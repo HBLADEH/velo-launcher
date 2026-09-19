@@ -21,10 +21,22 @@ jobs:
       - run: go install github.com/wailsapp/wails/v2/cmd/wails@v2.12.0
       - run: npm ci
         working-directory: frontend
-      - run: ./scripts/verify.ps1
+      - name: Ensure NSIS (makensis)
+        shell: pwsh
+        run: |
+          if (-not (Test-Path 'C:\Program Files (x86)\NSIS\makensis.exe')) {
+            choco install nsis --no-progress -y
+          }
+          $nsis = 'C:\Program Files (x86)\NSIS'
+          if (-not (Test-Path "$nsis\makensis.exe")) { throw "makensis not found in $nsis" }
+          $nsis | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+          & "$nsis\makensis.exe" -VERSION
+      - run: ./scripts/verify.ps1 -Installer
         shell: pwsh
       - uses: actions/upload-artifact@v4
         with:
           name: velo-launcher-windows-amd64
-          path: build/bin/velo-launcher.exe
+          path: |
+            build/bin/velo-launcher.exe
+            build/bin/*-installer.exe
           if-no-files-found: error

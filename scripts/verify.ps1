@@ -1,4 +1,4 @@
-param([switch]$SkipBuild)
+param([switch]$SkipBuild, [switch]$Installer)
 $ErrorActionPreference = 'Stop'
 Push-Location (Split-Path -Parent $PSScriptRoot)
 try {
@@ -17,7 +17,9 @@ try {
     & go test ./...
     if ($LASTEXITCODE -ne 0) { throw 'go test failed' }
     if (-not $SkipBuild) {
-        & wails build -clean -platform windows/amd64
+        $wailsArgs = @('build', '-clean', '-platform', 'windows/amd64')
+        if ($Installer) { $wailsArgs += '-nsis' }
+        & wails @wailsArgs
         if ($LASTEXITCODE -ne 0) { throw 'Windows build failed' }
     }
 } finally { Pop-Location }
