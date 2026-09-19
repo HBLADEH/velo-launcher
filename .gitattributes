@@ -1,0 +1,5 @@
+# 行尾统一为 LF：验证脚本直接跑 gofmt -l，CRLF 会被判为未格式化
+* text=auto eol=lf
+*.png binary
+*.ico binary
+*.exe binary
