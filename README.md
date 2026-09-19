@@ -4,7 +4,7 @@
 
 ## 使用
 
-运行 `build/bin/velo-launcher.exe`，或者在项目根目录执行 `wails dev`。
+运行 `build/bin/velo-launcher.exe`，或者在项目根目录执行 `wails dev`。已发布预览版 [v0.8.0-beta.1](https://github.com/HBLADEH/velo-launcher/releases/tag/v0.8.0-beta.1)（exe 与 NSIS 安装包，均未签名）。
 
 - `Alt+Space`：显示 / 隐藏；快捷键被占用时会显示提示，可在设置中更换。
 - 输入应用名称；`↑` / `↓` 选择，`Enter` 启动，`Esc` 隐藏。
@@ -81,7 +81,7 @@ JSON 保存使用同目录临时文件替换。默认每 30 分钟后台刷新�
 ./scripts/measure-resources.ps1 -ProcessId <Velo进程ID> -Seconds 15
 ```
 
-暂未发布签名安装包；没有插件、云端同步或其他 Future 范围功能。
+已发布的 exe 与安装包均未签名；没有插件、云端同步或其他 Future 范围功能。
 
 ## 许可证
 

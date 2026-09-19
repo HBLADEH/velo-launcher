@@ -12,6 +12,7 @@
 - 实际索引：Start Menu 211、Desktop 6、Program Files 692、Program Files (x86) 724、Windows Apps 32，共 1665 项；最新缓存 1665 项均有本地 PNG 图标。
 - 生产 Windows x64 构建成功，约 11 MB；Wails dev 已实际启动。Go vet、全部 Go 测试、前端 lint/typecheck/build 已通过。最新变更继续通过 scripts/verify.ps1 验证。
 - 仓库已推送到 GitHub（`HBLADEH/velo-launcher`，MIT）。远端 CI 首次运行暴露并修复两个干净目录问题：Windows checkout 的 CRLF 触发 `gofmt -l`、缺少 `frontend/dist` 使 `//go:embed` 失败；修复后 `Windows build` 工作流（run 35459277743）全流程通过并上传 `velo-launcher-windows-amd64` 产物。
+- 首个预览版已发布：[v0.8.0-beta.1](https://github.com/HBLADEH/velo-launcher/releases/tag/v0.8.0-beta.1)（prerelease）。CI（run 35459917732）安装 NSIS 后以 `verify.ps1 -Installer` 构建并上传 `velo-launcher.exe`（11501056 字节）与 `velo-launcher-amd64-installer.exe`（6373121 字节）；两者的 SHA256 记录在 release 说明中。安装包未签名，未做安装/卸载端到端验证。
 
 ## 性能基线
 
