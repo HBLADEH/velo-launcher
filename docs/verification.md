@@ -11,6 +11,7 @@
 - 默认 `--background` 实例日志证明窗口隐藏且快捷键注册成功。任务栏隐藏/失焦/多显示器和重启恢复还需完成默认模式回归，不能用诊断模式代替。
 - 实际索引：Start Menu 211、Desktop 6、Program Files 692、Program Files (x86) 724、Windows Apps 32，共 1665 项；最新缓存 1665 项均有本地 PNG 图标。
 - 生产 Windows x64 构建成功，约 11 MB；Wails dev 已实际启动。Go vet、全部 Go 测试、前端 lint/typecheck/build 已通过。最新变更继续通过 scripts/verify.ps1 验证。
+- 仓库已推送到 GitHub（`HBLADEH/velo-launcher`，MIT）。远端 CI 首次运行暴露并修复两个干净目录问题：Windows checkout 的 CRLF 触发 `gofmt -l`、缺少 `frontend/dist` 使 `//go:embed` 失败；修复后 `Windows build` 工作流（run 35459277743）全流程通过并上传 `velo-launcher-windows-amd64` 产物。
 
 ## 性能基线
 
@@ -32,4 +33,4 @@ WS 是各进程工作集之和，包含重复共享页；private 是私有提交
 - 降低 WebView2 常驻成本；后台可见性与空闲 CPU 新修复的复测。
 - 索引刷新、快捷键回滚、历史和关闭流程的进一步并发/边界检查；本机无 C 编译器，`go test -race` 尚未运行。
 - 登录启动实际注册验证、自定义目录与刷新流程的端到端回归。
-- 最终构建、文档逐项审计；GitHub CI 未在远端触发。
+- 最终构建、文档逐项审计；本机 `build/bin/velo-launcher.exe` 被运行中实例占用时无法覆盖打包产物。

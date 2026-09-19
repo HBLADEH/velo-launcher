@@ -4,7 +4,7 @@
 
 | 阶段 | 交付 | 当前状态 / 验证证据 |
 | --- | --- | --- |
-| 0 | Go/Wails/Vue/TS、日志、Windows CI | 已实现：本地 gofmt/vet/test、前端 lint/typecheck/build 及 Windows x64 打包通过；CI 随首次推送在远端触发 |
+| 0 | Go/Wails/Vue/TS、日志、Windows CI | 已实现：本地 gofmt/vet/test、前端 lint/typecheck/build 及 Windows x64 打包通过；远端 CI（windows-latest）执行同一脚本并上传 exe，已通过 |
 | 1 | Alt+Space、Start Menu、内存搜索、键盘启动 | 核心链路已验证：Alt+Space 呼出、输入 `code` 后 Enter 启动 Visual Studio Code、Ctrl+, 打开设置；默认模式隐藏/失焦/多显示器回归未完成 |
 | 2 | exact/prefix/word/substring/fuzzy、容错、排序、1000 应用 benchmark | 已实现，匹配/排序/拼写容错有单元测试；1000 应用 0.014–0.069 ms/op、2–3 allocs/op，达 <10 ms 目标 |
 | 3 | Desktop/Program Files/Windows Apps/自定义目录、lnk 元数据、缓存/增量/去重/后台更新 | 已实现：本机索引 1665 项（Start Menu 211 / Desktop 6 / Program Files 692 / Program Files (x86) 724 / Windows Apps 32），增量、去重、删除、取消均有测试；自定义目录端到端回归未完成 |
