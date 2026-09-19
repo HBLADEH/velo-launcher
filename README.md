@@ -43,7 +43,7 @@ $env:VELO_INTEGRATION = '1'
 go test ./internal/platform -run 'Test.*Icon' -v
 ```
 
-验证脚本执行 gofmt 检查、go vet、Go 测试、Wails 绑定生成、前端 lint / typecheck / build 和 Windows x64 打包；失败即停止。GitHub Actions 使用相同脚本并上传 exe。远端 CI 尚未运行。
+验证脚本执行 gofmt 检查、前端 lint / typecheck / build、Wails 绑定生成、go vet、Go 测试和 Windows x64 打包；失败即停止。前端构建先于 Go 检查，因为 `//go:embed all:frontend/dist` 要求产物已存在。GitHub Actions 使用相同脚本并上传 exe。远端 CI 尚未运行。
 
 Wails 绑定位于 `frontend/wailsjs`，由工具生成，请勿手工修改。`main_bindings.go` 使用独立构建标签，生成绑定时不会访问运行中的用户数据。仅 Windows 实现当前桌面能力；未宣称支持 macOS / Linux。
 
