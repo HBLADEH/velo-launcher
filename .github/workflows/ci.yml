@@ -1,0 +1,30 @@
+name: Windows build
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.25.6'
+          cache: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.15.0'
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: go install github.com/wailsapp/wails/v2/cmd/wails@v2.12.0
+      - run: npm ci
+        working-directory: frontend
+      - run: ./scripts/verify.ps1
+        shell: pwsh
+      - uses: actions/upload-artifact@v4
+        with:
+          name: velo-launcher-windows-amd64
+          path: build/bin/velo-launcher.exe
+          if-no-files-found: error

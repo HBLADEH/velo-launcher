@@ -1,0 +1,79 @@
+package main
+
+import (
+	"io"
+	"log/slog"
+	"os"
+	"path/filepath"
+	"testing"
+	"time"
+
+	core "velo-launcher/internal/app"
+	"velo-launcher/internal/config"
+	"velo-launcher/internal/indexer"
+	"velo-launcher/internal/model"
+	"velo-launcher/internal/platform"
+	"velo-launcher/internal/storage"
+)
+
+func TestFailedLaunchDoesNotRecordHistory(t *testing.T) {
+	dir := t.TempDir()
+	if err := storage.Write(filepath.Join(dir, "index.json"), indexer.Cache{Version: 1, Apps: []model.AppItem{{ID: "missing", Name: "Missing", Path: filepath.Join(dir, "missing.exe")}}}); err != nil {
+		t.Fatal(err)
+	}
+	logger := slog.New(slog.NewTextHandler(io.Discard, nil))
+	service, err := core.New(dir, logger)
+	if err != nil {
+		t.Fatal(err)
+	}
+	app := NewApp(logger, service, false, false, time.Now())
+	if err := app.Launch("missing", "m"); err == nil {
+		t.Fatal("missing executable accepted")
+	}
+	if _, err := os.Stat(filepath.Join(dir, "history.json")); !os.IsNotExist(err) {
+		t.Fatal("failed launch recorded")
+	}
+}
+func TestSettingsPersistenceFailureRestoresHotkey(t *testing.T) {
+	dir := t.TempDir()
+	path := filepath.Join(dir, "config.json")
+	c := config.Defaults()
+	c.Hotkey = "Ctrl+Alt+Shift+F20"
+	if err := storage.Write(path, c); err != nil {
+		t.Fatal(err)
+	}
+	logger := slog.New(slog.NewTextHandler(io.Discard, nil))
+	service, err := core.New(dir, logger)
+	if err != nil {
+		t.Fatal(err)
+	}
+	app := NewApp(logger, service, false, false, time.Now())
+	app.key, err = platform.RegisterHotkey(c.Hotkey, func() {})
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer app.key.Close()
+	if err := os.Remove(path); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.Mkdir(path, 0700); err != nil {
+		t.Fatal(err)
+	}
+	c.Hotkey = "Ctrl+Alt+Shift+F19"
+	if err := app.SaveSettings(c); err == nil {
+		t.Fatal("write failure not reported")
+	}
+	probe, err := platform.RegisterHotkey(c.Hotkey, func() {})
+	if err != nil {
+		t.Fatal("new hotkey not released", err)
+	}
+	probe.Close()
+	probe, err = platform.RegisterHotkey("Ctrl+Alt+Shift+F20", func() {})
+	if err == nil {
+		probe.Close()
+		t.Fatal("old hotkey not restored")
+	}
+	if app.GetSettings().Hotkey != "Ctrl+Alt+Shift+F20" {
+		t.Fatal("failed config applied")
+	}
+}
