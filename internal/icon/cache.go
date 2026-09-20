@@ -47,13 +47,11 @@ func Populate(ctx context.Context, dataDir string, items []model.AppItem, extrac
 	if err := os.MkdirAll(dir, 0700); err != nil {
 		return err
 	}
-	used := make(map[string]bool, len(items))
 	for n := range items {
 		if err := ctx.Err(); err != nil {
 			return err
 		}
 		name := signature(items[n]) + ".png"
-		used[name] = true
 		path := filepath.Join(dir, name)
 		if _, err := os.Stat(path); err != nil {
 			img, err := extract(items[n].Path)
@@ -80,8 +78,22 @@ func Populate(ctx context.Context, dataDir string, items []model.AppItem, extrac
 		}
 		items[n].IconURL = "/icons/" + name
 	}
+	return nil
+}
+
+// Prune must only run after the caller accepts and persists the new index.
+// Populate may belong to a cancelled or obsolete scan and must not evict icons.
+func Prune(dataDir string, items []model.AppItem) error {
+	dir := Directory(dataDir)
+	used := make(map[string]bool, len(items))
+	for _, item := range items {
+		used[strings.TrimPrefix(item.IconURL, "/icons/")] = true
+	}
 	// Only generated cache PNGs are eligible for cleanup.
 	files, err := os.ReadDir(dir)
+	if os.IsNotExist(err) {
+		return nil
+	}
 	if err != nil {
 		return err
 	}

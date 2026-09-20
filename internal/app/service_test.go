@@ -2,6 +2,7 @@ package app
 
 import (
 	"context"
+	"fmt"
 	"io"
 	"log/slog"
 	"os"
@@ -15,6 +16,94 @@ import (
 	"velo-launcher/internal/model"
 	"velo-launcher/internal/storage"
 )
+
+func TestObsoleteRefreshCannotReplacePublishedIndex(t *testing.T) {
+	dir := t.TempDir()
+	path := filepath.Join(dir, "index.json")
+	original := indexer.Cache{Version: 1, Apps: []model.AppItem{{ID: "original", Name: "Original"}}}
+	if err := storage.Write(path, original); err != nil {
+		t.Fatal(err)
+	}
+	s, err := New(dir, slog.New(slog.NewTextHandler(io.Discard, nil)))
+	if err != nil {
+		t.Fatal(err)
+	}
+	s.onChange = func() {}
+	rev := s.revision
+	c := s.Settings()
+	c.ScanProgramFiles = !c.ScanProgramFiles
+	if err := s.SaveSettings(c); err != nil {
+		t.Fatal(err)
+	}
+	s.state.Scanning = true
+	s.commitRefresh(context.Background(), rev, indexer.Cache{Version: 1}, nil, nil, time.Now())
+	var disk indexer.Cache
+	if err := storage.Read(path, &disk); err != nil {
+		t.Fatal(err)
+	}
+	if len(disk.Apps) != 1 || disk.Apps[0].ID != "original" || len(s.Search("original")) != 1 {
+		t.Fatal("obsolete refresh replaced committed index")
+	}
+	if s.State().Scanning || len(s.wake) != 1 {
+		t.Fatal("obsolete refresh did not schedule a replacement")
+	}
+}
+
+func TestConcurrentSettingsMatchPersistedSnapshot(t *testing.T) {
+	s, err := New(t.TempDir(), slog.New(slog.NewTextHandler(io.Discard, nil)))
+	if err != nil {
+		t.Fatal(err)
+	}
+	var group sync.WaitGroup
+	for n := 0; n < 20; n++ {
+		group.Add(1)
+		go func(n int) {
+			defer group.Done()
+			c := s.Settings()
+			c.CustomDirectories = []string{filepath.Join(t.TempDir(), fmt.Sprint(n))}
+			if err := s.SaveSettings(c); err != nil {
+				t.Error(err)
+			}
+			c.CustomDirectories[0] = "caller mutation"
+		}(n)
+	}
+	group.Wait()
+	var disk config.Config
+	if err := storage.Read(filepath.Join(s.dir, "config.json"), &disk); err != nil {
+		t.Fatal(err)
+	}
+	if got := s.Settings().CustomDirectories[0]; got != disk.CustomDirectories[0] {
+		t.Fatalf("memory %q differs from disk %q", got, disk.CustomDirectories[0])
+	}
+}
+
+func TestFailedIndexPersistenceDoesNotPruneIcons(t *testing.T) {
+	dir := t.TempDir()
+	s, err := New(dir, slog.New(slog.NewTextHandler(io.Discard, nil)))
+	if err != nil {
+		t.Fatal(err)
+	}
+	s.onChange = func() {}
+	iconDir := filepath.Join(dir, "cache", "icons")
+	if err := os.MkdirAll(iconDir, 0700); err != nil {
+		t.Fatal(err)
+	}
+	iconPath := filepath.Join(iconDir, "0123456789abcdef0123456789abcdef.png")
+	if err := os.WriteFile(iconPath, []byte("retained icon"), 0600); err != nil {
+		t.Fatal(err)
+	}
+	// A directory at the target file forces replacement to fail on Windows.
+	if err := os.Mkdir(filepath.Join(dir, "index.json"), 0700); err != nil {
+		t.Fatal(err)
+	}
+	s.commitRefresh(context.Background(), s.revision, indexer.Cache{Version: 1}, nil, nil, time.Now())
+	if len(s.State().Warnings) == 0 {
+		t.Fatal("persistence failure was not reported")
+	}
+	if _, err := os.Stat(iconPath); err != nil {
+		t.Fatal("failed commit removed persisted index icon", err)
+	}
+}
 
 func TestCustomDirectoryRefreshIntegration(t *testing.T) {
 	if os.Getenv("VELO_INTEGRATION") != "1" {

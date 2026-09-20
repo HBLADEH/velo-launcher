@@ -38,6 +38,14 @@ func TestReuseInvalidationAndServing(t *testing.T) {
 		t.Fatal("cache not invalidated")
 	}
 	h := Handler(dir)
+	retained := httptest.NewRecorder()
+	h.ServeHTTP(retained, httptest.NewRequest("GET", old, nil))
+	if retained.Code != 200 {
+		t.Fatal("unaccepted scan removed published icon", retained.Code)
+	}
+	if err := Prune(dir, items); err != nil {
+		t.Fatal(err)
+	}
 	w := httptest.NewRecorder()
 	h.ServeHTTP(w, httptest.NewRequest("GET", items[0].IconURL, nil))
 	if w.Code != 200 || w.Header().Get("Content-Type") != "image/png" {

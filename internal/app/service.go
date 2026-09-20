@@ -28,6 +28,8 @@ type State struct {
 	Warnings         []string `json:"warnings"`
 }
 type Service struct {
+	// Serialize settings writes and refresh commits without blocking readers on disk I/O.
+	commitMu sync.Mutex
 	mu       sync.RWMutex
 	dir      string
 	config   config.Config
@@ -125,9 +127,12 @@ func (s *Service) Settings() config.Config {
 	return c
 }
 func (s *Service) SaveSettings(c config.Config) error {
+	c.CustomDirectories = slices.Clone(c.CustomDirectories)
 	if err := c.Validate(); err != nil {
 		return err
 	}
+	s.commitMu.Lock()
+	defer s.commitMu.Unlock()
 	if err := storage.Write(filepath.Join(s.dir, "config.json"), c); err != nil {
 		return err
 	}
@@ -178,7 +183,16 @@ func (s *Service) refresh(ctx context.Context) {
 	s.mu.Unlock()
 	s.onChange()
 	next, warnings, err := scan(ctx, c, old, s.dir)
+	s.commitRefresh(ctx, rev, next, warnings, err, start)
+}
+
+func (s *Service) commitRefresh(ctx context.Context, rev uint64, next indexer.Cache, warnings []string, err error, start time.Time) {
+	s.commitMu.Lock()
+	defer s.commitMu.Unlock()
 	if ctx.Err() != nil {
+		s.mu.Lock()
+		s.state.Scanning = false
+		s.mu.Unlock()
 		return
 	}
 	s.mu.RLock()
@@ -191,12 +205,16 @@ func (s *Service) refresh(ctx context.Context) {
 		s.Refresh()
 		return
 	}
+	persisted := false
 	if err == nil {
 		if e := storage.Write(filepath.Join(s.dir, "index.json"), next); e != nil {
 			warnings = append(warnings, "索引缓存写入失败: "+e.Error())
+		} else {
+			persisted = true
 		}
 	}
 	s.mu.Lock()
+	previous := s.cache.Apps
 	s.state.Scanning = false
 	s.state.ScanMilliseconds = time.Since(start).Milliseconds()
 	if err != nil {
@@ -209,6 +227,13 @@ func (s *Service) refresh(ctx context.Context) {
 	}
 	count := s.state.Count
 	s.mu.Unlock()
+	// Never delete icons from the persisted index if its replacement failed.
+	// Retain one previous generation for results still displayed by the frontend.
+	if persisted {
+		if e := icon.Prune(s.dir, append(slices.Clone(next.Apps), previous...)); e != nil {
+			s.logger.Warn("icon cleanup failed", "error", e)
+		}
+	}
 	s.logger.Info("index refreshed", "apps", count, "duration_ms", time.Since(start).Milliseconds(), "error", err)
 	s.onChange()
 }
