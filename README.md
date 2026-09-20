@@ -4,7 +4,7 @@
 
 ## 使用
 
-运行 `build/bin/velo-launcher.exe`，或者在项目根目录执行 `wails dev`。已发布预览版 [v0.8.0-beta.1](https://github.com/HBLADEH/velo-launcher/releases/tag/v0.8.0-beta.1)（exe 与 NSIS 安装包，均未签名）。
+运行 `build/bin/velo-launcher.exe`，或者在项目根目录执行 `wails dev`。已发布预览版 [v0.8.0-beta.2](https://github.com/HBLADEH/velo-launcher/releases/tag/v0.8.0-beta.2)（exe 与 NSIS 安装包，均未签名）。
 
 - `Alt+Space`：显示 / 隐藏；快捷键被占用时会显示提示，可在设置中更换。
 - 输入应用名称；`↑` / `↓` 选择，`Enter` 启动，`Esc` 隐藏。
@@ -77,7 +77,7 @@ JSON 保存使用同目录临时文件替换。默认每 30 分钟后台刷新�
 
 完整范围和逐项待验收项见 [实施清单](docs/implementation.md)，原始规划见 [计划书](velo-launcher_README.md)。目前主要功能已实现并完成首轮自动化 / 桌面验证，**尚未完成全部性能和稳定性验收**。
 
-已实际验证：`code` → Visual Studio Code → Enter 启动；从其他应用 Alt+Space 呼出；Ctrl+, 打开设置；主题保存及本地历史排序；开始菜单/桌面/Program Files/Windows Apps 索引和图标缓存。本机索引 1665 项。
+已实际验证：`code` → Visual Studio Code → Enter 启动；从其他应用 Alt+Space 呼出；Ctrl+, 打开设置；主题保存及本地历史排序；开始菜单/桌面/Program Files/Windows Apps 索引和图标缓存；托盘图标创建与移除、`--background` 实例中托盘与快捷键共存；候选过滤、重名合并与深层限制后的本机索引（455 项缓存、402 项可见），以及开发模式下图标与设置加载的修复。
 
 1000 应用搜索基准约 **0.014–0.069 ms**，每次 2–3 次分配。单次缓存启动记录约 470–523 ms（进程入口到前端缓存结果就绪，不等同于严格冷启动）。完整内存统计包含 WebView2 子进程；已测得私有内存约 154–218 MB，**80 MB 目标尚未达成**。详见 [验证记录](docs/verification.md)。
 

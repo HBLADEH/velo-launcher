@@ -14,6 +14,8 @@
 - 仓库已推送到 GitHub（`HBLADEH/velo-launcher`，MIT）。远端 CI 首次运行暴露并修复两个干净目录问题：Windows checkout 的 CRLF 触发 `gofmt -l`、缺少 `frontend/dist` 使 `//go:embed` 失败；修复后 `Windows build` 工作流（run 35459277743）全流程通过并上传 `velo-launcher-windows-amd64` 产物。
 - 首个预览版已发布：[v0.8.0-beta.1](https://github.com/HBLADEH/velo-launcher/releases/tag/v0.8.0-beta.1)（prerelease）。CI（run 35459917732）安装 NSIS 后以 `verify.ps1 -Installer` 构建并上传 `velo-launcher.exe`（11501056 字节）与 `velo-launcher-amd64-installer.exe`（6373121 字节）；两者的 SHA256 记录在 release 说明中。安装包未签名，未做安装/卸载端到端验证。
 
+- 第二版预览版已发布：[v0.8.0-beta.2](https://github.com/HBLADEH/velo-launcher/releases/tag/v0.8.0-beta.2)（prerelease，tag 指向 `5ad2dd4`）。CI 两轮通过：main push（run 35526837776）与 tag push（run 35526961854），后者以 `verify.ps1 -Installer` 安装 NSIS 后构建并上传 `velo-launcher.exe`（11548672 字节，SHA256 `645c7fb8cff69aa7c84c2cafd5efb391653f38db9ce459eac99f7678df9e41d6`）与 `velo-launcher-amd64-installer.exe`（6392250 字节，SHA256 `844b263b6632e9169ad1928ae84ecae9ed92c511aa6f81597b404cec0484fc3e`）；校验值同时写入 release 说明。安装包未签名，未做安装/卸载端到端验证。
+
 ## 2026-09-21 回归补充
 
 - 历史写入改为独立串行写锁与已提交快照：阻塞磁盘写入时搜索评分仍可读取，写入成功前新历史不可见；20 次并发记录持久化后无丢失，自动测试通过。
