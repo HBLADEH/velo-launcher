@@ -16,6 +16,8 @@ export function Hide():Promise<void>;
 
 export function Launch(arg1:string,arg2:string):Promise<void>;
 
+export function OpenSettings():Promise<void>;
+
 export function Quit():Promise<void>;
 
 export function RefreshIndex():Promise<void>;

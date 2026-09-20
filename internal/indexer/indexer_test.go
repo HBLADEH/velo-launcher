@@ -4,6 +4,7 @@ import (
 	"context"
 	"os"
 	"path/filepath"
+	"sort"
 	"testing"
 	"velo-launcher/internal/model"
 )
@@ -22,7 +23,7 @@ func TestIncrementalDedupAndDeletion(t *testing.T) {
 		}
 	}
 	r := &resolver{}
-	roots := []Root{{dir, "Start Menu"}}
+	roots := []Root{{Path: dir, Source: "Start Menu"}}
 	cache, _, err := Scan(context.Background(), roots, Cache{}, r)
 	if err != nil {
 		t.Fatal(err)
@@ -52,7 +53,42 @@ func TestIncrementalDedupAndDeletion(t *testing.T) {
 func TestCancelledScan(t *testing.T) {
 	ctx, cancel := context.WithCancel(context.Background())
 	cancel()
-	if _, _, err := Scan(ctx, []Root{{t.TempDir(), "Custom"}}, Cache{}, &resolver{}); err == nil {
+	if _, _, err := Scan(ctx, []Root{{Path: t.TempDir(), Source: "Custom"}}, Cache{}, &resolver{}); err == nil {
 		t.Fatal("cancellation ignored")
+	}
+}
+
+func TestScanDepthLimitSkipsBundledTools(t *testing.T) {
+	root := t.TempDir()
+	for _, relative := range []string{
+		`App\App.exe`,
+		`Vendor\Product\Product.exe`,
+		`Git\usr\bin\sh.exe`,
+		`Vendor\Product\bin\helper.exe`,
+	} {
+		path := filepath.Join(root, relative)
+		if err := os.MkdirAll(filepath.Dir(path), 0700); err != nil {
+			t.Fatal(err)
+		}
+		if err := os.WriteFile(path, []byte("fixture"), 0600); err != nil {
+			t.Fatal(err)
+		}
+	}
+	cache, _, err := Scan(context.Background(), []Root{{Path: root, Source: "Program Files", MaxDepth: 2}}, Cache{}, &resolver{})
+	if err != nil {
+		t.Fatal(err)
+	}
+	names := []string{}
+	for _, item := range cache.Apps {
+		names = append(names, filepath.Base(item.Path))
+	}
+	sort.Strings(names)
+	if len(names) != 2 || names[0] != "App.exe" || names[1] != "Product.exe" {
+		t.Fatalf("深层组件应被跳过: %v", names)
+	}
+	// MaxDepth 为 0 时恢复完整扫描。
+	cache, _, err = Scan(context.Background(), []Root{{Path: root, Source: "Program Files"}}, Cache{}, &resolver{})
+	if err != nil || len(cache.Apps) != 4 {
+		t.Fatalf("无限制时应索引全部可执行文件: %d %v", len(cache.Apps), err)
 	}
 }

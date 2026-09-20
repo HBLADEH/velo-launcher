@@ -14,6 +14,9 @@ import (
 type Root struct {
 	Path   string
 	Source string
+	// MaxDepth 限制根目录下的层级：可启动的主程序通常位于安装目录顶层，
+	// 深层可执行文件多为组件或工具。0 表示不限制。
+	MaxDepth int
 }
 type File struct {
 	Modified int64         `json:"modified"`
@@ -78,6 +81,9 @@ func Scan(ctx context.Context, roots []Root, old Cache, resolver Resolver) (Cach
 			if ext != ".exe" && ext != ".lnk" {
 				return nil
 			}
+			if beyondDepth(root, path) {
+				return nil
+			}
 			info, err := d.Info()
 			if err != nil {
 				return nil
@@ -123,31 +129,75 @@ func Scan(ctx context.Context, roots []Root, old Cache, resolver Resolver) (Cach
 	next.Apps = Deduplicate(items)
 	return next, warnings, nil
 }
+
+// beyondDepth 只保留浅层程序：安装目录顶层是应用主程序，深层可执行文件
+// 通常是捆绑组件或开发工具（如 Git\usr\bin、Windows Kits\...\bin）。
+func beyondDepth(root Root, path string) bool {
+	if root.MaxDepth <= 0 {
+		return false
+	}
+	relative, err := filepath.Rel(root.Path, filepath.Dir(path))
+	if err != nil || relative == "." {
+		return false
+	}
+	return strings.Count(relative, string(filepath.Separator))+1 > root.MaxDepth
+}
+
+// Deduplicate keeps one entry per application. Friendly Start Menu shortcuts
+// win over executable filenames, shallower install paths win over helper copies
+// bundled inside another program, and the ID still separates different
+// profiles/commands of the same executable.
 func Deduplicate(items []model.AppItem) []model.AppItem {
-	// Prefer friendly Start Menu shortcuts over executable filenames.
 	priority := func(a model.AppItem) int {
+		if a.Source == "Windows Apps" {
+			return 3
+		}
 		if strings.EqualFold(filepath.Ext(a.Path), ".lnk") {
 			if a.Source == "Start Menu" {
 				return 0
 			}
-			return 1
+			if a.Source == "Desktop" {
+				return 1
+			}
+			return 2
 		}
-		return 2
+		return 4
+	}
+	rank := func(a model.AppItem) (int, int, string) {
+		exec := a.ExecPath
+		if exec == "" {
+			exec = a.Path
+		}
+		return priority(a), strings.Count(filepath.Clean(exec), string(filepath.Separator)), strings.ToLower(a.Path)
 	}
 	sort.Slice(items, func(i, j int) bool {
-		pi, pj := priority(items[i]), priority(items[j])
+		pi, di, pathi := rank(items[i])
+		pj, dj, pathj := rank(items[j])
 		if pi != pj {
 			return pi < pj
 		}
-		return items[i].Path < items[j].Path
+		if di != dj {
+			return di < dj
+		}
+		if pathi != pathj {
+			return pathi < pathj
+		}
+		return items[i].ID < items[j].ID
 	})
-	seen := map[string]bool{}
+	seenID := map[string]bool{}
+	seenName := map[string]bool{}
 	out := make([]model.AppItem, 0, len(items))
 	for _, item := range items {
-		if !seen[item.ID] {
-			seen[item.ID] = true
-			out = append(out, item)
+		if seenID[item.ID] {
+			continue
 		}
+		name := duplicateKey(item)
+		if seenName[name] {
+			continue
+		}
+		seenID[item.ID] = true
+		seenName[name] = true
+		out = append(out, item)
 	}
 	sort.Slice(out, func(i, j int) bool {
 		if out[i].Name != out[j].Name {
@@ -156,4 +206,15 @@ func Deduplicate(items []model.AppItem) []model.AppItem {
 		return out[i].ID < out[j].ID
 	})
 	return out
+}
+
+// duplicateKey groups the same program published from several locations, for
+// example one shortcut in the user Start Menu and one in the common Start Menu.
+// The target keeps different programs that merely share a name apart.
+func duplicateKey(item model.AppItem) string {
+	target := item.ExecPath
+	if target == "" {
+		target = item.Path
+	}
+	return strings.ToLower(strings.Join(strings.Fields(item.Name), " ")) + "\x00" + strings.ToLower(filepath.Base(target))
 }

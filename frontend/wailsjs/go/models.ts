@@ -20,6 +20,8 @@ export namespace config {
 	    max_results: number;
 	    theme: string;
 	    launch_at_startup: boolean;
+	    space_launch: boolean;
+	    filter_noise: boolean;
 	    search: Search;
 	    custom_directories: string[];
 	    scan_program_files: boolean;
@@ -36,6 +38,8 @@ export namespace config {
 	        this.max_results = source["max_results"];
 	        this.theme = source["theme"];
 	        this.launch_at_startup = source["launch_at_startup"];
+	        this.space_launch = source["space_launch"];
+	        this.filter_noise = source["filter_noise"];
 	        this.search = this.convertValues(source["search"], Search);
 	        this.custom_directories = source["custom_directories"];
 	        this.scan_program_files = source["scan_program_files"];

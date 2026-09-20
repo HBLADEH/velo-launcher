@@ -251,3 +251,34 @@ func TestCorruptIndexRecovery(t *testing.T) {
 		t.Fatal("corrupt index not discarded")
 	}
 }
+
+func TestFilterNoiseToggleRebuildsIndexWithoutRescan(t *testing.T) {
+	dir := t.TempDir()
+	apps := []model.AppItem{
+		{ID: "calc", Name: "Calculator", Path: `C:\Windows\System32\calc.exe`, ExecPath: `C:\Windows\System32\calc.exe`},
+		{ID: "help", Name: "Calculator 帮助", Path: `C:\Windows\System32\calc.chm`, ExecPath: `C:\Windows\System32\calc.chm`},
+	}
+	if err := storage.Write(filepath.Join(dir, "index.json"), indexer.Cache{Version: 1, Apps: apps}); err != nil {
+		t.Fatal(err)
+	}
+	s, err := New(dir, slog.New(slog.NewTextHandler(io.Discard, nil)))
+	if err != nil {
+		t.Fatal(err)
+	}
+	s.onChange = func() {}
+	if s.State().Count != 1 || len(s.Search("calculator")) != 1 {
+		t.Fatalf("默认设置应隐藏辅助项: %+v", s.Search("calculator"))
+	}
+	c := s.Settings()
+	c.FilterNoise = false
+	if err := s.SaveSettings(c); err != nil {
+		t.Fatal(err)
+	}
+	// 缓存保留全部条目：开关立即重建索引，同时安排后台重扫以恢复深层扫描范围。
+	if s.State().Count != 2 || len(s.Search("calculator")) != 2 {
+		t.Fatal("关闭过滤后应立即显示全部条目")
+	}
+	if len(s.wake) != 1 {
+		t.Fatal("过滤开关应安排后台重扫")
+	}
+}

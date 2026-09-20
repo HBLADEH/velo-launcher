@@ -21,20 +21,29 @@ import (
 	"velo-launcher/internal/model"
 )
 
+// programFilesDepth 是 Program Files 深层扫描的默认层级上限：
+// 只索引 <Program Files>\<厂商>\<应用>\app.exe 这类浅层主程序。
+const programFilesDepth = 2
+
 func Roots(c config.Config) []indexer.Root {
 	result := []indexer.Root{}
-	add := func(id *windows.KNOWNFOLDERID, source string) {
+	add := func(id *windows.KNOWNFOLDERID, source string, maxDepth int) {
 		if path, err := windows.KnownFolderPath(id, 0); err == nil {
-			result = append(result, indexer.Root{Path: path, Source: source})
+			result = append(result, indexer.Root{Path: path, Source: source, MaxDepth: maxDepth})
 		}
 	}
-	add(windows.FOLDERID_Programs, "Start Menu")
-	add(windows.FOLDERID_CommonPrograms, "Start Menu")
-	add(windows.FOLDERID_Desktop, "Desktop")
-	add(windows.FOLDERID_PublicDesktop, "Desktop")
+	add(windows.FOLDERID_Programs, "Start Menu", 0)
+	add(windows.FOLDERID_CommonPrograms, "Start Menu", 0)
+	add(windows.FOLDERID_Desktop, "Desktop", 0)
+	add(windows.FOLDERID_PublicDesktop, "Desktop", 0)
 	if c.ScanProgramFiles {
-		add(windows.FOLDERID_ProgramFiles, "Program Files")
-		add(windows.FOLDERID_ProgramFilesX86, "Program Files (x86)")
+		// 隐藏辅助项开启时同时跳过深层组件，关闭后恢复完整扫描。
+		depth := 0
+		if c.FilterNoise {
+			depth = programFilesDepth
+		}
+		add(windows.FOLDERID_ProgramFiles, "Program Files", depth)
+		add(windows.FOLDERID_ProgramFilesX86, "Program Files (x86)", depth)
 	}
 	for _, dir := range c.CustomDirectories {
 		result = append(result, indexer.Root{Path: dir, Source: "Custom"})

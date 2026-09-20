@@ -79,17 +79,21 @@ func New(dir string, logger *slog.Logger) (*Service, error) {
 	return s, nil
 }
 func (s *Service) replace(items []model.AppItem) {
-	s.index = search.New(items)
-	s.items = make(map[string]model.AppItem, len(items))
-	for _, item := range items {
+	// 调用方必须持有 s.mu，或在启动阶段独占地初始化。
+	visible := indexer.Visible(items, s.config.FilterNoise)
+	s.index = search.New(visible)
+	s.items = make(map[string]model.AppItem, len(visible))
+	for _, item := range visible {
 		s.items[item.ID] = item
 	}
-	s.state.Count = len(items)
+	s.state.Count = len(visible)
 }
 func (s *Service) Start(parent context.Context, onChange func()) {
 	ctx, cancel := context.WithCancel(parent)
 	s.cancel = cancel
+	s.mu.Lock()
 	s.onChange = onChange
+	s.mu.Unlock()
 	go func() {
 		defer close(s.done)
 		for {
@@ -139,12 +143,20 @@ func (s *Service) SaveSettings(c config.Config) error {
 	s.mu.Lock()
 	old := s.config
 	s.config = c
-	indexChanged := old.ScanProgramFiles != c.ScanProgramFiles || !slices.Equal(old.CustomDirectories, c.CustomDirectories)
-	if indexChanged {
+	filterChanged := old.FilterNoise != c.FilterNoise
+	rescan := old.ScanProgramFiles != c.ScanProgramFiles || filterChanged || !slices.Equal(old.CustomDirectories, c.CustomDirectories)
+	if rescan {
 		s.revision++
 	}
 	s.mu.Unlock()
-	if indexChanged || old.RefreshMinutes != c.RefreshMinutes {
+	if filterChanged {
+		// 先用现有缓存重建索引，让开关立即生效；深层辅助程序的排除在后台重扫后生效。
+		s.mu.Lock()
+		s.replace(s.cache.Apps)
+		s.mu.Unlock()
+		s.notify()
+	}
+	if rescan || old.RefreshMinutes != c.RefreshMinutes {
 		s.Refresh()
 	}
 	return nil
@@ -175,13 +187,23 @@ func (s *Service) Item(id string) (model.AppItem, error) {
 func (s *Service) Record(id, query string) error {
 	return s.history.Record(id, search.Normalize(query), time.Now())
 }
+
+// notify 在索引或可见条目变化后通知前端刷新。
+func (s *Service) notify() {
+	s.mu.RLock()
+	change := s.onChange
+	s.mu.RUnlock()
+	if change != nil {
+		change()
+	}
+}
 func (s *Service) refresh(ctx context.Context) {
 	start := time.Now()
 	s.mu.Lock()
 	c, old, rev := s.config, s.cache, s.revision
 	s.state.Scanning = true
 	s.mu.Unlock()
-	s.onChange()
+	s.notify()
 	next, warnings, err := scan(ctx, c, old, s.dir)
 	s.commitRefresh(ctx, rev, next, warnings, err, start)
 }
@@ -235,7 +257,7 @@ func (s *Service) commitRefresh(ctx context.Context, rev uint64, next indexer.Ca
 		}
 	}
 	s.logger.Info("index refreshed", "apps", count, "duration_ms", time.Since(start).Milliseconds(), "error", err)
-	s.onChange()
+	s.notify()
 }
 func scan(ctx context.Context, c config.Config, old indexer.Cache, dataDir string) (indexer.Cache, []string, error) {
 	resolver, err := platform.NewResolver()

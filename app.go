@@ -23,6 +23,7 @@ type App struct {
 	window        launcherWindow
 	key           *platform.Hotkey
 	keyError      string
+	tray          *platform.Tray
 	background    bool
 	diagnostics   bool
 	started       time.Time
@@ -61,6 +62,10 @@ func (a *App) ready(ctx context.Context) {
 		return
 	}
 	a.window = window
+	if a.tray, err = platform.NewTray(platform.TrayActions{Open: a.Show, Settings: a.OpenSettings, Quit: a.Quit}); err != nil {
+		a.tray = nil
+		a.logger.Warn("tray unavailable", "error", err)
+	}
 	a.key, err = platform.RegisterHotkey(a.service.Settings().Hotkey, a.Toggle)
 	if err != nil {
 		a.keyError = err.Error()
@@ -73,14 +78,21 @@ func (a *App) ready(ctx context.Context) {
 		a.window.Show()
 		wruntime.EventsEmit(ctx, "launcher:shown")
 	}
-	a.logger.Info("window ready", "visible", a.window.Visible(), "hotkey_error", a.keyError)
+	a.logger.Info("window ready", "visible", a.window.Visible(), "hotkey_error", a.keyError, "tray", a.tray != nil)
 }
 func (a *App) shutdown(_ context.Context) {
 	a.mu.Lock()
 	a.closing = true
 	key := a.key
 	a.key = nil
+	tray := a.tray
+	a.tray = nil
 	a.mu.Unlock()
+	if tray != nil {
+		if err := tray.Close(); err != nil {
+			a.logger.Warn("tray shutdown", "error", err)
+		}
+	}
 	if key != nil {
 		if err := key.Close(); err != nil {
 			a.logger.Warn("hotkey shutdown", "error", err)
@@ -109,6 +121,20 @@ func (a *App) Show() {
 		a.window.Show()
 		wruntime.EventsEmit(a.ctx, "launcher:shown")
 	}
+}
+
+// OpenSettings 供托盘等外部入口直接进入设置面板，窗口已可见时不再重置查询。
+func (a *App) OpenSettings() {
+	a.mu.Lock()
+	defer a.mu.Unlock()
+	if a.window == nil || a.closing {
+		return
+	}
+	if !a.window.Visible() {
+		a.window.Show()
+		wruntime.EventsEmit(a.ctx, "launcher:shown")
+	}
+	wruntime.EventsEmit(a.ctx, "settings:open")
 }
 func (a *App) Hide() {
 	a.mu.Lock()

@@ -20,6 +20,16 @@ func TestLoadDefaultsAndMigration(t *testing.T) {
 	if err != nil || c.MaxResults != 5 || c.Search.Fuzzy || c.Search.HistoryWeight != 1 || c.Version != 1 {
 		t.Fatalf("migration: %+v %v", c, err)
 	}
+	// 旧配置缺少启动台开关时沿用默认值：空格启动与辅助项过滤默认开启。
+	if !c.SpaceLaunch || !c.FilterNoise {
+		t.Fatalf("defaults not overlayed: %+v", c)
+	}
+	if err := os.WriteFile(path, []byte(`{"space_launch":false,"filter_noise":false}`), 0600); err != nil {
+		t.Fatal(err)
+	}
+	if c, _, err = Load(path); err != nil || c.SpaceLaunch || c.FilterNoise {
+		t.Fatalf("explicit opt-out lost: %+v %v", c, err)
+	}
 }
 func TestRecoveryAndFutureVersion(t *testing.T) {
 	path := filepath.Join(t.TempDir(), "config.json")

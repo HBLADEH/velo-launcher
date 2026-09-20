@@ -14,7 +14,10 @@ import (
 	"velo-launcher/internal/model"
 )
 
-type Extractor func(string) (image.Image, error)
+type Extractor func(model.AppItem) (image.Image, error)
+
+// signatureVersion 使提取尺寸或质量变化后的旧缓存失效，强制重新提取。
+const signatureVersion = "2"
 
 type encoderPool struct{ sync.Pool }
 
@@ -30,7 +33,7 @@ var buffers encoderPool
 
 func Directory(dataDir string) string { return filepath.Join(dataDir, "cache", "icons") }
 func signature(item model.AppItem) string {
-	parts := []string{item.Path, item.ExecPath, strings.Trim(strings.Split(item.IconPath, ",")[0], "\"")}
+	parts := []string{signatureVersion, item.Path, item.ExecPath, strings.Trim(strings.Split(item.IconPath, ",")[0], "\"")}
 	var stamp strings.Builder
 	for _, path := range parts {
 		stamp.WriteString(path)
@@ -54,7 +57,7 @@ func Populate(ctx context.Context, dataDir string, items []model.AppItem, extrac
 		name := signature(items[n]) + ".png"
 		path := filepath.Join(dir, name)
 		if _, err := os.Stat(path); err != nil {
-			img, err := extract(items[n].Path)
+			img, err := extract(items[n])
 			if err != nil {
 				continue
 			}

@@ -26,7 +26,7 @@ func TestPackagedAppIcon(t *testing.T) {
 		t.Skip("no packaged apps installed")
 	}
 	for _, app := range apps {
-		if _, err := ExtractIcon(app.Path); err != nil {
+		if _, err := ExtractIcon(app); err != nil {
 			t.Errorf("%s: %v", app.Name, err)
 		}
 	}
@@ -62,19 +62,21 @@ func TestShortcutMetadataAndIcon(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
+	item.Path = path
 	if !strings.EqualFold(item.ExecPath, target) || item.Arguments != "test.txt" || item.Description != "Velo test" || !strings.EqualFold(item.WorkingDirectory, filepath.Dir(path)) || item.IconPath == "" {
 		t.Fatalf("metadata: %+v", item)
 	}
-	img, err := ExtractIcon(path)
+	img, err := ExtractIcon(item)
 	if err != nil {
 		t.Fatal(err)
 	}
-	if img.Bounds().Dx() != 32 || img.Bounds().Dy() != 32 {
-		t.Fatal("unexpected icon dimensions")
+	// 索引中的图标按 iconSize 提取，前端再缩放到展示尺寸。
+	if img.Bounds().Dx() != iconSize || img.Bounds().Dy() != iconSize {
+		t.Fatal("unexpected icon dimensions", img.Bounds())
 	}
 	opaque := false
-	for y := 0; y < 32; y++ {
-		for x := 0; x < 32; x++ {
+	for y := 0; y < iconSize; y++ {
+		for x := 0; x < iconSize; x++ {
 			_, _, _, a := img.At(x, y).RGBA()
 			if a > 0 {
 				opaque = true

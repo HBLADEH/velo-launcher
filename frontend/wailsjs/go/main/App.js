@@ -26,6 +26,10 @@ export function Launch(arg1, arg2) {
   return window['go']['main']['App']['Launch'](arg1, arg2);
 }
 
+export function OpenSettings() {
+  return window['go']['main']['App']['OpenSettings']();
+}
+
 export function Quit() {
   return window['go']['main']['App']['Quit']();
 }

@@ -18,7 +18,10 @@ func TestReuseInvalidationAndServing(t *testing.T) {
 	}
 	items := []model.AppItem{{ID: "id", Path: exe, ExecPath: exe}}
 	calls := 0
-	extract := func(string) (image.Image, error) { calls++; return image.NewNRGBA(image.Rect(0, 0, 32, 32)), nil }
+	extract := func(model.AppItem) (image.Image, error) {
+		calls++
+		return image.NewNRGBA(image.Rect(0, 0, 32, 32)), nil
+	}
 	for i := 0; i < 2; i++ {
 		if err := Populate(context.Background(), dir, items, extract); err != nil {
 			t.Fatal(err)

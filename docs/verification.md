@@ -42,6 +42,14 @@ WS 是各进程工作集之和，包含重复共享页；private 是私有提交
 
 资源脚本现输出各进程内存明细，并比较采样两端的 PID 与启动时间。根进程无效时拒绝测量；采样端点进程集合变化时，`CPUSampleValid=false`、CPU 百分比为 null，应待进程树稳定后重测。端点采样不能检测完全发生在两次采样之间的短命进程，因此该方法用于稳定空闲期，不用于启动阶段 CPU 总量。上述长时间运行样本中，Velo 主进程 private 为 32.88 MB，其余约 119 MB 来自 WebView2。
 
+## 2026-09-21 启动台、图标与托盘补充
+
+- 托盘图标：`VELO_INTEGRATION=1 go test ./internal/platform -run TestTray -v` 通过，实际创建并移除了通知区域图标，重复 `Close()` 无副作用；沙箱实例日志为 `"msg":"window ready","visible":false,"hotkey_error":"","tray":true`，即后台模式下托盘与快捷键同时可用。
+- 图标清晰度：提取改为 `IShellItemImageFactory` 并按 64 px 渲染，探针实测开始菜单快捷方式、`System32` 可执行文件与 packaged app 均返回 64×64；随后改为优先使用快捷方式目标程序，探针图片确认图标不再带 Shell 的快捷方式箭头。缓存签名加入版本号，本机 1220 项图标已全部重新生成，抽查首图为 64×64。
+- 过滤与去重：本机索引由 1665 项合并为 1220 项（重名副本），再按辅助项过滤为可见 1162 项；加入 Program Files 两层层级限制后，缓存 455 项、可见 402 项（Start Menu 208、Desktop 4、Program Files 125、Program Files (x86) 86、Windows Apps 32），深层组件数量为 0；`7z` 从 3 条（`7-Zip`、`NVIDIA app`、`AMDInstallManager`）合并为 `C:\Program Files\7-Zip\7z.exe` 一条，`Visual Studio Code` 从用户与公共开始菜单两份合并为一条，缓存中仍保留 `7-Zip Help`、`EA app 更新程序` 等辅助项供关闭过滤后使用。单元测试覆盖词边界（`Helpdesk`、`UpdateTool` 不误伤）、中文子串、重名合并优先级与“同名不同目标保留”。
+- 空格键启动：默认开启，设置项 `space_launch` 可关闭；配置测试覆盖旧文件补齐默认值与显式关闭的持久化。UI 底栏提示随开关变化。
+- 端到端：在临时 `LOCALAPPDATA` 沙箱中构建并运行 `--background` 实例（不接触用户真实数据），日志为 `index refreshed apps=1162 duration_ms=15697`、`frontend interactive elapsed_ms=433`；另以 `--diagnostics` 实例截取真实窗口位图，确认候选列表只剩 7-Zip / MuMu / A HUB 等真实应用（`Git\usr\bin\[.exe`、`AccCheckConsole.exe` 已消失）、图标清晰无快捷方式箭头、底栏提示为 `↑↓ 选择 · Enter/Space 启动 · Esc 隐藏`；验证后已停止进程并删除沙箱、截图与临时构建产物。
+- 未完成：托盘菜单与左键单击的桌面端到端点击、资源管理器重启后的图标恢复、高 DPI 与 200% 缩放下的图标观感，需要人工回归。
 ## 仍需完成
 
 - 默认模式隐藏/失焦/重复呼出/多显示器回归，以及失焦与原生下拉框的交互。

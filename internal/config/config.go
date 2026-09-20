@@ -20,6 +20,8 @@ type Config struct {
 	MaxResults        int      `json:"max_results"`
 	Theme             string   `json:"theme"`
 	LaunchAtStartup   bool     `json:"launch_at_startup"`
+	SpaceLaunch       bool     `json:"space_launch"`
+	FilterNoise       bool     `json:"filter_noise"`
 	Search            Search   `json:"search"`
 	CustomDirectories []string `json:"custom_directories"`
 	ScanProgramFiles  bool     `json:"scan_program_files"`
@@ -27,7 +29,7 @@ type Config struct {
 }
 
 func Defaults() Config {
-	return Config{Version: 1, Hotkey: "Alt+Space", MaxResults: 8, Theme: "system", Search: Search{true, 1}, CustomDirectories: []string{}, ScanProgramFiles: true, RefreshMinutes: 30}
+	return Config{Version: 1, Hotkey: "Alt+Space", MaxResults: 8, Theme: "system", SpaceLaunch: true, FilterNoise: true, Search: Search{true, 1}, CustomDirectories: []string{}, ScanProgramFiles: true, RefreshMinutes: 30}
 }
 func (c Config) Validate() error {
 	if c.Version != 1 {

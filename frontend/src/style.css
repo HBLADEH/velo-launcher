@@ -17,6 +17,8 @@ button:disabled { opacity: .6; cursor: wait; }
 .results li:not(.empty) { display: flex; align-items: center; gap: 12px; height: 54px; padding: 6px 12px; border-radius: 6px; cursor: pointer; }
 .results li.selected { background: var(--selected); }
 .app-icon { display: grid; place-items: center; flex-shrink: 0; width: 32px; height: 32px; background: var(--field); border: 1px solid var(--border); border-radius: 7px; color: var(--accent); font-size: 16px; }
+/* 真实图标以 64 px 缓存，直接铺满 32 px 显示尺寸即可保持清晰。 */
+.icon-image { background: transparent; border: 0; border-radius: 0; object-fit: contain; }
 .app-label { display: flex; flex-direction: column; min-width: 0; gap: 3px; }
 .app-label strong { font-size: 14px; font-weight: 550; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .app-label small { color: var(--muted); font-size: 11px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }

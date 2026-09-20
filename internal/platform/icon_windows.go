@@ -2,15 +2,23 @@ package platform
 
 import (
 	"fmt"
-	"golang.org/x/sys/windows"
 	"image"
+	"os"
+	"path/filepath"
 	"strings"
 	"syscall"
 	"unsafe"
+
+	"golang.org/x/sys/windows"
+	"velo-launcher/internal/model"
 )
 
 var shell32 = windows.NewLazySystemDLL("shell32.dll")
 var gdi32 = windows.NewLazySystemDLL("gdi32.dll")
+
+// iconSize 是缓存 PNG 的边长。前端按 32 CSS px 显示，高 DPI 缩放后仍需要
+// 更大的源图，因此提取边长取 64。
+const iconSize = 64
 
 type shellFileInfo struct {
 	Icon        uintptr
@@ -27,69 +35,122 @@ type bitmapInfo struct {
 	XPels, YPels           int32
 	Used, Important        uint32
 }
+type bitmap struct {
+	Type       int32
+	Width      int32
+	Height     int32
+	WidthBytes int32
+	Planes     uint16
+	BitsPixel  uint16
+	Bits       uintptr
+}
 
-// ExtractIcon asks the local shell for an icon and renders it into a small
-// top-down DIB. All native handles are released on the scanning COM thread.
-func ExtractIcon(path string) (image.Image, error) {
-	if strings.HasPrefix(path, "shell:AppsFolder\\") {
-		return extractShellImage(path)
+var (
+	createShellItem    = shell32.NewProc("SHCreateItemFromParsingName")
+	shellGetFileInfo   = shell32.NewProc("SHGetFileInfoW")
+	createCompatibleDC = gdi32.NewProc("CreateCompatibleDC")
+	deleteDC           = gdi32.NewProc("DeleteDC")
+	createDIBSection   = gdi32.NewProc("CreateDIBSection")
+	selectObject       = gdi32.NewProc("SelectObject")
+	deleteObject       = gdi32.NewProc("DeleteObject")
+	getDIBits          = gdi32.NewProc("GetDIBits")
+	getObject          = gdi32.NewProc("GetObjectW")
+	flushGDI           = gdi32.NewProc("GdiFlush")
+	drawIconEx         = user32.NewProc("DrawIconEx")
+)
+
+// ExtractIcon asks the shell for the sharpest icon it has. IShellItemImageFactory
+// covers shortcuts, executables and packaged apps uniformly and renders from the
+// best matching frame instead of a fixed 32 px bitmap.
+func ExtractIcon(item model.AppItem) (image.Image, error) {
+	var reason error
+	for _, path := range iconSources(item) {
+		img, err := extractIcon(path)
+		if err == nil {
+			return img, nil
+		}
+		if reason == nil {
+			reason = err
+		}
 	}
+	return nil, fmt.Errorf("图标不可用: %w", reason)
+}
+
+// iconSources 优先使用快捷方式的目标程序：Shell 会给 .lnk 叠加"快捷方式
+// 箭头"，而启动台显示的是应用本身的图标。
+func iconSources(item model.AppItem) []string {
+	paths := []string{}
+	if strings.EqualFold(filepath.Ext(item.Path), ".lnk") {
+		switch exec := item.ExecPath; {
+		case strings.HasPrefix(exec, "shell:"):
+			paths = append(paths, exec)
+		case exec != "":
+			if info, err := os.Stat(exec); err == nil && !info.IsDir() {
+				paths = append(paths, exec)
+			}
+		}
+	}
+	if item.Path != "" {
+		paths = append(paths, item.Path)
+	}
+	return paths
+}
+
+func extractIcon(path string) (image.Image, error) {
+	img, shellErr := extractShellImage(path, iconSize)
+	if shellErr == nil {
+		return img, nil
+	}
+	img, fileErr := extractFileIcon(path, iconSize)
+	if fileErr == nil {
+		return img, nil
+	}
+	return nil, fmt.Errorf("%v / %v", shellErr, fileErr)
+}
+
+func extractFileIcon(path string, size int) (image.Image, error) {
 	var info shellFileInfo
-	flags := uintptr(0x100) // SHGFI_ICON, large shell icon
 	p, err := windows.UTF16PtrFromString(path)
 	if err != nil {
 		return nil, err
 	}
-	ok, _, _ := shell32.NewProc("SHGetFileInfoW").Call(uintptr(unsafe.Pointer(p)), 0, uintptr(unsafe.Pointer(&info)), unsafe.Sizeof(info), flags)
+	ok, _, _ := shellGetFileInfo.Call(uintptr(unsafe.Pointer(p)), 0, uintptr(unsafe.Pointer(&info)), unsafe.Sizeof(info), 0x100) // SHGFI_ICON, large shell icon
 	if ok == 0 || info.Icon == 0 {
 		return nil, fmt.Errorf("shell icon unavailable")
 	}
-	defer user32.NewProc("DestroyIcon").Call(info.Icon)
-	dc, _, _ := gdi32.NewProc("CreateCompatibleDC").Call(0)
+	defer destroyIcon.Call(info.Icon)
+	dc, _, _ := createCompatibleDC.Call(0)
 	if dc == 0 {
 		return nil, fmt.Errorf("icon DC unavailable")
 	}
-	defer gdi32.NewProc("DeleteDC").Call(dc)
-	header := bitmapInfo{Size: 40, Width: 32, Height: -32, Planes: 1, BitCount: 32}
+	defer deleteDC.Call(dc)
+	header := bitmapInfo{Size: 40, Width: int32(size), Height: -int32(size), Planes: 1, BitCount: 32}
 	var bits unsafe.Pointer
-	bitmap, _, _ := gdi32.NewProc("CreateDIBSection").Call(dc, uintptr(unsafe.Pointer(&header)), 0, uintptr(unsafe.Pointer(&bits)), 0, 0)
-	if bitmap == 0 || bits == nil {
+	handle, _, _ := createDIBSection.Call(dc, uintptr(unsafe.Pointer(&header)), 0, uintptr(unsafe.Pointer(&bits)), 0, 0)
+	if handle == 0 || bits == nil {
 		return nil, fmt.Errorf("icon bitmap unavailable")
 	}
-	defer gdi32.NewProc("DeleteObject").Call(bitmap)
-	previous, _, _ := gdi32.NewProc("SelectObject").Call(dc, bitmap)
-	defer gdi32.NewProc("SelectObject").Call(dc, previous)
-	pixels := unsafe.Slice((*byte)(bits), 32*32*4)
+	defer deleteObject.Call(handle)
+	previous, _, _ := selectObject.Call(dc, handle)
+	defer selectObject.Call(dc, previous)
+	pixels := unsafe.Slice((*byte)(bits), size*size*4)
 	clear(pixels)
-	ok, _, _ = user32.NewProc("DrawIconEx").Call(dc, 0, 0, info.Icon, 32, 32, 0, 0, 3)
+	ok, _, _ = drawIconEx.Call(dc, 0, 0, info.Icon, uintptr(size), uintptr(size), 0, 0, 3)
 	if ok == 0 {
 		return nil, fmt.Errorf("draw icon failed")
 	}
-	gdi32.NewProc("GdiFlush").Call()
-	output := image.NewNRGBA(image.Rect(0, 0, 32, 32))
-	hasAlpha := false
-	for n := 0; n < len(pixels); n += 4 {
-		b, g, r, a := pixels[n], pixels[n+1], pixels[n+2], pixels[n+3]
-		if a != 0 {
-			hasAlpha = true
-		}
-		if a > 0 && a < 255 {
-			r = byte(min(255, int(r)*255/int(a)))
-			g = byte(min(255, int(g)*255/int(a)))
-			b = byte(min(255, int(b)*255/int(a)))
-		}
-		output.Pix[n] = r
-		output.Pix[n+1] = g
-		output.Pix[n+2] = b
-		output.Pix[n+3] = a
-	}
-	if !hasAlpha {
+	flushGDI.Call()
+	output := image.NewNRGBA(image.Rect(0, 0, size, size))
+	copy(output.Pix, pixels)
+	normalizeBGRA(output)
+	if !hasAlpha(output) {
+		// 只有掩码的旧式图标：按不透明掩码重绘，避免整幅透明。
 		clear(pixels)
-		user32.NewProc("DrawIconEx").Call(dc, 0, 0, info.Icon, 32, 32, 0, 0, 1)
-		gdi32.NewProc("GdiFlush").Call()
-		for n := 0; n < len(pixels); n += 4 {
-			if pixels[n] == 0 {
-				output.Pix[n+3] = 255
+		drawIconEx.Call(dc, 0, 0, info.Icon, uintptr(size), uintptr(size), 0, 0, 1)
+		flushGDI.Call()
+		for n := 3; n < len(pixels); n += 4 {
+			if pixels[n-3] == 0 {
+				output.Pix[n] = 255
 			}
 		}
 	}
@@ -101,35 +162,46 @@ type imageFactoryVTable struct{ QueryInterface, AddRef, Release, GetImage uintpt
 
 // Packaged apps expose their icons through IShellItemImageFactory; the older
 // SHGetFileInfo path frequently has no HICON for these virtual shell items.
-func extractShellImage(path string) (image.Image, error) {
+func extractShellImage(path string, size int) (image.Image, error) {
 	name, err := windows.UTF16PtrFromString(path)
 	if err != nil {
 		return nil, err
 	}
 	iid := windows.GUID{Data1: 0xbcc18b79, Data2: 0xba16, Data3: 0x442f, Data4: [8]byte{0x80, 0xc4, 0x8a, 0x59, 0xc3, 0x0c, 0x46, 0x3b}}
 	var factory *imageFactory
-	hr, _, _ := shell32.NewProc("SHCreateItemFromParsingName").Call(uintptr(unsafe.Pointer(name)), 0, uintptr(unsafe.Pointer(&iid)), uintptr(unsafe.Pointer(&factory)))
+	hr, _, _ := createShellItem.Call(uintptr(unsafe.Pointer(name)), 0, uintptr(unsafe.Pointer(&iid)), uintptr(unsafe.Pointer(&factory)))
 	if int32(hr) < 0 || factory == nil {
 		return nil, fmt.Errorf("shell image factory: %#x", hr)
 	}
 	defer syscall.SyscallN(factory.vtable.Release, uintptr(unsafe.Pointer(factory)))
-	var bitmap uintptr
-	hr, _, _ = syscall.SyscallN(factory.vtable.GetImage, uintptr(unsafe.Pointer(factory)), uintptr(uint64(32)<<32|32), 4, uintptr(unsafe.Pointer(&bitmap)))
-	if int32(hr) < 0 || bitmap == 0 {
+	var handle uintptr
+	requested := uintptr(uint64(size)<<32 | uint64(size))
+	hr, _, _ = syscall.SyscallN(factory.vtable.GetImage, uintptr(unsafe.Pointer(factory)), requested, 4, uintptr(unsafe.Pointer(&handle))) // SIIGBF_ICONONLY
+	if int32(hr) < 0 || handle == 0 {
 		return nil, fmt.Errorf("shell image: %#x", hr)
 	}
-	defer gdi32.NewProc("DeleteObject").Call(bitmap)
-	dc, _, _ := gdi32.NewProc("CreateCompatibleDC").Call(0)
+	defer deleteObject.Call(handle)
+	var dimensions bitmap
+	if ok, _, _ := getObject.Call(handle, unsafe.Sizeof(dimensions), uintptr(unsafe.Pointer(&dimensions))); ok == 0 || dimensions.Width <= 0 || dimensions.Height <= 0 {
+		return nil, fmt.Errorf("shell image size unavailable")
+	}
+	width, height := int(dimensions.Width), int(dimensions.Height)
+	dc, _, _ := createCompatibleDC.Call(0)
 	if dc == 0 {
 		return nil, fmt.Errorf("image DC unavailable")
 	}
-	defer gdi32.NewProc("DeleteDC").Call(dc)
-	header := bitmapInfo{Size: 40, Width: 32, Height: -32, Planes: 1, BitCount: 32}
-	img := image.NewNRGBA(image.Rect(0, 0, 32, 32))
-	rows, _, _ := gdi32.NewProc("GetDIBits").Call(dc, bitmap, 0, 32, uintptr(unsafe.Pointer(&img.Pix[0])), uintptr(unsafe.Pointer(&header)), 0)
-	if rows == 0 {
+	defer deleteDC.Call(dc)
+	header := bitmapInfo{Size: 40, Width: int32(width), Height: -int32(height), Planes: 1, BitCount: 32}
+	img := image.NewNRGBA(image.Rect(0, 0, width, height))
+	if rows, _, _ := getDIBits.Call(dc, handle, 0, uintptr(height), uintptr(unsafe.Pointer(&img.Pix[0])), uintptr(unsafe.Pointer(&header)), 0); rows == 0 {
 		return nil, fmt.Errorf("read shell image failed")
 	}
+	normalizeBGRA(img)
+	return img, nil
+}
+
+// normalizeBGRA converts premultiplied BGRA pixels into straight RGBA.
+func normalizeBGRA(img *image.NRGBA) {
 	for n := 0; n < len(img.Pix); n += 4 {
 		img.Pix[n], img.Pix[n+2] = img.Pix[n+2], img.Pix[n]
 		a := int(img.Pix[n+3])
@@ -139,5 +211,12 @@ func extractShellImage(path string) (image.Image, error) {
 			}
 		}
 	}
-	return img, nil
+}
+func hasAlpha(img *image.NRGBA) bool {
+	for n := 3; n < len(img.Pix); n += 4 {
+		if img.Pix[n] != 0 {
+			return true
+		}
+	}
+	return false
 }
