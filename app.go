@@ -40,7 +40,7 @@ func NewApp(logger *slog.Logger, service *core.Service, background, diagnostics 
 func (a *App) startup(ctx context.Context) {
 	a.ctx = ctx
 	a.service.Start(ctx, func() { wruntime.EventsEmit(ctx, "index:changed") })
-	a.logger.Info("application started", "version", "0.1.0")
+	a.logger.Info("application started", "version", "0.8.0-beta.1")
 }
 func (a *App) ready(ctx context.Context) {
 	a.mu.Lock()
