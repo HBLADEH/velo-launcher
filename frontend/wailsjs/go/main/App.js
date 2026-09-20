@@ -34,6 +34,10 @@ export function RefreshIndex() {
   return window['go']['main']['App']['RefreshIndex']();
 }
 
+export function Resize(arg1) {
+  return window['go']['main']['App']['Resize'](arg1);
+}
+
 export function SaveSettings(arg1) {
   return window['go']['main']['App']['SaveSettings'](arg1);
 }

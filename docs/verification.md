@@ -14,6 +14,16 @@
 - 仓库已推送到 GitHub（`HBLADEH/velo-launcher`，MIT）。远端 CI 首次运行暴露并修复两个干净目录问题：Windows checkout 的 CRLF 触发 `gofmt -l`、缺少 `frontend/dist` 使 `//go:embed` 失败；修复后 `Windows build` 工作流（run 35459277743）全流程通过并上传 `velo-launcher-windows-amd64` 产物。
 - 首个预览版已发布：[v0.8.0-beta.1](https://github.com/HBLADEH/velo-launcher/releases/tag/v0.8.0-beta.1)（prerelease）。CI（run 35459917732）安装 NSIS 后以 `verify.ps1 -Installer` 构建并上传 `velo-launcher.exe`（11501056 字节）与 `velo-launcher-amd64-installer.exe`（6373121 字节）；两者的 SHA256 记录在 release 说明中。安装包未签名，未做安装/卸载端到端验证。
 
+## 2026-09-21 回归补充
+
+- 历史写入改为独立串行写锁与已提交快照：阻塞磁盘写入时搜索评分仍可读取，写入成功前新历史不可见；20 次并发记录持久化后无丢失，自动测试通过。
+- Alt+F4 统一走隐藏通知；显式退出或无可用快捷键时允许退出。关闭、失焦及重复隐藏有单元测试；新关闭流程尚未完成桌面端到端回归。
+- 窗口按当前显示器 DPI 调整尺寸并限制在工作区内；小屏幕、负坐标副屏及高 DPI 几何测试通过，实际多显示器行为仍待验证。
+- 自定义目录使用临时 exe 扫描夹具完成真实扫描集成测试，覆盖索引落盘、移除/恢复目录及删除后刷新；夹具不会执行。登录启动注册命令在隔离的 HKCU 临时键完成写入/删除/幂等测试，未修改用户实际 Run 项，真实登录行为仍待验证。
+- 持续运行的诊断实例最新扫描为 1705 项；重复启动可重新显示已有实例。该实例报告 Alt+Space 被占用，不能作为注册快捷键后隐藏/呼出的验收证据。
+- 验证脚本先生成当前 Wails 绑定，再执行前端类型检查与构建，最后执行 Go 检查，兼容干净检出的 dist 嵌入要求。
+- 本批最终验证：`scripts/verify.ps1 -SkipBuild` 通过（绑定、lint、typecheck、前端构建、Go vet/test）；Windows x64 生产构建通过，输出 `build/bin/velo-launcher-check.exe`。
+
 ## 性能基线
 
 | 项目 | 实测 | 口径 / 状态 |
@@ -33,5 +43,5 @@ WS 是各进程工作集之和，包含重复共享页；private 是私有提交
 - 快捷键到前端可输入的端到端延迟、重复缓存启动与冷启动分布。
 - 降低 WebView2 常驻成本；后台可见性与空闲 CPU 新修复的复测。
 - 索引刷新、快捷键回滚、历史和关闭流程的进一步并发/边界检查；本机无 C 编译器，`go test -race` 尚未运行。
-- 登录启动实际注册验证、自定义目录与刷新流程的端到端回归。
+- 登录启动真实登录回归；自定义目录设置页面的桌面端到端回归（后端真实扫描集成已通过）。
 - 最终构建、文档逐项审计；本机 `build/bin/velo-launcher.exe` 被运行中实例占用时无法覆盖打包产物。

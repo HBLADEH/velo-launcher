@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
-import { Blur, FrontendReady, GetSettings, GetStatus, Hide, Launch, Quit, RefreshIndex, Search } from '../wailsjs/go/main/App'
-import { EventsOn, WindowSetSize } from '../wailsjs/runtime/runtime'
+import { Blur, FrontendReady, GetSettings, GetStatus, Hide, Launch, Quit, RefreshIndex, Resize, Search } from '../wailsjs/go/main/App'
+import { EventsOn } from '../wailsjs/runtime/runtime'
 import type { config, main, search } from '../wailsjs/go/models'
 import SettingsPanel from './components/SettingsPanel.vue'
 
@@ -73,7 +73,7 @@ async function saved(value: config.Config) {
 }
 watch(query, () => { error.value = ''; void updateResults() })
 watch([results, settingsOpen, error], () => {
-  WindowSetSize(640, settingsOpen.value ? 620 : Math.min(680, 132 + Math.max(1, results.value.length) * 54 + (error.value ? 42 : 0)))
+  void Resize(settingsOpen.value ? 620 : Math.min(680, 132 + Math.max(1, results.value.length) * 54 + (error.value ? 42 : 0)))
 })
 onMounted(async () => {
   window.addEventListener('keydown', keydown)

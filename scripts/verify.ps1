@@ -5,13 +5,14 @@ try {
     $goSources = @((Get-ChildItem -LiteralPath . -Filter '*.go').FullName) + @('internal')
     $unformatted = & gofmt -l @goSources
     if ($LASTEXITCODE -ne 0 -or $unformatted) { throw "Run gofmt: $unformatted" }
+    # main_bindings.go 不嵌入 dist：先生成当前 API，避免类型检查使用旧绑定。
+    & wails generate module
+    if ($LASTEXITCODE -ne 0) { throw 'binding generation failed' }
     & npm --prefix frontend run lint
     if ($LASTEXITCODE -ne 0) { throw 'frontend lint failed' }
     # 先生成 frontend/dist：main.go 的 //go:embed all:frontend/dist 要求它存在
     & npm --prefix frontend run build
     if ($LASTEXITCODE -ne 0) { throw 'frontend build failed' }
-    & wails generate module
-    if ($LASTEXITCODE -ne 0) { throw 'binding generation failed' }
     & go vet ./...
     if ($LASTEXITCODE -ne 0) { throw 'go vet failed' }
     & go test ./...

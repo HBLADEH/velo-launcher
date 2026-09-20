@@ -176,15 +176,22 @@ func SetLaunchAtStartup(enabled bool) error {
 		return err
 	}
 	defer key.Close()
+	exe := ""
+	if enabled {
+		exe, err = os.Executable()
+		if err != nil {
+			return err
+		}
+	}
+	return setStartupValue(key, enabled, exe)
+}
+
+func setStartupValue(key registry.Key, enabled bool, exe string) error {
 	if !enabled {
-		err = key.DeleteValue("Velo")
+		err := key.DeleteValue("Velo")
 		if err == registry.ErrNotExist {
 			return nil
 		}
-		return err
-	}
-	exe, err := os.Executable()
-	if err != nil {
 		return err
 	}
 	return key.SetStringValue("Velo", `"`+exe+`" --background`)

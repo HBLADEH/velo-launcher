@@ -20,6 +20,8 @@ export function Quit():Promise<void>;
 
 export function RefreshIndex():Promise<void>;
 
+export function Resize(arg1:number):Promise<void>;
+
 export function SaveSettings(arg1:config.Config):Promise<void>;
 
 export function Search(arg1:string):Promise<Array<search.Result>>;

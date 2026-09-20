@@ -46,6 +46,20 @@ func (w *DesktopWindow) Active() bool {
 	return foreground == w.handle || owner == w.handle
 }
 func (w *DesktopWindow) Hide() { user32.NewProc("ShowWindow").Call(w.handle, 0) }
+func (w *DesktopWindow) Resize(width, height int) {
+	monitor, _, _ := user32.NewProc("MonitorFromWindow").Call(w.handle, 2)
+	info := monitorInfo{Size: uint32(unsafe.Sizeof(monitorInfo{}))}
+	ok, _, _ := user32.NewProc("GetMonitorInfoW").Call(monitor, uintptr(unsafe.Pointer(&info)))
+	if ok == 0 {
+		return
+	}
+	dpi, _, _ := user32.NewProc("GetDpiForWindow").Call(w.handle)
+	if dpi == 0 {
+		dpi = 96
+	}
+	x, y, cx, cy := windowPlacement(info.Work, int32(width*int(dpi)/96), int32(height*int(dpi)/96))
+	user32.NewProc("SetWindowPos").Call(w.handle, 0, uintptr(x), uintptr(y), uintptr(cx), uintptr(cy), 0x0014)
+}
 func (w *DesktopWindow) Show() {
 	// Use the monitor under the pointer and its work area, including taskbar
 	// exclusions and negative coordinates on secondary monitors.
@@ -57,9 +71,20 @@ func (w *DesktopWindow) Show() {
 	user32.NewProc("GetMonitorInfoW").Call(monitor, uintptr(unsafe.Pointer(&info)))
 	var bounds rect
 	user32.NewProc("GetWindowRect").Call(w.handle, uintptr(unsafe.Pointer(&bounds)))
-	x := info.Work.Left + (info.Work.Right-info.Work.Left-(bounds.Right-bounds.Left))/2
-	y := info.Work.Top + (info.Work.Bottom-info.Work.Top)/5
-	user32.NewProc("SetWindowPos").Call(w.handle, ^uintptr(0), uintptr(x), uintptr(y), 0, 0, 0x0041)
+	if info.Work.Right > info.Work.Left && info.Work.Bottom > info.Work.Top {
+		x, y, width, height := windowPlacement(info.Work, bounds.Right-bounds.Left, bounds.Bottom-bounds.Top)
+		user32.NewProc("SetWindowPos").Call(w.handle, ^uintptr(0), uintptr(x), uintptr(y), uintptr(width), uintptr(height), 0x0040)
+	}
 	user32.NewProc("ShowWindow").Call(w.handle, 9)
 	user32.NewProc("SetForegroundWindow").Call(w.handle)
+}
+
+// Keep the entire launcher in the work area on small/high-DPI monitors.
+// Coordinates may be negative on monitors left of or above the primary one.
+func windowPlacement(work rect, width, height int32) (int32, int32, int32, int32) {
+	width = min(max(1, width), work.Right-work.Left)
+	height = min(max(1, height), work.Bottom-work.Top)
+	x := work.Left + (work.Right-work.Left-width)/2
+	y := min(work.Top+(work.Bottom-work.Top)/5, work.Bottom-height)
+	return x, y, width, height
 }

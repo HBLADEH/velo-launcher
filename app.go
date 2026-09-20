@@ -16,17 +16,26 @@ import (
 )
 
 type App struct {
-	mu          sync.Mutex
-	ctx         context.Context
-	logger      *slog.Logger
-	service     *core.Service
-	window      *platform.DesktopWindow
-	key         *platform.Hotkey
-	keyError    string
-	background  bool
-	diagnostics bool
-	started     time.Time
-	clientReady bool
+	mu            sync.Mutex
+	ctx           context.Context
+	logger        *slog.Logger
+	service       *core.Service
+	window        launcherWindow
+	key           *platform.Hotkey
+	keyError      string
+	background    bool
+	diagnostics   bool
+	started       time.Time
+	clientReady   bool
+	exitRequested bool
+	closing       bool
+}
+type launcherWindow interface {
+	Visible() bool
+	Active() bool
+	Show()
+	Hide()
+	Resize(int, int)
 }
 type Status struct {
 	core.State
@@ -45,13 +54,13 @@ func (a *App) startup(ctx context.Context) {
 func (a *App) ready(ctx context.Context) {
 	a.mu.Lock()
 	defer a.mu.Unlock()
-	var err error
-	a.window, err = platform.FindWindow()
+	window, err := platform.FindWindow()
 	if err != nil {
 		a.keyError = err.Error()
 		a.logger.Error("window setup failed", "error", err)
 		return
 	}
+	a.window = window
 	a.key, err = platform.RegisterHotkey(a.service.Settings().Hotkey, a.Toggle)
 	if err != nil {
 		a.keyError = err.Error()
@@ -68,6 +77,7 @@ func (a *App) ready(ctx context.Context) {
 }
 func (a *App) shutdown(_ context.Context) {
 	a.mu.Lock()
+	a.closing = true
 	key := a.key
 	a.key = nil
 	a.mu.Unlock()
@@ -82,12 +92,11 @@ func (a *App) shutdown(_ context.Context) {
 func (a *App) Toggle() {
 	a.mu.Lock()
 	defer a.mu.Unlock()
-	if a.window == nil {
+	if a.window == nil || a.closing {
 		return
 	}
 	if a.window.Visible() {
-		a.window.Hide()
-		wruntime.EventsEmit(a.ctx, "launcher:hidden")
+		a.hideLocked()
 	} else {
 		a.window.Show()
 		wruntime.EventsEmit(a.ctx, "launcher:shown")
@@ -96,7 +105,7 @@ func (a *App) Toggle() {
 func (a *App) Show() {
 	a.mu.Lock()
 	defer a.mu.Unlock()
-	if a.window != nil {
+	if a.window != nil && !a.closing {
 		a.window.Show()
 		wruntime.EventsEmit(a.ctx, "launcher:shown")
 	}
@@ -104,10 +113,28 @@ func (a *App) Show() {
 func (a *App) Hide() {
 	a.mu.Lock()
 	defer a.mu.Unlock()
-	if a.window != nil {
-		a.window.Hide()
+	a.hideLocked()
+}
+func (a *App) hideLocked() {
+	if a.window == nil || a.closing || !a.window.Visible() {
+		return
+	}
+	a.window.Hide()
+	if a.ctx != nil {
 		wruntime.EventsEmit(a.ctx, "launcher:hidden")
 	}
+}
+
+// Route Alt+F4 through the same visibility transition as Escape/global toggle,
+// so a hidden WebView does not continue rendering a focused input caret.
+func (a *App) beforeClose(_ context.Context) bool {
+	a.mu.Lock()
+	defer a.mu.Unlock()
+	if a.exitRequested || a.key == nil {
+		return false
+	}
+	a.hideLocked()
+	return true
 }
 
 // Keep the window reachable when the configured global key was rejected.
@@ -115,8 +142,7 @@ func (a *App) Blur() {
 	a.mu.Lock()
 	defer a.mu.Unlock()
 	if a.window != nil && a.window.Visible() && a.key != nil && !a.diagnostics && !a.window.Active() {
-		a.window.Hide()
-		wruntime.EventsEmit(a.ctx, "launcher:hidden")
+		a.hideLocked()
 	}
 }
 
@@ -129,7 +155,12 @@ func (a *App) FrontendReady() {
 		a.logger.Info("frontend interactive", "elapsed_ms", time.Since(a.started).Milliseconds())
 	}
 }
-func (a *App) Quit()                               { wruntime.Quit(a.ctx) }
+func (a *App) Quit() {
+	a.mu.Lock()
+	a.exitRequested = true
+	a.mu.Unlock()
+	wruntime.Quit(a.ctx)
+}
 func (a *App) Search(query string) []search.Result { return a.service.Search(query) }
 func (a *App) GetSettings() config.Config          { return a.service.Settings() }
 func (a *App) GetStatus() Status {
@@ -140,6 +171,13 @@ func (a *App) GetStatus() Status {
 	return Status{a.service.State(), keyError, visible}
 }
 func (a *App) RefreshIndex() { a.service.Refresh() }
+func (a *App) Resize(height int) {
+	a.mu.Lock()
+	defer a.mu.Unlock()
+	if a.window != nil && !a.closing {
+		a.window.Resize(640, min(720, max(160, height)))
+	}
+}
 func (a *App) Launch(id, query string) error {
 	item, err := a.service.Item(id)
 	if err != nil {

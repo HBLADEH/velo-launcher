@@ -55,10 +55,10 @@ func run() error {
 	app := NewApp(logger, service, slices.Contains(os.Args, "--background"), slices.Contains(os.Args, "--diagnostics"), started)
 	err = wails.Run(&options.App{
 		Title: "Velo", Width: 640, Height: 540, DisableResize: true,
-		Frameless: true, AlwaysOnTop: true, HideWindowOnClose: true,
+		Frameless: true, AlwaysOnTop: true,
 		BackgroundColour: &options.RGBA{R: 247, G: 248, B: 250, A: 255},
 		AssetServer:      &assetserver.Options{Assets: assets, Handler: icon.Handler(dir)},
-		OnStartup:        app.startup, OnDomReady: app.ready, OnShutdown: app.shutdown,
+		OnStartup:        app.startup, OnDomReady: app.ready, OnShutdown: app.shutdown, OnBeforeClose: app.beforeClose,
 		Windows:            &windows.Options{WindowClassName: platform.WindowClass, WebviewUserDataPath: filepath.Join(dir, "webview"), WebviewGpuIsDisabled: true},
 		SingleInstanceLock: &options.SingleInstanceLock{UniqueId: "6ab2e7d8-15d5-456b-a8eb-f924ac650291", OnSecondInstanceLaunch: func(_ options.SecondInstanceData) { app.Show() }},
 		Bind:               []interface{}{app},

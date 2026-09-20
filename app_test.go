@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"io"
 	"log/slog"
 	"os"
@@ -15,6 +16,54 @@ import (
 	"velo-launcher/internal/platform"
 	"velo-launcher/internal/storage"
 )
+
+type testWindow struct {
+	visible, active bool
+	hides           int
+}
+
+func (w *testWindow) Visible() bool   { return w.visible }
+func (w *testWindow) Active() bool    { return w.active }
+func (w *testWindow) Show()           { w.visible = true }
+func (w *testWindow) Hide()           { w.visible = false; w.hides++ }
+func (w *testWindow) Resize(int, int) {}
+
+func TestDefaultWindowCloseAndFocusBehavior(t *testing.T) {
+	w := &testWindow{visible: true, active: true}
+	a := &App{window: w, key: &platform.Hotkey{}}
+	a.Blur()
+	if !w.visible {
+		t.Fatal("owned popup/input focus hid active launcher")
+	}
+	w.active = false
+	a.Blur()
+	if w.visible || w.hides != 1 {
+		t.Fatal("losing foreground did not hide")
+	}
+	a.Blur()
+	if w.hides != 1 {
+		t.Fatal("duplicate blur performed a second transition")
+	}
+	w.visible = true
+	if !a.beforeClose(context.Background()) || w.visible {
+		t.Fatal("Alt+F4 did not keep launcher resident and hidden")
+	}
+	a.exitRequested = true
+	if a.beforeClose(context.Background()) {
+		t.Fatal("explicit Quit was vetoed")
+	}
+}
+func TestWindowRemainsReachableWithoutHotkey(t *testing.T) {
+	w := &testWindow{visible: true}
+	a := &App{window: w}
+	a.Blur()
+	if !w.visible {
+		t.Fatal("unavailable hotkey stranded hidden window")
+	}
+	if a.beforeClose(context.Background()) {
+		t.Fatal("closing without a registered key must exit")
+	}
+}
 
 func TestFailedLaunchDoesNotRecordHistory(t *testing.T) {
 	dir := t.TempDir()
