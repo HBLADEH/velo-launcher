@@ -81,6 +81,8 @@ JSON 保存使用同目录临时文件替换。默认每 30 分钟后台刷新�
 ./scripts/measure-resources.ps1 -ProcessId <Velo进程ID> -Seconds 15
 ```
 
+输出包含各进程内存明细。仅当 `CPUSampleValid` 为 true 时使用 CPU 百分比；采样期间进程集合变化会返回无效样本，应在运行稳定后重测。该脚本测量稳定运行期，不用于启动阶段 CPU 总量。
+
 已发布的 exe 与安装包均未签名；没有插件、云端同步或其他 Future 范围功能。
 
 ## 许可证
