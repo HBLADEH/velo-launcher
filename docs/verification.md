@@ -50,6 +50,13 @@ WS 是各进程工作集之和，包含重复共享页；private 是私有提交
 - 空格键启动：默认开启，设置项 `space_launch` 可关闭；配置测试覆盖旧文件补齐默认值与显式关闭的持久化。UI 底栏提示随开关变化。
 - 端到端：在临时 `LOCALAPPDATA` 沙箱中构建并运行 `--background` 实例（不接触用户真实数据），日志为 `index refreshed apps=1162 duration_ms=15697`、`frontend interactive elapsed_ms=433`；另以 `--diagnostics` 实例截取真实窗口位图，确认候选列表只剩 7-Zip / MuMu / A HUB 等真实应用（`Git\usr\bin\[.exe`、`AccCheckConsole.exe` 已消失）、图标清晰无快捷方式箭头、底栏提示为 `↑↓ 选择 · Enter/Space 启动 · Esc 隐藏`；验证后已停止进程并删除沙箱、截图与临时构建产物。
 - 未完成：托盘菜单与左键单击的桌面端到端点击、资源管理器重启后的图标恢复、高 DPI 与 200% 缩放下的图标观感，需要人工回归。
+### 开发模式候选图标与设置加载（2026-09-21 用户报告）
+
+- 现象：`wails dev` 下候选项图标全部退化为首字母占位符，且底栏缺少空格键提示、`Ctrl+,` 打不开设置面板。
+- 根因一：dev 模式下前端页面由 Vite 直接提供，`/icons/*.png` 请求不会到达 Go 的 `icon.Handler`，而是落到 Vite 的 SPA 回退（实测返回 `200 text/html` 的 index.html），`<img>` 解码失败触发既有的 `@error` 清空逻辑，图标退化为占位符。生产构建由 `icon.Handler` 正常提供图标，不受影响，真实数据目录的 `index.json` 与图标文件核对一致（2191 个 PNG，抽查均存在）。
+- 根因二：同一轮实测发现 dev 模式页面加载后 Wails 的 IPC 桥才注册 `window.go`，页面首个绑定调用 `GetSettings()` 过早失败（`catch` 到错误后被 `show()` 清空，界面无提示），导致 `settings` 一直为空：设置面板因 `v-if="settingsOpen && settings"` 无法渲染，底栏也缺少空格键提示。生产构建使用 WebView2 原生 IPC，不受影响。
+- 修复：`frontend/vite.config.ts` 增加 dev-only 中间件，按与 Go 侧相同的规则（`%LOCALAPPDATA%\Velo\cache\icons`，`^[a-f0-9]{32}\.png$`）直接提供图标，不嵌入任何图标资源；`App.vue` 的设置加载改为带重试的 `loadSettings()`（最多 20 次 × 100 ms），设置面板打开前也会补加载。
+- 验证：全部在临时 `LOCALAPPDATA` 沙箱内进行（复制真实索引后运行 `wails dev`，不接触真实数据目录）。修复前截图确认图标为字母占位符、`Ctrl+,` 无法打开设置；修复后截图确认图标恢复清晰、底栏显示 `↑↓ 选择 · Enter/Space 启动 · Esc 隐藏`，且 `http://127.0.0.1:5173/icons/<hash>.png` 返回 `200 image/png`（修复前为 `200 text/html`）。生产构建路径另经 `scripts/verify.ps1` 与沙箱实例截图验证，行为不变。
 ## 仍需完成
 
 - 默认模式隐藏/失焦/重复呼出/多显示器回归，以及失焦与原生下拉框的交互。

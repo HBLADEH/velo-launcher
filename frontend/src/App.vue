@@ -75,8 +75,18 @@ async function saved(value: config.Config) {
   await nextTick()
   input.value?.focus()
 }
+// dev 模式下 Wails 的 IPC 桥在页面加载后才注册 window.go，页面首个绑定调用
+// 可能过早失败；生产构建使用 WebView2 原生 IPC，不受影响。这里短暂重试，
+// 避免设置面板因一次失败而一直无法打开。
+async function loadSettings() {
+  for (let attempt = 0; attempt < 20; attempt++) {
+    try { settings.value = await GetSettings(); return }
+    catch (cause) { if (attempt === 19) error.value = String(cause) }
+    await new Promise(resolve => setTimeout(resolve, 100))
+  }
+}
 async function openSettings() {
-  try { settings.value = await GetSettings() } catch (cause) { error.value = String(cause) }
+  if (!settings.value) await loadSettings()
   settingsOpen.value = true
 }
 watch(query, () => { error.value = ''; void updateResults() })
@@ -91,7 +101,7 @@ onMounted(async () => {
   disposers.push(EventsOn('launcher:hidden', () => { visible.value = false; input.value?.blur() }))
   disposers.push(EventsOn('index:changed', () => { void updateStatus(); void updateResults() }))
   disposers.push(EventsOn('settings:open', () => void openSettings()))
-  try { settings.value = await GetSettings() } catch (cause) { error.value = String(cause) }
+  await loadSettings()
   await show()
   await FrontendReady()
 })
