@@ -16,6 +16,8 @@
 
 - 第二版预览版已发布：[v0.8.0-beta.2](https://github.com/HBLADEH/velo-launcher/releases/tag/v0.8.0-beta.2)（prerelease，tag 指向 `5ad2dd4`）。CI 两轮通过：main push（run 35526837776）与 tag push（run 35526961854），后者以 `verify.ps1 -Installer` 安装 NSIS 后构建并上传 `velo-launcher.exe`（11548672 字节，SHA256 `645c7fb8cff69aa7c84c2cafd5efb391653f38db9ce459eac99f7678df9e41d6`）与 `velo-launcher-amd64-installer.exe`（6392250 字节，SHA256 `844b263b6632e9169ad1928ae84ecae9ed92c511aa6f81597b404cec0484fc3e`）；校验值同时写入 release 说明。安装包未签名，未做安装/卸载端到端验证。
 
+- 第三版预览版已发布：[v0.9.0](https://github.com/HBLADEH/velo-launcher/releases/tag/v0.9.0)（prerelease，tag 指向 `7e571c1`）。CI（tag push，run 35636042510）以 `verify.ps1 -Installer` 构建，新增的校验步骤生成 `SHA256SUMS.txt` 并随产物上传：`velo-launcher.exe`（11954688 字节，SHA256 `472285873fb6cfbae9c6db05c7f96987c19e8efa76d2ccf1ed9bf72c49ffb2d7`）、`velo-launcher-amd64-installer.exe`（6706692 字节，SHA256 `d27ad639780b3de927efa6b72138d3f74f33e36e22595108b21789f8449db544`）。三个文件由 `gh release create` 上传，说明见 `docs/releases/v0.9.0.md`。以 0.8.0 为当前版本的更新器联网探针读取线上 release，识别到 v0.9.0 及三个资产且大小一致；自动更新的真实下载与退出替换仍未人工回归，安装包依旧未签名。
+
 ## 2026-09-21 回归补充
 
 - 历史写入改为独立串行写锁与已提交快照：阻塞磁盘写入时搜索评分仍可读取，写入成功前新历史不可见；20 次并发记录持久化后无丢失，自动测试通过。
