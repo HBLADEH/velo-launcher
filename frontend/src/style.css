@@ -9,7 +9,7 @@ button { cursor: pointer; color: var(--fg); background: var(--field); border: 1p
 button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
 button:disabled { opacity: .6; cursor: wait; }
 .search-header { display: flex; align-items: center; gap: 15px; padding: 17px 20px; border-bottom: 1px solid var(--border); }
-.brand { font-size: 24px; font-weight: 700; color: var(--accent); }
+.brand { display: block; flex-shrink: 0; width: 48px; height: 48px; object-fit: contain; margin: -8px 0; }
 .search-header input { flex: 1; min-width: 0; background: transparent; border: 0; color: var(--fg); font-size: 21px; outline: none; }
 .search-header input::placeholder { color: var(--muted); }
 .icon-button { border: 0; background: none; font-size: 21px; color: var(--muted); padding: 3px; }
@@ -27,10 +27,12 @@ button:disabled { opacity: .6; cursor: wait; }
 footer { flex-shrink: 0; display: flex; align-items: center; gap: 12px; padding: 9px 16px; border-top: 1px solid var(--border); color: var(--muted); font-size: 11px; }
 .keyboard-help { margin-left: auto; }
 .text-button { border: 0; background: transparent; padding: 2px 0; color: var(--muted); font-size: inherit; }
-.error { margin: 8px 16px; padding: 8px; color: #b7473e; font-size: 12px; overflow-wrap: anywhere; }
+.error { flex-shrink: 0; margin: 8px 16px; padding: 8px; max-height: 90px; overflow-y: auto; color: #b7473e; font-size: 12px; overflow-wrap: anywhere; white-space: pre-line; }
 .warning { color: #ae7221; }
 .settings { display: flex; flex-direction: column; height: 100%; }
 .settings-header { display: flex; align-items: center; justify-content: space-between; padding: 20px 24px 12px; }
+.settings-title { display: flex; align-items: center; gap: 8px; }
+.settings-title img { display: block; object-fit: contain; }
 h1 { font-size: 20px; margin: 0; } h2 { font-size: 16px; margin: 0 0 22px; }
 nav { display: flex; gap: 6px; padding: 0 24px 14px; border-bottom: 1px solid var(--border); }
 nav button { border: 0; background: transparent; font-size: 13px; }
@@ -44,3 +46,45 @@ nav button.active { background: var(--selected); color: var(--accent); }
 .settings-actions { display: flex; justify-content: flex-end; gap: 10px; border-top: 1px solid var(--border); padding: 15px 24px; }
 .primary { background: var(--accent); color: var(--bg); border-color: var(--accent); }
 .scan-warnings { font-size: 11px; color: var(--muted); padding-left: 16px; overflow-wrap: anywhere; }
+
+/* Quick launch uses a fixed six-column layout at the native 640 px width. */
+.home-content { flex: 1; overflow-y: auto; padding: 16px 18px 20px; }
+.home-heading { display: flex; align-items: center; justify-content: space-between; color: var(--muted); font-size: 12px; margin: 0 4px 18px; }
+.home-heading button { color: var(--accent); }
+.home-section { margin-bottom: 22px; }
+.home-section:last-child { margin-bottom: 0; }
+.home-section h2 { display: flex; align-items: baseline; gap: 12px; margin: 0 4px 10px; font-size: 14px; }
+.home-section h2 small { color: var(--muted); font-size: 11px; font-weight: 400; }
+.home-empty { color: var(--muted); font-size: 12px; line-height: 1.7; padding: 14px; margin: 0 4px; border: 1px dashed var(--border); border-radius: 8px; }
+.home-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px; }
+.tile { position: relative; min-width: 0; border-radius: 9px; }
+.tile.selected { background: var(--selected); }
+.tile-launch { display: flex; flex-direction: column; align-items: center; gap: 10px; width: 100%; height: 100px; padding: 12px 6px 6px; border: 0; background: transparent; }
+.tile-launch .app-icon { width: 34px; height: 34px; font-size: 22px; }
+.tile-launch > span:last-child { font-size: 11px; line-height: 15px; overflow: hidden; overflow-wrap: anywhere; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+.pin-button { position: absolute; top: 0; right: 0; padding: 1px 4px; border: 0; background: var(--bg); color: var(--muted); font-size: 15px; opacity: 0; }
+.tile:hover .pin-button, .tile:focus-within .pin-button, .tile.selected .pin-button, .pin-button.pinned { opacity: 1; }
+.pin-button.pinned { color: var(--accent); }
+.result-pin { margin-left: auto; padding: 6px 8px; font-size: 18px; }
+.enter-hint { margin-left: 0; }
+.system-icon { background: var(--selected); color: var(--accent); border: 0; font-family: 'Segoe UI', sans-serif; font-weight: 600; }
+.notice { flex-shrink: 0; margin: 8px 20px 0; color: var(--accent); font-size: 12px; }
+.drop-zone { flex-shrink: 0; display: flex; align-items: center; gap: 12px; margin: 12px 20px; padding: 14px; border: 1px dashed var(--accent); border-radius: 8px; background: var(--selected); font-size: 12px; }
+.drop-zone > div { flex: 1; }
+.drop-zone strong { display: block; margin-bottom: 6px; }
+.drop-zone small { display: block; color: var(--muted); line-height: 1.6; }
+.custom-apps { display: flex; flex-direction: column; height: 100%; min-height: 0; }
+.custom-intro { padding: 0 24px; font-size: 13px; }
+.custom-intro > p:first-child { color: var(--muted); line-height: 1.7; }
+.custom-intro .drop-zone { margin: 14px 0; }
+.custom-path { display: flex; gap: 8px; }
+.custom-path input { flex: 1; min-width: 0; padding: 9px 10px; color: var(--fg); background: var(--field); border: 1px solid var(--border); border-radius: 6px; font-size: 13px; }
+.custom-list-heading { margin: 16px 24px 8px; font-size: 12px; color: var(--muted); }
+.custom-list { flex: 1; overflow-y: auto; list-style: none; padding: 0 24px; margin: 0; }
+.custom-list li:not(.home-empty) { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border); }
+.custom-list .app-label { flex: 1; }
+.custom-list button { flex-shrink: 0; font-size: 12px; }
+.custom-footnote { padding: 12px 24px; margin: 0; border-top: 1px solid var(--border); font-size: 11px; line-height: 1.7; color: var(--muted); }
+.update-actions { display: flex; flex-wrap: wrap; gap: 10px; margin: 14px 0; }
+.update-badge { color: var(--accent); font-weight: 600; }
+.release-notes { max-height: 180px; margin: 12px 0; padding: 12px; background: var(--field); border: 1px solid var(--border); border-radius: 6px; font: inherit; font-size: 12px; line-height: 1.7; white-space: pre-wrap; overflow-wrap: anywhere; overflow-y: auto; }

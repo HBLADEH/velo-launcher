@@ -1,96 +1,158 @@
-# Velo
+<p align="center">
+  <img src="frontend/src/assets/logo.png" alt="Velo logo" width="160" height="160" />
+</p>
 
-**Fast. Light. Ready.** 基于 Go + Wails 2 + Vue 3 + TypeScript 的 Windows 本地应用启动器。
+<h1 align="center">Velo</h1>
+<p align="center"><strong>Fast. Light. Ready.</strong><br />按下快捷键，找到应用，即刻启动。</p>
+<p align="center">
+  <a href="https://github.com/HBLADEH/velo-launcher/releases">下载预览版</a> ·
+  <a href="#快速上手">快速上手</a> ·
+  <a href="#开发与构建">开发与构建</a> ·
+  <a href="https://github.com/HBLADEH/velo-launcher/issues">反馈问题</a>
+</p>
 
-## 使用
+Velo 是面向 **Windows 10 / 11 x64** 的本地应用启动器，基于 Go、Wails 2、Vue 3 和 TypeScript 构建。通过全局快捷键呼出，输入应用名称即可搜索和启动，让常用应用始终触手可及。
 
-运行 `build/bin/velo-launcher.exe`，或者在项目根目录执行 `wails dev`。已发布预览版 [v0.8.0-beta.2](https://github.com/HBLADEH/velo-launcher/releases/tag/v0.8.0-beta.2)（exe 与 NSIS 安装包，均未签名）。
+> 当前为 **0.9.0 预览版**。主要功能已实现，性能与长期稳定性仍在持续验证。发布文件暂未签名。
 
-- `Alt+Space`：显示 / 隐藏；快捷键被占用时会显示提示，可在设置中更换。
-- 输入应用名称；`↑` / `↓` 选择，`Enter` 启动，`Esc` 隐藏。
-- `Ctrl+,`：设置；底部“退出”完全退出程序。
-- 通知区域（托盘）常驻 Velo 图标：左键单击打开启动台，右键菜单可打开启动台、设置或退出。
-- 选中候选项后按空格可直接启动（默认开启，可在设置中关闭；开启后查询内不再输入空格）。
-- 正常模式隐藏任务栏，失焦自动隐藏。再次运行 exe 可唤起已有实例。
-- `--background`：后台启动；只有快捷键注册成功才隐藏。
-- `--diagnostics`：供桌面验证使用，保留任务栏并关闭失焦隐藏；此模式不作为默认窗口行为的验收证据。
+## 功能亮点
 
-首次运行后台扫描，已有索引缓存会立即用于搜索。默认来源是开始菜单、桌面、Program Files、Program Files (x86) 和 Windows Apps；可在设置中添加目录或关闭 Program Files 扫描。Program Files 只索引浅层主程序（`<Program Files>\<厂商>\<应用>\app.exe`），其中的深层组件（如 `Git\usr\bin`、`Windows Kits\...\bin`）不会进入候选列表。
+- **快速启动首页**：空搜索时展示已固定、常用应用和系统快捷；常用应用结合启动历史与应用来源排序。
+- **自定义应用库**：通过拖入、选择文件或粘贴路径添加 `.exe` / `.lnk`，让扫描范围外的应用也能被搜索；支持单独删除，重启后仍保留。
+- **自动更新**：启动后检查发布页，发现新版本时提示；便携版原地替换、安装版静默升级，下载内容用发布页的 SHA-256 校验。
+- **键盘优先**：全局快捷键呼出，方向键选择，Enter 或空格启动；失焦自动隐藏，托盘常驻。
+- **灵活搜索**：支持精确、前缀、子串、模糊匹配与单字符拼写容错，结合使用频率、最近启动和查询历史排序。
+- **自动发现应用**：索引开始菜单、桌面、Windows Apps 和 Program Files，支持添加自定义目录。
+- **更干净的结果**：默认隐藏卸载、帮助、更新等辅助入口，合并重复快捷方式，跳过深层组件程序。
+- **本地运行**：设置、索引和启动历史保存在本机；使用索引与图标缓存，默认每 30 分钟后台刷新。
+- **按习惯调整**：自定义快捷键、登录启动、结果数量和搜索权重，支持浅色、深色及跟随系统主题。
 
-索引支持 `.lnk` / `.exe`，读取快捷方式的目标、参数、工作目录、描述和图标。启动快捷方式时保留 Windows Shell 语义。搜索完全在内存中完成，支持精确、前缀、词前缀、子串、模糊及单字符拼写容错；历史次数、最近启动和相同查询的选择参与排序。
+## 下载与安装
 
-候选列表默认隐藏“卸载 / 帮助 / 更新 / 安装”等辅助入口，合并同一个应用的多份重复快捷方式（例如用户开始菜单与公共开始菜单各一份），并跳过 Program Files 的深层组件；可用设置中的“隐藏辅助项”开关恢复完整列表。图标以 64 px 提取并缓存（优先取快捷方式目标程序的图标，避免 Shell 叠加的快捷方式箭头），在高 DPI 下仍然清晰。
+前往 [Releases](https://github.com/HBLADEH/velo-launcher/releases) 下载 Windows x64 版本：
 
-## 开发环境
+- **安装包**：运行 `*-installer.exe`，按向导安装。
+- **独立程序**：将 `velo-launcher.exe` 放到固定目录后直接运行；设置与缓存仍保存在用户本地数据目录。
 
-- Windows 10 / 11 x64；当前实测环境为 Windows 11 x64
-- Go 1.25.6、Node.js 22.15.0 / npm 10
-- Wails CLI 2.12.0、WebView2 Runtime
+运行需要 [Microsoft Edge WebView2 Runtime](https://developer.microsoft.com/microsoft-edge/webview2/)。如果系统缺少该组件，请先安装。当前不支持 macOS / Linux。
+
+## 快速上手
+
+1. 启动 Velo，等待首次应用索引完成；后续启动会优先使用已有缓存。
+2. 按 `Alt+Space` 呼出窗口，输入应用名称，例如 `code`。
+3. 用 `↑` / `↓` 选择结果，按 `Enter` 启动。
+4. 按 `Ctrl+,` 打开设置，按需要调整快捷键、主题和索引目录。
+
+| 操作 | 快捷键或入口 |
+| --- | --- |
+| 显示 / 隐藏启动台 | `Alt+Space`（可修改） |
+| 选择上 / 下一个结果 | `↑` / `↓` |
+| 启动选中应用 | `Enter`；默认也支持 `Space` |
+| 隐藏窗口 / 返回搜索 | `Esc` |
+| 打开设置 | `Ctrl+,` 或齿轮按钮 |
+| 刷新应用索引 | 窗口底部刷新按钮，或设置 → 索引 |
+| 检查更新 | 设置 → 关于，或窗口底部的版本按钮 |
+| 完全退出 | 窗口底部“退出”，或托盘右键菜单 |
+
+开启“按空格键启动选中应用”后，空格用于启动；如需输入 `visual studio` 等带空格的查询，请在设置 → 常规中关闭此选项。
+
+托盘图标左键单击可打开启动台，右键可打开设置或退出。再次运行程序会唤起已有实例。启用登录启动前，请先将独立程序放在固定位置。
+
+## 添加搜索范围外的应用
+
+点击首页的 **“＋ 自定义应用”**，或进入 **设置 → 索引 → 管理自定义应用**。可以拖入一个或多个 `.exe` / `.lnk` 文件、点击“选择文件”，或粘贴应用完整路径后点击“添加”。管理页面会保持显示，方便切换到资源管理器。
+
+添加后立即加入搜索库，刷新索引或重启 Velo 后仍可搜索，无需把应用所在的整个目录加入扫描范围。列表中的“删除”移除该应用的自定义记录及首页固定，不删除原程序文件；若该应用也在自动扫描范围内，仍可通过自动索引找到。重复添加同一目标与参数不会产生重复项；程序移动后需要重新添加。
+
+添加应用与首页固定独立：新添加的应用不会自动固定，搜索结果旁的 `☆` 可将应用固定到首页，取消固定后仍可搜索。自定义应用和固定记录统一保存在 `application-library.json` 中；旧版 `quick-launch.json` 中的手动应用会自动迁移，原文件保留为备份。
+
+搜索优先考虑固定项、启动历史、桌面/开始菜单入口及常见应用，并降低更新服务等辅助程序的排序；精确名称匹配仍优先。常用排序只使用 Velo 的本地启动记录，不读取其他启动器的历史或固定列表。
+
+内置系统快捷包括计算器、文件资源管理器、任务管理器、命令提示符、控制面板、卸载或更改程序、环境变量和设备管理器；支持中文名称及 `calc`、`cmd`、`path` 等关键词搜索。
+
+## 更新 Velo
+
+设置 → **关于** 中可以立即检查更新；默认也会在启动后自动检查一次，只读取 GitHub 发布页的版本信息，不上传任何本机数据。发现新版本时，窗口底部会出现版本按钮，打开即可查看发布说明、下载并安装。
+
+点击“下载并安装”后 Velo 会退出，由独立脚本完成替换并自动重新启动：
+
+- **独立程序**：直接覆盖当前可执行文件，随后重启。请确保程序放在你有写权限的位置。
+- **安装版**：安装在 Program Files 时，改用安装包静默升级，Windows 会提示 UAC 确认。
+
+下载内容会用发布页 `SHA256SUMS.txt` 中的 SHA-256 校验；校验文件缺失或不匹配时会停止自动安装，只保留手动下载。更新检查可以在设置 → 关于中关闭。
+
+## 常见问题
+
+**快捷键没有反应？**
+
+快捷键可能被其他程序占用。通过托盘打开设置，在“快捷键”中更换组合；注册失败时界面会显示提示。
+
+**找不到某个应用？**
+
+在设置 → 索引中检查应用来源，添加应用所在目录，再刷新索引。默认支持 `.lnk` 和 `.exe`，并枚举 Windows Apps。Program Files 默认只扫描浅层主程序；如需辅助入口或深层组件，可关闭“隐藏卸载、帮助、更新等辅助项”。
+
+**窗口隐藏后程序还在运行吗？**
+
+是。正常模式不显示任务栏按钮，失焦或按 `Esc` 只会隐藏窗口；使用托盘菜单或窗口底部“退出”结束程序。
+
+**数据存在哪里？**
+
+位于 `%LOCALAPPDATA%\Velo`：
+
+| 路径 | 用途 |
+| --- | --- |
+| `config.json` | 用户设置 |
+| `index.json` | 应用索引与文件指纹缓存 |
+| `history.json` | 启动次数、最近使用及查询选择历史 |
+| `application-library.json` | 自定义搜索应用及独立的首页固定记录 |
+| `cache/icons/` | 应用图标缓存 |
+| `updates/` | 更新时下载的程序文件与替换脚本，完成后自动清理 |
+| `logs/` | 当前及上一会话日志 |
+| `webview/` | WebView2 本地运行数据 |
+
+## 开发与构建
+
+推荐使用与 CI 一致的环境：Windows x64、Go **1.25.6**、Node.js **22.15.0**、npm **10**、Wails CLI **2.12.0**，以及 WebView2 Runtime。
 
 ```powershell
+git clone https://github.com/HBLADEH/velo-launcher.git
+cd velo-launcher
 go install github.com/wailsapp/wails/v2/cmd/wails@v2.12.0
 wails doctor
 npm --prefix frontend ci
 wails dev
 ```
 
-## 验证与构建
+验证并生成 Windows 程序：
 
 ```powershell
 ./scripts/verify.ps1
-# 仅检查，不重新打包：
+# 仅验证，不打包
 ./scripts/verify.ps1 -SkipBuild
-# 内存搜索基准：
-go test ./internal/search -bench . -benchmem
-# 本机 Windows Apps 集成测试（只枚举和读取图标，不启动）：
-$env:VELO_INTEGRATION = '1'
-go test ./internal/platform -run 'Test.*Icon' -v
-# 通知区域托盘集成测试（会在通知区域短暂显示 Velo 图标）：
-go test ./internal/platform -run TestTray -v
+# 同时生成安装包（需安装 NSIS，并将 makensis 加入 PATH）
+./scripts/verify.ps1 -Installer
 ```
 
-验证脚本执行 gofmt 检查、前端 lint / typecheck / build、Wails 绑定生成、go vet、Go 测试和 Windows x64 打包；失败即停止。加 `-Installer` 时改用 `wails build -nsis`，额外生成安装包（需要 `makensis` 在 PATH 中）。前端构建先于 Go 检查，因为 `//go:embed all:frontend/dist` 要求产物已存在。GitHub Actions 使用相同脚本（`-Installer`）并上传 exe 与安装包，远端 CI 已运行通过。
-
-`wails build -nsis` 会把 `build/windows/installer/wails_tools.nsh` 的模板占位符就地渲染成当前 `wails.json` 元数据，因此本地构建后该文件会显示为已修改；请用 `git restore build/windows/installer/wails_tools.nsh` 恢复模板状态，不要提交渲染结果（否则安装包版本不再跟随配置）。
-
-Wails 绑定位于 `frontend/wailsjs`，由工具生成，请勿手工修改。`main_bindings.go` 使用独立构建标签，生成绑定时不会访问运行中的用户数据。仅 Windows 实现当前桌面能力；未宣称支持 macOS / Linux。
-
-## 本地数据
-
-`%LOCALAPPDATA%\Velo`：
+产物输出到 `build/bin/`。验证脚本包含格式检查、Wails 绑定生成、前端 lint / 类型检查 / 构建、`go vet` 和 Go 测试；GitHub Actions 使用相同流程构建安装包。
 
 ```text
-config.json             设置（默认值补齐、版本检查、损坏备份恢复）
-index.json              索引与文件指纹缓存
-history.json            启动次数、最近使用、query → app
-logs/velo.log           当前会话 JSON 日志
-logs/velo.previous.log  上一会话日志
-cache/icons/            按源文件指纹缓存的本地图标
-webview/                WebView2 本地运行数据
+frontend/src/       Vue 界面、样式与品牌资源
+internal/          搜索、索引、配置、历史及 Windows 平台能力
+build/             应用图标、Windows 元数据与安装包配置
+scripts/           验证与资源测量脚本
+docs/              开发说明、实施清单与验证记录
 ```
 
-JSON 保存使用同目录临时文件替换。默认每 30 分钟后台刷新，也可手动刷新；未变化的快捷方式复用解析结果。没有持续磁盘轮询。不可访问的目录显示提示，并保留相应已有索引以便重试。
+Logo 源文件位于 [`frontend/src/assets/logo.png`](frontend/src/assets/logo.png)，用于应用界面和本文档；`build/appicon.png` 为打包副本，`build/windows/icon.ico` 为 Windows 图标，程序、托盘及安装包共用。替换与生成方式见 [构建资源说明](build/README.md)。
 
-设置包括常规、快捷键、外观、搜索、索引。更改主题/搜索参数不触发目录扫描；配置保存失败时回滚快捷键，启动失败不计入历史。切换“隐藏辅助项”会立即重建内存索引，并在后台重扫以同时恢复或跳过 Program Files 的深层扫描范围。
+更多调试参数、集成测试、性能测量和构建注意事项见 [开发说明](docs/development.md)。`frontend/wailsjs` 由 Wails 自动生成，请勿手工修改。
 
-## 进度与实测
+## 项目状态与反馈
 
-完整范围和逐项待验收项见 [实施清单](docs/implementation.md)，原始规划见 [计划书](velo-launcher_README.md)。目前主要功能已实现并完成首轮自动化 / 桌面验证，**尚未完成全部性能和稳定性验收**。
+当前专注于 Windows 本地应用搜索与启动，尚未提供插件或云端同步。历史实测中，含 WebView2 子进程的私有内存约为 **154–218 MB**，80 MB 目标尚未达成；完整性能与稳定性验收仍在进行，详见 [验证记录](docs/verification.md) 和 [实施清单](docs/implementation.md)。
 
-已实际验证：`code` → Visual Studio Code → Enter 启动；从其他应用 Alt+Space 呼出；Ctrl+, 打开设置；主题保存及本地历史排序；开始菜单/桌面/Program Files/Windows Apps 索引和图标缓存；托盘图标创建与移除、`--background` 实例中托盘与快捷键共存；候选过滤、重名合并与深层限制后的本机索引（455 项缓存、402 项可见），以及开发模式下图标与设置加载的修复。
-
-1000 应用搜索基准约 **0.014–0.069 ms**，每次 2–3 次分配。单次缓存启动记录约 470–523 ms（进程入口到前端缓存结果就绪，不等同于严格冷启动）。完整内存统计包含 WebView2 子进程；已测得私有内存约 154–218 MB，**80 MB 目标尚未达成**。详见 [验证记录](docs/verification.md)。
-
-资源测量命令（排除 Velo 启动的其他应用）：
-
-```powershell
-./scripts/measure-resources.ps1 -ProcessId <Velo进程ID> -Seconds 15
-```
-
-输出包含各进程内存明细。仅当 `CPUSampleValid` 为 true 时使用 CPU 百分比；采样期间进程集合变化会返回无效样本，应在运行稳定后重测。该脚本测量稳定运行期，不用于启动阶段 CPU 总量。
-
-已发布的 exe 与安装包均未签名；没有插件、云端同步或其他 Future 范围功能。
+欢迎通过 [Issues](https://github.com/HBLADEH/velo-launcher/issues) 提交问题或建议。报告问题时请附上 Windows 版本、Velo 版本、复现步骤及相关日志片段；分享前请检查日志中的本地路径等个人信息。
 
 ## 许可证
 
-[MIT](LICENSE)
+本项目采用 [MIT License](LICENSE)。

@@ -67,3 +67,38 @@ func BenchmarkSearch1000Apps(b *testing.B) {
 		})
 	}
 }
+
+func TestCommonAppsOutrankHelpersWithoutHistory(t *testing.T) {
+	idx := New([]model.AppItem{
+		{ID: "wab", Name: "wab", Source: "Program Files"},
+		{ID: "svc", Name: "WemeetUpdateSvc", Source: "Program Files"},
+		{ID: "game", Name: "WeGame", Source: "Start Menu"},
+		{ID: "watt", Name: "Watt Toolkit", Source: "Desktop"},
+		{ID: "wechat", Name: "微信", Source: "Start Menu"},
+	})
+	got := idx.Query("w", 4, true, nil, 1)
+	if len(got) != 4 || got[0].ID != "watt" || got[1].ID != "game" {
+		t.Fatalf("common apps not preferred: %+v", got)
+	}
+	if got[2].ID != "wechat" {
+		t.Fatalf("common alias ranked below helper: %+v", got)
+	}
+	if got := idx.Query("wab", 4, true, nil, 1); len(got) == 0 || got[0].ID != "wab" {
+		t.Fatal("explicit helper search no longer works")
+	}
+}
+
+func TestPinnedAndHistoryBoostCannotDisplaceExactName(t *testing.T) {
+	idx := New([]model.AppItem{{ID: "exact", Name: "Code"}, {ID: "pin", Name: "Code Tools", Pinned: true}, {ID: "plain", Name: "Code Editor"}})
+	got := idx.Query("code", 3, true, map[string]float64{"pin": 10000}, 5)
+	if got[0].ID != "exact" || got[1].ID != "pin" {
+		t.Fatalf("unexpected pinned/exact order: %+v", got)
+	}
+	got = idx.Query("", 3, true, map[string]float64{"plain": 135}, 1)
+	if got[0].ID != "plain" {
+		t.Fatal("frequent usage not reflected on home")
+	}
+	if len(idx.Query("unrelated", 3, true, map[string]float64{"pin": 10000}, 5)) != 0 {
+		t.Fatal("priority injected unrelated result")
+	}
+}

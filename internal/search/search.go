@@ -2,6 +2,7 @@
 package search
 
 import (
+	"math"
 	"sort"
 	"strings"
 	"unicode"
@@ -10,9 +11,11 @@ import (
 )
 
 type entry struct {
-	item  model.AppItem
-	name  string
-	terms []string
+	item     model.AppItem
+	name     string
+	terms    []string
+	aliases  []string
+	priority float64
 }
 type Index struct{ entries []entry }
 type Result struct {
@@ -37,14 +40,25 @@ func New(items []model.AppItem) *Index {
 			}
 		}
 		terms = append(terms, initials.String())
+		aliases := []string{}
 		for _, k := range app.Keywords {
 			terms = append(terms, Normalize(k))
+			if alias := Normalize(k); alias != "" {
+				aliases = append(aliases, alias)
+			}
 		}
 		// Common local aliases; broader user aliases can live in Keywords later.
 		if strings.Contains(name, "wechat") || strings.Contains(name, "微信") {
 			terms = append(terms, "wx", "weixin", "微信")
+			aliases = append(aliases, "wx", "weixin", "wechat", "微信")
 		}
-		i.entries = append(i.entries, entry{app, name, terms})
+		if strings.Contains(name, "腾讯会议") {
+			aliases = append(aliases, "wemeet", "tencent meeting")
+		}
+		if name == "visual studio code" {
+			aliases = append(aliases, "vscode", "code")
+		}
+		i.entries = append(i.entries, entry{item: app, name: name, terms: terms, aliases: aliases, priority: Priority(app)})
 	}
 	return i
 }
@@ -70,10 +84,26 @@ func (i *Index) Query(query string, limit int, fuzzy bool, weights map[string]fl
 	for n := range i.entries {
 		e := &i.entries[n]
 		score := match(query, e.name, e.terms, fuzzy)
+		if query != "" && score < 800 {
+			for _, alias := range e.aliases {
+				if strings.HasPrefix(alias, query) {
+					score = 800
+					break
+				}
+			}
+		}
 		if score < 0 {
 			continue
 		}
-		candidate := ranked{e, float64(score) + weights[e.item.ID]*weight}
+		boost := e.priority + weights[e.item.ID]*weight
+		if query != "" {
+			boost = math.Min(180, math.Max(-180, boost))
+		}
+		// Exact names always precede partial matches, even for a rarely used app.
+		if score == 1000 {
+			score += 1000
+		}
+		candidate := ranked{e, float64(score) + boost}
 		position := sort.Search(len(top), func(n int) bool { return better(candidate, top[n]) })
 		if position >= limit {
 			continue
@@ -89,6 +119,36 @@ func (i *Index) Query(query string, limit int, fuzzy bool, weights map[string]fl
 		out[n] = Result{candidate.entry.item, candidate.score}
 	}
 	return out
+}
+
+// Priority supplies a useful cold-start order before personal history exists.
+// It only ranks matching items; it never injects unrelated recommendations.
+func Priority(item model.AppItem) float64 {
+	var score float64
+	switch item.Source {
+	case "Desktop":
+		score = 75
+	case "Start Menu":
+		score = 55
+	case "Windows Apps":
+		score = 40
+	case "Manual":
+		score = 85
+	}
+	name := Normalize(item.Name)
+	for _, common := range []string{"wechat", "weixin", "微信", "qq", "wegame", "watt toolkit", "visual studio code", "chrome", "google chrome", "edge", "microsoft edge", "firefox", "steam", "discord", "telegram", "excel", "word", "powerpoint", "网易云音乐", "腾讯会议", "wemeet", "windows terminal"} {
+		if name == common || strings.HasPrefix(name, common+" ") {
+			score += 65
+			break
+		}
+	}
+	if name == "wab" || name == "wabmig" || strings.HasSuffix(name, "svc") || strings.HasSuffix(name, "service") || strings.Contains(name, "updater") || strings.Contains(name, "crashpad") || strings.Contains(name, "crashreport") || strings.Contains(name, "app cert kit") {
+		score -= 160
+	}
+	if item.Pinned {
+		score += 100
+	}
+	return score
 }
 func match(q, name string, terms []string, fuzzy bool) int {
 	if q == "" {

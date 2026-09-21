@@ -1,5 +1,21 @@
 # Build Directory
 
+## Velo 品牌资源
+
+Logo 源文件为 `frontend/src/assets/logo.png`，界面和项目 README 直接引用它。
+`build/appicon.png` 是同一图片的打包副本；`build/windows/icon.ico` 由 Wails
+生成，用于 Windows 可执行文件以及 NSIS 安装/卸载程序。托盘从可执行文件提取图标。
+
+替换源文件后，在项目根目录执行以下命令，同步 PNG 并重新生成 ICO：
+
+```powershell
+Copy-Item frontend/src/assets/logo.png build/appicon.png
+Remove-Item build/windows/icon.ico
+wails build -platform windows/amd64
+```
+
+请一并提交源 PNG、打包 PNG 和生成的 ICO，避免后续构建使用旧图标。
+
 The build directory is used to house all the build files and assets for your application. 
 
 The structure is:

@@ -56,6 +56,7 @@ func run() error {
 	err = wails.Run(&options.App{
 		Title: "Velo", Width: 640, Height: 540, DisableResize: true,
 		Frameless: true, AlwaysOnTop: true,
+		DragAndDrop:      &options.DragAndDrop{EnableFileDrop: true},
 		BackgroundColour: &options.RGBA{R: 247, G: 248, B: 250, A: 255},
 		AssetServer:      &assetserver.Options{Assets: assets, Handler: icon.Handler(dir)},
 		OnStartup:        app.startup, OnDomReady: app.ready, OnShutdown: app.shutdown, OnBeforeClose: app.beforeClose,

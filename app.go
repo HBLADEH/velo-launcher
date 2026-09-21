@@ -11,8 +11,11 @@ import (
 	core "velo-launcher/internal/app"
 	"velo-launcher/internal/config"
 	"velo-launcher/internal/hotkey"
+	"velo-launcher/internal/model"
 	"velo-launcher/internal/platform"
 	"velo-launcher/internal/search"
+	"velo-launcher/internal/update"
+	"velo-launcher/internal/version"
 )
 
 type App struct {
@@ -30,6 +33,9 @@ type App struct {
 	clientReady   bool
 	exitRequested bool
 	closing       bool
+	importMode    bool
+	// updates 只读缓存 GitHub release，测试可替换为本地服务器。
+	updates *update.Client
 }
 type launcherWindow interface {
 	Visible() bool
@@ -42,15 +48,17 @@ type Status struct {
 	core.State
 	HotkeyError string `json:"hotkey_error"`
 	Visible     bool   `json:"visible"`
+	Version     string `json:"version"`
 }
 
 func NewApp(logger *slog.Logger, service *core.Service, background, diagnostics bool, started time.Time) *App {
-	return &App{logger: logger, service: service, background: background, diagnostics: diagnostics, started: started}
+	return &App{logger: logger, service: service, background: background, diagnostics: diagnostics, started: started, updates: update.NewClient()}
 }
 func (a *App) startup(ctx context.Context) {
 	a.ctx = ctx
 	a.service.Start(ctx, func() { wruntime.EventsEmit(ctx, "index:changed") })
-	a.logger.Info("application started", "version", "0.8.0-beta.2")
+	a.logger.Info("application started", "version", version.Number)
+	go a.autoCheckUpdate(ctx)
 }
 func (a *App) ready(ctx context.Context) {
 	a.mu.Lock()
@@ -142,6 +150,7 @@ func (a *App) Hide() {
 	a.hideLocked()
 }
 func (a *App) hideLocked() {
+	a.importMode = false
 	if a.window == nil || a.closing || !a.window.Visible() {
 		return
 	}
@@ -167,7 +176,7 @@ func (a *App) beforeClose(_ context.Context) bool {
 func (a *App) Blur() {
 	a.mu.Lock()
 	defer a.mu.Unlock()
-	if a.window != nil && a.window.Visible() && a.key != nil && !a.diagnostics && !a.window.Active() {
+	if a.window != nil && a.window.Visible() && a.key != nil && !a.diagnostics && !a.importMode && !a.window.Active() {
 		a.hideLocked()
 	}
 }
@@ -187,14 +196,29 @@ func (a *App) Quit() {
 	a.mu.Unlock()
 	wruntime.Quit(a.ctx)
 }
-func (a *App) Search(query string) []search.Result { return a.service.Search(query) }
-func (a *App) GetSettings() config.Config          { return a.service.Settings() }
+func (a *App) Search(query string) []search.Result    { return a.service.Search(query) }
+func (a *App) GetHome() core.Home                     { return a.service.Home() }
+func (a *App) SetPinned(id string, pinned bool) error { return a.service.SetPinned(id, pinned) }
+func (a *App) AddApplications(paths []string) (core.ImportResult, error) {
+	return a.service.AddApplications(paths)
+}
+func (a *App) GetCustomApplications() []model.AppItem { return a.service.CustomApplications() }
+func (a *App) DeleteApplication(id string) error      { return a.service.DeleteApplication(id) }
+func (a *App) SetImportMode(enabled bool) {
+	a.mu.Lock()
+	defer a.mu.Unlock()
+	a.importMode = enabled
+}
+func (a *App) BrowseApplications() ([]string, error) {
+	return wruntime.OpenMultipleFilesDialog(a.ctx, wruntime.OpenDialogOptions{Title: "添加自定义应用", Filters: []wruntime.FileFilter{{DisplayName: "应用与快捷方式 (*.exe;*.lnk)", Pattern: "*.exe;*.lnk"}}})
+}
+func (a *App) GetSettings() config.Config { return a.service.Settings() }
 func (a *App) GetStatus() Status {
 	a.mu.Lock()
 	keyError := a.keyError
 	visible := a.window != nil && a.window.Visible()
 	a.mu.Unlock()
-	return Status{a.service.State(), keyError, visible}
+	return Status{State: a.service.State(), HotkeyError: keyError, Visible: visible, Version: version.Number}
 }
 func (a *App) RefreshIndex() { a.service.Refresh() }
 func (a *App) Resize(height int) {

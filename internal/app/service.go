@@ -29,21 +29,25 @@ type State struct {
 }
 type Service struct {
 	// Serialize settings writes and refresh commits without blocking readers on disk I/O.
-	commitMu sync.Mutex
-	mu       sync.RWMutex
-	dir      string
-	config   config.Config
-	revision uint64
-	index    *search.Index
-	items    map[string]model.AppItem
-	cache    indexer.Cache
-	history  *history.Store
-	state    State
-	logger   *slog.Logger
-	wake     chan struct{}
-	done     chan struct{}
-	cancel   context.CancelFunc
-	onChange func()
+	commitMu  sync.Mutex
+	mu        sync.RWMutex
+	dir       string
+	config    config.Config
+	revision  uint64
+	index     *search.Index
+	items     map[string]model.AppItem
+	cache     indexer.Cache
+	history   *history.Store
+	state     State
+	logger    *slog.Logger
+	wake      chan struct{}
+	done      chan struct{}
+	cancel    context.CancelFunc
+	onChange  func()
+	quick     []model.AppItem
+	custom    []model.AppItem
+	tools     []model.AppItem
+	toolIndex *search.Index
 }
 
 func New(dir string, logger *slog.Logger) (*Service, error) {
@@ -62,6 +66,11 @@ func New(dir string, logger *slog.Logger) (*Service, error) {
 	if s.cache.Version != 1 {
 		s.cache = indexer.Cache{}
 	}
+	if err := s.loadLibrary(); err != nil {
+		return nil, err
+	}
+	s.tools = systemTools()
+	s.toolIndex = search.New(s.tools)
 	s.replace(s.cache.Apps)
 	historyPath := filepath.Join(dir, "history.json")
 	s.history, err = history.Open(historyPath)
@@ -80,13 +89,39 @@ func New(dir string, logger *slog.Logger) (*Service, error) {
 }
 func (s *Service) replace(items []model.AppItem) {
 	// 调用方必须持有 s.mu，或在启动阶段独占地初始化。
-	visible := indexer.Visible(items, s.config.FilterNoise)
+	visible := indexer.Visible(slices.Clone(items), s.config.FilterNoise)
+	for _, item := range s.custom {
+		visible = slices.DeleteFunc(visible, func(a model.AppItem) bool { return a.ID == item.ID })
+		item.Pinned = false
+		visible = append(visible, item)
+	}
+	// Explicitly chosen items survive rescans and noise filtering. Match by ID
+	// so importing an already indexed shortcut does not create a second result.
+	for _, item := range s.quick {
+		if item.Source == "System" {
+			continue
+		}
+		for _, current := range visible {
+			if current.ID == item.ID {
+				item = current
+				break
+			}
+		}
+		visible = slices.DeleteFunc(visible, func(a model.AppItem) bool { return a.ID == item.ID })
+		item.Pinned = true
+		visible = append(visible, item)
+	}
 	s.index = search.New(visible)
 	s.items = make(map[string]model.AppItem, len(visible))
 	for _, item := range visible {
 		s.items[item.ID] = item
 	}
 	s.state.Count = len(visible)
+	tools := slices.Clone(s.tools)
+	for n := range tools {
+		tools[n].Pinned = slices.ContainsFunc(s.quick, func(a model.AppItem) bool { return a.ID == tools[n].ID })
+	}
+	s.toolIndex = search.New(tools)
 }
 func (s *Service) Start(parent context.Context, onChange func()) {
 	ctx, cancel := context.WithCancel(parent)
@@ -130,6 +165,9 @@ func (s *Service) Settings() config.Config {
 	c.CustomDirectories = append([]string{}, c.CustomDirectories...)
 	return c
 }
+
+// DataDir 暴露数据目录，供更新下载等需要与索引缓存同处的调用方使用。
+func (s *Service) DataDir() string { return s.dir }
 func (s *Service) SaveSettings(c config.Config) error {
 	c.CustomDirectories = slices.Clone(c.CustomDirectories)
 	if err := c.Validate(); err != nil {
@@ -171,14 +209,41 @@ func (s *Service) State() State {
 func (s *Service) Search(query string) []search.Result {
 	query = search.Normalize(query)
 	s.mu.RLock()
-	i, c := s.index, s.config
+	i, c, toolIndex := s.index, s.config, s.toolIndex
 	s.mu.RUnlock()
-	return i.Query(query, c.MaxResults, c.Search.Fuzzy, s.history.Scores(query, time.Now()), c.Search.HistoryWeight)
+	weights := s.history.Scores(query, time.Now())
+	results := i.Query(query, c.MaxResults, c.Search.Fuzzy, weights, c.Search.HistoryWeight)
+	if query != "" {
+		results = append(results, toolIndex.Query(query, c.MaxResults, c.Search.Fuzzy, weights, c.Search.HistoryWeight)...)
+		slices.SortStableFunc(results, func(a, b search.Result) int {
+			if a.Score > b.Score {
+				return -1
+			}
+			if a.Score < b.Score {
+				return 1
+			}
+			return 0
+		})
+		results = results[:min(len(results), c.MaxResults)]
+	}
+	s.mu.RLock()
+	defer s.mu.RUnlock()
+	for n := range results {
+		results[n].Pinned = slices.ContainsFunc(s.quick, func(a model.AppItem) bool { return a.ID == results[n].ID })
+	}
+	return results
 }
 func (s *Service) Item(id string) (model.AppItem, error) {
 	s.mu.RLock()
 	defer s.mu.RUnlock()
 	item, ok := s.items[id]
+	if !ok {
+		for _, tool := range s.tools {
+			if tool.ID == id {
+				return tool, nil
+			}
+		}
+	}
 	if !ok {
 		return item, fmt.Errorf("索引已更新，请重新选择应用")
 	}
@@ -252,7 +317,12 @@ func (s *Service) commitRefresh(ctx context.Context, rev uint64, next indexer.Ca
 	// Never delete icons from the persisted index if its replacement failed.
 	// Retain one previous generation for results still displayed by the frontend.
 	if persisted {
-		if e := icon.Prune(s.dir, append(slices.Clone(next.Apps), previous...)); e != nil {
+		s.mu.RLock()
+		retained := append(slices.Clone(next.Apps), previous...)
+		retained = append(retained, s.quick...)
+		retained = append(retained, s.custom...)
+		s.mu.RUnlock()
+		if e := icon.Prune(s.dir, retained); e != nil {
 			s.logger.Warn("icon cleanup failed", "error", e)
 		}
 	}

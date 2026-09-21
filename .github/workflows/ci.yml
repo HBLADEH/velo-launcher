@@ -33,10 +33,21 @@ jobs:
           & "$nsis\makensis.exe" -VERSION
       - run: ./scripts/verify.ps1 -Installer
         shell: pwsh
+      - name: SHA256 checksums
+        shell: pwsh
+        run: |
+          $files = Get-ChildItem build/bin -Filter *.exe
+          if (-not $files) { throw 'no build output to hash' }
+          $lines = foreach ($file in $files) {
+            "{0}  {1}" -f (Get-FileHash $file.FullName -Algorithm SHA256).Hash.ToLower(), $file.Name
+          }
+          $lines | Set-Content -Path build/bin/SHA256SUMS.txt -Encoding utf8NoBOM
+          Get-Content build/bin/SHA256SUMS.txt
       - uses: actions/upload-artifact@v4
         with:
           name: velo-launcher-windows-amd64
           path: |
             build/bin/velo-launcher.exe
             build/bin/*-installer.exe
+            build/bin/SHA256SUMS.txt
           if-no-files-found: error

@@ -26,10 +26,11 @@ type Config struct {
 	CustomDirectories []string `json:"custom_directories"`
 	ScanProgramFiles  bool     `json:"scan_program_files"`
 	RefreshMinutes    int      `json:"refresh_minutes"`
+	AutoCheckUpdates  bool     `json:"auto_check_updates"`
 }
 
 func Defaults() Config {
-	return Config{Version: 1, Hotkey: "Alt+Space", MaxResults: 8, Theme: "system", SpaceLaunch: true, FilterNoise: true, Search: Search{true, 1}, CustomDirectories: []string{}, ScanProgramFiles: true, RefreshMinutes: 30}
+	return Config{Version: 1, Hotkey: "Alt+Space", MaxResults: 8, Theme: "system", SpaceLaunch: true, FilterNoise: true, Search: Search{true, 1}, CustomDirectories: []string{}, ScanProgramFiles: true, RefreshMinutes: 30, AutoCheckUpdates: true}
 }
 func (c Config) Validate() error {
 	if c.Version != 1 {
