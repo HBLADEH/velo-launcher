@@ -192,14 +192,14 @@ func systemTools() []model.AppItem {
 		id, name, exe, args, description string
 		keywords                         []string
 	}{
-		{"calculator", "计算器", `System32\calc.exe`, "", "打开 Windows 计算器", []string{"calc", "jisuanqi"}},
-		{"explorer", "文件资源管理器", "explorer.exe", "", "浏览文件与文件夹", []string{"explorer", "files", "文件管理"}},
-		{"taskmanager", "任务管理器", `System32\Taskmgr.exe`, "", "查看进程与资源使用情况", []string{"task manager", "taskmgr", "进程"}},
-		{"terminal", "命令提示符", `System32\cmd.exe`, "", "打开命令行终端", []string{"cmd", "terminal", "终端"}},
-		{"control", "控制面板", `System32\control.exe`, "", "打开 Windows 控制面板", []string{"control panel", "kongzhimianban"}},
-		{"apps", "卸载或更改程序", `System32\control.exe`, "appwiz.cpl", "管理已安装的桌面程序", []string{"apps", "uninstall", "应用管理"}},
-		{"environment", "环境变量", `System32\rundll32.exe`, "sysdm.cpl,EditEnvironmentVariables", "编辑用户与系统环境变量", []string{"environment", "path", "huanjingbianliang"}},
-		{"devices", "设备管理器", `System32\mmc.exe`, "devmgmt.msc", "查看硬件设备与驱动", []string{"device manager", "驱动", "shebeiguanliqi"}},
+		{"calculator", "计算器", `System32\calc.exe`, "", "打开 Windows 计算器", []string{"calc", "calculator", "jisuanqi", "jsq"}},
+		{"explorer", "文件资源管理器", "explorer.exe", "", "浏览文件与文件夹", []string{"explorer", "file explorer", "files", "文件管理", "wenjianziyuanguanliqi", "资源管理器", "zyglq"}},
+		{"taskmanager", "任务管理器", `System32\Taskmgr.exe`, "", "查看进程与资源使用情况", []string{"task manager", "taskmgr", "进程", "renwuguanliqi", "rwglq"}},
+		{"terminal", "命令提示符", `System32\cmd.exe`, "", "打开命令行终端", []string{"cmd", "command prompt", "terminal", "终端", "命令行", "minglingtishifu", "mltsf"}},
+		{"control", "控制面板", `System32\control.exe`, "", "打开 Windows 控制面板", []string{"control panel", "kongzhimianban", "kzmb"}},
+		{"apps", "卸载或更改程序", `System32\control.exe`, "appwiz.cpl", "管理已安装的桌面程序", []string{"apps", "uninstall", "appwiz", "应用管理", "卸载程序", "xiezai", "xz"}},
+		{"environment", "环境变量", `System32\rundll32.exe`, "sysdm.cpl,EditEnvironmentVariables", "编辑用户与系统环境变量", []string{"environment", "env", "path", "huanjingbianliang", "hjbl"}},
+		{"devices", "设备管理器", `System32\mmc.exe`, "devmgmt.msc", "查看硬件设备与驱动", []string{"device manager", "devmgmt", "驱动", "shebeiguanliqi", "sbglq"}},
 	}
 	items := make([]model.AppItem, 0, len(definitions))
 	for _, d := range definitions {

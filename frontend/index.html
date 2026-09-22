@@ -4,6 +4,19 @@
     <meta charset="UTF-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Velo</title>
+    <script>
+      // Apply the last saved preference before the first stylesheet/frame.
+      try {
+        const theme = localStorage.getItem('velo-theme');
+        if (['light', 'dark', 'system'].includes(theme)) document.documentElement.dataset.theme = theme;
+      } catch { /* The native background still covers startup without storage. */ }
+    </script>
+    <style>
+      html, body, #app { margin: 0; width: 100%; height: 100%; overflow: hidden; }
+      html { background: #f6f8fc; color-scheme: light; }
+      html[data-theme="dark"] { background: #111b2b; color-scheme: dark; }
+      @media (prefers-color-scheme: dark) { html:not([data-theme="light"]) { background: #111b2b; color-scheme: dark; } }
+    </style>
     <link rel="icon" type="image/png" href="/src/assets/logo.png" />
 </head>
 <body>

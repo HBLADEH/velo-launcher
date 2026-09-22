@@ -102,6 +102,47 @@ func TestPinIndexedAppAndSystemTool(t *testing.T) {
 	}
 }
 
+func TestSystemToolsSearchWithoutAppCandidates(t *testing.T) {
+	s := quickService(t, t.TempDir())
+	s.config.Search.Fuzzy = false
+	if s.State().Count != 0 || len(s.Home().Pinned) != 0 {
+		t.Fatal("expected no app candidates or pins")
+	}
+	for _, tool := range systemTools() {
+		t.Run(tool.ID, func(t *testing.T) {
+			for _, query := range append([]string{tool.Name}, tool.Keywords...) {
+				results := s.Search(query)
+				found := false
+				for _, result := range results {
+					if result.ID == tool.ID {
+						found = true
+						if result.Pinned {
+							t.Fatal("unfixed system entry reported as pinned")
+						}
+						item, err := s.Item(result.ID)
+						if err != nil || item.ExecPath != tool.ExecPath || item.Arguments != tool.Arguments {
+							t.Fatalf("search result lost launch target: %+v, %v", item, err)
+						}
+					}
+				}
+				if !found {
+					t.Errorf("query %q missing %s: %+v", query, tool.ID, results)
+				}
+			}
+			if err := s.SetPinned(tool.ID, true); err != nil {
+				t.Fatal(err)
+			}
+			if err := s.SetPinned(tool.ID, false); err != nil {
+				t.Fatal(err)
+			}
+			results := s.Search(tool.Name)
+			if len(results) == 0 || results[0].ID != tool.ID || results[0].Pinned {
+				t.Fatalf("unpin removed system entry from search: %+v", results)
+			}
+		})
+	}
+}
+
 func TestQuickPersistenceFailureDoesNotPublish(t *testing.T) {
 	dir := t.TempDir()
 	s := quickService(t, dir)

@@ -56,7 +56,7 @@ defineExpose({ addPaths })
       <p>添加搜索范围外的应用，保存后立即可搜索，重启 Velo 仍然保留。</p>
       <div class="drop-zone"><div><strong>拖入 .exe 程序或 .lnk 快捷方式</strong><small>可一次添加多个；此页面保持显示，方便切换到资源管理器。</small></div><button :disabled="busy" @click="browse">选择文件</button></div>
       <form class="custom-path" @submit.prevent="addPath"><input v-model="path" aria-label="应用完整路径" placeholder="或粘贴应用的完整路径" :disabled="busy" /><button type="submit" :disabled="busy || !path.trim()">添加</button></form>
-      <p class="hint">添加不会自动固定到首页；可在搜索结果中另外点击 ☆ 固定。</p>
+      <p class="hint">添加不会自动固定到首页；可在搜索结果中点击星标按钮固定。</p>
     </div>
     <div v-if="error" class="error" role="alert">{{ error }}</div>
     <div v-if="notice" class="notice" role="status">{{ notice }}</div>

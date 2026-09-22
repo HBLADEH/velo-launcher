@@ -5,6 +5,7 @@ import { CheckUpdate, GetStatus, InstallUpdate, RefreshIndex, SaveSettings } fro
 import { EventsOn } from '../../wailsjs/runtime/runtime'
 import type { main, update } from '../../wailsjs/go/models'
 import logo from '../assets/logo.png'
+import fluentLicense from '../assets/fluent/LICENSE.txt?raw'
 const props = defineProps<{ initial: config.Config; initialTab?: string }>()
 const emit = defineEmits<{ saved: [value: config.Config]; close: []; manage: []; update: [value: update.Info] }>()
 const draft = ref(new config.Config(JSON.parse(JSON.stringify(props.initial))))
@@ -58,7 +59,7 @@ onUnmounted(() => { disposers.forEach(dispose => dispose()) })
   <form class="settings" @submit.prevent="save">
     <header class="settings-header"><div class="settings-title"><img :src="logo" alt="" width="40" height="40" /><h1>Velo 设置</h1></div><button type="button" class="text-button" @click="emit('close')">返回 · Esc</button></header>
     <nav aria-label="设置分类"><button v-for="name in tabs" :key="name" type="button" :class="{ active: tab === name }" :aria-pressed="tab === name" @click="tab = name">{{ name }}</button></nav>
-    <div class="settings-body">
+    <div :key="tab" class="settings-body">
       <template v-if="tab === '常规'">
         <h2>启动与显示</h2>
         <label class="check"><input v-model="draft.launch_at_startup" type="checkbox" />登录 Windows 时启动 Velo</label>
@@ -76,6 +77,7 @@ onUnmounted(() => { disposers.forEach(dispose => dispose()) })
       </template>
       <template v-else-if="tab === '外观'">
         <h2>界面主题</h2>
+        <div class="theme-preview" :data-preview="draft.theme"><div class="preview-window"><div class="preview-search"><span></span><i></i></div><div class="preview-tiles"><i v-for="n in 6" :key="n"></i></div></div><div><strong>Windows 蓝</strong><p>轻盈层次，流畅随行。</p><small>动效跟随系统的减少动画偏好</small></div></div>
         <label>主题<select v-model="draft.theme"><option value="system">跟随系统</option><option value="light">浅色</option><option value="dark">深色</option></select></label>
       </template>
       <template v-else-if="tab === '搜索'">
@@ -100,6 +102,11 @@ onUnmounted(() => { disposers.forEach(dispose => dispose()) })
       </template>
       <template v-else>
         <h2>版本与更新</h2>
+        <details class="icon-license">
+          <summary>图标与开源许可</summary>
+          <p class="hint">界面图标采用 Microsoft Fluent UI System Icons（MIT License）。</p>
+          <pre class="release-notes">{{ fluentLicense }}</pre>
+        </details>
         <p class="hint">当前版本 {{ status?.version ?? '…' }}。更新检查只读取 GitHub 发布页的版本信息，不上传任何本机数据。</p>
         <label class="check"><input v-model="draft.auto_check_updates" type="checkbox" />启动后自动检查更新</label>
         <p class="hint">自动检查只提示新版本，不会在后台下载或替换程序；下载与安装始终需要你确认。</p>
