@@ -4,6 +4,8 @@
 
 ## 已取得的证据
 
+- 2026-09-26 发布 [v0.9.2](https://github.com/HBLADEH/velo-launcher/releases/tag/v0.9.2) 预览版，标签指向 `5df157f`。标签 CI [36181223886](https://github.com/HBLADEH/velo-launcher/actions/runs/36181223886) 完整通过（前端 lint/类型检查/构建、Go vet/全部测试、Windows 程序及 NSIS 安装包）。本地 `verify.ps1 -SkipBuild` 通过；真实桌面与开始菜单合并扫描验证“异环”保留桌面入口且可搜索、“渔力全开.url”被排除；本机只读发现 39 个可用系统入口。CI 产物下载后复算 SHA-256，与校验清单一致；上传后 GitHub 资产 digest 再次匹配。发布包含 `velo-launcher.exe`（13233152 字节）、`velo-launcher-amd64-installer.exe`（6951337 字节）及 `SHA256SUMS.txt`（186 字节），校验值见 `docs/releases/v0.9.2.md`。程序的原始文件版本资源为 `0.9.2.0`。未运行安装包、未执行真实系统设置更改，企业电脑和安装后自动更新仍待实机验证。
+
 - 自动测试覆盖：配置默认值/旧字段补齐/损坏备份/未来版本保护；历史持久化、查询权重与衰减；增量扫描、去重、删除、取消；内存匹配/排序/拼写容错；快捷键冲突与重新绑定；保存失败恢复原快捷键；失败启动不写历史；图标复用、失效与 HTTP 路径限制；损坏索引恢复和并发缓存搜索。
 - Windows 集成测试实际注册备用全局键、创建并解析临时 `.lnk`、从 Notepad 快捷方式提取图标；本机 32 个 packaged app 图标均通过读取测试。
 - 桌面验证使用 computer-use 技能，在 `--diagnostics` 实例中实际搜索 `code`、按 Enter 启动 Visual Studio Code；历史文件记录 1 次启动与 query `code`，再次空查询时 Code 已排名首位。
