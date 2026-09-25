@@ -6,6 +6,7 @@ import (
 	"io/fs"
 	"os"
 	"path/filepath"
+	"slices"
 	"sort"
 	"strings"
 	"velo-launcher/internal/model"
@@ -91,7 +92,10 @@ func Scan(ctx context.Context, roots []Root, old Cache, resolver Resolver) (Cach
 			key := strings.ToLower(path)
 			if cached, ok := old.Files[key]; ok && cached.Modified == info.ModTime().UnixNano() && cached.Size == info.Size() {
 				cached.Item.Source = root.Source
-				next.Files[key] = cached
+				// Targets can disappear without the shortcut itself changing.
+				if validDesktopShortcut(cached.Item) {
+					next.Files[key] = cached
+				}
 				return nil
 			}
 			item := model.AppItem{Name: strings.TrimSuffix(d.Name(), filepath.Ext(d.Name())), Path: path, ExecPath: path, Source: root.Source, Keywords: []string{}}
@@ -110,6 +114,9 @@ func Scan(ctx context.Context, roots []Root, old Cache, resolver Resolver) (Cach
 					item = resolved
 				}
 			}
+			if !validDesktopShortcut(item) {
+				return nil
+			}
 			identity := item.ExecPath
 			if identity == "" {
 				identity = item.Path
@@ -124,10 +131,26 @@ func Scan(ctx context.Context, roots []Root, old Cache, resolver Resolver) (Cach
 	}
 	items := make([]model.AppItem, 0, len(next.Files))
 	for _, f := range next.Files {
-		items = append(items, f.Item)
+		if validDesktopShortcut(f.Item) {
+			items = append(items, f.Item)
+		}
 	}
 	next.Apps = Deduplicate(items)
 	return next, warnings, nil
+}
+
+// Desktop discovery only accepts file-target shortcuts, not empty shell links,
+// failed resolutions, or broken targets. The .lnk itself remains the launch path
+// so Windows preserves arguments, working directory and elevation semantics.
+func validDesktopShortcut(item model.AppItem) bool {
+	if item.Source != "Desktop" || !strings.EqualFold(filepath.Ext(item.Path), ".lnk") {
+		return true
+	}
+	if !filepath.IsAbs(item.ExecPath) || strings.EqualFold(item.ExecPath, item.Path) {
+		return false
+	}
+	info, err := os.Stat(item.ExecPath)
+	return err == nil && !info.IsDir()
 }
 
 // beyondDepth 只保留浅层程序：安装目录顶层是应用主程序，深层可执行文件
@@ -143,8 +166,8 @@ func beyondDepth(root Root, path string) bool {
 	return strings.Count(relative, string(filepath.Separator))+1 > root.MaxDepth
 }
 
-// Deduplicate keeps one entry per application. Friendly Start Menu shortcuts
-// win over executable filenames, shallower install paths win over helper copies
+// Deduplicate keeps one entry per application. Desktop shortcuts win over Start
+// Menu entries and executable filenames; shallower paths win over helper copies
 // bundled inside another program, and the ID still separates different
 // profiles/commands of the same executable.
 func Deduplicate(items []model.AppItem) []model.AppItem {
@@ -153,10 +176,10 @@ func Deduplicate(items []model.AppItem) []model.AppItem {
 			return 3
 		}
 		if strings.EqualFold(filepath.Ext(a.Path), ".lnk") {
-			if a.Source == "Start Menu" {
+			if a.Source == "Desktop" {
 				return 0
 			}
-			if a.Source == "Desktop" {
+			if a.Source == "Start Menu" {
 				return 1
 			}
 			return 2
@@ -184,18 +207,24 @@ func Deduplicate(items []model.AppItem) []model.AppItem {
 		}
 		return items[i].ID < items[j].ID
 	})
-	seenID := map[string]bool{}
+	seenID := map[string]int{}
 	seenName := map[string]bool{}
 	out := make([]model.AppItem, 0, len(items))
 	for _, item := range items {
-		if seenID[item.ID] {
+		if n, ok := seenID[item.ID]; ok {
+			// Keep alternate shortcut names searchable without changing launch identity.
+			for _, alias := range append([]string{item.Name}, item.Keywords...) {
+				if alias != "" && alias != out[n].Name && !slices.Contains(out[n].Keywords, alias) {
+					out[n].Keywords = append(slices.Clone(out[n].Keywords), alias)
+				}
+			}
 			continue
 		}
 		name := duplicateKey(item)
 		if seenName[name] {
 			continue
 		}
-		seenID[item.ID] = true
+		seenID[item.ID] = len(out)
 		seenName[name] = true
 		out = append(out, item)
 	}

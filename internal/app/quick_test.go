@@ -2,6 +2,7 @@ package app
 
 import (
 	"context"
+	"fmt"
 	"io"
 	"log/slog"
 	"os"
@@ -21,6 +22,39 @@ func quickService(t *testing.T, dir string) *Service {
 		t.Fatal(err)
 	}
 	return s
+}
+
+func TestHomeLearnsUsageBeforeColdStartAndPersists(t *testing.T) {
+	dir := t.TempDir()
+	items := []model.AppItem{{ID: "used", Name: "Office Forensic", Source: "Program Files"}, {ID: "once", Name: "Once", Source: "Desktop"}}
+	for n := 0; n < 15; n++ {
+		items = append(items, model.AppItem{ID: fmt.Sprint(n), Name: fmt.Sprintf("Chrome %d", n), Source: "Desktop"})
+	}
+	if err := storage.Write(filepath.Join(dir, "index.json"), indexer.Cache{Version: 1, Apps: items}); err != nil {
+		t.Fatal(err)
+	}
+	s := quickService(t, dir)
+	if err := s.Record("once", ""); err != nil {
+		t.Fatal(err)
+	}
+	for n := 0; n < 5; n++ {
+		if err := s.Record("used", "forensic"); err != nil {
+			t.Fatal(err)
+		}
+	}
+	for _, current := range []*Service{s, quickService(t, dir)} {
+		current.config.Search.HistoryWeight = 0
+		got := current.Home().Frequent
+		if len(got) != 12 || got[0].ID != "used" || got[1].ID != "once" {
+			t.Fatalf("personal history hidden by defaults: %+v", got)
+		}
+		if err := current.SetPinned("used", true); err != nil {
+			t.Fatal(err)
+		}
+		if current.Home().Frequent[0].ID != "once" {
+			t.Fatal("pinned app duplicated in frequent")
+		}
+	}
 }
 
 func TestImportPersistsDeduplicatesAndSurvivesRefresh(t *testing.T) {
@@ -85,7 +119,7 @@ func TestPinIndexedAppAndSystemTool(t *testing.T) {
 		}
 	}
 	home := s.Home()
-	if len(home.Pinned) != 2 || len(home.Frequent) != 0 || len(home.Tools) != 7 {
+	if len(home.Pinned) != 2 || len(home.Frequent) != 0 || len(home.Tools) != len(s.tools)-1 {
 		t.Fatalf("home groups not disjoint: %+v", home)
 	}
 	if got := s.Search("环境变量"); len(got) != 1 || !got[0].Pinned {
@@ -104,6 +138,7 @@ func TestPinIndexedAppAndSystemTool(t *testing.T) {
 
 func TestSystemToolsSearchWithoutAppCandidates(t *testing.T) {
 	s := quickService(t, t.TempDir())
+	s.config.MaxResults = 100 // Inspect all matches, including intentionally shared aliases.
 	s.config.Search.Fuzzy = false
 	if s.State().Count != 0 || len(s.Home().Pinned) != 0 {
 		t.Fatal("expected no app candidates or pins")
@@ -140,6 +175,33 @@ func TestSystemToolsSearchWithoutAppCandidates(t *testing.T) {
 				t.Fatalf("unpin removed system entry from search: %+v", results)
 			}
 		})
+	}
+}
+
+func TestUnavailableSystemPinIsHiddenAndReturnsWhenAvailable(t *testing.T) {
+	s := quickService(t, t.TempDir())
+	original := append([]model.AppItem{}, s.tools...)
+	if err := s.SetPinned("system:environment", true); err != nil {
+		t.Fatal(err)
+	}
+	s.tools = nil
+	s.replace(nil)
+	if len(s.Home().Pinned) != 0 || len(s.Search("环境变量")) != 0 {
+		t.Fatal("unavailable system tool retained in UI")
+	}
+	if _, err := s.Item("system:environment"); err == nil {
+		t.Fatal("unavailable system tool still launchable")
+	}
+	s.tools = original
+	s.replace(nil)
+	if len(s.Home().Pinned) != 1 {
+		t.Fatal("temporary absence discarded saved pin")
+	}
+	if err := s.Record("system:devices", "sbglq"); err != nil {
+		t.Fatal(err)
+	}
+	if s.Home().Tools[0].ID != "system:devices" {
+		t.Fatal("system tools did not learn usage")
 	}
 }
 

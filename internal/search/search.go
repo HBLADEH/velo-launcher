@@ -2,6 +2,7 @@
 package search
 
 import (
+	"github.com/mozillazg/go-pinyin"
 	"math"
 	"sort"
 	"strings"
@@ -41,7 +42,9 @@ func New(items []model.AppItem) *Index {
 		}
 		terms = append(terms, initials.String())
 		aliases := []string{}
+		aliases = append(aliases, pinyinAliases(name)...)
 		for _, k := range app.Keywords {
+			aliases = append(aliases, pinyinAliases(Normalize(k))...)
 			terms = append(terms, Normalize(k))
 			if alias := Normalize(k); alias != "" {
 				aliases = append(aliases, alias)
@@ -61,6 +64,30 @@ func New(items []model.AppItem) *Index {
 		i.entries = append(i.entries, entry{item: app, name: name, terms: terms, aliases: aliases, priority: Priority(app)})
 	}
 	return i
+}
+
+// Build phonetic suffixes once, so names such as “启动 雷电手机快取”
+// can also be found with ld, ldsjkq, or leidian without query-time conversion.
+func pinyinAliases(name string) []string {
+	if !strings.ContainsFunc(name, func(r rune) bool { return unicode.Is(unicode.Han, r) }) {
+		return nil
+	}
+	args := pinyin.NewArgs()
+	args.Fallback = func(r rune, _ pinyin.Args) []string { return []string{string(r)} }
+	parts := pinyin.Pinyin(name, args)
+	full, initials := make([]string, len(parts)), make([]string, len(parts))
+	for n, part := range parts {
+		full[n] = part[0]
+		r, _ := utf8.DecodeRuneInString(part[0])
+		initials[n] = string(r)
+	}
+	var aliases []string
+	for n, r := range []rune(name) {
+		if unicode.Is(unicode.Han, r) {
+			aliases = append(aliases, strings.Join(full[n:], ""), strings.Join(initials[n:], ""))
+		}
+	}
+	return aliases
 }
 func (i *Index) Query(query string, limit int, fuzzy bool, weights map[string]float64, weight float64) []Result {
 	query = Normalize(query)

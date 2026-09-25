@@ -22,6 +22,7 @@ const error = ref('')
 const launching = ref(false)
 const visible = ref(true)
 const home = ref<app.Home>()
+const allSystemTools = ref(false)
 const importing = ref(false)
 const customPanel = ref<InstanceType<typeof CustomAppsPanel>>()
 
@@ -30,7 +31,7 @@ const isHome = computed(() => !query.value.trim())
 const sections = computed(() => [
   { title: '已固定', items: home.value?.pinned ?? [], offset: 0 },
   { title: '常用应用', items: home.value?.frequent ?? [], offset: home.value?.pinned.length ?? 0 },
-  { title: '系统快捷', items: home.value?.tools ?? [], offset: (home.value?.pinned.length ?? 0) + (home.value?.frequent.length ?? 0) },
+  { title: '系统快捷', items: allSystemTools.value ? (home.value?.tools ?? []) : (home.value?.tools ?? []).slice(0, 12), offset: (home.value?.pinned.length ?? 0) + (home.value?.frequent.length ?? 0) },
 ].filter(section => section.title !== '已固定' || section.items.length > 0))
 const choices = computed<model.AppItem[]>(() => isHome.value ? sections.value.flatMap(section => section.items) : results.value)
 let sequence = 0
@@ -73,6 +74,7 @@ async function updateStatus() {
 }
 async function show() {
   visible.value = true
+  allSystemTools.value = false
   settingsOpen.value = false
   query.value = ''
   error.value = ''
@@ -187,6 +189,7 @@ async function openSettings(tab = '常规') {
   settingsOpen.value = true
 }
 watch(query, () => { error.value = ''; void updateResults() })
+watch(allSystemTools, () => { selected.value = 0 })
 watch(settingsOpen, open => { if (open && importing.value) void setImportMode(false) })
 watch([settingsOpen, importing], restoreSearchFocus, { flush: 'post' })
 watch([results, home, isHome, settingsOpen, error, importing], () => {
@@ -228,11 +231,11 @@ onUnmounted(() => { systemTheme.removeEventListener('change', systemThemeChanged
         <div class="home-heading"><div><span class="eyebrow">VELO / 快速启动</span><h1>即刻，开启所想<span class="heading-dot">.</span></h1></div><button class="add-app-button" @click="openCustomApps"><UiIcon name="plus" />自定义应用</button></div>
         <div id="home-results" role="listbox" aria-label="快速启动">
           <section v-for="section in sections" :key="section.title" class="home-section" role="group" :aria-label="section.title">
-            <h2><span class="section-marker" aria-hidden="true"></span>{{ section.title }}<span class="section-count">{{ section.items.length }}</span><small v-if="section.title === '常用应用'">根据使用习惯与应用来源排序</small></h2>
+            <h2><span class="section-marker" aria-hidden="true"></span>{{ section.title }}<span class="section-count">{{ section.title === '系统快捷' ? home?.tools.length : section.items.length }}</span><small v-if="section.title === '常用应用'">根据使用习惯与应用来源排序</small><button v-if="section.title === '系统快捷' && (home?.tools.length ?? 0) > 12" class="system-tools-toggle" :aria-expanded="allSystemTools" @click="allSystemTools = !allSystemTools">{{ allSystemTools ? '收起' : '展开全部' }}</button></h2>
             <p v-if="section.title === '常用应用' && !section.items.length" class="home-empty">{{ status?.scanning ? '正在发现本机应用…' : '搜索应用，或拖入你的第一个应用。' }}</p>
             <div class="home-grid">
               <div v-for="(item, index) in section.items" :key="item.id" class="tile" :style="{ '--item-order': index % 6 }" :class="{ selected: selected === section.offset + index }" @mousemove="selected = section.offset + index">
-                <button :id="`app-${item.id}`" class="tile-launch" role="option" :aria-selected="selected === section.offset + index" :title="item.description || item.path" @click="launch(section.offset + index)">
+                <button :id="`app-${item.id}`" class="tile-launch" role="option" :aria-selected="selected === section.offset + index" :title="item.exec_path || item.path || item.description" @click="launch(section.offset + index)">
                   <LauncherIcon :item="item" /><span>{{ item.name }}</span>
                 </button>
                 <button class="pin-button" :class="{ pinned: item.pinned }" :disabled="pinning" :aria-label="`${item.pinned ? '取消首页固定' : '固定'} ${item.name}`" :title="item.pinned ? '取消首页固定（仍可搜索）' : '固定到快速启动'" @click="togglePin(item)"><UiIcon :name="item.pinned ? 'starFilled' : 'star'" /></button>
@@ -244,7 +247,7 @@ onUnmounted(() => { systemTheme.removeEventListener('change', systemThemeChanged
       <ul v-else id="app-results" role="listbox" aria-label="应用" class="results">
         <li v-for="(item, index) in results" :id="`app-${item.id}`" :key="item.id" role="option" :aria-selected="selected === index" :class="{ selected: selected === index }" @mousemove="selected = index" @mousedown.prevent @click="launch(index)">
           <LauncherIcon :item="item" />
-          <span class="app-label"><strong>{{ item.name }}</strong><small :title="item.path">{{ item.description || item.path }}</small></span>
+          <span class="app-label"><strong>{{ item.name }}</strong><small :title="item.exec_path || item.path">{{ item.source === 'System' ? item.description : (item.exec_path || item.path) }}</small></span>
           <button class="result-pin text-button" :disabled="pinning" :aria-label="`${item.pinned ? '取消固定' : '固定'} ${item.name}`" :title="item.pinned ? '取消首页固定' : '固定到快速启动'" @click.stop="togglePin(item)"><UiIcon :name="item.pinned ? 'starFilled' : 'star'" /></button>
           <span v-if="selected === index" class="enter-hint" aria-hidden="true"><UiIcon name="enter" /></span>
         </li>

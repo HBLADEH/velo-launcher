@@ -274,6 +274,7 @@ func (s *Service) refresh(ctx context.Context) {
 }
 
 func (s *Service) commitRefresh(ctx context.Context, rev uint64, next indexer.Cache, warnings []string, err error, start time.Time) {
+	tools := systemTools()
 	s.commitMu.Lock()
 	defer s.commitMu.Unlock()
 	if ctx.Err() != nil {
@@ -302,10 +303,12 @@ func (s *Service) commitRefresh(ctx context.Context, rev uint64, next indexer.Ca
 	}
 	s.mu.Lock()
 	previous := s.cache.Apps
+	s.tools = tools
 	s.state.Scanning = false
 	s.state.ScanMilliseconds = time.Since(start).Milliseconds()
 	if err != nil {
 		s.state.Warnings = append(warnings, err.Error())
+		s.replace(s.cache.Apps)
 	} else {
 		s.cache = next
 		s.replace(next.Apps)

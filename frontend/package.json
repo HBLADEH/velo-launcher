@@ -1,5 +1,5 @@
 {
- "name": "velo-launcher-frontend", "private": true, "version": "0.9.1", "type": "module",
+ "name": "velo-launcher-frontend", "private": true, "version": "0.9.2", "type": "module",
  "scripts": {
   "dev": "vite --host 127.0.0.1", "lint": "eslint src",
   "typecheck": "vue-tsc --noEmit", "build": "npm run typecheck && vite build",

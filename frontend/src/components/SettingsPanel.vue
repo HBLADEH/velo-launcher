@@ -6,6 +6,7 @@ import { EventsOn } from '../../wailsjs/runtime/runtime'
 import type { main, update } from '../../wailsjs/go/models'
 import logo from '../assets/logo.png'
 import fluentLicense from '../assets/fluent/LICENSE.txt?raw'
+import pinyinLicense from '../assets/licenses/go-pinyin.txt?raw'
 const props = defineProps<{ initial: config.Config; initialTab?: string }>()
 const emit = defineEmits<{ saved: [value: config.Config]; close: []; manage: []; update: [value: update.Info] }>()
 const draft = ref(new config.Config(JSON.parse(JSON.stringify(props.initial))))
@@ -106,6 +107,8 @@ onUnmounted(() => { disposers.forEach(dispose => dispose()) })
           <summary>图标与开源许可</summary>
           <p class="hint">界面图标采用 Microsoft Fluent UI System Icons（MIT License）。</p>
           <pre class="release-notes">{{ fluentLicense }}</pre>
+          <p class="hint">拼音检索采用 go-pinyin（MIT License）。</p>
+          <pre class="release-notes">{{ pinyinLicense }}</pre>
         </details>
         <p class="hint">当前版本 {{ status?.version ?? '…' }}。更新检查只读取 GitHub 发布页的版本信息，不上传任何本机数据。</p>
         <label class="check"><input v-model="draft.auto_check_updates" type="checkbox" />启动后自动检查更新</label>

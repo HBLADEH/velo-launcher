@@ -151,6 +151,7 @@ kbd { display: inline-flex; align-items: center; justify-content: center; min-wi
 .home-section h2 { align-items: center; gap: 7px; margin: 0 2px 10px; font-size: 12px; font-weight: 600; }
 .section-marker { width: 3px; height: 11px; border-radius: 2px; background: var(--accent); }
 .section-count { color: var(--muted); font-size: 10px; font-weight: 400; }
+.system-tools-toggle { margin-left: auto; padding: 3px 7px; border: 0; background: transparent; color: var(--accent); font-size: 11px; }
 .home-section h2 small { margin-left: auto; font-size: 10px; }
 .home-empty { background: var(--surface); border-color: var(--accent-line); padding: 15px; font-size: 11px; }
 .home-grid { gap: 7px; }

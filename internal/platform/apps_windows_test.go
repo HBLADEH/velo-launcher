@@ -3,11 +3,77 @@ package platform
 import (
 	"context"
 	"github.com/go-ole/go-ole/oleutil"
+	"golang.org/x/sys/windows"
 	"os"
 	"path/filepath"
 	"strings"
 	"testing"
+	"velo-launcher/internal/config"
+	"velo-launcher/internal/indexer"
+	"velo-launcher/internal/search"
 )
+
+func TestDesktopRootsUseWindowsKnownFolders(t *testing.T) {
+	roots := Roots(config.Defaults())
+	for _, id := range []*windows.KNOWNFOLDERID{windows.FOLDERID_Desktop, windows.FOLDERID_PublicDesktop} {
+		path, err := windows.KnownFolderPath(id, 0)
+		if err != nil {
+			t.Fatal(err)
+		}
+		found := false
+		for _, root := range roots {
+			if root.Source == "Desktop" && strings.EqualFold(root.Path, path) {
+				found = true
+			}
+		}
+		if !found {
+			t.Fatalf("actual Windows desktop not scanned: %s", path)
+		}
+	}
+}
+
+// Read-only regression against the user's examples; never launches either game.
+func TestDesktopShortcutExamples(t *testing.T) {
+	if os.Getenv("VELO_INTEGRATION") != "1" {
+		t.Skip("set VELO_INTEGRATION=1 to scan the real desktop examples")
+	}
+	r, err := NewResolver()
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer r.Close()
+	var roots []indexer.Root
+	for _, root := range Roots(config.Defaults()) {
+		if root.Source == "Desktop" || root.Source == "Start Menu" {
+			roots = append(roots, root)
+		}
+	}
+	cache, warnings, err := indexer.Scan(context.Background(), roots, indexer.Cache{}, r)
+	if err != nil {
+		t.Fatal(err)
+	}
+	found := false
+	for _, item := range cache.Apps {
+		if item.Name == "渔力全开" {
+			t.Fatal("Steam URL shortcut indexed")
+		}
+		if item.Name == "异环" {
+			found = true
+			if !strings.EqualFold(filepath.Base(item.ExecPath), "NTELauncher.exe") || !strings.EqualFold(filepath.Ext(item.Path), ".lnk") {
+				t.Fatalf("unexpected target: %+v", item)
+			}
+			t.Logf("indexed desktop shortcut: %s -> %s", item.Path, item.ExecPath)
+		}
+	}
+	if !found {
+		t.Fatalf("异环 desktop shortcut not found; warnings=%v", warnings)
+	}
+	results := search.New(cache.Apps).Query("异环", 8, false, nil, 1)
+	if len(results) == 0 || results[0].Name != "异环" || results[0].Source != "Desktop" {
+		t.Fatalf("desktop entry not searchable: %+v", results)
+	}
+	t.Logf("indexed %d desktop/start menu entries; desktop name retained and Steam URL excluded", len(cache.Apps))
+}
 
 func TestPackagedAppIcon(t *testing.T) {
 	if os.Getenv("VELO_INTEGRATION") != "1" {

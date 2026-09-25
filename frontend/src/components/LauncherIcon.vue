@@ -6,7 +6,7 @@ import { systemIcons } from '../icons'
 const props = defineProps<{ item: model.AppItem }>()
 const failed = ref(false)
 watch(() => props.item.icon_url, () => { failed.value = false })
-const systemIcon = computed(() => props.item.source === 'System' ? systemIcons[props.item.id] : undefined)
+const systemIcon = computed(() => props.item.source === 'System' ? (systemIcons[props.item.id] ?? 'settings') : undefined)
 const symbol = computed(() => props.item.name.slice(0, 1).toUpperCase())
 </script>
 

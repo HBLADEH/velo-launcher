@@ -12,6 +12,7 @@ import (
 	"velo-launcher/internal/icon"
 	"velo-launcher/internal/model"
 	"velo-launcher/internal/platform"
+	"velo-launcher/internal/search"
 )
 
 type Home struct {
@@ -35,11 +36,16 @@ func (s *Service) Home() Home {
 			item = current
 		}
 		if item.Source == "System" {
+			available := false
 			for _, tool := range s.tools {
 				if tool.ID == item.ID {
 					item = tool
+					available = true
 					break
 				}
+			}
+			if !available {
+				continue
 			}
 		}
 		item.Pinned = true
@@ -47,7 +53,19 @@ func (s *Service) Home() Home {
 		home.Pinned = append(home.Pinned, item)
 	}
 	weights := s.history.Scores("", time.Now())
-	for _, result := range s.index.Query("", min(len(s.items), len(s.quick)+12), false, weights, s.config.Search.HistoryWeight) {
+	// Personal use takes precedence; cold-start suggestions only fill empty slots.
+	// Search's history weight must not disable learning on the home screen.
+	results := s.index.Query("", len(s.items), false, nil, 0)
+	slices.SortStableFunc(results, func(a, b search.Result) int {
+		if weights[a.ID] > weights[b.ID] {
+			return -1
+		}
+		if weights[a.ID] < weights[b.ID] {
+			return 1
+		}
+		return 0
+	})
+	for _, result := range results {
 		if !pinned[result.ID] {
 			home.Frequent = append(home.Frequent, result.AppItem)
 			if len(home.Frequent) == 12 {
@@ -60,6 +78,15 @@ func (s *Service) Home() Home {
 			home.Tools = append(home.Tools, tool)
 		}
 	}
+	slices.SortStableFunc(home.Tools, func(a, b model.AppItem) int {
+		if weights[a.ID] > weights[b.ID] {
+			return -1
+		}
+		if weights[a.ID] < weights[b.ID] {
+			return 1
+		}
+		return 0
+	})
 	return home
 }
 
@@ -181,30 +208,5 @@ func quickItem(path string, resolver shortcutResolver) (model.AppItem, error) {
 	return item, nil
 }
 
-// A fixed catalogue of non-destructive Windows entry points. Arguments are
-// separate from paths and are never assembled from a search query.
-func systemTools() []model.AppItem {
-	root := os.Getenv("WINDIR")
-	if root == "" {
-		root = `C:\Windows`
-	}
-	definitions := []struct {
-		id, name, exe, args, description string
-		keywords                         []string
-	}{
-		{"calculator", "计算器", `System32\calc.exe`, "", "打开 Windows 计算器", []string{"calc", "calculator", "jisuanqi", "jsq"}},
-		{"explorer", "文件资源管理器", "explorer.exe", "", "浏览文件与文件夹", []string{"explorer", "file explorer", "files", "文件管理", "wenjianziyuanguanliqi", "资源管理器", "zyglq"}},
-		{"taskmanager", "任务管理器", `System32\Taskmgr.exe`, "", "查看进程与资源使用情况", []string{"task manager", "taskmgr", "进程", "renwuguanliqi", "rwglq"}},
-		{"terminal", "命令提示符", `System32\cmd.exe`, "", "打开命令行终端", []string{"cmd", "command prompt", "terminal", "终端", "命令行", "minglingtishifu", "mltsf"}},
-		{"control", "控制面板", `System32\control.exe`, "", "打开 Windows 控制面板", []string{"control panel", "kongzhimianban", "kzmb"}},
-		{"apps", "卸载或更改程序", `System32\control.exe`, "appwiz.cpl", "管理已安装的桌面程序", []string{"apps", "uninstall", "appwiz", "应用管理", "卸载程序", "xiezai", "xz"}},
-		{"environment", "环境变量", `System32\rundll32.exe`, "sysdm.cpl,EditEnvironmentVariables", "编辑用户与系统环境变量", []string{"environment", "env", "path", "huanjingbianliang", "hjbl"}},
-		{"devices", "设备管理器", `System32\mmc.exe`, "devmgmt.msc", "查看硬件设备与驱动", []string{"device manager", "devmgmt", "驱动", "shebeiguanliqi", "sbglq"}},
-	}
-	items := make([]model.AppItem, 0, len(definitions))
-	for _, d := range definitions {
-		path := filepath.Join(root, d.exe)
-		items = append(items, model.AppItem{ID: "system:" + d.id, Name: d.name, Path: path, ExecPath: path, Arguments: d.args, WorkingDirectory: filepath.Join(root, "System32"), Source: "System", Description: d.description, Keywords: d.keywords})
-	}
-	return items
-}
+// systemTools is refreshed with the index to reflect installed Windows features.
+func systemTools() []model.AppItem { return platform.SystemTools() }

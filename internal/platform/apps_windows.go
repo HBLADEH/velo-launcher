@@ -19,6 +19,7 @@ import (
 	"velo-launcher/internal/config"
 	"velo-launcher/internal/indexer"
 	"velo-launcher/internal/model"
+	"velo-launcher/internal/systemtools"
 )
 
 // programFilesDepth 是 Program Files 深层扫描的默认层级上限：
@@ -148,6 +149,12 @@ func WindowsApps(ctx context.Context) ([]model.AppItem, error) {
 }
 
 func Launch(item model.AppItem) error {
+	if strings.HasPrefix(item.Path, "ms-settings:") {
+		if !systemtools.IsSettingsItem(item) {
+			return fmt.Errorf("不支持的系统设置入口")
+		}
+		return shellExecute(item.Path, "", "")
+	}
 	// Launch the shortcut itself to preserve shell semantics, arguments, working
 	// directory, environment expansion, advertised shortcuts and elevation flags.
 	path := item.Path

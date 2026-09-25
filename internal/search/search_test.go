@@ -35,6 +35,24 @@ func TestMatching(t *testing.T) {
 		t.Fatal("unrelated result")
 	}
 }
+
+func TestChineseShortcutPhonetics(t *testing.T) {
+	idx := New([]model.AppItem{
+		{ID: "thunder", Name: "启动 雷电手机快取", Source: "Start Menu"},
+		{ID: "link", Name: "Forensic", Keywords: []string{"雷电取证"}},
+		{ID: "llvm", Name: "ld.lld", Source: "Program Files"},
+	})
+	for _, q := range []string{"ld", "leidian", "ldsjkq"} {
+		got := idx.Query(q, 8, false, nil, 1)
+		if len(got) == 0 || got[0].ID != "thunder" {
+			t.Fatalf("query %q: %+v", q, got)
+		}
+	}
+	got := idx.Query("ldqz", 8, false, nil, 1)
+	if len(got) != 1 || got[0].ID != "link" {
+		t.Fatalf("shortcut alias: %+v", got)
+	}
+}
 func TestRankingAndHistory(t *testing.T) {
 	idx := New(apps("Codec", "My Code", "Code", "Chrome"))
 	got := idx.Query("code", 8, true, nil, 1)

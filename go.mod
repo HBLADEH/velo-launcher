@@ -4,6 +4,7 @@ go 1.23.0
 
 require (
 	github.com/go-ole/go-ole v1.3.0
+	github.com/mozillazg/go-pinyin v0.21.0
 	github.com/wailsapp/wails/v2 v2.12.0
 	golang.org/x/sys v0.30.0
 )
