@@ -2,6 +2,8 @@ package platform
 
 import (
 	"os"
+	"path/filepath"
+	"strconv"
 	"strings"
 )
 
@@ -39,13 +41,26 @@ func ReplaceScript(current, downloaded string) string {
 // 目标位置不可写说明安装包当初写入了 Program Files，因此需要提升并由 Windows 提示 UAC。
 func InstallScript(target, installer string) string {
 	return strings.Join([]string{
-		"$ErrorActionPreference = 'SilentlyContinue'",
+		"$ErrorActionPreference = 'Stop'",
 		"$target = " + powerShellLiteral(target),
 		"$installer = " + powerShellLiteral(installer),
-		"Start-Process -FilePath $installer -ArgumentList '/S' -Verb RunAs -Wait",
-		"Start-Process -FilePath $target",
-		"Remove-Item -LiteralPath $installer -Force",
-		"Remove-Item -LiteralPath $MyInvocation.MyCommand.Path -Force",
+		"$log = $MyInvocation.MyCommand.Path + '.log'",
+		"try {",
+		// 静默安装不能在旧程序仍占用 exe 时开始；退出超时则保留下载文件。
+		"  $parent = Get-Process -Id " + strconv.Itoa(os.Getpid()) + " -ErrorAction SilentlyContinue",
+		"  if ($parent -and -not $parent.WaitForExit(180000)) { throw 'Velo did not exit within 180 seconds' }",
+		// NSIS 的 /D 必须是最后一个参数且不加双引号，即使路径包含空格。
+		"  $arguments = " + powerShellLiteral("/S /D="+filepath.Dir(target)),
+		"  $process = Start-Process -FilePath $installer -ArgumentList $arguments -Verb RunAs -Wait -PassThru",
+		"  if ($process.ExitCode -ne 0) { throw ('Installer exited with code ' + $process.ExitCode) }",
+		"  Start-Process -FilePath $target",
+		"  Remove-Item -LiteralPath $installer -Force",
+		"  Remove-Item -LiteralPath $MyInvocation.MyCommand.Path -Force",
+		"} catch {",
+		"  $_ | Out-String | Out-File -LiteralPath $log -Encoding UTF8 -Append",
+		"  Start-Process -FilePath $target -ErrorAction SilentlyContinue",
+		"  exit 1",
+		"}",
 	}, "\r\n") + "\r\n"
 }
 

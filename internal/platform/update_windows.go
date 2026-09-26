@@ -14,7 +14,7 @@ import (
 const uninstallKey = `Software\Microsoft\Windows\CurrentVersion\Uninstall\HBLADEHVelo`
 
 const (
-	detachedProcess       = 0x00000008
+	createNoWindow        = 0x08000000
 	createNewProcessGroup = 0x00000200
 )
 
@@ -22,7 +22,10 @@ const (
 // 应当退出，让脚本可以覆盖正在运行的可执行文件。
 func RunDetachedScript(path string) error {
 	command := exec.Command("powershell.exe", "-NoProfile", "-NonInteractive", "-ExecutionPolicy", "Bypass", "-WindowStyle", "Hidden", "-File", path)
-	command.SysProcAttr = &syscall.SysProcAttr{HideWindow: true, CreationFlags: detachedProcess | createNewProcessGroup}
+	// Windows PowerShell 5.1 在 DETACHED_PROCESS 下可能启动后立即退出，
+	// 即使 Start 返回成功也不会执行脚本。CREATE_NO_WINDOW 保留可用的
+	// 控制台语义且不显示窗口，子进程仍可在 Velo 退出后继续运行。
+	command.SysProcAttr = &syscall.SysProcAttr{HideWindow: true, CreationFlags: createNoWindow | createNewProcessGroup}
 	if err := command.Start(); err != nil {
 		return err
 	}

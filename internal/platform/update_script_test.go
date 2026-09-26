@@ -30,7 +30,10 @@ func TestReplaceScriptWaitsRetriesAndRestarts(t *testing.T) {
 func TestInstallScriptRunsInstallerElevatedThenRestarts(t *testing.T) {
 	script := InstallScript(`C:\Program Files\HBLADEH\Velo\velo-launcher.exe`, `C:\Users\me\Velo\updates\velo-launcher-amd64-installer.exe`)
 	for _, fragment := range []string{
-		"-ArgumentList '/S' -Verb RunAs -Wait",
+		"-ArgumentList $arguments -Verb RunAs -Wait -PassThru",
+		"$parent.WaitForExit(180000)",
+		"if ($process.ExitCode -ne 0)",
+		"Out-File -LiteralPath $log -Encoding UTF8 -Append",
 		"'C:\\Program Files\\HBLADEH\\Velo\\velo-launcher.exe'",
 		"Start-Process -FilePath $target",
 	} {

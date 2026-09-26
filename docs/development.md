@@ -59,6 +59,8 @@ updates/                更新下载的程序文件与替换脚本（完成后�
 webview/                WebView2 本地运行数据
 ```
 
+自动更新使用无窗口的 PowerShell 子进程；不要使用 `DETACHED_PROCESS`，Windows PowerShell 5.1 可能在进程创建成功后直接退出而不执行脚本。安装版会等待旧进程退出，并将 NSIS 安装目录指定为原目录。安装失败或取消 UAC 时保留安装包和脚本，错误写入 `updates/velo-update-<PID>.ps1.log`，便于排查。
+
 JSON 保存使用同目录临时文件替换。默认每 30 分钟后台刷新，也可手动刷新；未变化的快捷方式复用解析结果。没有持续磁盘轮询。不可访问的目录显示提示，并保留相应已有索引以便重试。
 
 `application-library.json` 保存自定义应用与首页固定，两者相互独立：删除自定义应用同时移除它的固定，取消固定不影响搜索。旧版 `quick-launch.json` 中的手动应用会在首次启动时迁移，原文件保留为备份；迁移后新文件为准，不再回读旧文件。
@@ -112,4 +114,3 @@ gh release create vX.Y.Z --prerelease --title "Velo vX.Y.Z" --notes-file docs/re
 ## 许可证
 
 [MIT](../LICENSE)
-
