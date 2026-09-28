@@ -251,3 +251,59 @@ main[data-theme="dark"] .error { color: #ffa9a0; }
 .result-pin > .ui-icon { width: 18px; height: 18px; }
 .update-badge { display: inline-flex; align-items: center; gap: 3px; }
 .icon-license summary { cursor: pointer; color: var(--accent); }
+
+/* Shared settings controls use the same surfaces and motion in both themes. */
+.control-label { display: block; margin-bottom: 8px; font-size: 13px; }
+.settings input:not([type="checkbox"]), .settings textarea, .custom-path input {
+  transition: border-color 160ms, background-color 160ms, box-shadow 180ms;
+}
+.settings input:not([type="checkbox"]):hover, .settings textarea:hover { border-color: var(--accent-line); }
+.settings input:not([type="checkbox"]):focus, .settings textarea:focus, .custom-path input:focus {
+  border-color: var(--accent); box-shadow: 0 0 0 3px var(--selected);
+}
+.settings input[type="checkbox"] {
+  appearance: none; display: inline-grid; place-content: center; flex-shrink: 0;
+  width: 18px; height: 18px; border: 1px solid var(--muted); border-radius: 5px;
+  background: var(--field); cursor: pointer;
+  transition: background-color 160ms, border-color 160ms, box-shadow 180ms;
+}
+.settings input[type="checkbox"]::after {
+  content: ''; width: 14px; height: 14px; background: var(--bg);
+  mask: url('./assets/fluent/ic_fluent_checkmark_20_regular.svg') center / contain no-repeat;
+  transform: scale(.6); opacity: 0; transition: transform 180ms var(--ease), opacity 120ms;
+}
+.settings input[type="checkbox"]:checked { background: var(--accent); border-color: var(--accent); }
+.settings input[type="checkbox"]:checked::after { transform: scale(1); opacity: 1; }
+.settings input[type="checkbox"]:hover { box-shadow: 0 0 0 3px var(--selected); border-color: var(--accent); }
+.settings-body label.check { cursor: pointer; line-height: 1.6; }
+.ui-select { margin-bottom: 20px; }
+.select-anchor { position: relative; }
+.select-trigger { width: 100%; min-height: 44px; display: flex; align-items: center; justify-content: space-between; gap: 12px; text-align: left; padding: 10px 14px; }
+.select-trigger.expanded { border-color: var(--accent); box-shadow: 0 0 0 3px var(--selected); }
+.select-trigger .ui-icon { width: 16px; height: 16px; color: var(--muted); transition: transform 200ms var(--ease); }
+.select-trigger.expanded .ui-icon { transform: rotate(180deg); }
+.select-trigger:not(:disabled):active { transform: none; }
+.select-menu { position: absolute; z-index: 10; inset: calc(100% + 6px) 0 auto; list-style: none; margin: 0; padding: 5px; border: 1px solid var(--border); border-radius: 12px; background: var(--field); box-shadow: 0 12px 32px #00000024, var(--shadow); transform-origin: top; }
+.opens-above .select-menu { top: auto; bottom: calc(100% + 6px); transform-origin: bottom; }
+.select-menu li { display: flex; align-items: center; justify-content: space-between; min-height: 54px; padding: 9px 12px; border: 1px solid transparent; border-radius: 7px; cursor: pointer; transition: background-color 120ms, border-color 120ms; }
+.select-menu li.highlighted { background: var(--hover); border-color: var(--border); }
+.select-menu li.chosen { color: var(--accent); }
+.select-menu li strong { display: block; font-size: 13px; font-weight: 500; }
+.select-menu li small { display: block; margin-top: 3px; color: var(--muted); font-size: 11px; }
+.select-menu-enter-active, .select-menu-leave-active { transition: opacity 140ms, transform 180ms var(--ease); }
+.select-menu-enter-from, .select-menu-leave-to { opacity: 0; transform: translateY(-4px) scale(.98); }
+.opens-above .select-menu-enter-from, .opens-above .select-menu-leave-to { transform: translateY(4px) scale(.98); }
+.hotkey-recorder { display: flex; align-items: center; gap: 14px; width: 100%; min-height: 76px; padding: 18px; text-align: left; }
+.hotkey-recorder > .ui-icon { width: 24px; height: 24px; color: var(--muted); }
+.hotkey-keys { display: flex; align-items: center; flex-wrap: wrap; gap: 7px; flex: 1; }
+.hotkey-keys kbd { min-width: 36px; height: 32px; padding: 0 9px; border-radius: 6px; font-size: 13px; color: var(--fg); box-shadow: 0 2px 0 var(--border); }
+.key-plus, .record-placeholder { color: var(--muted); font-size: 12px; }
+.record-action { display: flex; align-items: center; gap: 7px; color: var(--accent); font-size: 11px; white-space: nowrap; }
+.record-action i { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: record-pulse 1.2s ease-in-out infinite; }
+.hotkey-recorder.recording { border-color: var(--accent); background: var(--selected); box-shadow: 0 0 0 3px var(--selected); }
+.hotkey-recorder.recording > .ui-icon { color: var(--accent); }
+.hotkey-recorder:not(:disabled):active { transform: none; }
+.recorder-hint { min-height: 22px; margin: 10px 0 22px; }
+.hotkey-recorder.invalid { border-color: #b97825; }
+.invalid-hint { color: var(--fg); }
+@keyframes record-pulse { 50% { box-shadow: 0 0 0 4px var(--accent-line); } }

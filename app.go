@@ -19,21 +19,22 @@ import (
 )
 
 type App struct {
-	mu            sync.Mutex
-	ctx           context.Context
-	logger        *slog.Logger
-	service       *core.Service
-	window        launcherWindow
-	key           *platform.Hotkey
-	keyError      string
-	tray          *platform.Tray
-	background    bool
-	diagnostics   bool
-	started       time.Time
-	clientReady   bool
-	exitRequested bool
-	closing       bool
-	importMode    bool
+	mu              sync.Mutex
+	ctx             context.Context
+	logger          *slog.Logger
+	service         *core.Service
+	window          launcherWindow
+	key             *platform.Hotkey
+	keyError        string
+	tray            *platform.Tray
+	background      bool
+	diagnostics     bool
+	started         time.Time
+	clientReady     bool
+	exitRequested   bool
+	closing         bool
+	importMode      bool
+	hotkeyRecording bool
 	// updates 只读缓存 GitHub release，测试可替换为本地服务器。
 	updates *update.Client
 }
@@ -115,6 +116,14 @@ func (a *App) Toggle() {
 	if a.window == nil || a.closing {
 		return
 	}
+	// Windows consumes an already registered chord before WebView receives it.
+	// Forward it to the recorder without releasing the global registration.
+	if a.hotkeyRecording && a.window.Visible() && a.window.Active() {
+		if a.ctx != nil {
+			wruntime.EventsEmit(a.ctx, "hotkey:recorded", a.service.Settings().Hotkey)
+		}
+		return
+	}
 	if a.window.Visible() {
 		a.hideLocked()
 	} else {
@@ -151,6 +160,7 @@ func (a *App) Hide() {
 }
 func (a *App) hideLocked() {
 	a.importMode = false
+	a.hotkeyRecording = false
 	if a.window == nil || a.closing || !a.window.Visible() {
 		return
 	}
@@ -168,6 +178,9 @@ func (a *App) beforeClose(_ context.Context) bool {
 	if a.exitRequested || a.key == nil {
 		return false
 	}
+	if a.hotkeyRecording && a.window != nil && a.window.Active() {
+		return true
+	}
 	a.hideLocked()
 	return true
 }
@@ -176,6 +189,9 @@ func (a *App) beforeClose(_ context.Context) bool {
 func (a *App) Blur() {
 	a.mu.Lock()
 	defer a.mu.Unlock()
+	if a.window != nil && !a.window.Active() {
+		a.hotkeyRecording = false
+	}
 	if a.window != nil && a.window.Visible() && a.key != nil && !a.diagnostics && !a.importMode && !a.window.Active() {
 		a.hideLocked()
 	}
@@ -213,6 +229,14 @@ func (a *App) BrowseApplications() ([]string, error) {
 	return wruntime.OpenMultipleFilesDialog(a.ctx, wruntime.OpenDialogOptions{Title: "添加自定义应用", Filters: []wruntime.FileFilter{{DisplayName: "应用与快捷方式 (*.exe;*.lnk)", Pattern: "*.exe;*.lnk"}}})
 }
 func (a *App) GetSettings() config.Config { return a.service.Settings() }
+
+// Recording never changes the registered shortcut. SaveSettings remains the
+// only commit point, so cancellation and focus loss leave the old key usable.
+func (a *App) SetHotkeyRecording(enabled bool) {
+	a.mu.Lock()
+	defer a.mu.Unlock()
+	a.hotkeyRecording = enabled && !a.closing && a.window != nil && a.window.Visible() && a.window.Active()
+}
 func (a *App) GetStatus() Status {
 	a.mu.Lock()
 	keyError := a.keyError
@@ -253,6 +277,9 @@ func (a *App) SaveSettings(c config.Config) error {
 	a.mu.Lock()
 	defer a.mu.Unlock()
 	old := a.service.Settings()
+	if a.hotkeyRecording {
+		return fmt.Errorf("请先完成或取消快捷键录制")
+	}
 	hadKey := a.key != nil
 	var err error
 	if hadKey {

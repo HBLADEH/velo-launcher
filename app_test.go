@@ -91,6 +91,45 @@ func TestImportModeKeepsWindowAvailableForDrag(t *testing.T) {
 	}
 }
 
+func TestHotkeyRecordingKeepsCurrentShortcutFromHidingWindow(t *testing.T) {
+	w := &testWindow{visible: true, active: true}
+	a := &App{window: w, key: &platform.Hotkey{}}
+	a.SetHotkeyRecording(true)
+	a.Toggle()
+	if !w.visible || w.hides != 0 {
+		t.Fatal("recording the registered chord hid the window")
+	}
+	if !a.beforeClose(context.Background()) || !w.visible {
+		t.Fatal("recording Alt+F4 closed or hid the window")
+	}
+	a.SetHotkeyRecording(false)
+	a.Toggle()
+	if w.visible || w.hides != 1 {
+		t.Fatal("cancelling recording did not restore shortcut behavior")
+	}
+}
+
+func TestHotkeyRecordingEndsOnFocusLossAndHide(t *testing.T) {
+	w := &testWindow{visible: true, active: true}
+	a := &App{window: w, key: &platform.Hotkey{}, diagnostics: true}
+	a.SetHotkeyRecording(true)
+	w.active = false
+	a.Blur()
+	if a.hotkeyRecording {
+		t.Fatal("focus loss retained recording even in diagnostics mode")
+	}
+	a.SetHotkeyRecording(true)
+	if a.hotkeyRecording {
+		t.Fatal("inactive window started recording")
+	}
+	w.active = true
+	a.SetHotkeyRecording(true)
+	a.Hide()
+	if a.hotkeyRecording {
+		t.Fatal("hidden window retained recording")
+	}
+}
+
 func TestStatusReportsBuildVersion(t *testing.T) {
 	dir := t.TempDir()
 	logger := slog.New(slog.NewTextHandler(io.Discard, nil))

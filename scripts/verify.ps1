@@ -10,6 +10,8 @@ try {
     if ($LASTEXITCODE -ne 0) { throw 'binding generation failed' }
     & npm --prefix frontend run lint
     if ($LASTEXITCODE -ne 0) { throw 'frontend lint failed' }
+    & node --experimental-strip-types --test frontend/tests/*.test.mjs
+    if ($LASTEXITCODE -ne 0) { throw 'frontend tests failed' }
     # 先生成 frontend/dist：main.go 的 //go:embed all:frontend/dist 要求它存在
     & npm --prefix frontend run build
     if ($LASTEXITCODE -ne 0) { throw 'frontend build failed' }

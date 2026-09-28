@@ -45,6 +45,8 @@ export function SaveSettings(arg1:config.Config):Promise<void>;
 
 export function Search(arg1:string):Promise<Array<search.Result>>;
 
+export function SetHotkeyRecording(arg1:boolean):Promise<void>;
+
 export function SetImportMode(arg1:boolean):Promise<void>;
 
 export function SetPinned(arg1:string,arg2:boolean):Promise<void>;

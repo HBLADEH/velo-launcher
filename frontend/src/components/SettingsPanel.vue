@@ -7,6 +7,8 @@ import type { main, update } from '../../wailsjs/go/models'
 import logo from '../assets/logo.png'
 import fluentLicense from '../assets/fluent/LICENSE.txt?raw'
 import pinyinLicense from '../assets/licenses/go-pinyin.txt?raw'
+import UiSelect from './UiSelect.vue'
+import HotkeyRecorder from './HotkeyRecorder.vue'
 const props = defineProps<{ initial: config.Config; initialTab?: string }>()
 const emit = defineEmits<{ saved: [value: config.Config]; close: []; manage: []; update: [value: update.Info] }>()
 const draft = ref(new config.Config(JSON.parse(JSON.stringify(props.initial))))
@@ -21,8 +23,15 @@ const updateMessage = ref('')
 const checking = ref(false)
 const installing = ref(false)
 const progress = ref(0)
-const canSave = computed(() => !saving.value)
+const recording = ref(false)
+const themes = [
+  { value: 'system', label: '跟随系统', description: '与 Windows 的外观设置保持一致' },
+  { value: 'light', label: '浅色', description: '明亮、清晰的日间外观' },
+  { value: 'dark', label: '深色', description: '柔和、低亮度的深色外观' },
+]
+const canSave = computed(() => !saving.value && !recording.value)
 async function save() {
+  if (!canSave.value) return
   saving.value = true
   error.value = ''
   draft.value.custom_directories = directories.value.split('\n').map(path => path.trim()).filter(Boolean)
@@ -71,15 +80,15 @@ onUnmounted(() => { disposers.forEach(dispose => dispose()) })
       </template>
       <template v-else-if="tab === '快捷键'">
         <h2>全局呼出</h2>
-        <label>快捷键<input v-model="draft.hotkey" placeholder="Alt+Space" required /></label>
-        <p class="hint">支持 Ctrl、Alt、Shift、Win 配合字母、数字、Space 或 F1–F24。再次按下会隐藏窗口；若已被占用，保存时会提示并保留原快捷键。</p>
-        <p class="hint">托盘图标常驻通知区域：左键单击打开启动台，右键菜单可打开启动台、设置或退出。</p>
+        <HotkeyRecorder v-model="draft.hotkey" @busy="recording = $event" />
+        <p class="hint">支持 Ctrl、Alt、Shift、Win 配合字母、数字、Space、Enter、Tab 或 F1–F24。系统保留的组合键可能无法录制或注册；若快捷键被占用，保存时会提示并保留原快捷键。</p>
+        <p class="hint">托盘图标常驻通知区域：左键单击打开启动器，右键菜单可打开启动器、设置或退出。</p>
         <p v-if="status?.hotkey_error" class="error">{{ status.hotkey_error }}</p>
       </template>
       <template v-else-if="tab === '外观'">
         <h2>界面主题</h2>
         <div class="theme-preview" :data-preview="draft.theme"><div class="preview-window"><div class="preview-search"><span></span><i></i></div><div class="preview-tiles"><i v-for="n in 6" :key="n"></i></div></div><div><strong>Windows 蓝</strong><p>轻盈层次，流畅随行。</p><small>动效跟随系统的减少动画偏好</small></div></div>
-        <label>主题<select v-model="draft.theme"><option value="system">跟随系统</option><option value="light">浅色</option><option value="dark">深色</option></select></label>
+        <UiSelect v-model="draft.theme" label="主题" :options="themes" />
       </template>
       <template v-else-if="tab === '搜索'">
         <h2>匹配与排序</h2>

@@ -78,6 +78,10 @@ export function Search(arg1) {
   return window['go']['main']['App']['Search'](arg1);
 }
 
+export function SetHotkeyRecording(arg1) {
+  return window['go']['main']['App']['SetHotkeyRecording'](arg1);
+}
+
 export function SetImportMode(arg1) {
   return window['go']['main']['App']['SetImportMode'](arg1);
 }

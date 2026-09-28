@@ -14,8 +14,11 @@ import star from './assets/fluent/ic_fluent_star_16_regular.svg'
 import starFilled from './assets/fluent/ic_fluent_star_16_filled.svg'
 import enter from './assets/fluent/ic_fluent_arrow_enter_left_20_regular.svg'
 import arrowUp from './assets/fluent/ic_fluent_arrow_up_16_regular.svg'
+import chevronDown from './assets/fluent/ic_fluent_chevron_down_20_regular.svg'
+import checkmark from './assets/fluent/ic_fluent_checkmark_20_regular.svg'
+import keyboard from './assets/fluent/ic_fluent_keyboard_20_regular.svg'
 
-export const icons = { calculator, folder, activity, terminal, settings, apps, code, devices, search, plus, refresh, star, starFilled, enter, arrowUp }
+export const icons = { calculator, folder, activity, terminal, settings, apps, code, devices, search, plus, refresh, star, starFilled, enter, arrowUp, chevronDown, checkmark, keyboard }
 export type IconName = keyof typeof icons
 
 export const systemIcons: Readonly<Record<string, IconName>> = {
