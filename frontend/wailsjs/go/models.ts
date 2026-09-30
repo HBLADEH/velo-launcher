@@ -70,6 +70,7 @@ export namespace config {
 	export class Config {
 	    version: number;
 	    hotkey: string;
+	    disable_hotkey_fullscreen: boolean;
 	    max_results: number;
 	    theme: string;
 	    launch_at_startup: boolean;
@@ -89,6 +90,7 @@ export namespace config {
 	        if ('string' === typeof source) source = JSON.parse(source);
 	        this.version = source["version"];
 	        this.hotkey = source["hotkey"];
+	        this.disable_hotkey_fullscreen = source["disable_hotkey_fullscreen"];
 	        this.max_results = source["max_results"];
 	        this.theme = source["theme"];
 	        this.launch_at_startup = source["launch_at_startup"];

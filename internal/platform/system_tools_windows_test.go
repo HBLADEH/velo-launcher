@@ -13,6 +13,12 @@ func TestSystemToolsLocalCapabilities(t *testing.T) {
 		t.Fatal("no Windows tools detected")
 	}
 	for _, item := range items {
+		if strings.HasPrefix(item.Path, "velo-action:") {
+			if !systemtools.IsActionItem(item) {
+				t.Fatalf("invalid action item: %+v", item)
+			}
+			continue
+		}
 		if strings.HasPrefix(item.Path, "ms-settings:") {
 			if !systemtools.IsSettingsItem(item) {
 				t.Fatalf("invalid settings item: %+v", item)

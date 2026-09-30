@@ -13,6 +13,25 @@ func apps(names ...string) []model.AppItem {
 	}
 	return out
 }
+
+func TestSubstringNamesKeywordsAndAliasesWithoutFuzzy(t *testing.T) {
+	idx := New([]model.AppItem{
+		{ID: "name", Name: "Calculator"},
+		{ID: "keyword", Name: "Tool", Keywords: []string{"prefix-middle-suffix"}},
+		{ID: "alias", Name: "Visual Studio Code"},
+	})
+	for query, id := range map[string]string{"CULAT": "name", "middle": "keyword", "scode": "alias"} {
+		got := idx.Query(query, 10, false, nil, 0)
+		if len(got) != 1 || got[0].ID != id {
+			t.Fatalf("%q: %+v", query, got)
+		}
+	}
+	idx = New(apps("middle", "middle suffix", "prefix middle suffix"))
+	got := idx.Query("middle", 10, false, nil, 0)
+	if len(got) != 3 || got[0].Name != "middle" || got[1].Name != "middle suffix" {
+		t.Fatalf("ranking: %+v", got)
+	}
+}
 func TestMatching(t *testing.T) {
 	idx := New(apps("Visual Studio Code", "Windows Terminal", "WeChat", "Calculator", "中文应用"))
 	for _, tt := range []struct {

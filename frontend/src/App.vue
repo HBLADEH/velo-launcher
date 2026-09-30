@@ -78,13 +78,11 @@ async function show() {
   settingsOpen.value = false
   query.value = ''
   error.value = ''
-
-  await setImportMode(false)
+  importing.value = false
+  // Focus as soon as the input is mounted; IPC/index reads must not delay typing.
+  restoreSearchFocus()
+  void setImportMode(false)
   await updateResults()
-  await updateStatus()
-  await nextTick()
-  input.value?.focus()
-  input.value?.select()
 }
 async function launch(index: number) {
   const item = choices.value[index]
@@ -164,7 +162,7 @@ function keepSearchFocus(event: MouseEvent) {
 }
 function restoreSearchFocus() { void nextTick(focusSearch) }
 function blur() { void Blur() }
-function focus() { if (!visible.value) void show(); else if (!settingsOpen.value && !importing.value) input.value?.focus() }
+function focus() { restoreSearchFocus() }
 async function saved(value: config.Config) {
   settings.value = value
   settingsOpen.value = false
@@ -207,7 +205,8 @@ onMounted(async () => {
   disposers.push(EventsOn('update:available', (info: update.Info) => { updateInfo.value = info }))
   await loadSettings()
   OnFileDrop((_x, _y, paths) => { void addPaths(paths) }, false)
-  await show()
+  await updateStatus()
+  if (visible.value) await show()
   await FrontendReady()
 })
 onUnmounted(() => { systemTheme.removeEventListener('change', systemThemeChanged); OnFileDropOff(); disposers.forEach(dispose => dispose()); window.removeEventListener('keydown', keydown); window.removeEventListener('blur', blur); window.removeEventListener('focus', focus) })
@@ -216,7 +215,7 @@ onUnmounted(() => { systemTheme.removeEventListener('change', systemThemeChanged
 <template>
   <!-- Native Show/Hide owns visibility; retain the painted surface between summons. -->
   <main :data-theme="theme" :aria-busy="launching" @mousedown.capture="keepSearchFocus" @focusout="restoreSearchFocus">
-    <Transition name="panel">
+    <Transition name="panel" @after-enter="restoreSearchFocus">
     <SettingsPanel v-if="settingsOpen && settings" :initial="settings" :initial-tab="settingsTab" @saved="saved" @close="settingsOpen = false" @manage="openCustomApps" @update="updateInfo = $event" />
     <CustomAppsPanel v-else-if="importing" ref="customPanel" @close="setImportMode(false)" @changed="customChanged" />
     <div v-else class="launcher">

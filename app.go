@@ -127,6 +127,9 @@ func (a *App) Toggle() {
 	if a.window.Visible() {
 		a.hideLocked()
 	} else {
+		if a.service.Settings().DisableHotkeyFullscreen && platform.ForegroundFullscreen() {
+			return
+		}
 		a.window.Show()
 		wruntime.EventsEmit(a.ctx, "launcher:shown")
 	}

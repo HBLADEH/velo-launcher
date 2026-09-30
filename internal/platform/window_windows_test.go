@@ -2,6 +2,24 @@ package platform
 
 import "testing"
 
+func TestFullscreenMonitorBounds(t *testing.T) {
+	monitor := rect{-1920, -200, 0, 880}
+	for _, tt := range []struct {
+		bounds rect
+		want   bool
+	}{
+		{monitor, true}, {rect{-1921, -201, 1, 881}, true},
+		{rect{-1920, -200, 0, 840}, false}, {rect{0, 0, 1920, 1080}, false},
+	} {
+		if got := coversMonitor(tt.bounds, monitor); got != tt.want {
+			t.Errorf("%+v: %v", tt.bounds, got)
+		}
+	}
+	if coversMonitor(rect{}, rect{}) {
+		t.Fatal("invalid monitor accepted")
+	}
+}
+
 func TestWindowPlacementOnSmallAndSecondaryMonitors(t *testing.T) {
 	for _, tt := range []struct {
 		name          string

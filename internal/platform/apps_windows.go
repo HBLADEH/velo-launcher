@@ -149,6 +149,12 @@ func WindowsApps(ctx context.Context) ([]model.AppItem, error) {
 }
 
 func Launch(item model.AppItem) error {
+	if strings.HasPrefix(item.Path, "velo-action:") {
+		if !systemtools.IsActionItem(item) {
+			return fmt.Errorf("不支持的系统操作")
+		}
+		return launchSystemAction(item)
+	}
 	if strings.HasPrefix(item.Path, "ms-settings:") {
 		if !systemtools.IsSettingsItem(item) {
 			return fmt.Errorf("不支持的系统设置入口")

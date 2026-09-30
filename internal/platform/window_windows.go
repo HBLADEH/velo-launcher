@@ -46,6 +46,39 @@ func (w *DesktopWindow) Active() bool {
 	return foreground == w.handle || owner == w.handle
 }
 func (w *DesktopWindow) Hide() { user32.NewProc("ShowWindow").Call(w.handle, 0) }
+
+// Compare the foreground window with its own monitor, not the primary display.
+// Maximized windows with a normal caption and the desktop are not fullscreen.
+func ForegroundFullscreen() bool {
+	h, _, _ := user32.NewProc("GetForegroundWindow").Call()
+	if h == 0 {
+		return false
+	}
+	var class [256]uint16
+	user32.NewProc("GetClassNameW").Call(h, uintptr(unsafe.Pointer(&class[0])), 256)
+	switch windows.UTF16ToString(class[:]) {
+	case "Progman", "WorkerW", "Shell_TrayWnd", "Shell_SecondaryTrayWnd", WindowClass:
+		return false
+	}
+	style, _, _ := user32.NewProc("GetWindowLongPtrW").Call(h, ^uintptr(15))
+	if style&0x00C00000 == 0x00C00000 {
+		return false
+	}
+	var bounds rect
+	ok, _, _ := user32.NewProc("GetWindowRect").Call(h, uintptr(unsafe.Pointer(&bounds)))
+	if ok == 0 {
+		return false
+	}
+	monitor, _, _ := user32.NewProc("MonitorFromWindow").Call(h, 2)
+	info := monitorInfo{Size: uint32(unsafe.Sizeof(monitorInfo{}))}
+	ok, _, _ = user32.NewProc("GetMonitorInfoW").Call(monitor, uintptr(unsafe.Pointer(&info)))
+	return ok != 0 && coversMonitor(bounds, info.Monitor)
+}
+
+func coversMonitor(bounds, monitor rect) bool {
+	return monitor.Right > monitor.Left && monitor.Bottom > monitor.Top &&
+		bounds.Left <= monitor.Left && bounds.Top <= monitor.Top && bounds.Right >= monitor.Right && bounds.Bottom >= monitor.Bottom
+}
 func (w *DesktopWindow) Resize(width, height int) {
 	monitor, _, _ := user32.NewProc("MonitorFromWindow").Call(w.handle, 2)
 	info := monitorInfo{Size: uint32(unsafe.Sizeof(monitorInfo{}))}

@@ -15,18 +15,19 @@ type Search struct {
 	HistoryWeight float64 `json:"history_weight"`
 }
 type Config struct {
-	Version           int      `json:"version"`
-	Hotkey            string   `json:"hotkey"`
-	MaxResults        int      `json:"max_results"`
-	Theme             string   `json:"theme"`
-	LaunchAtStartup   bool     `json:"launch_at_startup"`
-	SpaceLaunch       bool     `json:"space_launch"`
-	FilterNoise       bool     `json:"filter_noise"`
-	Search            Search   `json:"search"`
-	CustomDirectories []string `json:"custom_directories"`
-	ScanProgramFiles  bool     `json:"scan_program_files"`
-	RefreshMinutes    int      `json:"refresh_minutes"`
-	AutoCheckUpdates  bool     `json:"auto_check_updates"`
+	Version                 int      `json:"version"`
+	Hotkey                  string   `json:"hotkey"`
+	DisableHotkeyFullscreen bool     `json:"disable_hotkey_fullscreen"`
+	MaxResults              int      `json:"max_results"`
+	Theme                   string   `json:"theme"`
+	LaunchAtStartup         bool     `json:"launch_at_startup"`
+	SpaceLaunch             bool     `json:"space_launch"`
+	FilterNoise             bool     `json:"filter_noise"`
+	Search                  Search   `json:"search"`
+	CustomDirectories       []string `json:"custom_directories"`
+	ScanProgramFiles        bool     `json:"scan_program_files"`
+	RefreshMinutes          int      `json:"refresh_minutes"`
+	AutoCheckUpdates        bool     `json:"auto_check_updates"`
 }
 
 func Defaults() Config {

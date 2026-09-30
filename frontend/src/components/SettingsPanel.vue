@@ -81,6 +81,8 @@ onUnmounted(() => { disposers.forEach(dispose => dispose()) })
       <template v-else-if="tab === '快捷键'">
         <h2>全局呼出</h2>
         <HotkeyRecorder v-model="draft.hotkey" @busy="recording = $event" />
+        <label class="check"><input v-model="draft.disable_hotkey_fullscreen" type="checkbox" />全屏时禁止快捷键呼出</label>
+        <p class="hint">当前前台应用全屏时不响应呼出快捷键，仍可通过托盘打开 Velo。</p>
         <p class="hint">支持 Ctrl、Alt、Shift、Win 配合字母、数字、Space、Enter、Tab 或 F1–F24。系统保留的组合键可能无法录制或注册；若快捷键被占用，保存时会提示并保留原快捷键。</p>
         <p class="hint">托盘图标常驻通知区域：左键单击打开启动器，右键菜单可打开启动器、设置或退出。</p>
         <p v-if="status?.hotkey_error" class="error">{{ status.hotkey_error }}</p>

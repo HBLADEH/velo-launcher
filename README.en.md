@@ -20,7 +20,7 @@
 
 Velo is a local application launcher for **Windows 10 / 11 x64**, built with Go, Wails 2, Vue 3, and TypeScript. Open it with a global keyboard shortcut to search applications and access common Windows tools.
 
-> **0.9.4 is a preview release.** Release binaries are currently unsigned, and performance and long-term stability validation is ongoing. Only Windows is supported. The application UI is currently in Simplified Chinese; this page is an English translation of the primary Chinese README.
+> **0.9.5 is a preview release.** Release binaries are currently unsigned, and performance and long-term stability validation is ongoing. Only Windows is supported. The application UI is currently in Simplified Chinese; this page is an English translation of the primary Chinese README.
 
 ## Screenshots
 
@@ -42,6 +42,7 @@ Actual Velo 0.9.3 screenshots on Windows, showing the Chinese UI. Application li
 - **Application search**: exact, prefix, substring, and fuzzy matching with single-character typo tolerance. Ranking considers launch frequency, recent use, and query history.
 - **Automatic indexing**: discovers apps in the Start menu, desktop, Windows Apps, and Program Files, with additional scan directories supported. Duplicate entries are merged; uninstallers, help tools, and updaters are hidden by default.
 - **Quick access**: pinned apps, frequently used apps, and Windows shortcuts on the home screen. System shortcuts support Chinese, English, pinyin, and abbreviation searches.
+- **System actions**: empty the Recycle Bin, shut down, restart, or lock Windows. Emptying the Recycle Bin, shutdown, and restart require confirmation.
 - **Custom applications**: drag files in, select files, or paste paths to add `.exe` / `.lnk` entries outside scan directories. Custom entries and home-screen pins are managed independently.
 - **Appearance and preferences**: light, dark, and system themes; configurable shortcut, launch at sign-in, result count, and search weights.
 - **Local storage**: settings, index, and launch history stay on your computer. Index and icon caching are enabled, with a background refresh every 30 minutes by default.
@@ -68,6 +69,8 @@ Both distributions store settings and caches in `%LOCALAPPDATA%\Velo`, rather th
 4. Press `Ctrl+,` to configure the shortcut, theme, and scan directories.
 
 Under **Settings → 快捷键** (Keyboard shortcut), click the recorder and press your key combination. Click **保存设置** (Save settings) to apply it; `Esc` cancels recording.
+
+Enable **全屏时禁止快捷键呼出** to suppress the shortcut while the foreground application is fullscreen; the tray remains available. Opening the home screen immediately focuses search. Names, keywords, and aliases support substring matching.
 
 | Action | Shortcut or location |
 | --- | --- |

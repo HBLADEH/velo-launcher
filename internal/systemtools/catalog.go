@@ -46,6 +46,10 @@ func setting(id, name, page, description string, keywords ...string) definition 
 }
 
 var catalogue = []definition{
+	exe("empty-recycle-bin", "清空回收站", "velo-action:empty-recycle-bin", "", "清空所有驱动器的回收站（Windows 会提示确认）", "empty recycle bin", "清理回收站", "垃圾"),
+	exe("shutdown", "关机", "velo-action:shutdown", "", "确认后关闭电脑，请先保存工作", "shutdown", "power off", "关闭电脑"),
+	exe("restart", "重启", "velo-action:restart", "", "确认后重新启动电脑，请先保存工作", "restart", "reboot", "重新启动"),
+	exe("lock", "锁屏", "velo-action:lock", "", "锁定当前 Windows 会话", "lock", "锁定电脑"),
 	exe("calculator", "计算器", "System32/calc.exe", "", "打开 Windows 计算器", "calc", "calculator"),
 	exe("explorer", "文件资源管理器", "explorer.exe", "", "浏览文件与文件夹", "explorer", "file explorer", "files", "文件管理", "资源管理器"),
 	exe("taskmanager", "任务管理器", "System32/Taskmgr.exe", "", "查看进程与资源使用情况", "task manager", "taskmgr", "进程"),
@@ -93,7 +97,11 @@ func Discover(env Environment) []model.AppItem {
 	items := make([]model.AppItem, 0, len(catalogue))
 	for _, d := range catalogue {
 		path, args := d.target, d.args
-		if strings.HasPrefix(path, "ms-settings:") {
+		if strings.HasPrefix(path, "velo-action:") {
+			if !env.Exists(filepath.Join(env.WindowsDir, "System32", "shell32.dll")) {
+				continue
+			}
+		} else if strings.HasPrefix(path, "ms-settings:") {
 			if !env.SettingsRegistered || env.Build < d.minBuild || (d.id == "shared" && env.Build >= 22000) || !pageVisible(strings.TrimPrefix(path, "ms-settings:"), env.PagePolicies) {
 				continue
 			}
@@ -115,6 +123,19 @@ func Discover(env Environment) []model.AppItem {
 		items = append(items, model.AppItem{ID: "system:" + d.id, Name: d.name, Path: path, ExecPath: path, Arguments: args, WorkingDirectory: filepath.Join(env.WindowsDir, "System32"), Source: "System", Description: d.description, Keywords: append([]string{}, d.keywords...)})
 	}
 	return items
+}
+
+// Actions accept only fixed catalogue identities, never arbitrary commands.
+func IsActionItem(item model.AppItem) bool {
+	if item.Source != "System" || item.Arguments != "" || item.Path != item.ExecPath {
+		return false
+	}
+	for _, d := range catalogue {
+		if strings.HasPrefix(d.target, "velo-action:") && item.ID == "system:"+d.id && item.Path == d.target {
+			return true
+		}
+	}
+	return false
 }
 
 func pageVisible(page string, policies []string) bool {

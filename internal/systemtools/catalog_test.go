@@ -12,6 +12,29 @@ func fixture() Environment {
 	return Environment{WindowsDir: filepath.Join("C:", "Windows Test"), Build: 22631, SettingsRegistered: true, Exists: func(string) bool { return true }}
 }
 
+func TestActionCatalogueValidation(t *testing.T) {
+	items := byID(Discover(fixture()))
+	for _, id := range []string{"empty-recycle-bin", "shutdown", "restart", "lock"} {
+		item, ok := items["system:"+id]
+		if !ok || !IsActionItem(item) {
+			t.Fatalf("missing action %s", id)
+		}
+		for _, mutate := range []func(*model.AppItem){
+			func(a *model.AppItem) { a.Arguments = "/f" },
+			func(a *model.AppItem) { a.Source = "Manual" },
+			func(a *model.AppItem) { a.ID = "system:unknown" },
+			func(a *model.AppItem) { a.ExecPath = "cmd.exe" },
+			func(a *model.AppItem) { a.Path += ":arbitrary"; a.ExecPath = a.Path },
+		} {
+			changed := item
+			mutate(&changed)
+			if IsActionItem(changed) {
+				t.Fatalf("modified action accepted: %+v", changed)
+			}
+		}
+	}
+}
+
 func byID(items []model.AppItem) map[string]model.AppItem {
 	result := map[string]model.AppItem{}
 	for _, item := range items {

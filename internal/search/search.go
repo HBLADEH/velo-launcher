@@ -117,6 +117,9 @@ func (i *Index) Query(query string, limit int, fuzzy bool, weights map[string]fl
 					score = 800
 					break
 				}
+				if strings.Contains(alias, query) && score < 500 {
+					score = 500
+				}
 			}
 		}
 		if score < 0 {
@@ -194,6 +197,11 @@ func match(q, name string, terms []string, fuzzy bool) int {
 	}
 	if strings.Contains(name, q) {
 		return 500
+	}
+	for _, t := range terms {
+		if strings.Contains(t, q) {
+			return 500
+		}
 	}
 	if !fuzzy {
 		return -1
