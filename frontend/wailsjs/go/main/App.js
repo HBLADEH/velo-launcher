@@ -26,6 +26,10 @@ export function FrontendReady() {
   return window['go']['main']['App']['FrontendReady']();
 }
 
+export function GetAppActions(arg1) {
+  return window['go']['main']['App']['GetAppActions'](arg1);
+}
+
 export function GetCustomApplications() {
   return window['go']['main']['App']['GetCustomApplications']();
 }
@@ -52,6 +56,14 @@ export function InstallUpdate() {
 
 export function Launch(arg1, arg2) {
   return window['go']['main']['App']['Launch'](arg1, arg2);
+}
+
+export function LaunchAsAdmin(arg1, arg2) {
+  return window['go']['main']['App']['LaunchAsAdmin'](arg1, arg2);
+}
+
+export function OpenInstallDirectory(arg1) {
+  return window['go']['main']['App']['OpenInstallDirectory'](arg1);
 }
 
 export function OpenSettings() {

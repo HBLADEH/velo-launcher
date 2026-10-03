@@ -73,6 +73,7 @@ export namespace config {
 	    disable_hotkey_fullscreen: boolean;
 	    max_results: number;
 	    theme: string;
+	    result_layout: string;
 	    launch_at_startup: boolean;
 	    space_launch: boolean;
 	    filter_noise: boolean;
@@ -93,6 +94,7 @@ export namespace config {
 	        this.disable_hotkey_fullscreen = source["disable_hotkey_fullscreen"];
 	        this.max_results = source["max_results"];
 	        this.theme = source["theme"];
+	        this.result_layout = source["result_layout"];
 	        this.launch_at_startup = source["launch_at_startup"];
 	        this.space_launch = source["space_launch"];
 	        this.filter_noise = source["filter_noise"];
@@ -189,6 +191,25 @@ export namespace model {
 	        this.description = source["description"];
 	        this.source = source["source"];
 	        this.keywords = source["keywords"];
+	    }
+	}
+
+}
+
+export namespace platform {
+	
+	export class ItemActions {
+	    open_directory: boolean;
+	    run_as_admin: boolean;
+	
+	    static createFrom(source: any = {}) {
+	        return new ItemActions(source);
+	    }
+	
+	    constructor(source: any = {}) {
+	        if ('string' === typeof source) source = JSON.parse(source);
+	        this.open_directory = source["open_directory"];
+	        this.run_as_admin = source["run_as_admin"];
 	    }
 	}
 

@@ -20,6 +20,7 @@ type Config struct {
 	DisableHotkeyFullscreen bool     `json:"disable_hotkey_fullscreen"`
 	MaxResults              int      `json:"max_results"`
 	Theme                   string   `json:"theme"`
+	ResultLayout            string   `json:"result_layout"`
 	LaunchAtStartup         bool     `json:"launch_at_startup"`
 	SpaceLaunch             bool     `json:"space_launch"`
 	FilterNoise             bool     `json:"filter_noise"`
@@ -31,7 +32,7 @@ type Config struct {
 }
 
 func Defaults() Config {
-	return Config{Version: 1, Hotkey: "Alt+Space", MaxResults: 8, Theme: "system", SpaceLaunch: true, FilterNoise: true, Search: Search{true, 1}, CustomDirectories: []string{}, ScanProgramFiles: true, RefreshMinutes: 30, AutoCheckUpdates: true}
+	return Config{Version: 1, Hotkey: "Alt+Space", MaxResults: 8, Theme: "system", ResultLayout: "list", SpaceLaunch: true, FilterNoise: true, Search: Search{true, 1}, CustomDirectories: []string{}, ScanProgramFiles: true, RefreshMinutes: 30, AutoCheckUpdates: true}
 }
 func (c Config) Validate() error {
 	if c.Version != 1 {
@@ -45,6 +46,9 @@ func (c Config) Validate() error {
 	}
 	if c.Theme != "system" && c.Theme != "light" && c.Theme != "dark" {
 		return fmt.Errorf("无效主题")
+	}
+	if c.ResultLayout != "list" && c.ResultLayout != "grid" {
+		return fmt.Errorf("无效候选项排列方式")
 	}
 	if !(c.Search.HistoryWeight >= 0 && c.Search.HistoryWeight <= 5) {
 		return fmt.Errorf("历史权重须为 0–5")

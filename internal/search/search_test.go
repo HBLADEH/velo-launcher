@@ -32,6 +32,25 @@ func TestSubstringNamesKeywordsAndAliasesWithoutFuzzy(t *testing.T) {
 		t.Fatalf("ranking: %+v", got)
 	}
 }
+
+func TestDecoratedShortcutSurvivesResultLimit(t *testing.T) {
+	items := []model.AppItem{
+		{ID: "device", Name: "#0 MuMu安卓设备", Source: "Desktop", Arguments: "-v 0"},
+		{ID: "main", Name: "MuMu模拟器", Source: "Desktop", Arguments: "--from-shortcut"},
+	}
+	for _, name := range []string{"MuMuVMMNetNAT", "MuMuNxHeadless", "MuMuVMMBalloonCtrl", "MuMuVMMDTrace", "MuMuVMMHeadless", "MuMuVMMManage", "MuMuVMMNetDHCP", "MuMuNxSVC", "MuMuVMMSVC"} {
+		items = append(items, model.AppItem{ID: name, Name: name, Source: "Program Files"})
+	}
+	idx := New(items)
+	for _, fuzzy := range []bool{false, true} {
+		for _, query := range []string{"mumu", "MUMU", "umu", "安卓"} {
+			got := idx.Query(query, 8, fuzzy, nil, 1)
+			if len(got) == 0 || got[0].ID != "device" || got[0].Arguments != "-v 0" {
+				t.Fatalf("query %q, fuzzy %v: %+v", query, fuzzy, got)
+			}
+		}
+	}
+}
 func TestMatching(t *testing.T) {
 	idx := New(apps("Visual Studio Code", "Windows Terminal", "WeChat", "Calculator", "中文应用"))
 	for _, tt := range []struct {

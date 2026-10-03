@@ -20,7 +20,7 @@
 
 Velo is a local application launcher for **Windows 10 / 11 x64**, built with Go, Wails 2, Vue 3, and TypeScript. Open it with a global keyboard shortcut to search applications and access common Windows tools.
 
-> **0.9.5 is a preview release.** Release binaries are currently unsigned, and performance and long-term stability validation is ongoing. Only Windows is supported. The application UI is currently in Simplified Chinese; this page is an English translation of the primary Chinese README.
+> **0.9.6 is a preview release.** Release binaries are currently unsigned, and performance and long-term stability validation is ongoing. Only Windows is supported. The application UI is currently in Simplified Chinese; this page is an English translation of the primary Chinese README.
 
 ## Screenshots
 
@@ -42,9 +42,10 @@ Actual Velo 0.9.3 screenshots on Windows, showing the Chinese UI. Application li
 - **Application search**: exact, prefix, substring, and fuzzy matching with single-character typo tolerance. Ranking considers launch frequency, recent use, and query history.
 - **Automatic indexing**: discovers apps in the Start menu, desktop, Windows Apps, and Program Files, with additional scan directories supported. Duplicate entries are merged; uninstallers, help tools, and updaters are hidden by default.
 - **Quick access**: pinned apps, frequently used apps, and Windows shortcuts on the home screen. System shortcuts support Chinese, English, pinyin, and abbreviation searches.
+- **Result actions**: right-click to launch, open the installation directory, run as administrator, or pin to the home screen.
 - **System actions**: empty the Recycle Bin, shut down, restart, or lock Windows. Emptying the Recycle Bin, shutdown, and restart require confirmation.
 - **Custom applications**: drag files in, select files, or paste paths to add `.exe` / `.lnk` entries outside scan directories. Custom entries and home-screen pins are managed independently.
-- **Appearance and preferences**: light, dark, and system themes; configurable shortcut, launch at sign-in, result count, and search weights.
+- **Appearance and preferences**: light, dark, and system themes; switch between a list and an icon grid, with configurable shortcut, launch at sign-in, result count, and search weights.
 - **Local storage**: settings, index, and launch history stay on your computer. Index and icon caching are enabled, with a background refresh every 30 minutes by default.
 - **Updates**: checks GitHub Releases, verifies downloads with SHA-256, and supports replacing standalone binaries or upgrading installed copies.
 

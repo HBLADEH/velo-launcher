@@ -1,6 +1,7 @@
 package indexer
 
 import (
+	"path/filepath"
 	"regexp"
 	"strings"
 	"unicode"
@@ -60,6 +61,26 @@ func IsNoise(name string) bool {
 	return false
 }
 
+// Installation depth alone cannot identify user-facing apps: emulator engines
+// can live just two levels below Program Files. Hide raw executables in their
+// Hypervisor component directory, but preserve shortcuts and explicit imports.
+func isBackgroundComponent(item model.AppItem) bool {
+	switch item.Source {
+	case "Program Files", "Program Files (x86)", "Custom":
+	default:
+		return false
+	}
+	if !strings.EqualFold(filepath.Ext(item.Path), ".exe") {
+		return false
+	}
+	for _, dir := range strings.FieldsFunc(filepath.Dir(item.Path), func(r rune) bool { return r == '/' || r == '\\' }) {
+		if strings.EqualFold(dir, "Hypervisor") {
+			return true
+		}
+	}
+	return false
+}
+
 // Visible 返回搜索索引真正使用的条目：先隐藏辅助入口，再合并重名副本。
 func Visible(items []model.AppItem, filterNoise bool) []model.AppItem {
 	if !filterNoise {
@@ -67,7 +88,7 @@ func Visible(items []model.AppItem, filterNoise bool) []model.AppItem {
 	}
 	kept := make([]model.AppItem, 0, len(items))
 	for _, item := range items {
-		if !IsNoise(item.Name) {
+		if !IsNoise(item.Name) && !isBackgroundComponent(item) {
 			kept = append(kept, item)
 		}
 	}

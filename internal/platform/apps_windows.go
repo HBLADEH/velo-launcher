@@ -177,6 +177,18 @@ func Launch(item model.AppItem) error {
 	return shellExecute(item.ExecPath, item.Arguments, item.WorkingDirectory)
 }
 func shellExecute(path, args, dir string) error {
+	return shellExecuteVerb("", path, args, dir)
+}
+
+func shellExecuteVerb(verb, path, args, dir string) error {
+	var operation *uint16
+	if verb != "" {
+		var err error
+		operation, err = windows.UTF16PtrFromString(verb)
+		if err != nil {
+			return err
+		}
+	}
 	p, err := windows.UTF16PtrFromString(path)
 	if err != nil {
 		return err
@@ -189,7 +201,7 @@ func shellExecute(path, args, dir string) error {
 	if err != nil {
 		return err
 	}
-	return windows.ShellExecute(0, nil, p, a, d, 1)
+	return windows.ShellExecute(0, operation, p, a, d, 1)
 }
 
 func SetLaunchAtStartup(enabled bool) error {

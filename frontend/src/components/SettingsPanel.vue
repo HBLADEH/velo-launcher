@@ -29,6 +29,10 @@ const themes = [
   { value: 'light', label: '浅色', description: '明亮、清晰的日间外观' },
   { value: 'dark', label: '深色', description: '柔和、低亮度的深色外观' },
 ]
+const resultLayouts = [
+  { value: 'list', label: '列表', description: '逐行显示应用名称与路径' },
+  { value: 'grid', label: '网格', description: '图标在上、名称在下，分组显示搜索结果与匹配结果' },
+]
 const canSave = computed(() => !saving.value && !recording.value)
 async function save() {
   if (!canSave.value) return
@@ -91,6 +95,8 @@ onUnmounted(() => { disposers.forEach(dispose => dispose()) })
         <h2>界面主题</h2>
         <div class="theme-preview" :data-preview="draft.theme"><div class="preview-window"><div class="preview-search"><span></span><i></i></div><div class="preview-tiles"><i v-for="n in 6" :key="n"></i></div></div><div><strong>Windows 蓝</strong><p>轻盈层次，流畅随行。</p><small>动效跟随系统的减少动画偏好</small></div></div>
         <UiSelect v-model="draft.theme" label="主题" :options="themes" />
+        <UiSelect v-model="draft.result_layout" label="候选项排列" :options="resultLayouts" />
+        <p class="hint">网格模式支持四个方向键选择；两种排列均可右键打开候选项菜单。</p>
       </template>
       <template v-else-if="tab === '搜索'">
         <h2>匹配与排序</h2>

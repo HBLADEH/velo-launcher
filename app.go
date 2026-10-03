@@ -256,12 +256,36 @@ func (a *App) Resize(height int) {
 	}
 }
 func (a *App) Launch(id, query string) error {
+	return a.launch(id, query, platform.Launch)
+}
+func (a *App) LaunchAsAdmin(id, query string) error {
+	return a.launch(id, query, platform.LaunchAsAdmin)
+}
+func (a *App) GetAppActions(id string) (platform.ItemActions, error) {
+	item, err := a.service.Item(id)
+	if err != nil {
+		return platform.ItemActions{}, err
+	}
+	return platform.ActionsFor(item), nil
+}
+func (a *App) OpenInstallDirectory(id string) error {
+	item, err := a.service.Item(id)
+	if err != nil {
+		return err
+	}
+	if err := platform.OpenInstallDirectory(item); err != nil {
+		return err
+	}
+	a.Hide()
+	return nil
+}
+func (a *App) launch(id, query string, open func(model.AppItem) error) error {
 	item, err := a.service.Item(id)
 	if err != nil {
 		return err
 	}
 	a.Hide()
-	if err := platform.Launch(item); err != nil {
+	if err := open(item); err != nil {
 		a.Show()
 		return err
 	}

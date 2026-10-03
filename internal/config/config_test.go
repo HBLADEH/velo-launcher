@@ -21,7 +21,7 @@ func TestLoadDefaultsAndMigration(t *testing.T) {
 		t.Fatalf("migration: %+v %v", c, err)
 	}
 	// 旧配置缺少启动台开关时沿用默认值：空格启动与辅助项过滤默认开启。
-	if !c.SpaceLaunch || !c.FilterNoise {
+	if !c.SpaceLaunch || !c.FilterNoise || c.ResultLayout != "list" {
 		t.Fatalf("defaults not overlayed: %+v", c)
 	}
 	if err := os.WriteFile(path, []byte(`{"space_launch":false,"filter_noise":false}`), 0600); err != nil {
@@ -29,6 +29,26 @@ func TestLoadDefaultsAndMigration(t *testing.T) {
 	}
 	if c, _, err = Load(path); err != nil || c.SpaceLaunch || c.FilterNoise {
 		t.Fatalf("explicit opt-out lost: %+v %v", c, err)
+	}
+}
+
+func TestResultLayoutRoundTrip(t *testing.T) {
+	path := filepath.Join(t.TempDir(), "config.json")
+	for _, layout := range []string{"grid", "list"} {
+		c := Defaults()
+		c.ResultLayout = layout
+		if err := storage.Write(path, c); err != nil {
+			t.Fatal(err)
+		}
+		got, warning, err := Load(path)
+		if err != nil || warning != "" || got.ResultLayout != layout {
+			t.Fatalf("layout %q: %+v %q %v", layout, got, warning, err)
+		}
+	}
+	c := Defaults()
+	c.ResultLayout = "unknown"
+	if c.Validate() == nil {
+		t.Fatal("invalid layout accepted")
 	}
 }
 func TestRecoveryAndFutureVersion(t *testing.T) {

@@ -28,7 +28,7 @@ func NewClient() *Client {
 	return &Client{
 		Repository: version.Repository,
 		BaseURL:    "https://api.github.com",
-		HTTP:       &http.Client{Timeout: 60 * time.Second},
+		HTTP:       newHTTPClient(),
 	}
 }
 
@@ -86,7 +86,7 @@ func (c *Client) releases(ctx context.Context) ([]Release, error) {
 	c.headers(request)
 	response, err := c.http().Do(request)
 	if err != nil {
-		return nil, fmt.Errorf("无法连接更新服务器：%w", err)
+		return nil, networkError("无法连接更新服务器", err)
 	}
 	defer response.Body.Close()
 	if response.StatusCode != http.StatusOK {
@@ -112,7 +112,7 @@ func (c *Client) Download(ctx context.Context, url, dest string, onProgress func
 	c.headers(request)
 	response, err := c.http().Do(request)
 	if err != nil {
-		return "", fmt.Errorf("下载失败：%w", err)
+		return "", networkError("下载更新文件失败", err)
 	}
 	defer response.Body.Close()
 	if response.StatusCode != http.StatusOK {
@@ -166,7 +166,7 @@ func (c *Client) Checksums(ctx context.Context, url string) (map[string]string, 
 	c.headers(request)
 	response, err := c.http().Do(request)
 	if err != nil {
-		return nil, fmt.Errorf("无法读取校验文件：%w", err)
+		return nil, networkError("无法读取校验文件", err)
 	}
 	defer response.Body.Close()
 	if response.StatusCode != http.StatusOK {
@@ -207,9 +207,19 @@ func (c *Client) baseURL() string {
 
 func (c *Client) http() *http.Client {
 	if c.HTTP == nil {
-		c.HTTP = &http.Client{Timeout: 60 * time.Second}
+		return newHTTPClient()
 	}
 	return c.HTTP
+}
+
+func newHTTPClient() *http.Client {
+	transport := http.DefaultTransport.(*http.Transport).Clone()
+	transport.Proxy = updateProxy
+	return &http.Client{Transport: transport, Timeout: 60 * time.Second}
+}
+
+func networkError(action string, err error) error {
+	return fmt.Errorf("%s，请检查网络及代理设置；也可前往 GitHub 发布页手动下载：%w", action, err)
 }
 
 func (c *Client) headers(request *http.Request) {

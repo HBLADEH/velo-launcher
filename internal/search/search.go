@@ -192,7 +192,9 @@ func match(q, name string, terms []string, fuzzy bool) int {
 	}
 	for _, t := range terms {
 		if strings.HasPrefix(t, q) {
-			return 650
+			// A word inside a decorated shortcut name is as relevant as a
+			// name prefix: "#0 MuMu安卓设备" must not lose to MuMu helpers.
+			return 800
 		}
 	}
 	if strings.Contains(name, q) {

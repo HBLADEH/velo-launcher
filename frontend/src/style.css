@@ -307,3 +307,23 @@ main[data-theme="dark"] .error { color: #ffa9a0; }
 .hotkey-recorder.invalid { border-color: #b97825; }
 .invalid-hint { color: var(--fg); }
 @keyframes record-pulse { 50% { box-shadow: 0 0 0 4px var(--accent-line); } }
+
+/* Search tiles follow the same six columns as quick launch. */
+.search-grid-content { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: 18px 16px; }
+.search-grid-section { margin-bottom: 20px; }
+.search-grid-section:last-child { margin-bottom: 0; }
+.search-grid-section h2 { margin: 0 4px 10px; font-size: 13px; font-weight: 600; }
+.search-grid { gap: 8px; }
+.search-grid .tile { animation: none; border-radius: 10px; }
+.search-grid .tile-launch { height: 98px; padding: 10px 5px 8px; gap: 8px; }
+.search-grid .tile-launch .app-icon { width: 38px; height: 38px; }
+.search-grid .tile-launch > span:last-child { font-size: 12px; line-height: 17px; }
+.search-grid .tile.selected .tile-launch > span:last-child { color: var(--accent); }
+
+.item-context-menu { position: fixed; z-index: 30; width: 244px; max-width: calc(100vw - 16px); padding: 5px; border: 1px solid var(--border); border-radius: 11px; background: var(--field); box-shadow: 0 12px 32px #00000024, var(--shadow); }
+.context-menu-title { padding: 7px 10px; color: var(--muted); font-size: 11px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.item-context-menu button { display: flex; align-items: center; gap: 10px; width: 100%; min-height: 35px; padding: 8px 10px; border: 0; background: transparent; text-align: left; font-size: 12px; }
+.item-context-menu button:not(:disabled):hover, .item-context-menu button:focus-visible { background: var(--selected); color: var(--accent); }
+.item-context-menu button:not(:disabled):active { transform: none; }
+.item-context-menu button > small { margin-left: auto; color: var(--muted); font-size: 10px; }
+.context-menu-separator { margin: 4px 6px; height: 1px; background: var(--border); }
