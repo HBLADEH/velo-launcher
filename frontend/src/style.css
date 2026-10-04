@@ -8,6 +8,9 @@ button,input,select,textarea { font: inherit; }
 button { cursor: pointer; color: var(--fg); background: var(--field); border: 1px solid var(--border); border-radius: 6px; padding: 7px 12px; }
 button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
 button:disabled { opacity: .6; cursor: wait; }
+.window-drag-region { --wails-draggable: drag; cursor: move; user-select: none; }
+.window-drag-region :is(button, input, select, textarea, a, .search-field) { --wails-draggable: no-drag; }
+.window-drag-region .search-field { cursor: text; }
 .search-header { display: flex; align-items: center; gap: 15px; padding: 17px 20px; border-bottom: 1px solid var(--border); }
 .brand { display: block; flex-shrink: 0; width: 48px; height: 48px; object-fit: contain; margin: -8px 0; }
 .search-header input { flex: 1; min-width: 0; background: transparent; border: 0; color: var(--fg); font-size: 21px; outline: none; }
@@ -43,6 +46,7 @@ nav button.active { background: var(--selected); color: var(--accent); }
 .settings input:not([type="checkbox"]), .settings select, .settings textarea { padding: 9px 10px; border: 1px solid var(--border); border-radius: 5px; background: var(--field); color: var(--fg); width: 100%; }
 .settings input[type="number"] { max-width: 150px; }
 .hint { color: var(--muted); font-size: 12px; line-height: 1.8; margin: 8px 0 20px; }
+.backup-result { overflow-wrap: anywhere; user-select: text; }
 .settings-actions { display: flex; justify-content: flex-end; gap: 10px; border-top: 1px solid var(--border); padding: 15px 24px; }
 .primary { background: var(--accent); color: #fff; border-color: var(--accent); }
 .scan-warnings { font-size: 11px; color: var(--muted); padding-left: 16px; overflow-wrap: anywhere; }

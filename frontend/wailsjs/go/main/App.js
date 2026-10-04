@@ -6,6 +6,10 @@ export function AddApplications(arg1) {
   return window['go']['main']['App']['AddApplications'](arg1);
 }
 
+export function BackupSettings() {
+  return window['go']['main']['App']['BackupSettings']();
+}
+
 export function Blur() {
   return window['go']['main']['App']['Blur']();
 }
@@ -60,6 +64,10 @@ export function Launch(arg1, arg2) {
 
 export function LaunchAsAdmin(arg1, arg2) {
   return window['go']['main']['App']['LaunchAsAdmin'](arg1, arg2);
+}
+
+export function OpenBackupDirectory() {
+  return window['go']['main']['App']['OpenBackupDirectory']();
 }
 
 export function OpenInstallDirectory(arg1) {

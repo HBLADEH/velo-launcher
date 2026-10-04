@@ -20,7 +20,7 @@
 
 Velo is a local application launcher for **Windows 10 / 11 x64**, built with Go, Wails 2, Vue 3, and TypeScript. Open it with a global keyboard shortcut to search applications and access common Windows tools.
 
-> **0.9.6 is a preview release.** Release binaries are currently unsigned, and performance and long-term stability validation is ongoing. Only Windows is supported. The application UI is currently in Simplified Chinese; this page is an English translation of the primary Chinese README.
+> **0.9.7 is a preview release.** Release binaries are currently unsigned, and performance and long-term stability validation is ongoing. Only Windows is supported. The application UI is currently in Simplified Chinese; this page is an English translation of the primary Chinese README.
 
 ## Screenshots
 
@@ -39,6 +39,7 @@ Actual Velo 0.9.3 screenshots on Windows, showing the Chinese UI. Application li
 ## Features
 
 - **Keyboard controls**: open with a global shortcut, navigate with arrow keys, and launch with Enter. Supports hiding on focus loss and running in the system tray.
+- **Window and session**: drag the top logo, title, or empty header area to move the launcher. Hiding preserves the current page, unsaved settings, and update progress; the window keeps its chosen position during the current session.
 - **Application search**: exact, prefix, substring, and fuzzy matching with single-character typo tolerance. Ranking considers launch frequency, recent use, and query history.
 - **Automatic indexing**: discovers apps in the Start menu, desktop, Windows Apps, and Program Files, with additional scan directories supported. Duplicate entries are merged; uninstallers, help tools, and updaters are hidden by default.
 - **Quick access**: pinned apps, frequently used apps, and Windows shortcuts on the home screen. System shortcuts support Chinese, English, pinyin, and abbreviation searches.
@@ -47,7 +48,8 @@ Actual Velo 0.9.3 screenshots on Windows, showing the Chinese UI. Application li
 - **Custom applications**: drag files in, select files, or paste paths to add `.exe` / `.lnk` entries outside scan directories. Custom entries and home-screen pins are managed independently.
 - **Appearance and preferences**: light, dark, and system themes; switch between a list and an icon grid, with configurable shortcut, launch at sign-in, result count, and search weights.
 - **Local storage**: settings, index, and launch history stay on your computer. Index and icon caching are enabled, with a background refresh every 30 minutes by default.
-- **Updates**: checks GitHub Releases, verifies downloads with SHA-256, and supports replacing standalone binaries or upgrading installed copies.
+- **Configuration backups**: Settings → 备份 saves a separate JSON copy of your saved settings and lets you open the backup directory.
+- **Updates**: checks GitHub Releases, verifies downloads with SHA-256, backs up settings before installation, and preserves existing preferences. Supports replacing standalone binaries or upgrading installed copies.
 
 ## Download and installation
 
@@ -82,10 +84,13 @@ Enable **全屏时禁止快捷键呼出** to suppress the shortcut while the for
 | Open settings | `Ctrl+,` or the gear button |
 | Add custom apps | Home → 自定义应用, or Settings → 索引 |
 | Refresh the index | Footer refresh button, or Settings → 索引 |
+| Back up settings | Settings → 备份 → 立即备份 |
 | Check for updates | Settings → 关于 |
 | Quit completely | Footer 退出 button, or the tray context menu |
 
 Space launches the selected app by default. To enter queries containing spaces, such as `visual studio`, turn off **按空格键启动选中应用** under **Settings → 常规** (General).
+
+To keep your current settings, click **立即备份** under **Settings → 备份** (Backup). **打开备份目录** opens `%LOCALAPPDATA%\Velo\backups`. Automatic updates also back up settings before installation and stop if the backup fails. Upgrades preserve existing settings; new options receive defaults when loaded. Unsaved edits, custom apps, pins, and history are not included in the settings backup.
 
 The [user guide (Chinese)](docs/user-guide.md) covers custom apps, pinning, updates, storage, and troubleshooting. Updates can be disabled under **Settings → 关于** (About). Downloads are checked against the release's `SHA256SUMS.txt`; automatic installation stops if verification is unavailable or fails. Upgrading a copy installed in Program Files may require UAC confirmation.
 

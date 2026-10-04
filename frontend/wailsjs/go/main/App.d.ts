@@ -10,6 +10,8 @@ import {search} from '../models';
 
 export function AddApplications(arg1:Array<string>):Promise<app.ImportResult>;
 
+export function BackupSettings():Promise<string>;
+
 export function Blur():Promise<void>;
 
 export function BrowseApplications():Promise<Array<string>>;
@@ -37,6 +39,8 @@ export function InstallUpdate():Promise<void>;
 export function Launch(arg1:string,arg2:string):Promise<void>;
 
 export function LaunchAsAdmin(arg1:string,arg2:string):Promise<void>;
+
+export function OpenBackupDirectory():Promise<void>;
 
 export function OpenInstallDirectory(arg1:string):Promise<void>;
 

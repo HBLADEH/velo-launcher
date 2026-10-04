@@ -16,7 +16,7 @@ func AcquireInstance() (bool, func(), error) {
 		class, _ := windows.UTF16PtrFromString(WindowClass)
 		window, _, _ := user32.NewProc("FindWindowW").Call(uintptr(unsafe.Pointer(class)), 0)
 		if window != 0 {
-			(&DesktopWindow{window}).Show()
+			(&DesktopWindow{handle: window, positioned: true}).Show()
 		}
 		return false, func() {}, nil
 	}

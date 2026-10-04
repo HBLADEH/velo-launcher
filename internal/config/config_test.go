@@ -1,11 +1,44 @@
 package config
 
 import (
+	"bytes"
 	"os"
 	"path/filepath"
 	"testing"
 	"velo-launcher/internal/storage"
 )
+
+func TestUpgradeReadsExistingSettingsWithoutRewriting(t *testing.T) {
+	path := filepath.Join(t.TempDir(), "config.json")
+	// Missing newer fields must be filled in memory; explicit opt-outs and
+	// fields from another build must survive startup byte for byte on disk.
+	original := []byte(`{
+  "hotkey": "Ctrl+Alt+K", "max_results": 17, "theme": "dark",
+  "launch_at_startup": true, "space_launch": false, "filter_noise": false,
+  "search": {"fuzzy": false, "history_weight": 0},
+  "scan_program_files": false, "refresh_minutes": 123,
+  "auto_check_updates": false, "unknown_option": {"keep": true}
+}`)
+	if err := os.WriteFile(path, original, 0600); err != nil {
+		t.Fatal(err)
+	}
+	for n := 0; n < 2; n++ {
+		c, warning, err := Load(path)
+		if err != nil || warning != "" {
+			t.Fatalf("existing settings rejected: %q %v", warning, err)
+		}
+		if c.Hotkey != "Ctrl+Alt+K" || c.MaxResults != 17 || c.Theme != "dark" || !c.LaunchAtStartup || c.SpaceLaunch || c.FilterNoise || c.Search.Fuzzy || c.Search.HistoryWeight != 0 || c.ScanProgramFiles || c.RefreshMinutes != 123 || c.AutoCheckUpdates {
+			t.Fatalf("existing choices changed: %+v", c)
+		}
+		if c.ResultLayout != "list" || c.Version != 1 {
+			t.Fatalf("new fields not defaulted: %+v", c)
+		}
+		data, err := os.ReadFile(path)
+		if err != nil || !bytes.Equal(data, original) {
+			t.Fatalf("startup rewrote saved configuration: %q %v", data, err)
+		}
+	}
+}
 
 func TestLoadDefaultsAndMigration(t *testing.T) {
 	path := filepath.Join(t.TempDir(), "config.json")

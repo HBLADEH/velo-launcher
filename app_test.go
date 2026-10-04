@@ -11,6 +11,7 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+	"sync/atomic"
 	"testing"
 	"time"
 
@@ -27,6 +28,46 @@ import (
 type testWindow struct {
 	visible, active bool
 	hides           int
+}
+
+func TestHiddenWindowDoesNotRestartAnActiveUpdate(t *testing.T) {
+	started, release := make(chan struct{}), make(chan struct{})
+	var calls atomic.Int32
+	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if calls.Add(1) == 1 {
+			close(started)
+			<-release
+		}
+		fmt.Fprint(w, `[]`)
+	}))
+	defer server.Close()
+	app, _ := backupTestApp(t)
+	app.updates = &update.Client{Repository: "acme/velo", BaseURL: server.URL, HTTP: server.Client()}
+	window := &testWindow{visible: true, active: false}
+	app.window, app.key = window, &platform.Hotkey{}
+	finished := make(chan error, 1)
+	go func() { finished <- app.InstallUpdate() }()
+	select {
+	case <-started:
+	case <-time.After(5 * time.Second):
+		close(release)
+		t.Fatal("update did not start")
+	}
+	app.Blur()
+	duplicateErr := app.InstallUpdate()
+	close(release)
+	if err := <-finished; err == nil {
+		t.Fatal("test release list unexpectedly installed an update")
+	}
+	if window.visible || app.exitRequested {
+		t.Fatal("focus loss must hide without quitting")
+	}
+	if duplicateErr == nil || !strings.Contains(duplicateErr.Error(), "更新正在进行") || calls.Load() != 1 {
+		t.Fatalf("active update restarted: error=%v requests=%d", duplicateErr, calls.Load())
+	}
+	if err := app.InstallUpdate(); err == nil || calls.Load() != 2 {
+		t.Fatalf("failed attempt did not release update lock: %v requests=%d", err, calls.Load())
+	}
 }
 
 func (w *testWindow) Visible() bool   { return w.visible }

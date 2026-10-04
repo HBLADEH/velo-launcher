@@ -51,7 +51,7 @@ defineExpose({ addPaths })
 
 <template>
   <section class="custom-apps" aria-label="自定义应用管理">
-    <header class="settings-header"><h1>自定义应用</h1><button class="text-button" @click="emit('close')">返回 · Esc</button></header>
+    <header class="settings-header window-drag-region" title="拖动顶部空白区域可移动窗口"><h1>自定义应用</h1><button class="text-button" @click="emit('close')">返回 · Esc</button></header>
     <div class="custom-intro">
       <p>添加搜索范围外的应用，保存后立即可搜索，重启 Velo 仍然保留。</p>
       <div class="drop-zone"><div><strong>拖入 .exe 程序或 .lnk 快捷方式</strong><small>可一次添加多个；此页面保持显示，方便切换到资源管理器。</small></div><button :disabled="busy" @click="browse">选择文件</button></div>

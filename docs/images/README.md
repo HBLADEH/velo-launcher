@@ -15,3 +15,9 @@
 更新截图时，运行待记录版本，等待索引和界面过渡动画结束，仅捕获应用窗口。检查路径、提示和列表中是否包含个人信息，再替换对应文件，并同步更新中英文 README 的说明。不要为了截图而提交用户配置或索引数据。
 
 These are actual Windows application captures of Velo 0.9.3, taken on 2026-09-28 using diagnostics mode to prevent hiding on focus loss. Original JPEG captures are retained without compositing or replacing UI content. App lists and the index notice reflect the local machine; installation paths are visible in the search screenshot. Check for personal information and update both READMEs when replacing images.
+
+## 配置备份预览（2026-10-04）
+
+`config-backup-preview.jpg` 为当前源码的“设置 → 备份”页面在本地浏览器中的真实渲染截图，使用 640 × 660 页面尺寸。预览连接真实 Go 配置服务，配置与备份均位于独立测试目录，截图展示实际生成文件后的成功提示。此图用于验证页面布局及备份交互，不是原生桌面窗口截图，也不包含用户配置数据。
+
+`config-backup-preview.jpg` captures the current settings backup UI in a local browser, connected to the real Go configuration service with isolated test data. It shows a successful backup at 640 × 660; it is a browser preview, not a native desktop-window capture.

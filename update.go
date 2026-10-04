@@ -33,6 +33,21 @@ func (a *App) CheckUpdate() (update.Info, error) {
 // InstallUpdate 下载、校验并安装新版本，然后退出 Velo 让脚本完成替换。
 // 便携版直接覆盖当前可执行文件；安装目录不可写时改用安装包静默升级。
 func (a *App) InstallUpdate() error {
+	a.mu.Lock()
+	if a.installingUpdate {
+		a.mu.Unlock()
+		return fmt.Errorf("更新正在进行，请稍候")
+	}
+	a.installingUpdate = true
+	a.mu.Unlock()
+	scheduled := false
+	defer func() {
+		if !scheduled {
+			a.mu.Lock()
+			a.installingUpdate = false
+			a.mu.Unlock()
+		}
+	}()
 	current, err := currentVersion()
 	if err != nil {
 		return err
@@ -82,6 +97,31 @@ func (a *App) InstallUpdate() error {
 		os.Remove(dest)
 		return fmt.Errorf("更新文件的 SHA-256 与发布记录不一致，已删除下载内容，请重试")
 	}
+	scriptPath, err := a.prepareUpdate(exe, dest, portable)
+	if err != nil {
+		return err
+	}
+	if err := platform.RunDetachedScript(scriptPath); err != nil {
+		return err
+	}
+	scheduled = true
+	a.logger.Info("update scheduled", "version", info.Version, "portable", portable)
+	// 先让绑定调用返回，脚本需要 Velo 退出后才能覆盖可执行文件。
+	go func() {
+		time.Sleep(time.Second)
+		a.Quit()
+	}()
+	return nil
+}
+
+// prepareUpdate must preserve the saved configuration before creating any
+// executable update script. Both installation modes leave the data directory
+// intact; backups are kept separately from disposable update downloads.
+func (a *App) prepareUpdate(exe, dest string, portable bool) (string, error) {
+	backup, err := a.service.BackupSettings()
+	if err != nil {
+		return "", fmt.Errorf("更新前备份配置失败，已停止安装: %w", err)
+	}
 	target, script := exe, platform.ReplaceScript(exe, dest)
 	if !portable {
 		// 安装版可能被装到别处，优先回到注册表记录的安装目录。
@@ -90,20 +130,12 @@ func (a *App) InstallUpdate() error {
 		}
 		script = platform.InstallScript(target, dest)
 	}
-	scriptPath := filepath.Join(dir, fmt.Sprintf("velo-update-%d.ps1", os.Getpid()))
+	scriptPath := filepath.Join(a.service.DataDir(), "updates", fmt.Sprintf("velo-update-%d.ps1", os.Getpid()))
 	if err := platform.WriteScript(scriptPath, script); err != nil {
-		return err
+		return "", err
 	}
-	if err := platform.RunDetachedScript(scriptPath); err != nil {
-		return err
-	}
-	a.logger.Info("update scheduled", "version", info.Version, "portable", portable, "target", target)
-	// 先让绑定调用返回，脚本需要 Velo 退出后才能覆盖可执行文件。
-	go func() {
-		time.Sleep(time.Second)
-		a.Quit()
-	}()
-	return nil
+	a.logger.Info("update prepared", "target", target, "config_backup", backup)
+	return scriptPath, nil
 }
 
 func (a *App) reportProgress(done, total int64) {

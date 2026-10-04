@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
-import { Blur, FrontendReady, GetHome, GetSettings, GetStatus, Hide, Launch, LaunchAsAdmin, OpenInstallDirectory, Quit, RefreshIndex, Resize, Search, SetImportMode, SetPinned } from '../wailsjs/go/main/App'
+import { Blur, CheckUpdate, FrontendReady, GetHome, GetSettings, GetStatus, Hide, InstallUpdate, Launch, LaunchAsAdmin, OpenInstallDirectory, Quit, RefreshIndex, Resize, Search, SetImportMode, SetPinned } from '../wailsjs/go/main/App'
 import { EventsOn, OnFileDrop, OnFileDropOff, WindowSetBackgroundColour, WindowSetDarkTheme, WindowSetLightTheme, WindowSetSystemDefaultTheme } from '../wailsjs/runtime/runtime'
 import type { app, config, main, model, search, update } from '../wailsjs/go/models'
 import SettingsPanel from './components/SettingsPanel.vue'
@@ -10,6 +10,7 @@ import logo from './assets/logo.png'
 import UiIcon from './components/UiIcon.vue'
 import ItemContextMenu from './components/ItemContextMenu.vue'
 import { choiceRows, navigateChoices } from './navigation'
+import { createUpdater } from './updater'
 
 const query = ref('')
 const results = ref<search.Result[]>([])
@@ -19,7 +20,8 @@ const settings = ref<config.Config>()
 const status = ref<main.Status>()
 const settingsOpen = ref(false)
 const settingsTab = ref('常规')
-const updateInfo = ref<update.Info>()
+const updater = createUpdater({ check: CheckUpdate, install: InstallUpdate })
+const updateInfo = computed(() => updater.state.info)
 const error = ref('')
 const launching = ref(false)
 const visible = ref(true)
@@ -71,17 +73,21 @@ watch([theme, systemDark, settings], () => {
 const escapeHint = computed(() => query.value.length ? '清空' : '隐藏')
 const keyboardHelp = computed(() => `${isHome.value || gridResults.value ? '↑↓←→' : '↑↓'} 选择 · ${settings.value?.space_launch ? 'Enter/Space' : 'Enter'} 启动 · Esc ${escapeHint.value}`)
 
-async function updateResults() {
+async function updateResults(preserveSelection = false) {
   const request = ++sequence
+  const previousID = preserveSelection ? activeID.value : undefined
   try {
     if (isHome.value) {
       const data = await GetHome()
-      if (request === sequence) { home.value = data; selected.value = 0 }
+      if (request === sequence) { home.value = data; restoreSelection(previousID) }
     } else {
       const data = await Search(query.value)
-      if (request === sequence) { results.value = data; selected.value = 0 }
+      if (request === sequence) { results.value = data; restoreSelection(previousID) }
     }
   } catch (cause) { if (request === sequence) error.value = String(cause) }
+}
+function restoreSelection(previousID?: string) {
+  selected.value = Math.max(0, choices.value.findIndex(item => `app-${item.id}` === previousID))
 }
 async function updateStatus() {
   try { status.value = await GetStatus(); visible.value = status.value.visible } catch (cause) { error.value = String(cause) }
@@ -89,15 +95,10 @@ async function updateStatus() {
 async function show() {
   contextMenu.value = undefined
   visible.value = true
-  allSystemTools.value = false
-  settingsOpen.value = false
-  query.value = ''
-  error.value = ''
-  importing.value = false
-  // Focus as soon as the input is mounted; IPC/index reads must not delay typing.
+  // Hiding the native window must not navigate or unmount the current page.
   restoreSearchFocus()
-  void setImportMode(false)
-  await updateResults()
+  void SetImportMode(importing.value).catch(cause => { error.value = String(cause) })
+  if (!settingsOpen.value && !importing.value) await updateResults(true)
 }
 async function launch(index: number, admin = false) {
   const item = choices.value[index]
@@ -192,6 +193,7 @@ function focusSearch() {
   }
 }
 function keepSearchFocus(event: MouseEvent) {
+  if (event.target instanceof Element && getComputedStyle(event.target).getPropertyValue('--wails-draggable').trim() === 'drag') return
   if (event.target instanceof Element && event.target.closest('.item-context-menu')) return
   if (contextMenu.value) closeContextMenu()
   if (settingsOpen.value || importing.value || event.target === input.value) return
@@ -240,10 +242,11 @@ onMounted(async () => {
   window.addEventListener('blur', blur)
   window.addEventListener('focus', focus)
   disposers.push(EventsOn('launcher:shown', () => void show()))
-  disposers.push(EventsOn('launcher:hidden', () => { visible.value = false; importing.value = false; contextMenu.value = undefined; input.value?.blur() }))
+  disposers.push(EventsOn('launcher:hidden', () => { visible.value = false; contextMenu.value = undefined; input.value?.blur() }))
   disposers.push(EventsOn('index:changed', () => { void updateStatus(); void updateResults() }))
   disposers.push(EventsOn('settings:open', () => void openSettings()))
-  disposers.push(EventsOn('update:available', (info: update.Info) => { updateInfo.value = info }))
+  disposers.push(EventsOn('update:available', (info: update.Info) => { updater.state.info = info }))
+  disposers.push(EventsOn('update:progress', (percent: number) => { updater.state.progress = percent }))
   await loadSettings()
   OnFileDrop((_x, _y, paths) => { void addPaths(paths) }, false)
   await updateStatus()
@@ -257,11 +260,11 @@ onUnmounted(() => { systemTheme.removeEventListener('change', systemThemeChanged
   <!-- Native Show/Hide owns visibility; retain the painted surface between summons. -->
   <main :data-theme="theme" :aria-busy="launching" @mousedown.capture="keepSearchFocus" @focusout="restoreSearchFocus" @scroll.capture="closeContextMenu">
     <Transition name="panel" @after-enter="restoreSearchFocus">
-    <SettingsPanel v-if="settingsOpen && settings" :initial="settings" :initial-tab="settingsTab" @saved="saved" @close="settingsOpen = false" @manage="openCustomApps" @update="updateInfo = $event" />
+    <SettingsPanel v-if="settingsOpen && settings" :initial="settings" :initial-tab="settingsTab" :updater="updater" @saved="saved" @close="settingsOpen = false" @manage="openCustomApps" />
     <CustomAppsPanel v-else-if="importing" ref="customPanel" @close="setImportMode(false)" @changed="customChanged" />
     <div v-else class="launcher">
-      <header class="search-header">
-        <div class="brand-mark"><img class="brand" :src="logo" alt="Velo" width="36" height="36" /></div>
+      <header class="search-header window-drag-region" title="拖动顶部空白区域可移动窗口">
+        <div class="brand-mark"><img class="brand" :src="logo" alt="Velo" width="36" height="36" draggable="false" /></div>
         <div class="search-field"><UiIcon name="search" />
         <input ref="input" v-model="query" autofocus role="combobox" aria-label="搜索应用与系统功能" :aria-controls="isHome ? 'home-results' : 'app-results'" :aria-expanded="choices.length > 0" :aria-activedescendant="activeID" autocomplete="off" spellcheck="false" placeholder="搜索应用与系统功能…" /><kbd class="search-shortcut">搜索</kbd></div>
         <button class="icon-button" aria-label="设置 (Ctrl+,)" title="设置 (Ctrl+,)" @click="openSettings()"><UiIcon name="settings" /></button>

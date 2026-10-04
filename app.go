@@ -19,22 +19,23 @@ import (
 )
 
 type App struct {
-	mu              sync.Mutex
-	ctx             context.Context
-	logger          *slog.Logger
-	service         *core.Service
-	window          launcherWindow
-	key             *platform.Hotkey
-	keyError        string
-	tray            *platform.Tray
-	background      bool
-	diagnostics     bool
-	started         time.Time
-	clientReady     bool
-	exitRequested   bool
-	closing         bool
-	importMode      bool
-	hotkeyRecording bool
+	mu               sync.Mutex
+	ctx              context.Context
+	logger           *slog.Logger
+	service          *core.Service
+	window           launcherWindow
+	key              *platform.Hotkey
+	keyError         string
+	tray             *platform.Tray
+	background       bool
+	diagnostics      bool
+	started          time.Time
+	clientReady      bool
+	exitRequested    bool
+	closing          bool
+	importMode       bool
+	hotkeyRecording  bool
+	installingUpdate bool
 	// updates 只读缓存 GitHub release，测试可替换为本地服务器。
 	updates *update.Client
 }

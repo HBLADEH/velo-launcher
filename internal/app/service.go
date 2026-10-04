@@ -168,6 +168,17 @@ func (s *Service) Settings() config.Config {
 
 // DataDir 暴露数据目录，供更新下载等需要与索引缓存同处的调用方使用。
 func (s *Service) DataDir() string { return s.dir }
+
+func (s *Service) BackupDir() string { return filepath.Join(s.dir, "backups") }
+
+// BackupSettings shares the settings commit lock so a backup always captures
+// one complete saved configuration, without applying any unsaved UI changes.
+func (s *Service) BackupSettings() (string, error) {
+	s.commitMu.Lock()
+	defer s.commitMu.Unlock()
+	return config.Backup(filepath.Join(s.dir, "config.json"), s.BackupDir())
+}
+
 func (s *Service) SaveSettings(c config.Config) error {
 	c.CustomDirectories = slices.Clone(c.CustomDirectories)
 	if err := c.Validate(); err != nil {

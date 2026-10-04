@@ -10,7 +10,10 @@ import (
 
 const WindowClass = "VeloLauncherWindow"
 
-type DesktopWindow struct{ handle uintptr }
+type DesktopWindow struct {
+	handle     uintptr
+	positioned bool
+}
 type rect struct{ Left, Top, Right, Bottom int32 }
 type monitorInfo struct {
 	Size          uint32
@@ -34,7 +37,7 @@ func FindWindow() (*DesktopWindow, error) {
 		user32.NewProc("SetWindowLongPtrW").Call(h, ^uintptr(19), (style|0x80)&^0x40000)
 		user32.NewProc("SetWindowPos").Call(h, 0, 0, 0, 0, 0, 0x0027)
 	}
-	return &DesktopWindow{h}, nil
+	return &DesktopWindow{handle: h}, nil
 }
 func (w *DesktopWindow) Visible() bool {
 	v, _, _ := user32.NewProc("IsWindowVisible").Call(w.handle)
@@ -91,25 +94,45 @@ func (w *DesktopWindow) Resize(width, height int) {
 		dpi = 96
 	}
 	x, y, cx, cy := windowPlacement(info.Work, int32(width*int(dpi)/96), int32(height*int(dpi)/96))
+	var bounds rect
+	if ok, _, _ := user32.NewProc("GetWindowRect").Call(w.handle, uintptr(unsafe.Pointer(&bounds))); w.positioned && ok != 0 {
+		x, y, cx, cy = keepWindowPlacement(info.Work, bounds.Left, bounds.Top, cx, cy)
+	}
 	user32.NewProc("SetWindowPos").Call(w.handle, 0, uintptr(x), uintptr(y), uintptr(cx), uintptr(cy), 0x0014)
 }
 func (w *DesktopWindow) Show() {
-	// Use the monitor under the pointer and its work area, including taskbar
-	// exclusions and negative coordinates on secondary monitors.
-	var point struct{ X, Y int32 }
-	user32.NewProc("GetCursorPos").Call(uintptr(unsafe.Pointer(&point)))
-	packed := uint64(uint32(point.X)) | uint64(uint32(point.Y))<<32
-	monitor, _, _ := user32.NewProc("MonitorFromPoint").Call(uintptr(packed), 2)
+	// First show follows the pointer. Later shows retain the position chosen by
+	// dragging, clamped to the nearest remaining monitor if a display is removed.
+	monitor, _, _ := user32.NewProc("MonitorFromWindow").Call(w.handle, 2)
+	if !w.positioned {
+		var point struct{ X, Y int32 }
+		user32.NewProc("GetCursorPos").Call(uintptr(unsafe.Pointer(&point)))
+		packed := uint64(uint32(point.X)) | uint64(uint32(point.Y))<<32
+		monitor, _, _ = user32.NewProc("MonitorFromPoint").Call(uintptr(packed), 2)
+	}
 	info := monitorInfo{Size: uint32(unsafe.Sizeof(monitorInfo{}))}
 	user32.NewProc("GetMonitorInfoW").Call(monitor, uintptr(unsafe.Pointer(&info)))
 	var bounds rect
 	user32.NewProc("GetWindowRect").Call(w.handle, uintptr(unsafe.Pointer(&bounds)))
 	if info.Work.Right > info.Work.Left && info.Work.Bottom > info.Work.Top {
 		x, y, width, height := windowPlacement(info.Work, bounds.Right-bounds.Left, bounds.Bottom-bounds.Top)
-		user32.NewProc("SetWindowPos").Call(w.handle, ^uintptr(0), uintptr(x), uintptr(y), uintptr(width), uintptr(height), 0x0040)
+		if w.positioned {
+			x, y, width, height = keepWindowPlacement(info.Work, bounds.Left, bounds.Top, width, height)
+		}
+		if ok, _, _ := user32.NewProc("SetWindowPos").Call(w.handle, ^uintptr(0), uintptr(x), uintptr(y), uintptr(width), uintptr(height), 0x0040); ok != 0 {
+			w.positioned = true
+		}
 	}
 	user32.NewProc("ShowWindow").Call(w.handle, 9)
 	user32.NewProc("SetForegroundWindow").Call(w.handle)
+}
+
+func keepWindowPlacement(work rect, x, y, width, height int32) (int32, int32, int32, int32) {
+	width = min(max(1, width), work.Right-work.Left)
+	height = min(max(1, height), work.Bottom-work.Top)
+	x = min(max(work.Left, x), work.Right-width)
+	y = min(max(work.Top, y), work.Bottom-height)
+	return x, y, width, height
 }
 
 // Keep the entire launcher in the work area on small/high-DPI monitors.

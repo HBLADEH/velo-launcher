@@ -2,6 +2,26 @@ package platform
 
 import "testing"
 
+func TestDraggedWindowPositionSurvivesResizeAndRecall(t *testing.T) {
+	for _, tt := range []struct {
+		name               string
+		work, bounds, want rect
+	}{
+		{"unchanged", rect{0, 0, 1920, 1040}, rect{100, 70, 740, 730}, rect{100, 70, 740, 730}},
+		{"grow near bottom", rect{0, 0, 1920, 1040}, rect{100, 800, 740, 1460}, rect{100, 380, 740, 1040}},
+		{"left monitor", rect{-1920, -200, 0, 840}, rect{-1700, -100, -1060, 560}, rect{-1700, -100, -1060, 560}},
+		{"removed monitor", rect{0, 0, 1920, 1040}, rect{-1700, -100, -1060, 560}, rect{0, 0, 640, 660}},
+		{"small display", rect{0, 0, 600, 500}, rect{300, 200, 940, 860}, rect{0, 0, 600, 500}},
+	} {
+		t.Run(tt.name, func(t *testing.T) {
+			x, y, width, height := keepWindowPlacement(tt.work, tt.bounds.Left, tt.bounds.Top, tt.bounds.Right-tt.bounds.Left, tt.bounds.Bottom-tt.bounds.Top)
+			if got := (rect{x, y, x + width, y + height}); got != tt.want {
+				t.Fatalf("got %+v, want %+v", got, tt.want)
+			}
+		})
+	}
+}
+
 func TestFullscreenMonitorBounds(t *testing.T) {
 	monitor := rect{-1920, -200, 0, 880}
 	for _, tt := range []struct {
