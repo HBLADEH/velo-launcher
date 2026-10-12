@@ -20,7 +20,7 @@
 
 Velo is a local application launcher for **Windows 10 / 11 x64**, built with Go, Wails 2, Vue 3, and TypeScript. Open it with a global keyboard shortcut to search applications and access common Windows tools.
 
-> **0.9.7 is a preview release.** Release binaries are currently unsigned, and performance and long-term stability validation is ongoing. Only Windows is supported. The application UI is currently in Simplified Chinese; this page is an English translation of the primary Chinese README.
+> **0.9.8 is a preview release.** Release binaries are currently unsigned, and performance and long-term stability validation is ongoing. Only Windows is supported. The application UI is currently in Simplified Chinese; this page is an English translation of the primary Chinese README.
 
 ## Screenshots
 
@@ -39,7 +39,7 @@ Actual Velo 0.9.3 screenshots on Windows, showing the Chinese UI. Application li
 ## Features
 
 - **Keyboard controls**: open with a global shortcut, navigate with arrow keys, and launch with Enter. Supports hiding on focus loss and running in the system tray.
-- **Window and session**: drag the top logo, title, or empty header area to move the launcher. Hiding preserves the current page, unsaved settings, and update progress; the window keeps its chosen position during the current session.
+- **Window and session**: drag the top logo, title, or empty header area to move the launcher. Hiding preserves the current page, unsaved settings, and update progress; the window keeps its chosen position during the current session. A successful launch clears the search so you can type immediately the next time you open the launcher.
 - **Application search**: exact, prefix, substring, and fuzzy matching with single-character typo tolerance. Ranking considers launch frequency, recent use, and query history.
 - **Automatic indexing**: discovers apps in the Start menu, desktop, Windows Apps, and Program Files, with additional scan directories supported. Duplicate entries are merged; uninstallers, help tools, and updaters are hidden by default.
 - **Quick access**: pinned apps, frequently used apps, and Windows shortcuts on the home screen. System shortcuts support Chinese, English, pinyin, and abbreviation searches.

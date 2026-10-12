@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"golang.org/x/sys/windows"
 	"os"
+	"runtime"
 	"slices"
 	"unsafe"
 )
@@ -125,6 +126,32 @@ func (w *DesktopWindow) Show() {
 	}
 	user32.NewProc("ShowWindow").Call(w.handle, 9)
 	user32.NewProc("SetForegroundWindow").Call(w.handle)
+	w.focus()
+}
+
+func (w *DesktopWindow) focus() {
+	// SetFocus requires the caller and window to share an input queue. Hotkey
+	// and tray callbacks run on Go workers, while Wails owns the window thread.
+	runtime.LockOSThread()
+	defer runtime.UnlockOSThread()
+	caller := windows.GetCurrentThreadId()
+	owner, _, _ := user32.NewProc("GetWindowThreadProcessId").Call(w.handle, 0)
+	if owner == 0 {
+		return
+	}
+	if uintptr(caller) != owner {
+		// A worker may not have a message queue until its first User32 call.
+		var msg message
+		peekMessage.Call(uintptr(unsafe.Pointer(&msg)), 0, 0, 0, 0)
+		attach := user32.NewProc("AttachThreadInput")
+		if ok, _, _ := attach.Call(uintptr(caller), owner, 1); ok == 0 {
+			return
+		}
+		defer attach.Call(uintptr(caller), owner, 0)
+	}
+	// WM_SETFOCUS reaches Wails on the owning UI thread, where it restores
+	// WebView focus. Keep this synchronous so a later Hide cannot be undone.
+	user32.NewProc("SetFocus").Call(w.handle)
 }
 
 func keepWindowPlacement(work rect, x, y, width, height int32) (int32, int32, int32, int32) {

@@ -17,6 +17,7 @@ import (
 
 	core "velo-launcher/internal/app"
 	"velo-launcher/internal/config"
+	"velo-launcher/internal/history"
 	"velo-launcher/internal/indexer"
 	"velo-launcher/internal/model"
 	"velo-launcher/internal/platform"
@@ -28,6 +29,7 @@ import (
 type testWindow struct {
 	visible, active bool
 	hides           int
+	shows           int
 }
 
 func TestHiddenWindowDoesNotRestartAnActiveUpdate(t *testing.T) {
@@ -72,9 +74,103 @@ func TestHiddenWindowDoesNotRestartAnActiveUpdate(t *testing.T) {
 
 func (w *testWindow) Visible() bool   { return w.visible }
 func (w *testWindow) Active() bool    { return w.active }
-func (w *testWindow) Show()           { w.visible = true }
+func (w *testWindow) Show()           { w.visible = true; w.shows++ }
 func (w *testWindow) Hide()           { w.visible = false; w.hides++ }
 func (w *testWindow) Resize(int, int) {}
+
+func TestWindowShowEntrypoints(t *testing.T) {
+	for _, tt := range []struct {
+		name string
+		show func(*App)
+	}{
+		{"explicit show", (*App).Show},
+		{"global hotkey", (*App).Toggle},
+		{"tray settings", (*App).OpenSettings},
+	} {
+		t.Run(tt.name, func(t *testing.T) {
+			a, _ := backupTestApp(t)
+			w := &testWindow{}
+			a.window = w
+			tt.show(a)
+			if !w.visible || w.shows != 1 {
+				t.Fatalf("hidden launcher not shown: visible=%v shows=%d", w.visible, w.shows)
+			}
+		})
+	}
+}
+
+func TestShowAndSettingsReactivateVisibleWindow(t *testing.T) {
+	w := &testWindow{visible: true}
+	a := &App{window: w}
+	a.Show()
+	if !w.visible || w.shows != 1 {
+		t.Fatal("explicit show skipped an already visible launcher")
+	}
+	a.OpenSettings()
+	if w.shows != 2 {
+		t.Fatal("opening settings did not activate the visible launcher")
+	}
+	a.closing = true
+	a.Show()
+	a.Toggle()
+	a.OpenSettings()
+	if w.shows != 2 || w.hides != 0 {
+		t.Fatal("closed launcher changed visibility")
+	}
+	// External callbacks may arrive before native setup finishes.
+	a = &App{}
+	a.Show()
+	a.Toggle()
+	a.OpenSettings()
+}
+
+func TestLaunchHidesBeforeOpeningAndRestoresOnlyOnFailure(t *testing.T) {
+	for _, fails := range []bool{false, true} {
+		t.Run(fmt.Sprintf("fails=%t", fails), func(t *testing.T) {
+			dir := t.TempDir()
+			item := model.AppItem{ID: "test-app", Name: "Test App", Path: filepath.Join(dir, "test.exe")}
+			if err := storage.Write(filepath.Join(dir, "index.json"), indexer.Cache{Version: 1, Apps: []model.AppItem{item}}); err != nil {
+				t.Fatal(err)
+			}
+			logger := slog.New(slog.NewTextHandler(io.Discard, nil))
+			service, err := core.New(dir, logger)
+			if err != nil {
+				t.Fatal(err)
+			}
+			a := NewApp(logger, service, false, false, time.Now())
+			w := &testWindow{visible: true}
+			a.window = w
+			err = a.launch(item.ID, "original query", func(got model.AppItem) error {
+				if got.ID != item.ID || w.visible || w.hides != 1 {
+					t.Fatal("launcher was not hidden before opening the selected app")
+				}
+				if fails {
+					return fmt.Errorf("launch failed")
+				}
+				return nil
+			})
+			if fails {
+				if err == nil || !w.visible || w.shows != 1 {
+					t.Fatalf("failed launch not restored: error=%v visible=%v shows=%d", err, w.visible, w.shows)
+				}
+				if _, err := os.Stat(filepath.Join(dir, "history.json")); !os.IsNotExist(err) {
+					t.Fatal("failed launch recorded history")
+				}
+				return
+			}
+			if err != nil || w.visible || w.shows != 0 {
+				t.Fatalf("successful launch resummoned window: error=%v visible=%v shows=%d", err, w.visible, w.shows)
+			}
+			var entries map[string]history.Entry
+			if err := storage.Read(filepath.Join(dir, "history.json"), &entries); err != nil {
+				t.Fatal(err)
+			}
+			if entry := entries[item.ID]; entry.Count != 1 || entry.Queries["original query"] != 1 {
+				t.Fatalf("successful launch lost the original query: %+v", entry)
+			}
+		})
+	}
+}
 
 func TestDefaultWindowCloseAndFocusBehavior(t *testing.T) {
 	w := &testWindow{visible: true, active: true}

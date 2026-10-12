@@ -51,6 +51,8 @@ const choices = computed<model.AppItem[]>(() => isHome.value ? sections.value.fl
   gridResults.value ? searchSections.value.flatMap(section => section.items) : results.value)
 const navigationRows = computed(() => choiceRows(isHome.value ? sections.value : gridResults.value ? searchSections.value : [{ items: results.value, offset: 0 }], isHome.value || gridResults.value ? 6 : 1))
 let sequence = 0
+let focusRequest = 0
+let focusTimer: ReturnType<typeof setTimeout> | undefined
 const disposers: (() => void)[] = []
 const activeID = computed(() => choices.value[selected.value] ? `app-${choices.value[selected.value].id}` : undefined)
 const theme = computed(() => settings.value?.theme ?? document.documentElement.dataset.theme ?? 'system')
@@ -104,7 +106,13 @@ async function launch(index: number, admin = false) {
   const item = choices.value[index]
   if (!item || launching.value) return
   launching.value = true
-  try { await (admin ? LaunchAsAdmin : Launch)(item.id, query.value) }
+  try {
+    await (admin ? LaunchAsAdmin : Launch)(item.id, query.value)
+    query.value = ''
+    results.value = []
+    selected.value = 0
+    error.value = ''
+  }
   catch (cause) { error.value = String(cause) }
   finally { launching.value = false }
 }
@@ -187,10 +195,13 @@ function keydown(event: KeyboardEvent) {
     event.preventDefault(); void launch(selected.value)
   } else if (event.key === 'Enter') { event.preventDefault(); void launch(selected.value) }
 }
+function canFocusSearch() {
+  return visible.value && !settingsOpen.value && !importing.value && !contextMenu.value
+}
 function focusSearch() {
-  if (visible.value && !settingsOpen.value && !importing.value && !contextMenu.value && document.hasFocus()) {
-    input.value?.focus({ preventScroll: true })
-  }
+  if (!canFocusSearch() || !document.hasFocus() || !input.value) return false
+  input.value.focus({ preventScroll: true })
+  return document.activeElement === input.value
 }
 function keepSearchFocus(event: MouseEvent) {
   if (event.target instanceof Element && getComputedStyle(event.target).getPropertyValue('--wails-draggable').trim() === 'drag') return
@@ -201,16 +212,37 @@ function keepSearchFocus(event: MouseEvent) {
   event.preventDefault()
   focusSearch()
 }
-function restoreSearchFocus() { void nextTick(focusSearch) }
-function blur() { closeContextMenu(); void Blur() }
-function focus() { restoreSearchFocus() }
+function cancelSearchFocus() {
+  focusRequest++
+  clearTimeout(focusTimer)
+  focusTimer = undefined
+}
+function restoreSearchFocus() {
+  cancelSearchFocus()
+  const request = focusRequest
+  let attempts = 0
+  function retry() {
+    if (request !== focusRequest) return
+    focusTimer = undefined
+    if (!canFocusSearch()) return
+    // Native activation and WebView focus can arrive after launcher:shown.
+    if (focusSearch() || ++attempts >= 20) return
+    focusTimer = setTimeout(retry, 50)
+  }
+  void nextTick(retry)
+}
+function blur() { closeContextMenu(); cancelSearchFocus(); void Blur() }
+function focus() {
+  // A second process can raise the native window without launcher:shown.
+  visible.value = true
+  restoreSearchFocus()
+}
 async function saved(value: config.Config) {
   settings.value = value
   settingsOpen.value = false
   await updateStatus()
   await updateResults()
-  await nextTick()
-  input.value?.focus()
+  restoreSearchFocus()
 }
 // dev 模式下 Wails 的 IPC 桥在页面加载后才注册 window.go，页面首个绑定调用
 // 可能过早失败；生产构建使用 WebView2 原生 IPC，不受影响。这里短暂重试，
@@ -242,7 +274,7 @@ onMounted(async () => {
   window.addEventListener('blur', blur)
   window.addEventListener('focus', focus)
   disposers.push(EventsOn('launcher:shown', () => void show()))
-  disposers.push(EventsOn('launcher:hidden', () => { visible.value = false; contextMenu.value = undefined; input.value?.blur() }))
+  disposers.push(EventsOn('launcher:hidden', () => { visible.value = false; contextMenu.value = undefined; cancelSearchFocus(); input.value?.blur() }))
   disposers.push(EventsOn('index:changed', () => { void updateStatus(); void updateResults() }))
   disposers.push(EventsOn('settings:open', () => void openSettings()))
   disposers.push(EventsOn('update:available', (info: update.Info) => { updater.state.info = info }))
@@ -253,7 +285,7 @@ onMounted(async () => {
   if (visible.value) await show()
   await FrontendReady()
 })
-onUnmounted(() => { systemTheme.removeEventListener('change', systemThemeChanged); OnFileDropOff(); disposers.forEach(dispose => dispose()); window.removeEventListener('keydown', keydown); window.removeEventListener('blur', blur); window.removeEventListener('focus', focus) })
+onUnmounted(() => { cancelSearchFocus(); systemTheme.removeEventListener('change', systemThemeChanged); OnFileDropOff(); disposers.forEach(dispose => dispose()); window.removeEventListener('keydown', keydown); window.removeEventListener('blur', blur); window.removeEventListener('focus', focus) })
 </script>
 
 <template>

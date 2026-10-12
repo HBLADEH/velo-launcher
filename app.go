@@ -85,8 +85,7 @@ func (a *App) ready(ctx context.Context) {
 		a.window.Hide()
 		wruntime.EventsEmit(ctx, "launcher:hidden")
 	} else {
-		a.window.Show()
-		wruntime.EventsEmit(ctx, "launcher:shown")
+		a.showLocked()
 	}
 	a.logger.Info("window ready", "visible", a.window.Visible(), "hotkey_error", a.keyError, "tray", a.tray != nil)
 }
@@ -131,15 +130,20 @@ func (a *App) Toggle() {
 		if a.service.Settings().DisableHotkeyFullscreen && platform.ForegroundFullscreen() {
 			return
 		}
-		a.window.Show()
-		wruntime.EventsEmit(a.ctx, "launcher:shown")
+		a.showLocked()
 	}
 }
 func (a *App) Show() {
 	a.mu.Lock()
 	defer a.mu.Unlock()
-	if a.window != nil && !a.closing {
-		a.window.Show()
+	a.showLocked()
+}
+func (a *App) showLocked() {
+	if a.window == nil || a.closing {
+		return
+	}
+	a.window.Show()
+	if a.ctx != nil {
 		wruntime.EventsEmit(a.ctx, "launcher:shown")
 	}
 }
@@ -152,10 +156,13 @@ func (a *App) OpenSettings() {
 		return
 	}
 	if !a.window.Visible() {
+		a.showLocked()
+	} else {
 		a.window.Show()
-		wruntime.EventsEmit(a.ctx, "launcher:shown")
 	}
-	wruntime.EventsEmit(a.ctx, "settings:open")
+	if a.ctx != nil {
+		wruntime.EventsEmit(a.ctx, "settings:open")
+	}
 }
 func (a *App) Hide() {
 	a.mu.Lock()
