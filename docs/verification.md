@@ -4,6 +4,8 @@
 
 ## 已取得的证据
 
+- 2026-10-12 发布 [v0.9.8](https://github.com/HBLADEH/velo-launcher/releases/tag/v0.9.8) 预览版，标签指向 `37bdf39`，修复成功启动后搜索内容残留和呼出搜索框未聚焦的问题。原生窗口通过同步焦点通知恢复 WebView 输入，前端补充延迟激活重试与重复启动可见状态同步；设置、导入和右键菜单打开时保留其焦点。本地 `verify.ps1 -SkipBuild` 与标签 CI [38257241328](https://github.com/HBLADEH/velo-launcher/actions/runs/38257241328) 均通过，包括 20 项前端测试、Go vet / 全部 Go 测试、Windows 程序和 NSIS 安装包构建。产物为 `velo-launcher.exe`（13430272 字节）、安装包（7009040 字节）及校验清单（186 字节）；两份程序的文件版本为 `0.9.8.0`，本地复算及 GitHub 资产 digest 均匹配 SHA-256 清单，详见 `docs/releases/v0.9.8.md`。未运行安装包或替换本机程序，快捷键、托盘、管理员启动和重复启动的完整真实桌面交互仍待手动回归。
+
 - 2026-10-03 发布 [v0.9.6](https://github.com/HBLADEH/velo-launcher/releases/tag/v0.9.6) 预览版，标签指向 `44c14f7`，包含网格布局、候选项右键菜单、词首排序、更新代理与 MuMu 组件过滤。本地 `verify.ps1 -SkipBuild`、main CI `37125211789` 和标签 CI [37125214254](https://github.com/HBLADEH/velo-launcher/actions/runs/37125214254) 均通过。产物为 `velo-launcher.exe`（13414912 字节）、安装包（7001816 字节）及校验清单（186 字节）；文件版本资源为 `0.9.6.0`，本地复算及 GitHub 资产 digest 均匹配 SHA-256 清单，详见 `docs/releases/v0.9.6.md`。已用更新客户端联网验证：以 0.9.5 为当前版本可识别 0.9.6、两个程序与校验文件，线上清单匹配下载的 CI 程序；以 0.9.6 为当前版本不提示更新（使用已认证 GitHub 请求及本机系统代理）。未安装或替换本机正在运行的程序，真实 UAC 与完整升级流程仍待人工回归。
 
 - 2026-10-03 修复 MuMu 搜索混入虚拟机后台组件：默认辅助项过滤会隐藏 Program Files / 自定义扫描目录中 `Hypervisor` 目录下直接发现的 exe，保留快捷方式与显式导入、固定的入口；过滤作用于已有缓存，关闭过滤立即恢复缓存中的组件。回归测试覆盖组件名称、目录大小写与边界、快捷方式、启动参数、缓存加载与开关切换。本机只读缓存检查及真实目录扫描后，`mumu` 均仅返回“#0 MuMu安卓设备”和“MuMu模拟器”；后者按既有去重规则保留桌面快捷方式。未写入用户索引或启动 MuMu。`./scripts/verify.ps1 -SkipBuild` 通过（前端 lint / 测试 / 类型检查 / 构建、Go vet / 全部测试）；未替换运行中的程序或发布版本。
