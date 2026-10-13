@@ -107,11 +107,12 @@ async function launch(index: number, admin = false) {
   if (!item || launching.value) return
   launching.value = true
   try {
-    await (admin ? LaunchAsAdmin : Launch)(item.id, query.value)
+    const pending = (admin ? LaunchAsAdmin : Launch)(item.id, query.value)
     query.value = ''
     results.value = []
     selected.value = 0
     error.value = ''
+    await pending
   }
   catch (cause) { error.value = String(cause) }
   finally { launching.value = false }

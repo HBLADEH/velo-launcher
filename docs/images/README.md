@@ -21,3 +21,9 @@ These are actual Windows application captures of Velo 0.9.3, taken on 2026-09-28
 `config-backup-preview.jpg` 为当前源码的“设置 → 备份”页面在本地浏览器中的真实渲染截图，使用 640 × 660 页面尺寸。预览连接真实 Go 配置服务，配置与备份均位于独立测试目录，截图展示实际生成文件后的成功提示。此图用于验证页面布局及备份交互，不是原生桌面窗口截图，也不包含用户配置数据。
 
 `config-backup-preview.jpg` captures the current settings backup UI in a local browser, connected to the real Go configuration service with isolated test data. It shows a successful backup at 640 × 660; it is a browser preview, not a native desktop-window capture.
+
+## 空回收站信息提示（2026-10-14）
+
+`empty-recycle-bin-notice.jpg` 为当前 Go 源码的空回收站信息提示，使用真实 Windows `MessageBoxW` 显示并捕获。原生提示函数在独立测试中调用，截图展示信息图标、“回收站已为空，无需清理。”及单个“确定”按钮；实测按空格关闭后正常返回。测试没有调用清空接口，也没有删除文件。
+
+`empty-recycle-bin-notice.jpg` captures the current Go informational message box with a single OK button. Pressing Space dismissed the notice successfully; the test did not invoke the empty operation or delete files.

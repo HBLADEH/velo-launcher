@@ -117,7 +117,7 @@ async function launcher(overrides = {}) {
 }
 
 for (const admin of [false, true]) {
-  test(`${admin ? 'administrator' : 'normal'} launch clears the search only after successful completion`, async t => {
+  test(`${admin ? 'administrator' : 'normal'} launch clears the search immediately after dispatch`, async t => {
     const pending = deferred()
     const app = await launcher({ launch: () => pending.promise })
     t.after(() => app.dispose())
@@ -125,9 +125,14 @@ for (const admin of [false, true]) {
     await settle()
     app.state.selected.value = 2
     const task = app.state.launch(2, admin)
-    assert.equal(app.state.query.value, 'application')
-    assert.equal(app.state.selected.value, 2)
+    assert.deepEqual(app.launchCalls, [{ admin, args: ['app-2', 'application'] }])
+    assert.equal(app.state.query.value, '')
+    assert.equal(app.state.selected.value, 0)
+    assert.deepEqual(app.state.results.value, [])
     assert.equal(app.state.launching.value, true)
+    await app.emit('launcher:hidden')
+    await app.emit('launcher:shown')
+    assert.equal(app.state.isHome.value, true)
     pending.resolve()
     await task
     await settle()
@@ -140,19 +145,51 @@ for (const admin of [false, true]) {
     assert.equal(app.state.isHome.value, true)
   })
 
-  test(`${admin ? 'administrator' : 'normal'} launch failure preserves the search and selection`, async t => {
-    const app = await launcher({ launch: async () => { throw new Error('Launch failed') } })
+  test(`${admin ? 'administrator' : 'normal'} launch failure reports the error without restoring the old search`, async t => {
+    const pending = deferred()
+    const app = await launcher({ launch: () => pending.promise })
     t.after(() => app.dispose())
     app.state.query.value = 'application'
     await settle()
     app.state.selected.value = 2
-    await app.state.launch(2, admin)
-    assert.equal(app.state.query.value, 'application')
-    assert.equal(app.state.selected.value, 2)
-    assert.deepEqual(app.state.results.value, matches)
+    const task = app.state.launch(2, admin)
+    assert.equal(app.state.query.value, '')
+    await settle()
+    pending.reject(new Error('Launch failed'))
+    await task
+    await settle()
+    assert.deepEqual(app.launchCalls, [{ admin, args: ['app-2', 'application'] }])
+    assert.equal(app.state.query.value, '')
+    assert.equal(app.state.selected.value, 0)
+    assert.deepEqual(app.state.results.value, [])
     assert.match(app.state.error.value, /Launch failed/)
     assert.equal(app.state.launching.value, false)
   })
+
+  for (const fails of [false, true]) {
+    test(`${admin ? 'administrator' : 'normal'} launch ${fails ? 'failure' : 'completion'} preserves a newer search`, async t => {
+      const pending = deferred()
+      const app = await launcher({ launch: () => pending.promise })
+      t.after(() => app.dispose())
+      app.state.query.value = 'application'
+      await settle()
+      const task = app.state.launch(2, admin)
+      await settle()
+      app.state.query.value = 'new query'
+      await settle()
+      app.state.selected.value = 1
+      if (fails) pending.reject(new Error('Launch failed'))
+      else pending.resolve()
+      await task
+      await settle()
+      assert.deepEqual(app.launchCalls, [{ admin, args: ['app-2', 'application'] }])
+      assert.equal(app.state.query.value, 'new query')
+      assert.equal(app.state.selected.value, 1)
+      assert.deepEqual(app.state.results.value, matches)
+      assert.equal(app.state.launching.value, false)
+      if (fails) assert.match(app.state.error.value, /Launch failed/)
+    })
+  }
 }
 
 test('a shown event preceding native focus still focuses search without a second focus event', async t => {
