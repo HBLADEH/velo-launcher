@@ -4,7 +4,7 @@
 
 ## 已取得的证据
 
-- 2026-10-14 修复空回收站报错及启动搜索清空时机。清空前通过实际 Go 接口查询回收站，32 位结构为 20 字节、64 位为 24 字节；两种架构的只读查询均通过。已为空时显示单按钮原生信息提示，实测空格关闭后正常返回，截图见 `docs/images/empty-recycle-bin-notice.jpg`。普通与管理员启动均在指令发出后立即清空，失败仍报告错误，后续返回不会覆盖新查询。本地 `verify.ps1 -SkipBuild` 通过，包括 24 项前端测试、Go vet 和全部 Go 测试；回收站检测及错误分支有回归测试，原生信息提示验证未调用清空接口或删除文件。
+- 2026-10-14 发布 [v0.9.9](https://github.com/HBLADEH/velo-launcher/releases/tag/v0.9.9) 预览版，标签指向 `77796c3`，修复空回收站报错及启动搜索清空时机。32/64 位 Go 原生回收站查询均已只读验证；已为空时显示单按钮原生信息提示，实测空格关闭后正常返回，截图见 `docs/images/empty-recycle-bin-notice.jpg`。普通与管理员启动均在指令发出后立即清空，失败仍报告错误，后续返回不会覆盖新查询。本地 `verify.ps1 -SkipBuild`、main CI [38441767288](https://github.com/HBLADEH/velo-launcher/actions/runs/38441767288) 和标签 CI [38441766847](https://github.com/HBLADEH/velo-launcher/actions/runs/38441766847) 均通过，包括 24 项前端测试、Go vet / 全部 Go 测试、程序与 NSIS 安装包构建。产物为 `velo-launcher.exe`（13432320 字节）、安装包（7010399 字节）及校验清单（186 字节）；两份程序的文件版本均为 `0.9.9.0`，本地复算及三个 GitHub 资产 digest 均匹配，详见 `docs/releases/v0.9.9.md`。原生信息提示验证未调用清空接口或删除文件，发布安装包未运行。
 
 - 2026-10-12 发布 [v0.9.8](https://github.com/HBLADEH/velo-launcher/releases/tag/v0.9.8) 预览版，标签指向 `37bdf39`，修复成功启动后搜索内容残留和呼出搜索框未聚焦的问题。原生窗口通过同步焦点通知恢复 WebView 输入，前端补充延迟激活重试与重复启动可见状态同步；设置、导入和右键菜单打开时保留其焦点。本地 `verify.ps1 -SkipBuild` 与标签 CI [38257241328](https://github.com/HBLADEH/velo-launcher/actions/runs/38257241328) 均通过，包括 20 项前端测试、Go vet / 全部 Go 测试、Windows 程序和 NSIS 安装包构建。产物为 `velo-launcher.exe`（13430272 字节）、安装包（7009040 字节）及校验清单（186 字节）；两份程序的文件版本为 `0.9.8.0`，本地复算及 GitHub 资产 digest 均匹配 SHA-256 清单，详见 `docs/releases/v0.9.8.md`。未运行安装包或替换本机程序，快捷键、托盘、管理员启动和重复启动的完整真实桌面交互仍待手动回归。
 
