@@ -30,7 +30,7 @@ const themes = [
 ]
 const resultLayouts = [
   { value: 'list', label: '列表', description: '逐行显示应用名称与路径' },
-  { value: 'grid', label: '网格', description: '图标在上、名称在下，分组显示搜索结果与匹配结果' },
+  { value: 'grid', label: '网格', description: '图标在上、名称在下，应用与系统快捷按搜索排名统一排列' },
 ]
 const canSave = computed(() => !saving.value && !recording.value && !backingUp.value && !updateState.installing)
 async function save() {

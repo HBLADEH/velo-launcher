@@ -314,9 +314,6 @@ main[data-theme="dark"] .error { color: #ffa9a0; }
 
 /* Search tiles follow the same six columns as quick launch. */
 .search-grid-content { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: 18px 16px; }
-.search-grid-section { margin-bottom: 20px; }
-.search-grid-section:last-child { margin-bottom: 0; }
-.search-grid-section h2 { margin: 0 4px 10px; font-size: 13px; font-weight: 600; }
 .search-grid { gap: 8px; }
 .search-grid .tile { animation: none; border-radius: 10px; }
 .search-grid .tile-launch { height: 98px; padding: 10px 5px 8px; gap: 8px; }

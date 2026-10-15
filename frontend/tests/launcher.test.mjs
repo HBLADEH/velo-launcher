@@ -116,6 +116,34 @@ async function launcher(overrides = {}) {
   }
 }
 
+test('merged search grid preserves ranking and selection across sources and layout changes', async t => {
+  const app = await launcher()
+  t.after(() => app.dispose())
+  app.state.query.value = 'application'
+  await settle()
+  const ranked = Array.from({ length: 8 }, (_, index) => ({
+    id: `ranked-${index}`, name: `Application ${index}`, source: index % 2 ? 'Custom' : 'System',
+  }))
+  app.state.results.value = ranked
+  app.state.settings.value.result_layout = 'grid'
+  await settle()
+
+  assert.deepEqual(app.state.choices.value.map(item => item.id), ranked.map(item => item.id))
+  assert.equal(app.state.activeID.value, 'app-ranked-0', 'the top ranked system tool stays selected first')
+  app.state.selected.value = navigateChoices(app.state.navigationRows.value, 1, 'ArrowDown')
+  assert.equal(app.state.activeID.value, 'app-ranked-7', 'the next row continues across application sources')
+  app.state.selected.value = navigateChoices(app.state.navigationRows.value, 7, 'ArrowLeft')
+  assert.equal(app.state.activeID.value, 'app-ranked-6')
+
+  app.state.settings.value.result_layout = 'list'
+  await settle()
+  assert.equal(app.state.activeID.value, 'app-ranked-6', 'switching layouts preserves the selected item')
+  app.state.settings.value.result_layout = 'grid'
+  await settle()
+  await app.state.launch(app.state.selected.value)
+  assert.deepEqual(app.launchCalls, [{ admin: false, args: ['ranked-6', 'application'] }])
+})
+
 for (const admin of [false, true]) {
   test(`${admin ? 'administrator' : 'normal'} launch clears the search immediately after dispatch`, async t => {
     const pending = deferred()

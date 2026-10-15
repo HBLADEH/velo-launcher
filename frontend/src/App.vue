@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
-import { Blur, CheckUpdate, FrontendReady, GetHome, GetSettings, GetStatus, Hide, InstallUpdate, Launch, LaunchAsAdmin, OpenInstallDirectory, Quit, RefreshIndex, Resize, Search, SetImportMode, SetPinned } from '../wailsjs/go/main/App'
+import { Blur, CheckUpdate, FrontendReady, GetHome, GetSettings, GetStatus, Hide, InstallUpdate, Launch, LaunchAsAdmin, OpenInstallDirectory, RefreshIndex, Resize, Search, SetImportMode, SetPinned } from '../wailsjs/go/main/App'
 import { EventsOn, OnFileDrop, OnFileDropOff, WindowSetBackgroundColour, WindowSetDarkTheme, WindowSetLightTheme, WindowSetSystemDefaultTheme } from '../wailsjs/runtime/runtime'
 import type { app, config, main, model, search, update } from '../wailsjs/go/models'
 import SettingsPanel from './components/SettingsPanel.vue'
@@ -39,17 +39,8 @@ const sections = computed(() => [
   { title: '常用应用', items: home.value?.frequent ?? [], offset: home.value?.pinned.length ?? 0 },
   { title: '系统快捷', items: allSystemTools.value ? (home.value?.tools ?? []) : (home.value?.tools ?? []).slice(0, 12), offset: (home.value?.pinned.length ?? 0) + (home.value?.frequent.length ?? 0) },
 ].filter(section => section.title !== '已固定' || section.items.length > 0))
-const searchSections = computed(() => {
-  const apps = results.value.filter(item => item.source !== 'System')
-  const tools = results.value.filter(item => item.source === 'System')
-  return [
-    { title: '搜索结果', items: apps, offset: 0 },
-    { title: '匹配结果', items: tools, offset: apps.length },
-  ].filter(section => section.items.length)
-})
-const choices = computed<model.AppItem[]>(() => isHome.value ? sections.value.flatMap(section => section.items) :
-  gridResults.value ? searchSections.value.flatMap(section => section.items) : results.value)
-const navigationRows = computed(() => choiceRows(isHome.value ? sections.value : gridResults.value ? searchSections.value : [{ items: results.value, offset: 0 }], isHome.value || gridResults.value ? 6 : 1))
+const choices = computed<model.AppItem[]>(() => isHome.value ? sections.value.flatMap(section => section.items) : results.value)
+const navigationRows = computed(() => choiceRows(isHome.value ? sections.value : [{ items: results.value, offset: 0 }], isHome.value || gridResults.value ? 6 : 1))
 let sequence = 0
 let focusRequest = 0
 let focusTimer: ReturnType<typeof setTimeout> | undefined
@@ -266,7 +257,7 @@ watch(allSystemTools, () => { selected.value = 0 })
 watch(settingsOpen, open => { if (open && importing.value) void setImportMode(false) })
 watch([settingsOpen, importing], restoreSearchFocus, { flush: 'post' })
 watch([results, home, isHome, settingsOpen, error, importing, gridResults], () => {
-  const resultHeight = gridResults.value ? Math.max(160, navigationRows.value.length * 106 + searchSections.value.length * 34 + 32) : Math.max(1, results.value.length) * 54
+  const resultHeight = gridResults.value ? Math.max(160, navigationRows.value.length * 106 + 32) : Math.max(1, results.value.length) * 54
   void Resize(settingsOpen.value || importing.value || isHome.value ? 660 : Math.min(720, 156 + resultHeight + (error.value ? 60 : 0)))
 })
 onMounted(async () => {
@@ -320,18 +311,15 @@ onUnmounted(() => { cancelSearchFocus(); systemTheme.removeEventListener('change
           </section>
         </div>
       </div>
-      <div v-else-if="gridResults" id="app-results" role="listbox" aria-label="应用" class="search-grid-content">
-        <section v-for="section in searchSections" :key="section.title" class="search-grid-section" role="group" :aria-label="section.title">
-          <h2>{{ section.title }}</h2>
-          <div class="home-grid search-grid">
-            <div v-for="(item, index) in section.items" :key="item.id" class="tile" :class="{ selected: selected === section.offset + index }" @mousemove="!contextMenu && (selected = section.offset + index)" @contextmenu.prevent="openContextMenu($event, item, section.offset + index)">
-              <button :id="`app-${item.id}`" class="tile-launch" role="option" :aria-selected="selected === section.offset + index" :title="`${item.name}\n${item.exec_path || item.path || item.description}`" @click="launch(section.offset + index)">
-                <LauncherIcon :item="item" /><span>{{ item.name }}</span>
-              </button>
-              <button class="pin-button" :class="{ pinned: item.pinned }" :disabled="pinning" :aria-label="`${item.pinned ? '取消固定' : '固定'} ${item.name}`" :title="item.pinned ? '取消首页固定' : '固定到首页'" @click="togglePin(item)"><UiIcon :name="item.pinned ? 'starFilled' : 'star'" /></button>
-            </div>
+      <div v-else-if="gridResults" id="app-results" role="listbox" aria-label="搜索结果" class="search-grid-content">
+        <div class="home-grid search-grid">
+          <div v-for="(item, index) in results" :key="item.id" class="tile" :class="{ selected: selected === index }" @mousemove="!contextMenu && (selected = index)" @contextmenu.prevent="openContextMenu($event, item, index)">
+            <button :id="`app-${item.id}`" class="tile-launch" role="option" :aria-selected="selected === index" :title="`${item.name}\n${item.exec_path || item.path || item.description}`" @click="launch(index)">
+              <LauncherIcon :item="item" /><span>{{ item.name }}</span>
+            </button>
+            <button class="pin-button" :class="{ pinned: item.pinned }" :disabled="pinning" :aria-label="`${item.pinned ? '取消固定' : '固定'} ${item.name}`" :title="item.pinned ? '取消首页固定' : '固定到首页'" @click="togglePin(item)"><UiIcon :name="item.pinned ? 'starFilled' : 'star'" /></button>
           </div>
-        </section>
+        </div>
         <p v-if="!results.length" class="empty">{{ status?.scanning ? '正在建立应用索引…' : '没有找到匹配的应用' }}</p>
       </div>
       <ul v-else id="app-results" role="listbox" aria-label="应用" class="results">
@@ -352,7 +340,6 @@ onUnmounted(() => { cancelSearchFocus(); systemTheme.removeEventListener('change
         <button v-if="updateInfo?.available" class="text-button update-badge" :title="`发现新版本 v${updateInfo.version}，点击查看更新`" @click="openSettings('关于')"><UiIcon name="arrowUp" />v{{ updateInfo.version }}</button>
         <button v-if="!isHome" class="text-button" @click="openCustomApps">自定义应用</button>
         <button class="text-button" title="刷新索引" aria-label="刷新索引" :class="{ spinning: status?.scanning }" @click="RefreshIndex"><UiIcon name="refresh" /></button>
-        <button class="text-button" @click="Quit">退出</button>
       </footer>
     </div>
     </Transition>
