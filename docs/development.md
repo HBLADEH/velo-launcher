@@ -100,6 +100,8 @@ gh release create vX.Y.Z --prerelease --title "Velo vX.Y.Z" --notes-file docs/re
 
 自动更新读取 release 列表中最新的非草稿版本，项目至今只发布 prerelease，所以不能使用会忽略预发布版本的 `/releases/latest`。更新需要的资产固定为 `velo-launcher.exe`、`*-installer.exe` 与 `SHA256SUMS.txt`，缺一即拒绝自动安装。
 
+API 返回限流 `403` / `429` 后，更新器在 `Retry-After` / `X-RateLimit-Reset` 指定的时间前暂停 API 请求（缺少有效时间时暂停 5 分钟），改读同仓库的 `releases.atom`，按 tag 比较版本，并从选中版本的 `releases/expanded_assets/<tag>` 提取实际下载链接。备用通道复用原 HTTP 客户端与系统代理，不携带 API Token；仍由原安装流程强制校验 `SHA256SUMS.txt`。
+
 ## 进度与实测
 
 完整范围和逐项待验收项见 [实施清单](implementation.md)，原始规划见 [计划书](../velo-launcher_README.md)。目前主要功能已实现并完成首轮自动化 / 桌面验证，**尚未完成全部性能和稳定性验收**。

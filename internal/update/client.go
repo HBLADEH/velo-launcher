@@ -8,26 +8,35 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"net/url"
 	"os"
 	"path/filepath"
+	"strconv"
 	"strings"
+	"sync"
 	"time"
 
 	"velo-launcher/internal/version"
 )
 
-// Client 读取 GitHub release。BaseURL 可替换，测试与镜像都不需要联网访问 GitHub。
+// Client 读取 GitHub release，API 限流时改读公开发布页。
+// BaseURL 与 WebURL 可替换，测试与镜像都不需要联网访问 GitHub。
 type Client struct {
 	Repository string
 	BaseURL    string
+	WebURL     string
 	Token      string
 	HTTP       *http.Client
+
+	mu         sync.Mutex
+	apiRetryAt time.Time
 }
 
 func NewClient() *Client {
 	return &Client{
 		Repository: version.Repository,
 		BaseURL:    "https://api.github.com",
+		WebURL:     "https://github.com",
 		HTTP:       newHTTPClient(),
 	}
 }
@@ -63,6 +72,12 @@ func (c *Client) Check(ctx context.Context, current Version) (Info, error) {
 	if !found {
 		return info, nil
 	}
+	if best.fromFeed {
+		best.Assets, err = c.publicAssets(ctx, best.TagName)
+		if err != nil {
+			return info, c.publicCheckError(err)
+		}
+	}
 	portable, hasPortable := best.Find(PortableName)
 	installer, hasInstaller := best.Installer()
 	if !hasPortable && !hasInstaller {
@@ -78,6 +93,12 @@ func (c *Client) Check(ctx context.Context, current Version) (Info, error) {
 }
 
 func (c *Client) releases(ctx context.Context) ([]Release, error) {
+	c.mu.Lock()
+	limited := time.Now().Before(c.apiRetryAt)
+	c.mu.Unlock()
+	if limited {
+		return c.limitedReleases(ctx)
+	}
 	endpoint := fmt.Sprintf("%s/repos/%s/releases?per_page=20", c.baseURL(), c.Repository)
 	request, err := http.NewRequestWithContext(ctx, http.MethodGet, endpoint, nil)
 	if err != nil {
@@ -90,13 +111,52 @@ func (c *Client) releases(ctx context.Context) ([]Release, error) {
 	}
 	defer response.Body.Close()
 	if response.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("更新服务器返回 %s：%s", response.Status, apiMessage(response.Body))
+		message := apiMessage(response.Body)
+		if response.StatusCode == http.StatusTooManyRequests ||
+			(response.StatusCode == http.StatusForbidden &&
+				(response.Header.Get("X-RateLimit-Remaining") == "0" || strings.Contains(strings.ToLower(message), "rate limit"))) {
+			c.deferAPI(response.Header)
+			response.Body.Close()
+			return c.limitedReleases(ctx)
+		}
+		return nil, fmt.Errorf("更新服务器返回 %s：%s", response.Status, message)
 	}
 	var releases []Release
 	if err := json.NewDecoder(io.LimitReader(response.Body, 4<<20)).Decode(&releases); err != nil {
 		return nil, fmt.Errorf("无法解析更新信息：%w", err)
 	}
 	return releases, nil
+}
+
+// 限流期间直接读公开发布页，避免手动检查和安装前复查反复请求 API。
+func (c *Client) deferAPI(headers http.Header) {
+	now := time.Now()
+	retryAt := now.Add(5 * time.Minute)
+	if reset, err := strconv.ParseInt(headers.Get("X-RateLimit-Reset"), 10, 64); err == nil && reset > now.Unix() {
+		retryAt = time.Unix(reset, 0)
+	}
+	if delay, err := strconv.ParseInt(headers.Get("Retry-After"), 10, 64); err == nil && delay > 0 && delay <= 86400 {
+		retryAt = now.Add(time.Duration(delay) * time.Second)
+	} else if date, err := http.ParseTime(headers.Get("Retry-After")); err == nil && date.After(now) {
+		retryAt = date
+	}
+	c.mu.Lock()
+	if retryAt.After(c.apiRetryAt) {
+		c.apiRetryAt = retryAt
+	}
+	c.mu.Unlock()
+}
+
+func (c *Client) limitedReleases(ctx context.Context) ([]Release, error) {
+	releases, err := c.publicReleases(ctx)
+	if err != nil {
+		return nil, c.publicCheckError(err)
+	}
+	return releases, nil
+}
+
+func (c *Client) publicCheckError(err error) error {
+	return fmt.Errorf("GitHub API 请求已限流，发布页备用检查失败；请稍后重试、切换代理节点，或前往 %s/%s/releases 手动下载：%w", c.webURL(), c.Repository, err)
 }
 
 // Download 把 url 写入 dest 并返回 SHA-256。先写临时文件，成功后原子替换，
@@ -225,7 +285,9 @@ func networkError(action string, err error) error {
 func (c *Client) headers(request *http.Request) {
 	request.Header.Set("Accept", "application/vnd.github+json")
 	request.Header.Set("User-Agent", "Velo-Launcher/"+version.Number)
-	if c.Token != "" {
+	// API 凭据只发给配置的 API 服务，不附带到公开发布页或下载主机。
+	api, err := url.Parse(c.baseURL())
+	if c.Token != "" && err == nil && request.URL.Scheme == api.Scheme && strings.EqualFold(request.URL.Host, api.Host) {
 		request.Header.Set("Authorization", "Bearer "+c.Token)
 	}
 }

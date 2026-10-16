@@ -123,13 +123,13 @@ func TestCheckIgnoresSameOrNewerCurrentAndDrafts(t *testing.T) {
 func TestCheckReportsServerErrors(t *testing.T) {
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusForbidden)
-		fmt.Fprint(w, `{"message":"API rate limit exceeded for 1.2.3.4"}`)
+		fmt.Fprint(w, `{"message":"Repository access forbidden"}`)
 	}))
 	defer server.Close()
 	client := testClient(server)
 	current, _ := ParseVersion("0.8.0")
 	_, err := client.Check(context.Background(), current)
-	if err == nil || !strings.Contains(err.Error(), "rate limit") {
+	if err == nil || !strings.Contains(err.Error(), "Repository access forbidden") {
 		t.Fatalf("错误信息应包含服务器说明: %v", err)
 	}
 }

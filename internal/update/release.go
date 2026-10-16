@@ -16,6 +16,7 @@ type Release struct {
 	Prerelease  bool    `json:"prerelease"`
 	PublishedAt string  `json:"published_at"`
 	Assets      []Asset `json:"assets"`
+	fromFeed    bool
 }
 
 const (

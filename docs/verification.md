@@ -4,6 +4,8 @@
 
 ## 已取得的证据
 
+- 2026-10-17 修复更新检查遇到 GitHub API 限流时报错的问题：本机匿名 API 请求已复现 `403 API rate limit exceeded`，公开 `releases.atom` 与资产列表均返回 200。新增回归覆盖 403 / 429、限流冷却与恢复、预发布版本选择、发布说明纯文本转换、实际下载与校验、异常发布页及缺失资产。`verify.ps1 -SkipBuild` 全部通过，Windows x64 生产构建产物为 `build/bin/velo-launcher-rate-limit-fix.exe`。联网探针强制 API 返回 403 后，通过真实公开发布信息从 0.9.9 识别到 0.9.10，读取三个发布文件及有效 SHA-256 清单，0.9.10 自身不提示更新。未替换本机运行实例，未发布新版本；本机缺少 C 编译器，未执行 Go race 检测。
+
 - 2026-10-16 发布 [v0.9.10](https://github.com/HBLADEH/velo-launcher/releases/tag/v0.9.10) 预览版，标签指向 `eda6a9f`，移除主菜单右下角的退出按钮，并将网格中的应用与系统快捷统一按搜索排名展示。本地 `verify.ps1 -SkipBuild`、main CI [38780670315](https://github.com/HBLADEH/velo-launcher/actions/runs/38780670315) 和标签 CI [38780676169](https://github.com/HBLADEH/velo-launcher/actions/runs/38780676169) 均通过，包括 25 项前端测试、Go vet / 全部 Go 测试、程序与 NSIS 安装包构建。回归测试覆盖混合来源排名、跨行导航、布局切换保留选中项和实际启动目标。产物为 `velo-launcher.exe`（13431296 字节）、安装包（7010072 字节）及校验清单（186 字节）；两份程序的 Windows 固定文件版本均为 `0.9.10.0`，本地复算及三个 GitHub 资产 digest 均匹配，详见 `docs/releases/v0.9.10.md`。安装包未运行。
 
 - 2026-10-14 发布 [v0.9.9](https://github.com/HBLADEH/velo-launcher/releases/tag/v0.9.9) 预览版，标签指向 `77796c3`，修复空回收站报错及启动搜索清空时机。32/64 位 Go 原生回收站查询均已只读验证；已为空时显示单按钮原生信息提示，实测空格关闭后正常返回，截图见 `docs/images/empty-recycle-bin-notice.jpg`。普通与管理员启动均在指令发出后立即清空，失败仍报告错误，后续返回不会覆盖新查询。本地 `verify.ps1 -SkipBuild`、main CI [38441767288](https://github.com/HBLADEH/velo-launcher/actions/runs/38441767288) 和标签 CI [38441766847](https://github.com/HBLADEH/velo-launcher/actions/runs/38441766847) 均通过，包括 24 项前端测试、Go vet / 全部 Go 测试、程序与 NSIS 安装包构建。产物为 `velo-launcher.exe`（13432320 字节）、安装包（7010399 字节）及校验清单（186 字节）；两份程序的文件版本均为 `0.9.9.0`，本地复算及三个 GitHub 资产 digest 均匹配，详见 `docs/releases/v0.9.9.md`。原生信息提示验证未调用清空接口或删除文件，发布安装包未运行。
