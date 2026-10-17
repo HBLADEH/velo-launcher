@@ -13,6 +13,7 @@
 <p align="center">
   <a href="https://github.com/HBLADEH/velo-launcher/releases">下载</a> ·
   <a href="#快速上手">快速上手</a> ·
+  <a href="#velo-是怎么实现的">实现原理</a> ·
   <a href="docs/user-guide.md">用户指南</a> ·
   <a href="CONTRIBUTING.md">参与贡献</a> ·
   <a href="https://github.com/HBLADEH/velo-launcher/issues">问题反馈</a>
@@ -91,6 +92,35 @@ Velo 是面向 **Windows 10 / 11 x64** 的本地应用启动器，基于 Go、Wa
 默认情况下，空格键用于启动选中应用。如需输入 `visual studio` 等带空格的查询，请在 **设置 → 常规** 中关闭“按空格键启动选中应用”。
 
 应用添加、固定、更新机制、数据目录及常见问题详见 [用户指南](docs/user-guide.md)。
+
+## Velo 是怎么实现的？
+
+把 Velo 想成一个本地的 **“应用小工坊”**：先把电脑里的应用整理成目录，你输入名字时从目录里找，按回车后交给 Windows 打开。
+
+<p align="center">
+  <img src="docs/diagrams/velo-how-it-works.png" alt="Velo 卡通实现图：Vue 界面经 Wails 向 Go 传递操作，再由 Windows 执行；下方依次展示建立应用目录、在内存中搜索和启动后记录历史" width="960" />
+</p>
+
+### 四个角色，分工合作
+
+| 角色 | 好理解的分工 | 对应实现 |
+| --- | --- | --- |
+| 🖥️ 界面 | 接住你的输入，展示应用、设置和操作结果 | Vue 3 + TypeScript，[App.vue](frontend/src/App.vue) 与 [components/](frontend/src/components/) |
+| ✉️ 传话员 | 把界面操作交给 Go，再把结果和变化送回来 | Wails 2 自动生成的 [wailsjs/](frontend/wailsjs/) 绑定，以及运行时事件 |
+| 🧑‍🔧 调度员 | 决定该搜索、刷新目录、保存设置，还是启动应用 | [app.go](app.go) 协调桌面操作，[Service](internal/app/service.go) 组织业务与数据 |
+| 🪟 执行员 | 和 Windows 打交道：发现应用、打开程序、注册快捷键、管理托盘 | [internal/platform/](internal/platform/) |
+
+### 跟着一次使用，看看代码怎么跑
+
+1. **📚 建目录：先认识电脑里有哪些应用。** 从 [main.go](main.go) 启动，`Service` 先读取已有配置、索引缓存、应用库和历史，再开始后台扫描。[indexer](internal/indexer/indexer.go) 配合 Windows 平台层发现开始菜单、桌面、Program Files、自定义目录和 Windows Apps 中的应用，去重、过滤辅助项，并通过 [icon](internal/icon/cache.go) 缓存图标。各来源统一成 [AppItem](internal/model/app.go)，合并自定义应用与固定记录后，建立内存中的搜索目录。系统快捷入口由 [systemtools](internal/systemtools/catalog.go) 的内置目录提供。
+2. **🔎 找应用：输入 `code`，在目录里找 VS Code。** `App.vue` 通过 Wails 调用 `App.Search`，再进入 `Service.Search`。[search](internal/search/search.go) 在内存中匹配名称、关键词、拼音和缩写，也支持模糊匹配；[history](internal/history/history.go) 提供启动频率、最近使用和同一查询的历史，让结果更符合使用习惯。
+3. **🚀 启动：按下 Enter，交给 Windows 打开。** 界面传入应用 ID 和查询词，`App.Launch` 找到对应应用，再调用 `platform.Launch`。Windows 接受启动请求后，`Service.Record` 保存历史；后续搜索和首页常用应用就会参考这笔记录。界面在发出启动指令时立即清空搜索。
+
+**目录在后台更新，搜索随输入进行。** 有缓存时先使用缓存；默认每 30 分钟或手动触发刷新。目录变化后，Go 发出 `index:changed` 事件，界面重新获取结果。每次输入查询只查内存，扫描工作由后台任务完成。
+
+设置、索引、历史和应用库分别保存在 `%LOCALAPPDATA%\Velo` 下的 `config.json`、`index.json`、`history.json`、`application-library.json`，图标缓存在 `cache/icons/`。保存 JSON 时，[storage](internal/storage/json.go) 先写同目录临时文件，再替换旧文件。
+
+**打包时把界面装进程序。** Vite 将 Vue 界面构建到 `frontend/dist/`，`main.go` 使用 Go 的 `embed` 将它嵌入可执行文件；Wails 通过 WebView2 展示界面，并连接前面的 Go 方法与事件。应用更新由 [update.go](update.go) 和 [internal/update/](internal/update/) 负责：检查 GitHub Releases，下载并校验 SHA-256，备份配置后交给 Windows 执行升级。
 
 ## 开发与构建
 

@@ -13,6 +13,7 @@
 <p align="center">
   <a href="https://github.com/HBLADEH/velo-launcher/releases">Download</a> ·
   <a href="#quick-start">Quick start</a> ·
+  <a href="#how-velo-works">How it works</a> ·
   <a href="docs/user-guide.md">User guide (中文)</a> ·
   <a href="CONTRIBUTING.md">Contribute</a> ·
   <a href="https://github.com/HBLADEH/velo-launcher/issues">Report an issue</a>
@@ -93,6 +94,35 @@ Space launches the selected app by default. To enter queries containing spaces, 
 To keep your current settings, click **立即备份** under **Settings → 备份** (Backup). **打开备份目录** opens `%LOCALAPPDATA%\Velo\backups`. Automatic updates also back up settings before installation and stop if the backup fails. Upgrades preserve existing settings; new options receive defaults when loaded. Unsaved edits, custom apps, pins, and history are not included in the settings backup.
 
 The [user guide (Chinese)](docs/user-guide.md) covers custom apps, pinning, updates, storage, and troubleshooting. Updates can be disabled under **Settings → 关于** (About). Downloads are checked against the release's `SHA256SUMS.txt`; automatic installation stops if verification is unavailable or fails. Upgrading a copy installed in Program Files may require UAC confirmation.
+
+## How Velo works
+
+Think of Velo as a local **app workshop**: build a catalog of installed applications, look up a name as you type, and ask Windows to open the selected app when you press Enter.
+
+<p align="center">
+  <img src="docs/diagrams/velo-how-it-works.png" alt="Cartoon implementation overview with Chinese labels: Vue passes user actions through Wails to Go and Windows; three panels show catalog building, in-memory search, and launching followed by history recording" width="960" />
+</p>
+
+### Four helpers, each with a job
+
+| Helper | Responsibility | Implementation |
+| --- | --- | --- |
+| 🖥️ UI | Accept input and display apps, settings, and results | Vue 3 + TypeScript, [App.vue](frontend/src/App.vue), and [components/](frontend/src/components/) |
+| ✉️ Messenger | Pass UI actions to Go and return results and change notifications | Wails 2 generated [wailsjs/](frontend/wailsjs/) bindings and runtime events |
+| 🧑‍🔧 Coordinator | Organize searches, catalog refreshes, settings saves, and launch requests | [app.go](app.go) coordinates desktop operations; [Service](internal/app/service.go) manages business logic and data |
+| 🪟 Operator | Discover and launch apps, register global shortcuts, and manage the tray through Windows | [internal/platform/](internal/platform/) |
+
+### Follow one use of the launcher
+
+1. **📚 Build the catalog.** Starting from [main.go](main.go), `Service` loads settings, the cached index, the application library, and history, then starts a background scan. [indexer](internal/indexer/indexer.go) works with the Windows platform layer to discover apps in the Start menu, desktop, Program Files, custom directories, and Windows Apps, merge duplicates, filter helper entries, and cache icons through [icon](internal/icon/cache.go). Sources share the [AppItem](internal/model/app.go) model. The service combines them with custom entries and pins to build the in-memory search catalog. Windows shortcuts come from the built-in [systemtools](internal/systemtools/catalog.go) catalog.
+2. **🔎 Find an app.** Typing `code` makes `App.vue` call `App.Search` through Wails, which delegates to `Service.Search`. [search](internal/search/search.go) matches names, keywords, pinyin, and abbreviations, with fuzzy matching available. [history](internal/history/history.go) supplies launch frequency, recency, and past choices for the same query to personalize ranking.
+3. **🚀 Launch and remember.** Pressing Enter passes the app ID and query to `App.Launch`, which resolves the item and calls `platform.Launch`. Once Windows accepts the launch request, `Service.Record` saves its history for future searches and home-screen suggestions. The UI clears the search as soon as it sends the launch request.
+
+**Refresh the catalog in the background; search it as you type.** Existing cached results are available first. Refreshes run every 30 minutes by default or on request. Go emits `index:changed` when the catalog changes, prompting the UI to reload results. Each query searches memory while scanning runs in a background task.
+
+Settings, the index, history, and the application library live under `%LOCALAPPDATA%\Velo` in `config.json`, `index.json`, `history.json`, and `application-library.json`; cached icons live in `cache/icons/`. [storage](internal/storage/json.go) saves JSON through a temporary file in the same directory before replacing the previous file.
+
+**The UI ships inside the executable.** Vite builds Vue into `frontend/dist/`, and `main.go` embeds those files with Go's `embed` package. Wails displays them through WebView2 and connects the Go methods and events described above. [update.go](update.go) and [internal/update/](internal/update/) check GitHub Releases, download and verify SHA-256 checksums, back up settings, and delegate installation to Windows.
 
 ## Development and builds
 
