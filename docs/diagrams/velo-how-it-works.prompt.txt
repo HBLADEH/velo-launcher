@@ -1,0 +1,30 @@
+Use case: infographic-diagram
+Asset type: a polished cartoon implementation explainer for the Velo Windows launcher GitHub README.
+Primary request: Explain how this real project is implemented in an approachable hand-drawn comic, readable by a developer in 30 seconds. Simplify the architecture into four helpers and three everyday steps. Landscape canvas, about 3:2 aspect ratio, high-resolution crisp Chinese typography.
+
+Style/medium: friendly hand-drawn editorial cartoon, rounded anthropomorphic software objects with tiny expressive faces, clean dark ink outlines, soft blue, mint and warm yellow accents, bright paper background, generous whitespace, restrained marker texture. The characters must explain a responsibility rather than decorate unrelated parts. Warm, clear, technically accurate.
+
+Composition:
+Top: large heading exactly "Velo 的应用小工坊".
+Under it, one spacious left-to-right row of four characters connected by simple arrows. Each character has a large Chinese role label and smaller technology name:
+1. A friendly computer display with a search field: "界面" and "Vue".
+2. A small cheerful messenger carrying an envelope between the display and Go helper: "传话" and "Wails".
+3. A friendly blue coordinator holding a task clipboard: "调度" and "Go".
+4. A friendly desktop window with work gloves opening an app: "执行" and "Windows".
+Arrows: Vue to Wails to Go, then Go to Windows. These arrows mean a user's command is forwarded to the coordinator and then executed. Do not draw a web server, Internet cloud, or database server.
+
+Below, three equal-width comic panels with clear numbered titles and generous text space:
+Panel 1 title exactly "1 建目录".
+Draw a small scout gathering application cards from a Start menu folder, a desktop shortcut, and an application folder, arranging them into a neat local card catalog.
+Only supporting labels: "indexer" and "扫描 · 去重 · 缓存".
+Panel 2 title exactly "2 找应用".
+Draw a magnifying-glass helper finding the card "VS Code" in that card catalog when handed a small query card "code"; a little history notebook helps rank the selected card.
+Only supporting labels: "search + history" and "内存查找 · 历史排序".
+Panel 3 title exactly "3 启动".
+Draw a large Enter key leading to a Windows helper opening the chosen application, followed by a small notebook receiving a check mark.
+Only supporting labels: "platform" and "启动成功 → 记历史".
+
+Bottom: one concise hand-drawn ribbon with the exact text "先读本地缓存，后台再刷新目录".
+
+Text constraints: Render Chinese accurately and legibly, with clear typed-looking hand-lettered Chinese. Use only the exact quoted text and the listed technology labels; do not invent extra captions, labels, code, badges, slogans, or UI content. Titles and all supporting labels must be readable when the image is displayed at 900 pixels wide. Keep panel reading order unambiguous.
+Technical constraints: All application discovery, search, ranking, usage history, and launch are local. Wails connects Vue with Go. Go dispatches actual operating-system work to Windows. Search reads a previously built in-memory catalog, not a disk scan for each keypress. Record history after a successful launch request. This is a conceptual illustration, not an application screenshot. No update network, no plugin system, no cloud sync, no performance claims, no watermark.
