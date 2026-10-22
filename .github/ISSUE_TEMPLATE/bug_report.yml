@@ -1,0 +1,63 @@
+name: 缺陷报告 / Bug report
+description: 报告无法启动、搜索异常、快捷键或更新等问题。也可使用英文填写。
+title: "[缺陷] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢帮助改进 Velo。请先搜索已有问题，并尽量提供可复现的操作步骤。
+        中文、英文均可填写。Chinese and English reports are welcome.
+  - type: input
+    id: version
+    attributes:
+      label: Velo 版本 / Velo version
+      description: 在“设置 → 关于”中查看。
+      placeholder: 例如 0.9.10
+    validations:
+      required: true
+  - type: input
+    id: windows
+    attributes:
+      label: Windows 版本 / Windows version
+      placeholder: 例如 Windows 11 24H2，或 Windows 10 22H2
+    validations:
+      required: true
+  - type: dropdown
+    id: distribution
+    attributes:
+      label: 使用方式 / Distribution
+      options:
+        - 安装版 / Installer
+        - 免安装版 / Standalone
+        - 本地源码构建 / Built from source
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 复现步骤 / Steps to reproduce
+      description: 从打开 Velo 开始，说明输入内容、按键或点击操作。
+      placeholder: |
+        1. 按 Alt+Space 呼出 Velo
+        2. 输入……
+        3. 按下或点击……
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 预期结果 / Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: 实际结果 / Actual behavior
+      description: 如有错误提示，请附上完整文字。
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: 截图或日志 / Screenshots or logs
+      description: 日志位于 %LOCALAPPDATA%\Velo\logs。分享前请移除用户名、个人路径和敏感信息。

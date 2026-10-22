@@ -3,7 +3,7 @@
 </p>
 
 <h1 align="center">Velo</h1>
-<p align="center"><strong>Fast. Light. Ready.</strong><br />按下快捷键，找到应用，即刻启动。</p>
+<p align="center"><strong>按下快捷键，即刻开启所想。</strong><br /><sub>Fast. Light. Ready.</sub></p>
 <p align="center"><strong>简体中文</strong> · <a href="README.en.md">English</a></p>
 <p align="center">
   <a href="https://github.com/HBLADEH/velo-launcher/actions/workflows/ci.yml"><img src="https://github.com/HBLADEH/velo-launcher/actions/workflows/ci.yml/badge.svg" alt="Windows 构建状态" /></a>
@@ -19,23 +19,36 @@
   <a href="https://github.com/HBLADEH/velo-launcher/issues">问题反馈</a>
 </p>
 
-Velo 是面向 **Windows 10 / 11 x64** 的本地应用启动器，基于 Go、Wails 2、Vue 3 和 TypeScript 构建。通过全局快捷键唤起窗口，搜索应用、访问常用工具，用键盘完成日常启动操作。
+Velo 是一款面向 **Windows 10 / 11 x64** 的中文应用启动器。按下 `Alt+Space`，输入名称找到应用或 Windows 工具，再按 `Enter` 启动；常用应用、系统快捷和首页固定项集中在一个窗口中。
+
+系统快捷支持中文、英文、拼音与缩写搜索，界面提供列表与网格、浅色与深色主题。设置、索引和使用记录保存在本机。项目以中文文档与使用体验为主，同时提供 [English README](README.en.md)。
 
 > 当前版本为 **0.9.10 预览版**，发布文件暂未签名，性能与长期稳定性仍在验证中。目前仅支持 Windows，软件界面为简体中文。
 
 ## 界面预览
 
-以下为 Velo 0.9.3 在 Windows 上的实际运行截图，展示中文界面。应用列表随本机安装的软件和使用记录变化。
+以下为 2026-10-23 更新的 Windows 实机截图，展示当前版本的中文界面。应用列表与搜索结果来自维护者的实际使用环境。
 
 <p align="center">
-  <img src="docs/images/home-light.jpg" alt="Velo 浅色首页，展示常用应用与系统快捷入口" width="640" />
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/images/home-dark.png" />
+    <source media="(prefers-color-scheme: light)" srcset="docs/images/home-light.png" />
+    <img src="docs/images/home-light.png" alt="Velo 中文首页：常用应用与 Windows 系统快捷入口，提供浅色和深色主题" width="640" />
+  </picture>
 </p>
-<p align="center"><em>首页：集中访问常用应用和 Windows 工具。</em></p>
+<p align="center"><em>首页：常用应用与 Windows 工具，随时呼出、即刻启动。</em><br /><a href="docs/images/home-light.png">查看浅色首页</a> · <a href="docs/images/home-dark.png">查看深色首页</a></p>
 
-| 搜索应用 | 外观设置 |
+| 列表搜索 | 网格搜索 |
 | --- | --- |
-| ![输入 code 后的真实应用搜索结果](docs/images/search.jpg) | ![Velo 外观设置与主题选择](docs/images/appearance.jpg) |
-| 输入关键词，选择结果即可启动。 | 支持浅色、深色和跟随系统主题。 |
+| ![输入 code 后的列表搜索，首项为 Visual Studio Code](docs/images/search-list.png) | ![输入 qk 后的统一网格，同时展示清空回收站、Quicker 和 QuickerStarter](docs/images/search-grid.png) |
+| 显示应用名称与路径，方向键选择、Enter 启动。 | 应用与系统快捷按搜索排名统一排列，支持四个方向键选择。 |
+
+| 右键操作 | 外观设置 |
+| --- | --- |
+| ![Visual Studio Code 的右键菜单：打开、打开安装目录、使用管理员权限打开和置顶](docs/images/context-menu.png) | ![外观设置中的主题与候选项排列选项](docs/images/appearance.png) |
+| 打开安装目录、以管理员权限启动，或置顶到首页。 | 选择浅色、深色或跟随系统主题，切换列表与网格。 |
+
+[自定义应用与配置备份](docs/user-guide.md)的操作截图见用户指南，原图及拍摄说明见[截图说明](docs/images/README.md)。
 
 ## 主要功能
 
@@ -79,7 +92,7 @@ Velo 是面向 **Windows 10 / 11 x64** 的本地应用启动器，基于 Go、Wa
 | 操作 | 快捷键或入口 |
 | --- | --- |
 | 显示 / 隐藏启动器 | `Alt+Space`（可修改） |
-| 选择上 / 下一个结果 | `↑` / `↓` |
+| 选择结果 | `↑` / `↓`；首页与网格也支持 `←` / `→` |
 | 启动选中应用 | `Enter`；默认也支持 `Space` |
 | 清空输入；输入为空时隐藏窗口 | `Esc` |
 | 打开设置 | `Ctrl+,` 或齿轮按钮 |
@@ -87,7 +100,7 @@ Velo 是面向 **Windows 10 / 11 x64** 的本地应用启动器，基于 Go、Wa
 | 刷新索引 | 窗口底部刷新按钮或设置 → 索引 |
 | 备份配置 | 设置 → 备份 → 立即备份 |
 | 检查更新 | 设置 → 关于 |
-| 完全退出 | 窗口底部“退出”或托盘右键菜单 |
+| 完全退出 | 通知区域的 Velo 托盘图标 → 右键 → 退出 |
 
 默认情况下，空格键用于启动选中应用。如需输入 `visual studio` 等带空格的查询，请在 **设置 → 常规** 中关闭“按空格键启动选中应用”。
 
@@ -177,7 +190,7 @@ Velo 当前专注于 Windows 本地应用搜索与启动，尚未提供插件或
 
 ## 参与贡献
 
-欢迎提交缺陷报告、功能建议、文档改进和 Pull Request。开始前请阅读 [贡献指南](CONTRIBUTING.md)，了解开发验证流程和提交建议。
+欢迎使用中文提交缺陷报告、功能建议、文档改进和 Pull Request，也接受英文反馈。开始前请阅读 [贡献指南](CONTRIBUTING.md)，了解开发验证流程和提交建议。
 
 报告问题请前往 [Issues](https://github.com/HBLADEH/velo-launcher/issues)，附上 Windows 版本、Velo 版本、复现步骤、预期与实际结果。分享日志或截图前，请移除个人路径及其他敏感信息。
 

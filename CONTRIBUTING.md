@@ -4,7 +4,7 @@
 
 ## 提交问题与建议
 
-欢迎通过 [Issues](https://github.com/HBLADEH/velo-launcher/issues) 报告缺陷或提出建议。提交前请搜索已有问题，避免重复。
+欢迎通过 [Issues](https://github.com/HBLADEH/velo-launcher/issues) 报告缺陷或提出建议。项目以中文交流为主，也接受英文反馈。提交前请搜索已有问题，避免重复；新建 Issue 时可选择中文缺陷报告或功能建议表单，也可以直接新建空白 Issue。
 
 缺陷报告请包含：
 
@@ -34,7 +34,7 @@
 
 ## English
 
-Search existing [issues](https://github.com/HBLADEH/velo-launcher/issues) before opening a new one. Bug reports should include the Windows and Velo versions, distribution type, reproduction steps, expected and actual behavior, and relevant screenshots or log excerpts. Logs are stored in `%LOCALAPPDATA%\Velo\logs`; remove personal information before sharing. For substantial changes, discuss the scope in an issue first.
+Chinese is the project's primary working language; English reports and contributions are also welcome. Search existing [issues](https://github.com/HBLADEH/velo-launcher/issues) before opening a new one. You can use the Chinese issue forms or open a blank issue in English. Bug reports should include the Windows and Velo versions, distribution type, reproduction steps, expected and actual behavior, and relevant screenshots or log excerpts. Logs are stored in `%LOCALAPPDATA%\Velo\logs`; remove personal information before sharing. For substantial changes, discuss the scope in an issue first.
 
 Fork the repository, create a focused branch, and follow the [development guide (Chinese)](docs/development.md). Add appropriate tests for behavior changes and screenshots for UI changes. Run `./scripts/verify.ps1 -SkipBuild`; use the full script for packaging changes or `-Installer` for installer changes (requires NSIS). Describe the problem, resulting behavior, validation, and limitations in your PR.
 
