@@ -19,23 +19,36 @@
   <a href="https://github.com/HBLADEH/velo-launcher/issues">Report an issue</a>
 </p>
 
-Velo is a local application launcher for **Windows 10 / 11 x64**, built with Go, Wails 2, Vue 3, and TypeScript. Open it with a global keyboard shortcut to search applications and access common Windows tools.
+Velo is a local application launcher for **Windows 10 / 11 x64**, with a Simplified Chinese interface. Press `Alt+Space`, type an app or Windows tool name, and press `Enter` to launch it. Frequently used apps, Windows shortcuts, and pinned items share one window.
+
+Windows shortcuts support Chinese, English, pinyin, and abbreviation searches. Choose a list or icon grid and a light or dark theme; settings, the index, and usage history stay on your computer. The project primarily serves Chinese-speaking users; this English README is a companion to the [primary Chinese documentation](README.md).
 
 > **0.9.10 is a preview release.** Release binaries are currently unsigned, and performance and long-term stability validation is ongoing. Only Windows is supported. The application UI is currently in Simplified Chinese; this page is an English translation of the primary Chinese README.
 
 ## Screenshots
 
-Actual Velo 0.9.3 screenshots on Windows, showing the Chinese UI. Application lists vary with installed software and local usage history.
+Actual Windows captures updated on 2026-10-23, showing the current Chinese UI. App lists and search results reflect the maintainer's installed software and usage history.
 
 <p align="center">
-  <img src="docs/images/home-light.jpg" alt="Velo light home screen with frequently used apps and Windows shortcuts" width="640" />
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/images/home-dark.png" />
+    <source media="(prefers-color-scheme: light)" srcset="docs/images/home-light.png" />
+    <img src="docs/images/home-light.png" alt="Velo Chinese home screen with frequently used apps and Windows shortcuts, available in light and dark themes" width="640" />
+  </picture>
 </p>
-<p align="center"><em>Home: quick access to frequently used apps and Windows tools.</em></p>
+<p align="center"><em>Home: quick access to frequently used apps and Windows tools.</em><br /><a href="docs/images/home-light.png">View light theme</a> · <a href="docs/images/home-dark.png">View dark theme</a></p>
 
-| Application search | Appearance settings |
+| List search | Grid search |
 | --- | --- |
-| ![Actual search results for code](docs/images/search.jpg) | ![Velo appearance settings and theme selector](docs/images/appearance.jpg) |
-| Enter a query, select a result, and launch. | Light, dark, and system themes are available. |
+| ![List results for code, with Visual Studio Code selected](docs/images/search-list.png) | ![A unified grid for qk, showing Empty Recycle Bin, Quicker, and QuickerStarter](docs/images/search-grid.png) |
+| View app names and paths, select with arrow keys, and launch with Enter. | Apps and Windows shortcuts share one ranked grid with four-direction navigation. |
+
+| Context menu | Appearance settings |
+| --- | --- |
+| ![Visual Studio Code context menu with launch, installation directory, administrator launch, and pin actions](docs/images/context-menu.png) | ![Appearance settings with theme and result-layout selectors](docs/images/appearance.png) |
+| Open the installation directory, run as administrator, or pin to home. | Choose light, dark, or system theme and switch between list and grid. |
+
+The [user guide (Chinese)](docs/user-guide.md) includes custom-app and configuration-backup screenshots. See the [screenshot notes](docs/images/README.md) for capture details.
 
 ## Features
 
@@ -79,7 +92,7 @@ Enable **全屏时禁止快捷键呼出** to suppress the shortcut while the for
 | Action | Shortcut or location |
 | --- | --- |
 | Show / hide the launcher | `Alt+Space` (configurable) |
-| Select previous / next result | `↑` / `↓` |
+| Select a result | `↑` / `↓`; home and grid also support `←` / `→` |
 | Launch the selected app | `Enter`; `Space` is also enabled by default |
 | Clear the query; hide if already empty | `Esc` |
 | Open settings | `Ctrl+,` or the gear button |
@@ -87,7 +100,7 @@ Enable **全屏时禁止快捷键呼出** to suppress the shortcut while the for
 | Refresh the index | Footer refresh button, or Settings → 索引 |
 | Back up settings | Settings → 备份 → 立即备份 |
 | Check for updates | Settings → 关于 |
-| Quit completely | Footer 退出 button, or the tray context menu |
+| Quit completely | Right-click the Velo notification-area icon → 退出 (Quit) |
 
 Space launches the selected app by default. To enter queries containing spaces, such as `visual studio`, turn off **按空格键启动选中应用** under **Settings → 常规** (General).
 
@@ -181,7 +194,7 @@ Previous measurements showed approximately **154–218 MB of private memory**, i
 
 ## Contributing
 
-Bug reports, feature requests, documentation improvements, and pull requests are welcome. Read the bilingual [contribution guide](CONTRIBUTING.md) for the development and validation workflow.
+Bug reports, feature requests, documentation improvements, and pull requests are welcome in Chinese or English. Chinese is the project's primary working language. Read the bilingual [contribution guide](CONTRIBUTING.md) for the development and validation workflow.
 
 When opening an [issue](https://github.com/HBLADEH/velo-launcher/issues), include your Windows version, Velo version, reproduction steps, and expected and actual behavior. Remove personal paths and other sensitive information from logs and screenshots before sharing.
 
