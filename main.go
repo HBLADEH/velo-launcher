@@ -67,6 +67,8 @@ func run() error {
 	err = wails.Run(&options.App{
 		Title: "Velo", Width: 640, Height: 540, DisableResize: true,
 		Frameless: true, AlwaysOnTop: true,
+		// App owns the first show after both native setup and the frontend handshake.
+		StartHidden:      true,
 		DragAndDrop:      &options.DragAndDrop{EnableFileDrop: true},
 		BackgroundColour: background,
 		AssetServer:      &assetserver.Options{Assets: assets, Handler: icon.Handler(dir)},

@@ -23,7 +23,7 @@ Velo is a local application launcher for **Windows 10 / 11 x64**, with a Simplif
 
 Windows shortcuts support Chinese, English, pinyin, and abbreviation searches. Choose a list or icon grid and a light or dark theme; settings, the index, and usage history stay on your computer. The project primarily serves Chinese-speaking users; this English README is a companion to the [primary Chinese documentation](README.md).
 
-> **0.9.10 is a preview release.** Release binaries are currently unsigned, and performance and long-term stability validation is ongoing. Only Windows is supported. The application UI is currently in Simplified Chinese; this page is an English translation of the primary Chinese README.
+> **0.9.11 is a preview release.** Release binaries are currently unsigned, and performance and long-term stability validation is ongoing. Only Windows is supported. The application UI is currently in Simplified Chinese; this page is an English translation of the primary Chinese README.
 
 ## Screenshots
 
@@ -185,6 +185,7 @@ The following detailed documents are currently in Chinese:
 | [Build assets](build/README.md) | Logo, application icons, and installer assets |
 | [Verification records](docs/verification.md) | Completed checks, measurements, and limitations |
 | [Implementation checklist](docs/implementation.md) | Feature progress and pending validation |
+| [Lightweight optimization plan](docs/lightweight-optimization-plan.md) | Task order, status, acceptance criteria, and measurements |
 
 ## Project status
 

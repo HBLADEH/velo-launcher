@@ -2,6 +2,10 @@ param([switch]$SkipBuild, [switch]$Installer)
 $ErrorActionPreference = 'Stop'
 Push-Location (Split-Path -Parent $PSScriptRoot)
 try {
+    & (Join-Path $PSScriptRoot 'test-resource-measurement.ps1')
+    & (Join-Path $PSScriptRoot 'test-latency-summary.ps1')
+    & (Join-Path $PSScriptRoot 'test-latency-collection.ps1')
+    & (Join-Path $PSScriptRoot 'test-latency-startup-cleanup.ps1')
     $goSources = @((Get-ChildItem -LiteralPath . -Filter '*.go').FullName) + @('internal')
     $unformatted = & gofmt -l @goSources
     if ($LASTEXITCODE -ne 0 -or $unformatted) { throw "Run gofmt: $unformatted" }

@@ -1,0 +1,28 @@
+{
+  "StoppedAtUtc": "2026-10-27T01:14:42.8223582Z",
+  "Reason": "The active validation turn was interrupted; stopped only test-owned process identities and the validation runner.",
+  "Stopped": [],
+  "Reports": [
+    {
+      "File": "candidate-hidden-30s.json",
+      "Samples": 3,
+      "AllSamplesEligible": true
+    },
+    {
+      "File": "candidate-visible.json",
+      "Samples": 3,
+      "AllSamplesEligible": true
+    },
+    {
+      "File": "installed-visible.json",
+      "Samples": 3,
+      "AllSamplesEligible": true
+    }
+  ],
+  "RemainingVeloProcesses": [
+    {
+      "ProcessId": 26136,
+      "ExecutablePath": "C:\\Program Files\\HBLADEH\\Velo\\velo-launcher.exe"
+    }
+  ]
+}

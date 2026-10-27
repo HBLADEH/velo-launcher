@@ -31,6 +31,7 @@ type App struct {
 	diagnostics      bool
 	started          time.Time
 	clientReady      bool
+	startupComplete  bool
 	exitRequested    bool
 	closing          bool
 	importMode       bool
@@ -81,13 +82,26 @@ func (a *App) ready(ctx context.Context) {
 		a.keyError = err.Error()
 		a.logger.Warn("hotkey unavailable", "error", err)
 	}
+	a.completeStartupLocked()
+	a.logger.Info("window ready", "visible", a.window.Visible(), "hotkey_error", a.keyError, "tray", a.tray != nil)
+}
+
+// Wails calls OnDomReady while it is still resetting WebView visibility. The
+// frontend handshake follows its binding calls and cached results, so wait for
+// both lifecycles before the first activation can hand focus to the WebView.
+func (a *App) completeStartupLocked() {
+	if !a.clientReady || a.window == nil || a.startupComplete || a.closing {
+		return
+	}
+	a.startupComplete = true
 	if a.background && a.key != nil {
 		a.window.Hide()
-		wruntime.EventsEmit(ctx, "launcher:hidden")
+		if a.ctx != nil {
+			wruntime.EventsEmit(a.ctx, "launcher:hidden")
+		}
 	} else {
 		a.showLocked()
 	}
-	a.logger.Info("window ready", "visible", a.window.Visible(), "hotkey_error", a.keyError, "tray", a.tray != nil)
 }
 func (a *App) shutdown(_ context.Context) {
 	a.mu.Lock()
@@ -142,6 +156,8 @@ func (a *App) showLocked() {
 	if a.window == nil || a.closing {
 		return
 	}
+	// An explicit hotkey/tray/second-instance action owns startup visibility too.
+	a.startupComplete = true
 	a.window.Show()
 	if a.ctx != nil {
 		wruntime.EventsEmit(a.ctx, "launcher:shown")
@@ -172,7 +188,12 @@ func (a *App) Hide() {
 func (a *App) hideLocked() {
 	a.importMode = false
 	a.hotkeyRecording = false
-	if a.window == nil || a.closing || !a.window.Visible() {
+	if a.window == nil || a.closing {
+		return
+	}
+	// A pending frontend handshake must not reopen a dismissed launcher.
+	a.startupComplete = true
+	if !a.window.Visible() {
 		return
 	}
 	a.window.Hide()
@@ -214,6 +235,7 @@ func (a *App) FrontendReady() {
 	defer a.mu.Unlock()
 	if !a.clientReady {
 		a.clientReady = true
+		a.completeStartupLocked()
 		a.logger.Info("frontend interactive", "elapsed_ms", time.Since(a.started).Milliseconds())
 	}
 }

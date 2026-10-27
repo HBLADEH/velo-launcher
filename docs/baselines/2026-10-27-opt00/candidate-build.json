@@ -1,0 +1,40 @@
+{
+  "CapturedAtUtc": "2026-10-26T18:15:15.6552259Z",
+  "Edition": "Candidate",
+  "Path": "D:\\workspace\\velo-launcher\\build\\bin\\velo-launcher-opt00.exe",
+  "SHA256": "A28E8E244FE1EE14C109C98C06E107DA42FB4CEAD8E6422B857803713B19D6F8",
+  "Bytes": 13426688,
+  "FixedFileVersion": "0.9.10.0",
+  "SourceCommit": "45dffab58c2fa17993be19da8f5b76f00f6a4575",
+  "SourceTreeDirty": true,
+  "TrackedRuntimeChanges": [],
+  "BuildCommand": "wails build -platform windows/amd64 -o velo-launcher-opt00.exe",
+  "GoCompiler": "go version go1.25.6 windows/amd64",
+  "WailsCLI": "v2.12.0",
+  "Node": "v22.15.0",
+  "FrontendAssets": [
+    {
+      "Path": "index.html",
+      "Bytes": 1196,
+      "SHA256": "6BE4A1268B57716A873035DB2B43688CD9B9CD56B8B266EB2F2CDBE73522E76C"
+    },
+    {
+      "Path": "assets\\index-BimPXl5e.js",
+      "Bytes": 151152,
+      "SHA256": "0FB6CEFB2D4CB774284BD60BD69BCAADE16898EA3C5CCF092A6491C545F28BCE"
+    },
+    {
+      "Path": "assets\\index-DsmcsGGE.css",
+      "Bytes": 24138,
+      "SHA256": "DEB03A8AC8136FFCC2C6E101946B854073A5358FF4E223E6A10925F4E147DB03"
+    },
+    {
+      "Path": "assets\\logo-CyMBW9RJ.png",
+      "Bytes": 264515,
+      "SHA256": "B996AC1562316FE09124207272145DC5F8B951C8F1F0E85CCC8BBEF71661F0E8"
+    }
+  ],
+  "FrontendTotalBytes": 441001.0,
+  "RuntimeSamples": 0,
+  "RuntimeStatus": "Not launched: installed instance holds the shared mutex/hotkey/window class. Installed runtime samples are not candidate samples."
+}

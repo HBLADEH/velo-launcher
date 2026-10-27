@@ -1,6 +1,56 @@
 package platform
 
-import "testing"
+import (
+	"runtime"
+	"testing"
+	"unsafe"
+
+	"golang.org/x/sys/windows"
+)
+
+func TestFocusReentersHostWhenInitialWebViewFocusWasMissed(t *testing.T) {
+	runtime.LockOSThread()
+	defer runtime.UnlockOSThread()
+
+	// Simulate the Wails host receiving focus before its WebView is ready. A
+	// later SetFocus(host) must produce a new focus transition to hand it over.
+	var child uintptr
+	webviewReady := false
+	procedure := windows.NewCallback(func(hwnd uintptr, msg uint32, wparam, lparam uintptr) uintptr {
+		if msg == 0x0007 && webviewReady { // WM_SETFOCUS
+			user32.NewProc("SetFocus").Call(child)
+		}
+		result, _, _ := defWindowProc.Call(hwnd, uintptr(msg), wparam, lparam)
+		return result
+	})
+	instance, _, _ := getModuleHandle.Call(0)
+	className, _ := windows.UTF16PtrFromString("VeloLauncherFocusRegressionTest")
+	class := windowClassEx{Size: uint32(unsafe.Sizeof(windowClassEx{})), Procedure: procedure, Instance: instance, ClassName: className}
+	if atom, _, err := registerClassEx.Call(uintptr(unsafe.Pointer(&class))); atom == 0 {
+		t.Fatal("register focus test window:", err)
+	}
+	defer user32.NewProc("UnregisterClassW").Call(uintptr(unsafe.Pointer(className)), instance)
+	host, _, err := createWindowEx.Call(0, uintptr(unsafe.Pointer(className)), 0, 0x80000000, 0, 0, 100, 100, 0, 0, instance, 0)
+	if host == 0 {
+		t.Fatal("create focus test host:", err)
+	}
+	defer destroyWindow.Call(host)
+	editClass, _ := windows.UTF16PtrFromString("EDIT")
+	child, _, err = createWindowEx.Call(0, uintptr(unsafe.Pointer(editClass)), 0, 0x40000000, 0, 0, 80, 20, host, 0, instance, 0)
+	if child == 0 {
+		t.Fatal("create focus test child:", err)
+	}
+	defer destroyWindow.Call(child)
+	user32.NewProc("SetFocus").Call(host)
+	if focused, _, _ := user32.NewProc("GetFocus").Call(); focused != host {
+		t.Fatal("test precondition: focus must start on the host")
+	}
+	webviewReady = true
+	(&DesktopWindow{handle: host}).focus()
+	if focused, _, _ := user32.NewProc("GetFocus").Call(); focused != child {
+		t.Fatal("focus stayed on the already focused host instead of reaching its child")
+	}
+}
 
 func TestDraggedWindowPositionSurvivesResizeAndRecall(t *testing.T) {
 	for _, tt := range []struct {

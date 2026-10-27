@@ -1,0 +1,1697 @@
+{
+  "SchemaVersion": 2,
+  "CapturedAtUtc": "2026-10-26T18:18:27.9762900Z",
+  "Environment": {
+    "Windows": {
+      "Caption": "Microsoft Windows 11 专业版",
+      "Version": "10.0.26300",
+      "Build": "26300",
+      "LastBootUtc": "2026-10-26T14:44:38.5000000Z"
+    },
+    "Processor": [
+      "AMD Ryzen 9 9900X3D 12-Core Processor          "
+    ],
+    "LogicalProcessors": 24,
+    "PowerShell": "7.6.3",
+    "Go": "go version go1.25.6 windows/amd64",
+    "WailsCLI": "v2.12.0",
+    "Node": "v22.15.0",
+    "WebView2": [
+      {
+        "Path": "C:\\Program Files (x86)\\Microsoft\\EdgeWebView\\Application\\155.0.4283.62\\msedgewebview2.exe",
+        "Version": "155.0.4283.62"
+      }
+    ],
+    "WorkspaceCommit": "45dffab58c2fa17993be19da8f5b76f00f6a4575",
+    "WorkspaceDirty": true,
+    "CollectorSHA256": "56E200651EDF7581D72C5AD15A925ECD83D8FE4C823F3E29B47FE6958226FBF0",
+    "ValidatorSHA256": "EEFDF2EC5D89FFBAF2084ACCBFA078E2DC4BDA05E4B10FEC5C849BE065261476"
+  },
+  "Executable": {
+    "Edition": "Installed",
+    "Path": "C:\\Program Files\\HBLADEH\\Velo\\velo-launcher.exe",
+    "SHA256": "F58A976138BDDB9AE4D481E5BF64B785808B1C42716B137BA31D73328143A137",
+    "Bytes": 13431296,
+    "FileVersion": "",
+    "ProductVersion": "",
+    "FixedFileVersion": "0.9.10.0",
+    "ProcessId": 22636,
+    "StartedAtUtc": "2026-10-26T14:45:46.9728130Z",
+    "SourceCommit": "eda6a9f5bf76b766e6fe4adab8d6386e6bc1ab00",
+    "SourceCommitEvidence": "Operator supplied; verify against build manifest",
+    "GoCompiler": "go1.25.6",
+    "WailsDependency": "dep\tgithub.com/wailsapp/wails/v2\tv2.12.0\th1:BHO/kLNWFHYjCzucxbzAYZWUjub1Tvb4cSguQozHn5c=",
+    "BuildSettings": [
+      "build\t-ldflags=\"-w -s -H windowsgui\"",
+      "build\t-tags=desktop,wv2runtime.download,production",
+      "build\tGOARCH=amd64",
+      "build\tGOOS=windows"
+    ],
+    "Mode": "Production",
+    "BackgroundFlag": true
+  },
+  "ExecutableFileStable": true,
+  "ContextBefore": {
+    "Directory": "C:\\Users\\USER\\AppData\\Local\\Velo",
+    "Files": {
+      "config.json": {
+        "Path": "C:\\Users\\USER\\AppData\\Local\\Velo\\config.json",
+        "Bytes": 337,
+        "SHA256": "461E7A46ECE060B514CCF0510201753672877F05DEB6C5014C11680F9B83F48D"
+      },
+      "index.json": {
+        "Path": "C:\\Users\\USER\\AppData\\Local\\Velo\\index.json",
+        "Bytes": 629537,
+        "SHA256": "52201DB7FF20AA41C7A90012F199AFCC947F40B02B1AAEE48ECF1C482B4C5160"
+      },
+      "history.json": {
+        "Path": "C:\\Users\\USER\\AppData\\Local\\Velo\\history.json",
+        "Bytes": 952,
+        "SHA256": "B3510431C7FE1E473DA2576715B63D9DB54A902C797F0D3C5A2A1FF4AFF04D29"
+      },
+      "application-library.json": {
+        "Path": "C:\\Users\\USER\\AppData\\Local\\Velo\\application-library.json",
+        "Bytes": 498,
+        "SHA256": "041886C324822681B37F2DA3D86914B4BE35C2E24FC6F1E920993ADB9E030695"
+      },
+      "quick-launch.json": {
+        "Path": "C:\\Users\\USER\\AppData\\Local\\Velo\\quick-launch.json",
+        "Bytes": 419,
+        "SHA256": "8E52F751FA3540CF84AA941D968B40D208C5774275B59AAF50B6B5779EB9D64E"
+      }
+    },
+    "SavedConfig": {
+      "version": 1,
+      "hotkey": "Alt+Space",
+      "max_results": 8,
+      "theme": "system",
+      "launch_at_startup": false,
+      "space_launch": true,
+      "filter_noise": true,
+      "search": {
+        "fuzzy": true,
+        "history_weight": 1
+      },
+      "custom_directories": [],
+      "scan_program_files": true,
+      "refresh_minutes": 30,
+      "auto_check_updates": true
+    },
+    "CachedIndexCount": 458,
+    "LogSessionStarted": "2026-10-26T22:45:47.5160071+08:00",
+    "LastRefresh": {
+      "time": "2026-10-27T02:16:21.0537728+08:00",
+      "level": "INFO",
+      "msg": "index refreshed",
+      "apps": 390,
+      "duration_ms": 3333,
+      "error": null
+    },
+    "VisibleIndexCount": 390,
+    "VisibleIndexCountSource": "Last completed refresh log; not a live service-state query"
+  },
+  "ContextAfter": {
+    "Directory": "C:\\Users\\USER\\AppData\\Local\\Velo",
+    "Files": {
+      "config.json": {
+        "Path": "C:\\Users\\USER\\AppData\\Local\\Velo\\config.json",
+        "Bytes": 337,
+        "SHA256": "461E7A46ECE060B514CCF0510201753672877F05DEB6C5014C11680F9B83F48D"
+      },
+      "index.json": {
+        "Path": "C:\\Users\\USER\\AppData\\Local\\Velo\\index.json",
+        "Bytes": 629537,
+        "SHA256": "52201DB7FF20AA41C7A90012F199AFCC947F40B02B1AAEE48ECF1C482B4C5160"
+      },
+      "history.json": {
+        "Path": "C:\\Users\\USER\\AppData\\Local\\Velo\\history.json",
+        "Bytes": 952,
+        "SHA256": "B3510431C7FE1E473DA2576715B63D9DB54A902C797F0D3C5A2A1FF4AFF04D29"
+      },
+      "application-library.json": {
+        "Path": "C:\\Users\\USER\\AppData\\Local\\Velo\\application-library.json",
+        "Bytes": 498,
+        "SHA256": "041886C324822681B37F2DA3D86914B4BE35C2E24FC6F1E920993ADB9E030695"
+      },
+      "quick-launch.json": {
+        "Path": "C:\\Users\\USER\\AppData\\Local\\Velo\\quick-launch.json",
+        "Bytes": 419,
+        "SHA256": "8E52F751FA3540CF84AA941D968B40D208C5774275B59AAF50B6B5779EB9D64E"
+      }
+    },
+    "SavedConfig": {
+      "version": 1,
+      "hotkey": "Alt+Space",
+      "max_results": 8,
+      "theme": "system",
+      "launch_at_startup": false,
+      "space_launch": true,
+      "filter_noise": true,
+      "search": {
+        "fuzzy": true,
+        "history_weight": 1
+      },
+      "custom_directories": [],
+      "scan_program_files": true,
+      "refresh_minutes": 30,
+      "auto_check_updates": true
+    },
+    "CachedIndexCount": 458,
+    "LogSessionStarted": "2026-10-26T22:45:47.5160071+08:00",
+    "LastRefresh": {
+      "time": "2026-10-27T02:16:21.0537728+08:00",
+      "level": "INFO",
+      "msg": "index refreshed",
+      "apps": 390,
+      "duration_ms": 3333,
+      "error": null
+    },
+    "VisibleIndexCount": 390,
+    "VisibleIndexCountSource": "Last completed refresh log; not a live service-state query"
+  },
+  "RequestedWindowState": "Hidden",
+  "MinimumStateSeconds": 300,
+  "IdleEvidence": "Initial scan completed at 2026-10-27 01:46:17 +08:00. Expected automatic refresh near 02:16; any sample spanning it must be rejected by DataStable. Builds/benchmarks confined to the early settling period, none during the final minute of settling or resource sampling. Hidden duration is observed from collector start, not the hide edge.",
+  "StatePollingIntervalMilliseconds": 1000,
+  "AllSamplesEligible": true,
+  "Samples": [
+    {
+      "StartedAtUtc": "2026-10-26T18:16:55.0966380Z",
+      "EndedAtUtc": "2026-10-26T18:17:10.3323155Z",
+      "ProcessCount": 7,
+      "IncludesWebViewChildren": true,
+      "SampleSeconds": 15.234,
+      "CPUSampleValid": true,
+      "CPUPercentOfMachine": 0.0,
+      "CPUInvalidReason": null,
+      "WindowState": "Hidden",
+      "WindowStateConfirmed": true,
+      "WindowStateMatches": true,
+      "IdleConfirmed": true,
+      "DataStable": true,
+      "BaselineEligible": true,
+      "PrivateBytes": 184397824.0,
+      "WorkingSet": 304812032.0,
+      "PrivateBytesMB": 175.86,
+      "WorkingSetMB": 290.69,
+      "PrivateBytesMean": 184401335.0,
+      "WorkingSetMean": 304815543.0,
+      "PrivateBytesMin": 184397824.0,
+      "PrivateBytesMax": 184406016.0,
+      "WorkingSetMin": 304812032.0,
+      "WorkingSetMax": 304820224.0,
+      "PollCount": 14,
+      "Processes": [
+        {
+          "Identity": "6580/639286227475049963",
+          "ProcessId": 6580,
+          "Name": "msedgewebview2",
+          "CPUSeconds": 9.6875,
+          "WorkingSet": 95420416,
+          "PrivateBytes": 62074880
+        },
+        {
+          "Identity": "22388/639286227474045315",
+          "ProcessId": 22388,
+          "Name": "msedgewebview2",
+          "CPUSeconds": 0.625,
+          "WorkingSet": 21028864,
+          "PrivateBytes": 11526144
+        },
+        {
+          "Identity": "22540/639286227474406673",
+          "ProcessId": 22540,
+          "Name": "msedgewebview2",
+          "CPUSeconds": 0.0625,
+          "WorkingSet": 7049216,
+          "PrivateBytes": 7725056
+        },
+        {
+          "Identity": "22636/639286227469728136",
+          "ProcessId": 22636,
+          "Name": "velo-launcher",
+          "CPUSeconds": 25.375,
+          "WorkingSet": 54583296,
+          "PrivateBytes": 43954176
+        },
+        {
+          "Identity": "23044/639286227474027586",
+          "ProcessId": 23044,
+          "Name": "msedgewebview2",
+          "CPUSeconds": 10.078125,
+          "WorkingSet": 38465536,
+          "PrivateBytes": 16285696
+        },
+        {
+          "Identity": "23072/639286227471740796",
+          "ProcessId": 23072,
+          "Name": "msedgewebview2",
+          "CPUSeconds": 22.15625,
+          "WorkingSet": 83111936,
+          "PrivateBytes": 39841792
+        },
+        {
+          "Identity": "23364/639286227472480755",
+          "ProcessId": 23364,
+          "Name": "msedgewebview2",
+          "CPUSeconds": 0.109375,
+          "WorkingSet": 5152768,
+          "PrivateBytes": 2990080
+        }
+      ],
+      "WindowObservations": [
+        {
+          "TimestampUtc": "2026-10-26T18:16:55.0966380Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:16:56.3362970Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:16:57.5677483Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:16:58.7954742Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:17:00.0495100Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:17:01.2672563Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:17:02.4972652Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:17:03.7353441Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:17:04.9769497Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:17:06.2118928Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:17:07.4415332Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:17:08.6626630Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:17:09.9010382Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:17:10.3323155Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        }
+      ],
+      "StateContinuouslyObserved": true,
+      "Number": 1,
+      "InputBefore": {
+        "Files": {
+          "config.json": "461E7A46ECE060B514CCF0510201753672877F05DEB6C5014C11680F9B83F48D",
+          "index.json": "52201DB7FF20AA41C7A90012F199AFCC947F40B02B1AAEE48ECF1C482B4C5160",
+          "history.json": "B3510431C7FE1E473DA2576715B63D9DB54A902C797F0D3C5A2A1FF4AFF04D29",
+          "application-library.json": "041886C324822681B37F2DA3D86914B4BE35C2E24FC6F1E920993ADB9E030695",
+          "quick-launch.json": "8E52F751FA3540CF84AA941D968B40D208C5774275B59AAF50B6B5779EB9D64E"
+        },
+        "LastRefresh": {
+          "time": "2026-10-27T02:16:21.0537728+08:00",
+          "level": "INFO",
+          "msg": "index refreshed",
+          "apps": 390,
+          "duration_ms": 3333,
+          "error": null
+        },
+        "CachedIndexCount": 458
+      },
+      "InputAfter": {
+        "Files": {
+          "config.json": "461E7A46ECE060B514CCF0510201753672877F05DEB6C5014C11680F9B83F48D",
+          "index.json": "52201DB7FF20AA41C7A90012F199AFCC947F40B02B1AAEE48ECF1C482B4C5160",
+          "history.json": "B3510431C7FE1E473DA2576715B63D9DB54A902C797F0D3C5A2A1FF4AFF04D29",
+          "application-library.json": "041886C324822681B37F2DA3D86914B4BE35C2E24FC6F1E920993ADB9E030695",
+          "quick-launch.json": "8E52F751FA3540CF84AA941D968B40D208C5774275B59AAF50B6B5779EB9D64E"
+        },
+        "LastRefresh": {
+          "time": "2026-10-27T02:16:21.0537728+08:00",
+          "level": "INFO",
+          "msg": "index refreshed",
+          "apps": 390,
+          "duration_ms": 3333,
+          "error": null
+        },
+        "CachedIndexCount": 458
+      },
+      "ObservedStateSecondsAtStart": 300.679
+    },
+    {
+      "StartedAtUtc": "2026-10-26T18:17:10.6654831Z",
+      "EndedAtUtc": "2026-10-26T18:17:25.8994035Z",
+      "ProcessCount": 7,
+      "IncludesWebViewChildren": true,
+      "SampleSeconds": 15.234,
+      "CPUSampleValid": true,
+      "CPUPercentOfMachine": 0.004274,
+      "CPUInvalidReason": null,
+      "WindowState": "Hidden",
+      "WindowStateConfirmed": true,
+      "WindowStateMatches": true,
+      "IdleConfirmed": true,
+      "DataStable": true,
+      "BaselineEligible": true,
+      "PrivateBytes": 184397824.0,
+      "WorkingSet": 304812032.0,
+      "PrivateBytesMB": 175.86,
+      "WorkingSetMB": 290.69,
+      "PrivateBytesMean": 184385829.0,
+      "WorkingSetMean": 304807058.0,
+      "PrivateBytesMin": 184229888.0,
+      "PrivateBytesMax": 184397824.0,
+      "WorkingSetMin": 304742400.0,
+      "WorkingSetMax": 304812032.0,
+      "PollCount": 14,
+      "Processes": [
+        {
+          "Identity": "6580/639286227475049963",
+          "ProcessId": 6580,
+          "Name": "msedgewebview2",
+          "CPUSeconds": 9.6875,
+          "WorkingSet": 95420416,
+          "PrivateBytes": 62074880
+        },
+        {
+          "Identity": "22388/639286227474045315",
+          "ProcessId": 22388,
+          "Name": "msedgewebview2",
+          "CPUSeconds": 0.640625,
+          "WorkingSet": 21028864,
+          "PrivateBytes": 11526144
+        },
+        {
+          "Identity": "22540/639286227474406673",
+          "ProcessId": 22540,
+          "Name": "msedgewebview2",
+          "CPUSeconds": 0.0625,
+          "WorkingSet": 7049216,
+          "PrivateBytes": 7725056
+        },
+        {
+          "Identity": "22636/639286227469728136",
+          "ProcessId": 22636,
+          "Name": "velo-launcher",
+          "CPUSeconds": 25.375,
+          "WorkingSet": 54583296,
+          "PrivateBytes": 43954176
+        },
+        {
+          "Identity": "23044/639286227474027586",
+          "ProcessId": 23044,
+          "Name": "msedgewebview2",
+          "CPUSeconds": 10.078125,
+          "WorkingSet": 38461440,
+          "PrivateBytes": 16281600
+        },
+        {
+          "Identity": "23072/639286227471740796",
+          "ProcessId": 23072,
+          "Name": "msedgewebview2",
+          "CPUSeconds": 22.15625,
+          "WorkingSet": 83111936,
+          "PrivateBytes": 39841792
+        },
+        {
+          "Identity": "23364/639286227472480755",
+          "ProcessId": 23364,
+          "Name": "msedgewebview2",
+          "CPUSeconds": 0.109375,
+          "WorkingSet": 5156864,
+          "PrivateBytes": 2994176
+        }
+      ],
+      "WindowObservations": [
+        {
+          "TimestampUtc": "2026-10-26T18:17:10.6654831Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:17:11.8951214Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:17:13.1302629Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:17:14.3582263Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:17:15.5865943Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:17:16.8320477Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:17:18.0732576Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:17:19.2882095Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:17:20.5106566Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:17:21.7384526Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:17:22.9753393Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:17:24.1889474Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:17:25.4151486Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:17:25.8994035Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        }
+      ],
+      "StateContinuouslyObserved": true,
+      "Number": 2,
+      "InputBefore": {
+        "Files": {
+          "config.json": "461E7A46ECE060B514CCF0510201753672877F05DEB6C5014C11680F9B83F48D",
+          "index.json": "52201DB7FF20AA41C7A90012F199AFCC947F40B02B1AAEE48ECF1C482B4C5160",
+          "history.json": "B3510431C7FE1E473DA2576715B63D9DB54A902C797F0D3C5A2A1FF4AFF04D29",
+          "application-library.json": "041886C324822681B37F2DA3D86914B4BE35C2E24FC6F1E920993ADB9E030695",
+          "quick-launch.json": "8E52F751FA3540CF84AA941D968B40D208C5774275B59AAF50B6B5779EB9D64E"
+        },
+        "LastRefresh": {
+          "time": "2026-10-27T02:16:21.0537728+08:00",
+          "level": "INFO",
+          "msg": "index refreshed",
+          "apps": 390,
+          "duration_ms": 3333,
+          "error": null
+        },
+        "CachedIndexCount": 458
+      },
+      "InputAfter": {
+        "Files": {
+          "config.json": "461E7A46ECE060B514CCF0510201753672877F05DEB6C5014C11680F9B83F48D",
+          "index.json": "52201DB7FF20AA41C7A90012F199AFCC947F40B02B1AAEE48ECF1C482B4C5160",
+          "history.json": "B3510431C7FE1E473DA2576715B63D9DB54A902C797F0D3C5A2A1FF4AFF04D29",
+          "application-library.json": "041886C324822681B37F2DA3D86914B4BE35C2E24FC6F1E920993ADB9E030695",
+          "quick-launch.json": "8E52F751FA3540CF84AA941D968B40D208C5774275B59AAF50B6B5779EB9D64E"
+        },
+        "LastRefresh": {
+          "time": "2026-10-27T02:16:21.0537728+08:00",
+          "level": "INFO",
+          "msg": "index refreshed",
+          "apps": 390,
+          "duration_ms": 3333,
+          "error": null
+        },
+        "CachedIndexCount": 458
+      },
+      "ObservedStateSecondsAtStart": 316.246
+    },
+    {
+      "StartedAtUtc": "2026-10-26T18:17:26.1748957Z",
+      "EndedAtUtc": "2026-10-26T18:17:41.3953239Z",
+      "ProcessCount": 7,
+      "IncludesWebViewChildren": true,
+      "SampleSeconds": 15.22,
+      "CPUSampleValid": true,
+      "CPUPercentOfMachine": 0.0,
+      "CPUInvalidReason": null,
+      "WindowState": "Hidden",
+      "WindowStateConfirmed": true,
+      "WindowStateMatches": true,
+      "IdleConfirmed": true,
+      "DataStable": true,
+      "BaselineEligible": true,
+      "PrivateBytes": 184352768.0,
+      "WorkingSet": 304766976.0,
+      "PrivateBytesMB": 175.81,
+      "WorkingSetMB": 290.65,
+      "PrivateBytesMean": 184375296.0,
+      "WorkingSetMean": 304789504.0,
+      "PrivateBytesMin": 184352768.0,
+      "PrivateBytesMax": 184397824.0,
+      "WorkingSetMin": 304766976.0,
+      "WorkingSetMax": 304812032.0,
+      "PollCount": 14,
+      "Processes": [
+        {
+          "Identity": "6580/639286227475049963",
+          "ProcessId": 6580,
+          "Name": "msedgewebview2",
+          "CPUSeconds": 9.6875,
+          "WorkingSet": 95420416,
+          "PrivateBytes": 62074880
+        },
+        {
+          "Identity": "22388/639286227474045315",
+          "ProcessId": 22388,
+          "Name": "msedgewebview2",
+          "CPUSeconds": 0.640625,
+          "WorkingSet": 21028864,
+          "PrivateBytes": 11526144
+        },
+        {
+          "Identity": "22540/639286227474406673",
+          "ProcessId": 22540,
+          "Name": "msedgewebview2",
+          "CPUSeconds": 0.0625,
+          "WorkingSet": 7049216,
+          "PrivateBytes": 7725056
+        },
+        {
+          "Identity": "22636/639286227469728136",
+          "ProcessId": 22636,
+          "Name": "velo-launcher",
+          "CPUSeconds": 25.375,
+          "WorkingSet": 54583296,
+          "PrivateBytes": 43954176
+        },
+        {
+          "Identity": "23044/639286227474027586",
+          "ProcessId": 23044,
+          "Name": "msedgewebview2",
+          "CPUSeconds": 10.078125,
+          "WorkingSet": 38416384,
+          "PrivateBytes": 16236544
+        },
+        {
+          "Identity": "23072/639286227471740796",
+          "ProcessId": 23072,
+          "Name": "msedgewebview2",
+          "CPUSeconds": 22.15625,
+          "WorkingSet": 83111936,
+          "PrivateBytes": 39841792
+        },
+        {
+          "Identity": "23364/639286227472480755",
+          "ProcessId": 23364,
+          "Name": "msedgewebview2",
+          "CPUSeconds": 0.109375,
+          "WorkingSet": 5156864,
+          "PrivateBytes": 2994176
+        }
+      ],
+      "WindowObservations": [
+        {
+          "TimestampUtc": "2026-10-26T18:17:26.1748957Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:17:27.3939144Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:17:28.6183426Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:17:29.9044972Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:17:31.1328474Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:17:32.3641403Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:17:33.5861933Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:17:34.8131001Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:17:36.0537159Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:17:37.2825152Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:17:38.5223693Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:17:39.7429226Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:17:40.9783173Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:17:41.3953239Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        }
+      ],
+      "StateContinuouslyObserved": true,
+      "Number": 3,
+      "InputBefore": {
+        "Files": {
+          "config.json": "461E7A46ECE060B514CCF0510201753672877F05DEB6C5014C11680F9B83F48D",
+          "index.json": "52201DB7FF20AA41C7A90012F199AFCC947F40B02B1AAEE48ECF1C482B4C5160",
+          "history.json": "B3510431C7FE1E473DA2576715B63D9DB54A902C797F0D3C5A2A1FF4AFF04D29",
+          "application-library.json": "041886C324822681B37F2DA3D86914B4BE35C2E24FC6F1E920993ADB9E030695",
+          "quick-launch.json": "8E52F751FA3540CF84AA941D968B40D208C5774275B59AAF50B6B5779EB9D64E"
+        },
+        "LastRefresh": {
+          "time": "2026-10-27T02:16:21.0537728+08:00",
+          "level": "INFO",
+          "msg": "index refreshed",
+          "apps": 390,
+          "duration_ms": 3333,
+          "error": null
+        },
+        "CachedIndexCount": 458
+      },
+      "InputAfter": {
+        "Files": {
+          "config.json": "461E7A46ECE060B514CCF0510201753672877F05DEB6C5014C11680F9B83F48D",
+          "index.json": "52201DB7FF20AA41C7A90012F199AFCC947F40B02B1AAEE48ECF1C482B4C5160",
+          "history.json": "B3510431C7FE1E473DA2576715B63D9DB54A902C797F0D3C5A2A1FF4AFF04D29",
+          "application-library.json": "041886C324822681B37F2DA3D86914B4BE35C2E24FC6F1E920993ADB9E030695",
+          "quick-launch.json": "8E52F751FA3540CF84AA941D968B40D208C5774275B59AAF50B6B5779EB9D64E"
+        },
+        "LastRefresh": {
+          "time": "2026-10-27T02:16:21.0537728+08:00",
+          "level": "INFO",
+          "msg": "index refreshed",
+          "apps": 390,
+          "duration_ms": 3333,
+          "error": null
+        },
+        "CachedIndexCount": 458
+      },
+      "ObservedStateSecondsAtStart": 331.756
+    },
+    {
+      "StartedAtUtc": "2026-10-26T18:17:41.6656749Z",
+      "EndedAtUtc": "2026-10-26T18:17:56.8961368Z",
+      "ProcessCount": 7,
+      "IncludesWebViewChildren": true,
+      "SampleSeconds": 15.23,
+      "CPUSampleValid": true,
+      "CPUPercentOfMachine": 0.0,
+      "CPUInvalidReason": null,
+      "WindowState": "Hidden",
+      "WindowStateConfirmed": true,
+      "WindowStateMatches": true,
+      "IdleConfirmed": true,
+      "DataStable": true,
+      "BaselineEligible": true,
+      "PrivateBytes": 184360960.0,
+      "WorkingSet": 304775168.0,
+      "PrivateBytesMB": 175.82,
+      "WorkingSetMB": 290.66,
+      "PrivateBytesMean": 184360375.0,
+      "WorkingSetMean": 304773705.0,
+      "PrivateBytesMin": 184332288.0,
+      "PrivateBytesMax": 184430592.0,
+      "WorkingSetMin": 304762880.0,
+      "WorkingSetMax": 304816128.0,
+      "PollCount": 14,
+      "Processes": [
+        {
+          "Identity": "6580/639286227475049963",
+          "ProcessId": 6580,
+          "Name": "msedgewebview2",
+          "CPUSeconds": 9.6875,
+          "WorkingSet": 95420416,
+          "PrivateBytes": 62074880
+        },
+        {
+          "Identity": "22388/639286227474045315",
+          "ProcessId": 22388,
+          "Name": "msedgewebview2",
+          "CPUSeconds": 0.640625,
+          "WorkingSet": 21028864,
+          "PrivateBytes": 11526144
+        },
+        {
+          "Identity": "22540/639286227474406673",
+          "ProcessId": 22540,
+          "Name": "msedgewebview2",
+          "CPUSeconds": 0.0625,
+          "WorkingSet": 7049216,
+          "PrivateBytes": 7725056
+        },
+        {
+          "Identity": "22636/639286227469728136",
+          "ProcessId": 22636,
+          "Name": "velo-launcher",
+          "CPUSeconds": 25.375,
+          "WorkingSet": 54583296,
+          "PrivateBytes": 43954176
+        },
+        {
+          "Identity": "23044/639286227474027586",
+          "ProcessId": 23044,
+          "Name": "msedgewebview2",
+          "CPUSeconds": 10.078125,
+          "WorkingSet": 38416384,
+          "PrivateBytes": 16236544
+        },
+        {
+          "Identity": "23072/639286227471740796",
+          "ProcessId": 23072,
+          "Name": "msedgewebview2",
+          "CPUSeconds": 22.15625,
+          "WorkingSet": 83120128,
+          "PrivateBytes": 39849984
+        },
+        {
+          "Identity": "23364/639286227472480755",
+          "ProcessId": 23364,
+          "Name": "msedgewebview2",
+          "CPUSeconds": 0.109375,
+          "WorkingSet": 5156864,
+          "PrivateBytes": 2994176
+        }
+      ],
+      "WindowObservations": [
+        {
+          "TimestampUtc": "2026-10-26T18:17:41.6656749Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:17:42.8993668Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:17:44.1334515Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:17:45.4088613Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:17:46.6455802Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:17:47.8672125Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:17:49.1055794Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:17:50.3355995Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:17:51.5630721Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:17:52.7836067Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:17:54.0092450Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:17:55.2351178Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:17:56.4629977Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:17:56.8961368Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        }
+      ],
+      "StateContinuouslyObserved": true,
+      "Number": 4,
+      "InputBefore": {
+        "Files": {
+          "config.json": "461E7A46ECE060B514CCF0510201753672877F05DEB6C5014C11680F9B83F48D",
+          "index.json": "52201DB7FF20AA41C7A90012F199AFCC947F40B02B1AAEE48ECF1C482B4C5160",
+          "history.json": "B3510431C7FE1E473DA2576715B63D9DB54A902C797F0D3C5A2A1FF4AFF04D29",
+          "application-library.json": "041886C324822681B37F2DA3D86914B4BE35C2E24FC6F1E920993ADB9E030695",
+          "quick-launch.json": "8E52F751FA3540CF84AA941D968B40D208C5774275B59AAF50B6B5779EB9D64E"
+        },
+        "LastRefresh": {
+          "time": "2026-10-27T02:16:21.0537728+08:00",
+          "level": "INFO",
+          "msg": "index refreshed",
+          "apps": 390,
+          "duration_ms": 3333,
+          "error": null
+        },
+        "CachedIndexCount": 458
+      },
+      "InputAfter": {
+        "Files": {
+          "config.json": "461E7A46ECE060B514CCF0510201753672877F05DEB6C5014C11680F9B83F48D",
+          "index.json": "52201DB7FF20AA41C7A90012F199AFCC947F40B02B1AAEE48ECF1C482B4C5160",
+          "history.json": "B3510431C7FE1E473DA2576715B63D9DB54A902C797F0D3C5A2A1FF4AFF04D29",
+          "application-library.json": "041886C324822681B37F2DA3D86914B4BE35C2E24FC6F1E920993ADB9E030695",
+          "quick-launch.json": "8E52F751FA3540CF84AA941D968B40D208C5774275B59AAF50B6B5779EB9D64E"
+        },
+        "LastRefresh": {
+          "time": "2026-10-27T02:16:21.0537728+08:00",
+          "level": "INFO",
+          "msg": "index refreshed",
+          "apps": 390,
+          "duration_ms": 3333,
+          "error": null
+        },
+        "CachedIndexCount": 458
+      },
+      "ObservedStateSecondsAtStart": 347.247
+    },
+    {
+      "StartedAtUtc": "2026-10-26T18:17:57.1772662Z",
+      "EndedAtUtc": "2026-10-26T18:18:12.4096581Z",
+      "ProcessCount": 7,
+      "IncludesWebViewChildren": true,
+      "SampleSeconds": 15.232,
+      "CPUSampleValid": true,
+      "CPUPercentOfMachine": 0.0,
+      "CPUInvalidReason": null,
+      "WindowState": "Hidden",
+      "WindowStateConfirmed": true,
+      "WindowStateMatches": true,
+      "IdleConfirmed": true,
+      "DataStable": true,
+      "BaselineEligible": true,
+      "PrivateBytes": 184102912.0,
+      "WorkingSet": 304640000.0,
+      "PrivateBytesMB": 175.57,
+      "WorkingSetMB": 290.53,
+      "PrivateBytesMean": 184142117.0,
+      "WorkingSetMean": 304661650.0,
+      "PrivateBytesMin": 184102912.0,
+      "PrivateBytesMax": 184360960.0,
+      "WorkingSetMin": 304640000.0,
+      "WorkingSetMax": 304775168.0,
+      "PollCount": 14,
+      "Processes": [
+        {
+          "Identity": "6580/639286227475049963",
+          "ProcessId": 6580,
+          "Name": "msedgewebview2",
+          "CPUSeconds": 9.6875,
+          "WorkingSet": 95420416,
+          "PrivateBytes": 62074880
+        },
+        {
+          "Identity": "22388/639286227474045315",
+          "ProcessId": 22388,
+          "Name": "msedgewebview2",
+          "CPUSeconds": 0.640625,
+          "WorkingSet": 21028864,
+          "PrivateBytes": 11526144
+        },
+        {
+          "Identity": "22540/639286227474406673",
+          "ProcessId": 22540,
+          "Name": "msedgewebview2",
+          "CPUSeconds": 0.0625,
+          "WorkingSet": 7049216,
+          "PrivateBytes": 7725056
+        },
+        {
+          "Identity": "22636/639286227469728136",
+          "ProcessId": 22636,
+          "Name": "velo-launcher",
+          "CPUSeconds": 25.375,
+          "WorkingSet": 54583296,
+          "PrivateBytes": 43954176
+        },
+        {
+          "Identity": "23044/639286227474027586",
+          "ProcessId": 23044,
+          "Name": "msedgewebview2",
+          "CPUSeconds": 10.078125,
+          "WorkingSet": 38346752,
+          "PrivateBytes": 16093184
+        },
+        {
+          "Identity": "23072/639286227471740796",
+          "ProcessId": 23072,
+          "Name": "msedgewebview2",
+          "CPUSeconds": 22.15625,
+          "WorkingSet": 83054592,
+          "PrivateBytes": 39735296
+        },
+        {
+          "Identity": "23364/639286227472480755",
+          "ProcessId": 23364,
+          "Name": "msedgewebview2",
+          "CPUSeconds": 0.109375,
+          "WorkingSet": 5156864,
+          "PrivateBytes": 2994176
+        }
+      ],
+      "WindowObservations": [
+        {
+          "TimestampUtc": "2026-10-26T18:17:57.1772662Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:17:58.4094354Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:17:59.6320036Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:18:00.8716082Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:18:02.1050760Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:18:03.3316388Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:18:04.5463777Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:18:05.7844216Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:18:07.0114166Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:18:08.2326004Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:18:09.4758934Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:18:10.7143327Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:18:11.9466670Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:18:12.4096581Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        }
+      ],
+      "StateContinuouslyObserved": true,
+      "Number": 5,
+      "InputBefore": {
+        "Files": {
+          "config.json": "461E7A46ECE060B514CCF0510201753672877F05DEB6C5014C11680F9B83F48D",
+          "index.json": "52201DB7FF20AA41C7A90012F199AFCC947F40B02B1AAEE48ECF1C482B4C5160",
+          "history.json": "B3510431C7FE1E473DA2576715B63D9DB54A902C797F0D3C5A2A1FF4AFF04D29",
+          "application-library.json": "041886C324822681B37F2DA3D86914B4BE35C2E24FC6F1E920993ADB9E030695",
+          "quick-launch.json": "8E52F751FA3540CF84AA941D968B40D208C5774275B59AAF50B6B5779EB9D64E"
+        },
+        "LastRefresh": {
+          "time": "2026-10-27T02:16:21.0537728+08:00",
+          "level": "INFO",
+          "msg": "index refreshed",
+          "apps": 390,
+          "duration_ms": 3333,
+          "error": null
+        },
+        "CachedIndexCount": 458
+      },
+      "InputAfter": {
+        "Files": {
+          "config.json": "461E7A46ECE060B514CCF0510201753672877F05DEB6C5014C11680F9B83F48D",
+          "index.json": "52201DB7FF20AA41C7A90012F199AFCC947F40B02B1AAEE48ECF1C482B4C5160",
+          "history.json": "B3510431C7FE1E473DA2576715B63D9DB54A902C797F0D3C5A2A1FF4AFF04D29",
+          "application-library.json": "041886C324822681B37F2DA3D86914B4BE35C2E24FC6F1E920993ADB9E030695",
+          "quick-launch.json": "8E52F751FA3540CF84AA941D968B40D208C5774275B59AAF50B6B5779EB9D64E"
+        },
+        "LastRefresh": {
+          "time": "2026-10-27T02:16:21.0537728+08:00",
+          "level": "INFO",
+          "msg": "index refreshed",
+          "apps": 390,
+          "duration_ms": 3333,
+          "error": null
+        },
+        "CachedIndexCount": 458
+      },
+      "ObservedStateSecondsAtStart": 362.758
+    },
+    {
+      "StartedAtUtc": "2026-10-26T18:18:12.6792818Z",
+      "EndedAtUtc": "2026-10-26T18:18:27.9078922Z",
+      "ProcessCount": 7,
+      "IncludesWebViewChildren": true,
+      "SampleSeconds": 15.229,
+      "CPUSampleValid": true,
+      "CPUPercentOfMachine": 0.0,
+      "CPUInvalidReason": null,
+      "WindowState": "Hidden",
+      "WindowStateConfirmed": true,
+      "WindowStateMatches": true,
+      "IdleConfirmed": true,
+      "DataStable": true,
+      "BaselineEligible": true,
+      "PrivateBytes": 184094720.0,
+      "WorkingSet": 304631808.0,
+      "PrivateBytesMB": 175.57,
+      "WorkingSetMB": 290.52,
+      "PrivateBytesMean": 184092965.0,
+      "WorkingSetMean": 304633563.0,
+      "PrivateBytesMin": 184012800.0,
+      "PrivateBytesMax": 184102912.0,
+      "WorkingSetMin": 304599040.0,
+      "WorkingSetMax": 304640000.0,
+      "PollCount": 14,
+      "Processes": [
+        {
+          "Identity": "6580/639286227475049963",
+          "ProcessId": 6580,
+          "Name": "msedgewebview2",
+          "CPUSeconds": 9.6875,
+          "WorkingSet": 95420416,
+          "PrivateBytes": 62074880
+        },
+        {
+          "Identity": "22388/639286227474045315",
+          "ProcessId": 22388,
+          "Name": "msedgewebview2",
+          "CPUSeconds": 0.640625,
+          "WorkingSet": 21024768,
+          "PrivateBytes": 11522048
+        },
+        {
+          "Identity": "22540/639286227474406673",
+          "ProcessId": 22540,
+          "Name": "msedgewebview2",
+          "CPUSeconds": 0.0625,
+          "WorkingSet": 7049216,
+          "PrivateBytes": 7725056
+        },
+        {
+          "Identity": "22636/639286227469728136",
+          "ProcessId": 22636,
+          "Name": "velo-launcher",
+          "CPUSeconds": 25.375,
+          "WorkingSet": 54583296,
+          "PrivateBytes": 43954176
+        },
+        {
+          "Identity": "23044/639286227474027586",
+          "ProcessId": 23044,
+          "Name": "msedgewebview2",
+          "CPUSeconds": 10.078125,
+          "WorkingSet": 38346752,
+          "PrivateBytes": 16093184
+        },
+        {
+          "Identity": "23072/639286227471740796",
+          "ProcessId": 23072,
+          "Name": "msedgewebview2",
+          "CPUSeconds": 22.15625,
+          "WorkingSet": 83054592,
+          "PrivateBytes": 39735296
+        },
+        {
+          "Identity": "23364/639286227472480755",
+          "ProcessId": 23364,
+          "Name": "msedgewebview2",
+          "CPUSeconds": 0.109375,
+          "WorkingSet": 5152768,
+          "PrivateBytes": 2990080
+        }
+      ],
+      "WindowObservations": [
+        {
+          "TimestampUtc": "2026-10-26T18:18:12.6792818Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:18:13.9015401Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:18:15.1333209Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:18:16.3686225Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:18:17.5885334Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:18:18.8207355Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:18:20.0567486Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:18:21.2845931Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:18:22.5147639Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:18:23.7436503Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:18:24.9849753Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:18:26.2147083Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:18:27.4400055Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-26T18:18:27.9078922Z",
+          "Window": {
+            "State": "Hidden",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "2016A"
+          }
+        }
+      ],
+      "StateContinuouslyObserved": true,
+      "Number": 6,
+      "InputBefore": {
+        "Files": {
+          "config.json": "461E7A46ECE060B514CCF0510201753672877F05DEB6C5014C11680F9B83F48D",
+          "index.json": "52201DB7FF20AA41C7A90012F199AFCC947F40B02B1AAEE48ECF1C482B4C5160",
+          "history.json": "B3510431C7FE1E473DA2576715B63D9DB54A902C797F0D3C5A2A1FF4AFF04D29",
+          "application-library.json": "041886C324822681B37F2DA3D86914B4BE35C2E24FC6F1E920993ADB9E030695",
+          "quick-launch.json": "8E52F751FA3540CF84AA941D968B40D208C5774275B59AAF50B6B5779EB9D64E"
+        },
+        "LastRefresh": {
+          "time": "2026-10-27T02:16:21.0537728+08:00",
+          "level": "INFO",
+          "msg": "index refreshed",
+          "apps": 390,
+          "duration_ms": 3333,
+          "error": null
+        },
+        "CachedIndexCount": 458
+      },
+      "InputAfter": {
+        "Files": {
+          "config.json": "461E7A46ECE060B514CCF0510201753672877F05DEB6C5014C11680F9B83F48D",
+          "index.json": "52201DB7FF20AA41C7A90012F199AFCC947F40B02B1AAEE48ECF1C482B4C5160",
+          "history.json": "B3510431C7FE1E473DA2576715B63D9DB54A902C797F0D3C5A2A1FF4AFF04D29",
+          "application-library.json": "041886C324822681B37F2DA3D86914B4BE35C2E24FC6F1E920993ADB9E030695",
+          "quick-launch.json": "8E52F751FA3540CF84AA941D968B40D208C5774275B59AAF50B6B5779EB9D64E"
+        },
+        "LastRefresh": {
+          "time": "2026-10-27T02:16:21.0537728+08:00",
+          "level": "INFO",
+          "msg": "index refreshed",
+          "apps": 390,
+          "duration_ms": 3333,
+          "error": null
+        },
+        "CachedIndexCount": 458
+      },
+      "ObservedStateSecondsAtStart": 378.26
+    }
+  ],
+  "Limitations": [
+    "PrivateBytes is private commit, not physical resident memory. WorkingSet sums double-count shared pages.",
+    "CPUPercentOfMachine is normalized by logical processors. Process/window polling can miss changes entirely between polls.",
+    "IdleConfirmed is operator confirmation after scanning; log evidence alone cannot prove the live scanning flag.",
+    "No startup or key-to-editable latency is measured. Diagnostics mode must be compared separately."
+  ]
+}

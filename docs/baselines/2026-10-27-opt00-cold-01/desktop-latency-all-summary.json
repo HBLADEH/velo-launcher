@@ -1,0 +1,138 @@
+{
+  "SchemaVersion": 1,
+  "InputPath": "D:\\workspace\\velo-launcher\\docs\\baselines\\2026-10-27-opt00-cold-01\\desktop-latency-all.csv",
+  "InputSHA256": "AA83F75D6B28BB739F8DCEEF92134E2844F4508A0854242713B29120CF2C84BC",
+  "PercentileMethod": "Nearest rank: sorted[ceil(0.95*n)-1]; median averages the middle pair when n is even.",
+  "Groups": [
+    {
+      "Kind": "ColdStartup",
+      "ExecutableSHA256": "D099F92BF3A71A804572A2F0CF81B5FFEA664D46E0F1E477B7C37C7183E755C6",
+      "EnvironmentId": "32A9CD3C77039E0815CED73AD350CC89545EF0F898872DFC9DC4B9D5E612A520",
+      "InputId": "F63FA2287EC06F8CCBB801E528C8171EEF43592A09602653C6AC3D7466BBA8DE",
+      "Method": "ConservativeUpperBound_OSClock_DOMFocusReady_IPCAck",
+      "Boundary": "ProcessStartToEditable",
+      "ValidSamples": 0,
+      "InvalidSamples": 1,
+      "MedianMilliseconds": null,
+      "P95Milliseconds": null,
+      "MinimumSamples": 3,
+      "SampleCountSatisfied": false
+    },
+    {
+      "Kind": "HotkeyActivation",
+      "ExecutableSHA256": "31D38E9092717B6119FABBD079A170AA4605C47CA773E1C67C884F58D2A2CB40",
+      "EnvironmentId": "unverified-legacy-environment-31D38E9092717B6119FABBD079A170AA4605C47CA773E1C67C884F58D2A2CB40",
+      "InputId": "unverified-legacy-input-31D38E9092717B6119FABBD079A170AA4605C47CA773E1C67C884F58D2A2CB40",
+      "Method": "ConservativeUpperBound_OSClock_DOMFocusReady_IPCAck",
+      "Boundary": "KeyDownToEditable",
+      "ValidSamples": 0,
+      "InvalidSamples": 1,
+      "MedianMilliseconds": null,
+      "P95Milliseconds": null,
+      "MinimumSamples": 20,
+      "SampleCountSatisfied": false
+    },
+    {
+      "Kind": "HotkeyActivation",
+      "ExecutableSHA256": "D099F92BF3A71A804572A2F0CF81B5FFEA664D46E0F1E477B7C37C7183E755C6",
+      "EnvironmentId": "32A9CD3C77039E0815CED73AD350CC89545EF0F898872DFC9DC4B9D5E612A520",
+      "InputId": "F63FA2287EC06F8CCBB801E528C8171EEF43592A09602653C6AC3D7466BBA8DE",
+      "Method": "ConservativeUpperBound_OSClock_DOMFocusReady_IPCAck",
+      "Boundary": "KeyDownToEditable",
+      "ValidSamples": 21,
+      "InvalidSamples": 6,
+      "MedianMilliseconds": 29.5415,
+      "P95Milliseconds": 55.4893,
+      "MinimumSamples": 20,
+      "SampleCountSatisfied": true
+    },
+    {
+      "Kind": "WarmStartup",
+      "ExecutableSHA256": "31D38E9092717B6119FABBD079A170AA4605C47CA773E1C67C884F58D2A2CB40",
+      "EnvironmentId": "unverified-legacy-environment-31D38E9092717B6119FABBD079A170AA4605C47CA773E1C67C884F58D2A2CB40",
+      "InputId": "597BB0E13497DA8D315F6744BEE9D5AD2CA217FFEFBD661B47421AF55F7BBB21",
+      "Method": "ConservativeUpperBound_OSClock_DOMFocusReady_IPCAck",
+      "Boundary": "ProcessStartToEditable",
+      "ValidSamples": 0,
+      "InvalidSamples": 1,
+      "MedianMilliseconds": null,
+      "P95Milliseconds": null,
+      "MinimumSamples": 3,
+      "SampleCountSatisfied": false
+    },
+    {
+      "Kind": "WarmStartup",
+      "ExecutableSHA256": "D099F92BF3A71A804572A2F0CF81B5FFEA664D46E0F1E477B7C37C7183E755C6",
+      "EnvironmentId": "32A9CD3C77039E0815CED73AD350CC89545EF0F898872DFC9DC4B9D5E612A520",
+      "InputId": "F63FA2287EC06F8CCBB801E528C8171EEF43592A09602653C6AC3D7466BBA8DE",
+      "Method": "ConservativeUpperBound_OSClock_DOMFocusReady_IPCAck",
+      "Boundary": "ProcessStartToEditable",
+      "ValidSamples": 1,
+      "InvalidSamples": 3,
+      "MedianMilliseconds": 12904.2182,
+      "P95Milliseconds": 12904.2182,
+      "MinimumSamples": 3,
+      "SampleCountSatisfied": false
+    },
+    {
+      "Kind": "WarmStartup",
+      "ExecutableSHA256": "D099F92BF3A71A804572A2F0CF81B5FFEA664D46E0F1E477B7C37C7183E755C6",
+      "EnvironmentId": "32A9CD3C77039E0815CED73AD350CC89545EF0F898872DFC9DC4B9D5E612A520",
+      "InputId": "F63FA2287EC06F8CCBB801E528C8171EEF43592A09602653C6AC3D7466BBA8DE",
+      "Method": "ConservativeUpperBound_OSClock_DOMFocusReady_IPCAck_ManualFocusRecovery",
+      "Boundary": "ProcessStartToEditable",
+      "ValidSamples": 1,
+      "InvalidSamples": 0,
+      "MedianMilliseconds": 7862.2436,
+      "P95Milliseconds": 7862.2436,
+      "MinimumSamples": 3,
+      "SampleCountSatisfied": false
+    }
+  ],
+  "Coverage": [
+    {
+      "ExecutableSHA256": "31D38E9092717B6119FABBD079A170AA4605C47CA773E1C67C884F58D2A2CB40",
+      "EnvironmentId": "unverified-legacy-environment-31D38E9092717B6119FABBD079A170AA4605C47CA773E1C67C884F58D2A2CB40",
+      "InputId": "597BB0E13497DA8D315F6744BEE9D5AD2CA217FFEFBD661B47421AF55F7BBB21",
+      "Method": "ConservativeUpperBound_OSClock_DOMFocusReady_IPCAck",
+      "MissingKinds": [
+        "ColdStartup",
+        "HotkeyActivation"
+      ],
+      "AllSampleCountsSatisfied": false
+    },
+    {
+      "ExecutableSHA256": "31D38E9092717B6119FABBD079A170AA4605C47CA773E1C67C884F58D2A2CB40",
+      "EnvironmentId": "unverified-legacy-environment-31D38E9092717B6119FABBD079A170AA4605C47CA773E1C67C884F58D2A2CB40",
+      "InputId": "unverified-legacy-input-31D38E9092717B6119FABBD079A170AA4605C47CA773E1C67C884F58D2A2CB40",
+      "Method": "ConservativeUpperBound_OSClock_DOMFocusReady_IPCAck",
+      "MissingKinds": [
+        "ColdStartup",
+        "WarmStartup"
+      ],
+      "AllSampleCountsSatisfied": false
+    },
+    {
+      "ExecutableSHA256": "D099F92BF3A71A804572A2F0CF81B5FFEA664D46E0F1E477B7C37C7183E755C6",
+      "EnvironmentId": "32A9CD3C77039E0815CED73AD350CC89545EF0F898872DFC9DC4B9D5E612A520",
+      "InputId": "F63FA2287EC06F8CCBB801E528C8171EEF43592A09602653C6AC3D7466BBA8DE",
+      "Method": "ConservativeUpperBound_OSClock_DOMFocusReady_IPCAck",
+      "MissingKinds": [],
+      "AllSampleCountsSatisfied": false
+    },
+    {
+      "ExecutableSHA256": "D099F92BF3A71A804572A2F0CF81B5FFEA664D46E0F1E477B7C37C7183E755C6",
+      "EnvironmentId": "32A9CD3C77039E0815CED73AD350CC89545EF0F898872DFC9DC4B9D5E612A520",
+      "InputId": "F63FA2287EC06F8CCBB801E528C8171EEF43592A09602653C6AC3D7466BBA8DE",
+      "Method": "ConservativeUpperBound_OSClock_DOMFocusReady_IPCAck_ManualFocusRecovery",
+      "MissingKinds": [
+        "ColdStartup",
+        "HotkeyActivation"
+      ],
+      "AllSampleCountsSatisfied": false
+    }
+  ],
+  "MissingKinds": [],
+  "AllSampleCountsSatisfied": false,
+  "Note": "Summarizes supplied desktop evidence only; does not measure latency or establish that a cold condition/input-readiness claim is true."
+}

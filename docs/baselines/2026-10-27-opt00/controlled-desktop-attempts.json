@@ -1,0 +1,16 @@
+{
+  "RecordedAtUtc": "2026-10-26T18:36:34.6306039Z",
+  "EvidenceSource": "Recorded from Computer Use and native collector tool results; not an end-to-end timer",
+  "Edition": "Installed",
+  "ProcessId": 22636,
+  "ExecutableSHA256": "F58A976138BDDB9AE4D481E5BF64B785808B1C42716B137BA31D73328143A137",
+  "RequestedCondition": "Visible production window via Alt+Space from a uniquely returned Explorer window",
+  "PreflightError": "Window state changed or is unknown during settling; restart the measurement.",
+  "LastShortcutToolCompletedAtUtc": "2026-10-26T18:34:29.956Z",
+  "SubsequentNativeProbeSeconds": 1,
+  "SubsequentNativeStateBefore": "Hidden",
+  "SubsequentNativeStateAfter": "Hidden",
+  "ValidSamplesProduced": 0,
+  "LatencyMilliseconds": null,
+  "Conclusion": "Automation did not establish a controlled visible sample. Does not determine manual hotkey correctness or key-to-editable latency."
+}

@@ -1,0 +1,55 @@
+{
+  "CheckedAtUtc": "2026-10-27T02:39:07.8923020Z",
+  "CurrentSourceMatchesVerified": true,
+  "SourceChecks": [
+    {
+      "Path": "scripts/measure-resources.ps1",
+      "MatchesLastVerifiedSource": true,
+      "SHA256": "48B83C99EDFC3E11C953D608916C6BDBF80493D77447BE44F819177043E7BD2A"
+    },
+    {
+      "Path": "scripts/lib/resource-sample.ps1",
+      "MatchesLastVerifiedSource": true,
+      "SHA256": "3BCE08A389A5702D099071EBDE2B20CC4CB8D70C4AD34437DCD67CC8DAA92742"
+    },
+    {
+      "Path": "scripts/summarize-latency.ps1",
+      "MatchesLastVerifiedSource": true,
+      "SHA256": "B57BF7746CCAB281600B15CB2A0076E6D81512E02BA4101A6290D37CCE192531"
+    },
+    {
+      "Path": "scripts/test-resource-measurement.ps1",
+      "MatchesLastVerifiedSource": true,
+      "SHA256": "054E3C66D08CF109CBBEA7B5366E4C6D7F910AC505906E73C4E6F00BBA1D8C4E"
+    },
+    {
+      "Path": "scripts/test-latency-summary.ps1",
+      "MatchesLastVerifiedSource": true,
+      "SHA256": "FBA5B672A0873027E8D3283BDDE2600756191B291E0268219545C1732BF158D9"
+    },
+    {
+      "Path": "scripts/verify.ps1",
+      "MatchesLastVerifiedSource": true,
+      "SHA256": "92086C61446F4DBA9E5D005E7D8972C77433E3C1665B9EF3A31DEA10AB8A9078"
+    },
+    {
+      "Path": "internal/app/service_benchmark_test.go",
+      "MatchesLastVerifiedSource": true,
+      "SHA256": "6022C75EDA5BB3E4CB395FB00DC853AA37EB88E91832AA2B72B980826D359D72"
+    }
+  ],
+  "HistoricalEvidence": [
+    {
+      "Directory": "2026-10-27-opt00",
+      "VerifiedFiles": 21
+    },
+    {
+      "Directory": "2026-10-27-opt00-validation",
+      "VerifiedFiles": 14
+    }
+  ],
+  "TrackedRuntimeChanges": [],
+  "CandidateSHA256": "A28E8E244FE1EE14C109C98C06E107DA42FB4CEAD8E6422B857803713B19D6F8",
+  "InstalledSHA256": "F58A976138BDDB9AE4D481E5BF64B785808B1C42716B137BA31D73328143A137",
+  "FullVerificationEvidence": "../2026-10-27-opt00-validation/verify.txt"
+}

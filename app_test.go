@@ -78,6 +78,81 @@ func (w *testWindow) Show()           { w.visible = true; w.shows++ }
 func (w *testWindow) Hide()           { w.visible = false; w.hides++ }
 func (w *testWindow) Resize(int, int) {}
 
+func TestInitialShowWaitsForNativeAndFrontendReadiness(t *testing.T) {
+	for _, frontendFirst := range []bool{false, true} {
+		t.Run(fmt.Sprintf("frontend_first=%t", frontendFirst), func(t *testing.T) {
+			a, _ := backupTestApp(t)
+			w := &testWindow{}
+			if frontendFirst {
+				a.FrontendReady()
+				a.window = w
+			} else {
+				a.window = w
+				a.completeStartupLocked()
+			}
+			if w.shows != 0 || w.visible {
+				t.Fatal("startup activated before both lifecycles were ready")
+			}
+			if frontendFirst {
+				a.completeStartupLocked()
+			} else {
+				a.FrontendReady()
+			}
+			if w.shows != 1 || !w.visible {
+				t.Fatal("ready startup did not activate exactly once")
+			}
+			a.Hide()
+			a.FrontendReady()
+			a.completeStartupLocked()
+			if w.shows != 1 || w.visible {
+				t.Fatal("a repeated handshake reopened the hidden launcher")
+			}
+		})
+	}
+}
+
+func TestBackgroundStartupOnlyShowsWhenHotkeyUnavailable(t *testing.T) {
+	for _, hotkeyAvailable := range []bool{false, true} {
+		t.Run(fmt.Sprintf("hotkey_available=%t", hotkeyAvailable), func(t *testing.T) {
+			a, _ := backupTestApp(t)
+			w := &testWindow{}
+			a.window, a.background = w, true
+			if hotkeyAvailable {
+				a.key = &platform.Hotkey{}
+			}
+			a.FrontendReady()
+			wantShows := 0
+			if !hotkeyAvailable {
+				wantShows = 1
+			}
+			if w.visible == hotkeyAvailable || w.shows != wantShows {
+				t.Fatalf("wrong background startup visibility: visible=%v shows=%d", w.visible, w.shows)
+			}
+		})
+	}
+}
+
+func TestExplicitWindowActionWinsOverPendingStartup(t *testing.T) {
+	for _, show := range []bool{false, true} {
+		t.Run(fmt.Sprintf("show=%t", show), func(t *testing.T) {
+			a, _ := backupTestApp(t)
+			w := &testWindow{}
+			a.window, a.background = w, true
+			a.key = &platform.Hotkey{}
+			if show {
+				a.Show()
+			} else {
+				a.Hide()
+			}
+			shows, hides := w.shows, w.hides
+			a.FrontendReady()
+			if w.visible != show || w.shows != shows || w.hides != hides {
+				t.Fatal("startup overrode an explicit window action")
+			}
+		})
+	}
+}
+
 func TestWindowShowEntrypoints(t *testing.T) {
 	for _, tt := range []struct {
 		name string

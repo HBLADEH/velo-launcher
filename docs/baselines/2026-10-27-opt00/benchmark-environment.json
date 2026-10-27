@@ -1,0 +1,16 @@
+{
+  "CapturedAtUtc": "2026-10-26T18:12:38.3096156Z",
+  "WorkspaceCommit": "45dffab58c2fa17993be19da8f5b76f00f6a4575",
+  "WorkspaceDirty": true,
+  "Go": "go version go1.25.6 windows/amd64",
+  "Node": "v22.15.0",
+  "Wails": "v2.12.0",
+  "LogicalProcessors": 24,
+  "KernelBenchmarkSHA256": "ED006E69DB57AA2B70EDB12BEC147AFEE42DAFC14A3440C26AD807D7B42B918C",
+  "ServiceBenchmarkSHA256": "6022C75EDA5BB3E4CB395FB00DC853AA37EB88E91832AA2B72B980826D359D72",
+  "Commands": [
+    "go test ./internal/search -run '^$' -bench BenchmarkSearch1000Apps -benchmem -benchtime=300ms -count=3",
+    "go test ./internal/app -run '^$' -bench '^BenchmarkService(Home|Search)$' -benchmem -benchtime=300ms -count=3"
+  ],
+  "Scope": "Deterministic generated input; service includes history, pins and three fixed system tools; excludes IPC/rendering; no concurrent resource sampling or other benchmarks."
+}
