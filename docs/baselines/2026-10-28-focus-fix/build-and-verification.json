@@ -1,0 +1,75 @@
+{
+  "Date": "2026-10-28",
+  "ProductPath": "D:\\workspace\\velo-launcher\\build\\bin\\velo-launcher-focus-fix.exe",
+  "ProductBytes": 13427712,
+  "ProductSHA256": "248550BDC279F46A9C63B0A203729B902A7DD920666AA33A9FDF836FCD1DB3D2",
+  "ProductBuildInfo": [
+    "D:\\workspace\\velo-launcher\\build\\bin\\velo-launcher-focus-fix.exe: go1.25.6",
+    "\tpath\tvelo-launcher",
+    "\tmod\tvelo-launcher\t(devel)\t",
+    "\tdep\tgit.sr.ht/~jackmordaunt/go-toast/v2\tv2.0.3\th1:N3IGoHHp9pb6mj1cbXbuaSXV/UMKwmbKLf53nQmtqMA=",
+    "\tdep\tgithub.com/bep/debounce\tv1.2.1\th1:v67fRdBA9UQu2NhLFXrSg0Brw7CexQekrBwDMM8bzeY=",
+    "\tdep\tgithub.com/go-ole/go-ole\tv1.3.0\th1:Dt6ye7+vXGIKZ7Xtk4s6/xVdGDQynvom7xCFEdWr6uE=",
+    "\tdep\tgithub.com/google/uuid\tv1.6.0\th1:NIvaJDMOsjHA8n1jAhLSgzrAzy1Hgr+hNrb57e+94F0=",
+    "\tdep\tgithub.com/leaanthony/go-ansi-parser\tv1.6.1\th1:xd8bzARK3dErqkPFtoF9F3/HgN8UQk0ed1YDKpEz01A=",
+    "\tdep\tgithub.com/leaanthony/slicer\tv1.6.0\th1:1RFP5uiPJvT93TAHi+ipd3NACobkW53yUiBqZheE/Js=",
+    "\tdep\tgithub.com/leaanthony/u\tv1.1.1\th1:TUFjwDGlNX+WuwVEzDqQwC2lOv0P4uhTQw7CMFdiK7M=",
+    "\tdep\tgithub.com/mozillazg/go-pinyin\tv0.21.0\th1:Wo8/NT45z7P3er/9YSLHA3/kjZzbLz5hR7i+jGeIGao=",
+    "\tdep\tgithub.com/pkg/browser\tv0.0.0-20240102092130-5ac0b6a4141c\th1:+mdjkGKdHQG3305AYmdv1U2eRNDiU2ErMBj1gwrq8eQ=",
+    "\tdep\tgithub.com/pkg/errors\tv0.9.1\th1:FEBLx1zS214owpjy7qsBeixbURkuhQAwrK5UwLGTwt4=",
+    "\tdep\tgithub.com/rivo/uniseg\tv0.4.7\th1:WUdvkW8uEhrYfLC4ZzdpI2ztxP1I582+49Oc5Mq64VQ=",
+    "\tdep\tgithub.com/samber/lo\tv1.49.1\th1:4BIFyVfuQSEpluc7Fua+j1NolZHiEHEpaSEKdsH0tew=",
+    "\tdep\tgithub.com/tkrajina/go-reflector\tv0.5.8\th1:yPADHrwmUbMq4RGEyaOUpz2H90sRsETNVpjzo3DLVQQ=",
+    "\tdep\tgithub.com/wailsapp/go-webview2\tv1.0.22\th1:YT61F5lj+GGaat5OB96Aa3b4QA+mybD0Ggq6NZijQ58=",
+    "\tdep\tgithub.com/wailsapp/mimetype\tv1.4.1\th1:pQN9ycO7uo4vsUUuPeHEYoUkLVkaRntMnHJxVwYhwHs=",
+    "\tdep\tgithub.com/wailsapp/wails/v2\tv2.12.0\th1:BHO/kLNWFHYjCzucxbzAYZWUjub1Tvb4cSguQozHn5c=",
+    "\tdep\tgolang.org/x/net\tv0.35.0\th1:T5GQRQb2y08kTAByq9L4/bz8cipCdA8FbRTXewonqY8=",
+    "\tdep\tgolang.org/x/sys\tv0.30.0\th1:QjkSwP/36a20jFYWkSue1YwXzLmsV5Gfq7Eiy72C1uc=",
+    "\tdep\tgolang.org/x/text\tv0.22.0\th1:bofq7m3/HAFvbF51jz3Q9wLg3jkvSPuiZu/pD1XwgtM=",
+    "\tbuild\t-buildmode=exe",
+    "\tbuild\t-compiler=gc",
+    "\tbuild\t-ldflags=\"-w -s -H windowsgui\"",
+    "\tbuild\t-tags=desktop,wv2runtime.download,production",
+    "\tbuild\tDefaultGODEBUG=containermaxprocs=0,decoratemappings=0,gotestjsonbuildtext=1,httpcookiemaxnum=0,multipathtcp=0,randseednop=0,rsa1024min=0,tlsmlkem=0,tlssha1=1,updatemaxprocs=0,urlmaxqueryparams=0,x509rsacrt=0,x509sha256skid=0,x509usepolicies=0",
+    "\tbuild\tCGO_ENABLED=0",
+    "\tbuild\tGOARCH=amd64",
+    "\tbuild\tGOOS=windows",
+    "\tbuild\tGOAMD64=v1"
+  ],
+  "RuntimeSources": [
+    {
+      "Path": "D:\\workspace\\velo-launcher\\app.go",
+      "SHA256": "ACAD1374D2E60091C6F5EE1B9B7AF124BA9710A8343752AF8E949CEBBABC1B7B",
+      "MatchesObservedProbe": true
+    },
+    {
+      "Path": "D:\\workspace\\velo-launcher\\main.go",
+      "SHA256": "F7BF5CF8777631F0ED51A1D4972DB1C660A4FF5E287105DC8FF788EEBD697D0F",
+      "MatchesObservedProbe": true
+    },
+    {
+      "Path": "D:\\workspace\\velo-launcher\\internal\\platform\\window_windows.go",
+      "SHA256": "00E2BD3C617F341F256648B3860749D21D13C315D046AB7593549F9427E5C615",
+      "MatchesObservedProbe": true
+    },
+    {
+      "Path": "D:\\workspace\\velo-launcher\\frontend\\src\\App.vue",
+      "SHA256": "C4377BAEF64153BEA23C0C2240ABBF8E2C31D6D04FF5B3F346D24C8D670FFC19",
+      "MatchesObservedProbe": true
+    }
+  ],
+  "Verification": {
+    "FrontendTests": 26,
+    "ProbeTaggedGoTests": "Passed",
+    "WindowsProductionBuild": "Passed",
+    "VerifySkipBuild": "Passed",
+    "Win32Regression": "Failed before fix, passed after fix"
+  },
+  "Desktop": {
+    "DiagnosticsMode": false,
+    "FreshWebViewProfile": true,
+    "SuccessfulStartupObservations": 1,
+    "RebootColdStartup": "Not measured",
+    "KeyboardInjection": "Not attempted: Computer Use URL safety check stopped at context observation"
+  }
+}

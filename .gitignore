@@ -10,3 +10,9 @@
 *.log
 .DS_Store
 /.reasonix/
+
+# Keep raw local measurement logs and frozen collector snapshots out of Git.
+/docs/baselines/**/*.jsonl
+/docs/baselines/**/*.txt
+/docs/baselines/**/*.ps1
+!/docs/baselines/**/SHA256SUMS.public.txt

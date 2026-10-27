@@ -74,8 +74,9 @@ async function launcher(overrides = {}) {
   }
   const bridge = new Proxy({
     GetSettings: async () => ({ theme: 'system', result_layout: 'list' }),
-    GetStatus: async () => ({ visible: true }),
-    GetHome: async () => ({ pinned: [], frequent: [], tools: [] }),
+    GetStatus: async () => ({ visible: overrides.visible ?? true }),
+    GetHome: async () => { overrides.home?.(); return { pinned: [], frequent: [], tools: [] } },
+    FrontendReady: async () => { overrides.frontendReady?.() },
     Search: async () => matches,
     Launch: async (...args) => { launchCalls.push({ admin: false, args }); await overrides.launch?.(...args) },
     LaunchAsAdmin: async (...args) => { launchCalls.push({ admin: true, args }); await overrides.launch?.(...args) },
@@ -219,6 +220,21 @@ for (const admin of [false, true]) {
     })
   }
 }
+
+test('initially hidden startup loads cached home before the handshake and focuses only after show', async t => {
+  const startup = []
+  const app = await launcher({
+    visible: false,
+    home: () => startup.push('home'),
+    frontendReady: () => startup.push('frontend-ready'),
+  })
+  t.after(() => app.dispose())
+  assert.deepEqual(startup, ['home', 'frontend-ready'])
+  assert.equal(app.document.activeElement, undefined, 'hidden startup must not focus search')
+  await app.emit('launcher:shown')
+  assert.equal(app.document.activeElement, app.state.input.value)
+  assert.ok(app.focusCalls.length > 0)
+})
 
 test('a shown event preceding native focus still focuses search without a second focus event', async t => {
   const app = await launcher()

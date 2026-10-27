@@ -1,0 +1,47 @@
+{
+  "Armed": false,
+  "Attached": true,
+  "HookError": "",
+  "ProcessId": 5444,
+  "Ready": true,
+  "Records": [
+    {
+      "ID": "startup",
+      "Kind": "WarmStartup",
+      "ProcessID": 5444,
+      "ExecutableSHA256": "D099F92BF3A71A804572A2F0CF81B5FFEA664D46E0F1E477B7C37C7183E755C6",
+      "BootID": "2026-10-27T01:08:52.5Z",
+      "StartedAtUTC": "2026-10-27T05:58:59.0342903Z",
+      "AcknowledgedAtUTC": "2026-10-27T05:59:11.9385085Z",
+      "UpperBoundMilliseconds": 12904.2182,
+      "Valid": true,
+      "Reason": "",
+      "ClockUncertaintyMS": 0.1,
+      "KeyboardEventMilliseconds": 0,
+      "InjectedKeyboardEvent": false,
+      "DOM": {
+        "stage": "ready",
+        "documentFocused": true,
+        "inputFocused": true,
+        "writable": true,
+        "displayed": true,
+        "browserTimeMS": 12521.099999997765
+      },
+      "NativeVisible": true,
+      "NativeActive": true,
+      "ForegroundProcessID": 5444
+    }
+  ],
+  "Status": {
+    "count": 388,
+    "scanning": false,
+    "last_refresh": "2026-10-27T13:59:02+08:00",
+    "scan_milliseconds": 3111,
+    "warnings": [
+      "C:\\Program Files\\Windows Defender Advanced Threat Protection\\Classification\\Configuration: open C:\\Program Files\\Windows Defender Advanced Threat Protection\\Classification\\Configuration: Access is denied."
+    ],
+    "hotkey_error": "",
+    "visible": true,
+    "version": "0.9.10"
+  }
+}

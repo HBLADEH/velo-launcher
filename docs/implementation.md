@@ -2,6 +2,8 @@
 
 目标范围：规划文档的 Phase 0–6；Future 明确不进入当前核心范围。每项以实际代码、自动化测试或运行记录验收，性能目标须实测。
 
+2026-10-27 轻量化专项：后续优化按[轻量化优化执行文档](lightweight-optimization-plan.md)逐项推进。文档已记录本次审计基线、任务依赖与验收标准，优化代码尚未实施；性能结果继续写入[验证记录](verification.md)。
+
 | 阶段 | 交付 | 当前状态 / 验证证据 |
 | --- | --- | --- |
 | 0 | Go/Wails/Vue/TS、日志、Windows CI | 已实现：本地 gofmt/vet/test、前端 lint/typecheck/build 及 Windows x64 打包通过；远端 CI（windows-latest）执行同一脚本并上传 exe，已通过 |

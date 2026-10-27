@@ -39,7 +39,7 @@ go test ./internal/platform -run TestEmptyRecycleBinNativeQuery -v
 go test ./internal/platform -run TestTray -v
 ```
 
-验证脚本执行 gofmt 检查、前端 lint / 按键解析测试 / typecheck / build、Wails 绑定生成、go vet、Go 测试和 Windows x64 打包；失败即停止。加 `-Installer` 时改用 `wails build -nsis`，额外生成安装包（需要 `makensis` 在 PATH 中）。前端构建先于 Go 检查，因为 `//go:embed all:frontend/dist` 要求产物已存在。GitHub Actions 使用相同脚本（`-Installer`）并上传 exe 与安装包，远端 CI 已运行通过。
+验证脚本执行测量脚本回归检查、gofmt 检查、前端 lint / 按键解析测试 / typecheck / build、Wails 绑定生成、go vet、Go 测试和 Windows x64 打包；失败即停止。加 `-Installer` 时改用 `wails build -nsis`，额外生成安装包（需要 `makensis` 在 PATH 中）。前端构建先于 Go 检查，因为 `//go:embed all:frontend/dist` 要求产物已存在。GitHub Actions 使用相同脚本（`-Installer`）并上传 exe 与安装包，远端 CI 已运行通过。
 
 `wails build -nsis` 会把 `build/windows/installer/wails_tools.nsh` 的模板占位符就地渲染成当前 `wails.json` 元数据，因此本地构建后该文件会显示为已修改；请用 `git restore build/windows/installer/wails_tools.nsh` 恢复模板状态，不要提交渲染结果（否则安装包版本不再跟随配置）。
 
@@ -110,13 +110,91 @@ API 返回限流 `403` / `429` 后，更新器在 `Retry-After` / `X-RateLimit-R
 
 1000 应用搜索基准约 **0.014–0.069 ms**，每次 2–3 次分配。单次缓存启动记录约 470–523 ms（进程入口到前端缓存结果就绪，不等同于严格冷启动）。完整内存统计包含 WebView2 子进程；已测得私有内存约 154–218 MB，**80 MB 目标尚未达成**。详见 [验证记录](verification.md)。
 
-资源测量命令（排除 Velo 启动的其他应用）：
+### 轻量化测量与回归基线（OPT-00）
+
+执行状态与原始证据见 [2026-10-27 基线](baselines/2026-10-27-opt00/README.md) 和[优化计划](lightweight-optimization-plan.md)。安装版与候选版分别记录；相同的 `0.9.10` 版本号不能证明它们是同一个构建。
+
+资源采集前，先通过当前会话的 `index refreshed` 成功日志和界面扫描状态确认刷新已经结束，保持界面空闲，避开下一次定时刷新。采样期间不要同时构建、运行 benchmark、操作 Velo 或启动其他应用。确认数据目录属于目标进程，不能仅修改 `LOCALAPPDATA` 就认为实现了隔离：单实例互斥锁、窗口类和全局快捷键仍然共享。候选没有实际启动时，运行数据保持空缺。
+
+```powershell
+Get-CimInstance Win32_Process -Filter "Name LIKE 'velo-launcher%'" |
+    Select-Object ProcessId, Name, ExecutablePath
+
+# 根据上一步结果填写，核实 exe 路径；证据目录需要预先创建。
+$veloProcessId = 12345
+$veloExecutable = 'C:\Program Files\HBLADEH\Velo\velo-launcher.exe'
+$veloEvidenceDir = '.reasonix/opt00-next-run'
+New-Item -ItemType Directory -Path $veloEvidenceDir -Force | Out-Null
+
+# 可见且稳定后执行。IdleEvidence 填写本次确认扫描结束的具体依据。
+./scripts/measure-resources.ps1 -ProcessId $veloProcessId -Seconds 15 -Samples 3 `
+    -Edition Installed -ExpectedExecutable $veloExecutable -WindowState Visible `
+    -IdleConfirmed -IdleEvidence '填写本次扫描完成时间及确认方式' `
+    -OutputPath "$veloEvidenceDir/installed-visible.json"
+
+# 刚隐藏后执行；确认期间保持隐藏，再顺序取得三组 15 秒样本。
+./scripts/measure-resources.ps1 -ProcessId $veloProcessId -Seconds 15 -Samples 3 `
+    -Edition Installed -ExpectedExecutable $veloExecutable -WindowState Hidden `
+    -MinimumStateSeconds 30 -IdleConfirmed -IdleEvidence '填写本次扫描完成时间及确认方式' `
+    -OutputPath "$veloEvidenceDir/installed-hidden-30s.json"
+
+# 重新呼出并隐藏后单独执行，不能把进程存活时间当作隐藏时间。
+./scripts/measure-resources.ps1 -ProcessId $veloProcessId -Seconds 15 -Samples 3 `
+    -Edition Installed -ExpectedExecutable $veloExecutable -WindowState Hidden `
+    -MinimumStateSeconds 300 -IdleConfirmed -IdleEvidence '填写本次扫描完成时间及确认方式' `
+    -OutputPath "$veloEvidenceDir/installed-hidden-5m.json"
+```
+
+候选使用 `-Edition Candidate -ExpectedExecutable <候选实际路径> -DataDirectory <候选数据目录>`，在安装版退出或独立测试会话中执行，并确认实际根进程路径。对照时核对配置、索引、历史、应用库的 SHA-256、可见索引数量、DPI、WebView2 版本和生产 / 诊断模式。只使用同一套输入；保存的配置缺失字段由对应程序版本补默认值，不能把 `SavedConfig` 当作完整的实时设置查询。`--diagnostics` 与默认生产行为分组记录。
+
+输出为 `SchemaVersion=2` JSON，含程序路径 / SHA-256 / 字节数 / 固定文件版本、代码与工具链信息、配置与数据指纹、各进程内存、CPU 和逐次窗口观察。`Environment.WorkspaceCommit` 是采集器工作区的提交；程序没有嵌入 `vcs.revision` 时，`Executable.SourceCommit` 默认空缺。只有通过发布清单 SHA-256 或构建记录确认提交后，才填写完整的 `-ExecutableCommit`，并在测量记录中附依据。当前 PATH 中的 Node / Wails CLI 是采集环境信息，不代表安装版当初使用的构建工具；程序的 Go / Wails 依赖另从 exe 的 Go build info 读取。
+
+采集器只读枚举属于目标 PID 的 `VeloLauncherWindow`，记录 `IsWindowVisible`、DPI 与缩放比例；每约 1 秒检查一次进程树和窗口。状态缺失或采样中发生显隐切换时输出 `WindowState=Unknown`（状态未确认）；预期状态不符也不得纳入对照。`MinimumStateSeconds` 是从采集器开始观察起的持续状态下限，不是隐藏动作的精确时间；必须记录是否从一次新的隐藏动作开始。三个连续样本会在该下限之后依次取得，不能都写成“恰好隐藏 30 秒”。
+
+逐样本检查 `CPUSampleValid`、`WindowStateMatches`、`StateContinuouslyObserved`、`DataStable`、`IdleConfirmed` 与 `BaselineEligible`，同时核对报告的 `ExecutableFileStable`。数据文件或刷新日志改变会使对应空闲样本无效；保留无效样本，另取新文件补测。`AllSamplesEligible` 仅描述该文件的全部样本是否可用，不表示 OPT-00 或性能目标验收通过。`-IdleConfirmed` 需要填写 `-IdleEvidence`，默认不宣称已经空闲；日志中的上次刷新数量也不是实时扫描状态。脚本不会覆盖已有输出。
+
+PrivateBytes 为私有提交，WorkingSet 为全进程树工作集求和（共享页重复统计），单位 `MB` 字段按 1024² 字节换算，原始字节同时保留。CPU 用两端累计计数之差、单调时钟的实际秒数及逻辑 CPU 数归一化；检查每个轮询点的 PID / 启动时间和计数，变化或计数下降则 CPU 为 null。轮询仍可能漏掉完全发生在间隔内的短命进程或显隐变化，所以这些数值用于稳定空闲期，不能证明启动 CPU、物理常驻 <80 MB 或热呼出 <50 ms。CPU 显示 0 是该精度下的结果。
+
+搜索内核与服务基准串行运行，至少三轮，不与资源采样重叠：
+
+```powershell
+go test ./internal/search -run '^$' -bench BenchmarkSearch1000Apps -benchmem -benchtime=300ms -count=3
+go test ./internal/app -run '^$' -bench '^BenchmarkService(Home|Search)$' -benchmem -benchtime=300ms -count=3
+```
+
+服务夹具固定为 100 / 1000 / 5000 项、4 个固定应用和 1 个固定系统快捷，系统快捷总数固定为 3；分别无历史和所有条目有历史（过去约 24 小时、不同启动次数及 query 频次）。通过真实 `Service.New` 加载临时数据，计时只覆盖 `Home` / `Search` 调用，包含历史计算、锁、排名和混合结果；构建夹具、磁盘扫描、IPC、DOM 渲染不在计时内。服务夹具包含中文名称，不能把它与原有内核夹具的差值全部归因为服务开销。
+
+### 桌面启动与热呼出计时
+
+已提供仅 `latencyprobe` 标签启用的观察探针、`build-latency-probe.ps1`、`collect-latency.ps1` 和需在正常交互桌面运行的 `run-desktop-latency.ps1`。当前校准结果、时钟 / 原生焦点限制及三次暖启动、20 次真实按键、独立冷启动的采集步骤见[计时采集记录](baselines/2026-10-27-opt00-latency/README.md)。普通生产构建不包含探针；工具通过测试不代表已有有效计时数据。
+
+真正冷启动、暖启动、热呼出分组保存，使用[空白 CSV](baselines/2026-10-27-opt00/desktop-latency.csv) 的列名另建本次证据文件。每行关联 exe SHA-256、环境 / 数据指纹记录、时间、测量方法与原始证据。`Valid=false` 的失败尝试保留但不参与分位数；超时和输入失败另报数量，不得通过删除慢样本改善结果。
+
+- `ColdStartup`：`Boundary=ProcessStartToEditable`。独立重启 / 受控冷条件后的首次启动；在 `BootId` 填写该条件的证据 ID。后续重复启动属于暖启动。同一个条件不得重复计作冷样本；不要为了测量自动重启用户电脑或改动自启动设置。
+
+  重启前须核对实际登录启动入口及其启用状态，不能只检查 `config.json` 的 `launch_at_startup`。2026-10-27 复核发现配置为 false，但注册表 `Run\Velo` 和 StartupApproved 仍启用，安装版已先于采样启动。具体证据与需用户明确授权才执行的临时停用 / 恢复步骤见[重启预检记录](baselines/2026-10-27-opt00-cold-preflight/README.md)；管理脚本默认 `Status` 只读，备份不等于更改启动项。
+- `WarmStartup`：同样测从进程开始到搜索框可输入，保留 OS / WebView / Velo 索引缓存，正常退出后重复启动；建议至少 3 次，独立于冷启动。
+- `HotkeyActivation`：`Boundary=KeyDownToEditable`。生产模式隐藏后，从实际快捷键按下到搜索框成功接受输入；至少 20 个有效样本。使用能够覆盖整个边界的桌面计时 / 高帧率录屏及输入证据，并注明分辨率、时钟和观察误差。分别保留隐藏等待时长及焦点、输入失败，计时后清空测试查询，不执行候选。
+
+启动日志 `frontend interactive` 只作补充，不能代替上述可输入时刻。工具调用耗时和两次截图间隔也不能证明 <50 ms。尚无这些测量能力或实际样本时，CSV 只保留表头，延迟与分位数保持空缺。
+
+```powershell
+# 对真实桌面记录计算中位数和 P95；不会自动产生计时样本。
+./scripts/summarize-latency.ps1 -InputPath <本次桌面CSV路径> -OutputPath <新JSON路径>
+# 独立验证采集判定及统计规则（不操作桌面；亦已纳入 verify.ps1）：
+./scripts/test-resource-measurement.ps1
+./scripts/test-latency-summary.ps1
+```
+
+统计按程序 SHA-256、环境、输入、方法及指标分组；中位数在偶数样本时取中间两值均值，P95 使用最近秩 `ceil(0.95 × n)`。汇总器检查热呼出 20 次、启动每组 3 次的样本数量，拒绝有效记录中的非有限 / 非正耗时及重复冷条件。样本数量满足不等于性能达标，原始证据和真实冷条件仍需核验。
+
+简要资源探针仍可使用：
 
 ```powershell
 ./scripts/measure-resources.ps1 -ProcessId <Velo进程ID> -Seconds 15
 ```
 
-输出包含各进程内存明细。仅当 `CPUSampleValid` 为 true 时使用 CPU 百分比；采样期间进程集合变化会返回无效样本，应在运行稳定后重测。该脚本测量稳定运行期，不用于启动阶段 CPU 总量。
+未提供空闲确认时，探针的 `BaselineEligible=false`；它用于检查目标进程与状态，不能直接作为已验收的空闲基线。
 
 已发布的 exe 与安装包均未签名；没有插件、云端同步或其他 Future 范围功能。
 

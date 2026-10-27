@@ -275,6 +275,7 @@ onMounted(async () => {
   OnFileDrop((_x, _y, paths) => { void addPaths(paths) }, false)
   await updateStatus()
   if (visible.value) await show()
+  else await updateResults()
   await FrontendReady()
 })
 onUnmounted(() => { cancelSearchFocus(); systemTheme.removeEventListener('change', systemThemeChanged); OnFileDropOff(); disposers.forEach(dispose => dispose()); window.removeEventListener('keydown', keydown); window.removeEventListener('blur', blur); window.removeEventListener('focus', focus) })

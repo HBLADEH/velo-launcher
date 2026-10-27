@@ -1,0 +1,57 @@
+{
+  "SchemaVersion": 1,
+  "ObservedAtUtc": "2026-10-27T13:37:06.5175624Z",
+  "BootUtc": "2026-10-27T11:25:07.5000000Z",
+  "InstalledProcess": {
+    "ProcessId": 30492,
+    "Executable": "C:\\Program Files\\HBLADEH\\Velo\\velo-launcher.exe",
+    "CommandLine": "\"C:\\Program Files\\HBLADEH\\Velo\\velo-launcher.exe\" --background",
+    "CreatedUtc": "2026-10-27T11:26:10.5507680Z"
+  },
+  "StartupEntry": {
+    "Hive": "HKCU",
+    "Key": "Software\\Microsoft\\Windows\\CurrentVersion\\Run",
+    "Name": "Velo",
+    "Value": "\"C:\\Program Files\\HBLADEH\\Velo\\velo-launcher.exe\" --background",
+    "Approved": true
+  },
+  "ColdRejected": true,
+  "Reason": "A Velo instance is already running.",
+  "TimingSampleCreated": false,
+  "FrozenExecutableMetadataMatches": true,
+  "FrozenInputsMetadata": [
+    {
+      "Name": "config.json",
+      "Bytes": 356,
+      "ModifiedUtcTicks": 639286728207381377,
+      "MatchesFrozen": true
+    },
+    {
+      "Name": "index.json",
+      "Bytes": 638501,
+      "ModifiedUtcTicks": 639286779232516583,
+      "MatchesFrozen": true
+    },
+    {
+      "Name": "history.json",
+      "Bytes": 952,
+      "ModifiedUtcTicks": 639256100379387625,
+      "MatchesFrozen": true
+    },
+    {
+      "Name": "application-library.json",
+      "Bytes": 498,
+      "ModifiedUtcTicks": 639256099851084502,
+      "MatchesFrozen": true
+    },
+    {
+      "Name": "quick-launch.json",
+      "Bytes": 419,
+      "ModifiedUtcTicks": 639256091469678433,
+      "MatchesFrozen": true
+    }
+  ],
+  "StartupSettingChanged": false,
+  "RunningInstalledAppStopped": false,
+  "ProbeContentReadOrLaunched": false
+}

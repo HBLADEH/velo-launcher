@@ -151,7 +151,14 @@ func (w *DesktopWindow) focus() {
 	}
 	// WM_SETFOCUS reaches Wails on the owning UI thread, where it restores
 	// WebView focus. Keep this synchronous so a later Hide cannot be undone.
-	user32.NewProc("SetFocus").Call(w.handle)
+	setFocus := user32.NewProc("SetFocus")
+	if focused, _, _ := user32.NewProc("GetFocus").Call(); focused == w.handle {
+		// Initial activation can focus the host before the WebView is ready.
+		// Focusing the same HWND is a no-op, so create a real transition that
+		// lets Wails hand focus to the WebView instead of leaving it on the host.
+		setFocus.Call(0)
+	}
+	setFocus.Call(w.handle)
 }
 
 func keepWindowPlacement(work rect, x, y, width, height int32) (int32, int32, int32, int32) {

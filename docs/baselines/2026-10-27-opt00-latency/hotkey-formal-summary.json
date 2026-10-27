@@ -1,0 +1,41 @@
+{
+  "SchemaVersion": 1,
+  "InputPath": "D:\\workspace\\velo-launcher\\docs\\baselines\\2026-10-27-opt00-latency\\hotkey-formal.csv",
+  "InputSHA256": "A3D1F6A50CF53B9E39AD1F01EAAEE781C350A34F72D3D108C04D3867279C9E1D",
+  "PercentileMethod": "Nearest rank: sorted[ceil(0.95*n)-1]; median averages the middle pair when n is even.",
+  "Groups": [
+    {
+      "Kind": "HotkeyActivation",
+      "ExecutableSHA256": "D099F92BF3A71A804572A2F0CF81B5FFEA664D46E0F1E477B7C37C7183E755C6",
+      "EnvironmentId": "32A9CD3C77039E0815CED73AD350CC89545EF0F898872DFC9DC4B9D5E612A520",
+      "InputId": "F63FA2287EC06F8CCBB801E528C8171EEF43592A09602653C6AC3D7466BBA8DE",
+      "Method": "ConservativeUpperBound_OSClock_DOMFocusReady_IPCAck",
+      "Boundary": "KeyDownToEditable",
+      "ValidSamples": 20,
+      "InvalidSamples": 4,
+      "MedianMilliseconds": 29.4425,
+      "P95Milliseconds": 51.9961,
+      "MinimumSamples": 20,
+      "SampleCountSatisfied": true
+    }
+  ],
+  "Coverage": [
+    {
+      "ExecutableSHA256": "D099F92BF3A71A804572A2F0CF81B5FFEA664D46E0F1E477B7C37C7183E755C6",
+      "EnvironmentId": "32A9CD3C77039E0815CED73AD350CC89545EF0F898872DFC9DC4B9D5E612A520",
+      "InputId": "F63FA2287EC06F8CCBB801E528C8171EEF43592A09602653C6AC3D7466BBA8DE",
+      "Method": "ConservativeUpperBound_OSClock_DOMFocusReady_IPCAck",
+      "MissingKinds": [
+        "ColdStartup",
+        "WarmStartup"
+      ],
+      "AllSampleCountsSatisfied": false
+    }
+  ],
+  "MissingKinds": [
+    "ColdStartup",
+    "WarmStartup"
+  ],
+  "AllSampleCountsSatisfied": false,
+  "Note": "Summarizes supplied desktop evidence only; does not measure latency or establish that a cold condition/input-readiness claim is true."
+}

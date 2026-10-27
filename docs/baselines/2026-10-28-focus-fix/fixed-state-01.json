@@ -1,0 +1,64 @@
+{
+  "Armed": false,
+  "Attached": true,
+  "ForegroundProcessID": 37600,
+  "HookError": "",
+  "LastDOM": {
+    "stage": "ready",
+    "documentFocused": true,
+    "inputFocused": true,
+    "writable": true,
+    "displayed": true,
+    "browserTimeMS": 1156
+  },
+  "NativeActive": true,
+  "NativeFocus": {
+    "Available": true,
+    "FocusedClass": "Chrome_WidgetWin_1",
+    "FocusedWindow": 7932386,
+    "Window": 395842
+  },
+  "NativeVisible": true,
+  "ProcessId": 37600,
+  "Ready": true,
+  "Records": [
+    {
+      "ID": "startup",
+      "Kind": "WarmStartup",
+      "ProcessID": 37600,
+      "ExecutableSHA256": "16F4CA7C21CA8488FFE0116DE5B5C208C8EDC8870D50C90F50A74671B6CEFB51",
+      "BootID": "2026-10-27T13:59:11.5Z",
+      "StartedAtUTC": "2026-10-27T17:16:13.7915159Z",
+      "AcknowledgedAtUTC": "2026-10-27T17:16:15.9786035Z",
+      "UpperBoundMilliseconds": 2187.0876,
+      "Valid": true,
+      "Reason": "",
+      "ClockUncertaintyMS": 0.1,
+      "KeyboardEventMilliseconds": 0,
+      "InjectedKeyboardEvent": false,
+      "DOM": {
+        "stage": "ready",
+        "documentFocused": true,
+        "inputFocused": true,
+        "writable": true,
+        "displayed": true,
+        "browserTimeMS": 1156
+      },
+      "NativeVisible": true,
+      "NativeActive": true,
+      "ForegroundProcessID": 37600
+    }
+  ],
+  "Status": {
+    "count": 389,
+    "scanning": false,
+    "last_refresh": "2026-10-28T01:16:17+08:00",
+    "scan_milliseconds": 2778,
+    "warnings": [
+      "C:\\Program Files\\Windows Defender Advanced Threat Protection\\Classification\\Configuration: open C:\\Program Files\\Windows Defender Advanced Threat Protection\\Classification\\Configuration: Access is denied."
+    ],
+    "hotkey_error": "",
+    "visible": true,
+    "version": "0.9.10"
+  }
+}

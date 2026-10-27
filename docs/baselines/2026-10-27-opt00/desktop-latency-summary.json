@@ -1,0 +1,15 @@
+{
+  "SchemaVersion": 1,
+  "InputPath": "D:\\workspace\\velo-launcher\\docs\\baselines\\2026-10-27-opt00\\desktop-latency.csv",
+  "InputSHA256": "21A951FC5DC216052E9B68ECBD21CF2C9AD58F6190392F269281B521C6971E7E",
+  "PercentileMethod": "Nearest rank: sorted[ceil(0.95*n)-1]; median averages the middle pair when n is even.",
+  "Groups": [],
+  "Coverage": [],
+  "MissingKinds": [
+    "WarmStartup",
+    "HotkeyActivation",
+    "ColdStartup"
+  ],
+  "AllSampleCountsSatisfied": false,
+  "Note": "Summarizes supplied desktop evidence only; does not measure latency or establish that a cold condition/input-readiness claim is true."
+}
