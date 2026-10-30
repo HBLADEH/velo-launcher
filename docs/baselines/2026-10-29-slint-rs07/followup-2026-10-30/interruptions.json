@@ -1,0 +1,25 @@
+{
+  "CancelledUacAttempts": [
+    {
+      "Attempt": 1,
+      "Outcome": "UAC cancelled",
+      "UserExplanation": "重新来一次，刚刚我不小心关掉了",
+      "SourceProcessStarted": false,
+      "CountedAsFunctionalFailure": false
+    },
+    {
+      "Case": "femtovg-high",
+      "Attempt": 1,
+      "Outcome": "UAC cancelled",
+      "UserExplanation": "重新来一次，没注意到",
+      "TargetStarted": false,
+      "CountedAsFunctionalFailure": false
+    }
+  ],
+  "ComputerUseInterruption": {
+    "Cause": "Physical Escape",
+    "ResumedByUser": true,
+    "Effect": "No post-drop Software-high screenshot; successful source/target events and explicit user report retained."
+  },
+  "FunctionalFailures": 0
+}

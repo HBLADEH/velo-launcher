@@ -45,6 +45,10 @@ go test ./internal/platform -run TestTray -v
 
 Wails 绑定位于 `frontend/wailsjs`，由工具生成，请勿手工修改。`main_bindings.go` 使用独立构建标签，生成绑定时不会访问运行中的用户数据。仅 Windows 实现当前桌面能力；未宣称支持 macOS / Linux。
 
+## Rust + Slint 重构验证
+
+Rust + Slint 重构使用独立验证入口，工具链、features 与运行参数见 [Rust 工程说明](../rust/README.md)。在仓库根目录运行 `./scripts/verify-rust.ps1 -SmokeTest` 可完成格式、clippy、Rust 测试、两种 Release 构建与实际窗口/输入冒烟检查。RS-01 至 RS-05、RS-07 已通过本机验证，RS-06 多屏/混合 DPI 等项仍待补验，G2 尚未放行。另一台双屏电脑可按 [跨机器测试清单](rust-slint-dual-monitor-testing.md)复验；当前仍是独立原型，不替代下面的 Go 版数据和发布流程。
+
 ## 本地数据
 
 `%LOCALAPPDATA%\Velo`：

@@ -54,6 +54,8 @@ $tree = @(
 )
 $selected = @(Get-VeloProcessTree -Processes $tree -RootProcessId 1)
 Assert (-not (Compare-Object @(1, 2, 3) @($selected.ProcessId | Sort-Object))) 'Include all launcher WebViews and exclude launched/unrelated applications.'
+$allChildren = @(Get-VeloProcessTree -Processes $tree -RootProcessId 1 -AllDescendants)
+Assert (-not (Compare-Object @(1, 2, 3, 4, 5) @($allChildren.ProcessId | Sort-Object))) 'Slint must include every descendant, even one that is not a WebView.'
 
 $jsonPath = Join-Path ([IO.Path]::GetTempPath()) ('velo-metadata-test-' + [guid]::NewGuid().ToString('N') + '.json')
 try {
@@ -72,7 +74,7 @@ try {
     if (Test-Path -LiteralPath $jsonPath) { Remove-Item -LiteralPath $jsonPath }
 }
 
-foreach ($script in @('measure-resources.ps1', 'lib/resource-sample.ps1', 'test-resource-measurement.ps1')) {
+foreach ($script in @('measure-resources.ps1', 'measure-slint-ab.ps1', 'collect-slint-latency.ps1', 'lib/resource-sample.ps1', 'test-resource-measurement.ps1')) {
     $tokens = $null; $parseErrors = $null
     [void][System.Management.Automation.Language.Parser]::ParseFile((Join-Path $PSScriptRoot $script), [ref]$tokens, [ref]$parseErrors)
     Assert (-not $parseErrors) "PowerShell syntax errors in $script"

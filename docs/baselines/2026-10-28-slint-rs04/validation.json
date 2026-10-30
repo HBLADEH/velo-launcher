@@ -1,0 +1,48 @@
+{
+  "OriginalBuilds": [
+    "femtovg-build.json",
+    "software-build.json"
+  ],
+  "RebuiltBuilds": [
+    "femtovg-rebuild.json",
+    "software-rebuild.json"
+  ],
+  "RustChecks": {
+    "Format": true,
+    "ClippyAllTargetsDenyWarnings": true,
+    "BehaviorTestsPerRenderer": 9,
+    "ReleaseBuilds": 2,
+    "WindowSmokePerRenderer": true,
+    "InputSmokeAssertionsPerRenderer": 15,
+    "RebuiltWindowAndInputSmoke": true
+  },
+  "SharedChecks": {
+    "ResourceRegression": true,
+    "SlintMeasurementRegression": true,
+    "LatencySummaryRegression": true,
+    "WailsLatencyCollectionRegression": true,
+    "StartupCleanupRegression": true,
+    "FrontendLint": true,
+    "FrontendTests": 26,
+    "FrontendBuild": true,
+    "GoVet": true,
+    "GoTests": true,
+    "FullEntryPoint": "scripts/verify.ps1 -SkipBuild"
+  },
+  "Desktop": {
+    "ResourceSamples": 42,
+    "RawResourcePolls": 501,
+    "AllSamplesEligible": true,
+    "CyclesPerRenderer": 100,
+    "ActualInputObservationsPerRenderer": 3,
+    "Screenshots": 12,
+    "DPI": 120,
+    "ScalePercent": 125,
+    "NoRemainingSlintProcess": true
+  },
+  "Limitations": [
+    "G1 prototype feasibility only; no full application performance or final renderer decision.",
+    "Actual input latency includes Computer Use activation/waiting; cold/hotkey coverage intentionally remains missing.",
+    "Rebuild changes executable SHA; original and rebuilt measurements remain separate. Original executable copies were not retained before rebuilding."
+  ]
+}

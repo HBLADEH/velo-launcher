@@ -10,6 +10,7 @@
 *.log
 .DS_Store
 /.reasonix/
+/rust/target/
 
 # Keep raw local measurement logs and frozen collector snapshots out of Git.
 /docs/baselines/**/*.jsonl

@@ -1,0 +1,27 @@
+{
+  "OperatingSystem": {
+    "Caption": "Microsoft Windows 11 专业版",
+    "Version": "10.0.26300",
+    "BuildNumber": "26300",
+    "OSArchitecture": "64 位"
+  },
+  "NativeObservations": [
+    "event=probe_monitor x=0 y=0 width=2560 height=1440 work_x=0 work_y=0 work_width=2560 work_height=1380 dpi=120 primary=true"
+  ],
+  "RemainingRustProcesses": 0,
+  "RemainingLauncherOrTrayWindows": 0,
+  "TestHotkey": "Ctrl+Alt+K",
+  "TestHotkeyReacquired": true,
+  "TestHotkeyReleased": true,
+  "ExploratoryTestProcesses": [
+    38804
+  ],
+  "FinalTestProcesses": [
+    10512,
+    31748
+  ],
+  "FixtureExplorerWindowClosed": true,
+  "ScaleOrPowerSettingsChanged": false,
+  "ElevatedRunExecuted": false,
+  "Note": "The initial layout exploration build was replaced and exited before final evidence collection."
+}

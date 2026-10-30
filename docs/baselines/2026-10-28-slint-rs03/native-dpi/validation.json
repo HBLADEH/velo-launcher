@@ -1,0 +1,59 @@
+{
+  "DateBeijing": "2026-10-28",
+  "Status": "passed",
+  "Scope": "RS-03 initial native DPI validation on Windows 11 with Microsoft Pinyin",
+  "SystemDisplayChange": "Windows Settings / System / Display / Scale",
+  "OriginalSystemScalePercent": 125,
+  "RestoredSystemScalePercent": 125,
+  "DisplayResolution": [
+    2560,
+    1440
+  ],
+  "SlintScaleOverride": null,
+  "ApplicationSourceChanged": false,
+  "BinariesRebuilt": false,
+  "ManualSessionsPassed": 6,
+  "WindowSmokesPassed": 8,
+  "InputSmokesPassed": 8,
+  "ComponentAssertionsPassed": 120,
+  "SettingsScreenshotPublished": false,
+  "Checks": [
+    {
+      "SystemScalePercent": 100,
+      "WindowSmokesPassed": 2,
+      "InputSmokesPassed": 2,
+      "ComponentAssertionsPassed": 30,
+      "Evidence": "checks-100.json",
+      "Role": "native DPI supplement"
+    },
+    {
+      "SystemScalePercent": 125,
+      "WindowSmokesPassed": 2,
+      "InputSmokesPassed": 2,
+      "ComponentAssertionsPassed": 30,
+      "Evidence": "checks-125.json",
+      "Role": "restored original scale"
+    },
+    {
+      "SystemScalePercent": 150,
+      "WindowSmokesPassed": 2,
+      "InputSmokesPassed": 2,
+      "ComponentAssertionsPassed": 30,
+      "Evidence": "checks-150.json",
+      "Role": "native DPI supplement"
+    },
+    {
+      "SystemScalePercent": 200,
+      "WindowSmokesPassed": 2,
+      "InputSmokesPassed": 2,
+      "ComponentAssertionsPassed": 30,
+      "Evidence": "checks-200.json",
+      "Role": "native DPI supplement"
+    }
+  ],
+  "RemainingScope": [
+    "Live DPI changes / mixed-DPI monitor moves: RS-06",
+    "Windows 10 and third-party IME: environment-specific later verification",
+    "SLINT_SCALE_FACTOR mismatch remains a development override limitation"
+  ]
+}

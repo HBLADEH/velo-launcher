@@ -2,6 +2,8 @@
 [CmdletBinding()]
 param(
     [ValidateSet('Prepare', 'Arm', 'Capture', 'Warm', 'Cold', 'Export', 'Snapshot', 'Close', 'Finish')][string]$Action,
+    [ValidateSet('Wails', 'Slint')][string]$ApplicationKind = 'Wails',
+    [string]$Executable,
     [Parameter(Mandatory)][string]$WorkDirectory,
     [Parameter(Mandatory)][string]$OutputDirectory,
     [string]$SeedSource,
@@ -10,6 +12,10 @@ param(
     [switch]$KeepLastRunning
 )
 $ErrorActionPreference = 'Stop'
+if ($ApplicationKind -eq 'Slint') {
+    & (Join-Path $PSScriptRoot 'collect-slint-latency.ps1') -Action $Action -WorkDirectory $WorkDirectory -OutputDirectory $OutputDirectory -Executable $Executable
+    return
+}
 $workspace = Split-Path -Parent $PSScriptRoot
 $WorkDirectory = $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($WorkDirectory)
 $OutputDirectory = $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($OutputDirectory)

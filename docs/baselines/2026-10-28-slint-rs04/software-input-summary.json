@@ -1,0 +1,42 @@
+{
+  "SchemaVersion": 1,
+  "InputPath": "software-input.csv",
+  "InputSHA256": "5A6B4C038B60F2EBE2B037C8A1545174E9148B524038E4F40E2D7EDC33E4A9FF",
+  "PercentileMethod": "Nearest rank: sorted[ceil(0.95*n)-1]; median averages the middle pair when n is even.",
+  "Groups": [
+    {
+      "Kind": "WarmStartup",
+      "ExecutableSHA256": "214DC140513322B99301867F52B54F216BF9F7E8AD45CFCF8765237CD4AA6C74",
+      "EnvironmentId": "A7CFF02CBEB3EF24B7E548AB52069636894B1C2AE3502B35931DFE8A0AD1923A",
+      "InputId": "EB5CC01B545EC8C5957CD5E4078061AD8A36D87BFE72D90C6E27D02DC6798D37",
+      "Method": "ComputerUseAssistedUpperBound",
+      "Boundary": "ProcessStartToEditable",
+      "ValidSamples": 3,
+      "InvalidSamples": 0,
+      "MedianMilliseconds": 10264.601,
+      "P95Milliseconds": 15035.8605,
+      "MinimumSamples": 3,
+      "SampleCountSatisfied": true
+    }
+  ],
+  "Coverage": [
+    {
+      "ExecutableSHA256": "214DC140513322B99301867F52B54F216BF9F7E8AD45CFCF8765237CD4AA6C74",
+      "EnvironmentId": "A7CFF02CBEB3EF24B7E548AB52069636894B1C2AE3502B35931DFE8A0AD1923A",
+      "InputId": "EB5CC01B545EC8C5957CD5E4078061AD8A36D87BFE72D90C6E27D02DC6798D37",
+      "Method": "ComputerUseAssistedUpperBound",
+      "MissingKinds": [
+        "ColdStartup",
+        "HotkeyActivation"
+      ],
+      "AllSampleCountsSatisfied": false
+    }
+  ],
+  "MissingKinds": [
+    "ColdStartup",
+    "HotkeyActivation"
+  ],
+  "AllSampleCountsSatisfied": false,
+  "Note": "Summarizes supplied desktop evidence only; does not measure latency or establish that a cold condition/input-readiness claim is true.",
+  "LocalSourceCSVHash": "29E5F9EE4DFD4FC6B2D4657C0EB64F221FB51D0788C94860917980C54B7D73F0"
+}

@@ -1,0 +1,30 @@
+{
+  "BuildIdentities": [
+    {
+      "Renderer": "software",
+      "ExecutableSHA256": "2C26130F54BC6A38983A2F5C5BA7E75D2AFBE3199F4F65259731864FD6589D48",
+      "SourceFingerprints": 49,
+      "Match": true
+    },
+    {
+      "Renderer": "femtovg",
+      "ExecutableSHA256": "2F12AFA94F84810F09D5F0D25F2CB54B69B2D5D1537964C94C2F996210404080",
+      "SourceFingerprints": 49,
+      "Match": true
+    }
+  ],
+  "RustOrProductSourcesChanged": false,
+  "PriorAutomaticVerification": "../checks.json (same executable and same 49 recorded source fingerprints per renderer)",
+  "NewFixtureCompiled": true,
+  "NewFixtureBuild": "drag-source-build.json",
+  "LiveRunsVerified": 4,
+  "NativeEventsDropped": 0,
+  "ScreenshotsVerified": 7,
+  "NormalSingleGestureBothRenderers": true,
+  "OrdinaryExplorerBlockedByElevatedBothRenderers": true,
+  "HighToHighRealOleBothRenderers": true,
+  "ElevatedPickerAndInputBothRenderers": true,
+  "ExitCleanupVerified": true,
+  "Rs07LocalWindows11Status": "verified",
+  "G2": "not released: deferred RS-06 hardware/notification-area items remain"
+}

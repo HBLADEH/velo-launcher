@@ -1,0 +1,1071 @@
+{
+  "Timezone": "Asia/Shanghai",
+  "PhysicalDisplayCount": 1,
+  "NativeSamples": [
+    {
+      "Name": "after-explorer-restart.bounds.log",
+      "SHA256": "51F686E7D898E08EAC3C93C40796B5E7FCB4A854926B03A54B516123024F7402",
+      "Method": "Native read-only inspection after the named desktop action",
+      "Events": [
+        {
+          "event": "probe_monitor",
+          "x": "0",
+          "y": "0",
+          "width": "2560",
+          "height": "1440",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1380",
+          "dpi": "120",
+          "primary": "true"
+        },
+        {
+          "event": "probe_window",
+          "class": "VeloSlintLauncherWindow",
+          "hwnd": "20608",
+          "pid": "30252",
+          "visible": "false",
+          "dpi": "120",
+          "x": "800",
+          "y": "273",
+          "width": "800",
+          "height": "263"
+        },
+        {
+          "event": "probe_window",
+          "class": "VeloSlintLauncherWindow",
+          "hwnd": "8A09E2",
+          "pid": "2964",
+          "visible": "false",
+          "dpi": "120",
+          "x": "1030",
+          "y": "0",
+          "width": "800",
+          "height": "900"
+        },
+        {
+          "event": "probe_window",
+          "class": "VeloSlintDesktopService",
+          "hwnd": "E0586",
+          "pid": "30252",
+          "visible": "false",
+          "dpi": "144",
+          "x": "0",
+          "y": "0",
+          "width": "0",
+          "height": "0"
+        },
+        {
+          "event": "probe_tray",
+          "hwnd": "E0586",
+          "registered": "true",
+          "x": "2124",
+          "y": "1380",
+          "width": "40",
+          "height": "60"
+        },
+        {
+          "event": "probe_window",
+          "class": "VeloSlintDesktopService",
+          "hwnd": "4209D0",
+          "pid": "2964",
+          "visible": "false",
+          "dpi": "120",
+          "x": "0",
+          "y": "0",
+          "width": "0",
+          "height": "0"
+        },
+        {
+          "event": "probe_tray",
+          "hwnd": "4209D0",
+          "registered": "true",
+          "x": "2124",
+          "y": "1380",
+          "width": "40",
+          "height": "60"
+        }
+      ]
+    },
+    {
+      "Name": "after-offscreen-recovery.bounds.log",
+      "SHA256": "ACD8DCDDF3BFF296879625283A591EB7115706EB28F121ABFA27F6EDE989B4F4",
+      "Method": "Programmatic offscreen placement injection plus native inspection; not physical monitor removal",
+      "Events": [
+        {
+          "event": "probe_monitor",
+          "x": "0",
+          "y": "0",
+          "width": "2560",
+          "height": "1440",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1380",
+          "dpi": "120",
+          "primary": "true"
+        },
+        {
+          "event": "probe_window",
+          "class": "VeloSlintLauncherWindow",
+          "hwnd": "8A09E2",
+          "pid": "2964",
+          "visible": "true",
+          "dpi": "120",
+          "x": "0",
+          "y": "0",
+          "width": "800",
+          "height": "825"
+        },
+        {
+          "event": "probe_window",
+          "class": "VeloSlintLauncherWindow",
+          "hwnd": "20608",
+          "pid": "30252",
+          "visible": "false",
+          "dpi": "120",
+          "x": "800",
+          "y": "273",
+          "width": "800",
+          "height": "263"
+        },
+        {
+          "event": "probe_window",
+          "class": "VeloSlintDesktopService",
+          "hwnd": "4209D0",
+          "pid": "2964",
+          "visible": "false",
+          "dpi": "120",
+          "x": "0",
+          "y": "0",
+          "width": "0",
+          "height": "0"
+        },
+        {
+          "event": "probe_tray",
+          "hwnd": "4209D0",
+          "registered": "true",
+          "x": "2124",
+          "y": "1380",
+          "width": "40",
+          "height": "60"
+        },
+        {
+          "event": "probe_window",
+          "class": "VeloSlintDesktopService",
+          "hwnd": "E0586",
+          "pid": "30252",
+          "visible": "false",
+          "dpi": "144",
+          "x": "0",
+          "y": "0",
+          "width": "0",
+          "height": "0"
+        },
+        {
+          "event": "probe_tray",
+          "hwnd": "E0586",
+          "registered": "true",
+          "x": "2124",
+          "y": "1380",
+          "width": "40",
+          "height": "60"
+        }
+      ]
+    },
+    {
+      "Name": "before-offscreen-recovery.bounds.log",
+      "SHA256": "BC8D80F98E76F5CC6962D5A6FBC2004D662E111D43C01655AF3432E396037FE4",
+      "Method": "Programmatic offscreen placement injection plus native inspection; not physical monitor removal",
+      "Events": [
+        {
+          "event": "probe_monitor",
+          "x": "0",
+          "y": "0",
+          "width": "2560",
+          "height": "1440",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1380",
+          "dpi": "120",
+          "primary": "true"
+        },
+        {
+          "event": "probe_window",
+          "class": "VeloSlintLauncherWindow",
+          "hwnd": "8A09E2",
+          "pid": "2964",
+          "visible": "true",
+          "dpi": "120",
+          "x": "1030",
+          "y": "0",
+          "width": "800",
+          "height": "825"
+        },
+        {
+          "event": "probe_window",
+          "class": "VeloSlintLauncherWindow",
+          "hwnd": "20608",
+          "pid": "30252",
+          "visible": "false",
+          "dpi": "120",
+          "x": "800",
+          "y": "273",
+          "width": "800",
+          "height": "263"
+        },
+        {
+          "event": "probe_window",
+          "class": "VeloSlintDesktopService",
+          "hwnd": "4209D0",
+          "pid": "2964",
+          "visible": "false",
+          "dpi": "120",
+          "x": "0",
+          "y": "0",
+          "width": "0",
+          "height": "0"
+        },
+        {
+          "event": "probe_tray",
+          "hwnd": "4209D0",
+          "registered": "true",
+          "x": "2124",
+          "y": "1380",
+          "width": "40",
+          "height": "60"
+        },
+        {
+          "event": "probe_window",
+          "class": "VeloSlintDesktopService",
+          "hwnd": "E0586",
+          "pid": "30252",
+          "visible": "false",
+          "dpi": "144",
+          "x": "0",
+          "y": "0",
+          "width": "0",
+          "height": "0"
+        },
+        {
+          "event": "probe_tray",
+          "hwnd": "E0586",
+          "registered": "true",
+          "x": "2124",
+          "y": "1380",
+          "width": "40",
+          "height": "60"
+        }
+      ]
+    },
+    {
+      "Name": "both-dpi-100.bounds.log",
+      "SHA256": "1B391AE974B06EF403ADB5AC35DC843930F3B49E8F904B0ECFF095363F3F5A64",
+      "Method": "Native read-only inspection after the named desktop action",
+      "Events": [
+        {
+          "event": "probe_monitor",
+          "x": "0",
+          "y": "0",
+          "width": "2560",
+          "height": "1440",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1392",
+          "dpi": "96",
+          "primary": "true"
+        },
+        {
+          "event": "probe_window",
+          "class": "VeloSlintLauncherWindow",
+          "hwnd": "20608",
+          "pid": "30252",
+          "visible": "true",
+          "dpi": "96",
+          "x": "800",
+          "y": "273",
+          "width": "640",
+          "height": "264"
+        },
+        {
+          "event": "probe_window",
+          "class": "VeloSlintLauncherWindow",
+          "hwnd": "8A09E2",
+          "pid": "2964",
+          "visible": "false",
+          "dpi": "96",
+          "x": "1030",
+          "y": "0",
+          "width": "640",
+          "height": "720"
+        },
+        {
+          "event": "probe_window",
+          "class": "VeloSlintDesktopService",
+          "hwnd": "E0586",
+          "pid": "30252",
+          "visible": "false",
+          "dpi": "144",
+          "x": "0",
+          "y": "0",
+          "width": "0",
+          "height": "0"
+        },
+        {
+          "event": "probe_tray",
+          "hwnd": "E0586",
+          "registered": "true",
+          "x": "2212",
+          "y": "1392",
+          "width": "32",
+          "height": "48"
+        },
+        {
+          "event": "probe_window",
+          "class": "VeloSlintDesktopService",
+          "hwnd": "4209D0",
+          "pid": "2964",
+          "visible": "false",
+          "dpi": "120",
+          "x": "0",
+          "y": "0",
+          "width": "0",
+          "height": "0"
+        },
+        {
+          "event": "probe_tray",
+          "hwnd": "4209D0",
+          "registered": "true",
+          "x": "2212",
+          "y": "1392",
+          "width": "32",
+          "height": "48"
+        }
+      ]
+    },
+    {
+      "Name": "both-dpi-150.bounds.log",
+      "SHA256": "61310383FDCA76D2049E3ADE23A504FF904D8901BE1E0D4ECD8A223CB9825920",
+      "Method": "Native read-only inspection after the named desktop action",
+      "Events": [
+        {
+          "event": "probe_monitor",
+          "x": "0",
+          "y": "0",
+          "width": "2560",
+          "height": "1440",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1368",
+          "dpi": "144",
+          "primary": "true"
+        },
+        {
+          "event": "probe_window",
+          "class": "VeloSlintLauncherWindow",
+          "hwnd": "20608",
+          "pid": "30252",
+          "visible": "true",
+          "dpi": "144",
+          "x": "800",
+          "y": "273",
+          "width": "960",
+          "height": "990"
+        },
+        {
+          "event": "probe_window",
+          "class": "VeloSlintLauncherWindow",
+          "hwnd": "8A09E2",
+          "pid": "2964",
+          "visible": "false",
+          "dpi": "144",
+          "x": "1030",
+          "y": "288",
+          "width": "960",
+          "height": "1080"
+        },
+        {
+          "event": "probe_window",
+          "class": "VeloSlintDesktopService",
+          "hwnd": "E0586",
+          "pid": "30252",
+          "visible": "false",
+          "dpi": "144",
+          "x": "0",
+          "y": "0",
+          "width": "0",
+          "height": "0"
+        },
+        {
+          "event": "probe_tray",
+          "hwnd": "E0586",
+          "registered": "true",
+          "x": "2037",
+          "y": "1368",
+          "width": "48",
+          "height": "72"
+        },
+        {
+          "event": "probe_window",
+          "class": "VeloSlintDesktopService",
+          "hwnd": "4209D0",
+          "pid": "2964",
+          "visible": "false",
+          "dpi": "120",
+          "x": "0",
+          "y": "0",
+          "width": "0",
+          "height": "0"
+        },
+        {
+          "event": "probe_tray",
+          "hwnd": "4209D0",
+          "registered": "true",
+          "x": "2037",
+          "y": "1368",
+          "width": "48",
+          "height": "72"
+        }
+      ]
+    },
+    {
+      "Name": "both-dpi-200-hidden.bounds.log",
+      "SHA256": "C2318099EAD52B404BF43C28B546AA5A6AD5B4927958602418DFEAED5D6E1A6B",
+      "Method": "Native read-only inspection after the named desktop action",
+      "Events": [
+        {
+          "event": "probe_monitor",
+          "x": "0",
+          "y": "0",
+          "width": "2560",
+          "height": "1440",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1344",
+          "dpi": "192",
+          "primary": "true"
+        },
+        {
+          "event": "probe_window",
+          "class": "VeloSlintLauncherWindow",
+          "hwnd": "20608",
+          "pid": "30252",
+          "visible": "false",
+          "dpi": "192",
+          "x": "800",
+          "y": "273",
+          "width": "1280",
+          "height": "528"
+        },
+        {
+          "event": "probe_window",
+          "class": "VeloSlintLauncherWindow",
+          "hwnd": "8A09E2",
+          "pid": "2964",
+          "visible": "false",
+          "dpi": "192",
+          "x": "1030",
+          "y": "0",
+          "width": "1280",
+          "height": "1344"
+        },
+        {
+          "event": "probe_window",
+          "class": "VeloSlintDesktopService",
+          "hwnd": "E0586",
+          "pid": "30252",
+          "visible": "false",
+          "dpi": "144",
+          "x": "0",
+          "y": "0",
+          "width": "0",
+          "height": "0"
+        },
+        {
+          "event": "probe_tray",
+          "hwnd": "E0586",
+          "registered": "true",
+          "x": "1862",
+          "y": "1344",
+          "width": "64",
+          "height": "96"
+        },
+        {
+          "event": "probe_window",
+          "class": "VeloSlintDesktopService",
+          "hwnd": "4209D0",
+          "pid": "2964",
+          "visible": "false",
+          "dpi": "120",
+          "x": "0",
+          "y": "0",
+          "width": "0",
+          "height": "0"
+        },
+        {
+          "event": "probe_tray",
+          "hwnd": "4209D0",
+          "registered": "true",
+          "x": "1862",
+          "y": "1344",
+          "width": "64",
+          "height": "96"
+        }
+      ]
+    },
+    {
+      "Name": "both-dpi-restored-125.bounds.log",
+      "SHA256": "51F686E7D898E08EAC3C93C40796B5E7FCB4A854926B03A54B516123024F7402",
+      "Method": "Native read-only inspection after the named desktop action",
+      "Events": [
+        {
+          "event": "probe_monitor",
+          "x": "0",
+          "y": "0",
+          "width": "2560",
+          "height": "1440",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1380",
+          "dpi": "120",
+          "primary": "true"
+        },
+        {
+          "event": "probe_window",
+          "class": "VeloSlintLauncherWindow",
+          "hwnd": "20608",
+          "pid": "30252",
+          "visible": "false",
+          "dpi": "120",
+          "x": "800",
+          "y": "273",
+          "width": "800",
+          "height": "263"
+        },
+        {
+          "event": "probe_window",
+          "class": "VeloSlintLauncherWindow",
+          "hwnd": "8A09E2",
+          "pid": "2964",
+          "visible": "false",
+          "dpi": "120",
+          "x": "1030",
+          "y": "0",
+          "width": "800",
+          "height": "900"
+        },
+        {
+          "event": "probe_window",
+          "class": "VeloSlintDesktopService",
+          "hwnd": "E0586",
+          "pid": "30252",
+          "visible": "false",
+          "dpi": "144",
+          "x": "0",
+          "y": "0",
+          "width": "0",
+          "height": "0"
+        },
+        {
+          "event": "probe_tray",
+          "hwnd": "E0586",
+          "registered": "true",
+          "x": "2124",
+          "y": "1380",
+          "width": "40",
+          "height": "60"
+        },
+        {
+          "event": "probe_window",
+          "class": "VeloSlintDesktopService",
+          "hwnd": "4209D0",
+          "pid": "2964",
+          "visible": "false",
+          "dpi": "120",
+          "x": "0",
+          "y": "0",
+          "width": "0",
+          "height": "0"
+        },
+        {
+          "event": "probe_tray",
+          "hwnd": "4209D0",
+          "registered": "true",
+          "x": "2124",
+          "y": "1380",
+          "width": "40",
+          "height": "60"
+        }
+      ]
+    },
+    {
+      "Name": "femtovg-dragged.bounds.log",
+      "SHA256": "82E7DB89BEE21F24B7C946BBA50E42AF7BE22BA7D26AB24726A69BA361E2BE93",
+      "Method": "Native read-only inspection after the named desktop action",
+      "Events": [
+        {
+          "event": "probe_monitor",
+          "x": "0",
+          "y": "0",
+          "width": "2560",
+          "height": "1440",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1380",
+          "dpi": "120",
+          "primary": "true"
+        },
+        {
+          "event": "probe_window",
+          "class": "VeloSlintLauncherWindow",
+          "hwnd": "20608",
+          "pid": "30252",
+          "visible": "true",
+          "dpi": "120",
+          "x": "925",
+          "y": "348",
+          "width": "800",
+          "height": "825"
+        },
+        {
+          "event": "probe_window",
+          "class": "VeloSlintDesktopService",
+          "hwnd": "E0586",
+          "pid": "30252",
+          "visible": "false",
+          "dpi": "144",
+          "x": "0",
+          "y": "0",
+          "width": "0",
+          "height": "0"
+        },
+        {
+          "event": "probe_tray",
+          "hwnd": "E0586",
+          "registered": "true",
+          "x": "2124",
+          "y": "1380",
+          "width": "40",
+          "height": "60"
+        }
+      ]
+    },
+    {
+      "Name": "final-cleanup.bounds.log",
+      "SHA256": "ABEA97CB211C35DB32FD8CBF96B678337F9F53BFE1734C66778E1A54068FC927",
+      "Method": "Native read-only inspection after the named desktop action",
+      "Events": [
+        {
+          "event": "probe_monitor",
+          "x": "0",
+          "y": "0",
+          "width": "2560",
+          "height": "1440",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1380",
+          "dpi": "120",
+          "primary": "true"
+        }
+      ]
+    },
+    {
+      "Name": "software-after-quit.bounds.log",
+      "SHA256": "4B8AC9BAB13390E5E75F9692BAC3A2FCD16FBDE337E26EF8352CDAA1E7F9724D",
+      "Method": "Native read-only inspection after the named desktop action",
+      "Events": [
+        {
+          "event": "probe_monitor",
+          "x": "0",
+          "y": "0",
+          "width": "2560",
+          "height": "1440",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1380",
+          "dpi": "120",
+          "primary": "true"
+        },
+        {
+          "event": "probe_window",
+          "class": "VeloSlintLauncherWindow",
+          "hwnd": "20608",
+          "pid": "30252",
+          "visible": "false",
+          "dpi": "120",
+          "x": "800",
+          "y": "273",
+          "width": "800",
+          "height": "263"
+        },
+        {
+          "event": "probe_window",
+          "class": "VeloSlintDesktopService",
+          "hwnd": "E0586",
+          "pid": "30252",
+          "visible": "false",
+          "dpi": "144",
+          "x": "0",
+          "y": "0",
+          "width": "0",
+          "height": "0"
+        },
+        {
+          "event": "probe_tray",
+          "hwnd": "E0586",
+          "registered": "true",
+          "x": "2124",
+          "y": "1380",
+          "width": "40",
+          "height": "60"
+        }
+      ]
+    },
+    {
+      "Name": "software-dpi-100-hidden.bounds.log",
+      "SHA256": "8CECFEBE3325D66466CB6F27D5B1ABF6290315D1CF91C942842F9870296062F3",
+      "Method": "Native read-only inspection after the named desktop action",
+      "Events": [
+        {
+          "event": "probe_monitor",
+          "x": "0",
+          "y": "0",
+          "width": "2560",
+          "height": "1440",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1392",
+          "dpi": "96",
+          "primary": "true"
+        },
+        {
+          "event": "probe_window",
+          "class": "VeloSlintLauncherWindow",
+          "hwnd": "8A09E2",
+          "pid": "2964",
+          "visible": "false",
+          "dpi": "96",
+          "x": "1030",
+          "y": "351",
+          "width": "640",
+          "height": "264"
+        },
+        {
+          "event": "probe_window",
+          "class": "VeloSlintDesktopService",
+          "hwnd": "4209D0",
+          "pid": "2964",
+          "visible": "false",
+          "dpi": "120",
+          "x": "0",
+          "y": "0",
+          "width": "0",
+          "height": "0"
+        },
+        {
+          "event": "probe_tray",
+          "hwnd": "4209D0",
+          "registered": "true",
+          "x": "2211",
+          "y": "1392",
+          "width": "32",
+          "height": "48"
+        }
+      ]
+    },
+    {
+      "Name": "software-dpi-150-hidden.bounds.log",
+      "SHA256": "06BE25F3CE8E62927EF1FB0CDB5BF0663F684762DF9CC3C375AAF58F61B736A0",
+      "Method": "Native read-only inspection after the named desktop action",
+      "Events": [
+        {
+          "event": "probe_monitor",
+          "x": "0",
+          "y": "0",
+          "width": "2560",
+          "height": "1440",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1368",
+          "dpi": "144",
+          "primary": "true"
+        },
+        {
+          "event": "probe_window",
+          "class": "VeloSlintLauncherWindow",
+          "hwnd": "8A09E2",
+          "pid": "2964",
+          "visible": "false",
+          "dpi": "144",
+          "x": "1030",
+          "y": "351",
+          "width": "960",
+          "height": "396"
+        },
+        {
+          "event": "probe_window",
+          "class": "VeloSlintDesktopService",
+          "hwnd": "4209D0",
+          "pid": "2964",
+          "visible": "false",
+          "dpi": "120",
+          "x": "0",
+          "y": "0",
+          "width": "0",
+          "height": "0"
+        },
+        {
+          "event": "probe_tray",
+          "hwnd": "4209D0",
+          "registered": "true",
+          "x": "2037",
+          "y": "1368",
+          "width": "48",
+          "height": "72"
+        }
+      ]
+    },
+    {
+      "Name": "software-drag-hidden.bounds.log",
+      "SHA256": "51BBD7EDA003EDC49EFCD4D23F48DC63B1A292670F9BC492D7843E2937FFC8F4",
+      "Method": "Native read-only inspection after the named desktop action",
+      "Events": [
+        {
+          "event": "probe_monitor",
+          "x": "0",
+          "y": "0",
+          "width": "2560",
+          "height": "1440",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1380",
+          "dpi": "120",
+          "primary": "true"
+        },
+        {
+          "event": "probe_window",
+          "class": "VeloSlintLauncherWindow",
+          "hwnd": "8A09E2",
+          "pid": "2964",
+          "visible": "false",
+          "dpi": "120",
+          "x": "1030",
+          "y": "351",
+          "width": "800",
+          "height": "330"
+        },
+        {
+          "event": "probe_window",
+          "class": "VeloSlintDesktopService",
+          "hwnd": "4209D0",
+          "pid": "2964",
+          "visible": "false",
+          "dpi": "120",
+          "x": "0",
+          "y": "0",
+          "width": "0",
+          "height": "0"
+        },
+        {
+          "event": "probe_tray",
+          "hwnd": "4209D0",
+          "registered": "true",
+          "x": "2124",
+          "y": "1380",
+          "width": "40",
+          "height": "60"
+        }
+      ]
+    },
+    {
+      "Name": "software-search.bounds.log",
+      "SHA256": "39DB02DEBB700725D080A3C254E1A1F75C949CB4624DFECC77E7CEF8DE24628A",
+      "Method": "Native read-only inspection after the named desktop action",
+      "Events": [
+        {
+          "event": "probe_monitor",
+          "x": "0",
+          "y": "0",
+          "width": "2560",
+          "height": "1440",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1380",
+          "dpi": "120",
+          "primary": "true"
+        },
+        {
+          "event": "probe_window",
+          "class": "VeloSlintLauncherWindow",
+          "hwnd": "8A09E2",
+          "pid": "2964",
+          "visible": "true",
+          "dpi": "120",
+          "x": "880",
+          "y": "276",
+          "width": "800",
+          "height": "330"
+        },
+        {
+          "event": "probe_window",
+          "class": "VeloSlintDesktopService",
+          "hwnd": "4209D0",
+          "pid": "2964",
+          "visible": "false",
+          "dpi": "120",
+          "x": "0",
+          "y": "0",
+          "width": "0",
+          "height": "0"
+        },
+        {
+          "event": "probe_tray",
+          "hwnd": "4209D0",
+          "registered": "true",
+          "x": "2124",
+          "y": "1380",
+          "width": "40",
+          "height": "60"
+        }
+      ]
+    }
+  ],
+  "InjectedTrayEntries": [
+    {
+      "Name": "femtovg-tray-left-injected.log",
+      "SHA256": "A32E0CBD60A7AD3109AD97FCE7680169CDDE014BCA2B17E6C6FF8DF857CE9327",
+      "Events": [
+        {
+          "event": "probe_message_injected",
+          "action": "--tray-left",
+          "hwnd": "E0586",
+          "cursor_x": "428",
+          "cursor_y": "143"
+        }
+      ]
+    },
+    {
+      "Name": "femtovg-tray-menu-injected.log",
+      "SHA256": "575FF98545C07C1D8F7697BC28704F70D2AEF7E86D8184DC6E35D6E4C1BB4009",
+      "Events": [
+        {
+          "event": "probe_message_injected",
+          "action": "--tray-menu",
+          "hwnd": "E0586",
+          "cursor_x": "1300",
+          "cursor_y": "356"
+        }
+      ]
+    },
+    {
+      "Name": "software-tray-left-injected.log",
+      "SHA256": "E4823EFD66DF654C300165F3BFD21948D5DA54A8D99C60399035E1D69A5EBA84",
+      "Events": [
+        {
+          "event": "probe_message_injected",
+          "action": "--tray-left",
+          "hwnd": "4209D0",
+          "cursor_x": "1569",
+          "cursor_y": "1426"
+        }
+      ]
+    },
+    {
+      "Name": "software-tray-menu-injected.log",
+      "SHA256": "81E454994D0BC061E873C643CF3E87CC4CE2F9F9E5252716AD6D6E47EB50702C",
+      "Events": [
+        {
+          "event": "probe_message_injected",
+          "action": "--tray-menu",
+          "hwnd": "4209D0",
+          "cursor_x": "1330",
+          "cursor_y": "50"
+        }
+      ]
+    },
+    {
+      "Name": "software-tray-open-menu-injected.log",
+      "SHA256": "41C86780F905AFAE4A837881672460BFB9F93DFC3E1E6A8076E7BE37CB0027F0",
+      "Events": [
+        {
+          "event": "probe_message_injected",
+          "action": "--tray-menu",
+          "hwnd": "4209D0",
+          "cursor_x": "300",
+          "cursor_y": "50"
+        }
+      ]
+    },
+    {
+      "Name": "software-tray-quit-menu-injected.log",
+      "SHA256": "8EBD36BA8F9F3CB6FA34F9F5EF27497CF20D417F95B93E2BEFD7B319739FE776",
+      "Events": [
+        {
+          "event": "probe_message_injected",
+          "action": "--tray-menu",
+          "hwnd": "4209D0",
+          "cursor_x": "366",
+          "cursor_y": "65"
+        }
+      ]
+    }
+  ],
+  "ActualExplorerRestart": {
+    "Before": [
+      {
+        "Id": 13500,
+        "SessionId": 1
+      },
+      {
+        "Id": 14112,
+        "SessionId": 1
+      },
+      {
+        "Id": 31828,
+        "SessionId": 1
+      }
+    ],
+    "After": [
+      {
+        "Id": 7912,
+        "SessionId": 1
+      }
+    ],
+    "TestFileExplorerWindowClosedBeforeRestart": true
+  },
+  "InstanceGuardChecks": [
+    {
+      "Name": "MissingDataDirectory",
+      "ExitCode": 1,
+      "Error": "Error: \"测试副本须同时指定 --instance-id 和 --data-dir\"",
+      "Passed": true
+    },
+    {
+      "Name": "SharedDirectoryRejected",
+      "ExitCode": 1,
+      "Error": "Error: \"该测试数据目录已由另一个实例使用，请同时更换 instance-id 和 data-dir\"",
+      "Passed": true
+    },
+    {
+      "Name": "ProductDirectoryRejected",
+      "ExitCode": 1,
+      "Error": "Error: \"Rust 原型禁止使用 Go/Velo 产品数据目录；请指定独立测试目录\"",
+      "Passed": true
+    }
+  ],
+  "ProbeExecutableSHA256": "F076D210ECD80CB6C6DAB39C9CA2290BA345F6A2C53F5F5A20359FB036EAE728",
+  "ProbeSourceSHA256": "007BB15D480B1EF7A42F63A6EBF19083D9A699EF44AECA63185909438EC45154"
+}

@@ -1,0 +1,1968 @@
+{
+  "SchemaVersion": 3,
+  "CapturedAtUtc": "2026-10-28T03:46:43.0421069Z",
+  "Environment": {
+    "Windows": {
+      "Caption": "Microsoft Windows 11 专业版",
+      "Version": "10.0.26300",
+      "Build": "26300",
+      "LastBootUtc": "2026-10-28T01:06:10.5Z"
+    },
+    "Processor": [
+      "AMD Ryzen 9 9900X3D 12-Core Processor          "
+    ],
+    "LogicalProcessors": 24,
+    "PowerShell": "7.6.3",
+    "Go": "go version go1.25.6 windows/amd64",
+    "WailsCLI": "v2.12.0",
+    "Node": "v22.15.0",
+    "WebView2": [],
+    "GraphicsAdapters": [
+      {
+        "Caption": "Zako Display Adapter",
+        "DriverVersion": "100.0.18.1",
+        "DriverDate": "2026-10-19T08:00:00+08:00"
+      },
+      {
+        "Caption": "GameViewer Virtual Display Adapter",
+        "DriverVersion": "15.6.5.199",
+        "DriverDate": "2026-02-28T08:00:00+08:00"
+      },
+      {
+        "Caption": "MuMu Virtual Display Adapter",
+        "DriverVersion": "20.36.41.498",
+        "DriverDate": "2026-03-12T08:00:00+08:00"
+      },
+      {
+        "Caption": "NVIDIA GeForce RTX 5070 Ti",
+        "DriverVersion": "32.0.16.1742",
+        "DriverDate": "2026-09-30T08:00:00+08:00"
+      },
+      {
+        "Caption": "AMD Radeon(TM) Graphics",
+        "DriverVersion": "32.0.21045.5002",
+        "DriverDate": "2026-08-17T08:00:00+08:00"
+      }
+    ],
+    "PowerScheme": "电源方案 GUID: 381b4222-f694-41f0-9685-ff5bb260df2e  (平衡)",
+    "WorkspaceCommit": "ac2f51ad1317f4abffab2c548af251e48ce16d2b",
+    "WorkspaceDirty": true,
+    "CollectorSHA256": "BF17D693F8E38A511E28F7478AD360A1F9C420B20B78A40E51D025EEE58AD88B",
+    "ValidatorSHA256": "282D1855FCC6F4652EB02191AA5B10F2CF1E3A7F0FD18AFB1D0A0176464E4671"
+  },
+  "Executable": {
+    "ApplicationKind": "Slint",
+    "RustBuildIdentity": {
+      "Renderer": "software",
+      "Backend": "winit",
+      "Target": "x86_64-pc-windows-msvc",
+      "Rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+      "Cargo": "cargo 1.99.1 (5f94df478 2026-08-27)",
+      "MsvcToolsVersion": "14.50.35717",
+      "WindowsSdkVersion": "10.0.26100.0",
+      "CompilerFileVersion": "19.50.35719.0",
+      "LinkerFileVersion": "14.50.35719.0",
+      "SlintVersion": "1.18.1",
+      "SlintFeatures": [
+        "backend-winit",
+        "compat-1-18",
+        "raw-window-handle-06",
+        "renderer-software",
+        "std",
+        "unstable-winit-030"
+      ],
+      "WinitBackendFeatures": [
+        "default",
+        "muda",
+        "raw-window-handle-06",
+        "renderer-software",
+        "wayland",
+        "x11"
+      ],
+      "WorkspaceCommit": "ac2f51ad1317f4abffab2c548af251e48ce16d2b",
+      "WorkspaceDirty": true,
+      "ExecutableSHA256": "214DC140513322B99301867F52B54F216BF9F7E8AD45CFCF8765237CD4AA6C74",
+      "ExecutableBytes": 10503168,
+      "Sources": [
+        {
+          "Path": "../scripts/collect-latency.ps1",
+          "SHA256": "8EDE186EAA826AD365F2100DBDCADF5850B28F2525242CBF22A56BED07502E30"
+        },
+        {
+          "Path": "../scripts/collect-slint-latency.ps1",
+          "SHA256": "4D48172DA641488B2BBF7DF67B83B33D0A5AADD81448C1F3E04FCE7473B76CB5"
+        },
+        {
+          "Path": "../scripts/lib/resource-sample.ps1",
+          "SHA256": "282D1855FCC6F4652EB02191AA5B10F2CF1E3A7F0FD18AFB1D0A0176464E4671"
+        },
+        {
+          "Path": "../scripts/lib/rust-environment.ps1",
+          "SHA256": "330D5ECE195714C182B949C18D6C62951CEF4EE23BAF2982DEE43B68F9B521BC"
+        },
+        {
+          "Path": "../scripts/measure-resources.ps1",
+          "SHA256": "BF17D693F8E38A511E28F7478AD360A1F9C420B20B78A40E51D025EEE58AD88B"
+        },
+        {
+          "Path": "../scripts/measure-slint-ab.ps1",
+          "SHA256": "E13A61419F62F0785AA8DB8690BB299B8CD6151A942AE96AAEFE2E3EF2F73B47"
+        },
+        {
+          "Path": "../scripts/verify-rust.ps1",
+          "SHA256": "29ECB8BE46CC8D79D84005E6325A51B46773FC8AE54AC19650619024BEB5F207"
+        },
+        {
+          "Path": ".cargo/config.toml",
+          "SHA256": "B30E5A93F3EE1E18D93D09516EB08D9CCCCDDA15027615C61D58BE7264185711"
+        },
+        {
+          "Path": "build.rs",
+          "SHA256": "E3DE7AFD93F01A7A60914DA159B45516DA0429705E56C9EA10425AC33B332E07"
+        },
+        {
+          "Path": "Cargo.lock",
+          "SHA256": "362445DBE460A3E894E3537C9F0CF9F3849819B1E9B80A3269AB8675ACE208B6"
+        },
+        {
+          "Path": "Cargo.toml",
+          "SHA256": "FD0D2161DF9568DE658F6C5BD152BC6FE9B77C0C93506FD565E2F5D26F892339"
+        },
+        {
+          "Path": "rust-toolchain.toml",
+          "SHA256": "4387889E7EF217B7A0CEA12EE152FB5570EC33880F985BFF2EBCD49B963B3B24"
+        },
+        {
+          "Path": "src/fixtures.rs",
+          "SHA256": "D8934619205CFD9AD81B6B089B2BC255821DBDDCC506DBAB3C528F3D48C10ECE"
+        },
+        {
+          "Path": "src/input.rs",
+          "SHA256": "AE6697CBC639B26B1697B4CA5FAAC7B01E4BE9BD38BA568BD054066683BA510C"
+        },
+        {
+          "Path": "src/interaction_probe.rs",
+          "SHA256": "91262E130673609A9D44518B56EB40A4AC3A9C962C9B972294FA281E8F7BE10C"
+        },
+        {
+          "Path": "src/main.rs",
+          "SHA256": "ADDD3E3285AB99882F677997D8657C274587A23690BD15F48B37008718116124"
+        },
+        {
+          "Path": "src/measurement.rs",
+          "SHA256": "E015A01499AD941DDD2E16BD301A32EED5261BC96A491640579ED67B1089FBEB"
+        },
+        {
+          "Path": "src/navigation.rs",
+          "SHA256": "6A5E428C74E0C9D10D6A17281883D1D576ACB14A90A8F0CE16EA76F999176B8A"
+        },
+        {
+          "Path": "src/ui.rs",
+          "SHA256": "0BFB1CCE2914C58F5756572D7FC18E6B74D502636F5E089DCBBCF0E07D230D70"
+        },
+        {
+          "Path": "ui/app.slint",
+          "SHA256": "33175CCC09388B4B8BF8D10F7619EBB6BC455FCB178943F51F5E55AB1C070C11"
+        },
+        {
+          "Path": "ui/assets/fluent/ic_fluent_apps_24_regular.svg",
+          "SHA256": "49ACD3CA4B7FFFCE746312A729EBC007EC82D3D7372BE9830577F50B541FA6DF"
+        },
+        {
+          "Path": "ui/assets/fluent/ic_fluent_calculator_24_regular.svg",
+          "SHA256": "142C592DD1E26ABD4395507B32B7AE1DC9A3D18FEE30C4E7653D7B8811701D3D"
+        },
+        {
+          "Path": "ui/assets/fluent/ic_fluent_code_24_regular.svg",
+          "SHA256": "03090C9E30C66BD926AD19FB1E5CCD07BDD9C2815881CA5A83A8788F6FCE2F63"
+        },
+        {
+          "Path": "ui/assets/fluent/ic_fluent_desktop_pulse_24_regular.svg",
+          "SHA256": "073D8DE9BE495F9E58C18A66EC2F8D35B7CD134C5B71FCDFC36B024F4FFDE4A1"
+        },
+        {
+          "Path": "ui/assets/fluent/ic_fluent_developer_board_24_regular.svg",
+          "SHA256": "CACA0F3C34ABFD3F0D80544FDCF3359C7A14646B8ED0C704C9D90A1CC666440D"
+        },
+        {
+          "Path": "ui/assets/fluent/ic_fluent_folder_24_regular.svg",
+          "SHA256": "B223F863F213DCC1BF75A65D31A287830380C08503C79565B317C77B10E7A2E1"
+        },
+        {
+          "Path": "ui/assets/fluent/ic_fluent_search_20_regular.svg",
+          "SHA256": "5AC1EAC82DF532662CD1BAD2C8E55763846E1B258740BCBB0612A48D22630D40"
+        },
+        {
+          "Path": "ui/assets/fluent/ic_fluent_settings_24_regular.svg",
+          "SHA256": "5AC05E6E11C9EC9F24703091C42CA1F5C91F4032CB0EEE35C892D1872A38871B"
+        },
+        {
+          "Path": "ui/assets/fluent/ic_fluent_star_16_filled.svg",
+          "SHA256": "3F96EC326175B38593F80DFA9EA47D1EA7A726D8614D042C19871B9155667638"
+        },
+        {
+          "Path": "ui/assets/fluent/ic_fluent_star_16_regular.svg",
+          "SHA256": "C5ABB68053095622285EDB425B1C072665EC3FEF7FB4FA0777C978169AD5889E"
+        },
+        {
+          "Path": "ui/assets/fluent/ic_fluent_window_console_20_regular.svg",
+          "SHA256": "F2B46D93F5B922C79ECD04C9CBAD61C26F6BD0491B80763DE4409F059C43A202"
+        },
+        {
+          "Path": "ui/assets/fluent/LICENSE.txt",
+          "SHA256": "69BC45DC42B9ACB96A69823ADBC6AE538374E3C0BDE169B855B32C48EAAEF52F"
+        },
+        {
+          "Path": "ui/assets/logo.png",
+          "SHA256": "EE4C40D5765E2596B2EBDC20FAB3AB04301E6B26FB33A65074FEBB477DEFD82A"
+        },
+        {
+          "Path": "ui/assets/README.md",
+          "SHA256": "5E02B4DE68208FD58A88600E77688BB82DA4433F947E294C3E69F2456DEA9D70"
+        },
+        {
+          "Path": "ui/components.slint",
+          "SHA256": "69C10F7464778A2DF3038F6EC91E76F1F4BFF38176B4B6A0A5B11622716FF98C"
+        },
+        {
+          "Path": "windows-toolchain.json",
+          "SHA256": "850BE7ABA1DC71C8FDEB44A9950DDFC80E5D1EBE3E77B6E93D9E51126042194C"
+        }
+      ]
+    },
+    "Edition": "Unknown",
+    "Path": "<local frozen Rust artifact>/software/velo-slint.exe",
+    "SHA256": "214DC140513322B99301867F52B54F216BF9F7E8AD45CFCF8765237CD4AA6C74",
+    "Bytes": 10503168,
+    "FileVersion": null,
+    "ProductVersion": null,
+    "FixedFileVersion": "0.0.0.0",
+    "ProcessId": 25440,
+    "StartedAtUtc": "2026-10-28T03:45:34.446347Z",
+    "SourceCommit": null,
+    "SourceCommitEvidence": "Unknown; no vcs.revision in binary",
+    "GoCompiler": null,
+    "WailsDependency": "",
+    "BuildSettings": [],
+    "Mode": "Production",
+    "BackgroundFlag": false
+  },
+  "ExecutableFileStable": true,
+  "ContextBefore": {
+    "Directory": null,
+    "Files": {
+      "embedded-fixtures": {
+        "SHA256": "D8934619205CFD9AD81B6B089B2BC255821DBDDCC506DBAB3C528F3D48C10ECE"
+      }
+    },
+    "LogSessionStarted": null,
+    "LastRefresh": null,
+    "CachedIndexCount": 28,
+    "Source": "Embedded synthetic fixture; no product data directory, scanning or user icon cache.",
+    "IconCache": null
+  },
+  "ContextAfter": {
+    "Directory": null,
+    "Files": {
+      "embedded-fixtures": {
+        "SHA256": "D8934619205CFD9AD81B6B089B2BC255821DBDDCC506DBAB3C528F3D48C10ECE"
+      }
+    },
+    "LogSessionStarted": null,
+    "LastRefresh": null,
+    "CachedIndexCount": 28,
+    "Source": "Embedded synthetic fixture; no product data directory, scanning or user icon cache.",
+    "IconCache": null
+  },
+  "RequestedWindowState": "Visible",
+  "MinimumStateSeconds": 3,
+  "IdleEvidence": "Normal prototype without --measurement flags or diagnostics. Computer Use Up/Down navigation rendered the last and first home rows; finite animation settled; no screenshots during sampling.",
+  "StatePollingIntervalMilliseconds": 1000,
+  "AllSamplesEligible": true,
+  "Samples": [
+    {
+      "StartedAtUtc": "2026-10-28T03:45:56.6525762Z",
+      "EndedAtUtc": "2026-10-28T03:46:11.8715733Z",
+      "ProcessCount": 1,
+      "IncludesWebViewChildren": false,
+      "SampleSeconds": 15.218,
+      "CPUSampleValid": true,
+      "CPUPercentOfMachine": 0.0,
+      "CPUInvalidReason": null,
+      "WindowState": "Visible",
+      "WindowStateConfirmed": true,
+      "WindowStateMatches": true,
+      "IdleConfirmed": true,
+      "DataStable": true,
+      "BaselineEligible": true,
+      "PrivateBytes": 6938624.0,
+      "WorkingSet": 29818880.0,
+      "PrivateBytesMB": 6.62,
+      "WorkingSetMB": 28.44,
+      "PrivateBytesMean": 6938624.0,
+      "WorkingSetMean": 29814784.0,
+      "PrivateBytesMin": 6938624.0,
+      "PrivateBytesMax": 6938624.0,
+      "WorkingSetMin": 29810688.0,
+      "WorkingSetMax": 29818880.0,
+      "PollCount": 12,
+      "Processes": [
+        {
+          "Identity": "25440/639287559344463472",
+          "ProcessId": 25440,
+          "Name": "velo-slint",
+          "CPUSeconds": 0.484375,
+          "WorkingSet": 29818880,
+          "PrivateBytes": 6938624,
+          "PrivateWorkingSet": 6033408,
+          "Handles": 281,
+          "Threads": 11
+        }
+      ],
+      "WindowObservations": [
+        {
+          "TimestampUtc": "2026-10-28T03:45:56.6525762Z",
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:45:58.0709256Z",
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:45:59.43859Z",
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:46:00.8197074Z",
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:46:02.1998861Z",
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:46:03.5711163Z",
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:46:04.948007Z",
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:46:06.3367609Z",
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:46:07.7181383Z",
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:46:09.0917378Z",
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:46:10.4767218Z",
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:46:11.8715733Z",
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        }
+      ],
+      "StateContinuouslyObserved": true,
+      "Number": 1,
+      "PrivateWorkingSet": 6033408.0,
+      "Handles": 281.0,
+      "Threads": 11.0,
+      "RawSnapshots": [
+        {
+          "TimestampUtc": "2026-10-28T03:45:56.6525762Z",
+          "MonotonicSeconds": 9586.3728068,
+          "Processes": [
+            {
+              "Identity": "25440/639287559344463472",
+              "ProcessId": 25440,
+              "Name": "velo-slint",
+              "CPUSeconds": 0.484375,
+              "WorkingSet": 29810688,
+              "PrivateBytes": 6938624,
+              "PrivateWorkingSet": 6033408,
+              "Handles": 280,
+              "Threads": 11
+            }
+          ],
+          "Complete": true,
+          "WorkingSet": 29810688.0,
+          "PrivateBytes": 6938624.0,
+          "PrivateWorkingSet": 6033408.0,
+          "Handles": 280.0,
+          "Threads": 11.0,
+          "GPU": null,
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:45:58.0709256Z",
+          "MonotonicSeconds": 9587.7904078,
+          "Processes": [
+            {
+              "Identity": "25440/639287559344463472",
+              "ProcessId": 25440,
+              "Name": "velo-slint",
+              "CPUSeconds": 0.484375,
+              "WorkingSet": 29810688,
+              "PrivateBytes": 6938624,
+              "PrivateWorkingSet": 6033408,
+              "Handles": 280,
+              "Threads": 11
+            }
+          ],
+          "Complete": true,
+          "WorkingSet": 29810688.0,
+          "PrivateBytes": 6938624.0,
+          "PrivateWorkingSet": 6033408.0,
+          "Handles": 280.0,
+          "Threads": 11.0,
+          "GPU": null,
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:45:59.43859Z",
+          "MonotonicSeconds": 9589.1580724,
+          "Processes": [
+            {
+              "Identity": "25440/639287559344463472",
+              "ProcessId": 25440,
+              "Name": "velo-slint",
+              "CPUSeconds": 0.484375,
+              "WorkingSet": 29810688,
+              "PrivateBytes": 6938624,
+              "PrivateWorkingSet": 6033408,
+              "Handles": 280,
+              "Threads": 11
+            }
+          ],
+          "Complete": true,
+          "WorkingSet": 29810688.0,
+          "PrivateBytes": 6938624.0,
+          "PrivateWorkingSet": 6033408.0,
+          "Handles": 280.0,
+          "Threads": 11.0,
+          "GPU": null,
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:46:00.8197074Z",
+          "MonotonicSeconds": 9590.5391905,
+          "Processes": [
+            {
+              "Identity": "25440/639287559344463472",
+              "ProcessId": 25440,
+              "Name": "velo-slint",
+              "CPUSeconds": 0.484375,
+              "WorkingSet": 29810688,
+              "PrivateBytes": 6938624,
+              "PrivateWorkingSet": 6033408,
+              "Handles": 280,
+              "Threads": 11
+            }
+          ],
+          "Complete": true,
+          "WorkingSet": 29810688.0,
+          "PrivateBytes": 6938624.0,
+          "PrivateWorkingSet": 6033408.0,
+          "Handles": 280.0,
+          "Threads": 11.0,
+          "GPU": null,
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:46:02.1998861Z",
+          "MonotonicSeconds": 9591.9193696,
+          "Processes": [
+            {
+              "Identity": "25440/639287559344463472",
+              "ProcessId": 25440,
+              "Name": "velo-slint",
+              "CPUSeconds": 0.484375,
+              "WorkingSet": 29810688,
+              "PrivateBytes": 6938624,
+              "PrivateWorkingSet": 6033408,
+              "Handles": 280,
+              "Threads": 11
+            }
+          ],
+          "Complete": true,
+          "WorkingSet": 29810688.0,
+          "PrivateBytes": 6938624.0,
+          "PrivateWorkingSet": 6033408.0,
+          "Handles": 280.0,
+          "Threads": 11.0,
+          "GPU": null,
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:46:03.5711163Z",
+          "MonotonicSeconds": 9593.2905994,
+          "Processes": [
+            {
+              "Identity": "25440/639287559344463472",
+              "ProcessId": 25440,
+              "Name": "velo-slint",
+              "CPUSeconds": 0.484375,
+              "WorkingSet": 29810688,
+              "PrivateBytes": 6938624,
+              "PrivateWorkingSet": 6033408,
+              "Handles": 280,
+              "Threads": 11
+            }
+          ],
+          "Complete": true,
+          "WorkingSet": 29810688.0,
+          "PrivateBytes": 6938624.0,
+          "PrivateWorkingSet": 6033408.0,
+          "Handles": 280.0,
+          "Threads": 11.0,
+          "GPU": null,
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:46:04.948007Z",
+          "MonotonicSeconds": 9594.6674889,
+          "Processes": [
+            {
+              "Identity": "25440/639287559344463472",
+              "ProcessId": 25440,
+              "Name": "velo-slint",
+              "CPUSeconds": 0.484375,
+              "WorkingSet": 29818880,
+              "PrivateBytes": 6938624,
+              "PrivateWorkingSet": 6033408,
+              "Handles": 281,
+              "Threads": 11
+            }
+          ],
+          "Complete": true,
+          "WorkingSet": 29818880.0,
+          "PrivateBytes": 6938624.0,
+          "PrivateWorkingSet": 6033408.0,
+          "Handles": 281.0,
+          "Threads": 11.0,
+          "GPU": null,
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:46:06.3367609Z",
+          "MonotonicSeconds": 9596.0562439,
+          "Processes": [
+            {
+              "Identity": "25440/639287559344463472",
+              "ProcessId": 25440,
+              "Name": "velo-slint",
+              "CPUSeconds": 0.484375,
+              "WorkingSet": 29818880,
+              "PrivateBytes": 6938624,
+              "PrivateWorkingSet": 6033408,
+              "Handles": 281,
+              "Threads": 11
+            }
+          ],
+          "Complete": true,
+          "WorkingSet": 29818880.0,
+          "PrivateBytes": 6938624.0,
+          "PrivateWorkingSet": 6033408.0,
+          "Handles": 281.0,
+          "Threads": 11.0,
+          "GPU": null,
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:46:07.7181383Z",
+          "MonotonicSeconds": 9597.4376212,
+          "Processes": [
+            {
+              "Identity": "25440/639287559344463472",
+              "ProcessId": 25440,
+              "Name": "velo-slint",
+              "CPUSeconds": 0.484375,
+              "WorkingSet": 29818880,
+              "PrivateBytes": 6938624,
+              "PrivateWorkingSet": 6033408,
+              "Handles": 281,
+              "Threads": 11
+            }
+          ],
+          "Complete": true,
+          "WorkingSet": 29818880.0,
+          "PrivateBytes": 6938624.0,
+          "PrivateWorkingSet": 6033408.0,
+          "Handles": 281.0,
+          "Threads": 11.0,
+          "GPU": null,
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:46:09.0917378Z",
+          "MonotonicSeconds": 9598.8112202,
+          "Processes": [
+            {
+              "Identity": "25440/639287559344463472",
+              "ProcessId": 25440,
+              "Name": "velo-slint",
+              "CPUSeconds": 0.484375,
+              "WorkingSet": 29818880,
+              "PrivateBytes": 6938624,
+              "PrivateWorkingSet": 6033408,
+              "Handles": 281,
+              "Threads": 11
+            }
+          ],
+          "Complete": true,
+          "WorkingSet": 29818880.0,
+          "PrivateBytes": 6938624.0,
+          "PrivateWorkingSet": 6033408.0,
+          "Handles": 281.0,
+          "Threads": 11.0,
+          "GPU": null,
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:46:10.4767218Z",
+          "MonotonicSeconds": 9600.1962047,
+          "Processes": [
+            {
+              "Identity": "25440/639287559344463472",
+              "ProcessId": 25440,
+              "Name": "velo-slint",
+              "CPUSeconds": 0.484375,
+              "WorkingSet": 29818880,
+              "PrivateBytes": 6938624,
+              "PrivateWorkingSet": 6033408,
+              "Handles": 281,
+              "Threads": 11
+            }
+          ],
+          "Complete": true,
+          "WorkingSet": 29818880.0,
+          "PrivateBytes": 6938624.0,
+          "PrivateWorkingSet": 6033408.0,
+          "Handles": 281.0,
+          "Threads": 11.0,
+          "GPU": null,
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:46:11.8715733Z",
+          "MonotonicSeconds": 9601.5910564,
+          "Processes": [
+            {
+              "Identity": "25440/639287559344463472",
+              "ProcessId": 25440,
+              "Name": "velo-slint",
+              "CPUSeconds": 0.484375,
+              "WorkingSet": 29818880,
+              "PrivateBytes": 6938624,
+              "PrivateWorkingSet": 6033408,
+              "Handles": 281,
+              "Threads": 11
+            }
+          ],
+          "Complete": true,
+          "WorkingSet": 29818880.0,
+          "PrivateBytes": 6938624.0,
+          "PrivateWorkingSet": 6033408.0,
+          "Handles": 281.0,
+          "Threads": 11.0,
+          "GPU": null,
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        }
+      ],
+      "GPU": null,
+      "ProcessTreePolicy": "All descendants",
+      "InputBefore": {
+        "Files": {
+          "embedded-fixtures": "D8934619205CFD9AD81B6B089B2BC255821DBDDCC506DBAB3C528F3D48C10ECE"
+        },
+        "LastRefresh": null,
+        "CachedIndexCount": 28
+      },
+      "InputAfter": {
+        "Files": {
+          "embedded-fixtures": "D8934619205CFD9AD81B6B089B2BC255821DBDDCC506DBAB3C528F3D48C10ECE"
+        },
+        "LastRefresh": null,
+        "CachedIndexCount": 28
+      },
+      "ObservedStateSecondsAtStart": 3.616
+    },
+    {
+      "StartedAtUtc": "2026-10-28T03:46:12.2873293Z",
+      "EndedAtUtc": "2026-10-28T03:46:27.4642022Z",
+      "ProcessCount": 1,
+      "IncludesWebViewChildren": false,
+      "SampleSeconds": 15.177,
+      "CPUSampleValid": true,
+      "CPUPercentOfMachine": 0.0,
+      "CPUInvalidReason": null,
+      "WindowState": "Visible",
+      "WindowStateConfirmed": true,
+      "WindowStateMatches": true,
+      "IdleConfirmed": true,
+      "DataStable": true,
+      "BaselineEligible": true,
+      "PrivateBytes": 6938624.0,
+      "WorkingSet": 29818880.0,
+      "PrivateBytesMB": 6.62,
+      "WorkingSetMB": 28.44,
+      "PrivateBytesMean": 6938624.0,
+      "WorkingSetMean": 29818880.0,
+      "PrivateBytesMin": 6938624.0,
+      "PrivateBytesMax": 6938624.0,
+      "WorkingSetMin": 29818880.0,
+      "WorkingSetMax": 29818880.0,
+      "PollCount": 12,
+      "Processes": [
+        {
+          "Identity": "25440/639287559344463472",
+          "ProcessId": 25440,
+          "Name": "velo-slint",
+          "CPUSeconds": 0.484375,
+          "WorkingSet": 29818880,
+          "PrivateBytes": 6938624,
+          "PrivateWorkingSet": 6033408,
+          "Handles": 281,
+          "Threads": 11
+        }
+      ],
+      "WindowObservations": [
+        {
+          "TimestampUtc": "2026-10-28T03:46:12.2873293Z",
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:46:13.6689371Z",
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:46:15.0456205Z",
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:46:16.4167329Z",
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:46:17.8026588Z",
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:46:19.1851735Z",
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:46:20.5641222Z",
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:46:21.9413855Z",
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:46:23.3217694Z",
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:46:24.7102908Z",
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:46:26.089951Z",
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:46:27.4642022Z",
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        }
+      ],
+      "StateContinuouslyObserved": true,
+      "Number": 2,
+      "PrivateWorkingSet": 6033408.0,
+      "Handles": 281.0,
+      "Threads": 11.0,
+      "RawSnapshots": [
+        {
+          "TimestampUtc": "2026-10-28T03:46:12.2873293Z",
+          "MonotonicSeconds": 9602.0068119,
+          "Processes": [
+            {
+              "Identity": "25440/639287559344463472",
+              "ProcessId": 25440,
+              "Name": "velo-slint",
+              "CPUSeconds": 0.484375,
+              "WorkingSet": 29818880,
+              "PrivateBytes": 6938624,
+              "PrivateWorkingSet": 6033408,
+              "Handles": 281,
+              "Threads": 11
+            }
+          ],
+          "Complete": true,
+          "WorkingSet": 29818880.0,
+          "PrivateBytes": 6938624.0,
+          "PrivateWorkingSet": 6033408.0,
+          "Handles": 281.0,
+          "Threads": 11.0,
+          "GPU": null,
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:46:13.6689371Z",
+          "MonotonicSeconds": 9603.3884198,
+          "Processes": [
+            {
+              "Identity": "25440/639287559344463472",
+              "ProcessId": 25440,
+              "Name": "velo-slint",
+              "CPUSeconds": 0.484375,
+              "WorkingSet": 29818880,
+              "PrivateBytes": 6938624,
+              "PrivateWorkingSet": 6033408,
+              "Handles": 281,
+              "Threads": 11
+            }
+          ],
+          "Complete": true,
+          "WorkingSet": 29818880.0,
+          "PrivateBytes": 6938624.0,
+          "PrivateWorkingSet": 6033408.0,
+          "Handles": 281.0,
+          "Threads": 11.0,
+          "GPU": null,
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:46:15.0456205Z",
+          "MonotonicSeconds": 9604.7651041,
+          "Processes": [
+            {
+              "Identity": "25440/639287559344463472",
+              "ProcessId": 25440,
+              "Name": "velo-slint",
+              "CPUSeconds": 0.484375,
+              "WorkingSet": 29818880,
+              "PrivateBytes": 6938624,
+              "PrivateWorkingSet": 6033408,
+              "Handles": 281,
+              "Threads": 11
+            }
+          ],
+          "Complete": true,
+          "WorkingSet": 29818880.0,
+          "PrivateBytes": 6938624.0,
+          "PrivateWorkingSet": 6033408.0,
+          "Handles": 281.0,
+          "Threads": 11.0,
+          "GPU": null,
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:46:16.4167329Z",
+          "MonotonicSeconds": 9606.1362164,
+          "Processes": [
+            {
+              "Identity": "25440/639287559344463472",
+              "ProcessId": 25440,
+              "Name": "velo-slint",
+              "CPUSeconds": 0.484375,
+              "WorkingSet": 29818880,
+              "PrivateBytes": 6938624,
+              "PrivateWorkingSet": 6033408,
+              "Handles": 281,
+              "Threads": 11
+            }
+          ],
+          "Complete": true,
+          "WorkingSet": 29818880.0,
+          "PrivateBytes": 6938624.0,
+          "PrivateWorkingSet": 6033408.0,
+          "Handles": 281.0,
+          "Threads": 11.0,
+          "GPU": null,
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:46:17.8026588Z",
+          "MonotonicSeconds": 9607.522142,
+          "Processes": [
+            {
+              "Identity": "25440/639287559344463472",
+              "ProcessId": 25440,
+              "Name": "velo-slint",
+              "CPUSeconds": 0.484375,
+              "WorkingSet": 29818880,
+              "PrivateBytes": 6938624,
+              "PrivateWorkingSet": 6033408,
+              "Handles": 281,
+              "Threads": 11
+            }
+          ],
+          "Complete": true,
+          "WorkingSet": 29818880.0,
+          "PrivateBytes": 6938624.0,
+          "PrivateWorkingSet": 6033408.0,
+          "Handles": 281.0,
+          "Threads": 11.0,
+          "GPU": null,
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:46:19.1851735Z",
+          "MonotonicSeconds": 9608.9046558,
+          "Processes": [
+            {
+              "Identity": "25440/639287559344463472",
+              "ProcessId": 25440,
+              "Name": "velo-slint",
+              "CPUSeconds": 0.484375,
+              "WorkingSet": 29818880,
+              "PrivateBytes": 6938624,
+              "PrivateWorkingSet": 6033408,
+              "Handles": 281,
+              "Threads": 11
+            }
+          ],
+          "Complete": true,
+          "WorkingSet": 29818880.0,
+          "PrivateBytes": 6938624.0,
+          "PrivateWorkingSet": 6033408.0,
+          "Handles": 281.0,
+          "Threads": 11.0,
+          "GPU": null,
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:46:20.5641222Z",
+          "MonotonicSeconds": 9610.2836052,
+          "Processes": [
+            {
+              "Identity": "25440/639287559344463472",
+              "ProcessId": 25440,
+              "Name": "velo-slint",
+              "CPUSeconds": 0.484375,
+              "WorkingSet": 29818880,
+              "PrivateBytes": 6938624,
+              "PrivateWorkingSet": 6033408,
+              "Handles": 281,
+              "Threads": 11
+            }
+          ],
+          "Complete": true,
+          "WorkingSet": 29818880.0,
+          "PrivateBytes": 6938624.0,
+          "PrivateWorkingSet": 6033408.0,
+          "Handles": 281.0,
+          "Threads": 11.0,
+          "GPU": null,
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:46:21.9413855Z",
+          "MonotonicSeconds": 9611.6608688,
+          "Processes": [
+            {
+              "Identity": "25440/639287559344463472",
+              "ProcessId": 25440,
+              "Name": "velo-slint",
+              "CPUSeconds": 0.484375,
+              "WorkingSet": 29818880,
+              "PrivateBytes": 6938624,
+              "PrivateWorkingSet": 6033408,
+              "Handles": 281,
+              "Threads": 11
+            }
+          ],
+          "Complete": true,
+          "WorkingSet": 29818880.0,
+          "PrivateBytes": 6938624.0,
+          "PrivateWorkingSet": 6033408.0,
+          "Handles": 281.0,
+          "Threads": 11.0,
+          "GPU": null,
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:46:23.3217694Z",
+          "MonotonicSeconds": 9613.0412515,
+          "Processes": [
+            {
+              "Identity": "25440/639287559344463472",
+              "ProcessId": 25440,
+              "Name": "velo-slint",
+              "CPUSeconds": 0.484375,
+              "WorkingSet": 29818880,
+              "PrivateBytes": 6938624,
+              "PrivateWorkingSet": 6033408,
+              "Handles": 281,
+              "Threads": 11
+            }
+          ],
+          "Complete": true,
+          "WorkingSet": 29818880.0,
+          "PrivateBytes": 6938624.0,
+          "PrivateWorkingSet": 6033408.0,
+          "Handles": 281.0,
+          "Threads": 11.0,
+          "GPU": null,
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:46:24.7102908Z",
+          "MonotonicSeconds": 9614.4297732,
+          "Processes": [
+            {
+              "Identity": "25440/639287559344463472",
+              "ProcessId": 25440,
+              "Name": "velo-slint",
+              "CPUSeconds": 0.484375,
+              "WorkingSet": 29818880,
+              "PrivateBytes": 6938624,
+              "PrivateWorkingSet": 6033408,
+              "Handles": 281,
+              "Threads": 11
+            }
+          ],
+          "Complete": true,
+          "WorkingSet": 29818880.0,
+          "PrivateBytes": 6938624.0,
+          "PrivateWorkingSet": 6033408.0,
+          "Handles": 281.0,
+          "Threads": 11.0,
+          "GPU": null,
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:46:26.089951Z",
+          "MonotonicSeconds": 9615.8094334,
+          "Processes": [
+            {
+              "Identity": "25440/639287559344463472",
+              "ProcessId": 25440,
+              "Name": "velo-slint",
+              "CPUSeconds": 0.484375,
+              "WorkingSet": 29818880,
+              "PrivateBytes": 6938624,
+              "PrivateWorkingSet": 6033408,
+              "Handles": 281,
+              "Threads": 11
+            }
+          ],
+          "Complete": true,
+          "WorkingSet": 29818880.0,
+          "PrivateBytes": 6938624.0,
+          "PrivateWorkingSet": 6033408.0,
+          "Handles": 281.0,
+          "Threads": 11.0,
+          "GPU": null,
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:46:27.4642022Z",
+          "MonotonicSeconds": 9617.1836846,
+          "Processes": [
+            {
+              "Identity": "25440/639287559344463472",
+              "ProcessId": 25440,
+              "Name": "velo-slint",
+              "CPUSeconds": 0.484375,
+              "WorkingSet": 29818880,
+              "PrivateBytes": 6938624,
+              "PrivateWorkingSet": 6033408,
+              "Handles": 281,
+              "Threads": 11
+            }
+          ],
+          "Complete": true,
+          "WorkingSet": 29818880.0,
+          "PrivateBytes": 6938624.0,
+          "PrivateWorkingSet": 6033408.0,
+          "Handles": 281.0,
+          "Threads": 11.0,
+          "GPU": null,
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        }
+      ],
+      "GPU": null,
+      "ProcessTreePolicy": "All descendants",
+      "InputBefore": {
+        "Files": {
+          "embedded-fixtures": "D8934619205CFD9AD81B6B089B2BC255821DBDDCC506DBAB3C528F3D48C10ECE"
+        },
+        "LastRefresh": null,
+        "CachedIndexCount": 28
+      },
+      "InputAfter": {
+        "Files": {
+          "embedded-fixtures": "D8934619205CFD9AD81B6B089B2BC255821DBDDCC506DBAB3C528F3D48C10ECE"
+        },
+        "LastRefresh": null,
+        "CachedIndexCount": 28
+      },
+      "ObservedStateSecondsAtStart": 19.25
+    },
+    {
+      "StartedAtUtc": "2026-10-28T03:46:27.8263642Z",
+      "EndedAtUtc": "2026-10-28T03:46:43.0214995Z",
+      "ProcessCount": 1,
+      "IncludesWebViewChildren": false,
+      "SampleSeconds": 15.195,
+      "CPUSampleValid": true,
+      "CPUPercentOfMachine": 0.0,
+      "CPUInvalidReason": null,
+      "WindowState": "Visible",
+      "WindowStateConfirmed": true,
+      "WindowStateMatches": true,
+      "IdleConfirmed": true,
+      "DataStable": true,
+      "BaselineEligible": true,
+      "PrivateBytes": 6782976.0,
+      "WorkingSet": 29761536.0,
+      "PrivateBytesMB": 6.47,
+      "WorkingSetMB": 28.38,
+      "PrivateBytesMean": 6871723.0,
+      "WorkingSetMean": 29785429.0,
+      "PrivateBytesMin": 6782976.0,
+      "PrivateBytesMax": 6938624.0,
+      "WorkingSetMin": 29761536.0,
+      "WorkingSetMax": 29818880.0,
+      "PollCount": 12,
+      "Processes": [
+        {
+          "Identity": "25440/639287559344463472",
+          "ProcessId": 25440,
+          "Name": "velo-slint",
+          "CPUSeconds": 0.484375,
+          "WorkingSet": 29761536,
+          "PrivateBytes": 6782976,
+          "PrivateWorkingSet": 5943296,
+          "Handles": 279,
+          "Threads": 6
+        }
+      ],
+      "WindowObservations": [
+        {
+          "TimestampUtc": "2026-10-28T03:46:27.8263642Z",
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:46:29.2038358Z",
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:46:30.5861289Z",
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:46:31.9684636Z",
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:46:33.3533982Z",
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:46:34.7315757Z",
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:46:36.1179372Z",
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:46:37.4952987Z",
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:46:38.8749124Z",
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:46:40.2525712Z",
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:46:41.6429095Z",
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:46:43.0214995Z",
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        }
+      ],
+      "StateContinuouslyObserved": true,
+      "Number": 3,
+      "PrivateWorkingSet": 5943296.0,
+      "Handles": 279.0,
+      "Threads": 6.0,
+      "RawSnapshots": [
+        {
+          "TimestampUtc": "2026-10-28T03:46:27.8263642Z",
+          "MonotonicSeconds": 9617.5458495,
+          "Processes": [
+            {
+              "Identity": "25440/639287559344463472",
+              "ProcessId": 25440,
+              "Name": "velo-slint",
+              "CPUSeconds": 0.484375,
+              "WorkingSet": 29818880,
+              "PrivateBytes": 6938624,
+              "PrivateWorkingSet": 6033408,
+              "Handles": 281,
+              "Threads": 11
+            }
+          ],
+          "Complete": true,
+          "WorkingSet": 29818880.0,
+          "PrivateBytes": 6938624.0,
+          "PrivateWorkingSet": 6033408.0,
+          "Handles": 281.0,
+          "Threads": 11.0,
+          "GPU": null,
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:46:29.2038358Z",
+          "MonotonicSeconds": 9618.9233184,
+          "Processes": [
+            {
+              "Identity": "25440/639287559344463472",
+              "ProcessId": 25440,
+              "Name": "velo-slint",
+              "CPUSeconds": 0.484375,
+              "WorkingSet": 29818880,
+              "PrivateBytes": 6938624,
+              "PrivateWorkingSet": 6033408,
+              "Handles": 281,
+              "Threads": 11
+            }
+          ],
+          "Complete": true,
+          "WorkingSet": 29818880.0,
+          "PrivateBytes": 6938624.0,
+          "PrivateWorkingSet": 6033408.0,
+          "Handles": 281.0,
+          "Threads": 11.0,
+          "GPU": null,
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:46:30.5861289Z",
+          "MonotonicSeconds": 9620.3056117,
+          "Processes": [
+            {
+              "Identity": "25440/639287559344463472",
+              "ProcessId": 25440,
+              "Name": "velo-slint",
+              "CPUSeconds": 0.484375,
+              "WorkingSet": 29818880,
+              "PrivateBytes": 6938624,
+              "PrivateWorkingSet": 6033408,
+              "Handles": 281,
+              "Threads": 11
+            }
+          ],
+          "Complete": true,
+          "WorkingSet": 29818880.0,
+          "PrivateBytes": 6938624.0,
+          "PrivateWorkingSet": 6033408.0,
+          "Handles": 281.0,
+          "Threads": 11.0,
+          "GPU": null,
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:46:31.9684636Z",
+          "MonotonicSeconds": 9621.6879533,
+          "Processes": [
+            {
+              "Identity": "25440/639287559344463472",
+              "ProcessId": 25440,
+              "Name": "velo-slint",
+              "CPUSeconds": 0.484375,
+              "WorkingSet": 29818880,
+              "PrivateBytes": 6938624,
+              "PrivateWorkingSet": 6033408,
+              "Handles": 281,
+              "Threads": 11
+            }
+          ],
+          "Complete": true,
+          "WorkingSet": 29818880.0,
+          "PrivateBytes": 6938624.0,
+          "PrivateWorkingSet": 6033408.0,
+          "Handles": 281.0,
+          "Threads": 11.0,
+          "GPU": null,
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:46:33.3533982Z",
+          "MonotonicSeconds": 9623.0728897,
+          "Processes": [
+            {
+              "Identity": "25440/639287559344463472",
+              "ProcessId": 25440,
+              "Name": "velo-slint",
+              "CPUSeconds": 0.484375,
+              "WorkingSet": 29818880,
+              "PrivateBytes": 6938624,
+              "PrivateWorkingSet": 6033408,
+              "Handles": 281,
+              "Threads": 11
+            }
+          ],
+          "Complete": true,
+          "WorkingSet": 29818880.0,
+          "PrivateBytes": 6938624.0,
+          "PrivateWorkingSet": 6033408.0,
+          "Handles": 281.0,
+          "Threads": 11.0,
+          "GPU": null,
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:46:34.7315757Z",
+          "MonotonicSeconds": 9624.4510566,
+          "Processes": [
+            {
+              "Identity": "25440/639287559344463472",
+              "ProcessId": 25440,
+              "Name": "velo-slint",
+              "CPUSeconds": 0.484375,
+              "WorkingSet": 29761536,
+              "PrivateBytes": 6840320,
+              "PrivateWorkingSet": 5976064,
+              "Handles": 281,
+              "Threads": 8
+            }
+          ],
+          "Complete": true,
+          "WorkingSet": 29761536.0,
+          "PrivateBytes": 6840320.0,
+          "PrivateWorkingSet": 5976064.0,
+          "Handles": 281.0,
+          "Threads": 8.0,
+          "GPU": null,
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:46:36.1179372Z",
+          "MonotonicSeconds": 9625.8374188,
+          "Processes": [
+            {
+              "Identity": "25440/639287559344463472",
+              "ProcessId": 25440,
+              "Name": "velo-slint",
+              "CPUSeconds": 0.484375,
+              "WorkingSet": 29761536,
+              "PrivateBytes": 6840320,
+              "PrivateWorkingSet": 5976064,
+              "Handles": 281,
+              "Threads": 8
+            }
+          ],
+          "Complete": true,
+          "WorkingSet": 29761536.0,
+          "PrivateBytes": 6840320.0,
+          "PrivateWorkingSet": 5976064.0,
+          "Handles": 281.0,
+          "Threads": 8.0,
+          "GPU": null,
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:46:37.4952987Z",
+          "MonotonicSeconds": 9627.2147811,
+          "Processes": [
+            {
+              "Identity": "25440/639287559344463472",
+              "ProcessId": 25440,
+              "Name": "velo-slint",
+              "CPUSeconds": 0.484375,
+              "WorkingSet": 29761536,
+              "PrivateBytes": 6840320,
+              "PrivateWorkingSet": 5976064,
+              "Handles": 281,
+              "Threads": 8
+            }
+          ],
+          "Complete": true,
+          "WorkingSet": 29761536.0,
+          "PrivateBytes": 6840320.0,
+          "PrivateWorkingSet": 5976064.0,
+          "Handles": 281.0,
+          "Threads": 8.0,
+          "GPU": null,
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:46:38.8749124Z",
+          "MonotonicSeconds": 9628.5943935,
+          "Processes": [
+            {
+              "Identity": "25440/639287559344463472",
+              "ProcessId": 25440,
+              "Name": "velo-slint",
+              "CPUSeconds": 0.484375,
+              "WorkingSet": 29761536,
+              "PrivateBytes": 6840320,
+              "PrivateWorkingSet": 5976064,
+              "Handles": 281,
+              "Threads": 8
+            }
+          ],
+          "Complete": true,
+          "WorkingSet": 29761536.0,
+          "PrivateBytes": 6840320.0,
+          "PrivateWorkingSet": 5976064.0,
+          "Handles": 281.0,
+          "Threads": 8.0,
+          "GPU": null,
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:46:40.2525712Z",
+          "MonotonicSeconds": 9629.9720698,
+          "Processes": [
+            {
+              "Identity": "25440/639287559344463472",
+              "ProcessId": 25440,
+              "Name": "velo-slint",
+              "CPUSeconds": 0.484375,
+              "WorkingSet": 29761536,
+              "PrivateBytes": 6840320,
+              "PrivateWorkingSet": 5976064,
+              "Handles": 281,
+              "Threads": 8
+            }
+          ],
+          "Complete": true,
+          "WorkingSet": 29761536.0,
+          "PrivateBytes": 6840320.0,
+          "PrivateWorkingSet": 5976064.0,
+          "Handles": 281.0,
+          "Threads": 8.0,
+          "GPU": null,
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:46:41.6429095Z",
+          "MonotonicSeconds": 9631.3623894,
+          "Processes": [
+            {
+              "Identity": "25440/639287559344463472",
+              "ProcessId": 25440,
+              "Name": "velo-slint",
+              "CPUSeconds": 0.484375,
+              "WorkingSet": 29761536,
+              "PrivateBytes": 6782976,
+              "PrivateWorkingSet": 5976064,
+              "Handles": 279,
+              "Threads": 6
+            }
+          ],
+          "Complete": true,
+          "WorkingSet": 29761536.0,
+          "PrivateBytes": 6782976.0,
+          "PrivateWorkingSet": 5976064.0,
+          "Handles": 279.0,
+          "Threads": 6.0,
+          "GPU": null,
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        },
+        {
+          "TimestampUtc": "2026-10-28T03:46:43.0214995Z",
+          "MonotonicSeconds": 9632.7409805,
+          "Processes": [
+            {
+              "Identity": "25440/639287559344463472",
+              "ProcessId": 25440,
+              "Name": "velo-slint",
+              "CPUSeconds": 0.484375,
+              "WorkingSet": 29761536,
+              "PrivateBytes": 6782976,
+              "PrivateWorkingSet": 5943296,
+              "Handles": 279,
+              "Threads": 6
+            }
+          ],
+          "Complete": true,
+          "WorkingSet": 29761536.0,
+          "PrivateBytes": 6782976.0,
+          "PrivateWorkingSet": 5943296.0,
+          "Handles": 279.0,
+          "Threads": 6.0,
+          "GPU": null,
+          "Window": {
+            "State": "Visible",
+            "DPI": 120,
+            "ScalePercent": 125.0,
+            "Handle": "904F4",
+            "ClassName": "Window Class"
+          }
+        }
+      ],
+      "GPU": null,
+      "ProcessTreePolicy": "All descendants",
+      "InputBefore": {
+        "Files": {
+          "embedded-fixtures": "D8934619205CFD9AD81B6B089B2BC255821DBDDCC506DBAB3C528F3D48C10ECE"
+        },
+        "LastRefresh": null,
+        "CachedIndexCount": 28
+      },
+      "InputAfter": {
+        "Files": {
+          "embedded-fixtures": "D8934619205CFD9AD81B6B089B2BC255821DBDDCC506DBAB3C528F3D48C10ECE"
+        },
+        "LastRefresh": null,
+        "CachedIndexCount": 28
+      },
+      "ObservedStateSecondsAtStart": 34.789
+    }
+  ],
+  "UnavailableMetrics": [
+    "GPU fields are null if the Windows GPU Process Memory provider has no readable instance; null is not zero. Renderer-internal texture/glyph cache bytes are unavailable.",
+    "Embedded icons use Slint caches; no application-owned decoded icon LRU exists yet."
+  ],
+  "Limitations": [
+    "PrivateBytes is private commit, not physical resident memory. WorkingSet sums double-count shared pages.",
+    "CPUPercentOfMachine is normalized by logical processors. Process/window polling can miss changes entirely between polls.",
+    "IdleConfirmed is operator confirmation after scanning; log evidence alone cannot prove the live scanning flag.",
+    "No startup or key-to-editable latency is measured. Diagnostics mode must be compared separately."
+  ]
+}

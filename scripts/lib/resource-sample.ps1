@@ -10,14 +10,31 @@ function Read-VeloMetadataJson {
     }
 }
 
+function Read-VeloRustBuildIdentity {
+    param([string]$Executable, [string]$IdentityPath)
+    if (-not $IdentityPath) { $IdentityPath = Join-Path (Split-Path -Parent $Executable) 'build-identity.json' }
+    $identity = Read-VeloMetadataJson $IdentityPath
+    $file = Get-Item -LiteralPath $Executable
+    if ($identity.ExecutableSHA256 -ne (Get-FileHash -LiteralPath $Executable -Algorithm SHA256).Hash -or
+        $identity.ExecutableBytes -ne $file.Length -or $identity.Backend -ne 'winit' -or $identity.Renderer -notin @('femtovg','software') -or
+        @($identity.Sources | Where-Object { $_.Path -eq 'src/fixtures.rs' -and $_.SHA256 -match '^[0-9a-fA-F]{64}$' }).Count -ne 1) {
+        throw 'Rust build identity does not match the sampled executable/fixture.'
+    }
+    foreach ($features in @($identity.SlintFeatures, $identity.WinitBackendFeatures)) {
+        $renderers = @($features | Where-Object { $_ -like 'renderer-*' })
+        if ($renderers.Count -ne 1 -or $renderers[0] -ne ('renderer-' + $identity.Renderer)) { throw 'Rust identity must contain exactly one matching renderer feature.' }
+    }
+    $identity
+}
+
 function Get-VeloProcessTree {
-    param([object[]]$Processes, [int]$RootProcessId)
+    param([object[]]$Processes, [int]$RootProcessId, [switch]$AllDescendants)
     $ids = [System.Collections.Generic.HashSet[int]]::new()
     [void]$ids.Add($RootProcessId)
     do {
         $added = $false
         foreach ($entry in $Processes) {
-            if ($entry.Name -eq 'msedgewebview2.exe' -and $ids.Contains([int]$entry.ParentProcessId) -and $ids.Add([int]$entry.ProcessId)) { $added = $true }
+            if (($AllDescendants -or $entry.Name -eq 'msedgewebview2.exe') -and $ids.Contains([int]$entry.ParentProcessId) -and $ids.Add([int]$entry.ProcessId)) { $added = $true }
         }
     } while ($added)
     $Processes | Where-Object { $ids.Contains([int]$_.ProcessId) }

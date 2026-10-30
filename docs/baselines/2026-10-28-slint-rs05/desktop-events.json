@@ -1,0 +1,1829 @@
+{
+  "Date": "2026-10-28",
+  "Timezone": "Asia/Shanghai",
+  "Method": "ComputerUse",
+  "Timing": "Functional evidence only; includes tool scheduling/activation; not calibrated latency",
+  "Runs": [
+    {
+      "Name": "software-production",
+      "Renderer": "software",
+      "ProcessId": 19420,
+      "ExecutableSHA256": "5555606B628555E858CD40F3E7B27A170EF60936C24FBE2E10101A5622B7388C",
+      "RawLogSHA256": "1572D20CC0782CD7B861E72C9B0D33CD8E3483E8D5349EE3FA304E2768AB64BF",
+      "EventCount": 108,
+      "AllEventsDroppedZero": true,
+      "AcceptedNoncomposingInputCount": 2,
+      "NativeWindowEventCount": 1,
+      "Events": [
+        {
+          "event": "main_started",
+          "pid": "19420",
+          "unix_us": "1793171816114028",
+          "elapsed_us": "642",
+          "dropped": "0",
+          "renderer": "software",
+          "backend": "winit"
+        },
+        {
+          "event": "component_created",
+          "pid": "19420",
+          "unix_us": "1793171816119217",
+          "elapsed_us": "5831",
+          "dropped": "0"
+        },
+        {
+          "event": "hotkey_bind",
+          "pid": "19420",
+          "unix_us": "1793171816119429",
+          "elapsed_us": "6044",
+          "dropped": "0",
+          "success": "true",
+          "previous_retained": "false"
+        },
+        {
+          "event": "native_window",
+          "pid": "19420",
+          "unix_us": "1793171816133203",
+          "elapsed_us": "19817",
+          "dropped": "0",
+          "hwnd": "3B04F4",
+          "scale": "1.25",
+          "physical_width": "800",
+          "physical_height": "675"
+        },
+        {
+          "event": "lifecycle_ready",
+          "pid": "19420",
+          "unix_us": "1793171816140724",
+          "elapsed_us": "27338",
+          "dropped": "0",
+          "native_visible": "false",
+          "content_ready": "true",
+          "background": "false",
+          "hotkey_available": "true"
+        },
+        {
+          "event": "native_focus_sync",
+          "pid": "19420",
+          "unix_us": "1793171816167811",
+          "elapsed_us": "54426",
+          "dropped": "0",
+          "focused": "true",
+          "source": "GetForegroundWindow+GetFocus"
+        },
+        {
+          "event": "lifecycle_shown",
+          "pid": "19420",
+          "unix_us": "1793171816174707",
+          "elapsed_us": "61322",
+          "dropped": "0",
+          "reason": "startup",
+          "generation": "1",
+          "native_active": "true",
+          "query_bytes": "0",
+          "appearance_open": "false"
+        },
+        {
+          "event": "input_focus",
+          "pid": "19420",
+          "unix_us": "1793171816174715",
+          "elapsed_us": "61330",
+          "dropped": "0",
+          "focused": "true"
+        },
+        {
+          "event": "first_redraw_requested",
+          "pid": "19420",
+          "unix_us": "1793171816175394",
+          "elapsed_us": "62008",
+          "dropped": "0",
+          "completed_frame": "false"
+        },
+        {
+          "event": "native_focus",
+          "pid": "19420",
+          "unix_us": "1793171816692202",
+          "elapsed_us": "578817",
+          "dropped": "0",
+          "focused": "true"
+        },
+        {
+          "event": "native_key_down",
+          "pid": "19420",
+          "unix_us": "1793171827296753",
+          "elapsed_us": "11183368",
+          "dropped": "0"
+        },
+        {
+          "event": "input_accepted",
+          "pid": "19420",
+          "unix_us": "1793171827297109",
+          "elapsed_us": "11183723",
+          "dropped": "0",
+          "utf8_bytes": "1",
+          "focused": "true",
+          "native_focused": "true",
+          "visible": "true",
+          "composing": "false"
+        },
+        {
+          "event": "native_focus",
+          "pid": "19420",
+          "unix_us": "1793171834623822",
+          "elapsed_us": "18510437",
+          "dropped": "0",
+          "focused": "false"
+        },
+        {
+          "event": "input_focus",
+          "pid": "19420",
+          "unix_us": "1793171834624577",
+          "elapsed_us": "18511191",
+          "dropped": "0",
+          "focused": "false"
+        },
+        {
+          "event": "lifecycle_blur_check",
+          "pid": "19420",
+          "unix_us": "1793171834654498",
+          "elapsed_us": "18541113",
+          "dropped": "0",
+          "owned_foreground": "false",
+          "action": "Hide"
+        },
+        {
+          "event": "lifecycle_hidden",
+          "pid": "19420",
+          "unix_us": "1793171834657031",
+          "elapsed_us": "18543646",
+          "dropped": "0",
+          "reason": "blur",
+          "generation": "2"
+        },
+        {
+          "event": "global_hotkey",
+          "pid": "19420",
+          "unix_us": "1793171882549386",
+          "elapsed_us": "66436000",
+          "dropped": "0",
+          "action": "Show"
+        },
+        {
+          "event": "native_focus_sync",
+          "pid": "19420",
+          "unix_us": "1793171882569616",
+          "elapsed_us": "66456231",
+          "dropped": "0",
+          "focused": "true",
+          "source": "GetForegroundWindow+GetFocus"
+        },
+        {
+          "event": "lifecycle_shown",
+          "pid": "19420",
+          "unix_us": "1793171882574233",
+          "elapsed_us": "66460847",
+          "dropped": "0",
+          "reason": "hotkey",
+          "generation": "3",
+          "native_active": "true",
+          "query_bytes": "1",
+          "appearance_open": "false"
+        },
+        {
+          "event": "native_focus",
+          "pid": "19420",
+          "unix_us": "1793171882574243",
+          "elapsed_us": "66460857",
+          "dropped": "0",
+          "focused": "true"
+        },
+        {
+          "event": "input_focus",
+          "pid": "19420",
+          "unix_us": "1793171882576151",
+          "elapsed_us": "66462765",
+          "dropped": "0",
+          "focused": "true"
+        },
+        {
+          "event": "native_key_down",
+          "pid": "19420",
+          "unix_us": "1793171902902371",
+          "elapsed_us": "86788986",
+          "dropped": "0"
+        },
+        {
+          "event": "lifecycle_hidden",
+          "pid": "19420",
+          "unix_us": "1793171902910686",
+          "elapsed_us": "86797301",
+          "dropped": "0",
+          "reason": "close",
+          "generation": "4"
+        },
+        {
+          "event": "native_focus",
+          "pid": "19420",
+          "unix_us": "1793171902910700",
+          "elapsed_us": "86797314",
+          "dropped": "0",
+          "focused": "false"
+        },
+        {
+          "event": "input_focus",
+          "pid": "19420",
+          "unix_us": "1793171902910724",
+          "elapsed_us": "86797338",
+          "dropped": "0",
+          "focused": "false"
+        },
+        {
+          "event": "lifecycle_blur_check",
+          "pid": "19420",
+          "unix_us": "1793171902941709",
+          "elapsed_us": "86828324",
+          "dropped": "0",
+          "owned_foreground": "false",
+          "action": "None"
+        },
+        {
+          "event": "global_hotkey",
+          "pid": "19420",
+          "unix_us": "1793171914593658",
+          "elapsed_us": "98480273",
+          "dropped": "0",
+          "action": "Show"
+        },
+        {
+          "event": "native_focus_sync",
+          "pid": "19420",
+          "unix_us": "1793171914611624",
+          "elapsed_us": "98498239",
+          "dropped": "0",
+          "focused": "true",
+          "source": "GetForegroundWindow+GetFocus"
+        },
+        {
+          "event": "lifecycle_shown",
+          "pid": "19420",
+          "unix_us": "1793171914612788",
+          "elapsed_us": "98499403",
+          "dropped": "0",
+          "reason": "hotkey",
+          "generation": "5",
+          "native_active": "true",
+          "query_bytes": "1",
+          "appearance_open": "false"
+        },
+        {
+          "event": "native_focus",
+          "pid": "19420",
+          "unix_us": "1793171914612802",
+          "elapsed_us": "98499416",
+          "dropped": "0",
+          "focused": "true"
+        },
+        {
+          "event": "input_focus",
+          "pid": "19420",
+          "unix_us": "1793171914613981",
+          "elapsed_us": "98500595",
+          "dropped": "0",
+          "focused": "true"
+        },
+        {
+          "event": "native_key_down",
+          "pid": "19420",
+          "unix_us": "1793171927694276",
+          "elapsed_us": "111580891",
+          "dropped": "0"
+        },
+        {
+          "event": "native_key_down",
+          "pid": "19420",
+          "unix_us": "1793171936539270",
+          "elapsed_us": "120425884",
+          "dropped": "0"
+        },
+        {
+          "event": "lifecycle_hidden",
+          "pid": "19420",
+          "unix_us": "1793171936546504",
+          "elapsed_us": "120433118",
+          "dropped": "0",
+          "reason": "escape",
+          "generation": "6"
+        },
+        {
+          "event": "input_focus",
+          "pid": "19420",
+          "unix_us": "1793171936546547",
+          "elapsed_us": "120433161",
+          "dropped": "0",
+          "focused": "false"
+        },
+        {
+          "event": "native_focus",
+          "pid": "19420",
+          "unix_us": "1793171936546561",
+          "elapsed_us": "120433176",
+          "dropped": "0",
+          "focused": "false"
+        },
+        {
+          "event": "lifecycle_blur_check",
+          "pid": "19420",
+          "unix_us": "1793171936577051",
+          "elapsed_us": "120463665",
+          "dropped": "0",
+          "owned_foreground": "false",
+          "action": "None"
+        },
+        {
+          "event": "global_hotkey",
+          "pid": "19420",
+          "unix_us": "1793171945600929",
+          "elapsed_us": "129487544",
+          "dropped": "0",
+          "action": "Show"
+        },
+        {
+          "event": "native_focus_sync",
+          "pid": "19420",
+          "unix_us": "1793171945616817",
+          "elapsed_us": "129503431",
+          "dropped": "0",
+          "focused": "true",
+          "source": "GetForegroundWindow+GetFocus"
+        },
+        {
+          "event": "lifecycle_shown",
+          "pid": "19420",
+          "unix_us": "1793171945617873",
+          "elapsed_us": "129504487",
+          "dropped": "0",
+          "reason": "hotkey",
+          "generation": "7",
+          "native_active": "true",
+          "query_bytes": "0",
+          "appearance_open": "false"
+        },
+        {
+          "event": "native_focus",
+          "pid": "19420",
+          "unix_us": "1793171945617883",
+          "elapsed_us": "129504497",
+          "dropped": "0",
+          "focused": "true"
+        },
+        {
+          "event": "input_focus",
+          "pid": "19420",
+          "unix_us": "1793171945618662",
+          "elapsed_us": "129505276",
+          "dropped": "0",
+          "focused": "true"
+        },
+        {
+          "event": "native_key_down",
+          "pid": "19420",
+          "unix_us": "1793171954004027",
+          "elapsed_us": "137890641",
+          "dropped": "0"
+        },
+        {
+          "event": "input_accepted",
+          "pid": "19420",
+          "unix_us": "1793171954004374",
+          "elapsed_us": "137890989",
+          "dropped": "0",
+          "utf8_bytes": "1",
+          "focused": "true",
+          "native_focused": "true",
+          "visible": "true",
+          "composing": "false"
+        },
+        {
+          "event": "input_focus",
+          "pid": "19420",
+          "unix_us": "1793171971855425",
+          "elapsed_us": "155742039",
+          "dropped": "0",
+          "focused": "false"
+        },
+        {
+          "event": "hotkey_recording",
+          "pid": "19420",
+          "unix_us": "1793171992972708",
+          "elapsed_us": "176859322",
+          "dropped": "0",
+          "enabled": "true"
+        },
+        {
+          "event": "native_key_down",
+          "pid": "19420",
+          "unix_us": "1793172010674509",
+          "elapsed_us": "194561124",
+          "dropped": "0"
+        },
+        {
+          "event": "global_hotkey",
+          "pid": "19420",
+          "unix_us": "1793172010674656",
+          "elapsed_us": "194561271",
+          "dropped": "0",
+          "action": "Record"
+        },
+        {
+          "event": "hotkey_recording",
+          "pid": "19420",
+          "unix_us": "1793172010674731",
+          "elapsed_us": "194561354",
+          "dropped": "0",
+          "enabled": "false"
+        },
+        {
+          "event": "hotkey_recording",
+          "pid": "19420",
+          "unix_us": "1793172020908828",
+          "elapsed_us": "204795443",
+          "dropped": "0",
+          "enabled": "true"
+        },
+        {
+          "event": "native_key_down",
+          "pid": "19420",
+          "unix_us": "1793172032165844",
+          "elapsed_us": "216052459",
+          "dropped": "0"
+        },
+        {
+          "event": "native_key_down",
+          "pid": "19420",
+          "unix_us": "1793172032166570",
+          "elapsed_us": "216053185",
+          "dropped": "0"
+        },
+        {
+          "event": "native_key_down",
+          "pid": "19420",
+          "unix_us": "1793172032167070",
+          "elapsed_us": "216053684",
+          "dropped": "0"
+        },
+        {
+          "event": "hotkey_recording",
+          "pid": "19420",
+          "unix_us": "1793172032167094",
+          "elapsed_us": "216053708",
+          "dropped": "0",
+          "enabled": "false"
+        },
+        {
+          "event": "native_key_down",
+          "pid": "19420",
+          "unix_us": "1793172045814024",
+          "elapsed_us": "229700638",
+          "dropped": "0"
+        },
+        {
+          "event": "global_hotkey",
+          "pid": "19420",
+          "unix_us": "1793172045814255",
+          "elapsed_us": "229700869",
+          "dropped": "0",
+          "action": "Hide"
+        },
+        {
+          "event": "lifecycle_hidden",
+          "pid": "19420",
+          "unix_us": "1793172045822157",
+          "elapsed_us": "229708772",
+          "dropped": "0",
+          "reason": "hotkey",
+          "generation": "8"
+        },
+        {
+          "event": "native_focus",
+          "pid": "19420",
+          "unix_us": "1793172045822171",
+          "elapsed_us": "229708785",
+          "dropped": "0",
+          "focused": "false"
+        },
+        {
+          "event": "lifecycle_blur_check",
+          "pid": "19420",
+          "unix_us": "1793172045851716",
+          "elapsed_us": "229738330",
+          "dropped": "0",
+          "owned_foreground": "false",
+          "action": "None"
+        },
+        {
+          "event": "global_hotkey",
+          "pid": "19420",
+          "unix_us": "1793172060928073",
+          "elapsed_us": "244814688",
+          "dropped": "0",
+          "action": "Show"
+        },
+        {
+          "event": "native_focus_sync",
+          "pid": "19420",
+          "unix_us": "1793172060944829",
+          "elapsed_us": "244831443",
+          "dropped": "0",
+          "focused": "true",
+          "source": "GetForegroundWindow+GetFocus"
+        },
+        {
+          "event": "lifecycle_shown",
+          "pid": "19420",
+          "unix_us": "1793172060944843",
+          "elapsed_us": "244831458",
+          "dropped": "0",
+          "reason": "hotkey",
+          "generation": "9",
+          "native_active": "true",
+          "query_bytes": "1",
+          "appearance_open": "true"
+        },
+        {
+          "event": "native_focus",
+          "pid": "19420",
+          "unix_us": "1793172060944850",
+          "elapsed_us": "244831464",
+          "dropped": "0",
+          "focused": "true"
+        },
+        {
+          "event": "hotkey_bind",
+          "pid": "19420",
+          "unix_us": "1793172078117450",
+          "elapsed_us": "262004064",
+          "dropped": "0",
+          "success": "true",
+          "previous_retained": "false"
+        },
+        {
+          "event": "native_key_down",
+          "pid": "19420",
+          "unix_us": "1793172104143688",
+          "elapsed_us": "288030302",
+          "dropped": "0"
+        },
+        {
+          "event": "native_key_down",
+          "pid": "19420",
+          "unix_us": "1793172104145232",
+          "elapsed_us": "288031846",
+          "dropped": "0"
+        },
+        {
+          "event": "native_key_down",
+          "pid": "19420",
+          "unix_us": "1793172112371083",
+          "elapsed_us": "296257698",
+          "dropped": "0"
+        },
+        {
+          "event": "native_key_down",
+          "pid": "19420",
+          "unix_us": "1793172112372331",
+          "elapsed_us": "296258946",
+          "dropped": "0"
+        },
+        {
+          "event": "hotkey_bind",
+          "pid": "19420",
+          "unix_us": "1793172123936926",
+          "elapsed_us": "307823540",
+          "dropped": "0",
+          "success": "false",
+          "previous_retained": "true"
+        },
+        {
+          "event": "native_key_down",
+          "pid": "19420",
+          "unix_us": "1793172137953460",
+          "elapsed_us": "321840074",
+          "dropped": "0"
+        },
+        {
+          "event": "global_hotkey",
+          "pid": "19420",
+          "unix_us": "1793172137953925",
+          "elapsed_us": "321840539",
+          "dropped": "0",
+          "action": "Hide"
+        },
+        {
+          "event": "lifecycle_hidden",
+          "pid": "19420",
+          "unix_us": "1793172137962653",
+          "elapsed_us": "321849268",
+          "dropped": "0",
+          "reason": "hotkey",
+          "generation": "10"
+        },
+        {
+          "event": "native_focus",
+          "pid": "19420",
+          "unix_us": "1793172137962665",
+          "elapsed_us": "321849280",
+          "dropped": "0",
+          "focused": "false"
+        },
+        {
+          "event": "lifecycle_blur_check",
+          "pid": "19420",
+          "unix_us": "1793172137992503",
+          "elapsed_us": "321879118",
+          "dropped": "0",
+          "owned_foreground": "false",
+          "action": "None"
+        },
+        {
+          "event": "global_hotkey",
+          "pid": "19420",
+          "unix_us": "1793172148837032",
+          "elapsed_us": "332723646",
+          "dropped": "0",
+          "action": "Show"
+        },
+        {
+          "event": "native_focus_sync",
+          "pid": "19420",
+          "unix_us": "1793172148854505",
+          "elapsed_us": "332741119",
+          "dropped": "0",
+          "focused": "true",
+          "source": "GetForegroundWindow+GetFocus"
+        },
+        {
+          "event": "lifecycle_shown",
+          "pid": "19420",
+          "unix_us": "1793172148854521",
+          "elapsed_us": "332741136",
+          "dropped": "0",
+          "reason": "hotkey",
+          "generation": "11",
+          "native_active": "true",
+          "query_bytes": "1",
+          "appearance_open": "true"
+        },
+        {
+          "event": "native_focus",
+          "pid": "19420",
+          "unix_us": "1793172148854528",
+          "elapsed_us": "332741143",
+          "dropped": "0",
+          "focused": "true"
+        },
+        {
+          "event": "native_focus",
+          "pid": "19420",
+          "unix_us": "1793172183333593",
+          "elapsed_us": "367220207",
+          "dropped": "0",
+          "focused": "false"
+        },
+        {
+          "event": "lifecycle_blur_check",
+          "pid": "19420",
+          "unix_us": "1793172183364545",
+          "elapsed_us": "367251160",
+          "dropped": "0",
+          "owned_foreground": "true",
+          "action": "None"
+        },
+        {
+          "event": "global_hotkey",
+          "pid": "19420",
+          "unix_us": "1793172399029449",
+          "elapsed_us": "582916063",
+          "dropped": "0",
+          "action": "Hide"
+        },
+        {
+          "event": "lifecycle_hidden",
+          "pid": "19420",
+          "unix_us": "1793172399032794",
+          "elapsed_us": "582919408",
+          "dropped": "0",
+          "reason": "hotkey",
+          "generation": "12"
+        },
+        {
+          "event": "global_hotkey",
+          "pid": "19420",
+          "unix_us": "1793172424705848",
+          "elapsed_us": "608592463",
+          "dropped": "0",
+          "action": "None"
+        },
+        {
+          "event": "global_hotkey",
+          "pid": "19420",
+          "unix_us": "1793172453439813",
+          "elapsed_us": "637326427",
+          "dropped": "0",
+          "action": "Show"
+        },
+        {
+          "event": "native_focus_sync",
+          "pid": "19420",
+          "unix_us": "1793172453462698",
+          "elapsed_us": "637349313",
+          "dropped": "0",
+          "focused": "true",
+          "source": "GetForegroundWindow+GetFocus"
+        },
+        {
+          "event": "lifecycle_shown",
+          "pid": "19420",
+          "unix_us": "1793172453462715",
+          "elapsed_us": "637349329",
+          "dropped": "0",
+          "reason": "hotkey",
+          "generation": "13",
+          "native_active": "true",
+          "query_bytes": "1",
+          "appearance_open": "true"
+        },
+        {
+          "event": "native_focus",
+          "pid": "19420",
+          "unix_us": "1793172453462721",
+          "elapsed_us": "637349336",
+          "dropped": "0",
+          "focused": "true"
+        },
+        {
+          "event": "native_focus",
+          "pid": "19420",
+          "unix_us": "1793172473135320",
+          "elapsed_us": "657021934",
+          "dropped": "0",
+          "focused": "false"
+        },
+        {
+          "event": "lifecycle_blur_check",
+          "pid": "19420",
+          "unix_us": "1793172473164847",
+          "elapsed_us": "657051462",
+          "dropped": "0",
+          "owned_foreground": "false",
+          "action": "Hide"
+        },
+        {
+          "event": "lifecycle_hidden",
+          "pid": "19420",
+          "unix_us": "1793172473167312",
+          "elapsed_us": "657053926",
+          "dropped": "0",
+          "reason": "blur",
+          "generation": "14"
+        },
+        {
+          "event": "global_hotkey",
+          "pid": "19420",
+          "unix_us": "1793172483923748",
+          "elapsed_us": "667810363",
+          "dropped": "0",
+          "action": "Show"
+        },
+        {
+          "event": "native_focus_sync",
+          "pid": "19420",
+          "unix_us": "1793172483942682",
+          "elapsed_us": "667829296",
+          "dropped": "0",
+          "focused": "true",
+          "source": "GetForegroundWindow+GetFocus"
+        },
+        {
+          "event": "lifecycle_shown",
+          "pid": "19420",
+          "unix_us": "1793172483942697",
+          "elapsed_us": "667829312",
+          "dropped": "0",
+          "reason": "hotkey",
+          "generation": "15",
+          "native_active": "true",
+          "query_bytes": "1",
+          "appearance_open": "true"
+        },
+        {
+          "event": "native_focus",
+          "pid": "19420",
+          "unix_us": "1793172483942703",
+          "elapsed_us": "667829317",
+          "dropped": "0",
+          "focused": "true"
+        },
+        {
+          "event": "native_focus",
+          "pid": "19420",
+          "unix_us": "1793172526491774",
+          "elapsed_us": "710378389",
+          "dropped": "0",
+          "focused": "false"
+        },
+        {
+          "event": "native_focus",
+          "pid": "19420",
+          "unix_us": "1793172526524294",
+          "elapsed_us": "710410908",
+          "dropped": "0",
+          "focused": "true"
+        },
+        {
+          "event": "lifecycle_blur_check",
+          "pid": "19420",
+          "unix_us": "1793172526529846",
+          "elapsed_us": "710416461",
+          "dropped": "0",
+          "owned_foreground": "true",
+          "action": "None"
+        },
+        {
+          "event": "native_focus",
+          "pid": "19420",
+          "unix_us": "1793172526979139",
+          "elapsed_us": "710865754",
+          "dropped": "0",
+          "focused": "false"
+        },
+        {
+          "event": "lifecycle_blur_check",
+          "pid": "19420",
+          "unix_us": "1793172527008916",
+          "elapsed_us": "710895530",
+          "dropped": "0",
+          "owned_foreground": "false",
+          "action": "Hide"
+        },
+        {
+          "event": "lifecycle_hidden",
+          "pid": "19420",
+          "unix_us": "1793172527012203",
+          "elapsed_us": "710898817",
+          "dropped": "0",
+          "reason": "blur",
+          "generation": "16"
+        },
+        {
+          "event": "global_hotkey",
+          "pid": "19420",
+          "unix_us": "1793172717227945",
+          "elapsed_us": "901114559",
+          "dropped": "0",
+          "action": "Show"
+        },
+        {
+          "event": "native_focus_sync",
+          "pid": "19420",
+          "unix_us": "1793172717247087",
+          "elapsed_us": "901133702",
+          "dropped": "0",
+          "focused": "true",
+          "source": "GetForegroundWindow+GetFocus"
+        },
+        {
+          "event": "lifecycle_shown",
+          "pid": "19420",
+          "unix_us": "1793172717247103",
+          "elapsed_us": "901133717",
+          "dropped": "0",
+          "reason": "hotkey",
+          "generation": "17",
+          "native_active": "true",
+          "query_bytes": "1",
+          "appearance_open": "true"
+        },
+        {
+          "event": "native_focus",
+          "pid": "19420",
+          "unix_us": "1793172717247109",
+          "elapsed_us": "901133723",
+          "dropped": "0",
+          "focused": "true"
+        },
+        {
+          "event": "native_key_down",
+          "pid": "19420",
+          "unix_us": "1793172753906506",
+          "elapsed_us": "937793121",
+          "dropped": "0"
+        },
+        {
+          "event": "input_focus",
+          "pid": "19420",
+          "unix_us": "1793172753908015",
+          "elapsed_us": "937794629",
+          "dropped": "0",
+          "focused": "true"
+        },
+        {
+          "event": "lifecycle_quit",
+          "pid": "19420",
+          "unix_us": "1793172766569068",
+          "elapsed_us": "950455683",
+          "dropped": "0"
+        },
+        {
+          "event": "input_focus",
+          "pid": "19420",
+          "unix_us": "1793172766569101",
+          "elapsed_us": "950455715",
+          "dropped": "0",
+          "focused": "false"
+        }
+      ]
+    },
+    {
+      "Name": "software-background-conflict",
+      "Renderer": "software",
+      "ProcessId": 24892,
+      "ExecutableSHA256": "5555606B628555E858CD40F3E7B27A170EF60936C24FBE2E10101A5622B7388C",
+      "RawLogSHA256": "1D6B6DBE0E4D059AE35E5C327D209CFD91918CF2B67C97B0D72C298169352B02",
+      "EventCount": 18,
+      "AllEventsDroppedZero": true,
+      "AcceptedNoncomposingInputCount": 0,
+      "NativeWindowEventCount": 1,
+      "Events": [
+        {
+          "event": "main_started",
+          "pid": "24892",
+          "unix_us": "1793172526931645",
+          "elapsed_us": "634",
+          "dropped": "0",
+          "renderer": "software",
+          "backend": "winit"
+        },
+        {
+          "event": "component_created",
+          "pid": "24892",
+          "unix_us": "1793172526935993",
+          "elapsed_us": "4982",
+          "dropped": "0"
+        },
+        {
+          "event": "hotkey_bind",
+          "pid": "24892",
+          "unix_us": "1793172526936483",
+          "elapsed_us": "5471",
+          "dropped": "0",
+          "success": "false",
+          "previous_retained": "false"
+        },
+        {
+          "event": "native_window",
+          "pid": "24892",
+          "unix_us": "1793172526951024",
+          "elapsed_us": "20013",
+          "dropped": "0",
+          "hwnd": "570012",
+          "scale": "1.25",
+          "physical_width": "800",
+          "physical_height": "675"
+        },
+        {
+          "event": "lifecycle_ready",
+          "pid": "24892",
+          "unix_us": "1793172526958442",
+          "elapsed_us": "27431",
+          "dropped": "0",
+          "native_visible": "false",
+          "content_ready": "true",
+          "background": "true",
+          "hotkey_available": "false"
+        },
+        {
+          "event": "native_focus_sync",
+          "pid": "24892",
+          "unix_us": "1793172526979717",
+          "elapsed_us": "48706",
+          "dropped": "0",
+          "focused": "true",
+          "source": "GetForegroundWindow+GetFocus"
+        },
+        {
+          "event": "lifecycle_shown",
+          "pid": "24892",
+          "unix_us": "1793172526986076",
+          "elapsed_us": "55065",
+          "dropped": "0",
+          "reason": "startup",
+          "generation": "1",
+          "native_active": "true",
+          "query_bytes": "0",
+          "appearance_open": "false"
+        },
+        {
+          "event": "input_focus",
+          "pid": "24892",
+          "unix_us": "1793172526986082",
+          "elapsed_us": "55071",
+          "dropped": "0",
+          "focused": "true"
+        },
+        {
+          "event": "first_redraw_requested",
+          "pid": "24892",
+          "unix_us": "1793172526987819",
+          "elapsed_us": "56808",
+          "dropped": "0",
+          "completed_frame": "false"
+        },
+        {
+          "event": "native_focus",
+          "pid": "24892",
+          "unix_us": "1793172527505712",
+          "elapsed_us": "574701",
+          "dropped": "0",
+          "focused": "true"
+        },
+        {
+          "event": "native_key_down",
+          "pid": "24892",
+          "unix_us": "1793172555797013",
+          "elapsed_us": "28866001",
+          "dropped": "0"
+        },
+        {
+          "event": "native_focus",
+          "pid": "24892",
+          "unix_us": "1793172567067659",
+          "elapsed_us": "40136648",
+          "dropped": "0",
+          "focused": "false"
+        },
+        {
+          "event": "input_focus",
+          "pid": "24892",
+          "unix_us": "1793172567068372",
+          "elapsed_us": "40137361",
+          "dropped": "0",
+          "focused": "false"
+        },
+        {
+          "event": "lifecycle_blur_check",
+          "pid": "24892",
+          "unix_us": "1793172567098804",
+          "elapsed_us": "40167793",
+          "dropped": "0",
+          "owned_foreground": "false",
+          "action": "None"
+        },
+        {
+          "event": "native_focus",
+          "pid": "24892",
+          "unix_us": "1793172595155966",
+          "elapsed_us": "68224955",
+          "dropped": "0",
+          "focused": "true"
+        },
+        {
+          "event": "input_focus",
+          "pid": "24892",
+          "unix_us": "1793172595156964",
+          "elapsed_us": "68225952",
+          "dropped": "0",
+          "focused": "true"
+        },
+        {
+          "event": "native_key_down",
+          "pid": "24892",
+          "unix_us": "1793172595173250",
+          "elapsed_us": "68242238",
+          "dropped": "0"
+        },
+        {
+          "event": "lifecycle_quit",
+          "pid": "24892",
+          "unix_us": "1793172595176465",
+          "elapsed_us": "68245453",
+          "dropped": "0"
+        }
+      ]
+    },
+    {
+      "Name": "software-background",
+      "Renderer": "software",
+      "ProcessId": 33280,
+      "ExecutableSHA256": "5555606B628555E858CD40F3E7B27A170EF60936C24FBE2E10101A5622B7388C",
+      "RawLogSHA256": "F6FB0567FC59832C24D377F941DA16F661502A6F6F0393ABA062D66963C791A4",
+      "EventCount": 16,
+      "AllEventsDroppedZero": true,
+      "AcceptedNoncomposingInputCount": 1,
+      "NativeWindowEventCount": 1,
+      "Events": [
+        {
+          "event": "main_started",
+          "pid": "33280",
+          "unix_us": "1793172595592309",
+          "elapsed_us": "600",
+          "dropped": "0",
+          "renderer": "software",
+          "backend": "winit"
+        },
+        {
+          "event": "component_created",
+          "pid": "33280",
+          "unix_us": "1793172595596637",
+          "elapsed_us": "4928",
+          "dropped": "0"
+        },
+        {
+          "event": "hotkey_bind",
+          "pid": "33280",
+          "unix_us": "1793172595596787",
+          "elapsed_us": "5078",
+          "dropped": "0",
+          "success": "true",
+          "previous_retained": "false"
+        },
+        {
+          "event": "native_window",
+          "pid": "33280",
+          "unix_us": "1793172595611105",
+          "elapsed_us": "19396",
+          "dropped": "0",
+          "hwnd": "2A09C0",
+          "scale": "1.25",
+          "physical_width": "800",
+          "physical_height": "675"
+        },
+        {
+          "event": "lifecycle_ready",
+          "pid": "33280",
+          "unix_us": "1793172595617423",
+          "elapsed_us": "25713",
+          "dropped": "0",
+          "native_visible": "false",
+          "content_ready": "true",
+          "background": "true",
+          "hotkey_available": "true"
+        },
+        {
+          "event": "lifecycle_hidden",
+          "pid": "33280",
+          "unix_us": "1793172595617432",
+          "elapsed_us": "25723",
+          "dropped": "0",
+          "reason": "startup",
+          "generation": "1"
+        },
+        {
+          "event": "global_hotkey",
+          "pid": "33280",
+          "unix_us": "1793172619160685",
+          "elapsed_us": "23568976",
+          "dropped": "0",
+          "action": "Show"
+        },
+        {
+          "event": "native_focus_sync",
+          "pid": "33280",
+          "unix_us": "1793172619191839",
+          "elapsed_us": "23600130",
+          "dropped": "0",
+          "focused": "true",
+          "source": "GetForegroundWindow+GetFocus"
+        },
+        {
+          "event": "lifecycle_shown",
+          "pid": "33280",
+          "unix_us": "1793172619200122",
+          "elapsed_us": "23608413",
+          "dropped": "0",
+          "reason": "hotkey",
+          "generation": "2",
+          "native_active": "true",
+          "query_bytes": "0",
+          "appearance_open": "false"
+        },
+        {
+          "event": "native_focus",
+          "pid": "33280",
+          "unix_us": "1793172619200135",
+          "elapsed_us": "23608425",
+          "dropped": "0",
+          "focused": "true"
+        },
+        {
+          "event": "first_redraw_requested",
+          "pid": "33280",
+          "unix_us": "1793172619202989",
+          "elapsed_us": "23611280",
+          "dropped": "0",
+          "completed_frame": "false"
+        },
+        {
+          "event": "input_focus",
+          "pid": "33280",
+          "unix_us": "1793172619203029",
+          "elapsed_us": "23611320",
+          "dropped": "0",
+          "focused": "true"
+        },
+        {
+          "event": "native_key_down",
+          "pid": "33280",
+          "unix_us": "1793172666482917",
+          "elapsed_us": "70891208",
+          "dropped": "0"
+        },
+        {
+          "event": "input_accepted",
+          "pid": "33280",
+          "unix_us": "1793172666483227",
+          "elapsed_us": "70891518",
+          "dropped": "0",
+          "utf8_bytes": "1",
+          "focused": "true",
+          "native_focused": "true",
+          "visible": "true",
+          "composing": "false"
+        },
+        {
+          "event": "lifecycle_quit",
+          "pid": "33280",
+          "unix_us": "1793172706184717",
+          "elapsed_us": "110593008",
+          "dropped": "0"
+        },
+        {
+          "event": "input_focus",
+          "pid": "33280",
+          "unix_us": "1793172706184761",
+          "elapsed_us": "110593051",
+          "dropped": "0",
+          "focused": "false"
+        }
+      ]
+    },
+    {
+      "Name": "femtovg-background",
+      "Renderer": "femtovg",
+      "ProcessId": 18716,
+      "ExecutableSHA256": "227C07B66C5FFA8C29DFB24BA5D8B021E34D03E19D04AFC6F23764858BB3DB44",
+      "RawLogSHA256": "CA3F03CA9B2A44F0475EA951E90989763747EBE51E82D4A9B952B7951B925FE5",
+      "EventCount": 52,
+      "AllEventsDroppedZero": true,
+      "AcceptedNoncomposingInputCount": 1,
+      "NativeWindowEventCount": 1,
+      "Events": [
+        {
+          "event": "main_started",
+          "pid": "18716",
+          "unix_us": "1793172981206385",
+          "elapsed_us": "557",
+          "dropped": "0",
+          "renderer": "femtovg",
+          "backend": "winit"
+        },
+        {
+          "event": "component_created",
+          "pid": "18716",
+          "unix_us": "1793172981397799",
+          "elapsed_us": "191971",
+          "dropped": "0"
+        },
+        {
+          "event": "hotkey_bind",
+          "pid": "18716",
+          "unix_us": "1793172981398016",
+          "elapsed_us": "192188",
+          "dropped": "0",
+          "success": "true",
+          "previous_retained": "false"
+        },
+        {
+          "event": "native_window",
+          "pid": "18716",
+          "unix_us": "1793172981494360",
+          "elapsed_us": "288532",
+          "dropped": "0",
+          "hwnd": "7806D0",
+          "scale": "1.25",
+          "physical_width": "800",
+          "physical_height": "675"
+        },
+        {
+          "event": "lifecycle_ready",
+          "pid": "18716",
+          "unix_us": "1793172981500592",
+          "elapsed_us": "294764",
+          "dropped": "0",
+          "native_visible": "false",
+          "content_ready": "true",
+          "background": "true",
+          "hotkey_available": "true"
+        },
+        {
+          "event": "lifecycle_hidden",
+          "pid": "18716",
+          "unix_us": "1793172981500606",
+          "elapsed_us": "294778",
+          "dropped": "0",
+          "reason": "startup",
+          "generation": "1"
+        },
+        {
+          "event": "global_hotkey",
+          "pid": "18716",
+          "unix_us": "1793172991176214",
+          "elapsed_us": "9970386",
+          "dropped": "0",
+          "action": "Show"
+        },
+        {
+          "event": "first_opengl_frame",
+          "pid": "18716",
+          "unix_us": "1793172991206989",
+          "elapsed_us": "10001161",
+          "dropped": "0",
+          "graphics_api": "NativeOpenGL"
+        },
+        {
+          "event": "native_focus_sync",
+          "pid": "18716",
+          "unix_us": "1793172991353611",
+          "elapsed_us": "10147783",
+          "dropped": "0",
+          "focused": "true",
+          "source": "GetForegroundWindow+GetFocus"
+        },
+        {
+          "event": "lifecycle_shown",
+          "pid": "18716",
+          "unix_us": "1793172991360587",
+          "elapsed_us": "10154759",
+          "dropped": "0",
+          "reason": "hotkey",
+          "generation": "2",
+          "native_active": "true",
+          "query_bytes": "0",
+          "appearance_open": "false"
+        },
+        {
+          "event": "native_focus",
+          "pid": "18716",
+          "unix_us": "1793172991360600",
+          "elapsed_us": "10154772",
+          "dropped": "0",
+          "focused": "true"
+        },
+        {
+          "event": "first_redraw_requested",
+          "pid": "18716",
+          "unix_us": "1793172991360909",
+          "elapsed_us": "10155081",
+          "dropped": "0",
+          "completed_frame": "false"
+        },
+        {
+          "event": "input_focus",
+          "pid": "18716",
+          "unix_us": "1793172991360935",
+          "elapsed_us": "10155107",
+          "dropped": "0",
+          "focused": "true"
+        },
+        {
+          "event": "native_key_down",
+          "pid": "18716",
+          "unix_us": "1793173013230757",
+          "elapsed_us": "32024929",
+          "dropped": "0"
+        },
+        {
+          "event": "input_accepted",
+          "pid": "18716",
+          "unix_us": "1793173013231183",
+          "elapsed_us": "32025355",
+          "dropped": "0",
+          "utf8_bytes": "1",
+          "focused": "true",
+          "native_focused": "true",
+          "visible": "true",
+          "composing": "false"
+        },
+        {
+          "event": "native_key_down",
+          "pid": "18716",
+          "unix_us": "1793173031503181",
+          "elapsed_us": "50297353",
+          "dropped": "0"
+        },
+        {
+          "event": "native_key_down",
+          "pid": "18716",
+          "unix_us": "1793173040330783",
+          "elapsed_us": "59124955",
+          "dropped": "0"
+        },
+        {
+          "event": "native_key_down",
+          "pid": "18716",
+          "unix_us": "1793173054507817",
+          "elapsed_us": "73301989",
+          "dropped": "0"
+        },
+        {
+          "event": "native_key_down",
+          "pid": "18716",
+          "unix_us": "1793173065079737",
+          "elapsed_us": "83873909",
+          "dropped": "0"
+        },
+        {
+          "event": "input_accepted",
+          "pid": "18716",
+          "unix_us": "1793173065091223",
+          "elapsed_us": "83885395",
+          "dropped": "0",
+          "utf8_bytes": "3",
+          "focused": "true",
+          "native_focused": "true",
+          "visible": "true",
+          "composing": "true"
+        },
+        {
+          "event": "native_key_down",
+          "pid": "18716",
+          "unix_us": "1793173081361733",
+          "elapsed_us": "100155905",
+          "dropped": "0"
+        },
+        {
+          "event": "lifecycle_hidden",
+          "pid": "18716",
+          "unix_us": "1793173081371275",
+          "elapsed_us": "100165447",
+          "dropped": "0",
+          "reason": "close",
+          "generation": "3"
+        },
+        {
+          "event": "native_focus",
+          "pid": "18716",
+          "unix_us": "1793173081371287",
+          "elapsed_us": "100165459",
+          "dropped": "0",
+          "focused": "false"
+        },
+        {
+          "event": "input_focus",
+          "pid": "18716",
+          "unix_us": "1793173081371312",
+          "elapsed_us": "100165484",
+          "dropped": "0",
+          "focused": "false"
+        },
+        {
+          "event": "lifecycle_blur_check",
+          "pid": "18716",
+          "unix_us": "1793173081402012",
+          "elapsed_us": "100196184",
+          "dropped": "0",
+          "owned_foreground": "false",
+          "action": "None"
+        },
+        {
+          "event": "global_hotkey",
+          "pid": "18716",
+          "unix_us": "1793173089912521",
+          "elapsed_us": "108706693",
+          "dropped": "0",
+          "action": "Show"
+        },
+        {
+          "event": "native_focus_sync",
+          "pid": "18716",
+          "unix_us": "1793173089929609",
+          "elapsed_us": "108723782",
+          "dropped": "0",
+          "focused": "true",
+          "source": "GetForegroundWindow+GetFocus"
+        },
+        {
+          "event": "lifecycle_shown",
+          "pid": "18716",
+          "unix_us": "1793173089930494",
+          "elapsed_us": "108724666",
+          "dropped": "0",
+          "reason": "hotkey",
+          "generation": "4",
+          "native_active": "true",
+          "query_bytes": "3",
+          "appearance_open": "false"
+        },
+        {
+          "event": "native_focus",
+          "pid": "18716",
+          "unix_us": "1793173089930505",
+          "elapsed_us": "108724677",
+          "dropped": "0",
+          "focused": "true"
+        },
+        {
+          "event": "input_focus",
+          "pid": "18716",
+          "unix_us": "1793173089931274",
+          "elapsed_us": "108725446",
+          "dropped": "0",
+          "focused": "true"
+        },
+        {
+          "event": "native_key_down",
+          "pid": "18716",
+          "unix_us": "1793173122831233",
+          "elapsed_us": "141625405",
+          "dropped": "0"
+        },
+        {
+          "event": "native_key_down",
+          "pid": "18716",
+          "unix_us": "1793173136517749",
+          "elapsed_us": "155311921",
+          "dropped": "0"
+        },
+        {
+          "event": "lifecycle_hidden",
+          "pid": "18716",
+          "unix_us": "1793173136532654",
+          "elapsed_us": "155326827",
+          "dropped": "0",
+          "reason": "escape",
+          "generation": "5"
+        },
+        {
+          "event": "input_focus",
+          "pid": "18716",
+          "unix_us": "1793173136532699",
+          "elapsed_us": "155326872",
+          "dropped": "0",
+          "focused": "false"
+        },
+        {
+          "event": "native_focus",
+          "pid": "18716",
+          "unix_us": "1793173136532711",
+          "elapsed_us": "155326883",
+          "dropped": "0",
+          "focused": "false"
+        },
+        {
+          "event": "lifecycle_blur_check",
+          "pid": "18716",
+          "unix_us": "1793173136562762",
+          "elapsed_us": "155356935",
+          "dropped": "0",
+          "owned_foreground": "false",
+          "action": "None"
+        },
+        {
+          "event": "global_hotkey",
+          "pid": "18716",
+          "unix_us": "1793173146662973",
+          "elapsed_us": "165457145",
+          "dropped": "0",
+          "action": "Show"
+        },
+        {
+          "event": "native_focus_sync",
+          "pid": "18716",
+          "unix_us": "1793173146681475",
+          "elapsed_us": "165475648",
+          "dropped": "0",
+          "focused": "true",
+          "source": "GetForegroundWindow+GetFocus"
+        },
+        {
+          "event": "lifecycle_shown",
+          "pid": "18716",
+          "unix_us": "1793173146682680",
+          "elapsed_us": "165476852",
+          "dropped": "0",
+          "reason": "hotkey",
+          "generation": "6",
+          "native_active": "true",
+          "query_bytes": "0",
+          "appearance_open": "false"
+        },
+        {
+          "event": "native_focus",
+          "pid": "18716",
+          "unix_us": "1793173146682692",
+          "elapsed_us": "165476864",
+          "dropped": "0",
+          "focused": "true"
+        },
+        {
+          "event": "input_focus",
+          "pid": "18716",
+          "unix_us": "1793173146683328",
+          "elapsed_us": "165477500",
+          "dropped": "0",
+          "focused": "true"
+        },
+        {
+          "event": "native_focus",
+          "pid": "18716",
+          "unix_us": "1793173168691622",
+          "elapsed_us": "187485794",
+          "dropped": "0",
+          "focused": "false"
+        },
+        {
+          "event": "input_focus",
+          "pid": "18716",
+          "unix_us": "1793173168692359",
+          "elapsed_us": "187486531",
+          "dropped": "0",
+          "focused": "false"
+        },
+        {
+          "event": "lifecycle_blur_check",
+          "pid": "18716",
+          "unix_us": "1793173168721132",
+          "elapsed_us": "187515304",
+          "dropped": "0",
+          "owned_foreground": "false",
+          "action": "Hide"
+        },
+        {
+          "event": "lifecycle_hidden",
+          "pid": "18716",
+          "unix_us": "1793173168724920",
+          "elapsed_us": "187519092",
+          "dropped": "0",
+          "reason": "blur",
+          "generation": "7"
+        },
+        {
+          "event": "global_hotkey",
+          "pid": "18716",
+          "unix_us": "1793173178968423",
+          "elapsed_us": "197762595",
+          "dropped": "0",
+          "action": "Show"
+        },
+        {
+          "event": "native_focus_sync",
+          "pid": "18716",
+          "unix_us": "1793173178996530",
+          "elapsed_us": "197790703",
+          "dropped": "0",
+          "focused": "true",
+          "source": "GetForegroundWindow+GetFocus"
+        },
+        {
+          "event": "lifecycle_shown",
+          "pid": "18716",
+          "unix_us": "1793173179000314",
+          "elapsed_us": "197794486",
+          "dropped": "0",
+          "reason": "hotkey",
+          "generation": "8",
+          "native_active": "true",
+          "query_bytes": "0",
+          "appearance_open": "false"
+        },
+        {
+          "event": "native_focus",
+          "pid": "18716",
+          "unix_us": "1793173179000324",
+          "elapsed_us": "197794495",
+          "dropped": "0",
+          "focused": "true"
+        },
+        {
+          "event": "input_focus",
+          "pid": "18716",
+          "unix_us": "1793173179001985",
+          "elapsed_us": "197796157",
+          "dropped": "0",
+          "focused": "true"
+        },
+        {
+          "event": "lifecycle_quit",
+          "pid": "18716",
+          "unix_us": "1793173197772841",
+          "elapsed_us": "216567013",
+          "dropped": "0"
+        },
+        {
+          "event": "input_focus",
+          "pid": "18716",
+          "unix_us": "1793173197772861",
+          "elapsed_us": "216567033",
+          "dropped": "0",
+          "focused": "false"
+        }
+      ]
+    },
+    {
+      "Name": "software-isolated-collector",
+      "Renderer": "software",
+      "ProcessId": 19556,
+      "ExecutableSHA256": "5555606B628555E858CD40F3E7B27A170EF60936C24FBE2E10101A5622B7388C",
+      "RawLogSHA256": "145F607FD7333685FC93D1412DB134C3E8F118F1BAE47EC87C6A89A4F9FA1E11",
+      "EventCount": 10,
+      "AllEventsDroppedZero": true,
+      "AcceptedNoncomposingInputCount": 1,
+      "NativeWindowEventCount": 1,
+      "Events": [
+        {
+          "event": "main_started",
+          "pid": "19556",
+          "unix_us": "1793173679274037",
+          "elapsed_us": "406",
+          "dropped": "0",
+          "renderer": "software",
+          "backend": "winit"
+        },
+        {
+          "event": "component_created",
+          "pid": "19556",
+          "unix_us": "1793173679278351",
+          "elapsed_us": "4719",
+          "dropped": "0"
+        },
+        {
+          "event": "show_returned",
+          "pid": "19556",
+          "unix_us": "1793173679279693",
+          "elapsed_us": "6061",
+          "dropped": "0"
+        },
+        {
+          "event": "input_focus",
+          "pid": "19556",
+          "unix_us": "1793173679279713",
+          "elapsed_us": "6081",
+          "dropped": "0",
+          "focused": "true"
+        },
+        {
+          "event": "native_window",
+          "pid": "19556",
+          "unix_us": "1793173679326229",
+          "elapsed_us": "52597",
+          "dropped": "0",
+          "hwnd": "8B056C",
+          "scale": "1.25",
+          "physical_width": "800",
+          "physical_height": "675"
+        },
+        {
+          "event": "native_focus",
+          "pid": "19556",
+          "unix_us": "1793173679326286",
+          "elapsed_us": "52654",
+          "dropped": "0",
+          "focused": "true"
+        },
+        {
+          "event": "first_redraw_requested",
+          "pid": "19556",
+          "unix_us": "1793173679333404",
+          "elapsed_us": "59772",
+          "dropped": "0",
+          "completed_frame": "false"
+        },
+        {
+          "event": "native_key_down",
+          "pid": "19556",
+          "unix_us": "1793173705871918",
+          "elapsed_us": "26598286",
+          "dropped": "0"
+        },
+        {
+          "event": "input_accepted",
+          "pid": "19556",
+          "unix_us": "1793173705872239",
+          "elapsed_us": "26598607",
+          "dropped": "0",
+          "utf8_bytes": "1",
+          "focused": "true",
+          "native_focused": "true",
+          "visible": "true",
+          "composing": "false"
+        },
+        {
+          "event": "native_key_down",
+          "pid": "19556",
+          "unix_us": "1793173719501661",
+          "elapsed_us": "40228029",
+          "dropped": "0"
+        }
+      ]
+    }
+  ]
+}

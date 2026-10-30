@@ -1,0 +1,48 @@
+{
+  "Checks": [
+    {
+      "Name": "rust-two-renderer-verification",
+      "Command": "./scripts/verify-rust.ps1 -SmokeTest",
+      "ExitCode": 0,
+      "LogSHA256": "46902EAD41571AA0E792E649E9F225072B79C130D2947ECA83B8902D569B3944",
+      "Evidence": [
+        "test result: ok. 26 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s",
+        "event=smoke_result passed=true backend=winit renderer=femtovg hwnd=true redraw_events=8 logical_size_640x540=true nonuniform_snapshot=true opengl_frame=true",
+        "event=input_smoke_result passed=true error=None",
+        "event=smoke_result passed=true backend=winit renderer=femtovg hwnd=true redraw_events=9 logical_size_640x540=true nonuniform_snapshot=true opengl_frame=true",
+        "Verified femtovg Release: D:\\workstation\\go\\velo-launcher\\rust\\target\\artifacts\\femtovg\\velo-slint.exe",
+        "test result: ok. 26 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s",
+        "event=smoke_result passed=true backend=winit renderer=software hwnd=true redraw_events=8 logical_size_640x540=true nonuniform_snapshot=true opengl_frame=false",
+        "event=input_smoke_result passed=true error=None",
+        "event=smoke_result passed=true backend=winit renderer=software hwnd=true redraw_events=9 logical_size_640x540=true nonuniform_snapshot=true opengl_frame=false",
+        "Verified software Release: D:\\workstation\\go\\velo-launcher\\rust\\target\\artifacts\\software\\velo-slint.exe"
+      ]
+    },
+    {
+      "Name": "existing-application",
+      "Command": "./scripts/verify.ps1 -SkipBuild",
+      "ExitCode": 0,
+      "LogSHA256": "C8EB723988D786A7B9AB96ED60D871F280349D722C182844D65751A508174D2F"
+    }
+  ],
+  "RustUnitTestsPerRenderer": 26,
+  "ComponentInputAssertionsPerRenderer": 20,
+  "FrontendTests": 26,
+  "SourceFingerprintsMatchCurrentFiles": true,
+  "Builds": [
+    {
+      "Renderer": "software",
+      "ExecutableBytes": 10864128,
+      "SHA256": "2C26130F54BC6A38983A2F5C5BA7E75D2AFBE3199F4F65259731864FD6589D48",
+      "SourceFingerprints": 49
+    },
+    {
+      "Renderer": "femtovg",
+      "ExecutableBytes": 10362880,
+      "SHA256": "2F12AFA94F84810F09D5F0D25F2CB54B69B2D5D1537964C94C2F996210404080",
+      "SourceFingerprints": 49
+    }
+  ],
+  "ProductDataReadOrWritten": false,
+  "PerformanceClaims": "No new memory or calibrated latency measurements in RS-07"
+}

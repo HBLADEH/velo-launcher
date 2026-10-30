@@ -1,0 +1,191 @@
+{
+  "Snapshots": [
+    {
+      "Label": "software-high-confirmed",
+      "ObservedUtc": "2026-10-30T06:04:28.2739095Z",
+      "ProcessTokens": [
+        {
+          "Name": "explorer",
+          "PID": 17172,
+          "Security": "elevated=false integrity_rid=8192"
+        },
+        {
+          "Name": "explorer",
+          "PID": 28700,
+          "Security": "elevated=false integrity_rid=8192"
+        },
+        {
+          "Name": "velo-slint",
+          "PID": 9924,
+          "Security": "elevated=true integrity_rid=12288"
+        }
+      ],
+      "Native": [
+        "event=probe_monitor x=0 y=0 width=2560 height=1440 work_x=0 work_y=0 work_width=2560 work_height=1380 dpi=120 primary=true",
+        "event=probe_window class=VeloSlintLauncherWindow hwnd=29804FA pid=9924 visible=true dpi=120 x=880 y=276 width=800 height=825",
+        "event=probe_window class=VeloSlintDesktopService hwnd=50A12 pid=9924 visible=false dpi=120 x=0 y=0 width=0 height=0",
+        "event=probe_tray hwnd=50A12 registered=true x=2084 y=1380 width=40 height=60"
+      ]
+    },
+    {
+      "Label": "software-high-with-source",
+      "ObservedUtc": "2026-10-30T06:09:25.7113483Z",
+      "ProcessTokens": [
+        {
+          "Name": "explorer",
+          "PID": 17172,
+          "Security": "elevated=false integrity_rid=8192"
+        },
+        {
+          "Name": "explorer",
+          "PID": 28700,
+          "Security": "elevated=false integrity_rid=8192"
+        },
+        {
+          "Name": "rs07-drag-source",
+          "PID": 9696,
+          "Security": "elevated=true integrity_rid=12288"
+        },
+        {
+          "Name": "velo-slint",
+          "PID": 9924,
+          "Security": "elevated=true integrity_rid=12288"
+        }
+      ],
+      "Native": [
+        "event=probe_monitor x=0 y=0 width=2560 height=1440 work_x=0 work_y=0 work_width=2560 work_height=1380 dpi=120 primary=true",
+        "event=probe_window class=VeloSlintLauncherWindow hwnd=29804FA pid=9924 visible=true dpi=120 x=880 y=276 width=800 height=825",
+        "event=probe_window class=VeloSlintDesktopService hwnd=50A12 pid=9924 visible=false dpi=120 x=0 y=0 width=0 height=0",
+        "event=probe_tray hwnd=50A12 registered=true x=2084 y=1380 width=40 height=60"
+      ]
+    },
+    {
+      "Label": "after-software-high-exit",
+      "ObservedUtc": "2026-10-30T06:13:53.1381414Z",
+      "ProcessTokens": [
+        {
+          "Name": "explorer",
+          "PID": 17172,
+          "Security": "elevated=false integrity_rid=8192"
+        },
+        {
+          "Name": "explorer",
+          "PID": 28700,
+          "Security": "elevated=false integrity_rid=8192"
+        }
+      ],
+      "Native": [
+        "event=probe_monitor x=0 y=0 width=2560 height=1440 work_x=0 work_y=0 work_width=2560 work_height=1380 dpi=120 primary=true"
+      ]
+    },
+    {
+      "Label": "femtovg-high-confirmed",
+      "ObservedUtc": "2026-10-30T06:20:23.3799614Z",
+      "ProcessTokens": [
+        {
+          "Name": "explorer",
+          "PID": 17172,
+          "Security": "elevated=false integrity_rid=8192"
+        },
+        {
+          "Name": "explorer",
+          "PID": 28700,
+          "Security": "elevated=false integrity_rid=8192"
+        },
+        {
+          "Name": "velo-slint",
+          "PID": 2040,
+          "Security": "elevated=true integrity_rid=12288"
+        }
+      ],
+      "Native": [
+        "event=probe_monitor x=0 y=0 width=2560 height=1440 work_x=0 work_y=0 work_width=2560 work_height=1380 dpi=120 primary=true",
+        "event=probe_window class=VeloSlintLauncherWindow hwnd=8071A pid=2040 visible=true dpi=120 x=880 y=276 width=800 height=825",
+        "event=probe_window class=VeloSlintDesktopService hwnd=73052C pid=2040 visible=false dpi=120 x=0 y=0 width=0 height=0",
+        "event=probe_tray hwnd=73052C registered=true x=2084 y=1380 width=40 height=60"
+      ]
+    },
+    {
+      "Label": "femtovg-high-with-source",
+      "ObservedUtc": "2026-10-30T06:21:48.1581262Z",
+      "ProcessTokens": [
+        {
+          "Name": "explorer",
+          "PID": 17172,
+          "Security": "elevated=false integrity_rid=8192"
+        },
+        {
+          "Name": "explorer",
+          "PID": 28700,
+          "Security": "elevated=false integrity_rid=8192"
+        },
+        {
+          "Name": "rs07-drag-source",
+          "PID": 7388,
+          "Security": "elevated=true integrity_rid=12288"
+        },
+        {
+          "Name": "velo-slint",
+          "PID": 2040,
+          "Security": "elevated=true integrity_rid=12288"
+        }
+      ],
+      "Native": [
+        "event=probe_monitor x=0 y=0 width=2560 height=1440 work_x=0 work_y=0 work_width=2560 work_height=1380 dpi=120 primary=true",
+        "event=probe_window class=VeloSlintLauncherWindow hwnd=8071A pid=2040 visible=true dpi=120 x=880 y=276 width=800 height=825",
+        "event=probe_window class=VeloSlintDesktopService hwnd=73052C pid=2040 visible=false dpi=120 x=0 y=0 width=0 height=0",
+        "event=probe_tray hwnd=73052C registered=true x=2084 y=1380 width=40 height=60"
+      ]
+    },
+    {
+      "Label": "final-cleanup",
+      "ObservedUtc": "2026-10-30T06:24:13.0349552Z",
+      "ProcessTokens": [
+        {
+          "Name": "explorer",
+          "PID": 17172,
+          "Security": "elevated=false integrity_rid=8192"
+        }
+      ],
+      "Native": [
+        "event=probe_monitor x=0 y=0 width=2560 height=1440 work_x=0 work_y=0 work_width=2560 work_height=1380 dpi=120 primary=true"
+      ]
+    }
+  ],
+  "OrdinaryExplorerToElevatedTarget": [
+    {
+      "Case": "software-medium-explorer-to-high",
+      "UserReport": "有管理员提示，拖入被阻止，仍为 0 项",
+      "Result": "expected_windows_integrity_boundary",
+      "TargetPid": 9924,
+      "Source": "Explorer",
+      "SourceIntegrityRid": 8192,
+      "TargetIntegrityRid": 12288,
+      "TargetElevated": true,
+      "Snapshot": "software-high-confirmed.json",
+      "ObservedBeforeElevatedSource": [],
+      "ParentRemainedVisible": true,
+      "FallbackPending": false,
+      "FallbackCompleted": true
+    },
+    {
+      "Case": "femtovg-medium-explorer-to-high",
+      "UserReport": "有管理员提示，普通 Explorer 拖入被阻止，仍为 0 项",
+      "Result": "expected_windows_integrity_boundary",
+      "TargetPid": 2040,
+      "Source": "Explorer",
+      "SourceIntegrityRid": 8192,
+      "TargetIntegrityRid": 12288,
+      "TargetElevated": true,
+      "Snapshot": "femtovg-high-confirmed.json",
+      "ObservedBeforeElevatedSource": [],
+      "ParentRemainedVisible": true,
+      "FallbackPending": false,
+      "FallbackCompleted": true
+    }
+  ],
+  "IntegrityRidMeaning": {
+    "8192": "Medium",
+    "12288": "High"
+  }
+}

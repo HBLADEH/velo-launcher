@@ -1,0 +1,231 @@
+{
+  "DateBeijing": "2026-10-28",
+  "NativeWindowsScale": 1.25,
+  "Inputs": "Computer Use physical keys; literal text for clipboard/filter checks",
+  "Sessions": [
+    {
+      "Session": "femtovg-125.stderr",
+      "Events": [
+        "event=input_edited utf8_bytes=0 fixture_results=28 home=true",
+        "event=renderer_observed renderer=femtovg graphics_api=NativeOpenGL",
+        "event=native_window backend=winit renderer=femtovg scale=1.25 physical_width=800 physical_height=675",
+        "event=window_focus focused=true",
+        "event=keyboard_navigation direction=Up index=27 id=environment home=true",
+        "event=keyboard_navigation direction=Down index=0 id=code home=true",
+        "event=ime kind=enabled composing=true",
+        "event=ime kind=preedit composing=true",
+        "event=ime kind=preedit composing=true",
+        "event=ime kind=preedit composing=true",
+        "event=ime kind=commit composing=true",
+        "event=input_edited utf8_bytes=3 fixture_results=0 home=false",
+        "event=ime kind=disabled composing=false",
+        "event=ime kind=enabled composing=true",
+        "event=ime kind=preedit composing=true",
+        "event=ime kind=preedit composing=true",
+        "event=ime kind=preedit composing=true",
+        "event=ime kind=commit composing=true",
+        "event=ime kind=disabled composing=false",
+        "event=input_edited utf8_bytes=0 fixture_results=28 home=true",
+        "event=input_edited utf8_bytes=1 fixture_results=13 home=false",
+        "event=keyboard_navigation direction=Up index=12 id=missing home=false",
+        "event=fixture_chosen id=missing action=record_only",
+        "event=input_edited utf8_bytes=18 fixture_results=0 home=false",
+        "event=input_edited utf8_bytes=0 fixture_results=28 home=true",
+        "event=input_edited utf8_bytes=18 fixture_results=0 home=false",
+        "event=input_focus focused=false",
+        "event=input_focus focused=true",
+        "event=input_edited utf8_bytes=19 fixture_results=0 home=false",
+        "event=input_edited utf8_bytes=0 fixture_results=28 home=true",
+        "event=ime kind=enabled composing=true",
+        "event=ime kind=preedit composing=true",
+        "event=ime kind=preedit composing=true",
+        "event=ime kind=commit composing=true",
+        "event=input_edited utf8_bytes=1 fixture_results=1 home=false",
+        "event=ime kind=disabled composing=false",
+        "event=window_focus focused=false",
+        "event=input_focus focused=false"
+      ]
+    },
+    {
+      "Session": "femtovg-motion.stderr",
+      "Events": [
+        "event=input_edited utf8_bytes=0 fixture_results=28 home=true",
+        "event=renderer_observed renderer=femtovg graphics_api=NativeOpenGL",
+        "event=native_window backend=winit renderer=femtovg scale=1.25 physical_width=800 physical_height=675",
+        "event=window_focus focused=true",
+        "event=input_focus focused=false",
+        "event=input_focus focused=true",
+        "event=input_edited utf8_bytes=4 fixture_results=2 home=false",
+        "event=input_edited utf8_bytes=0 fixture_results=28 home=true",
+        "event=window_focus focused=false",
+        "event=input_focus focused=false"
+      ]
+    },
+    {
+      "Session": "femtovg-scale-100.stderr",
+      "Events": [
+        "event=input_edited utf8_bytes=0 fixture_results=28 home=true",
+        "event=renderer_observed renderer=femtovg graphics_api=NativeOpenGL",
+        "event=native_window backend=winit renderer=femtovg scale=1.25 physical_width=640 physical_height=540",
+        "event=window_focus focused=true",
+        "event=ime kind=enabled composing=true",
+        "event=ime kind=preedit composing=true",
+        "event=ime kind=preedit composing=true",
+        "event=ime kind=preedit composing=true",
+        "event=ime kind=commit composing=true",
+        "event=ime kind=disabled composing=false",
+        "event=window_focus focused=false",
+        "event=input_focus focused=false"
+      ]
+    },
+    {
+      "Session": "femtovg-scale-150.stderr",
+      "Events": [
+        "event=input_edited utf8_bytes=0 fixture_results=28 home=true",
+        "event=renderer_observed renderer=femtovg graphics_api=NativeOpenGL",
+        "event=native_window backend=winit renderer=femtovg scale=1.25 physical_width=960 physical_height=810",
+        "event=window_focus focused=true",
+        "event=ime kind=enabled composing=true",
+        "event=ime kind=preedit composing=true",
+        "event=ime kind=preedit composing=true",
+        "event=ime kind=preedit composing=true",
+        "event=ime kind=commit composing=true",
+        "event=ime kind=disabled composing=false",
+        "event=window_focus focused=false",
+        "event=input_focus focused=false"
+      ]
+    },
+    {
+      "Session": "femtovg-scale-200.stderr",
+      "Events": [
+        "event=input_edited utf8_bytes=0 fixture_results=28 home=true",
+        "event=renderer_observed renderer=femtovg graphics_api=NativeOpenGL",
+        "event=native_window backend=winit renderer=femtovg scale=1.25 physical_width=1280 physical_height=1080",
+        "event=window_focus focused=true",
+        "event=ime kind=enabled composing=true",
+        "event=ime kind=preedit composing=true",
+        "event=ime kind=preedit composing=true",
+        "event=ime kind=preedit composing=true",
+        "event=ime kind=commit composing=true",
+        "event=ime kind=disabled composing=false",
+        "event=window_focus focused=false",
+        "event=input_focus focused=false"
+      ]
+    },
+    {
+      "Session": "software-125.stderr",
+      "Events": [
+        "event=input_edited utf8_bytes=0 fixture_results=28 home=true",
+        "event=native_window backend=winit renderer=software scale=1.25 physical_width=800 physical_height=675",
+        "event=window_focus focused=true",
+        "event=ime kind=enabled composing=true",
+        "event=ime kind=preedit composing=true",
+        "event=ime kind=preedit composing=true",
+        "event=ime kind=preedit composing=true",
+        "event=ime kind=preedit composing=true",
+        "event=ime kind=commit composing=true",
+        "event=input_edited utf8_bytes=3 fixture_results=0 home=false",
+        "event=ime kind=disabled composing=false",
+        "event=ime kind=enabled composing=true",
+        "event=ime kind=preedit composing=true",
+        "event=ime kind=preedit composing=true",
+        "event=ime kind=preedit composing=true",
+        "event=ime kind=commit composing=true",
+        "event=ime kind=disabled composing=false",
+        "event=ime kind=enabled composing=true",
+        "event=ime kind=preedit composing=true",
+        "event=ime kind=preedit composing=true",
+        "event=ime kind=commit composing=true",
+        "event=input_edited utf8_bytes=4 fixture_results=0 home=false",
+        "event=ime kind=disabled composing=false",
+        "event=input_edited utf8_bytes=0 fixture_results=28 home=true",
+        "event=input_edited utf8_bytes=6 fixture_results=13 home=false",
+        "event=keyboard_navigation direction=Up index=12 id=environment home=false",
+        "event=fixture_chosen id=environment action=record_only",
+        "event=input_focus focused=false",
+        "event=input_focus focused=true",
+        "event=input_edited utf8_bytes=18 fixture_results=0 home=false",
+        "event=window_focus focused=false",
+        "event=input_focus focused=false"
+      ]
+    },
+    {
+      "Session": "software-motion.stderr",
+      "Events": [
+        "event=input_edited utf8_bytes=0 fixture_results=28 home=true",
+        "event=native_window backend=winit renderer=software scale=1.25 physical_width=800 physical_height=675",
+        "event=window_focus focused=true",
+        "event=input_focus focused=false",
+        "event=input_focus focused=true",
+        "event=window_focus focused=false",
+        "event=input_focus focused=false"
+      ]
+    },
+    {
+      "Session": "software-scale-100.stderr",
+      "Events": [
+        "event=input_edited utf8_bytes=0 fixture_results=28 home=true",
+        "event=native_window backend=winit renderer=software scale=1.25 physical_width=640 physical_height=540",
+        "event=window_focus focused=true",
+        "event=ime kind=enabled composing=true",
+        "event=ime kind=preedit composing=true",
+        "event=ime kind=preedit composing=true",
+        "event=ime kind=preedit composing=true",
+        "event=ime kind=commit composing=true",
+        "event=ime kind=disabled composing=false",
+        "event=window_focus focused=false",
+        "event=input_focus focused=false"
+      ]
+    },
+    {
+      "Session": "software-scale-150.stderr",
+      "Events": [
+        "event=input_edited utf8_bytes=0 fixture_results=28 home=true",
+        "event=native_window backend=winit renderer=software scale=1.25 physical_width=960 physical_height=810",
+        "event=window_focus focused=true",
+        "event=ime kind=enabled composing=true",
+        "event=ime kind=preedit composing=true",
+        "event=ime kind=preedit composing=true",
+        "event=ime kind=preedit composing=true",
+        "event=ime kind=commit composing=true",
+        "event=ime kind=disabled composing=false",
+        "event=window_focus focused=false",
+        "event=input_focus focused=false"
+      ]
+    },
+    {
+      "Session": "software-scale-200.stderr",
+      "Events": [
+        "event=input_edited utf8_bytes=0 fixture_results=28 home=true",
+        "event=native_window backend=winit renderer=software scale=1.25 physical_width=1280 physical_height=1080",
+        "event=window_focus focused=true",
+        "event=ime kind=enabled composing=true",
+        "event=ime kind=preedit composing=true",
+        "event=ime kind=preedit composing=true",
+        "event=ime kind=preedit composing=true",
+        "event=ime kind=commit composing=true",
+        "event=ime kind=disabled composing=false",
+        "event=window_focus focused=false",
+        "event=input_focus focused=false"
+      ]
+    },
+    {
+      "Session": "software-ui.stderr",
+      "Events": [
+        "event=input_edited utf8_bytes=0 fixture_results=28 home=true",
+        "event=native_window backend=winit renderer=software scale=1.25 physical_width=800 physical_height=675",
+        "event=window_focus focused=true",
+        "event=keyboard_navigation direction=Down index=3 id=studio home=true",
+        "event=ime kind=enabled composing=true",
+        "event=ime kind=preedit composing=true",
+        "event=ime kind=preedit composing=true",
+        "event=ime kind=commit composing=true",
+        "event=input_edited utf8_bytes=1 fixture_results=13 home=false",
+        "event=ime kind=disabled composing=false",
+        "event=keyboard_navigation direction=Up index=12 id=missing home=false",
+        "event=window_focus focused=false",
+        "event=input_focus focused=false"
+      ]
+    }
+  ]
+}

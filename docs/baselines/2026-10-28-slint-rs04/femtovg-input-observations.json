@@ -1,0 +1,645 @@
+[
+  {
+    "Kind": "WarmStartup",
+    "Boundary": "ProcessStartToEditable",
+    "Valid": "true",
+    "DurationMilliseconds": 16282.4265,
+    "TimestampUtc": "2026-10-28T03:21:13.577864Z",
+    "BootId": "",
+    "ExecutableSHA256": "59867920F4EB17170AADA43AC29AEE387C5C209E9D19A2B751910EBEC21C4777",
+    "EnvironmentId": "A7CFF02CBEB3EF24B7E548AB52069636894B1C2AE3502B35931DFE8A0AD1923A",
+    "InputId": "EB5CC01B545EC8C5957CD5E4078061AD8A36D87BFE72D90C6E27D02DC6798D37",
+    "Method": "ComputerUseAssistedUpperBound",
+    "Evidence": "warm-20261028T0320572033268-events.log",
+    "ProcessId": 9780,
+    "Reason": "Upper bound includes Computer Use activation and waiting; not a calibrated startup benchmark.",
+    "Stages": [
+      {
+        "event": "main_started",
+        "pid": "9780",
+        "unix_us": "1793157657339095",
+        "elapsed_us": "632",
+        "dropped": "0",
+        "renderer": "femtovg",
+        "backend": "winit"
+      },
+      {
+        "event": "component_created",
+        "pid": "9780",
+        "unix_us": "1793157657554746",
+        "elapsed_us": "216283",
+        "dropped": "0"
+      },
+      {
+        "event": "show_returned",
+        "pid": "9780",
+        "unix_us": "1793157657555054",
+        "elapsed_us": "216591",
+        "dropped": "0"
+      },
+      {
+        "event": "first_opengl_frame",
+        "pid": "9780",
+        "unix_us": "1793157657654695",
+        "elapsed_us": "316232",
+        "dropped": "0",
+        "graphics_api": "NativeOpenGL"
+      },
+      {
+        "event": "native_window",
+        "pid": "9780",
+        "unix_us": "1793157657818933",
+        "elapsed_us": "480470",
+        "dropped": "0",
+        "hwnd": "148010A",
+        "scale": "1.25",
+        "physical_width": "800",
+        "physical_height": "675"
+      },
+      {
+        "event": "first_redraw_requested",
+        "pid": "9780",
+        "unix_us": "1793157657820264",
+        "elapsed_us": "481802",
+        "dropped": "0",
+        "completed_frame": "false"
+      },
+      {
+        "event": "native_focus",
+        "pid": "9780",
+        "unix_us": "1793157673541518",
+        "elapsed_us": "16203055",
+        "dropped": "0",
+        "focused": "true"
+      },
+      {
+        "event": "input_accepted",
+        "pid": "9780",
+        "unix_us": "1793157673577864",
+        "elapsed_us": "16239401",
+        "dropped": "0",
+        "utf8_bytes": "4",
+        "focused": "true",
+        "native_focused": "true",
+        "visible": "true",
+        "composing": "false"
+      },
+      {
+        "event": "native_focus",
+        "pid": "9780",
+        "unix_us": "1793157699716569",
+        "elapsed_us": "42378106",
+        "dropped": "0",
+        "focused": "false"
+      },
+      {
+        "event": "input_focus",
+        "pid": "9780",
+        "unix_us": "1793157699716779",
+        "elapsed_us": "42378317",
+        "dropped": "0",
+        "focused": "false"
+      }
+    ],
+    "RawEvents": [
+      {
+        "event": "main_started",
+        "pid": "9780",
+        "unix_us": "1793157657339095",
+        "elapsed_us": "632",
+        "dropped": "0",
+        "renderer": "femtovg",
+        "backend": "winit"
+      },
+      {
+        "event": "component_created",
+        "pid": "9780",
+        "unix_us": "1793157657554746",
+        "elapsed_us": "216283",
+        "dropped": "0"
+      },
+      {
+        "event": "show_returned",
+        "pid": "9780",
+        "unix_us": "1793157657555054",
+        "elapsed_us": "216591",
+        "dropped": "0"
+      },
+      {
+        "event": "first_opengl_frame",
+        "pid": "9780",
+        "unix_us": "1793157657654695",
+        "elapsed_us": "316232",
+        "dropped": "0",
+        "graphics_api": "NativeOpenGL"
+      },
+      {
+        "event": "native_window",
+        "pid": "9780",
+        "unix_us": "1793157657818933",
+        "elapsed_us": "480470",
+        "dropped": "0",
+        "hwnd": "148010A",
+        "scale": "1.25",
+        "physical_width": "800",
+        "physical_height": "675"
+      },
+      {
+        "event": "first_redraw_requested",
+        "pid": "9780",
+        "unix_us": "1793157657820264",
+        "elapsed_us": "481802",
+        "dropped": "0",
+        "completed_frame": "false"
+      },
+      {
+        "event": "native_focus",
+        "pid": "9780",
+        "unix_us": "1793157673541518",
+        "elapsed_us": "16203055",
+        "dropped": "0",
+        "focused": "true"
+      },
+      {
+        "event": "native_key_down",
+        "pid": "9780",
+        "unix_us": "1793157673571109",
+        "elapsed_us": "16232646",
+        "dropped": "0"
+      },
+      {
+        "event": "native_key_down",
+        "pid": "9780",
+        "unix_us": "1793157673576764",
+        "elapsed_us": "16238301",
+        "dropped": "0"
+      },
+      {
+        "event": "input_accepted",
+        "pid": "9780",
+        "unix_us": "1793157673577864",
+        "elapsed_us": "16239401",
+        "dropped": "0",
+        "utf8_bytes": "4",
+        "focused": "true",
+        "native_focused": "true",
+        "visible": "true",
+        "composing": "false"
+      },
+      {
+        "event": "native_key_down",
+        "pid": "9780",
+        "unix_us": "1793157699705573",
+        "elapsed_us": "42367110",
+        "dropped": "0"
+      },
+      {
+        "event": "native_focus",
+        "pid": "9780",
+        "unix_us": "1793157699716569",
+        "elapsed_us": "42378106",
+        "dropped": "0",
+        "focused": "false"
+      },
+      {
+        "event": "input_focus",
+        "pid": "9780",
+        "unix_us": "1793157699716779",
+        "elapsed_us": "42378317",
+        "dropped": "0",
+        "focused": "false"
+      }
+    ]
+  },
+  {
+    "Kind": "WarmStartup",
+    "Boundary": "ProcessStartToEditable",
+    "Valid": "true",
+    "DurationMilliseconds": 13861.9317,
+    "TimestampUtc": "2026-10-28T03:23:04.422464Z",
+    "BootId": "",
+    "ExecutableSHA256": "59867920F4EB17170AADA43AC29AEE387C5C209E9D19A2B751910EBEC21C4777",
+    "EnvironmentId": "A7CFF02CBEB3EF24B7E548AB52069636894B1C2AE3502B35931DFE8A0AD1923A",
+    "InputId": "EB5CC01B545EC8C5957CD5E4078061AD8A36D87BFE72D90C6E27D02DC6798D37",
+    "Method": "ComputerUseAssistedUpperBound",
+    "Evidence": "warm-20261028T0322504999325-events.log",
+    "ProcessId": 31836,
+    "Reason": "Upper bound includes Computer Use activation and waiting; not a calibrated startup benchmark.",
+    "Stages": [
+      {
+        "event": "main_started",
+        "pid": "31836",
+        "unix_us": "1793157770598738",
+        "elapsed_us": "1128",
+        "dropped": "0",
+        "renderer": "femtovg",
+        "backend": "winit"
+      },
+      {
+        "event": "component_created",
+        "pid": "31836",
+        "unix_us": "1793157770777966",
+        "elapsed_us": "180355",
+        "dropped": "0"
+      },
+      {
+        "event": "show_returned",
+        "pid": "31836",
+        "unix_us": "1793157770778234",
+        "elapsed_us": "180623",
+        "dropped": "0"
+      },
+      {
+        "event": "first_opengl_frame",
+        "pid": "31836",
+        "unix_us": "1793157770877961",
+        "elapsed_us": "280350",
+        "dropped": "0",
+        "graphics_api": "NativeOpenGL"
+      },
+      {
+        "event": "native_window",
+        "pid": "31836",
+        "unix_us": "1793157771034003",
+        "elapsed_us": "436392",
+        "dropped": "0",
+        "hwnd": "180746",
+        "scale": "1.25",
+        "physical_width": "800",
+        "physical_height": "675"
+      },
+      {
+        "event": "native_focus",
+        "pid": "31836",
+        "unix_us": "1793157771034060",
+        "elapsed_us": "436449",
+        "dropped": "0",
+        "focused": "true"
+      },
+      {
+        "event": "first_redraw_requested",
+        "pid": "31836",
+        "unix_us": "1793157771040469",
+        "elapsed_us": "442858",
+        "dropped": "0",
+        "completed_frame": "false"
+      },
+      {
+        "event": "input_accepted",
+        "pid": "31836",
+        "unix_us": "1793157784422464",
+        "elapsed_us": "13824853",
+        "dropped": "0",
+        "utf8_bytes": "6",
+        "focused": "true",
+        "native_focused": "true",
+        "visible": "true",
+        "composing": "false"
+      },
+      {
+        "event": "native_focus",
+        "pid": "31836",
+        "unix_us": "1793157811178031",
+        "elapsed_us": "40580420",
+        "dropped": "0",
+        "focused": "false"
+      },
+      {
+        "event": "input_focus",
+        "pid": "31836",
+        "unix_us": "1793157811178249",
+        "elapsed_us": "40580638",
+        "dropped": "0",
+        "focused": "false"
+      }
+    ],
+    "RawEvents": [
+      {
+        "event": "main_started",
+        "pid": "31836",
+        "unix_us": "1793157770598738",
+        "elapsed_us": "1128",
+        "dropped": "0",
+        "renderer": "femtovg",
+        "backend": "winit"
+      },
+      {
+        "event": "component_created",
+        "pid": "31836",
+        "unix_us": "1793157770777966",
+        "elapsed_us": "180355",
+        "dropped": "0"
+      },
+      {
+        "event": "show_returned",
+        "pid": "31836",
+        "unix_us": "1793157770778234",
+        "elapsed_us": "180623",
+        "dropped": "0"
+      },
+      {
+        "event": "first_opengl_frame",
+        "pid": "31836",
+        "unix_us": "1793157770877961",
+        "elapsed_us": "280350",
+        "dropped": "0",
+        "graphics_api": "NativeOpenGL"
+      },
+      {
+        "event": "native_window",
+        "pid": "31836",
+        "unix_us": "1793157771034003",
+        "elapsed_us": "436392",
+        "dropped": "0",
+        "hwnd": "180746",
+        "scale": "1.25",
+        "physical_width": "800",
+        "physical_height": "675"
+      },
+      {
+        "event": "native_focus",
+        "pid": "31836",
+        "unix_us": "1793157771034060",
+        "elapsed_us": "436449",
+        "dropped": "0",
+        "focused": "true"
+      },
+      {
+        "event": "first_redraw_requested",
+        "pid": "31836",
+        "unix_us": "1793157771040469",
+        "elapsed_us": "442858",
+        "dropped": "0",
+        "completed_frame": "false"
+      },
+      {
+        "event": "native_key_down",
+        "pid": "31836",
+        "unix_us": "1793157784419876",
+        "elapsed_us": "13822265",
+        "dropped": "0"
+      },
+      {
+        "event": "native_key_down",
+        "pid": "31836",
+        "unix_us": "1793157784421921",
+        "elapsed_us": "13824310",
+        "dropped": "0"
+      },
+      {
+        "event": "input_accepted",
+        "pid": "31836",
+        "unix_us": "1793157784422464",
+        "elapsed_us": "13824853",
+        "dropped": "0",
+        "utf8_bytes": "6",
+        "focused": "true",
+        "native_focused": "true",
+        "visible": "true",
+        "composing": "false"
+      },
+      {
+        "event": "native_key_down",
+        "pid": "31836",
+        "unix_us": "1793157793600673",
+        "elapsed_us": "23003062",
+        "dropped": "0"
+      },
+      {
+        "event": "native_key_down",
+        "pid": "31836",
+        "unix_us": "1793157811164476",
+        "elapsed_us": "40566865",
+        "dropped": "0"
+      },
+      {
+        "event": "native_focus",
+        "pid": "31836",
+        "unix_us": "1793157811178031",
+        "elapsed_us": "40580420",
+        "dropped": "0",
+        "focused": "false"
+      },
+      {
+        "event": "input_focus",
+        "pid": "31836",
+        "unix_us": "1793157811178249",
+        "elapsed_us": "40580638",
+        "dropped": "0",
+        "focused": "false"
+      }
+    ]
+  },
+  {
+    "Kind": "WarmStartup",
+    "Boundary": "ProcessStartToEditable",
+    "Valid": "true",
+    "DurationMilliseconds": 12150.7199,
+    "TimestampUtc": "2026-10-28T03:23:44.084212Z",
+    "BootId": "",
+    "ExecutableSHA256": "59867920F4EB17170AADA43AC29AEE387C5C209E9D19A2B751910EBEC21C4777",
+    "EnvironmentId": "A7CFF02CBEB3EF24B7E548AB52069636894B1C2AE3502B35931DFE8A0AD1923A",
+    "InputId": "EB5CC01B545EC8C5957CD5E4078061AD8A36D87BFE72D90C6E27D02DC6798D37",
+    "Method": "ComputerUseAssistedUpperBound",
+    "Evidence": "warm-20261028T0323318749171-events.log",
+    "ProcessId": 24444,
+    "Reason": "Upper bound includes Computer Use activation and waiting; not a calibrated startup benchmark.",
+    "Stages": [
+      {
+        "event": "main_started",
+        "pid": "24444",
+        "unix_us": "1793157811970731",
+        "elapsed_us": "597",
+        "dropped": "0",
+        "renderer": "femtovg",
+        "backend": "winit"
+      },
+      {
+        "event": "component_created",
+        "pid": "24444",
+        "unix_us": "1793157812151740",
+        "elapsed_us": "181606",
+        "dropped": "0"
+      },
+      {
+        "event": "show_returned",
+        "pid": "24444",
+        "unix_us": "1793157812152026",
+        "elapsed_us": "181892",
+        "dropped": "0"
+      },
+      {
+        "event": "first_opengl_frame",
+        "pid": "24444",
+        "unix_us": "1793157812251888",
+        "elapsed_us": "281754",
+        "dropped": "0",
+        "graphics_api": "NativeOpenGL"
+      },
+      {
+        "event": "native_window",
+        "pid": "24444",
+        "unix_us": "1793157812400348",
+        "elapsed_us": "430215",
+        "dropped": "0",
+        "hwnd": "7305C8",
+        "scale": "1.25",
+        "physical_width": "800",
+        "physical_height": "675"
+      },
+      {
+        "event": "native_focus",
+        "pid": "24444",
+        "unix_us": "1793157812400438",
+        "elapsed_us": "430304",
+        "dropped": "0",
+        "focused": "true"
+      },
+      {
+        "event": "first_redraw_requested",
+        "pid": "24444",
+        "unix_us": "1793157812408089",
+        "elapsed_us": "437955",
+        "dropped": "0",
+        "completed_frame": "false"
+      },
+      {
+        "event": "input_accepted",
+        "pid": "24444",
+        "unix_us": "1793157824084212",
+        "elapsed_us": "12114078",
+        "dropped": "0",
+        "utf8_bytes": "12",
+        "focused": "true",
+        "native_focused": "true",
+        "visible": "true",
+        "composing": "false"
+      },
+      {
+        "event": "native_focus",
+        "pid": "24444",
+        "unix_us": "1793157840080569",
+        "elapsed_us": "28110435",
+        "dropped": "0",
+        "focused": "false"
+      },
+      {
+        "event": "input_focus",
+        "pid": "24444",
+        "unix_us": "1793157840080741",
+        "elapsed_us": "28110607",
+        "dropped": "0",
+        "focused": "false"
+      }
+    ],
+    "RawEvents": [
+      {
+        "event": "main_started",
+        "pid": "24444",
+        "unix_us": "1793157811970731",
+        "elapsed_us": "597",
+        "dropped": "0",
+        "renderer": "femtovg",
+        "backend": "winit"
+      },
+      {
+        "event": "component_created",
+        "pid": "24444",
+        "unix_us": "1793157812151740",
+        "elapsed_us": "181606",
+        "dropped": "0"
+      },
+      {
+        "event": "show_returned",
+        "pid": "24444",
+        "unix_us": "1793157812152026",
+        "elapsed_us": "181892",
+        "dropped": "0"
+      },
+      {
+        "event": "first_opengl_frame",
+        "pid": "24444",
+        "unix_us": "1793157812251888",
+        "elapsed_us": "281754",
+        "dropped": "0",
+        "graphics_api": "NativeOpenGL"
+      },
+      {
+        "event": "native_window",
+        "pid": "24444",
+        "unix_us": "1793157812400348",
+        "elapsed_us": "430215",
+        "dropped": "0",
+        "hwnd": "7305C8",
+        "scale": "1.25",
+        "physical_width": "800",
+        "physical_height": "675"
+      },
+      {
+        "event": "native_focus",
+        "pid": "24444",
+        "unix_us": "1793157812400438",
+        "elapsed_us": "430304",
+        "dropped": "0",
+        "focused": "true"
+      },
+      {
+        "event": "first_redraw_requested",
+        "pid": "24444",
+        "unix_us": "1793157812408089",
+        "elapsed_us": "437955",
+        "dropped": "0",
+        "completed_frame": "false"
+      },
+      {
+        "event": "native_key_down",
+        "pid": "24444",
+        "unix_us": "1793157824081498",
+        "elapsed_us": "12111364",
+        "dropped": "0"
+      },
+      {
+        "event": "native_key_down",
+        "pid": "24444",
+        "unix_us": "1793157824082809",
+        "elapsed_us": "12112675",
+        "dropped": "0"
+      },
+      {
+        "event": "input_accepted",
+        "pid": "24444",
+        "unix_us": "1793157824084212",
+        "elapsed_us": "12114078",
+        "dropped": "0",
+        "utf8_bytes": "12",
+        "focused": "true",
+        "native_focused": "true",
+        "visible": "true",
+        "composing": "false"
+      },
+      {
+        "event": "native_key_down",
+        "pid": "24444",
+        "unix_us": "1793157840069110",
+        "elapsed_us": "28098976",
+        "dropped": "0"
+      },
+      {
+        "event": "native_focus",
+        "pid": "24444",
+        "unix_us": "1793157840080569",
+        "elapsed_us": "28110435",
+        "dropped": "0",
+        "focused": "false"
+      },
+      {
+        "event": "input_focus",
+        "pid": "24444",
+        "unix_us": "1793157840080741",
+        "elapsed_us": "28110607",
+        "dropped": "0",
+        "focused": "false"
+      }
+    ]
+  }
+]

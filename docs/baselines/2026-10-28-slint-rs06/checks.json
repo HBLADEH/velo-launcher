@@ -1,0 +1,45 @@
+{
+  "Checks": [
+    {
+      "Name": "rust-two-renderer-verification",
+      "Command": "./scripts/verify-rust.ps1 -SmokeTest",
+      "ExitCode": 0,
+      "Passed": true,
+      "LogSHA256": "1AB0599EB5BEFA30FA7121A0DB81B379BB8A9AF0B5260091CBB50820B53F67D9",
+      "Evidence": [
+        "test result: ok. 21 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.04s",
+        "event=smoke_result passed=true backend=winit renderer=femtovg hwnd=true redraw_events=8 logical_size_640x540=true nonuniform_snapshot=true opengl_frame=true",
+        "event=input_smoke_result passed=true error=None",
+        "event=smoke_result passed=true backend=winit renderer=femtovg hwnd=true redraw_events=9 logical_size_640x540=true nonuniform_snapshot=true opengl_frame=true",
+        "Verified femtovg Release: D:\\workstation\\go\\velo-launcher\\rust\\target\\artifacts\\femtovg\\velo-slint.exe",
+        "test result: ok. 21 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s",
+        "event=smoke_result passed=true backend=winit renderer=software hwnd=true redraw_events=8 logical_size_640x540=true nonuniform_snapshot=true opengl_frame=false",
+        "event=input_smoke_result passed=true error=None",
+        "event=smoke_result passed=true backend=winit renderer=software hwnd=true redraw_events=9 logical_size_640x540=true nonuniform_snapshot=true opengl_frame=false",
+        "Verified software Release: D:\\workstation\\go\\velo-launcher\\rust\\target\\artifacts\\software\\velo-slint.exe"
+      ]
+    },
+    {
+      "Name": "existing-application",
+      "Command": "./scripts/verify.ps1 -SkipBuild",
+      "ExitCode": 0,
+      "Passed": true,
+      "LogSHA256": "B2DF0944802209B4CEA3FE7752EB7A5CB007948C7366DC9E1348782BBD1CE3A7"
+    }
+  ],
+  "RustUnitTestsPerRenderer": 21,
+  "ComponentInputAssertionsPerRenderer": 15,
+  "FrontendTests": 26,
+  "SourceFingerprintsMatchCurrentFiles": true,
+  "FingerprintsPerRenderer": 47,
+  "ChangedProductBusinessFiles": false,
+  "PerformanceClaims": "No memory or calibrated latency remeasurement in RS-06",
+  "Pending": [
+    "Physical secondary/negative-coordinate/mixed-DPI monitors and live unplug",
+    "Physical sleep/resume",
+    "Actual left/right click on the Shell tray icon and direct icon visual QA",
+    "Native activation from non-foreground parents / injected callbacks; failed observations retained",
+    "Windows 10 and other Windows 11 environments",
+    "RS-07 import UI, drop and full temporary focus matrix"
+  ]
+}

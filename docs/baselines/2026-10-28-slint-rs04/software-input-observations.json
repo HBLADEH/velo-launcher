@@ -1,0 +1,597 @@
+[
+  {
+    "Kind": "WarmStartup",
+    "Boundary": "ProcessStartToEditable",
+    "Valid": "true",
+    "DurationMilliseconds": 10264.601,
+    "TimestampUtc": "2026-10-28T03:21:50.761087Z",
+    "BootId": "",
+    "ExecutableSHA256": "214DC140513322B99301867F52B54F216BF9F7E8AD45CFCF8765237CD4AA6C74",
+    "EnvironmentId": "A7CFF02CBEB3EF24B7E548AB52069636894B1C2AE3502B35931DFE8A0AD1923A",
+    "InputId": "EB5CC01B545EC8C5957CD5E4078061AD8A36D87BFE72D90C6E27D02DC6798D37",
+    "Method": "ComputerUseAssistedUpperBound",
+    "Evidence": "warm-20261028T0321404314508-events.log",
+    "ProcessId": 25068,
+    "Reason": "Upper bound includes Computer Use activation and waiting; not a calibrated startup benchmark.",
+    "Stages": [
+      {
+        "event": "main_started",
+        "pid": "25068",
+        "unix_us": "1793157700534535",
+        "elapsed_us": "958",
+        "dropped": "0",
+        "renderer": "software",
+        "backend": "winit"
+      },
+      {
+        "event": "component_created",
+        "pid": "25068",
+        "unix_us": "1793157700540393",
+        "elapsed_us": "6817",
+        "dropped": "0"
+      },
+      {
+        "event": "show_returned",
+        "pid": "25068",
+        "unix_us": "1793157700540676",
+        "elapsed_us": "7099",
+        "dropped": "0"
+      },
+      {
+        "event": "native_window",
+        "pid": "25068",
+        "unix_us": "1793157700594263",
+        "elapsed_us": "60687",
+        "dropped": "0",
+        "hwnd": "14095E",
+        "scale": "1.25",
+        "physical_width": "800",
+        "physical_height": "675"
+      },
+      {
+        "event": "native_focus",
+        "pid": "25068",
+        "unix_us": "1793157700594425",
+        "elapsed_us": "60848",
+        "dropped": "0",
+        "focused": "true"
+      },
+      {
+        "event": "first_redraw_requested",
+        "pid": "25068",
+        "unix_us": "1793157700606486",
+        "elapsed_us": "72909",
+        "dropped": "0",
+        "completed_frame": "false"
+      },
+      {
+        "event": "input_accepted",
+        "pid": "25068",
+        "unix_us": "1793157710761087",
+        "elapsed_us": "10227511",
+        "dropped": "0",
+        "utf8_bytes": "4",
+        "focused": "true",
+        "native_focused": "true",
+        "visible": "true",
+        "composing": "false"
+      },
+      {
+        "event": "native_focus",
+        "pid": "25068",
+        "unix_us": "1793157748283726",
+        "elapsed_us": "47750150",
+        "dropped": "0",
+        "focused": "false"
+      },
+      {
+        "event": "input_focus",
+        "pid": "25068",
+        "unix_us": "1793157748284258",
+        "elapsed_us": "47750682",
+        "dropped": "0",
+        "focused": "false"
+      }
+    ],
+    "RawEvents": [
+      {
+        "event": "main_started",
+        "pid": "25068",
+        "unix_us": "1793157700534535",
+        "elapsed_us": "958",
+        "dropped": "0",
+        "renderer": "software",
+        "backend": "winit"
+      },
+      {
+        "event": "component_created",
+        "pid": "25068",
+        "unix_us": "1793157700540393",
+        "elapsed_us": "6817",
+        "dropped": "0"
+      },
+      {
+        "event": "show_returned",
+        "pid": "25068",
+        "unix_us": "1793157700540676",
+        "elapsed_us": "7099",
+        "dropped": "0"
+      },
+      {
+        "event": "native_window",
+        "pid": "25068",
+        "unix_us": "1793157700594263",
+        "elapsed_us": "60687",
+        "dropped": "0",
+        "hwnd": "14095E",
+        "scale": "1.25",
+        "physical_width": "800",
+        "physical_height": "675"
+      },
+      {
+        "event": "native_focus",
+        "pid": "25068",
+        "unix_us": "1793157700594425",
+        "elapsed_us": "60848",
+        "dropped": "0",
+        "focused": "true"
+      },
+      {
+        "event": "first_redraw_requested",
+        "pid": "25068",
+        "unix_us": "1793157700606486",
+        "elapsed_us": "72909",
+        "dropped": "0",
+        "completed_frame": "false"
+      },
+      {
+        "event": "native_key_down",
+        "pid": "25068",
+        "unix_us": "1793157710759160",
+        "elapsed_us": "10225583",
+        "dropped": "0"
+      },
+      {
+        "event": "native_key_down",
+        "pid": "25068",
+        "unix_us": "1793157710760481",
+        "elapsed_us": "10226905",
+        "dropped": "0"
+      },
+      {
+        "event": "input_accepted",
+        "pid": "25068",
+        "unix_us": "1793157710761087",
+        "elapsed_us": "10227511",
+        "dropped": "0",
+        "utf8_bytes": "4",
+        "focused": "true",
+        "native_focused": "true",
+        "visible": "true",
+        "composing": "false"
+      },
+      {
+        "event": "native_key_down",
+        "pid": "25068",
+        "unix_us": "1793157724441292",
+        "elapsed_us": "23907716",
+        "dropped": "0"
+      },
+      {
+        "event": "native_key_down",
+        "pid": "25068",
+        "unix_us": "1793157748276754",
+        "elapsed_us": "47743177",
+        "dropped": "0"
+      },
+      {
+        "event": "native_focus",
+        "pid": "25068",
+        "unix_us": "1793157748283726",
+        "elapsed_us": "47750150",
+        "dropped": "0",
+        "focused": "false"
+      },
+      {
+        "event": "input_focus",
+        "pid": "25068",
+        "unix_us": "1793157748284258",
+        "elapsed_us": "47750682",
+        "dropped": "0",
+        "focused": "false"
+      }
+    ]
+  },
+  {
+    "Kind": "WarmStartup",
+    "Boundary": "ProcessStartToEditable",
+    "Valid": "true",
+    "DurationMilliseconds": 9085.2482,
+    "TimestampUtc": "2026-10-28T03:22:38.140654Z",
+    "BootId": "",
+    "ExecutableSHA256": "214DC140513322B99301867F52B54F216BF9F7E8AD45CFCF8765237CD4AA6C74",
+    "EnvironmentId": "A7CFF02CBEB3EF24B7E548AB52069636894B1C2AE3502B35931DFE8A0AD1923A",
+    "InputId": "EB5CC01B545EC8C5957CD5E4078061AD8A36D87BFE72D90C6E27D02DC6798D37",
+    "Method": "ComputerUseAssistedUpperBound",
+    "Evidence": "warm-20261028T0322289933297-events.log",
+    "ProcessId": 17460,
+    "Reason": "Upper bound includes Computer Use activation and waiting; not a calibrated startup benchmark.",
+    "Stages": [
+      {
+        "event": "main_started",
+        "pid": "17460",
+        "unix_us": "1793157749093570",
+        "elapsed_us": "595",
+        "dropped": "0",
+        "renderer": "software",
+        "backend": "winit"
+      },
+      {
+        "event": "component_created",
+        "pid": "17460",
+        "unix_us": "1793157749099004",
+        "elapsed_us": "6029",
+        "dropped": "0"
+      },
+      {
+        "event": "show_returned",
+        "pid": "17460",
+        "unix_us": "1793157749099275",
+        "elapsed_us": "6299",
+        "dropped": "0"
+      },
+      {
+        "event": "native_window",
+        "pid": "17460",
+        "unix_us": "1793157749146504",
+        "elapsed_us": "53529",
+        "dropped": "0",
+        "hwnd": "450982",
+        "scale": "1.25",
+        "physical_width": "800",
+        "physical_height": "675"
+      },
+      {
+        "event": "native_focus",
+        "pid": "17460",
+        "unix_us": "1793157749146594",
+        "elapsed_us": "53618",
+        "dropped": "0",
+        "focused": "true"
+      },
+      {
+        "event": "first_redraw_requested",
+        "pid": "17460",
+        "unix_us": "1793157749154665",
+        "elapsed_us": "61689",
+        "dropped": "0",
+        "completed_frame": "false"
+      },
+      {
+        "event": "input_accepted",
+        "pid": "17460",
+        "unix_us": "1793157758140654",
+        "elapsed_us": "9047678",
+        "dropped": "0",
+        "utf8_bytes": "6",
+        "focused": "true",
+        "native_focused": "true",
+        "visible": "true",
+        "composing": "false"
+      },
+      {
+        "event": "native_focus",
+        "pid": "17460",
+        "unix_us": "1793157769829951",
+        "elapsed_us": "20736976",
+        "dropped": "0",
+        "focused": "false"
+      },
+      {
+        "event": "input_focus",
+        "pid": "17460",
+        "unix_us": "1793157769830499",
+        "elapsed_us": "20737523",
+        "dropped": "0",
+        "focused": "false"
+      }
+    ],
+    "RawEvents": [
+      {
+        "event": "main_started",
+        "pid": "17460",
+        "unix_us": "1793157749093570",
+        "elapsed_us": "595",
+        "dropped": "0",
+        "renderer": "software",
+        "backend": "winit"
+      },
+      {
+        "event": "component_created",
+        "pid": "17460",
+        "unix_us": "1793157749099004",
+        "elapsed_us": "6029",
+        "dropped": "0"
+      },
+      {
+        "event": "show_returned",
+        "pid": "17460",
+        "unix_us": "1793157749099275",
+        "elapsed_us": "6299",
+        "dropped": "0"
+      },
+      {
+        "event": "native_window",
+        "pid": "17460",
+        "unix_us": "1793157749146504",
+        "elapsed_us": "53529",
+        "dropped": "0",
+        "hwnd": "450982",
+        "scale": "1.25",
+        "physical_width": "800",
+        "physical_height": "675"
+      },
+      {
+        "event": "native_focus",
+        "pid": "17460",
+        "unix_us": "1793157749146594",
+        "elapsed_us": "53618",
+        "dropped": "0",
+        "focused": "true"
+      },
+      {
+        "event": "first_redraw_requested",
+        "pid": "17460",
+        "unix_us": "1793157749154665",
+        "elapsed_us": "61689",
+        "dropped": "0",
+        "completed_frame": "false"
+      },
+      {
+        "event": "native_key_down",
+        "pid": "17460",
+        "unix_us": "1793157758138663",
+        "elapsed_us": "9045688",
+        "dropped": "0"
+      },
+      {
+        "event": "native_key_down",
+        "pid": "17460",
+        "unix_us": "1793157758140175",
+        "elapsed_us": "9047199",
+        "dropped": "0"
+      },
+      {
+        "event": "input_accepted",
+        "pid": "17460",
+        "unix_us": "1793157758140654",
+        "elapsed_us": "9047678",
+        "dropped": "0",
+        "utf8_bytes": "6",
+        "focused": "true",
+        "native_focused": "true",
+        "visible": "true",
+        "composing": "false"
+      },
+      {
+        "event": "native_key_down",
+        "pid": "17460",
+        "unix_us": "1793157769822178",
+        "elapsed_us": "20729202",
+        "dropped": "0"
+      },
+      {
+        "event": "native_focus",
+        "pid": "17460",
+        "unix_us": "1793157769829951",
+        "elapsed_us": "20736976",
+        "dropped": "0",
+        "focused": "false"
+      },
+      {
+        "event": "input_focus",
+        "pid": "17460",
+        "unix_us": "1793157769830499",
+        "elapsed_us": "20737523",
+        "dropped": "0",
+        "focused": "false"
+      }
+    ]
+  },
+  {
+    "Kind": "WarmStartup",
+    "Boundary": "ProcessStartToEditable",
+    "Valid": "true",
+    "DurationMilliseconds": 15035.8605,
+    "TimestampUtc": "2026-10-28T03:24:15.872735Z",
+    "BootId": "",
+    "ExecutableSHA256": "214DC140513322B99301867F52B54F216BF9F7E8AD45CFCF8765237CD4AA6C74",
+    "EnvironmentId": "A7CFF02CBEB3EF24B7E548AB52069636894B1C2AE3502B35931DFE8A0AD1923A",
+    "InputId": "EB5CC01B545EC8C5957CD5E4078061AD8A36D87BFE72D90C6E27D02DC6798D37",
+    "Method": "ComputerUseAssistedUpperBound",
+    "Evidence": "warm-20261028T0324007751466-events.log",
+    "ProcessId": 28300,
+    "Reason": "Upper bound includes Computer Use activation and waiting; not a calibrated startup benchmark.",
+    "Stages": [
+      {
+        "event": "main_started",
+        "pid": "28300",
+        "unix_us": "1793157840874691",
+        "elapsed_us": "585",
+        "dropped": "0",
+        "renderer": "software",
+        "backend": "winit"
+      },
+      {
+        "event": "component_created",
+        "pid": "28300",
+        "unix_us": "1793157840880754",
+        "elapsed_us": "6648",
+        "dropped": "0"
+      },
+      {
+        "event": "show_returned",
+        "pid": "28300",
+        "unix_us": "1793157840881035",
+        "elapsed_us": "6929",
+        "dropped": "0"
+      },
+      {
+        "event": "native_window",
+        "pid": "28300",
+        "unix_us": "1793157840926907",
+        "elapsed_us": "52801",
+        "dropped": "0",
+        "hwnd": "190994",
+        "scale": "1.25",
+        "physical_width": "800",
+        "physical_height": "675"
+      },
+      {
+        "event": "native_focus",
+        "pid": "28300",
+        "unix_us": "1793157840926961",
+        "elapsed_us": "52856",
+        "dropped": "0",
+        "focused": "true"
+      },
+      {
+        "event": "first_redraw_requested",
+        "pid": "28300",
+        "unix_us": "1793157840934801",
+        "elapsed_us": "60696",
+        "dropped": "0",
+        "completed_frame": "false"
+      },
+      {
+        "event": "input_accepted",
+        "pid": "28300",
+        "unix_us": "1793157855872735",
+        "elapsed_us": "14998629",
+        "dropped": "0",
+        "utf8_bytes": "12",
+        "focused": "true",
+        "native_focused": "true",
+        "visible": "true",
+        "composing": "false"
+      },
+      {
+        "event": "native_focus",
+        "pid": "28300",
+        "unix_us": "1793157865742708",
+        "elapsed_us": "24868603",
+        "dropped": "0",
+        "focused": "false"
+      },
+      {
+        "event": "input_focus",
+        "pid": "28300",
+        "unix_us": "1793157865743356",
+        "elapsed_us": "24869251",
+        "dropped": "0",
+        "focused": "false"
+      }
+    ],
+    "RawEvents": [
+      {
+        "event": "main_started",
+        "pid": "28300",
+        "unix_us": "1793157840874691",
+        "elapsed_us": "585",
+        "dropped": "0",
+        "renderer": "software",
+        "backend": "winit"
+      },
+      {
+        "event": "component_created",
+        "pid": "28300",
+        "unix_us": "1793157840880754",
+        "elapsed_us": "6648",
+        "dropped": "0"
+      },
+      {
+        "event": "show_returned",
+        "pid": "28300",
+        "unix_us": "1793157840881035",
+        "elapsed_us": "6929",
+        "dropped": "0"
+      },
+      {
+        "event": "native_window",
+        "pid": "28300",
+        "unix_us": "1793157840926907",
+        "elapsed_us": "52801",
+        "dropped": "0",
+        "hwnd": "190994",
+        "scale": "1.25",
+        "physical_width": "800",
+        "physical_height": "675"
+      },
+      {
+        "event": "native_focus",
+        "pid": "28300",
+        "unix_us": "1793157840926961",
+        "elapsed_us": "52856",
+        "dropped": "0",
+        "focused": "true"
+      },
+      {
+        "event": "first_redraw_requested",
+        "pid": "28300",
+        "unix_us": "1793157840934801",
+        "elapsed_us": "60696",
+        "dropped": "0",
+        "completed_frame": "false"
+      },
+      {
+        "event": "native_key_down",
+        "pid": "28300",
+        "unix_us": "1793157855870029",
+        "elapsed_us": "14995924",
+        "dropped": "0"
+      },
+      {
+        "event": "native_key_down",
+        "pid": "28300",
+        "unix_us": "1793157855871412",
+        "elapsed_us": "14997307",
+        "dropped": "0"
+      },
+      {
+        "event": "input_accepted",
+        "pid": "28300",
+        "unix_us": "1793157855872735",
+        "elapsed_us": "14998629",
+        "dropped": "0",
+        "utf8_bytes": "12",
+        "focused": "true",
+        "native_focused": "true",
+        "visible": "true",
+        "composing": "false"
+      },
+      {
+        "event": "native_key_down",
+        "pid": "28300",
+        "unix_us": "1793157865734022",
+        "elapsed_us": "24859917",
+        "dropped": "0"
+      },
+      {
+        "event": "native_focus",
+        "pid": "28300",
+        "unix_us": "1793157865742708",
+        "elapsed_us": "24868603",
+        "dropped": "0",
+        "focused": "false"
+      },
+      {
+        "event": "input_focus",
+        "pid": "28300",
+        "unix_us": "1793157865743356",
+        "elapsed_us": "24869251",
+        "dropped": "0",
+        "focused": "false"
+      }
+    ]
+  }
+]

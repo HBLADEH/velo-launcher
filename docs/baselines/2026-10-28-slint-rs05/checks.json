@@ -1,0 +1,76 @@
+{
+  "Checks": [
+    {
+      "Name": "rustfmt",
+      "Command": "cargo fmt --all -- --check",
+      "ExitCode": 0,
+      "Passed": true,
+      "LogSHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "Name": "software-clippy",
+      "Command": "cargo clippy --locked --no-default-features --features renderer-software --all-targets -- -D warnings",
+      "ExitCode": 0,
+      "Passed": true,
+      "LogSHA256": "2A2EFD547035A52A2B5F049DBDAB83037CEA5256791ABE659C8DF4522BFEF624"
+    },
+    {
+      "Name": "software-tests",
+      "Command": "cargo test --locked --no-default-features --features renderer-software",
+      "ExitCode": 0,
+      "Passed": true,
+      "LogSHA256": "28E3C8CF1DA71C05FE48D50B9CB40170AB5B8031536EC90D4940D60922070C44"
+    },
+    {
+      "Name": "software-release-build",
+      "Command": "./scripts/verify-rust.ps1 -Renderer Software -SkipChecks",
+      "ExitCode": 0,
+      "Passed": true,
+      "LogSHA256": "73A7AB99B60B591722EDD61FF6EF1D3D7A20FF0A2F3E5F5D07EF7E7135AD5078"
+    },
+    {
+      "Name": "software-window-smoke",
+      "Command": "velo-slint.exe --smoke-test --diagnostics",
+      "ExitCode": 0,
+      "Passed": true,
+      "LogSHA256": "A75BCD09B8E9D9C8471C1C099FCE8311BB444D6A543546355073046171EE418C"
+    },
+    {
+      "Name": "software-component-smoke",
+      "Command": "velo-slint.exe --input-smoke-test --diagnostics",
+      "ExitCode": 0,
+      "Passed": true,
+      "LogSHA256": "CFFF09A7F88105678A875A61BFD546577B9FBA2861B95A10345F3A941C37BCD3"
+    },
+    {
+      "Name": "femtovg-full-verification",
+      "Command": "./scripts/verify-rust.ps1 -Renderer FemtoVG -SmokeTest",
+      "ExitCode": 0,
+      "Passed": true,
+      "LogSHA256": "B55521ECFB87CC0E78C30BD46CA4022CC47D0C4E980E4705674D05E979DCBB90"
+    },
+    {
+      "Name": "existing-application",
+      "Command": "./scripts/verify.ps1 -SkipBuild",
+      "ExitCode": 0,
+      "Passed": true,
+      "LogSHA256": "77F5F64B7A0AC065F9C85A7CDEF1C61241E05CCA1BF7574B72CF1FEF9B72F36B"
+    }
+  ],
+  "RustUnitTestsPerRenderer": 16,
+  "ComponentInputAssertionsPerRenderer": 15,
+  "FrontendTests": 26,
+  "IsolatedCollector": {
+    "Valid": true,
+    "DurationIntentionallyNotUsedForBudget": true,
+    "Reason": "Upper bound includes Computer Use activation and waiting; not a calibrated startup benchmark.",
+    "Method": "ComputerUseAssistedUpperBound",
+    "Boundary": "ProcessStartToEditable"
+  },
+  "KnownInitialTestFailure": {
+    "SkippedTests": 0,
+    "Resolution": "Exited fixture and reran complete verification successfully",
+    "Reason": "F23 conflict fixture was still holding the native-test key (os error 1409)"
+  },
+  "SourceFingerprintsMatchCurrentFiles": true
+}

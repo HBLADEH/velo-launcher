@@ -3,6 +3,7 @@ $ErrorActionPreference = 'Stop'
 Push-Location (Split-Path -Parent $PSScriptRoot)
 try {
     & (Join-Path $PSScriptRoot 'test-resource-measurement.ps1')
+    & (Join-Path $PSScriptRoot 'test-slint-measurement.ps1')
     & (Join-Path $PSScriptRoot 'test-latency-summary.ps1')
     & (Join-Path $PSScriptRoot 'test-latency-collection.ps1')
     & (Join-Path $PSScriptRoot 'test-latency-startup-cleanup.ps1')

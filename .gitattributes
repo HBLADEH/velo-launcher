@@ -3,3 +3,7 @@
 *.png binary
 *.ico binary
 *.exe binary
+
+# Slint evidence manifests hash original bytes, including captured line endings.
+docs/baselines/2026-10-28-slint-rs*/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+docs/baselines/2026-10-29-slint-rs07/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

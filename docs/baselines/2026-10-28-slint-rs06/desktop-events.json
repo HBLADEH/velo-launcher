@@ -1,0 +1,4497 @@
+{
+  "StartedDate": "2026-10-28",
+  "RecordedDate": "2026-10-29",
+  "Timezone": "Asia/Shanghai",
+  "Method": "ComputerUse plus explicitly labelled native integration probes",
+  "Timing": "Functional evidence only; no calibrated latency or memory claim",
+  "TrayEntryInvocation": "Native callback messages injected by rs06_native_probe; not a physical click on the Shell notification icon",
+  "TrayMenuSelection": "Actual pointer input through Computer Use against the real Win32 popup menu",
+  "ExplorerSecondLaunch": "Actual pointer double-click in File Explorer; existing software PID and HWND retained with native focus true",
+  "DpiChanges": "Real Windows Display Settings; no SLINT_SCALE_FACTOR override; original 125% restored",
+  "Runs": [
+    {
+      "Name": "software-production",
+      "Renderer": "software",
+      "ProcessId": 2964,
+      "NativeWindow": "8A09E2",
+      "ExecutableSHA256": "08AA458E8E6F65AEAA8C253701C3D5F6E0509A9FDF04CEA11A34BEAA96BD018B",
+      "StartedAt": "2026-10-28T16:19:40.1370000+08:00",
+      "FinishedAt": "2026-10-28T16:39:12.2680000+08:00",
+      "EventLogSHA256": "BE0D772816CC44F974D84CE4966AB7F6C50F1E9739A1D2A388F41C5E6024956C",
+      "DiagnosticsLogSHA256": "328254B5AFD2FF7C5F7E6AD3760AA52703CE71F573A909854211EAAC7C59A0C8",
+      "EventCount": 171,
+      "SourceFingerprintCount": 47,
+      "AllSourceFingerprintsMatch": true,
+      "AllEventsDroppedZero": true,
+      "NativeWindowEventCount": 1,
+      "AcceptedNativeFocusedInputCount": 4,
+      "NativeFocusDeniedObservations": 3,
+      "Events": [
+        {
+          "event": "main_started",
+          "pid": "2964",
+          "unix_us": "1793175580136912",
+          "elapsed_us": "2666",
+          "dropped": "0",
+          "renderer": "software",
+          "backend": "winit"
+        },
+        {
+          "event": "component_created",
+          "pid": "2964",
+          "unix_us": "1793175580144878",
+          "elapsed_us": "10632",
+          "dropped": "0"
+        },
+        {
+          "event": "hotkey_bind",
+          "pid": "2964",
+          "unix_us": "1793175580157763",
+          "elapsed_us": "23517",
+          "dropped": "0",
+          "success": "true",
+          "previous_retained": "false"
+        },
+        {
+          "event": "native_window",
+          "pid": "2964",
+          "unix_us": "1793175580177023",
+          "elapsed_us": "42777",
+          "dropped": "0",
+          "hwnd": "8A09E2",
+          "scale": "1.25",
+          "physical_width": "800",
+          "physical_height": "675"
+        },
+        {
+          "event": "desktop_event",
+          "pid": "2964",
+          "unix_us": "1793175580183556",
+          "elapsed_us": "49309",
+          "dropped": "0",
+          "action": "6"
+        },
+        {
+          "event": "lifecycle_ready",
+          "pid": "2964",
+          "unix_us": "1793175580185871",
+          "elapsed_us": "51624",
+          "dropped": "0",
+          "native_visible": "false",
+          "content_ready": "true",
+          "background": "false",
+          "hotkey_available": "true"
+        },
+        {
+          "event": "window_layout",
+          "pid": "2964",
+          "unix_us": "1793175580188427",
+          "elapsed_us": "54180",
+          "dropped": "0",
+          "reason": "show",
+          "applied": "true",
+          "dpi": "120",
+          "x": "880",
+          "y": "276",
+          "physical_width": "800",
+          "physical_height": "825",
+          "logical_width": "640.0",
+          "logical_height": "660.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1380"
+        },
+        {
+          "event": "native_focus_sync",
+          "pid": "2964",
+          "unix_us": "1793175580217113",
+          "elapsed_us": "82866",
+          "dropped": "0",
+          "focused": "false",
+          "source": "GetForegroundWindow+GetFocus"
+        },
+        {
+          "event": "lifecycle_shown",
+          "pid": "2964",
+          "unix_us": "1793175580220116",
+          "elapsed_us": "85869",
+          "dropped": "0",
+          "reason": "startup",
+          "generation": "1",
+          "native_active": "false",
+          "query_bytes": "0",
+          "appearance_open": "false"
+        },
+        {
+          "event": "input_focus",
+          "pid": "2964",
+          "unix_us": "1793175580221051",
+          "elapsed_us": "86805",
+          "dropped": "0",
+          "focused": "true"
+        },
+        {
+          "event": "first_redraw_requested",
+          "pid": "2964",
+          "unix_us": "1793175580221296",
+          "elapsed_us": "87049",
+          "dropped": "0",
+          "completed_frame": "false"
+        },
+        {
+          "event": "desktop_event",
+          "pid": "2964",
+          "unix_us": "1793175620472056",
+          "elapsed_us": "40337809",
+          "dropped": "0",
+          "action": "8"
+        },
+        {
+          "event": "window_layout",
+          "pid": "2964",
+          "unix_us": "1793175620473267",
+          "elapsed_us": "40339020",
+          "dropped": "0",
+          "reason": "show",
+          "applied": "true",
+          "dpi": "120",
+          "x": "880",
+          "y": "276",
+          "physical_width": "800",
+          "physical_height": "825",
+          "logical_width": "640.0",
+          "logical_height": "660.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1380"
+        },
+        {
+          "event": "native_focus_sync",
+          "pid": "2964",
+          "unix_us": "1793175620474448",
+          "elapsed_us": "40340201",
+          "dropped": "0",
+          "focused": "false",
+          "source": "GetForegroundWindow+GetFocus"
+        },
+        {
+          "event": "lifecycle_shown",
+          "pid": "2964",
+          "unix_us": "1793175620474873",
+          "elapsed_us": "40340626",
+          "dropped": "0",
+          "reason": "second_instance",
+          "generation": "2",
+          "native_active": "false",
+          "query_bytes": "0",
+          "appearance_open": "false"
+        },
+        {
+          "event": "input_focus",
+          "pid": "2964",
+          "unix_us": "1793175620475762",
+          "elapsed_us": "40341515",
+          "dropped": "0",
+          "focused": "false"
+        },
+        {
+          "event": "global_hotkey",
+          "pid": "2964",
+          "unix_us": "1793175669422975",
+          "elapsed_us": "89288729",
+          "dropped": "0",
+          "action": "Hide"
+        },
+        {
+          "event": "lifecycle_hidden",
+          "pid": "2964",
+          "unix_us": "1793175669428664",
+          "elapsed_us": "89294417",
+          "dropped": "0",
+          "reason": "hotkey",
+          "generation": "3"
+        },
+        {
+          "event": "global_hotkey",
+          "pid": "2964",
+          "unix_us": "1793175681852048",
+          "elapsed_us": "101717801",
+          "dropped": "0",
+          "action": "Show"
+        },
+        {
+          "event": "window_layout",
+          "pid": "2964",
+          "unix_us": "1793175681857237",
+          "elapsed_us": "101722991",
+          "dropped": "0",
+          "reason": "show",
+          "applied": "true",
+          "dpi": "120",
+          "x": "880",
+          "y": "276",
+          "physical_width": "800",
+          "physical_height": "825",
+          "logical_width": "640.0",
+          "logical_height": "660.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1380"
+        },
+        {
+          "event": "native_focus_sync",
+          "pid": "2964",
+          "unix_us": "1793175681864140",
+          "elapsed_us": "101729894",
+          "dropped": "0",
+          "focused": "true",
+          "source": "GetForegroundWindow+GetFocus"
+        },
+        {
+          "event": "lifecycle_shown",
+          "pid": "2964",
+          "unix_us": "1793175681873071",
+          "elapsed_us": "101738824",
+          "dropped": "0",
+          "reason": "hotkey",
+          "generation": "4",
+          "native_active": "true",
+          "query_bytes": "0",
+          "appearance_open": "false"
+        },
+        {
+          "event": "native_focus",
+          "pid": "2964",
+          "unix_us": "1793175681873626",
+          "elapsed_us": "101739379",
+          "dropped": "0",
+          "focused": "true"
+        },
+        {
+          "event": "input_focus",
+          "pid": "2964",
+          "unix_us": "1793175681874135",
+          "elapsed_us": "101739889",
+          "dropped": "0",
+          "focused": "true"
+        },
+        {
+          "event": "native_key_down",
+          "pid": "2964",
+          "unix_us": "1793175723240859",
+          "elapsed_us": "143106612",
+          "dropped": "0"
+        },
+        {
+          "event": "native_key_down",
+          "pid": "2964",
+          "unix_us": "1793175723242457",
+          "elapsed_us": "143108210",
+          "dropped": "0"
+        },
+        {
+          "event": "input_accepted",
+          "pid": "2964",
+          "unix_us": "1793175723242928",
+          "elapsed_us": "143108681",
+          "dropped": "0",
+          "utf8_bytes": "4",
+          "focused": "true",
+          "native_focused": "true",
+          "visible": "true",
+          "composing": "false"
+        },
+        {
+          "event": "window_layout",
+          "pid": "2964",
+          "unix_us": "1793175723251219",
+          "elapsed_us": "143116972",
+          "dropped": "0",
+          "reason": "content",
+          "applied": "true",
+          "dpi": "120",
+          "x": "880",
+          "y": "276",
+          "physical_width": "800",
+          "physical_height": "330",
+          "logical_width": "640.0",
+          "logical_height": "264.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1380"
+        },
+        {
+          "event": "window_drag",
+          "pid": "2964",
+          "unix_us": "1793175733865694",
+          "elapsed_us": "153731448",
+          "dropped": "0",
+          "started": "true"
+        },
+        {
+          "event": "native_key_down",
+          "pid": "2964",
+          "unix_us": "1793175743895622",
+          "elapsed_us": "163761375",
+          "dropped": "0"
+        },
+        {
+          "event": "lifecycle_hidden",
+          "pid": "2964",
+          "unix_us": "1793175743901973",
+          "elapsed_us": "163767726",
+          "dropped": "0",
+          "reason": "close",
+          "generation": "5"
+        },
+        {
+          "event": "native_focus",
+          "pid": "2964",
+          "unix_us": "1793175743906932",
+          "elapsed_us": "163772686",
+          "dropped": "0",
+          "focused": "false"
+        },
+        {
+          "event": "input_focus",
+          "pid": "2964",
+          "unix_us": "1793175743907372",
+          "elapsed_us": "163773125",
+          "dropped": "0",
+          "focused": "false"
+        },
+        {
+          "event": "lifecycle_blur_check",
+          "pid": "2964",
+          "unix_us": "1793175743937998",
+          "elapsed_us": "163803752",
+          "dropped": "0",
+          "owned_foreground": "false",
+          "action": "None"
+        },
+        {
+          "event": "desktop_event",
+          "pid": "2964",
+          "unix_us": "1793175818388544",
+          "elapsed_us": "238254297",
+          "dropped": "0",
+          "action": "6"
+        },
+        {
+          "event": "desktop_event",
+          "pid": "2964",
+          "unix_us": "1793175818389067",
+          "elapsed_us": "238254821",
+          "dropped": "0",
+          "action": "5"
+        },
+        {
+          "event": "window_layout",
+          "pid": "2964",
+          "unix_us": "1793175818391514",
+          "elapsed_us": "238257268",
+          "dropped": "0",
+          "reason": "display_or_resume",
+          "applied": "true",
+          "dpi": "96",
+          "x": "1030",
+          "y": "351",
+          "physical_width": "640",
+          "physical_height": "264",
+          "logical_width": "640.0",
+          "logical_height": "264.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1392"
+        },
+        {
+          "event": "native_dpi_changed",
+          "pid": "2964",
+          "unix_us": "1793175818392137",
+          "elapsed_us": "238257890",
+          "dropped": "0",
+          "scale": "1"
+        },
+        {
+          "event": "desktop_event",
+          "pid": "2964",
+          "unix_us": "1793175818432079",
+          "elapsed_us": "238297832",
+          "dropped": "0",
+          "action": "6"
+        },
+        {
+          "event": "desktop_event",
+          "pid": "2964",
+          "unix_us": "1793175818433105",
+          "elapsed_us": "238298858",
+          "dropped": "0",
+          "action": "5"
+        },
+        {
+          "event": "window_layout",
+          "pid": "2964",
+          "unix_us": "1793175818440105",
+          "elapsed_us": "238305858",
+          "dropped": "0",
+          "reason": "display_or_resume",
+          "applied": "true",
+          "dpi": "96",
+          "x": "1030",
+          "y": "351",
+          "physical_width": "640",
+          "physical_height": "264",
+          "logical_width": "640.0",
+          "logical_height": "264.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1392"
+        },
+        {
+          "event": "desktop_event",
+          "pid": "2964",
+          "unix_us": "1793175818453196",
+          "elapsed_us": "238318949",
+          "dropped": "0",
+          "action": "6"
+        },
+        {
+          "event": "desktop_event",
+          "pid": "2964",
+          "unix_us": "1793175818454508",
+          "elapsed_us": "238320262",
+          "dropped": "0",
+          "action": "5"
+        },
+        {
+          "event": "window_layout",
+          "pid": "2964",
+          "unix_us": "1793175818456728",
+          "elapsed_us": "238322482",
+          "dropped": "0",
+          "reason": "display_or_resume",
+          "applied": "true",
+          "dpi": "96",
+          "x": "1030",
+          "y": "351",
+          "physical_width": "640",
+          "physical_height": "264",
+          "logical_width": "640.0",
+          "logical_height": "264.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1392"
+        },
+        {
+          "event": "global_hotkey",
+          "pid": "2964",
+          "unix_us": "1793175834274627",
+          "elapsed_us": "254140380",
+          "dropped": "0",
+          "action": "Show"
+        },
+        {
+          "event": "window_layout",
+          "pid": "2964",
+          "unix_us": "1793175834278425",
+          "elapsed_us": "254144179",
+          "dropped": "0",
+          "reason": "show",
+          "applied": "true",
+          "dpi": "96",
+          "x": "1030",
+          "y": "351",
+          "physical_width": "640",
+          "physical_height": "264",
+          "logical_width": "640.0",
+          "logical_height": "264.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1392"
+        },
+        {
+          "event": "native_focus_sync",
+          "pid": "2964",
+          "unix_us": "1793175834292368",
+          "elapsed_us": "254158122",
+          "dropped": "0",
+          "focused": "true",
+          "source": "GetForegroundWindow+GetFocus"
+        },
+        {
+          "event": "lifecycle_shown",
+          "pid": "2964",
+          "unix_us": "1793175834294042",
+          "elapsed_us": "254159795",
+          "dropped": "0",
+          "reason": "hotkey",
+          "generation": "6",
+          "native_active": "true",
+          "query_bytes": "4",
+          "appearance_open": "false"
+        },
+        {
+          "event": "native_focus",
+          "pid": "2964",
+          "unix_us": "1793175834294688",
+          "elapsed_us": "254160442",
+          "dropped": "0",
+          "focused": "true"
+        },
+        {
+          "event": "input_focus",
+          "pid": "2964",
+          "unix_us": "1793175834296125",
+          "elapsed_us": "254161878",
+          "dropped": "0",
+          "focused": "true"
+        },
+        {
+          "event": "native_key_down",
+          "pid": "2964",
+          "unix_us": "1793175860187537",
+          "elapsed_us": "280053290",
+          "dropped": "0"
+        },
+        {
+          "event": "native_key_down",
+          "pid": "2964",
+          "unix_us": "1793175860189476",
+          "elapsed_us": "280055229",
+          "dropped": "0"
+        },
+        {
+          "event": "input_accepted",
+          "pid": "2964",
+          "unix_us": "1793175860189985",
+          "elapsed_us": "280055738",
+          "dropped": "0",
+          "utf8_bytes": "5",
+          "focused": "true",
+          "native_focused": "true",
+          "visible": "true",
+          "composing": "false"
+        },
+        {
+          "event": "native_focus",
+          "pid": "2964",
+          "unix_us": "1793175860266232",
+          "elapsed_us": "280131985",
+          "dropped": "0",
+          "focused": "false"
+        },
+        {
+          "event": "input_focus",
+          "pid": "2964",
+          "unix_us": "1793175860267287",
+          "elapsed_us": "280133040",
+          "dropped": "0",
+          "focused": "false"
+        },
+        {
+          "event": "lifecycle_blur_check",
+          "pid": "2964",
+          "unix_us": "1793175860296779",
+          "elapsed_us": "280162532",
+          "dropped": "0",
+          "owned_foreground": "false",
+          "action": "Hide"
+        },
+        {
+          "event": "lifecycle_hidden",
+          "pid": "2964",
+          "unix_us": "1793175860300102",
+          "elapsed_us": "280165855",
+          "dropped": "0",
+          "reason": "blur",
+          "generation": "7"
+        },
+        {
+          "event": "desktop_event",
+          "pid": "2964",
+          "unix_us": "1793175893373382",
+          "elapsed_us": "313239136",
+          "dropped": "0",
+          "action": "6"
+        },
+        {
+          "event": "desktop_event",
+          "pid": "2964",
+          "unix_us": "1793175893374210",
+          "elapsed_us": "313239964",
+          "dropped": "0",
+          "action": "5"
+        },
+        {
+          "event": "window_layout",
+          "pid": "2964",
+          "unix_us": "1793175893379735",
+          "elapsed_us": "313245488",
+          "dropped": "0",
+          "reason": "display_or_resume",
+          "applied": "true",
+          "dpi": "144",
+          "x": "1030",
+          "y": "351",
+          "physical_width": "960",
+          "physical_height": "396",
+          "logical_width": "640.0",
+          "logical_height": "264.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1368"
+        },
+        {
+          "event": "native_dpi_changed",
+          "pid": "2964",
+          "unix_us": "1793175893380447",
+          "elapsed_us": "313246200",
+          "dropped": "0",
+          "scale": "1.5"
+        },
+        {
+          "event": "desktop_event",
+          "pid": "2964",
+          "unix_us": "1793175893382085",
+          "elapsed_us": "313247838",
+          "dropped": "0",
+          "action": "6"
+        },
+        {
+          "event": "desktop_event",
+          "pid": "2964",
+          "unix_us": "1793175893382976",
+          "elapsed_us": "313248729",
+          "dropped": "0",
+          "action": "5"
+        },
+        {
+          "event": "desktop_event",
+          "pid": "2964",
+          "unix_us": "1793175893425289",
+          "elapsed_us": "313291043",
+          "dropped": "0",
+          "action": "6"
+        },
+        {
+          "event": "desktop_event",
+          "pid": "2964",
+          "unix_us": "1793175893426063",
+          "elapsed_us": "313291816",
+          "dropped": "0",
+          "action": "5"
+        },
+        {
+          "event": "window_layout",
+          "pid": "2964",
+          "unix_us": "1793175893428227",
+          "elapsed_us": "313293980",
+          "dropped": "0",
+          "reason": "display_or_resume",
+          "applied": "true",
+          "dpi": "144",
+          "x": "1030",
+          "y": "351",
+          "physical_width": "960",
+          "physical_height": "396",
+          "logical_width": "640.0",
+          "logical_height": "264.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1368"
+        },
+        {
+          "event": "global_hotkey",
+          "pid": "2964",
+          "unix_us": "1793175922154813",
+          "elapsed_us": "342020567",
+          "dropped": "0",
+          "action": "Show"
+        },
+        {
+          "event": "window_layout",
+          "pid": "2964",
+          "unix_us": "1793175922155511",
+          "elapsed_us": "342021264",
+          "dropped": "0",
+          "reason": "show",
+          "applied": "true",
+          "dpi": "144",
+          "x": "1030",
+          "y": "351",
+          "physical_width": "960",
+          "physical_height": "396",
+          "logical_width": "640.0",
+          "logical_height": "264.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1368"
+        },
+        {
+          "event": "native_focus_sync",
+          "pid": "2964",
+          "unix_us": "1793175922169471",
+          "elapsed_us": "342035225",
+          "dropped": "0",
+          "focused": "true",
+          "source": "GetForegroundWindow+GetFocus"
+        },
+        {
+          "event": "lifecycle_shown",
+          "pid": "2964",
+          "unix_us": "1793175922171801",
+          "elapsed_us": "342037554",
+          "dropped": "0",
+          "reason": "hotkey",
+          "generation": "8",
+          "native_active": "true",
+          "query_bytes": "5",
+          "appearance_open": "false"
+        },
+        {
+          "event": "native_focus",
+          "pid": "2964",
+          "unix_us": "1793175922172458",
+          "elapsed_us": "342038211",
+          "dropped": "0",
+          "focused": "true"
+        },
+        {
+          "event": "input_focus",
+          "pid": "2964",
+          "unix_us": "1793175922174402",
+          "elapsed_us": "342040155",
+          "dropped": "0",
+          "focused": "true"
+        },
+        {
+          "event": "native_key_down",
+          "pid": "2964",
+          "unix_us": "1793175943487292",
+          "elapsed_us": "363353045",
+          "dropped": "0"
+        },
+        {
+          "event": "native_key_down",
+          "pid": "2964",
+          "unix_us": "1793175943488605",
+          "elapsed_us": "363354358",
+          "dropped": "0"
+        },
+        {
+          "event": "native_key_down",
+          "pid": "2964",
+          "unix_us": "1793175943579332",
+          "elapsed_us": "363445085",
+          "dropped": "0"
+        },
+        {
+          "event": "native_key_down",
+          "pid": "2964",
+          "unix_us": "1793175943581438",
+          "elapsed_us": "363447191",
+          "dropped": "0"
+        },
+        {
+          "event": "input_accepted",
+          "pid": "2964",
+          "unix_us": "1793175943582120",
+          "elapsed_us": "363447873",
+          "dropped": "0",
+          "utf8_bytes": "6",
+          "focused": "true",
+          "native_focused": "true",
+          "visible": "true",
+          "composing": "false"
+        },
+        {
+          "event": "window_layout",
+          "pid": "2964",
+          "unix_us": "1793175943591704",
+          "elapsed_us": "363457457",
+          "dropped": "0",
+          "reason": "content",
+          "applied": "true",
+          "dpi": "144",
+          "x": "1030",
+          "y": "288",
+          "physical_width": "960",
+          "physical_height": "1080",
+          "logical_width": "640.0",
+          "logical_height": "720.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1368"
+        },
+        {
+          "event": "native_focus",
+          "pid": "2964",
+          "unix_us": "1793175960254501",
+          "elapsed_us": "380120254",
+          "dropped": "0",
+          "focused": "false"
+        },
+        {
+          "event": "input_focus",
+          "pid": "2964",
+          "unix_us": "1793175960261226",
+          "elapsed_us": "380126979",
+          "dropped": "0",
+          "focused": "false"
+        },
+        {
+          "event": "lifecycle_blur_check",
+          "pid": "2964",
+          "unix_us": "1793175960284439",
+          "elapsed_us": "380150192",
+          "dropped": "0",
+          "owned_foreground": "false",
+          "action": "Hide"
+        },
+        {
+          "event": "lifecycle_hidden",
+          "pid": "2964",
+          "unix_us": "1793175960287450",
+          "elapsed_us": "380153203",
+          "dropped": "0",
+          "reason": "blur",
+          "generation": "9"
+        },
+        {
+          "event": "desktop_event",
+          "pid": "2964",
+          "unix_us": "1793176022250121",
+          "elapsed_us": "442115874",
+          "dropped": "0",
+          "action": "6"
+        },
+        {
+          "event": "desktop_event",
+          "pid": "2964",
+          "unix_us": "1793176022250884",
+          "elapsed_us": "442116637",
+          "dropped": "0",
+          "action": "5"
+        },
+        {
+          "event": "window_layout",
+          "pid": "2964",
+          "unix_us": "1793176022256095",
+          "elapsed_us": "442121848",
+          "dropped": "0",
+          "reason": "display_or_resume",
+          "applied": "true",
+          "dpi": "192",
+          "x": "1030",
+          "y": "0",
+          "physical_width": "1280",
+          "physical_height": "1344",
+          "logical_width": "640.0",
+          "logical_height": "672.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1344"
+        },
+        {
+          "event": "native_dpi_changed",
+          "pid": "2964",
+          "unix_us": "1793176022256643",
+          "elapsed_us": "442122396",
+          "dropped": "0",
+          "scale": "2"
+        },
+        {
+          "event": "desktop_event",
+          "pid": "2964",
+          "unix_us": "1793176022279330",
+          "elapsed_us": "442145083",
+          "dropped": "0",
+          "action": "6"
+        },
+        {
+          "event": "desktop_event",
+          "pid": "2964",
+          "unix_us": "1793176022280109",
+          "elapsed_us": "442145862",
+          "dropped": "0",
+          "action": "5"
+        },
+        {
+          "event": "window_layout",
+          "pid": "2964",
+          "unix_us": "1793176022286535",
+          "elapsed_us": "442152289",
+          "dropped": "0",
+          "reason": "display_or_resume",
+          "applied": "true",
+          "dpi": "192",
+          "x": "1030",
+          "y": "0",
+          "physical_width": "1280",
+          "physical_height": "1344",
+          "logical_width": "640.0",
+          "logical_height": "672.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1344"
+        },
+        {
+          "event": "desktop_event",
+          "pid": "2964",
+          "unix_us": "1793176022330564",
+          "elapsed_us": "442196318",
+          "dropped": "0",
+          "action": "6"
+        },
+        {
+          "event": "desktop_event",
+          "pid": "2964",
+          "unix_us": "1793176022331552",
+          "elapsed_us": "442197305",
+          "dropped": "0",
+          "action": "5"
+        },
+        {
+          "event": "window_layout",
+          "pid": "2964",
+          "unix_us": "1793176022334417",
+          "elapsed_us": "442200170",
+          "dropped": "0",
+          "reason": "display_or_resume",
+          "applied": "true",
+          "dpi": "192",
+          "x": "1030",
+          "y": "0",
+          "physical_width": "1280",
+          "physical_height": "1344",
+          "logical_width": "640.0",
+          "logical_height": "672.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1344"
+        },
+        {
+          "event": "global_hotkey",
+          "pid": "2964",
+          "unix_us": "1793176045642729",
+          "elapsed_us": "465508482",
+          "dropped": "0",
+          "action": "Show"
+        },
+        {
+          "event": "window_layout",
+          "pid": "2964",
+          "unix_us": "1793176045647152",
+          "elapsed_us": "465512905",
+          "dropped": "0",
+          "reason": "show",
+          "applied": "true",
+          "dpi": "192",
+          "x": "1030",
+          "y": "0",
+          "physical_width": "1280",
+          "physical_height": "1344",
+          "logical_width": "640.0",
+          "logical_height": "672.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1344"
+        },
+        {
+          "event": "native_focus_sync",
+          "pid": "2964",
+          "unix_us": "1793176045659966",
+          "elapsed_us": "465525719",
+          "dropped": "0",
+          "focused": "true",
+          "source": "GetForegroundWindow+GetFocus"
+        },
+        {
+          "event": "lifecycle_shown",
+          "pid": "2964",
+          "unix_us": "1793176045663047",
+          "elapsed_us": "465528800",
+          "dropped": "0",
+          "reason": "hotkey",
+          "generation": "10",
+          "native_active": "true",
+          "query_bytes": "6",
+          "appearance_open": "false"
+        },
+        {
+          "event": "native_focus",
+          "pid": "2964",
+          "unix_us": "1793176045663458",
+          "elapsed_us": "465529211",
+          "dropped": "0",
+          "focused": "true"
+        },
+        {
+          "event": "input_focus",
+          "pid": "2964",
+          "unix_us": "1793176045664501",
+          "elapsed_us": "465530255",
+          "dropped": "0",
+          "focused": "true"
+        },
+        {
+          "event": "native_key_down",
+          "pid": "2964",
+          "unix_us": "1793176061695229",
+          "elapsed_us": "481560982",
+          "dropped": "0"
+        },
+        {
+          "event": "native_key_down",
+          "pid": "2964",
+          "unix_us": "1793176061698522",
+          "elapsed_us": "481564275",
+          "dropped": "0"
+        },
+        {
+          "event": "input_accepted",
+          "pid": "2964",
+          "unix_us": "1793176061699311",
+          "elapsed_us": "481565064",
+          "dropped": "0",
+          "utf8_bytes": "7",
+          "focused": "true",
+          "native_focused": "true",
+          "visible": "true",
+          "composing": "false"
+        },
+        {
+          "event": "native_focus",
+          "pid": "2964",
+          "unix_us": "1793176061791593",
+          "elapsed_us": "481657346",
+          "dropped": "0",
+          "focused": "false"
+        },
+        {
+          "event": "input_focus",
+          "pid": "2964",
+          "unix_us": "1793176061792979",
+          "elapsed_us": "481658733",
+          "dropped": "0",
+          "focused": "false"
+        },
+        {
+          "event": "lifecycle_blur_check",
+          "pid": "2964",
+          "unix_us": "1793176061821958",
+          "elapsed_us": "481687711",
+          "dropped": "0",
+          "owned_foreground": "false",
+          "action": "Hide"
+        },
+        {
+          "event": "lifecycle_hidden",
+          "pid": "2964",
+          "unix_us": "1793176061827363",
+          "elapsed_us": "481693117",
+          "dropped": "0",
+          "reason": "blur",
+          "generation": "11"
+        },
+        {
+          "event": "desktop_event",
+          "pid": "2964",
+          "unix_us": "1793176155402264",
+          "elapsed_us": "575268017",
+          "dropped": "0",
+          "action": "8"
+        },
+        {
+          "event": "window_layout",
+          "pid": "2964",
+          "unix_us": "1793176155403042",
+          "elapsed_us": "575268795",
+          "dropped": "0",
+          "reason": "show",
+          "applied": "true",
+          "dpi": "192",
+          "x": "1030",
+          "y": "0",
+          "physical_width": "1280",
+          "physical_height": "1344",
+          "logical_width": "640.0",
+          "logical_height": "672.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1344"
+        },
+        {
+          "event": "native_focus_sync",
+          "pid": "2964",
+          "unix_us": "1793176155421106",
+          "elapsed_us": "575286859",
+          "dropped": "0",
+          "focused": "true",
+          "source": "GetForegroundWindow+GetFocus"
+        },
+        {
+          "event": "lifecycle_shown",
+          "pid": "2964",
+          "unix_us": "1793176155422706",
+          "elapsed_us": "575288459",
+          "dropped": "0",
+          "reason": "second_instance",
+          "generation": "12",
+          "native_active": "true",
+          "query_bytes": "7",
+          "appearance_open": "false"
+        },
+        {
+          "event": "native_focus",
+          "pid": "2964",
+          "unix_us": "1793176155423019",
+          "elapsed_us": "575288773",
+          "dropped": "0",
+          "focused": "true"
+        },
+        {
+          "event": "input_focus",
+          "pid": "2964",
+          "unix_us": "1793176155432403",
+          "elapsed_us": "575298156",
+          "dropped": "0",
+          "focused": "true"
+        },
+        {
+          "event": "native_focus",
+          "pid": "2964",
+          "unix_us": "1793176258877587",
+          "elapsed_us": "678743340",
+          "dropped": "0",
+          "focused": "false"
+        },
+        {
+          "event": "input_focus",
+          "pid": "2964",
+          "unix_us": "1793176258885252",
+          "elapsed_us": "678751005",
+          "dropped": "0",
+          "focused": "false"
+        },
+        {
+          "event": "lifecycle_blur_check",
+          "pid": "2964",
+          "unix_us": "1793176258908376",
+          "elapsed_us": "678774129",
+          "dropped": "0",
+          "owned_foreground": "false",
+          "action": "Hide"
+        },
+        {
+          "event": "lifecycle_hidden",
+          "pid": "2964",
+          "unix_us": "1793176258912956",
+          "elapsed_us": "678778710",
+          "dropped": "0",
+          "reason": "blur",
+          "generation": "13"
+        },
+        {
+          "event": "desktop_event",
+          "pid": "2964",
+          "unix_us": "1793176315529316",
+          "elapsed_us": "735395069",
+          "dropped": "0",
+          "action": "6"
+        },
+        {
+          "event": "desktop_event",
+          "pid": "2964",
+          "unix_us": "1793176315530337",
+          "elapsed_us": "735396090",
+          "dropped": "0",
+          "action": "5"
+        },
+        {
+          "event": "window_layout",
+          "pid": "2964",
+          "unix_us": "1793176315539332",
+          "elapsed_us": "735405085",
+          "dropped": "0",
+          "reason": "display_or_resume",
+          "applied": "true",
+          "dpi": "96",
+          "x": "1030",
+          "y": "0",
+          "physical_width": "640",
+          "physical_height": "720",
+          "logical_width": "640.0",
+          "logical_height": "720.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1392"
+        },
+        {
+          "event": "native_dpi_changed",
+          "pid": "2964",
+          "unix_us": "1793176315539977",
+          "elapsed_us": "735405730",
+          "dropped": "0",
+          "scale": "1"
+        },
+        {
+          "event": "desktop_event",
+          "pid": "2964",
+          "unix_us": "1793176315542101",
+          "elapsed_us": "735407854",
+          "dropped": "0",
+          "action": "6"
+        },
+        {
+          "event": "desktop_event",
+          "pid": "2964",
+          "unix_us": "1793176315543609",
+          "elapsed_us": "735409363",
+          "dropped": "0",
+          "action": "5"
+        },
+        {
+          "event": "window_layout",
+          "pid": "2964",
+          "unix_us": "1793176315548345",
+          "elapsed_us": "735414099",
+          "dropped": "0",
+          "reason": "display_or_resume",
+          "applied": "true",
+          "dpi": "96",
+          "x": "1030",
+          "y": "0",
+          "physical_width": "640",
+          "physical_height": "720",
+          "logical_width": "640.0",
+          "logical_height": "720.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1392"
+        },
+        {
+          "event": "desktop_event",
+          "pid": "2964",
+          "unix_us": "1793176315553220",
+          "elapsed_us": "735418973",
+          "dropped": "0",
+          "action": "6"
+        },
+        {
+          "event": "desktop_event",
+          "pid": "2964",
+          "unix_us": "1793176315553829",
+          "elapsed_us": "735419582",
+          "dropped": "0",
+          "action": "5"
+        },
+        {
+          "event": "window_layout",
+          "pid": "2964",
+          "unix_us": "1793176315555622",
+          "elapsed_us": "735421375",
+          "dropped": "0",
+          "reason": "display_or_resume",
+          "applied": "true",
+          "dpi": "96",
+          "x": "1030",
+          "y": "0",
+          "physical_width": "640",
+          "physical_height": "720",
+          "logical_width": "640.0",
+          "logical_height": "720.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1392"
+        },
+        {
+          "event": "desktop_event",
+          "pid": "2964",
+          "unix_us": "1793176361100944",
+          "elapsed_us": "780966697",
+          "dropped": "0",
+          "action": "6"
+        },
+        {
+          "event": "desktop_event",
+          "pid": "2964",
+          "unix_us": "1793176361102110",
+          "elapsed_us": "780967864",
+          "dropped": "0",
+          "action": "5"
+        },
+        {
+          "event": "window_layout",
+          "pid": "2964",
+          "unix_us": "1793176361109983",
+          "elapsed_us": "780975736",
+          "dropped": "0",
+          "reason": "display_or_resume",
+          "applied": "true",
+          "dpi": "120",
+          "x": "1030",
+          "y": "0",
+          "physical_width": "800",
+          "physical_height": "900",
+          "logical_width": "640.0",
+          "logical_height": "720.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1380"
+        },
+        {
+          "event": "native_dpi_changed",
+          "pid": "2964",
+          "unix_us": "1793176361110579",
+          "elapsed_us": "780976332",
+          "dropped": "0",
+          "scale": "1.25"
+        },
+        {
+          "event": "desktop_event",
+          "pid": "2964",
+          "unix_us": "1793176361113467",
+          "elapsed_us": "780979220",
+          "dropped": "0",
+          "action": "6"
+        },
+        {
+          "event": "desktop_event",
+          "pid": "2964",
+          "unix_us": "1793176361114474",
+          "elapsed_us": "780980227",
+          "dropped": "0",
+          "action": "5"
+        },
+        {
+          "event": "window_layout",
+          "pid": "2964",
+          "unix_us": "1793176361119256",
+          "elapsed_us": "780985009",
+          "dropped": "0",
+          "reason": "display_or_resume",
+          "applied": "true",
+          "dpi": "120",
+          "x": "1030",
+          "y": "0",
+          "physical_width": "800",
+          "physical_height": "900",
+          "logical_width": "640.0",
+          "logical_height": "720.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1380"
+        },
+        {
+          "event": "desktop_event",
+          "pid": "2964",
+          "unix_us": "1793176361125587",
+          "elapsed_us": "780991340",
+          "dropped": "0",
+          "action": "6"
+        },
+        {
+          "event": "desktop_event",
+          "pid": "2964",
+          "unix_us": "1793176361126437",
+          "elapsed_us": "780992191",
+          "dropped": "0",
+          "action": "5"
+        },
+        {
+          "event": "window_layout",
+          "pid": "2964",
+          "unix_us": "1793176361127668",
+          "elapsed_us": "780993421",
+          "dropped": "0",
+          "reason": "display_or_resume",
+          "applied": "true",
+          "dpi": "120",
+          "x": "1030",
+          "y": "0",
+          "physical_width": "800",
+          "physical_height": "900",
+          "logical_width": "640.0",
+          "logical_height": "720.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1380"
+        },
+        {
+          "event": "desktop_event",
+          "pid": "2964",
+          "unix_us": "1793176426897946",
+          "elapsed_us": "846763700",
+          "dropped": "0",
+          "action": "6"
+        },
+        {
+          "event": "desktop_event",
+          "pid": "2964",
+          "unix_us": "1793176452689492",
+          "elapsed_us": "872555245",
+          "dropped": "0",
+          "action": "1"
+        },
+        {
+          "event": "window_layout",
+          "pid": "2964",
+          "unix_us": "1793176452694536",
+          "elapsed_us": "872560289",
+          "dropped": "0",
+          "reason": "show",
+          "applied": "true",
+          "dpi": "120",
+          "x": "1030",
+          "y": "0",
+          "physical_width": "800",
+          "physical_height": "900",
+          "logical_width": "640.0",
+          "logical_height": "720.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1380"
+        },
+        {
+          "event": "native_focus_sync",
+          "pid": "2964",
+          "unix_us": "1793176452702707",
+          "elapsed_us": "872568461",
+          "dropped": "0",
+          "focused": "false",
+          "source": "GetForegroundWindow+GetFocus"
+        },
+        {
+          "event": "lifecycle_shown",
+          "pid": "2964",
+          "unix_us": "1793176452704508",
+          "elapsed_us": "872570261",
+          "dropped": "0",
+          "reason": "tray",
+          "generation": "14",
+          "native_active": "false",
+          "query_bytes": "7",
+          "appearance_open": "false"
+        },
+        {
+          "event": "input_focus",
+          "pid": "2964",
+          "unix_us": "1793176452705358",
+          "elapsed_us": "872571111",
+          "dropped": "0",
+          "focused": "true"
+        },
+        {
+          "event": "native_focus",
+          "pid": "2964",
+          "unix_us": "1793176473151503",
+          "elapsed_us": "893017256",
+          "dropped": "0",
+          "focused": "true"
+        },
+        {
+          "event": "native_focus",
+          "pid": "2964",
+          "unix_us": "1793176473694552",
+          "elapsed_us": "893560305",
+          "dropped": "0",
+          "focused": "false"
+        },
+        {
+          "event": "input_focus",
+          "pid": "2964",
+          "unix_us": "1793176473696017",
+          "elapsed_us": "893561770",
+          "dropped": "0",
+          "focused": "false"
+        },
+        {
+          "event": "lifecycle_blur_check",
+          "pid": "2964",
+          "unix_us": "1793176473724557",
+          "elapsed_us": "893590310",
+          "dropped": "0",
+          "owned_foreground": "true",
+          "action": "None"
+        },
+        {
+          "event": "desktop_event",
+          "pid": "2964",
+          "unix_us": "1793176510277306",
+          "elapsed_us": "930143059",
+          "dropped": "0",
+          "action": "2"
+        },
+        {
+          "event": "window_layout",
+          "pid": "2964",
+          "unix_us": "1793176510283423",
+          "elapsed_us": "930149176",
+          "dropped": "0",
+          "reason": "show",
+          "applied": "true",
+          "dpi": "120",
+          "x": "1030",
+          "y": "0",
+          "physical_width": "800",
+          "physical_height": "825",
+          "logical_width": "640.0",
+          "logical_height": "660.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1380"
+        },
+        {
+          "event": "native_focus_sync",
+          "pid": "2964",
+          "unix_us": "1793176510293084",
+          "elapsed_us": "930158838",
+          "dropped": "0",
+          "focused": "true",
+          "source": "GetForegroundWindow+GetFocus"
+        },
+        {
+          "event": "lifecycle_shown",
+          "pid": "2964",
+          "unix_us": "1793176510293744",
+          "elapsed_us": "930159497",
+          "dropped": "0",
+          "reason": "tray_settings",
+          "generation": "15",
+          "native_active": "true",
+          "query_bytes": "7",
+          "appearance_open": "true"
+        },
+        {
+          "event": "native_focus",
+          "pid": "2964",
+          "unix_us": "1793176510294393",
+          "elapsed_us": "930160146",
+          "dropped": "0",
+          "focused": "true"
+        },
+        {
+          "event": "desktop_event",
+          "pid": "2964",
+          "unix_us": "1793176510294783",
+          "elapsed_us": "930160536",
+          "dropped": "0",
+          "action": "4"
+        },
+        {
+          "event": "lifecycle_blur_check",
+          "pid": "2964",
+          "unix_us": "1793176510324941",
+          "elapsed_us": "930190694",
+          "dropped": "0",
+          "owned_foreground": "true",
+          "action": "None"
+        },
+        {
+          "event": "native_key_down",
+          "pid": "2964",
+          "unix_us": "1793176712610276",
+          "elapsed_us": "1132476030",
+          "dropped": "0"
+        },
+        {
+          "event": "input_focus",
+          "pid": "2964",
+          "unix_us": "1793176712610987",
+          "elapsed_us": "1132476741",
+          "dropped": "0",
+          "focused": "true"
+        },
+        {
+          "event": "window_layout",
+          "pid": "2964",
+          "unix_us": "1793176712618665",
+          "elapsed_us": "1132484419",
+          "dropped": "0",
+          "reason": "content",
+          "applied": "true",
+          "dpi": "120",
+          "x": "0",
+          "y": "0",
+          "physical_width": "800",
+          "physical_height": "900",
+          "logical_width": "640.0",
+          "logical_height": "720.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1380"
+        },
+        {
+          "event": "native_focus",
+          "pid": "2964",
+          "unix_us": "1793176713274951",
+          "elapsed_us": "1133140704",
+          "dropped": "0",
+          "focused": "false"
+        },
+        {
+          "event": "input_focus",
+          "pid": "2964",
+          "unix_us": "1793176713280210",
+          "elapsed_us": "1133145963",
+          "dropped": "0",
+          "focused": "false"
+        },
+        {
+          "event": "lifecycle_blur_check",
+          "pid": "2964",
+          "unix_us": "1793176713305304",
+          "elapsed_us": "1133171057",
+          "dropped": "0",
+          "owned_foreground": "true",
+          "action": "None"
+        },
+        {
+          "event": "desktop_event",
+          "pid": "2964",
+          "unix_us": "1793176738607355",
+          "elapsed_us": "1158473109",
+          "dropped": "0",
+          "action": "1"
+        },
+        {
+          "event": "window_layout",
+          "pid": "2964",
+          "unix_us": "1793176738612653",
+          "elapsed_us": "1158478406",
+          "dropped": "0",
+          "reason": "show",
+          "applied": "true",
+          "dpi": "120",
+          "x": "0",
+          "y": "0",
+          "physical_width": "800",
+          "physical_height": "900",
+          "logical_width": "640.0",
+          "logical_height": "720.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1380"
+        },
+        {
+          "event": "native_focus_sync",
+          "pid": "2964",
+          "unix_us": "1793176738622283",
+          "elapsed_us": "1158488036",
+          "dropped": "0",
+          "focused": "true",
+          "source": "GetForegroundWindow+GetFocus"
+        },
+        {
+          "event": "lifecycle_shown",
+          "pid": "2964",
+          "unix_us": "1793176738622685",
+          "elapsed_us": "1158488438",
+          "dropped": "0",
+          "reason": "tray",
+          "generation": "16",
+          "native_active": "true",
+          "query_bytes": "7",
+          "appearance_open": "false"
+        },
+        {
+          "event": "native_focus",
+          "pid": "2964",
+          "unix_us": "1793176738622966",
+          "elapsed_us": "1158488719",
+          "dropped": "0",
+          "focused": "true"
+        },
+        {
+          "event": "input_focus",
+          "pid": "2964",
+          "unix_us": "1793176738623229",
+          "elapsed_us": "1158488982",
+          "dropped": "0",
+          "focused": "true"
+        },
+        {
+          "event": "desktop_event",
+          "pid": "2964",
+          "unix_us": "1793176738623805",
+          "elapsed_us": "1158489558",
+          "dropped": "0",
+          "action": "4"
+        },
+        {
+          "event": "lifecycle_blur_check",
+          "pid": "2964",
+          "unix_us": "1793176738653961",
+          "elapsed_us": "1158519714",
+          "dropped": "0",
+          "owned_foreground": "true",
+          "action": "None"
+        },
+        {
+          "event": "native_focus",
+          "pid": "2964",
+          "unix_us": "1793176739003435",
+          "elapsed_us": "1158869188",
+          "dropped": "0",
+          "focused": "false"
+        },
+        {
+          "event": "input_focus",
+          "pid": "2964",
+          "unix_us": "1793176739008704",
+          "elapsed_us": "1158874457",
+          "dropped": "0",
+          "focused": "false"
+        },
+        {
+          "event": "lifecycle_blur_check",
+          "pid": "2964",
+          "unix_us": "1793176739033906",
+          "elapsed_us": "1158899660",
+          "dropped": "0",
+          "owned_foreground": "true",
+          "action": "None"
+        },
+        {
+          "event": "desktop_event",
+          "pid": "2964",
+          "unix_us": "1793176752263741",
+          "elapsed_us": "1172129494",
+          "dropped": "0",
+          "action": "3"
+        },
+        {
+          "event": "lifecycle_quit",
+          "pid": "2964",
+          "unix_us": "1793176752267596",
+          "elapsed_us": "1172133349",
+          "dropped": "0"
+        }
+      ],
+      "DiagnosticEvents": [
+        {
+          "event": "input_edited",
+          "utf8_bytes": "0",
+          "fixture_results": "28",
+          "home": "true"
+        },
+        {
+          "event": "tray_icon",
+          "registered": "true",
+          "physical_size": "20"
+        },
+        {
+          "event": "hotkey_bind",
+          "success": "true",
+          "previous_retained": "false"
+        },
+        {
+          "event": "native_window",
+          "backend": "winit",
+          "renderer": "software",
+          "hwnd": "0x8a09e2",
+          "scale": "1.25",
+          "physical_width": "800",
+          "physical_height": "675"
+        },
+        {
+          "event": "desktop_event",
+          "action": "6"
+        },
+        {
+          "event": "lifecycle_ready",
+          "native_visible": "false",
+          "content_ready": "true",
+          "background": "false",
+          "hotkey_available": "true"
+        },
+        {
+          "event": "window_layout",
+          "reason": "show",
+          "applied": "true",
+          "dpi": "120",
+          "x": "880",
+          "y": "276",
+          "physical_width": "800",
+          "physical_height": "825",
+          "logical_width": "640.0",
+          "logical_height": "660.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1380"
+        },
+        {
+          "event": "native_focus_sync",
+          "focused": "false",
+          "source": "GetForegroundWindow+GetFocus"
+        },
+        {
+          "event": "lifecycle_shown",
+          "reason": "startup",
+          "generation": "1",
+          "native_active": "false",
+          "query_bytes": "0",
+          "appearance_open": "false"
+        },
+        {
+          "event": "input_focus",
+          "focused": "true"
+        },
+        {
+          "event": "desktop_event",
+          "action": "8"
+        },
+        {
+          "event": "window_layout",
+          "reason": "show",
+          "applied": "true",
+          "dpi": "120",
+          "x": "880",
+          "y": "276",
+          "physical_width": "800",
+          "physical_height": "825",
+          "logical_width": "640.0",
+          "logical_height": "660.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1380"
+        },
+        {
+          "event": "native_focus_sync",
+          "focused": "false",
+          "source": "GetForegroundWindow+GetFocus"
+        },
+        {
+          "event": "lifecycle_shown",
+          "reason": "second_instance",
+          "generation": "2",
+          "native_active": "false",
+          "query_bytes": "0",
+          "appearance_open": "false"
+        },
+        {
+          "event": "input_focus",
+          "focused": "false"
+        },
+        {
+          "event": "global_hotkey",
+          "action": "Hide"
+        },
+        {
+          "event": "lifecycle_hidden",
+          "reason": "hotkey",
+          "generation": "3"
+        },
+        {
+          "event": "global_hotkey",
+          "action": "Show"
+        },
+        {
+          "event": "window_layout",
+          "reason": "show",
+          "applied": "true",
+          "dpi": "120",
+          "x": "880",
+          "y": "276",
+          "physical_width": "800",
+          "physical_height": "825",
+          "logical_width": "640.0",
+          "logical_height": "660.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1380"
+        },
+        {
+          "event": "native_focus_sync",
+          "focused": "true",
+          "source": "GetForegroundWindow+GetFocus"
+        },
+        {
+          "event": "lifecycle_shown",
+          "reason": "hotkey",
+          "generation": "4",
+          "native_active": "true",
+          "query_bytes": "0",
+          "appearance_open": "false"
+        },
+        {
+          "event": "window_focus",
+          "focused": "true"
+        },
+        {
+          "event": "input_focus",
+          "focused": "true"
+        },
+        {
+          "event": "input_edited",
+          "utf8_bytes": "4",
+          "fixture_results": "2",
+          "home": "false"
+        },
+        {
+          "event": "window_layout",
+          "reason": "content",
+          "applied": "true",
+          "dpi": "120",
+          "x": "880",
+          "y": "276",
+          "physical_width": "800",
+          "physical_height": "330",
+          "logical_width": "640.0",
+          "logical_height": "264.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1380"
+        },
+        {
+          "event": "window_drag",
+          "started": "true"
+        },
+        {
+          "event": "lifecycle_hidden",
+          "reason": "close",
+          "generation": "5"
+        },
+        {
+          "event": "window_focus",
+          "focused": "false"
+        },
+        {
+          "event": "input_focus",
+          "focused": "false"
+        },
+        {
+          "event": "lifecycle_blur_check",
+          "owned_foreground": "false",
+          "action": "None"
+        },
+        {
+          "event": "tray_icon",
+          "registered": "true",
+          "physical_size": "16"
+        },
+        {
+          "event": "desktop_event",
+          "action": "6"
+        },
+        {
+          "event": "desktop_event",
+          "action": "5"
+        },
+        {
+          "event": "window_layout",
+          "reason": "display_or_resume",
+          "applied": "true",
+          "dpi": "96",
+          "x": "1030",
+          "y": "351",
+          "physical_width": "640",
+          "physical_height": "264",
+          "logical_width": "640.0",
+          "logical_height": "264.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1392"
+        },
+        {
+          "event": "native_dpi_changed",
+          "scale": "1"
+        },
+        {
+          "event": "tray_icon",
+          "registered": "true",
+          "physical_size": "16"
+        },
+        {
+          "event": "desktop_event",
+          "action": "6"
+        },
+        {
+          "event": "desktop_event",
+          "action": "5"
+        },
+        {
+          "event": "window_layout",
+          "reason": "display_or_resume",
+          "applied": "true",
+          "dpi": "96",
+          "x": "1030",
+          "y": "351",
+          "physical_width": "640",
+          "physical_height": "264",
+          "logical_width": "640.0",
+          "logical_height": "264.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1392"
+        },
+        {
+          "event": "tray_icon",
+          "registered": "true",
+          "physical_size": "16"
+        },
+        {
+          "event": "desktop_event",
+          "action": "6"
+        },
+        {
+          "event": "desktop_event",
+          "action": "5"
+        },
+        {
+          "event": "window_layout",
+          "reason": "display_or_resume",
+          "applied": "true",
+          "dpi": "96",
+          "x": "1030",
+          "y": "351",
+          "physical_width": "640",
+          "physical_height": "264",
+          "logical_width": "640.0",
+          "logical_height": "264.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1392"
+        },
+        {
+          "event": "global_hotkey",
+          "action": "Show"
+        },
+        {
+          "event": "window_layout",
+          "reason": "show",
+          "applied": "true",
+          "dpi": "96",
+          "x": "1030",
+          "y": "351",
+          "physical_width": "640",
+          "physical_height": "264",
+          "logical_width": "640.0",
+          "logical_height": "264.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1392"
+        },
+        {
+          "event": "native_focus_sync",
+          "focused": "true",
+          "source": "GetForegroundWindow+GetFocus"
+        },
+        {
+          "event": "lifecycle_shown",
+          "reason": "hotkey",
+          "generation": "6",
+          "native_active": "true",
+          "query_bytes": "4",
+          "appearance_open": "false"
+        },
+        {
+          "event": "window_focus",
+          "focused": "true"
+        },
+        {
+          "event": "input_focus",
+          "focused": "true"
+        },
+        {
+          "event": "input_edited",
+          "utf8_bytes": "5",
+          "fixture_results": "2",
+          "home": "false"
+        },
+        {
+          "event": "window_focus",
+          "focused": "false"
+        },
+        {
+          "event": "input_focus",
+          "focused": "false"
+        },
+        {
+          "event": "lifecycle_blur_check",
+          "owned_foreground": "false",
+          "action": "Hide"
+        },
+        {
+          "event": "lifecycle_hidden",
+          "reason": "blur",
+          "generation": "7"
+        },
+        {
+          "event": "tray_icon",
+          "registered": "true",
+          "physical_size": "24"
+        },
+        {
+          "event": "desktop_event",
+          "action": "6"
+        },
+        {
+          "event": "desktop_event",
+          "action": "5"
+        },
+        {
+          "event": "window_layout",
+          "reason": "display_or_resume",
+          "applied": "true",
+          "dpi": "144",
+          "x": "1030",
+          "y": "351",
+          "physical_width": "960",
+          "physical_height": "396",
+          "logical_width": "640.0",
+          "logical_height": "264.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1368"
+        },
+        {
+          "event": "native_dpi_changed",
+          "scale": "1.5"
+        },
+        {
+          "event": "tray_icon",
+          "registered": "true",
+          "physical_size": "24"
+        },
+        {
+          "event": "desktop_event",
+          "action": "6"
+        },
+        {
+          "event": "desktop_event",
+          "action": "5"
+        },
+        {
+          "event": "tray_icon",
+          "registered": "true",
+          "physical_size": "24"
+        },
+        {
+          "event": "desktop_event",
+          "action": "6"
+        },
+        {
+          "event": "desktop_event",
+          "action": "5"
+        },
+        {
+          "event": "window_layout",
+          "reason": "display_or_resume",
+          "applied": "true",
+          "dpi": "144",
+          "x": "1030",
+          "y": "351",
+          "physical_width": "960",
+          "physical_height": "396",
+          "logical_width": "640.0",
+          "logical_height": "264.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1368"
+        },
+        {
+          "event": "global_hotkey",
+          "action": "Show"
+        },
+        {
+          "event": "window_layout",
+          "reason": "show",
+          "applied": "true",
+          "dpi": "144",
+          "x": "1030",
+          "y": "351",
+          "physical_width": "960",
+          "physical_height": "396",
+          "logical_width": "640.0",
+          "logical_height": "264.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1368"
+        },
+        {
+          "event": "native_focus_sync",
+          "focused": "true",
+          "source": "GetForegroundWindow+GetFocus"
+        },
+        {
+          "event": "lifecycle_shown",
+          "reason": "hotkey",
+          "generation": "8",
+          "native_active": "true",
+          "query_bytes": "5",
+          "appearance_open": "false"
+        },
+        {
+          "event": "window_focus",
+          "focused": "true"
+        },
+        {
+          "event": "input_focus",
+          "focused": "true"
+        },
+        {
+          "event": "input_edited",
+          "utf8_bytes": "6",
+          "fixture_results": "13",
+          "home": "false"
+        },
+        {
+          "event": "window_layout",
+          "reason": "content",
+          "applied": "true",
+          "dpi": "144",
+          "x": "1030",
+          "y": "288",
+          "physical_width": "960",
+          "physical_height": "1080",
+          "logical_width": "640.0",
+          "logical_height": "720.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1368"
+        },
+        {
+          "event": "window_focus",
+          "focused": "false"
+        },
+        {
+          "event": "input_focus",
+          "focused": "false"
+        },
+        {
+          "event": "lifecycle_blur_check",
+          "owned_foreground": "false",
+          "action": "Hide"
+        },
+        {
+          "event": "lifecycle_hidden",
+          "reason": "blur",
+          "generation": "9"
+        },
+        {
+          "event": "tray_icon",
+          "registered": "true",
+          "physical_size": "32"
+        },
+        {
+          "event": "desktop_event",
+          "action": "6"
+        },
+        {
+          "event": "desktop_event",
+          "action": "5"
+        },
+        {
+          "event": "window_layout",
+          "reason": "display_or_resume",
+          "applied": "true",
+          "dpi": "192",
+          "x": "1030",
+          "y": "0",
+          "physical_width": "1280",
+          "physical_height": "1344",
+          "logical_width": "640.0",
+          "logical_height": "672.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1344"
+        },
+        {
+          "event": "native_dpi_changed",
+          "scale": "2"
+        },
+        {
+          "event": "tray_icon",
+          "registered": "true",
+          "physical_size": "32"
+        },
+        {
+          "event": "desktop_event",
+          "action": "6"
+        },
+        {
+          "event": "desktop_event",
+          "action": "5"
+        },
+        {
+          "event": "window_layout",
+          "reason": "display_or_resume",
+          "applied": "true",
+          "dpi": "192",
+          "x": "1030",
+          "y": "0",
+          "physical_width": "1280",
+          "physical_height": "1344",
+          "logical_width": "640.0",
+          "logical_height": "672.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1344"
+        },
+        {
+          "event": "tray_icon",
+          "registered": "true",
+          "physical_size": "32"
+        },
+        {
+          "event": "desktop_event",
+          "action": "6"
+        },
+        {
+          "event": "desktop_event",
+          "action": "5"
+        },
+        {
+          "event": "window_layout",
+          "reason": "display_or_resume",
+          "applied": "true",
+          "dpi": "192",
+          "x": "1030",
+          "y": "0",
+          "physical_width": "1280",
+          "physical_height": "1344",
+          "logical_width": "640.0",
+          "logical_height": "672.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1344"
+        },
+        {
+          "event": "global_hotkey",
+          "action": "Show"
+        },
+        {
+          "event": "window_layout",
+          "reason": "show",
+          "applied": "true",
+          "dpi": "192",
+          "x": "1030",
+          "y": "0",
+          "physical_width": "1280",
+          "physical_height": "1344",
+          "logical_width": "640.0",
+          "logical_height": "672.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1344"
+        },
+        {
+          "event": "native_focus_sync",
+          "focused": "true",
+          "source": "GetForegroundWindow+GetFocus"
+        },
+        {
+          "event": "lifecycle_shown",
+          "reason": "hotkey",
+          "generation": "10",
+          "native_active": "true",
+          "query_bytes": "6",
+          "appearance_open": "false"
+        },
+        {
+          "event": "window_focus",
+          "focused": "true"
+        },
+        {
+          "event": "input_focus",
+          "focused": "true"
+        },
+        {
+          "event": "input_edited",
+          "utf8_bytes": "7",
+          "fixture_results": "13",
+          "home": "false"
+        },
+        {
+          "event": "window_focus",
+          "focused": "false"
+        },
+        {
+          "event": "input_focus",
+          "focused": "false"
+        },
+        {
+          "event": "lifecycle_blur_check",
+          "owned_foreground": "false",
+          "action": "Hide"
+        },
+        {
+          "event": "lifecycle_hidden",
+          "reason": "blur",
+          "generation": "11"
+        },
+        {
+          "event": "desktop_event",
+          "action": "8"
+        },
+        {
+          "event": "window_layout",
+          "reason": "show",
+          "applied": "true",
+          "dpi": "192",
+          "x": "1030",
+          "y": "0",
+          "physical_width": "1280",
+          "physical_height": "1344",
+          "logical_width": "640.0",
+          "logical_height": "672.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1344"
+        },
+        {
+          "event": "native_focus_sync",
+          "focused": "true",
+          "source": "GetForegroundWindow+GetFocus"
+        },
+        {
+          "event": "lifecycle_shown",
+          "reason": "second_instance",
+          "generation": "12",
+          "native_active": "true",
+          "query_bytes": "7",
+          "appearance_open": "false"
+        },
+        {
+          "event": "window_focus",
+          "focused": "true"
+        },
+        {
+          "event": "input_focus",
+          "focused": "true"
+        },
+        {
+          "event": "window_focus",
+          "focused": "false"
+        },
+        {
+          "event": "input_focus",
+          "focused": "false"
+        },
+        {
+          "event": "lifecycle_blur_check",
+          "owned_foreground": "false",
+          "action": "Hide"
+        },
+        {
+          "event": "lifecycle_hidden",
+          "reason": "blur",
+          "generation": "13"
+        },
+        {
+          "event": "tray_icon",
+          "registered": "true",
+          "physical_size": "16"
+        },
+        {
+          "event": "desktop_event",
+          "action": "6"
+        },
+        {
+          "event": "desktop_event",
+          "action": "5"
+        },
+        {
+          "event": "window_layout",
+          "reason": "display_or_resume",
+          "applied": "true",
+          "dpi": "96",
+          "x": "1030",
+          "y": "0",
+          "physical_width": "640",
+          "physical_height": "720",
+          "logical_width": "640.0",
+          "logical_height": "720.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1392"
+        },
+        {
+          "event": "native_dpi_changed",
+          "scale": "1"
+        },
+        {
+          "event": "tray_icon",
+          "registered": "true",
+          "physical_size": "16"
+        },
+        {
+          "event": "desktop_event",
+          "action": "6"
+        },
+        {
+          "event": "desktop_event",
+          "action": "5"
+        },
+        {
+          "event": "window_layout",
+          "reason": "display_or_resume",
+          "applied": "true",
+          "dpi": "96",
+          "x": "1030",
+          "y": "0",
+          "physical_width": "640",
+          "physical_height": "720",
+          "logical_width": "640.0",
+          "logical_height": "720.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1392"
+        },
+        {
+          "event": "tray_icon",
+          "registered": "true",
+          "physical_size": "16"
+        },
+        {
+          "event": "desktop_event",
+          "action": "6"
+        },
+        {
+          "event": "desktop_event",
+          "action": "5"
+        },
+        {
+          "event": "window_layout",
+          "reason": "display_or_resume",
+          "applied": "true",
+          "dpi": "96",
+          "x": "1030",
+          "y": "0",
+          "physical_width": "640",
+          "physical_height": "720",
+          "logical_width": "640.0",
+          "logical_height": "720.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1392"
+        },
+        {
+          "event": "tray_icon",
+          "registered": "true",
+          "physical_size": "20"
+        },
+        {
+          "event": "desktop_event",
+          "action": "6"
+        },
+        {
+          "event": "desktop_event",
+          "action": "5"
+        },
+        {
+          "event": "window_layout",
+          "reason": "display_or_resume",
+          "applied": "true",
+          "dpi": "120",
+          "x": "1030",
+          "y": "0",
+          "physical_width": "800",
+          "physical_height": "900",
+          "logical_width": "640.0",
+          "logical_height": "720.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1380"
+        },
+        {
+          "event": "native_dpi_changed",
+          "scale": "1.25"
+        },
+        {
+          "event": "tray_icon",
+          "registered": "true",
+          "physical_size": "20"
+        },
+        {
+          "event": "desktop_event",
+          "action": "6"
+        },
+        {
+          "event": "desktop_event",
+          "action": "5"
+        },
+        {
+          "event": "window_layout",
+          "reason": "display_or_resume",
+          "applied": "true",
+          "dpi": "120",
+          "x": "1030",
+          "y": "0",
+          "physical_width": "800",
+          "physical_height": "900",
+          "logical_width": "640.0",
+          "logical_height": "720.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1380"
+        },
+        {
+          "event": "tray_icon",
+          "registered": "true",
+          "physical_size": "20"
+        },
+        {
+          "event": "desktop_event",
+          "action": "6"
+        },
+        {
+          "event": "desktop_event",
+          "action": "5"
+        },
+        {
+          "event": "window_layout",
+          "reason": "display_or_resume",
+          "applied": "true",
+          "dpi": "120",
+          "x": "1030",
+          "y": "0",
+          "physical_width": "800",
+          "physical_height": "900",
+          "logical_width": "640.0",
+          "logical_height": "720.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1380"
+        },
+        {
+          "event": "tray_icon",
+          "registered": "true",
+          "physical_size": "20"
+        },
+        {
+          "event": "desktop_event",
+          "action": "6"
+        },
+        {
+          "event": "desktop_event",
+          "action": "1"
+        },
+        {
+          "event": "window_layout",
+          "reason": "show",
+          "applied": "true",
+          "dpi": "120",
+          "x": "1030",
+          "y": "0",
+          "physical_width": "800",
+          "physical_height": "900",
+          "logical_width": "640.0",
+          "logical_height": "720.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1380"
+        },
+        {
+          "event": "native_focus_sync",
+          "focused": "false",
+          "source": "GetForegroundWindow+GetFocus"
+        },
+        {
+          "event": "lifecycle_shown",
+          "reason": "tray",
+          "generation": "14",
+          "native_active": "false",
+          "query_bytes": "7",
+          "appearance_open": "false"
+        },
+        {
+          "event": "input_focus",
+          "focused": "true"
+        },
+        {
+          "event": "window_focus",
+          "focused": "true"
+        },
+        {
+          "event": "window_focus",
+          "focused": "false"
+        },
+        {
+          "event": "input_focus",
+          "focused": "false"
+        },
+        {
+          "event": "lifecycle_blur_check",
+          "owned_foreground": "true",
+          "action": "None"
+        },
+        {
+          "event": "desktop_event",
+          "action": "2"
+        },
+        {
+          "event": "window_layout",
+          "reason": "show",
+          "applied": "true",
+          "dpi": "120",
+          "x": "1030",
+          "y": "0",
+          "physical_width": "800",
+          "physical_height": "825",
+          "logical_width": "640.0",
+          "logical_height": "660.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1380"
+        },
+        {
+          "event": "native_focus_sync",
+          "focused": "true",
+          "source": "GetForegroundWindow+GetFocus"
+        },
+        {
+          "event": "lifecycle_shown",
+          "reason": "tray_settings",
+          "generation": "15",
+          "native_active": "true",
+          "query_bytes": "7",
+          "appearance_open": "true"
+        },
+        {
+          "event": "window_focus",
+          "focused": "true"
+        },
+        {
+          "event": "desktop_event",
+          "action": "4"
+        },
+        {
+          "event": "lifecycle_blur_check",
+          "owned_foreground": "true",
+          "action": "None"
+        },
+        {
+          "event": "input_focus",
+          "focused": "true"
+        },
+        {
+          "event": "window_layout",
+          "reason": "content",
+          "applied": "true",
+          "dpi": "120",
+          "x": "0",
+          "y": "0",
+          "physical_width": "800",
+          "physical_height": "900",
+          "logical_width": "640.0",
+          "logical_height": "720.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1380"
+        },
+        {
+          "event": "window_focus",
+          "focused": "false"
+        },
+        {
+          "event": "input_focus",
+          "focused": "false"
+        },
+        {
+          "event": "lifecycle_blur_check",
+          "owned_foreground": "true",
+          "action": "None"
+        },
+        {
+          "event": "desktop_event",
+          "action": "1"
+        },
+        {
+          "event": "window_layout",
+          "reason": "show",
+          "applied": "true",
+          "dpi": "120",
+          "x": "0",
+          "y": "0",
+          "physical_width": "800",
+          "physical_height": "900",
+          "logical_width": "640.0",
+          "logical_height": "720.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1380"
+        },
+        {
+          "event": "native_focus_sync",
+          "focused": "true",
+          "source": "GetForegroundWindow+GetFocus"
+        },
+        {
+          "event": "lifecycle_shown",
+          "reason": "tray",
+          "generation": "16",
+          "native_active": "true",
+          "query_bytes": "7",
+          "appearance_open": "false"
+        },
+        {
+          "event": "window_focus",
+          "focused": "true"
+        },
+        {
+          "event": "input_focus",
+          "focused": "true"
+        },
+        {
+          "event": "desktop_event",
+          "action": "4"
+        },
+        {
+          "event": "lifecycle_blur_check",
+          "owned_foreground": "true",
+          "action": "None"
+        },
+        {
+          "event": "window_focus",
+          "focused": "false"
+        },
+        {
+          "event": "input_focus",
+          "focused": "false"
+        },
+        {
+          "event": "lifecycle_blur_check",
+          "owned_foreground": "true",
+          "action": "None"
+        },
+        {
+          "event": "desktop_event",
+          "action": "3"
+        },
+        {
+          "event": "lifecycle_quit"
+        },
+        {
+          "event": "desktop_stopped",
+          "tray_removed": "true"
+        }
+      ]
+    },
+    {
+      "Name": "femtovg-production",
+      "Renderer": "femtovg",
+      "ProcessId": 30252,
+      "NativeWindow": "20608",
+      "ExecutableSHA256": "E7E1BBB2E2DD05BB89C33001302DAD9C282D0FF11459598D66CBDA568D5D11F3",
+      "StartedAt": "2026-10-28T16:25:21.8960000+08:00",
+      "FinishedAt": "2026-10-28T16:40:11.2120000+08:00",
+      "EventLogSHA256": "55317474F161A15D8681BCBDBCAD9E5C4410C12DFC3EC9A65264BC1A4126F452",
+      "DiagnosticsLogSHA256": "8FA529447AA9605C95432E9268E428BF8DFA6B8811909C710EDF48FB9A0F3E45",
+      "EventCount": 92,
+      "SourceFingerprintCount": 47,
+      "AllSourceFingerprintsMatch": true,
+      "AllEventsDroppedZero": true,
+      "NativeWindowEventCount": 1,
+      "AcceptedNativeFocusedInputCount": 2,
+      "NativeFocusDeniedObservations": 1,
+      "Events": [
+        {
+          "event": "main_started",
+          "pid": "30252",
+          "unix_us": "1793175921895951",
+          "elapsed_us": "1900",
+          "dropped": "0",
+          "renderer": "femtovg",
+          "backend": "winit"
+        },
+        {
+          "event": "component_created",
+          "pid": "30252",
+          "unix_us": "1793175922094541",
+          "elapsed_us": "200490",
+          "dropped": "0"
+        },
+        {
+          "event": "hotkey_bind",
+          "pid": "30252",
+          "unix_us": "1793175922106963",
+          "elapsed_us": "212912",
+          "dropped": "0",
+          "success": "true",
+          "previous_retained": "false"
+        },
+        {
+          "event": "native_window",
+          "pid": "30252",
+          "unix_us": "1793175922231468",
+          "elapsed_us": "337417",
+          "dropped": "0",
+          "hwnd": "20608",
+          "scale": "1.5",
+          "physical_width": "960",
+          "physical_height": "810"
+        },
+        {
+          "event": "desktop_event",
+          "pid": "30252",
+          "unix_us": "1793175922240577",
+          "elapsed_us": "346526",
+          "dropped": "0",
+          "action": "6"
+        },
+        {
+          "event": "lifecycle_ready",
+          "pid": "30252",
+          "unix_us": "1793175922243219",
+          "elapsed_us": "349168",
+          "dropped": "0",
+          "native_visible": "false",
+          "content_ready": "true",
+          "background": "true",
+          "hotkey_available": "true"
+        },
+        {
+          "event": "lifecycle_hidden",
+          "pid": "30252",
+          "unix_us": "1793175922245579",
+          "elapsed_us": "351528",
+          "dropped": "0",
+          "reason": "startup",
+          "generation": "1"
+        },
+        {
+          "event": "global_hotkey",
+          "pid": "30252",
+          "unix_us": "1793175963436993",
+          "elapsed_us": "41542942",
+          "dropped": "0",
+          "action": "Show"
+        },
+        {
+          "event": "window_layout",
+          "pid": "30252",
+          "unix_us": "1793175963440006",
+          "elapsed_us": "41545956",
+          "dropped": "0",
+          "reason": "show",
+          "applied": "true",
+          "dpi": "144",
+          "x": "800",
+          "y": "273",
+          "physical_width": "960",
+          "physical_height": "990",
+          "logical_width": "640.0",
+          "logical_height": "660.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1368"
+        },
+        {
+          "event": "first_opengl_frame",
+          "pid": "30252",
+          "unix_us": "1793175963474712",
+          "elapsed_us": "41580661",
+          "dropped": "0",
+          "graphics_api": "NativeOpenGL"
+        },
+        {
+          "event": "native_focus_sync",
+          "pid": "30252",
+          "unix_us": "1793175963622862",
+          "elapsed_us": "41728811",
+          "dropped": "0",
+          "focused": "true",
+          "source": "GetForegroundWindow+GetFocus"
+        },
+        {
+          "event": "lifecycle_shown",
+          "pid": "30252",
+          "unix_us": "1793175963631460",
+          "elapsed_us": "41737409",
+          "dropped": "0",
+          "reason": "hotkey",
+          "generation": "2",
+          "native_active": "true",
+          "query_bytes": "0",
+          "appearance_open": "false"
+        },
+        {
+          "event": "native_focus",
+          "pid": "30252",
+          "unix_us": "1793175963632185",
+          "elapsed_us": "41738134",
+          "dropped": "0",
+          "focused": "true"
+        },
+        {
+          "event": "first_redraw_requested",
+          "pid": "30252",
+          "unix_us": "1793175963635032",
+          "elapsed_us": "41740981",
+          "dropped": "0",
+          "completed_frame": "false"
+        },
+        {
+          "event": "input_focus",
+          "pid": "30252",
+          "unix_us": "1793175963635072",
+          "elapsed_us": "41741021",
+          "dropped": "0",
+          "focused": "true"
+        },
+        {
+          "event": "native_key_down",
+          "pid": "30252",
+          "unix_us": "1793175991856619",
+          "elapsed_us": "69962568",
+          "dropped": "0"
+        },
+        {
+          "event": "native_key_down",
+          "pid": "30252",
+          "unix_us": "1793175991858772",
+          "elapsed_us": "69964721",
+          "dropped": "0"
+        },
+        {
+          "event": "input_accepted",
+          "pid": "30252",
+          "unix_us": "1793175991859767",
+          "elapsed_us": "69965716",
+          "dropped": "0",
+          "utf8_bytes": "4",
+          "focused": "true",
+          "native_focused": "true",
+          "visible": "true",
+          "composing": "false"
+        },
+        {
+          "event": "window_layout",
+          "pid": "30252",
+          "unix_us": "1793175991869339",
+          "elapsed_us": "69975288",
+          "dropped": "0",
+          "reason": "content",
+          "applied": "true",
+          "dpi": "144",
+          "x": "800",
+          "y": "273",
+          "physical_width": "960",
+          "physical_height": "396",
+          "logical_width": "640.0",
+          "logical_height": "264.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1368"
+        },
+        {
+          "event": "native_focus",
+          "pid": "30252",
+          "unix_us": "1793175991949412",
+          "elapsed_us": "70055361",
+          "dropped": "0",
+          "focused": "false"
+        },
+        {
+          "event": "input_focus",
+          "pid": "30252",
+          "unix_us": "1793175991950480",
+          "elapsed_us": "70056429",
+          "dropped": "0",
+          "focused": "false"
+        },
+        {
+          "event": "lifecycle_blur_check",
+          "pid": "30252",
+          "unix_us": "1793175991980074",
+          "elapsed_us": "70086022",
+          "dropped": "0",
+          "owned_foreground": "false",
+          "action": "Hide"
+        },
+        {
+          "event": "lifecycle_hidden",
+          "pid": "30252",
+          "unix_us": "1793175991982394",
+          "elapsed_us": "70088343",
+          "dropped": "0",
+          "reason": "blur",
+          "generation": "3"
+        },
+        {
+          "event": "desktop_event",
+          "pid": "30252",
+          "unix_us": "1793176022249925",
+          "elapsed_us": "100355874",
+          "dropped": "0",
+          "action": "6"
+        },
+        {
+          "event": "desktop_event",
+          "pid": "30252",
+          "unix_us": "1793176022250573",
+          "elapsed_us": "100356522",
+          "dropped": "0",
+          "action": "5"
+        },
+        {
+          "event": "window_layout",
+          "pid": "30252",
+          "unix_us": "1793176022256323",
+          "elapsed_us": "100362272",
+          "dropped": "0",
+          "reason": "display_or_resume",
+          "applied": "true",
+          "dpi": "192",
+          "x": "800",
+          "y": "273",
+          "physical_width": "1280",
+          "physical_height": "528",
+          "logical_width": "640.0",
+          "logical_height": "264.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1344"
+        },
+        {
+          "event": "native_dpi_changed",
+          "pid": "30252",
+          "unix_us": "1793176022256789",
+          "elapsed_us": "100362738",
+          "dropped": "0",
+          "scale": "2"
+        },
+        {
+          "event": "desktop_event",
+          "pid": "30252",
+          "unix_us": "1793176022277842",
+          "elapsed_us": "100383791",
+          "dropped": "0",
+          "action": "6"
+        },
+        {
+          "event": "desktop_event",
+          "pid": "30252",
+          "unix_us": "1793176022278935",
+          "elapsed_us": "100384884",
+          "dropped": "0",
+          "action": "5"
+        },
+        {
+          "event": "window_layout",
+          "pid": "30252",
+          "unix_us": "1793176022286534",
+          "elapsed_us": "100392483",
+          "dropped": "0",
+          "reason": "display_or_resume",
+          "applied": "true",
+          "dpi": "192",
+          "x": "800",
+          "y": "273",
+          "physical_width": "1280",
+          "physical_height": "528",
+          "logical_width": "640.0",
+          "logical_height": "264.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1344"
+        },
+        {
+          "event": "desktop_event",
+          "pid": "30252",
+          "unix_us": "1793176022331534",
+          "elapsed_us": "100437483",
+          "dropped": "0",
+          "action": "6"
+        },
+        {
+          "event": "desktop_event",
+          "pid": "30252",
+          "unix_us": "1793176022332870",
+          "elapsed_us": "100438819",
+          "dropped": "0",
+          "action": "5"
+        },
+        {
+          "event": "window_layout",
+          "pid": "30252",
+          "unix_us": "1793176022335328",
+          "elapsed_us": "100441277",
+          "dropped": "0",
+          "reason": "display_or_resume",
+          "applied": "true",
+          "dpi": "192",
+          "x": "800",
+          "y": "273",
+          "physical_width": "1280",
+          "physical_height": "528",
+          "logical_width": "640.0",
+          "logical_height": "264.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1344"
+        },
+        {
+          "event": "global_hotkey",
+          "pid": "30252",
+          "unix_us": "1793176064978640",
+          "elapsed_us": "143084589",
+          "dropped": "0",
+          "action": "Show"
+        },
+        {
+          "event": "window_layout",
+          "pid": "30252",
+          "unix_us": "1793176064979458",
+          "elapsed_us": "143085407",
+          "dropped": "0",
+          "reason": "show",
+          "applied": "true",
+          "dpi": "192",
+          "x": "800",
+          "y": "273",
+          "physical_width": "1280",
+          "physical_height": "528",
+          "logical_width": "640.0",
+          "logical_height": "264.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1344"
+        },
+        {
+          "event": "native_focus_sync",
+          "pid": "30252",
+          "unix_us": "1793176064997855",
+          "elapsed_us": "143103804",
+          "dropped": "0",
+          "focused": "true",
+          "source": "GetForegroundWindow+GetFocus"
+        },
+        {
+          "event": "lifecycle_shown",
+          "pid": "30252",
+          "unix_us": "1793176064999537",
+          "elapsed_us": "143105486",
+          "dropped": "0",
+          "reason": "hotkey",
+          "generation": "4",
+          "native_active": "true",
+          "query_bytes": "4",
+          "appearance_open": "false"
+        },
+        {
+          "event": "native_focus",
+          "pid": "30252",
+          "unix_us": "1793176064999898",
+          "elapsed_us": "143105847",
+          "dropped": "0",
+          "focused": "true"
+        },
+        {
+          "event": "input_focus",
+          "pid": "30252",
+          "unix_us": "1793176065000876",
+          "elapsed_us": "143106825",
+          "dropped": "0",
+          "focused": "true"
+        },
+        {
+          "event": "native_focus",
+          "pid": "30252",
+          "unix_us": "1793176090718385",
+          "elapsed_us": "168824335",
+          "dropped": "0",
+          "focused": "false"
+        },
+        {
+          "event": "input_focus",
+          "pid": "30252",
+          "unix_us": "1793176090726838",
+          "elapsed_us": "168832787",
+          "dropped": "0",
+          "focused": "false"
+        },
+        {
+          "event": "lifecycle_blur_check",
+          "pid": "30252",
+          "unix_us": "1793176090749086",
+          "elapsed_us": "168855035",
+          "dropped": "0",
+          "owned_foreground": "false",
+          "action": "Hide"
+        },
+        {
+          "event": "lifecycle_hidden",
+          "pid": "30252",
+          "unix_us": "1793176090751122",
+          "elapsed_us": "168857071",
+          "dropped": "0",
+          "reason": "blur",
+          "generation": "5"
+        },
+        {
+          "event": "desktop_event",
+          "pid": "30252",
+          "unix_us": "1793176315529393",
+          "elapsed_us": "393635342",
+          "dropped": "0",
+          "action": "6"
+        },
+        {
+          "event": "desktop_event",
+          "pid": "30252",
+          "unix_us": "1793176315530383",
+          "elapsed_us": "393636332",
+          "dropped": "0",
+          "action": "5"
+        },
+        {
+          "event": "window_layout",
+          "pid": "30252",
+          "unix_us": "1793176315541059",
+          "elapsed_us": "393647008",
+          "dropped": "0",
+          "reason": "display_or_resume",
+          "applied": "true",
+          "dpi": "96",
+          "x": "800",
+          "y": "273",
+          "physical_width": "640",
+          "physical_height": "264",
+          "logical_width": "640.0",
+          "logical_height": "264.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1392"
+        },
+        {
+          "event": "native_dpi_changed",
+          "pid": "30252",
+          "unix_us": "1793176315541938",
+          "elapsed_us": "393647887",
+          "dropped": "0",
+          "scale": "1"
+        },
+        {
+          "event": "desktop_event",
+          "pid": "30252",
+          "unix_us": "1793176315545473",
+          "elapsed_us": "393651422",
+          "dropped": "0",
+          "action": "6"
+        },
+        {
+          "event": "desktop_event",
+          "pid": "30252",
+          "unix_us": "1793176315546375",
+          "elapsed_us": "393652324",
+          "dropped": "0",
+          "action": "5"
+        },
+        {
+          "event": "desktop_event",
+          "pid": "30252",
+          "unix_us": "1793176315556389",
+          "elapsed_us": "393662338",
+          "dropped": "0",
+          "action": "6"
+        },
+        {
+          "event": "desktop_event",
+          "pid": "30252",
+          "unix_us": "1793176315557229",
+          "elapsed_us": "393663178",
+          "dropped": "0",
+          "action": "5"
+        },
+        {
+          "event": "window_layout",
+          "pid": "30252",
+          "unix_us": "1793176315558420",
+          "elapsed_us": "393664369",
+          "dropped": "0",
+          "reason": "display_or_resume",
+          "applied": "true",
+          "dpi": "96",
+          "x": "800",
+          "y": "273",
+          "physical_width": "640",
+          "physical_height": "264",
+          "logical_width": "640.0",
+          "logical_height": "264.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1392"
+        },
+        {
+          "event": "global_hotkey",
+          "pid": "30252",
+          "unix_us": "1793176317388684",
+          "elapsed_us": "395494633",
+          "dropped": "0",
+          "action": "Show"
+        },
+        {
+          "event": "window_layout",
+          "pid": "30252",
+          "unix_us": "1793176317393282",
+          "elapsed_us": "395499231",
+          "dropped": "0",
+          "reason": "show",
+          "applied": "true",
+          "dpi": "96",
+          "x": "800",
+          "y": "273",
+          "physical_width": "640",
+          "physical_height": "264",
+          "logical_width": "640.0",
+          "logical_height": "264.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1392"
+        },
+        {
+          "event": "native_focus_sync",
+          "pid": "30252",
+          "unix_us": "1793176317410096",
+          "elapsed_us": "395516046",
+          "dropped": "0",
+          "focused": "true",
+          "source": "GetForegroundWindow+GetFocus"
+        },
+        {
+          "event": "lifecycle_shown",
+          "pid": "30252",
+          "unix_us": "1793176317412587",
+          "elapsed_us": "395518536",
+          "dropped": "0",
+          "reason": "hotkey",
+          "generation": "6",
+          "native_active": "true",
+          "query_bytes": "4",
+          "appearance_open": "false"
+        },
+        {
+          "event": "native_focus",
+          "pid": "30252",
+          "unix_us": "1793176317413020",
+          "elapsed_us": "395518969",
+          "dropped": "0",
+          "focused": "true"
+        },
+        {
+          "event": "input_focus",
+          "pid": "30252",
+          "unix_us": "1793176317414992",
+          "elapsed_us": "395520941",
+          "dropped": "0",
+          "focused": "true"
+        },
+        {
+          "event": "native_key_down",
+          "pid": "30252",
+          "unix_us": "1793176333601968",
+          "elapsed_us": "411707917",
+          "dropped": "0"
+        },
+        {
+          "event": "native_key_down",
+          "pid": "30252",
+          "unix_us": "1793176333603156",
+          "elapsed_us": "411709105",
+          "dropped": "0"
+        },
+        {
+          "event": "native_key_down",
+          "pid": "30252",
+          "unix_us": "1793176333668630",
+          "elapsed_us": "411774579",
+          "dropped": "0"
+        },
+        {
+          "event": "native_key_down",
+          "pid": "30252",
+          "unix_us": "1793176333671857",
+          "elapsed_us": "411777806",
+          "dropped": "0"
+        },
+        {
+          "event": "input_accepted",
+          "pid": "30252",
+          "unix_us": "1793176333673382",
+          "elapsed_us": "411779331",
+          "dropped": "0",
+          "utf8_bytes": "4",
+          "focused": "true",
+          "native_focused": "true",
+          "visible": "true",
+          "composing": "false"
+        },
+        {
+          "event": "window_layout",
+          "pid": "30252",
+          "unix_us": "1793176333683125",
+          "elapsed_us": "411789074",
+          "dropped": "0",
+          "reason": "content",
+          "applied": "true",
+          "dpi": "96",
+          "x": "800",
+          "y": "273",
+          "physical_width": "640",
+          "physical_height": "210",
+          "logical_width": "640.0",
+          "logical_height": "210.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1392"
+        },
+        {
+          "event": "native_focus",
+          "pid": "30252",
+          "unix_us": "1793176333839188",
+          "elapsed_us": "411945137",
+          "dropped": "0",
+          "focused": "false"
+        },
+        {
+          "event": "input_focus",
+          "pid": "30252",
+          "unix_us": "1793176333840631",
+          "elapsed_us": "411946580",
+          "dropped": "0",
+          "focused": "false"
+        },
+        {
+          "event": "lifecycle_blur_check",
+          "pid": "30252",
+          "unix_us": "1793176333870366",
+          "elapsed_us": "411976315",
+          "dropped": "0",
+          "owned_foreground": "false",
+          "action": "Hide"
+        },
+        {
+          "event": "lifecycle_hidden",
+          "pid": "30252",
+          "unix_us": "1793176333875638",
+          "elapsed_us": "411981587",
+          "dropped": "0",
+          "reason": "blur",
+          "generation": "7"
+        },
+        {
+          "event": "desktop_event",
+          "pid": "30252",
+          "unix_us": "1793176361100903",
+          "elapsed_us": "439206852",
+          "dropped": "0",
+          "action": "6"
+        },
+        {
+          "event": "desktop_event",
+          "pid": "30252",
+          "unix_us": "1793176361102041",
+          "elapsed_us": "439207990",
+          "dropped": "0",
+          "action": "5"
+        },
+        {
+          "event": "window_layout",
+          "pid": "30252",
+          "unix_us": "1793176361115159",
+          "elapsed_us": "439221108",
+          "dropped": "0",
+          "reason": "display_or_resume",
+          "applied": "true",
+          "dpi": "120",
+          "x": "800",
+          "y": "273",
+          "physical_width": "800",
+          "physical_height": "263",
+          "logical_width": "640.0",
+          "logical_height": "210.4",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1380"
+        },
+        {
+          "event": "native_dpi_changed",
+          "pid": "30252",
+          "unix_us": "1793176361115779",
+          "elapsed_us": "439221728",
+          "dropped": "0",
+          "scale": "1.25"
+        },
+        {
+          "event": "desktop_event",
+          "pid": "30252",
+          "unix_us": "1793176361117077",
+          "elapsed_us": "439223026",
+          "dropped": "0",
+          "action": "6"
+        },
+        {
+          "event": "desktop_event",
+          "pid": "30252",
+          "unix_us": "1793176361118151",
+          "elapsed_us": "439224100",
+          "dropped": "0",
+          "action": "5"
+        },
+        {
+          "event": "desktop_event",
+          "pid": "30252",
+          "unix_us": "1793176361170139",
+          "elapsed_us": "439276089",
+          "dropped": "0",
+          "action": "6"
+        },
+        {
+          "event": "desktop_event",
+          "pid": "30252",
+          "unix_us": "1793176361170950",
+          "elapsed_us": "439276899",
+          "dropped": "0",
+          "action": "5"
+        },
+        {
+          "event": "window_layout",
+          "pid": "30252",
+          "unix_us": "1793176361172589",
+          "elapsed_us": "439278538",
+          "dropped": "0",
+          "reason": "display_or_resume",
+          "applied": "true",
+          "dpi": "120",
+          "x": "800",
+          "y": "273",
+          "physical_width": "800",
+          "physical_height": "263",
+          "logical_width": "640.0",
+          "logical_height": "210.4",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1380"
+        },
+        {
+          "event": "desktop_event",
+          "pid": "30252",
+          "unix_us": "1793176426897656",
+          "elapsed_us": "505003606",
+          "dropped": "0",
+          "action": "6"
+        },
+        {
+          "event": "desktop_event",
+          "pid": "30252",
+          "unix_us": "1793176752655788",
+          "elapsed_us": "830761737",
+          "dropped": "0",
+          "action": "1"
+        },
+        {
+          "event": "window_layout",
+          "pid": "30252",
+          "unix_us": "1793176752656266",
+          "elapsed_us": "830762215",
+          "dropped": "0",
+          "reason": "show",
+          "applied": "true",
+          "dpi": "120",
+          "x": "800",
+          "y": "273",
+          "physical_width": "800",
+          "physical_height": "263",
+          "logical_width": "640.0",
+          "logical_height": "210.4",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1380"
+        },
+        {
+          "event": "native_focus_sync",
+          "pid": "30252",
+          "unix_us": "1793176752664464",
+          "elapsed_us": "830770413",
+          "dropped": "0",
+          "focused": "false",
+          "source": "GetForegroundWindow+GetFocus"
+        },
+        {
+          "event": "lifecycle_shown",
+          "pid": "30252",
+          "unix_us": "1793176752665195",
+          "elapsed_us": "830771144",
+          "dropped": "0",
+          "reason": "tray",
+          "generation": "8",
+          "native_active": "false",
+          "query_bytes": "4",
+          "appearance_open": "false"
+        },
+        {
+          "event": "input_focus",
+          "pid": "30252",
+          "unix_us": "1793176752665933",
+          "elapsed_us": "830771882",
+          "dropped": "0",
+          "focused": "true"
+        },
+        {
+          "event": "native_focus",
+          "pid": "30252",
+          "unix_us": "1793176784262223",
+          "elapsed_us": "862368172",
+          "dropped": "0",
+          "focused": "true"
+        },
+        {
+          "event": "native_key_down",
+          "pid": "30252",
+          "unix_us": "1793176784281865",
+          "elapsed_us": "862387814",
+          "dropped": "0"
+        },
+        {
+          "event": "window_layout",
+          "pid": "30252",
+          "unix_us": "1793176784286354",
+          "elapsed_us": "862392303",
+          "dropped": "0",
+          "reason": "content",
+          "applied": "true",
+          "dpi": "120",
+          "x": "800",
+          "y": "273",
+          "physical_width": "800",
+          "physical_height": "825",
+          "logical_width": "640.0",
+          "logical_height": "660.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1380"
+        },
+        {
+          "event": "window_drag",
+          "pid": "30252",
+          "unix_us": "1793176784499719",
+          "elapsed_us": "862605668",
+          "dropped": "0",
+          "started": "true"
+        },
+        {
+          "event": "native_focus",
+          "pid": "30252",
+          "unix_us": "1793176785025426",
+          "elapsed_us": "863131375",
+          "dropped": "0",
+          "focused": "false"
+        },
+        {
+          "event": "input_focus",
+          "pid": "30252",
+          "unix_us": "1793176785032473",
+          "elapsed_us": "863138422",
+          "dropped": "0",
+          "focused": "false"
+        },
+        {
+          "event": "lifecycle_blur_check",
+          "pid": "30252",
+          "unix_us": "1793176785055403",
+          "elapsed_us": "863161352",
+          "dropped": "0",
+          "owned_foreground": "true",
+          "action": "None"
+        },
+        {
+          "event": "desktop_event",
+          "pid": "30252",
+          "unix_us": "1793176811207201",
+          "elapsed_us": "889313150",
+          "dropped": "0",
+          "action": "3"
+        },
+        {
+          "event": "lifecycle_quit",
+          "pid": "30252",
+          "unix_us": "1793176811212127",
+          "elapsed_us": "889318076",
+          "dropped": "0"
+        }
+      ],
+      "DiagnosticEvents": [
+        {
+          "event": "input_edited",
+          "utf8_bytes": "0",
+          "fixture_results": "28",
+          "home": "true"
+        },
+        {
+          "event": "tray_icon",
+          "registered": "true",
+          "physical_size": "24"
+        },
+        {
+          "event": "hotkey_bind",
+          "success": "true",
+          "previous_retained": "false"
+        },
+        {
+          "event": "native_window",
+          "backend": "winit",
+          "renderer": "femtovg",
+          "hwnd": "0x20608",
+          "scale": "1.5",
+          "physical_width": "960",
+          "physical_height": "810"
+        },
+        {
+          "event": "desktop_event",
+          "action": "6"
+        },
+        {
+          "event": "lifecycle_ready",
+          "native_visible": "false",
+          "content_ready": "true",
+          "background": "true",
+          "hotkey_available": "true"
+        },
+        {
+          "event": "lifecycle_hidden",
+          "reason": "startup",
+          "generation": "1"
+        },
+        {
+          "event": "global_hotkey",
+          "action": "Show"
+        },
+        {
+          "event": "window_layout",
+          "reason": "show",
+          "applied": "true",
+          "dpi": "144",
+          "x": "800",
+          "y": "273",
+          "physical_width": "960",
+          "physical_height": "990",
+          "logical_width": "640.0",
+          "logical_height": "660.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1368"
+        },
+        {
+          "event": "renderer_observed",
+          "renderer": "femtovg",
+          "graphics_api": "NativeOpenGL"
+        },
+        {
+          "event": "native_focus_sync",
+          "focused": "true",
+          "source": "GetForegroundWindow+GetFocus"
+        },
+        {
+          "event": "lifecycle_shown",
+          "reason": "hotkey",
+          "generation": "2",
+          "native_active": "true",
+          "query_bytes": "0",
+          "appearance_open": "false"
+        },
+        {
+          "event": "window_focus",
+          "focused": "true"
+        },
+        {
+          "event": "input_focus",
+          "focused": "true"
+        },
+        {
+          "event": "input_edited",
+          "utf8_bytes": "4",
+          "fixture_results": "2",
+          "home": "false"
+        },
+        {
+          "event": "window_layout",
+          "reason": "content",
+          "applied": "true",
+          "dpi": "144",
+          "x": "800",
+          "y": "273",
+          "physical_width": "960",
+          "physical_height": "396",
+          "logical_width": "640.0",
+          "logical_height": "264.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1368"
+        },
+        {
+          "event": "window_focus",
+          "focused": "false"
+        },
+        {
+          "event": "input_focus",
+          "focused": "false"
+        },
+        {
+          "event": "lifecycle_blur_check",
+          "owned_foreground": "false",
+          "action": "Hide"
+        },
+        {
+          "event": "lifecycle_hidden",
+          "reason": "blur",
+          "generation": "3"
+        },
+        {
+          "event": "tray_icon",
+          "registered": "true",
+          "physical_size": "32"
+        },
+        {
+          "event": "desktop_event",
+          "action": "6"
+        },
+        {
+          "event": "desktop_event",
+          "action": "5"
+        },
+        {
+          "event": "window_layout",
+          "reason": "display_or_resume",
+          "applied": "true",
+          "dpi": "192",
+          "x": "800",
+          "y": "273",
+          "physical_width": "1280",
+          "physical_height": "528",
+          "logical_width": "640.0",
+          "logical_height": "264.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1344"
+        },
+        {
+          "event": "native_dpi_changed",
+          "scale": "2"
+        },
+        {
+          "event": "tray_icon",
+          "registered": "true",
+          "physical_size": "32"
+        },
+        {
+          "event": "desktop_event",
+          "action": "6"
+        },
+        {
+          "event": "desktop_event",
+          "action": "5"
+        },
+        {
+          "event": "window_layout",
+          "reason": "display_or_resume",
+          "applied": "true",
+          "dpi": "192",
+          "x": "800",
+          "y": "273",
+          "physical_width": "1280",
+          "physical_height": "528",
+          "logical_width": "640.0",
+          "logical_height": "264.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1344"
+        },
+        {
+          "event": "tray_icon",
+          "registered": "true",
+          "physical_size": "32"
+        },
+        {
+          "event": "desktop_event",
+          "action": "6"
+        },
+        {
+          "event": "desktop_event",
+          "action": "5"
+        },
+        {
+          "event": "window_layout",
+          "reason": "display_or_resume",
+          "applied": "true",
+          "dpi": "192",
+          "x": "800",
+          "y": "273",
+          "physical_width": "1280",
+          "physical_height": "528",
+          "logical_width": "640.0",
+          "logical_height": "264.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1344"
+        },
+        {
+          "event": "global_hotkey",
+          "action": "Show"
+        },
+        {
+          "event": "window_layout",
+          "reason": "show",
+          "applied": "true",
+          "dpi": "192",
+          "x": "800",
+          "y": "273",
+          "physical_width": "1280",
+          "physical_height": "528",
+          "logical_width": "640.0",
+          "logical_height": "264.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1344"
+        },
+        {
+          "event": "native_focus_sync",
+          "focused": "true",
+          "source": "GetForegroundWindow+GetFocus"
+        },
+        {
+          "event": "lifecycle_shown",
+          "reason": "hotkey",
+          "generation": "4",
+          "native_active": "true",
+          "query_bytes": "4",
+          "appearance_open": "false"
+        },
+        {
+          "event": "window_focus",
+          "focused": "true"
+        },
+        {
+          "event": "input_focus",
+          "focused": "true"
+        },
+        {
+          "event": "window_focus",
+          "focused": "false"
+        },
+        {
+          "event": "input_focus",
+          "focused": "false"
+        },
+        {
+          "event": "lifecycle_blur_check",
+          "owned_foreground": "false",
+          "action": "Hide"
+        },
+        {
+          "event": "lifecycle_hidden",
+          "reason": "blur",
+          "generation": "5"
+        },
+        {
+          "event": "tray_icon",
+          "registered": "true",
+          "physical_size": "16"
+        },
+        {
+          "event": "desktop_event",
+          "action": "6"
+        },
+        {
+          "event": "desktop_event",
+          "action": "5"
+        },
+        {
+          "event": "window_layout",
+          "reason": "display_or_resume",
+          "applied": "true",
+          "dpi": "96",
+          "x": "800",
+          "y": "273",
+          "physical_width": "640",
+          "physical_height": "264",
+          "logical_width": "640.0",
+          "logical_height": "264.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1392"
+        },
+        {
+          "event": "native_dpi_changed",
+          "scale": "1"
+        },
+        {
+          "event": "tray_icon",
+          "registered": "true",
+          "physical_size": "16"
+        },
+        {
+          "event": "desktop_event",
+          "action": "6"
+        },
+        {
+          "event": "desktop_event",
+          "action": "5"
+        },
+        {
+          "event": "tray_icon",
+          "registered": "true",
+          "physical_size": "16"
+        },
+        {
+          "event": "desktop_event",
+          "action": "6"
+        },
+        {
+          "event": "desktop_event",
+          "action": "5"
+        },
+        {
+          "event": "window_layout",
+          "reason": "display_or_resume",
+          "applied": "true",
+          "dpi": "96",
+          "x": "800",
+          "y": "273",
+          "physical_width": "640",
+          "physical_height": "264",
+          "logical_width": "640.0",
+          "logical_height": "264.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1392"
+        },
+        {
+          "event": "global_hotkey",
+          "action": "Show"
+        },
+        {
+          "event": "window_layout",
+          "reason": "show",
+          "applied": "true",
+          "dpi": "96",
+          "x": "800",
+          "y": "273",
+          "physical_width": "640",
+          "physical_height": "264",
+          "logical_width": "640.0",
+          "logical_height": "264.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1392"
+        },
+        {
+          "event": "native_focus_sync",
+          "focused": "true",
+          "source": "GetForegroundWindow+GetFocus"
+        },
+        {
+          "event": "lifecycle_shown",
+          "reason": "hotkey",
+          "generation": "6",
+          "native_active": "true",
+          "query_bytes": "4",
+          "appearance_open": "false"
+        },
+        {
+          "event": "window_focus",
+          "focused": "true"
+        },
+        {
+          "event": "input_focus",
+          "focused": "true"
+        },
+        {
+          "event": "input_edited",
+          "utf8_bytes": "4",
+          "fixture_results": "0",
+          "home": "false"
+        },
+        {
+          "event": "window_layout",
+          "reason": "content",
+          "applied": "true",
+          "dpi": "96",
+          "x": "800",
+          "y": "273",
+          "physical_width": "640",
+          "physical_height": "210",
+          "logical_width": "640.0",
+          "logical_height": "210.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1392"
+        },
+        {
+          "event": "window_focus",
+          "focused": "false"
+        },
+        {
+          "event": "input_focus",
+          "focused": "false"
+        },
+        {
+          "event": "lifecycle_blur_check",
+          "owned_foreground": "false",
+          "action": "Hide"
+        },
+        {
+          "event": "lifecycle_hidden",
+          "reason": "blur",
+          "generation": "7"
+        },
+        {
+          "event": "tray_icon",
+          "registered": "true",
+          "physical_size": "20"
+        },
+        {
+          "event": "desktop_event",
+          "action": "6"
+        },
+        {
+          "event": "desktop_event",
+          "action": "5"
+        },
+        {
+          "event": "tray_icon",
+          "registered": "true",
+          "physical_size": "20"
+        },
+        {
+          "event": "window_layout",
+          "reason": "display_or_resume",
+          "applied": "true",
+          "dpi": "120",
+          "x": "800",
+          "y": "273",
+          "physical_width": "800",
+          "physical_height": "263",
+          "logical_width": "640.0",
+          "logical_height": "210.4",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1380"
+        },
+        {
+          "event": "native_dpi_changed",
+          "scale": "1.25"
+        },
+        {
+          "event": "desktop_event",
+          "action": "6"
+        },
+        {
+          "event": "desktop_event",
+          "action": "5"
+        },
+        {
+          "event": "tray_icon",
+          "registered": "true",
+          "physical_size": "20"
+        },
+        {
+          "event": "desktop_event",
+          "action": "6"
+        },
+        {
+          "event": "desktop_event",
+          "action": "5"
+        },
+        {
+          "event": "window_layout",
+          "reason": "display_or_resume",
+          "applied": "true",
+          "dpi": "120",
+          "x": "800",
+          "y": "273",
+          "physical_width": "800",
+          "physical_height": "263",
+          "logical_width": "640.0",
+          "logical_height": "210.4",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1380"
+        },
+        {
+          "event": "tray_icon",
+          "registered": "true",
+          "physical_size": "20"
+        },
+        {
+          "event": "desktop_event",
+          "action": "6"
+        },
+        {
+          "event": "desktop_event",
+          "action": "1"
+        },
+        {
+          "event": "window_layout",
+          "reason": "show",
+          "applied": "true",
+          "dpi": "120",
+          "x": "800",
+          "y": "273",
+          "physical_width": "800",
+          "physical_height": "263",
+          "logical_width": "640.0",
+          "logical_height": "210.4",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1380"
+        },
+        {
+          "event": "native_focus_sync",
+          "focused": "false",
+          "source": "GetForegroundWindow+GetFocus"
+        },
+        {
+          "event": "lifecycle_shown",
+          "reason": "tray",
+          "generation": "8",
+          "native_active": "false",
+          "query_bytes": "4",
+          "appearance_open": "false"
+        },
+        {
+          "event": "input_focus",
+          "focused": "true"
+        },
+        {
+          "event": "window_focus",
+          "focused": "true"
+        },
+        {
+          "event": "input_edited",
+          "utf8_bytes": "0",
+          "fixture_results": "28",
+          "home": "true"
+        },
+        {
+          "event": "window_layout",
+          "reason": "content",
+          "applied": "true",
+          "dpi": "120",
+          "x": "800",
+          "y": "273",
+          "physical_width": "800",
+          "physical_height": "825",
+          "logical_width": "640.0",
+          "logical_height": "660.0",
+          "work_x": "0",
+          "work_y": "0",
+          "work_width": "2560",
+          "work_height": "1380"
+        },
+        {
+          "event": "window_drag",
+          "started": "true"
+        },
+        {
+          "event": "window_focus",
+          "focused": "false"
+        },
+        {
+          "event": "input_focus",
+          "focused": "false"
+        },
+        {
+          "event": "lifecycle_blur_check",
+          "owned_foreground": "true",
+          "action": "None"
+        },
+        {
+          "event": "desktop_event",
+          "action": "3"
+        },
+        {
+          "event": "lifecycle_quit"
+        },
+        {
+          "event": "desktop_stopped",
+          "tray_removed": "true"
+        }
+      ]
+    }
+  ]
+}

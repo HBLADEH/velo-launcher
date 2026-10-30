@@ -1,0 +1,524 @@
+{
+  "Unit": "bytes; MiB = bytes / 1048576",
+  "SummaryMethod": "Median of valid sample endpoints; min/max retain all raw polls.",
+  "Groups": [
+    {
+      "Renderer": "femtovg",
+      "Session": "01",
+      "State": "hidden-30s",
+      "Mode": "MeasurementProbe",
+      "ExecutableSHA256": "59867920F4EB17170AADA43AC29AEE387C5C209E9D19A2B751910EBEC21C4777",
+      "Evidence": "femtovg-01-hidden-30s.json",
+      "ValidSamples": 3,
+      "PrivateBytesMedian": 143736832.0,
+      "PrivateBytesRange": [
+        143421440.0,
+        143736832.0
+      ],
+      "WorkingSetMedian": 114921472.0,
+      "PrivateWorkingSetMedian": 62173184.0,
+      "CPUPercentOfMachineMedian": 0.042723,
+      "CPUPercentOfMachineRange": [
+        0.038522,
+        0.055295
+      ],
+      "ThreadRange": [
+        37.0,
+        41.0
+      ],
+      "HandleRange": [
+        589.0,
+        599.0
+      ],
+      "ProcessCounts": [
+        1
+      ],
+      "GPUDedicatedMedian": 48136192.0,
+      "GPUSharedMedian": 20918272.0,
+      "GPUCommittedMedian": 64684032.0,
+      "Budget30MiBSatisfied": false,
+      "Notes": "Memory medians use sample endpoints; ranges cover every one-second raw poll. GPU allocations are separate and may overlap other accounting."
+    },
+    {
+      "Renderer": "femtovg",
+      "Session": "01",
+      "State": "hidden-5m",
+      "Mode": "MeasurementProbe",
+      "ExecutableSHA256": "59867920F4EB17170AADA43AC29AEE387C5C209E9D19A2B751910EBEC21C4777",
+      "Evidence": "femtovg-01-hidden-5m.json",
+      "ValidSamples": 3,
+      "PrivateBytesMedian": 143536128.0,
+      "PrivateBytesRange": [
+        143536128.0,
+        143671296.0
+      ],
+      "WorkingSetMedian": 115445760.0,
+      "PrivateWorkingSetMedian": 62263296.0,
+      "CPUPercentOfMachineMedian": 0.042592,
+      "CPUPercentOfMachineRange": [
+        0.021251,
+        0.055415
+      ],
+      "ThreadRange": [
+        37.0,
+        39.0
+      ],
+      "HandleRange": [
+        591.0,
+        601.0
+      ],
+      "ProcessCounts": [
+        1
+      ],
+      "GPUDedicatedMedian": 47611904.0,
+      "GPUSharedMedian": 20344832.0,
+      "GPUCommittedMedian": 64159744.0,
+      "Budget30MiBSatisfied": false,
+      "Notes": "Memory medians use sample endpoints; ranges cover every one-second raw poll. GPU allocations are separate and may overlap other accounting."
+    },
+    {
+      "Renderer": "femtovg",
+      "Session": "01",
+      "State": "visible-after-cycles",
+      "Mode": "MeasurementProbe",
+      "ExecutableSHA256": "59867920F4EB17170AADA43AC29AEE387C5C209E9D19A2B751910EBEC21C4777",
+      "Evidence": "femtovg-01-visible-after-cycles.json",
+      "ValidSamples": 3,
+      "PrivateBytesMedian": 150896640.0,
+      "PrivateBytesRange": [
+        147451904.0,
+        151945216.0
+      ],
+      "WorkingSetMedian": 121479168.0,
+      "PrivateWorkingSetMedian": 68149248.0,
+      "CPUPercentOfMachineMedian": 0.033834,
+      "CPUPercentOfMachineRange": [
+        0.016916,
+        0.1099
+      ],
+      "ThreadRange": [
+        37.0,
+        38.0
+      ],
+      "HandleRange": [
+        594.0,
+        598.0
+      ],
+      "ProcessCounts": [
+        1
+      ],
+      "GPUDedicatedMedian": 48672768.0,
+      "GPUSharedMedian": 24981504.0,
+      "GPUCommittedMedian": 69414912.0,
+      "Budget30MiBSatisfied": false,
+      "Notes": "Memory medians use sample endpoints; ranges cover every one-second raw poll. GPU allocations are separate and may overlap other accounting."
+    },
+    {
+      "Renderer": "femtovg",
+      "Session": "01",
+      "State": "visible",
+      "Mode": "MeasurementProbe",
+      "ExecutableSHA256": "59867920F4EB17170AADA43AC29AEE387C5C209E9D19A2B751910EBEC21C4777",
+      "Evidence": "femtovg-01-visible.json",
+      "ValidSamples": 3,
+      "PrivateBytesMedian": 143872000.0,
+      "PrivateBytesRange": [
+        143847424.0,
+        143872000.0
+      ],
+      "WorkingSetMedian": 115937280.0,
+      "PrivateWorkingSetMedian": 63340544.0,
+      "CPUPercentOfMachineMedian": 0.037992,
+      "CPUPercentOfMachineRange": [
+        0.033781,
+        0.046451
+      ],
+      "ThreadRange": [
+        45.0,
+        46.0
+      ],
+      "HandleRange": [
+        601.0,
+        602.0
+      ],
+      "ProcessCounts": [
+        1
+      ],
+      "GPUDedicatedMedian": 48136192.0,
+      "GPUSharedMedian": 20918272.0,
+      "GPUCommittedMedian": 64684032.0,
+      "Budget30MiBSatisfied": false,
+      "Notes": "Memory medians use sample endpoints; ranges cover every one-second raw poll. GPU allocations are separate and may overlap other accounting."
+    },
+    {
+      "Renderer": "femtovg",
+      "Session": "reverse",
+      "State": "visible",
+      "Mode": "MeasurementProbe",
+      "ExecutableSHA256": "59867920F4EB17170AADA43AC29AEE387C5C209E9D19A2B751910EBEC21C4777",
+      "Evidence": "femtovg-reverse-visible.json",
+      "ValidSamples": 3,
+      "PrivateBytesMedian": 143437824.0,
+      "PrivateBytesRange": [
+        143138816.0,
+        143437824.0
+      ],
+      "WorkingSetMedian": 114991104.0,
+      "PrivateWorkingSetMedian": 62451712.0,
+      "CPUPercentOfMachineMedian": 0.025052,
+      "CPUPercentOfMachineRange": [
+        0.012715,
+        0.050751
+      ],
+      "ThreadRange": [
+        45.0,
+        46.0
+      ],
+      "HandleRange": [
+        601.0,
+        602.0
+      ],
+      "ProcessCounts": [
+        1
+      ],
+      "GPUDedicatedMedian": 48140288.0,
+      "GPUSharedMedian": 20918272.0,
+      "GPUCommittedMedian": 64688128.0,
+      "Budget30MiBSatisfied": false,
+      "Notes": "Memory medians use sample endpoints; ranges cover every one-second raw poll. GPU allocations are separate and may overlap other accounting."
+    },
+    {
+      "Renderer": "femtovg",
+      "Session": "production",
+      "State": "visible",
+      "Mode": "Production",
+      "ExecutableSHA256": "59867920F4EB17170AADA43AC29AEE387C5C209E9D19A2B751910EBEC21C4777",
+      "Evidence": "femtovg-production-visible.json",
+      "ValidSamples": 3,
+      "PrivateBytesMedian": 139112448.0,
+      "PrivateBytesRange": [
+        138854400.0,
+        139214848.0
+      ],
+      "WorkingSetMedian": 110219264.0,
+      "PrivateWorkingSetMedian": 57561088.0,
+      "CPUPercentOfMachineMedian": 0.021132,
+      "CPUPercentOfMachineRange": [
+        0.01692,
+        0.021138
+      ],
+      "ThreadRange": [
+        38.0,
+        43.0
+      ],
+      "HandleRange": [
+        590.0,
+        596.0
+      ],
+      "ProcessCounts": [
+        1
+      ],
+      "GPUDedicatedMedian": 48128000.0,
+      "GPUSharedMedian": 16723968.0,
+      "GPUCommittedMedian": 60481536.0,
+      "Budget30MiBSatisfied": false,
+      "Notes": "Memory medians use sample endpoints; ranges cover every one-second raw poll. GPU allocations are separate and may overlap other accounting."
+    },
+    {
+      "Renderer": "femtovg",
+      "Session": "rebuild",
+      "State": "visible",
+      "Mode": "MeasurementProbe",
+      "ExecutableSHA256": "CCA988D943D18772464260352A60E7D92A8766425B6813C939D5ECD0AA34F654",
+      "Evidence": "femtovg-rebuild-visible.json",
+      "ValidSamples": 3,
+      "PrivateBytesMedian": 144039936.0,
+      "PrivateBytesRange": [
+        143908864.0,
+        144236544.0
+      ],
+      "WorkingSetMedian": 114540544.0,
+      "PrivateWorkingSetMedian": 62005248.0,
+      "CPUPercentOfMachineMedian": 0.012689,
+      "CPUPercentOfMachineRange": [
+        0.008449,
+        0.025198
+      ],
+      "ThreadRange": [
+        45.0,
+        46.0
+      ],
+      "HandleRange": [
+        601.0,
+        602.0
+      ],
+      "ProcessCounts": [
+        1
+      ],
+      "GPUDedicatedMedian": 48140288.0,
+      "GPUSharedMedian": 20918272.0,
+      "GPUCommittedMedian": 64688128.0,
+      "Budget30MiBSatisfied": false,
+      "Notes": "Memory medians use sample endpoints; ranges cover every one-second raw poll. GPU allocations are separate and may overlap other accounting."
+    },
+    {
+      "Renderer": "software",
+      "Session": "01",
+      "State": "hidden-30s",
+      "Mode": "MeasurementProbe",
+      "ExecutableSHA256": "214DC140513322B99301867F52B54F216BF9F7E8AD45CFCF8765237CD4AA6C74",
+      "Evidence": "software-01-hidden-30s.json",
+      "ValidSamples": 3,
+      "PrivateBytesMedian": 7024640.0,
+      "PrivateBytesRange": [
+        6930432.0,
+        7024640.0
+      ],
+      "WorkingSetMedian": 29782016.0,
+      "PrivateWorkingSetMedian": 6070272.0,
+      "CPUPercentOfMachineMedian": 0.042744,
+      "CPUPercentOfMachineRange": [
+        0.029928,
+        0.05082
+      ],
+      "ThreadRange": [
+        6.0,
+        9.0
+      ],
+      "HandleRange": [
+        280.0,
+        286.0
+      ],
+      "ProcessCounts": [
+        1
+      ],
+      "GPUDedicatedMedian": null,
+      "GPUSharedMedian": null,
+      "GPUCommittedMedian": null,
+      "Budget30MiBSatisfied": true,
+      "Notes": "Memory medians use sample endpoints; ranges cover every one-second raw poll. GPU allocations are separate and may overlap other accounting."
+    },
+    {
+      "Renderer": "software",
+      "Session": "01",
+      "State": "hidden-5m",
+      "Mode": "MeasurementProbe",
+      "ExecutableSHA256": "214DC140513322B99301867F52B54F216BF9F7E8AD45CFCF8765237CD4AA6C74",
+      "Evidence": "software-01-hidden-5m.json",
+      "ValidSamples": 3,
+      "PrivateBytesMedian": 7024640.0,
+      "PrivateBytesRange": [
+        7024640.0,
+        7127040.0
+      ],
+      "WorkingSetMedian": 30150656.0,
+      "PrivateWorkingSetMedian": 6111232.0,
+      "CPUPercentOfMachineMedian": 0.038051,
+      "CPUPercentOfMachineRange": [
+        0.021347,
+        0.046924
+      ],
+      "ThreadRange": [
+        6.0,
+        9.0
+      ],
+      "HandleRange": [
+        280.0,
+        286.0
+      ],
+      "ProcessCounts": [
+        1
+      ],
+      "GPUDedicatedMedian": null,
+      "GPUSharedMedian": null,
+      "GPUCommittedMedian": null,
+      "Budget30MiBSatisfied": true,
+      "Notes": "Memory medians use sample endpoints; ranges cover every one-second raw poll. GPU allocations are separate and may overlap other accounting."
+    },
+    {
+      "Renderer": "software",
+      "Session": "01",
+      "State": "visible-after-cycles",
+      "Mode": "MeasurementProbe",
+      "ExecutableSHA256": "214DC140513322B99301867F52B54F216BF9F7E8AD45CFCF8765237CD4AA6C74",
+      "Evidence": "software-01-visible-after-cycles.json",
+      "ValidSamples": 3,
+      "PrivateBytesMedian": 7294976.0,
+      "PrivateBytesRange": [
+        7294976.0,
+        7294976.0
+      ],
+      "WorkingSetMedian": 30449664.0,
+      "PrivateWorkingSetMedian": 6356992.0,
+      "CPUPercentOfMachineMedian": 0.0,
+      "CPUPercentOfMachineRange": [
+        0.0,
+        0.008491
+      ],
+      "ThreadRange": [
+        7.0,
+        7.0
+      ],
+      "HandleRange": [
+        282.0,
+        282.0
+      ],
+      "ProcessCounts": [
+        1
+      ],
+      "GPUDedicatedMedian": null,
+      "GPUSharedMedian": null,
+      "GPUCommittedMedian": null,
+      "Budget30MiBSatisfied": true,
+      "Notes": "Memory medians use sample endpoints; ranges cover every one-second raw poll. GPU allocations are separate and may overlap other accounting."
+    },
+    {
+      "Renderer": "software",
+      "Session": "01",
+      "State": "visible",
+      "Mode": "MeasurementProbe",
+      "ExecutableSHA256": "214DC140513322B99301867F52B54F216BF9F7E8AD45CFCF8765237CD4AA6C74",
+      "Evidence": "software-01-visible.json",
+      "ValidSamples": 3,
+      "PrivateBytesMedian": 7155712.0,
+      "PrivateBytesRange": [
+        7155712.0,
+        7155712.0
+      ],
+      "WorkingSetMedian": 29786112.0,
+      "PrivateWorkingSetMedian": 6148096.0,
+      "CPUPercentOfMachineMedian": 0.004227,
+      "CPUPercentOfMachineRange": [
+        0.0,
+        0.012682
+      ],
+      "ThreadRange": [
+        13.0,
+        13.0
+      ],
+      "HandleRange": [
+        285.0,
+        286.0
+      ],
+      "ProcessCounts": [
+        1
+      ],
+      "GPUDedicatedMedian": null,
+      "GPUSharedMedian": null,
+      "GPUCommittedMedian": null,
+      "Budget30MiBSatisfied": true,
+      "Notes": "Memory medians use sample endpoints; ranges cover every one-second raw poll. GPU allocations are separate and may overlap other accounting."
+    },
+    {
+      "Renderer": "software",
+      "Session": "reverse",
+      "State": "visible",
+      "Mode": "MeasurementProbe",
+      "ExecutableSHA256": "214DC140513322B99301867F52B54F216BF9F7E8AD45CFCF8765237CD4AA6C74",
+      "Evidence": "software-reverse-visible.json",
+      "ValidSamples": 3,
+      "PrivateBytesMedian": 7147520.0,
+      "PrivateBytesRange": [
+        7147520.0,
+        7147520.0
+      ],
+      "WorkingSetMedian": 29786112.0,
+      "PrivateWorkingSetMedian": 6139904.0,
+      "CPUPercentOfMachineMedian": 0.004257,
+      "CPUPercentOfMachineRange": [
+        0.0,
+        0.008514
+      ],
+      "ThreadRange": [
+        13.0,
+        13.0
+      ],
+      "HandleRange": [
+        285.0,
+        286.0
+      ],
+      "ProcessCounts": [
+        1
+      ],
+      "GPUDedicatedMedian": null,
+      "GPUSharedMedian": null,
+      "GPUCommittedMedian": null,
+      "Budget30MiBSatisfied": true,
+      "Notes": "Memory medians use sample endpoints; ranges cover every one-second raw poll. GPU allocations are separate and may overlap other accounting."
+    },
+    {
+      "Renderer": "software",
+      "Session": "production",
+      "State": "visible",
+      "Mode": "Production",
+      "ExecutableSHA256": "214DC140513322B99301867F52B54F216BF9F7E8AD45CFCF8765237CD4AA6C74",
+      "Evidence": "software-production-visible.json",
+      "ValidSamples": 3,
+      "PrivateBytesMedian": 6938624.0,
+      "PrivateBytesRange": [
+        6782976.0,
+        6938624.0
+      ],
+      "WorkingSetMedian": 29818880.0,
+      "PrivateWorkingSetMedian": 6033408.0,
+      "CPUPercentOfMachineMedian": 0.0,
+      "CPUPercentOfMachineRange": [
+        0.0,
+        0.0
+      ],
+      "ThreadRange": [
+        6.0,
+        11.0
+      ],
+      "HandleRange": [
+        279.0,
+        281.0
+      ],
+      "ProcessCounts": [
+        1
+      ],
+      "GPUDedicatedMedian": null,
+      "GPUSharedMedian": null,
+      "GPUCommittedMedian": null,
+      "Budget30MiBSatisfied": true,
+      "Notes": "Memory medians use sample endpoints; ranges cover every one-second raw poll. GPU allocations are separate and may overlap other accounting."
+    },
+    {
+      "Renderer": "software",
+      "Session": "rebuild",
+      "State": "visible",
+      "Mode": "MeasurementProbe",
+      "ExecutableSHA256": "195B5A7CC44B0C3C27243103760377742939E0C9C4B8A99CE366570458E58A03",
+      "Evidence": "software-rebuild-visible.json",
+      "ValidSamples": 3,
+      "PrivateBytesMedian": 7155712.0,
+      "PrivateBytesRange": [
+        7053312.0,
+        7155712.0
+      ],
+      "WorkingSetMedian": 29773824.0,
+      "PrivateWorkingSetMedian": 6139904.0,
+      "CPUPercentOfMachineMedian": 0.008443,
+      "CPUPercentOfMachineRange": [
+        0.004223,
+        0.012671
+      ],
+      "ThreadRange": [
+        10.0,
+        13.0
+      ],
+      "HandleRange": [
+        285.0,
+        286.0
+      ],
+      "ProcessCounts": [
+        1
+      ],
+      "GPUDedicatedMedian": null,
+      "GPUSharedMedian": null,
+      "GPUCommittedMedian": null,
+      "Budget30MiBSatisfied": true,
+      "Notes": "Memory medians use sample endpoints; ranges cover every one-second raw poll. GPU allocations are separate and may overlap other accounting."
+    }
+  ]
+}

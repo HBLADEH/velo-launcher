@@ -1,0 +1,3148 @@
+[
+  {
+    "name": "adler2",
+    "version": "2.0.1",
+    "license": "0BSD OR MIT OR Apache-2.0",
+    "repository": "https://github.com/oyvindln/adler2",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "aho-corasick",
+    "version": "1.1.5",
+    "license": "Unlicense OR MIT",
+    "repository": "https://github.com/BurntSushi/aho-corasick",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "allocator-api2",
+    "version": "0.2.21",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/zakarumych/allocator-api2",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "annotate-snippets",
+    "version": "0.12.17",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/rust-lang/annotate-snippets-rs",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "anstyle",
+    "version": "1.0.14",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/rust-cli/anstyle.git",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "arboard",
+    "version": "3.7.0",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/1Password/arboard",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "arrayref",
+    "version": "0.3.9",
+    "license": "BSD-2-Clause",
+    "repository": "https://github.com/droundy/arrayref",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "arrayvec",
+    "version": "0.7.8",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/bluss/arrayvec",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "ash",
+    "version": "0.38.0+1.3.281",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/ash-rs/ash",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "autocfg",
+    "version": "1.5.1",
+    "license": "Apache-2.0 OR MIT",
+    "repository": "https://github.com/cuviper/autocfg",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "base64",
+    "version": "0.23.1",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/marshallpierce/rust-base64",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "bincode",
+    "version": "2.0.1",
+    "license": "MIT",
+    "repository": "https://github.com/bincode-org/bincode",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "bindgen",
+    "version": "0.72.1",
+    "license": "BSD-3-Clause",
+    "repository": "https://github.com/rust-lang/rust-bindgen",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "bit-set",
+    "version": "0.10.0",
+    "license": "Apache-2.0 OR MIT",
+    "repository": "https://github.com/contain-rs/bit-set",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "bit-vec",
+    "version": "0.9.1",
+    "license": "Apache-2.0 OR MIT",
+    "repository": "https://github.com/contain-rs/bit-vec",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "bitflags",
+    "version": "2.13.2",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/bitflags/bitflags",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "borsh",
+    "version": "1.8.1",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/near/borsh-rs",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "by_address",
+    "version": "1.2.1",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/mbrubeck/by_address",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "bytemuck",
+    "version": "1.25.2",
+    "license": "Zlib OR Apache-2.0 OR MIT",
+    "repository": "https://github.com/Lokathor/bytemuck",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "bytemuck_derive",
+    "version": "1.12.1",
+    "license": "Zlib OR Apache-2.0 OR MIT",
+    "repository": "https://github.com/Lokathor/bytemuck",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "byteorder-lite",
+    "version": "0.1.0",
+    "license": "Unlicense OR MIT",
+    "repository": "https://github.com/image-rs/byteorder-lite",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "bytes",
+    "version": "1.12.1",
+    "license": "MIT",
+    "repository": "https://github.com/tokio-rs/bytes",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "cc",
+    "version": "1.10.0",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/rust-lang/cc-rs",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "cexpr",
+    "version": "0.6.0",
+    "license": "Apache-2.0/MIT",
+    "repository": "https://github.com/jethrogb/rust-cexpr",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "cfg_aliases",
+    "version": "0.2.2",
+    "license": "MIT",
+    "repository": "https://github.com/katharostech/cfg_aliases",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "cfg-if",
+    "version": "1.0.5",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/rust-lang/cfg-if",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "chrono",
+    "version": "0.4.45",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/chronotope/chrono",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "clang-sys",
+    "version": "1.9.1",
+    "license": "Apache-2.0",
+    "repository": "https://github.com/KyleMayes/clang-sys",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "clipboard-win",
+    "version": "5.4.3",
+    "license": "BSL-1.0",
+    "repository": "https://github.com/DoumanAsh/clipboard-win",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "clru",
+    "version": "0.6.3",
+    "license": "MIT",
+    "repository": "https://github.com/marmeladema/clru-rs",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "codespan-reporting",
+    "version": "0.13.1",
+    "license": "Apache-2.0",
+    "repository": "https://github.com/brendanzab/codespan",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "color_quant",
+    "version": "1.1.0",
+    "license": "MIT",
+    "repository": "https://github.com/image-rs/color_quant.git",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "const-field-offset",
+    "version": "0.2.1",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/slint-ui/slint",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "const-field-offset-macro",
+    "version": "0.2.1",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/slint-ui/slint",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "convert_case",
+    "version": "0.10.0",
+    "license": "MIT",
+    "repository": "https://github.com/rutrum/convert-case",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "countme",
+    "version": "3.0.1",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/matklad/countme",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "crc32fast",
+    "version": "1.5.3",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/srijs/rust-crc32fast",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "critical-section",
+    "version": "1.2.0",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/rust-embedded/critical-section",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "crossbeam-channel",
+    "version": "0.5.17",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/crossbeam-rs/crossbeam",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "crossbeam-deque",
+    "version": "0.8.8",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/crossbeam-rs/crossbeam",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "crossbeam-epoch",
+    "version": "0.9.21",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/crossbeam-rs/crossbeam",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "crossbeam-utils",
+    "version": "0.8.23",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/crossbeam-rs/crossbeam",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "cursor-icon",
+    "version": "1.2.0",
+    "license": "MIT OR Apache-2.0 OR Zlib",
+    "repository": "https://github.com/rust-windowing/cursor-icon",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "data-url",
+    "version": "0.3.2",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/servo/rust-url",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "derive_more",
+    "version": "2.1.1",
+    "license": "MIT",
+    "repository": "https://github.com/JelteF/derive_more",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "derive_more-impl",
+    "version": "2.1.1",
+    "license": "MIT",
+    "repository": "https://github.com/JelteF/derive_more",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "displaydoc",
+    "version": "0.2.7",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/yaahc/displaydoc",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "document-features",
+    "version": "0.2.12",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/slint-ui/document-features",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "dpi",
+    "version": "0.1.2",
+    "license": "Apache-2.0 AND MIT",
+    "repository": "https://github.com/rust-windowing/winit",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "either",
+    "version": "1.19.0",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/rayon-rs/either",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "equivalent",
+    "version": "1.0.3",
+    "license": "Apache-2.0 OR MIT",
+    "repository": "https://github.com/indexmap-rs/equivalent",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "error-code",
+    "version": "3.4.0",
+    "license": "BSL-1.0",
+    "repository": "https://github.com/DoumanAsh/error-code",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "euclid",
+    "version": "0.22.14",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/servo/euclid",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "fdeflate",
+    "version": "0.3.7",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/image-rs/fdeflate",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "femtovg",
+    "version": "0.27.0",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/femtovg/femtovg",
+    "usedBy": [
+      "femtovg"
+    ]
+  },
+  {
+    "name": "field-offset",
+    "version": "0.3.6",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/Diggsey/rust-field-offset",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "filetime",
+    "version": "0.2.29",
+    "license": "MIT/Apache-2.0",
+    "repository": "https://github.com/alexcrichton/filetime",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "find-msvc-tools",
+    "version": "0.1.15",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/rust-lang/cc-rs",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "fixed_decimal",
+    "version": "0.7.3",
+    "license": "Unicode-3.0",
+    "repository": "https://github.com/unicode-org/icu4x",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "flate2",
+    "version": "1.1.10",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/rust-lang/flate2-rs",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "float-cmp",
+    "version": "0.9.0",
+    "license": "MIT",
+    "repository": "https://github.com/mikedilger/float-cmp",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "fnv",
+    "version": "1.0.7",
+    "license": "Apache-2.0 / MIT",
+    "repository": "https://github.com/servo/rust-fnv",
+    "usedBy": [
+      "femtovg"
+    ]
+  },
+  {
+    "name": "foldhash",
+    "version": "0.2.0",
+    "license": "Zlib",
+    "repository": "https://github.com/orlp/foldhash",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "font-types",
+    "version": "0.12.7",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/googlefonts/fontations",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "fontdb",
+    "version": "0.24.0",
+    "license": "MIT",
+    "repository": "https://github.com/RazrFalcon/fontdb",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "fontique",
+    "version": "0.11.1",
+    "license": "Apache-2.0 OR MIT",
+    "repository": "https://github.com/linebender/parley",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "form_urlencoded",
+    "version": "1.2.2",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/servo/rust-url",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "getrandom",
+    "version": "0.4.3",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/rust-random/getrandom",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "gif",
+    "version": "0.14.2",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/image-rs/image-gif",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "gl_generator",
+    "version": "0.14.0",
+    "license": "Apache-2.0",
+    "repository": "https://github.com/brendanzab/gl-rs/",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "glob",
+    "version": "0.3.4",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/rust-lang/glob",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "glow",
+    "version": "0.18.0",
+    "license": "MIT OR Apache-2.0 OR Zlib",
+    "repository": "https://github.com/grovesNL/glow",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "glutin",
+    "version": "0.32.3",
+    "license": "Apache-2.0",
+    "repository": "https://github.com/rust-windowing/glutin",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "glutin_egl_sys",
+    "version": "0.7.1",
+    "license": "Apache-2.0",
+    "repository": "https://github.com/rust-windowing/glutin",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "glutin_wgl_sys",
+    "version": "0.6.1",
+    "license": "Apache-2.0",
+    "repository": "https://github.com/rust-windowing/glutin",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "glutin-winit",
+    "version": "0.5.0",
+    "license": "MIT",
+    "repository": "https://github.com/rust-windowing/glutin",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "gpu-allocator",
+    "version": "0.28.0",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/Traverse-Research/gpu-allocator",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "grid",
+    "version": "1.0.1",
+    "license": "MIT",
+    "repository": "https://github.com/becheran/grid",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "half",
+    "version": "2.7.1",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/VoidStarKat/half-rs",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "harfrust",
+    "version": "0.12.0",
+    "license": "MIT",
+    "repository": "https://github.com/harfbuzz/harfrust",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "hashbrown",
+    "version": "0.14.5",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/rust-lang/hashbrown",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "hashbrown",
+    "version": "0.16.1",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/rust-lang/hashbrown",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "hashbrown",
+    "version": "0.17.1",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/rust-lang/hashbrown",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "heck",
+    "version": "0.5.0",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/withoutboats/heck",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "htmlparser",
+    "version": "0.2.1",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/jdrouet/htmlparser.git",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "i-slint-backend-selector",
+    "version": "1.18.1",
+    "license": "GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0",
+    "repository": "https://github.com/slint-ui/slint",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "i-slint-backend-testing",
+    "version": "1.18.1",
+    "license": "GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0",
+    "repository": "https://github.com/slint-ui/slint",
+    "usedBy": [
+      "software"
+    ]
+  },
+  {
+    "name": "i-slint-backend-winit",
+    "version": "1.18.1",
+    "license": "GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0",
+    "repository": "https://github.com/slint-ui/slint",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "i-slint-common",
+    "version": "1.18.1",
+    "license": "GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0",
+    "repository": "https://github.com/slint-ui/slint",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "i-slint-compiler",
+    "version": "1.18.1",
+    "license": "GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0",
+    "repository": "https://github.com/slint-ui/slint",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "i-slint-core",
+    "version": "1.18.1",
+    "license": "GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0",
+    "repository": "https://github.com/slint-ui/slint",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "i-slint-core-macros",
+    "version": "1.18.1",
+    "license": "GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0",
+    "repository": "https://github.com/slint-ui/slint",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "i-slint-renderer-femtovg",
+    "version": "1.18.1",
+    "license": "GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0",
+    "repository": "https://github.com/slint-ui/slint",
+    "usedBy": [
+      "femtovg"
+    ]
+  },
+  {
+    "name": "i-slint-renderer-skia",
+    "version": "1.18.1",
+    "license": "GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0",
+    "repository": "https://github.com/slint-ui/slint",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "i-slint-renderer-software",
+    "version": "1.18.1",
+    "license": "GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0",
+    "repository": "https://github.com/slint-ui/slint",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "icu_collections",
+    "version": "2.4.0",
+    "license": "Unicode-3.0",
+    "repository": "https://github.com/unicode-org/icu4x",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "icu_decimal",
+    "version": "2.4.0",
+    "license": "Unicode-3.0",
+    "repository": "https://github.com/unicode-org/icu4x",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "icu_decimal_data",
+    "version": "2.4.0",
+    "license": "Unicode-3.0",
+    "repository": "https://github.com/unicode-org/icu4x",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "icu_locale_core",
+    "version": "2.4.0",
+    "license": "Unicode-3.0",
+    "repository": "https://github.com/unicode-org/icu4x",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "icu_locale_fallback",
+    "version": "2.4.0",
+    "license": "Unicode-3.0",
+    "repository": "https://github.com/unicode-org/icu4x",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "icu_locale_fallback_data",
+    "version": "2.4.0",
+    "license": "Unicode-3.0",
+    "repository": "https://github.com/unicode-org/icu4x",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "icu_normalizer",
+    "version": "2.4.0",
+    "license": "Unicode-3.0",
+    "repository": "https://github.com/unicode-org/icu4x",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "icu_normalizer_data",
+    "version": "2.4.0",
+    "license": "Unicode-3.0",
+    "repository": "https://github.com/unicode-org/icu4x",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "icu_plurals",
+    "version": "2.4.0",
+    "license": "Unicode-3.0",
+    "repository": "https://github.com/unicode-org/icu4x",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "icu_plurals_data",
+    "version": "2.4.0",
+    "license": "Unicode-3.0",
+    "repository": "https://github.com/unicode-org/icu4x",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "icu_properties",
+    "version": "2.4.0",
+    "license": "Unicode-3.0",
+    "repository": "https://github.com/unicode-org/icu4x",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "icu_properties_data",
+    "version": "2.4.0",
+    "license": "Unicode-3.0",
+    "repository": "https://github.com/unicode-org/icu4x",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "icu_provider",
+    "version": "2.4.0",
+    "license": "Unicode-3.0",
+    "repository": "https://github.com/unicode-org/icu4x",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "icu_segmenter",
+    "version": "2.4.0",
+    "license": "Unicode-3.0",
+    "repository": "https://github.com/unicode-org/icu4x",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "icu_segmenter_data",
+    "version": "2.4.0",
+    "license": "Unicode-3.0",
+    "repository": "https://github.com/unicode-org/icu4x",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "idna",
+    "version": "1.1.0",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/servo/rust-url/",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "idna_adapter",
+    "version": "1.2.2",
+    "license": "Apache-2.0 OR MIT",
+    "repository": "https://github.com/hsivonen/idna_adapter",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "image",
+    "version": "0.25.10",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/image-rs/image",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "image-webp",
+    "version": "0.2.4",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/image-rs/image-webp",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "imagesize",
+    "version": "0.15.0",
+    "license": "MIT",
+    "repository": "https://github.com/Roughsketch/imagesize",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "imgref",
+    "version": "1.12.3",
+    "license": "CC0-1.0 OR Apache-2.0",
+    "repository": "https://github.com/kornelski/imgref",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "indexmap",
+    "version": "2.14.2",
+    "license": "Apache-2.0 OR MIT",
+    "repository": "https://github.com/indexmap-rs/indexmap",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "itertools",
+    "version": "0.13.0",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/rust-itertools/itertools",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "itertools",
+    "version": "0.15.0",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/rust-itertools/itertools",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "itoa",
+    "version": "1.0.18",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/dtolnay/itoa",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "jobserver",
+    "version": "0.1.35",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/rust-lang/jobserver-rs",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "keyboard-types",
+    "version": "0.7.0",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/pyfisch/keyboard-types",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "khronos_api",
+    "version": "3.1.0",
+    "license": "Apache-2.0",
+    "repository": "https://github.com/brendanzab/gl-rs/",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "kurbo",
+    "version": "0.13.1",
+    "license": "Apache-2.0 OR MIT",
+    "repository": "https://github.com/linebender/kurbo",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "lazy_static",
+    "version": "1.5.1",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/rust-lang-nursery/lazy-static.rs",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "libc",
+    "version": "0.2.191",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/rust-lang/libc",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "libloading",
+    "version": "0.8.9",
+    "license": "ISC",
+    "repository": "https://github.com/nagisa/rust_libloading/",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "libm",
+    "version": "0.2.16",
+    "license": "MIT",
+    "repository": "https://github.com/rust-lang/compiler-builtins",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "linebender_resource_handle",
+    "version": "0.1.1",
+    "license": "Apache-2.0 OR MIT",
+    "repository": "https://github.com/linebender/raw_resource_handle",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "litemap",
+    "version": "0.8.3",
+    "license": "Unicode-3.0",
+    "repository": "https://github.com/unicode-org/icu4x",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "litrs",
+    "version": "1.0.1",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/LukasKalbertodt/litrs",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "lock_api",
+    "version": "0.4.14",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/Amanieu/parking_lot",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "log",
+    "version": "0.4.34",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/rust-lang/log",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "lyon_algorithms",
+    "version": "1.0.22",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/nical/lyon",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "lyon_extra",
+    "version": "1.1.0",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/nical/lyon",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "lyon_geom",
+    "version": "1.0.20",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/nical/lyon",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "lyon_path",
+    "version": "1.0.19",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/nical/lyon",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "memchr",
+    "version": "2.8.3",
+    "license": "Unlicense OR MIT",
+    "repository": "https://github.com/BurntSushi/memchr",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "memmap2",
+    "version": "0.9.12",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/RazrFalcon/memmap2-rs",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "memoffset",
+    "version": "0.9.1",
+    "license": "MIT",
+    "repository": "https://github.com/Gilnaa/memoffset",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "minimal-lexical",
+    "version": "0.2.1",
+    "license": "MIT/Apache-2.0",
+    "repository": "https://github.com/Alexhuszagh/minimal-lexical",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "miniz_oxide",
+    "version": "0.8.9",
+    "license": "MIT OR Zlib OR Apache-2.0",
+    "repository": "https://github.com/Frommi/miniz_oxide/tree/master/miniz_oxide",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "miniz_oxide",
+    "version": "0.9.1",
+    "license": "MIT OR Zlib OR Apache-2.0",
+    "repository": "https://github.com/Frommi/miniz_oxide/tree/master/miniz_oxide",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "moxcms",
+    "version": "0.8.1",
+    "license": "BSD-3-Clause OR Apache-2.0",
+    "repository": "https://github.com/awxkee/moxcms.git",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "muda",
+    "version": "0.19.3",
+    "license": "Apache-2.0 OR MIT",
+    "repository": "https://github.com/tauri-apps/muda",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "naga",
+    "version": "30.0.1",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/gfx-rs/wgpu",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "naga-types",
+    "version": "30.0.1",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/gfx-rs/wgpu",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "natord",
+    "version": "1.0.9",
+    "license": "MIT",
+    "repository": "https://github.com/lifthrasiir/rust-natord",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "nom",
+    "version": "7.1.3",
+    "license": "MIT",
+    "repository": "https://github.com/Geal/nom",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "num_enum",
+    "version": "0.7.6",
+    "license": "BSD-3-Clause OR MIT OR Apache-2.0",
+    "repository": "https://github.com/illicitonion/num_enum",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "num_enum_derive",
+    "version": "0.7.6",
+    "license": "BSD-3-Clause OR MIT OR Apache-2.0",
+    "repository": "https://github.com/illicitonion/num_enum",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "num-traits",
+    "version": "0.2.19",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/rust-num/num-traits",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "once_cell",
+    "version": "1.21.4",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/matklad/once_cell",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "ordered-float",
+    "version": "5.5.1",
+    "license": "MIT",
+    "repository": "https://github.com/reem/rust-ordered-float",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "parking_lot",
+    "version": "0.12.5",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/Amanieu/parking_lot",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "parking_lot_core",
+    "version": "0.9.12",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/Amanieu/parking_lot",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "parlance",
+    "version": "0.1.1",
+    "license": "Apache-2.0 OR MIT",
+    "repository": "https://github.com/linebender/parley",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "parley",
+    "version": "0.11.1",
+    "license": "Apache-2.0 OR MIT",
+    "repository": "https://github.com/linebender/parley",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "parley_data",
+    "version": "0.11.1",
+    "license": "Apache-2.0 OR MIT",
+    "repository": "https://github.com/linebender/parley",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "percent-encoding",
+    "version": "2.3.2",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/servo/rust-url/",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "pico-args",
+    "version": "0.5.0",
+    "license": "MIT",
+    "repository": "https://github.com/RazrFalcon/pico-args",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "pin-project",
+    "version": "1.1.13",
+    "license": "Apache-2.0 OR MIT",
+    "repository": "https://github.com/taiki-e/pin-project",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "pin-project-internal",
+    "version": "1.1.13",
+    "license": "Apache-2.0 OR MIT",
+    "repository": "https://github.com/taiki-e/pin-project",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "pin-project-lite",
+    "version": "0.2.17",
+    "license": "Apache-2.0 OR MIT",
+    "repository": "https://github.com/taiki-e/pin-project-lite",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "pin-utils",
+    "version": "0.1.1",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/rust-lang/pin-utils",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "pin-weak",
+    "version": "1.1.0",
+    "license": "MIT",
+    "repository": "https://github.com/sixtyfpsui/pin-weak",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "pkg-config",
+    "version": "0.3.34",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/rust-lang/pkg-config-rs",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "png",
+    "version": "0.18.1",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/image-rs/image-png",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "polycool",
+    "version": "0.4.0",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/linebender/kurbo",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "portable-atomic",
+    "version": "1.15.0",
+    "license": "Apache-2.0 OR MIT",
+    "repository": "https://github.com/taiki-e/portable-atomic",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "potential_utf",
+    "version": "0.1.6",
+    "license": "Unicode-3.0",
+    "repository": "https://github.com/unicode-org/icu4x",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "presser",
+    "version": "0.3.1",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/EmbarkStudios/presser",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "prettyplease",
+    "version": "0.2.37",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/dtolnay/prettyplease",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "proc-macro-crate",
+    "version": "3.5.0",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/bkchr/proc-macro-crate",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "proc-macro2",
+    "version": "1.0.107",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/dtolnay/proc-macro2",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "profiling",
+    "version": "1.0.18",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/aclysma/profiling",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "pulldown-cmark",
+    "version": "0.13.5",
+    "license": "MIT",
+    "repository": "https://github.com/raphlinus/pulldown-cmark",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "pxfm",
+    "version": "0.1.30",
+    "license": "BSD-3-Clause OR Apache-2.0",
+    "repository": "https://github.com/awxkee/pxfm",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "quick-error",
+    "version": "2.0.1",
+    "license": "MIT/Apache-2.0",
+    "repository": "http://github.com/tailhook/quick-error",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "quote",
+    "version": "1.0.47",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/dtolnay/quote",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "range-alloc",
+    "version": "0.1.5",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/gfx-rs/range-alloc",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "raw-window-handle",
+    "version": "0.6.2",
+    "license": "MIT OR Apache-2.0 OR Zlib",
+    "repository": "https://github.com/rust-windowing/raw-window-handle",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "rayon",
+    "version": "1.12.0",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/rayon-rs/rayon",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "rayon-core",
+    "version": "1.13.0",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/rayon-rs/rayon",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "read-fonts",
+    "version": "0.41.0",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/googlefonts/fontations",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "regex",
+    "version": "1.13.1",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/rust-lang/regex",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "regex-automata",
+    "version": "0.4.18",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/rust-lang/regex",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "regex-syntax",
+    "version": "0.8.11",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/rust-lang/regex",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "renderdoc-sys",
+    "version": "1.1.0",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/ebkalderon/renderdoc-rs",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "resvg",
+    "version": "0.48.1",
+    "license": "Apache-2.0 OR MIT",
+    "repository": "https://github.com/linebender/resvg",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "rgb",
+    "version": "0.8.53",
+    "license": "MIT",
+    "repository": "https://github.com/kornelski/rust-rgb",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "rowan",
+    "version": "0.17.0",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/rust-analyzer/rowan",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "roxmltree",
+    "version": "0.21.2",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/RazrFalcon/roxmltree",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "rspolib",
+    "version": "0.1.2",
+    "license": "MIT",
+    "repository": "https://github.com/mondeja/rspolib",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "rustc_version",
+    "version": "0.4.1",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/djc/rustc-version-rs",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "rustc-hash",
+    "version": "1.1.0",
+    "license": "Apache-2.0/MIT",
+    "repository": "https://github.com/rust-lang-nursery/rustc-hash",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "rustc-hash",
+    "version": "2.1.3",
+    "license": "Apache-2.0 OR MIT",
+    "repository": "https://github.com/rust-lang/rustc-hash",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "rustversion",
+    "version": "1.0.23",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/dtolnay/rustversion",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "scoped-tls-hkt",
+    "version": "0.1.5",
+    "license": "MIT/Apache-2.0",
+    "repository": "https://github.com/Diggsey/scoped-tls-hkt",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "scopeguard",
+    "version": "1.2.0",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/bluss/scopeguard",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "semver",
+    "version": "1.0.28",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/dtolnay/semver",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "serde",
+    "version": "1.0.229",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/serde-rs/serde",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "serde_core",
+    "version": "1.0.229",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/serde-rs/serde",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "serde_derive",
+    "version": "1.0.229",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/serde-rs/serde",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "serde_json",
+    "version": "1.0.154",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/serde-rs/json",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "serde_spanned",
+    "version": "1.1.2",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/toml-rs/toml",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "shlex",
+    "version": "1.3.0",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/comex/rust-shlex",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "shlex",
+    "version": "2.0.1",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/comex/rust-shlex",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "simd-adler32",
+    "version": "0.3.10",
+    "license": "MIT",
+    "repository": "https://github.com/mcountryman/simd-adler32",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "simplecss",
+    "version": "0.2.2",
+    "license": "Apache-2.0 OR MIT",
+    "repository": "https://github.com/linebender/simplecss",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "siphasher",
+    "version": "1.0.4",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/jedisct1/rust-siphash",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "skia-bindings",
+    "version": "0.153.3",
+    "license": "MIT",
+    "repository": "https://github.com/rust-skia/rust-skia",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "skia-safe",
+    "version": "0.153.3",
+    "license": "MIT",
+    "repository": "https://github.com/rust-skia/rust-skia",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "skrifa",
+    "version": "0.44.0",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/googlefonts/fontations",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "slab",
+    "version": "0.4.12",
+    "license": "MIT",
+    "repository": "https://github.com/tokio-rs/slab",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "slint",
+    "version": "1.18.1",
+    "license": "GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0",
+    "repository": "https://github.com/slint-ui/slint",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "slint-build",
+    "version": "1.18.1",
+    "license": "GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0",
+    "repository": "https://github.com/slint-ui/slint",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "slint-macros",
+    "version": "1.18.1",
+    "license": "GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0",
+    "repository": "https://github.com/slint-ui/slint",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "slotmap",
+    "version": "1.1.1",
+    "license": "Zlib",
+    "repository": "https://github.com/orlp/slotmap",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "smallvec",
+    "version": "1.16.4",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/servo/rust-smallvec",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "smol_str",
+    "version": "0.2.2",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/rust-analyzer/smol_str",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "smol_str",
+    "version": "0.3.7",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/rust-lang/rust-analyzer/tree/master/lib/smol_str",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "snafu",
+    "version": "0.8.9",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/shepmaster/snafu",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "snafu-derive",
+    "version": "0.8.9",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/shepmaster/snafu",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "softbuffer",
+    "version": "0.4.8",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/rust-windowing/softbuffer",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "spin_on",
+    "version": "0.1.1",
+    "license": "Apache-2.0 OR MIT",
+    "repository": null,
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "spirv",
+    "version": "0.4.0+sdk-1.4.341.0",
+    "license": "Apache-2.0",
+    "repository": "https://github.com/gfx-rs/rspirv",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "stable_deref_trait",
+    "version": "1.2.1",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/storyyeller/stable_deref_trait",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "static_assertions",
+    "version": "1.1.0",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/nvzqz/static-assertions-rs",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "strict-num",
+    "version": "0.1.1",
+    "license": "MIT",
+    "repository": "https://github.com/RazrFalcon/strict-num",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "strum",
+    "version": "0.28.0",
+    "license": "MIT",
+    "repository": "https://github.com/Peternator7/strum",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "strum_macros",
+    "version": "0.28.0",
+    "license": "MIT",
+    "repository": "https://github.com/Peternator7/strum",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "svgtypes",
+    "version": "0.16.1",
+    "license": "Apache-2.0 OR MIT",
+    "repository": "https://github.com/linebender/svgtypes",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "swash",
+    "version": "0.2.10",
+    "license": "Apache-2.0 OR MIT",
+    "repository": "https://github.com/dfrg/swash",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "syn",
+    "version": "2.0.119",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/dtolnay/syn",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "syn",
+    "version": "3.0.9",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/dtolnay/syn",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "synstructure",
+    "version": "0.14.0",
+    "license": "MIT",
+    "repository": "https://github.com/mystor/synstructure",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "sys-locale",
+    "version": "0.3.2",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/1Password/sys-locale",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "taffy",
+    "version": "0.10.1",
+    "license": "MIT",
+    "repository": "https://github.com/DioxusLabs/taffy",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "tar",
+    "version": "0.4.46",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/composefs/tar-rs",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "text-size",
+    "version": "1.1.1",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/rust-analyzer/text-size",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "thiserror",
+    "version": "2.0.21",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/dtolnay/thiserror",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "thiserror-impl",
+    "version": "2.0.21",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/dtolnay/thiserror",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "tiny-skia",
+    "version": "0.12.0",
+    "license": "BSD-3-Clause",
+    "repository": "https://github.com/linebender/tiny-skia",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "tiny-skia-path",
+    "version": "0.12.0",
+    "license": "BSD-3-Clause",
+    "repository": "https://github.com/linebender/tiny-skia/tree/master/path",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "tinystr",
+    "version": "0.8.5",
+    "license": "Unicode-3.0",
+    "repository": "https://github.com/unicode-org/icu4x",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "tinyvec",
+    "version": "1.13.3",
+    "license": "Zlib OR Apache-2.0 OR MIT",
+    "repository": "https://github.com/Lokathor/tinyvec",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "toml",
+    "version": "1.1.8+spec-1.1.0",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/toml-rs/toml",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "toml_datetime",
+    "version": "1.1.2+spec-1.1.0",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/toml-rs/toml",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "toml_edit",
+    "version": "0.25.17+spec-1.1.0",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/toml-rs/toml",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "toml_parser",
+    "version": "1.1.5+spec-1.1.0",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/toml-rs/toml",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "toml_writer",
+    "version": "1.1.3+spec-1.1.0",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/toml-rs/toml",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "tracing",
+    "version": "0.1.44",
+    "license": "MIT",
+    "repository": "https://github.com/tokio-rs/tracing",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "tracing-attributes",
+    "version": "0.1.31",
+    "license": "MIT",
+    "repository": "https://github.com/tokio-rs/tracing",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "tracing-core",
+    "version": "0.1.36",
+    "license": "MIT",
+    "repository": "https://github.com/tokio-rs/tracing",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "typed-index-collections",
+    "version": "3.5.0",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/zheland/typed-index-collections",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "unicase",
+    "version": "2.10.0",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/seanmonstar/unicase",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "unicode-bidi",
+    "version": "0.3.18",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/servo/unicode-bidi",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "unicode-ident",
+    "version": "1.0.27",
+    "license": "(MIT OR Apache-2.0) AND Unicode-3.0",
+    "repository": "https://github.com/dtolnay/unicode-ident",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "unicode-linebreak",
+    "version": "0.1.5",
+    "license": "Apache-2.0",
+    "repository": "https://github.com/axelf4/unicode-linebreak",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "unicode-script",
+    "version": "0.5.8",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/unicode-rs/unicode-script",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "unicode-segmentation",
+    "version": "1.13.3",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/unicode-rs/unicode-segmentation",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "unicode-vo",
+    "version": "0.1.0",
+    "license": "MIT/Apache-2.0",
+    "repository": "https://github.com/RazrFalcon/unicode-vo",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "unicode-width",
+    "version": "0.2.2",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/unicode-rs/unicode-width",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "unicode-xid",
+    "version": "0.2.6",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/unicode-rs/unicode-xid",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "unty",
+    "version": "0.0.4",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/bincode-org/unty",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "url",
+    "version": "2.5.8",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/servo/rust-url",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "usvg",
+    "version": "0.48.1",
+    "license": "Apache-2.0 OR MIT",
+    "repository": "https://github.com/linebender/resvg",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "utf8_iter",
+    "version": "1.0.4",
+    "license": "Apache-2.0 OR MIT",
+    "repository": "https://github.com/hsivonen/utf8_iter",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "version_check",
+    "version": "0.9.5",
+    "license": "MIT/Apache-2.0",
+    "repository": "https://github.com/SergioBenitez/version_check",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "vtable",
+    "version": "0.5.0",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/slint-ui/slint",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "vtable-macro",
+    "version": "0.5.0",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/slint-ui/slint",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "webbrowser",
+    "version": "1.2.5",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/amodm/webbrowser-rs",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "weezl",
+    "version": "0.1.12",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/image-rs/weezl",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "wgpu",
+    "version": "30.0.1",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/gfx-rs/wgpu",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "wgpu-core",
+    "version": "30.0.1",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/gfx-rs/wgpu",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "wgpu-core-deps-windows-linux-android",
+    "version": "30.0.1",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/gfx-rs/wgpu",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "wgpu-hal",
+    "version": "30.0.1",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/gfx-rs/wgpu",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "wgpu-naga-bridge",
+    "version": "30.0.1",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/gfx-rs/wgpu",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "wgpu-types",
+    "version": "30.0.1",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/gfx-rs/wgpu",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "windows",
+    "version": "0.62.2",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/microsoft/windows-rs",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "windows_x86_64_msvc",
+    "version": "0.52.6",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/microsoft/windows-rs",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "windows-collections",
+    "version": "0.3.2",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/microsoft/windows-rs",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "windows-core",
+    "version": "0.62.2",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/microsoft/windows-rs",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "windows-future",
+    "version": "0.3.2",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/microsoft/windows-rs",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "windows-implement",
+    "version": "0.60.2",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/microsoft/windows-rs",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "windows-interface",
+    "version": "0.59.3",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/microsoft/windows-rs",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "windows-link",
+    "version": "0.2.1",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/microsoft/windows-rs",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "windows-numerics",
+    "version": "0.3.1",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/microsoft/windows-rs",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "windows-result",
+    "version": "0.4.1",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/microsoft/windows-rs",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "windows-strings",
+    "version": "0.5.1",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/microsoft/windows-rs",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "windows-sys",
+    "version": "0.52.0",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/microsoft/windows-rs",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "windows-sys",
+    "version": "0.61.2",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/microsoft/windows-rs",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "windows-targets",
+    "version": "0.52.6",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/microsoft/windows-rs",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "windows-threading",
+    "version": "0.2.1",
+    "license": "MIT OR Apache-2.0",
+    "repository": "https://github.com/microsoft/windows-rs",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "winit",
+    "version": "0.30.13",
+    "license": "Apache-2.0",
+    "repository": "https://github.com/rust-windowing/winit",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "winnow",
+    "version": "1.0.4",
+    "license": "MIT",
+    "repository": "https://github.com/winnow-rs/winnow",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "writeable",
+    "version": "0.6.4",
+    "license": "Unicode-3.0",
+    "repository": "https://github.com/unicode-org/icu4x",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "xml-rs",
+    "version": "0.8.29",
+    "license": "MIT",
+    "repository": "https://github.com/kornelski/xml-rs",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "xmlwriter",
+    "version": "0.1.0",
+    "license": "MIT",
+    "repository": "https://github.com/RazrFalcon/xmlwriter",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "yazi",
+    "version": "0.2.1",
+    "license": "Apache-2.0 OR MIT",
+    "repository": "https://github.com/dfrg/yazi",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "yoke",
+    "version": "0.8.4",
+    "license": "Unicode-3.0",
+    "repository": "https://github.com/unicode-org/icu4x",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "yoke-derive",
+    "version": "0.8.4",
+    "license": "Unicode-3.0",
+    "repository": "https://github.com/unicode-org/icu4x",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "zeno",
+    "version": "0.3.3",
+    "license": "Apache-2.0 OR MIT",
+    "repository": "https://github.com/dfrg/zeno",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "zerocopy",
+    "version": "0.8.63",
+    "license": "BSD-2-Clause OR Apache-2.0 OR MIT",
+    "repository": "https://github.com/google/zerocopy",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "zerocopy-derive",
+    "version": "0.8.63",
+    "license": "BSD-2-Clause OR Apache-2.0 OR MIT",
+    "repository": "https://github.com/google/zerocopy",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "zerofrom",
+    "version": "0.1.8",
+    "license": "Unicode-3.0",
+    "repository": "https://github.com/unicode-org/icu4x",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "zerofrom-derive",
+    "version": "0.1.8",
+    "license": "Unicode-3.0",
+    "repository": "https://github.com/unicode-org/icu4x",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "zerotrie",
+    "version": "0.2.5",
+    "license": "Unicode-3.0",
+    "repository": "https://github.com/unicode-org/icu4x",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "zerovec",
+    "version": "0.11.9",
+    "license": "Unicode-3.0",
+    "repository": "https://github.com/unicode-org/icu4x",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "zerovec-derive",
+    "version": "0.11.7",
+    "license": "Unicode-3.0",
+    "repository": "https://github.com/unicode-org/icu4x",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "zlib-rs",
+    "version": "0.6.8",
+    "license": "Zlib",
+    "repository": "https://github.com/trifectatechfoundation/zlib-rs",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "zmij",
+    "version": "1.0.23",
+    "license": "MIT",
+    "repository": "https://github.com/dtolnay/zmij",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "zune-core",
+    "version": "0.5.3",
+    "license": "MIT OR Apache-2.0 OR Zlib",
+    "repository": "https://github.com/etemesi254/zune-image",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  },
+  {
+    "name": "zune-jpeg",
+    "version": "0.5.15",
+    "license": "MIT OR Apache-2.0 OR Zlib",
+    "repository": "https://github.com/etemesi254/zune-image/tree/dev/crates/zune-jpeg",
+    "usedBy": [
+      "femtovg",
+      "software"
+    ]
+  }
+]

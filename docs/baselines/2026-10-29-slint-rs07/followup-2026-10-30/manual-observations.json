@@ -1,0 +1,115 @@
+[
+  {
+    "Case": "software-medium-single-gesture",
+    "UserReport": "一次拖入，显示 3 项（2 支持、1 无效）",
+    "Result": "passed",
+    "Renderer": "software",
+    "Elevated": false,
+    "DroppedEvents": 3,
+    "WorkerBatchEntries": 3,
+    "FinalTotal": 3,
+    "Supported": 2,
+    "Invalid": 1,
+    "EventElapsedUs": [
+      123559567,
+      123560103,
+      123560613
+    ],
+    "Source": "Explorer actual pointer drag, user-operated"
+  },
+  {
+    "Case": "femtovg-medium-single-gesture",
+    "UserReport": "一次拖入，显示 3 项（2 支持、1 无效）",
+    "Result": "passed",
+    "Renderer": "femtovg",
+    "Elevated": false,
+    "DroppedEvents": 3,
+    "WorkerBatchEntries": 3,
+    "FinalTotal": 3,
+    "Supported": 2,
+    "Invalid": 1,
+    "EventElapsedUs": [
+      48427776,
+      48428575,
+      48429261
+    ],
+    "Source": "Explorer actual pointer drag, user-operated"
+  },
+  {
+    "Case": "software-high-to-high-single-gesture",
+    "UserReport": "管理员源拖入成功，显示 3 项（2 支持、1 无效）",
+    "Result": "passed",
+    "Renderer": "software",
+    "SourcePid": 9696,
+    "TargetPid": 9924,
+    "Elevated": true,
+    "SourceIntegrityRid": 12288,
+    "TargetIntegrityRid": 12288,
+    "DroppedEvents": 3,
+    "WorkerBatchEntries": 3,
+    "FinalTotal": 3,
+    "Supported": 2,
+    "Invalid": 1,
+    "EventElapsedUs": [
+      391873856,
+      391873865,
+      391873867
+    ],
+    "SourceDragEffect": "Copy",
+    "Source": "User-operated WinForms OLE FileDrop fixture, not Explorer",
+    "Snapshot": "software-high-with-source.json",
+    "Screenshot": "Not captured after success because Computer Use was stopped by physical Escape; user report and source/target native events retained"
+  },
+  {
+    "Case": "software-high-picker-focus-exit",
+    "UserReport": "选择成功，可输入 code，已正常退出",
+    "Result": "passed",
+    "Renderer": "software",
+    "TargetPid": 9924,
+    "PickerPaths": 1,
+    "ActualInputUtf8Bytes": 4,
+    "ActualInputFocused": true,
+    "ActualInputNativeFocused": true,
+    "ExitedNormally": true,
+    "CleanupSnapshot": "after-software-high-exit.json",
+    "SelectionDetail": "Request suggested two files; native completion actually returned one, which was previewed successfully. No claim of elevated two-file selection in this run."
+  },
+  {
+    "Case": "femtovg-high-to-high-single-gesture",
+    "UserReport": "管理员源拖入成功，显示 3 项（2 支持、1 无效）",
+    "Result": "passed",
+    "Renderer": "femtovg",
+    "SourcePid": 7388,
+    "TargetPid": 2040,
+    "Elevated": true,
+    "SourceIntegrityRid": 12288,
+    "TargetIntegrityRid": 12288,
+    "DroppedEvents": 3,
+    "WorkerBatchEntries": 3,
+    "FinalTotal": 3,
+    "Supported": 2,
+    "Invalid": 1,
+    "EventElapsedUs": [
+      121901768,
+      121901777,
+      121901779
+    ],
+    "SourceDragEffect": "Copy",
+    "Source": "User-operated WinForms OLE FileDrop fixture, not Explorer",
+    "Snapshot": "femtovg-high-with-source.json",
+    "Screenshot": "screenshots/femtovg-high-high-source-drop.jpg"
+  },
+  {
+    "Case": "femtovg-high-picker-focus-exit",
+    "UserReport": "两项选择成功，可输入 code，三个测试窗口均已关闭",
+    "Result": "passed",
+    "Renderer": "femtovg",
+    "TargetPid": 2040,
+    "PickerPaths": 2,
+    "ActualInputUtf8Bytes": 4,
+    "ActualInputFocused": true,
+    "ActualInputNativeFocused": true,
+    "ExitedNormally": true,
+    "CleanupSnapshot": "final-cleanup.json"
+  }
+]

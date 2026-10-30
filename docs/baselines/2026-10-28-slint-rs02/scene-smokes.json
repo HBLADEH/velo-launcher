@@ -1,0 +1,50 @@
+[
+  {
+    "Renderer": "femtovg",
+    "Scene": "dark-list",
+    "ExitCode": 0,
+    "FixtureResults": 2,
+    "SmokeResult": "event=smoke_result passed=true backend=winit renderer=femtovg hwnd=true redraw_events=8 logical_size_640x540=true nonuniform_snapshot=true opengl_frame=true",
+    "ExecutableSHA256": "EEE1A2E49A190A0C4C27086F4B16418A75B9DA703F895E5349FBF6AE8C9E153F"
+  },
+  {
+    "Renderer": "femtovg",
+    "Scene": "light-empty",
+    "ExitCode": 0,
+    "FixtureResults": 0,
+    "SmokeResult": "event=smoke_result passed=true backend=winit renderer=femtovg hwnd=true redraw_events=8 logical_size_640x540=true nonuniform_snapshot=true opengl_frame=true",
+    "ExecutableSHA256": "EEE1A2E49A190A0C4C27086F4B16418A75B9DA703F895E5349FBF6AE8C9E153F"
+  },
+  {
+    "Renderer": "femtovg",
+    "Scene": "dark-empty-pinned",
+    "ExitCode": 0,
+    "FixtureResults": 25,
+    "SmokeResult": "event=smoke_result passed=true backend=winit renderer=femtovg hwnd=true redraw_events=9 logical_size_640x540=true nonuniform_snapshot=true opengl_frame=true",
+    "ExecutableSHA256": "EEE1A2E49A190A0C4C27086F4B16418A75B9DA703F895E5349FBF6AE8C9E153F"
+  },
+  {
+    "Renderer": "software",
+    "Scene": "dark-list",
+    "ExitCode": 0,
+    "FixtureResults": 2,
+    "SmokeResult": "event=smoke_result passed=true backend=winit renderer=software hwnd=true redraw_events=9 logical_size_640x540=true nonuniform_snapshot=true opengl_frame=false",
+    "ExecutableSHA256": "7C2DC44E86B42A2116E08E2F413BAAABA91E7D49FB10E7B376CD9593557DC077"
+  },
+  {
+    "Renderer": "software",
+    "Scene": "light-empty",
+    "ExitCode": 0,
+    "FixtureResults": 0,
+    "SmokeResult": "event=smoke_result passed=true backend=winit renderer=software hwnd=true redraw_events=8 logical_size_640x540=true nonuniform_snapshot=true opengl_frame=false",
+    "ExecutableSHA256": "7C2DC44E86B42A2116E08E2F413BAAABA91E7D49FB10E7B376CD9593557DC077"
+  },
+  {
+    "Renderer": "software",
+    "Scene": "dark-empty-pinned",
+    "ExitCode": 0,
+    "FixtureResults": 25,
+    "SmokeResult": "event=smoke_result passed=true backend=winit renderer=software hwnd=true redraw_events=8 logical_size_640x540=true nonuniform_snapshot=true opengl_frame=false",
+    "ExecutableSHA256": "7C2DC44E86B42A2116E08E2F413BAAABA91E7D49FB10E7B376CD9593557DC077"
+  }
+]

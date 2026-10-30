@@ -1,0 +1,75 @@
+{
+  "Renderer": "femtovg",
+  "Backend": "winit",
+  "Target": "x86_64-pc-windows-msvc",
+  "Rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+  "Cargo": "cargo 1.99.1 (5f94df478 2026-08-27)",
+  "MsvcToolsVersion": "14.50.35717",
+  "WindowsSdkVersion": "10.0.26100.0",
+  "CompilerFileVersion": "19.50.35719.0",
+  "LinkerFileVersion": "14.50.35719.0",
+  "SlintVersion": "1.18.1",
+  "SlintFeatures": [
+    "backend-winit",
+    "compat-1-18",
+    "i-slint-renderer-femtovg",
+    "raw-window-handle-06",
+    "renderer-femtovg",
+    "std",
+    "unstable-winit-030"
+  ],
+  "WinitBackendFeatures": [
+    "default",
+    "muda",
+    "raw-window-handle-06",
+    "renderer-femtovg",
+    "wayland",
+    "x11"
+  ],
+  "WorkspaceCommit": "ac2f51ad1317f4abffab2c548af251e48ce16d2b",
+  "WorkspaceDirty": true,
+  "ExecutableSHA256": "CF8E64341CF7A74D0CF9C6DE81C2B767D495BAD5F42625FCB314C909184CC9CC",
+  "ExecutableBytes": 9913344,
+  "Sources": [
+    {
+      "Path": "Cargo.toml",
+      "SHA256": "FD0D2161DF9568DE658F6C5BD152BC6FE9B77C0C93506FD565E2F5D26F892339"
+    },
+    {
+      "Path": "Cargo.lock",
+      "SHA256": "362445DBE460A3E894E3537C9F0CF9F3849819B1E9B80A3269AB8675ACE208B6"
+    },
+    {
+      "Path": "rust-toolchain.toml",
+      "SHA256": "4387889E7EF217B7A0CEA12EE152FB5570EC33880F985BFF2EBCD49B963B3B24"
+    },
+    {
+      "Path": "windows-toolchain.json",
+      "SHA256": "850BE7ABA1DC71C8FDEB44A9950DDFC80E5D1EBE3E77B6E93D9E51126042194C"
+    },
+    {
+      "Path": ".cargo/config.toml",
+      "SHA256": "B30E5A93F3EE1E18D93D09516EB08D9CCCCDDA15027615C61D58BE7264185711"
+    },
+    {
+      "Path": "build.rs",
+      "SHA256": "CF7A1764E61464770A5F1A58BAE1996A7C9DE0796EFE753A9DAFF8590F0470C5"
+    },
+    {
+      "Path": "src/main.rs",
+      "SHA256": "28A204825C77A62352C2C1681B78744B906A084277F51AAB2EDB8BB21004EF7F"
+    },
+    {
+      "Path": "ui/app.slint",
+      "SHA256": "762AE1B6FF89CA9929BE29BCF2195038A1EA09DAEE7D53724ADCED2433367F84"
+    },
+    {
+      "Path": "../scripts/verify-rust.ps1",
+      "SHA256": "A15C1E73A017CD05C8C8B306BE0EE433EC7108AFBC34F6943C8F1E381B1B3620"
+    },
+    {
+      "Path": "../scripts/lib/rust-environment.ps1",
+      "SHA256": "330D5ECE195714C182B949C18D6C62951CEF4EE23BAF2982DEE43B68F9B521BC"
+    }
+  ]
+}

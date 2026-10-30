@@ -1,0 +1,72 @@
+{
+  "SchemaVersion": 1,
+  "RecordedDate": "2026-10-28",
+  "Timezone": "Asia/Shanghai",
+  "OperatingSystem": "Windows 11 Pro x64 10.0.26300",
+  "Scale": 1.25,
+  "PhysicalClient": [
+    800,
+    675
+  ],
+  "LogicalClient": [
+    640,
+    540
+  ],
+  "ScreenshotPixels": [
+    640,
+    540
+  ],
+  "Runs": [
+    {
+      "Renderer": "femtovg",
+      "ExecutableSHA256": "EEE1A2E49A190A0C4C27086F4B16418A75B9DA703F895E5349FBF6AE8C9E153F",
+      "Arguments": [
+        "--diagnostics",
+        "--reduce-motion"
+      ],
+      "Events": [
+        "event=input_edited utf8_bytes=0 fixture_results=28 home=true",
+        "event=renderer_observed renderer=femtovg graphics_api=NativeOpenGL",
+        "event=native_window backend=winit renderer=femtovg scale=1.25 physical_width=800 physical_height=675",
+        "event=input_edited utf8_bytes=4 fixture_results=2 home=false",
+        "event=fixture_chosen id=editor action=record_only",
+        "event=input_edited utf8_bytes=0 fixture_results=28 home=true",
+        "event=input_edited utf8_bytes=6 fixture_results=13 home=false",
+        "event=fixture_chosen id=environment action=record_only"
+      ]
+    },
+    {
+      "Renderer": "software",
+      "ExecutableSHA256": "7C2DC44E86B42A2116E08E2F413BAAABA91E7D49FB10E7B376CD9593557DC077",
+      "Arguments": [
+        "--diagnostics",
+        "--reduce-motion"
+      ],
+      "Events": [
+        "event=input_edited utf8_bytes=0 fixture_results=28 home=true",
+        "event=native_window backend=winit renderer=software scale=1.25 physical_width=800 physical_height=675",
+        "event=input_edited utf8_bytes=4 fixture_results=2 home=false",
+        "event=input_edited utf8_bytes=0 fixture_results=28 home=true",
+        "event=input_edited utf8_bytes=9 fixture_results=1 home=false",
+        "event=fixture_chosen id=notes action=record_only",
+        "event=input_edited utf8_bytes=0 fixture_results=28 home=true",
+        "event=input_edited utf8_bytes=23 fixture_results=0 home=false",
+        "event=input_edited utf8_bytes=0 fixture_results=28 home=true"
+      ]
+    },
+    {
+      "Renderer": "software",
+      "ExecutableSHA256": "7C2DC44E86B42A2116E08E2F413BAAABA91E7D49FB10E7B376CD9593557DC077",
+      "Arguments": [
+        "--diagnostics",
+        "--reduce-motion",
+        "--empty-pinned",
+        "--theme=dark"
+      ],
+      "Events": [
+        "event=input_edited utf8_bytes=0 fixture_results=25 home=true",
+        "event=native_window backend=winit renderer=software scale=1.25 physical_width=800 physical_height=675"
+      ]
+    }
+  ]
+}

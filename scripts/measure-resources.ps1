@@ -1,6 +1,9 @@
 [CmdletBinding()]
 param(
     [Parameter(Mandatory)][ValidateRange(1, 2147483647)][int]$ProcessId,
+    [ValidateSet('Wails', 'Slint')][string]$ApplicationKind = 'Wails',
+    [string]$WindowHandle,
+    [string]$BuildIdentityPath,
     [ValidateRange(1, 60)][int]$Seconds = 15,
     [ValidateRange(1, 20)][int]$Samples = 1,
     [ValidateSet('Installed', 'Candidate', 'Unknown')][string]$Edition = 'Unknown',
@@ -18,6 +21,8 @@ $ErrorActionPreference = 'Stop'
 if ($MinimumStateSeconds -gt 0 -and $WindowState -eq 'Unknown') { throw 'A settling period requires Visible or Hidden.' }
 if ($IdleConfirmed -and [string]::IsNullOrWhiteSpace($IdleEvidence)) { throw 'IdleConfirmed requires IdleEvidence describing how scanning completion was confirmed.' }
 if ($OutputPath -and (Test-Path -LiteralPath $OutputPath)) { throw 'OutputPath already exists; keep previous evidence and use a new filename.' }
+if ($ApplicationKind -eq 'Slint' -and $WindowHandle -notmatch '^(?:0x)?[0-9A-Fa-f]+$') { throw 'Slint requires an observed hexadecimal WindowHandle; PID alone cannot distinguish helper windows.' }
+$nativeHandle = $(if ($WindowHandle) { [Convert]::ToInt64(($WindowHandle -replace '^0x', ''), 16) } else { 0 })
 
 # Read-only native observation: match both class and owner PID. FindWindow alone
 # could accidentally describe another Velo process/session. No window is changed.
@@ -32,6 +37,7 @@ namespace VeloMeasurement {
         public string Handle;
         public bool Visible;
         public uint DPI;
+        public string ClassName;
     }
     public static class WindowProbe {
         private delegate bool EnumProc(IntPtr window, IntPtr data);
@@ -40,7 +46,7 @@ namespace VeloMeasurement {
         [DllImport("user32.dll", CharSet=CharSet.Unicode)] private static extern int GetClassName(IntPtr window, StringBuilder name, int max);
         [DllImport("user32.dll")] private static extern bool IsWindowVisible(IntPtr window);
         [DllImport("user32.dll")] private static extern uint GetDpiForWindow(IntPtr window);
-        public static WindowInfo[] Read(uint pid) {
+        public static WindowInfo[] Read(uint pid, long handle) {
             var result = new List<WindowInfo>();
             EnumWindows((window, data) => {
                 uint owner;
@@ -48,8 +54,8 @@ namespace VeloMeasurement {
                 if (owner != pid) return true;
                 var name = new StringBuilder(256);
                 GetClassName(window, name, name.Capacity);
-                if (name.ToString() == "VeloLauncherWindow") {
-                    result.Add(new WindowInfo { Handle=window.ToInt64().ToString("X"), Visible=IsWindowVisible(window), DPI=GetDpiForWindow(window) });
+                if ((handle == 0 && name.ToString() == "VeloLauncherWindow") || (handle != 0 && window.ToInt64() == handle)) {
+                    result.Add(new WindowInfo { Handle=window.ToInt64().ToString("X"), Visible=IsWindowVisible(window), DPI=GetDpiForWindow(window), ClassName=name.ToString() });
                 }
                 return true;
             }, IntPtr.Zero);
@@ -61,7 +67,7 @@ namespace VeloMeasurement {
 }
 
 function Get-WindowObservation {
-    $windows = @([VeloMeasurement.WindowProbe]::Read($ProcessId))
+    $windows = @([VeloMeasurement.WindowProbe]::Read($ProcessId, $nativeHandle))
     if ($windows.Count -ne 1) {
         return [pscustomobject]@{ State = 'Unknown'; DPI = $null; ScalePercent = $null; Handle = $null }
     }
@@ -70,6 +76,7 @@ function Get-WindowObservation {
         DPI = $windows[0].DPI
         ScalePercent = [math]::Round($windows[0].DPI / 96 * 100, 2)
         Handle = $windows[0].Handle
+        ClassName = $windows[0].ClassName
     }
 }
 
@@ -80,6 +87,15 @@ function Get-FileIdentity([string]$Path) {
 }
 
 function Get-DataEvidence {
+    if ($ApplicationKind -eq 'Slint') {
+        return [pscustomobject]@{
+            Directory = $null
+            Files = [ordered]@{ 'embedded-fixtures' = [pscustomobject]@{ SHA256 = $rustIdentity.Sources | Where-Object Path -EQ 'src/fixtures.rs' | Select-Object -ExpandProperty SHA256 } }
+            LogSessionStarted = $null; LastRefresh = $null; CachedIndexCount = 28
+            Source = 'Embedded synthetic fixture; no product data directory, scanning or user icon cache.'
+            IconCache = $null
+        }
+    }
     $files = [ordered]@{}
     foreach ($name in @('config.json', 'index.json', 'history.json', 'application-library.json', 'quick-launch.json')) {
         $files[$name] = Get-FileIdentity (Join-Path $DataDirectory $name)
@@ -126,9 +142,17 @@ function Get-InputFingerprint($Evidence) {
 function Get-TreeSnapshot {
     $all = @(Get-CimInstance Win32_Process)
     $root = @($all | Where-Object ProcessId -EQ $ProcessId)
-    if ($root.Count -ne 1 -or $root[0].Name -notlike 'velo-launcher*.exe') { throw 'ProcessId must identify a running Velo executable.' }
+    if ($root.Count -ne 1 -or $root[0].Name -notlike $executablePattern) { throw 'ProcessId must identify the requested running Velo application kind.' }
     if (-not $root[0].ExecutablePath -or $root[0].ExecutablePath -ne $target.Path) { throw 'Target executable path changed or cannot be read.' }
-    $tree = @(Get-VeloProcessTree -Processes $all -RootProcessId $ProcessId)
+    $liveRoot = Get-Process -Id $ProcessId
+    if ($liveRoot.StartTime.ToUniversalTime().Ticks -ne $rootStartedTicks) { throw 'Root PID was reused.' }
+    $tree = @(Get-VeloProcessTree -Processes $all -RootProcessId $ProcessId -AllDescendants:($ApplicationKind -eq 'Slint'))
+    $privateWorkingSets = @{}
+    try {
+        foreach ($counter in (Get-CimInstance Win32_PerfRawData_PerfProc_Process -ErrorAction Stop)) {
+            $privateWorkingSets[[int]$counter.IDProcess] = [long]$counter.WorkingSetPrivate
+        }
+    } catch { $privateWorkingSets = @{} }
     $processes = @(foreach ($id in ($tree.ProcessId | Sort-Object)) {
         try {
             $process = Get-Process -Id $id -ErrorAction Stop
@@ -139,9 +163,26 @@ function Get-TreeSnapshot {
                 CPUSeconds = $process.TotalProcessorTime.TotalSeconds
                 WorkingSet = $process.WorkingSet64
                 PrivateBytes = $process.PrivateMemorySize64
+                PrivateWorkingSet = $(if ($privateWorkingSets.ContainsKey([int]$id)) { $privateWorkingSets[[int]$id] } else { $null })
+                Handles = $process.HandleCount
+                Threads = $process.Threads.Count
             }
         } catch { continue }
     })
+    $gpu = $null
+    try {
+        $gpuRows = @(Get-CimInstance Win32_PerfFormattedData_GPUPerformanceCounters_GPUProcessMemory -ErrorAction Stop | Where-Object {
+            $_.Name -match '^pid_(\d+)_' -and [int]$Matches[1] -in @($tree.ProcessId)
+        })
+        if ($gpuRows.Count) {
+            $gpu = [pscustomobject]@{
+                DedicatedBytes = ($gpuRows | Measure-Object DedicatedUsage -Sum).Sum
+                SharedBytes = ($gpuRows | Measure-Object SharedUsage -Sum).Sum
+                TotalCommittedBytes = ($gpuRows | Measure-Object TotalCommitted -Sum).Sum
+                InstanceCount = $gpuRows.Count
+            }
+        }
+    } catch { $gpu = $null }
     if (-not ($processes | Where-Object ProcessId -EQ $ProcessId)) { throw 'Velo exited during sampling.' }
     [pscustomobject]@{
         TimestampUtc = [DateTime]::UtcNow.ToString('o')
@@ -150,6 +191,10 @@ function Get-TreeSnapshot {
         Complete = $processes.Count -eq $tree.Count
         WorkingSet = ($processes | Measure-Object WorkingSet -Sum).Sum
         PrivateBytes = ($processes | Measure-Object PrivateBytes -Sum).Sum
+        PrivateWorkingSet = $(if (@($processes | Where-Object { $null -eq $_.PrivateWorkingSet }).Count -eq 0) { ($processes | Measure-Object PrivateWorkingSet -Sum).Sum } else { $null })
+        Handles = ($processes | Measure-Object Handles -Sum).Sum
+        Threads = ($processes | Measure-Object Threads -Sum).Sum
+        GPU = $gpu
         Window = Get-WindowObservation
     }
 }
@@ -161,11 +206,17 @@ function Get-ToolVersion([string]$Name, [string[]]$Arguments) {
 }
 
 $root = Get-CimInstance Win32_Process -Filter "ProcessId=$ProcessId"
-if (-not $root -or $root.Name -notlike 'velo-launcher*.exe' -or -not $root.ExecutablePath) { throw 'ProcessId must identify a readable running Velo executable.' }
+$executablePattern = $(if ($ApplicationKind -eq 'Slint') { 'velo-slint*.exe' } else { 'velo-launcher*.exe' })
+if (-not $root -or $root.Name -notlike $executablePattern -or -not $root.ExecutablePath) { throw 'ProcessId must identify a readable executable of the requested application kind.' }
+$rootStartedTicks = (Get-Process -Id $ProcessId).StartTime.ToUniversalTime().Ticks
 $target = Get-FileIdentity $root.ExecutablePath
 if ($ExpectedExecutable -and $target.Path -ne (Resolve-Path -LiteralPath $ExpectedExecutable).Path) { throw 'Running executable does not match ExpectedExecutable (possibly an older single instance).' }
 $binaryInfo = @()
-if (Get-Command go -ErrorAction SilentlyContinue) { $binaryInfo = @(& go version -m $target.Path); if ($LASTEXITCODE -ne 0) { throw 'Cannot read Go executable build information.' } }
+$rustIdentity = $null
+if ($ApplicationKind -eq 'Slint') {
+    if (-not $BuildIdentityPath) { $BuildIdentityPath = Join-Path (Split-Path -Parent $target.Path) 'build-identity.json' }
+    $rustIdentity = Read-VeloRustBuildIdentity -Executable $target.Path -IdentityPath $BuildIdentityPath
+} elseif (Get-Command go -ErrorAction SilentlyContinue) { $binaryInfo = @(& go version -m $target.Path); if ($LASTEXITCODE -ne 0) { throw 'Cannot read Go executable build information.' } }
 $revisionLine = $binaryInfo | Where-Object { $_ -match '^\s*build\s+vcs.revision=' } | Select-Object -First 1
 $embeddedRevision = $(if ($revisionLine) { ($revisionLine -split 'vcs.revision=', 2)[1].Trim() } else { $null })
 if ($ExecutableCommit -and $embeddedRevision -and $ExecutableCommit -ne $embeddedRevision) { throw 'ExecutableCommit disagrees with embedded vcs.revision; supply a full commit ID.' }
@@ -187,6 +238,8 @@ $environment = [pscustomobject]@{
     WailsCLI = Get-ToolVersion 'wails' @('version')
     Node = Get-ToolVersion 'node' @('--version')
     WebView2 = $webviewVersions
+    GraphicsAdapters = @(Get-CimInstance Win32_VideoController | Select-Object Caption, DriverVersion, DriverDate)
+    PowerScheme = ((& powercfg /getactivescheme) | Out-String).Trim()
     # Repository HEAD describes the collector workspace, never an installed exe.
     WorkspaceCommit = $workspaceCommit
     WorkspaceDirty = $workspaceStatus.Count -gt 0
@@ -194,6 +247,8 @@ $environment = [pscustomobject]@{
     ValidatorSHA256 = (Get-FileHash -LiteralPath (Join-Path $PSScriptRoot 'lib/resource-sample.ps1') -Algorithm SHA256).Hash
 }
 $executable = [pscustomobject]@{
+    ApplicationKind = $ApplicationKind
+    RustBuildIdentity = $rustIdentity
     Edition = $Edition; Path = $target.Path; SHA256 = $target.SHA256; Bytes = $target.Bytes
     FileVersion = $versionInfo.FileVersion; ProductVersion = $versionInfo.ProductVersion
     FixedFileVersion = ('{0}.{1}.{2}.{3}' -f $versionInfo.FileMajorPart, $versionInfo.FileMinorPart, $versionInfo.FileBuildPart, $versionInfo.FilePrivatePart)
@@ -203,7 +258,7 @@ $executable = [pscustomobject]@{
     GoCompiler = $(if ($binaryInfo.Count) { ($binaryInfo[0] -split ': ')[-1] } else { $null })
     WailsDependency = ($binaryInfo | Where-Object { $_ -match '^\s*dep\s+github.com/wailsapp/wails/v2\s' } | Out-String).Trim()
     BuildSettings = @($binaryInfo | Where-Object { $_ -match '^\s*build\s+(vcs[^=]*=|-tags=|-ldflags=|GOOS=|GOARCH=)' } | ForEach-Object { $_.Trim() })
-    Mode = $(if ($root.CommandLine -match '(?:^|\s)--diagnostics(?:\s|$)') { 'Diagnostics' } else { 'Production' })
+    Mode = $(if ($root.CommandLine -match '--measurement-log=') { 'MeasurementProbe' } elseif ($root.CommandLine -match '(?:^|\s)--diagnostics(?:\s|$)') { 'Diagnostics' } else { 'Production' })
     BackgroundFlag = $root.CommandLine -match '(?:^|\s)--background(?:\s|$)'
 }
 
@@ -235,6 +290,13 @@ $results = @(for ($sample = 1; $sample -le $Samples; $sample++) {
     $result.BaselineEligible = $result.BaselineEligible -and $stateContinuous
     $result | Add-Member -NotePropertyName StateContinuouslyObserved -NotePropertyValue $stateContinuous
     $result | Add-Member -NotePropertyName Number -NotePropertyValue $sample
+    $result | Add-Member -NotePropertyName PrivateWorkingSet -NotePropertyValue $snapshots[-1].PrivateWorkingSet
+    $result | Add-Member -NotePropertyName Handles -NotePropertyValue $snapshots[-1].Handles
+    $result | Add-Member -NotePropertyName Threads -NotePropertyValue $snapshots[-1].Threads
+    $result | Add-Member -NotePropertyName RawSnapshots -NotePropertyValue $snapshots.ToArray()
+    $result | Add-Member -NotePropertyName GPU -NotePropertyValue $snapshots[-1].GPU
+    $result | Add-Member -NotePropertyName ProcessTreePolicy -NotePropertyValue $(if ($ApplicationKind -eq 'Slint') { 'All descendants' } else { 'Root plus WebView descendants; excludes launched applications' })
+    $result.IncludesWebViewChildren = $ApplicationKind -eq 'Wails'
     $result | Add-Member -NotePropertyName InputBefore -NotePropertyValue (Get-InputFingerprint $inputBefore)
     $result | Add-Member -NotePropertyName InputAfter -NotePropertyValue (Get-InputFingerprint $inputAfter)
     $result | Add-Member -NotePropertyName ObservedStateSecondsAtStart -NotePropertyValue $(if ($stateContinuous) { [math]::Round($snapshots[0].MonotonicSeconds - $settleStartSeconds, 3) } else { $null })
@@ -243,7 +305,7 @@ $results = @(for ($sample = 1; $sample -le $Samples; $sample++) {
 $dataAfter = Get-DataEvidence
 $binaryStable = $target.SHA256 -eq (Get-FileHash -LiteralPath $target.Path -Algorithm SHA256).Hash
 $report = [pscustomobject]@{
-    SchemaVersion = 2
+    SchemaVersion = 3
     CapturedAtUtc = [DateTime]::UtcNow.ToString('o')
     Environment = $environment
     Executable = $executable
@@ -256,6 +318,7 @@ $report = [pscustomobject]@{
     StatePollingIntervalMilliseconds = 1000
     AllSamplesEligible = $binaryStable -and @($results | Where-Object { -not $_.BaselineEligible }).Count -eq 0
     Samples = $results
+    UnavailableMetrics = @('GPU fields are null if the Windows GPU Process Memory provider has no readable instance; null is not zero. Renderer-internal texture/glyph cache bytes are unavailable.', 'Embedded icons use Slint caches; no application-owned decoded icon LRU exists yet.')
     Limitations = @(
         'PrivateBytes is private commit, not physical resident memory. WorkingSet sums double-count shared pages.',
         'CPUPercentOfMachine is normalized by logical processors. Process/window polling can miss changes entirely between polls.',

@@ -1,5 +1,7 @@
 # 实施与验收清单
 
+2026-10-30 进度更新：`codex/rust-slint-refactor` 分支按 [Rust + Slint 重构实施方案](rust-slint-refactor-plan.md)推进四阶段迁移。RS-01 至 RS-05、RS-07 已完成本机验证，RS-06 已实现并通过单屏检查，多屏/混合 DPI 等实机项待在双屏电脑补验；[跨机器测试清单](rust-slint-dual-monitor-testing.md)包含构建入口与记录要求。G2 未放行，产品业务与数据尚未迁移。下表保留 Go/Wails 版本的历史功能与验收状态，作为迁移行为基线。
+
 目标范围：规划文档的 Phase 0–6；Future 明确不进入当前核心范围。每项以实际代码、自动化测试或运行记录验收，性能目标须实测。
 
 2026-10-27 轻量化专项：后续优化按[轻量化优化执行文档](lightweight-optimization-plan.md)逐项推进。文档已记录本次审计基线、任务依赖与验收标准，优化代码尚未实施；性能结果继续写入[验证记录](verification.md)。

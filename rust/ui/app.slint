@@ -1,0 +1,400 @@
+import { AboutSlint, Palette } from "std-widgets.slint";
+import { ActionButton, ContentScroll, Glyph, HomeSection, LauncherItem, PreviewEntry, ResultRow, Theme } from "components.slint";
+export { LauncherItem, PreviewEntry, Theme } from "components.slint";
+
+export component AppWindow inherits Window {
+    title: "Velo · Rust + Slint · RS-07";
+    in property <float> viewport-width: 640;
+    in property <float> viewport-height: 540;
+    preferred-width: root.viewport-width * 1px;
+    preferred-height: root.viewport-height * 1px;
+    min-width: root.viewport-width * 1px;
+    max-width: root.viewport-width * 1px;
+    min-height: root.viewport-height * 1px;
+    max-height: root.viewport-height * 1px;
+    no-frame: true;
+    always-on-top: true;
+    background: Theme.bg;
+    default-font-family: "Microsoft YaHei UI";
+    default-font-size: 12px;
+
+    in property <string> renderer-label;
+    in property <string> native-status;
+    out property <bool> import-open: false;
+    in property <[PreviewEntry]> preview-entries;
+    in property <bool> import-busy: false;
+    in property <bool> import-elevated: false;
+    in property <bool> drop-hovering: false;
+    in property <bool> native-dialog-active: false;
+    in property <string> import-summary: "0 项预览";
+    in-out property <string> import-notice;
+    in-out property <string> import-path;
+    in property <int> item-count;
+    in property <[LauncherItem]> pinned-items;
+    in property <[LauncherItem]> frequent-items;
+    in property <[LauncherItem]> system-items;
+    in property <[LauncherItem]> result-items;
+    in-out property <string> input-text;
+    in-out property <string> selected-id;
+    in-out property <string> selection-notice;
+    in-out property <bool> is-home: true;
+    in-out property <bool> dark-theme <=> Theme.dark;
+    in-out property <bool> reduce-motion <=> Theme.reduce-motion;
+    out property <bool> appearance-open: false;
+    in property <bool> native-composing: false;
+    in property <bool> native-focused: false;
+    in property <bool> presented: false;
+    in property <bool> lifecycle-enabled: false;
+    in property <string> hotkey-current;
+    in property <string> hotkey-error;
+    in property <string> platform-error;
+    in-out property <string> hotkey-draft: "Alt+Space";
+    in property <bool> hotkey-recording: false;
+    in-out property <bool> disable-hotkey-fullscreen: true;
+    out property <bool> input-has-focus: input.has-focus;
+    out property <bool> has-preedit: input.preedit-text != "";
+    out property <length> home-scroll-y: home.content-y;
+    out property <length> result-scroll-y: results.content-y;
+    callback input-edited(string);
+    callback item-chosen(string);
+    callback quit-requested();
+    callback hide-requested();
+    callback global-hotkey(string);
+    callback desktop-event(int);
+    callback layout-changed();
+    callback drag-requested();
+    callback hotkey-apply(string);
+    callback hotkey-record(bool);
+    callback key-requested(string, bool, bool) -> bool;
+    callback input-focus-changed(bool);
+    callback import-path-requested(string);
+    callback import-preview-ready(int, [PreviewEntry]);
+    callback import-native-requested(int);
+    callback import-native-completed(int, [string], string);
+    callback native-interaction-finished();
+    public function focus-input() {
+        if root.presented && !root.native-dialog-active {
+            if root.import-open { import-focus.focus(); }
+            else if !root.appearance-open { input.focus(); }
+        }
+    }
+    public function suspend-input() { parking-focus.focus(); }
+    public function show-appearance(open: bool) {
+        if open { root.import-open = false; }
+        root.appearance-open = open;
+        if open { appearance-focus.focus(); } else { input.focus(); }
+    }
+    public function show-import(open: bool) {
+        if open { root.appearance-open = false; root.hotkey-record(false); }
+        root.import-open = open;
+        if root.presented {
+            if open { import-focus.focus(); } else { root.focus-input(); }
+        }
+    }
+    public function clear-input() {
+        root.input-text = "";
+        root.input-edited("");
+        input.focus();
+    }
+    public function ensure-selection-visible(index: int) {
+        if root.is-home {
+            if index < root.pinned-items.length {
+                home.ensure-visible(pinned.y + 28px + Math.floor(index / 6) * 96px, 89px);
+            } else if index < root.pinned-items.length + root.frequent-items.length {
+                home.ensure-visible(frequent.y + 28px + Math.floor((index - root.pinned-items.length) / 6) * 96px, 89px);
+            } else {
+                home.ensure-visible(system.y + 28px + Math.floor((index - root.pinned-items.length - root.frequent-items.length) / 6) * 96px, 89px);
+            }
+        } else {
+            results.ensure-visible(6px + index * 54px, 54px);
+        }
+    }
+    init => { Palette.color-scheme = root.dark-theme ? ColorScheme.dark : ColorScheme.light; }
+    changed dark-theme => { Palette.color-scheme = root.dark-theme ? ColorScheme.dark : ColorScheme.light; }
+    changed input-text => { results.content-y = 0px; }
+    changed input-has-focus => { root.input-focus-changed(root.input-has-focus); }
+    changed appearance-open => { if !root.appearance-open { root.hotkey-record(false); } root.layout-changed(); }
+    changed import-open => { root.layout-changed(); }
+
+    // Capture commands before TextInput's cursor navigation. Other keys retain
+    // normal text editing, and buttons keep their own Enter/Space semantics.
+    FocusScope {
+        width: parent.width; height: parent.height;
+        focus-on-click: false;
+        focus-on-tab-navigation: false;
+        capture-key-pressed(event) => {
+            if root.key-requested(event.text, event.modifiers.control || event.modifiers.alt || event.modifiers.meta || event.modifiers.shift, event.repeat) {
+                return accept;
+            }
+            return reject;
+        }
+        TouchArea { clicked => { root.focus-input(); } }
+        parking-focus := FocusScope { focus-on-click: false; focus-on-tab-navigation: false; }
+
+        Rectangle {
+            x: 0px; y: 0px; width: parent.width;
+            height: 79px; background: Theme.surface;
+            // Background only: later input/buttons consume their own pointer events.
+            TouchArea {
+                enabled: root.lifecycle-enabled && !root.appearance-open && !root.import-open;
+                pointer-event(event) => {
+                    if event.kind == PointerEventKind.down && event.button == PointerEventButton.left { root.drag-requested(); }
+                }
+            }
+            Rectangle { y: parent.height - 1px; height: 1px; background: Theme.border; }
+            Image { x: 21px; y: 23px; width: 36px; height: 36px; source: @image-url("assets/logo.png"); image-fit: contain; }
+            Rectangle {
+                x: 70px; y: 18px; width: parent.width - 136px; height: 44px;
+                border-radius: 10px;
+                border-width: 1px;
+                border-color: input.has-focus ? Theme.accent : Theme.border;
+                background: Theme.field;
+                animate border-color { duration: Theme.reduce-motion ? 0ms : 180ms; }
+                Glyph { x: 12px; y: 13px; width: 17px; height: 17px; icon-key: "search"; }
+                Text {
+                    x: 39px; width: parent.width - 92px; height: 44px;
+                    text: input.text == "" && input.preedit-text == "" ? "搜索应用与系统功能…" : "";
+                    font-size: 15px; color: Theme.muted; vertical-alignment: center;
+                }
+                input := TextInput {
+                    x: 39px; y: 10px; width: parent.width - 92px; height: 24px;
+                    text <=> root.input-text;
+                    single-line: true;
+                    enabled: root.presented && !root.appearance-open && !root.import-open && !root.native-dialog-active;
+                    font-size: 15px; color: Theme.fg;
+                    selection-background-color: Theme.selected;
+                    selection-foreground-color: Theme.fg;
+                    edited => { root.input-edited(self.text); }
+                    accessible-label: "搜索应用与系统功能";
+                }
+                if root.input-text != "": ActionButton {
+                    x: parent.width - 42px; y: 9px; width: 32px; height: 26px;
+                    text: "清空";
+                    enabled: !root.appearance-open;
+                    activated => { root.clear-input(); }
+                }
+                if root.input-text == "": Text {
+                    x: parent.width - 39px; y: 14px; width: 30px; height: 18px;
+                    text: "搜索"; font-size: 10px; color: Theme.muted;
+                    horizontal-alignment: center;
+                }
+            }
+            ActionButton {
+                x: parent.width - 54px; y: 23px; width: 34px; height: 34px;
+                text: "外观与关于"; icon-key: "settings";
+                checked: root.appearance-open;
+                enabled: !root.appearance-open;
+                activated => { root.show-appearance(!root.appearance-open); }
+            }
+        }
+
+        home := ContentScroll {
+            visible: root.is-home;
+            private property <float> entry: root.presented && root.is-home ? 1 : 0;
+            animate entry { duration: Theme.reduce-motion ? 0ms : 240ms; easing: cubic-bezier(0.22, 1, 0.36, 1); }
+            opacity: Theme.reduce-motion ? 1 : self.entry;
+            x: 0px; y: 79px + (Theme.reduce-motion ? 0px : (1 - self.entry) * 5px); width: parent.width; height: parent.height - 122px;
+            content-height: home-body.height;
+            home-body := Rectangle {
+                width: home.visible-width;
+                height: system.y + system.height + 18px;
+                background: Theme.bg;
+                Text { x: 24px; y: 22px; text: "VELO / 快速启动"; font-size: 9px; font-weight: 600; color: Theme.muted; letter-spacing: 1.8px; }
+                Text { x: 24px; y: 42px; text: "即刻，开启所想"; font-size: 23px; font-weight: 600; color: Theme.fg; }
+                Text { x: 187px; y: 42px; text: "."; font-size: 23px; font-weight: 600; color: Theme.accent; }
+                pinned := HomeSection {
+                    x: 22px; y: 88px; width: parent.width - 44px;
+                    title: "固定应用"; items: root.pinned-items;
+                    height: root.pinned-items.length == 0 ? 0px : 28px + Math.ceil(root.pinned-items.length / 6) * 96px;
+                    visible: root.pinned-items.length > 0;
+                    selected-id: root.selected-id;
+                    entered: root.presented && root.is-home;
+                    hovered(id) => { root.selected-id = id; }
+                    chosen(id) => { root.item-chosen(id); }
+                }
+                frequent := HomeSection {
+                    x: 22px; y: pinned.y + pinned.height + (root.pinned-items.length > 0 ? 20px : 0px); width: parent.width - 44px;
+                    title: "常用应用"; hint: "根据使用习惯与应用来源排序";
+                    items: root.frequent-items; selected-id: root.selected-id;
+                    entered: root.presented && root.is-home;
+                    hovered(id) => { root.selected-id = id; }
+                    chosen(id) => { root.item-chosen(id); }
+                }
+                system := HomeSection {
+                    x: 22px; y: frequent.y + frequent.height + 20px; width: parent.width - 44px;
+                    title: "系统快捷";
+                    items: root.system-items; selected-id: root.selected-id;
+                    entered: root.presented && root.is-home;
+                    hovered(id) => { root.selected-id = id; }
+                    chosen(id) => { root.item-chosen(id); }
+                }
+            }
+        }
+
+        results := ContentScroll {
+            visible: !root.is-home && root.result-items.length > 0;
+            private property <float> entry: root.presented && !root.is-home ? 1 : 0;
+            animate entry { duration: Theme.reduce-motion ? 0ms : 240ms; easing: cubic-bezier(0.22, 1, 0.36, 1); }
+            opacity: Theme.reduce-motion ? 1 : self.entry;
+            x: 0px; y: 79px + (Theme.reduce-motion ? 0px : (1 - self.entry) * 5px); width: parent.width; height: parent.height - 122px;
+            content-height: root.result-items.length * 54px + 12px;
+            for item[index] in root.result-items: ResultRow {
+                x: 12px; y: 6px + index * 54px; width: results.visible-width - 24px;
+                item: item; selected: root.selected-id == item.id;
+                hovered(id) => { root.selected-id = id; }
+                chosen(id) => { root.item-chosen(id); }
+            }
+        }
+
+        if !root.is-home && root.result-items.length == 0: Rectangle {
+            x: 0px; y: 79px; width: parent.width; height: parent.height - 122px;
+            background: Theme.bg;
+            Glyph { x: 24px; y: 16px; width: 24px; height: 24px; icon-key: "search"; }
+            Text { y: 10px; height: 26px; width: parent.width; text: "没有找到匹配的应用"; font-size: 14px; color: Theme.fg; horizontal-alignment: center; }
+            ActionButton { x: (parent.width - 100px) / 2; y: 44px; width: 100px; height: 28px; text: "清空搜索"; activated => { root.clear-input(); } }
+        }
+
+        Rectangle {
+            x: 0px; width: parent.width;
+            y: parent.height - 43px; height: 43px; background: Theme.surface;
+            Rectangle { x: 0px; y: 0px; width: parent.width; height: 1px; background: Theme.border; }
+            Rectangle { x: 20px; y: 19px; width: 5px; height: 5px; border-radius: 3px; background: Theme.accent; }
+            Text {
+                x: 32px; y: 1px; width: parent.width - 250px; height: 42px;
+                text: root.platform-error != "" ? root.platform-error : root.hotkey-error != "" ? "快捷键设置失败，请打开设置" : root.selection-notice != "" ? root.selection-notice : root.is-home ? root.item-count + " 个应用" : root.result-items.length + " 个结果";
+                font-size: 10px; color: Theme.muted; vertical-alignment: center; overflow: elide;
+            }
+            ActionButton { x: parent.width - 204px; y: 7px; width: 62px; height: 29px; text: "导入预览"; enabled: !root.appearance-open; activated => { root.show-import(true); } }
+            ActionButton { x: parent.width - 134px; y: 7px; width: 60px; height: 29px; text: root.dark-theme ? "浅色" : "深色"; enabled: !root.appearance-open; activated => { root.dark-theme = !root.dark-theme; input.focus(); } }
+            ActionButton { x: parent.width - 66px; y: 7px; width: 46px; height: 29px; text: "退出"; enabled: !root.appearance-open; activated => { root.quit-requested(); } }
+        }
+
+        FocusScope {
+            visible: root.import-open;
+            x: 0px; y: 0px;
+            width: parent.width; height: parent.height;
+            enabled: root.presented && !root.native-dialog-active;
+            focus-on-click: false;
+            focus-on-tab-navigation: false;
+            import-focus := FocusScope { focus-on-click: false; focus-on-tab-navigation: false; }
+            Rectangle {
+                x: 0px; y: 0px; width: parent.width; height: parent.height; background: Theme.bg;
+                TouchArea {
+                    pointer-event(event) => {
+                        if event.kind == PointerEventKind.up && event.button == PointerEventButton.right { root.import-native-requested(4); }
+                    }
+                }
+                Rectangle {
+                    x: 0px; y: 0px; width: parent.width; height: 70px; background: Theme.surface;
+                    TouchArea {
+                        pointer-event(event) => {
+                            if event.kind == PointerEventKind.down && event.button == PointerEventButton.left { root.drag-requested(); }
+                            if event.kind == PointerEventKind.up && event.button == PointerEventButton.right { root.import-native-requested(4); }
+                        }
+                    }
+                    Text { x: 24px; y: 22px; text: "导入预览"; color: Theme.fg; font-size: 21px; font-weight: 600; }
+                    ActionButton { x: parent.width - 208px; y: 20px; width: 74px; text: "更多…"; activated => { root.import-native-requested(4); } }
+                    ActionButton { x: parent.width - 122px; y: 20px; width: 98px; text: "返回 · Esc"; activated => { root.show-import(false); } }
+                }
+                ContentScroll {
+                    x: 0px; y: 70px; width: parent.width; height: parent.height - 70px;
+                    content-height: import-body.height;
+                    import-body := Rectangle {
+                        x: 0px; y: 0px; width: parent.visible-width; height: max(360px, 266px + root.preview-entries.length * 78px);
+                        Rectangle {
+                            x: 24px; y: 14px; width: parent.width - 48px; height: 92px;
+                            background: root.drop-hovering ? Theme.selected : Theme.field;
+                            border-width: 1px; border-radius: 10px;
+                            border-color: root.drop-hovering ? Theme.accent : Theme.border;
+                            Text { x: 16px; y: 15px; width: parent.width - 146px; text: "拖入 .exe 程序或 .lnk 快捷方式"; color: Theme.fg; font-size: 14px; }
+                            Text { x: 16px; y: 44px; width: parent.width - 146px; height: 34px; text: "支持多文件；切到资源管理器时此页保持显示。"; color: Theme.muted; font-size: 11px; wrap: word-wrap; }
+                            ActionButton { x: parent.width - 120px; y: 28px; width: 104px; text: "选择文件"; activated => { root.import-native-requested(1); } }
+                        }
+                        Rectangle {
+                            x: 24px; y: 118px; width: parent.width - 152px; height: 34px;
+                            background: Theme.field; border-color: import-path-input.has-focus ? Theme.accent : Theme.border; border-width: 1px; border-radius: 6px;
+                            if root.import-path == "": Text { x: 10px; y: 8px; text: "或粘贴完整文件路径"; color: Theme.muted; }
+                            import-path-input := TextInput {
+                                x: 10px; y: 7px; width: parent.width - 20px; height: 22px;
+                                text <=> root.import-path; single-line: true; color: Theme.fg;
+                                accepted => { root.import-path-requested(root.import-path); }
+                                accessible-label: "导入文件完整路径";
+                            }
+                        }
+                        ActionButton { x: parent.width - 116px; y: 118px; width: 92px; height: 34px; text: "添加预览"; enabled: root.import-path != ""; activated => { root.import-path-requested(root.import-path); } }
+                        Text { x: 24px; y: 164px; width: parent.width - 48px; height: 32px; text: root.import-elevated ? "当前以管理员权限运行：普通资源管理器可能无法拖入，请使用选择文件。" : "预览仅检查文件，不启动文件或保存应用；快捷方式目标尚未解析。"; color: Theme.muted; font-size: 11px; wrap: word-wrap; }
+                        Text { x: 24px; y: 202px; width: parent.width - 48px; height: 26px; text: root.import-busy ? "正在检查文件…" : root.import-summary; color: Theme.fg; font-size: 12px; vertical-alignment: center; }
+                        Text { x: 24px; y: 231px; width: parent.width - 48px; height: 24px; text: root.import-notice; color: Theme.muted; font-size: 10px; overflow: elide; }
+                        for entry[index] in root.preview-entries: Rectangle {
+                            x: 24px; y: 266px + index * 78px; width: parent.width - 48px; height: 70px;
+                            background: Theme.field; border-radius: 8px; border-width: 1px; border-color: Theme.border;
+                            Text { x: 12px; y: 8px; width: parent.width - 24px; height: 20px; text: entry.name; color: Theme.fg; font-size: 13px; overflow: elide; }
+                            Text { x: 12px; y: 30px; width: parent.width - 24px; height: 16px; text: entry.path; color: Theme.muted; font-size: 10px; overflow: elide; }
+                            Text { x: 12px; y: 49px; width: parent.width - 24px; height: 16px; text: entry.status; color: entry.valid ? Theme.accent : Theme.muted; font-size: 10px; overflow: elide; }
+                        }
+                    }
+                }
+            }
+        }
+
+        Rectangle {
+            private property <float> progress: root.appearance-open ? 1 : 0;
+            private property <length> offset: root.appearance-open ? 0px : 8px;
+            animate progress { duration: Theme.reduce-motion ? 0ms : root.appearance-open ? 220ms : 100ms; easing: cubic-bezier(0.22, 1, 0.36, 1); }
+            animate offset { duration: Theme.reduce-motion ? 0ms : 280ms; easing: cubic-bezier(0.22, 1, 0.36, 1); }
+            visible: root.appearance-open || self.progress > 0;
+            opacity: Theme.reduce-motion ? (root.appearance-open ? 1 : 0) : self.progress;
+            x: 0px; y: 0px; width: parent.width; height: parent.height;
+            // Dismiss surface prevents clicks reaching tiles behind the panel.
+            background: transparent;
+            TouchArea { clicked => { root.show-appearance(false); } }
+            appearance-focus := FocusScope {
+                enabled: root.presented && root.appearance-open;
+                focus-on-click: false;
+                focus-on-tab-navigation: false;
+                x: max(16px, root.width - self.width - 20px);
+                y: 72px + (Theme.reduce-motion ? 0px : parent.offset);
+                width: min(322px, root.width - 32px);
+                height: min(root.lifecycle-enabled ? 452px : 332px, max(1px, root.height - self.y - 12px));
+                ContentScroll {
+                    width: parent.width; height: parent.height;
+                    content-height: appearance-body.height;
+                    appearance-body := Rectangle {
+                    width: parent.visible-width; height: root.lifecycle-enabled ? 452px : 332px;
+                    background: Theme.field; border-color: Theme.border; border-width: 1px; border-radius: 12px;
+                    TouchArea { }
+                    Text { x: 18px; y: 16px; text: "外观与关于"; color: Theme.fg; font-size: 16px; font-weight: 600; }
+                    ActionButton { x: 258px; y: 10px; width: 48px; text: "关闭"; activated => { root.show-appearance(false); } }
+                    ActionButton { x: 18px; y: 54px; width: 138px; text: "浅色"; checked: !root.dark-theme; activated => { root.dark-theme = false; } }
+                    ActionButton { x: 164px; y: 54px; width: 138px; text: "深色"; checked: root.dark-theme; activated => { root.dark-theme = true; } }
+                    Text { x: 18px; y: 106px; height: 30px; text: "减少动画"; color: Theme.fg; vertical-alignment: center; }
+                    ActionButton { x: 226px; y: 102px; width: 76px; text: root.reduce-motion ? "已开启" : "已关闭"; checked: root.reduce-motion; checkable: true; activated => { root.reduce-motion = !root.reduce-motion; } }
+                    if root.lifecycle-enabled: Rectangle {
+                        x: 18px; y: 144px; width: 286px; height: 120px;
+                        Text { x: 0px; y: 0px; width: 286px; height: 18px; text: root.hotkey-current == "" ? "全局快捷键不可用" : "当前快捷键：" + root.hotkey-current; color: Theme.fg; font-size: 11px; }
+                        Rectangle {
+                            y: 22px; width: 162px; height: 29px; border-radius: 5px;
+                            background: Theme.bg; border-color: Theme.border; border-width: 1px;
+                            TextInput {
+                                x: 7px; y: 5px; width: 148px; height: 19px;
+                                text <=> root.hotkey-draft; single-line: true; color: Theme.fg;
+                                enabled: !root.hotkey-recording;
+                                accessible-label: "全局快捷键";
+                            }
+                        }
+                        ActionButton { x: 168px; y: 22px; width: 56px; height: 29px; text: root.hotkey-recording ? "取消" : "录制"; activated => { root.hotkey-record(!root.hotkey-recording); } }
+                        ActionButton { x: 230px; y: 22px; width: 56px; height: 29px; text: "应用"; enabled: !root.hotkey-recording; activated => { root.hotkey-apply(root.hotkey-draft); } }
+                        Text { y: 56px; width: 286px; height: 30px; text: root.hotkey-recording ? "请按快捷键；Esc 取消" : root.hotkey-error; color: Theme.muted; font-size: 10px; wrap: word-wrap; overflow: elide; }
+                        Text { x: 0px; y: 89px; width: 200px; height: 27px; text: "全屏时禁用呼出"; color: Theme.fg; font-size: 11px; vertical-alignment: center; }
+                        ActionButton { x: 210px; y: 88px; width: 76px; height: 28px; text: root.disable-hotkey-fullscreen ? "已开启" : "已关闭"; activated => { root.disable-hotkey-fullscreen = !root.disable-hotkey-fullscreen; } }
+                    }
+                    Text { x: 18px; y: root.lifecycle-enabled ? 266px : 146px; width: 286px; text: root.renderer-label; color: Theme.muted; font-size: 10px; overflow: elide; }
+                    // Official, accessible attribution required by the selected Slint license.
+                    AboutSlint { x: 18px; y: root.lifecycle-enabled ? 296px : 176px; width: 286px; height: 138px; }
+                    }
+                }
+            }
+        }
+    }
+    forward-focus: input;
+}
