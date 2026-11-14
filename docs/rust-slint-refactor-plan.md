@@ -1,5 +1,7 @@
 # Rust + Slint 重构实施方案
 
+- Rust 0.1.0 最终发行构建与系统安装器已验证，见[发行证据](baselines/2026-11-15-rust-0.1.0/README.md)；后续以 Rust 主线开发。
+
 - 制定日期：2026-10-28（北京时间）。
 - 工作分支：`codex/rust-slint-refactor`，从 `main` 的 `ac2f51ad1317f4abffab2c548af251e48ce16d2b` 创建。
 - 行为基线：Velo `0.9.11` 的 Go + Wails + Vue 实现及现有测试。

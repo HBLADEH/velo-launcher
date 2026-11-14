@@ -1,5 +1,7 @@
 # 实施与验收清单
 
+本页保留 Go/Wails 阶段的实施沿革。后续产品开发切换到 Rust，当前状态见[重构计划](rust-slint-refactor-plan.md)与[正式发行验证](baselines/2026-11-15-rust-0.1.0/README.md)。
+
 2026-10-30 进度更新：`codex/rust-slint-refactor` 分支按 [Rust + Slint 重构实施方案](rust-slint-refactor-plan.md)推进四阶段迁移。RS-01 至 RS-05、RS-07 已完成本机验证，RS-06 已实现并通过单屏检查，多屏/混合 DPI 等实机项待在双屏电脑补验；[跨机器测试清单](rust-slint-dual-monitor-testing.md)包含构建入口与记录要求。G2 未放行，产品业务与数据尚未迁移。下表保留 Go/Wails 版本的历史功能与验收状态，作为迁移行为基线。
 
 目标范围：规划文档的 Phase 0–6；Future 明确不进入当前核心范围。每项以实际代码、自动化测试或运行记录验收，性能目标须实测。

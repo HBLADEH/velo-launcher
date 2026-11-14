@@ -1,0 +1,269 @@
+{
+  "Tag": "0.1.0",
+  "PublicAssets": [
+    {
+      "Name": "release-manifest.json",
+      "SHA256": "D724B9D9D4FDF2F318031D59C9697EF65CBFC5764FA18AECAAA8AD3262991AF1",
+      "Bytes": 77204
+    },
+    {
+      "Name": "velo-rust-0.1.0-licenses.zip",
+      "SHA256": "C3CA7727097BF6C5B20779CCD507EC1798E5ECAC90D8866E18F885D5CC2764DA",
+      "Bytes": 2520406
+    },
+    {
+      "Name": "velo-rust-femtovg-x64-installer.exe",
+      "SHA256": "40958C3E261699C16D65A1B5E76733C24F0B40AFA1C62F5B385D00FA8A626C05",
+      "Bytes": 5279924
+    },
+    {
+      "Name": "velo-rust-x64-installer.exe",
+      "SHA256": "683823731FB4D1E7E501A802BBDC67E34A2F0312BF7A590F74ABE8C81038D5C9",
+      "Bytes": 5312700
+    }
+  ],
+  "Builds": [
+    {
+      "Renderer": "software",
+      "SourceCommit": "d01f4ecbe3cf10e2717814895c042e0d5b020200",
+      "SourceInputsVerified": 223,
+      "PayloadEntriesVerified": 601,
+      "Dependencies": 322,
+      "MissingLicenseTexts": 0,
+      "ExecutableSHA256": "35D0C718322AA5D72C1CF8C532F2FF871919CB82D421A1F91E3C4C89EB9F56AC"
+    },
+    {
+      "Renderer": "femtovg",
+      "SourceCommit": "d01f4ecbe3cf10e2717814895c042e0d5b020200",
+      "SourceInputsVerified": 223,
+      "PayloadEntriesVerified": 605,
+      "Dependencies": 324,
+      "MissingLicenseTexts": 0,
+      "ExecutableSHA256": "90FB2B4ADBC3FBD1E938CCB9972FEB1E467F047156A234F5DEF507107533C11B"
+    }
+  ],
+  "MachineAcceptance": {
+    "prepare": {
+      "AtUtc": "2026-11-14T19:30:07.1089679Z",
+      "Stage": "Prepare",
+      "Passed": true,
+      "Cases": [
+        {
+          "Name": "concurrent-machine-installer-rejected-before-snapshot",
+          "Passed": true
+        },
+        {
+          "Name": "locked-Go-takeover-rejected-before-change",
+          "Passed": true
+        },
+        {
+          "Name": "unknown-baseline-rejected-without-change",
+          "Passed": true
+        },
+        {
+          "Name": "actual-Go-to-Software-same-path-HKLM-takeover",
+          "Passed": true
+        }
+      ],
+      "HostModified": false
+    },
+    "switch": {
+      "AtUtc": "2026-11-14T19:32:20.4573414Z",
+      "Stage": "Switch",
+      "Passed": true,
+      "Cases": [
+        {
+          "Name": "locked-Rust-upgrade-and-uninstall-rejected",
+          "Passed": true
+        },
+        {
+          "Passed": true,
+          "Name": "post-replacement-fault-restores-exact-Software-state",
+          "FixtureOnly": true
+        },
+        {
+          "Name": "actual-Software-to-FemtoVG-machine-upgrade",
+          "Passed": true
+        }
+      ],
+      "HostModified": false
+    },
+    "rollback": {
+      "AtUtc": "2026-11-14T19:32:46.0680485Z",
+      "Stage": "Rollback",
+      "Passed": true,
+      "Cases": [
+        {
+          "Passed": true,
+          "Name": "actual-Go-machine-rollback-byte-exact",
+          "SemanticUninstallResult": {
+            "LauncherExitCode": 0,
+            "OperationResult": {
+              "Schema": 1,
+              "AtUtc": "2026-11-14T19:32:45.7910608Z",
+              "Action": "Rollback",
+              "Passed": true,
+              "UserDataModified": false
+            }
+          }
+        }
+      ],
+      "HostModified": false
+    },
+    "cleanup": {
+      "AtUtc": "2026-11-14T19:33:41.4062237Z",
+      "Stage": "Cleanup",
+      "Passed": true,
+      "Cases": [
+        {
+          "Passed": true,
+          "Name": "actual-Rust-system-uninstall-keeps-unknown-and-rollback-archives",
+          "SemanticUninstallResult": {
+            "LauncherExitCode": 0,
+            "OperationResult": {
+              "Schema": 1,
+              "AtUtc": "2026-11-14T19:33:41.3535111Z",
+              "Action": "Uninstall",
+              "Passed": true,
+              "UserDataModified": false
+            }
+          }
+        }
+      ],
+      "HostModified": false
+    },
+    "fresh-install": {
+      "Passed": true,
+      "FreshPublicInstall": true,
+      "OfficialDisplayName": true,
+      "NoGoSnapshot": true,
+      "UnavailableRollbackRejected": true,
+      "FreshUninstall": true,
+      "GuestOnly": true
+    },
+    "batch": {
+      "Passed": true,
+      "Stages": [
+        "Prepare",
+        "Switch",
+        "Rollback",
+        "Cleanup",
+        "Fresh"
+      ],
+      "InstallerOnly": true,
+      "CurrentPhysicalIMEClaimed": false,
+      "HostModified": false
+    },
+    "final-cleanup": {
+      "Passed": true,
+      "NoVeloProcess": true,
+      "MachineRegistrationAbsent": true,
+      "MachineShortcutsAbsent": true,
+      "UserDataOriginalsUnchanged": true,
+      "ArchivesPreserved": true,
+      "GuestOnly": true
+    }
+  },
+  "HistoricalG4Evidence": "docs/baselines/2026-11-07-slint-rs14/machine-completion-2026-11-14/g4-acceptance.md",
+  "CurrentPhysicalIMERetested": false,
+  "HostFormalInstallationUsedForTests": false,
+  "GuestExecutionStateReleased": {
+    "Active": false,
+    "Released": true,
+    "PowerSettingsChanged": false,
+    "GuestOnly": true
+  },
+  "GuestGracefullyStopped": true,
+  "RunnerCleanup": {
+    "RunnerRegistrationRemoved": true,
+    "ServiceInstalled": false,
+    "RunId": 43632029992,
+    "Conclusion": "success"
+  },
+  "ProductChecks": {
+    "software": {
+      "RecordedAtUtc": "2026-11-14T19:25:26.7100813Z",
+      "Renderer": "software",
+      "ProductIdentity": true,
+      "ChecksPassed": true,
+      "SmokeTestPassed": true,
+      "ExecutableSHA256": "35D0C718322AA5D72C1CF8C532F2FF871919CB82D421A1F91E3C4C89EB9F56AC",
+      "BuildIdentitySHA256": "F075AF3177E35A651A60049F542F54E2697854FB7545799AAC0A6D4F667BAB42",
+      "CargoMetadataSHA256": "F62AF6AF276CA780D336AB6103B50BEC18547D65BF37875A313A96B27C7B14F0",
+      "RustTestsPassed": 87
+    },
+    "femtovg": {
+      "RecordedAtUtc": "2026-11-14T19:21:29.4719066Z",
+      "Renderer": "femtovg",
+      "ProductIdentity": true,
+      "ChecksPassed": true,
+      "SmokeTestPassed": true,
+      "ExecutableSHA256": "90FB2B4ADBC3FBD1E938CCB9972FEB1E467F047156A234F5DEF507107533C11B",
+      "BuildIdentitySHA256": "6B60A0BD9EA3207BF78B8B4B8AFB9F27EE28B8BDC02887ED6BD0A567350F875F",
+      "CargoMetadataSHA256": "95FC67230FAEEB540660FEC18ECED5FAC1BE3ACCF5B2D3B061DB79F9FB814F72",
+      "RustTestsPassed": 87
+    }
+  },
+  "PriorAttempt": {
+    "Result": "Failed before application execution; RC2176 detected a binary icon changed by an overbroad line-ending normalization.",
+    "Correction": "Both ICO and PNG were restored to their exact prior verified SHA256 values and committed; full checks reran successfully.",
+    "RawLocalLogRetained": true
+  },
+  "InstallerConcurrencyFinding": {
+    "Observed": "Guest sleep suspended the VM; a mistaken concurrent recovery overlapped the still-running coordinator after resume.",
+    "Impact": "Fresh installation encountered a missing license path; prior passing machine stages remain preserved.",
+    "Fix": "Global machine-install mutex, refusal code 33 before snapshot/journal changes; tested with actual NSIS.",
+    "PriorAttemptRetained": true
+  },
+  "PriorCIAttempts": [
+    {
+      "RunId": 43628536461,
+      "Conclusion": "cancelled",
+      "Failure": "Windows protection flagged the copied native integration driver during the restart test."
+    },
+    {
+      "RunId": 43630642363,
+      "Conclusion": "failure",
+      "Failure": "Windows protection blocked the original native scan driver."
+    }
+  ],
+  "NativeFixtureCorrection": {
+    "Change": "Separate a minimal argument/working-directory receipt executable from the native test driver; remove driver self-copy and self-launch.",
+    "CoverageRetained": "Real scan, icon, launch arguments, working directory, history, update replacement and restart checks retained.",
+    "SecuritySettingsChanged": false
+  },
+  "GitHubCI": {
+    "id": 43632029992,
+    "html_url": "https://github.com/HBLADEH/velo-launcher/actions/runs/43632029992",
+    "head_sha": "d01f4ecbe3cf10e2717814895c042e0d5b020200",
+    "status": "completed",
+    "conclusion": "success"
+  },
+  "HostFormalFiles": [
+    {
+      "Name": "config.json",
+      "SHA256": "6DECBCB844CC656D0EAFBD340F7B8BF3B877FAAD593D543F85A37B15EB95143F",
+      "MatchesPriorReference": true
+    },
+    {
+      "Name": "history.json",
+      "SHA256": "18767782BD92FC904116A8B376C54049578E596AFA715B08B18D8280F2FCBF5E",
+      "MatchesPriorReference": true
+    },
+    {
+      "Name": "index.json",
+      "SHA256": "A1C62CEA85156FB48E52874988DE07931AD4386F7F1448DC9ADBD5BC5A1195FC",
+      "MatchesPriorReference": true
+    },
+    {
+      "Name": "application-library.json",
+      "SHA256": "A5E8BC981B03563AF3D26E5EEF9D263D9EAA4181C5DA758E8DCBF82160FF01F6",
+      "MatchesPriorReference": true
+    },
+    {
+      "Name": "quick-launch.json",
+      "SHA256": null,
+      "MatchesPriorReference": true
+    }
+  ]
+}
