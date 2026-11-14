@@ -54,8 +54,10 @@ try {
             New-Item -ItemType Directory -Path $nativeDirectory -Force | Out-Null
             & cargo run --locked --no-default-features --features $feature --example rs10_windows -- (Join-Path $nativeDirectory 'native.json')
             if ($LASTEXITCODE -ne 0) { throw "RS-10 native Windows verification failed: $name" }
+            & cargo build --locked --no-default-features --features $feature --example rs11_update_capture
+            if ($LASTEXITCODE -ne 0) { throw "RS-11 update capture helper build failed: $name" }
             & cargo run --locked --no-default-features --features $feature --example rs11_windows -- `
-                (Join-Path $environment.RustRoot 'target/x86_64-pc-windows-msvc/debug/examples/rs10_windows.exe') (Join-Path $nativeDirectory 'rs11-native.json')
+                (Join-Path $environment.RustRoot 'target/x86_64-pc-windows-msvc/debug/examples/rs11_update_capture.exe') (Join-Path $nativeDirectory 'rs11-native.json')
             if ($LASTEXITCODE -ne 0) { throw "RS-11 native update verification failed: $name" }
         }
         & cargo build --release --locked --no-default-features --features $feature

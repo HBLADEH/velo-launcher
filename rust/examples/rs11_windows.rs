@@ -1,5 +1,5 @@
 //! Executes update replacement/recovery only in a disposable directory, using
-//! the already built RS-10 capture helper. No installer or system action runs.
+//! a minimal argument-capture helper. No installer or system action runs.
 use sha2::{Digest, Sha256};
 use std::fs;
 use std::io::Write;
