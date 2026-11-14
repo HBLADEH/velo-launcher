@@ -21,6 +21,9 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
+          # Keep ignored compiler outputs; release packaging rejects dirty
+          # source, stale receipts and changed input hashes.
+          clean: false
       - uses: actions/setup-go@v5
         with:
           go-version: '1.25.6'
@@ -30,14 +33,14 @@ jobs:
         run: ./scripts/verify-rust.ps1 -Product -SmokeTest
       - name: Prepare pinned NSIS
         shell: pwsh
-        run: ./scripts/prepare-rust-packaging-tools.ps1 -OutputDirectory rust/target/ci-packaging-tools
+        run: ./scripts/prepare-rust-packaging-tools.ps1 -OutputDirectory rust/target/ci-packaging-tools-${{ github.run_id }}-${{ github.run_attempt }}
       - name: Package approved Rust release
         shell: pwsh
         run: |
-          $tools = Get-Content -Raw rust/target/ci-packaging-tools/tools.json | ConvertFrom-Json
-          ./scripts/package-rust-release.ps1 -OutputDirectory rust/target/ci-release -Makensis $tools.Compiler
+          $tools = Get-Content -Raw rust/target/ci-packaging-tools-${{ github.run_id }}-${{ github.run_attempt }}/tools.json | ConvertFrom-Json
+          ./scripts/package-rust-release.ps1 -OutputDirectory rust/target/ci-release-${{ github.run_id }}-${{ github.run_attempt }} -Makensis $tools.Compiler
       - uses: actions/upload-artifact@v4
         with:
           name: velo-rust-windows-x64
-          path: rust/target/ci-release/assets/*
+          path: rust/target/ci-release-${{ github.run_id }}-${{ github.run_attempt }}/assets/*
           if-no-files-found: error
