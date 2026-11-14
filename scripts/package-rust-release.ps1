@@ -34,8 +34,13 @@ $builds = @(foreach ($renderer in 'software','femtovg') {
 if ($builds[0].SourceCommit -ne $builds[1].SourceCommit) { throw 'Both renderers must bind the same source commit.' }
 $notices = Join-Path $OutputDirectory 'notices'
 New-Item -ItemType Directory -Path $notices | Out-Null
-foreach ($name in 'licenses','LICENSE','dependency-inventory.json') {
-    Copy-Item -LiteralPath (Join-Path $OutputDirectory "software/package/content/$name") -Destination $notices -Recurse
+Copy-Item -LiteralPath (Join-Path $repository 'LICENSE') -Destination $notices
+foreach ($renderer in 'software','femtovg') {
+    $rendererNotices = Join-Path $notices $renderer
+    New-Item -ItemType Directory -Path $rendererNotices | Out-Null
+    foreach ($name in 'licenses','dependency-inventory.json') {
+        Copy-Item -LiteralPath (Join-Path $OutputDirectory "$renderer/package/content/$name") -Destination $rendererNotices -Recurse
+    }
 }
 Compress-Archive -Path (Join-Path $notices '*') -DestinationPath (Join-Path $assets "velo-rust-$($policy.ReleaseTag)-licenses.zip")
 [ordered]@{
