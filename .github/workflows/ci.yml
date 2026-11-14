@@ -2,6 +2,12 @@ name: Rust Windows validation
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - 'docs/**'
+      - README.md
+      - README.en.md
+      - CONTRIBUTING.md
+      - rust/README.md
   workflow_dispatch:
 permissions:
   contents: read
