@@ -1,6 +1,6 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
-//! Local native integration evidence; launches only a copy of this helper in a
+//! Local native integration evidence; launches only an argument-capture fixture in a
 //! disposable directory and records aggregate results without personal paths.
 use std::fs;
 use std::path::{Path, PathBuf};
@@ -51,16 +51,6 @@ fn main() -> Result {
             args.get(2).ok_or("missing UI fixture directory")?,
         ));
     }
-    if args.get(1).is_some_and(|arg| arg == "--capture") {
-        let marker = args.get(2).ok_or("missing capture marker")?;
-        fs::write(
-            marker,
-            serde_json::to_vec(
-                &serde_json::json!({ "arguments": args[3..], "directory": std::env::current_dir()? }),
-            )?,
-        )?;
-        return Ok(());
-    }
     let output = PathBuf::from(args.get(1).ok_or("usage: rs10_windows <new report path>")?);
     if output.exists() {
         return Err("report already exists".into());
@@ -77,7 +67,7 @@ fn main() -> Result {
     fs::create_dir_all(&apps)?;
     fs::create_dir_all(&workspace)?;
     let executable = apps.join("RS10 Helper.exe");
-    fs::copy(std::env::current_exe()?, &executable)?;
+    fs::copy(capture_helper()?, &executable)?;
     let marker = directory.path().join("launch.json");
     let arguments = format!("--capture \"{}\" --profile 中文", marker.display());
     let shortcut = apps.join("中文 启动.lnk");
@@ -304,7 +294,7 @@ fn prepare_ui(directory: &Path) -> Result {
     fs::create_dir(&apps)?;
     fs::create_dir(&data)?;
     let executable = apps.join("RS10 Helper.exe");
-    fs::copy(std::env::current_exe()?, &executable)?;
+    fs::copy(capture_helper()?, &executable)?;
     let apartment = shell::Apartment::new()?;
     let arguments = format!(
         "--capture \"{}\" --profile UI",
@@ -328,6 +318,18 @@ fn prepare_ui(directory: &Path) -> Result {
         },
     )?;
     Ok(())
+}
+
+fn capture_helper() -> Result<PathBuf> {
+    let current = std::env::current_exe()?;
+    let helper = current
+        .parent()
+        .ok_or("missing native example directory")?
+        .join("rs11_update_capture.exe");
+    if !helper.is_file() {
+        return Err("build the rs11_update_capture example before native integration tests".into());
+    }
+    Ok(helper)
 }
 
 fn await_snapshot(runtime: &Runtime, id: &str) -> Result<Arc<Snapshot>> {

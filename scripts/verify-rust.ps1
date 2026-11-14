@@ -52,10 +52,10 @@ try {
             & (Join-Path $PSScriptRoot 'test-data-compat.ps1') -Renderer $name
             $nativeDirectory = Join-Path $environment.RustRoot ('target/compat-rs10/' + [guid]::NewGuid().ToString('N'))
             New-Item -ItemType Directory -Path $nativeDirectory -Force | Out-Null
-            & cargo run --locked --no-default-features --features $feature --example rs10_windows -- (Join-Path $nativeDirectory 'native.json')
-            if ($LASTEXITCODE -ne 0) { throw "RS-10 native Windows verification failed: $name" }
             & cargo build --locked --no-default-features --features $feature --example rs11_update_capture
             if ($LASTEXITCODE -ne 0) { throw "RS-11 update capture helper build failed: $name" }
+            & cargo run --locked --no-default-features --features $feature --example rs10_windows -- (Join-Path $nativeDirectory 'native.json')
+            if ($LASTEXITCODE -ne 0) { throw "RS-10 native Windows verification failed: $name" }
             & cargo run --locked --no-default-features --features $feature --example rs11_windows -- `
                 (Join-Path $environment.RustRoot 'target/x86_64-pc-windows-msvc/debug/examples/rs11_update_capture.exe') (Join-Path $nativeDirectory 'rs11-native.json')
             if ($LASTEXITCODE -ne 0) { throw "RS-11 native update verification failed: $name" }
@@ -173,8 +173,10 @@ try {
                 throw "Input component smoke test failed: $name (exit $($inputProcess.ExitCode))"
             }
             if ($SkipChecks) {
-                & cargo build --locked --no-default-features --features $feature --example rs10_windows
-                if ($LASTEXITCODE -ne 0) { throw "Business UI fixture helper build failed: $name" }
+                foreach ($example in 'rs11_update_capture','rs10_windows') {
+                    & cargo build --locked --no-default-features --features $feature --example $example
+                    if ($LASTEXITCODE -ne 0) { throw "Business UI fixture helper build failed: $name/$example" }
+                }
             }
             $businessDirectory = Join-Path $outputDirectory ('business-' + [guid]::NewGuid().ToString('N'))
             & (Join-Path $PSScriptRoot 'test-business-ui.ps1') -Executable $executable `
