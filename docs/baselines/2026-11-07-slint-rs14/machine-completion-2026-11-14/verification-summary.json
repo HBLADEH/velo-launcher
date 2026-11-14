@@ -1,0 +1,50 @@
+{
+  "RecordedAtUtc": "2026-11-14T16:34:16.2688287Z",
+  "BothProductRenderersFullChecksPassed": true,
+  "ProductTestsPerRenderer": 85,
+  "ProductSourceInputsPerRenderer": 221,
+  "BothPreviewRenderersFullChecksPassed": true,
+  "PreviewEvidenceScope": "Original preview receipts retained; product installer source changes and final product checks are recorded separately",
+  "LegacyGoVersion": "go1.25.6 windows/amd64",
+  "LegacyFullSkipBuildPassed": true,
+  "FrontendTestsPassed": 26,
+  "GoVetAndTestsPassed": true,
+  "Go1256SearchDiscoverySystemOraclesPassed": true,
+  "BothRendererBidirectionalDataChecksWithGo1256Passed": true,
+  "CIWorkflowYAMLParsed": true,
+  "CurrentWorkflowNotPushed": true,
+  "Logs": [
+    {
+      "Record": "preview-full-r2.log",
+      "SHA256": "BBA8571CA650B148356B74E1D1C47F2F200FA32EAFCCBFAE1235C81E25FD3C54",
+      "OriginalRetainedLocally": true
+    },
+    {
+      "Record": "product-full-r5.log",
+      "SHA256": "53A05A412615E45788DA2FDCD281A555F893B50277D1E86BE38CC22337EDCEEB",
+      "OriginalRetainedLocally": true
+    },
+    {
+      "Record": "legacy-verification-go1256.log",
+      "SHA256": "A7F072B5273BF466BEAE8C8D52FBBBD3E06313793E8920B96E8C305C8A624FA4",
+      "OriginalRetainedLocally": true
+    },
+    {
+      "Record": "go-oracles-1256.log",
+      "SHA256": "9C9DF8F60707CC98B8C0835FA2CF5B8217D5B367E0475A36824FD42EBA73240E",
+      "OriginalRetainedLocally": true
+    },
+    {
+      "Record": "data-compat-go1256.log",
+      "SHA256": "97EDF60ACB4137294A440DC2C7011ACFFBF79D6E33AEF656758659426BB7A76B",
+      "OriginalRetainedLocally": true
+    },
+    {
+      "Record": "package-r3.log",
+      "SHA256": "E04C9D5E33F455772A8B01F0C77F67D31F15CDF1FFAD32C9E3D72B3C7BF58CBD",
+      "OriginalRetainedLocally": true
+    }
+  ],
+  "PriorGo123VetFailurePreserved": true,
+  "NoTestAlteredToBypassToolchain": true
+}

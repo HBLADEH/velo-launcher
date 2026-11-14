@@ -1,0 +1,103 @@
+{
+  "RecordedAtUtc": "2026-11-09T04:35:19.8322786Z",
+  "Case": "wails-1",
+  "Edition": "wails",
+  "BuildScope": "Frozen latencyprobe actual-input Wails build; not the official uninstrumented Wails Release.",
+  "PreparedAtUtc": "2026-11-04T13:33:34.4901391Z",
+  "BootUtc": "2026-11-09T04:05:08.5Z",
+  "BootId": "639297939085000000",
+  "ProcessId": 31604,
+  "FirstLaunchOperatorConfirmed": true,
+  "IndependentBootClaim": true,
+  "CandidateFilesReadBeforeLaunch": false,
+  "UserReport": "The search box displayed A; exited through the tray.",
+  "SearchBoxClickIndependentlyVerified": false,
+  "AutomatedUIUsed": false,
+  "NormalTrayExitConfirmed": true,
+  "ProcessExitCode": 0,
+  "ExecutableSha256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+  "ExecutableMatchesFrozenCase": true,
+  "EnvironmentId": "3548C2246D9C8A1B2FA86F11AC5A4A0802396357F7EC313EF38BAC9CDF4FB890",
+  "InputId": "024397D07DB93ECF20AFE342D982D988B8C0F9D9C1272BC69700447A3C8C0935",
+  "InputAcceptedEvents": 1,
+  "AcceptedInput": {
+    "UnixMicroseconds": 1794198889624072,
+    "Utf8Bytes": 1,
+    "Focused": true,
+    "NativeFocused": true,
+    "Visible": true,
+    "Composing": false,
+    "Synthetic": false,
+    "Trusted": true,
+    "Dropped": 0
+  },
+  "CollectionScriptExitCode": 0,
+  "ValidIndependentColdConditionObservation": true,
+  "Method": "IndependentBootToAcceptedCharacterUpperBound",
+  "StartObservedUnixMicroseconds": 1794198825247636,
+  "DurationUpperMillisecondsIncludingHumanDelay": 64377.436,
+  "StartupClockCalibration": "OS creation FILETIME and accepted-input UTC with a 1ms guard; wall-clock step/error is not independently bounded. Not calibrated first-possible-readiness timing.",
+  "FirstPossibleInputLatencyVerified": false,
+  "ColdStartupBudgetVerified": false,
+  "PresentedFrameVerified": false,
+  "DataMatchesFrozenSeedAfterExit": {
+    "config.json": true,
+    "history.json": true,
+    "application-library.json": true,
+    "index.json": false
+  },
+  "IndexChangeReason": "Index changed during the isolated session; the cause was not independently verified.",
+  "VeloProcessesRemainingAfterExit": 0,
+  "IsolatedWebViewProcessesRemainingAfterExit": 0,
+  "RawArtifactsSHA256": {
+    "case.json": "DE6C8A7EEC61C47ED192330514858BFC4E51F0E6BFBB6E95ECA964A8CD308768",
+    "probe/accepted-input.log": "F9095E9E90A041EABF188DE50DED27840173CDCD1E387BC7C8198387D49EF23F",
+    "cold-input.json": "C241094FC1FDD70B64E69032CF0107B924BFC559745324BD9B2AA3257C29364A",
+    "started.json": "A7A41A65E7162B0910F372544F5C0003DA2DAA877BE0942825ADEC59E8630ED8",
+    "exit.json": "A135DDB14C46D1A7E3A922960AA475C36DE31000831830E7125EF2029EB7BD1E",
+    "boot-ledger.json": "12D4449A097DFF7DD047C714115BA9BC11F0FC3335E1AC37FF192BFD0BFAF653"
+  },
+  "CollectorHashesAtCollection": {
+    "scripts/start-rs12-cold.ps1": "169B35A629F8B68EDDF0C9EC2B2AB61F2F2387A6967DEC07D3DD557AF0057201",
+    "scripts/collect-rs12-cold.ps1": "B15F2EA174FAF13381C51362DDA0651153699CF65F965982FECCBA9044A96C07",
+    "scripts/lib/rs12-input-observer.cs": "2D5494F9B14263E99E7FD0D5AE178481C1B153BB1473BDA1ADEDA92C4B7A0209",
+    "scripts/lib/resource-sample.ps1": "6A939C59BCEB8069ACD28CD1F4B4434B1D7F431BFDB8FBEEFF4474F639AFAE3D"
+  },
+  "CollectorHashesForFutureRuns": {
+    "scripts/start-rs12-cold.ps1": "169B35A629F8B68EDDF0C9EC2B2AB61F2F2387A6967DEC07D3DD557AF0057201",
+    "scripts/collect-rs12-cold.ps1": "A63B10E7A28034AADE7ABFA423C662D00634FCB3BB4120467EBBBBB61BCB5CBF",
+    "scripts/lib/rs12-input-observer.cs": "2D5494F9B14263E99E7FD0D5AE178481C1B153BB1473BDA1ADEDA92C4B7A0209",
+    "scripts/lib/resource-sample.ps1": "7E78BE326C36E19259571CB4E9BB676C3B3E6A403812AC0264C3D8672758370C",
+    "scripts/test-rs12-input.ps1": "C26C8E975AC3994F68F14C562582A9333B3F5B734C3997C1A8F3103297C0D85A"
+  },
+  "EnvironmentIdAudit": {
+    "PriorFemtoVgRawId": "D170D1BA387FA2A9A8279CA9FB11ABD1A9A1DD4832F0553F716120DD0C318936",
+    "CurrentWailsRawId": "3548C2246D9C8A1B2FA86F11AC5A4A0802396357F7EC313EF38BAC9CDF4FB890",
+    "CurrentFieldsReproducePriorAndCurrentIdsUnderDifferentFieldOrders": true,
+    "PriorFieldOrder": "Build,Windows,CPU",
+    "CurrentFieldOrder": "Windows,Build,CPU",
+    "CanonicalAlgorithmForFutureReports": "ColdWindowsBuildCpuOrdinalV1",
+    "Scope": "Reproduction uses current Windows version, build and processor names only; it does not establish equality of other conditions or alter historical raw reports."
+  },
+  "ValidIndependentColdConditionObservations": 2,
+  "RequiredIndependentColdConditionObservations": 9,
+  "InvalidAttemptsRetained": 1,
+  "ValidObservationsByEdition": {
+    "software": 0,
+    "femtovg": 1,
+    "wails": 1
+  },
+  "NextScheduledCase": "femtovg-2",
+  "RS12Complete": false,
+  "Validation": {
+    "RecordedAtUtc": "2026-11-09T04:44:03.0790367Z",
+    "ColdEnvironmentOrderingAndChangeChecks": "passed",
+    "RealCollectorInTwoIsolatedSyntheticProcesses": "passed",
+    "Command": "$env:GOTOOLCHAIN='go1.25.6'; ./scripts/verify.ps1 -SkipBuild",
+    "ExitCode": 0,
+    "FrontendTestsPassed": 26,
+    "GoVetPassed": true,
+    "GoTestsPassed": true,
+    "RustBuildOrSmokeRerun": false
+  }
+}

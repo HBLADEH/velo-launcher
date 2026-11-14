@@ -1,0 +1,93 @@
+{
+  "Edition": "software",
+  "ExecutableSHA256": "5E7C017DDA3FF691E7FF8DCBFEAF149E5A766C1F8DC73A816BB5C4A9F7C4C66B",
+  "ProcessId": 133404,
+  "StartedTicks": 639300816527974886,
+  "CaptureReady": {
+    "event": "capture_ready",
+    "qpc": 1498650984073,
+    "qpc_frequency": 10000000,
+    "pid": 133404,
+    "creation_filetime_100ns": 134389584527974886,
+    "backend": "WindowsGraphicsCapture",
+    "desktop_frame": false,
+    "cursor_captured": false,
+    "secondary_windows": true
+  },
+  "CollectorSHA256": "3DB66C258905693001A31B43D27A887DDC3D1F2F080142F65DF31C19243DF0CA",
+  "RawTraceSHA256": "C7A78B50D4B36D01771DBB1081A5F27B829BE5DA2F28B9CEE265CA8B6F14EA42",
+  "Ended": false,
+  "Clips": [
+    {
+      "Name": "settings-exit-current-active-slice",
+      "SavedFrames": 9,
+      "ChangedIntervals": 6,
+      "MajorChangeIntervals": 5,
+      "PossibleStorageLimit": false,
+      "NativeDPI": [
+        96
+      ],
+      "OriginalFrames": [
+        {
+          "File": "settings-exit-current-active-slice/frame-250.bmp",
+          "SHA256": "5B98E56BDEAE13B29533ABA199DA3B1BF77E50338FFB7F0D04940ED64A41499F",
+          "Bytes": 1567158
+        },
+        {
+          "File": "settings-exit-current-active-slice/frame-251.bmp",
+          "SHA256": "68CC9158950CA95FFEC6A6681DBA486CDCD778F58655B77E14FAC401AC422B38",
+          "Bytes": 1567158
+        },
+        {
+          "File": "settings-exit-current-active-slice/frame-252.bmp",
+          "SHA256": "C9AE9FCCF5D8BA9A3DEA3C3DC2706B6B530510B9E3F9FCB950D7311D333FC3F5",
+          "Bytes": 1567158
+        },
+        {
+          "File": "settings-exit-current-active-slice/frame-253.bmp",
+          "SHA256": "4325EB73A13E11A34A5FFA8DD4DE0FDD0D1C14B5343DBBA0193BFD3A8410ED43",
+          "Bytes": 1567158
+        },
+        {
+          "File": "settings-exit-current-active-slice/frame-254.bmp",
+          "SHA256": "D1DE86779C352173E58480B68ED77BFD28DBD80CE59878436104350A1FCE17DC",
+          "Bytes": 1567158
+        },
+        {
+          "File": "settings-exit-current-active-slice/frame-255.bmp",
+          "SHA256": "62386D1F7D7DA68879BADB672A1AD885988EDAF3E7221E70905945B72E6F323B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "settings-exit-current-active-slice/frame-256.bmp",
+          "SHA256": "3DC0AC49B6CE785399E4E33E628E86C33AC6DB270987B2B4EC570D8D7F08AD28",
+          "Bytes": 1567158
+        },
+        {
+          "File": "settings-exit-current-active-slice/frame-257.bmp",
+          "SHA256": "3DC0AC49B6CE785399E4E33E628E86C33AC6DB270987B2B4EC570D8D7F08AD28",
+          "Bytes": 1567158
+        },
+        {
+          "File": "settings-exit-current-active-slice/frame-258.bmp",
+          "SHA256": "3DC0AC49B6CE785399E4E33E628E86C33AC6DB270987B2B4EC570D8D7F08AD28",
+          "Bytes": 1567158
+        }
+      ],
+      "Published": true,
+      "Clock": "Original WGC surface time and observer QPC; not final desktop/photon time",
+      "ObservedSpanMilliseconds": 162.1193,
+      "MaximumObservedGapMilliseconds": 33.2541,
+      "MaximumSourceGapMilliseconds": 33.3677,
+      "PreviewOriginalFrameRange": [
+        0,
+        6
+      ],
+      "PreviewClock": "WGC source intervals, idle lead/trail trimmed; last frame held 200ms for review",
+      "PreviewScaled": false
+    }
+  ],
+  "PhysicalInputProvenByThisFile": false,
+  "RS13Complete": false,
+  "Scope": "Native selected-window surface records. Stimulus identity and physical-input proof belong to the operator/session logs. Preview trimming/padding never changes the raw frames or original clocks."
+}

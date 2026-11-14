@@ -1,0 +1,62 @@
+{
+  "RecordedAtUtc": "2026-11-11T15:09:42.400597+00:00",
+  "Rows": [
+    {
+      "Renderer": "software",
+      "Run": "software-final-input",
+      "ExecutableSHA256": "A64BE7CCBA0F187EA89EA0C1933658DFE67BC440825EB29D73DDF2C430848659",
+      "ProcessId": 63512,
+      "StartedTicks": 639300006720347570,
+      "NativeDPISamples": [
+        96
+      ],
+      "OperatorReports": [
+        "最终 Software 完成，全部正常",
+        "最终 Software 正常"
+      ],
+      "OperatorConfirmedScope": "Microsoft Pinyin candidate location/page/selection, Esc cancellation and English abc at 100%; FemtoVG additionally reports cross-monitor input.",
+      "LoggedAcceptedEdits": 31,
+      "LoggedComposingEdits": 9,
+      "RawInputLogSHA256": "C728F28DEA0BE79FE80E6AF8BCDC7470CB3DA98B8DCAD2E30B09C8007333C03C",
+      "Completion": {
+        "Completed": true,
+        "ExitCode": 0,
+        "ProcessId": 63512,
+        "SHA256": "A64BE7CCBA0F187EA89EA0C1933658DFE67BC440825EB29D73DDF2C430848659",
+        "ForcedCleanup": false,
+        "CleanupScope": "This wrapper never terminates a process. External cleanup records take precedence on nonzero exit."
+      },
+      "EvidenceLimit": "Operator reports arrived after the sessions. Event counts cover the entire run, including Computer Use; synthetic=false alone does not prove physical input. FemtoVG has no logged composition sequence or measured cross-monitor transition, so its final-exe physical and cross-monitor result is operator-reported, not an instrumented transition claim."
+    },
+    {
+      "Renderer": "femtovg",
+      "Run": "femtovg-final",
+      "ExecutableSHA256": "8C5A183653EB678E68B81091EDB3428628EE059ED3CA746BE8453EFA5291D547",
+      "ProcessId": 64668,
+      "StartedTicks": 639299989573989972,
+      "NativeDPISamples": [
+        96
+      ],
+      "OperatorReports": [
+        "最终 FemtoVG 正常，跨屏输入也正常"
+      ],
+      "OperatorConfirmedScope": "Microsoft Pinyin candidate location/page/selection, Esc cancellation and English abc at 100%; FemtoVG additionally reports cross-monitor input.",
+      "LoggedAcceptedEdits": 1,
+      "LoggedComposingEdits": 0,
+      "RawInputLogSHA256": "777E26F4196E5568E9031572250D45D2DFA370018590418F901BB62C237FB011",
+      "Completion": {
+        "Completed": true,
+        "ExitCode": 0,
+        "ProcessId": 64668,
+        "SHA256": "8C5A183653EB678E68B81091EDB3428628EE059ED3CA746BE8453EFA5291D547",
+        "ForcedCleanup": false,
+        "CleanupScope": "This wrapper never terminates a process. External cleanup records take precedence on nonzero exit."
+      },
+      "EvidenceLimit": "Operator reports arrived after the sessions. Event counts cover the entire run, including Computer Use; synthetic=false alone does not prove physical input. FemtoVG has no logged composition sequence or measured cross-monitor transition, so its final-exe physical and cross-monitor result is operator-reported, not an instrumented transition claim."
+    }
+  ],
+  "OriginalScaleMatrix": "physical-input.json",
+  "SourceDelta": "physical-to-final-source-delta.json",
+  "Scale200Percent": "Not available: operator reports maximum selectable scale 175%.",
+  "Scope": "Final executable checks supplement the original 100/125/150/175% matrix; never replace its executable identities."
+}

@@ -1,0 +1,117 @@
+{
+  "ExecutableSHA256": "D81F31ED8AB3C0D45A3565CDC8AA412B3FB870C0CC350204178CDE44456B6487",
+  "PID": 124188,
+  "RawTraceSHA256": "942EFFA08930E9268131B13206BBFE1D92B446E78556D7C058DE25CC0647FF92",
+  "CompleteTrace": false,
+  "WriterQueueRejected": null,
+  "GPUQueueRejected": null,
+  "Clips": [
+    {
+      "Name": "settings-enter-current-active-slice",
+      "Frames": 17,
+      "CachedBaseline": false,
+      "SourceSpanMilliseconds": 300.2983999848366,
+      "SourceIntervalsMilliseconds": [
+        16.682899981737137,
+        16.683800011873245,
+        16.683299988508224,
+        16.68250000476837,
+        16.683200001716614,
+        16.683800011873245,
+        33.36659997701645,
+        33.366700023412704,
+        16.682899981737137,
+        16.6836000084877,
+        16.68250000476837,
+        16.682799994945526,
+        16.683699995279312,
+        16.683299988508224,
+        16.683800011873245,
+        16.68299999833107
+      ],
+      "MaximumSourceGapMilliseconds": 33.366700023412704,
+      "EndpointProgress": [
+        {
+          "SourceMilliseconds": 0.0,
+          "Progress": 0.0
+        },
+        {
+          "SourceMilliseconds": 16.682899981737137,
+          "Progress": 0.5761711001396179
+        },
+        {
+          "SourceMilliseconds": 33.36669999361038,
+          "Progress": 0.658879280090332
+        },
+        {
+          "SourceMilliseconds": 50.04999998211861,
+          "Progress": 0.7026768922805786
+        },
+        {
+          "SourceMilliseconds": 66.73249998688698,
+          "Progress": 0.7533902525901794
+        },
+        {
+          "SourceMilliseconds": 83.41569998860359,
+          "Progress": 0.7711739540100098
+        },
+        {
+          "SourceMilliseconds": 100.09950000047684,
+          "Progress": 0.9827977418899536
+        },
+        {
+          "SourceMilliseconds": 133.4660999774933,
+          "Progress": 0.9958499670028687
+        },
+        {
+          "SourceMilliseconds": 166.832800000906,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 183.51569998264313,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 200.19929999113083,
+          "Progress": 1.0000007152557373
+        },
+        {
+          "SourceMilliseconds": 216.8817999958992,
+          "Progress": 1.000001072883606
+        },
+        {
+          "SourceMilliseconds": 233.56459999084473,
+          "Progress": 0.9999997615814209
+        },
+        {
+          "SourceMilliseconds": 250.24829998612404,
+          "Progress": 0.9999987483024597
+        },
+        {
+          "SourceMilliseconds": 266.93159997463226,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 283.6153999865055,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 300.2983999848366,
+          "Progress": 1.0
+        }
+      ],
+      "IntermediateFrames": 5,
+      "FiniteFitAvailable": true,
+      "ScalarEndpointFit": {
+        "Curve": "wails-main",
+        "DurationMilliseconds": 242,
+        "OnsetSourceMilliseconds": -7.317100018262863,
+        "RMSE": 0.0688377047601194
+      },
+      "FitScope": "Projection between body endpoints; blends opacity and translation. This fit alone cannot certify either independent CSS property."
+    }
+  ],
+  "PhysicalInput": false,
+  "RS13Complete": false,
+  "Scope": "Original selected-window WGC surface times; source intervals distinguish cached idle baselines. Scalar fits are diagnostic and do not certify final desktop or isolated opacity/translation curves."
+}

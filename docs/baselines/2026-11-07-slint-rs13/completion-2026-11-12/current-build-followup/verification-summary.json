@@ -1,0 +1,181 @@
+{
+  "RecordedAtUtc": "2026-11-12T13:31:05.511638+00:00",
+  "ArtifactIntegrityPassed": true,
+  "RS13Complete": false,
+  "Builds": [
+    {
+      "Renderer": "software",
+      "ExecutableSHA256": "5E7C017DDA3FF691E7FF8DCBFEAF149E5A766C1F8DC73A816BB5C4A9F7C4C66B",
+      "VerificationReceiptSHA256": "F3C1032A2C334A859486948BD96C287C27D8FB9B7E8DED4BE892703EAAA21891",
+      "BuildIdentitySHA256": "755BE0DFDDB7B2C723C2602CE8F418A6181919484D493B543F924C5B52A2BADB",
+      "Inputs": 206,
+      "MatchedInputs": 206,
+      "ChecksPassed": true,
+      "SmokeTestPassed": true
+    },
+    {
+      "Renderer": "femtovg",
+      "ExecutableSHA256": "D81F31ED8AB3C0D45A3565CDC8AA412B3FB870C0CC350204178CDE44456B6487",
+      "VerificationReceiptSHA256": "1481EFF242B688A4CB60641AA605F810050096DAC3F44111E3542267F92E2A62",
+      "BuildIdentitySHA256": "4AAAA87CDE69C73D4974EA77409598F4BD8CAF4AE3EB3089F8FD174E05DDC370",
+      "Inputs": 206,
+      "MatchedInputs": 206,
+      "ChecksPassed": true,
+      "SmokeTestPassed": true
+    }
+  ],
+  "PreviousNativeRecordingBuilds": {
+    "software": "D9265467D96436581A6C562E0B49D8F5654D6A102F7ECC19A1A6405B7FB69D50",
+    "femtovg": "EAD49D50F8E206D82C6A15FFB0D20A2300DBA7AFD23142B41F82339C6BD89E97",
+    "InputsPerRenderer": 157,
+    "CurrentPhysicalInputEvidenceReused": false
+  },
+  "Capture": {
+    "Backend": "WindowsGraphicsCapture",
+    "WindowClientDPI": 96,
+    "PhysicalKeyboardOrIME": false,
+    "FinalDesktopOrPhotonPresentationTiming": false,
+    "RecorderExecutableSHA256": "F3039B9305C6B9BAE3F26676C1E47417A749C35C67FF377C16D4C171932738F9",
+    "GPUQueueRejected": 0,
+    "WriterQueueRejected": 0
+  },
+  "SettingsTransitions": [
+    {
+      "Renderer": "software",
+      "Direction": "enter",
+      "Run": ".reasonix/rs13-current-build-20261112/light/runs/software-current-3",
+      "RawTraceSHA256": "2BF9E9B9A195C16963759A8E2CEA3262FBC6E836E02DBC8FAE57C7BA9BF10C78",
+      "Slice": "analysis-current-v2/settings-enter-current-active-slice",
+      "SliceManifestSHA256": "D55F991CC6C2328DFB866D01E3B1479AD72FCDF152F467883828030DD5E795D2",
+      "FirstFrameIndex": 232,
+      "LastFrameIndex": 249,
+      "ActiveFrameCount": 18,
+      "ActiveSourceSpanMilliseconds": 333.6711,
+      "MaximumInternalSourceGapMilliseconds": 33.3671,
+      "GapBeforeFirstIntermediateFrameMilliseconds": 500.5009,
+      "DeclaredWaveformWithFreeOnsetDiagnostic": "compatible",
+      "Acceptance": "insufficient",
+      "ParentStorageLimited": true
+    },
+    {
+      "Renderer": "software",
+      "Direction": "exit",
+      "Run": ".reasonix/rs13-current-build-20261112/light/runs/software-current-3",
+      "RawTraceSHA256": "2BF9E9B9A195C16963759A8E2CEA3262FBC6E836E02DBC8FAE57C7BA9BF10C78",
+      "Slice": "analysis-current-v2/settings-exit-current-active-slice",
+      "SliceManifestSHA256": "4D6EE0B426A9FC18ECCFE50D94F16930CE20C3E58761CBD121C78C0D9A76E325",
+      "FirstFrameIndex": 250,
+      "LastFrameIndex": 258,
+      "ActiveFrameCount": 9,
+      "ActiveSourceSpanMilliseconds": 150.1501,
+      "MaximumInternalSourceGapMilliseconds": 33.3677,
+      "GapBeforeFirstIntermediateFrameMilliseconds": 144994.9399,
+      "DeclaredWaveformWithFreeOnsetDiagnostic": "compatible",
+      "Acceptance": "insufficient",
+      "ParentStorageLimited": true,
+      "MaximumVisibleExitShiftLogicalPixels": 0.25
+    },
+    {
+      "Renderer": "femtovg",
+      "Direction": "enter",
+      "Run": ".reasonix/rs13-current-build-20261112/light/runs/femtovg-current-1",
+      "RawTraceSHA256": "57D946DF34B48C02393D5EAE0EC0891492EC3B3100F0682D2117F934DB562E18",
+      "Slice": "settings-enter-current-active-slice",
+      "SliceManifestSHA256": "0D14D5594A78A7C09AE112904CF9CE12B41EB5CD23A15F011BCB71408D9A2754",
+      "FirstFrameIndex": 317,
+      "LastFrameIndex": 333,
+      "ActiveFrameCount": 17,
+      "ActiveSourceSpanMilliseconds": 300.2984,
+      "MaximumInternalSourceGapMilliseconds": 33.3667,
+      "GapBeforeFirstIntermediateFrameMilliseconds": 350.3538,
+      "DeclaredWaveformWithFreeOnsetDiagnostic": "compatible",
+      "Acceptance": "insufficient",
+      "ParentStorageLimited": false
+    },
+    {
+      "Renderer": "femtovg",
+      "Direction": "exit",
+      "Run": ".reasonix/rs13-current-build-20261112/light/runs/femtovg-current-1",
+      "RawTraceSHA256": "57D946DF34B48C02393D5EAE0EC0891492EC3B3100F0682D2117F934DB562E18",
+      "Slice": "settings-exit-current-active-slice",
+      "SliceManifestSHA256": "87810302D40B2CB76777EBB634231740F75B4041DC4BBF4B2CFE25F103624B5A",
+      "FirstFrameIndex": 334,
+      "LastFrameIndex": 351,
+      "ActiveFrameCount": 18,
+      "ActiveSourceSpanMilliseconds": 316.9854,
+      "MaximumInternalSourceGapMilliseconds": 33.3678,
+      "GapBeforeFirstIntermediateFrameMilliseconds": 483.8193,
+      "DeclaredWaveformWithFreeOnsetDiagnostic": "compatible",
+      "Acceptance": "insufficient",
+      "ParentStorageLimited": false,
+      "MaximumVisibleExitShiftLogicalPixels": 0.5
+    }
+  ],
+  "RecordingPulse": {
+    "Renderer": "software",
+    "ExecutableSHA256": "5E7C017DDA3FF691E7FF8DCBFEAF149E5A766C1F8DC73A816BB5C4A9F7C4C66B",
+    "Run": ".reasonix/rs13-current-build-20261112/light/runs/software-recording-current-1",
+    "RawTraceSHA256": "8473813D3FCEBC91AB2C1DDB2FB1763A752E2370ECB8453A03A8AE377D66341D",
+    "RawTraceBytes": 822572,
+    "ParentFrameCount": 7224,
+    "SavedRecordingFrames": 85,
+    "ParentStorageLimited": true,
+    "ParentGPUQueueRejected": 0,
+    "ParentWriterQueueRejected": 0,
+    "ActiveFramesAfterCachedBaseline": 84,
+    "ActiveSourceSpanMilliseconds": 1668.3285,
+    "MaximumActiveSourceGapMilliseconds": 33.367,
+    "LocalROIChangedIntervals": 19,
+    "PulseMaskMinimumPixels": 15,
+    "PulseMaskMaximumPixels": 147,
+    "HighMaskPlateauStartsMilliseconds": [
+      183.518,
+      1368.027
+    ],
+    "PeakSeparationMilliseconds": 1184.509,
+    "DeclaredPeriodMilliseconds": 1200,
+    "SessionExitCode": 0,
+    "ForcedCleanup": false,
+    "PulseTimelineSHA256": "779223D8CD8797B6F2EEA2111B330D6128A47476B4B7B473ADC797B25A3F5DA3",
+    "PulseTimeseriesSHA256": "B2BB5ADD2E5CE3BF6DCB5986F3E072CDB5B9EC499B8C94DA43AF894B8CA669D4",
+    "PerFrameSHA256Manifest": ".reasonix/rs13-current-build-20261112/light/runs/software-recording-current-1/recording-active-slice/slice-manifest.json",
+    "PerFrameSHA256ManifestSHA256": "730F8134C152DA6AC35E4A2C007D229434823D58D717A078CED2ED39BFA9A950",
+    "Scope": "Current-build local ROI/source-time observation supports approximately 1.2 s pulse behavior. The parent trace later hit the bounded storage limit; saved active frames are retained and analyzed separately."
+  },
+  "Remaining": {
+    "CurrentBuildPhysicalIME": false,
+    "CurrentBuildPhysicalDPIAndCrossScreen": false,
+    "ExactTransitionOnsetAndEasingAccepted": false,
+    "AppearanceDifferenceTradeoffsAccepted": false,
+    "RS13Complete": false,
+    "DefaultRendererChosen": false,
+    "G4Passed": false,
+    "FemtoVGCurrentNativePulseFollowupComplete": false,
+    "FemtoVGCurrentNativePulseFollowupReason": "Desktop capture returned an unrelated/stale surface after reselecting the target; no app input sent during that attempt, normal quit used."
+  },
+  "Scope": "Current executable visual diagnostics and artifact integrity. Automated mouse/keyboard events are synthetic. WGC source time is not final desktop or photon presentation time.",
+  "ComponentEvidence": {
+    "StaticPNGsSHA256Checked": 104,
+    "AnimationFramesSHA256Checked": 936,
+    "ComponentClipsPassed": 26,
+    "CoreRectanglesPassed": 132,
+    "HeadingRegressionsPassed": 12,
+    "CurrentSourcesMatched": true,
+    "PhysicalInput": false,
+    "NativeDisplayTiming": false
+  },
+  "ToolCalibration": {
+    "CasesPassed": 21,
+    "ROIRejectionCasesPassed": 4,
+    "TriggerAndCompletionGapsRecomputedFromSamples": true,
+    "Source": "scripts/verify-rs13-transition-contract.py"
+  },
+  "Cleanup": {
+    "Passed": true,
+    "NormalProductExits": 6,
+    "NormalRecorderExits": 5,
+    "TestProcessCount": 0,
+    "AltSpaceAvailableAndReleased": true,
+    "FormalFiveFilesMatchEarlierReference": true
+  }
+}

@@ -1,0 +1,992 @@
+{
+  "SchemaVersion": 3,
+  "SHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+  "ObserverSHA256": "2D5494F9B14263E99E7FD0D5AE178481C1B153BB1473BDA1ADEDA92C4B7A0209",
+  "CountMode": "UntilExit",
+  "RequestedCount": 20,
+  "Kind": "HotkeyActivation",
+  "Result": {
+    "Kind": "HotkeyActivation",
+    "ProcessId": 273052,
+    "HWND": "3213F6",
+    "EventClockQuantumMilliseconds": 15.625,
+    "Observations": [
+      {
+        "Number": 1,
+        "Kind": "HotkeyActivation",
+        "Valid": false,
+        "InjectedStart": false,
+        "Reason": "Another physical Alt+Space arrived before accepted input; earlier activation retained as incomplete.",
+        "StartLowerUnixUs": 1793954410006141,
+        "StartObservedUnixUs": 1793954410021874,
+        "AcceptedUnixUs": 0,
+        "DurationUpperMilliseconds": 0.0,
+        "ClockUncertaintyMilliseconds": 15.733,
+        "WallClockDriftMilliseconds": 0.0
+      },
+      {
+        "Number": 2,
+        "Kind": "HotkeyActivation",
+        "Valid": true,
+        "InjectedStart": false,
+        "Reason": "Actual character accepted; upper bound includes manual delay before typing. No subtraction of human waiting or claim of first-possible readiness.",
+        "StartLowerUnixUs": 1793954413443662,
+        "StartObservedUnixUs": 1793954413459287,
+        "AcceptedUnixUs": 1793954417791105,
+        "DurationUpperMilliseconds": 4347.443,
+        "ClockUncertaintyMilliseconds": 15.625,
+        "WallClockDriftMilliseconds": 0.06739999999990687
+      },
+      {
+        "Number": 3,
+        "Kind": "HotkeyActivation",
+        "Valid": false,
+        "InjectedStart": false,
+        "Reason": "No focused non-composing character accepted within ten seconds of the hotkey.",
+        "StartLowerUnixUs": 1793954714349355,
+        "StartObservedUnixUs": 1793954714364980,
+        "AcceptedUnixUs": 0,
+        "DurationUpperMilliseconds": 0.0,
+        "ClockUncertaintyMilliseconds": 15.625,
+        "WallClockDriftMilliseconds": 0.0
+      },
+      {
+        "Number": 4,
+        "Kind": "HotkeyActivation",
+        "Valid": true,
+        "InjectedStart": false,
+        "Reason": "Actual character accepted; upper bound includes manual delay before typing. No subtraction of human waiting or claim of first-possible readiness.",
+        "StartLowerUnixUs": 1793955250362012,
+        "StartObservedUnixUs": 1793955250377637,
+        "AcceptedUnixUs": 1793955253172799,
+        "DurationUpperMilliseconds": 2810.787,
+        "ClockUncertaintyMilliseconds": 15.625,
+        "WallClockDriftMilliseconds": 0.04239999999981592
+      }
+    ],
+    "Completed": false,
+    "CountMode": "UntilExit",
+    "EndReason": "Timeout",
+    "ValidSampleCountSatisfied": false,
+    "NativeEventsDropped": false,
+    "NativeEvents": [
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793954406808162,
+        "ElapsedMilliseconds": 42996.2375,
+        "Visible": true,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "hide",
+        "UnixMicroseconds": 1793954406814274,
+        "ElapsedMilliseconds": 43002.3505,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793954406885964,
+        "ElapsedMilliseconds": 43074.0421,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "alt_space",
+        "UnixMicroseconds": 1793954410021632,
+        "ElapsedMilliseconds": 46209.7586,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "show",
+        "UnixMicroseconds": 1793954410024513,
+        "ElapsedMilliseconds": 46212.6398,
+        "Visible": true,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793954410027314,
+        "ElapsedMilliseconds": 46215.4424,
+        "Visible": true,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "hide",
+        "UnixMicroseconds": 1793954410052291,
+        "ElapsedMilliseconds": 46240.425,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793954411296755,
+        "ElapsedMilliseconds": 47484.9017,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "alt_space",
+        "UnixMicroseconds": 1793954413459280,
+        "ElapsedMilliseconds": 49647.4601,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "show",
+        "UnixMicroseconds": 1793954413461635,
+        "ElapsedMilliseconds": 49649.8152,
+        "Visible": true,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793954413463893,
+        "ElapsedMilliseconds": 49652.0733,
+        "Visible": true,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793954433257451,
+        "ElapsedMilliseconds": 69445.9453,
+        "Visible": true,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "hide",
+        "UnixMicroseconds": 1793954433263029,
+        "ElapsedMilliseconds": 69451.5248,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793954636246027,
+        "ElapsedMilliseconds": 272437.7322,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "alt_space",
+        "UnixMicroseconds": 1793954636354025,
+        "ElapsedMilliseconds": 272545.7281,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": true
+      },
+      {
+        "Kind": "show",
+        "UnixMicroseconds": 1793954636362644,
+        "ElapsedMilliseconds": 272554.348,
+        "Visible": true,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793954636376503,
+        "ElapsedMilliseconds": 272568.2146,
+        "Visible": true,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793954650545378,
+        "ElapsedMilliseconds": 286737.3048,
+        "Visible": true,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "hide",
+        "UnixMicroseconds": 1793954650558553,
+        "ElapsedMilliseconds": 286750.482,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793954650587705,
+        "ElapsedMilliseconds": 286779.6365,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793954651484353,
+        "ElapsedMilliseconds": 287676.2942,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793954651492384,
+        "ElapsedMilliseconds": 287684.3259,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793954651502844,
+        "ElapsedMilliseconds": 287694.7865,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793954653694835,
+        "ElapsedMilliseconds": 289886.8152,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793954653760160,
+        "ElapsedMilliseconds": 289952.1497,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793954655220495,
+        "ElapsedMilliseconds": 291412.4996,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793954655308389,
+        "ElapsedMilliseconds": 291500.3925,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793954697115138,
+        "ElapsedMilliseconds": 333307.8033,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793954702059437,
+        "ElapsedMilliseconds": 338252.1784,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793954702291288,
+        "ElapsedMilliseconds": 338484.0346,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793954702421150,
+        "ElapsedMilliseconds": 338613.8985,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793954705536580,
+        "ElapsedMilliseconds": 341729.3804,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793954705661968,
+        "ElapsedMilliseconds": 341854.7661,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793954705686555,
+        "ElapsedMilliseconds": 341879.3525,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793954705702945,
+        "ElapsedMilliseconds": 341895.7437,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793954705888795,
+        "ElapsedMilliseconds": 342081.5966,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793954711039034,
+        "ElapsedMilliseconds": 347231.9167,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793954711126651,
+        "ElapsedMilliseconds": 347319.5402,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "alt_space",
+        "UnixMicroseconds": 1793954714364975,
+        "ElapsedMilliseconds": 350557.9111,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "show",
+        "UnixMicroseconds": 1793954714370960,
+        "ElapsedMilliseconds": 350563.909,
+        "Visible": true,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793954714378070,
+        "ElapsedMilliseconds": 350571.008,
+        "Visible": true,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793954790961805,
+        "ElapsedMilliseconds": 427155.9525,
+        "Visible": true,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "hide",
+        "UnixMicroseconds": 1793954790977024,
+        "ElapsedMilliseconds": 427171.1769,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793954793256752,
+        "ElapsedMilliseconds": 429450.9373,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793954793327421,
+        "ElapsedMilliseconds": 429521.6047,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793954798961522,
+        "ElapsedMilliseconds": 435155.7946,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793954884343777,
+        "ElapsedMilliseconds": 520539.3979,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793954884434403,
+        "ElapsedMilliseconds": 520630.0256,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "show",
+        "UnixMicroseconds": 1793954885866951,
+        "ElapsedMilliseconds": 522062.5955,
+        "Visible": true,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793954885872855,
+        "ElapsedMilliseconds": 522068.5082,
+        "Visible": true,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793954886684934,
+        "ElapsedMilliseconds": 522880.5991,
+        "Visible": true,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "hide",
+        "UnixMicroseconds": 1793954886694717,
+        "ElapsedMilliseconds": 522890.3764,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "show",
+        "UnixMicroseconds": 1793954886746620,
+        "ElapsedMilliseconds": 522942.3837,
+        "Visible": true,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793954886751415,
+        "ElapsedMilliseconds": 522947.0747,
+        "Visible": true,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793954886983077,
+        "ElapsedMilliseconds": 523178.7387,
+        "Visible": true,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "hide",
+        "UnixMicroseconds": 1793954886996481,
+        "ElapsedMilliseconds": 523192.1442,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "show",
+        "UnixMicroseconds": 1793954887003034,
+        "ElapsedMilliseconds": 523198.6967,
+        "Visible": true,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793954887013076,
+        "ElapsedMilliseconds": 523208.7408,
+        "Visible": true,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793954887822541,
+        "ElapsedMilliseconds": 524018.2172,
+        "Visible": true,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "hide",
+        "UnixMicroseconds": 1793954887831253,
+        "ElapsedMilliseconds": 524026.9284,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "show",
+        "UnixMicroseconds": 1793954887915821,
+        "ElapsedMilliseconds": 524111.4982,
+        "Visible": true,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793954887922936,
+        "ElapsedMilliseconds": 524118.6153,
+        "Visible": true,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "hide",
+        "UnixMicroseconds": 1793954887962712,
+        "ElapsedMilliseconds": 524158.3929,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793954889310016,
+        "ElapsedMilliseconds": 525505.7151,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793954889394150,
+        "ElapsedMilliseconds": 525589.8504,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793954894607155,
+        "ElapsedMilliseconds": 530802.9386,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793954896796368,
+        "ElapsedMilliseconds": 532992.1851,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793954951307443,
+        "ElapsedMilliseconds": 587504.1252,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793954951921097,
+        "ElapsedMilliseconds": 588117.7874,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793954955400128,
+        "ElapsedMilliseconds": 591596.8739,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793954956298393,
+        "ElapsedMilliseconds": 592495.1525,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793954958310417,
+        "ElapsedMilliseconds": 594507.2065,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793954958392629,
+        "ElapsedMilliseconds": 594589.4198,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793954961760819,
+        "ElapsedMilliseconds": 597957.6643,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793954971873410,
+        "ElapsedMilliseconds": 608070.4144,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793954971913640,
+        "ElapsedMilliseconds": 608110.644,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793954972001439,
+        "ElapsedMilliseconds": 608198.4464,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793954972018387,
+        "ElapsedMilliseconds": 608215.3934,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793954972717830,
+        "ElapsedMilliseconds": 608914.8485,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793954976032315,
+        "ElapsedMilliseconds": 612229.3861,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793954976130125,
+        "ElapsedMilliseconds": 612327.1952,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793954980985834,
+        "ElapsedMilliseconds": 617182.9815,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793955059390589,
+        "ElapsedMilliseconds": 695588.9755,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793955059504665,
+        "ElapsedMilliseconds": 695703.0526,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793955126750254,
+        "ElapsedMilliseconds": 762949.7126,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793955127519099,
+        "ElapsedMilliseconds": 763718.5666,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793955132340714,
+        "ElapsedMilliseconds": 768540.2556,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793955132398426,
+        "ElapsedMilliseconds": 768597.9657,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793955132433838,
+        "ElapsedMilliseconds": 768633.3816,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793955133829457,
+        "ElapsedMilliseconds": 770029.023,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793955143778487,
+        "ElapsedMilliseconds": 779978.2066,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793955146827123,
+        "ElapsedMilliseconds": 783026.8908,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793955159671681,
+        "ElapsedMilliseconds": 795871.6518,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793955159775252,
+        "ElapsedMilliseconds": 795975.2245,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793955163486444,
+        "ElapsedMilliseconds": 799686.4755,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793955163701731,
+        "ElapsedMilliseconds": 799901.7672,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793955174000360,
+        "ElapsedMilliseconds": 810200.5585,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793955176156156,
+        "ElapsedMilliseconds": 812356.3869,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793955179276191,
+        "ElapsedMilliseconds": 815476.4712,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793955181694755,
+        "ElapsedMilliseconds": 817895.0737,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793955196946968,
+        "ElapsedMilliseconds": 833147.529,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793955204418525,
+        "ElapsedMilliseconds": 840619.2047,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793955204493965,
+        "ElapsedMilliseconds": 840694.6434,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793955214136075,
+        "ElapsedMilliseconds": 850336.9075,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793955214218184,
+        "ElapsedMilliseconds": 850419.0211,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793955228530249,
+        "ElapsedMilliseconds": 864731.3098,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793955231947933,
+        "ElapsedMilliseconds": 868149.0481,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793955238568828,
+        "ElapsedMilliseconds": 874770.0453,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793955246327132,
+        "ElapsedMilliseconds": 882528.4746,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793955247344948,
+        "ElapsedMilliseconds": 883546.3036,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "alt_space",
+        "UnixMicroseconds": 1793955250377626,
+        "ElapsedMilliseconds": 886579.0326,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "show",
+        "UnixMicroseconds": 1793955250382733,
+        "ElapsedMilliseconds": 886584.1381,
+        "Visible": true,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793955250389018,
+        "ElapsedMilliseconds": 886590.4228,
+        "Visible": true,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      }
+    ]
+  },
+  "RecordedAtUtc": "2026-11-06T08:54:23.8352544Z",
+  "EnvironmentId": "919334C89E60F497840DA52B3B7791CC5DD006BCC54E291BAD0A492BC13F2FD7",
+  "InputId": "4F199EEA23BF1258C3A98A684D259AF3DAFD9F0766A1D920592C905F4BDC2D5F",
+  "Method": "Physical Alt+Space Windows event lower bound to actual non-composing character accepted by the focused visible launcher. Includes manual typing delay. Injected hotkeys excluded.",
+  "Boundary": "KeyDownToEditable",
+  "Limitations": [
+    "Actual accepted character is later than first-possible readiness; human delay is not removed. Above-budget upper bounds alone cannot establish a readiness regression.",
+    "Windows keyboard-event clock quantum and UTC mapping bounds are reported. Native timestamps are callback observations, not presented frames or application-level cause.",
+    "Only starts on the selected hidden launcher; no other typed keys or text are collected.",
+    "Completed describes capture termination only. It does not establish reliable activation or absence of operator-reported failures.",
+    "UntilExit retains all bounded-session attempts until the target window ends or the timeout; minimum sample counts are reported separately."
+  ],
+  "StartupClockCalibration": null
+}

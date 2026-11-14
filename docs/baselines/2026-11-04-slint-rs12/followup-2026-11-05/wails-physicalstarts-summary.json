@@ -1,0 +1,41 @@
+{
+  "SchemaVersion": 1,
+  "InputPath": "wails-physicalstarts.csv",
+  "InputSHA256": "8F2BE6CA88DDB5B7A454C4D23EF036EA741852AC32C2A6A60370439ABBC9A391",
+  "PercentileMethod": "Nearest rank: sorted[ceil(0.95*n)-1]; median averages the middle pair when n is even.",
+  "Groups": [
+    {
+      "Kind": "HotkeyActivation",
+      "ExecutableSHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+      "EnvironmentId": "919334C89E60F497840DA52B3B7791CC5DD006BCC54E291BAD0A492BC13F2FD7",
+      "InputId": "4F199EEA23BF1258C3A98A684D259AF3DAFD9F0766A1D920592C905F4BDC2D5F",
+      "Method": "PhysicalKeyboardToAcceptedCharacterUpperBound",
+      "Boundary": "KeyDownToEditable",
+      "ValidSamples": 4,
+      "InvalidSamples": 1,
+      "MedianMilliseconds": 669.2885,
+      "P95Milliseconds": 3430.385,
+      "MinimumSamples": 20,
+      "SampleCountSatisfied": false
+    }
+  ],
+  "Coverage": [
+    {
+      "ExecutableSHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+      "EnvironmentId": "919334C89E60F497840DA52B3B7791CC5DD006BCC54E291BAD0A492BC13F2FD7",
+      "InputId": "4F199EEA23BF1258C3A98A684D259AF3DAFD9F0766A1D920592C905F4BDC2D5F",
+      "Method": "PhysicalKeyboardToAcceptedCharacterUpperBound",
+      "MissingKinds": [
+        "WarmStartup",
+        "ColdStartup"
+      ],
+      "AllSampleCountsSatisfied": false
+    }
+  ],
+  "MissingKinds": [
+    "WarmStartup",
+    "ColdStartup"
+  ],
+  "AllSampleCountsSatisfied": false,
+  "Note": "Summarizes supplied desktop evidence only; does not measure latency or establish that a cold condition/input-readiness claim is true."
+}

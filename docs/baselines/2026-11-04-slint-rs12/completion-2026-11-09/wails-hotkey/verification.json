@@ -1,0 +1,30 @@
+{
+  "RecordedAtUtc": "2026-11-09T06:20:30.5789522Z",
+  "Command": "GOTOOLCHAIN=go1.25.6 ./scripts/verify.ps1 -SkipBuild",
+  "Succeeded": true,
+  "ExitCode": 0,
+  "Checks": [
+    "RS-12 passive input and real hidden-window destruction",
+    "Native process-tree resource regression",
+    "Shared measurement/latency regressions",
+    "Frontend lint, 26 tests and typecheck/build",
+    "go vet ./... and go test ./..."
+  ],
+  "ToolSHA256": {
+    "scripts/collect-rs12-input.ps1": "BE97D59C80DC7ADE43BDEA1509426413A921A17303C392263E8BF54C8CD4C1AE",
+    "scripts/observe-rs12-window.ps1": "6F97ED6AF19668A569CC8DE37600131156856D36841815AC84FE0527D3DAE525",
+    "scripts/lib/rs12-input-observer.cs": "90924FCD48C2F58FEF2C3F4441D0591BCED3E7E3E4E44FACAD8EDB2527E9EB0D",
+    "scripts/lib/rs12-window-observer.cs": "CA76B7D4D18683659A217398FF700FA6774FFA5F7D493DD948E3ED64E8C18B72",
+    "scripts/test-rs12-input.ps1": "5F2101ADDB13FD92F80F47B0B7283D799760713BB3C8BA6F17B5148C0CBA43D3"
+  },
+  "GoToolchain": "go1.25.6",
+  "NewRustBuild": false,
+  "NewRustSmoke": false,
+  "FrozenBinariesUnchanged": true,
+  "Notes": [
+    "Final full shared verification follows all collector edits.",
+    "Hidden STATIC fixture windows never show and install no keyboard hook.",
+    "This synthetic exit regression is not a new physical-input or latency sample."
+  ],
+  "OriginalLogSHA256": "D2B7AD75319E04AA52EF2059C1F6F3A2366E69D4147256A604D66F40108C25D7"
+}

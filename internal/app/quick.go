@@ -27,6 +27,10 @@ type ImportResult struct {
 }
 
 func (s *Service) Home() Home {
+	return s.homeAt(time.Now())
+}
+
+func (s *Service) homeAt(now time.Time) Home {
 	s.mu.RLock()
 	defer s.mu.RUnlock()
 	home := Home{Pinned: []model.AppItem{}, Frequent: []model.AppItem{}, Tools: []model.AppItem{}}
@@ -52,7 +56,7 @@ func (s *Service) Home() Home {
 		pinned[item.ID] = true
 		home.Pinned = append(home.Pinned, item)
 	}
-	weights := s.history.Scores("", time.Now())
+	weights := s.history.Scores("", now)
 	// Personal use takes precedence; cold-start suggestions only fill empty slots.
 	// Search's history weight must not disable learning on the home screen.
 	results := s.index.Query("", len(s.items), false, nil, 0)

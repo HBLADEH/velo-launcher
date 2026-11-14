@@ -1,0 +1,35 @@
+{
+  "RecordedAtUtc": "2026-11-12T18:09:40.662130+00:00",
+  "Renderer": "femtovg",
+  "ScalePercent": 150,
+  "InputIntervalDPI": 144,
+  "ExecutableSHA256": "D81F31ED8AB3C0D45A3565CDC8AA412B3FB870C0CC350204178CDE44456B6487",
+  "OperatorReply": "FemtoVG 150% 布局和输入全部正常",
+  "InputIntervalStartUnixUs": 1794506721029770,
+  "Next96DPILayoutUnixUs": 1794506739222632,
+  "LogLineStartOneBased": 199,
+  "LogLineEndOneBased": 261,
+  "InputEdits": 6,
+  "ComposingEdits": 3,
+  "NonComposingEdits": 3,
+  "PhysicalSizes": [
+    [
+      960,
+      315
+    ],
+    [
+      960,
+      882
+    ],
+    [
+      960,
+      990
+    ]
+  ],
+  "RawLogSHA256AtRead": "62C101C218BF08E76B38B187EAB611E2486D25BA90BF97B545D3F994EB8319F5",
+  "LaterCheckpointDPI": 96,
+  "LateCheckpointFile": "femtovg-150-physical.json",
+  "NativeCheckpointMismatchRetained": true,
+  "InputAtRequestedDPIConfirmedByApplicationLog": true,
+  "Scope": "Operator physical-keyboard feedback plus actual 144 DPI layouts enclosing the edits. The later passive snapshot read 96 DPI after a subsequent display change, and remains preserved without relabeling."
+}

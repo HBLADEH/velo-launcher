@@ -1,0 +1,435 @@
+{
+  "Python": "3.13.3",
+  "Pillow": "12.1.0",
+  "SummarizerSHA256": "320F1C5131FDFDCA7B0DBA12E562327ABC4FC918E82F7FC48A9A1B9CD6D98B6D",
+  "SourceMatched": true,
+  "ScenePairs": 52,
+  "OriginalPNGs": 104,
+  "SyntheticStates": true,
+  "ReducedMotion": true,
+  "PhysicalDPIValidated": false,
+  "PhysicalIMEValidated": false,
+  "WailsComparisonComplete": false,
+  "PresentedFramesVerified": false,
+  "GeometryToleranceVerified": false,
+  "RS13Complete": false,
+  "DifferenceScope": "Descriptive RGB differences only. Includes text antialiasing, renderer label and caret phase; no pass/fail threshold or geometric tolerance is inferred.",
+  "Comparisons": [
+    {
+      "Scene": "dark-custom-bottom.png",
+      "Width": 640,
+      "Height": 660,
+      "DifferentPixels": 98634,
+      "DifferentPixelFraction": 0.23350852272727274,
+      "MeanAbsoluteRGBChannelDifference": 2.176368371212121
+    },
+    {
+      "Scene": "dark-custom.png",
+      "Width": 640,
+      "Height": 660,
+      "DifferentPixels": 96947,
+      "DifferentPixelFraction": 0.22951467803030304,
+      "MeanAbsoluteRGBChannelDifference": 2.1607788825757575
+    },
+    {
+      "Scene": "dark-empty.png",
+      "Width": 640,
+      "Height": 210,
+      "DifferentPixels": 32661,
+      "DifferentPixelFraction": 0.24301339285714285,
+      "MeanAbsoluteRGBChannelDifference": 0.8784201388888889
+    },
+    {
+      "Scene": "dark-error.png",
+      "Width": 640,
+      "Height": 660,
+      "DifferentPixels": 94261,
+      "DifferentPixelFraction": 0.2231557765151515,
+      "MeanAbsoluteRGBChannelDifference": 0.925725220959596
+    },
+    {
+      "Scene": "dark-grid.png",
+      "Width": 640,
+      "Height": 396,
+      "DifferentPixels": 85304,
+      "DifferentPixelFraction": 0.33658459595959594,
+      "MeanAbsoluteRGBChannelDifference": 1.1587029145622896
+    },
+    {
+      "Scene": "dark-home-bottom.png",
+      "Width": 640,
+      "Height": 660,
+      "DifferentPixels": 94695,
+      "DifferentPixelFraction": 0.22418323863636364,
+      "MeanAbsoluteRGBChannelDifference": 0.9526680871212121
+    },
+    {
+      "Scene": "dark-home-empty-frequent.png",
+      "Width": 640,
+      "Height": 660,
+      "DifferentPixels": 89981,
+      "DifferentPixelFraction": 0.21302320075757575,
+      "MeanAbsoluteRGBChannelDifference": 0.8697024936868688
+    },
+    {
+      "Scene": "dark-home-empty-pinned.png",
+      "Width": 640,
+      "Height": 660,
+      "DifferentPixels": 88198,
+      "DifferentPixelFraction": 0.20880208333333333,
+      "MeanAbsoluteRGBChannelDifference": 0.7711347853535354
+    },
+    {
+      "Scene": "dark-home-two-rows.png",
+      "Width": 640,
+      "Height": 660,
+      "DifferentPixels": 95011,
+      "DifferentPixelFraction": 0.2249313446969697,
+      "MeanAbsoluteRGBChannelDifference": 1.0169554924242423
+    },
+    {
+      "Scene": "dark-home.png",
+      "Width": 640,
+      "Height": 660,
+      "DifferentPixels": 93280,
+      "DifferentPixelFraction": 0.22083333333333333,
+      "MeanAbsoluteRGBChannelDifference": 0.8867945075757576
+    },
+    {
+      "Scene": "dark-list.png",
+      "Width": 640,
+      "Height": 588,
+      "DifferentPixels": 79965,
+      "DifferentPixelFraction": 0.2124920280612245,
+      "MeanAbsoluteRGBChannelDifference": 2.1182902848639453
+    },
+    {
+      "Scene": "dark-long-name.png",
+      "Width": 640,
+      "Height": 210,
+      "DifferentPixels": 22079,
+      "DifferentPixelFraction": 0.1642782738095238,
+      "MeanAbsoluteRGBChannelDifference": 1.9792906746031746
+    },
+    {
+      "Scene": "dark-missing-icon.png",
+      "Width": 640,
+      "Height": 660,
+      "DifferentPixels": 92715,
+      "DifferentPixelFraction": 0.21949573863636362,
+      "MeanAbsoluteRGBChannelDifference": 0.8638083964646465
+    },
+    {
+      "Scene": "dark-recording.png",
+      "Width": 640,
+      "Height": 660,
+      "DifferentPixels": 110966,
+      "DifferentPixelFraction": 0.2627035984848485,
+      "MeanAbsoluteRGBChannelDifference": 2.1071890782828286
+    },
+    {
+      "Scene": "dark-scanning.png",
+      "Width": 640,
+      "Height": 660,
+      "DifferentPixels": 93313,
+      "DifferentPixelFraction": 0.22091145833333334,
+      "MeanAbsoluteRGBChannelDifference": 0.8870525568181818
+    },
+    {
+      "Scene": "dark-settings-0.png",
+      "Width": 640,
+      "Height": 660,
+      "DifferentPixels": 123606,
+      "DifferentPixelFraction": 0.2926278409090909,
+      "MeanAbsoluteRGBChannelDifference": 1.9712768308080808
+    },
+    {
+      "Scene": "dark-settings-1.png",
+      "Width": 640,
+      "Height": 660,
+      "DifferentPixels": 111073,
+      "DifferentPixelFraction": 0.26295691287878786,
+      "MeanAbsoluteRGBChannelDifference": 2.1362326388888886
+    },
+    {
+      "Scene": "dark-settings-2.png",
+      "Width": 640,
+      "Height": 660,
+      "DifferentPixels": 84114,
+      "DifferentPixelFraction": 0.19913352272727272,
+      "MeanAbsoluteRGBChannelDifference": 1.0774676452020202
+    },
+    {
+      "Scene": "dark-settings-3.png",
+      "Width": 640,
+      "Height": 660,
+      "DifferentPixels": 116866,
+      "DifferentPixelFraction": 0.2766714015151515,
+      "MeanAbsoluteRGBChannelDifference": 1.23046875
+    },
+    {
+      "Scene": "dark-settings-4-bottom.png",
+      "Width": 640,
+      "Height": 660,
+      "DifferentPixels": 126147,
+      "DifferentPixelFraction": 0.2986434659090909,
+      "MeanAbsoluteRGBChannelDifference": 2.113518781565656
+    },
+    {
+      "Scene": "dark-settings-4.png",
+      "Width": 640,
+      "Height": 660,
+      "DifferentPixels": 126670,
+      "DifferentPixelFraction": 0.2998816287878788,
+      "MeanAbsoluteRGBChannelDifference": 2.111846590909091
+    },
+    {
+      "Scene": "dark-settings-5-bottom.png",
+      "Width": 640,
+      "Height": 660,
+      "DifferentPixels": 133363,
+      "DifferentPixelFraction": 0.31572679924242425,
+      "MeanAbsoluteRGBChannelDifference": 3.1328480113636363
+    },
+    {
+      "Scene": "dark-settings-5.png",
+      "Width": 640,
+      "Height": 660,
+      "DifferentPixels": 133363,
+      "DifferentPixelFraction": 0.31572679924242425,
+      "MeanAbsoluteRGBChannelDifference": 3.1328480113636363
+    },
+    {
+      "Scene": "dark-settings-6-bottom.png",
+      "Width": 640,
+      "Height": 660,
+      "DifferentPixels": 117993,
+      "DifferentPixelFraction": 0.27933948863636365,
+      "MeanAbsoluteRGBChannelDifference": 1.8543631628787878
+    },
+    {
+      "Scene": "dark-settings-6.png",
+      "Width": 640,
+      "Height": 660,
+      "DifferentPixels": 124556,
+      "DifferentPixelFraction": 0.2948768939393939,
+      "MeanAbsoluteRGBChannelDifference": 1.7708570075757575
+    },
+    {
+      "Scene": "dark-update.png",
+      "Width": 640,
+      "Height": 660,
+      "DifferentPixels": 126891,
+      "DifferentPixelFraction": 0.30040482954545455,
+      "MeanAbsoluteRGBChannelDifference": 2.1566540404040406
+    },
+    {
+      "Scene": "light-custom-bottom.png",
+      "Width": 640,
+      "Height": 660,
+      "DifferentPixels": 59080,
+      "DifferentPixelFraction": 0.13986742424242424,
+      "MeanAbsoluteRGBChannelDifference": 2.0072301136363637
+    },
+    {
+      "Scene": "light-custom.png",
+      "Width": 640,
+      "Height": 660,
+      "DifferentPixels": 57430,
+      "DifferentPixelFraction": 0.13596117424242424,
+      "MeanAbsoluteRGBChannelDifference": 1.9919034090909091
+    },
+    {
+      "Scene": "light-empty.png",
+      "Width": 640,
+      "Height": 210,
+      "DifferentPixels": 18189,
+      "DifferentPixelFraction": 0.13533482142857142,
+      "MeanAbsoluteRGBChannelDifference": 0.7798387896825396
+    },
+    {
+      "Scene": "light-error.png",
+      "Width": 640,
+      "Height": 660,
+      "DifferentPixels": 43758,
+      "DifferentPixelFraction": 0.10359375,
+      "MeanAbsoluteRGBChannelDifference": 0.8302406881313131
+    },
+    {
+      "Scene": "light-grid.png",
+      "Width": 640,
+      "Height": 396,
+      "DifferentPixels": 35392,
+      "DifferentPixelFraction": 0.13964646464646466,
+      "MeanAbsoluteRGBChannelDifference": 1.006566971801347
+    },
+    {
+      "Scene": "light-home-bottom.png",
+      "Width": 640,
+      "Height": 660,
+      "DifferentPixels": 47741,
+      "DifferentPixelFraction": 0.11302320075757576,
+      "MeanAbsoluteRGBChannelDifference": 0.8076751893939393
+    },
+    {
+      "Scene": "light-home-empty-frequent.png",
+      "Width": 640,
+      "Height": 660,
+      "DifferentPixels": 42047,
+      "DifferentPixelFraction": 0.09954308712121213,
+      "MeanAbsoluteRGBChannelDifference": 0.7837799873737374
+    },
+    {
+      "Scene": "light-home-empty-pinned.png",
+      "Width": 640,
+      "Height": 660,
+      "DifferentPixels": 36571,
+      "DifferentPixelFraction": 0.08657907196969697,
+      "MeanAbsoluteRGBChannelDifference": 0.6635361426767677
+    },
+    {
+      "Scene": "light-home-two-rows.png",
+      "Width": 640,
+      "Height": 660,
+      "DifferentPixels": 47263,
+      "DifferentPixelFraction": 0.11189157196969697,
+      "MeanAbsoluteRGBChannelDifference": 0.9016358901515152
+    },
+    {
+      "Scene": "light-home.png",
+      "Width": 640,
+      "Height": 660,
+      "DifferentPixels": 42798,
+      "DifferentPixelFraction": 0.10132102272727272,
+      "MeanAbsoluteRGBChannelDifference": 0.7887878787878787
+    },
+    {
+      "Scene": "light-list.png",
+      "Width": 640,
+      "Height": 588,
+      "DifferentPixels": 35262,
+      "DifferentPixelFraction": 0.09370216836734693,
+      "MeanAbsoluteRGBChannelDifference": 1.9460042871315195
+    },
+    {
+      "Scene": "light-long-name.png",
+      "Width": 640,
+      "Height": 210,
+      "DifferentPixels": 15896,
+      "DifferentPixelFraction": 0.11827380952380952,
+      "MeanAbsoluteRGBChannelDifference": 2.1483382936507938
+    },
+    {
+      "Scene": "light-missing-icon.png",
+      "Width": 640,
+      "Height": 660,
+      "DifferentPixels": 42349,
+      "DifferentPixelFraction": 0.10025804924242425,
+      "MeanAbsoluteRGBChannelDifference": 0.7702312184343434
+    },
+    {
+      "Scene": "light-recording.png",
+      "Width": 640,
+      "Height": 660,
+      "DifferentPixels": 59496,
+      "DifferentPixelFraction": 0.14085227272727271,
+      "MeanAbsoluteRGBChannelDifference": 1.8665940656565656
+    },
+    {
+      "Scene": "light-scanning.png",
+      "Width": 640,
+      "Height": 660,
+      "DifferentPixels": 42830,
+      "DifferentPixelFraction": 0.1013967803030303,
+      "MeanAbsoluteRGBChannelDifference": 0.7889520202020202
+    },
+    {
+      "Scene": "light-settings-0.png",
+      "Width": 640,
+      "Height": 660,
+      "DifferentPixels": 57189,
+      "DifferentPixelFraction": 0.135390625,
+      "MeanAbsoluteRGBChannelDifference": 1.727383207070707
+    },
+    {
+      "Scene": "light-settings-1.png",
+      "Width": 640,
+      "Height": 660,
+      "DifferentPixels": 59569,
+      "DifferentPixelFraction": 0.1410250946969697,
+      "MeanAbsoluteRGBChannelDifference": 1.8915759154040404
+    },
+    {
+      "Scene": "light-settings-2.png",
+      "Width": 640,
+      "Height": 660,
+      "DifferentPixels": 45945,
+      "DifferentPixelFraction": 0.10877130681818181,
+      "MeanAbsoluteRGBChannelDifference": 0.9513170770202021
+    },
+    {
+      "Scene": "light-settings-3.png",
+      "Width": 640,
+      "Height": 660,
+      "DifferentPixels": 52861,
+      "DifferentPixelFraction": 0.1251444128787879,
+      "MeanAbsoluteRGBChannelDifference": 1.0363849431818182
+    },
+    {
+      "Scene": "light-settings-4-bottom.png",
+      "Width": 640,
+      "Height": 660,
+      "DifferentPixels": 61366,
+      "DifferentPixelFraction": 0.14527935606060607,
+      "MeanAbsoluteRGBChannelDifference": 1.87693023989899
+    },
+    {
+      "Scene": "light-settings-4.png",
+      "Width": 640,
+      "Height": 660,
+      "DifferentPixels": 61074,
+      "DifferentPixelFraction": 0.14458806818181819,
+      "MeanAbsoluteRGBChannelDifference": 1.873627683080808
+    },
+    {
+      "Scene": "light-settings-5-bottom.png",
+      "Width": 640,
+      "Height": 660,
+      "DifferentPixels": 68720,
+      "DifferentPixelFraction": 0.16268939393939394,
+      "MeanAbsoluteRGBChannelDifference": 2.7847230113636363
+    },
+    {
+      "Scene": "light-settings-5.png",
+      "Width": 640,
+      "Height": 660,
+      "DifferentPixels": 68720,
+      "DifferentPixelFraction": 0.16268939393939394,
+      "MeanAbsoluteRGBChannelDifference": 2.7847230113636363
+    },
+    {
+      "Scene": "light-settings-6-bottom.png",
+      "Width": 640,
+      "Height": 660,
+      "DifferentPixels": 59085,
+      "DifferentPixelFraction": 0.13987926136363638,
+      "MeanAbsoluteRGBChannelDifference": 1.6404861111111113
+    },
+    {
+      "Scene": "light-settings-6.png",
+      "Width": 640,
+      "Height": 660,
+      "DifferentPixels": 59198,
+      "DifferentPixelFraction": 0.1401467803030303,
+      "MeanAbsoluteRGBChannelDifference": 1.541249210858586
+    },
+    {
+      "Scene": "light-update.png",
+      "Width": 640,
+      "Height": 660,
+      "DifferentPixels": 61488,
+      "DifferentPixelFraction": 0.14556818181818182,
+      "MeanAbsoluteRGBChannelDifference": 1.953231534090909
+    }
+  ]
+}

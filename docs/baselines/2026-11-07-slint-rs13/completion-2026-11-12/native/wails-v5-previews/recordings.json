@@ -1,0 +1,654 @@
+{
+  "Edition": "wails",
+  "ExecutableSHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+  "ProcessId": 56852,
+  "StartedTicks": 639300137913800560,
+  "CaptureReady": {
+    "event": "capture_ready",
+    "qpc": 820056042208,
+    "qpc_frequency": 10000000,
+    "pid": 56852,
+    "creation_filetime_100ns": 134388905913800560,
+    "backend": "WindowsGraphicsCapture",
+    "desktop_frame": false,
+    "cursor_captured": false,
+    "secondary_windows": true
+  },
+  "CollectorSHA256": "3DB66C258905693001A31B43D27A887DDC3D1F2F080142F65DF31C19243DF0CA",
+  "RawTraceSHA256": "39470355874353E883D6FF271A01EA2B1EEB6B09EFF16CF6B80A95C85EF93BE7",
+  "Ended": true,
+  "Clips": [
+    {
+      "Name": "settings-enter-1",
+      "SavedFrames": 16,
+      "ChangedIntervals": 15,
+      "MajorChangeIntervals": 7,
+      "PossibleStorageLimit": false,
+      "NativeDPI": [
+        96
+      ],
+      "OriginalFrames": [
+        {
+          "File": "settings-enter-1/frame-835.bmp",
+          "SHA256": "EAE9EAB5890765B5CFEB140ACC66D8B348597CB888D047AE7BECF5CCF760C610",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-1/frame-836.bmp",
+          "SHA256": "97FCB269F3EB06F69A2BABD68E73E585BE2828BA1D968B6C88DEC597B48692E0",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-1/frame-837.bmp",
+          "SHA256": "B83F0F58E0413B3C486698B54E8275B114DAEF39C7422F717B09A2913FF24C75",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-1/frame-838.bmp",
+          "SHA256": "6871F36C1C156D6DC67429D96E51D785AF4BE8DD6E35C72057E37EE7A1A2300A",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-1/frame-839.bmp",
+          "SHA256": "88DD55C0DCFB5512D2C398C73A0522A29DBDE9D54F5CC30155898A29C6DAF80C",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-1/frame-840.bmp",
+          "SHA256": "7F296FA4DE608F7101148BBA7DCE1756B04D00CF2B2154918856C39656492772",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-1/frame-841.bmp",
+          "SHA256": "C1637B7F7BC19A6F00B2DA9239924D1DF615322412B088889596FC1F28E2AEE1",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-1/frame-842.bmp",
+          "SHA256": "D280FECE17989C85EAA5C9C68EAD7D58CE72F507011001D04BDF6E4EB004D7A3",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-1/frame-843.bmp",
+          "SHA256": "BE76220D4563709DF7FDB1C32BF48D80889391CF03FD83F15D7B0720C49A11C0",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-1/frame-844.bmp",
+          "SHA256": "DEA4E14F5C84134E41DB964FF08CB5D5C5242DD8BEF939E3293C91253B3D9425",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-1/frame-845.bmp",
+          "SHA256": "E7D8D85FFCC04FAD1BE438342CD250F61202AE94F83D24739DB95F6963A1C348",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-1/frame-846.bmp",
+          "SHA256": "5F9FE4D19117D49DF69032C5DB5493505ED84FAD3358724359C0B826C19497B8",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-1/frame-847.bmp",
+          "SHA256": "5EC1AE92C80EC84A2787B82C506800D2AC4695B4FDDF213F17895E10D59DBCAF",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-1/frame-848.bmp",
+          "SHA256": "9BF4189261F8E8BCE3B4442A47A5DA9B440CBAFACA78A9B1DBCAC2795EDE1713",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-1/frame-849.bmp",
+          "SHA256": "4AC2352810738E9AF54D2F26148613FBC05E18EC8469F887DECF79EB7F2ECBE0",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-1/frame-850.bmp",
+          "SHA256": "34ACBF91F75056E5397977CC71EB839FE3A4133F2AF275AC7B1DCE465D6EA451",
+          "Bytes": 1569622
+        }
+      ],
+      "Published": true,
+      "Clock": "Original WGC surface time and observer QPC; not final desktop/photon time",
+      "ObservedSpanMilliseconds": 1066.9381,
+      "MaximumObservedGapMilliseconds": 558.3758,
+      "MaximumSourceGapMilliseconds": 66.7361,
+      "PreviewOriginalFrameRange": [
+        8,
+        15
+      ],
+      "PreviewClock": "WGC source intervals, idle lead/trail trimmed; last frame held 200ms for review",
+      "PreviewScaled": false
+    },
+    {
+      "Name": "settings-exit-1",
+      "SavedFrames": 13,
+      "ChangedIntervals": 12,
+      "MajorChangeIntervals": 12,
+      "PossibleStorageLimit": false,
+      "NativeDPI": [
+        96
+      ],
+      "OriginalFrames": [
+        {
+          "File": "settings-exit-1/frame-853.bmp",
+          "SHA256": "4A207002D10858FA85F375BC6A9FCDCB4BAC359D32B7A781FDA9D911D19288DD",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-exit-1/frame-854.bmp",
+          "SHA256": "2EC02DEBC670A3A5AA53D33959B429B531F48F05608A659FF02DEE9887036B11",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-exit-1/frame-855.bmp",
+          "SHA256": "AF5D19B189E351AFC19EE21292A55E750E7D4B47E7268544BE037F21DC1A378A",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-exit-1/frame-856.bmp",
+          "SHA256": "2EC02DEBC670A3A5AA53D33959B429B531F48F05608A659FF02DEE9887036B11",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-exit-1/frame-857.bmp",
+          "SHA256": "28646D8BA02846963AAEA67A7FD0F7B101D7E2DB37B00630D42859F073782743",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-exit-1/frame-858.bmp",
+          "SHA256": "1B8393D14E9B4F7A532741E6D364C37451368A89EC151DF82A2C124AB62353CD",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-exit-1/frame-859.bmp",
+          "SHA256": "D5C662242954EBF58A566164B4727377B687D83FD9E83AE8CAD09D0C046F2CED",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-exit-1/frame-860.bmp",
+          "SHA256": "AF947A6EDFFB323632E6C6CFA73367F86304FBF9E2CF2A30438DA2CFB69339DD",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-exit-1/frame-861.bmp",
+          "SHA256": "12A24DE6F1519D4FC5A5B7EAC93987C0433116AD48016ADB4146B28627250365",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-exit-1/frame-862.bmp",
+          "SHA256": "46C31CAD4725A423DB9BA53CFF8079D505101AC16038BDFD64FAB2C87CEB1588",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-exit-1/frame-863.bmp",
+          "SHA256": "6FBFE408AA5917BE76DADDFBBBA4283EB2DD6D15BEAFB0CA93060FDBA17B7F8A",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-exit-1/frame-864.bmp",
+          "SHA256": "905FFE7756D5A133AA7DCDD48D23DE7DA13149250E7271F23CEA0F288FBB6E8D",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-exit-1/frame-865.bmp",
+          "SHA256": "354097DE1BD9E3377BB8445476F0B49993CD405C05CF92926E2CCAAADA6E2A68",
+          "Bytes": 1569622
+        }
+      ],
+      "Published": true,
+      "Clock": "Original WGC surface time and observer QPC; not final desktop/photon time",
+      "ObservedSpanMilliseconds": 19010.5527,
+      "MaximumObservedGapMilliseconds": 18555.5414,
+      "MaximumSourceGapMilliseconds": 66.7366,
+      "PreviewOriginalFrameRange": [
+        0,
+        12
+      ],
+      "PreviewClock": "WGC source intervals, idle lead/trail trimmed; last frame held 200ms for review",
+      "PreviewScaled": false
+    },
+    {
+      "Name": "settings-enter-2",
+      "SavedFrames": 83,
+      "ChangedIntervals": 77,
+      "MajorChangeIntervals": 45,
+      "PossibleStorageLimit": false,
+      "NativeDPI": [
+        96
+      ],
+      "OriginalFrames": [
+        {
+          "File": "settings-enter-2/frame-1673.bmp",
+          "SHA256": "6D61B7345CB7196A928B2822E0919FE221B0836C7380E4F1853C5E083093D175",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1674.bmp",
+          "SHA256": "E838765152E5811ADBD2AFDA10229481DC2A703872DFF8DE3006F8311C976B74",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1675.bmp",
+          "SHA256": "5E58AA290BECFFB63083313EFD66EE45FF8E6561FC9FE9B513B9D48658A7B8A3",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1676.bmp",
+          "SHA256": "846F717C886CD042D55844AEE12A44B315466724AEEA7E0CCFAE28B0533040FA",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1677.bmp",
+          "SHA256": "FC9D02C96775C0BCCC56E3397994BBF75850048F6354AC9AE4764FB0AB561CC0",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1678.bmp",
+          "SHA256": "3E00DE6A0D81E2E835926496D3ED5DA94E47457722043FB772672E58A572B37A",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1679.bmp",
+          "SHA256": "3490A909142342A6E4D82AF3490AFEDF01C6D950E29D6107732AD0BCBD3CF7DC",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1680.bmp",
+          "SHA256": "853FD23FADF2C5D6168687529CB082335A59136D4999DA3FA19C481A107499B2",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1681.bmp",
+          "SHA256": "4F6EF1D4CD0B89346241436C930B2A79A47D8B80D37308AD6C0FA14C472ECE10",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1682.bmp",
+          "SHA256": "800071C522C1A94D901CB0DB779496EF839676C68361F9BEC1A8BA82B5DD787D",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1683.bmp",
+          "SHA256": "FC09821906E4B42EE6DD4631F6FB3AFD1AEB7F7D18D30FAA1123DC54EC93B014",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1684.bmp",
+          "SHA256": "03D3C292C670751D25DD4C80F9E637595010E5FF5FB556C0987F6933B7F7DB8F",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1685.bmp",
+          "SHA256": "3801A01C45D1F5B033C664E53767AFB82DE23A13F6F3E9E989B53EAF8CEADE97",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1686.bmp",
+          "SHA256": "C1A5E69ED2871BF0C1804B2BB90C5E54CF969EFCB335D54E745A48F88DEEB4E7",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1687.bmp",
+          "SHA256": "67F2FD913B7C105292C4900259BA8C8504E729DE9CF36E4D1A060E40414A5D39",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1688.bmp",
+          "SHA256": "9B224E86CD358313F93758693FCDBF660331BBB0AAB4D33E7C358131F0568945",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1689.bmp",
+          "SHA256": "B704A1852A3FEB6332196E78D2B43FA50B3440F03FD5573E2523E407D1B9F2C0",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1690.bmp",
+          "SHA256": "493F405958503A918194F21B9229C492E653CC47EE81F869DF2F10ABDBA752A0",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1691.bmp",
+          "SHA256": "8B4E5113ACAF8BB69FDDAB060B30D601F7B4D8D231D74BE0954B51BE2C91EBD1",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1692.bmp",
+          "SHA256": "B2B94B24AC2BF3FE872C1A8152CF7FBDCD1429AE24032D3F57104A6A2F455C91",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1693.bmp",
+          "SHA256": "46A46417B4B934646C35F05B71055EC910EAE164175269EED03B96D7E75D16EA",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1694.bmp",
+          "SHA256": "27165FEBE9AA3DFEB45CC363B1E1E481C0DF1A03C8164377ACCB73ADA310C389",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1695.bmp",
+          "SHA256": "E75BB5D77D5972E90F8ED3C30DC90B6557EA3BE09F3A9AB32E9E0B5C9780E3DD",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1696.bmp",
+          "SHA256": "26F0EA2FC68CD632E5DEF768329DFFDD55C3238E4D7C718471D961CE9E2C37A8",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1697.bmp",
+          "SHA256": "2FA45160141CAEEB13829BBE2EBB2E6F44FB92118B345760C52FD18389632E6F",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1698.bmp",
+          "SHA256": "EAEA899AF2D62AF2920501D48D4425D48EF40D04F3E66A126C6F4A62CDD456C0",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1699.bmp",
+          "SHA256": "EAEA899AF2D62AF2920501D48D4425D48EF40D04F3E66A126C6F4A62CDD456C0",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1700.bmp",
+          "SHA256": "EAEA899AF2D62AF2920501D48D4425D48EF40D04F3E66A126C6F4A62CDD456C0",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1701.bmp",
+          "SHA256": "9681B97FB2072F034F79DAD66C51234134ADE8CF84AB6C69D76AD158F871353B",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1702.bmp",
+          "SHA256": "87FB32AA6A50A363C690A84205E8EE140EACBBBC815C94D00E83B14EE00ED59C",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1703.bmp",
+          "SHA256": "AE54AF46BADF87E1601987C7998A27C0F9B77CA52E0189421F60D4F27F5E66AE",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1704.bmp",
+          "SHA256": "9681B97FB2072F034F79DAD66C51234134ADE8CF84AB6C69D76AD158F871353B",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1705.bmp",
+          "SHA256": "87FB32AA6A50A363C690A84205E8EE140EACBBBC815C94D00E83B14EE00ED59C",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1706.bmp",
+          "SHA256": "EE9204417F8473955B64A893F9AD260B6D955526BA4F78AE13D411650368FAB5",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1707.bmp",
+          "SHA256": "4378B0158E373AC0E6EF317D82E075C6C140BF58714852108AC41CE27428546D",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1708.bmp",
+          "SHA256": "839955A2FBA5EBED732E7F33635E48687BDB65713F065DEC93A3ACE2F001B8CA",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1709.bmp",
+          "SHA256": "A75954FBE551851FE98CD1F8C1E880C7AC006F32C273E8FA43021057CB081F6B",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1710.bmp",
+          "SHA256": "FEA171115751806C51E1CA325542218EAC802D960D569CF48BCE9DDB8B25D77A",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1711.bmp",
+          "SHA256": "8E0A23B08399F43CA0968B9D0BC0399B8DAF66A84154A2B505FA7FBB6424D4C0",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1712.bmp",
+          "SHA256": "6B7BE37EB76570A5C37A4DCF0054C8B7929D13C5548287486D88F400FE55E0A4",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1713.bmp",
+          "SHA256": "A60D2D6F1B5BC99A6032E47BF5FFB583A8964165499DD5EE4CA6B4D4BF7FE5F7",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1714.bmp",
+          "SHA256": "DDAABB0528AF077DA369C42F2D90AC00C20C4CDEE75358D5A3E6CD4B723A31B1",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1715.bmp",
+          "SHA256": "90B592AF91430937DBCB5339DA539D2F79D2B85707DAF1E44A6EF1F98240572E",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1716.bmp",
+          "SHA256": "87FB32AA6A50A363C690A84205E8EE140EACBBBC815C94D00E83B14EE00ED59C",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1717.bmp",
+          "SHA256": "9681B97FB2072F034F79DAD66C51234134ADE8CF84AB6C69D76AD158F871353B",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1718.bmp",
+          "SHA256": "9681B97FB2072F034F79DAD66C51234134ADE8CF84AB6C69D76AD158F871353B",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1719.bmp",
+          "SHA256": "9681B97FB2072F034F79DAD66C51234134ADE8CF84AB6C69D76AD158F871353B",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1720.bmp",
+          "SHA256": "761A66EB662BA2ECAB63D5BB2C4B50BE654F327D9E82084466EB17A7EFE03C48",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1721.bmp",
+          "SHA256": "51F5B359D09EB6A56B81515338522FCBACC9D5FA96EA597D7A76C572534A9075",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1722.bmp",
+          "SHA256": "B9C686F7C679142CC363E459DD3D36EF9F80E553F8FA1C80047592DF25B85DF5",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1723.bmp",
+          "SHA256": "7EB0863B1D0234DB8A1CB4D5329D0DF5981D2C06EB4D83C96DAEF7FEA1E8A13F",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1724.bmp",
+          "SHA256": "25D8FF10C0757169B32E151AD5DAB2B8AF0596A348B2A7EB9603176B15F02164",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1725.bmp",
+          "SHA256": "95C3267B665381853D5BFB01D812FF9FD5395B71980C9C2A3D939E0340DBCCFF",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1726.bmp",
+          "SHA256": "DE2656D7BA840D961D5750B500A7315A5846E8342DB199831F54E02E89523B07",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1727.bmp",
+          "SHA256": "EFDF305CB8DD81929B71FE557D552765B124C6E0FE0AD0F55370DC7A75630B42",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1728.bmp",
+          "SHA256": "BEC68A2584E28BBB37420BEE40B0F810A6BC52D661D7CCA308C8EDF0D5A23A48",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1729.bmp",
+          "SHA256": "464B5430860842BF13C10A17840BB06DF2B2CFE2E35A2BB123150C74BB294DFF",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1730.bmp",
+          "SHA256": "2E24D9C5F0C9E0D8B7DC4B4AFD9EC074BC8617074D5432D891D8199DA28DEE5C",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1731.bmp",
+          "SHA256": "278B6BBD85E16C929546D8A43BADD3F5448A697680CBE7B8343E6C1B23D210F4",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1732.bmp",
+          "SHA256": "37B0F698C9186CDCA6BA4E44F674089041FD8578EA189579F43CFA470296F0BA",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1733.bmp",
+          "SHA256": "D5DB7EAE8C5E4A5D41BDBB2BE3D2D392D69D383BEF7D9C1DE196A85DA4F10767",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1734.bmp",
+          "SHA256": "69BB981433DB44C00346451A1E18F9F018C711CB6B311FE7463707A730703F4F",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1735.bmp",
+          "SHA256": "54C60756AD200F18F5D1446904951B920CB7C7F7641321652B34082129E94E33",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1736.bmp",
+          "SHA256": "1CF9CCECE33E2729C2B04E2ECAB7B9B39550B4977235756744C8A8C6ED973FAD",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1737.bmp",
+          "SHA256": "0A558BB318022661762D68820AA88C19CF87BFA09E2D3F14C3539BDAA23F91C4",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1738.bmp",
+          "SHA256": "79717A4D49FFD60A56F1B3348002DE761165D5EF41BBF25CE508E280DB831425",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1739.bmp",
+          "SHA256": "2D508F0F55CEC288F978F20CA653059359E0D9B60A17727EB3CA662BA38EC937",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1740.bmp",
+          "SHA256": "6ECC7C0B966DD696973C1693BD1DBE7AA0A315631C56C33DD9282A39594D2C73",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1741.bmp",
+          "SHA256": "2EE57B9DE75A31EBE88792B6BC6FADFBA35FC9632E04B27F09C1882AB48756D6",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1742.bmp",
+          "SHA256": "1EF763615525FE76BD7CFBF4233553124261FEEB42D57216194609A38BA402CB",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1743.bmp",
+          "SHA256": "849DBA7DDD6F3D6C1BFB049CB59B249A92F1E99FD9C89591B4B8C12F8CF03D95",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1744.bmp",
+          "SHA256": "933BC1770B185C4E6BA4522E5A9CBCE8E4B5624ADDEC9F0A2B67941E4C366FBC",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1745.bmp",
+          "SHA256": "D29684B0F96FBA77BBBF1E7318320EFDB530D30EBCC26242ADC77B690CF48B74",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1746.bmp",
+          "SHA256": "DA9549D177B883A8CB3FB470A90F2724152ECF62DB6F917C5D63C66273CB6761",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1747.bmp",
+          "SHA256": "78B53AB8D3FCB83B5A15A6F090A97F3ECBA78D7B532F45524239C2D2C27B5494",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1748.bmp",
+          "SHA256": "08BD26E930F0C7C413960EDD860CD6CEA38153897E9640C3D6F9B9BD4E62E752",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1749.bmp",
+          "SHA256": "D4119BBB2BE90F8C5B0C0106B82CC6A1E5B132E84D82AD5D009C891697C2E4B1",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1750.bmp",
+          "SHA256": "D280D014232B315B73E6B340479EF5380F1C3E5C1613CB31E04AEF311F57B8C0",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1751.bmp",
+          "SHA256": "5EA87149A2CE5055E4B0D4A42E728B2A2370B654E40D575DAABBF4E288A62D67",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1752.bmp",
+          "SHA256": "1DAB3695BFBB04A9AAFDFFE324FC7DDABAB49F4F06CFFB15AE646A4AAD596561",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1753.bmp",
+          "SHA256": "4C25C1B1DA7C32B647A707299976FC26FEA6550CB7DE8DC320C6F1ECB96169A6",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1754.bmp",
+          "SHA256": "4C25C1B1DA7C32B647A707299976FC26FEA6550CB7DE8DC320C6F1ECB96169A6",
+          "Bytes": 1569622
+        },
+        {
+          "File": "settings-enter-2/frame-1755.bmp",
+          "SHA256": "3A1EF56CA456E133A892B550922D2C6631EFCA415E010818D42E8D062D802121",
+          "Bytes": 1569622
+        }
+      ],
+      "Published": true,
+      "Clock": "Original WGC surface time and observer QPC; not final desktop/photon time",
+      "ObservedSpanMilliseconds": 3243.6022,
+      "MaximumObservedGapMilliseconds": 626.2797,
+      "MaximumSourceGapMilliseconds": 633.9685,
+      "PreviewOriginalFrameRange": [
+        0,
+        76
+      ],
+      "PreviewClock": "WGC source intervals, idle lead/trail trimmed; last frame held 200ms for review",
+      "PreviewScaled": false
+    }
+  ],
+  "PhysicalInputProvenByThisFile": false,
+  "RS13Complete": false,
+  "Scope": "Native selected-window surface records. Stimulus identity and physical-input proof belong to the operator/session logs. Preview trimming/padding never changes the raw frames or original clocks."
+}

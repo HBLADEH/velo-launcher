@@ -1,0 +1,167 @@
+{
+  "RecordedAtUtc": "2026-11-06T19:32:47.3779205Z",
+  "Edition": "software",
+  "SHA256": "E85B41C7E77888750817E47F092EABECB1BAB5A68EFCE579378CE2DDAD2DBA4B",
+  "ProcessId": 428996,
+  "InputId": "4F199EEA23BF1258C3A98A684D259AF3DAFD9F0766A1D920592C905F4BDC2D5F",
+  "Environment": {
+    "Windows": "10.0.26340",
+    "Build": "26340",
+    "BootUtc": "2026-10-31T10:03:28.458604Z",
+    "CPU": [
+      "Intel(R) Core(TM) i7-10700 CPU @ 2.90GHz"
+    ]
+  },
+  "OperatorReport": "均正常，无问题",
+  "TestInputSource": "Human physical Microsoft Pinyin keyboard input. No Computer Use input.",
+  "Cases": [
+    {
+      "Name": "Candidate positioning, arrows, Space commit",
+      "OperatorPassed": true
+    },
+    {
+      "Name": "Enter during composition commits Chinese only",
+      "OperatorPassed": true
+    },
+    {
+      "Name": "Escape cancels preedit first; later Escape clears/hides, hotkey restores input",
+      "OperatorPassed": true
+    },
+    {
+      "Name": "Settings round trip restores input focus",
+      "OperatorPassed": true
+    }
+  ],
+  "InputEvents": 18,
+  "ComposingInputEvents": 6,
+  "NonComposingInputEvents": 12,
+  "EventLoss": 0,
+  "NormalExit": {
+    "Completed": true,
+    "ExitCode": 0,
+    "ProcessId": 428996,
+    "SHA256": "E85B41C7E77888750817E47F092EABECB1BAB5A68EFCE579378CE2DDAD2DBA4B",
+    "ForcedCleanup": false
+  },
+  "HistoryUnchanged": true,
+  "ExecutableUnchanged": true,
+  "EventCounts": [
+    {
+      "Event": "catalog_published",
+      "Count": 2
+    },
+    {
+      "Event": "component_created",
+      "Count": 1
+    },
+    {
+      "Event": "desktop_event",
+      "Count": 2
+    },
+    {
+      "Event": "first_redraw_requested",
+      "Count": 1
+    },
+    {
+      "Event": "global_hotkey",
+      "Count": 4
+    },
+    {
+      "Event": "hotkey_bind",
+      "Count": 1
+    },
+    {
+      "Event": "icon_cache",
+      "Count": 8
+    },
+    {
+      "Event": "import_permission",
+      "Count": 1
+    },
+    {
+      "Event": "index_status",
+      "Count": 2
+    },
+    {
+      "Event": "input_accepted",
+      "Count": 18
+    },
+    {
+      "Event": "input_focus",
+      "Count": 10
+    },
+    {
+      "Event": "lifecycle_blur_check",
+      "Count": 4
+    },
+    {
+      "Event": "lifecycle_hidden",
+      "Count": 4
+    },
+    {
+      "Event": "lifecycle_quit",
+      "Count": 1
+    },
+    {
+      "Event": "lifecycle_ready",
+      "Count": 1
+    },
+    {
+      "Event": "lifecycle_shown",
+      "Count": 4
+    },
+    {
+      "Event": "main_started",
+      "Count": 1
+    },
+    {
+      "Event": "native_focus",
+      "Count": 8
+    },
+    {
+      "Event": "native_focus_sync",
+      "Count": 4
+    },
+    {
+      "Event": "native_key_down",
+      "Count": 94
+    },
+    {
+      "Event": "native_window",
+      "Count": 1
+    },
+    {
+      "Event": "startup_configuration_ready",
+      "Count": 1
+    },
+    {
+      "Event": "window_drag",
+      "Count": 1
+    },
+    {
+      "Event": "window_layout",
+      "Count": 20
+    }
+  ],
+  "RawLocalIdentities": [
+    {
+      "RelativeName": "session.json",
+      "SHA256": "2567FAD20BE7AF3D726E8064269FFE18B090FBF4C61CFE94B69A9094012A6F06"
+    },
+    {
+      "RelativeName": "completion.json",
+      "SHA256": "BE4D6C331521A9A08799C04A0A257FADEFF4883160DB097960870571DEB8AB69"
+    },
+    {
+      "RelativeName": "input-events.log",
+      "SHA256": "F03D0FDD30082D1FE0AC26269C983CE1194B87EE1F4EF26AFB52E95868C6FE08"
+    }
+  ],
+  "SyntheticTest": false,
+  "PhysicalIMEScopeVerified": true,
+  "CandidateScreenshotCaptured": false,
+  "Scope": "One physical IME exercise on this Windows 11 x64 system at 96 DPI. User confirms candidate/key behavior; input composition flags and clean exit checked. Not third-party IME, high-DPI candidate pixel alignment, launch/frame latency, or exhaustive keyboard coverage.",
+  "ColdSample": false,
+  "CalibratedLatencyVerified": false,
+  "PresentedFrameLatencyVerified": false
+}

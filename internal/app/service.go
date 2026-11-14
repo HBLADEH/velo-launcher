@@ -218,11 +218,15 @@ func (s *Service) State() State {
 	return state
 }
 func (s *Service) Search(query string) []search.Result {
+	return s.searchAt(query, time.Now())
+}
+
+func (s *Service) searchAt(query string, now time.Time) []search.Result {
 	query = search.Normalize(query)
 	s.mu.RLock()
 	i, c, toolIndex := s.index, s.config, s.toolIndex
 	s.mu.RUnlock()
-	weights := s.history.Scores(query, time.Now())
+	weights := s.history.Scores(query, now)
 	results := i.Query(query, c.MaxResults, c.Search.Fuzzy, weights, c.Search.HistoryWeight)
 	if query != "" {
 		results = append(results, toolIndex.Query(query, c.MaxResults, c.Search.Fuzzy, weights, c.Search.HistoryWeight)...)

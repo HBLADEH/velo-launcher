@@ -1,0 +1,59 @@
+{
+  "AtUtc": "2026-11-13T09:02:16.0697947Z",
+  "Processes": [],
+  "Lifecycle": [
+    {
+      "time": "2026-11-13T16:46:50.4470715+08:00",
+      "msg": "application started",
+      "visible": null,
+      "apps": null,
+      "elapsed_ms": null
+    },
+    {
+      "time": "2026-11-13T16:46:54.8896752+08:00",
+      "msg": "window ready",
+      "visible": false,
+      "apps": null,
+      "elapsed_ms": null
+    },
+    {
+      "time": "2026-11-13T16:46:55.2654071+08:00",
+      "msg": "frontend interactive",
+      "visible": null,
+      "apps": null,
+      "elapsed_ms": 7675
+    },
+    {
+      "time": "2026-11-13T16:46:56.5042664+08:00",
+      "msg": "index refreshed",
+      "visible": null,
+      "apps": 1027,
+      "elapsed_ms": null
+    },
+    {
+      "time": "2026-11-13T17:00:33.0104754+08:00",
+      "msg": "application stopped",
+      "visible": null,
+      "apps": null,
+      "elapsed_ms": null
+    }
+  ],
+  "Data": {
+    "application-library.json": {
+      "CurrentSHA256": "A32DCFA1175495EC20CAB36315C2C48F471BFA3C1F6AB91CD0F1670E027D0C5D",
+      "BackupSHA256": "A32DCFA1175495EC20CAB36315C2C48F471BFA3C1F6AB91CD0F1670E027D0C5D",
+      "Unchanged": true
+    },
+    "history.json": {
+      "CurrentSHA256": "E3566B3A06430868D71E9287DFD6C6C520A3DA027AABEA01951D407EE131DC2F",
+      "BackupSHA256": "E3566B3A06430868D71E9287DFD6C6C520A3DA027AABEA01951D407EE131DC2F",
+      "Unchanged": true
+    },
+    "config.json": {
+      "CurrentSHA256": "D0AD379DB686117CAAC3275AD4F3D39B2BF3C30D3FC09A887AFC9199E761A429",
+      "BackupSHA256": "D0AD379DB686117CAAC3275AD4F3D39B2BF3C30D3FC09A887AFC9199E761A429",
+      "Unchanged": true
+    }
+  },
+  "GoSHA256": "9A1A898A1E3D70267481BCC68E3368F0B6594F68E8AE43B3F0DCDC06A9B329A6"
+}

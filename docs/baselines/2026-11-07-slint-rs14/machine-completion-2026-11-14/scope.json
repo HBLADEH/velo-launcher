@@ -1,0 +1,26 @@
+{
+  "Date": "2026-11-14",
+  "Stage": "RS-14",
+  "UserScope": "Only the supplied host and its disposable Windows10 guest; unavailable environments are skipped.",
+  "DefaultRenderer": "software",
+  "PhysicalGPU": "Intel UHD Graphics 630",
+  "PhysicalDriverVersion": "30.0.100.9805",
+  "AdditionalPhysicalGPUDrivers": {
+    "Status": "Skipped",
+    "Reason": "No additional physical machine or adapter supplied; explicitly excluded by the user."
+  },
+  "Unavailable200PercentDPI": {
+    "Status": "Skipped",
+    "Reason": "Not offered by the supplied host; earlier 100/125/150/175 percent physical checks remain at their original exe identities."
+  },
+  "ThirdPartyIME": "Sogou Pinyin 16.10.0.5858 in the existing disposable guest",
+  "G4Passed": true,
+  "ReleasePublished": false,
+  "CIResultsApplyToPriorSnapshotOnly": true,
+  "ScopeIsNotAllHardwareCompatibility": true,
+  "CompletedDate": "2026-11-15",
+  "CurrentMachineValidationComplete": true,
+  "G4Scope": "Only the supplied Windows11 physical host and its Windows10 disposable guest, with explicitly skipped unavailable environments.",
+  "ThirdPartyIMEVerified": true,
+  "PublicationApproved": false
+}

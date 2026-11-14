@@ -1,0 +1,133 @@
+{
+  "RunId": 43370007545,
+  "URL": "https://github.com/HBLADEH/velo-launcher/actions/runs/43370007545",
+  "Commit": "4bab4c940fd01c7a1219cc4991ddeaadf5a37e26",
+  "Branch": "codex/rs14-ci-validation-20261113-ea19bc0e",
+  "CreatedAtUtc": "2026-11-13T05:08:13Z",
+  "CompletedAtUtc": "2026-11-13T05:54:25Z",
+  "Conclusion": "success",
+  "ExecutionHost": "User-authorized ephemeral runner on the current Windows 11 desktop",
+  "Jobs": [
+    {
+      "id": 131703311883,
+      "name": "validate",
+      "status": "completed",
+      "conclusion": "success",
+      "runner_name": "velo-rs14-ea19bc0e",
+      "started_at": "2026-11-13T05:08:19Z",
+      "completed_at": "2026-11-13T05:54:24Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-13T05:08:26Z",
+          "completed_at": "2026-11-13T05:08:45Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-13T05:08:45Z",
+          "completed_at": "2026-11-13T05:09:09Z"
+        },
+        {
+          "name": "Run actions/setup-go@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-13T05:09:09Z",
+          "completed_at": "2026-11-13T05:09:27Z"
+        },
+        {
+          "name": "Restore task-owned compiler cache",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-13T05:09:27Z",
+          "completed_at": "2026-11-13T05:09:30Z"
+        },
+        {
+          "name": "Run ./scripts/verify-rust.ps1 -SmokeTest",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-13T05:09:30Z",
+          "completed_at": "2026-11-13T05:18:00Z"
+        },
+        {
+          "name": "Verify and stage both internal preview archives",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-11-13T05:18:00Z",
+          "completed_at": "2026-11-13T05:18:36Z"
+        },
+        {
+          "name": "Prepare pinned portable NSIS",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-11-13T05:18:36Z",
+          "completed_at": "2026-11-13T05:18:41Z"
+        },
+        {
+          "name": "Verify actual isolated installers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-11-13T05:18:41Z",
+          "completed_at": "2026-11-13T05:20:21Z"
+        },
+        {
+          "name": "Verify actual per-user registration and cleanup",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-11-13T05:20:21Z",
+          "completed_at": "2026-11-13T05:21:46Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-11-13T05:21:46Z",
+          "completed_at": "2026-11-13T05:22:44Z"
+        },
+        {
+          "name": "Post Run actions/setup-go@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19,
+          "started_at": "2026-11-13T05:22:44Z",
+          "completed_at": "2026-11-13T05:54:10Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20,
+          "started_at": "2026-11-13T05:54:10Z",
+          "completed_at": "2026-11-13T05:54:15Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 21,
+          "started_at": "2026-11-13T05:54:16Z",
+          "completed_at": "2026-11-13T05:54:16Z"
+        }
+      ]
+    }
+  ],
+  "RemoteWorkflow": "rs14-validation.yml on the exact temporary branch; actor, branch and unique runner label guarded",
+  "ReusableManualWorkflowExecutedInPlace": false,
+  "OptionalPostJobWarning": "actions/setup-go cache save failed after tests and artifact upload (tar exit 3221225477); optional cache not saved, job conclusion success. Node 20 actions ran under forced Node 24 and emitted a deprecation warning.",
+  "RawRunJSONSHA256": "A52FAC941F324A12391743CB5A104587478F89DDE5BE923066DD5B9218CDF7E5",
+  "RawJobsJSONSHA256": "EDF3BFE321D6FE7F3636AC67894A86E551D74A303BBCED215CA91B41427E8C5D",
+  "RawLogSHA256": "A7439A1AA75F9826BB53E4619BBA5FFAB66F563A6481E2D88785845578D822DC"
+}

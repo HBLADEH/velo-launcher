@@ -5,6 +5,7 @@ use std::os::windows::ffi::OsStringExt;
 use std::path::PathBuf;
 use std::ptr::{null, null_mut};
 
+use crate::core::{launch, model::AppItem};
 use windows_sys::Win32::Foundation::{CloseHandle, HWND, POINT};
 use windows_sys::Win32::Security::{
     GetTokenInformation, TOKEN_ELEVATION, TOKEN_QUERY, TokenElevation,
@@ -84,7 +85,7 @@ pub fn run(owner: isize, request: i32) -> Completion {
 
 unsafe fn browse(owner: HWND) -> Completion {
     let mut buffer = vec![0u16; 65536];
-    let title = wide("Velo · 选择导入预览文件");
+    let title = wide("Velo · 选择应用文件");
     let filter = wide("应用与快捷方式 (*.exe;*.lnk)\0*.exe;*.lnk\0所有文件 (*.*)\0*.*\0");
     let mut options = OPENFILENAMEW {
         lStructSize: std::mem::size_of::<OPENFILENAMEW>() as u32,
@@ -215,6 +216,113 @@ unsafe fn menu(owner: HWND) -> Completion {
             action: selected,
             ..Default::default()
         }
+    }
+}
+
+/// Only an existing catalog item can reach this worker. Return a command; no
+/// menu selection performs disk writes or launches before the UI accepts it.
+pub fn application(owner: isize, item: Option<&AppItem>, request: i32) -> i32 {
+    let owner = owner as HWND;
+    // SAFETY: UI retains owner and suppresses hide/quit for this interaction.
+    // All Win32 objects are created/destroyed on this temporary worker thread.
+    unsafe {
+        if request == 5 || request == 6 {
+            let message = if request == 5 {
+                "移除此自定义应用及其固定项？原文件不会被删除。"
+            } else {
+                "下载并安装更新？Velo 将备份已保存的配置，退出并重新启动。"
+            };
+            return if MessageBoxW(
+                owner,
+                wide(message).as_ptr(),
+                wide("Velo · 确认操作").as_ptr(),
+                MB_OKCANCEL | MB_DEFBUTTON2 | MB_ICONQUESTION | MB_SETFOREGROUND,
+            ) == IDOK
+            {
+                request
+            } else {
+                0
+            };
+        }
+        let Some(item) = item else {
+            return 0;
+        };
+        let host = CreateWindowExW(
+            0,
+            wide("STATIC").as_ptr(),
+            wide("Velo Application Menu").as_ptr(),
+            WS_POPUP,
+            0,
+            0,
+            0,
+            0,
+            owner,
+            null_mut(),
+            null_mut(),
+            null(),
+        );
+        let menu = CreatePopupMenu();
+        if host.is_null() || menu.is_null() {
+            if !host.is_null() {
+                DestroyWindow(host);
+            }
+            if !menu.is_null() {
+                DestroyMenu(menu);
+            }
+            return -1;
+        }
+        let (directory, admin) = launch::capabilities(item);
+        let target = if item.exec_path.is_empty() {
+            &item.path
+        } else {
+            &item.exec_path
+        };
+        let directory = directory
+            && std::path::Path::new(target)
+                .parent()
+                .is_some_and(|p| p.is_dir());
+        let admin = admin && std::path::Path::new(target).is_file();
+        AppendMenuW(menu, MF_STRING | MF_DISABLED, 99, wide(&item.name).as_ptr());
+        AppendMenuW(menu, MF_SEPARATOR, 0, null());
+        for (id, label, enabled) in [
+            (1, "打开", true),
+            (2, "打开安装目录", directory),
+            (3, "使用管理员权限打开", admin),
+            (
+                4,
+                if item.pinned {
+                    "取消置顶"
+                } else {
+                    "置顶 · 固定到首页"
+                },
+                true,
+            ),
+        ] {
+            AppendMenuW(
+                menu,
+                MF_STRING | if enabled { 0 } else { MF_GRAYED },
+                id,
+                wide(label).as_ptr(),
+            );
+        }
+        let mut point = POINT::default();
+        GetCursorPos(&mut point);
+        SetForegroundWindow(host);
+        let selected = TrackPopupMenu(
+            menu,
+            TPM_RETURNCMD | TPM_RIGHTBUTTON,
+            point.x,
+            point.y,
+            0,
+            host,
+            null(),
+        );
+        if GetForegroundWindow() == host {
+            SetForegroundWindow(owner);
+        }
+        DestroyMenu(menu);
+        DestroyWindow(host);
+        selected
     }
 }
 

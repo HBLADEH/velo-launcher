@@ -1,0 +1,870 @@
+{
+  "ExecutableSHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+  "PID": 95084,
+  "RawTraceSHA256": "B91F6E533F88AB84DCD3ACD32E97703CE057EC0DA86862E966C29896E87676AC",
+  "CompleteTrace": true,
+  "WriterQueueRejected": 0,
+  "GPUQueueRejected": 0,
+  "Clips": [
+    {
+      "Name": "list-enter",
+      "Frames": 12,
+      "CachedBaseline": true,
+      "SourceSpanMilliseconds": 1051.029599994421,
+      "SourceIntervalsMilliseconds": [
+        316.97520001232624,
+        16.682799994945526,
+        16.683100000023842,
+        16.682799994945526,
+        33.364600002765656,
+        16.68250000476837,
+        16.683299988508224,
+        16.683900013566017,
+        33.36499999463558,
+        33.36609999835491
+      ],
+      "MaximumSourceGapMilliseconds": 316.97520001232624,
+      "EndpointProgress": [
+        {
+          "SourceMilliseconds": 0.0,
+          "Progress": 0.0
+        },
+        {
+          "SourceMilliseconds": 533.8602999895811,
+          "Progress": 0.0
+        },
+        {
+          "SourceMilliseconds": 850.8355000019073,
+          "Progress": 0.7052033543586731
+        },
+        {
+          "SourceMilliseconds": 867.5182999968529,
+          "Progress": 0.7514873147010803
+        },
+        {
+          "SourceMilliseconds": 884.2013999968767,
+          "Progress": 0.7855634689331055
+        },
+        {
+          "SourceMilliseconds": 900.8841999918222,
+          "Progress": 0.8185943961143494
+        },
+        {
+          "SourceMilliseconds": 934.2487999945879,
+          "Progress": 0.8697404265403748
+        },
+        {
+          "SourceMilliseconds": 950.9312999993563,
+          "Progress": 0.8829339742660522
+        },
+        {
+          "SourceMilliseconds": 967.6145999878645,
+          "Progress": 0.8952655792236328
+        },
+        {
+          "SourceMilliseconds": 984.2985000014305,
+          "Progress": 0.8972227573394775
+        },
+        {
+          "SourceMilliseconds": 1017.6634999960661,
+          "Progress": 0.8973466157913208
+        },
+        {
+          "SourceMilliseconds": 1051.029599994421,
+          "Progress": 1.0
+        }
+      ],
+      "IntermediateFrames": 9,
+      "FiniteFitAvailable": true,
+      "ScalarEndpointFit": {
+        "Curve": "wails-main",
+        "DurationMilliseconds": 438,
+        "OnsetSourceMilliseconds": 770.8355000019073,
+        "RMSE": 0.04203050581884599
+      },
+      "FitScope": "Projection between body endpoints; blends opacity and translation. This fit alone cannot certify either independent CSS property."
+    },
+    {
+      "Name": "list-selection",
+      "Frames": 12,
+      "CachedBaseline": true,
+      "SourceSpanMilliseconds": 1051.0568999946117,
+      "SourceIntervalsMilliseconds": [
+        16.68299999833107,
+        16.683200001716614,
+        16.682899996638298,
+        16.683799996972084,
+        33.36779999732971,
+        16.68300001323223,
+        16.68299999833107,
+        16.682899996638298,
+        33.36659999191761,
+        367.0355000048876
+      ],
+      "MaximumSourceGapMilliseconds": 367.0355000048876,
+      "EndpointProgress": [
+        {
+          "SourceMilliseconds": 0.0,
+          "Progress": 0.0
+        },
+        {
+          "SourceMilliseconds": 500.5051999986172,
+          "Progress": 0.7457499504089355
+        },
+        {
+          "SourceMilliseconds": 517.1881999969482,
+          "Progress": 0.7457499504089355
+        },
+        {
+          "SourceMilliseconds": 533.8713999986649,
+          "Progress": 0.783977210521698
+        },
+        {
+          "SourceMilliseconds": 550.5542999953032,
+          "Progress": 0.8546971678733826
+        },
+        {
+          "SourceMilliseconds": 567.2380999922752,
+          "Progress": 0.9134524464607239
+        },
+        {
+          "SourceMilliseconds": 600.605899989605,
+          "Progress": 0.9764614105224609
+        },
+        {
+          "SourceMilliseconds": 617.2889000028372,
+          "Progress": 0.9926161766052246
+        },
+        {
+          "SourceMilliseconds": 633.9719000011683,
+          "Progress": 0.995180606842041
+        },
+        {
+          "SourceMilliseconds": 650.6547999978065,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 684.0213999897242,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 1051.0568999946117,
+          "Progress": 1.0
+        }
+      ],
+      "IntermediateFrames": 5,
+      "FiniteFitAvailable": true,
+      "ScalarEndpointFit": {
+        "Curve": "wails-main",
+        "DurationMilliseconds": 380,
+        "OnsetSourceMilliseconds": 420.5051999986172,
+        "RMSE": 0.025239602801638165
+      },
+      "FitScope": "Projection between body endpoints; blends opacity and translation. This fit alone cannot certify either independent CSS property."
+    },
+    {
+      "Name": "home-entry",
+      "Frames": 26,
+      "CachedBaseline": true,
+      "SourceSpanMilliseconds": 1217.9059000015259,
+      "SourceIntervalsMilliseconds": [
+        150.15420000255108,
+        33.36829999089241,
+        16.684000000357628,
+        33.36930000782013,
+        33.36839999258518,
+        50.05009999871254,
+        16.683400005102158,
+        33.36750000715256,
+        16.683299988508224,
+        16.68300001323223,
+        33.36649999022484,
+        16.68350000679493,
+        16.682799994945526,
+        16.6841000020504,
+        16.68359999358654,
+        16.683800011873245,
+        16.685699999332428,
+        16.68469999730587,
+        16.683200001716614,
+        16.683200001716614,
+        16.682599991559982,
+        16.68299999833107,
+        33.366800010204315,
+        16.68349999189377
+      ],
+      "MaximumSourceGapMilliseconds": 150.15420000255108,
+      "EndpointProgress": [
+        {
+          "SourceMilliseconds": 0.0,
+          "Progress": 0.0
+        },
+        {
+          "SourceMilliseconds": 550.5574000030756,
+          "Progress": 0.0
+        },
+        {
+          "SourceMilliseconds": 700.7116000056267,
+          "Progress": 0.0
+        },
+        {
+          "SourceMilliseconds": 734.0798999965191,
+          "Progress": 0.4642642140388489
+        },
+        {
+          "SourceMilliseconds": 750.7638999968767,
+          "Progress": 0.47959205508232117
+        },
+        {
+          "SourceMilliseconds": 784.1332000046968,
+          "Progress": 0.5347772836685181
+        },
+        {
+          "SourceMilliseconds": 817.501599997282,
+          "Progress": 0.6372212171554565
+        },
+        {
+          "SourceMilliseconds": 867.5516999959946,
+          "Progress": 0.8130955100059509
+        },
+        {
+          "SourceMilliseconds": 884.2351000010967,
+          "Progress": 0.855984628200531
+        },
+        {
+          "SourceMilliseconds": 917.6026000082493,
+          "Progress": 0.9216842651367188
+        },
+        {
+          "SourceMilliseconds": 934.2858999967575,
+          "Progress": 0.9406099915504456
+        },
+        {
+          "SourceMilliseconds": 950.9689000099897,
+          "Progress": 0.9605425000190735
+        },
+        {
+          "SourceMilliseconds": 984.3354000002146,
+          "Progress": 0.9823271632194519
+        },
+        {
+          "SourceMilliseconds": 1001.0189000070095,
+          "Progress": 0.9883951544761658
+        },
+        {
+          "SourceMilliseconds": 1017.701700001955,
+          "Progress": 0.9915246367454529
+        },
+        {
+          "SourceMilliseconds": 1034.3858000040054,
+          "Progress": 0.995176374912262
+        },
+        {
+          "SourceMilliseconds": 1051.069399997592,
+          "Progress": 0.9972450137138367
+        },
+        {
+          "SourceMilliseconds": 1067.7532000094652,
+          "Progress": 0.9979241490364075
+        },
+        {
+          "SourceMilliseconds": 1084.4389000087976,
+          "Progress": 0.9992263317108154
+        },
+        {
+          "SourceMilliseconds": 1101.1236000061035,
+          "Progress": 0.9997326135635376
+        },
+        {
+          "SourceMilliseconds": 1117.8068000078201,
+          "Progress": 1.0000156164169312
+        },
+        {
+          "SourceMilliseconds": 1134.4900000095367,
+          "Progress": 1.0000156164169312
+        },
+        {
+          "SourceMilliseconds": 1151.1726000010967,
+          "Progress": 1.000011682510376
+        },
+        {
+          "SourceMilliseconds": 1167.8555999994278,
+          "Progress": 1.000009536743164
+        },
+        {
+          "SourceMilliseconds": 1201.222400009632,
+          "Progress": 1.0000041723251343
+        },
+        {
+          "SourceMilliseconds": 1217.9059000015259,
+          "Progress": 1.0
+        }
+      ],
+      "IntermediateFrames": 9,
+      "FiniteFitAvailable": true,
+      "ScalarEndpointFit": {
+        "Curve": "wails-main",
+        "DurationMilliseconds": 500,
+        "OnsetSourceMilliseconds": 696.0798999965191,
+        "RMSE": 0.045323776833798006
+      },
+      "FitScope": "Projection between body endpoints; blends opacity and translation. This fit alone cannot certify either independent CSS property."
+    },
+    {
+      "Name": "tile-hover",
+      "Frames": 17,
+      "CachedBaseline": true,
+      "SourceSpanMilliseconds": 950.9328999966383,
+      "SourceIntervalsMilliseconds": [
+        33.364599987864494,
+        16.682300001382828,
+        33.36609999835491,
+        16.68290001153946,
+        16.683699995279312,
+        16.6824000030756,
+        16.682899996638298,
+        16.683799996972084,
+        33.36640000343323,
+        16.684900000691414,
+        16.682799994945526,
+        16.682199999690056,
+        16.683100000023842,
+        16.683300003409386,
+        250.2529000043869
+      ],
+      "MaximumSourceGapMilliseconds": 250.2529000043869,
+      "EndpointProgress": [
+        {
+          "SourceMilliseconds": 0.0,
+          "Progress": 0.0
+        },
+        {
+          "SourceMilliseconds": 417.06859999895096,
+          "Progress": 0.0
+        },
+        {
+          "SourceMilliseconds": 450.43319998681545,
+          "Progress": 0.02051583305001259
+        },
+        {
+          "SourceMilliseconds": 467.1154999881983,
+          "Progress": 0.025898311287164688
+        },
+        {
+          "SourceMilliseconds": 500.4815999865532,
+          "Progress": 0.03163573145866394
+        },
+        {
+          "SourceMilliseconds": 517.1644999980927,
+          "Progress": 0.03326936811208725
+        },
+        {
+          "SourceMilliseconds": 533.848199993372,
+          "Progress": 0.03405681997537613
+        },
+        {
+          "SourceMilliseconds": 550.5305999964476,
+          "Progress": 0.034829091280698776
+        },
+        {
+          "SourceMilliseconds": 567.2134999930859,
+          "Progress": 0.03542894870042801
+        },
+        {
+          "SourceMilliseconds": 583.897299990058,
+          "Progress": 0.03554341569542885
+        },
+        {
+          "SourceMilliseconds": 617.2636999934912,
+          "Progress": 0.03603588417172432
+        },
+        {
+          "SourceMilliseconds": 633.9485999941826,
+          "Progress": 0.036041975021362305
+        },
+        {
+          "SourceMilliseconds": 650.6313999891281,
+          "Progress": 0.03604821115732193
+        },
+        {
+          "SourceMilliseconds": 667.3135999888182,
+          "Progress": 0.036059074103832245
+        },
+        {
+          "SourceMilliseconds": 683.996699988842,
+          "Progress": 0.036059074103832245
+        },
+        {
+          "SourceMilliseconds": 700.6799999922514,
+          "Progress": 0.03606955334544182
+        },
+        {
+          "SourceMilliseconds": 950.9328999966383,
+          "Progress": 1.0
+        }
+      ],
+      "IntermediateFrames": 12,
+      "FiniteFitAvailable": true,
+      "ScalarEndpointFit": {
+        "Curve": "css-ease",
+        "DurationMilliseconds": 500,
+        "OnsetSourceMilliseconds": 500.4815999865532,
+        "RMSE": 0.3096189438412978
+      },
+      "FitScope": "Projection between body endpoints; blends opacity and translation. This fit alone cannot certify either independent CSS property."
+    },
+    {
+      "Name": "tile-press",
+      "Frames": 17,
+      "CachedBaseline": true,
+      "SourceSpanMilliseconds": 1067.7203000038862,
+      "SourceIntervalsMilliseconds": [
+        16.68290001153946,
+        33.3669999986887,
+        16.683200001716614,
+        16.68239998817444,
+        16.6824000030756,
+        16.682099997997284,
+        33.36690001189709,
+        16.683199986815453,
+        16.683400005102158,
+        33.366200000047684,
+        16.682600006461143,
+        33.36599999666214,
+        16.683100000023842,
+        16.683200001716614,
+        316.9802999943495
+      ],
+      "MaximumSourceGapMilliseconds": 316.9802999943495,
+      "EndpointProgress": [
+        {
+          "SourceMilliseconds": 0.0,
+          "Progress": 0.0
+        },
+        {
+          "SourceMilliseconds": 450.44539999961853,
+          "Progress": 0.9704398512840271
+        },
+        {
+          "SourceMilliseconds": 467.128300011158,
+          "Progress": 0.9723151326179504
+        },
+        {
+          "SourceMilliseconds": 500.4953000098467,
+          "Progress": 0.9838816523551941
+        },
+        {
+          "SourceMilliseconds": 517.1785000115633,
+          "Progress": 0.9909835457801819
+        },
+        {
+          "SourceMilliseconds": 533.8608999997377,
+          "Progress": 0.9951804876327515
+        },
+        {
+          "SourceMilliseconds": 550.5433000028133,
+          "Progress": 0.9973511099815369
+        },
+        {
+          "SourceMilliseconds": 567.2254000008106,
+          "Progress": 0.9989154934883118
+        },
+        {
+          "SourceMilliseconds": 600.5923000127077,
+          "Progress": 0.9998159408569336
+        },
+        {
+          "SourceMilliseconds": 617.2754999995232,
+          "Progress": 0.9998835325241089
+        },
+        {
+          "SourceMilliseconds": 633.9589000046253,
+          "Progress": 0.9999182224273682
+        },
+        {
+          "SourceMilliseconds": 667.325100004673,
+          "Progress": 0.9999534487724304
+        },
+        {
+          "SourceMilliseconds": 684.0077000111341,
+          "Progress": 0.9999617338180542
+        },
+        {
+          "SourceMilliseconds": 717.3737000077963,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 734.0568000078201,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 750.7400000095367,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 1067.7203000038862,
+          "Progress": 1.0
+        }
+      ],
+      "IntermediateFrames": 0,
+      "FiniteFitAvailable": false,
+      "Reason": "Fewer than four intermediate native frames; exact curve unverified."
+    },
+    {
+      "Name": "gear-hover",
+      "Frames": 21,
+      "CachedBaseline": true,
+      "SourceSpanMilliseconds": 734.0488000065088,
+      "SourceIntervalsMilliseconds": [
+        33.366300001740456,
+        16.683300003409386,
+        16.682199999690056,
+        33.36439999938011,
+        16.683200001716614,
+        16.682099997997284,
+        16.6824000030756,
+        16.68299999833107,
+        16.68350000679493,
+        33.36779999732971,
+        16.6824000030756,
+        16.683100000023842,
+        16.68239998817444,
+        16.682700008153915,
+        16.683200001716614,
+        33.366899996995926,
+        16.682599991559982,
+        183.51050001382828,
+        16.683100000023842
+      ],
+      "MaximumSourceGapMilliseconds": 183.51050001382828,
+      "FiniteFitAvailable": false,
+      "Reason": "Endpoints nearly equal or cyclic decoration; no finite endpoint model."
+    },
+    {
+      "Name": "scanning",
+      "Frames": 61,
+      "CachedBaseline": true,
+      "SourceSpanMilliseconds": 1768.4186999946833,
+      "SourceIntervalsMilliseconds": [
+        50.0489000082016,
+        16.682799994945526,
+        16.683100000023842,
+        16.682899996638298,
+        33.36670000851154,
+        33.366799995303154,
+        33.36769999563694,
+        16.68290001153946,
+        16.68239998817444,
+        16.68300001323223,
+        16.683799996972084,
+        33.368000000715256,
+        16.682099997997284,
+        16.682799994945526,
+        16.682600006461143,
+        33.36489999294281,
+        16.682800009846687,
+        33.365699991583824,
+        16.68250000476837,
+        16.682899996638298,
+        16.682799994945526,
+        16.683700010180473,
+        16.6841000020504,
+        16.683399990200996,
+        16.684000000357628,
+        33.366300001740456,
+        16.682799994945526,
+        16.68290001153946,
+        16.682799994945526,
+        16.683699995279312,
+        16.683400005102158,
+        16.68299999833107,
+        16.68299999833107,
+        16.683200001716614,
+        33.36660000681877,
+        16.683199986815453,
+        16.684300005435944,
+        33.36560000479221,
+        16.683799996972084,
+        33.365700006484985,
+        16.682699993252754,
+        33.36550000309944,
+        16.683300003409386,
+        16.683799996972084,
+        16.683899998664856,
+        16.683100000023842,
+        33.36710000038147,
+        33.36669999361038,
+        16.682600006461143,
+        16.6824000030756,
+        16.683199986815453,
+        16.682300001382828,
+        16.68250000476837,
+        16.683799996972084,
+        16.683899998664856,
+        16.68250000476837,
+        16.683300003409386,
+        16.683799996972084,
+        33.366200000047684
+      ],
+      "MaximumSourceGapMilliseconds": 50.0489000082016,
+      "EndpointProgress": [
+        {
+          "SourceMilliseconds": 0.0,
+          "Progress": 0.0
+        },
+        {
+          "SourceMilliseconds": 517.1824999898672,
+          "Progress": 0.0
+        },
+        {
+          "SourceMilliseconds": 567.2313999980688,
+          "Progress": 0.0
+        },
+        {
+          "SourceMilliseconds": 583.9141999930143,
+          "Progress": 0.0
+        },
+        {
+          "SourceMilliseconds": 600.5972999930382,
+          "Progress": 0.0
+        },
+        {
+          "SourceMilliseconds": 617.2801999896765,
+          "Progress": 0.0
+        },
+        {
+          "SourceMilliseconds": 650.646899998188,
+          "Progress": 0.0
+        },
+        {
+          "SourceMilliseconds": 684.0136999934912,
+          "Progress": 0.06515400111675262
+        },
+        {
+          "SourceMilliseconds": 717.3813999891281,
+          "Progress": 0.45316341519355774
+        },
+        {
+          "SourceMilliseconds": 734.0643000006676,
+          "Progress": 0.6345994472503662
+        },
+        {
+          "SourceMilliseconds": 750.746699988842,
+          "Progress": 0.7531395554542542
+        },
+        {
+          "SourceMilliseconds": 767.4297000020742,
+          "Progress": 0.8397471308708191
+        },
+        {
+          "SourceMilliseconds": 784.1134999990463,
+          "Progress": 0.9124383926391602
+        },
+        {
+          "SourceMilliseconds": 817.4814999997616,
+          "Progress": 0.986758291721344
+        },
+        {
+          "SourceMilliseconds": 834.1635999977589,
+          "Progress": 1.005345344543457
+        },
+        {
+          "SourceMilliseconds": 850.8463999927044,
+          "Progress": 1.0000721216201782
+        },
+        {
+          "SourceMilliseconds": 867.5289999991655,
+          "Progress": 1.0000721216201782
+        },
+        {
+          "SourceMilliseconds": 900.8938999921083,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 917.576700001955,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 950.9423999935389,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 967.6248999983072,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 984.3077999949455,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 1000.990599989891,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 1017.6743000000715,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 1034.358400002122,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 1051.041799992323,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 1067.7257999926805,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 1101.092099994421,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 1117.7748999893665,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 1134.457800000906,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 1151.1405999958515,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 1167.8242999911308,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 1184.507699996233,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 1201.190699994564,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 1217.8736999928951,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 1234.5568999946117,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 1267.9235000014305,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 1284.606699988246,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 1301.290999993682,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 1334.6565999984741,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 1351.3403999954462,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 1384.7061000019312,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 1401.388799995184,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 1434.7542999982834,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 1451.4376000016928,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 1468.1213999986649,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 1484.8052999973297,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 1501.4883999973536,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 1534.855499997735,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 1568.2221999913454,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 1584.9047999978065,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 1601.5872000008821,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 1618.2703999876976,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 1634.9526999890804,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 1651.6351999938488,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 1668.3189999908209,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 1685.0028999894857,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 1701.685399994254,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 1718.3686999976635,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 1735.0524999946356,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 1768.4186999946833,
+          "Progress": 1.0
+        }
+      ],
+      "IntermediateFrames": 6,
+      "FiniteFitAvailable": true,
+      "ScalarEndpointFit": {
+        "Curve": "css-ease",
+        "DurationMilliseconds": 176,
+        "OnsetSourceMilliseconds": 670.0136999934912,
+        "RMSE": 0.002116562775141461
+      },
+      "FitScope": "Projection between body endpoints; blends opacity and translation. This fit alone cannot certify either independent CSS property."
+    }
+  ],
+  "PhysicalInput": false,
+  "RS13Complete": false,
+  "Scope": "Original selected-window WGC surface times; source intervals distinguish cached idle baselines. Scalar fits are diagnostic and do not certify final desktop or isolated opacity/translation curves."
+}

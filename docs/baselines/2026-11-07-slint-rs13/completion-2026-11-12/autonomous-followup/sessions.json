@@ -1,0 +1,226 @@
+{
+  "Sessions": [
+    {
+      "Run": "femtovg-motion",
+      "InitialTheme": "light",
+      "Edition": "femtovg",
+      "ExecutableSHA256": "EAD49D50F8E206D82C6A15FFB0D20A2300DBA7AFD23142B41F82339C6BD89E97",
+      "PID": 93420,
+      "StartedTicks": 639300182666997124,
+      "Completion": {
+        "Completed": true,
+        "ExitCode": 0,
+        "ProcessId": 93420,
+        "SHA256": "EAD49D50F8E206D82C6A15FFB0D20A2300DBA7AFD23142B41F82339C6BD89E97",
+        "ForcedCleanup": false,
+        "CleanupScope": "This wrapper never terminates a process. External cleanup records take precedence on nonzero exit."
+      },
+      "HistoryUnchanged": true,
+      "HistorySHA256": "E3566B3A06430868D71E9287DFD6C6C520A3DA027AABEA01951D407EE131DC2F",
+      "SessionSHA256": "56192E0D7392D5EB088550CC43087C98D973649B8EEE3D39C1DC69F20FD90DC9",
+      "RawInputLogSHA256": "7D3DC250C31D8E7F2BFCD756742734473B13C1B9A081185093B53CC7BF416559",
+      "NativeDPISamples": [
+        96
+      ],
+      "LaunchCallbacks": 0,
+      "CaptureEnd": {
+        "event": "end",
+        "qpc": 871399384570,
+        "frames": 2083,
+        "clips": 9,
+        "gpu_queue_rejected": 0,
+        "write_queue_rejected": 0,
+        "storage_limited": false
+      },
+      "RawTraceSHA256": "F0DF0B7C4E2EB434EAB9DA8E8E39E53A6DA1C48A90AE5DA19DBCCC8E9FBD1C09"
+    },
+    {
+      "Run": "femtovg-secondary",
+      "InitialTheme": "light",
+      "Edition": "femtovg",
+      "ExecutableSHA256": "EAD49D50F8E206D82C6A15FFB0D20A2300DBA7AFD23142B41F82339C6BD89E97",
+      "PID": 102288,
+      "StartedTicks": 639300197918248229,
+      "Completion": {
+        "Completed": true,
+        "ExitCode": 0,
+        "ProcessId": 102288,
+        "SHA256": "EAD49D50F8E206D82C6A15FFB0D20A2300DBA7AFD23142B41F82339C6BD89E97",
+        "ForcedCleanup": false,
+        "CleanupScope": "This wrapper never terminates a process. External cleanup records take precedence on nonzero exit."
+      },
+      "HistoryUnchanged": true,
+      "HistorySHA256": "E3566B3A06430868D71E9287DFD6C6C520A3DA027AABEA01951D407EE131DC2F",
+      "SessionSHA256": "CF7EFAD00E09A83747D48B10F54E1D3A90EB9D3F4A60F3AEC2B402D43E9ED174",
+      "RawInputLogSHA256": "8A90BFAA949B8849D3AC77E461ADC8B9238F9A685FDBD63718D2A7DCE2F515C1",
+      "NativeDPISamples": [
+        96
+      ],
+      "LaunchCallbacks": 0,
+      "CaptureEnd": {
+        "event": "end",
+        "qpc": 882220450490,
+        "frames": 809,
+        "clips": 7,
+        "gpu_queue_rejected": 0,
+        "write_queue_rejected": 0,
+        "storage_limited": false
+      },
+      "RawTraceSHA256": "0790D0F801756A3F3391558DFB49268B57222A035CBBD1D995CB01DB452CF950"
+    },
+    {
+      "Run": "software-motion",
+      "InitialTheme": "light",
+      "Edition": "software",
+      "ExecutableSHA256": "D9265467D96436581A6C562E0B49D8F5654D6A102F7ECC19A1A6405B7FB69D50",
+      "PID": 71532,
+      "StartedTicks": 639300177009672064,
+      "Completion": {
+        "Completed": true,
+        "ExitCode": 0,
+        "ProcessId": 71532,
+        "SHA256": "D9265467D96436581A6C562E0B49D8F5654D6A102F7ECC19A1A6405B7FB69D50",
+        "ForcedCleanup": false,
+        "CleanupScope": "This wrapper never terminates a process. External cleanup records take precedence on nonzero exit."
+      },
+      "HistoryUnchanged": true,
+      "HistorySHA256": "E3566B3A06430868D71E9287DFD6C6C520A3DA027AABEA01951D407EE131DC2F",
+      "SessionSHA256": "3210624767D052A8C6C17B6861D4A6896A27C1792CE4167CB06508BF7A6BF669",
+      "RawInputLogSHA256": "BF415882BDB1A26601F4B1D297D60DEC4F73BB94202FA2A3FA926A63A35A6CA3",
+      "NativeDPISamples": [
+        96
+      ],
+      "LaunchCallbacks": 0,
+      "CaptureEnd": {
+        "event": "end",
+        "qpc": 864342964944,
+        "frames": 1604,
+        "clips": 9,
+        "gpu_queue_rejected": 0,
+        "write_queue_rejected": 0,
+        "storage_limited": false
+      },
+      "RawTraceSHA256": "98742C8F355C9F5A1511F5AB39A828B14C2F53397643B345C8B77515131DB4EC"
+    },
+    {
+      "Run": "software-secondary",
+      "InitialTheme": "light",
+      "Edition": "software",
+      "ExecutableSHA256": "D9265467D96436581A6C562E0B49D8F5654D6A102F7ECC19A1A6405B7FB69D50",
+      "PID": 102224,
+      "StartedTicks": 639300195499101524,
+      "Completion": {
+        "Completed": true,
+        "ExitCode": 0,
+        "ProcessId": 102224,
+        "SHA256": "D9265467D96436581A6C562E0B49D8F5654D6A102F7ECC19A1A6405B7FB69D50",
+        "ForcedCleanup": false,
+        "CleanupScope": "This wrapper never terminates a process. External cleanup records take precedence on nonzero exit."
+      },
+      "HistoryUnchanged": true,
+      "HistorySHA256": "E3566B3A06430868D71E9287DFD6C6C520A3DA027AABEA01951D407EE131DC2F",
+      "SessionSHA256": "000881B4A3EB71BE45DAACC348D24DBA27104E12EB0300510109D107FE416D1B",
+      "RawInputLogSHA256": "7A9C5F994CBD49A53870FDB73CF8C4ADA6F9F65EED94302F24660F0473AADA6C",
+      "NativeDPISamples": [
+        96
+      ],
+      "LaunchCallbacks": 0,
+      "CaptureEnd": {
+        "event": "end",
+        "qpc": 879950015580,
+        "frames": 482,
+        "clips": 7,
+        "gpu_queue_rejected": 0,
+        "write_queue_rejected": 0,
+        "storage_limited": false
+      },
+      "RawTraceSHA256": "15493A22DE1EFA6713DF1506B5F8CBE70B1944621DCF03714BDF65367EDB4EB2"
+    },
+    {
+      "Run": "wails-motion",
+      "InitialTheme": "light",
+      "Edition": "wails",
+      "ExecutableSHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+      "PID": 81012,
+      "StartedTicks": 639300173807043011,
+      "Completion": {
+        "Completed": true,
+        "ExitCode": 0,
+        "ProcessId": 81012,
+        "SHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+        "ForcedCleanup": false,
+        "CleanupScope": "This wrapper never terminates a process. External cleanup records take precedence on nonzero exit."
+      },
+      "HistoryUnchanged": true,
+      "HistorySHA256": "E3566B3A06430868D71E9287DFD6C6C520A3DA027AABEA01951D407EE131DC2F",
+      "SessionSHA256": "CFD05E891244ACC72EE6613450CAE87EFB35913EA092FCF8D697105BA77FC6CB",
+      "CaptureEnd": {
+        "event": "end",
+        "qpc": 858857865739,
+        "frames": 2106,
+        "clips": 9,
+        "gpu_queue_rejected": 0,
+        "write_queue_rejected": 0,
+        "storage_limited": false
+      },
+      "RawTraceSHA256": "B776FCCD0AA82859EB11A7F1302B4A6615141D6365C139529484737540C174BB"
+    },
+    {
+      "Run": "wails-secondary",
+      "InitialTheme": "light",
+      "Edition": "wails",
+      "ExecutableSHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+      "PID": 95084,
+      "StartedTicks": 639300193070819891,
+      "Completion": {
+        "Completed": true,
+        "ExitCode": 0,
+        "ProcessId": 95084,
+        "SHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+        "ForcedCleanup": false,
+        "CleanupScope": "This wrapper never terminates a process. External cleanup records take precedence on nonzero exit."
+      },
+      "HistoryUnchanged": true,
+      "HistorySHA256": "E3566B3A06430868D71E9287DFD6C6C520A3DA027AABEA01951D407EE131DC2F",
+      "SessionSHA256": "A227410F774D79B057EA667DD176288FD2981A3C46D6096B0D5A517ACAC7DC1B",
+      "RawInputLogSHA256": "80F532846A99969FF55E3310D17FC676EBDFBA6AF13326297BB4A6D37B02D658",
+      "NativeDPISamples": [],
+      "LaunchCallbacks": 0,
+      "CaptureEnd": {
+        "event": "end",
+        "qpc": 877528385099,
+        "frames": 579,
+        "clips": 7,
+        "gpu_queue_rejected": 0,
+        "write_queue_rejected": 0,
+        "storage_limited": false
+      },
+      "RawTraceSHA256": "B91F6E533F88AB84DCD3ACD32E97703CE057EC0DA86862E966C29896E87676AC"
+    },
+    {
+      "Run": "software-dark",
+      "InitialTheme": "dark",
+      "Edition": "software",
+      "ExecutableSHA256": "D9265467D96436581A6C562E0B49D8F5654D6A102F7ECC19A1A6405B7FB69D50",
+      "PID": 96872,
+      "StartedTicks": 639300190079349386,
+      "Completion": {
+        "Completed": true,
+        "ExitCode": 0,
+        "ProcessId": 96872,
+        "SHA256": "D9265467D96436581A6C562E0B49D8F5654D6A102F7ECC19A1A6405B7FB69D50",
+        "ForcedCleanup": false,
+        "CleanupScope": "This wrapper never terminates a process. External cleanup records take precedence on nonzero exit."
+      },
+      "HistoryUnchanged": true,
+      "HistorySHA256": "E3566B3A06430868D71E9287DFD6C6C520A3DA027AABEA01951D407EE131DC2F",
+      "SessionSHA256": "172983BCEA44E78AE2A10FAFB0521D2766AB04742AEB0872686119A29548F08F",
+      "RawInputLogSHA256": "23C7DF2546F338B29706BCF7F0BDB0EE21B479B1590DB71B2568F189ADE17D39",
+      "NativeDPISamples": [
+        96
+      ],
+      "LaunchCallbacks": 0
+    }
+  ],
+  "Scope": "Every product/recorder exited normally. CUA inputs are synthetic; no physical input claim. History hashes unchanged, no recorded launch callbacks."
+}

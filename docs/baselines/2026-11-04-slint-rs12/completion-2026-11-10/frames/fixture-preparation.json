@@ -1,0 +1,36 @@
+{
+  "RecordedAtUtc": "2026-11-09T17:15:04.6111157Z",
+  "ReferenceIDUnionCount": 736,
+  "ReferenceIndexSHA256": [
+    "EE71305C7CF5E3DF94347FDB16DE28491454AFC774E1F90719BB7B1D55D991BE",
+    "1285E5D72D9E556E072B04B001A18F40A730114C7ACE4A3FC4853AEFEA0631BA"
+  ],
+  "Seeds": [
+    {
+      "Count": 1000,
+      "ShadowedReferenceIDs": 736,
+      "Inputs": {
+        "config.json": "D0AD379DB686117CAAC3275AD4F3D39B2BF3C30D3FC09A887AFC9199E761A429",
+        "index.json": "5F6B903C9EC17E632A656A2C719DE02A8E7D4D107B478E6429195BD80DB3BAAE",
+        "history.json": "E3566B3A06430868D71E9287DFD6C6C520A3DA027AABEA01951D407EE131DC2F",
+        "application-library.json": "EE2D00C197A1E60D0D27323017EA070566FF347CADD988878CFC3AB703B7D993",
+        "cache/icons/5fdf3b469f3174b898c3f6b1016afa18.png": "B39D6A584D7F5782854BA9A2E1A6CA839A14E7688F60A0B7D8F5FE6563E25EDF"
+      }
+    },
+    {
+      "Count": 10000,
+      "ShadowedReferenceIDs": 736,
+      "Inputs": {
+        "config.json": "D0AD379DB686117CAAC3275AD4F3D39B2BF3C30D3FC09A887AFC9199E761A429",
+        "index.json": "19A4003574920E4851FC3B5866C6ADD74F2E63370456D07703A1A5D3A5D122E0",
+        "history.json": "E3566B3A06430868D71E9287DFD6C6C520A3DA027AABEA01951D407EE131DC2F",
+        "application-library.json": "EDCED22DABA58CA63C65CDD0A4E445D2E8C33267390865D045CE51487C671192",
+        "cache/icons/5fdf3b469f3174b898c3f6b1016afa18.png": "B39D6A584D7F5782854BA9A2E1A6CA839A14E7688F60A0B7D8F5FE6563E25EDF"
+      }
+    }
+  ],
+  "TargetFilesCreated": false,
+  "ProductSourcesChanged": false,
+  "Status": "Prepared and structurally/decoded-icon tested only; corrected v3 fixtures have not been measured in product sessions.",
+  "PriorVersions": "v1 measured FemtoVG 1000 with fallback icons; v2 rejected before launch due invalid cache name; neither supersedes corrected v3 evidence."
+}

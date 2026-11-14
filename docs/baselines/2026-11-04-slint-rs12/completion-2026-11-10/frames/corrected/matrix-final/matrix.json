@@ -1,0 +1,212 @@
+{
+  "RecordedAtUtc": "2026-11-09T18:49:38.0241067Z",
+  "Conditions": 6,
+  "PhysicalQueries": 33.0,
+  "AdditionalAcceptedEdits": 2.0,
+  "AllNormalExit": true,
+  "AllFormalFilesMatch": true,
+  "Fixture": "v4",
+  "ObserverBuild": "build7",
+  "NativeDPI": 96,
+  "Order": [
+    "software-1000-v4",
+    "software-10000-v4",
+    "femtovg-1000-v4",
+    "femtovg-10000-v4-attempt2",
+    "wails-1000-v4",
+    "wails-10000-v4"
+  ],
+  "Cases": [
+    {
+      "Scenario": "software-1000-v4",
+      "Edition": "software",
+      "Count": 1000,
+      "Queries": 5,
+      "AdditionalAcceptedEdits": 0,
+      "NormalExitCode": 0,
+      "InputToFirstResultRegionChangeUpperMilliseconds": {
+        "Count": 5,
+        "Minimum": 43.4059,
+        "Median": 44.0977,
+        "P95": 61.316,
+        "Maximum": 61.316
+      },
+      "InputToStableResultRegionUpperMilliseconds": {
+        "Count": 5,
+        "Minimum": 276.8484,
+        "Median": 277.589,
+        "P95": 294.7764,
+        "Maximum": 294.7764
+      },
+      "ResultConfirmation": "body",
+      "FrameCaptureSHA256": "541A0F04EABD79F04716EDBFD179C255A69B55E53D93780D058D0FBB2D090C62",
+      "FinalInputLogSHA256": "B0826BB4A4DE288B54D97A0DAED893D2F2347847A2A7CAF59115F2FF3585079B",
+      "FinalReviewSHA256": "13D2AAA90E3181A6AC6E75E255B0AED7D9251BE5E8F819B8D9C2D4942DFE2E3E",
+      "FormalFilesMatch": true,
+      "OwnedWindowsRemaining": 0,
+      "Evidence": "software-1000-v4/final-review.json",
+      "EvidenceSHA256": "13D2AAA90E3181A6AC6E75E255B0AED7D9251BE5E8F819B8D9C2D4942DFE2E3E"
+    },
+    {
+      "Scenario": "software-10000-v4",
+      "Edition": "software",
+      "Count": 10000,
+      "Queries": 6,
+      "AdditionalAcceptedEdits": 0,
+      "NormalExitCode": 0,
+      "InputToFirstResultRegionChangeUpperMilliseconds": {
+        "Count": 6,
+        "Minimum": 51.2811,
+        "Median": 57.608000000000004,
+        "P95": 71.0427,
+        "Maximum": 71.0427
+      },
+      "InputToStableResultRegionUpperMilliseconds": {
+        "Count": 6,
+        "Minimum": 268.4521,
+        "Median": 287.088,
+        "P95": 290.2645,
+        "Maximum": 290.2645
+      },
+      "ResultConfirmation": "body",
+      "FrameCaptureSHA256": "1B4E4D638B62AADDE7A3DC73306F96BDCD995419853A952B696B13BB65CDEDAD",
+      "FinalInputLogSHA256": "17DA6E543E688B9DF8832799669F49708BF93C94EA152AAF6FE91074FB03D28B",
+      "FinalReviewSHA256": "B5FA90C2A045F70AF0D98E558B74A0A1F2C99BA8FFE43E73AD181BE9BF0D9AFE",
+      "FormalFilesMatch": true,
+      "OwnedWindowsRemaining": 0,
+      "Evidence": "software-10000-v4/final-review.json",
+      "EvidenceSHA256": "B5FA90C2A045F70AF0D98E558B74A0A1F2C99BA8FFE43E73AD181BE9BF0D9AFE"
+    },
+    {
+      "Scenario": "femtovg-1000-v4",
+      "Edition": "femtovg",
+      "Count": 1000,
+      "Queries": 5,
+      "AdditionalAcceptedEdits": 0,
+      "NormalExitCode": 0,
+      "InputToFirstResultRegionChangeUpperMilliseconds": {
+        "Count": 5,
+        "Minimum": 49.5645,
+        "Median": 62.0545,
+        "P95": 67.4988,
+        "Maximum": 67.4988
+      },
+      "InputToStableResultRegionUpperMilliseconds": {
+        "Count": 5,
+        "Minimum": 299.6364,
+        "Median": 311.5421,
+        "P95": 317.7247,
+        "Maximum": 317.7247
+      },
+      "ResultConfirmation": "body",
+      "FrameCaptureSHA256": "A687B043B8B5213E7D9BF359354F410B7C10CF4C73DDDA0C3EA0EA572DB8490C",
+      "FinalInputLogSHA256": "934ABDB9283AA4CD8992F488845A300444587279B0445644A5255E8A8FD60361",
+      "FinalReviewSHA256": "2916CC8E770C23D5B99586A532AA24BE4430B066194FDC96CB66F95B1F605670",
+      "FormalFilesMatch": true,
+      "OwnedWindowsRemaining": 0,
+      "Evidence": "femtovg-1000-v4/final-review.json",
+      "EvidenceSHA256": "2916CC8E770C23D5B99586A532AA24BE4430B066194FDC96CB66F95B1F605670"
+    },
+    {
+      "Scenario": "femtovg-10000-v4-attempt2",
+      "Edition": "femtovg",
+      "Count": 10000,
+      "Queries": 7,
+      "AdditionalAcceptedEdits": 0,
+      "NormalExitCode": 0,
+      "InputToFirstResultRegionChangeUpperMilliseconds": {
+        "Count": 7,
+        "Minimum": 51.7201,
+        "Median": 62.1276,
+        "P95": 76.3205,
+        "Maximum": 76.3205
+      },
+      "InputToStableResultRegionUpperMilliseconds": {
+        "Count": 7,
+        "Minimum": 293.185,
+        "Median": 310.0605,
+        "P95": 319.9042,
+        "Maximum": 319.9042
+      },
+      "ResultConfirmation": "body",
+      "FrameCaptureSHA256": "B0BA6BF92220E0319B2EA4539B0E04FA8F001A099F4F4A8A0DBC99C44A519793",
+      "FinalInputLogSHA256": "6ED16E0F01E4B3D4FFCCA30DB3A41F86CEAB8B93E5425856D3F7729E74F7E5D4",
+      "FinalReviewSHA256": "EBCCA1A0E38730E302B2605F2C44996FD146BE9A51407736F572D88E64A9E8F3",
+      "FormalFilesMatch": true,
+      "OwnedWindowsRemaining": 0,
+      "Evidence": "femtovg-10000-v4-attempt2/final-review.json",
+      "EvidenceSHA256": "EBCCA1A0E38730E302B2605F2C44996FD146BE9A51407736F572D88E64A9E8F3"
+    },
+    {
+      "Scenario": "wails-1000-v4",
+      "Edition": "wails",
+      "Count": 1000,
+      "Queries": 5,
+      "AdditionalAcceptedEdits": 0,
+      "NormalExitCode": 0,
+      "InputToFirstResultRegionChangeUpperMilliseconds": {
+        "Count": 5,
+        "Minimum": 40.9909,
+        "Median": 53.1659,
+        "P95": 62.1843,
+        "Maximum": 62.1843
+      },
+      "InputToStableResultRegionUpperMilliseconds": {
+        "Count": 5,
+        "Minimum": 285.188,
+        "Median": 293.7629,
+        "P95": 322.6071,
+        "Maximum": 322.6071
+      },
+      "ResultConfirmation": "full-window-fnv-reference",
+      "FrameCaptureSHA256": "77B8625F1A4DEF35621C24D87CEE8A0FCBF674843FAE45F6B535607F69594445",
+      "FinalInputLogSHA256": "294896BE1730FFC7BE86AF59EEAB2190E7CCABBFBC15AB1286665640989531BD",
+      "FinalReviewSHA256": "30F700735C04201AEDBEFF8C754F3A4CE99ADDDC8A076C7AA3D5D402F5086EC5",
+      "FormalFilesMatch": true,
+      "OwnedWindowsRemaining": 0,
+      "Evidence": "wails-1000-v4/final-review.json",
+      "EvidenceSHA256": "30F700735C04201AEDBEFF8C754F3A4CE99ADDDC8A076C7AA3D5D402F5086EC5"
+    },
+    {
+      "Scenario": "wails-10000-v4",
+      "Edition": "wails",
+      "Count": 10000,
+      "Queries": 5,
+      "AdditionalAcceptedEdits": 2,
+      "NormalExitCode": 0,
+      "InputToFirstResultRegionChangeUpperMilliseconds": {
+        "Count": 5,
+        "Minimum": 47.1887,
+        "Median": 68.1654,
+        "P95": 77.6576,
+        "Maximum": 77.6576
+      },
+      "InputToStableResultRegionUpperMilliseconds": {
+        "Count": 5,
+        "Minimum": 294.5072,
+        "Median": 315.7563,
+        "P95": 324.9072,
+        "Maximum": 324.9072
+      },
+      "ResultConfirmation": "full-window-fnv-reference",
+      "FrameCaptureSHA256": "67638D09E735E8FA9D8F038678FED126A76CCFFB19DA24E45108DF4127636425",
+      "FinalInputLogSHA256": "67CB40356F31CC502287688198A99939D5F160A0BDFE2E3C1590D276C149E7BA",
+      "FinalReviewSHA256": "85C18573B8D081F86B524A7720FFAB0655F8B2B1D0F2F2B3AB6A1B2A7C3838B1",
+      "FormalFilesMatch": true,
+      "OwnedWindowsRemaining": 0,
+      "Evidence": "wails-10000-v4/final-review.json",
+      "EvidenceSHA256": "85C18573B8D081F86B524A7720FFAB0655F8B2B1D0F2F2B3AB6A1B2A7C3838B1"
+    }
+  ],
+  "ColdConditionCharacters": 9,
+  "FirstPossibleInputLatencyVerified": false,
+  "PhotonPresentationVerified": false,
+  "RS12Complete": false,
+  "Limitations": [
+    "One synthetic query A, small samples, single Windows 11/DPI/driver; no broad latency distribution claim.",
+    "Changed/stable result pixels do not establish first possible input readiness or exact earliest correct result frame.",
+    "Wails and Slint page styles/animations differ; stable times include transitions.",
+    "Sequential capture order, no new broad randomized performance or resource benefit conclusion.",
+    "Original cold failures, legacy captures and zero-input attempt remain unchanged."
+  ]
+}

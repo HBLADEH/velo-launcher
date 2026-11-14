@@ -1,0 +1,171 @@
+{
+  "RecordedAtUtc": "2026-11-06T19:44:34.2653302Z",
+  "Edition": "femtovg",
+  "SHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+  "ProcessId": 394268,
+  "InputId": "4F199EEA23BF1258C3A98A684D259AF3DAFD9F0766A1D920592C905F4BDC2D5F",
+  "Environment": {
+    "Windows": "10.0.26340",
+    "Build": "26340",
+    "BootUtc": "2026-10-31T10:03:28.458604Z",
+    "CPU": [
+      "Intel(R) Core(TM) i7-10700 CPU @ 2.90GHz"
+    ]
+  },
+  "OperatorReport": "均成功，没有问题",
+  "TestInputSource": "Human physical Microsoft Pinyin keyboard input. No Computer Use input.",
+  "Cases": [
+    {
+      "Name": "Candidate positioning, arrows and Space commit",
+      "OperatorPassed": true
+    },
+    {
+      "Name": "Enter during composition commits Chinese only",
+      "OperatorPassed": true
+    },
+    {
+      "Name": "Escape cancels preedit first; later Escape clears/hides and hotkey restores input",
+      "OperatorPassed": true
+    },
+    {
+      "Name": "Settings round trip restores input focus",
+      "OperatorPassed": true
+    }
+  ],
+  "InputEvents": 5,
+  "ComposingInputEvents": 4,
+  "NonComposingInputEvents": 1,
+  "EventLoss": 0,
+  "NormalExit": {
+    "Completed": true,
+    "ExitCode": 0,
+    "ProcessId": 394268,
+    "SHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+    "ForcedCleanup": false
+  },
+  "HistoryUnchanged": true,
+  "ExecutableUnchanged": true,
+  "EventCounts": [
+    {
+      "Count": 2,
+      "Event": "catalog_published"
+    },
+    {
+      "Count": 1,
+      "Event": "component_created"
+    },
+    {
+      "Count": 2,
+      "Event": "desktop_event"
+    },
+    {
+      "Count": 1,
+      "Event": "first_opengl_frame"
+    },
+    {
+      "Count": 1,
+      "Event": "first_redraw_requested"
+    },
+    {
+      "Count": 6,
+      "Event": "global_hotkey"
+    },
+    {
+      "Count": 1,
+      "Event": "hotkey_bind"
+    },
+    {
+      "Count": 3,
+      "Event": "icon_cache"
+    },
+    {
+      "Count": 1,
+      "Event": "import_permission"
+    },
+    {
+      "Count": 2,
+      "Event": "index_status"
+    },
+    {
+      "Count": 5,
+      "Event": "input_accepted"
+    },
+    {
+      "Count": 10,
+      "Event": "input_focus"
+    },
+    {
+      "Count": 4,
+      "Event": "lifecycle_blur_check"
+    },
+    {
+      "Count": 4,
+      "Event": "lifecycle_hidden"
+    },
+    {
+      "Count": 1,
+      "Event": "lifecycle_quit"
+    },
+    {
+      "Count": 1,
+      "Event": "lifecycle_ready"
+    },
+    {
+      "Count": 4,
+      "Event": "lifecycle_shown"
+    },
+    {
+      "Count": 1,
+      "Event": "main_started"
+    },
+    {
+      "Count": 8,
+      "Event": "native_focus"
+    },
+    {
+      "Count": 4,
+      "Event": "native_focus_sync"
+    },
+    {
+      "Count": 88,
+      "Event": "native_key_down"
+    },
+    {
+      "Count": 1,
+      "Event": "native_window"
+    },
+    {
+      "Count": 1,
+      "Event": "startup_configuration_ready"
+    },
+    {
+      "Count": 1,
+      "Event": "window_drag"
+    },
+    {
+      "Count": 13,
+      "Event": "window_layout"
+    }
+  ],
+  "RawLocalIdentities": [
+    {
+      "SHA256": "73EA71FC749E041AC36EEC69AEED7392FC661F07583F5C6DA9046521A1AA84E7",
+      "RelativeName": "session.json"
+    },
+    {
+      "SHA256": "D476C87FC1057100E1A9E9F91431E02FA1C5190BEA91E84B30F57B5AC2DD8578",
+      "RelativeName": "completion.json"
+    },
+    {
+      "SHA256": "E218F93F63D1838578219025D86B7B1988E9DB1CB84D91E6E00D306F8E971B4C",
+      "RelativeName": "input-events.log"
+    }
+  ],
+  "SyntheticTest": false,
+  "PhysicalIMEScopeVerified": true,
+  "CandidateScreenshotCaptured": false,
+  "Scope": "One physical Microsoft Pinyin exercise on this Windows 11 x64 system at 96 DPI. All four behaviors are operator-attested; composition/input flags and normal exit are corroboration, not a separate event-level assertion for every candidate/key. No third-party IME, high-DPI candidate pixel alignment or latency claim.",
+  "ColdSample": false,
+  "CalibratedLatencyVerified": false,
+  "PresentedFrameLatencyVerified": false
+}

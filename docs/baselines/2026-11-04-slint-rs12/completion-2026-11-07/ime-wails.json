@@ -1,0 +1,84 @@
+{
+  "RecordedAtUtc": "2026-11-06T19:51:47.3456893Z",
+  "Edition": "wails",
+  "SHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+  "ProcessId": 429276,
+  "InputId": "4F199EEA23BF1258C3A98A684D259AF3DAFD9F0766A1D920592C905F4BDC2D5F",
+  "Environment": {
+    "Windows": "10.0.26340",
+    "Build": "26340",
+    "BootUtc": "2026-10-31T10:03:28.458604Z",
+    "CPU": [
+      "Intel(R) Core(TM) i7-10700 CPU @ 2.90GHz"
+    ]
+  },
+  "OperatorReport": "均正常",
+  "TestInputSource": "Human physical Microsoft Pinyin keyboard input. No Computer Use input.",
+  "Cases": [
+    {
+      "Name": "Candidate positioning, arrows and Space commit",
+      "OperatorPassed": true
+    },
+    {
+      "Name": "Enter during composition commits Chinese only",
+      "OperatorPassed": true
+    },
+    {
+      "Name": "Escape cancels preedit first; later Escape clears/hides and hotkey restores input",
+      "OperatorPassed": true
+    },
+    {
+      "Name": "Settings round trip restores input focus",
+      "OperatorPassed": true
+    }
+  ],
+  "InputEvents": 36,
+  "ComposingInputEvents": 30,
+  "NonComposingInputEvents": 6,
+  "EventLoss": 0,
+  "NormalExit": {
+    "Completed": true,
+    "ExitCode": 0,
+    "ProcessId": 429276,
+    "SHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+    "ForcedCleanup": false
+  },
+  "HistoryUnchanged": true,
+  "ExecutableUnchanged": true,
+  "EventCounts": [
+    {
+      "Event": "input_accepted",
+      "Count": 36
+    }
+  ],
+  "RawLocalIdentities": [
+    {
+      "RelativeName": "session.json",
+      "SHA256": "0F623983F62D6840A0DF68A770060FA85D60CC5B98C431B6D8BE87BADDF8D432"
+    },
+    {
+      "RelativeName": "completion.json",
+      "SHA256": "DE5E058DD46A75AC15DE6EB6BEB6827C7B9099D9ED249052830EB0B68FC1C07E"
+    },
+    {
+      "RelativeName": "probe/accepted-input.log",
+      "SHA256": "720DB6DEEE11D3ED3B020AE067037D2C4E9881AC01A14651CA19A1EE1E237D71"
+    },
+    {
+      "RelativeName": "probe/events.jsonl",
+      "SHA256": "9C47E1B1B947407310F92BB0FB204BB8F81687F48CBDE4D0672A5D41176AAE14"
+    }
+  ],
+  "SyntheticTest": false,
+  "PhysicalIMEScopeVerified": true,
+  "CandidateScreenshotCaptured": false,
+  "Scope": "One physical Microsoft Pinyin exercise on this Windows 11 x64 system at 96 DPI. All four behaviors are operator-attested; composition/input flags and normal exit are corroboration, not a separate event-level assertion for every candidate/key. No third-party IME, high-DPI candidate pixel alignment or latency claim.",
+  "ColdSample": false,
+  "CalibratedLatencyVerified": false,
+  "PresentedFrameLatencyVerified": false,
+  "BuildKind": "Frozen latencyprobe actual-input build; separate from official Wails resource Release.",
+  "TrustedInputEvents": 32,
+  "TrustedNonComposingInputEvents": 2,
+  "UntrustedSyntheticInputEvents": 4,
+  "TrustScope": "No agent input was sent. Four frontend-generated composition commit events are synthetic/untrusted; these remain excluded as physical latency endpoints. Counts corroborate composition state, not per-key behavioral coverage."
+}

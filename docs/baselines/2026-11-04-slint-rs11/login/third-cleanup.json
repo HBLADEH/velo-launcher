@@ -1,0 +1,30 @@
+{
+  "captured_utc": "2026-11-04T03:52:11.7376247Z",
+  "passed": true,
+  "cases": [
+    {
+      "renderer": "software",
+      "system_run_absent": true,
+      "local_run_absent": true,
+      "saved_startup_disabled": true,
+      "matching_processes_remaining": 0,
+      "native_instance_endpoint_absent": true,
+      "test_hotkey_available": true,
+      "passed": true
+    },
+    {
+      "renderer": "femtovg",
+      "system_run_absent": true,
+      "local_run_absent": true,
+      "saved_startup_disabled": true,
+      "matching_processes_remaining": 0,
+      "native_instance_endpoint_absent": true,
+      "test_hotkey_available": true,
+      "passed": true
+    }
+  ],
+  "normal_quit": "user used both application Quit controls",
+  "data_retained": true,
+  "input_injected": false,
+  "tray_scope": "owning native instance endpoints absent after normal quit; no additional visual tray inspection"
+}

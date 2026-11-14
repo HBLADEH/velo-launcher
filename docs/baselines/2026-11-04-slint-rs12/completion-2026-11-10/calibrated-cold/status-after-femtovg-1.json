@@ -1,0 +1,30 @@
+{
+  "RecordedAtUtc": "2026-11-10T12:47:11.2644383Z",
+  "HumanColdCharacterObservations": 9,
+  "CalibratedColdValidSamples": 2,
+  "CalibratedColdInvalidSamples": 0,
+  "RequiredSamples": 9,
+  "SamplesByEdition": {
+    "software": 1,
+    "femtovg": 1,
+    "wails": 0
+  },
+  "RequiredPerEdition": 3,
+  "NextCase": "wails-1",
+  "RemainingSequence": [
+    "wails-1",
+    "femtovg-2",
+    "wails-2",
+    "software-2",
+    "wails-3",
+    "software-3",
+    "femtovg-3"
+  ],
+  "IndependentRestartRequiredBeforeNext": true,
+  "CurrentBootConsumed": "639299112115000000",
+  "ColdStartup500msBudgetVerifiedForCompleteMatrix": false,
+  "HistoricalManualFocusRootCauseEstablished": false,
+  "DefaultRendererSelected": false,
+  "RS12Complete": false,
+  "Scope": "Current calibrated-cold checkpoint; prior remaining-auto/status.json and status-after-software-1.json retain their original checkpoints."
+}

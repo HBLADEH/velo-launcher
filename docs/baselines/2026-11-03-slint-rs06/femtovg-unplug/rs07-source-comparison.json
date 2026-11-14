@@ -1,0 +1,23 @@
+{
+  "ComparedAt": "2026-11-03T13:14:33.4298056+08:00",
+  "Comparisons": [
+    {
+      "Renderer": "software",
+      "PreviousEvidence": "docs/baselines/2026-10-29-slint-rs07/software-build.json",
+      "PreviousExecutableSHA256": "2C26130F54BC6A38983A2F5C5BA7E75D2AFBE3199F4F65259731864FD6589D48",
+      "CurrentExecutableSHA256": "417FF956E78C632E101989586A6CACA30BF0DF7414E13122CC75A26B0338E993",
+      "MatchedSourcePaths": 49,
+      "Differences": [],
+      "Interpretation": "Same locked application, dependencies and verification scripts; distinct exe hashes and machines retained. RS-07 actual behavior evidence belongs to previous builds, current same-source rebuild passed its own full automatic verification."
+    },
+    {
+      "Renderer": "femtovg",
+      "PreviousEvidence": "docs/baselines/2026-10-29-slint-rs07/femtovg-build.json",
+      "PreviousExecutableSHA256": "2F12AFA94F84810F09D5F0D25F2CB54B69B2D5D1537964C94C2F996210404080",
+      "CurrentExecutableSHA256": "AD4A650FB62AD4A13FA12239C8CC13299748241FD0B26D1B557AEBAE08B7BCB3",
+      "MatchedSourcePaths": 49,
+      "Differences": [],
+      "Interpretation": "Same locked application, dependencies and verification scripts; distinct exe hashes and machines retained. RS-07 actual behavior evidence belongs to previous builds, current same-source rebuild passed its own full automatic verification."
+    }
+  ]
+}

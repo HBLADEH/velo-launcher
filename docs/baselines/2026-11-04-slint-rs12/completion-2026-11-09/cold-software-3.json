@@ -1,0 +1,149 @@
+{
+  "RecordedAtUtc": "2026-11-09T07:04:28.6027594Z",
+  "Case": "software-3",
+  "Edition": "software",
+  "BuildScope": "Frozen Slint Software actual-input Release; unchanged measurement executable.",
+  "PreparedAtUtc": "2026-11-04T13:33:53.3596888Z",
+  "BootUtc": "2026-11-09T06:51:19.5Z",
+  "BootId": "639298038795000000",
+  "ProcessId": 26504,
+  "FirstLaunchOperatorConfirmed": true,
+  "IndependentBootClaim": true,
+  "CandidateFilesReadBeforeLaunch": false,
+  "FormalFilesReadBeforeLaunch": false,
+  "UserFirstLaunchReport": "已经重启，未运行任何 Velo",
+  "UserResultReport": "字母正常出现，已从托盘退出",
+  "SearchBoxClickIndependentlyVerified": false,
+  "AutomatedUIUsed": false,
+  "NormalTrayExitConfirmed": true,
+  "ProcessExitCode": 0,
+  "ExecutableSha256": "E85B41C7E77888750817E47F092EABECB1BAB5A68EFCE579378CE2DDAD2DBA4B",
+  "ExecutableMatchesFrozenCase": true,
+  "EnvironmentId": "3548C2246D9C8A1B2FA86F11AC5A4A0802396357F7EC313EF38BAC9CDF4FB890",
+  "EnvironmentIdAlgorithm": "ColdWindowsBuildCpuOrdinalV1",
+  "EnvironmentIdMatchesPriorWails3": true,
+  "EnvironmentIdScope": "Only Windows version, build and processor names; equality does not establish all conditions match.",
+  "InputId": "024397D07DB93ECF20AFE342D982D988B8C0F9D9C1272BC69700447A3C8C0935",
+  "InputAcceptedEvents": 1,
+  "AcceptedInput": {
+    "UnixMicroseconds": 1794207707607718,
+    "Utf8Bytes": 1,
+    "Focused": true,
+    "NativeFocused": true,
+    "Visible": true,
+    "Composing": false,
+    "Synthetic": false,
+    "Dropped": 0
+  },
+  "NativeKeyDownEvents": 5,
+  "EventLoss": 0,
+  "Lifecycle": [
+    {
+      "Event": "lifecycle_shown",
+      "ElapsedMicroseconds": 226557,
+      "Reason": "startup"
+    },
+    {
+      "Event": "lifecycle_hidden",
+      "ElapsedMicroseconds": 285732,
+      "Reason": "blur"
+    },
+    {
+      "Event": "lifecycle_shown",
+      "ElapsedMicroseconds": 28189319,
+      "Reason": "hotkey"
+    },
+    {
+      "Event": "input_accepted",
+      "ElapsedMicroseconds": 30079889,
+      "Reason": null
+    },
+    {
+      "Event": "lifecycle_hidden",
+      "ElapsedMicroseconds": 33926620,
+      "Reason": "escape"
+    },
+    {
+      "Event": "lifecycle_quit",
+      "ElapsedMicroseconds": 36387325,
+      "Reason": null
+    }
+  ],
+  "HiddenBeforeAcceptedInput": 1,
+  "HotkeyShowsBeforeAcceptedInput": 1,
+  "InitialShowEditableWithoutReactivationVerified": false,
+  "LifecycleScope": "First startup show was hidden for blur before a later hotkey show and accepted character; the cause of blur was not independently established. Times are internal callback observations, not frames.",
+  "CollectionScriptExitCode": 0,
+  "ValidIndependentColdConditionObservation": true,
+  "Method": "IndependentBootToAcceptedCharacterUpperBound",
+  "StartObservedUnixMicroseconds": 1794207677500308,
+  "DurationUpperMillisecondsIncludingHumanDelay": 30108.41,
+  "StartupClockCalibration": "OS creation FILETIME and accepted-input UTC with a 1ms guard; wall-clock step/error is not independently bounded. Not calibrated first-possible-readiness timing.",
+  "FirstPossibleInputLatencyVerified": false,
+  "ColdStartupBudgetVerified": false,
+  "PresentedFrameVerified": false,
+  "ScanCompleted": true,
+  "ScanWarning": true,
+  "DataMatchesFrozenSeedAfterExit": {
+    "config.json": true,
+    "history.json": true,
+    "application-library.json": true,
+    "index.json": false
+  },
+  "IndexChangeNote": "Index differs after the isolated session completed scanning with a warning; exact changed bytes were not independently attributed.",
+  "FormalDataMatchesPriorVerifiedSession": {
+    "config.json": true,
+    "index.json": true,
+    "history.json": true,
+    "application-library.json": true,
+    "quick-launch.json": true
+  },
+  "FormalComparisonScope": "Compared after exit to the 2026-11-09 Wails hotkey preflight; neither candidate nor formal data bytes were read before this cold launch.",
+  "VeloProcessesRemainingAfterExit": 0,
+  "Cleanup": {
+    "RecordedAtUtc": "2026-11-09T07:08:44.192283Z",
+    "ProcessId": 26504,
+    "LauncherWindows": 0,
+    "DesktopServiceWindows": 0,
+    "InstanceMutexAbsent": true,
+    "AltSpaceTemporarilyRegisteredAndReleased": true,
+    "NoInputSynthesized": true,
+    "Scope": "Post-exit owned windows and instance mutex; hotkey registered and immediately released; no product process launched."
+  },
+  "RawArtifactsSHA256": {
+    "case.json": "BD3AAC0013B7D204F24A016CCDC53B9C2CEE68769B87A5E71648424B482A8098",
+    "started.json": "B864DDE9FBBAE8C4D0ABCD54D471BF4076316AD34F0F7BC5E66FF5A6D44EDB72",
+    "exit.json": "B3D4BB456E6D0D2B485E791BDD3175561E7D819DC03F0E271939DAB793DCD0C2",
+    "cold-input.json": "1C6B1395B2FE5FFD227C76E5FE79012C239B6599C0E3825E231D384EAAC16CDF",
+    "measurement-events.log": "8B8CFF5DD89F77FAE9613FDAE15028D98593817105560A27D854685F36740587",
+    "boot-ledger.json": "702C57BC1AC901352183E4BDFFE5240406230B89EF17669D64A7EAD07206DE3E",
+    "continuation/preflight.json": "FB612D98BFA638E34B4641EA0C1792FE094029F08980B4D40DC479AE44E5CB33",
+    "continuation/operator-report.json": "147FAC9DC441D640882B1FC47A9799CE0B0B53701FED6A2742B167D09B91E3C9",
+    "continuation/exit-review.json": "8D437D6BE8389F3D306F5A512F6909146DA068CD5B05372A318E19F0F1168914",
+    "continuation/cleanup.json": "A68CDFC49212494DFB0087FE574098D61A963107A233F67989667FA3CE49723A",
+    "continuation/lifecycle-review.json": "721BA53FA4BD8CEEC5451BB655C7D3BDF85B2AB266B31B583F75C5EE01B46FCE",
+    "continuation/matrix.json": "847AFC9FB5F47A7911B8240FFBC218D3851A8F1476F16751556B339BA35D8A69"
+  },
+  "CollectorHashesAtCollection": {
+    "scripts/start-rs12-cold.ps1": "169B35A629F8B68EDDF0C9EC2B2AB61F2F2387A6967DEC07D3DD557AF0057201",
+    "scripts/collect-rs12-cold.ps1": "A63B10E7A28034AADE7ABFA423C662D00634FCB3BB4120467EBBBBB61BCB5CBF",
+    "scripts/lib/rs12-input-observer.cs": "90924FCD48C2F58FEF2C3F4441D0591BCED3E7E3E4E44FACAD8EDB2527E9EB0D",
+    "scripts/lib/resource-sample.ps1": "7E78BE326C36E19259571CB4E9BB676C3B3E6A403812AC0264C3D8672758370C"
+  },
+  "BuildOrSourceChangedThisObservation": false,
+  "AutomaticRegressionRerun": false,
+  "ValidIndependentColdConditionObservations": 6,
+  "RequiredIndependentColdConditionObservations": 9,
+  "InvalidAttemptsRetained": 2,
+  "ValidObservationsByEdition": {
+    "software": 1,
+    "femtovg": 2,
+    "wails": 3
+  },
+  "NextScheduledCase": "femtovg-3",
+  "SubsequentCases": [
+    "software-4",
+    "software-5"
+  ],
+  "RS12Complete": false
+}

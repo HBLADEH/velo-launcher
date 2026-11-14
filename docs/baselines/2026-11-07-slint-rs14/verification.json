@@ -1,0 +1,88 @@
+{
+  "RecordedAtUtc": "2026-11-06T20:17:47.7022084Z",
+  "Commands": [
+    "GOTOOLCHAIN=go1.25.6 ./scripts/verify-rust.ps1 -SmokeTest",
+    "GOTOOLCHAIN=go1.25.6 ./scripts/verify.ps1 -SkipBuild",
+    "./scripts/test-rust-preview.ps1 -Renderer <each renderer> -OutputDirectory <fresh rust/target directory>"
+  ],
+  "RustPassed": true,
+  "SharedGoVuePassed": true,
+  "PreviewTestsPassed": true,
+  "RustLogSHA256": "43D53BBB9512E68885B8E5E0C7913C537BEF4046EDE722FCAB613FD8CDA69307",
+  "SharedLogSHA256": "5A2D1CA8C522335D4A067F409B49C2DAB2D0D9C03E9B0A5CA84C7A784CABB857",
+  "Renderers": [
+    {
+      "Renderer": "software",
+      "Verification": {
+        "RecordedAtUtc": "2026-11-06T20:15:41.3049049Z",
+        "Renderer": "software",
+        "ChecksPassed": true,
+        "SmokeTestPassed": true,
+        "ExecutableSHA256": "BAF9B2A6533392AAEAB1580235351858275535EC995AB2FFF08ECCA68F147818",
+        "BuildIdentitySHA256": "655A97B284E2E6A777E0345448780525AE5A1C628DFBDCC00D244CB8E4724A03",
+        "CargoMetadataSHA256": "F18C06D10FC8E5224886E5A517AA4061C868DBF90DD38B0500CE5DA4AD95353C"
+      },
+      "RustTestsPassed": 80,
+      "AllRecordedSourcesMatch": true,
+      "Sources": 146,
+      "Rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+      "Cargo": "cargo 1.99.1 (5f94df478 2026-08-27)",
+      "MsvcToolsVersion": "14.50.35717",
+      "WindowsSdkVersion": "10.0.26100.0",
+      "WorkspaceCommit": "4d9dbaf9acf5286d9961fae1e89cca908b5af9d7",
+      "WorkspaceDirty": true
+    },
+    {
+      "Renderer": "femtovg",
+      "Verification": {
+        "RecordedAtUtc": "2026-11-06T20:12:28.3568038Z",
+        "Renderer": "femtovg",
+        "ChecksPassed": true,
+        "SmokeTestPassed": true,
+        "ExecutableSHA256": "CB98794AD241081CEDE83AB5310462320AF65E35F7C9E46916881E8464BCC638",
+        "BuildIdentitySHA256": "DE90C88E7DF691D94086A4AEBE8D1A79D1F25AEF9EB67A75A8E97E00FA01D7B7",
+        "CargoMetadataSHA256": "63D7032B16E4951BB2009BBA7301B6A1F5E082730DE490A15CF9DA2B3A94F86E"
+      },
+      "RustTestsPassed": 80,
+      "AllRecordedSourcesMatch": true,
+      "Sources": 146,
+      "Rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+      "Cargo": "cargo 1.99.1 (5f94df478 2026-08-27)",
+      "MsvcToolsVersion": "14.50.35717",
+      "WindowsSdkVersion": "10.0.26100.0",
+      "WorkspaceCommit": "4d9dbaf9acf5286d9961fae1e89cca908b5af9d7",
+      "WorkspaceDirty": true
+    }
+  ],
+  "RemoteCIExecuted": false,
+  "NSISBuilt": false,
+  "DefaultRenderer": null,
+  "G4Passed": false,
+  "Scope": "Full local locked-toolchain checks and synthetic component/isolated integration tests. No new physical hotkey, cold-start, IME, DPI or presented-frame measurement is implied.",
+  "ToolSources": [
+    {
+      "Path": "scripts/verify-rust.ps1",
+      "SHA256": "BB8C4195C5FCD541C8D02E084DFBF23A7FC4DAE28BFC00A952E91DACD42F94A1"
+    },
+    {
+      "Path": "scripts/package-rust-preview.ps1",
+      "SHA256": "C85F57B4823F52F680D2928336567D1E887034BA254DE02ED6D2934CAD97B40C"
+    },
+    {
+      "Path": "scripts/test-rust-preview.ps1",
+      "SHA256": "62C12FF275C121B78C7676927E5CBD452DCED699CC9705D6B70BAC62300888E2"
+    },
+    {
+      "Path": "scripts/capture-rust-visual.ps1",
+      "SHA256": "8E4716114806E7488BAC507A515A99A4DA193BB1023B736721CE59490BBA780E"
+    },
+    {
+      "Path": "scripts/summarize-rust-visual.py",
+      "SHA256": "01A2EAA5707C06FFFE41DC89802541B7A252863CAAB631241B286EB2190CF7CA"
+    },
+    {
+      "Path": ".github/workflows/rust-preview.yml",
+      "SHA256": "02392C3826D4AFEAE7944E5DBBE255CB5623E5093CF8F364809776B80063C48C"
+    }
+  ]
+}

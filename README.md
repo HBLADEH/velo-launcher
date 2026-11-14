@@ -1,202 +1,52 @@
-<p align="center">
-  <img src="frontend/src/assets/logo.png" alt="Velo 标志" width="128" height="128" />
-</p>
+# Velo
 
-<h1 align="center">Velo</h1>
-<p align="center"><strong>按下快捷键，即刻开启所想。</strong><br /><sub>Fast. Light. Ready.</sub></p>
-<p align="center"><strong>简体中文</strong> · <a href="README.en.md">English</a></p>
-<p align="center">
-  <a href="https://github.com/HBLADEH/velo-launcher/actions/workflows/ci.yml"><img src="https://github.com/HBLADEH/velo-launcher/actions/workflows/ci.yml/badge.svg" alt="Windows 构建状态" /></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT 许可证" /></a>
-  <img src="https://img.shields.io/badge/platform-Windows%2010%20%2F%2011-0078D4" alt="Windows 10 / 11" />
-</p>
-<p align="center">
-  <a href="https://github.com/HBLADEH/velo-launcher/releases">下载</a> ·
-  <a href="#快速上手">快速上手</a> ·
-  <a href="#velo-是怎么实现的">实现原理</a> ·
-  <a href="docs/user-guide.md">用户指南</a> ·
-  <a href="CONTRIBUTING.md">参与贡献</a> ·
-  <a href="https://github.com/HBLADEH/velo-launcher/issues">问题反馈</a>
-</p>
+[English](README.en.md) · [下载](https://github.com/HBLADEH/velo-launcher/releases/latest) · [用户指南](docs/user-guide.md)
 
-Velo 是一款面向 **Windows 10 / 11 x64** 的中文应用启动器。按下 `Alt+Space`，输入名称找到应用或 Windows 工具，再按 `Enter` 启动；常用应用、系统快捷和首页固定项集中在一个窗口中。
+面向 **Windows 10/11 x64** 的中文应用启动器。按 `Alt+Space` 呼出，输入应用名称、拼音或首字母，按 `Enter` 启动。
 
-系统快捷支持中文、英文、拼音与缩写搜索，界面提供列表与网格、浅色与深色主题。设置、索引和使用记录保存在本机。项目以中文文档与使用体验为主，同时提供 [English README](README.en.md)。
+**0.1.0 是 Rust + Slint 重构后的首个正式版本，版本号重新起算。后续开发以 Rust 为主线，Go/Wails 0.9.x 停止维护。** 程序采用原生单进程，不需要 Go、Node.js、WebView2 或本地 HTTP 服务。
 
-> 当前版本为 **0.9.11 预览版**，发布文件暂未签名，性能与长期稳定性仍在验证中。目前仅支持 Windows，软件界面为简体中文。
+## 安装
 
-## 界面预览
+从 [最新发布](https://github.com/HBLADEH/velo-launcher/releases/latest) 下载 `velo-rust-x64-installer.exe`，运行安装器并确认 Windows UAC。默认使用 Software 渲染器；`velo-rust-femtovg-x64-installer.exe` 是使用 OpenGL 的替代构建，切换前请从托盘完全退出 Velo。
 
-以下为 2026-10-23 更新的 Windows 实机截图，展示当前版本的中文界面。应用列表与搜索结果来自维护者的实际使用环境。
+0.1.0 提供系统安装版。发布页同时提供 `SHA256SUMS.txt`、依赖许可包和构建清单，可用 `Get-FileHash` 核对安装包。
 
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="docs/images/home-dark.png" />
-    <source media="(prefers-color-scheme: light)" srcset="docs/images/home-light.png" />
-    <img src="docs/images/home-light.png" alt="Velo 中文首页：常用应用与 Windows 系统快捷入口，提供浅色和深色主题" width="640" />
-  </picture>
-</p>
-<p align="center"><em>首页：常用应用与 Windows 工具，随时呼出、即刻启动。</em><br /><a href="docs/images/home-light.png">查看浅色首页</a> · <a href="docs/images/home-dark.png">查看深色首页</a></p>
+从旧版迁移时，先退出 Go/Wails Velo，再运行安装器。已核对的官方 Go **v0.9.11 系统安装**可在原目录接管；其他旧构建请先卸载并保留数据，再安装 Rust。由于版本号重新起算，请手动下载安装器，不依赖旧 Go 更新器。
 
-| 列表搜索 | 网格搜索 |
-| --- | --- |
-| ![输入 code 后的列表搜索，首项为 Visual Studio Code](docs/images/search-list.png) | ![输入 qk 后的统一网格，同时展示清空回收站、Quicker 和 QuickerStarter](docs/images/search-grid.png) |
-| 显示应用名称与路径，方向键选择、Enter 启动。 | 应用与系统快捷按搜索排名统一排列，支持四个方向键选择。 |
+设置、历史、自定义应用和固定项继续位于 `%LOCALAPPDATA%\Velo`。Rust 首次打开数据前会将原文快照保存在 `%LOCALAPPDATA%\VeloRustMigrationBackups`，备份失败时停止初始化。卸载保留用户数据与程序恢复档案。
 
-| 右键操作 | 外观设置 |
-| --- | --- |
-| ![Visual Studio Code 的右键菜单：打开、打开安装目录、使用管理员权限打开和置顶](docs/images/context-menu.png) | ![外观设置中的主题与候选项排列选项](docs/images/appearance.png) |
-| 打开安装目录、以管理员权限启动，或置顶到首页。 | 选择浅色、深色或跟随系统主题，切换列表与网格。 |
+## 功能
 
-[自定义应用与配置备份](docs/user-guide.md)的操作截图见用户指南，原图及拍摄说明见[截图说明](docs/images/README.md)。
+- 中文、英文、拼音、首字母、关键词及模糊搜索，结合本地使用历史排序。
+- 索引开始菜单、桌面、Windows Apps、Program Files 和自定义目录。
+- 固定与常用应用、系统快捷入口、自定义应用及文件拖入。
+- 列表与网格、键盘导航、原生右键菜单、托盘与全局快捷键。
+- 浅色、深色、跟随系统主题、设置备份及带 SHA-256 校验的 Rust 更新。
 
-## 主要功能
+![Rust 界面示例，使用合成数据](docs/baselines/2026-11-07-slint-rs13/completion-2026-11-12/static/software/light-home.png)
 
-- **键盘操作**：全局快捷键唤起，方向键选择，Enter 启动；支持失焦隐藏和系统托盘。
-- **窗口与会话**：拖动顶部标志、标题或空白区域移动窗口；失焦仅隐藏，再次呼出保留原页面、未保存设置和更新进度，当前会话内保持拖动后的位置。普通和管理员启动指令发出后立即清空搜索，无需等待应用启动或系统弹窗关闭。
-- **应用搜索**：支持精确、前缀、子串、模糊匹配和单字符拼写容错，结合启动频率、最近使用和查询历史排序。
-- **自动索引**：发现开始菜单、桌面、Windows Apps 和 Program Files 中的应用，可添加自定义扫描目录；默认合并重复项并隐藏卸载、帮助、更新等辅助入口。
-- **快捷访问**：首页展示已固定应用、常用应用和系统快捷入口；系统快捷支持中文、英文、拼音及缩写搜索。
-- **候选项操作**：右键可打开应用、打开安装目录、使用管理员权限打开或置顶；置顶项固定到首页。
-- **便捷操作**：清空回收站、关机、重启、锁屏；回收站有内容时保留 Windows 清空确认，已为空时显示单按钮信息提示，可按空格关闭。关机、重启前显示确认提示。
-- **自定义应用**：拖入文件、选择文件或粘贴路径，添加扫描范围外的 `.exe` / `.lnk`；自定义应用与首页固定分别管理。
-- **外观与偏好**：支持浅色、深色和跟随系统主题，可在列表与网格之间切换，并调整快捷键、登录启动、结果数量及搜索权重。
-- **本地数据**：设置、索引和启动历史保存在本机；索引与图标使用缓存，默认每 30 分钟后台刷新。
-- **配置备份**：设置 → 备份可一键保留已保存的配置，并打开备份目录；每次生成独立的 JSON 文件。
-- **应用更新**：从 GitHub Releases 检查版本，下载后校验 SHA-256，安装前自动备份配置，更新后保留原有设置；支持免安装版替换和安装版升级。
+## 开发
 
-## 下载与安装
-
-前往 [Releases](https://github.com/HBLADEH/velo-launcher/releases) 选择 Windows x64 发布文件：
-
-| 方式 | 文件 | 使用方法 |
-| --- | --- | --- |
-| 安装版 | `*-installer.exe` | 运行安装向导 |
-| 免安装版 | `velo-launcher.exe` | 放到固定目录后直接运行 |
-
-两种方式均将设置和缓存保存到 `%LOCALAPPDATA%\Velo`。免安装版不会将数据保存在程序旁边；开启登录启动前，请先确定程序位置。
-
-运行需要 [Microsoft Edge WebView2 Runtime](https://developer.microsoft.com/microsoft-edge/webview2/)。如果系统缺少该组件，请先安装。目前不支持 macOS / Linux。
-
-## 快速上手
-
-1. 启动 Velo，等待首次应用索引完成。后续启动会优先读取缓存。
-2. 按 `Alt+Space` 唤起窗口，输入应用名称，例如 `code`。
-3. 用 `↑` / `↓` 选择结果，按 `Enter` 启动；点击星标可将应用固定到首页。
-4. 按 `Ctrl+,` 打开设置，调整快捷键、主题和索引目录。
-
-在 **设置 → 快捷键** 点击录制区域，直接按下组合键即可记录；点击“保存设置”后生效，`Esc` 可取消录制。
-
-可开启“全屏时禁止快捷键呼出”，避免打断全屏应用；托盘入口仍然可用。每次呼出主页会立即聚焦搜索框，名称、关键词和别名均支持中间匹配。
-
-| 操作 | 快捷键或入口 |
-| --- | --- |
-| 显示 / 隐藏启动器 | `Alt+Space`（可修改） |
-| 选择结果 | `↑` / `↓`；首页与网格也支持 `←` / `→` |
-| 启动选中应用 | `Enter`；默认也支持 `Space` |
-| 清空输入；输入为空时隐藏窗口 | `Esc` |
-| 打开设置 | `Ctrl+,` 或齿轮按钮 |
-| 添加自定义应用 | 首页“＋ 自定义应用”或设置 → 索引 |
-| 刷新索引 | 窗口底部刷新按钮或设置 → 索引 |
-| 备份配置 | 设置 → 备份 → 立即备份 |
-| 检查更新 | 设置 → 关于 |
-| 完全退出 | 通知区域的 Velo 托盘图标 → 右键 → 退出 |
-
-默认情况下，空格键用于启动选中应用。如需输入 `visual studio` 等带空格的查询，请在 **设置 → 常规** 中关闭“按空格键启动选中应用”。
-
-应用添加、固定、更新机制、数据目录及常见问题详见 [用户指南](docs/user-guide.md)。
-
-## Velo 是怎么实现的？
-
-把 Velo 想成一个本地的 **“应用小工坊”**：先把电脑里的应用整理成目录，你输入名字时从目录里找，按回车后交给 Windows 打开。
-
-<p align="center">
-  <img src="docs/diagrams/velo-how-it-works.png" alt="Velo 卡通实现图：Vue 界面经 Wails 向 Go 传递操作，再由 Windows 执行；下方依次展示建立应用目录、在内存中搜索和启动后记录历史" width="960" />
-</p>
-
-### 四个角色，分工合作
-
-| 角色 | 好理解的分工 | 对应实现 |
-| --- | --- | --- |
-| 🖥️ 界面 | 接住你的输入，展示应用、设置和操作结果 | Vue 3 + TypeScript，[App.vue](frontend/src/App.vue) 与 [components/](frontend/src/components/) |
-| ✉️ 传话员 | 把界面操作交给 Go，再把结果和变化送回来 | Wails 2 自动生成的 [wailsjs/](frontend/wailsjs/) 绑定，以及运行时事件 |
-| 🧑‍🔧 调度员 | 决定该搜索、刷新目录、保存设置，还是启动应用 | [app.go](app.go) 协调桌面操作，[Service](internal/app/service.go) 组织业务与数据 |
-| 🪟 执行员 | 和 Windows 打交道：发现应用、打开程序、注册快捷键、管理托盘 | [internal/platform/](internal/platform/) |
-
-### 跟着一次使用，看看代码怎么跑
-
-1. **📚 建目录：先认识电脑里有哪些应用。** 从 [main.go](main.go) 启动，`Service` 先读取已有配置、索引缓存、应用库和历史，再开始后台扫描。[indexer](internal/indexer/indexer.go) 配合 Windows 平台层发现开始菜单、桌面、Program Files、自定义目录和 Windows Apps 中的应用，去重、过滤辅助项，并通过 [icon](internal/icon/cache.go) 缓存图标。各来源统一成 [AppItem](internal/model/app.go)，合并自定义应用与固定记录后，建立内存中的搜索目录。系统快捷入口由 [systemtools](internal/systemtools/catalog.go) 的内置目录提供。
-2. **🔎 找应用：输入 `code`，在目录里找 VS Code。** `App.vue` 通过 Wails 调用 `App.Search`，再进入 `Service.Search`。[search](internal/search/search.go) 在内存中匹配名称、关键词、拼音和缩写，也支持模糊匹配；[history](internal/history/history.go) 提供启动频率、最近使用和同一查询的历史，让结果更符合使用习惯。
-3. **🚀 启动：按下 Enter，交给 Windows 打开。** 界面传入应用 ID 和查询词，`App.Launch` 找到对应应用，再调用 `platform.Launch`。Windows 接受启动请求后，`Service.Record` 保存历史；后续搜索和首页常用应用就会参考这笔记录。界面在发出启动指令时立即清空搜索。
-
-**目录在后台更新，搜索随输入进行。** 有缓存时先使用缓存；默认每 30 分钟或手动触发刷新。目录变化后，Go 发出 `index:changed` 事件，界面重新获取结果。每次输入查询只查内存，扫描工作由后台任务完成。
-
-设置、索引、历史和应用库分别保存在 `%LOCALAPPDATA%\Velo` 下的 `config.json`、`index.json`、`history.json`、`application-library.json`，图标缓存在 `cache/icons/`。保存 JSON 时，[storage](internal/storage/json.go) 先写同目录临时文件，再替换旧文件。
-
-**打包时把界面装进程序。** Vite 将 Vue 界面构建到 `frontend/dist/`，`main.go` 使用 Go 的 `embed` 将它嵌入可执行文件；Wails 通过 WebView2 展示界面，并连接前面的 Go 方法与事件。应用更新由 [update.go](update.go) 和 [internal/update/](internal/update/) 负责：检查 GitHub Releases，下载并校验 SHA-256，备份配置后交给 Windows 执行升级。
-
-## 开发与构建
-
-推荐与 CI 保持一致：**Windows x64、Go 1.25.6、Node.js 22.15.0、npm 10、Wails CLI 2.12.0**，并安装 WebView2 Runtime。
+产品源码位于 `rust/`。工具链固定在 `rust/rust-toolchain.toml` 和 `rust/windows-toolchain.json`；请先按 [开发说明](docs/development.md) 安装匹配版本，使用 PowerShell 7.4+。
 
 ```powershell
-git clone https://github.com/HBLADEH/velo-launcher.git
-cd velo-launcher
-go install github.com/wailsapp/wails/v2/cmd/wails@v2.12.0
-wails doctor
-npm --prefix frontend ci
-wails dev
+$env:GOTOOLCHAIN = 'go1.25.6' # 仅用于历史兼容契约测试
+./scripts/verify-rust.ps1 -Product -SmokeTest
 ```
 
-验证与打包：
+两种渲染器分别构建到 `rust/target/product-artifacts/`。界面开发可使用独立预览身份，命令及参数见 [Rust 工程说明](rust/README.md)。测试必须使用独立实例和数据目录，不得访问正式数据。
 
-```powershell
-# 格式检查、前端检查与构建、go vet、Go 测试及 Windows 打包
-./scripts/verify.ps1
+Go/Wails 源码与旧构建脚本仅作为历史兼容测试基线保留，见 [旧版说明](docs/legacy-go-wails.md)。
 
-# 仅验证，不生成 Windows 可执行文件
-./scripts/verify.ps1 -SkipBuild
+## 验证与限制
 
-# 同时生成安装包（需要 NSIS，且 makensis 位于 PATH 中）
-./scripts/verify.ps1 -Installer
-```
+[RS-14 / G4](docs/baselines/2026-11-07-slint-rs14/machine-completion-2026-11-14/g4-acceptance.md) 已在当前 Windows 11 / Intel UHD 630 宿主机和 Windows 10 测试虚拟机范围放行，其他不可用实体硬件未验证。真实搜狗输入、系统接管、故障恢复、升级、回退和卸载均有记录。
 
-构建产物位于 `build/bin/`。GitHub Actions 使用同一验证脚本；`frontend/wailsjs/` 为 Wails 自动生成的绑定，请勿手工修改。
+渲染器与动画存在资源和帧节奏取舍，历史性能证据见 [重构计划](docs/rust-slint-refactor-plan.md)，不承诺所有设备均达到同一内存预算。
 
-```text
-frontend/src/   Vue 界面、样式与资源
-internal/       搜索、索引、配置、历史与 Windows 平台实现
-build/          应用图标、Windows 元数据与安装包配置
-scripts/        验证与资源测量脚本
-docs/           用户指南、开发说明与验证记录
-```
+## 贡献与许可
 
-## 文档
+欢迎通过 [Issues](https://github.com/HBLADEH/velo-launcher/issues) 反馈问题，附 Windows 版本、Velo 版本和渲染器；分享记录前移除个人信息。开发约定见 [贡献指南](CONTRIBUTING.md)。
 
-| 文档 | 内容 |
-| --- | --- |
-| [用户指南](docs/user-guide.md) | 自定义应用、更新、常见问题与数据存储 |
-| [开发说明](docs/development.md) | 调试参数、测试、发布与资源测量 |
-| [系统快捷入口](docs/system-shortcuts.md) | 支持的入口与 Windows 兼容性 |
-| [构建资源](build/README.md) | 标志、程序图标与安装包资源 |
-| [验证记录](docs/verification.md) | 已完成验证、实测结果及限制 |
-| [实施清单](docs/implementation.md) | 功能进度与待验收项目 |
-| [轻量化执行文档](docs/lightweight-optimization-plan.md) | 优化顺序、任务状态、验收标准与测量方法 |
-
-## 项目状态
-
-Velo 当前专注于 Windows 本地应用搜索与启动，尚未提供插件或云端同步。主要功能已实现，完整性能与稳定性验收仍在进行。
-
-历史测试中，包含 WebView2 子进程的私有内存约为 **154–218 MB**，尚未达到 80 MB 的设计目标。此数据是特定环境下的测量结果，不代表所有设备的资源占用；详见 [验证记录](docs/verification.md)。
-
-## 参与贡献
-
-欢迎使用中文提交缺陷报告、功能建议、文档改进和 Pull Request，也接受英文反馈。开始前请阅读 [贡献指南](CONTRIBUTING.md)，了解开发验证流程和提交建议。
-
-报告问题请前往 [Issues](https://github.com/HBLADEH/velo-launcher/issues)，附上 Windows 版本、Velo 版本、复现步骤、预期与实际结果。分享日志或截图前，请移除个人路径及其他敏感信息。
-
-## 许可证与致谢
-
-Velo 采用 [MIT License](LICENSE)。
-
-界面使用 [Microsoft Fluent UI System Icons](https://github.com/microsoft/fluentui-system-icons)（MIT），以本地 SVG 子集打包；第三方应用保留原生图标。相关许可见 [图标许可证](frontend/src/assets/fluent/LICENSE.txt)，接入规范见 [图标说明](frontend/src/assets/fluent/README.md)。应用内“设置 → 关于”也提供第三方许可信息。
+Velo 使用 [MIT](LICENSE) 许可证。第三方依赖遵循各自条款；Slint 使用 Royalty-free 2.0，应用设置 → 关于提供实际 AboutSlint，完整文本随安装器和许可包分发。[Fluent 图标](rust/ui/assets/fluent/LICENSE.txt) 使用 MIT 许可。

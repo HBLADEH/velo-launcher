@@ -1,0 +1,397 @@
+{
+  "RecordedAtUtc": "2026-11-11T13:25:48.2493686Z",
+  "Renderer": "femtovg",
+  "Kind": "Dedicated synthetic Slint component snapshot example; not the measured product executable",
+  "ExecutableSHA256": "74C8BC43A7AC35ACB25D23D33C6A14B8E25E3231BAD1197A22D2088EC4C45331",
+  "SourceSHA256": "683482280E51F650B763C42324CCEACC86D751B9018BDB437346E3F35C6CCFFD",
+  "Sources": [
+    {
+      "Path": "Cargo.toml",
+      "SHA256": "765E3D1548AF72F139BFE92D93E4571DA1BD878F5D3C0C39B71A7A2292278803"
+    },
+    {
+      "Path": "Cargo.lock",
+      "SHA256": "4DACDF9E0FC09E868BC5B8E38A8D70231F67CB4BA3FA4DDBB0D8CA6A7694C65C"
+    },
+    {
+      "Path": "build.rs",
+      "SHA256": "E3DE7AFD93F01A7A60914DA159B45516DA0429705E56C9EA10425AC33B332E07"
+    },
+    {
+      "Path": "rust-toolchain.toml",
+      "SHA256": "4387889E7EF217B7A0CEA12EE152FB5570EC33880F985BFF2EBCD49B963B3B24"
+    },
+    {
+      "Path": "windows-toolchain.json",
+      "SHA256": "850BE7ABA1DC71C8FDEB44A9950DDFC80E5D1EBE3E77B6E93D9E51126042194C"
+    },
+    {
+      "Path": ".cargo/config.toml",
+      "SHA256": "B30E5A93F3EE1E18D93D09516EB08D9CCCCDDA15027615C61D58BE7264185711"
+    },
+    {
+      "Path": "examples/rs13_visual.rs",
+      "SHA256": "683482280E51F650B763C42324CCEACC86D751B9018BDB437346E3F35C6CCFFD"
+    },
+    {
+      "Path": "../scripts/capture-rust-visual.ps1",
+      "SHA256": "71D72D6CD5F37423CCFA9EC2C530124C4A61A2AEC8EEAE573BB292A926A27B73"
+    },
+    {
+      "Path": "ui/app.slint",
+      "SHA256": "7F0CF73924807294E951DE67FDB954F6817EC7CE754F241911920526A7E9148A"
+    },
+    {
+      "Path": "ui/components.slint",
+      "SHA256": "7C0CD5391156436A44124D3CD3A67BC433600210B041DCC19FFD21CD4D1853D8"
+    },
+    {
+      "Path": "ui/custom.slint",
+      "SHA256": "847D9BFC81B7C75DAC499780FE7A2EB3AFF233AB9ABDAFE4E8606ED28D2B3FEB"
+    },
+    {
+      "Path": "ui/rotating-icons.slint",
+      "SHA256": "027D04961B967B62A12E9F698E16EE578CA63CE12F37671D5DB7EA3EA3241CB4"
+    },
+    {
+      "Path": "ui/settings-controls.slint",
+      "SHA256": "99DF5BFDE22A0F8C36A80F45A701CDE0A89B261D870D60D6BFD4ECC4026C702C"
+    },
+    {
+      "Path": "ui/settings.slint",
+      "SHA256": "24E5A17EE3AA76D72C2D858736EF30554F9B68B01E9B70E54E1F6754003DCFA0"
+    },
+    {
+      "Path": "ui/assets/logo.png",
+      "SHA256": "EE4C40D5765E2596B2EBDC20FAB3AB04301E6B26FB33A65074FEBB477DEFD82A"
+    },
+    {
+      "Path": "ui/assets/README.md",
+      "SHA256": "5E02B4DE68208FD58A88600E77688BB82DA4433F947E294C3E69F2456DEA9D70"
+    },
+    {
+      "Path": "ui/assets/velo.ico",
+      "SHA256": "90B1410469F1F2D7BD87D1979E356EB74586429C9AA0ED8B45168A8085B00298"
+    },
+    {
+      "Path": "ui/assets/fluent/ic_fluent_add_20_regular.svg",
+      "SHA256": "FDF9FEFAF083FF2349AC94AFD47AAB8ECB554650781C5797176B9D6AD3CAEE05"
+    },
+    {
+      "Path": "ui/assets/fluent/ic_fluent_apps_24_regular.svg",
+      "SHA256": "49ACD3CA4B7FFFCE746312A729EBC007EC82D3D7372BE9830577F50B541FA6DF"
+    },
+    {
+      "Path": "ui/assets/fluent/ic_fluent_arrow_clockwise_20_regular.svg",
+      "SHA256": "AB803364462AA202E1D26EB8FEC8FF988C108F742E62B1442A0DB4E0D3304800"
+    },
+    {
+      "Path": "ui/assets/fluent/ic_fluent_arrow_enter_left_20_regular.svg",
+      "SHA256": "5FE518E6862F427B77AE5466681D749A11A099A0FAB658A31BAE87113CD22739"
+    },
+    {
+      "Path": "ui/assets/fluent/ic_fluent_calculator_24_regular.svg",
+      "SHA256": "142C592DD1E26ABD4395507B32B7AE1DC9A3D18FEE30C4E7653D7B8811701D3D"
+    },
+    {
+      "Path": "ui/assets/fluent/ic_fluent_checkmark_20_regular.svg",
+      "SHA256": "D4EB7C05FCFE45D7799925431902DC0079FA0A8CF4C647CFD4CB3DB22C3FD2B7"
+    },
+    {
+      "Path": "ui/assets/fluent/ic_fluent_chevron_down_20_regular.svg",
+      "SHA256": "56CB3F544124A67C79A5FA021EE35BB5488403A840BAC1AE3291C5F6D71ABCCD"
+    },
+    {
+      "Path": "ui/assets/fluent/ic_fluent_code_24_regular.svg",
+      "SHA256": "03090C9E30C66BD926AD19FB1E5CCD07BDD9C2815881CA5A83A8788F6FCE2F63"
+    },
+    {
+      "Path": "ui/assets/fluent/ic_fluent_desktop_pulse_24_regular.svg",
+      "SHA256": "073D8DE9BE495F9E58C18A66EC2F8D35B7CD134C5B71FCDFC36B024F4FFDE4A1"
+    },
+    {
+      "Path": "ui/assets/fluent/ic_fluent_developer_board_24_regular.svg",
+      "SHA256": "CACA0F3C34ABFD3F0D80544FDCF3359C7A14646B8ED0C704C9D90A1CC666440D"
+    },
+    {
+      "Path": "ui/assets/fluent/ic_fluent_folder_24_regular.svg",
+      "SHA256": "B223F863F213DCC1BF75A65D31A287830380C08503C79565B317C77B10E7A2E1"
+    },
+    {
+      "Path": "ui/assets/fluent/ic_fluent_keyboard_20_regular.svg",
+      "SHA256": "3EBFABE0B682FDA1F581511C20BDF228FC70600C33411F3BF3281E00A37E74E1"
+    },
+    {
+      "Path": "ui/assets/fluent/ic_fluent_search_20_regular.svg",
+      "SHA256": "5AC1EAC82DF532662CD1BAD2C8E55763846E1B258740BCBB0612A48D22630D40"
+    },
+    {
+      "Path": "ui/assets/fluent/ic_fluent_settings_24_regular.svg",
+      "SHA256": "5AC05E6E11C9EC9F24703091C42CA1F5C91F4032CB0EEE35C892D1872A38871B"
+    },
+    {
+      "Path": "ui/assets/fluent/ic_fluent_star_16_filled.svg",
+      "SHA256": "3F96EC326175B38593F80DFA9EA47D1EA7A726D8614D042C19871B9155667638"
+    },
+    {
+      "Path": "ui/assets/fluent/ic_fluent_star_16_regular.svg",
+      "SHA256": "C5ABB68053095622285EDB425B1C072665EC3FEF7FB4FA0777C978169AD5889E"
+    },
+    {
+      "Path": "ui/assets/fluent/ic_fluent_window_console_20_regular.svg",
+      "SHA256": "F2B46D93F5B922C79ECD04C9CBAD61C26F6BD0491B80763DE4409F059C43A202"
+    },
+    {
+      "Path": "ui/assets/fluent/LICENSE.txt",
+      "SHA256": "69BC45DC42B9ACB96A69823ADBC6AE538374E3C0BDE169B855B32C48EAAEF52F"
+    },
+    {
+      "Path": "examples/support/rs13_fixture.rs",
+      "SHA256": "E4AA9CEF2F9C564C764E00C86762001B7CAD782E7ABEA37E9A6F9C955E487EC6"
+    }
+  ],
+  "WorkspaceCommit": "4d9dbaf9acf5286d9961fae1e89cca908b5af9d7",
+  "WorkspaceDirty": true,
+  "ReducedMotion": true,
+  "ExpectedScenes": [
+    "home",
+    "home-empty-pinned",
+    "list",
+    "grid",
+    "empty",
+    "long-name",
+    "custom",
+    "settings-0",
+    "settings-1",
+    "settings-2",
+    "settings-3",
+    "settings-4",
+    "settings-5",
+    "settings-6",
+    "scanning",
+    "error",
+    "update",
+    "home-two-rows",
+    "home-bottom",
+    "home-empty-frequent",
+    "custom-bottom",
+    "settings-4-bottom",
+    "settings-5-bottom",
+    "settings-6-bottom",
+    "missing-icon",
+    "recording"
+  ],
+  "PhysicalInput": false,
+  "MonitorFrameCapture": false,
+  "WailsComparisonComplete": false,
+  "Images": [
+    {
+      "Name": "dark-custom-bottom.png",
+      "SHA256": "F2DD7CFA2E4AADFB257AC9E36D11AC83B7F60A184287ACADB2A9A8383A11C86D"
+    },
+    {
+      "Name": "dark-custom.png",
+      "SHA256": "29460A026F9101EAD71A14D2EF1AA8C54457C2DC06025B58218B9E8E599F75A9"
+    },
+    {
+      "Name": "dark-empty.png",
+      "SHA256": "47F4B56C4261D8D609BDE274FBCBFAD79056E7EEC15D9AD84A35CDF87D859938"
+    },
+    {
+      "Name": "dark-error.png",
+      "SHA256": "0CC2E1C4B9B0292EA0E86A9B948F41D39906CE4AA6479D78C7400569908DE6D7"
+    },
+    {
+      "Name": "dark-grid.png",
+      "SHA256": "3A1D01820EF0609C289ADD347672215EFAA4DFB52B4821D95EEB534CDC57DD64"
+    },
+    {
+      "Name": "dark-home-bottom.png",
+      "SHA256": "3C89CD6F26410F648291C6953103E133B8052C155CED40B114665FD32182FE0F"
+    },
+    {
+      "Name": "dark-home-empty-frequent.png",
+      "SHA256": "88352A6FD786D719ACF5973923D042F2918207946526EA23A2DEB7DD39E343A8"
+    },
+    {
+      "Name": "dark-home-empty-pinned.png",
+      "SHA256": "24526B1B3A8D2E6845C6C9CEA61B765D21A34D45CA70EE4AE8D41342B0DF8313"
+    },
+    {
+      "Name": "dark-home-two-rows.png",
+      "SHA256": "18ECB4CC604643F5C7020812F1CFE7AF6DFDFC241CE99F158C3F476BD5308AD2"
+    },
+    {
+      "Name": "dark-home.png",
+      "SHA256": "080F5BDD95F3041F9A8ED24BA4DBD9AD6A860F09BC2E693A944F8C5548170A6F"
+    },
+    {
+      "Name": "dark-list.png",
+      "SHA256": "509CB2DF87DF534B4BFDFEB9C6BADD59F981A22C6864C5AF5DAF73EFAEE1E51F"
+    },
+    {
+      "Name": "dark-long-name.png",
+      "SHA256": "DE9ADC94CC14C4D0DF31261D2FAB7EA57FEBD7D26B03FE31C4ED89FB9DA6B0C3"
+    },
+    {
+      "Name": "dark-missing-icon.png",
+      "SHA256": "7E1DB5B9599C99079C53872ABB83D74447A4B55CBE493D6764968B213ACCD8CE"
+    },
+    {
+      "Name": "dark-recording.png",
+      "SHA256": "8CA35CBCF13592B6146B2BA668D6593C6499AFD44503E45F0FE3113DBC433626"
+    },
+    {
+      "Name": "dark-scanning.png",
+      "SHA256": "BE9D353CAE4731361240E28E366480FD192BB5893A8D36FC42311A3A7D7340A1"
+    },
+    {
+      "Name": "dark-settings-0.png",
+      "SHA256": "F80DC98E4C30E3194582F253D0E75DCAF7370D03719B5B7B9D529E164500EE55"
+    },
+    {
+      "Name": "dark-settings-1.png",
+      "SHA256": "5C49A1B4789F520EC37F5A2A3A338FD45607436820908AF5C3A7ECEA9EF0849C"
+    },
+    {
+      "Name": "dark-settings-2.png",
+      "SHA256": "1DB21EB4D0FAF6F86B486D231732F3204F56DC4889030A2921F50BF6DCC322A3"
+    },
+    {
+      "Name": "dark-settings-3.png",
+      "SHA256": "16DC36CF49B41F32FC7C139E68D85E59218A3B5B6F6DEF5B3ECC16FD48A23E4A"
+    },
+    {
+      "Name": "dark-settings-4-bottom.png",
+      "SHA256": "3BDE31F564E4BCA5E2CE0E437D5DAD12190872E3AFAD3B0C0918BBD141BDD9E8"
+    },
+    {
+      "Name": "dark-settings-4.png",
+      "SHA256": "3BDE31F564E4BCA5E2CE0E437D5DAD12190872E3AFAD3B0C0918BBD141BDD9E8"
+    },
+    {
+      "Name": "dark-settings-5-bottom.png",
+      "SHA256": "707559D284F0C153B8940CCA20B2BCB3F527D6352B9BFD3FD1E7204EBD886874"
+    },
+    {
+      "Name": "dark-settings-5.png",
+      "SHA256": "707559D284F0C153B8940CCA20B2BCB3F527D6352B9BFD3FD1E7204EBD886874"
+    },
+    {
+      "Name": "dark-settings-6-bottom.png",
+      "SHA256": "4F0B210E54D9F9A4E9A3C04CCD1A4FB366B6574842525BBF546359C9AC2F723B"
+    },
+    {
+      "Name": "dark-settings-6.png",
+      "SHA256": "4F0B210E54D9F9A4E9A3C04CCD1A4FB366B6574842525BBF546359C9AC2F723B"
+    },
+    {
+      "Name": "dark-update.png",
+      "SHA256": "187C4E559B86D07BF953B8625BC530B6191C4852FD0DF7413CB14B320AEF13A4"
+    },
+    {
+      "Name": "light-custom-bottom.png",
+      "SHA256": "DC3189104D78D9EDEA579055B6CD67DB02DA2E548DD802182713D39A303E1DA8"
+    },
+    {
+      "Name": "light-custom.png",
+      "SHA256": "E301A7A818F292D276DCCE5E09F78B0D8A817AA51F837C8BBD16214816DEDDC8"
+    },
+    {
+      "Name": "light-empty.png",
+      "SHA256": "C94E4487F8A784141C5D7B2B76F289902809367ED7928E298D19EAA864033626"
+    },
+    {
+      "Name": "light-error.png",
+      "SHA256": "62478243F855A36C006FB08E3D0C9ABEEFC39655748B03B808FCE5F228484486"
+    },
+    {
+      "Name": "light-grid.png",
+      "SHA256": "ACC362B06C5CDB26623CFFE3BC5BDEC2D330552CF1EE06059C68A8BFF784AD48"
+    },
+    {
+      "Name": "light-home-bottom.png",
+      "SHA256": "8E750B5CB7EB1195DC03B1AA9A2536C1622B531F960854FD9C5A4C08B78A25E0"
+    },
+    {
+      "Name": "light-home-empty-frequent.png",
+      "SHA256": "5729B23497A88F8645DA96FD578D44307A9B120EEDAEB02A3940D77E7509A24C"
+    },
+    {
+      "Name": "light-home-empty-pinned.png",
+      "SHA256": "1504E95A417FBE5EBB5E767C463BB1782E67B0BFDBC607C0D53FF1DCB7BF1D72"
+    },
+    {
+      "Name": "light-home-two-rows.png",
+      "SHA256": "1D03D577BE431D2BCAAD815BA3A14706E0A65436D3E3DEC31E720C7EB5E618F8"
+    },
+    {
+      "Name": "light-home.png",
+      "SHA256": "BAF42CC8F968381279BEF7D041ECEFEBB5D8D40594C4A4EC2DD5E90B7E513384"
+    },
+    {
+      "Name": "light-list.png",
+      "SHA256": "A7005A9150D07513F4C3EB4761AFC9818B68DB6EE7602D591B0271C8B151DDFF"
+    },
+    {
+      "Name": "light-long-name.png",
+      "SHA256": "69298A68BAE83120A6B3C02390B0756D84585688F15A89FDFF4BFA2D9A7953CD"
+    },
+    {
+      "Name": "light-missing-icon.png",
+      "SHA256": "0AE91237A9BFC6CE2E4844751C27C2969EB68DD9A16B263865FB7A7B149046DB"
+    },
+    {
+      "Name": "light-recording.png",
+      "SHA256": "15BA80079C8B798A76B01E26B4172311E6EEAE3B32AEE0430A3BC037D6D76D7C"
+    },
+    {
+      "Name": "light-scanning.png",
+      "SHA256": "E0A1F6BF99FFA6B1EF750DDA2FAF974DAF8E91D0D4CDBB3CB17EA34A585CEF0D"
+    },
+    {
+      "Name": "light-settings-0.png",
+      "SHA256": "46FD0585F6663346298B5C0947EB4250E1526040577DA805B4BFF625CCA2EFAF"
+    },
+    {
+      "Name": "light-settings-1.png",
+      "SHA256": "218AA7B194BE438A915FABF33BA2C86DDB2BA0E069A5235F06DEE9F795997104"
+    },
+    {
+      "Name": "light-settings-2.png",
+      "SHA256": "3DFC7247E53F2DD55A07EEF37B4673FB5247ED67C73C3C31E3D9867FE7AD06DF"
+    },
+    {
+      "Name": "light-settings-3.png",
+      "SHA256": "BDDCB67D65A419652A2E0073D3E02348722ABB2BE5ABC853F0C611814A561393"
+    },
+    {
+      "Name": "light-settings-4-bottom.png",
+      "SHA256": "6C83162B1362E85A09D59B6BAC183D6BB798899477BAD23F5A9642CE33F23A25"
+    },
+    {
+      "Name": "light-settings-4.png",
+      "SHA256": "6C83162B1362E85A09D59B6BAC183D6BB798899477BAD23F5A9642CE33F23A25"
+    },
+    {
+      "Name": "light-settings-5-bottom.png",
+      "SHA256": "CD305D462017B02FC61593478F6A328C215175609DB687A9071270F6E529AC94"
+    },
+    {
+      "Name": "light-settings-5.png",
+      "SHA256": "CD305D462017B02FC61593478F6A328C215175609DB687A9071270F6E529AC94"
+    },
+    {
+      "Name": "light-settings-6-bottom.png",
+      "SHA256": "201E14472901C5D09C04FA6845604C677D873046C50D244965A891BAC0271A35"
+    },
+    {
+      "Name": "light-settings-6.png",
+      "SHA256": "201E14472901C5D09C04FA6845604C677D873046C50D244965A891BAC0271A35"
+    },
+    {
+      "Name": "light-update.png",
+      "SHA256": "135CA6C5399CCF737B2CD5371975E705D9B4B128EAA34E11C37341C7E501B804"
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "RecordedAtUtc": "2026-11-09T18:13:00.1925072Z",
+  "Scenario": "software-10000-v4",
+  "Edition": "software",
+  "Fixture": "v4-production-signature-icons",
+  "ExpectedCatalogCount": 10000,
+  "ObservedFinalCatalogCount": 10000,
+  "SHA256": "E85B41C7E77888750817E47F092EABECB1BAB5A68EFCE579378CE2DDAD2DBA4B",
+  "ExecutableMatches": true,
+  "ProcessId": 28668,
+  "NormalExit": {
+    "Completed": true,
+    "ExitCode": 0,
+    "ProcessId": 28668,
+    "SHA256": "E85B41C7E77888750817E47F092EABECB1BAB5A68EFCE579378CE2DDAD2DBA4B",
+    "ForcedCleanup": false
+  },
+  "OperatorReport": "5 次正常，已点击退出",
+  "ExitFollowup": null,
+  "PhysicalFixedAKeys": 6,
+  "ValidPairedQueryRows": 6,
+  "EligibleFinalEdits": 6,
+  "DroppedEventLines": 0,
+  "GeometryFreshnessVerified": true,
+  "ClockOffsetRangeMilliseconds": 0.0023,
+  "KeyToFirstChangedResultRegionUpperMilliseconds": {
+    "Count": 6,
+    "Minimum": 51.2811,
+    "Median": 57.608000000000004,
+    "P95": 71.0427,
+    "Maximum": 71.0427
+  },
+  "AllSavedCompleteBodiesMatch": true,
+  "ExpectedVisibleNames": [
+    "RS12 测试 App 00000",
+    "RS12 测试 App 00001",
+    "RS12 测试 App 00002",
+    "RS12 测试 App 00003",
+    "RS12 测试 App 00004",
+    "RS12 测试 App 00005",
+    "RS12 测试 App 00006",
+    "RS12 测试 App 00007"
+  ],
+  "PixelComparisonScope": "All saved BGRA pixels y>=66, including eight result rows and footer",
+  "ReferenceImage": "frame-605.bmp",
+  "NativeDPI": 96,
+  "ObserverCPUSeconds": 3.59375,
+  "ObserverElapsedSeconds": 69.9537052,
+  "FormalFilesMatchingSessionPreflight": {
+    "config.json": true,
+    "index.json": true,
+    "history.json": true,
+    "application-library.json": true,
+    "quick-launch.json": true
+  },
+  "SeedFilesMatchingAfterExit": {
+    "config.json": true,
+    "index.json": false,
+    "history.json": true,
+    "application-library.json": true,
+    "quick-launch.json": true
+  },
+  "ClosedEvidenceHashes": {
+    "session.json": "39E544CB4931D46E58494533FD9BB614D88542AAD49C7AD4143294D4892F54D6",
+    "completion.json": "E3687D26247F348264D3682898DDE05F18C9653166E97E32F2E5FD977796A794",
+    "input-events.log": "17DA6E543E688B9DF8832799669F49708BF93C94EA152AAF6FE91074FB03D28B",
+    "events.jsonl": "1B4E4D638B62AADDE7A3DC73306F96BDCD995419853A952B696B13BB65CDEDAD",
+    "identity.json": "E0A2E543795932BB0296AA084D9FBD0D03A3C8D651922C497F5B54EA82C6A5FB",
+    "summary.json": "4C58F269F491EC7D1811F05A8084BF3C05C3175F3C323C5530497E40A65DAA22",
+    "saved-frame-verification.json": "417A193ADBA65433094DE2340BA2A6F19A400F57EE0902C0CC31C508D1E79C59",
+    "animation-observation.json": "C685C4CEA55DA50594CF92CECD89FED930E7A5603ACF2FD3B14F9D0566AB4A0E"
+  },
+  "SavedImageSHA256": {
+    "frame-602.bmp": "311354A76FC6F78AA0D14627A814D7201B1C0F269FB398306C48D638EC045D56",
+    "frame-757.bmp": "0B4AABDB3141ABDE574A048E682B246737FD6FCEA48419396D5DEEA46DBA3E9F",
+    "frame-844.bmp": "311354A76FC6F78AA0D14627A814D7201B1C0F269FB398306C48D638EC045D56",
+    "frame-913.bmp": "311354A76FC6F78AA0D14627A814D7201B1C0F269FB398306C48D638EC045D56",
+    "frame-997.bmp": "311354A76FC6F78AA0D14627A814D7201B1C0F269FB398306C48D638EC045D56",
+    "frame-1068.bmp": "311354A76FC6F78AA0D14627A814D7201B1C0F269FB398306C48D638EC045D56"
+  },
+  "RawImagesPublished": false,
+  "CorrectResultBodyReviewed": true,
+  "ExactEarliestCorrectResultFrameVerified": false,
+  "FirstPossibleInputLatencyVerified": false,
+  "PhotonPresentationVerified": false,
+  "ColdStartupBudgetVerified": false,
+  "Scope": "Physical fixed A query to first changed result region, plus separate reviewed complete-body saved frames and animation stability observations. One query/96 DPI/small sample only. v3 fallback and v4 actual-icon conditions remain separate.",
+  "RS12Complete": false
+}

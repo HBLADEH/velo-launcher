@@ -1,0 +1,81 @@
+{
+  "RecordedAtUtc": "2026-11-10T18:42:38.3044972Z",
+  "HumanColdCharacterObservations": 9,
+  "CalibratedColdValidSamples": 9,
+  "CalibratedColdInvalidSamples": 0,
+  "ColdCalibrationComplete": true,
+  "RequiredSamples": 9,
+  "SamplesByEdition": {
+    "software": 3,
+    "femtovg": 3,
+    "wails": 3
+  },
+  "RequiredPerEdition": 3,
+  "CurrentUpperMilliseconds": {
+    "software": [
+      287.4924,
+      215.15370000000001,
+      237.8731
+    ],
+    "femtovg": [
+      445.7443,
+      450.45480000000003,
+      473.74260000000004
+    ],
+    "wails": [
+      3549.82875,
+      3241.6126,
+      3190.8264
+    ]
+  },
+  "ValidSamplesWithUpperBoundAbove500ms": 3,
+  "Groups": {
+    "software": {
+      "SampleCountSatisfied": true,
+      "UpperMilliseconds": {
+        "Count": 3,
+        "Minimum": 215.15370000000001,
+        "Median": 237.8731,
+        "P95": 287.4924,
+        "Maximum": 287.4924
+      },
+      "UpperBoundP95Within500ms": true
+    },
+    "femtovg": {
+      "SampleCountSatisfied": true,
+      "UpperMilliseconds": {
+        "Count": 3,
+        "Minimum": 445.7443,
+        "Median": 450.45480000000003,
+        "P95": 473.74260000000004,
+        "Maximum": 473.74260000000004
+      },
+      "UpperBoundP95Within500ms": true
+    },
+    "wails": {
+      "SampleCountSatisfied": true,
+      "UpperMilliseconds": {
+        "Count": 3,
+        "Minimum": 3190.8264,
+        "Median": 3241.6126,
+        "P95": 3549.82875,
+        "Maximum": 3549.82875
+      },
+      "UpperBoundP95Within500ms": false
+    }
+  },
+  "LatestCaseQuitSource": "User confirmed visible characters and normal quit",
+  "LatestCaseHumanVisualFeedbackReceived": true,
+  "NextCase": null,
+  "RemainingSequence": [],
+  "IndependentRestartRequiredBeforeNext": false,
+  "CurrentBootConsumed": "639299317925000000",
+  "SlintSixColdSampleUpperBoundsWithin500ms": true,
+  "ColdStartup500msBudgetVerifiedForAllThreePrograms": false,
+  "HistoricalManualFocusRootCauseEstablished": false,
+  "DefaultRendererSelected": false,
+  "RS12Complete": true,
+  "StageReview": "RS-12 frozen same-machine measurement matrix verified; budget exceptions, historical failures and timing/compatibility limits retained.",
+  "Scope": "Nine cold calibrations complete. Both Slint paths meet 500ms in their three tested trials; Wails reference remains above budget. Final stage acceptance is separate from budget/release approval. Earlier raw/status files retain original identities.",
+  "StageAcceptance": "../../completion-2026-11-11/acceptance.json"
+}

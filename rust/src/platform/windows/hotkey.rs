@@ -89,6 +89,8 @@ pub enum Event {
 
 enum Request {
     Bind(Key, SyncSender<Result<(), String>>),
+    Prepare(Key, SyncSender<Result<(), String>>),
+    Finish(bool, SyncSender<Result<(), String>>),
 }
 
 struct Registration {
@@ -122,6 +124,37 @@ pub struct Service {
     worker: Option<JoinHandle<()>>,
 }
 
+/// A settings worker can reserve a new chord while the old registration stays
+/// alive. A failed disk/registry commit only releases the reservation.
+#[derive(Clone)]
+pub struct Client {
+    sender: SyncSender<Request>,
+    thread_id: u32,
+}
+
+impl Client {
+    fn request(
+        &self,
+        request: impl FnOnce(SyncSender<Result<(), String>>) -> Request,
+    ) -> Result<(), String> {
+        let (sender, result) = mpsc::sync_channel(1);
+        self.sender
+            .try_send(request(sender))
+            .map_err(|_| "快捷键服务已停止或忙碌")?;
+        // SAFETY: Service publishes the ID only after creating its message queue.
+        if unsafe { PostThreadMessageW(self.thread_id, WM_APP + 1, 0, 0) } == 0 {
+            return Err("快捷键服务不可用".into());
+        }
+        result.recv().map_err(|_| "快捷键服务已停止")?
+    }
+    pub fn prepare(&self, key: Key) -> Result<(), String> {
+        self.request(|result| Request::Prepare(key, result))
+    }
+    pub fn finish(&self, commit: bool) -> Result<(), String> {
+        self.request(|result| Request::Finish(commit, result))
+    }
+}
+
 impl Service {
     pub fn start(callback: impl Fn(Event) + Send + 'static) -> std::io::Result<Self> {
         let (sender, requests) = mpsc::sync_channel(1);
@@ -134,6 +167,8 @@ impl Service {
                 unsafe { PeekMessageW(&mut message, null_mut(), 0, 0, PM_NOREMOVE) };
                 let _ = ready.send(unsafe { GetCurrentThreadId() });
                 let mut registration: Option<Registration> = None;
+                let mut pending: Option<Registration> = None;
+                let mut preparing = false;
                 // GetMessage blocks while idle. All registrations and requests are serialized here.
                 while unsafe { GetMessageW(&mut message, null_mut(), 0, 0) } > 0 {
                     if message.message == WM_HOTKEY {
@@ -147,8 +182,9 @@ impl Service {
                     } else if message.message == WM_APP + 1 {
                         match requests.recv() {
                             Ok(Request::Bind(key, result)) => {
-                                let outcome = if registration.as_ref().is_some_and(|r| r.key == key)
-                                {
+                                let outcome = if preparing {
+                                    Err("设置正在保存，请稍候".into())
+                                } else if registration.as_ref().is_some_and(|r| r.key == key) {
                                     Ok(())
                                 } else {
                                     let next = registration.as_ref().map_or(1, |r| 3 - r.id);
@@ -156,6 +192,28 @@ impl Service {
                                         .map(|new| registration = Some(new))
                                 };
                                 let _ = result.send(outcome);
+                            }
+                            Ok(Request::Prepare(key, result)) => {
+                                let outcome = if preparing {
+                                    Err("设置正在保存，请稍候".into())
+                                } else if registration.as_ref().is_some_and(|r| r.key == key) {
+                                    Ok(())
+                                } else {
+                                    let next = registration.as_ref().map_or(1, |r| 3 - r.id);
+                                    Registration::acquire(next, key).map(|new| pending = Some(new))
+                                };
+                                if outcome.is_ok() {
+                                    preparing = true;
+                                }
+                                let _ = result.send(outcome);
+                            }
+                            Ok(Request::Finish(commit, result)) => {
+                                if commit && let Some(new) = pending.take() {
+                                    registration = Some(new);
+                                }
+                                pending.take();
+                                preparing = false;
+                                let _ = result.send(Ok(()));
                             }
                             Err(_) => return,
                         }
@@ -173,18 +231,14 @@ impl Service {
     }
 
     pub fn bind(&self, key: Key) -> Result<(), String> {
-        let (sender, result) = mpsc::sync_channel(1);
-        self.sender
-            .try_send(Request::Bind(key, sender))
-            .map_err(|_| "快捷键服务已停止或忙碌")?;
-        // SAFETY: a successful start guarantees the target owns a message queue.
-        if unsafe { PostThreadMessageW(self.thread_id, WM_APP + 1, 0, 0) } == 0 {
-            return Err(format!(
-                "快捷键服务不可用: {}",
-                std::io::Error::last_os_error()
-            ));
+        self.client().request(|result| Request::Bind(key, result))
+    }
+
+    pub fn client(&self) -> Client {
+        Client {
+            sender: self.sender.clone(),
+            thread_id: self.thread_id,
         }
-        result.recv().map_err(|_| "快捷键服务已停止")?
     }
 }
 

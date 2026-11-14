@@ -19,6 +19,8 @@ use slint::{ComponentHandle, GraphicsAPI, RenderingState};
 
 slint::include_modules!();
 
+mod business;
+mod business_probe;
 mod fixtures;
 mod import_preview;
 mod input;
@@ -26,7 +28,8 @@ mod interaction_probe;
 mod lifecycle;
 mod measurement;
 mod navigation;
-mod platform;
+mod pages_probe;
+use velo_slint::platform;
 mod ui;
 
 const RENDERER: &str = if cfg!(feature = "renderer-femtovg") {
@@ -55,9 +58,15 @@ fn main() -> Result<(), Box<dyn Error>> {
     let mut initial_query = String::new();
     let mut measurement_log = None;
     let mut measurement_stdio = false;
+    let mut measurement_business = false;
     let mut isolated = false;
+    let mut fixture_mode = false;
+    let mut business_smoke_test = false;
+    let mut pages_smoke_test = false;
+    let mut pages_restart_test = false;
     let mut background = false;
     let mut hotkey = platform::windows::hotkey::Key::parse("Alt+Space")?;
+    let mut hotkey_override = false;
     let mut allow_hotkey_fullscreen = false;
     let mut instance_id = None;
     let mut data_dir = None;
@@ -74,20 +83,33 @@ fn main() -> Result<(), Box<dyn Error>> {
             "--reduce-motion" => reduce_motion = true,
             "--empty-pinned" => empty_pinned = true,
             "--measurement-stdio" => measurement_stdio = true,
+            "--measurement-business" => measurement_business = true,
             "--isolated" => isolated = true,
+            "--fixtures" => fixture_mode = true,
+            "--business-smoke-test" => business_smoke_test = true,
+            "--pages-smoke-test" => pages_smoke_test = true,
+            "--pages-restart-test" => {
+                pages_smoke_test = true;
+                pages_restart_test = true;
+            }
             "--background" => background = true,
             "--allow-hotkey-fullscreen" => allow_hotkey_fullscreen = true,
             "--version" => {
                 println!(
-                    "velo-slint {} slint=1.18.1 backend=winit renderer={RENDERER} target={}",
+                    "velo-slint {} slint=1.18.1 backend=winit renderer={RENDERER} target={} identity={}",
                     env!("CARGO_PKG_VERSION"),
-                    env!("VELO_BUILD_TARGET")
+                    env!("VELO_BUILD_TARGET"),
+                    if cfg!(feature = "product") {
+                        "product"
+                    } else {
+                        "preview"
+                    }
                 );
                 return Ok(());
             }
             "--help" | "-h" => {
                 println!(
-                    "velo-slint [--background] [--hotkey=Alt+Space] [--allow-hotkey-fullscreen] [--instance-id=ID --data-dir=PATH] [--diagnostics] [--isolated] [--smoke-test|--input-smoke-test] [--theme=light|dark] [--reduce-motion] [--empty-pinned] [--query=TEXT] [--measurement-log=PATH [--measurement-stdio]] [--version]"
+                    "velo-slint [--background] [--hotkey=Alt+Space] [--allow-hotkey-fullscreen] [--instance-id=ID --data-dir=PATH] [--diagnostics] [--isolated|--fixtures] [--smoke-test|--input-smoke-test|--business-smoke-test] [--theme=light|dark] [--reduce-motion] [--empty-pinned] [--query=TEXT] [--measurement-log=PATH [--measurement-stdio] [--measurement-business]] [--version]"
                 );
                 return Ok(());
             }
@@ -98,6 +120,7 @@ fn main() -> Result<(), Box<dyn Error>> {
                     measurement_log = Some(std::path::PathBuf::from(path));
                 } else if let Some(text) = argument.strip_prefix("--hotkey=") {
                     hotkey = platform::windows::hotkey::Key::parse(text)?;
+                    hotkey_override = true;
                 } else if let Some(id) = argument.strip_prefix("--instance-id=") {
                     instance_id = Some(id.to_owned());
                 } else if let Some(path) = argument.strip_prefix("--data-dir=") {
@@ -108,19 +131,41 @@ fn main() -> Result<(), Box<dyn Error>> {
             }
         }
     }
-    isolated |= smoke_test || measurement_stdio;
+    if measurement_business
+        && (instance_id.is_none() || data_dir.is_none() || isolated || fixture_mode || smoke_test)
+    {
+        return Err("--measurement-business requires an explicit test identity/data directory and the normal business lifecycle".into());
+    }
+    isolated |= smoke_test || (measurement_stdio && !measurement_business);
+    fixture_mode |= isolated;
+    if (business_smoke_test || pages_smoke_test)
+        && (instance_id.is_none()
+            || data_dir.is_none()
+            || fixture_mode
+            || background
+            || initial_query != business_probe::QUERY)
+    {
+        return Err("--business-smoke-test requires an explicit test identity/data directory and --query=RS10 启动验证, without fixture/background modes".into());
+    }
     if isolated && background {
         return Err("--background cannot be combined with isolated measurement/smoke modes".into());
     }
     if measurement_stdio && measurement_log.is_none() {
         return Err("--measurement-stdio requires --measurement-log=PATH".into());
     }
+    if measurement_business && measurement_log.is_none() {
+        return Err("--measurement-business requires --measurement-log=PATH".into());
+    }
     if measurement_log.is_some() && (smoke_test || !initial_query.is_empty()) {
         return Err(
             "Measurement requires real input; do not combine with smoke tests or --query".into(),
         );
     }
-    let identity = platform::windows::instance::Identity::resolve(instance_id, data_dir)?;
+    let identity = platform::windows::instance::Identity::resolve_launch(
+        instance_id,
+        data_dir,
+        !isolated && !smoke_test && !fixture_mode,
+    )?;
     let _instance_guard = if isolated {
         None
     } else {
@@ -154,14 +199,20 @@ fn main() -> Result<(), Box<dyn Error>> {
         })
         .select()?;
     let app = AppWindow::new()?;
-    ui::connect(&app, diagnostics, empty_pinned, measurement.clone());
+    app.set_product_version(env!("CARGO_PKG_VERSION").into());
+    app.on_hotkey_parts(|text| {
+        Rc::new(slint::VecModel::from(
+            text.split('+')
+                .map(slint::SharedString::from)
+                .collect::<Vec<_>>(),
+        ))
+        .into()
+    });
     let imports = import_preview::Controller::connect(&app, diagnostics, measurement.clone());
     app.set_dark_theme(dark_theme);
     app.set_reduce_motion(reduce_motion);
     app.set_lifecycle_enabled(!isolated);
     app.set_disable_hotkey_fullscreen(!allow_hotkey_fullscreen);
-    app.set_input_text(initial_query.clone().into());
-    app.invoke_input_edited(initial_query.into());
     app.set_renderer_label(format!("Slint 1.18.1 · winit · {RENDERER}（独立构建）").into());
     let probe = Rc::new(RefCell::new(Probe::default()));
     measurement::event(&measurement, "component_created", "");
@@ -170,11 +221,43 @@ fn main() -> Result<(), Box<dyn Error>> {
             &app,
             background,
             hotkey,
+            !fixture_mode,
             &identity,
             diagnostics,
             measurement.clone(),
         )
     });
+    let business = if fixture_mode {
+        let fixture = std::thread::spawn(move || fixtures::Snapshot::new(empty_pinned))
+            .join()
+            .map_err(|_| "fixture startup task failed")??;
+        ui::connect(&app, diagnostics, fixture, measurement.clone());
+        None
+    } else {
+        let options = lifecycle
+            .as_ref()
+            .and_then(|controller| controller.hotkey_client())
+            .map(|hotkey| {
+                platform::windows::preferences::Startup::for_instance(&identity).map(|startup| {
+                    velo_slint::core::service::Options {
+                        hotkey,
+                        startup,
+                        identity: identity.clone(),
+                    }
+                })
+            })
+            .transpose()?;
+        Some(business::Controller::connect(
+            &app,
+            &identity.data_dir,
+            diagnostics,
+            options,
+            hotkey_override,
+            measurement.clone(),
+        )?)
+    };
+    app.set_input_text(initial_query.clone().into());
+    app.invoke_input_edited(initial_query.into());
 
     if cfg!(feature = "renderer-femtovg") {
         let rendering_probe = probe.clone();
@@ -419,13 +502,32 @@ fn main() -> Result<(), Box<dyn Error>> {
     if measurement_stdio {
         measurement::connect_stdio(&app, measurement.as_ref().unwrap().clone());
     }
+    let business_probe = business_smoke_test
+        .then(|| business_probe::Controller::start(&app, &identity.data_dir))
+        .transpose()?;
+    let pages_probe = pages_smoke_test
+        .then(|| pages_probe::Controller::start(&app, &identity.data_dir, pages_restart_test))
+        .transpose()?;
     slint::run_event_loop_until_quit()?;
     app.set_presented(false);
     app.hide()?;
+    if let Some(controller) = &business {
+        controller.stop();
+    }
     app.window()
         .on_winit_window_event(|_, _| EventResult::Propagate);
     drop(lifecycle);
     drop(imports);
+    if let Some(probe) = pages_probe
+        && !probe.finish()?
+    {
+        return Err("Complete pages component smoke test failed".into());
+    }
+    if let Some(probe) = business_probe
+        && !probe.finish()?
+    {
+        return Err("Business component smoke test failed".into());
+    }
     if smoke_test && !smoke_result.get() {
         return Err("Window/renderer smoke test failed (or closed before completion)".into());
     }

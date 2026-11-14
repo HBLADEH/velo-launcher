@@ -10,7 +10,10 @@
 *.log
 .DS_Store
 /.reasonix/
+/.playwright-mcp/
 /rust/target/
+__pycache__/
+*.pyc
 
 # Keep raw local measurement logs and frozen collector snapshots out of Git.
 /docs/baselines/**/*.jsonl

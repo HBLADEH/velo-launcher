@@ -1,0 +1,86 @@
+name: Rust preview validation
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    # Exact MSVC/SDK file versions are checked by rust-environment.ps1. A moving
+    # hosted image cannot stand in for the toolchain locked by this repository.
+    runs-on: [self-hosted, Windows, X64, velo-locked-toolchain]
+    timeout-minutes: 180
+    concurrency:
+      group: velo-rust-desktop-validation
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.25.6'
+      - run: ./scripts/verify-rust.ps1 -SmokeTest
+        shell: pwsh
+      - name: Verify and stage both internal preview archives
+        shell: pwsh
+        run: |
+          foreach ($renderer in 'software','femtovg') {
+            ./scripts/test-rust-preview.ps1 -Renderer $renderer -OutputDirectory "rust/target/preview-$renderer"
+            ./scripts/audit-rust-licenses.ps1 -Renderer $renderer -OutputPath "rust/target/preview-$renderer/license-audit.json"
+          }
+      - name: Prepare pinned portable NSIS
+        shell: pwsh
+        run: ./scripts/prepare-rust-packaging-tools.ps1 -OutputDirectory rust/target/packaging-tools
+      - name: Verify actual isolated installers
+        shell: pwsh
+        run: |
+          $tools = Get-Content -Raw rust/target/packaging-tools/tools.json | ConvertFrom-Json
+          foreach ($renderer in 'software','femtovg') {
+            ./scripts/test-rust-installer.ps1 -Renderer $renderer -OutputDirectory "rust/target/installer-$renderer" -Makensis $tools.Compiler
+          }
+      - name: Verify actual per-user registration and cleanup
+        shell: pwsh
+        run: |
+          $tools = Get-Content -Raw rust/target/packaging-tools/tools.json | ConvertFrom-Json
+          foreach ($renderer in 'software','femtovg') {
+            ./scripts/test-rust-user-install.ps1 -Renderer $renderer -OutputDirectory "rust/target/user-install-$renderer" -Makensis $tools.Compiler
+          }
+      - name: Verify product identity and stage machine installers
+        shell: pwsh
+        run: |
+          ./scripts/verify-rust.ps1 -Product -SmokeTest
+          $tools = Get-Content -Raw rust/target/packaging-tools/tools.json | ConvertFrom-Json
+          foreach ($renderer in 'software','femtovg') {
+            ./scripts/package-rust-product.ps1 -Renderer $renderer -OutputDirectory "rust/target/product-$renderer" -Makensis $tools.Compiler
+          }
+          # Actual machine takeover tests require the disposable guest; never
+          # replace the interactive runner's own machine installation.
+      - uses: actions/upload-artifact@v4
+        with:
+          name: velo-rust-internal-previews
+          path: |
+            rust/target/preview-software/valid/*.zip
+            rust/target/preview-software/valid/SHA256SUMS.txt
+            rust/target/preview-software/result.json
+            rust/target/preview-software/license-audit.json
+            rust/target/preview-femtovg/valid/*.zip
+            rust/target/preview-femtovg/valid/SHA256SUMS.txt
+            rust/target/preview-femtovg/result.json
+            rust/target/preview-femtovg/license-audit.json
+            rust/target/installer-software/installer/*installer.exe
+            rust/target/installer-software/installer/installer.json
+            rust/target/installer-software/results.json
+            rust/target/installer-femtovg/installer/*installer.exe
+            rust/target/installer-femtovg/installer/installer.json
+            rust/target/installer-femtovg/results.json
+            rust/target/user-install-software/results.json
+            rust/target/user-install-femtovg/results.json
+            rust/target/product-software/*installer.exe
+            rust/target/product-software/installer.json
+            rust/target/product-software/package/*.zip
+            rust/target/product-software/package/SHA256SUMS.txt
+            rust/target/product-femtovg/*installer.exe
+            rust/target/product-femtovg/installer.json
+            rust/target/product-femtovg/package/*.zip
+            rust/target/product-femtovg/package/SHA256SUMS.txt
+          if-no-files-found: error

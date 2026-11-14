@@ -56,7 +56,7 @@ pub fn placement(work: Bounds, size: (i32, i32), previous: Option<Bounds>) -> Bo
     }
 }
 
-pub fn monitor_dpi(monitor: HMONITOR) -> u32 {
+pub(crate) fn monitor_dpi(monitor: HMONITOR) -> u32 {
     let (mut x, mut y) = (96, 96);
     if unsafe { GetDpiForMonitor(monitor, MDT_EFFECTIVE_DPI, &mut x, &mut y) } < 0 {
         96

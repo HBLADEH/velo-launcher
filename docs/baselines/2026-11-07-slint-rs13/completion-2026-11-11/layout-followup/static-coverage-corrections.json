@@ -1,0 +1,36 @@
+{
+  "Corrections": [
+    {
+      "Renderer": "software",
+      "Scene": "dark-settings-6-bottom.png",
+      "ValidAsBottomScrollEvidence": false,
+      "SHA256": "49524A59900222E5A4E2D9383596FBF4D25967FB5E640FEDD2DD4A9F5791CBF5",
+      "Reason": "The fixture requests show-licenses before the deferred tab-change handler resets that state; the original image is a collapsed About page. Retain bytes, exclude from bottom-scroll coverage."
+    },
+    {
+      "Renderer": "software",
+      "Scene": "light-settings-6-bottom.png",
+      "ValidAsBottomScrollEvidence": false,
+      "SHA256": "A4B2F7A57E1163702B749CAA4EAFA260D6E96C794D565D3823C4794543DB2179",
+      "Reason": "The fixture requests show-licenses before the deferred tab-change handler resets that state; the original image is a collapsed About page. Retain bytes, exclude from bottom-scroll coverage."
+    },
+    {
+      "Renderer": "femtovg",
+      "Scene": "dark-settings-6-bottom.png",
+      "ValidAsBottomScrollEvidence": false,
+      "SHA256": "4F0B210E54D9F9A4E9A3C04CCD1A4FB366B6574842525BBF546359C9AC2F723B",
+      "Reason": "The fixture requests show-licenses before the deferred tab-change handler resets that state; the original image is a collapsed About page. Retain bytes, exclude from bottom-scroll coverage."
+    },
+    {
+      "Renderer": "femtovg",
+      "Scene": "light-settings-6-bottom.png",
+      "ValidAsBottomScrollEvidence": false,
+      "SHA256": "201E14472901C5D09C04FA6845604C677D873046C50D244965A891BAC0271A35",
+      "Reason": "The fixture requests show-licenses before the deferred tab-change handler resets that state; the original image is a collapsed About page. Retain bytes, exclude from bottom-scroll coverage."
+    }
+  ],
+  "OtherImageInventoryMatched": true,
+  "OriginalPNGs": 104,
+  "ValidAsNamedScenePNGs": 100,
+  "Scope": "Image inventory and source hash checks do not establish each semantic fixture state. Original files are retained and this correction takes precedence for the four named images."
+}

@@ -1,0 +1,47 @@
+{
+  "date": "2026-11-04",
+  "timezone": "Asia/Shanghai",
+  "attempt": 2,
+  "passed": false,
+  "actual_logout_login_reported_by_user": true,
+  "interactive_logon_changed": true,
+  "manual_relaunch_before_capture": false,
+  "cases": [
+    {
+      "renderer": "software",
+      "executable_sha256": "B234714B46F5396B64FA08F2F6001CC4677C6FB03DBD01F52B579CBCD672EA3D",
+      "run_command_utf16_units": 194,
+      "local_run_present": true,
+      "system_run_present": false,
+      "system_registry_query_return_value": 0,
+      "matching_processes": 0,
+      "original_config_bytes_preserved": true,
+      "passed": false
+    },
+    {
+      "renderer": "femtovg",
+      "executable_sha256": "4CE277451CE75027BCEAE8DC830519158FA6F047BC2040FB43AFCD9181F8A5D6",
+      "run_command_utf16_units": 194,
+      "local_run_present": true,
+      "system_run_present": false,
+      "system_registry_query_return_value": 0,
+      "matching_processes": 0,
+      "original_config_bytes_preserved": true,
+      "passed": false
+    }
+  ],
+  "finding": "Local HKCU view contains both 194-unit Run commands, but the system StdRegProv view under the current account SID contains neither. The old readiness check did not validate the system view.",
+  "first_attempt_causality": "Overlength commands were a separate documented defect; shortening them alone did not prove the cause of the first failed login.",
+  "next_verification": "Launch the same verified app copies from the ordinary interactive desktop, save through the actual settings UI, and require exact system-provider Run entries before another logout.",
+  "raw_reports": [
+    "rust/target/rs11-login2/second-login-failed.json",
+    "rust/target/rs11-login2/registry-views-after.json"
+  ],
+  "cleanup": {
+    "system_test_values_present_at_inspection": 0,
+    "local_test_values_removed": 2,
+    "matching_processes": 0,
+    "data_retained": true
+  },
+  "uac_policy_changed": false
+}

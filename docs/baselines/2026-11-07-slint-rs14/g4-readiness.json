@@ -1,0 +1,34 @@
+{
+  "RecordedAtUtc": "2026-11-06T20:17:47.7078864Z",
+  "Status": "not-ready",
+  "DefaultRenderer": null,
+  "G4Passed": false,
+  "ColdSamples": 0,
+  "RequiredIndependentColdSamples": 9,
+  "PhysicalMicrosoftPinyin": "software/femtovg/wails: four cases operator-passed on frozen actual-input builds, one local system at 96 DPI",
+  "HotkeyReliability": "open: Wails physical flash/focus failures retained; valid physical start sample count insufficient",
+  "ExactLatencyVerified": false,
+  "PresentedFramesVerified": false,
+  "GeometryToleranceVerified": false,
+  "StaticSlintScenes": 68,
+  "SameRoundNativeWailsVisualComparison": false,
+  "LicenseRedistributionCleared": false,
+  "NSISValidated": false,
+  "PackageLevelUpgradeRollbackValidated": false,
+  "RemoteCIExecuted": false,
+  "MemoryShortlist": "software first for further validation; this is not a default renderer decision",
+  "ResourceEvidence": [
+    {
+      "Path": "docs/baselines/2026-11-04-slint-rs12/normal/resources-summary.json",
+      "SHA256": "E8A4A157BC47D721742C0D459363FBC6C4DEAE111223508B80AD527E495F9F3B"
+    },
+    {
+      "Path": "docs/baselines/2026-11-04-slint-rs12/remaining/hidden-resources.json",
+      "SHA256": "E9A0ABC640DF100E51DCCF59BEA590ADCEA42690741828F0CC95A9E9BE46BBBF"
+    }
+  ],
+  "FrozenResourceBuilds": {
+    "femtovg": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+    "software": "E85B41C7E77888750817E47F092EABECB1BAB5A68EFCE579378CE2DDAD2DBA4B"
+  }
+}

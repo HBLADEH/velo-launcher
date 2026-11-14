@@ -1,0 +1,36 @@
+{
+  "Stage": "RS-13",
+  "Status": "已验证（本机可测范围）",
+  "CurrentExecutablePhysicalScaleMatrixComplete": true,
+  "ScalePercentVerified": [100, 125, 150, 175],
+  "BothRenderersCrossScreenInputVerified": true,
+  "ListedAppearanceDifferencesAccepted": true,
+  "NativeSettingsEnterAndExitHaveCompatibleSamplesForBothRenderers": true,
+  "CurrentFemtoVGNativeRecordingPulseVerified": true,
+  "UntestedOrLimited": [
+    {
+      "ID": "scale-200",
+      "Status": "本机不可选，未测",
+      "Scope": "Retain the operator-reported maximum 175% condition; do not label 200% passed."
+    },
+    {
+      "ID": "native-optical-outlier",
+      "Status": "原样保留",
+      "Scope": "One earlier Software exit alpha RMSE 0.0558 exceeds 0.05. Same-executable fixed-phase repeats both passed. This does not erase the outlier or promise every-frame equality."
+    },
+    {
+      "ID": "native-exact-present-time",
+      "Status": "未测，不在本次声明范围",
+      "Scope": "WGC waveform consistency at source sampling tolerance is separate from uniquely identified easing, individual GPU execution or photon presentation time."
+    },
+    {
+      "ID": "other-environments",
+      "Status": "未测",
+      "Scope": "Windows 10, other GPU drivers and third-party IMEs require their own execution evidence."
+    }
+  ],
+  "NextStage": "RS-14",
+  "RS14DefaultRendererAndG4Approved": false,
+  "ProjectGoalComplete": false,
+  "Scope": "RS-13 visual/input evidence is accepted only for the recorded host/build scope. Installation, renderer selection, remote CI and release conditions remain outside this stage conclusion."
+}

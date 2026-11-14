@@ -1,0 +1,25 @@
+{
+  "Edition": "software",
+  "ProcessId": 89416,
+  "StartedTicks": 639299999036189927,
+  "SHA256": "A64BE7CCBA0F187EA89EA0C1933658DFE67BC440825EB29D73DDF2C430848659",
+  "Inputs": {
+    "config.json": "D0AD379DB686117CAAC3275AD4F3D39B2BF3C30D3FC09A887AFC9199E761A429",
+    "index.json": "6E387C444930C0591E0BEC175CA0E6D5A2CD3F17671CB5F9B7D1D104271CACE4",
+    "history.json": "E3566B3A06430868D71E9287DFD6C6C520A3DA027AABEA01951D407EE131DC2F",
+    "application-library.json": "A32DCFA1175495EC20CAB36315C2C48F471BFA3C1F6AB91CD0F1670E027D0C5D",
+    "quick-launch.json": null
+  },
+  "InputId": "07B5C28A192C5A40980C7AA4D70CD90F27CC47DE89C50C6A0CCF1E399681C976",
+  "Environment": {
+    "Windows": "10.0.26340",
+    "Build": "26340",
+    "BootUtc": "2026-11-10T18:23:12.5000000Z",
+    "CPU": [
+      "Intel(R) Core(TM) i7-10700 CPU @ 2.90GHz"
+    ]
+  },
+  "Diagnostics": true,
+  "BlurHideDisabled": false,
+  "Method": "RS-13 native visual session with isolated shared seed. Wails diagnostics suppress blur-hide; Slint diagnostics add logging and retain normal blur-hide. Computer Use input is synthetic, not physical IME or latency evidence."
+}

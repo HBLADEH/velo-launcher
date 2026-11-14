@@ -1,0 +1,47 @@
+{
+  "RecordedAtUtc": "2026-11-13T02:49:02.5616891Z",
+  "Renderer": "software",
+  "Passed": true,
+  "Cases": [
+    {
+      "Passed": true,
+      "Name": "wrong-target-refused"
+    },
+    {
+      "Passed": true,
+      "Name": "install-path-with-chinese-and-spaces"
+    },
+    {
+      "Passed": true,
+      "Name": "installed-executable-window-smoke"
+    },
+    {
+      "Passed": true,
+      "Name": "locked-program-refused-without-change"
+    },
+    {
+      "Passed": true,
+      "Name": "locked-uninstall-refused-before-payload-removal"
+    },
+    {
+      "Passed": true,
+      "Name": "failure-after-backup-restores-exact-old-bytes"
+    },
+    {
+      "Passed": true,
+      "Name": "upgrade-replaces-old-payload"
+    },
+    {
+      "Passed": true,
+      "Name": "uninstall-preserves-unknown-files"
+    }
+  ],
+  "InstallerSHA256": "A0FEAAA337021D6BCE6F3BA321D983C82CE4A54700E145670F19CFAC764D4FE3",
+  "RegistryOrShortcutWrites": false,
+  "UACValidated": false,
+  "GoRustPackageMigrationValidated": false,
+  "G4Passed": false,
+  "PreservedUserDataFiles": 5,
+  "InstalledPayloadSmokePassed": true,
+  "Scope": "Actual pinned NSIS installer/uninstaller in one compile-time-constrained directory. Shared per-user payload replacement and failure recovery logic; no formal installation or data used."
+}

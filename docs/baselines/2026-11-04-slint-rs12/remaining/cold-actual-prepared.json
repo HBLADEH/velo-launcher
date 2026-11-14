@@ -1,0 +1,92 @@
+{
+  "Cases": [
+    {
+      "Case": "femtovg-1",
+      "Edition": "femtovg",
+      "SHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+      "InputId": "024397D07DB93ECF20AFE342D982D988B8C0F9D9C1272BC69700447A3C8C0935",
+      "ActualInputProbe": true,
+      "ExeMatches": true,
+      "PreparedAtUtc": "2026-11-04T13:33:42.0250076Z"
+    },
+    {
+      "Case": "femtovg-2",
+      "Edition": "femtovg",
+      "SHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+      "InputId": "024397D07DB93ECF20AFE342D982D988B8C0F9D9C1272BC69700447A3C8C0935",
+      "ActualInputProbe": true,
+      "ExeMatches": true,
+      "PreparedAtUtc": "2026-11-04T13:33:48.6304715Z"
+    },
+    {
+      "Case": "femtovg-3",
+      "Edition": "femtovg",
+      "SHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+      "InputId": "024397D07DB93ECF20AFE342D982D988B8C0F9D9C1272BC69700447A3C8C0935",
+      "ActualInputProbe": true,
+      "ExeMatches": true,
+      "PreparedAtUtc": "2026-11-04T13:33:55.6899586Z"
+    },
+    {
+      "Case": "software-1",
+      "Edition": "software",
+      "SHA256": "E85B41C7E77888750817E47F092EABECB1BAB5A68EFCE579378CE2DDAD2DBA4B",
+      "InputId": "024397D07DB93ECF20AFE342D982D988B8C0F9D9C1272BC69700447A3C8C0935",
+      "ActualInputProbe": true,
+      "ExeMatches": true,
+      "PreparedAtUtc": "2026-11-04T13:33:38.7313961Z"
+    },
+    {
+      "Case": "software-2",
+      "Edition": "software",
+      "SHA256": "E85B41C7E77888750817E47F092EABECB1BAB5A68EFCE579378CE2DDAD2DBA4B",
+      "InputId": "024397D07DB93ECF20AFE342D982D988B8C0F9D9C1272BC69700447A3C8C0935",
+      "ActualInputProbe": true,
+      "ExeMatches": true,
+      "PreparedAtUtc": "2026-11-04T13:33:46.2113478Z"
+    },
+    {
+      "Case": "software-3",
+      "Edition": "software",
+      "SHA256": "E85B41C7E77888750817E47F092EABECB1BAB5A68EFCE579378CE2DDAD2DBA4B",
+      "InputId": "024397D07DB93ECF20AFE342D982D988B8C0F9D9C1272BC69700447A3C8C0935",
+      "ActualInputProbe": true,
+      "ExeMatches": true,
+      "PreparedAtUtc": "2026-11-04T13:33:53.3596888Z"
+    },
+    {
+      "Case": "wails-1",
+      "Edition": "wails",
+      "SHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+      "InputId": "024397D07DB93ECF20AFE342D982D988B8C0F9D9C1272BC69700447A3C8C0935",
+      "ActualInputProbe": true,
+      "ExeMatches": true,
+      "PreparedAtUtc": "2026-11-04T13:33:34.4901391Z"
+    },
+    {
+      "Case": "wails-2",
+      "Edition": "wails",
+      "SHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+      "InputId": "024397D07DB93ECF20AFE342D982D988B8C0F9D9C1272BC69700447A3C8C0935",
+      "ActualInputProbe": true,
+      "ExeMatches": true,
+      "PreparedAtUtc": "2026-11-04T13:33:43.9193284Z"
+    },
+    {
+      "Case": "wails-3",
+      "Edition": "wails",
+      "SHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+      "InputId": "024397D07DB93ECF20AFE342D982D988B8C0F9D9C1272BC69700447A3C8C0935",
+      "ActualInputProbe": true,
+      "ExeMatches": true,
+      "PreparedAtUtc": "2026-11-04T13:33:50.8683656Z"
+    }
+  ],
+  "CaseCount": 9,
+  "SameBootLaunchRejected": true,
+  "ColdSamples": 0,
+  "LedgerScope": "Shared per-workspace boot ledger across prepared sets",
+  "OperatorAway": "Pending desktop operations skipped at user request",
+  "RebootPerformed": false,
+  "LoginItemsChanged": false
+}

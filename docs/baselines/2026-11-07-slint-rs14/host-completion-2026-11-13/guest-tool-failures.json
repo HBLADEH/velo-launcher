@@ -1,0 +1,20 @@
+[
+  {
+    "Run": "ci-final",
+    "Passed": false,
+    "SuccessfulCasesBeforeFailure": 0,
+    "ResultSHA256": "49699B68190E45EDC361EC2EB864020E6A21F905DF4D4F7C7C5954ED7B452B78",
+    "ErrorSHA256": "41D4451FDD3005AA647D4DFB5A29C806EAE562764D92D6B8BE87A436BEE77F0F",
+    "Cause": "Windows PowerShell 5.1 child-process ExitCode returned null",
+    "Disposition": "Tooling failure retained; final fresh PS7 run used the same product binaries, unchanged thresholds and waited for all cleanup predicates"
+  },
+  {
+    "Run": "ci-final-ps7",
+    "Passed": false,
+    "SuccessfulCasesBeforeFailure": 4,
+    "ResultSHA256": "FC582B9AE59B7E5200F4B98F4CD7D3A3989F7CF48CCDEBAD8357E6341ECD3FD2",
+    "ErrorSHA256": "750F211EC87F5B8B3071A477DFDD4BAE6085641C538A68D9514FF34E1ED707A1",
+    "Cause": "NSIS temp-copy uninstaller removes exe before finishing registry/shortcut cleanup; test waited for exe only",
+    "Disposition": "Tooling failure retained; final fresh PS7 run used the same product binaries, unchanged thresholds and waited for all cleanup predicates"
+  }
+]

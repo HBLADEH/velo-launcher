@@ -1,0 +1,215 @@
+{
+  "SchemaVersion": 1,
+  "CapturedAtUtc": "2026-11-04T08:10:30.6487941Z",
+  "Scope": "Two normal business processes with no in-process log or stdio controller; only visible state, 3 x 15-second samples per renderer. Scan completion and prewarm confirmed by human operator. Internal scan/cache metrics unavailable. No attribution of differences to instrumentation overhead.",
+  "Rows": [
+    {
+      "Run": "femtovg-normal-retry",
+      "RunCompleted": true,
+      "Edition": "femtovg",
+      "SHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+      "Phase": "visible",
+      "Samples": 3,
+      "Mode": "Production",
+      "PrivateBytesMedian": 57704448.0,
+      "PrivateBytesMin": 57704448.0,
+      "PrivateBytesMax": 57704448.0,
+      "PrivateBytesPollingMin": 57704448.0,
+      "PrivateBytesPollingMax": 58494976.0,
+      "PrivateMiB": 55.03125,
+      "WorkingSetMiB": 124.0859375,
+      "PrivateWorkingSetMiB": 46.93359375,
+      "CPUPercentOfMachineMedian": 0.058144,
+      "Processes": [
+        1
+      ],
+      "Threads": [
+        16.0
+      ],
+      "Handles": [
+        684.0
+      ],
+      "CatalogCount": null,
+      "CachedIndexCount": 736,
+      "IconDisk": {
+        "Files": 767,
+        "Bytes": 2210373,
+        "SHA256": "D6CD3FC55309F18865495D79F9805B55A9C1E289B1B23F699EEB47719F3B09DB"
+      },
+      "IconCache": null,
+      "ScanWarningsAccepted": false,
+      "OperatorBusinessConfirmed": true,
+      "ScanWarning": null,
+      "InputsBefore": {
+        "Files": {
+          "config.json": "1839E326E5501DAA350418D81B7732C103EB7DB5455D145BD94B72B48349775D",
+          "index.json": "17FC33346FCAEE8071513399F40847C2A6F7997D810CFF09F373BACAD370D518",
+          "history.json": "300716DFFF2BCBF12B317BAD430A3F553842C13616BB28C636E620E69681CA11",
+          "application-library.json": "A5E8BC981B03563AF3D26E5EEF9D263D9EAA4181C5DA758E8DCBF82160FF01F6",
+          "quick-launch.json": null
+        },
+        "LastRefresh": null,
+        "CachedIndexCount": 736,
+        "IconDisk": {
+          "Files": 767,
+          "Bytes": 2210373,
+          "SHA256": "D6CD3FC55309F18865495D79F9805B55A9C1E289B1B23F699EEB47719F3B09DB"
+        },
+        "Business": {
+          "Complete": true,
+          "Scanning": false,
+          "Warning": null,
+          "Count": null,
+          "IconCache": null,
+          "PublishedDuringScan": false,
+          "Source": "Operator confirmed scan/model on this normal business window; no in-process observer. Internal counts/cache unavailable."
+        }
+      },
+      "InputsAfter": {
+        "Files": {
+          "config.json": "1839E326E5501DAA350418D81B7732C103EB7DB5455D145BD94B72B48349775D",
+          "index.json": "17FC33346FCAEE8071513399F40847C2A6F7997D810CFF09F373BACAD370D518",
+          "history.json": "300716DFFF2BCBF12B317BAD430A3F553842C13616BB28C636E620E69681CA11",
+          "application-library.json": "A5E8BC981B03563AF3D26E5EEF9D263D9EAA4181C5DA758E8DCBF82160FF01F6",
+          "quick-launch.json": null
+        },
+        "LastRefresh": null,
+        "CachedIndexCount": 736,
+        "IconDisk": {
+          "Files": 767,
+          "Bytes": 2210373,
+          "SHA256": "D6CD3FC55309F18865495D79F9805B55A9C1E289B1B23F699EEB47719F3B09DB"
+        },
+        "Business": {
+          "Complete": true,
+          "Scanning": false,
+          "Warning": null,
+          "Count": null,
+          "IconCache": null,
+          "PublishedDuringScan": false,
+          "Source": "Operator confirmed scan/model on this normal business window; no in-process observer. Internal counts/cache unavailable."
+        }
+      },
+      "GPU": [
+        {
+          "DedicatedBytes": 0.0,
+          "SharedBytes": 35102720.0,
+          "TotalCommittedBytes": 28913664.0,
+          "InstanceCount": 1
+        },
+        {
+          "DedicatedBytes": 0.0,
+          "SharedBytes": 35102720.0,
+          "TotalCommittedBytes": 28913664.0,
+          "InstanceCount": 1
+        },
+        {
+          "DedicatedBytes": 0.0,
+          "SharedBytes": 35102720.0,
+          "TotalCommittedBytes": 28913664.0,
+          "InstanceCount": 1
+        }
+      ],
+      "EvidenceSHA256": "56EC4F5668C9FCC366C0CFDDCDFA71F0D28EB2E1AF9B94C70F2224CD220B64B3",
+      "CollectorSHA256": "21A0A80116AAC07437FB45EB698FEE3C468652AF74F3269DAF071F268903C3B8",
+      "ValidatorSHA256": "B0EDC89C3A1BE157F8A8B9E46EF97AE3072AF0654E8B06312534674D9A02439A"
+    },
+    {
+      "Run": "software-normal-retry",
+      "RunCompleted": true,
+      "Edition": "software",
+      "SHA256": "E85B41C7E77888750817E47F092EABECB1BAB5A68EFCE579378CE2DDAD2DBA4B",
+      "Phase": "visible",
+      "Samples": 3,
+      "Mode": "Production",
+      "PrivateBytesMedian": 27602944.0,
+      "PrivateBytesMin": 27602944.0,
+      "PrivateBytesMax": 27602944.0,
+      "PrivateBytesPollingMin": 27602944.0,
+      "PrivateBytesPollingMax": 27602944.0,
+      "PrivateMiB": 26.32421875,
+      "WorkingSetMiB": 63.96875,
+      "PrivateWorkingSetMiB": 21.8515625,
+      "CPUPercentOfMachineMedian": 0.013,
+      "Processes": [
+        1
+      ],
+      "Threads": [
+        13.0
+      ],
+      "Handles": [
+        560.0
+      ],
+      "CatalogCount": null,
+      "CachedIndexCount": 736,
+      "IconDisk": {
+        "Files": 767,
+        "Bytes": 2210373,
+        "SHA256": "D6CD3FC55309F18865495D79F9805B55A9C1E289B1B23F699EEB47719F3B09DB"
+      },
+      "IconCache": null,
+      "ScanWarningsAccepted": false,
+      "OperatorBusinessConfirmed": true,
+      "ScanWarning": null,
+      "InputsBefore": {
+        "Files": {
+          "config.json": "1839E326E5501DAA350418D81B7732C103EB7DB5455D145BD94B72B48349775D",
+          "index.json": "ECD1F0B9AAF7ABF1241164327666A2B6290D862227F79A06C5216850664A7F10",
+          "history.json": "300716DFFF2BCBF12B317BAD430A3F553842C13616BB28C636E620E69681CA11",
+          "application-library.json": "A5E8BC981B03563AF3D26E5EEF9D263D9EAA4181C5DA758E8DCBF82160FF01F6",
+          "quick-launch.json": null
+        },
+        "LastRefresh": null,
+        "CachedIndexCount": 736,
+        "IconDisk": {
+          "Files": 767,
+          "Bytes": 2210373,
+          "SHA256": "D6CD3FC55309F18865495D79F9805B55A9C1E289B1B23F699EEB47719F3B09DB"
+        },
+        "Business": {
+          "Complete": true,
+          "Scanning": false,
+          "Warning": null,
+          "Count": null,
+          "IconCache": null,
+          "PublishedDuringScan": false,
+          "Source": "Operator confirmed scan/model on this normal business window; no in-process observer. Internal counts/cache unavailable."
+        }
+      },
+      "InputsAfter": {
+        "Files": {
+          "config.json": "1839E326E5501DAA350418D81B7732C103EB7DB5455D145BD94B72B48349775D",
+          "index.json": "ECD1F0B9AAF7ABF1241164327666A2B6290D862227F79A06C5216850664A7F10",
+          "history.json": "300716DFFF2BCBF12B317BAD430A3F553842C13616BB28C636E620E69681CA11",
+          "application-library.json": "A5E8BC981B03563AF3D26E5EEF9D263D9EAA4181C5DA758E8DCBF82160FF01F6",
+          "quick-launch.json": null
+        },
+        "LastRefresh": null,
+        "CachedIndexCount": 736,
+        "IconDisk": {
+          "Files": 767,
+          "Bytes": 2210373,
+          "SHA256": "D6CD3FC55309F18865495D79F9805B55A9C1E289B1B23F699EEB47719F3B09DB"
+        },
+        "Business": {
+          "Complete": true,
+          "Scanning": false,
+          "Warning": null,
+          "Count": null,
+          "IconCache": null,
+          "PublishedDuringScan": false,
+          "Source": "Operator confirmed scan/model on this normal business window; no in-process observer. Internal counts/cache unavailable."
+        }
+      },
+      "GPU": [
+        null,
+        null,
+        null
+      ],
+      "EvidenceSHA256": "274FB19AA4DAC81D362627B415762731E65CC82CB58061CDB0F3DB5114B48864",
+      "CollectorSHA256": "21A0A80116AAC07437FB45EB698FEE3C468652AF74F3269DAF071F268903C3B8",
+      "ValidatorSHA256": "B0EDC89C3A1BE157F8A8B9E46EF97AE3072AF0654E8B06312534674D9A02439A"
+    }
+  ],
+  "RS12Complete": false
+}

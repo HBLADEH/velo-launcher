@@ -1,0 +1,110 @@
+{
+  "SchemaVersion": 1,
+  "RecordedAtUtc": "2026-11-09T18:35:18.0990914Z",
+  "Method": "DXGI Desktop Duplication LastPresentTime QPC to cropped pixels; separate callback/read times.",
+  "RawLogSHA256": "541A0F04EABD79F04716EDBFD179C255A69B55E53D93780D058D0FBB2D090C62",
+  "Calibration": false,
+  "Frames": 859,
+  "ChangedFrames": 249,
+  "RejectedFrames": 49,
+  "GeometryFreshnessVerified": true,
+  "LegacyGeometryDiagnosticsOnly": false,
+  "ProductFrameEvidenceEligible": true,
+  "MaximumAccumulatedFrames": 2.0,
+  "FrameReadLagMilliseconds": {
+    "Count": 859,
+    "Minimum": 0.9739,
+    "Median": 1.7136,
+    "P95": 4.4652,
+    "Maximum": 7.4922
+  },
+  "ClockOffsetRangeMilliseconds": 0.008549999999999999,
+  "ClockBracketMaximumMilliseconds": 0.0174,
+  "QpcFrequency": 10000000.0,
+  "ClockSegmentStartQpc": 0,
+  "SelectedClockPairs": 50,
+  "TotalClockPairs": 50,
+  "PhysicalKeysOutsideSelectedClockSegment": 0,
+  "ObserverCPUSeconds": 2.984375,
+  "ObserverElapsedSeconds": 48.7090866,
+  "CalibrationRows": [],
+  "CalibrationPaintToDesktopPresentMilliseconds": null,
+  "RepeatedPatternFrames": null,
+  "PhysicalInputRows": [
+    {
+      "Valid": true,
+      "ClockSegmentCovered": true,
+      "KeyObservedQpc": 116462405499,
+      "KeyEventLowerQpc": 116462099249,
+      "AcceptedInputQpc": 116462427932.5,
+      "FirstChangedResultCropQpc": 116462694754,
+      "KeyToChangedResultCropUpperMilliseconds": 59.5505,
+      "KeyToAcceptedInputUpperMilliseconds": 32.86835,
+      "Scope": "Physical fixed A key to accepted edit and first changed result crop. A crop change is not independent proof of correct result text or first possible readiness."
+    },
+    {
+      "Valid": true,
+      "ClockSegmentCovered": true,
+      "KeyObservedQpc": 116503624078,
+      "KeyEventLowerQpc": 116503467828,
+      "AcceptedInputQpc": 116503639512.5,
+      "FirstChangedResultCropQpc": 116503903709,
+      "KeyToChangedResultCropUpperMilliseconds": 43.5881,
+      "KeyToAcceptedInputUpperMilliseconds": 17.16845,
+      "Scope": "Physical fixed A key to accepted edit and first changed result crop. A crop change is not independent proof of correct result text or first possible readiness."
+    },
+    {
+      "Valid": true,
+      "ClockSegmentCovered": true,
+      "KeyObservedQpc": 116545324671,
+      "KeyEventLowerQpc": 116545168421,
+      "AcceptedInputQpc": 116545343592.5,
+      "FirstChangedResultCropQpc": 116545609398,
+      "KeyToChangedResultCropUpperMilliseconds": 44.0977,
+      "KeyToAcceptedInputUpperMilliseconds": 17.51715,
+      "Scope": "Physical fixed A key to accepted edit and first changed result crop. A crop change is not independent proof of correct result text or first possible readiness."
+    },
+    {
+      "Valid": true,
+      "ClockSegmentCovered": true,
+      "KeyObservedQpc": 116586373782,
+      "KeyEventLowerQpc": 116586217532,
+      "AcceptedInputQpc": 116586396602.5,
+      "FirstChangedResultCropQpc": 116586651591,
+      "KeyToChangedResultCropUpperMilliseconds": 43.4059,
+      "KeyToAcceptedInputUpperMilliseconds": 17.90705,
+      "Scope": "Physical fixed A key to accepted edit and first changed result crop. A crop change is not independent proof of correct result text or first possible readiness."
+    },
+    {
+      "Valid": true,
+      "ClockSegmentCovered": true,
+      "KeyObservedQpc": 116625892596,
+      "KeyEventLowerQpc": 116625576346,
+      "AcceptedInputQpc": 116625910842.5,
+      "FirstChangedResultCropQpc": 116626189506,
+      "KeyToChangedResultCropUpperMilliseconds": 61.316,
+      "KeyToAcceptedInputUpperMilliseconds": 33.44965,
+      "Scope": "Physical fixed A key to accepted edit and first changed result crop. A crop change is not independent proof of correct result text or first possible readiness."
+    }
+  ],
+  "PhysicalFixedAKeys": 5,
+  "ValidPhysicalCropChangeRows": 5,
+  "KeyToChangedResultCropUpperMilliseconds": {
+    "Count": 5,
+    "Minimum": 43.4059,
+    "Median": 44.0977,
+    "P95": 61.316,
+    "Maximum": 61.316
+  },
+  "FirstPossibleInputLatencyVerified": false,
+  "CorrectResultFrameIndependentlyVerified": false,
+  "PhotonPresentationVerified": false,
+  "RS12Complete": false,
+  "Limitations": [
+    "Composed desktop timestamp, not photon scanout; occluded/hidden/out-of-monitor crops rejected.",
+    "Background updates can change the desktop with identical target pixels; only changed crop hashes describe target changes.",
+    "Accumulated frames may omit intermediate states. Pixel hashes alone do not prove correct results or quantify GPU rendering work.",
+    "The physical key lower bound retains Windows event-clock quantum and callback delay. Actual input is paired using bracketed QPC/UTC mapping.",
+    "No subtraction of human startup delay, no first possible readiness or calibrated cold startup claim."
+  ]
+}

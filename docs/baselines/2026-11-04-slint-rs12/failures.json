@@ -1,0 +1,54 @@
+{
+  "SoftwarePages": {
+    "AssistedRetryPassed": true,
+    "ExeSHA256": "E85B41C7E77888750817E47F092EABECB1BAB5A68EFCE579378CE2DDAD2DBA4B",
+    "Unassisted": [
+      "Grid navigation assertion while launcher was hidden after blur",
+      "90-second probe timeout after blur"
+    ]
+  },
+  "BusinessCollector": {
+    "FemtoVGCheck": {
+      "ExitCode": 0,
+      "ForcedCleanup": false
+    },
+    "SoftwareRetry": {
+      "ExitCode": 0,
+      "ForcedCleanup": false
+    },
+    "FirstSoftwareCheck": {
+      "Failure": "Windows file sharing denied reading a live Rust log",
+      "ForcedCleanup": true
+    }
+  },
+  "SoftwareFinalResourceGroup": {
+    "Samples": {
+      "Invalid": 1,
+      "Valid": 2
+    },
+    "Phase": "visible-after-loop",
+    "LoopSeconds": 1800.0778985,
+    "AllSamplesEligible": false,
+    "EvidenceSHA256": "7E764888E1497BAA6EA7A60E9A400C8153B3A51E5429CA3FEFB6762C1C1C1EC4",
+    "Reason": "The third observed sample changed from Visible to Hidden after losing focus",
+    "EarlierEligibleGroups": [
+      "visible",
+      "hidden-30s",
+      "hidden-5m",
+      "visible-after-100-cycles"
+    ],
+    "NormalProcessExit": 0
+  },
+  "ExcludedTimingAttempts": [
+    "Preparation overlapped initial Go timing",
+    "Page smoke test overlapped one Rust timing; final public Rust measurements were rerun after it completed"
+  ],
+  "WailsHiddenFiveMinuteAttempt1": {
+    "Reason": "Second sample observed Hidden and Visible; third sample was Hidden but continuous state was already broken",
+    "AllSamplesEligible": false,
+    "InvalidSamples": 2,
+    "Retry": "Same process, new filename hidden-5m-attempt-2.json",
+    "ValidSamples": 1,
+    "EvidenceSHA256": "8772E722A61B45556575146D9ACDA390377F0A9267EFB09160061407CFCA2A76"
+  }
+}

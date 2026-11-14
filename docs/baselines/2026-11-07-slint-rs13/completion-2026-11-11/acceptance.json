@@ -1,0 +1,46 @@
+{
+  "RecordedDate": "2026-11-11 Asia/Shanghai",
+  "RS13Complete": false,
+  "State": "in_progress",
+  "DefaultRendererChosen": false,
+  "G4Released": false,
+  "StaticComponentPNGs": 104,
+  "ComponentClips": 26,
+  "OriginalComponentFramesRetainedLocally": 936,
+  "HeadingPixelRegressions": 12,
+  "NativeSceneRecords": 52,
+  "NativeJPEGsPublished": 43,
+  "NativeDPI": 96,
+  "ProductVerification": [
+    {
+      "Renderer": "software",
+      "InputFilesChecked": 150,
+      "ExecutableSHA256": "60A671F568EF9BE8DF32DBDB5FED4CBF50A86F186137CCFBC16899DA965F680A"
+    },
+    {
+      "Renderer": "femtovg",
+      "InputFilesChecked": 150,
+      "ExecutableSHA256": "068B44441E8335BB3035CE4000435154986DD93FD293E7439758AD466E1FFFA1"
+    }
+  ],
+  "Checks": {
+    "FullRustSmoke": true,
+    "LegacyGoVueRegression": true,
+    "StaticSourceAndHashes": true,
+    "ComponentMotionChecks": true,
+    "HeadingOriginPixels": true,
+    "NativeFullMatrix": false,
+    "CoreGeometryTolerance": false,
+    "PhysicalDPIChangesAdded": false,
+    "PhysicalIMEAdded": false,
+    "NativeMatchedAnimationRecording": false,
+    "NewProductPerformanceMatrix": false
+  },
+  "Remaining": [
+    "Restore documented Wails geometry/control differences or obtain explicit acceptance of concrete alternatives",
+    "Complete native grid/empty-pinned/long-name/dark-page and confirmation matrix",
+    "Record matched native animation and resource costs",
+    "Recheck current builds with physical DPI/IME input"
+  ],
+  "SourceScope": "Changed RS-13 UI builds are separate from original RS-12 performance identities."
+}

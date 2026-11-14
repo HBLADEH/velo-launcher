@@ -1,0 +1,44 @@
+{
+  "Renderer": "femtovg",
+  "RequestedAt": "2026-11-03T12:43:37.7527174+08:00",
+  "ObservedAt": "2026-11-03T12:54:55.3546484+08:00",
+  "Events": [
+    {
+      "Provider": "Microsoft-Windows-Kernel-Power",
+      "Id": 42,
+      "RecordId": 34983,
+      "Time": "2026-11-03T12:51:16.9743694+08:00",
+      "Data": {
+        "TargetState": "4",
+        "EffectiveState": "4",
+        "Reason": "4",
+        "Flags": "0",
+        "TransitionsToOn": "2"
+      }
+    },
+    {
+      "Provider": "Microsoft-Windows-Kernel-Power",
+      "Id": 107,
+      "RecordId": 34984,
+      "Time": "2026-11-03T12:51:20.940776+08:00",
+      "Data": {
+        "TargetState": "4",
+        "EffectiveState": "4"
+      }
+    },
+    {
+      "Provider": "Microsoft-Windows-Power-Troubleshooter",
+      "Id": 1,
+      "RecordId": 35013,
+      "Time": "2026-11-03T12:53:45.0904997+08:00",
+      "Data": {
+        "SleepTime": "2026-11-03T04:51:16.6703148Z",
+        "WakeTime": "2026-11-03T04:53:43.9323143Z",
+        "SleepDuration": "306",
+        "WakeDuration": "431",
+        "TargetState": "4",
+        "EffectiveState": "4"
+      }
+    }
+  ]
+}

@@ -5,15 +5,23 @@ edition = "2024"
 rust-version = "1.99.1"
 publish = false
 license = "MIT"
-description = "Isolated Rust + Slint feasibility application for Velo"
+description = "Native Windows application launcher built with Rust and Slint"
 
 [features]
 default = []
 renderer-femtovg = ["slint/renderer-femtovg"]
 renderer-software = ["slint/renderer-software"]
+product = []
 
 [dependencies]
+chrono = { version = "=0.4.45", default-features = false, features = ["std"] }
+image = { version = "=0.25.10", default-features = false, features = ["png"] }
+quick-xml = { version = "=0.41.0", features = ["serialize"] }
 raw-window-handle = "=0.6.2"
+serde = { version = "=1.0.229", features = ["derive"] }
+serde_json = { version = "=1.0.154", features = ["arbitrary_precision"] }
+sha2 = { version = "=0.10.9", default-features = false }
+tempfile = "=3.27.0"
 slint = { version = "=1.18.1", default-features = false, features = [
     "std",
     "compat-1-18",
@@ -26,13 +34,26 @@ windows-sys = { version = "=0.61.2", features = [
     "Win32_Graphics_Gdi",
     "Win32_System_Threading",
     "Win32_System_LibraryLoader",
+    "Win32_System_Registry",
+    "Win32_System_SystemInformation",
+    "Win32_Networking_WinHttp",
+    "Win32_System_Shutdown",
     "Win32_System_Com",
+    "Win32_Storage_FileSystem",
     "Win32_Security",
     "Win32_UI_HiDpi",
     "Win32_UI_Controls_Dialogs",
     "Win32_UI_Input_KeyboardAndMouse",
     "Win32_UI_Shell",
     "Win32_UI_WindowsAndMessaging",
+] }
+windows = { version = "=0.62.2", default-features = false, features = [
+    "Win32_Foundation",
+    "Win32_Graphics_Gdi",
+    "Win32_Storage_FileSystem",
+    "Win32_System_Com",
+    "Win32_UI_Shell",
+    "Win32_UI_Shell_Common",
 ] }
 
 [build-dependencies]

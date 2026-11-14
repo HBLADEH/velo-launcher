@@ -1,0 +1,128 @@
+{
+  "RecordedAtUtc": "2026-11-09T19:58:08.4414800Z",
+  "FinalCalibrator": "build8",
+  "CalibratorSHA256": "22BE103D619273F3B1800E8945B09D4CF8372249CB686DEF879EAD0F456457EF",
+  "StartupSamples": 9,
+  "InjectedHotkeySamples": 60,
+  "AllFinalSamplesValid": true,
+  "Rows": [
+    {
+      "Edition": "software",
+      "Kind": "WarmStartup",
+      "SHA256": "E85B41C7E77888750817E47F092EABECB1BAB5A68EFCE579378CE2DDAD2DBA4B",
+      "ValidSamples": 3,
+      "InvalidSamples": 0,
+      "UpperMilliseconds": {
+        "Count": 3,
+        "Minimum": 161.32115,
+        "Median": 211.33839999999998,
+        "P95": 251.64905000000002,
+        "Maximum": 251.64905000000002
+      },
+      "ReferenceBudgetMilliseconds": 500,
+      "UpperBoundP95WithinReference": true,
+      "MachineGeneratedInput": true,
+      "CountsAsPhysicalHotkey": false,
+      "SummarySHA256": "401451BDD800FAD24B890C75EBB3FD5CEE725EF6131F9A79B891F077CA41D856"
+    },
+    {
+      "Edition": "software",
+      "Kind": "InjectedHotkeyCalibration",
+      "SHA256": "E85B41C7E77888750817E47F092EABECB1BAB5A68EFCE579378CE2DDAD2DBA4B",
+      "ValidSamples": 20,
+      "InvalidSamples": 0,
+      "UpperMilliseconds": {
+        "Count": 20,
+        "Minimum": 21.326600000000003,
+        "Median": 31.880225,
+        "P95": 44.8175,
+        "Maximum": 52.51525
+      },
+      "ReferenceBudgetMilliseconds": 50,
+      "UpperBoundP95WithinReference": true,
+      "MachineGeneratedInput": true,
+      "CountsAsPhysicalHotkey": false,
+      "SummarySHA256": "401451BDD800FAD24B890C75EBB3FD5CEE725EF6131F9A79B891F077CA41D856"
+    },
+    {
+      "Edition": "femtovg",
+      "Kind": "WarmStartup",
+      "SHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+      "ValidSamples": 3,
+      "InvalidSamples": 0,
+      "UpperMilliseconds": {
+        "Count": 3,
+        "Minimum": 548.66045,
+        "Median": 578.1403499999999,
+        "P95": 619.3880499999999,
+        "Maximum": 619.3880499999999
+      },
+      "ReferenceBudgetMilliseconds": 500,
+      "UpperBoundP95WithinReference": false,
+      "MachineGeneratedInput": true,
+      "CountsAsPhysicalHotkey": false,
+      "SummarySHA256": "7D3AE8CBB7AA5E67AE8E3F16B15E42BFF78930F1F9E639FB623C3AEDED261FE1"
+    },
+    {
+      "Edition": "femtovg",
+      "Kind": "InjectedHotkeyCalibration",
+      "SHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+      "ValidSamples": 20,
+      "InvalidSamples": 0,
+      "UpperMilliseconds": {
+        "Count": 20,
+        "Minimum": 20.985599999999998,
+        "Median": 24.977275,
+        "P95": 26.74115,
+        "Maximum": 32.47495
+      },
+      "ReferenceBudgetMilliseconds": 50,
+      "UpperBoundP95WithinReference": true,
+      "MachineGeneratedInput": true,
+      "CountsAsPhysicalHotkey": false,
+      "SummarySHA256": "7D3AE8CBB7AA5E67AE8E3F16B15E42BFF78930F1F9E639FB623C3AEDED261FE1"
+    },
+    {
+      "Edition": "wails",
+      "Kind": "WarmStartup",
+      "SHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+      "ValidSamples": 3,
+      "InvalidSamples": 0,
+      "UpperMilliseconds": {
+        "Count": 3,
+        "Minimum": 739.96385,
+        "Median": 782.0705,
+        "P95": 867.7677500000001,
+        "Maximum": 867.7677500000001
+      },
+      "ReferenceBudgetMilliseconds": 500,
+      "UpperBoundP95WithinReference": false,
+      "MachineGeneratedInput": true,
+      "CountsAsPhysicalHotkey": false,
+      "SummarySHA256": "D29ACF01D8FFB441142BA1721F59C8F8EF2D3F8E1FE9BE49D7B82C93586A28D0"
+    },
+    {
+      "Edition": "wails",
+      "Kind": "InjectedHotkeyCalibration",
+      "SHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+      "ValidSamples": 20,
+      "InvalidSamples": 0,
+      "UpperMilliseconds": {
+        "Count": 20,
+        "Minimum": 18.21275,
+        "Median": 24.453400000000002,
+        "P95": 36.87135,
+        "Maximum": 38.97965
+      },
+      "ReferenceBudgetMilliseconds": 50,
+      "UpperBoundP95WithinReference": true,
+      "MachineGeneratedInput": true,
+      "CountsAsPhysicalHotkey": false,
+      "SummarySHA256": "D29ACF01D8FFB441142BA1721F59C8F8EF2D3F8E1FE9BE49D7B82C93586A28D0"
+    }
+  ],
+  "BudgetScope": "500ms is the plan cold-start target, shown only as a warm comparison reference. Hotkey machine acceptance upper bound is separate from already-completed physical-key evidence.",
+  "ExactFirstPossibleInputClaim": false,
+  "ColdCalibrationSamples": 0,
+  "RS12Complete": false
+}

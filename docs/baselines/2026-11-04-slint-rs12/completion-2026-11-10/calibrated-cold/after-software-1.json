@@ -1,0 +1,52 @@
+{
+  "SchemaVersion": 1,
+  "RecordedAtUtc": "2026-11-10T05:40:57.3081364Z",
+  "Method": "Fixed Unicode a via guarded native SendInput; operational QPC/UTC brackets to actual focused non-composing accepted edit. Separate from physical-key tests.",
+  "Groups": [
+    {
+      "Edition": "software",
+      "SHA256": "E85B41C7E77888750817E47F092EABECB1BAB5A68EFCE579378CE2DDAD2DBA4B",
+      "Kind": "ColdStartup",
+      "ValidSamples": 1,
+      "InvalidSamples": 0,
+      "MinimumSamples": 3,
+      "SampleCountSatisfied": false,
+      "UpperMilliseconds": {
+        "Count": 1,
+        "Minimum": 287.4924,
+        "Median": 287.4924,
+        "P95": 287.4924,
+        "Maximum": 287.4924
+      },
+      "BudgetMilliseconds": 500,
+      "UpperBoundP95WithinBudget": true,
+      "CountsAsPhysicalHotkeys": false
+    }
+  ],
+  "Observations": [
+    {
+      "Edition": "software",
+      "SHA256": "E85B41C7E77888750817E47F092EABECB1BAB5A68EFCE579378CE2DDAD2DBA4B",
+      "Kind": "ColdStartup",
+      "BootId": "639298852305000000",
+      "Valid": true,
+      "DurationUpperMilliseconds": 287.4924,
+      "ClockMappingObservedRangeMilliseconds": 0.0005,
+      "DeclaredClockGuardAndObservedBracketMilliseconds": 0.1015,
+      "MachineGeneratedInput": true,
+      "CountsAsPhysicalHotkey": false,
+      "Probes": 1,
+      "MaximumProbeGapMilliseconds": 0.0,
+      "Case": "software-1",
+      "Trace": "startup-calibration.jsonl",
+      "TraceSHA256": "6FCF7D425677D855CA4B06A2CD6151F9C27C39E7B88995407ED26A8DC23EF84B",
+      "FinalProductLogSHA256": "DF2C6B038B6E0DFC4D7B5806441798449A90F76A6F8F1DAFB9B9C66553A67845",
+      "Reason": "Accepted character, final normal exit, process creation, and observed QPC/UTC calibration checked. Machine-generated input; physical evidence remains separate."
+    }
+  ],
+  "ColdStartupMeasured": true,
+  "ExactFirstPossibleInputClaim": false,
+  "BudgetInterpretation": "An upper bound within budget supports the tested acceptance target; an above-budget upper bound alone does not prove an earlier possible readiness regression. Windows clock continuity is checked at stored brackets, with a declared 0.1ms guard.",
+  "Scope": "Machine integration calibration only; not real IME or physical Alt+Space. No reinterpretation of earlier manual-delay records.",
+  "RS12Complete": false
+}

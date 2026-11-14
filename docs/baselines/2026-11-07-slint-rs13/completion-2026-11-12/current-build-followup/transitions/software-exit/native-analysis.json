@@ -1,0 +1,71 @@
+{
+  "ExecutableSHA256": "5E7C017DDA3FF691E7FF8DCBFEAF149E5A766C1F8DC73A816BB5C4A9F7C4C66B",
+  "PID": 133404,
+  "RawTraceSHA256": "C7A78B50D4B36D01771DBB1081A5F27B829BE5DA2F28B9CEE265CA8B6F14EA42",
+  "CompleteTrace": false,
+  "WriterQueueRejected": null,
+  "GPUQueueRejected": null,
+  "Clips": [
+    {
+      "Name": "settings-exit-current-active-slice",
+      "Frames": 9,
+      "CachedBaseline": false,
+      "SourceSpanMilliseconds": 150.15009999275208,
+      "SourceIntervalsMilliseconds": [
+        16.68290001153946,
+        16.682899981737137,
+        16.683100014925003,
+        16.68309998512268,
+        33.3677000105381,
+        16.68349999189377,
+        16.683100014925003,
+        16.683799982070923
+      ],
+      "MaximumSourceGapMilliseconds": 33.3677000105381,
+      "EndpointProgress": [
+        {
+          "SourceMilliseconds": 0.0,
+          "Progress": 0.0
+        },
+        {
+          "SourceMilliseconds": 16.68290001153946,
+          "Progress": 0.7692031264305115
+        },
+        {
+          "SourceMilliseconds": 33.365799993276596,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 50.0489000082016,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 66.73199999332428,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 100.09970000386238,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 116.78319999575615,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 133.46630001068115,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 150.15009999275208,
+          "Progress": 1.0
+        }
+      ],
+      "IntermediateFrames": 1,
+      "FiniteFitAvailable": false,
+      "Reason": "Fewer than four intermediate native frames; exact curve unverified."
+    }
+  ],
+  "PhysicalInput": false,
+  "RS13Complete": false,
+  "Scope": "Original selected-window WGC surface times; source intervals distinguish cached idle baselines. Scalar fits are diagnostic and do not certify final desktop or isolated opacity/translation curves."
+}

@@ -1,0 +1,198 @@
+{
+  "Probe": "rs06_native_probe debug example from the pinned build",
+  "ProbeSHA256": "EFF35D370DCDFA3E5A12E304BC8FCA75FF6E5D7FC41E874B91720AA8125CEB49",
+  "Mode": "Read only, no parameters",
+  "Observations": [
+    {
+      "File": "femtovg-13-results-clamped-native.txt",
+      "RawSHA256": "F01B66F8B45340A9A22F123BAC7D934DDB8384F9048CF62B1B192729E1BAA0D8",
+      "Lines": [
+        "event=probe_monitor x=1920 y=42 width=1920 height=1080 work_x=1920 work_y=42 work_width=1920 work_height=1008 dpi=144 primary=false",
+        "event=probe_monitor x=0 y=0 width=1920 height=1080 work_x=0 work_y=0 work_width=1920 work_height=1032 dpi=96 primary=true",
+        "event=probe_window class=VeloSlintLauncherWindow hwnd=A70FA0 pid=190592 visible=true dpi=144 x=1920 y=42 width=960 height=1008",
+        "event=probe_window class=VeloSlintDesktopService hwnd=3402BC pid=190592 visible=false dpi=96 x=0 y=0 width=0 height=0",
+        "event=probe_tray hwnd=3402BC registered=true x=1475 y=1032 width=32 height=48"
+      ]
+    },
+    {
+      "File": "femtovg-after-tray-exit-native.txt",
+      "RawSHA256": "BE960DB588A929C6884D393E15669368027EDAF7A0EA4EB26676F6339EA42BC9",
+      "Lines": [
+        "event=probe_monitor x=-1920 y=0 width=1920 height=1080 work_x=-1920 work_y=0 work_width=1920 work_height=1008 dpi=144 primary=false",
+        "event=probe_monitor x=0 y=0 width=1920 height=1080 work_x=0 work_y=0 work_width=1920 work_height=1008 dpi=144 primary=true"
+      ]
+    },
+    {
+      "File": "femtovg-drag-primary-native.txt",
+      "RawSHA256": "893593F7E3C8D03DB54E86C3EC7145CA9E06992B4C68F24C9198173A743F2F1C",
+      "Lines": [
+        "event=probe_monitor x=1920 y=42 width=1920 height=1080 work_x=1920 work_y=42 work_width=1920 work_height=1008 dpi=144 primary=false",
+        "event=probe_monitor x=0 y=0 width=1920 height=1080 work_x=0 work_y=0 work_width=1920 work_height=1032 dpi=96 primary=true",
+        "event=probe_window class=VeloSlintLauncherWindow hwnd=A70FA0 pid=190592 visible=true dpi=144 x=2560 y=248 width=960 height=396",
+        "event=probe_window class=VeloSlintDesktopService hwnd=3402BC pid=190592 visible=false dpi=96 x=0 y=0 width=0 height=0",
+        "event=probe_tray hwnd=3402BC registered=true x=1503 y=1032 width=32 height=48"
+      ]
+    },
+    {
+      "File": "femtovg-hidden-dpi-150-native.txt",
+      "RawSHA256": "62C258CA889AE1020567D781CEB24757DF3B0688CEF3DA46847B1F13936019F2",
+      "Lines": [
+        "event=probe_monitor x=1920 y=42 width=1920 height=1080 work_x=1920 work_y=42 work_width=1920 work_height=1008 dpi=144 primary=false",
+        "event=probe_monitor x=0 y=0 width=1920 height=1080 work_x=0 work_y=0 work_width=1920 work_height=1032 dpi=96 primary=true",
+        "event=probe_window class=VeloSlintLauncherWindow hwnd=A70FA0 pid=190592 visible=false dpi=144 x=2560 y=248 width=960 height=396",
+        "event=probe_window class=VeloSlintDesktopService hwnd=3402BC pid=190592 visible=false dpi=96 x=0 y=0 width=0 height=0",
+        "event=probe_tray hwnd=3402BC registered=true x=1475 y=1032 width=32 height=48"
+      ]
+    },
+    {
+      "File": "femtovg-list-clamped-native.txt",
+      "RawSHA256": "C08206A2D5594B3526D08E2E2F217F0F141B5E65674325EAFCF34C5F338BEB1F",
+      "Lines": [
+        "event=probe_monitor x=1920 y=42 width=1920 height=1080 work_x=1920 work_y=42 work_width=1920 work_height=1008 dpi=144 primary=false",
+        "event=probe_monitor x=0 y=0 width=1920 height=1080 work_x=0 work_y=0 work_width=1920 work_height=1032 dpi=96 primary=true",
+        "event=probe_window class=VeloSlintLauncherWindow hwnd=A70FA0 pid=190592 visible=true dpi=144 x=1920 y=60 width=960 height=315",
+        "event=probe_window class=VeloSlintDesktopService hwnd=3402BC pid=190592 visible=false dpi=96 x=0 y=0 width=0 height=0",
+        "event=probe_tray hwnd=3402BC registered=true x=1475 y=1032 width=32 height=48"
+      ]
+    },
+    {
+      "File": "femtovg-negative-drag-primary-native.txt",
+      "RawSHA256": "14D782DF96B37D6DDB2B795A69C5A8F758669A68458391F22CA9A272DFFB9838",
+      "Lines": [
+        "event=probe_monitor x=-1920 y=0 width=1920 height=1080 work_x=-1920 work_y=0 work_width=1920 work_height=1008 dpi=144 primary=false",
+        "event=probe_monitor x=0 y=0 width=1920 height=1080 work_x=0 work_y=0 work_width=1920 work_height=1032 dpi=96 primary=true",
+        "event=probe_window class=VeloSlintLauncherWindow hwnd=A70FA0 pid=190592 visible=true dpi=96 x=0 y=35 width=640 height=720",
+        "event=probe_window class=VeloSlintDesktopService hwnd=3402BC pid=190592 visible=false dpi=96 x=0 y=0 width=0 height=0",
+        "event=probe_tray hwnd=3402BC registered=true x=1475 y=1032 width=32 height=48"
+      ]
+    },
+    {
+      "File": "femtovg-negative-layout-native.txt",
+      "RawSHA256": "397343472AE8E1ADDEDA653F4FD5E90D1BCEFE243A898BE14FB987D681BB9948",
+      "Lines": [
+        "event=probe_monitor x=-1920 y=0 width=1920 height=1080 work_x=-1920 work_y=0 work_width=1920 work_height=1008 dpi=144 primary=false",
+        "event=probe_monitor x=0 y=0 width=1920 height=1080 work_x=0 work_y=0 work_width=1920 work_height=1032 dpi=96 primary=true",
+        "event=probe_window class=VeloSlintLauncherWindow hwnd=A70FA0 pid=190592 visible=false dpi=144 x=-1920 y=0 width=960 height=1008",
+        "event=probe_window class=VeloSlintDesktopService hwnd=3402BC pid=190592 visible=false dpi=96 x=0 y=0 width=0 height=0",
+        "event=probe_tray hwnd=3402BC registered=true x=1475 y=1032 width=32 height=48"
+      ]
+    },
+    {
+      "File": "femtovg-primary-100-native.txt",
+      "RawSHA256": "6C1EFE50DAA33742E1D44391BEEE91DEDC1BD29C3E6028B256293C4362741942",
+      "Lines": [
+        "event=probe_monitor x=1920 y=42 width=1920 height=1080 work_x=1920 work_y=42 work_width=1920 work_height=1008 dpi=144 primary=false",
+        "event=probe_monitor x=0 y=0 width=1920 height=1080 work_x=0 work_y=0 work_width=1920 work_height=1032 dpi=96 primary=true",
+        "event=probe_window class=VeloSlintLauncherWindow hwnd=A70FA0 pid=190592 visible=true dpi=96 x=1280 y=283 width=640 height=210",
+        "event=probe_window class=VeloSlintDesktopService hwnd=3402BC pid=190592 visible=false dpi=96 x=0 y=0 width=0 height=0",
+        "event=probe_tray hwnd=3402BC registered=true x=1475 y=1032 width=32 height=48"
+      ]
+    },
+    {
+      "File": "femtovg-primary-after-exit-native.txt",
+      "RawSHA256": "BE960DB588A929C6884D393E15669368027EDAF7A0EA4EB26676F6339EA42BC9",
+      "Lines": [
+        "event=probe_monitor x=-1920 y=0 width=1920 height=1080 work_x=-1920 work_y=0 work_width=1920 work_height=1008 dpi=144 primary=false",
+        "event=probe_monitor x=0 y=0 width=1920 height=1080 work_x=0 work_y=0 work_width=1920 work_height=1008 dpi=144 primary=true"
+      ]
+    },
+    {
+      "File": "femtovg-primary-start-native.txt",
+      "RawSHA256": "BE960DB588A929C6884D393E15669368027EDAF7A0EA4EB26676F6339EA42BC9",
+      "Lines": [
+        "event=probe_monitor x=-1920 y=0 width=1920 height=1080 work_x=-1920 work_y=0 work_width=1920 work_height=1008 dpi=144 primary=false",
+        "event=probe_monitor x=0 y=0 width=1920 height=1080 work_x=0 work_y=0 work_width=1920 work_height=1008 dpi=144 primary=true"
+      ]
+    },
+    {
+      "File": "femtovg-secondary-search-100-native.txt",
+      "RawSHA256": "3D563125AAB8BEC617FA3C2A4938AC6BCD346D796464A34568713E857481E14F",
+      "Lines": [
+        "event=probe_monitor x=1920 y=42 width=1920 height=1080 work_x=1920 work_y=42 work_width=1920 work_height=1032 dpi=96 primary=false",
+        "event=probe_monitor x=0 y=0 width=1920 height=1080 work_x=0 work_y=0 work_width=1920 work_height=1032 dpi=96 primary=true",
+        "event=probe_window class=VeloSlintLauncherWindow hwnd=A70FA0 pid=190592 visible=true dpi=96 x=2560 y=248 width=640 height=264",
+        "event=probe_window class=VeloSlintDesktopService hwnd=3402BC pid=190592 visible=false dpi=96 x=0 y=0 width=0 height=0",
+        "event=probe_tray hwnd=3402BC registered=true x=1475 y=1032 width=32 height=48"
+      ]
+    },
+    {
+      "File": "femtovg-start-native.txt",
+      "RawSHA256": "33E04EF030E464E4A4D5C30C8CD0D99106B9B5EC65BECCE1B30B0F8EFAE88A24",
+      "Lines": [
+        "event=probe_monitor x=1920 y=42 width=1920 height=1080 work_x=1920 work_y=42 work_width=1920 work_height=1032 dpi=96 primary=false",
+        "event=probe_monitor x=0 y=0 width=1920 height=1080 work_x=0 work_y=0 work_width=1920 work_height=1032 dpi=96 primary=true",
+        "event=probe_window class=VeloSlintLauncherWindow hwnd=A70FA0 pid=190592 visible=true dpi=96 x=2560 y=248 width=640 height=660",
+        "event=probe_window class=VeloSlintDesktopService hwnd=3402BC pid=190592 visible=false dpi=96 x=0 y=0 width=0 height=0",
+        "event=probe_tray hwnd=3402BC registered=true x=1475 y=1032 width=32 height=48"
+      ]
+    },
+    {
+      "File": "femtovg-tray-primary-150-native.txt",
+      "RawSHA256": "91400BCA50CB17E2D7A73DB7204FBB508A8B74EC523EDF5728918B5AF77E67DD",
+      "Lines": [
+        "event=probe_monitor x=-1920 y=0 width=1920 height=1080 work_x=-1920 work_y=0 work_width=1920 work_height=1008 dpi=144 primary=false",
+        "event=probe_monitor x=0 y=0 width=1920 height=1080 work_x=0 work_y=0 work_width=1920 work_height=1008 dpi=144 primary=true",
+        "event=probe_window class=VeloSlintLauncherWindow hwnd=A70FA0 pid=190592 visible=false dpi=144 x=0 y=0 width=960 height=1008",
+        "event=probe_window class=VeloSlintDesktopService hwnd=3402BC pid=190592 visible=false dpi=96 x=0 y=0 width=0 height=0",
+        "event=probe_tray hwnd=3402BC registered=true x=1253 y=1008 width=48 height=72"
+      ]
+    },
+    {
+      "File": "native-after-user-stop.txt",
+      "RawSHA256": "9E892865FE3D0AB1BAB396BC319DB7A0875D2575F4B11E1A791405132A5B7D0E",
+      "Lines": [
+        "event=probe_monitor x=-1920 y=0 width=1920 height=1080 work_x=-1920 work_y=0 work_width=1920 work_height=1032 dpi=96 primary=false",
+        "event=probe_monitor x=0 y=0 width=1920 height=1080 work_x=0 work_y=0 work_width=1920 work_height=1032 dpi=96 primary=true"
+      ]
+    },
+    {
+      "File": "native-before.txt",
+      "RawSHA256": "0AEFDBD7389008963430F21BECE834152272C27BCB74F23343F4B9BD9B2780D4",
+      "Lines": [
+        "event=probe_monitor x=1920 y=42 width=1920 height=1080 work_x=1920 work_y=42 work_width=1920 work_height=1032 dpi=96 primary=false",
+        "event=probe_monitor x=0 y=0 width=1920 height=1080 work_x=0 work_y=0 work_width=1920 work_height=1032 dpi=96 primary=true"
+      ]
+    },
+    {
+      "File": "software-after-tray-exit-native.txt",
+      "RawSHA256": "79384092092F71F7A68FAE8D8ACD7223F32F93A00202532B0530AA5702CE7175",
+      "Lines": [
+        "event=probe_monitor x=-1920 y=0 width=1920 height=1080 work_x=-1920 work_y=0 work_width=1920 work_height=1032 dpi=96 primary=false",
+        "event=probe_monitor x=0 y=0 width=1920 height=1080 work_x=0 work_y=0 work_width=1920 work_height=1008 dpi=144 primary=true"
+      ]
+    },
+    {
+      "File": "software-negative-100-native.txt",
+      "RawSHA256": "EB4054C213FD84979ACDDFCBCC9676D230E50B3B6FCEE60EF53A86F9F12A322F",
+      "Lines": [
+        "event=probe_monitor x=-1920 y=0 width=1920 height=1080 work_x=-1920 work_y=0 work_width=1920 work_height=1032 dpi=96 primary=false",
+        "event=probe_monitor x=0 y=0 width=1920 height=1080 work_x=0 work_y=0 work_width=1920 work_height=1008 dpi=144 primary=true",
+        "event=probe_window class=VeloSlintLauncherWindow hwnd=C80D90 pid=185280 visible=true dpi=96 x=-640 y=53 width=640 height=264",
+        "event=probe_window class=VeloSlintDesktopService hwnd=5D0F12 pid=185280 visible=false dpi=144 x=0 y=0 width=0 height=0",
+        "event=probe_tray hwnd=5D0F12 registered=true x=1251 y=1008 width=48 height=72"
+      ]
+    },
+    {
+      "File": "software-primary-clamped-native.txt",
+      "RawSHA256": "6B77B06595F2EF8668CFA85FD3827BCB563C47388F7FE03F775D49FEE46EECBB",
+      "Lines": [
+        "event=probe_monitor x=-1920 y=0 width=1920 height=1080 work_x=-1920 work_y=0 work_width=1920 work_height=1032 dpi=96 primary=false",
+        "event=probe_monitor x=0 y=0 width=1920 height=1080 work_x=0 work_y=0 work_width=1920 work_height=1008 dpi=144 primary=true",
+        "event=probe_window class=VeloSlintLauncherWindow hwnd=C80D90 pid=185280 visible=true dpi=144 x=0 y=0 width=960 height=1008",
+        "event=probe_window class=VeloSlintDesktopService hwnd=5D0F12 pid=185280 visible=false dpi=144 x=0 y=0 width=0 height=0",
+        "event=probe_tray hwnd=5D0F12 registered=true x=1251 y=1008 width=48 height=72"
+      ]
+    },
+    {
+      "File": "software-reverse-mixed-native.txt",
+      "RawSHA256": "86E4DDDA41EFFB9C6F3E5B6687D6970EF2F5015E26BA197F3AE37B7B9767C36E",
+      "Lines": [
+        "event=probe_monitor x=-1920 y=0 width=1920 height=1080 work_x=-1920 work_y=0 work_width=1920 work_height=1032 dpi=96 primary=false",
+        "event=probe_monitor x=0 y=0 width=1920 height=1080 work_x=0 work_y=0 work_width=1920 work_height=1008 dpi=144 primary=true",
+        "event=probe_window class=VeloSlintLauncherWindow hwnd=C80D90 pid=185280 visible=false dpi=144 x=480 y=18 width=960 height=396",
+        "event=probe_window class=VeloSlintDesktopService hwnd=5D0F12 pid=185280 visible=false dpi=144 x=0 y=0 width=0 height=0",
+        "event=probe_tray hwnd=5D0F12 registered=true x=1251 y=1008 width=48 height=72"
+      ]
+    }
+  ]
+}

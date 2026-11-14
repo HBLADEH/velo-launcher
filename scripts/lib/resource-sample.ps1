@@ -1,4 +1,81 @@
 # Helpers shared by the collector and its dependency-free regression checks.
+function Get-VeloColdEnvironmentId {
+    param(
+        [Parameter(Mandatory)][string]$WindowsVersion,
+        [Parameter(Mandatory)][string]$WindowsBuild,
+        [Parameter(Mandatory)][string[]]$Processors
+    )
+    # Stable field and processor order keep the same environment comparable across PowerShell processes.
+    [string[]]$orderedProcessors = $Processors.Clone()
+    [Array]::Sort($orderedProcessors, [StringComparer]::Ordinal)
+    $environment = [ordered]@{ Windows = $WindowsVersion; Build = $WindowsBuild; CPU = @($orderedProcessors) }
+    [Convert]::ToHexString([Security.Cryptography.SHA256]::HashData([Text.Encoding]::UTF8.GetBytes(($environment | ConvertTo-Json -Compress))))
+}
+
+function Get-VeloExecutableMode {
+    param([string]$CommandLine, [string[]]$GoBuildInfo = @())
+    if ($CommandLine -match '--measurement-log=') { return 'MeasurementProbe' }
+    if (@($GoBuildInfo | Where-Object { $_ -match '^\s*build\s+-tags=.*\blatencyprobe\b' }).Count) {
+        # Go's probe is enabled through environment/sidecar settings, which are
+        # absent from CommandLine. The binary tag establishes instrumentation,
+        # but does not prove whether every optional observer is active.
+        return 'ProbeBuild'
+    }
+    if ($CommandLine -match '(?:^|\s)--diagnostics(?:\s|$)') { return 'Diagnostics' }
+    'Production'
+}
+
+function Read-VeloEventLines {
+    param([string]$Path)
+    # The bounded Rust writer keeps its file open. Both sides must share write
+    # access on Windows; File.ReadLines denies an already-open writer.
+    $stream = [IO.FileStream]::new($Path, [IO.FileMode]::Open, [IO.FileAccess]::Read, [IO.FileShare]::ReadWrite -bor [IO.FileShare]::Delete)
+    $reader = [IO.StreamReader]::new($stream, [Text.Encoding]::UTF8)
+    try { $content = $reader.ReadToEnd() } finally { $reader.Dispose() }
+    # Ignore a trailing partial write until its terminating newline is visible.
+    $lines = $content -split '\r?\n'
+    if ($lines.Count -gt 1) { $lines[0..($lines.Count - 2)] }
+}
+
+function Read-VeloBusinessObservation {
+    param([string]$Path, [int]$ProcessId)
+    $state = [ordered]@{ ProcessId = $ProcessId; Complete = $false; Scanning = $null; Warning = $null; Count = $null; IconCache = $null; LastScan = $null; PublishedDuringScan = $false; Dropped = $false }
+    $scanStarted = $null
+    $published = $null
+    foreach ($line in Read-VeloEventLines $Path) {
+        $fields = @{}
+        foreach ($match in [regex]::Matches($line, '(\w+)=([^ ]+)')) { $fields[$match.Groups[1].Value] = $match.Groups[2].Value }
+        if ($fields.pid -ne [string]$ProcessId -or $fields.dropped -ne '0') { $state.Dropped = $true; continue }
+        switch ($fields.event) {
+            'catalog_published' { $state.Count = [int]$fields.count; $published = [long]$fields.elapsed_us }
+            'index_status' {
+                $state.Scanning = $fields.scanning -eq 'true'
+                if ($state.Scanning) { $scanStarted = [long]$fields.elapsed_us }
+                else { $state.PublishedDuringScan = $null -ne $scanStarted -and $null -ne $published -and $published -gt $scanStarted }
+                $state.Warning = $fields.warning -eq 'true'
+                $state.LastScan = $fields.elapsed_us
+            }
+            'icon_cache' { $state.IconCache = [pscustomobject]@{ Entries = [int]$fields.entries; CPUAndTextureEstimateBytes = [long]$fields.cpu_and_texture_estimate_bytes } }
+        }
+    }
+    $state.Complete = $null -ne $state.Count -and $null -ne $state.Scanning -and -not $state.Dropped
+    [pscustomobject]$state
+}
+
+function Get-VeloIconDiskEvidence {
+    param([string]$Directory)
+    $path = Join-Path $Directory 'cache/icons'
+    $files = @(if (Test-Path -LiteralPath $path) { Get-ChildItem -LiteralPath $path -File -Filter '*.png' | Sort-Object Name })
+    [long]$bytes = 0
+    foreach ($file in $files) { $bytes += $file.Length }
+    $fingerprint = ($files | ForEach-Object { $_.Name + ':' + (Get-FileHash -LiteralPath $_.FullName -Algorithm SHA256).Hash }) -join "`n"
+    [pscustomobject]@{
+        Files = $files.Count
+        Bytes = $bytes
+        SHA256 = ([BitConverter]::ToString([Security.Cryptography.SHA256]::Create().ComputeHash([Text.Encoding]::UTF8.GetBytes($fingerprint)))).Replace('-', '')
+    }
+}
+
 function Read-VeloMetadataJson {
     param([string]$Path)
     try {

@@ -1,0 +1,137 @@
+[
+  {
+    "Run": "femtovg-native-current",
+    "Renderer": "femtovg",
+    "ProcessId": 161800,
+    "StartedTicks": 639301041901348782,
+    "ExecutableSHA256": "D81F31ED8AB3C0D45A3565CDC8AA412B3FB870C0CC350204178CDE44456B6487",
+    "Completion": {
+      "Completed": true,
+      "ExitCode": 0,
+      "ProcessId": 161800,
+      "SHA256": "D81F31ED8AB3C0D45A3565CDC8AA412B3FB870C0CC350204178CDE44456B6487",
+      "ForcedCleanup": false,
+      "CleanupScope": "This wrapper never terminates a process. External cleanup records take precedence on nonzero exit."
+    },
+    "RawInputLogSHA256": "6EAABA0C295D39B778109B9C9E65AEC80E25931A26675E9D4B1E2CA749A2AB70",
+    "HistoryUnchanged": true,
+    "ConfigUnchanged": true,
+    "LaunchCallbacks": 0,
+    "InputEditsByActualLoggedDPI": {},
+    "WindowObservations": []
+  },
+  {
+    "Run": "femtovg-physical",
+    "Renderer": "femtovg",
+    "ProcessId": 94504,
+    "StartedTicks": 639301015585310087,
+    "ExecutableSHA256": "D81F31ED8AB3C0D45A3565CDC8AA412B3FB870C0CC350204178CDE44456B6487",
+    "Completion": {
+      "Completed": true,
+      "ExitCode": 0,
+      "ProcessId": 94504,
+      "SHA256": "D81F31ED8AB3C0D45A3565CDC8AA412B3FB870C0CC350204178CDE44456B6487",
+      "ForcedCleanup": false,
+      "CleanupScope": "This wrapper never terminates a process. External cleanup records take precedence on nonzero exit."
+    },
+    "RawInputLogSHA256": "F76D56B590B2D9CD6D28EB7DA2BF61499F051539A97F7B35348FAC2708A93863",
+    "HistoryUnchanged": true,
+    "ConfigUnchanged": true,
+    "LaunchCallbacks": 0,
+    "InputEditsByActualLoggedDPI": {
+      "96": {
+        "Edits": 17,
+        "Composing": 4,
+        "NonComposing": 13,
+        "ThreeByteNonComposing": 4
+      },
+      "120": {
+        "Edits": 5,
+        "Composing": 2,
+        "NonComposing": 3,
+        "ThreeByteNonComposing": 1
+      },
+      "144": {
+        "Edits": 6,
+        "Composing": 3,
+        "NonComposing": 3,
+        "ThreeByteNonComposing": 1
+      },
+      "168": {
+        "Edits": 5,
+        "Composing": 2,
+        "NonComposing": 3,
+        "ThreeByteNonComposing": 1
+      }
+    },
+    "WindowObservations": [
+      {
+        "File": "native-window-observation-2.json",
+        "SHA256": "F10029D3C695479B2C55C6C37A9432F59F41B61DA03BF99ECDD3B1FAADEF92AF",
+        "TargetEnded": true
+      },
+      {
+        "File": "native-window-observation.json",
+        "SHA256": "39E66A4D59BF644D8EB55D1422CFD3310D5279ACB8E624A35C0B1FA9C5A7D879",
+        "TargetEnded": false
+      }
+    ]
+  },
+  {
+    "Run": "software-physical",
+    "Renderer": "software",
+    "ProcessId": 156608,
+    "StartedTicks": 639300999440977380,
+    "ExecutableSHA256": "5E7C017DDA3FF691E7FF8DCBFEAF149E5A766C1F8DC73A816BB5C4A9F7C4C66B",
+    "Completion": {
+      "Completed": true,
+      "ExitCode": 0,
+      "ProcessId": 156608,
+      "SHA256": "5E7C017DDA3FF691E7FF8DCBFEAF149E5A766C1F8DC73A816BB5C4A9F7C4C66B",
+      "ForcedCleanup": false,
+      "CleanupScope": "This wrapper never terminates a process. External cleanup records take precedence on nonzero exit."
+    },
+    "RawInputLogSHA256": "1EB572C13EFE851D86791F1A23BB4BA7832DC5EA3B7D21A606DBAB8ADBBB92D8",
+    "HistoryUnchanged": true,
+    "ConfigUnchanged": true,
+    "LaunchCallbacks": 0,
+    "InputEditsByActualLoggedDPI": {
+      "96": {
+        "Edits": 11,
+        "Composing": 5,
+        "NonComposing": 6,
+        "ThreeByteNonComposing": 2
+      },
+      "120": {
+        "Edits": 12,
+        "Composing": 4,
+        "NonComposing": 8,
+        "ThreeByteNonComposing": 1
+      },
+      "144": {
+        "Edits": 11,
+        "Composing": 3,
+        "NonComposing": 8,
+        "ThreeByteNonComposing": 2
+      },
+      "168": {
+        "Edits": 9,
+        "Composing": 4,
+        "NonComposing": 5,
+        "ThreeByteNonComposing": 1
+      }
+    },
+    "WindowObservations": [
+      {
+        "File": "native-window-observation-2.json",
+        "SHA256": "9C4BB5B1AF15472AADDBFADB6A8A4B2DE48B8F3E4388FE3C7F3D05447801B4F1",
+        "TargetEnded": true
+      },
+      {
+        "File": "native-window-observation.json",
+        "SHA256": "897EB06855115FAA2EAFED5079D534F240639D90E75D01350EBA1553F658C71A",
+        "TargetEnded": false
+      }
+    ]
+  }
+]

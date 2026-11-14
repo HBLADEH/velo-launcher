@@ -1,0 +1,51 @@
+{
+  "SchemaVersion": 1,
+  "SHA256": "E85B41C7E77888750817E47F092EABECB1BAB5A68EFCE579378CE2DDAD2DBA4B",
+  "ObserverSHA256": "1E973C13524A86F0BAB8B7EC0873F9EA4B8CFEF7DEB0209C1BABE299C8740EEA",
+  "Kind": "HotkeyActivation",
+  "Result": {
+    "Kind": "HotkeyActivation",
+    "ProcessId": 294636,
+    "HWND": "B13FE",
+    "EventClockQuantumMilliseconds": 15.625,
+    "Observations": [
+      {
+        "Number": 1,
+        "Kind": "HotkeyActivation",
+        "Valid": false,
+        "InjectedStart": false,
+        "Reason": "No focused non-composing character accepted within ten seconds of the hotkey.",
+        "StartLowerUnixUs": 1793790598621790,
+        "StartObservedUnixUs": 1793790598637509,
+        "AcceptedUnixUs": 0,
+        "DurationUpperMilliseconds": 0.0,
+        "ClockUncertaintyMilliseconds": 15.719,
+        "WallClockDriftMilliseconds": 0.0
+      },
+      {
+        "Number": 2,
+        "Kind": "HotkeyActivation",
+        "Valid": true,
+        "InjectedStart": false,
+        "Reason": "Actual character accepted; upper bound includes manual delay before typing. No subtraction of human waiting or claim of first-possible readiness.",
+        "StartLowerUnixUs": 1793790711141893,
+        "StartObservedUnixUs": 1793790711157519,
+        "AcceptedUnixUs": 1793790713955457,
+        "DurationUpperMilliseconds": 2813.564,
+        "ClockUncertaintyMilliseconds": 15.626,
+        "WallClockDriftMilliseconds": 0.042000000000371074
+      }
+    ],
+    "Completed": true
+  },
+  "RecordedAtUtc": "2026-11-04T11:11:54.0064784Z",
+  "EnvironmentId": "919334C89E60F497840DA52B3B7791CC5DD006BCC54E291BAD0A492BC13F2FD7",
+  "InputId": "9C48BD83A09FF5830227CAB6DBFEE9C67BAF87A8EE43E2ECF6AE49439C21011B",
+  "Method": "Physical Alt+Space Windows event lower bound to actual non-composing character accepted by the focused visible launcher. Includes manual typing delay. Injected hotkeys excluded.",
+  "Boundary": "KeyDownToEditable",
+  "Limitations": [
+    "Actual accepted character is later than first-possible readiness; human delay is not removed. Above-budget upper bounds alone cannot establish a readiness regression.",
+    "Windows keyboard-event clock quantum and UTC mapping bounds are reported. This does not measure a presented result frame.",
+    "Only starts on the selected hidden launcher; no other typed keys or text are collected."
+  ]
+}

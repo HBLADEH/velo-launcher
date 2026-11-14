@@ -1,0 +1,62 @@
+{
+  "RecordedAtUtc": "2026-11-13T03:25:50.789794+00:00",
+  "RustFullSmokePassed": true,
+  "LegacyGoVuePassed": true,
+  "RustTestsPerRenderer": 80,
+  "InputBusinessPageAssertions": [
+    22,
+    7,
+    33
+  ],
+  "FinalSourceFingerprintsMatch": true,
+  "SourcesPerRenderer": [
+    214,
+    214
+  ],
+  "Logs": [
+    {
+      "Path": ".reasonix/rs14-validation-20261113/verify-rust.log",
+      "SHA256": "19DEECA82619C9FD3B3C25D6738DA1B237C1C825D83178AB83F486DC771E65AA",
+      "ExitCode": 0,
+      "Scope": "Both renderers before the ACL comparison script correction"
+    },
+    {
+      "Path": ".reasonix/rs14-validation-20261113/verify-rust-final.log",
+      "SHA256": "FF2E43958EC2A242E04CCB6EEE7C39AAA47935DC10F885446165E2B550631BE2",
+      "ExitCode": 1,
+      "Scope": "Final FemtoVG passed; Software business smoke lost focus and timed out"
+    },
+    {
+      "Path": ".reasonix/rs14-validation-20261113/verify-rust-software-retry.log",
+      "SHA256": "45A486EFDD44230F806A23D16B27773CFF13C1B166FE27CB3F7787090031A432",
+      "ExitCode": 0,
+      "Scope": "Full Software-only official entry after the preserved failure"
+    },
+    {
+      "Path": ".reasonix/rs14-validation-20261113/verify-go-vue.log",
+      "SHA256": "1E3D0B8C17DA42A2E975D69E69AE5C29AAC577C41DD884964A569358B87E517D",
+      "ExitCode": 0,
+      "Scope": "Legacy Go/Vue and shared tool checks"
+    }
+  ],
+  "PreservedFailures": [
+    {
+      "Case": "First FemtoVG installed-window smoke",
+      "SHA256": "6FB67A571171C1306FBE8D965AB748136AB87B7764AA99A71C6F0DC31ACAD429",
+      "Observed": "nonuniform snapshot true, redraw_events zero; exact cause not established",
+      "Retry": "Fresh serial directory, all eight cases passed"
+    },
+    {
+      "Case": "First ACL finalization comparison rejected raw SDDL inequality",
+      "Observed": "Eight actual ACEs, protection, owner and group all match; control-flag serialization differs",
+      "Correction": "Compare ACE signatures, protection, owner and group; all four actual directories restored. Product code unchanged."
+    },
+    {
+      "Case": "Final dual-entry Software business smoke",
+      "SHA256": "FF2E43958EC2A242E04CCB6EEE7C39AAA47935DC10F885446165E2B550631BE2",
+      "Observed": "First three assertions passed; native focus lost, normal blur-hide, then business timeout",
+      "Retry": "Full official Software-only entry on unchanged source; original failure retained, foreground-loss cause unproven"
+    }
+  ],
+  "PublishingOrFormalInstallPerformed": false
+}

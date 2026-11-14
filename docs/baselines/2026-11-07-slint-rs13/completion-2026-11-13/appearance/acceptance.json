@@ -1,0 +1,20 @@
+{
+  "RecordedAtUtc": "2026-11-12T18:52:55.8152443Z",
+  "RendererScope": [
+    "software",
+    "femtovg"
+  ],
+  "Scenario": "appearance-tradeoffs",
+  "OperatorReply": "接受这些外观差异",
+  "AcceptedDifferences": [
+    "Text antialiasing and small weight differences",
+    "Shadow and glow intensity differences",
+    "Windows native context-menu and file-picker appearance"
+  ],
+  "ReviewedArtifact": "appearance-review.png",
+  "ReviewedArtifactSHA256": "13D90BFA4FA5615305FCA30D8B23014E40279D45610EC841AE1309DDC62CC5D0",
+  "EvidenceIdentity": "Existing native reference crops; relevant component/select sources verified unchanged against the current verified build.",
+  "ExactAnimationTimingAccepted": false,
+  "UntestedScale200PercentAcceptedAsPassed": false,
+  "DefaultRendererChosen": false
+}

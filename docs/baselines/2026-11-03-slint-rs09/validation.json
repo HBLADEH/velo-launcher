@@ -1,0 +1,108 @@
+{
+  "SchemaVersion": 1,
+  "DateBeijing": "2026-11-03",
+  "Stage": "RS-09",
+  "Status": "passed",
+  "Scope": "Search/history/home kernel and synthetic UI integration; discovery and real launch pending RS-10",
+  "WorkspaceCommit": "4d9dbaf9acf5286d9961fae1e89cca908b5af9d7",
+  "WorkspaceDirty": true,
+  "Environment": {
+    "OS": "Windows 11 Pro Insider Preview x64",
+    "OSBuild": "10.0.26340",
+    "Go": "go1.25.6 windows/amd64",
+    "Node": "v22.23.2",
+    "npm": "10.9.8",
+    "Rust": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+    "MSVC": "14.50.35717",
+    "WindowsSDK": "10.0.26100.0",
+    "ScreenshotScale": 1.0
+  },
+  "Fixture": {
+    "Path": "tests/fixtures/compat/rs09.json",
+    "SHA256": "1523870B12B3260312FCC00D05E33794D56FD98A2FD9F07B8DBFBA9AC0474598",
+    "FixedTime": "2026-11-03T04:05:06.123456789Z",
+    "Normalizations": 9,
+    "SearchQueries": 152,
+    "Histories": 4,
+    "ServiceCases": 4,
+    "PinRequests": 12,
+    "ServiceStates": 16,
+    "ServiceQueries": 59,
+    "ScoreAbsoluteTolerance": 1e-09,
+    "RankingTolerance": "none"
+  },
+  "Validation": {
+    "RustEntry": "./scripts/verify-rust.ps1 -SmokeTest",
+    "RustEntryExitCode": 0,
+    "LegacyEntry": "./scripts/verify.ps1 -SkipBuild",
+    "LegacyEntryExitCode": 0,
+    "RustTestsPerRenderer": 53,
+    "ClippyAllTargets": true,
+    "ReleaseBuilds": true,
+    "GoOracleAndStaticTables": true,
+    "DataRoundTripsAndNtfsDenialPerRenderer": true,
+    "HistoryAndPinRollbackAndConcurrentWriters": true,
+    "NonblockingCommittedHistoryReads": true,
+    "WindowSmokePerRenderer": true,
+    "ComponentAssertionsPerRenderer": 22,
+    "LegacyFrontendTests": 26,
+    "LegacyLintTypecheckBuildVetAndGoTests": true,
+    "BuildSourceFingerprintsMatch": true,
+    "SameSourceListForBothRenderers": true,
+    "TestProcessesCleaned": true,
+    "ProductDirectoryAccessed": false
+  },
+  "Builds": [
+    {
+      "Renderer": "femtovg",
+      "ExecutableSHA256": "002E638CD7238D9BB4B8F762ABA7F83B27629B396822345E41DC26AD6FF7C03B",
+      "ExecutableBytes": 10859520,
+      "SourceCount": 95,
+      "Identity": "femtovg-build-identity.json"
+    },
+    {
+      "Renderer": "software",
+      "ExecutableSHA256": "1540ABB9552E438CDFE344780854C2FB6B76521475467D9EF8C0F4965A7053F1",
+      "ExecutableBytes": 11361280,
+      "SourceCount": 95,
+      "Identity": "software-build-identity.json"
+    }
+  ],
+  "Screenshots": [
+    {
+      "Path": "screenshots/femtovg-home-light.png",
+      "SHA256": "FC703C352864A19BC71E538B28F320E7147A27A071F91305A3CA0DB562D6772E",
+      "Kind": "preset-query or startup; native input not claimed"
+    },
+    {
+      "Path": "screenshots/femtovg-pinyin-dark.png",
+      "SHA256": "EB1A17E9E59909F92DEA587ECCAA5E29CBF7462F970732A914FD837F8AF2E66F",
+      "Kind": "preset-query or startup; native input not claimed"
+    },
+    {
+      "Path": "screenshots/software-code-light.png",
+      "SHA256": "2E11D2C350AC09E51872162F58AE1800B4EAC23DB60900EF35CDF1AFC32EBE7B",
+      "Kind": "preset-query or startup; native input not claimed"
+    },
+    {
+      "Path": "screenshots/software-empty-dark.png",
+      "SHA256": "E626C6097CB2E03FD7C90C441F88A108717F50E506EC7D4497F033FAB15221D5",
+      "Kind": "preset-query or startup; native input not claimed"
+    },
+    {
+      "Path": "screenshots/software-pinyin-dark.png",
+      "SHA256": "250482A1B0AF9D7BEDC31F56C1A65C3A3973CD10511FFCB6BDD7F5A6308AE143",
+      "Kind": "preset-query or startup; native input not claimed"
+    }
+  ],
+  "Limitations": [
+    "Computer Use activation failed twice: failed to activate captured window; no further native input attempted",
+    "Screenshots use preset queries and isolated 640x540 at system scale 1.0; no new real keyboard or IME acceptance",
+    "No production directory, user data copy, real discovery, icon extraction, or Shell launch",
+    "No new memory/latency/long-running measurements; G3 and default renderer remain pending"
+  ],
+  "BehaviorNotes": [
+    "Go tied least-count history eviction is unspecified; Rust chooses the lexicographically first eligible key and keeps the current query",
+    "Rust refuses i64 learning counter overflow and preserves the committed snapshot"
+  ]
+}

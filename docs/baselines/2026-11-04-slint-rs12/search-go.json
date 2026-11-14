@@ -1,0 +1,2474 @@
+[
+  {
+    "count": 1000,
+    "history": false,
+    "layer": "kernel",
+    "query": "editor",
+    "round": 1,
+    "iterations": 256,
+    "elapsed_nanoseconds": 12017700,
+    "nanoseconds_per_operation": 46944.140625,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00004",
+      "app-00005",
+      "app-00006",
+      "app-00007"
+    ]
+  },
+  {
+    "count": 1000,
+    "history": false,
+    "layer": "kernel",
+    "query": "editor",
+    "round": 2,
+    "iterations": 256,
+    "elapsed_nanoseconds": 12018700,
+    "nanoseconds_per_operation": 46948.046875,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00004",
+      "app-00005",
+      "app-00006",
+      "app-00007"
+    ]
+  },
+  {
+    "count": 1000,
+    "history": false,
+    "layer": "kernel",
+    "query": "editor",
+    "round": 3,
+    "iterations": 256,
+    "elapsed_nanoseconds": 11594700,
+    "nanoseconds_per_operation": 45291.796875,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00004",
+      "app-00005",
+      "app-00006",
+      "app-00007"
+    ]
+  },
+  {
+    "count": 1000,
+    "history": false,
+    "layer": "service",
+    "query": "editor",
+    "round": 1,
+    "iterations": 256,
+    "elapsed_nanoseconds": 12758300,
+    "nanoseconds_per_operation": 49837.109375,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00004",
+      "app-00005",
+      "app-00006",
+      "app-00007"
+    ]
+  },
+  {
+    "count": 1000,
+    "history": false,
+    "layer": "service",
+    "query": "editor",
+    "round": 2,
+    "iterations": 256,
+    "elapsed_nanoseconds": 12405000,
+    "nanoseconds_per_operation": 48457.03125,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00004",
+      "app-00005",
+      "app-00006",
+      "app-00007"
+    ]
+  },
+  {
+    "count": 1000,
+    "history": false,
+    "layer": "service",
+    "query": "editor",
+    "round": 3,
+    "iterations": 256,
+    "elapsed_nanoseconds": 11876100,
+    "nanoseconds_per_operation": 46391.015625,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00004",
+      "app-00005",
+      "app-00006",
+      "app-00007"
+    ]
+  },
+  {
+    "count": 1000,
+    "history": false,
+    "layer": "kernel",
+    "query": "vs",
+    "round": 1,
+    "iterations": 256,
+    "elapsed_nanoseconds": 44049500,
+    "nanoseconds_per_operation": 172068.359375,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00004",
+      "app-00005",
+      "app-00006",
+      "app-00007"
+    ]
+  },
+  {
+    "count": 1000,
+    "history": false,
+    "layer": "kernel",
+    "query": "vs",
+    "round": 2,
+    "iterations": 256,
+    "elapsed_nanoseconds": 40815800,
+    "nanoseconds_per_operation": 159436.71875,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00004",
+      "app-00005",
+      "app-00006",
+      "app-00007"
+    ]
+  },
+  {
+    "count": 1000,
+    "history": false,
+    "layer": "kernel",
+    "query": "vs",
+    "round": 3,
+    "iterations": 256,
+    "elapsed_nanoseconds": 40949500,
+    "nanoseconds_per_operation": 159958.984375,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00004",
+      "app-00005",
+      "app-00006",
+      "app-00007"
+    ]
+  },
+  {
+    "count": 1000,
+    "history": false,
+    "layer": "service",
+    "query": "vs",
+    "round": 1,
+    "iterations": 256,
+    "elapsed_nanoseconds": 46381400,
+    "nanoseconds_per_operation": 181177.34375,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00004",
+      "app-00005",
+      "app-00006",
+      "app-00007"
+    ]
+  },
+  {
+    "count": 1000,
+    "history": false,
+    "layer": "service",
+    "query": "vs",
+    "round": 2,
+    "iterations": 256,
+    "elapsed_nanoseconds": 41245100,
+    "nanoseconds_per_operation": 161113.671875,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00004",
+      "app-00005",
+      "app-00006",
+      "app-00007"
+    ]
+  },
+  {
+    "count": 1000,
+    "history": false,
+    "layer": "service",
+    "query": "vs",
+    "round": 3,
+    "iterations": 256,
+    "elapsed_nanoseconds": 40404900,
+    "nanoseconds_per_operation": 157831.640625,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00004",
+      "app-00005",
+      "app-00006",
+      "app-00007"
+    ]
+  },
+  {
+    "count": 1000,
+    "history": false,
+    "layer": "kernel",
+    "query": "edtor",
+    "round": 1,
+    "iterations": 256,
+    "elapsed_nanoseconds": 52231600,
+    "nanoseconds_per_operation": 204029.6875,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00004",
+      "app-00005",
+      "app-00006",
+      "app-00007"
+    ]
+  },
+  {
+    "count": 1000,
+    "history": false,
+    "layer": "kernel",
+    "query": "edtor",
+    "round": 2,
+    "iterations": 256,
+    "elapsed_nanoseconds": 53234900,
+    "nanoseconds_per_operation": 207948.828125,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00004",
+      "app-00005",
+      "app-00006",
+      "app-00007"
+    ]
+  },
+  {
+    "count": 1000,
+    "history": false,
+    "layer": "kernel",
+    "query": "edtor",
+    "round": 3,
+    "iterations": 256,
+    "elapsed_nanoseconds": 53464700,
+    "nanoseconds_per_operation": 208846.484375,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00004",
+      "app-00005",
+      "app-00006",
+      "app-00007"
+    ]
+  },
+  {
+    "count": 1000,
+    "history": false,
+    "layer": "service",
+    "query": "edtor",
+    "round": 1,
+    "iterations": 256,
+    "elapsed_nanoseconds": 55188000,
+    "nanoseconds_per_operation": 215578.125,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00004",
+      "app-00005",
+      "app-00006",
+      "app-00007"
+    ]
+  },
+  {
+    "count": 1000,
+    "history": false,
+    "layer": "service",
+    "query": "edtor",
+    "round": 2,
+    "iterations": 256,
+    "elapsed_nanoseconds": 53825900,
+    "nanoseconds_per_operation": 210257.421875,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00004",
+      "app-00005",
+      "app-00006",
+      "app-00007"
+    ]
+  },
+  {
+    "count": 1000,
+    "history": false,
+    "layer": "service",
+    "query": "edtor",
+    "round": 3,
+    "iterations": 256,
+    "elapsed_nanoseconds": 57981100,
+    "nanoseconds_per_operation": 226488.671875,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00004",
+      "app-00005",
+      "app-00006",
+      "app-00007"
+    ]
+  },
+  {
+    "count": 1000,
+    "history": false,
+    "layer": "kernel",
+    "query": "",
+    "round": 1,
+    "iterations": 256,
+    "elapsed_nanoseconds": 6448200,
+    "nanoseconds_per_operation": 25188.28125,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00004",
+      "app-00005",
+      "app-00006",
+      "app-00007"
+    ]
+  },
+  {
+    "count": 1000,
+    "history": false,
+    "layer": "kernel",
+    "query": "",
+    "round": 2,
+    "iterations": 256,
+    "elapsed_nanoseconds": 7933700,
+    "nanoseconds_per_operation": 30991.015625,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00004",
+      "app-00005",
+      "app-00006",
+      "app-00007"
+    ]
+  },
+  {
+    "count": 1000,
+    "history": false,
+    "layer": "kernel",
+    "query": "",
+    "round": 3,
+    "iterations": 256,
+    "elapsed_nanoseconds": 6254100,
+    "nanoseconds_per_operation": 24430.078125,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00004",
+      "app-00005",
+      "app-00006",
+      "app-00007"
+    ]
+  },
+  {
+    "count": 1000,
+    "history": false,
+    "layer": "service",
+    "query": "",
+    "round": 1,
+    "iterations": 256,
+    "elapsed_nanoseconds": 7627600,
+    "nanoseconds_per_operation": 29795.3125,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00004",
+      "app-00005",
+      "app-00006",
+      "app-00007"
+    ]
+  },
+  {
+    "count": 1000,
+    "history": false,
+    "layer": "service",
+    "query": "",
+    "round": 2,
+    "iterations": 256,
+    "elapsed_nanoseconds": 7761900,
+    "nanoseconds_per_operation": 30319.921875,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00004",
+      "app-00005",
+      "app-00006",
+      "app-00007"
+    ]
+  },
+  {
+    "count": 1000,
+    "history": false,
+    "layer": "service",
+    "query": "",
+    "round": 3,
+    "iterations": 256,
+    "elapsed_nanoseconds": 6843300,
+    "nanoseconds_per_operation": 26731.640625,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00004",
+      "app-00005",
+      "app-00006",
+      "app-00007"
+    ]
+  },
+  {
+    "count": 1000,
+    "history": false,
+    "layer": "kernel",
+    "query": "zzzz",
+    "round": 1,
+    "iterations": 256,
+    "elapsed_nanoseconds": 80421200,
+    "nanoseconds_per_operation": 314145.3125,
+    "result_ids": []
+  },
+  {
+    "count": 1000,
+    "history": false,
+    "layer": "kernel",
+    "query": "zzzz",
+    "round": 2,
+    "iterations": 256,
+    "elapsed_nanoseconds": 78928300,
+    "nanoseconds_per_operation": 308313.671875,
+    "result_ids": []
+  },
+  {
+    "count": 1000,
+    "history": false,
+    "layer": "kernel",
+    "query": "zzzz",
+    "round": 3,
+    "iterations": 256,
+    "elapsed_nanoseconds": 81267700,
+    "nanoseconds_per_operation": 317451.953125,
+    "result_ids": []
+  },
+  {
+    "count": 1000,
+    "history": false,
+    "layer": "service",
+    "query": "zzzz",
+    "round": 1,
+    "iterations": 256,
+    "elapsed_nanoseconds": 79944100,
+    "nanoseconds_per_operation": 312281.640625,
+    "result_ids": []
+  },
+  {
+    "count": 1000,
+    "history": false,
+    "layer": "service",
+    "query": "zzzz",
+    "round": 2,
+    "iterations": 256,
+    "elapsed_nanoseconds": 77180900,
+    "nanoseconds_per_operation": 301487.890625,
+    "result_ids": []
+  },
+  {
+    "count": 1000,
+    "history": false,
+    "layer": "service",
+    "query": "zzzz",
+    "round": 3,
+    "iterations": 256,
+    "elapsed_nanoseconds": 77191900,
+    "nanoseconds_per_operation": 301530.859375,
+    "result_ids": []
+  },
+  {
+    "count": 1000,
+    "history": false,
+    "layer": "kernel",
+    "query": "计算器",
+    "round": 1,
+    "iterations": 256,
+    "elapsed_nanoseconds": 63806400,
+    "nanoseconds_per_operation": 249243.75,
+    "result_ids": []
+  },
+  {
+    "count": 1000,
+    "history": false,
+    "layer": "kernel",
+    "query": "计算器",
+    "round": 2,
+    "iterations": 256,
+    "elapsed_nanoseconds": 65460100,
+    "nanoseconds_per_operation": 255703.515625,
+    "result_ids": []
+  },
+  {
+    "count": 1000,
+    "history": false,
+    "layer": "kernel",
+    "query": "计算器",
+    "round": 3,
+    "iterations": 256,
+    "elapsed_nanoseconds": 64370300,
+    "nanoseconds_per_operation": 251446.484375,
+    "result_ids": []
+  },
+  {
+    "count": 1000,
+    "history": false,
+    "layer": "service",
+    "query": "计算器",
+    "round": 1,
+    "iterations": 256,
+    "elapsed_nanoseconds": 64717600,
+    "nanoseconds_per_operation": 252803.125,
+    "result_ids": [
+      "tool-calc"
+    ]
+  },
+  {
+    "count": 1000,
+    "history": false,
+    "layer": "service",
+    "query": "计算器",
+    "round": 2,
+    "iterations": 256,
+    "elapsed_nanoseconds": 65487900,
+    "nanoseconds_per_operation": 255812.109375,
+    "result_ids": [
+      "tool-calc"
+    ]
+  },
+  {
+    "count": 1000,
+    "history": false,
+    "layer": "service",
+    "query": "计算器",
+    "round": 3,
+    "iterations": 256,
+    "elapsed_nanoseconds": 64568800,
+    "nanoseconds_per_operation": 252221.875,
+    "result_ids": [
+      "tool-calc"
+    ]
+  },
+  {
+    "count": 1000,
+    "history": true,
+    "layer": "kernel",
+    "query": "editor",
+    "round": 1,
+    "iterations": 256,
+    "elapsed_nanoseconds": 18753600,
+    "nanoseconds_per_operation": 73256.25,
+    "result_ids": [
+      "app-00003",
+      "app-00004",
+      "app-00005",
+      "app-00006",
+      "app-00009",
+      "app-00010",
+      "app-00011",
+      "app-00012"
+    ]
+  },
+  {
+    "count": 1000,
+    "history": true,
+    "layer": "kernel",
+    "query": "editor",
+    "round": 2,
+    "iterations": 256,
+    "elapsed_nanoseconds": 17717100,
+    "nanoseconds_per_operation": 69207.421875,
+    "result_ids": [
+      "app-00003",
+      "app-00004",
+      "app-00005",
+      "app-00006",
+      "app-00009",
+      "app-00010",
+      "app-00011",
+      "app-00012"
+    ]
+  },
+  {
+    "count": 1000,
+    "history": true,
+    "layer": "kernel",
+    "query": "editor",
+    "round": 3,
+    "iterations": 256,
+    "elapsed_nanoseconds": 17218800,
+    "nanoseconds_per_operation": 67260.9375,
+    "result_ids": [
+      "app-00003",
+      "app-00004",
+      "app-00005",
+      "app-00006",
+      "app-00009",
+      "app-00010",
+      "app-00011",
+      "app-00012"
+    ]
+  },
+  {
+    "count": 1000,
+    "history": true,
+    "layer": "service",
+    "query": "editor",
+    "round": 1,
+    "iterations": 256,
+    "elapsed_nanoseconds": 45610600,
+    "nanoseconds_per_operation": 178166.40625,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00004",
+      "app-00005",
+      "app-00006",
+      "app-00009"
+    ]
+  },
+  {
+    "count": 1000,
+    "history": true,
+    "layer": "service",
+    "query": "editor",
+    "round": 2,
+    "iterations": 256,
+    "elapsed_nanoseconds": 43549700,
+    "nanoseconds_per_operation": 170116.015625,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00004",
+      "app-00005",
+      "app-00006",
+      "app-00009"
+    ]
+  },
+  {
+    "count": 1000,
+    "history": true,
+    "layer": "service",
+    "query": "editor",
+    "round": 3,
+    "iterations": 256,
+    "elapsed_nanoseconds": 40867000,
+    "nanoseconds_per_operation": 159636.71875,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00004",
+      "app-00005",
+      "app-00006",
+      "app-00009"
+    ]
+  },
+  {
+    "count": 1000,
+    "history": true,
+    "layer": "kernel",
+    "query": "vs",
+    "round": 1,
+    "iterations": 256,
+    "elapsed_nanoseconds": 47551600,
+    "nanoseconds_per_operation": 185748.4375,
+    "result_ids": [
+      "app-00005",
+      "app-00008",
+      "app-00011",
+      "app-00014",
+      "app-00017",
+      "app-00020",
+      "app-00023",
+      "app-00026"
+    ]
+  },
+  {
+    "count": 1000,
+    "history": true,
+    "layer": "kernel",
+    "query": "vs",
+    "round": 2,
+    "iterations": 256,
+    "elapsed_nanoseconds": 47374000,
+    "nanoseconds_per_operation": 185054.6875,
+    "result_ids": [
+      "app-00005",
+      "app-00008",
+      "app-00011",
+      "app-00014",
+      "app-00017",
+      "app-00020",
+      "app-00023",
+      "app-00026"
+    ]
+  },
+  {
+    "count": 1000,
+    "history": true,
+    "layer": "kernel",
+    "query": "vs",
+    "round": 3,
+    "iterations": 256,
+    "elapsed_nanoseconds": 49560600,
+    "nanoseconds_per_operation": 193596.09375,
+    "result_ids": [
+      "app-00005",
+      "app-00008",
+      "app-00011",
+      "app-00014",
+      "app-00017",
+      "app-00020",
+      "app-00023",
+      "app-00026"
+    ]
+  },
+  {
+    "count": 1000,
+    "history": true,
+    "layer": "service",
+    "query": "vs",
+    "round": 1,
+    "iterations": 256,
+    "elapsed_nanoseconds": 73815400,
+    "nanoseconds_per_operation": 288341.40625,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00005",
+      "app-00008",
+      "app-00011",
+      "app-00014"
+    ]
+  },
+  {
+    "count": 1000,
+    "history": true,
+    "layer": "service",
+    "query": "vs",
+    "round": 2,
+    "iterations": 256,
+    "elapsed_nanoseconds": 70612200,
+    "nanoseconds_per_operation": 275828.90625,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00005",
+      "app-00008",
+      "app-00011",
+      "app-00014"
+    ]
+  },
+  {
+    "count": 1000,
+    "history": true,
+    "layer": "service",
+    "query": "vs",
+    "round": 3,
+    "iterations": 256,
+    "elapsed_nanoseconds": 76704400,
+    "nanoseconds_per_operation": 299626.5625,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00005",
+      "app-00008",
+      "app-00011",
+      "app-00014"
+    ]
+  },
+  {
+    "count": 1000,
+    "history": true,
+    "layer": "kernel",
+    "query": "edtor",
+    "round": 1,
+    "iterations": 256,
+    "elapsed_nanoseconds": 58594800,
+    "nanoseconds_per_operation": 228885.9375,
+    "result_ids": [
+      "app-00027",
+      "app-00029",
+      "app-00031",
+      "app-00033",
+      "app-00035",
+      "app-00037",
+      "app-00039",
+      "app-00041"
+    ]
+  },
+  {
+    "count": 1000,
+    "history": true,
+    "layer": "kernel",
+    "query": "edtor",
+    "round": 2,
+    "iterations": 256,
+    "elapsed_nanoseconds": 61425100,
+    "nanoseconds_per_operation": 239941.796875,
+    "result_ids": [
+      "app-00027",
+      "app-00029",
+      "app-00031",
+      "app-00033",
+      "app-00035",
+      "app-00037",
+      "app-00039",
+      "app-00041"
+    ]
+  },
+  {
+    "count": 1000,
+    "history": true,
+    "layer": "kernel",
+    "query": "edtor",
+    "round": 3,
+    "iterations": 256,
+    "elapsed_nanoseconds": 63385500,
+    "nanoseconds_per_operation": 247599.609375,
+    "result_ids": [
+      "app-00027",
+      "app-00029",
+      "app-00031",
+      "app-00033",
+      "app-00035",
+      "app-00037",
+      "app-00039",
+      "app-00041"
+    ]
+  },
+  {
+    "count": 1000,
+    "history": true,
+    "layer": "service",
+    "query": "edtor",
+    "round": 1,
+    "iterations": 256,
+    "elapsed_nanoseconds": 87069800,
+    "nanoseconds_per_operation": 340116.40625,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00027",
+      "app-00029",
+      "app-00031",
+      "app-00033"
+    ]
+  },
+  {
+    "count": 1000,
+    "history": true,
+    "layer": "service",
+    "query": "edtor",
+    "round": 2,
+    "iterations": 256,
+    "elapsed_nanoseconds": 84841100,
+    "nanoseconds_per_operation": 331410.546875,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00027",
+      "app-00029",
+      "app-00031",
+      "app-00033"
+    ]
+  },
+  {
+    "count": 1000,
+    "history": true,
+    "layer": "service",
+    "query": "edtor",
+    "round": 3,
+    "iterations": 256,
+    "elapsed_nanoseconds": 84815200,
+    "nanoseconds_per_operation": 331309.375,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00027",
+      "app-00029",
+      "app-00031",
+      "app-00033"
+    ]
+  },
+  {
+    "count": 1000,
+    "history": true,
+    "layer": "kernel",
+    "query": "",
+    "round": 1,
+    "iterations": 256,
+    "elapsed_nanoseconds": 7265100,
+    "nanoseconds_per_operation": 28379.296875,
+    "result_ids": [
+      "app-00049",
+      "app-00099",
+      "app-00149",
+      "app-00199",
+      "app-00249",
+      "app-00299",
+      "app-00349",
+      "app-00399"
+    ]
+  },
+  {
+    "count": 1000,
+    "history": true,
+    "layer": "kernel",
+    "query": "",
+    "round": 2,
+    "iterations": 256,
+    "elapsed_nanoseconds": 9657400,
+    "nanoseconds_per_operation": 37724.21875,
+    "result_ids": [
+      "app-00049",
+      "app-00099",
+      "app-00149",
+      "app-00199",
+      "app-00249",
+      "app-00299",
+      "app-00349",
+      "app-00399"
+    ]
+  },
+  {
+    "count": 1000,
+    "history": true,
+    "layer": "kernel",
+    "query": "",
+    "round": 3,
+    "iterations": 256,
+    "elapsed_nanoseconds": 7352500,
+    "nanoseconds_per_operation": 28720.703125,
+    "result_ids": [
+      "app-00049",
+      "app-00099",
+      "app-00149",
+      "app-00199",
+      "app-00249",
+      "app-00299",
+      "app-00349",
+      "app-00399"
+    ]
+  },
+  {
+    "count": 1000,
+    "history": true,
+    "layer": "service",
+    "query": "",
+    "round": 1,
+    "iterations": 256,
+    "elapsed_nanoseconds": 32080200,
+    "nanoseconds_per_operation": 125313.28125,
+    "result_ids": [
+      "app-00003",
+      "app-00002",
+      "app-00001",
+      "app-00000",
+      "app-00049",
+      "app-00099",
+      "app-00149",
+      "app-00199"
+    ]
+  },
+  {
+    "count": 1000,
+    "history": true,
+    "layer": "service",
+    "query": "",
+    "round": 2,
+    "iterations": 256,
+    "elapsed_nanoseconds": 30172500,
+    "nanoseconds_per_operation": 117861.328125,
+    "result_ids": [
+      "app-00003",
+      "app-00002",
+      "app-00001",
+      "app-00000",
+      "app-00049",
+      "app-00099",
+      "app-00149",
+      "app-00199"
+    ]
+  },
+  {
+    "count": 1000,
+    "history": true,
+    "layer": "service",
+    "query": "",
+    "round": 3,
+    "iterations": 256,
+    "elapsed_nanoseconds": 35645800,
+    "nanoseconds_per_operation": 139241.40625,
+    "result_ids": [
+      "app-00003",
+      "app-00002",
+      "app-00001",
+      "app-00000",
+      "app-00049",
+      "app-00099",
+      "app-00149",
+      "app-00199"
+    ]
+  },
+  {
+    "count": 1000,
+    "history": true,
+    "layer": "kernel",
+    "query": "zzzz",
+    "round": 1,
+    "iterations": 256,
+    "elapsed_nanoseconds": 79933300,
+    "nanoseconds_per_operation": 312239.453125,
+    "result_ids": []
+  },
+  {
+    "count": 1000,
+    "history": true,
+    "layer": "kernel",
+    "query": "zzzz",
+    "round": 2,
+    "iterations": 256,
+    "elapsed_nanoseconds": 79533600,
+    "nanoseconds_per_operation": 310678.125,
+    "result_ids": []
+  },
+  {
+    "count": 1000,
+    "history": true,
+    "layer": "kernel",
+    "query": "zzzz",
+    "round": 3,
+    "iterations": 256,
+    "elapsed_nanoseconds": 77441300,
+    "nanoseconds_per_operation": 302505.078125,
+    "result_ids": []
+  },
+  {
+    "count": 1000,
+    "history": true,
+    "layer": "service",
+    "query": "zzzz",
+    "round": 1,
+    "iterations": 256,
+    "elapsed_nanoseconds": 103291900,
+    "nanoseconds_per_operation": 403483.984375,
+    "result_ids": []
+  },
+  {
+    "count": 1000,
+    "history": true,
+    "layer": "service",
+    "query": "zzzz",
+    "round": 2,
+    "iterations": 256,
+    "elapsed_nanoseconds": 105405900,
+    "nanoseconds_per_operation": 411741.796875,
+    "result_ids": []
+  },
+  {
+    "count": 1000,
+    "history": true,
+    "layer": "service",
+    "query": "zzzz",
+    "round": 3,
+    "iterations": 256,
+    "elapsed_nanoseconds": 101761100,
+    "nanoseconds_per_operation": 397504.296875,
+    "result_ids": []
+  },
+  {
+    "count": 1000,
+    "history": true,
+    "layer": "kernel",
+    "query": "计算器",
+    "round": 1,
+    "iterations": 256,
+    "elapsed_nanoseconds": 65507500,
+    "nanoseconds_per_operation": 255888.671875,
+    "result_ids": []
+  },
+  {
+    "count": 1000,
+    "history": true,
+    "layer": "kernel",
+    "query": "计算器",
+    "round": 2,
+    "iterations": 256,
+    "elapsed_nanoseconds": 65912000,
+    "nanoseconds_per_operation": 257468.75,
+    "result_ids": []
+  },
+  {
+    "count": 1000,
+    "history": true,
+    "layer": "kernel",
+    "query": "计算器",
+    "round": 3,
+    "iterations": 256,
+    "elapsed_nanoseconds": 65844500,
+    "nanoseconds_per_operation": 257205.078125,
+    "result_ids": []
+  },
+  {
+    "count": 1000,
+    "history": true,
+    "layer": "service",
+    "query": "计算器",
+    "round": 1,
+    "iterations": 256,
+    "elapsed_nanoseconds": 90438900,
+    "nanoseconds_per_operation": 353276.953125,
+    "result_ids": [
+      "tool-calc"
+    ]
+  },
+  {
+    "count": 1000,
+    "history": true,
+    "layer": "service",
+    "query": "计算器",
+    "round": 2,
+    "iterations": 256,
+    "elapsed_nanoseconds": 90953100,
+    "nanoseconds_per_operation": 355285.546875,
+    "result_ids": [
+      "tool-calc"
+    ]
+  },
+  {
+    "count": 1000,
+    "history": true,
+    "layer": "service",
+    "query": "计算器",
+    "round": 3,
+    "iterations": 256,
+    "elapsed_nanoseconds": 90472800,
+    "nanoseconds_per_operation": 353409.375,
+    "result_ids": [
+      "tool-calc"
+    ]
+  },
+  {
+    "count": 10000,
+    "history": false,
+    "layer": "kernel",
+    "query": "editor",
+    "round": 1,
+    "iterations": 256,
+    "elapsed_nanoseconds": 134778900,
+    "nanoseconds_per_operation": 526480.078125,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00004",
+      "app-00005",
+      "app-00006",
+      "app-00007"
+    ]
+  },
+  {
+    "count": 10000,
+    "history": false,
+    "layer": "kernel",
+    "query": "editor",
+    "round": 2,
+    "iterations": 256,
+    "elapsed_nanoseconds": 133977600,
+    "nanoseconds_per_operation": 523350,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00004",
+      "app-00005",
+      "app-00006",
+      "app-00007"
+    ]
+  },
+  {
+    "count": 10000,
+    "history": false,
+    "layer": "kernel",
+    "query": "editor",
+    "round": 3,
+    "iterations": 256,
+    "elapsed_nanoseconds": 133569900,
+    "nanoseconds_per_operation": 521757.421875,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00004",
+      "app-00005",
+      "app-00006",
+      "app-00007"
+    ]
+  },
+  {
+    "count": 10000,
+    "history": false,
+    "layer": "service",
+    "query": "editor",
+    "round": 1,
+    "iterations": 256,
+    "elapsed_nanoseconds": 142715900,
+    "nanoseconds_per_operation": 557483.984375,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00004",
+      "app-00005",
+      "app-00006",
+      "app-00007"
+    ]
+  },
+  {
+    "count": 10000,
+    "history": false,
+    "layer": "service",
+    "query": "editor",
+    "round": 2,
+    "iterations": 256,
+    "elapsed_nanoseconds": 141116200,
+    "nanoseconds_per_operation": 551235.15625,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00004",
+      "app-00005",
+      "app-00006",
+      "app-00007"
+    ]
+  },
+  {
+    "count": 10000,
+    "history": false,
+    "layer": "service",
+    "query": "editor",
+    "round": 3,
+    "iterations": 256,
+    "elapsed_nanoseconds": 130141600,
+    "nanoseconds_per_operation": 508365.625,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00004",
+      "app-00005",
+      "app-00006",
+      "app-00007"
+    ]
+  },
+  {
+    "count": 10000,
+    "history": false,
+    "layer": "kernel",
+    "query": "vs",
+    "round": 1,
+    "iterations": 256,
+    "elapsed_nanoseconds": 549530400,
+    "nanoseconds_per_operation": 2146603.125,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00004",
+      "app-00005",
+      "app-00006",
+      "app-00007"
+    ]
+  },
+  {
+    "count": 10000,
+    "history": false,
+    "layer": "kernel",
+    "query": "vs",
+    "round": 2,
+    "iterations": 256,
+    "elapsed_nanoseconds": 575633600,
+    "nanoseconds_per_operation": 2248568.75,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00004",
+      "app-00005",
+      "app-00006",
+      "app-00007"
+    ]
+  },
+  {
+    "count": 10000,
+    "history": false,
+    "layer": "kernel",
+    "query": "vs",
+    "round": 3,
+    "iterations": 256,
+    "elapsed_nanoseconds": 540734200,
+    "nanoseconds_per_operation": 2112242.96875,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00004",
+      "app-00005",
+      "app-00006",
+      "app-00007"
+    ]
+  },
+  {
+    "count": 10000,
+    "history": false,
+    "layer": "service",
+    "query": "vs",
+    "round": 1,
+    "iterations": 256,
+    "elapsed_nanoseconds": 485196800,
+    "nanoseconds_per_operation": 1895300,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00004",
+      "app-00005",
+      "app-00006",
+      "app-00007"
+    ]
+  },
+  {
+    "count": 10000,
+    "history": false,
+    "layer": "service",
+    "query": "vs",
+    "round": 2,
+    "iterations": 256,
+    "elapsed_nanoseconds": 521125000,
+    "nanoseconds_per_operation": 2035644.53125,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00004",
+      "app-00005",
+      "app-00006",
+      "app-00007"
+    ]
+  },
+  {
+    "count": 10000,
+    "history": false,
+    "layer": "service",
+    "query": "vs",
+    "round": 3,
+    "iterations": 256,
+    "elapsed_nanoseconds": 484370300,
+    "nanoseconds_per_operation": 1892071.484375,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00004",
+      "app-00005",
+      "app-00006",
+      "app-00007"
+    ]
+  },
+  {
+    "count": 10000,
+    "history": false,
+    "layer": "kernel",
+    "query": "edtor",
+    "round": 1,
+    "iterations": 256,
+    "elapsed_nanoseconds": 714690300,
+    "nanoseconds_per_operation": 2791758.984375,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00004",
+      "app-00005",
+      "app-00006",
+      "app-00007"
+    ]
+  },
+  {
+    "count": 10000,
+    "history": false,
+    "layer": "kernel",
+    "query": "edtor",
+    "round": 2,
+    "iterations": 256,
+    "elapsed_nanoseconds": 743080200,
+    "nanoseconds_per_operation": 2902657.03125,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00004",
+      "app-00005",
+      "app-00006",
+      "app-00007"
+    ]
+  },
+  {
+    "count": 10000,
+    "history": false,
+    "layer": "kernel",
+    "query": "edtor",
+    "round": 3,
+    "iterations": 256,
+    "elapsed_nanoseconds": 817986600,
+    "nanoseconds_per_operation": 3195260.15625,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00004",
+      "app-00005",
+      "app-00006",
+      "app-00007"
+    ]
+  },
+  {
+    "count": 10000,
+    "history": false,
+    "layer": "service",
+    "query": "edtor",
+    "round": 1,
+    "iterations": 256,
+    "elapsed_nanoseconds": 666592800,
+    "nanoseconds_per_operation": 2603878.125,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00004",
+      "app-00005",
+      "app-00006",
+      "app-00007"
+    ]
+  },
+  {
+    "count": 10000,
+    "history": false,
+    "layer": "service",
+    "query": "edtor",
+    "round": 2,
+    "iterations": 256,
+    "elapsed_nanoseconds": 622040100,
+    "nanoseconds_per_operation": 2429844.140625,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00004",
+      "app-00005",
+      "app-00006",
+      "app-00007"
+    ]
+  },
+  {
+    "count": 10000,
+    "history": false,
+    "layer": "service",
+    "query": "edtor",
+    "round": 3,
+    "iterations": 256,
+    "elapsed_nanoseconds": 657537300,
+    "nanoseconds_per_operation": 2568505.078125,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00004",
+      "app-00005",
+      "app-00006",
+      "app-00007"
+    ]
+  },
+  {
+    "count": 10000,
+    "history": false,
+    "layer": "kernel",
+    "query": "",
+    "round": 1,
+    "iterations": 256,
+    "elapsed_nanoseconds": 73696600,
+    "nanoseconds_per_operation": 287877.34375,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00004",
+      "app-00005",
+      "app-00006",
+      "app-00007"
+    ]
+  },
+  {
+    "count": 10000,
+    "history": false,
+    "layer": "kernel",
+    "query": "",
+    "round": 2,
+    "iterations": 256,
+    "elapsed_nanoseconds": 70394600,
+    "nanoseconds_per_operation": 274978.90625,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00004",
+      "app-00005",
+      "app-00006",
+      "app-00007"
+    ]
+  },
+  {
+    "count": 10000,
+    "history": false,
+    "layer": "kernel",
+    "query": "",
+    "round": 3,
+    "iterations": 256,
+    "elapsed_nanoseconds": 77872000,
+    "nanoseconds_per_operation": 304187.5,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00004",
+      "app-00005",
+      "app-00006",
+      "app-00007"
+    ]
+  },
+  {
+    "count": 10000,
+    "history": false,
+    "layer": "service",
+    "query": "",
+    "round": 1,
+    "iterations": 256,
+    "elapsed_nanoseconds": 71972800,
+    "nanoseconds_per_operation": 281143.75,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00004",
+      "app-00005",
+      "app-00006",
+      "app-00007"
+    ]
+  },
+  {
+    "count": 10000,
+    "history": false,
+    "layer": "service",
+    "query": "",
+    "round": 2,
+    "iterations": 256,
+    "elapsed_nanoseconds": 73654300,
+    "nanoseconds_per_operation": 287712.109375,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00004",
+      "app-00005",
+      "app-00006",
+      "app-00007"
+    ]
+  },
+  {
+    "count": 10000,
+    "history": false,
+    "layer": "service",
+    "query": "",
+    "round": 3,
+    "iterations": 256,
+    "elapsed_nanoseconds": 71857200,
+    "nanoseconds_per_operation": 280692.1875,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00004",
+      "app-00005",
+      "app-00006",
+      "app-00007"
+    ]
+  },
+  {
+    "count": 10000,
+    "history": false,
+    "layer": "kernel",
+    "query": "zzzz",
+    "round": 1,
+    "iterations": 256,
+    "elapsed_nanoseconds": 1054327900,
+    "nanoseconds_per_operation": 4118468.359375,
+    "result_ids": []
+  },
+  {
+    "count": 10000,
+    "history": false,
+    "layer": "kernel",
+    "query": "zzzz",
+    "round": 2,
+    "iterations": 256,
+    "elapsed_nanoseconds": 1016693800,
+    "nanoseconds_per_operation": 3971460.15625,
+    "result_ids": []
+  },
+  {
+    "count": 10000,
+    "history": false,
+    "layer": "kernel",
+    "query": "zzzz",
+    "round": 3,
+    "iterations": 256,
+    "elapsed_nanoseconds": 987668900,
+    "nanoseconds_per_operation": 3858081.640625,
+    "result_ids": []
+  },
+  {
+    "count": 10000,
+    "history": false,
+    "layer": "service",
+    "query": "zzzz",
+    "round": 1,
+    "iterations": 256,
+    "elapsed_nanoseconds": 890785800,
+    "nanoseconds_per_operation": 3479632.03125,
+    "result_ids": []
+  },
+  {
+    "count": 10000,
+    "history": false,
+    "layer": "service",
+    "query": "zzzz",
+    "round": 2,
+    "iterations": 256,
+    "elapsed_nanoseconds": 1008315600,
+    "nanoseconds_per_operation": 3938732.8125,
+    "result_ids": []
+  },
+  {
+    "count": 10000,
+    "history": false,
+    "layer": "service",
+    "query": "zzzz",
+    "round": 3,
+    "iterations": 256,
+    "elapsed_nanoseconds": 899983800,
+    "nanoseconds_per_operation": 3515561.71875,
+    "result_ids": []
+  },
+  {
+    "count": 10000,
+    "history": false,
+    "layer": "kernel",
+    "query": "计算器",
+    "round": 1,
+    "iterations": 256,
+    "elapsed_nanoseconds": 845866000,
+    "nanoseconds_per_operation": 3304164.0625,
+    "result_ids": []
+  },
+  {
+    "count": 10000,
+    "history": false,
+    "layer": "kernel",
+    "query": "计算器",
+    "round": 2,
+    "iterations": 256,
+    "elapsed_nanoseconds": 857714800,
+    "nanoseconds_per_operation": 3350448.4375,
+    "result_ids": []
+  },
+  {
+    "count": 10000,
+    "history": false,
+    "layer": "kernel",
+    "query": "计算器",
+    "round": 3,
+    "iterations": 256,
+    "elapsed_nanoseconds": 842163200,
+    "nanoseconds_per_operation": 3289700,
+    "result_ids": []
+  },
+  {
+    "count": 10000,
+    "history": false,
+    "layer": "service",
+    "query": "计算器",
+    "round": 1,
+    "iterations": 256,
+    "elapsed_nanoseconds": 784176700,
+    "nanoseconds_per_operation": 3063190.234375,
+    "result_ids": [
+      "tool-calc"
+    ]
+  },
+  {
+    "count": 10000,
+    "history": false,
+    "layer": "service",
+    "query": "计算器",
+    "round": 2,
+    "iterations": 256,
+    "elapsed_nanoseconds": 794106700,
+    "nanoseconds_per_operation": 3101979.296875,
+    "result_ids": [
+      "tool-calc"
+    ]
+  },
+  {
+    "count": 10000,
+    "history": false,
+    "layer": "service",
+    "query": "计算器",
+    "round": 3,
+    "iterations": 256,
+    "elapsed_nanoseconds": 758255300,
+    "nanoseconds_per_operation": 2961934.765625,
+    "result_ids": [
+      "tool-calc"
+    ]
+  },
+  {
+    "count": 10000,
+    "history": true,
+    "layer": "kernel",
+    "query": "editor",
+    "round": 1,
+    "iterations": 256,
+    "elapsed_nanoseconds": 222803600,
+    "nanoseconds_per_operation": 870326.5625,
+    "result_ids": [
+      "app-00003",
+      "app-00004",
+      "app-00005",
+      "app-00006",
+      "app-00009",
+      "app-00010",
+      "app-00011",
+      "app-00012"
+    ]
+  },
+  {
+    "count": 10000,
+    "history": true,
+    "layer": "kernel",
+    "query": "editor",
+    "round": 2,
+    "iterations": 256,
+    "elapsed_nanoseconds": 224358000,
+    "nanoseconds_per_operation": 876398.4375,
+    "result_ids": [
+      "app-00003",
+      "app-00004",
+      "app-00005",
+      "app-00006",
+      "app-00009",
+      "app-00010",
+      "app-00011",
+      "app-00012"
+    ]
+  },
+  {
+    "count": 10000,
+    "history": true,
+    "layer": "kernel",
+    "query": "editor",
+    "round": 3,
+    "iterations": 256,
+    "elapsed_nanoseconds": 236262000,
+    "nanoseconds_per_operation": 922898.4375,
+    "result_ids": [
+      "app-00003",
+      "app-00004",
+      "app-00005",
+      "app-00006",
+      "app-00009",
+      "app-00010",
+      "app-00011",
+      "app-00012"
+    ]
+  },
+  {
+    "count": 10000,
+    "history": true,
+    "layer": "service",
+    "query": "editor",
+    "round": 1,
+    "iterations": 256,
+    "elapsed_nanoseconds": 618927800,
+    "nanoseconds_per_operation": 2417686.71875,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00004",
+      "app-00005",
+      "app-00006",
+      "app-00009"
+    ]
+  },
+  {
+    "count": 10000,
+    "history": true,
+    "layer": "service",
+    "query": "editor",
+    "round": 2,
+    "iterations": 256,
+    "elapsed_nanoseconds": 529049100,
+    "nanoseconds_per_operation": 2066598.046875,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00004",
+      "app-00005",
+      "app-00006",
+      "app-00009"
+    ]
+  },
+  {
+    "count": 10000,
+    "history": true,
+    "layer": "service",
+    "query": "editor",
+    "round": 3,
+    "iterations": 256,
+    "elapsed_nanoseconds": 512540300,
+    "nanoseconds_per_operation": 2002110.546875,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00004",
+      "app-00005",
+      "app-00006",
+      "app-00009"
+    ]
+  },
+  {
+    "count": 10000,
+    "history": true,
+    "layer": "kernel",
+    "query": "vs",
+    "round": 1,
+    "iterations": 256,
+    "elapsed_nanoseconds": 750654900,
+    "nanoseconds_per_operation": 2932245.703125,
+    "result_ids": [
+      "app-00005",
+      "app-00008",
+      "app-00011",
+      "app-00014",
+      "app-00017",
+      "app-00020",
+      "app-00023",
+      "app-00026"
+    ]
+  },
+  {
+    "count": 10000,
+    "history": true,
+    "layer": "kernel",
+    "query": "vs",
+    "round": 2,
+    "iterations": 256,
+    "elapsed_nanoseconds": 743431500,
+    "nanoseconds_per_operation": 2904029.296875,
+    "result_ids": [
+      "app-00005",
+      "app-00008",
+      "app-00011",
+      "app-00014",
+      "app-00017",
+      "app-00020",
+      "app-00023",
+      "app-00026"
+    ]
+  },
+  {
+    "count": 10000,
+    "history": true,
+    "layer": "kernel",
+    "query": "vs",
+    "round": 3,
+    "iterations": 256,
+    "elapsed_nanoseconds": 749240900,
+    "nanoseconds_per_operation": 2926722.265625,
+    "result_ids": [
+      "app-00005",
+      "app-00008",
+      "app-00011",
+      "app-00014",
+      "app-00017",
+      "app-00020",
+      "app-00023",
+      "app-00026"
+    ]
+  },
+  {
+    "count": 10000,
+    "history": true,
+    "layer": "service",
+    "query": "vs",
+    "round": 1,
+    "iterations": 256,
+    "elapsed_nanoseconds": 1062963000,
+    "nanoseconds_per_operation": 4152199.21875,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00005",
+      "app-00008",
+      "app-00011",
+      "app-00014"
+    ]
+  },
+  {
+    "count": 10000,
+    "history": true,
+    "layer": "service",
+    "query": "vs",
+    "round": 2,
+    "iterations": 256,
+    "elapsed_nanoseconds": 1123906000,
+    "nanoseconds_per_operation": 4390257.8125,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00005",
+      "app-00008",
+      "app-00011",
+      "app-00014"
+    ]
+  },
+  {
+    "count": 10000,
+    "history": true,
+    "layer": "service",
+    "query": "vs",
+    "round": 3,
+    "iterations": 256,
+    "elapsed_nanoseconds": 1068075000,
+    "nanoseconds_per_operation": 4172167.96875,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00005",
+      "app-00008",
+      "app-00011",
+      "app-00014"
+    ]
+  },
+  {
+    "count": 10000,
+    "history": true,
+    "layer": "kernel",
+    "query": "edtor",
+    "round": 1,
+    "iterations": 256,
+    "elapsed_nanoseconds": 925155600,
+    "nanoseconds_per_operation": 3613889.0625,
+    "result_ids": [
+      "app-00027",
+      "app-00029",
+      "app-00031",
+      "app-00033",
+      "app-00035",
+      "app-00037",
+      "app-00039",
+      "app-00041"
+    ]
+  },
+  {
+    "count": 10000,
+    "history": true,
+    "layer": "kernel",
+    "query": "edtor",
+    "round": 2,
+    "iterations": 256,
+    "elapsed_nanoseconds": 938256700,
+    "nanoseconds_per_operation": 3665065.234375,
+    "result_ids": [
+      "app-00027",
+      "app-00029",
+      "app-00031",
+      "app-00033",
+      "app-00035",
+      "app-00037",
+      "app-00039",
+      "app-00041"
+    ]
+  },
+  {
+    "count": 10000,
+    "history": true,
+    "layer": "kernel",
+    "query": "edtor",
+    "round": 3,
+    "iterations": 256,
+    "elapsed_nanoseconds": 796911700,
+    "nanoseconds_per_operation": 3112936.328125,
+    "result_ids": [
+      "app-00027",
+      "app-00029",
+      "app-00031",
+      "app-00033",
+      "app-00035",
+      "app-00037",
+      "app-00039",
+      "app-00041"
+    ]
+  },
+  {
+    "count": 10000,
+    "history": true,
+    "layer": "service",
+    "query": "edtor",
+    "round": 1,
+    "iterations": 256,
+    "elapsed_nanoseconds": 1145474600,
+    "nanoseconds_per_operation": 4474510.15625,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00027",
+      "app-00029",
+      "app-00031",
+      "app-00033"
+    ]
+  },
+  {
+    "count": 10000,
+    "history": true,
+    "layer": "service",
+    "query": "edtor",
+    "round": 2,
+    "iterations": 256,
+    "elapsed_nanoseconds": 1173048400,
+    "nanoseconds_per_operation": 4582220.3125,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00027",
+      "app-00029",
+      "app-00031",
+      "app-00033"
+    ]
+  },
+  {
+    "count": 10000,
+    "history": true,
+    "layer": "service",
+    "query": "edtor",
+    "round": 3,
+    "iterations": 256,
+    "elapsed_nanoseconds": 1220585100,
+    "nanoseconds_per_operation": 4767910.546875,
+    "result_ids": [
+      "app-00000",
+      "app-00001",
+      "app-00002",
+      "app-00003",
+      "app-00027",
+      "app-00029",
+      "app-00031",
+      "app-00033"
+    ]
+  },
+  {
+    "count": 10000,
+    "history": true,
+    "layer": "kernel",
+    "query": "",
+    "round": 1,
+    "iterations": 256,
+    "elapsed_nanoseconds": 96294600,
+    "nanoseconds_per_operation": 376150.78125,
+    "result_ids": [
+      "app-00049",
+      "app-00099",
+      "app-00149",
+      "app-00199",
+      "app-00249",
+      "app-00299",
+      "app-00349",
+      "app-00399"
+    ]
+  },
+  {
+    "count": 10000,
+    "history": true,
+    "layer": "kernel",
+    "query": "",
+    "round": 2,
+    "iterations": 256,
+    "elapsed_nanoseconds": 90476200,
+    "nanoseconds_per_operation": 353422.65625,
+    "result_ids": [
+      "app-00049",
+      "app-00099",
+      "app-00149",
+      "app-00199",
+      "app-00249",
+      "app-00299",
+      "app-00349",
+      "app-00399"
+    ]
+  },
+  {
+    "count": 10000,
+    "history": true,
+    "layer": "kernel",
+    "query": "",
+    "round": 3,
+    "iterations": 256,
+    "elapsed_nanoseconds": 89220700,
+    "nanoseconds_per_operation": 348518.359375,
+    "result_ids": [
+      "app-00049",
+      "app-00099",
+      "app-00149",
+      "app-00199",
+      "app-00249",
+      "app-00299",
+      "app-00349",
+      "app-00399"
+    ]
+  },
+  {
+    "count": 10000,
+    "history": true,
+    "layer": "service",
+    "query": "",
+    "round": 1,
+    "iterations": 256,
+    "elapsed_nanoseconds": 371157000,
+    "nanoseconds_per_operation": 1449832.03125,
+    "result_ids": [
+      "app-00003",
+      "app-00002",
+      "app-00001",
+      "app-00000",
+      "app-00049",
+      "app-00099",
+      "app-00149",
+      "app-00199"
+    ]
+  },
+  {
+    "count": 10000,
+    "history": true,
+    "layer": "service",
+    "query": "",
+    "round": 2,
+    "iterations": 256,
+    "elapsed_nanoseconds": 363565300,
+    "nanoseconds_per_operation": 1420176.953125,
+    "result_ids": [
+      "app-00003",
+      "app-00002",
+      "app-00001",
+      "app-00000",
+      "app-00049",
+      "app-00099",
+      "app-00149",
+      "app-00199"
+    ]
+  },
+  {
+    "count": 10000,
+    "history": true,
+    "layer": "service",
+    "query": "",
+    "round": 3,
+    "iterations": 256,
+    "elapsed_nanoseconds": 419637400,
+    "nanoseconds_per_operation": 1639208.59375,
+    "result_ids": [
+      "app-00003",
+      "app-00002",
+      "app-00001",
+      "app-00000",
+      "app-00049",
+      "app-00099",
+      "app-00149",
+      "app-00199"
+    ]
+  },
+  {
+    "count": 10000,
+    "history": true,
+    "layer": "kernel",
+    "query": "zzzz",
+    "round": 1,
+    "iterations": 256,
+    "elapsed_nanoseconds": 967005500,
+    "nanoseconds_per_operation": 3777365.234375,
+    "result_ids": []
+  },
+  {
+    "count": 10000,
+    "history": true,
+    "layer": "kernel",
+    "query": "zzzz",
+    "round": 2,
+    "iterations": 256,
+    "elapsed_nanoseconds": 962589800,
+    "nanoseconds_per_operation": 3760116.40625,
+    "result_ids": []
+  },
+  {
+    "count": 10000,
+    "history": true,
+    "layer": "kernel",
+    "query": "zzzz",
+    "round": 3,
+    "iterations": 256,
+    "elapsed_nanoseconds": 1025471400,
+    "nanoseconds_per_operation": 4005747.65625,
+    "result_ids": []
+  },
+  {
+    "count": 10000,
+    "history": true,
+    "layer": "service",
+    "query": "zzzz",
+    "round": 1,
+    "iterations": 256,
+    "elapsed_nanoseconds": 1576970600,
+    "nanoseconds_per_operation": 6160041.40625,
+    "result_ids": []
+  },
+  {
+    "count": 10000,
+    "history": true,
+    "layer": "service",
+    "query": "zzzz",
+    "round": 2,
+    "iterations": 256,
+    "elapsed_nanoseconds": 1456966400,
+    "nanoseconds_per_operation": 5691275,
+    "result_ids": []
+  },
+  {
+    "count": 10000,
+    "history": true,
+    "layer": "service",
+    "query": "zzzz",
+    "round": 3,
+    "iterations": 256,
+    "elapsed_nanoseconds": 1370041800,
+    "nanoseconds_per_operation": 5351725.78125,
+    "result_ids": []
+  },
+  {
+    "count": 10000,
+    "history": true,
+    "layer": "kernel",
+    "query": "计算器",
+    "round": 1,
+    "iterations": 256,
+    "elapsed_nanoseconds": 821475500,
+    "nanoseconds_per_operation": 3208888.671875,
+    "result_ids": []
+  },
+  {
+    "count": 10000,
+    "history": true,
+    "layer": "kernel",
+    "query": "计算器",
+    "round": 2,
+    "iterations": 256,
+    "elapsed_nanoseconds": 844813300,
+    "nanoseconds_per_operation": 3300051.953125,
+    "result_ids": []
+  },
+  {
+    "count": 10000,
+    "history": true,
+    "layer": "kernel",
+    "query": "计算器",
+    "round": 3,
+    "iterations": 256,
+    "elapsed_nanoseconds": 793958900,
+    "nanoseconds_per_operation": 3101401.953125,
+    "result_ids": []
+  },
+  {
+    "count": 10000,
+    "history": true,
+    "layer": "service",
+    "query": "计算器",
+    "round": 1,
+    "iterations": 256,
+    "elapsed_nanoseconds": 1314529800,
+    "nanoseconds_per_operation": 5134882.03125,
+    "result_ids": [
+      "tool-calc"
+    ]
+  },
+  {
+    "count": 10000,
+    "history": true,
+    "layer": "service",
+    "query": "计算器",
+    "round": 2,
+    "iterations": 256,
+    "elapsed_nanoseconds": 1628362900,
+    "nanoseconds_per_operation": 6360792.578125,
+    "result_ids": [
+      "tool-calc"
+    ]
+  },
+  {
+    "count": 10000,
+    "history": true,
+    "layer": "service",
+    "query": "计算器",
+    "round": 3,
+    "iterations": 256,
+    "elapsed_nanoseconds": 1312090100,
+    "nanoseconds_per_operation": 5125351.953125,
+    "result_ids": [
+      "tool-calc"
+    ]
+  }
+]

@@ -1,0 +1,9 @@
+{
+  "VersionUnchanged": "1.99.1",
+  "PreviousChannel": "1.99.1",
+  "Channel": "1.99.1-x86_64-pc-windows-msvc",
+  "GlobalDefaultChanged": false,
+  "DirectoryOverrideNeeded": false,
+  "ValidationNowChecksRustcHost": true,
+  "Reason": "Fresh CI checkout inherited global GNU host; prior local acceptance relied on a directory override. Explicit project host restores the intended native toolchain."
+}

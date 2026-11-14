@@ -1,0 +1,935 @@
+{
+  "schema_version": 1,
+  "fixed_time": "2026-11-03T04:05:06.123456789+08:00",
+  "identities": [
+    {
+      "name": "path-case-upper",
+      "path": "C:\\Program Files\\Velo\\App.EXE",
+      "arguments": "",
+      "expected": "3e0c4e1c99a8012f1933702d6ef9e4c3"
+    },
+    {
+      "name": "path-case-lower",
+      "path": "c:\\program files\\velo\\app.exe",
+      "arguments": "",
+      "expected": "3e0c4e1c99a8012f1933702d6ef9e4c3"
+    },
+    {
+      "name": "profile-one",
+      "path": "C:\\Program Files\\Velo\\App.EXE",
+      "arguments": "--profile=One",
+      "expected": "6191e02deb3ee8f674f654ceaa97afdf"
+    },
+    {
+      "name": "profile-two",
+      "path": "C:\\Program Files\\Velo\\App.EXE",
+      "arguments": "--profile=Two",
+      "expected": "5287f25a37b293193f4b658a706b592b"
+    },
+    {
+      "name": "arguments-case",
+      "path": "C:\\Program Files\\Velo\\App.EXE",
+      "arguments": "--profile=one",
+      "expected": "476459eb3b0eb287f9caca9029593ed8"
+    },
+    {
+      "name": "chinese-and-spaces",
+      "path": "C:\\合成应用\\我的 工具.exe",
+      "arguments": "--name=\"工作\"",
+      "expected": "79d894badf842d9433745e5fec249720"
+    },
+    {
+      "name": "sigma-simple-case",
+      "path": "C:\\ΟΣ\\Σ.exe",
+      "arguments": "",
+      "expected": "830fa1cbbaf50cc61eaf51a455110402"
+    },
+    {
+      "name": "dotted-i-simple-case",
+      "path": "C:\\İ\\APP.exe",
+      "arguments": "",
+      "expected": "91db2168adf339a3b45727fe1ff0e49f"
+    },
+    {
+      "name": "kelvin-and-sharp-s",
+      "path": "C:\\Kẞ\\APP.exe",
+      "arguments": "",
+      "expected": "8376862dcb46fce7768994b210289044"
+    },
+    {
+      "name": "forward-slashes",
+      "path": "C:/Velo/App.exe",
+      "arguments": "",
+      "expected": "efcf75f1850a05f87077e9b5a2ce1a4b"
+    },
+    {
+      "name": "empty",
+      "path": "",
+      "arguments": "",
+      "expected": "6e340b9cffb37a989ca544e6bb780a2c"
+    },
+    {
+      "name": "nul-separated-arguments",
+      "path": "ab",
+      "arguments": "c\u0000d",
+      "expected": "1e8937e355807742dbbfefeaad0aef56"
+    }
+  ],
+  "configs": [
+    {
+      "name": "defaults",
+      "input": "{}",
+      "valid": true,
+      "expected": {
+        "version": 1,
+        "hotkey": "Alt+Space",
+        "disable_hotkey_fullscreen": false,
+        "max_results": 8,
+        "theme": "system",
+        "result_layout": "list",
+        "launch_at_startup": false,
+        "space_launch": true,
+        "filter_noise": true,
+        "search": {
+          "fuzzy": true,
+          "history_weight": 1
+        },
+        "custom_directories": [],
+        "scan_program_files": true,
+        "refresh_minutes": 30,
+        "auto_check_updates": true
+      }
+    },
+    {
+      "name": "legacy-partial",
+      "input": "{\"max_results\":5,\"search\":{\"fuzzy\":false}}",
+      "valid": true,
+      "expected": {
+        "version": 1,
+        "hotkey": "Alt+Space",
+        "disable_hotkey_fullscreen": false,
+        "max_results": 5,
+        "theme": "system",
+        "result_layout": "list",
+        "launch_at_startup": false,
+        "space_launch": true,
+        "filter_noise": true,
+        "search": {
+          "fuzzy": false,
+          "history_weight": 1
+        },
+        "custom_directories": [],
+        "scan_program_files": true,
+        "refresh_minutes": 30,
+        "auto_check_updates": true
+      }
+    },
+    {
+      "name": "explicit-opt-outs",
+      "input": "{\"space_launch\":false,\"filter_noise\":false,\"scan_program_files\":false,\"auto_check_updates\":false,\"search\":{\"fuzzy\":false,\"history_weight\":0}}",
+      "valid": true,
+      "expected": {
+        "version": 1,
+        "hotkey": "Alt+Space",
+        "disable_hotkey_fullscreen": false,
+        "max_results": 8,
+        "theme": "system",
+        "result_layout": "list",
+        "launch_at_startup": false,
+        "space_launch": false,
+        "filter_noise": false,
+        "search": {
+          "fuzzy": false,
+          "history_weight": 0
+        },
+        "custom_directories": [],
+        "scan_program_files": false,
+        "refresh_minutes": 30,
+        "auto_check_updates": false
+      }
+    },
+    {
+      "name": "old-unknown",
+      "input": "{\"hotkey\":\"Ctrl+Alt+K\",\"max_results\":17,\"theme\":\"dark\",\"unknown_option\":{\"keep\":true},\"search\":{\"future_mode\":\"保留\"}}",
+      "valid": true,
+      "expected": {
+        "version": 1,
+        "hotkey": "Ctrl+Alt+K",
+        "disable_hotkey_fullscreen": false,
+        "max_results": 17,
+        "theme": "dark",
+        "result_layout": "list",
+        "launch_at_startup": false,
+        "space_launch": true,
+        "filter_noise": true,
+        "search": {
+          "fuzzy": true,
+          "history_weight": 1
+        },
+        "custom_directories": [],
+        "scan_program_files": true,
+        "refresh_minutes": 30,
+        "auto_check_updates": true
+      }
+    },
+    {
+      "name": "null-config",
+      "input": "null",
+      "valid": true,
+      "expected": {
+        "version": 1,
+        "hotkey": "Alt+Space",
+        "disable_hotkey_fullscreen": false,
+        "max_results": 8,
+        "theme": "system",
+        "result_layout": "list",
+        "launch_at_startup": false,
+        "space_launch": true,
+        "filter_noise": true,
+        "search": {
+          "fuzzy": true,
+          "history_weight": 1
+        },
+        "custom_directories": [],
+        "scan_program_files": true,
+        "refresh_minutes": 30,
+        "auto_check_updates": true
+      }
+    },
+    {
+      "name": "null-fields",
+      "input": "{\"version\":null,\"hotkey\":null,\"max_results\":null,\"space_launch\":null,\"search\":null,\"custom_directories\":null}",
+      "valid": true,
+      "expected": {
+        "version": 1,
+        "hotkey": "Alt+Space",
+        "disable_hotkey_fullscreen": false,
+        "max_results": 8,
+        "theme": "system",
+        "result_layout": "list",
+        "launch_at_startup": false,
+        "space_launch": true,
+        "filter_noise": true,
+        "search": {
+          "fuzzy": true,
+          "history_weight": 1
+        },
+        "custom_directories": null,
+        "scan_program_files": true,
+        "refresh_minutes": 30,
+        "auto_check_updates": true
+      }
+    },
+    {
+      "name": "empty-directories",
+      "input": "{\"custom_directories\":[]}",
+      "valid": true,
+      "expected": {
+        "version": 1,
+        "hotkey": "Alt+Space",
+        "disable_hotkey_fullscreen": false,
+        "max_results": 8,
+        "theme": "system",
+        "result_layout": "list",
+        "launch_at_startup": false,
+        "space_launch": true,
+        "filter_noise": true,
+        "search": {
+          "fuzzy": true,
+          "history_weight": 1
+        },
+        "custom_directories": [],
+        "scan_program_files": true,
+        "refresh_minutes": 30,
+        "auto_check_updates": true
+      }
+    },
+    {
+      "name": "nested-null",
+      "input": "{\"search\":{\"fuzzy\":null,\"history_weight\":null}}",
+      "valid": true,
+      "expected": {
+        "version": 1,
+        "hotkey": "Alt+Space",
+        "disable_hotkey_fullscreen": false,
+        "max_results": 8,
+        "theme": "system",
+        "result_layout": "list",
+        "launch_at_startup": false,
+        "space_launch": true,
+        "filter_noise": true,
+        "search": {
+          "fuzzy": true,
+          "history_weight": 1
+        },
+        "custom_directories": [],
+        "scan_program_files": true,
+        "refresh_minutes": 30,
+        "auto_check_updates": true
+      }
+    },
+    {
+      "name": "case-insensitive-fields",
+      "input": "{\"HOTKEY\":\"Ctrl+Space\",\"SEARCH\":{\"FUZZY\":false}}",
+      "valid": true,
+      "expected": {
+        "version": 1,
+        "hotkey": "Ctrl+Space",
+        "disable_hotkey_fullscreen": false,
+        "max_results": 8,
+        "theme": "system",
+        "result_layout": "list",
+        "launch_at_startup": false,
+        "space_launch": true,
+        "filter_noise": true,
+        "search": {
+          "fuzzy": false,
+          "history_weight": 1
+        },
+        "custom_directories": [],
+        "scan_program_files": true,
+        "refresh_minutes": 30,
+        "auto_check_updates": true
+      }
+    },
+    {
+      "name": "grid",
+      "input": "{\"result_layout\":\"grid\",\"max_results\":20,\"refresh_minutes\":1440,\"search\":{\"history_weight\":5}}",
+      "valid": true,
+      "expected": {
+        "version": 1,
+        "hotkey": "Alt+Space",
+        "disable_hotkey_fullscreen": false,
+        "max_results": 20,
+        "theme": "system",
+        "result_layout": "grid",
+        "launch_at_startup": false,
+        "space_launch": true,
+        "filter_noise": true,
+        "search": {
+          "fuzzy": true,
+          "history_weight": 5
+        },
+        "custom_directories": [],
+        "scan_program_files": true,
+        "refresh_minutes": 1440,
+        "auto_check_updates": true
+      }
+    },
+    {
+      "name": "windows-absolute",
+      "input": "{\"custom_directories\":[\"C:\\\\合成应用\\\\工具\",\"\\\\\\\\fixture-server\\\\apps\",\"C:/Velo apps\"]}",
+      "valid": true,
+      "expected": {
+        "version": 1,
+        "hotkey": "Alt+Space",
+        "disable_hotkey_fullscreen": false,
+        "max_results": 8,
+        "theme": "system",
+        "result_layout": "list",
+        "launch_at_startup": false,
+        "space_launch": true,
+        "filter_noise": true,
+        "search": {
+          "fuzzy": true,
+          "history_weight": 1
+        },
+        "custom_directories": [
+          "C:\\合成应用\\工具",
+          "\\\\fixture-server\\apps",
+          "C:/Velo apps"
+        ],
+        "scan_program_files": true,
+        "refresh_minutes": 30,
+        "auto_check_updates": true
+      }
+    },
+    {
+      "name": "max-results-minimum",
+      "input": "{\"max_results\":1,\"refresh_minutes\":1}",
+      "valid": true,
+      "expected": {
+        "version": 1,
+        "hotkey": "Alt+Space",
+        "disable_hotkey_fullscreen": false,
+        "max_results": 1,
+        "theme": "system",
+        "result_layout": "list",
+        "launch_at_startup": false,
+        "space_launch": true,
+        "filter_noise": true,
+        "search": {
+          "fuzzy": true,
+          "history_weight": 1
+        },
+        "custom_directories": [],
+        "scan_program_files": true,
+        "refresh_minutes": 1,
+        "auto_check_updates": true
+      }
+    },
+    {
+      "name": "future-version",
+      "input": "{\"version\":99}",
+      "valid": false
+    },
+    {
+      "name": "version-zero",
+      "input": "{\"version\":0}",
+      "valid": false
+    },
+    {
+      "name": "invalid-hotkey",
+      "input": "{\"hotkey\":\" \\t\\n\"}",
+      "valid": false
+    },
+    {
+      "name": "invalid-theme",
+      "input": "{\"theme\":\"auto\"}",
+      "valid": false
+    },
+    {
+      "name": "invalid-layout",
+      "input": "{\"result_layout\":\"tiles\"}",
+      "valid": false
+    },
+    {
+      "name": "invalid-results-low",
+      "input": "{\"max_results\":0}",
+      "valid": false
+    },
+    {
+      "name": "invalid-results-high",
+      "input": "{\"max_results\":21}",
+      "valid": false
+    },
+    {
+      "name": "invalid-weight-negative",
+      "input": "{\"search\":{\"history_weight\":-0.01}}",
+      "valid": false
+    },
+    {
+      "name": "invalid-weight-high",
+      "input": "{\"search\":{\"history_weight\":5.01}}",
+      "valid": false
+    },
+    {
+      "name": "invalid-refresh-low",
+      "input": "{\"refresh_minutes\":0}",
+      "valid": false
+    },
+    {
+      "name": "invalid-refresh-high",
+      "input": "{\"refresh_minutes\":1441}",
+      "valid": false
+    },
+    {
+      "name": "relative-directory",
+      "input": "{\"custom_directories\":[\"relative\"]}",
+      "valid": false
+    },
+    {
+      "name": "drive-relative-directory",
+      "input": "{\"custom_directories\":[\"C:apps\"]}",
+      "valid": false
+    },
+    {
+      "name": "rooted-without-volume",
+      "input": "{\"custom_directories\":[\"\\\\apps\"]}",
+      "valid": false
+    },
+    {
+      "name": "wrong-type",
+      "input": "{\"max_results\":\"8\"}",
+      "valid": false
+    },
+    {
+      "name": "fractional-integer",
+      "input": "{\"max_results\":1.5}",
+      "valid": false
+    },
+    {
+      "name": "invalid-top-level",
+      "input": "[]",
+      "valid": false
+    },
+    {
+      "name": "broken-json",
+      "input": "{broken",
+      "valid": false
+    }
+  ],
+  "bundle": {
+    "config": {
+      "hotkey": "Ctrl+Alt+K",
+      "max_results": 17,
+      "theme": "dark",
+      "space_launch": false,
+      "filter_noise": false,
+      "search": {
+        "fuzzy": false,
+        "history_weight": 0
+      },
+      "custom_directories": [
+        "C:\\合成应用"
+      ]
+    },
+    "history": {
+      "custom-preserved-id": {
+        "launch_count": 42,
+        "last_launch_time": "2026-10-28T01:02:03.987654321-07:00",
+        "query_history": {
+          "测试": 2,
+          "profile": 3
+        }
+      },
+      "scanned-preserved-id": {
+        "launch_count": 0,
+        "last_launch_time": "0001-01-01T00:00:00Z",
+        "query_history": null
+      }
+    },
+    "index": {
+      "version": 1,
+      "files": {
+        "c:\\合成应用\\入口.lnk": {
+          "modified": 1793678706123456789,
+          "size": 9007199254740993,
+          "item": {
+            "id": "scanned-preserved-id",
+            "name": "Scanned App",
+            "path": "C:\\合成应用\\Scanned App.lnk",
+            "exec_path": "C:\\合成应用\\Scanned App.exe",
+            "arguments": "--profile=\"测试\"",
+            "working_directory": "C:\\合成应用",
+            "icon_path": "C:\\合成应用\\icon.dll,0",
+            "icon_url": "/icons/0123456789abcdef0123456789abcdef.png",
+            "description": "合成 \u003c\u0026\u003e fixture",
+            "source": "Start Menu",
+            "pinned": false,
+            "keywords": [
+              "fixture",
+              "中文"
+            ]
+          }
+        }
+      },
+      "apps": [
+        {
+          "id": "scanned-preserved-id",
+          "name": "Scanned App",
+          "path": "C:\\合成应用\\Scanned App.lnk",
+          "exec_path": "C:\\合成应用\\Scanned App.exe",
+          "arguments": "--profile=\"测试\"",
+          "working_directory": "C:\\合成应用",
+          "icon_path": "C:\\合成应用\\icon.dll,0",
+          "icon_url": "/icons/0123456789abcdef0123456789abcdef.png",
+          "description": "合成 \u003c\u0026\u003e fixture",
+          "source": "Start Menu",
+          "pinned": false,
+          "keywords": [
+            "fixture",
+            "中文"
+          ]
+        }
+      ]
+    },
+    "library": {
+      "version": 1,
+      "applications": [
+        {
+          "id": "custom-preserved-id",
+          "name": "自定义 工具",
+          "path": "C:\\合成应用\\自定义 工具.lnk",
+          "exec_path": "C:\\合成应用\\自定义 工具.exe",
+          "arguments": "--profile=\"测试\"",
+          "working_directory": "C:\\合成应用",
+          "icon_path": "C:\\合成应用\\icon.dll,0",
+          "icon_url": "/icons/0123456789abcdef0123456789abcdef.png",
+          "description": "合成 \u003c\u0026\u003e fixture",
+          "source": "Manual",
+          "pinned": false,
+          "keywords": []
+        }
+      ],
+      "pinned": [
+        {
+          "id": "custom-preserved-id",
+          "name": "自定义 工具",
+          "path": "C:\\合成应用\\自定义 工具.lnk",
+          "exec_path": "C:\\合成应用\\自定义 工具.exe",
+          "arguments": "--profile=\"测试\"",
+          "working_directory": "C:\\合成应用",
+          "icon_path": "C:\\合成应用\\icon.dll,0",
+          "icon_url": "/icons/0123456789abcdef0123456789abcdef.png",
+          "description": "合成 \u003c\u0026\u003e fixture",
+          "source": "Manual",
+          "pinned": true,
+          "keywords": []
+        },
+        {
+          "id": "system-preserved-id",
+          "name": "合成系统快捷",
+          "path": "C:\\合成应用\\合成系统快捷.lnk",
+          "exec_path": "C:\\合成应用\\合成系统快捷.exe",
+          "arguments": "--profile=\"测试\"",
+          "working_directory": "C:\\合成应用",
+          "icon_path": "C:\\合成应用\\icon.dll,0",
+          "icon_url": "/icons/0123456789abcdef0123456789abcdef.png",
+          "description": "合成 \u003c\u0026\u003e fixture",
+          "source": "System",
+          "pinned": true,
+          "keywords": null
+        }
+      ]
+    }
+  },
+  "expected_bundle": {
+    "config": {
+      "version": 1,
+      "hotkey": "Ctrl+Alt+K",
+      "disable_hotkey_fullscreen": false,
+      "max_results": 17,
+      "theme": "dark",
+      "result_layout": "list",
+      "launch_at_startup": false,
+      "space_launch": false,
+      "filter_noise": false,
+      "search": {
+        "fuzzy": false,
+        "history_weight": 0
+      },
+      "custom_directories": [
+        "C:\\合成应用"
+      ],
+      "scan_program_files": true,
+      "refresh_minutes": 30,
+      "auto_check_updates": true
+    },
+    "history": {
+      "custom-preserved-id": {
+        "launch_count": 42,
+        "last_launch_time": "2026-10-28T01:02:03.987654321-07:00",
+        "query_history": {
+          "profile": 3,
+          "测试": 2
+        }
+      },
+      "scanned-preserved-id": {
+        "launch_count": 0,
+        "last_launch_time": "0001-01-01T00:00:00Z",
+        "query_history": null
+      }
+    },
+    "index": {
+      "version": 1,
+      "files": {
+        "c:\\合成应用\\入口.lnk": {
+          "modified": 1793678706123456789,
+          "size": 9007199254740993,
+          "item": {
+            "pinned": false,
+            "id": "scanned-preserved-id",
+            "name": "Scanned App",
+            "path": "C:\\合成应用\\Scanned App.lnk",
+            "exec_path": "C:\\合成应用\\Scanned App.exe",
+            "arguments": "--profile=\"测试\"",
+            "working_directory": "C:\\合成应用",
+            "icon_path": "C:\\合成应用\\icon.dll,0",
+            "icon_url": "/icons/0123456789abcdef0123456789abcdef.png",
+            "description": "合成 \u003c\u0026\u003e fixture",
+            "source": "Start Menu",
+            "keywords": [
+              "fixture",
+              "中文"
+            ]
+          }
+        }
+      },
+      "apps": [
+        {
+          "pinned": false,
+          "id": "scanned-preserved-id",
+          "name": "Scanned App",
+          "path": "C:\\合成应用\\Scanned App.lnk",
+          "exec_path": "C:\\合成应用\\Scanned App.exe",
+          "arguments": "--profile=\"测试\"",
+          "working_directory": "C:\\合成应用",
+          "icon_path": "C:\\合成应用\\icon.dll,0",
+          "icon_url": "/icons/0123456789abcdef0123456789abcdef.png",
+          "description": "合成 \u003c\u0026\u003e fixture",
+          "source": "Start Menu",
+          "keywords": [
+            "fixture",
+            "中文"
+          ]
+        }
+      ]
+    },
+    "library": {
+      "version": 1,
+      "applications": [
+        {
+          "pinned": false,
+          "id": "custom-preserved-id",
+          "name": "自定义 工具",
+          "path": "C:\\合成应用\\自定义 工具.lnk",
+          "exec_path": "C:\\合成应用\\自定义 工具.exe",
+          "arguments": "--profile=\"测试\"",
+          "working_directory": "C:\\合成应用",
+          "icon_path": "C:\\合成应用\\icon.dll,0",
+          "icon_url": "/icons/0123456789abcdef0123456789abcdef.png",
+          "description": "合成 \u003c\u0026\u003e fixture",
+          "source": "Manual",
+          "keywords": []
+        }
+      ],
+      "pinned": [
+        {
+          "pinned": true,
+          "id": "custom-preserved-id",
+          "name": "自定义 工具",
+          "path": "C:\\合成应用\\自定义 工具.lnk",
+          "exec_path": "C:\\合成应用\\自定义 工具.exe",
+          "arguments": "--profile=\"测试\"",
+          "working_directory": "C:\\合成应用",
+          "icon_path": "C:\\合成应用\\icon.dll,0",
+          "icon_url": "/icons/0123456789abcdef0123456789abcdef.png",
+          "description": "合成 \u003c\u0026\u003e fixture",
+          "source": "Manual",
+          "keywords": []
+        },
+        {
+          "pinned": true,
+          "id": "system-preserved-id",
+          "name": "合成系统快捷",
+          "path": "C:\\合成应用\\合成系统快捷.lnk",
+          "exec_path": "C:\\合成应用\\合成系统快捷.exe",
+          "arguments": "--profile=\"测试\"",
+          "working_directory": "C:\\合成应用",
+          "icon_path": "C:\\合成应用\\icon.dll,0",
+          "icon_url": "/icons/0123456789abcdef0123456789abcdef.png",
+          "description": "合成 \u003c\u0026\u003e fixture",
+          "source": "System",
+          "keywords": null
+        }
+      ]
+    }
+  },
+  "edited_bundle": {
+    "config": {
+      "version": 1,
+      "hotkey": "Ctrl+Alt+K",
+      "disable_hotkey_fullscreen": false,
+      "max_results": 19,
+      "theme": "light",
+      "result_layout": "list",
+      "launch_at_startup": false,
+      "space_launch": false,
+      "filter_noise": false,
+      "search": {
+        "fuzzy": false,
+        "history_weight": 0
+      },
+      "custom_directories": [
+        "C:\\合成应用"
+      ],
+      "scan_program_files": true,
+      "refresh_minutes": 30,
+      "auto_check_updates": true
+    },
+    "history": {
+      "custom-preserved-id": {
+        "launch_count": 43,
+        "last_launch_time": "2026-11-03T04:05:06.123456789+08:00",
+        "query_history": {
+          "profile": 3,
+          "测试": 3
+        }
+      },
+      "scanned-preserved-id": {
+        "launch_count": 0,
+        "last_launch_time": "0001-01-01T00:00:00Z",
+        "query_history": null
+      }
+    },
+    "index": {
+      "version": 1,
+      "files": {
+        "c:\\合成应用\\入口.lnk": {
+          "modified": 1793678706123456789,
+          "size": 9007199254740993,
+          "item": {
+            "pinned": false,
+            "id": "scanned-preserved-id",
+            "name": "Scanned App",
+            "path": "C:\\合成应用\\Scanned App.lnk",
+            "exec_path": "C:\\合成应用\\Scanned App.exe",
+            "arguments": "--profile=\"测试\"",
+            "working_directory": "C:\\合成应用",
+            "icon_path": "C:\\合成应用\\icon.dll,0",
+            "icon_url": "/icons/0123456789abcdef0123456789abcdef.png",
+            "description": "合成 \u003c\u0026\u003e fixture",
+            "source": "Start Menu",
+            "keywords": [
+              "fixture",
+              "中文"
+            ]
+          }
+        }
+      },
+      "apps": [
+        {
+          "pinned": false,
+          "id": "scanned-preserved-id",
+          "name": "Scanned App",
+          "path": "C:\\合成应用\\Scanned App.lnk",
+          "exec_path": "C:\\合成应用\\Scanned App.exe",
+          "arguments": "--profile=\"测试\"",
+          "working_directory": "C:\\合成应用",
+          "icon_path": "C:\\合成应用\\icon.dll,0",
+          "icon_url": "/icons/0123456789abcdef0123456789abcdef.png",
+          "description": "合成 \u003c\u0026\u003e fixture",
+          "source": "Start Menu",
+          "keywords": [
+            "fixture",
+            "中文"
+          ]
+        }
+      ]
+    },
+    "library": {
+      "version": 1,
+      "applications": [],
+      "pinned": [
+        {
+          "pinned": true,
+          "id": "system-preserved-id",
+          "name": "合成系统快捷",
+          "path": "C:\\合成应用\\合成系统快捷.lnk",
+          "exec_path": "C:\\合成应用\\合成系统快捷.exe",
+          "arguments": "--profile=\"测试\"",
+          "working_directory": "C:\\合成应用",
+          "icon_path": "C:\\合成应用\\icon.dll,0",
+          "icon_url": "/icons/0123456789abcdef0123456789abcdef.png",
+          "description": "合成 \u003c\u0026\u003e fixture",
+          "source": "System",
+          "keywords": null
+        }
+      ]
+    }
+  },
+  "legacy": [
+    {
+      "pinned": true,
+      "id": "legacy-manual",
+      "name": "旧手动应用",
+      "path": "C:\\合成应用\\旧手动应用.lnk",
+      "exec_path": "C:\\合成应用\\旧手动应用.exe",
+      "arguments": "--profile=\"测试\"",
+      "working_directory": "C:\\合成应用",
+      "icon_path": "C:\\合成应用\\icon.dll,0",
+      "icon_url": "/icons/0123456789abcdef0123456789abcdef.png",
+      "description": "合成 \u003c\u0026\u003e fixture",
+      "source": "Quick Launch",
+      "keywords": []
+    },
+    {
+      "pinned": false,
+      "id": "scanned-preserved-id",
+      "name": "Scanned App",
+      "path": "C:\\合成应用\\Scanned App.lnk",
+      "exec_path": "C:\\合成应用\\Scanned App.exe",
+      "arguments": "--profile=\"测试\"",
+      "working_directory": "C:\\合成应用",
+      "icon_path": "C:\\合成应用\\icon.dll,0",
+      "icon_url": "/icons/0123456789abcdef0123456789abcdef.png",
+      "description": "合成 \u003c\u0026\u003e fixture",
+      "source": "Start Menu",
+      "keywords": [
+        "fixture",
+        "中文"
+      ]
+    },
+    {
+      "pinned": true,
+      "id": "system-preserved-id",
+      "name": "合成系统快捷",
+      "path": "C:\\合成应用\\合成系统快捷.lnk",
+      "exec_path": "C:\\合成应用\\合成系统快捷.exe",
+      "arguments": "--profile=\"测试\"",
+      "working_directory": "C:\\合成应用",
+      "icon_path": "C:\\合成应用\\icon.dll,0",
+      "icon_url": "/icons/0123456789abcdef0123456789abcdef.png",
+      "description": "合成 \u003c\u0026\u003e fixture",
+      "source": "System",
+      "keywords": null
+    }
+  ],
+  "expected_legacy": {
+    "version": 1,
+    "applications": [
+      {
+        "pinned": false,
+        "id": "legacy-manual",
+        "name": "旧手动应用",
+        "path": "C:\\合成应用\\旧手动应用.lnk",
+        "exec_path": "C:\\合成应用\\旧手动应用.exe",
+        "arguments": "--profile=\"测试\"",
+        "working_directory": "C:\\合成应用",
+        "icon_path": "C:\\合成应用\\icon.dll,0",
+        "icon_url": "/icons/0123456789abcdef0123456789abcdef.png",
+        "description": "合成 \u003c\u0026\u003e fixture",
+        "source": "Manual",
+        "keywords": []
+      }
+    ],
+    "pinned": [
+      {
+        "pinned": true,
+        "id": "legacy-manual",
+        "name": "旧手动应用",
+        "path": "C:\\合成应用\\旧手动应用.lnk",
+        "exec_path": "C:\\合成应用\\旧手动应用.exe",
+        "arguments": "--profile=\"测试\"",
+        "working_directory": "C:\\合成应用",
+        "icon_path": "C:\\合成应用\\icon.dll,0",
+        "icon_url": "/icons/0123456789abcdef0123456789abcdef.png",
+        "description": "合成 \u003c\u0026\u003e fixture",
+        "source": "Manual",
+        "keywords": []
+      },
+      {
+        "pinned": false,
+        "id": "scanned-preserved-id",
+        "name": "Scanned App",
+        "path": "C:\\合成应用\\Scanned App.lnk",
+        "exec_path": "C:\\合成应用\\Scanned App.exe",
+        "arguments": "--profile=\"测试\"",
+        "working_directory": "C:\\合成应用",
+        "icon_path": "C:\\合成应用\\icon.dll,0",
+        "icon_url": "/icons/0123456789abcdef0123456789abcdef.png",
+        "description": "合成 \u003c\u0026\u003e fixture",
+        "source": "Start Menu",
+        "keywords": [
+          "fixture",
+          "中文"
+        ]
+      },
+      {
+        "pinned": true,
+        "id": "system-preserved-id",
+        "name": "合成系统快捷",
+        "path": "C:\\合成应用\\合成系统快捷.lnk",
+        "exec_path": "C:\\合成应用\\合成系统快捷.exe",
+        "arguments": "--profile=\"测试\"",
+        "working_directory": "C:\\合成应用",
+        "icon_path": "C:\\合成应用\\icon.dll,0",
+        "icon_url": "/icons/0123456789abcdef0123456789abcdef.png",
+        "description": "合成 \u003c\u0026\u003e fixture",
+        "source": "System",
+        "keywords": null
+      }
+    ]
+  }
+}

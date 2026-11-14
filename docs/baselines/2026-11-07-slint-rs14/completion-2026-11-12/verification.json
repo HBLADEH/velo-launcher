@@ -1,0 +1,80 @@
+{
+  "RecordedAtUtc": "2026-11-11T20:16:18.911445+00:00",
+  "FinalRustFullAndSmokePassed": true,
+  "OldGoVueAndSharedToolsPassed": true,
+  "RustTestsPerRenderer": 80,
+  "InputAssertions": 22,
+  "BusinessAssertions": 7,
+  "PageAssertions": 33,
+  "ProductInputsMatchedPerRenderer": 206,
+  "FinalLog": "verify-rust-final.log",
+  "Logs": [
+    {
+      "File": "candidate-femtovg.log",
+      "SHA256": "4A4A37027D875115A8A8009CF09310276498C9B602A67E73325173B49C98DD41",
+      "Bytes": 73
+    },
+    {
+      "File": "candidate-software.log",
+      "SHA256": "4A4A37027D875115A8A8009CF09310276498C9B602A67E73325173B49C98DD41",
+      "Bytes": 73
+    },
+    {
+      "File": "installer-femtovg-final.log",
+      "SHA256": "9AA1A9D94F8C8502A728069EE3A169123B97430AF97EC74FCA677A6225114800",
+      "Bytes": 264
+    },
+    {
+      "File": "installer-femtovg.log",
+      "SHA256": "9E20F739247D64C5D74F23CE1E0DCAD4B6955FAB19D66F18B47779E5B42F0574",
+      "Bytes": 4821
+    },
+    {
+      "File": "installer-software-final.log",
+      "SHA256": "ED6BEAFA96D6622A72D84A2B23B9C8636A2587B2C314A4D5AFE62B370AB9345F",
+      "Bytes": 265
+    },
+    {
+      "File": "preview-femtovg-final.log",
+      "SHA256": "A473C71A4E49BDEDA480A154C99878D0E21A3D0C4C2F3D877831EABC5FFC7904",
+      "Bytes": 211
+    },
+    {
+      "File": "preview-femtovg.log",
+      "SHA256": "3F082AA0F2014235E7CD425FFAD6E2F4DF905BAC82623F6B0BDB1EECF9DF5022",
+      "Bytes": 4707
+    },
+    {
+      "File": "preview-software-final.log",
+      "SHA256": "6D20D2EDD0A282FE2A017F607A1A4B5B3A1953C044C981A614A6AF9DBCD5477D",
+      "Bytes": 213
+    },
+    {
+      "File": "rollback-femtovg.log",
+      "SHA256": "70D783589D11D2F0CFF866621AEC39B3CD72A1085F19D4F2618AF47FEB93BD9A",
+      "Bytes": 252
+    },
+    {
+      "File": "rollback-software.log",
+      "SHA256": "7587D544FF5BD3B3A17CA65D09D13590CE6FAC797F12B0C654DACB7DBBE99D40",
+      "Bytes": 253
+    },
+    {
+      "File": "verify-rust-final.log",
+      "SHA256": "5D5DA1E44B51EF2A4AD772A362A8E8DC3C62249E635AB273E4BEC6466DB8604D",
+      "Bytes": 50464
+    },
+    {
+      "File": "verify-rust-v1.log",
+      "SHA256": "F88AF6608E4A59C476A2CD208E12E9313EDE00D34CCBE164F544B613EFB56BB2",
+      "Bytes": 50600
+    },
+    {
+      "File": "verify-shared.log",
+      "SHA256": "C6779403CA1DA53E2A4A0B7A35C3C61C13AAF33B32D8758C609FE1BDE8D0CF17",
+      "Bytes": 9226
+    }
+  ],
+  "OldFirstFemtoPackageMissingOneText": "Preserved as preview-femtovg.log/installer-femtovg.log. Added the FemtoVG-only license and reverified both final packages with zero missing texts.",
+  "Scope": "Full local locked-toolchain verification and actual local preview package transitions, not public release or administrative installer acceptance."
+}

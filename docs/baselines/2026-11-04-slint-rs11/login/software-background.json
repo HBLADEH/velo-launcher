@@ -1,0 +1,51 @@
+{
+  "cases": [
+    {
+      "cached_items": 10000,
+      "case": "default",
+      "configured": true,
+      "ever_visible": false,
+      "expected_visible": false,
+      "original_config_preserved": true,
+      "passed": true,
+      "registered_chord_failures": 0,
+      "saved_chord_registered_or_blocked": true,
+      "scope": "current-session command startup; no real login or keyboard evidence",
+      "startup_shown": false,
+      "visible": false
+    },
+    {
+      "cached_items": 10000,
+      "case": "saved",
+      "configured": true,
+      "ever_visible": true,
+      "expected_visible": true,
+      "original_config_preserved": true,
+      "passed": true,
+      "registered_chord_failures": 1,
+      "saved_chord_registered_or_blocked": true,
+      "scope": "current-session command startup; no real login or keyboard evidence",
+      "startup_shown": true,
+      "visible": true
+    },
+    {
+      "cached_items": 10000,
+      "case": "invalid",
+      "configured": true,
+      "ever_visible": true,
+      "expected_visible": true,
+      "original_config_preserved": true,
+      "passed": true,
+      "registered_chord_failures": 0,
+      "saved_chord_registered_or_blocked": false,
+      "scope": "current-session command startup; no real login or keyboard evidence",
+      "startup_shown": true,
+      "visible": true
+    }
+  ],
+  "default_already_busy": false,
+  "login_values_created": false,
+  "passed": true,
+  "process_cleanup": "isolated PID terminated after removing owned tray icon",
+  "executable_sha256": "B234714B46F5396B64FA08F2F6001CC4677C6FB03DBD01F52B579CBCD672EA3D"
+}

@@ -1,0 +1,793 @@
+{
+  "RecordedAtUtc": "2026-11-13T03:25:46.390551+00:00",
+  "Scope": "Current 206-input exe snapshots; same original RS12 seed, sequential same-machine business measurement with opt-in pipes/logging. Current discovery state is separate from the old frozen normal-mode matrix.",
+  "CurrentProductRebuiltForMeasurement": false,
+  "ValidSamples": 30,
+  "InvalidGroupsRetained": [
+    {
+      "Renderer": "software",
+      "File": "visible-attempt-2.json",
+      "SHA256": "59A1FB90FEBB8B0E08F8002EAC3D6F959F0B2B6995BA5BD5548D78C573367A51",
+      "ValidSamples": 0,
+      "TotalSamples": 3,
+      "Reason": "Visible state changed after foreground focus was lost; whole group excluded."
+    },
+    {
+      "Renderer": "software",
+      "File": "visible.json",
+      "SHA256": "C379C1E9919187A4CBFC2752C1BEF9C3B7450DE937389A0A0ADB44ED55D5E310",
+      "ValidSamples": 1,
+      "TotalSamples": 3,
+      "Reason": "Visible state changed after foreground focus was lost; whole group excluded."
+    }
+  ],
+  "Groups": [
+    {
+      "Renderer": "software",
+      "File": "hidden-30s.json",
+      "SHA256": "FD4950D0FD7B40F1EFCC84CDB6BA0E40CFD2B4B18B7C1EBD82EBB37A1DFE1E03",
+      "ExecutableSHA256": "5E7C017DDA3FF691E7FF8DCBFEAF149E5A766C1F8DC73A816BB5C4A9F7C4C66B",
+      "Samples": 3,
+      "PrivateBytes": {
+        "Minimum": 20873216.0,
+        "Median": 20873216.0,
+        "Maximum": 20873216.0
+      },
+      "PrivateMiB": {
+        "Minimum": 19.90625,
+        "Median": 19.90625,
+        "Maximum": 19.90625
+      },
+      "PrivateWorkingSetMiB": {
+        "Minimum": 16.40234375,
+        "Median": 16.40234375,
+        "Maximum": 16.40234375
+      },
+      "WorkingSetMiB": {
+        "Minimum": 66.80078125,
+        "Median": 66.80078125,
+        "Maximum": 66.80078125
+      },
+      "MachineCPUPercent": {
+        "Minimum": 0.0,
+        "Median": 0.0,
+        "Maximum": 0.0
+      },
+      "Handles": {
+        "Minimum": 565.0,
+        "Median": 565.0,
+        "Maximum": 565.0
+      },
+      "Threads": {
+        "Minimum": 16.0,
+        "Median": 16.0,
+        "Maximum": 16.0
+      },
+      "DPI": [
+        96
+      ],
+      "Business": {
+        "ProcessId": 135672,
+        "Complete": true,
+        "Scanning": false,
+        "Warning": true,
+        "Count": 622,
+        "IconCache": {
+          "Entries": 20,
+          "CPUAndTextureEstimateBytes": 655360
+        },
+        "LastScan": "17157887",
+        "PublishedDuringScan": true,
+        "Dropped": false
+      },
+      "InputFiles": {
+        "config.json": "1839E326E5501DAA350418D81B7732C103EB7DB5455D145BD94B72B48349775D",
+        "index.json": "85205EB283CC7008FDB20E55B89BC12AACB66D8CF23D4FEC97195118FDE464CF",
+        "history.json": "300716DFFF2BCBF12B317BAD430A3F553842C13616BB28C636E620E69681CA11",
+        "application-library.json": "A5E8BC981B03563AF3D26E5EEF9D263D9EAA4181C5DA758E8DCBF82160FF01F6",
+        "quick-launch.json": null
+      },
+      "DiskIcons": {
+        "Files": 744,
+        "Bytes": 2087182,
+        "SHA256": "70F64B4838623CC481F7901E6D62A77628409A291724C0609B06AA9BFEAE87B9"
+      },
+      "GPUMetricAvailable": false
+    },
+    {
+      "Renderer": "software",
+      "File": "hidden-5m.json",
+      "SHA256": "D96870413BB9E2CE3E54501D90A95F23C57058F94ED4136EF99032FB4464CC1A",
+      "ExecutableSHA256": "5E7C017DDA3FF691E7FF8DCBFEAF149E5A766C1F8DC73A816BB5C4A9F7C4C66B",
+      "Samples": 3,
+      "PrivateBytes": {
+        "Minimum": 20885504.0,
+        "Median": 20946944.0,
+        "Maximum": 20946944.0
+      },
+      "PrivateMiB": {
+        "Minimum": 19.91796875,
+        "Median": 19.9765625,
+        "Maximum": 19.9765625
+      },
+      "PrivateWorkingSetMiB": {
+        "Minimum": 16.4296875,
+        "Median": 16.4609375,
+        "Maximum": 16.4609375
+      },
+      "WorkingSetMiB": {
+        "Minimum": 67.27734375,
+        "Median": 67.32421875,
+        "Maximum": 67.32421875
+      },
+      "MachineCPUPercent": {
+        "Minimum": 0.0,
+        "Median": 0.0,
+        "Maximum": 0.0
+      },
+      "Handles": {
+        "Minimum": 565.0,
+        "Median": 565.0,
+        "Maximum": 565.0
+      },
+      "Threads": {
+        "Minimum": 16.0,
+        "Median": 18.0,
+        "Maximum": 18.0
+      },
+      "DPI": [
+        96
+      ],
+      "Business": {
+        "ProcessId": 135672,
+        "Complete": true,
+        "Scanning": false,
+        "Warning": true,
+        "Count": 622,
+        "IconCache": {
+          "Entries": 20,
+          "CPUAndTextureEstimateBytes": 655360
+        },
+        "LastScan": "17157887",
+        "PublishedDuringScan": true,
+        "Dropped": false
+      },
+      "InputFiles": {
+        "config.json": "1839E326E5501DAA350418D81B7732C103EB7DB5455D145BD94B72B48349775D",
+        "index.json": "85205EB283CC7008FDB20E55B89BC12AACB66D8CF23D4FEC97195118FDE464CF",
+        "history.json": "300716DFFF2BCBF12B317BAD430A3F553842C13616BB28C636E620E69681CA11",
+        "application-library.json": "A5E8BC981B03563AF3D26E5EEF9D263D9EAA4181C5DA758E8DCBF82160FF01F6",
+        "quick-launch.json": null
+      },
+      "DiskIcons": {
+        "Files": 744,
+        "Bytes": 2087182,
+        "SHA256": "70F64B4838623CC481F7901E6D62A77628409A291724C0609B06AA9BFEAE87B9"
+      },
+      "GPUMetricAvailable": false
+    },
+    {
+      "Renderer": "software",
+      "File": "visible-after-100-cycles.json",
+      "SHA256": "6C7852A509746140CCD0B066AC6487A3DB81D913AFC173341384B975AA8440E0",
+      "ExecutableSHA256": "5E7C017DDA3FF691E7FF8DCBFEAF149E5A766C1F8DC73A816BB5C4A9F7C4C66B",
+      "Samples": 3,
+      "PrivateBytes": {
+        "Minimum": 21102592.0,
+        "Median": 21102592.0,
+        "Maximum": 21102592.0
+      },
+      "PrivateMiB": {
+        "Minimum": 20.125,
+        "Median": 20.125,
+        "Maximum": 20.125
+      },
+      "PrivateWorkingSetMiB": {
+        "Minimum": 16.54296875,
+        "Median": 16.54296875,
+        "Maximum": 16.54296875
+      },
+      "WorkingSetMiB": {
+        "Minimum": 67.48828125,
+        "Median": 67.48828125,
+        "Maximum": 67.48828125
+      },
+      "MachineCPUPercent": {
+        "Minimum": 0.175116,
+        "Median": 0.207268,
+        "Maximum": 0.218494
+      },
+      "Handles": {
+        "Minimum": 565.0,
+        "Median": 565.0,
+        "Maximum": 565.0
+      },
+      "Threads": {
+        "Minimum": 18.0,
+        "Median": 18.0,
+        "Maximum": 18.0
+      },
+      "DPI": [
+        96
+      ],
+      "Business": {
+        "ProcessId": 135672,
+        "Complete": true,
+        "Scanning": false,
+        "Warning": true,
+        "Count": 622,
+        "IconCache": {
+          "Entries": 20,
+          "CPUAndTextureEstimateBytes": 655360
+        },
+        "LastScan": "17157887",
+        "PublishedDuringScan": true,
+        "Dropped": false
+      },
+      "InputFiles": {
+        "config.json": "1839E326E5501DAA350418D81B7732C103EB7DB5455D145BD94B72B48349775D",
+        "index.json": "85205EB283CC7008FDB20E55B89BC12AACB66D8CF23D4FEC97195118FDE464CF",
+        "history.json": "300716DFFF2BCBF12B317BAD430A3F553842C13616BB28C636E620E69681CA11",
+        "application-library.json": "A5E8BC981B03563AF3D26E5EEF9D263D9EAA4181C5DA758E8DCBF82160FF01F6",
+        "quick-launch.json": null
+      },
+      "DiskIcons": {
+        "Files": 744,
+        "Bytes": 2087182,
+        "SHA256": "70F64B4838623CC481F7901E6D62A77628409A291724C0609B06AA9BFEAE87B9"
+      },
+      "GPUMetricAvailable": false
+    },
+    {
+      "Renderer": "software",
+      "File": "visible-after-loop.json",
+      "SHA256": "7F8BA7949D38AC6CF56EE7E6F6758F3DE567778C8462011C41EDF5706B313A66",
+      "ExecutableSHA256": "5E7C017DDA3FF691E7FF8DCBFEAF149E5A766C1F8DC73A816BB5C4A9F7C4C66B",
+      "Samples": 3,
+      "PrivateBytes": {
+        "Minimum": 21102592.0,
+        "Median": 21102592.0,
+        "Maximum": 21102592.0
+      },
+      "PrivateMiB": {
+        "Minimum": 20.125,
+        "Median": 20.125,
+        "Maximum": 20.125
+      },
+      "PrivateWorkingSetMiB": {
+        "Minimum": 16.54296875,
+        "Median": 16.54296875,
+        "Maximum": 16.54296875
+      },
+      "WorkingSetMiB": {
+        "Minimum": 67.5,
+        "Median": 67.5,
+        "Maximum": 67.5
+      },
+      "MachineCPUPercent": {
+        "Minimum": 0.17511,
+        "Median": 0.19514,
+        "Maximum": 0.200833
+      },
+      "Handles": {
+        "Minimum": 566.0,
+        "Median": 566.0,
+        "Maximum": 566.0
+      },
+      "Threads": {
+        "Minimum": 18.0,
+        "Median": 18.0,
+        "Maximum": 18.0
+      },
+      "DPI": [
+        96
+      ],
+      "Business": {
+        "ProcessId": 135672,
+        "Complete": true,
+        "Scanning": false,
+        "Warning": true,
+        "Count": 622,
+        "IconCache": {
+          "Entries": 20,
+          "CPUAndTextureEstimateBytes": 655360
+        },
+        "LastScan": "17157887",
+        "PublishedDuringScan": true,
+        "Dropped": false
+      },
+      "InputFiles": {
+        "config.json": "1839E326E5501DAA350418D81B7732C103EB7DB5455D145BD94B72B48349775D",
+        "index.json": "85205EB283CC7008FDB20E55B89BC12AACB66D8CF23D4FEC97195118FDE464CF",
+        "history.json": "300716DFFF2BCBF12B317BAD430A3F553842C13616BB28C636E620E69681CA11",
+        "application-library.json": "A5E8BC981B03563AF3D26E5EEF9D263D9EAA4181C5DA758E8DCBF82160FF01F6",
+        "quick-launch.json": null
+      },
+      "DiskIcons": {
+        "Files": 744,
+        "Bytes": 2087182,
+        "SHA256": "70F64B4838623CC481F7901E6D62A77628409A291724C0609B06AA9BFEAE87B9"
+      },
+      "GPUMetricAvailable": false
+    },
+    {
+      "Renderer": "software",
+      "File": "visible-attempt-3.json",
+      "SHA256": "C9FE7E6CEFC9C8EC0BE1A8BAB469B46A520553A01F08EF22267BA8466D92F57A",
+      "ExecutableSHA256": "5E7C017DDA3FF691E7FF8DCBFEAF149E5A766C1F8DC73A816BB5C4A9F7C4C66B",
+      "Samples": 3,
+      "PrivateBytes": {
+        "Minimum": 20873216.0,
+        "Median": 20873216.0,
+        "Maximum": 20873216.0
+      },
+      "PrivateMiB": {
+        "Minimum": 19.90625,
+        "Median": 19.90625,
+        "Maximum": 19.90625
+      },
+      "PrivateWorkingSetMiB": {
+        "Minimum": 16.40234375,
+        "Median": 16.40234375,
+        "Maximum": 16.40234375
+      },
+      "WorkingSetMiB": {
+        "Minimum": 66.79296875,
+        "Median": 66.79296875,
+        "Maximum": 66.80078125
+      },
+      "MachineCPUPercent": {
+        "Minimum": 0.106417,
+        "Median": 0.116799,
+        "Maximum": 0.119626
+      },
+      "Handles": {
+        "Minimum": 566.0,
+        "Median": 566.0,
+        "Maximum": 566.0
+      },
+      "Threads": {
+        "Minimum": 16.0,
+        "Median": 16.0,
+        "Maximum": 16.0
+      },
+      "DPI": [
+        96
+      ],
+      "Business": {
+        "ProcessId": 135672,
+        "Complete": true,
+        "Scanning": false,
+        "Warning": true,
+        "Count": 622,
+        "IconCache": {
+          "Entries": 20,
+          "CPUAndTextureEstimateBytes": 655360
+        },
+        "LastScan": "17157887",
+        "PublishedDuringScan": true,
+        "Dropped": false
+      },
+      "InputFiles": {
+        "config.json": "1839E326E5501DAA350418D81B7732C103EB7DB5455D145BD94B72B48349775D",
+        "index.json": "85205EB283CC7008FDB20E55B89BC12AACB66D8CF23D4FEC97195118FDE464CF",
+        "history.json": "300716DFFF2BCBF12B317BAD430A3F553842C13616BB28C636E620E69681CA11",
+        "application-library.json": "A5E8BC981B03563AF3D26E5EEF9D263D9EAA4181C5DA758E8DCBF82160FF01F6",
+        "quick-launch.json": null
+      },
+      "DiskIcons": {
+        "Files": 744,
+        "Bytes": 2087182,
+        "SHA256": "70F64B4838623CC481F7901E6D62A77628409A291724C0609B06AA9BFEAE87B9"
+      },
+      "GPUMetricAvailable": false
+    },
+    {
+      "Renderer": "femtovg",
+      "File": "hidden-30s.json",
+      "SHA256": "9C80DC22925330D6CD30D500CDE5458CDEB51C9B22B21C09A8730600824146C2",
+      "ExecutableSHA256": "D81F31ED8AB3C0D45A3565CDC8AA412B3FB870C0CC350204178CDE44456B6487",
+      "Samples": 3,
+      "PrivateBytes": {
+        "Minimum": 53215232.0,
+        "Median": 53215232.0,
+        "Maximum": 53215232.0
+      },
+      "PrivateMiB": {
+        "Minimum": 50.75,
+        "Median": 50.75,
+        "Maximum": 50.75
+      },
+      "PrivateWorkingSetMiB": {
+        "Minimum": 42.70703125,
+        "Median": 42.70703125,
+        "Maximum": 42.70703125
+      },
+      "WorkingSetMiB": {
+        "Minimum": 129.1875,
+        "Median": 129.1875,
+        "Maximum": 129.1875
+      },
+      "MachineCPUPercent": {
+        "Minimum": 0.01249,
+        "Median": 0.01252,
+        "Maximum": 0.018737
+      },
+      "Handles": {
+        "Minimum": 720.0,
+        "Median": 720.0,
+        "Maximum": 720.0
+      },
+      "Threads": {
+        "Minimum": 19.0,
+        "Median": 19.0,
+        "Maximum": 19.0
+      },
+      "DPI": [
+        96
+      ],
+      "Business": {
+        "ProcessId": 169428,
+        "Complete": true,
+        "Scanning": false,
+        "Warning": true,
+        "Count": 622,
+        "IconCache": {
+          "Entries": 20,
+          "CPUAndTextureEstimateBytes": 655360
+        },
+        "LastScan": "18754689",
+        "PublishedDuringScan": true,
+        "Dropped": false
+      },
+      "InputFiles": {
+        "config.json": "1839E326E5501DAA350418D81B7732C103EB7DB5455D145BD94B72B48349775D",
+        "index.json": "8FC22E48373F7C0D3B26AA0468AAFCAF8B1BA5789205377BAFAA67A9144A4776",
+        "history.json": "300716DFFF2BCBF12B317BAD430A3F553842C13616BB28C636E620E69681CA11",
+        "application-library.json": "A5E8BC981B03563AF3D26E5EEF9D263D9EAA4181C5DA758E8DCBF82160FF01F6",
+        "quick-launch.json": null
+      },
+      "DiskIcons": {
+        "Files": 744,
+        "Bytes": 2087182,
+        "SHA256": "70F64B4838623CC481F7901E6D62A77628409A291724C0609B06AA9BFEAE87B9"
+      },
+      "GPUMetricAvailable": true
+    },
+    {
+      "Renderer": "femtovg",
+      "File": "hidden-5m.json",
+      "SHA256": "862112B4EE7535900EFE96BE13732A30A73C40F5ED8219EE5799C3E224FFD5B6",
+      "ExecutableSHA256": "D81F31ED8AB3C0D45A3565CDC8AA412B3FB870C0CC350204178CDE44456B6487",
+      "Samples": 3,
+      "PrivateBytes": {
+        "Minimum": 53252096.0,
+        "Median": 53252096.0,
+        "Maximum": 53252096.0
+      },
+      "PrivateMiB": {
+        "Minimum": 50.78515625,
+        "Median": 50.78515625,
+        "Maximum": 50.78515625
+      },
+      "PrivateWorkingSetMiB": {
+        "Minimum": 42.7265625,
+        "Median": 42.7265625,
+        "Maximum": 42.7265625
+      },
+      "WorkingSetMiB": {
+        "Minimum": 129.6796875,
+        "Median": 129.6796875,
+        "Maximum": 129.6796875
+      },
+      "MachineCPUPercent": {
+        "Minimum": 0.0,
+        "Median": 0.006456,
+        "Maximum": 0.012504
+      },
+      "Handles": {
+        "Minimum": 719.0,
+        "Median": 719.0,
+        "Maximum": 719.0
+      },
+      "Threads": {
+        "Minimum": 20.0,
+        "Median": 20.0,
+        "Maximum": 20.0
+      },
+      "DPI": [
+        96
+      ],
+      "Business": {
+        "ProcessId": 169428,
+        "Complete": true,
+        "Scanning": false,
+        "Warning": true,
+        "Count": 622,
+        "IconCache": {
+          "Entries": 20,
+          "CPUAndTextureEstimateBytes": 655360
+        },
+        "LastScan": "18754689",
+        "PublishedDuringScan": true,
+        "Dropped": false
+      },
+      "InputFiles": {
+        "config.json": "1839E326E5501DAA350418D81B7732C103EB7DB5455D145BD94B72B48349775D",
+        "index.json": "8FC22E48373F7C0D3B26AA0468AAFCAF8B1BA5789205377BAFAA67A9144A4776",
+        "history.json": "300716DFFF2BCBF12B317BAD430A3F553842C13616BB28C636E620E69681CA11",
+        "application-library.json": "A5E8BC981B03563AF3D26E5EEF9D263D9EAA4181C5DA758E8DCBF82160FF01F6",
+        "quick-launch.json": null
+      },
+      "DiskIcons": {
+        "Files": 744,
+        "Bytes": 2087182,
+        "SHA256": "70F64B4838623CC481F7901E6D62A77628409A291724C0609B06AA9BFEAE87B9"
+      },
+      "GPUMetricAvailable": true
+    },
+    {
+      "Renderer": "femtovg",
+      "File": "visible-after-100-cycles.json",
+      "SHA256": "069D91E9C4A3FBA608939AC00A59DC2E0573386D2A811B10BEDC0DACC206D095",
+      "ExecutableSHA256": "D81F31ED8AB3C0D45A3565CDC8AA412B3FB870C0CC350204178CDE44456B6487",
+      "Samples": 3,
+      "PrivateBytes": {
+        "Minimum": 53215232.0,
+        "Median": 53342208.0,
+        "Maximum": 53342208.0
+      },
+      "PrivateMiB": {
+        "Minimum": 50.75,
+        "Median": 50.87109375,
+        "Maximum": 50.87109375
+      },
+      "PrivateWorkingSetMiB": {
+        "Minimum": 42.7734375,
+        "Median": 42.83984375,
+        "Maximum": 42.83984375
+      },
+      "WorkingSetMiB": {
+        "Minimum": 129.6953125,
+        "Median": 129.77734375,
+        "Maximum": 129.77734375
+      },
+      "MachineCPUPercent": {
+        "Minimum": 0.206594,
+        "Median": 0.224559,
+        "Maximum": 0.253122
+      },
+      "Handles": {
+        "Minimum": 719.0,
+        "Median": 719.0,
+        "Maximum": 719.0
+      },
+      "Threads": {
+        "Minimum": 20.0,
+        "Median": 24.0,
+        "Maximum": 24.0
+      },
+      "DPI": [
+        96
+      ],
+      "Business": {
+        "ProcessId": 169428,
+        "Complete": true,
+        "Scanning": false,
+        "Warning": true,
+        "Count": 622,
+        "IconCache": {
+          "Entries": 20,
+          "CPUAndTextureEstimateBytes": 655360
+        },
+        "LastScan": "18754689",
+        "PublishedDuringScan": true,
+        "Dropped": false
+      },
+      "InputFiles": {
+        "config.json": "1839E326E5501DAA350418D81B7732C103EB7DB5455D145BD94B72B48349775D",
+        "index.json": "8FC22E48373F7C0D3B26AA0468AAFCAF8B1BA5789205377BAFAA67A9144A4776",
+        "history.json": "300716DFFF2BCBF12B317BAD430A3F553842C13616BB28C636E620E69681CA11",
+        "application-library.json": "A5E8BC981B03563AF3D26E5EEF9D263D9EAA4181C5DA758E8DCBF82160FF01F6",
+        "quick-launch.json": null
+      },
+      "DiskIcons": {
+        "Files": 744,
+        "Bytes": 2087182,
+        "SHA256": "70F64B4838623CC481F7901E6D62A77628409A291724C0609B06AA9BFEAE87B9"
+      },
+      "GPUMetricAvailable": true
+    },
+    {
+      "Renderer": "femtovg",
+      "File": "visible-after-loop.json",
+      "SHA256": "07B50CDD167BCE8F4B8DE892D236BB594AF566E21BB52D49E96666764AD75EE6",
+      "ExecutableSHA256": "D81F31ED8AB3C0D45A3565CDC8AA412B3FB870C0CC350204178CDE44456B6487",
+      "Samples": 3,
+      "PrivateBytes": {
+        "Minimum": 53342208.0,
+        "Median": 53342208.0,
+        "Maximum": 53342208.0
+      },
+      "PrivateMiB": {
+        "Minimum": 50.87109375,
+        "Median": 50.87109375,
+        "Maximum": 50.87109375
+      },
+      "PrivateWorkingSetMiB": {
+        "Minimum": 42.83984375,
+        "Median": 42.83984375,
+        "Maximum": 42.83984375
+      },
+      "WorkingSetMiB": {
+        "Minimum": 129.77734375,
+        "Median": 129.77734375,
+        "Maximum": 129.77734375
+      },
+      "MachineCPUPercent": {
+        "Minimum": 0.207786,
+        "Median": 0.219573,
+        "Maximum": 0.263346
+      },
+      "Handles": {
+        "Minimum": 719.0,
+        "Median": 719.0,
+        "Maximum": 719.0
+      },
+      "Threads": {
+        "Minimum": 24.0,
+        "Median": 24.0,
+        "Maximum": 24.0
+      },
+      "DPI": [
+        96
+      ],
+      "Business": {
+        "ProcessId": 169428,
+        "Complete": true,
+        "Scanning": false,
+        "Warning": true,
+        "Count": 622,
+        "IconCache": {
+          "Entries": 20,
+          "CPUAndTextureEstimateBytes": 655360
+        },
+        "LastScan": "18754689",
+        "PublishedDuringScan": true,
+        "Dropped": false
+      },
+      "InputFiles": {
+        "config.json": "1839E326E5501DAA350418D81B7732C103EB7DB5455D145BD94B72B48349775D",
+        "index.json": "8FC22E48373F7C0D3B26AA0468AAFCAF8B1BA5789205377BAFAA67A9144A4776",
+        "history.json": "300716DFFF2BCBF12B317BAD430A3F553842C13616BB28C636E620E69681CA11",
+        "application-library.json": "A5E8BC981B03563AF3D26E5EEF9D263D9EAA4181C5DA758E8DCBF82160FF01F6",
+        "quick-launch.json": null
+      },
+      "DiskIcons": {
+        "Files": 744,
+        "Bytes": 2087182,
+        "SHA256": "70F64B4838623CC481F7901E6D62A77628409A291724C0609B06AA9BFEAE87B9"
+      },
+      "GPUMetricAvailable": true
+    },
+    {
+      "Renderer": "femtovg",
+      "File": "visible.json",
+      "SHA256": "6DBF8F7CF02DC4B2C5C56DB2F7A21EE7A30EF574A351720CD5368CF2194FC2A9",
+      "ExecutableSHA256": "D81F31ED8AB3C0D45A3565CDC8AA412B3FB870C0CC350204178CDE44456B6487",
+      "Samples": 3,
+      "PrivateBytes": {
+        "Minimum": 53264384.0,
+        "Median": 56004608.0,
+        "Maximum": 59801600.0
+      },
+      "PrivateMiB": {
+        "Minimum": 50.796875,
+        "Median": 53.41015625,
+        "Maximum": 57.03125
+      },
+      "PrivateWorkingSetMiB": {
+        "Minimum": 42.75390625,
+        "Median": 45.36328125,
+        "Maximum": 52.5859375
+      },
+      "WorkingSetMiB": {
+        "Minimum": 129.234375,
+        "Median": 131.84375,
+        "Maximum": 135.3671875
+      },
+      "MachineCPUPercent": {
+        "Minimum": 0.239488,
+        "Median": 0.25058,
+        "Maximum": 0.26585
+      },
+      "Handles": {
+        "Minimum": 718.0,
+        "Median": 720.0,
+        "Maximum": 720.0
+      },
+      "Threads": {
+        "Minimum": 19.0,
+        "Median": 19.0,
+        "Maximum": 22.0
+      },
+      "DPI": [
+        96
+      ],
+      "Business": {
+        "ProcessId": 169428,
+        "Complete": true,
+        "Scanning": false,
+        "Warning": true,
+        "Count": 622,
+        "IconCache": {
+          "Entries": 20,
+          "CPUAndTextureEstimateBytes": 655360
+        },
+        "LastScan": "18754689",
+        "PublishedDuringScan": true,
+        "Dropped": false
+      },
+      "InputFiles": {
+        "config.json": "1839E326E5501DAA350418D81B7732C103EB7DB5455D145BD94B72B48349775D",
+        "index.json": "8FC22E48373F7C0D3B26AA0468AAFCAF8B1BA5789205377BAFAA67A9144A4776",
+        "history.json": "300716DFFF2BCBF12B317BAD430A3F553842C13616BB28C636E620E69681CA11",
+        "application-library.json": "A5E8BC981B03563AF3D26E5EEF9D263D9EAA4181C5DA758E8DCBF82160FF01F6",
+        "quick-launch.json": null
+      },
+      "DiskIcons": {
+        "Files": 744,
+        "Bytes": 2087182,
+        "SHA256": "70F64B4838623CC481F7901E6D62A77628409A291724C0609B06AA9BFEAE87B9"
+      },
+      "GPUMetricAvailable": true
+    }
+  ],
+  "Completions": [
+    {
+      "Completed": true,
+      "CheckOnly": false,
+      "VisibleOnly": false,
+      "Renderer": "software",
+      "SHA256": "5E7C017DDA3FF691E7FF8DCBFEAF149E5A766C1F8DC73A816BB5C4A9F7C4C66B",
+      "CollectorSHA256": "7001DEFA27F291E18DEF5C73F72EBA0754DB51FD2CCA315BFB285F4EBB66DEB1",
+      "CollectorStable": true,
+      "ProcessId": 135672,
+      "ExitCode": 0,
+      "ForcedCleanup": false,
+      "ElapsedSeconds": 775.5629158,
+      "OperationIdleSeconds": 699.6575798,
+      "SyntheticCycles": 100,
+      "ThirtyMinuteLoop": false,
+      "Method": "Application stdio commands through normal business/lifecycle callbacks; no physical keyboard or calibrated latency claim."
+    },
+    {
+      "Completed": true,
+      "CheckOnly": false,
+      "VisibleOnly": false,
+      "Renderer": "femtovg",
+      "SHA256": "D81F31ED8AB3C0D45A3565CDC8AA412B3FB870C0CC350204178CDE44456B6487",
+      "CollectorSHA256": "7001DEFA27F291E18DEF5C73F72EBA0754DB51FD2CCA315BFB285F4EBB66DEB1",
+      "CollectorStable": true,
+      "ProcessId": 169428,
+      "ExitCode": 0,
+      "ForcedCleanup": false,
+      "ElapsedSeconds": 673.9137372,
+      "OperationIdleSeconds": 596.1725901,
+      "SyntheticCycles": 100,
+      "ThirtyMinuteLoop": false,
+      "Method": "Application stdio commands through normal business/lifecycle callbacks; no physical keyboard or calibrated latency claim."
+    }
+  ],
+  "ThirtyMinuteLoopRepeated": false,
+  "IndependentColdTimingRepeated": false,
+  "ScanWarningsAllowed": true,
+  "Limits": [
+    "Scans published a new 622-entry snapshot with warnings; partial discovery is disclosed and is not called a warning-free scan.",
+    "Three 15-second samples per idle state; no builds, benchmarks or screenshots during the resource runs. File review occurred while hidden settling.",
+    "Application-held CPU/texture estimates and PrivateBytes do not prove GPU internal memory or general physical residency.",
+    "A zero sampled CPU percentage is bounded by counter resolution; nonzero visible CPU and all invalid groups remain reported.",
+    "The Minutes=0 supplement checks 100 cycles and idle states; its post-loop label does not claim a new 30-minute test.",
+    "Historical RS12 latency/animation/normal-mode numbers retain their original exe identities and are supporting history, not remeasurement of these binaries."
+  ]
+}

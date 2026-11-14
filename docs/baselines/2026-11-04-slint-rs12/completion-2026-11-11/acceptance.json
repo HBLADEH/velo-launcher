@@ -1,0 +1,413 @@
+{
+  "SchemaVersion": 1,
+  "RecordedAtUtc": "2026-11-10T18:42:38.2791489Z",
+  "Stage": "RS-12",
+  "Decision": "已验证：冻结程序的本机资源与交互测量矩阵完成",
+  "Scope": "Frozen same-machine Windows 11 x64 measurements and documented limitations. Completes measurement requirements; does not assert all initial budgets met, all historical issues fixed, a default renderer or release readiness.",
+  "RS12Complete": true,
+  "AllInitialBudgetsMet": false,
+  "DefaultRendererSelected": false,
+  "G4Released": false,
+  "HistoricalFocusRootCauseEstablished": false,
+  "HistoricalFocusFixClaim": false,
+  "GeneralStabilityApproved": false,
+  "FrozenWorkspaceCommit": "4d9dbaf9acf5286d9961fae1e89cca908b5af9d7",
+  "FrozenWorkspaceDirty": true,
+  "WailsUninstrumentedResourceReferenceSHA256": "9A1A898A1E3D70267481BCC68E3368F0B6594F68E8AE43B3F0DCDC06A9B329A6",
+  "ColdCalibrations": [
+    {
+      "Edition": "wails",
+      "SHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+      "Samples": 3,
+      "Failures": 0,
+      "UpperMilliseconds": {
+        "Count": 3,
+        "Minimum": 3190.8264,
+        "Median": 3241.6126,
+        "P95": 3549.82875,
+        "Maximum": 3549.82875
+      },
+      "UpperBoundP95Within500ms": false
+    },
+    {
+      "Edition": "femtovg",
+      "SHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+      "Samples": 3,
+      "Failures": 0,
+      "UpperMilliseconds": {
+        "Count": 3,
+        "Minimum": 445.7443,
+        "Median": 450.45480000000003,
+        "P95": 473.74260000000004,
+        "Maximum": 473.74260000000004
+      },
+      "UpperBoundP95Within500ms": true
+    },
+    {
+      "Edition": "software",
+      "SHA256": "E85B41C7E77888750817E47F092EABECB1BAB5A68EFCE579378CE2DDAD2DBA4B",
+      "Samples": 3,
+      "Failures": 0,
+      "UpperMilliseconds": {
+        "Count": 3,
+        "Minimum": 215.15370000000001,
+        "Median": 237.8731,
+        "P95": 287.4924,
+        "Maximum": 287.4924
+      },
+      "UpperBoundP95Within500ms": true
+    }
+  ],
+  "ColdCalibrationSamples": 9,
+  "IndependentBoots": 9,
+  "SlintSixColdSampleUpperBoundsWithin500ms": true,
+  "WailsReferenceThreeColdUpperBoundsAbove500ms": true,
+  "MachineHotkeyCalibrationGroups": [
+    {
+      "Edition": "software",
+      "Kind": "InjectedHotkeyCalibration",
+      "SHA256": "E85B41C7E77888750817E47F092EABECB1BAB5A68EFCE579378CE2DDAD2DBA4B",
+      "ValidSamples": 20,
+      "InvalidSamples": 0,
+      "UpperMilliseconds": {
+        "Count": 20,
+        "Minimum": 21.326600000000003,
+        "Median": 31.880225,
+        "P95": 44.8175,
+        "Maximum": 52.51525
+      },
+      "ReferenceBudgetMilliseconds": 50,
+      "UpperBoundP95WithinReference": true,
+      "MachineGeneratedInput": true,
+      "CountsAsPhysicalHotkey": false,
+      "SummarySHA256": "401451BDD800FAD24B890C75EBB3FD5CEE725EF6131F9A79B891F077CA41D856"
+    },
+    {
+      "Edition": "femtovg",
+      "Kind": "InjectedHotkeyCalibration",
+      "SHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+      "ValidSamples": 20,
+      "InvalidSamples": 0,
+      "UpperMilliseconds": {
+        "Count": 20,
+        "Minimum": 20.985599999999998,
+        "Median": 24.977275,
+        "P95": 26.74115,
+        "Maximum": 32.47495
+      },
+      "ReferenceBudgetMilliseconds": 50,
+      "UpperBoundP95WithinReference": true,
+      "MachineGeneratedInput": true,
+      "CountsAsPhysicalHotkey": false,
+      "SummarySHA256": "7D3AE8CBB7AA5E67AE8E3F16B15E42BFF78930F1F9E639FB623C3AEDED261FE1"
+    },
+    {
+      "Edition": "wails",
+      "Kind": "InjectedHotkeyCalibration",
+      "SHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+      "ValidSamples": 20,
+      "InvalidSamples": 0,
+      "UpperMilliseconds": {
+        "Count": 20,
+        "Minimum": 18.21275,
+        "Median": 24.453400000000002,
+        "P95": 36.87135,
+        "Maximum": 38.97965
+      },
+      "ReferenceBudgetMilliseconds": 50,
+      "UpperBoundP95WithinReference": true,
+      "MachineGeneratedInput": true,
+      "CountsAsPhysicalHotkey": false,
+      "SummarySHA256": "D29ACF01D8FFB441142BA1721F59C8F8EF2D3F8E1FE9BE49D7B82C93586A28D0"
+    }
+  ],
+  "WarmMachineCalibrations": 9,
+  "PhysicalHotkeyEvidenceSeparate": true,
+  "PhysicalIME": "Three candidates, Microsoft Pinyin on this machine at 96 DPI",
+  "MemoryBudgetObservations": [
+    {
+      "Edition": "software",
+      "Mode": "Production",
+      "Metric": "Full process-tree PrivateBytes",
+      "VisibleMiB": 26.32421875,
+      "HiddenFiveMinutesMiB": 26.12109375,
+      "VisibleWithin50MiB": true,
+      "HiddenWithin30MiBAspiration": true,
+      "Scope": "Existing normal-mode observations; no cross-round subtraction or hidden GPU-memory claim."
+    },
+    {
+      "Edition": "femtovg",
+      "Mode": "Production",
+      "Metric": "Full process-tree PrivateBytes",
+      "VisibleMiB": 55.03125,
+      "HiddenFiveMinutesMiB": 67.3046875,
+      "VisibleWithin50MiB": false,
+      "HiddenWithin30MiBAspiration": false,
+      "Scope": "Existing normal-mode observations; no cross-round subtraction or hidden GPU-memory claim."
+    }
+  ],
+  "Coverage": [
+    {
+      "Requirement": "Frozen programs, source and shared inputs",
+      "Status": "verified for documented measurement scope",
+      "Evidence": [
+        {
+          "Path": "../build-identities.json",
+          "SHA256": "FC68B279CA6F9520050BE0FBCA935B5D267FC78346D55D11388AC7A29634027D"
+        },
+        {
+          "Path": "../data-comparison.json",
+          "SHA256": "BA3CF4248C161E44C973D56C614654870E3949EF2FC3BFC1A41DF50FC9FC2635"
+        },
+        {
+          "Path": "../remaining/input/measurement-identities.json",
+          "SHA256": "B9563F8951454171504D3ABB56326506886014D83A815D523737CD4D07418338"
+        }
+      ]
+    },
+    {
+      "Requirement": "Idle states: visible, hidden 30 seconds and hidden five minutes",
+      "Status": "verified for documented measurement scope",
+      "Evidence": [
+        {
+          "Path": "../resources-summary.json",
+          "SHA256": "A8D9FE009DE64D281842A64928D6CCC89EDCE8A45A5FAE9D22AE160FCE6E0CB0"
+        },
+        {
+          "Path": "../normal/resources-summary.json",
+          "SHA256": "E8A4A157BC47D721742C0D459363FBC6C4DEAE111223508B80AD527E495F9F3B"
+        },
+        {
+          "Path": "../remaining/hidden-resources.json",
+          "SHA256": "E9A0ABC640DF100E51DCCF59BEA590ADCEA42690741828F0CC95A9E9BE46BBBF"
+        }
+      ],
+      "Count": 54
+    },
+    {
+      "Requirement": "Full process-tree startup and scan sampling",
+      "Status": "verified for documented measurement scope",
+      "Evidence": [
+        {
+          "Path": "../followup-2026-11-05/scan/summary.json",
+          "SHA256": "425B38E0FD6471DB526495CD0B95D8C29E0BB5B045F1D3B460BEBA8143943552"
+        }
+      ]
+    },
+    {
+      "Requirement": "100 show-hide cycles and 30-minute operation-idle observations",
+      "Status": "verified for documented measurement scope",
+      "Evidence": [
+        {
+          "Path": "../slint-loops.json",
+          "SHA256": "42265CFAFC9EE8750F4D04E24F6643F0D71976D31A37159F56664025B1A83AA8"
+        },
+        {
+          "Path": "../wails-loop.json",
+          "SHA256": "8F355729C4487DCD25382967373228FDB333A333EC25984C6CF71124BD51D2D3"
+        },
+        {
+          "Path": "../wails-operator.json",
+          "SHA256": "EC935B7C45A24C3032F7F8B38BD83438E2D9A1FD43E41B68E0183F3D9DD1A902"
+        }
+      ]
+    },
+    {
+      "Requirement": "1000/10000 kernel and service differential queries",
+      "Status": "verified for documented measurement scope",
+      "Evidence": [
+        {
+          "Path": "../search-summary.json",
+          "SHA256": "0940A4C744CC0782A3F5CE08D7E053EA0F4FC27DB6B2C3FCF8D3D0AD7E1FC0F3"
+        },
+        {
+          "Path": "../search-identity.json",
+          "SHA256": "B8E743A31AA5B005D3958679A665F5C61D44FDC1B74FE611749348969152D30F"
+        }
+      ],
+      "Count": 144
+    },
+    {
+      "Requirement": "At least 20 physical hotkeys per candidate, kept apart from generated input",
+      "Status": "verified for documented measurement scope",
+      "Evidence": [
+        {
+          "Path": "../remaining/input/software-physical-input.json",
+          "SHA256": "7A29718284A6C484259DC9A61A47ABB13B6A1E5EF19EDFF3A5E7E628FA197B42"
+        },
+        {
+          "Path": "../remaining/input/femtovg-physical-input.json",
+          "SHA256": "62C0A30A6DECA320F0787A330ACE0C84DA3DC4AB7E2BF3A1BC19C34C38D18539"
+        },
+        {
+          "Path": "../completion-2026-11-09/wails-hotkey/physical-input.json",
+          "SHA256": "C0E9DE0EA85EFE0CCC5F44F653FC43EA644409415CA614E953213C96E697D0E8"
+        },
+        {
+          "Path": "../completion-2026-11-10/frames/software-physical-input.json",
+          "SHA256": "87E82CD91BB65384ADE668ECD413363B468E1725861D991E045C39C6C81130CE"
+        }
+      ],
+      "MinimumPerCandidate": 20,
+      "ValidCountsFromSelectedPhysicalSessions": {
+        "software": 21,
+        "femtovg": 20,
+        "wails": 20
+      },
+      "Scope": "Software later session has 21 valid physical hotkeys; the earlier 19-sample file is retained as context, not presented alone as a 20-sample session. Wails collector Completed=false is preserved; its 20 valid observations, operator report and final normal exit are reviewed separately."
+    },
+    {
+      "Requirement": "Physical Microsoft Pinyin input and composition boundaries",
+      "Status": "verified for documented measurement scope",
+      "Evidence": [
+        {
+          "Path": "../completion-2026-11-07/ime-software.json",
+          "SHA256": "7658A75F00D707DA6C09E06E8624F385A982327084A3EA9BE0D38E8FD14F454A"
+        },
+        {
+          "Path": "../completion-2026-11-07/ime-femtovg.json",
+          "SHA256": "0F554B3D8A4FF83072CDD011CE87BBB9FAC9882F86C359C770C91FBC0A991A7C"
+        },
+        {
+          "Path": "../completion-2026-11-07/ime-wails.json",
+          "SHA256": "31F7ED1ED25F2BDEA2BCD84E225AA9CD86AEF49D8E37F39EDD7DA823D027434D"
+        }
+      ]
+    },
+    {
+      "Requirement": "Warm startup and generated-hotkey accepted-input calibration",
+      "Status": "verified for documented measurement scope",
+      "Evidence": [
+        {
+          "Path": "../completion-2026-11-10/remaining-auto/readiness-matrix.json",
+          "SHA256": "5DAA6DA2B7D7EC66F2788E27E4BFD7162E068ED00D2C639C66CD9BB349E4E634"
+        }
+      ],
+      "WarmSamples": 9,
+      "MachineHotkeySamples": 60
+    },
+    {
+      "Requirement": "Three independent boot calibrations per candidate",
+      "Status": "verified for documented measurement scope",
+      "Evidence": [
+        {
+          "Path": "../completion-2026-11-10/calibrated-cold/after-femtovg-3.json",
+          "SHA256": "C8E87C272ECCC9C80EE104130369726BD1DFAFE8A09EF5050B02A8D7BAEF79A1"
+        }
+      ],
+      "Count": 9
+    },
+    {
+      "Requirement": "1000/10000 physical query result pixels, correctness references and settling",
+      "Status": "verified for documented measurement scope",
+      "Evidence": [
+        {
+          "Path": "../completion-2026-11-10/frames/corrected/matrix-final/matrix.json",
+          "SHA256": "15246FD4F8FA932F310EA6E7DD5252BA975980B06AF0845E232697B29D1F84EF"
+        }
+      ],
+      "Count": 33,
+      "Conditions": 6
+    },
+    {
+      "Requirement": "Query-animation full-tree CPU windows and desktop-frame cadence",
+      "Status": "verified for documented measurement scope",
+      "Evidence": [
+        {
+          "Path": "../completion-2026-11-10/remaining-auto/animation-matrix.json",
+          "SHA256": "0ACD41280B678421DFC1E4CF6FFDD49DCB07E5B6416889529F701E6720BAAF5D"
+        }
+      ],
+      "Count": 30,
+      "Conditions": 6
+    },
+    {
+      "Requirement": "Icon extraction/cache, Chinese text/DPI and default-network observations",
+      "Status": "verified for documented measurement scope",
+      "Evidence": [
+        {
+          "Path": "../remaining/icons/identity.json",
+          "SHA256": "58121F18458C693FA0414D9F20A756E6E12077B53A229A04715BD79E0675766B"
+        },
+        {
+          "Path": "../remaining/default-network.json",
+          "SHA256": "AA8203170792BCF56F88B2C8D10A8FDBA6EAD0ED2D453786055AFCBC5C4538AA"
+        },
+        {
+          "Path": "../followup-2026-11-05/desktop/summary.json",
+          "SHA256": "3E61CE150F119E968D29B675C20FFC9E454391314E2BD544C80BEE4BDABD56E3"
+        },
+        {
+          "Path": "../followup-2026-11-05/wails-retry/final-dpi-input.json",
+          "SHA256": "4E1A9E3F7C797B4F5348A6DF06731627F0F4537DE4F22D2009C203A50720C9B2"
+        }
+      ]
+    },
+    {
+      "Requirement": "Shared verification and cleanup",
+      "Status": "verified for documented measurement scope",
+      "Evidence": [
+        {
+          "Path": "../completion-2026-11-10/remaining-auto/verification.json",
+          "SHA256": "5F694103A59A7DA1F729580716540B6BFA47F374DD60B4C1827F86E513795C0D"
+        },
+        {
+          "Path": "../completion-2026-11-10/remaining-auto/cleanup.json",
+          "SHA256": "828311742C68B7034B8D3C6A31055C831BD84669664A605EDCAF92BFC1CFFBE7"
+        },
+        {
+          "Path": "../completion-2026-11-10/frames/corrected/matrix-final/cleanup.json",
+          "SHA256": "238868ADA07E9D3C01C2E5E2F621B7F718BFB215A70AB2AB2A4E8A896880470B"
+        }
+      ]
+    }
+  ],
+  "RisksRetained": [
+    "FemtoVG normal visible/hidden PrivateBytes exceeds the 50MiB/30MiB initial goals; budget unchanged.",
+    "Wails actual-input reference cold upper bounds exceed 500ms; all samples retained.",
+    "10000-entry extended service cases reached about 16.65ms; 1000-entry target and extended scale remain separate.",
+    "Historical Software first-show blur and Wails intermittent flash/input failures lack original foreground evidence; no root-cause or product-fix claim.",
+    "Wails native dispatch and accepted-edit callback counts differ and some timestamps have write-order differences; no per-dispatch acceptance guarantee.",
+    "Only the documented finite query/DPI/driver/IME scope was observed; no broad compatibility or indefinite no-leak claim."
+  ],
+  "TimingLimits": [
+    "Operational accepted-input upper bounds from guarded machine probes with observed QPC/UTC brackets, not a mathematical earliest-readiness time.",
+    "Three cold samples per candidate are small-sample observations; reboot-first-Velo condition is operator attested.",
+    "Frame results separate first changed pixels, stable correct reference and actual input; startup redraw/OpenGL callbacks are not independent desktop presentation timestamps.",
+    "Animation CPU is summed over complete process-tree counter windows; exact per-frame GPU time, internal GPU cache and screen photon presentation were not measured."
+  ],
+  "Verification": {
+    "NoProductSourceOrFrozenToolChange": true,
+    "ProductRebuilt": false,
+    "FinalSharedRegressionExitCode": 0,
+    "VerifiedSharedSourcesUnchanged": true,
+    "FinalCaseIdentityBootSourceAndCleanupAudit": "evidence-audit.json",
+    "EvidenceAuditSHA256": "16AFA105DBE7DFF705C69EF64C65AFC093E022A1A891432E04B93647D26C6C28",
+    "AllTestProcessesCleaned": true,
+    "FormalBeforeAfterUnchangedClaimForColdRuns": false
+  },
+  "NoMoreColdRebootsRequiredForMatrix": true,
+  "NextStage": "RS-13 visual acceptance; RS-14 renderer, stability/budget tradeoffs and release gate",
+  "HistoricalReportsRewritten": false,
+  "FrozenExportConservativeRS12FlagOverriddenInPlace": false,
+  "PhysicalHotkeyObservedCounts": {
+    "software": 21,
+    "femtovg": 20,
+    "wails": 20
+  },
+  "CollectorCompletionLimits": [
+    {
+      "Evidence": "../slint-loops.json",
+      "OriginalFlag": "Software RunCompleted=false",
+      "ObservedLoopSeconds": 1800.0778985,
+      "ObservedSyntheticCycles": 100,
+      "Disposition": "The final visible re-sampling group lost focus, making the wrapper incomplete. Observed 100 cycles/30-minute loop retained; invalid post-loop idle group excluded, original failure flag unchanged."
+    },
+    {
+      "Evidence": "../completion-2026-11-09/wails-hotkey/physical-input.json",
+      "OriginalFlag": "Result.Completed=false",
+      "ValidPhysicalObservations": 20,
+      "Disposition": "Old observer timed out after window destruction; valid physical edits and operator feedback reviewed with final normal exit. Failed collection flag remains unchanged."
+    }
+  ]
+}

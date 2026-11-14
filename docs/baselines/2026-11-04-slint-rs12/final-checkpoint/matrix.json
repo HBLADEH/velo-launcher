@@ -1,0 +1,76 @@
+{
+  "RecordedAtUtc": "2026-11-06T11:03:10.1528357Z",
+  "RS12Complete": false,
+  "DefaultRendererSelected": false,
+  "Rows": [
+    {
+      "Status": "verified",
+      "Item": "Frozen Release binaries and original data",
+      "Evidence": "../build-identities.json"
+    },
+    {
+      "Status": "verified for recorded scope",
+      "Item": "Idle resource samples",
+      "Count": 54,
+      "Evidence": "../resources-summary.json"
+    },
+    {
+      "Status": "verified for synthetic scope; 10000 extension has slow cases",
+      "Item": "1000/10000 search kernel and service",
+      "Evidence": "../search-summary.json"
+    },
+    {
+      "Status": "verified for recorded synthetic/manual scope",
+      "Item": "100 cycles and 30-minute operation/idle",
+      "Evidence": "../README.md"
+    },
+    {
+      "Status": "observed; manual delay and calibration limitations retained",
+      "Item": "Warm startup accepted-character bounds",
+      "Evidence": "../followup-2026-11-05/warm/verification.json"
+    },
+    {
+      "Status": "prepared, waiting for first operator restart",
+      "Required": 9,
+      "Item": "Cold startup independent boots",
+      "Completed": 0,
+      "Evidence": "preflight.json"
+    },
+    {
+      "Status": "pending",
+      "Item": "Calibrated startup and physical hotkey latency",
+      "Evidence": "../remaining/README.md"
+    },
+    {
+      "Status": "not passed; operator-reported flash/input failures unresolved",
+      "Item": "Wails activation reliability",
+      "Evidence": "../followup-2026-11-05/wails-operator-report.json"
+    },
+    {
+      "Status": "observed within limited scope; invalid trials excluded",
+      "Item": "Slint native DPI and Chinese presentation",
+      "Evidence": "../followup-2026-11-05/desktop/README.md"
+    },
+    {
+      "Status": "actual 96/144/96 HWND DPI/bounds observed; user reports layout and input normal; no Wails pixels or physical IME test",
+      "Item": "Wails native DPI and physical IME",
+      "NativeScaleTransition": "96 DPI 640x588; 144 DPI 960x882; restored 96 DPI 640x588",
+      "PhysicalHotkeyCapture": "4 non-injected physical starts; 2 paired valid character bounds, 2 unmatched/timeout; 3 additional accepted-character events unpaired; 20 valid samples not reached",
+      "LatestUserReport": "layout/input normal at 150% and restored 100%",
+      "PresentedFrames": "not captured",
+      "PhysicalIME": "not tested",
+      "Evidence": "../followup-2026-11-05/wails-retry/README.md"
+    },
+    {
+      "Status": "pending",
+      "Item": "Input to presented results at 1000/10000 items and animation frame times",
+      "Evidence": "README.md"
+    },
+    {
+      "Status": "partial observation; renderer-internal allocation unavailable",
+      "Item": "Full application/GPU cache accounting and eviction references",
+      "Evidence": "../followup-2026-11-05/desktop/summary.json"
+    }
+  ],
+  "Note": "2026-11-06: Go shared verification and Rust two-renderer smoke passed. Wails native DPI transition is observed with user-reported normal layout/input; no screenshot/frame/physical IME. Physical hotkey observer was incomplete (2 valid bounds, 2 invalid starts, 3 unpaired input events); reliability not passed. Strict cold remains 0/9 and deferred by user."
+}

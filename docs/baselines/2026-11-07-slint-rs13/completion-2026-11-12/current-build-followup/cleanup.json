@@ -1,0 +1,87 @@
+{
+  "CleanupPassed": true,
+  "RecordedAtUtc": "2026-11-12T13:27:15.7978232Z",
+  "TestProcessCount": 0,
+  "Instances": [
+    {
+      "Run": "femtovg-current-1",
+      "ExecutableSHA256": "D81F31ED8AB3C0D45A3565CDC8AA412B3FB870C0CC350204178CDE44456B6487",
+      "EndpointPresent": false,
+      "ExitCode": 0,
+      "ForcedCleanup": false
+    },
+    {
+      "Run": "femtovg-recording-current-2",
+      "ExecutableSHA256": "D81F31ED8AB3C0D45A3565CDC8AA412B3FB870C0CC350204178CDE44456B6487",
+      "EndpointPresent": false,
+      "ExitCode": 0,
+      "ForcedCleanup": false
+    },
+    {
+      "Run": "software-current",
+      "ExecutableSHA256": "5E7C017DDA3FF691E7FF8DCBFEAF149E5A766C1F8DC73A816BB5C4A9F7C4C66B",
+      "EndpointPresent": false,
+      "ExitCode": 0,
+      "ForcedCleanup": false
+    },
+    {
+      "Run": "software-current-2",
+      "ExecutableSHA256": "5E7C017DDA3FF691E7FF8DCBFEAF149E5A766C1F8DC73A816BB5C4A9F7C4C66B",
+      "EndpointPresent": false,
+      "ExitCode": 0,
+      "ForcedCleanup": false
+    },
+    {
+      "Run": "software-current-3",
+      "ExecutableSHA256": "5E7C017DDA3FF691E7FF8DCBFEAF149E5A766C1F8DC73A816BB5C4A9F7C4C66B",
+      "EndpointPresent": false,
+      "ExitCode": 0,
+      "ForcedCleanup": false
+    },
+    {
+      "Run": "software-recording-current-1",
+      "ExecutableSHA256": "5E7C017DDA3FF691E7FF8DCBFEAF149E5A766C1F8DC73A816BB5C4A9F7C4C66B",
+      "EndpointPresent": false,
+      "ExitCode": 0,
+      "ForcedCleanup": false
+    }
+  ],
+  "AltSpaceAvailable": true,
+  "TemporaryRegistrationReleased": true,
+  "FormalFiles": [
+    {
+      "Name": "config.json",
+      "MatchesEarlierReference": true,
+      "EarlierSHA256": "6DECBCB844CC656D0EAFBD340F7B8BF3B877FAAD593D543F85A37B15EB95143F",
+      "CurrentSHA256": "6DECBCB844CC656D0EAFBD340F7B8BF3B877FAAD593D543F85A37B15EB95143F"
+    },
+    {
+      "Name": "history.json",
+      "MatchesEarlierReference": true,
+      "EarlierSHA256": "18767782BD92FC904116A8B376C54049578E596AFA715B08B18D8280F2FCBF5E",
+      "CurrentSHA256": "18767782BD92FC904116A8B376C54049578E596AFA715B08B18D8280F2FCBF5E"
+    },
+    {
+      "Name": "index.json",
+      "MatchesEarlierReference": true,
+      "EarlierSHA256": "A1C62CEA85156FB48E52874988DE07931AD4386F7F1448DC9ADBD5BC5A1195FC",
+      "CurrentSHA256": "A1C62CEA85156FB48E52874988DE07931AD4386F7F1448DC9ADBD5BC5A1195FC"
+    },
+    {
+      "Name": "application-library.json",
+      "MatchesEarlierReference": true,
+      "EarlierSHA256": "A5E8BC981B03563AF3D26E5EEF9D263D9EAA4181C5DA758E8DCBF82160FF01F6",
+      "CurrentSHA256": "A5E8BC981B03563AF3D26E5EEF9D263D9EAA4181C5DA758E8DCBF82160FF01F6"
+    },
+    {
+      "Name": "quick-launch.json",
+      "MatchesEarlierReference": true,
+      "EarlierSHA256": null,
+      "CurrentSHA256": null
+    }
+  ],
+  "FormalReferenceSHA256": "6065514C60226AB470CFF000D5A44905E07B8E93B39879D42A6409CF2A07F564",
+  "FormalReferenceRecordedBeforeThisPass": true,
+  "DisplaySettingsChangedThisPass": false,
+  "Scope": "Normal session receipts, absent test endpoints/processes, and a temporary hotkey registration immediately released. Formal data matches an earlier recorded reference; no newly captured pre-pass snapshot is implied."
+}

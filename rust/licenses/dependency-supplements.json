@@ -1,0 +1,516 @@
+{
+  "Entries": [
+    {
+      "Name": "clipboard-win",
+      "Version": "5.4.3",
+      "SPDX": "BSL-1.0",
+      "Repository": "https://github.com/DoumanAsh/clipboard-win",
+      "SourceRevision": "ed27008ae5d1f10cfbb266de039f0fb35fd05a56",
+      "Files": [
+        {
+          "Path": "licenses/dependencies/clipboard-win-5.4.3/LICENSE",
+          "SHA256": "C9BFF75738922193E67FA726FA225535870D2AA1059F91452C411736284AD566",
+          "Source": "https://raw.githubusercontent.com/DoumanAsh/clipboard-win/ed27008ae5d1f10cfbb266de039f0fb35fd05a56/LICENSE"
+        }
+      ],
+      "Scope": "Exact source revision license texts; conservative resolved dependency inventory. Native vendor/license choice review is separate."
+    },
+    {
+      "Name": "const-field-offset",
+      "Version": "0.2.1",
+      "SPDX": "MIT OR Apache-2.0",
+      "Repository": "https://github.com/slint-ui/slint",
+      "SourceRevision": "b0fc6a7287a062fefb30133e6aecf0303f76357d",
+      "Files": [
+        {
+          "Path": "licenses/dependencies/const-field-offset-0.2.1/Apache-2.0.txt",
+          "SHA256": "074E6E32C86A4C0EF8B3ED25B721CA23ACA83DF277CD88106EF7177C354615FF",
+          "Source": "Cargo archive const-field-offset@0.2.1/LICENSES/Apache-2.0.txt"
+        },
+        {
+          "Path": "licenses/dependencies/const-field-offset-0.2.1/MIT.txt",
+          "SHA256": "B85DCD3E453D05982552C52B5FC9E0BDD6D23C6F8E844B984A88AF32570B0CC0",
+          "Source": "Cargo archive const-field-offset@0.2.1/LICENSES/MIT.txt"
+        }
+      ],
+      "Scope": "Exact-version license texts. Includes conservative resolved build/optional packages; this does not by itself grant redistribution clearance or audit nested vendor code."
+    },
+    {
+      "Name": "const-field-offset-macro",
+      "Version": "0.2.1",
+      "SPDX": "MIT OR Apache-2.0",
+      "Repository": "https://github.com/slint-ui/slint",
+      "SourceRevision": "b0fc6a7287a062fefb30133e6aecf0303f76357d",
+      "Files": [
+        {
+          "Path": "licenses/dependencies/const-field-offset-macro-0.2.1/Apache-2.0.txt",
+          "SHA256": "074E6E32C86A4C0EF8B3ED25B721CA23ACA83DF277CD88106EF7177C354615FF",
+          "Source": "Cargo archive const-field-offset-macro@0.2.1/LICENSES/Apache-2.0.txt"
+        },
+        {
+          "Path": "licenses/dependencies/const-field-offset-macro-0.2.1/MIT.txt",
+          "SHA256": "B85DCD3E453D05982552C52B5FC9E0BDD6D23C6F8E844B984A88AF32570B0CC0",
+          "Source": "Cargo archive const-field-offset-macro@0.2.1/LICENSES/MIT.txt"
+        }
+      ],
+      "Scope": "Exact-version license texts. Includes conservative resolved build/optional packages; this does not by itself grant redistribution clearance or audit nested vendor code."
+    },
+    {
+      "Name": "gl_generator",
+      "Version": "0.14.0",
+      "SPDX": "Apache-2.0",
+      "Repository": "https://github.com/brendanzab/gl-rs",
+      "SourceRevision": "ea503e8d5fb6d73c6030e6191ce738cd3bf3433e",
+      "Files": [
+        {
+          "Path": "licenses/dependencies/gl_generator-0.14.0/LICENSE",
+          "SHA256": "CFC7749B96F63BD31C3C42B5C471BF756814053E847C10F3EB003417BC523D30",
+          "Source": "https://raw.githubusercontent.com/brendanzab/gl-rs/ea503e8d5fb6d73c6030e6191ce738cd3bf3433e/LICENSE"
+        }
+      ],
+      "Scope": "Exact source revision license texts; conservative resolved dependency inventory. Native vendor/license choice review is separate."
+    },
+    {
+      "Name": "i-slint-backend-selector",
+      "Version": "1.18.1",
+      "SPDX": "GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0",
+      "Repository": "https://github.com/slint-ui/slint",
+      "SourceRevision": "372cf0ee5577c3dfec309a45e7b778ba4e81b734",
+      "Files": [
+        {
+          "Path": "licenses/dependencies/i-slint-backend-selector-1.18.1/LicenseRef-Slint-Royalty-free-2.0.md",
+          "SHA256": "5167F5056E850419106AB6265EFBDCA7CBA4D99C849D1445CA0BBF6A1E2315FE",
+          "Source": "Cargo archive i-slint-backend-selector@1.18.1/LICENSES/LicenseRef-Slint-Royalty-free-2.0.md"
+        }
+      ],
+      "Scope": "Exact-version license texts. Includes conservative resolved build/optional packages; this does not by itself grant redistribution clearance or audit nested vendor code."
+    },
+    {
+      "Name": "i-slint-backend-testing",
+      "Version": "1.18.1",
+      "SPDX": "GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0",
+      "Repository": "https://github.com/slint-ui/slint",
+      "SourceRevision": "372cf0ee5577c3dfec309a45e7b778ba4e81b734",
+      "Files": [
+        {
+          "Path": "licenses/dependencies/i-slint-backend-testing-1.18.1/LicenseRef-Slint-Royalty-free-2.0.md",
+          "SHA256": "5167F5056E850419106AB6265EFBDCA7CBA4D99C849D1445CA0BBF6A1E2315FE",
+          "Source": "Cargo archive i-slint-backend-testing@1.18.1/LICENSES/LicenseRef-Slint-Royalty-free-2.0.md"
+        }
+      ],
+      "Scope": "Exact-version license texts. Includes conservative resolved build/optional packages; this does not by itself grant redistribution clearance or audit nested vendor code."
+    },
+    {
+      "Name": "i-slint-backend-winit",
+      "Version": "1.18.1",
+      "SPDX": "GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0",
+      "Repository": "https://github.com/slint-ui/slint",
+      "SourceRevision": "372cf0ee5577c3dfec309a45e7b778ba4e81b734",
+      "Files": [
+        {
+          "Path": "licenses/dependencies/i-slint-backend-winit-1.18.1/LicenseRef-Slint-Royalty-free-2.0.md",
+          "SHA256": "5167F5056E850419106AB6265EFBDCA7CBA4D99C849D1445CA0BBF6A1E2315FE",
+          "Source": "Cargo archive i-slint-backend-winit@1.18.1/LICENSES/LicenseRef-Slint-Royalty-free-2.0.md"
+        }
+      ],
+      "Scope": "Exact-version license texts. Includes conservative resolved build/optional packages; this does not by itself grant redistribution clearance or audit nested vendor code."
+    },
+    {
+      "Name": "i-slint-common",
+      "Version": "1.18.1",
+      "SPDX": "GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0",
+      "Repository": "https://github.com/slint-ui/slint",
+      "SourceRevision": "372cf0ee5577c3dfec309a45e7b778ba4e81b734",
+      "Files": [
+        {
+          "Path": "licenses/dependencies/i-slint-common-1.18.1/LicenseRef-Slint-Royalty-free-2.0.md",
+          "SHA256": "5167F5056E850419106AB6265EFBDCA7CBA4D99C849D1445CA0BBF6A1E2315FE",
+          "Source": "Cargo archive i-slint-common@1.18.1/LICENSES/LicenseRef-Slint-Royalty-free-2.0.md"
+        }
+      ],
+      "Scope": "Exact-version license texts. Includes conservative resolved build/optional packages; this does not by itself grant redistribution clearance or audit nested vendor code."
+    },
+    {
+      "Name": "i-slint-compiler",
+      "Version": "1.18.1",
+      "SPDX": "GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0",
+      "Repository": "https://github.com/slint-ui/slint",
+      "SourceRevision": "372cf0ee5577c3dfec309a45e7b778ba4e81b734",
+      "Files": [
+        {
+          "Path": "licenses/dependencies/i-slint-compiler-1.18.1/Apache-2.0.txt",
+          "SHA256": "074E6E32C86A4C0EF8B3ED25B721CA23ACA83DF277CD88106EF7177C354615FF",
+          "Source": "Cargo archive i-slint-compiler@1.18.1/LICENSES/Apache-2.0.txt"
+        },
+        {
+          "Path": "licenses/dependencies/i-slint-compiler-1.18.1/LicenseRef-Slint-Royalty-free-2.0.md",
+          "SHA256": "5167F5056E850419106AB6265EFBDCA7CBA4D99C849D1445CA0BBF6A1E2315FE",
+          "Source": "Cargo archive i-slint-compiler@1.18.1/LICENSES/LicenseRef-Slint-Royalty-free-2.0.md"
+        },
+        {
+          "Path": "licenses/dependencies/i-slint-compiler-1.18.1/MIT.txt",
+          "SHA256": "B85DCD3E453D05982552C52B5FC9E0BDD6D23C6F8E844B984A88AF32570B0CC0",
+          "Source": "Cargo archive i-slint-compiler@1.18.1/LICENSES/MIT.txt"
+        }
+      ],
+      "Scope": "Exact-version license texts. Includes conservative resolved build/optional packages; this does not by itself grant redistribution clearance or audit nested vendor code."
+    },
+    {
+      "Name": "i-slint-core",
+      "Version": "1.18.1",
+      "SPDX": "GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0",
+      "Repository": "https://github.com/slint-ui/slint",
+      "SourceRevision": "372cf0ee5577c3dfec309a45e7b778ba4e81b734",
+      "Files": [
+        {
+          "Path": "licenses/dependencies/i-slint-core-1.18.1/LicenseRef-Slint-Royalty-free-2.0.md",
+          "SHA256": "5167F5056E850419106AB6265EFBDCA7CBA4D99C849D1445CA0BBF6A1E2315FE",
+          "Source": "Cargo archive i-slint-core@1.18.1/LICENSES/LicenseRef-Slint-Royalty-free-2.0.md"
+        }
+      ],
+      "Scope": "Exact-version license texts. Includes conservative resolved build/optional packages; this does not by itself grant redistribution clearance or audit nested vendor code."
+    },
+    {
+      "Name": "i-slint-core-macros",
+      "Version": "1.18.1",
+      "SPDX": "GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0",
+      "Repository": "https://github.com/slint-ui/slint",
+      "SourceRevision": "372cf0ee5577c3dfec309a45e7b778ba4e81b734",
+      "Files": [
+        {
+          "Path": "licenses/dependencies/i-slint-core-macros-1.18.1/LicenseRef-Slint-Royalty-free-2.0.md",
+          "SHA256": "5167F5056E850419106AB6265EFBDCA7CBA4D99C849D1445CA0BBF6A1E2315FE",
+          "Source": "Cargo archive i-slint-core-macros@1.18.1/LICENSES/LicenseRef-Slint-Royalty-free-2.0.md"
+        }
+      ],
+      "Scope": "Exact-version license texts. Includes conservative resolved build/optional packages; this does not by itself grant redistribution clearance or audit nested vendor code."
+    },
+    {
+      "Name": "i-slint-renderer-femtovg",
+      "Version": "1.18.1",
+      "SPDX": "GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0",
+      "Repository": "https://github.com/slint-ui/slint",
+      "SourceRevision": "372cf0ee5577c3dfec309a45e7b778ba4e81b734",
+      "Files": [
+        {
+          "Path": "licenses/dependencies/i-slint-renderer-femtovg-1.18.1/LicenseRef-Slint-Royalty-free-2.0.md",
+          "SHA256": "5167F5056E850419106AB6265EFBDCA7CBA4D99C849D1445CA0BBF6A1E2315FE",
+          "Source": "Cargo archive i-slint-renderer-femtovg@1.18.1/LICENSES/LicenseRef-Slint-Royalty-free-2.0.md"
+        }
+      ],
+      "Scope": "FemtoVG-only resolved dependency; same exact-version desktop royalty-free attribution conditions."
+    },
+    {
+      "Name": "i-slint-renderer-skia",
+      "Version": "1.18.1",
+      "SPDX": "GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0",
+      "Repository": "https://github.com/slint-ui/slint",
+      "SourceRevision": "372cf0ee5577c3dfec309a45e7b778ba4e81b734",
+      "Files": [
+        {
+          "Path": "licenses/dependencies/i-slint-renderer-skia-1.18.1/LicenseRef-Slint-Royalty-free-2.0.md",
+          "SHA256": "5167F5056E850419106AB6265EFBDCA7CBA4D99C849D1445CA0BBF6A1E2315FE",
+          "Source": "Cargo archive i-slint-renderer-skia@1.18.1/LICENSES/LicenseRef-Slint-Royalty-free-2.0.md"
+        }
+      ],
+      "Scope": "Exact-version license texts. Includes conservative resolved build/optional packages; this does not by itself grant redistribution clearance or audit nested vendor code."
+    },
+    {
+      "Name": "i-slint-renderer-software",
+      "Version": "1.18.1",
+      "SPDX": "GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0",
+      "Repository": "https://github.com/slint-ui/slint",
+      "SourceRevision": "372cf0ee5577c3dfec309a45e7b778ba4e81b734",
+      "Files": [
+        {
+          "Path": "licenses/dependencies/i-slint-renderer-software-1.18.1/LicenseRef-Slint-Royalty-free-2.0.md",
+          "SHA256": "5167F5056E850419106AB6265EFBDCA7CBA4D99C849D1445CA0BBF6A1E2315FE",
+          "Source": "Cargo archive i-slint-renderer-software@1.18.1/LICENSES/LicenseRef-Slint-Royalty-free-2.0.md"
+        }
+      ],
+      "Scope": "Exact-version license texts. Includes conservative resolved build/optional packages; this does not by itself grant redistribution clearance or audit nested vendor code."
+    },
+    {
+      "Name": "khronos_api",
+      "Version": "3.1.0",
+      "SPDX": "Apache-2.0",
+      "Repository": "https://github.com/brendanzab/gl-rs",
+      "SourceRevision": "f150967b1c44ae888e6676f93f639ebc82771bdc",
+      "Files": [
+        {
+          "Path": "licenses/dependencies/khronos_api-3.1.0/LICENSE",
+          "SHA256": "CFC7749B96F63BD31C3C42B5C471BF756814053E847C10F3EB003417BC523D30",
+          "Source": "https://raw.githubusercontent.com/brendanzab/gl-rs/f150967b1c44ae888e6676f93f639ebc82771bdc/LICENSE"
+        },
+        {
+          "Path": "licenses/dependencies/khronos_api-3.1.0/ANGLE-LICENSE.txt",
+          "SHA256": "BF4DA21BD20BCFB5B60B7ECC67FA864A79BE049E21D6178076887F178DD6C71A",
+          "Source": "https://raw.githubusercontent.com/google/angle/7403dd2cd3764fe96660fe09892e764e9ae1dbca/LICENSE"
+        }
+      ],
+      "Scope": "Exact crate revision Apache text plus ANGLE BSD license from the pinned api_angle git submodule. Embedded XML/IDL notices are collected separately."
+    },
+    {
+      "Name": "lyon_algorithms",
+      "Version": "1.0.22",
+      "SPDX": "MIT OR Apache-2.0",
+      "Repository": "https://github.com/nical/lyon",
+      "SourceRevision": "db98d26a1a90076a7a894262dcb51117eef643c8",
+      "Files": [
+        {
+          "Path": "licenses/dependencies/lyon_algorithms-1.0.22/LICENSE-MIT",
+          "SHA256": "80F275E90D799911ED3830A7F242A2EF5A4ADE2092FE0AA07BFB2D2CF2F2B95E",
+          "Source": "https://raw.githubusercontent.com/nical/lyon/db98d26a1a90076a7a894262dcb51117eef643c8/LICENSE-MIT"
+        },
+        {
+          "Path": "licenses/dependencies/lyon_algorithms-1.0.22/LICENSE-APACHE",
+          "SHA256": "216486F29671A4262EFE32AF6D84A75BEF398127F8C5F369B5C8305983887A06",
+          "Source": "https://raw.githubusercontent.com/nical/lyon/db98d26a1a90076a7a894262dcb51117eef643c8/LICENSE-APACHE"
+        }
+      ],
+      "Scope": "Exact source revision license texts; conservative resolved dependency inventory. Native vendor/license choice review is separate."
+    },
+    {
+      "Name": "lyon_extra",
+      "Version": "1.1.0",
+      "SPDX": "MIT OR Apache-2.0",
+      "Repository": "https://github.com/nical/lyon",
+      "SourceRevision": "56219c95c658d4f39de7b190d98e57d5773ba241",
+      "Files": [
+        {
+          "Path": "licenses/dependencies/lyon_extra-1.1.0/LICENSE-MIT",
+          "SHA256": "80F275E90D799911ED3830A7F242A2EF5A4ADE2092FE0AA07BFB2D2CF2F2B95E",
+          "Source": "https://raw.githubusercontent.com/nical/lyon/56219c95c658d4f39de7b190d98e57d5773ba241/LICENSE-MIT"
+        },
+        {
+          "Path": "licenses/dependencies/lyon_extra-1.1.0/LICENSE-APACHE",
+          "SHA256": "216486F29671A4262EFE32AF6D84A75BEF398127F8C5F369B5C8305983887A06",
+          "Source": "https://raw.githubusercontent.com/nical/lyon/56219c95c658d4f39de7b190d98e57d5773ba241/LICENSE-APACHE"
+        }
+      ],
+      "Scope": "Exact source revision license texts; conservative resolved dependency inventory. Native vendor/license choice review is separate."
+    },
+    {
+      "Name": "lyon_geom",
+      "Version": "1.0.20",
+      "SPDX": "MIT OR Apache-2.0",
+      "Repository": "https://github.com/nical/lyon",
+      "SourceRevision": "db98d26a1a90076a7a894262dcb51117eef643c8",
+      "Files": [
+        {
+          "Path": "licenses/dependencies/lyon_geom-1.0.20/LICENSE-MIT",
+          "SHA256": "80F275E90D799911ED3830A7F242A2EF5A4ADE2092FE0AA07BFB2D2CF2F2B95E",
+          "Source": "https://raw.githubusercontent.com/nical/lyon/db98d26a1a90076a7a894262dcb51117eef643c8/LICENSE-MIT"
+        },
+        {
+          "Path": "licenses/dependencies/lyon_geom-1.0.20/LICENSE-APACHE",
+          "SHA256": "216486F29671A4262EFE32AF6D84A75BEF398127F8C5F369B5C8305983887A06",
+          "Source": "https://raw.githubusercontent.com/nical/lyon/db98d26a1a90076a7a894262dcb51117eef643c8/LICENSE-APACHE"
+        }
+      ],
+      "Scope": "Exact source revision license texts; conservative resolved dependency inventory. Native vendor/license choice review is separate."
+    },
+    {
+      "Name": "lyon_path",
+      "Version": "1.0.19",
+      "SPDX": "MIT OR Apache-2.0",
+      "Repository": "https://github.com/nical/lyon",
+      "SourceRevision": "56219c95c658d4f39de7b190d98e57d5773ba241",
+      "Files": [
+        {
+          "Path": "licenses/dependencies/lyon_path-1.0.19/LICENSE-MIT",
+          "SHA256": "80F275E90D799911ED3830A7F242A2EF5A4ADE2092FE0AA07BFB2D2CF2F2B95E",
+          "Source": "https://raw.githubusercontent.com/nical/lyon/56219c95c658d4f39de7b190d98e57d5773ba241/LICENSE-MIT"
+        },
+        {
+          "Path": "licenses/dependencies/lyon_path-1.0.19/LICENSE-APACHE",
+          "SHA256": "216486F29671A4262EFE32AF6D84A75BEF398127F8C5F369B5C8305983887A06",
+          "Source": "https://raw.githubusercontent.com/nical/lyon/56219c95c658d4f39de7b190d98e57d5773ba241/LICENSE-APACHE"
+        }
+      ],
+      "Scope": "Exact source revision license texts; conservative resolved dependency inventory. Native vendor/license choice review is separate."
+    },
+    {
+      "Name": "profiling",
+      "Version": "1.0.18",
+      "SPDX": "MIT OR Apache-2.0",
+      "Repository": "https://github.com/aclysma/profiling",
+      "SourceRevision": "8271551172eb6fa4cba47369aedd93790c623df9",
+      "Files": [
+        {
+          "Path": "licenses/dependencies/profiling-1.0.18/LICENSE-MIT",
+          "SHA256": "C8167FDEEED46D3F244D3F85C5BF998CE889343691C32BE2C61A8BC4B5C08333",
+          "Source": "https://raw.githubusercontent.com/aclysma/profiling/8271551172eb6fa4cba47369aedd93790c623df9/LICENSE-MIT"
+        },
+        {
+          "Path": "licenses/dependencies/profiling-1.0.18/LICENSE-APACHE",
+          "SHA256": "10D30A673CD5E9349BDC02AEB48F14B3386D27D0DA32DF8F0A555D4AA16AA551",
+          "Source": "https://raw.githubusercontent.com/aclysma/profiling/8271551172eb6fa4cba47369aedd93790c623df9/LICENSE-APACHE"
+        }
+      ],
+      "Scope": "Exact source revision license texts; conservative resolved dependency inventory. Native vendor/license choice review is separate."
+    },
+    {
+      "Name": "rspolib",
+      "Version": "0.1.2",
+      "SPDX": "MIT",
+      "Repository": "https://github.com/mondeja/rspolib",
+      "SourceRevision": "8170d99ebad29d894712ccb3dc6d0be2198d3055",
+      "Files": [
+        {
+          "Path": "licenses/dependencies/rspolib-0.1.2/LICENSE",
+          "SHA256": "4FE9B5FCE8FD028261959D039D19EF66182BE088AB48FFA97DBEAEF7B35E39C3",
+          "Source": "https://raw.githubusercontent.com/mondeja/rspolib/8170d99ebad29d894712ccb3dc6d0be2198d3055/LICENSE"
+        }
+      ],
+      "Scope": "Exact source revision license texts; conservative resolved dependency inventory. Native vendor/license choice review is separate."
+    },
+    {
+      "Name": "skia-bindings",
+      "Version": "0.153.3",
+      "SPDX": "MIT",
+      "Repository": "https://github.com/rust-skia/rust-skia",
+      "SourceRevision": "b7f043e0b1e2a850e702245de811f01df1f6b0ff",
+      "Files": [
+        {
+          "Path": "licenses/dependencies/skia-bindings-0.153.3/LICENSE",
+          "SHA256": "4B33ED5B329A3A79EB1243FD91373C68B0AE0B9DF7503BFC50D0C5253ADF1B9A",
+          "Source": "https://raw.githubusercontent.com/rust-skia/rust-skia/b7f043e0b1e2a850e702245de811f01df1f6b0ff/LICENSE"
+        }
+      ],
+      "Scope": "Exact source revision license texts; conservative resolved dependency inventory. Native vendor/license choice review is separate."
+    },
+    {
+      "Name": "skia-safe",
+      "Version": "0.153.3",
+      "SPDX": "MIT",
+      "Repository": "https://github.com/rust-skia/rust-skia",
+      "SourceRevision": "b7f043e0b1e2a850e702245de811f01df1f6b0ff",
+      "Files": [
+        {
+          "Path": "licenses/dependencies/skia-safe-0.153.3/LICENSE",
+          "SHA256": "4B33ED5B329A3A79EB1243FD91373C68B0AE0B9DF7503BFC50D0C5253ADF1B9A",
+          "Source": "https://raw.githubusercontent.com/rust-skia/rust-skia/b7f043e0b1e2a850e702245de811f01df1f6b0ff/LICENSE"
+        }
+      ],
+      "Scope": "Exact source revision license texts; conservative resolved dependency inventory. Native vendor/license choice review is separate."
+    },
+    {
+      "Name": "slint",
+      "Version": "1.18.1",
+      "SPDX": "GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0",
+      "Repository": "https://github.com/slint-ui/slint",
+      "SourceRevision": "372cf0ee5577c3dfec309a45e7b778ba4e81b734",
+      "Files": [
+        {
+          "Path": "licenses/dependencies/slint-1.18.1/LicenseRef-Slint-Royalty-free-2.0.md",
+          "SHA256": "5167F5056E850419106AB6265EFBDCA7CBA4D99C849D1445CA0BBF6A1E2315FE",
+          "Source": "Cargo archive slint@1.18.1/LICENSES/LicenseRef-Slint-Royalty-free-2.0.md"
+        }
+      ],
+      "Scope": "Exact-version license texts. Includes conservative resolved build/optional packages; this does not by itself grant redistribution clearance or audit nested vendor code."
+    },
+    {
+      "Name": "slint-build",
+      "Version": "1.18.1",
+      "SPDX": "GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0",
+      "Repository": "https://github.com/slint-ui/slint",
+      "SourceRevision": "372cf0ee5577c3dfec309a45e7b778ba4e81b734",
+      "Files": [
+        {
+          "Path": "licenses/dependencies/slint-build-1.18.1/LicenseRef-Slint-Royalty-free-2.0.md",
+          "SHA256": "5167F5056E850419106AB6265EFBDCA7CBA4D99C849D1445CA0BBF6A1E2315FE",
+          "Source": "Cargo archive slint-build@1.18.1/LICENSES/LicenseRef-Slint-Royalty-free-2.0.md"
+        }
+      ],
+      "Scope": "Exact-version license texts. Includes conservative resolved build/optional packages; this does not by itself grant redistribution clearance or audit nested vendor code."
+    },
+    {
+      "Name": "slint-macros",
+      "Version": "1.18.1",
+      "SPDX": "GPL-3.0-only OR LicenseRef-Slint-Royalty-free-2.0 OR LicenseRef-Slint-Software-3.0",
+      "Repository": "https://github.com/slint-ui/slint",
+      "SourceRevision": "372cf0ee5577c3dfec309a45e7b778ba4e81b734",
+      "Files": [
+        {
+          "Path": "licenses/dependencies/slint-macros-1.18.1/LicenseRef-Slint-Royalty-free-2.0.md",
+          "SHA256": "5167F5056E850419106AB6265EFBDCA7CBA4D99C849D1445CA0BBF6A1E2315FE",
+          "Source": "Cargo archive slint-macros@1.18.1/LICENSES/LicenseRef-Slint-Royalty-free-2.0.md"
+        }
+      ],
+      "Scope": "Exact-version license texts. Includes conservative resolved build/optional packages; this does not by itself grant redistribution clearance or audit nested vendor code."
+    },
+    {
+      "Name": "spirv",
+      "Version": "0.4.0+sdk-1.4.341.0",
+      "SPDX": "Apache-2.0",
+      "Repository": "https://github.com/gfx-rs/rspirv",
+      "SourceRevision": "8afc3d0ac8e158128cd1410bb2e4b4c26ab11bb4",
+      "Files": [
+        {
+          "Path": "licenses/dependencies/spirv-0.4.0+sdk-1.4.341.0/LICENSE",
+          "SHA256": "CFC7749B96F63BD31C3C42B5C471BF756814053E847C10F3EB003417BC523D30",
+          "Source": "https://raw.githubusercontent.com/gfx-rs/rspirv/8afc3d0ac8e158128cd1410bb2e4b4c26ab11bb4/LICENSE"
+        }
+      ],
+      "Scope": "Exact source revision license texts; conservative resolved dependency inventory. Native vendor/license choice review is separate."
+    },
+    {
+      "Name": "taffy",
+      "Version": "0.10.1",
+      "SPDX": "MIT",
+      "Repository": "https://github.com/DioxusLabs/taffy",
+      "SourceRevision": "639f0acdd20f914f847abffbeaa903d66cae4882",
+      "Files": [
+        {
+          "Path": "licenses/dependencies/taffy-0.10.1/LICENSE.md",
+          "SHA256": "A7083EF3DD41A65EEB2162C2C091B0082E2724FB4C6ED029B363C7840D244ECD",
+          "Source": "https://raw.githubusercontent.com/DioxusLabs/taffy/639f0acdd20f914f847abffbeaa903d66cae4882/LICENSE.md"
+        }
+      ],
+      "Scope": "Exact source revision license texts; conservative resolved dependency inventory. Native vendor/license choice review is separate."
+    },
+    {
+      "Name": "vtable",
+      "Version": "0.5.0",
+      "SPDX": "MIT OR Apache-2.0",
+      "Repository": "https://github.com/slint-ui/slint",
+      "SourceRevision": "b0fc6a7287a062fefb30133e6aecf0303f76357d",
+      "Files": [
+        {
+          "Path": "licenses/dependencies/vtable-0.5.0/Apache-2.0.txt",
+          "SHA256": "074E6E32C86A4C0EF8B3ED25B721CA23ACA83DF277CD88106EF7177C354615FF",
+          "Source": "Cargo archive vtable@0.5.0/LICENSES/Apache-2.0.txt"
+        },
+        {
+          "Path": "licenses/dependencies/vtable-0.5.0/MIT.txt",
+          "SHA256": "B85DCD3E453D05982552C52B5FC9E0BDD6D23C6F8E844B984A88AF32570B0CC0",
+          "Source": "Cargo archive vtable@0.5.0/LICENSES/MIT.txt"
+        }
+      ],
+      "Scope": "Exact-version license texts. Includes conservative resolved build/optional packages; this does not by itself grant redistribution clearance or audit nested vendor code."
+    },
+    {
+      "Name": "vtable-macro",
+      "Version": "0.5.0",
+      "SPDX": "MIT OR Apache-2.0",
+      "Repository": "https://github.com/slint-ui/slint",
+      "SourceRevision": "b0fc6a7287a062fefb30133e6aecf0303f76357d",
+      "Files": [
+        {
+          "Path": "licenses/dependencies/vtable-macro-0.5.0/Apache-2.0.txt",
+          "SHA256": "074E6E32C86A4C0EF8B3ED25B721CA23ACA83DF277CD88106EF7177C354615FF",
+          "Source": "Cargo archive vtable-macro@0.5.0/LICENSES/Apache-2.0.txt"
+        },
+        {
+          "Path": "licenses/dependencies/vtable-macro-0.5.0/MIT.txt",
+          "SHA256": "B85DCD3E453D05982552C52B5FC9E0BDD6D23C6F8E844B984A88AF32570B0CC0",
+          "Source": "Cargo archive vtable-macro@0.5.0/LICENSES/MIT.txt"
+        }
+      ],
+      "Scope": "Exact-version license texts. Includes conservative resolved build/optional packages; this does not by itself grant redistribution clearance or audit nested vendor code."
+    }
+  ],
+  "RedistributionCleared": false,
+  "Scope": "Only missing crate-root license texts are supplemented, using exact Cargo source revisions. Native vendor and license-option requirements remain separate."
+}

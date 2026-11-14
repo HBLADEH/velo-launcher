@@ -1,0 +1,190 @@
+{
+  "RecordedAtUtc": "2026-11-09T14:25:36.3803448Z",
+  "Case": "software-4",
+  "Edition": "software",
+  "BuildScope": "Frozen Slint Software actual-input Release; unchanged measurement executable.",
+  "ReplacesInvalidCase": "software-1",
+  "FrozenSourceCase": "software-2",
+  "PreparedAtUtc": "2026-11-08T19:46:15.8435972Z",
+  "BootUtc": "2026-11-09T13:40:01.5Z",
+  "BootId": "639298284015000000",
+  "ProcessId": 4016,
+  "FirstLaunchOperatorConfirmed": true,
+  "IndependentBootClaim": true,
+  "CandidateFilesReadBeforeLaunch": false,
+  "FormalFilesReadBeforeLaunch": false,
+  "UserFirstLaunchReport": "已经重启，未运行任何 Velo",
+  "UserResultReport": "字母正常出现，已从托盘退出",
+  "SearchBoxClickIndependentlyVerified": false,
+  "AutomatedUIUsed": false,
+  "NormalTrayExitConfirmed": true,
+  "ProcessExitCode": 0,
+  "ExecutableSha256": "E85B41C7E77888750817E47F092EABECB1BAB5A68EFCE579378CE2DDAD2DBA4B",
+  "ExecutableMatchesFrozenCase": true,
+  "EnvironmentId": "3548C2246D9C8A1B2FA86F11AC5A4A0802396357F7EC313EF38BAC9CDF4FB890",
+  "EnvironmentIdAlgorithm": "ColdWindowsBuildCpuOrdinalV1",
+  "EnvironmentIdScope": "Only Windows version, build and processor names; equality does not establish all conditions match.",
+  "InputId": "024397D07DB93ECF20AFE342D982D988B8C0F9D9C1272BC69700447A3C8C0935",
+  "InputEditEvents": 2,
+  "ComposingInputEditEvents": 1,
+  "EligibleNonComposingInputEditEvents": 1,
+  "ChosenInput": {
+    "UnixMicroseconds": 1794234207577371,
+    "Utf8Bytes": 1,
+    "Focused": true,
+    "NativeFocused": true,
+    "Visible": true,
+    "Composing": false,
+    "Synthetic": false,
+    "Dropped": 0
+  },
+  "InputEvents": [
+    {
+      "UnixMicroseconds": 1794234206474101,
+      "ElapsedMicroseconds": 2193816222,
+      "Utf8Bytes": 1,
+      "Focused": true,
+      "NativeFocused": true,
+      "Visible": true,
+      "Composing": true,
+      "Synthetic": false,
+      "Dropped": 0,
+      "ChosenByCollector": false
+    },
+    {
+      "UnixMicroseconds": 1794234207577371,
+      "ElapsedMicroseconds": 2194919492,
+      "Utf8Bytes": 1,
+      "Focused": true,
+      "NativeFocused": true,
+      "Visible": true,
+      "Composing": false,
+      "Synthetic": false,
+      "Dropped": 0,
+      "ChosenByCollector": true
+    }
+  ],
+  "InputBoundaryNote": "Two one-byte edit callbacks; first composing, second non-composing and selected by collector. No input text or exact edit operation is inferred.",
+  "NativeKeyDownEvents": 7,
+  "EventLoss": 0,
+  "Lifecycle": [
+    {
+      "Event": "lifecycle_shown",
+      "ElapsedMicroseconds": 264105,
+      "Reason": "startup"
+    },
+    {
+      "Event": "input_accepted",
+      "ElapsedMicroseconds": 2193816222,
+      "Reason": null
+    },
+    {
+      "Event": "input_accepted",
+      "ElapsedMicroseconds": 2194919492,
+      "Reason": null
+    },
+    {
+      "Event": "lifecycle_hidden",
+      "ElapsedMicroseconds": 2196287940,
+      "Reason": "escape"
+    },
+    {
+      "Event": "lifecycle_quit",
+      "ElapsedMicroseconds": 2198866031,
+      "Reason": null
+    }
+  ],
+  "HiddenBeforeChosenInput": 0,
+  "HotkeyShowsBeforeChosenInput": 0,
+  "InitialShowFirstPossibleReadinessVerified": false,
+  "NativeDPIObserved": 96,
+  "CollectionScriptExitCode": 0,
+  "ValidIndependentColdConditionObservation": true,
+  "Method": "IndependentBootToAcceptedCharacterUpperBound",
+  "StartObservedUnixMicroseconds": 1794232012635107,
+  "DurationUpperMillisecondsIncludingHumanDelay": 2194943.264,
+  "StartupClockCalibration": "OS creation FILETIME and accepted-input UTC with a 1ms guard; wall-clock step/error is not independently bounded. Not calibrated first-possible-readiness timing.",
+  "FirstPossibleInputLatencyVerified": false,
+  "ColdStartupBudgetVerified": false,
+  "PresentedFrameVerified": false,
+  "ScanCompleted": true,
+  "ScanWarning": true,
+  "DataMatchesFrozenSeedAfterExit": {
+    "config.json": true,
+    "history.json": true,
+    "application-library.json": true,
+    "index.json": false
+  },
+  "IndexChangeNote": "Isolated index differs after scan completed with a warning; exact changed bytes were not independently attributed.",
+  "FormalDataMatchesPriorVerifiedSession": {
+    "config.json": true,
+    "index.json": false,
+    "history.json": false,
+    "application-library.json": true,
+    "quick-launch.json": true
+  },
+  "FormalComparisonScope": "Compared after exit to the 2026-11-09 Wails hotkey preflight; neither candidate nor formal data bytes read before this cold launch.",
+  "FormalFilesDifferingFromEarlierReference": [
+    "index.json",
+    "history.json"
+  ],
+  "DifferingFormalFileMetadata": [
+    {
+      "File": "index.json",
+      "LastWriteUtc": "2026-11-09T13:18:20.0743439Z",
+      "LastWriteBeforeBoot": true,
+      "LastWriteBeforeCandidateLaunch": true
+    },
+    {
+      "File": "history.json",
+      "LastWriteUtc": "2026-11-09T10:41:48.4277276Z",
+      "LastWriteBeforeBoot": true,
+      "LastWriteBeforeCandidateLaunch": true
+    }
+  ],
+  "FormalDataUnchangedThisRunVerified": false,
+  "FormalComparisonNote": "Formal index and history differ from the afternoon reference. Their post-exit last-write times precede this boot; no start-of-run formal hashes or continuous write monitoring exist, so no run-specific unchanged/changed attribution is made.",
+  "VeloProcessesRemainingAfterExit": 0,
+  "Cleanup": {
+    "RecordedAtUtc": "2026-11-09T14:28:33.2068114Z",
+    "ProcessId": 4016,
+    "LauncherWindows": 0,
+    "DesktopServiceWindows": 0,
+    "InstanceMutexAbsent": true,
+    "AltSpaceTemporarilyRegisteredAndReleased": true,
+    "NoInputSynthesized": true
+  },
+  "RawArtifactsSHA256": {
+    "case.json": "CD24DB45B9466480B639B8713201AEE2E46D0E18FC7A8E8D8DB6280F2E002F49",
+    "started.json": "125C89101E0C1C96F727523E663677BA30D0FE25520D215AB787926EA3A76448",
+    "exit.json": "4F10BD847524063CA3D787E0FA92176A82FCEC0F2044C36BD904A0682FE32617",
+    "cold-input.json": "9384B9FCC3ACDD818D01167D62611299E24C2623C8151C35D548473020DA1BE0",
+    "measurement-events.log": "E50FE5C130D70ED8C1378FF29B5872CD8909C479C3232C8297448E1E756C0EAF",
+    "boot-ledger.json": "706B9DE5432E936CC20E2D88FDAB5F6D55F6CDEF7FD07556976FE0D1F6C35015",
+    "continuation/preflight.json": "D358E6486706E7F3F3A07AA1901B471E09DDAB3AD3849B06B54024421B471D1B",
+    "continuation/operator-report.json": "BE60A15C77CAB975D8EF2EFD7F4F00C1D2F6F41BF4D23240596D26FF4E4A714A",
+    "continuation/exit-review.json": "E2AD257E4958E33449635A519F18CAAC6C667F4338C8085A9D36E489A65BBF29",
+    "continuation/cleanup.json": "F5E185D0BFA6680F18557FAFB711A229913D6A6A08C81659007B6B125A0B4970",
+    "continuation/formal-metadata.json": "B7BF588D3E02720F7F69B6BE2C9D4B4D8FFD6266D3D090EAD366096CBBBD2675",
+    "continuation/input-review.json": "5A6A14195953893CBFEEE09CD1823F684DAEE26B57F831209A38BC01A126024E",
+    "continuation/matrix.json": "B64B2547AE83AF44E6262258937961E38DCFC27E5006EA1134FE44AFDCDDC12A"
+  },
+  "CollectorHashesAtCollection": {
+    "scripts/start-rs12-cold.ps1": "169B35A629F8B68EDDF0C9EC2B2AB61F2F2387A6967DEC07D3DD557AF0057201",
+    "scripts/collect-rs12-cold.ps1": "A63B10E7A28034AADE7ABFA423C662D00634FCB3BB4120467EBBBBB61BCB5CBF",
+    "scripts/lib/rs12-input-observer.cs": "90924FCD48C2F58FEF2C3F4441D0591BCED3E7E3E4E44FACAD8EDB2527E9EB0D",
+    "scripts/lib/resource-sample.ps1": "7E78BE326C36E19259571CB4E9BB676C3B3E6A403812AC0264C3D8672758370C"
+  },
+  "BuildOrSourceChangedThisObservation": false,
+  "AutomaticRegressionRerun": false,
+  "ValidIndependentColdConditionObservations": 8,
+  "RequiredIndependentColdConditionObservations": 9,
+  "InvalidAttemptsRetained": 2,
+  "ValidObservationsByEdition": {
+    "software": 2,
+    "femtovg": 3,
+    "wails": 3
+  },
+  "NextScheduledCase": "software-5",
+  "RS12Complete": false
+}

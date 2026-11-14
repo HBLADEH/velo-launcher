@@ -1,0 +1,596 @@
+[
+  {
+    "id": "empty-recycle-bin",
+    "name": "清空回收站",
+    "target": "velo-action:empty-recycle-bin",
+    "args": "",
+    "description": "清空所有驱动器的回收站（Windows 会提示确认）",
+    "keywords": [
+      "empty recycle bin",
+      "清理回收站",
+      "垃圾"
+    ],
+    "required": "",
+    "min_build": 0
+  },
+  {
+    "id": "shutdown",
+    "name": "关机",
+    "target": "velo-action:shutdown",
+    "args": "",
+    "description": "确认后关闭电脑，请先保存工作",
+    "keywords": [
+      "shutdown",
+      "power off",
+      "关闭电脑"
+    ],
+    "required": "",
+    "min_build": 0
+  },
+  {
+    "id": "restart",
+    "name": "重启",
+    "target": "velo-action:restart",
+    "args": "",
+    "description": "确认后重新启动电脑，请先保存工作",
+    "keywords": [
+      "restart",
+      "reboot",
+      "重新启动"
+    ],
+    "required": "",
+    "min_build": 0
+  },
+  {
+    "id": "lock",
+    "name": "锁屏",
+    "target": "velo-action:lock",
+    "args": "",
+    "description": "锁定当前 Windows 会话",
+    "keywords": [
+      "lock",
+      "锁定电脑"
+    ],
+    "required": "",
+    "min_build": 0
+  },
+  {
+    "id": "calculator",
+    "name": "计算器",
+    "target": "System32/calc.exe",
+    "args": "",
+    "description": "打开 Windows 计算器",
+    "keywords": [
+      "calc",
+      "calculator"
+    ],
+    "required": "",
+    "min_build": 0
+  },
+  {
+    "id": "explorer",
+    "name": "文件资源管理器",
+    "target": "explorer.exe",
+    "args": "",
+    "description": "浏览文件与文件夹",
+    "keywords": [
+      "explorer",
+      "file explorer",
+      "files",
+      "文件管理",
+      "资源管理器"
+    ],
+    "required": "",
+    "min_build": 0
+  },
+  {
+    "id": "taskmanager",
+    "name": "任务管理器",
+    "target": "System32/Taskmgr.exe",
+    "args": "",
+    "description": "查看进程与资源使用情况",
+    "keywords": [
+      "task manager",
+      "taskmgr",
+      "进程"
+    ],
+    "required": "",
+    "min_build": 0
+  },
+  {
+    "id": "terminal",
+    "name": "命令提示符",
+    "target": "System32/cmd.exe",
+    "args": "",
+    "description": "打开命令行终端",
+    "keywords": [
+      "cmd",
+      "command prompt",
+      "terminal",
+      "终端",
+      "命令行"
+    ],
+    "required": "",
+    "min_build": 0
+  },
+  {
+    "id": "control",
+    "name": "控制面板",
+    "target": "System32/control.exe",
+    "args": "",
+    "description": "打开 Windows 控制面板",
+    "keywords": [
+      "control panel"
+    ],
+    "required": "",
+    "min_build": 0
+  },
+  {
+    "id": "apps",
+    "name": "卸载或更改程序",
+    "target": "System32/control.exe",
+    "args": "appwiz.cpl",
+    "description": "管理已安装的桌面程序",
+    "keywords": [
+      "apps",
+      "uninstall",
+      "appwiz",
+      "应用管理",
+      "卸载程序",
+      "xiezai",
+      "xz"
+    ],
+    "required": "System32/appwiz.cpl",
+    "min_build": 0
+  },
+  {
+    "id": "environment",
+    "name": "环境变量",
+    "target": "System32/rundll32.exe",
+    "args": "sysdm.cpl,EditEnvironmentVariables",
+    "description": "编辑用户与系统环境变量",
+    "keywords": [
+      "environment",
+      "env",
+      "path",
+      "系统属性环境变量"
+    ],
+    "required": "System32/sysdm.cpl",
+    "min_build": 0
+  },
+  {
+    "id": "devices",
+    "name": "设备管理器",
+    "target": "System32/mmc.exe",
+    "args": "",
+    "description": "查看硬件设备与驱动",
+    "keywords": [
+      "device manager",
+      "devmgmt",
+      "驱动"
+    ],
+    "required": "System32/devmgmt.msc",
+    "min_build": 0
+  },
+  {
+    "id": "systemconfig",
+    "name": "系统配置",
+    "target": "System32/msconfig.exe",
+    "args": "",
+    "description": "查看启动与服务配置",
+    "keywords": [
+      "msconfig",
+      "system configuration"
+    ],
+    "required": "",
+    "min_build": 0
+  },
+  {
+    "id": "systeminfo",
+    "name": "系统信息",
+    "target": "System32/msinfo32.exe",
+    "args": "",
+    "description": "查看硬件、组件与系统信息",
+    "keywords": [
+      "msinfo32",
+      "system information"
+    ],
+    "required": "",
+    "min_build": 0
+  },
+  {
+    "id": "computer",
+    "name": "计算机管理",
+    "target": "System32/mmc.exe",
+    "args": "",
+    "description": "管理磁盘、服务与本地计算机",
+    "keywords": [
+      "computer management",
+      "compmgmt"
+    ],
+    "required": "System32/compmgmt.msc",
+    "min_build": 0
+  },
+  {
+    "id": "events",
+    "name": "事件查看器",
+    "target": "System32/mmc.exe",
+    "args": "",
+    "description": "查看 Windows 日志与系统事件",
+    "keywords": [
+      "event viewer",
+      "eventvwr",
+      "系统日志"
+    ],
+    "required": "System32/eventvwr.msc",
+    "min_build": 0
+  },
+  {
+    "id": "services",
+    "name": "服务管理",
+    "target": "System32/mmc.exe",
+    "args": "",
+    "description": "查看与管理 Windows 服务",
+    "keywords": [
+      "services",
+      "系统服务"
+    ],
+    "required": "System32/services.msc",
+    "min_build": 0
+  },
+  {
+    "id": "disks",
+    "name": "磁盘管理",
+    "target": "System32/mmc.exe",
+    "args": "",
+    "description": "查看磁盘、分区与卷",
+    "keywords": [
+      "disk management",
+      "diskmgmt"
+    ],
+    "required": "System32/diskmgmt.msc",
+    "min_build": 0
+  },
+  {
+    "id": "tasks",
+    "name": "任务计划程序",
+    "target": "System32/mmc.exe",
+    "args": "",
+    "description": "查看与管理计划任务",
+    "keywords": [
+      "task scheduler",
+      "taskschd",
+      "计划任务"
+    ],
+    "required": "System32/taskschd.msc",
+    "min_build": 0
+  },
+  {
+    "id": "components",
+    "name": "组件服务",
+    "target": "System32/mmc.exe",
+    "args": "",
+    "description": "管理 COM+ 应用程序与组件服务",
+    "keywords": [
+      "component services",
+      "comexp",
+      "dcomcnfg"
+    ],
+    "required": "System32/comexp.msc",
+    "min_build": 0
+  },
+  {
+    "id": "grouppolicy",
+    "name": "本地组策略编辑器",
+    "target": "System32/mmc.exe",
+    "args": "",
+    "description": "查看与编辑本地组策略",
+    "keywords": [
+      "group policy",
+      "gpedit",
+      "组策略"
+    ],
+    "required": "System32/gpedit.msc",
+    "min_build": 0
+  },
+  {
+    "id": "cleanup",
+    "name": "磁盘清理",
+    "target": "System32/cleanmgr.exe",
+    "args": "",
+    "description": "打开磁盘清理，由你选择要清理的项目",
+    "keywords": [
+      "disk cleanup",
+      "cleanmgr"
+    ],
+    "required": "",
+    "min_build": 0
+  },
+  {
+    "id": "optimize",
+    "name": "碎片整理和优化驱动器",
+    "target": "System32/dfrgui.exe",
+    "args": "",
+    "description": "查看驱动器优化状态",
+    "keywords": [
+      "defragment",
+      "optimize drives",
+      "dfrgui",
+      "磁盘优化"
+    ],
+    "required": "",
+    "min_build": 0
+  },
+  {
+    "id": "resources",
+    "name": "资源监视器",
+    "target": "System32/resmon.exe",
+    "args": "",
+    "description": "查看 CPU、内存、磁盘与网络使用情况",
+    "keywords": [
+      "resource monitor",
+      "resmon"
+    ],
+    "required": "",
+    "min_build": 0
+  },
+  {
+    "id": "colorprofile",
+    "name": "颜色管理",
+    "target": "System32/colorcpl.exe",
+    "args": "",
+    "description": "管理显示器颜色配置文件",
+    "keywords": [
+      "color management",
+      "colorcpl"
+    ],
+    "required": "",
+    "min_build": 0
+  },
+  {
+    "id": "display",
+    "name": "显示设置",
+    "target": "ms-settings:display",
+    "args": "",
+    "description": "调整分辨率、缩放与显示器布局",
+    "keywords": [
+      "display settings",
+      "分辨率",
+      "屏幕"
+    ],
+    "required": "",
+    "min_build": 10240
+  },
+  {
+    "id": "sound",
+    "name": "声音设置",
+    "target": "ms-settings:sound",
+    "args": "",
+    "description": "管理音频输入、输出与音量",
+    "keywords": [
+      "sound settings",
+      "音量",
+      "麦克风"
+    ],
+    "required": "",
+    "min_build": 17134
+  },
+  {
+    "id": "colors",
+    "name": "系统颜色设置",
+    "target": "ms-settings:personalization-colors",
+    "args": "",
+    "description": "调整 Windows 主题色与外观",
+    "keywords": [
+      "colors",
+      "主题色"
+    ],
+    "required": "",
+    "min_build": 10240
+  },
+  {
+    "id": "activation",
+    "name": "系统激活设置",
+    "target": "ms-settings:activation",
+    "args": "",
+    "description": "查看 Windows 激活状态",
+    "keywords": [
+      "activation",
+      "激活"
+    ],
+    "required": "",
+    "min_build": 10240
+  },
+  {
+    "id": "recovery",
+    "name": "系统恢复设置",
+    "target": "ms-settings:recovery",
+    "args": "",
+    "description": "查看 Windows 恢复选项",
+    "keywords": [
+      "recovery",
+      "恢复"
+    ],
+    "required": "",
+    "min_build": 10240
+  },
+  {
+    "id": "updates",
+    "name": "检查系统更新",
+    "target": "ms-settings:windowsupdate",
+    "args": "",
+    "description": "打开 Windows 更新页面",
+    "keywords": [
+      "windows update",
+      "系统更新"
+    ],
+    "required": "",
+    "min_build": 10240
+  },
+  {
+    "id": "about",
+    "name": "关于系统",
+    "target": "ms-settings:about",
+    "args": "",
+    "description": "查看 Windows 版本与设备规格",
+    "keywords": [
+      "about windows",
+      "系统版本"
+    ],
+    "required": "",
+    "min_build": 10240
+  },
+  {
+    "id": "storage",
+    "name": "存储设置",
+    "target": "ms-settings:storagesense",
+    "args": "",
+    "description": "查看磁盘空间与存储管理选项",
+    "keywords": [
+      "storage",
+      "磁盘空间"
+    ],
+    "required": "",
+    "min_build": 10240
+  },
+  {
+    "id": "network",
+    "name": "网络状态",
+    "target": "ms-settings:network-status",
+    "args": "",
+    "description": "查看网络连接与状态",
+    "keywords": [
+      "network status",
+      "网络设置"
+    ],
+    "required": "",
+    "min_build": 14393
+  },
+  {
+    "id": "proxy",
+    "name": "网络代理设置",
+    "target": "ms-settings:network-proxy",
+    "args": "",
+    "description": "查看与配置代理服务器",
+    "keywords": [
+      "proxy",
+      "代理"
+    ],
+    "required": "",
+    "min_build": 10240
+  },
+  {
+    "id": "vpn",
+    "name": "VPN 设置",
+    "target": "ms-settings:network-vpn",
+    "args": "",
+    "description": "管理 VPN 连接",
+    "keywords": [
+      "vpn"
+    ],
+    "required": "",
+    "min_build": 10240
+  },
+  {
+    "id": "printers",
+    "name": "打印机和扫描仪",
+    "target": "ms-settings:printers",
+    "args": "",
+    "description": "管理打印设备与扫描仪",
+    "keywords": [
+      "printers",
+      "scanners"
+    ],
+    "required": "",
+    "min_build": 10240
+  },
+  {
+    "id": "mouse",
+    "name": "鼠标设置",
+    "target": "ms-settings:mousetouchpad",
+    "args": "",
+    "description": "调整鼠标按钮与滚动选项",
+    "keywords": [
+      "mouse settings"
+    ],
+    "required": "",
+    "min_build": 10240
+  },
+  {
+    "id": "datetime",
+    "name": "日期和时间",
+    "target": "ms-settings:dateandtime",
+    "args": "",
+    "description": "调整日期、时间与时区",
+    "keywords": [
+      "date and time",
+      "时区"
+    ],
+    "required": "",
+    "min_build": 10240
+  },
+  {
+    "id": "defaultapps",
+    "name": "默认应用",
+    "target": "ms-settings:defaultapps",
+    "args": "",
+    "description": "选择文件与链接的默认打开应用",
+    "keywords": [
+      "default apps",
+      "默认程序"
+    ],
+    "required": "",
+    "min_build": 10240
+  },
+  {
+    "id": "notifications",
+    "name": "通知设置",
+    "target": "ms-settings:notifications",
+    "args": "",
+    "description": "管理应用与系统通知",
+    "keywords": [
+      "notifications"
+    ],
+    "required": "",
+    "min_build": 10240
+  },
+  {
+    "id": "signin",
+    "name": "登录选项",
+    "target": "ms-settings:signinoptions",
+    "args": "",
+    "description": "管理账户登录方式",
+    "keywords": [
+      "sign in options",
+      "登录设置"
+    ],
+    "required": "",
+    "min_build": 10240
+  },
+  {
+    "id": "startup",
+    "name": "启动应用",
+    "target": "ms-settings:startupapps",
+    "args": "",
+    "description": "管理登录时自动启动的应用",
+    "keywords": [
+      "startup apps",
+      "开机启动"
+    ],
+    "required": "",
+    "min_build": 17134
+  },
+  {
+    "id": "shared",
+    "name": "共享体验设置",
+    "target": "ms-settings:crossdevice",
+    "args": "",
+    "description": "管理 Windows 10 跨设备共享体验",
+    "keywords": [
+      "shared experiences",
+      "跨设备"
+    ],
+    "required": "",
+    "min_build": 15063
+  }
+]

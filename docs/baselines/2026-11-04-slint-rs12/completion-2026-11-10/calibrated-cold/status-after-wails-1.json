@@ -1,0 +1,35 @@
+{
+  "RecordedAtUtc": "2026-11-10T13:17:09.1397929Z",
+  "HumanColdCharacterObservations": 9,
+  "CalibratedColdValidSamples": 3,
+  "CalibratedColdInvalidSamples": 0,
+  "RequiredSamples": 9,
+  "SamplesByEdition": {
+    "software": 1,
+    "femtovg": 1,
+    "wails": 1
+  },
+  "RequiredPerEdition": 3,
+  "CurrentUpperMilliseconds": {
+    "software": 287.4924,
+    "femtovg": 445.7443,
+    "wails": 3549.82875
+  },
+  "ValidSamplesWithUpperBoundAbove500ms": 1,
+  "NextCase": "femtovg-2",
+  "RemainingSequence": [
+    "femtovg-2",
+    "wails-2",
+    "software-2",
+    "wails-3",
+    "software-3",
+    "femtovg-3"
+  ],
+  "IndependentRestartRequiredBeforeNext": true,
+  "CurrentBootConsumed": "639299122025000000",
+  "ColdStartup500msBudgetVerifiedForCompleteMatrix": false,
+  "HistoricalManualFocusRootCauseEstablished": false,
+  "DefaultRendererSelected": false,
+  "RS12Complete": false,
+  "Scope": "Current calibrated-cold checkpoint. Validity, sample-count completion and 500ms budget verification are separate. Prior checkpoint status files retain original counts."
+}

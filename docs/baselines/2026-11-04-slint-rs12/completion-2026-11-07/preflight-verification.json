@@ -1,0 +1,26 @@
+{
+  "RecordedAtUtc": "2026-11-06T19:26:16.4273252Z",
+  "TestCommand": "./scripts/test-rs12-input.ps1",
+  "RegressionPassed": true,
+  "RegressionLogSHA256": "69FB25950E148D5C8156639B2815161C5E932C3CD7C4A49E8CC9E95038480033",
+  "PreflightLocalSHA256": "0F02A41C73928E0E85776614D611E2F985D3BF7ECEBD6D094F9408CB01A2194C",
+  "Sources": [
+    {
+      "Path": "scripts/start-rs12-cold.ps1",
+      "SHA256": "169B35A629F8B68EDDF0C9EC2B2AB61F2F2387A6967DEC07D3DD557AF0057201"
+    },
+    {
+      "Path": "scripts/collect-rs12-cold.ps1",
+      "SHA256": "B15F2EA174FAF13381C51362DDA0651153699CF65F965982FECCBA9044A96C07"
+    },
+    {
+      "Path": "scripts/test-rs12-input.ps1",
+      "SHA256": "A03A565056D694252ABBD713E23DD4AC729B51FFF4797E87B6D3E758B35C7147"
+    },
+    {
+      "Path": "scripts/start-rs12-input-session.ps1",
+      "SHA256": "8A28FD4DC0FEFCC6A2EF8BF5C7B8C8F651AF3383E729614168009F283C2A717B"
+    }
+  ],
+  "Scope": "Pre-restart integrity and collector regression only. No cold sample or physical IME result is implied."
+}

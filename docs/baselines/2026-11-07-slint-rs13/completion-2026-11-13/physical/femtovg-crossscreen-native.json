@@ -1,0 +1,32 @@
+{
+  "SchemaVersion": 1,
+  "SHA256": "D81F31ED8AB3C0D45A3565CDC8AA412B3FB870C0CC350204178CDE44456B6487",
+  "RecordedAtUtc": "2026-11-12T18:15:37.4916659Z",
+  "Capture": {
+    "ProcessId": 94504,
+    "StartedTicks": 639301015585310087,
+    "HWND": "1E40EE8",
+    "Polls": 10,
+    "IntervalMilliseconds": 100,
+    "MaximumPollGapMilliseconds": 110.9117,
+    "TargetEnded": false,
+    "Truncated": false,
+    "Changes": [
+      {
+        "UnixMicroseconds": 1794507336399780,
+        "ElapsedMilliseconds": 0.3972,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "DPI": 96,
+        "X": 205,
+        "Y": 170,
+        "Width": 640,
+        "Height": 660
+      }
+    ]
+  },
+  "CollectorSHA256": "6F97ED6AF19668A569CC8DE37600131156856D36841815AC84FE0527D3DAE525",
+  "ObserverSHA256": "CA76B7D4D18683659A217398FF700FA6774FFA5F7D493DD948E3ED64E8C18B72",
+  "ObserverIdentityScope": "Source at load, before capture",
+  "Scope": "Passive native physical coordinates/DPI/visibility/foreground ownership. Changes between polls can be missed. Does not measure presented frames, text or IME readiness."
+}

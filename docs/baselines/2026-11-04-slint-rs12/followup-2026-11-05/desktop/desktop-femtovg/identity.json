@@ -1,0 +1,54 @@
+{
+  "Run": "desktop-femtovg",
+  "Renderer": "femtovg",
+  "SHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+  "ProcessId": 330028,
+  "StartedTicks": 639294402797386811,
+  "Scope": "Invalid DPI trial: target stayed on primary monitor at 96 DPI while the other display changed.",
+  "Exit": {
+    "Completed": true,
+    "ProcessId": 330028,
+    "ExitCode": 0,
+    "ForcedCleanup": false,
+    "ExecutableUnchanged": true
+  },
+  "RawSessionSHA256": "C6BA8CAD572338A5F7D58426F70CB827D347D1053666E63DF8D23CCBCCBCC8A3",
+  "RawEventsSHA256": "D67F7C1765847E0F78400EF7FE51C1F5291D0B2782659358E54BB2FABC420D72",
+  "ActualAutomatedInput": [
+    "event=input_accepted pid=330028 unix_us=1793843673500642 elapsed_us=193673359 dropped=0 utf8_bytes=9 focused=true native_focused=true visible=true composing=false synthetic=false"
+  ],
+  "RawResponseFiles": [
+    {
+      "SHA256": "57E83DEAE06E735EA82D34716851EA0B120C645C6260377AC1318F31D0D34AE5",
+      "Name": "01-home.json"
+    },
+    {
+      "SHA256": "05500ACD80EA3AA0B6B3A4256CA23541668DCBADEC78019C936D29073CC92BA9",
+      "Name": "02-chinese.json"
+    },
+    {
+      "SHA256": "F3BA8C9E59224E1EDC915EF06D6610B21BF6CB3E17F529808A3E324ECC7D01E6",
+      "Name": "03-hide.json"
+    },
+    {
+      "SHA256": "C397F4042A129FD164BB6D3CCA15C7E3393BC38C8F3638078585F55DDAE18BA1",
+      "Name": "04-150.json"
+    },
+    {
+      "SHA256": "10756C38BC959A07052885F39A52A2AF6DF52F8A2485BD72765E2A9A433ED769",
+      "Name": "05-150-home.json"
+    },
+    {
+      "SHA256": "785402E3577EB309C30D61D6DD844F56C24EAA001F717985488F69E64BC0AB52",
+      "Name": "06-hide.json"
+    },
+    {
+      "SHA256": "38FCF4F0B503D9A3FCDCE673D3FB74ABB1A6C4064E383ED546B8D04D793BCF6C",
+      "Name": "07-restored.json"
+    },
+    {
+      "SHA256": "F5DC3C08B411E2C3B42D473104BCD39E72086DD68F2AAD5F3066247175EB435B",
+      "Name": "08-quit.json"
+    }
+  ]
+}

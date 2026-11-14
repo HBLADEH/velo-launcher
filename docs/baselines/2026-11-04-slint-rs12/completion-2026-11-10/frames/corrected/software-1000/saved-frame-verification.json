@@ -1,0 +1,56 @@
+{
+  "RecordedAtUtc": "2026-11-09T18:11:07.3414086Z",
+  "Scenario": "software-1000",
+  "ComparedRegion": "All saved BGRA pixels y>=66, including eight result rows and footer",
+  "Reference": "frame-1277.bmp",
+  "ReferenceBodySHA256": "1421984347F49DDBAA5EA393859B910246F09F736F9F1A00766316E4B8D22490",
+  "Queries": [
+    {
+      "KeyQpc": 91257207003,
+      "KeyLowerQpc": 91257050753,
+      "MatchingSavedImages": 1,
+      "FirstVerifiedImage": "frame-1277.bmp",
+      "FirstVerifiedPresentQpc": 91262754537,
+      "KeyToVerifiedSavedFrameUpperMs": 570.3784,
+      "BodySHA256": "1421984347F49DDBAA5EA393859B910246F09F736F9F1A00766316E4B8D22490"
+    },
+    {
+      "KeyQpc": 91305230521,
+      "KeyLowerQpc": 91304914271,
+      "MatchingSavedImages": 2,
+      "FirstVerifiedImage": "frame-1331.bmp",
+      "FirstVerifiedPresentQpc": 91307795061,
+      "KeyToVerifiedSavedFrameUpperMs": 288.079,
+      "BodySHA256": "1421984347F49DDBAA5EA393859B910246F09F736F9F1A00766316E4B8D22490"
+    },
+    {
+      "KeyQpc": 91353418853,
+      "KeyLowerQpc": 91353102603,
+      "MatchingSavedImages": 2,
+      "FirstVerifiedImage": "frame-1404.bmp",
+      "FirstVerifiedPresentQpc": 91356011050,
+      "KeyToVerifiedSavedFrameUpperMs": 290.8447,
+      "BodySHA256": "1421984347F49DDBAA5EA393859B910246F09F736F9F1A00766316E4B8D22490"
+    },
+    {
+      "KeyQpc": 91395757335,
+      "KeyLowerQpc": 91395451085,
+      "MatchingSavedImages": 2,
+      "FirstVerifiedImage": "frame-1500.bmp",
+      "FirstVerifiedPresentQpc": 91398389091,
+      "KeyToVerifiedSavedFrameUpperMs": 293.8006,
+      "BodySHA256": "1421984347F49DDBAA5EA393859B910246F09F736F9F1A00766316E4B8D22490"
+    },
+    {
+      "KeyQpc": 91459115652,
+      "KeyLowerQpc": 91458809402,
+      "MatchingSavedImages": 2,
+      "FirstVerifiedImage": "frame-1643.bmp",
+      "FirstVerifiedPresentQpc": 91461950964,
+      "KeyToVerifiedSavedFrameUpperMs": 314.1562,
+      "BodySHA256": "1421984347F49DDBAA5EA393859B910246F09F736F9F1A00766316E4B8D22490"
+    }
+  ],
+  "AllQueriesMatchReviewedBody": true,
+  "Scope": "Earliest retained saved image matching the reviewed final body; later than first possible correct-result frame. Images saved at least 100ms apart; conservative observation, not exact rendering latency."
+}

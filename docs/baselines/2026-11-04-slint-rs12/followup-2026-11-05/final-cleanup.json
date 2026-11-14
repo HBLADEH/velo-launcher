@@ -1,0 +1,49 @@
+{
+  "RecordedAtUtc": "2026-11-06T11:03:13.3842624Z",
+  "VeloProcessCount": 0,
+  "IsolatedWebViewProcessCount": 0,
+  "NativeVeloWindows": [],
+  "AltSpaceAvailable": true,
+  "TemporaryCheckReleased": true,
+  "FormalFiles": [
+    {
+      "File": "config.json",
+      "BeforeFinalRunSHA256": "6DECBCB844CC656D0EAFBD340F7B8BF3B877FAAD593D543F85A37B15EB95143F",
+      "CurrentSHA256": "6DECBCB844CC656D0EAFBD340F7B8BF3B877FAAD593D543F85A37B15EB95143F",
+      "UnchangedDuringFinalRun": true
+    },
+    {
+      "File": "index.json",
+      "BeforeFinalRunSHA256": "D9FDC8437135DF652114CB4B802A24434935EF4EF18F4AF643317F017B7B38AE",
+      "CurrentSHA256": "D9FDC8437135DF652114CB4B802A24434935EF4EF18F4AF643317F017B7B38AE",
+      "UnchangedDuringFinalRun": true
+    },
+    {
+      "File": "history.json",
+      "BeforeFinalRunSHA256": "FCA9BBCE5F57A53CCB23A7FB3A2F2BB4B9CFAD46DD241EDA168BBF029B51E8C6",
+      "CurrentSHA256": "FCA9BBCE5F57A53CCB23A7FB3A2F2BB4B9CFAD46DD241EDA168BBF029B51E8C6",
+      "UnchangedDuringFinalRun": true
+    },
+    {
+      "File": "application-library.json",
+      "BeforeFinalRunSHA256": "A5E8BC981B03563AF3D26E5EEF9D263D9EAA4181C5DA758E8DCBF82160FF01F6",
+      "CurrentSHA256": "A5E8BC981B03563AF3D26E5EEF9D263D9EAA4181C5DA758E8DCBF82160FF01F6",
+      "UnchangedDuringFinalRun": true
+    },
+    {
+      "File": "quick-launch.json",
+      "BeforeFinalRunSHA256": null,
+      "CurrentSHA256": null,
+      "UnchangedDuringFinalRun": true
+    }
+  ],
+  "ScanNormalExits": 3,
+  "SyntheticExitOnlySlintRuns": 2,
+  "WarmMeasuredNormalExits": 3,
+  "ExtraWailsWarmLaunchExcluded": true,
+  "HotkeyReliabilityPassed": false,
+  "RS12Complete": false,
+  "FormalBeforeFinalRunSource": ".reasonix/rs12-final-20261106/formal-before.json",
+  "EarlierBaselineDriftDetected": false,
+  "TestRunFormalFilesUnchanged": true
+}

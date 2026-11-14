@@ -1,0 +1,20 @@
+[
+  {
+    "Result": "results.json",
+    "ResultSHA256": "7841AE73D57D1F05F6D1C7C17DAB61CF9E77639A9C05C57F0F647E23DD0C19E4",
+    "ErrorFile": "failure.txt",
+    "ErrorSHA256": "19F298256659A31870A9056419F0D574C96388BC80BB9EDAC8F1CA39C5B0E194",
+    "SuccessfulCases": 4,
+    "Cause": "Test treated per-process rotating velo.log as append-only",
+    "Disposition": "Prior raw files retained. Ordered current-session start/frontend/stopped log, direct user tray report, no process and exact user-file/backup hashes reviewed separately. No zero exit code invented."
+  },
+  {
+    "Result": "results-final.json",
+    "ResultSHA256": "4A6F9B05663AB05FE6D1AB7F4CEBF533743A77151FC113B5144AEFB0BF90B8A4",
+    "ErrorFile": "finish-failure.txt",
+    "ErrorSHA256": "1BD74E1B31A3717EA6113A16FCE6DB819868845F67B87D1FBC792E618D8A4BB6",
+    "SuccessfulCases": 4,
+    "Cause": "Attached process ExitCode unavailable after exit; original script compared null with zero",
+    "Disposition": "Prior raw files retained. Ordered current-session start/frontend/stopped log, direct user tray report, no process and exact user-file/backup hashes reviewed separately. No zero exit code invented."
+  }
+]

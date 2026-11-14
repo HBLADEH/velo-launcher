@@ -1,0 +1,65 @@
+{
+  "Capture": "Computer Use bounded screenshots; physical geometry from native probe",
+  "Scenes": [
+    {
+      "name": "software-secondary-first-input",
+      "path": "screenshots/software-secondary-first-input.jpg",
+      "sha256": "4403aac929baa09e44a63765dd876fd48d739f4f60c8b4cecb8317c6aaed90d8",
+      "width": 640,
+      "height": 264,
+      "originX": 2560,
+      "originY": 248,
+      "notes": "Real Explorer launch on secondary; startup native focus true before tool input; code entered without clicking search field."
+    },
+    {
+      "name": "software-actual-tray-settings",
+      "path": "screenshots/software-actual-tray-settings.jpg",
+      "sha256": "edaf9a55a4cf6ee259eb955fb2e016450a8c145daaca04de5aa942026ae6efeb",
+      "width": 640,
+      "height": 660,
+      "originX": 1157,
+      "originY": 289,
+      "notes": "User clicked Settings in actual Shell tray context menu; action=2 and tray_settings native focus true confirmed."
+    },
+    {
+      "name": "software-before-physical-unplug",
+      "path": "screenshots/software-before-physical-unplug.jpg",
+      "sha256": "376d4dfb64bbecf96fd19a35905cb5a9c4219a572a511d75b61c646edb00a3cf",
+      "width": 640,
+      "height": 264,
+      "originX": 1920,
+      "originY": 289,
+      "notes": "Real pointer drag positions the same window on the right-hand secondary before user physically disconnects it."
+    },
+    {
+      "name": "software-physical-unplug-recall-input",
+      "path": "screenshots/software-physical-unplug-recall-input.jpg",
+      "sha256": "0c69e005db42c0b868c2534405eb0899210120a10a533743dc536c197001cf7e",
+      "width": 640,
+      "height": 210,
+      "originX": 0,
+      "originY": 247,
+      "notes": "Physical secondary video cable removed by user; only primary remains; actual hotkey recalls same HWND and code query; x input succeeds."
+    },
+    {
+      "name": "software-physical-replug-input",
+      "path": "screenshots/software-physical-replug-input.jpg",
+      "sha256": "0d303c29d93a5e3ef314c2367d0f4e54ba519dae3976b02a24246b6659008b62",
+      "width": 640,
+      "height": 660,
+      "originX": 1920,
+      "originY": 289,
+      "notes": "User physically reconnected secondary; actual hotkey recalled same window and preserved codex; Backspace cleared the selected query and restored the home page."
+    },
+    {
+      "name": "software-replug-before-sleep-query",
+      "path": "screenshots/software-replug-before-sleep-query.jpg",
+      "sha256": "376d4dfb64bbecf96fd19a35905cb5a9c4219a572a511d75b61c646edb00a3cf",
+      "width": 640,
+      "height": 264,
+      "originX": 1920,
+      "originY": 289,
+      "notes": "Actual code input after physical reconnection succeeds; same HWND, two results, 264px logical height before sleep."
+    }
+  ]
+}

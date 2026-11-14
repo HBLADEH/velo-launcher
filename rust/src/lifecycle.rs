@@ -112,6 +112,7 @@ pub struct Controller {
     layout_queued: Cell<bool>,
     current: Cell<Option<Key>>,
     modifiers: Cell<ModifiersState>,
+    launch_generation: Cell<Option<u64>>,
     observer: Option<Observer>,
     diagnostics: bool,
 }
@@ -121,6 +122,7 @@ impl Controller {
         app: &AppWindow,
         background: bool,
         key: Key,
+        await_configuration: bool,
         identity: &Identity,
         diagnostics: bool,
         observer: Option<Observer>,
@@ -153,7 +155,7 @@ impl Controller {
             app: app.as_weak(),
             state: RefCell::new(State {
                 background,
-                content_ready: true,
+                content_ready: !await_configuration,
                 ..Default::default()
             }),
             native: Cell::new(None),
@@ -163,15 +165,39 @@ impl Controller {
             layout_queued: Cell::new(false),
             current: Cell::new(None),
             modifiers: Cell::new(ModifiersState::empty()),
+            launch_generation: Cell::new(None),
             observer,
             diagnostics,
         });
         app.set_hotkey_draft(key.to_string().into());
         if let Some(error) = error {
             app.set_hotkey_error(format!("快捷键服务不可用: {error}").into());
-        } else {
+        } else if !await_configuration {
             controller.apply_hotkey(&key.to_string());
         }
+        let weak = Rc::downgrade(&controller);
+        app.on_startup_configuration_ready(move |success| {
+            let Some(controller) = weak.upgrade() else {
+                return;
+            };
+            {
+                let mut state = controller.state.borrow_mut();
+                if state.content_ready {
+                    return;
+                }
+                state.content_ready = true;
+                // Failed data loading must remain reachable even if a fallback
+                // chord happens to be available. Preserve later explicit hides.
+                if !success && state.startup_choice.is_none() {
+                    state.startup_choice = Some(true);
+                }
+            }
+            controller.log("startup_configuration_ready", &format!("success={success}"));
+            if !success {
+                controller.apply_hotkey(&key.to_string());
+            }
+            controller.complete_startup();
+        });
         let weak = Rc::downgrade(&controller);
         app.on_global_hotkey(move |text| {
             if let Some(controller) = weak.upgrade() {
@@ -215,6 +241,19 @@ impl Controller {
             }
         });
         let weak = Rc::downgrade(&controller);
+        app.on_hotkey_committed(move |text| {
+            if let Some(controller) = weak.upgrade()
+                && let Ok(key) = Key::parse(&text)
+            {
+                controller.current.set(Some(key));
+                controller.state.borrow_mut().hotkey_available = true;
+                if let Some(app) = controller.app.upgrade() {
+                    app.set_hotkey_current(key.to_string().into());
+                    app.set_hotkey_error("".into());
+                }
+            }
+        });
+        let weak = Rc::downgrade(&controller);
         app.on_hotkey_record(move |enabled| {
             if let Some(controller) = weak.upgrade() {
                 controller.record(enabled);
@@ -224,6 +263,30 @@ impl Controller {
         app.on_native_interaction_finished(move || {
             if let Some(controller) = weak.upgrade() {
                 controller.focused(controller.native.get().is_some_and(NativeWindow::active));
+            }
+        });
+        let weak = Rc::downgrade(&controller);
+        app.on_launch_started(move || {
+            if let Some(controller) = weak.upgrade() {
+                controller.hide("launch");
+                controller
+                    .launch_generation
+                    .set(Some(controller.state.borrow().generation));
+                if let Some(app) = controller.app.upgrade() {
+                    app.set_native_dialog_active(true);
+                }
+            }
+        });
+        let weak = Rc::downgrade(&controller);
+        app.on_launch_finished(move |success| {
+            if let Some(controller) = weak.upgrade() {
+                if let Some(app) = controller.app.upgrade() {
+                    app.set_native_dialog_active(false);
+                }
+                let generation = controller.launch_generation.take();
+                if !success && generation == Some(controller.state.borrow().generation) {
+                    controller.show("launch_failure");
+                }
             }
         });
         let weak = Rc::downgrade(&controller);
@@ -269,20 +332,25 @@ impl Controller {
         if let Some(desktop) = &self.desktop {
             desktop.set_owner(hwnd);
         }
-        let action = {
+        {
             let mut state = self.state.borrow_mut();
             state.native_ready = true;
-            state.complete_startup()
-        };
+        }
         self.log(
             "lifecycle_ready",
             &format!(
-                "native_visible={} content_ready=true background={} hotkey_available={}",
+                "native_visible={} content_ready={} background={} hotkey_available={}",
                 self.native.get().unwrap().visible(),
+                self.state.borrow().content_ready,
                 self.state.borrow().background,
                 self.state.borrow().hotkey_available
             ),
         );
+        self.complete_startup();
+    }
+
+    fn complete_startup(self: &Rc<Self>) {
+        let action = self.state.borrow_mut().complete_startup();
         match action {
             Action::Show => self.show("startup"),
             Action::Hide => self.hide("startup"),
@@ -542,6 +610,9 @@ impl Controller {
                 }
             }
             n if n == desktop::Event::EnvironmentChanged as i32 => {
+                if let Some(app) = self.app.upgrade() {
+                    app.invoke_environment_changed();
+                }
                 self.queue_layout("display_or_resume")
             }
             n if n == desktop::Event::MenuClosed as i32 && self.state.borrow().visible => {
@@ -593,12 +664,21 @@ impl Controller {
         let (Some(native), Some(app)) = (self.native.get(), self.app.upgrade()) else {
             return;
         };
-        let height = geometry::content_height(
-            app.get_is_home(),
-            app.get_appearance_open(),
-            app.get_import_open(),
-            app.get_result_items().row_count(),
-        );
+        let height = if !app.get_is_home()
+            && !app.get_appearance_open()
+            && !app.get_import_open()
+            && app.get_grid_results()
+        {
+            (156 + ((app.get_result_items().row_count().div_ceil(6) * 106 + 32).max(160)))
+                .clamp(160, 720) as i32
+        } else {
+            geometry::content_height(
+                app.get_is_home(),
+                app.get_appearance_open(),
+                app.get_import_open(),
+                app.get_result_items().row_count(),
+            )
+        };
         let Some(layout) = geometry::layout(native, height, self.positioned.get()) else {
             self.log("geometry_error", "operation=monitor_layout");
             return;
@@ -648,6 +728,10 @@ impl Controller {
                 outcome.is_err() && self.current.get().is_some()
             ),
         );
+    }
+
+    pub fn hotkey_client(&self) -> Option<hotkey::Client> {
+        self.service.as_ref().map(Service::client)
     }
 
     fn record(&self, enabled: bool) {

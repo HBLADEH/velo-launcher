@@ -1,0 +1,120 @@
+[
+  {
+    "Renderer": "software",
+    "PhysicalExecutableSHA256": "5EB0E03B365B2FD33F4D892F589316C7876235173FF0B28161AA1CB6BD919287",
+    "ChangedInputs": [
+      {
+        "Path": "examples/rs10_windows.rs",
+        "PhysicalBuildSHA256": "43DBEFE8312728089DBEDA4CB6D92E84F673EE3DAE41C8E16A360FEB38981960",
+        "CurrentSourceSHA256": "3CD0AC3CC4C785BE535B2756EB9EF455CF50F24E1A05BD476618AA76CC0458FD"
+      },
+      {
+        "Path": "src/business.rs",
+        "PhysicalBuildSHA256": "727D7385AE309E756313B33376E9A30CB8FAA046E7985D52CDF2E91C0164D3B6",
+        "CurrentSourceSHA256": "378A20AE644DA2AE54C6A8C1C19D824DC2ADF92586B6095E9D5752866ED46E3F"
+      },
+      {
+        "Path": "src/pages_probe.rs",
+        "PhysicalBuildSHA256": "5F098A847A1B0E84A0C1D50ACDA2AB3BDFADA591E00167B20C537C7EAA3991EC",
+        "CurrentSourceSHA256": "923E73F53BA2CFC737CC210A8918093A5CFE1382E89E7C5038E8E4FCA6E11988"
+      },
+      {
+        "Path": "src/platform/windows/icons.rs",
+        "PhysicalBuildSHA256": "79CCCDF06B95FB68C217A595E272D89F7F72680792548BED8A0F296BB39CEBAF",
+        "CurrentSourceSHA256": "5232FE903F6DCF69764DC15F604C026DF1A7D9C02FC74822264E20FFC1286E8A"
+      },
+      {
+        "Path": "ui/app.slint",
+        "PhysicalBuildSHA256": "4553B86994E364B7F88CACCF3D494AEF8C8F96B3E34CF0966FB5149BF8CAE3E4",
+        "CurrentSourceSHA256": "7F0CF73924807294E951DE67FDB954F6817EC7CE754F241911920526A7E9148A"
+      },
+      {
+        "Path": "ui/components.slint",
+        "PhysicalBuildSHA256": "D9A30506830AE3EE1BA2522A010DB7452EF59298FD959A1D4552EC982D7715B2",
+        "CurrentSourceSHA256": "7C0CD5391156436A44124D3CD3A67BC433600210B041DCC19FFD21CD4D1853D8"
+      },
+      {
+        "Path": "ui/custom.slint",
+        "PhysicalBuildSHA256": "00F58946AAF4C0B10CCDD3C12B236E8E5E807415A1E7F676FA9ABF5AA82C1C04",
+        "CurrentSourceSHA256": "847D9BFC81B7C75DAC499780FE7A2EB3AFF233AB9ABDAFE4E8606ED28D2B3FEB"
+      },
+      {
+        "Path": "ui/settings-controls.slint",
+        "PhysicalBuildSHA256": "31C67DAEAE6ED7FC8A40372F3741AF26E25D3AE28FC3BBFD941FD3A7017A39A8",
+        "CurrentSourceSHA256": "99DF5BFDE22A0F8C36A80F45A701CDE0A89B261D870D60D6BFD4ECC4026C702C"
+      },
+      {
+        "Path": "ui/settings.slint",
+        "PhysicalBuildSHA256": "F90C703E47382F31E6BE48DBF86B77B5506C056C269FEC26CA617813892F983E",
+        "CurrentSourceSHA256": "24E5A17EE3AA76D72C2D858736EF30554F9B68B01E9B70E54E1F6754003DCFA0"
+      }
+    ],
+    "CoreInputAndNativeLifecycleUnchangedFiles": [
+      "src/input.rs",
+      "src/lifecycle.rs",
+      "src/main.rs",
+      "src/platform/windows/geometry.rs",
+      "src/platform/windows/hotkey.rs"
+    ],
+    "Scope": "Evidence reuse is by unchanged sources only; physical runs retain original exe identities. Final-build desktop smoke/native recordings are separate."
+  },
+  {
+    "Renderer": "femtovg",
+    "PhysicalExecutableSHA256": "C55E36CB3D6659E839C25F7888AD907BBB33B4368058B5ED38CB2684AEF9139F",
+    "ChangedInputs": [
+      {
+        "Path": "examples/rs10_windows.rs",
+        "PhysicalBuildSHA256": "43DBEFE8312728089DBEDA4CB6D92E84F673EE3DAE41C8E16A360FEB38981960",
+        "CurrentSourceSHA256": "3CD0AC3CC4C785BE535B2756EB9EF455CF50F24E1A05BD476618AA76CC0458FD"
+      },
+      {
+        "Path": "src/business.rs",
+        "PhysicalBuildSHA256": "727D7385AE309E756313B33376E9A30CB8FAA046E7985D52CDF2E91C0164D3B6",
+        "CurrentSourceSHA256": "378A20AE644DA2AE54C6A8C1C19D824DC2ADF92586B6095E9D5752866ED46E3F"
+      },
+      {
+        "Path": "src/pages_probe.rs",
+        "PhysicalBuildSHA256": "5F098A847A1B0E84A0C1D50ACDA2AB3BDFADA591E00167B20C537C7EAA3991EC",
+        "CurrentSourceSHA256": "923E73F53BA2CFC737CC210A8918093A5CFE1382E89E7C5038E8E4FCA6E11988"
+      },
+      {
+        "Path": "src/platform/windows/icons.rs",
+        "PhysicalBuildSHA256": "79CCCDF06B95FB68C217A595E272D89F7F72680792548BED8A0F296BB39CEBAF",
+        "CurrentSourceSHA256": "5232FE903F6DCF69764DC15F604C026DF1A7D9C02FC74822264E20FFC1286E8A"
+      },
+      {
+        "Path": "ui/app.slint",
+        "PhysicalBuildSHA256": "4553B86994E364B7F88CACCF3D494AEF8C8F96B3E34CF0966FB5149BF8CAE3E4",
+        "CurrentSourceSHA256": "7F0CF73924807294E951DE67FDB954F6817EC7CE754F241911920526A7E9148A"
+      },
+      {
+        "Path": "ui/components.slint",
+        "PhysicalBuildSHA256": "D9A30506830AE3EE1BA2522A010DB7452EF59298FD959A1D4552EC982D7715B2",
+        "CurrentSourceSHA256": "7C0CD5391156436A44124D3CD3A67BC433600210B041DCC19FFD21CD4D1853D8"
+      },
+      {
+        "Path": "ui/custom.slint",
+        "PhysicalBuildSHA256": "00F58946AAF4C0B10CCDD3C12B236E8E5E807415A1E7F676FA9ABF5AA82C1C04",
+        "CurrentSourceSHA256": "847D9BFC81B7C75DAC499780FE7A2EB3AFF233AB9ABDAFE4E8606ED28D2B3FEB"
+      },
+      {
+        "Path": "ui/settings-controls.slint",
+        "PhysicalBuildSHA256": "31C67DAEAE6ED7FC8A40372F3741AF26E25D3AE28FC3BBFD941FD3A7017A39A8",
+        "CurrentSourceSHA256": "99DF5BFDE22A0F8C36A80F45A701CDE0A89B261D870D60D6BFD4ECC4026C702C"
+      },
+      {
+        "Path": "ui/settings.slint",
+        "PhysicalBuildSHA256": "F90C703E47382F31E6BE48DBF86B77B5506C056C269FEC26CA617813892F983E",
+        "CurrentSourceSHA256": "24E5A17EE3AA76D72C2D858736EF30554F9B68B01E9B70E54E1F6754003DCFA0"
+      }
+    ],
+    "CoreInputAndNativeLifecycleUnchangedFiles": [
+      "src/input.rs",
+      "src/lifecycle.rs",
+      "src/main.rs",
+      "src/platform/windows/geometry.rs",
+      "src/platform/windows/hotkey.rs"
+    ],
+    "Scope": "Evidence reuse is by unchanged sources only; physical runs retain original exe identities. Final-build desktop smoke/native recordings are separate."
+  }
+]

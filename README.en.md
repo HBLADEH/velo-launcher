@@ -1,206 +1,48 @@
-<p align="center">
-  <img src="frontend/src/assets/logo.png" alt="Velo logo" width="128" height="128" />
-</p>
+# Velo
 
-<h1 align="center">Velo</h1>
-<p align="center"><strong>Fast. Light. Ready.</strong><br />Press a shortcut. Find your app. Launch.</p>
-<p align="center"><a href="README.md">简体中文</a> · <strong>English</strong></p>
-<p align="center">
-  <a href="https://github.com/HBLADEH/velo-launcher/actions/workflows/ci.yml"><img src="https://github.com/HBLADEH/velo-launcher/actions/workflows/ci.yml/badge.svg" alt="Windows build status" /></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT License" /></a>
-  <img src="https://img.shields.io/badge/platform-Windows%2010%20%2F%2011-0078D4" alt="Windows 10 / 11" />
-</p>
-<p align="center">
-  <a href="https://github.com/HBLADEH/velo-launcher/releases">Download</a> ·
-  <a href="#quick-start">Quick start</a> ·
-  <a href="#how-velo-works">How it works</a> ·
-  <a href="docs/user-guide.md">User guide (中文)</a> ·
-  <a href="CONTRIBUTING.md">Contribute</a> ·
-  <a href="https://github.com/HBLADEH/velo-launcher/issues">Report an issue</a>
-</p>
+[简体中文](README.md) · [Download](https://github.com/HBLADEH/velo-launcher/releases/latest) · [User guide (Chinese)](docs/user-guide.md)
 
-Velo is a local application launcher for **Windows 10 / 11 x64**, with a Simplified Chinese interface. Press `Alt+Space`, type an app or Windows tool name, and press `Enter` to launch it. Frequently used apps, Windows shortcuts, and pinned items share one window.
+A Chinese application launcher for **Windows 10/11 x64**. Press `Alt+Space`, search by name, Chinese pinyin or initials, and press `Enter` to launch.
 
-Windows shortcuts support Chinese, English, pinyin, and abbreviation searches. Choose a list or icon grid and a light or dark theme; settings, the index, and usage history stay on your computer. The project primarily serves Chinese-speaking users; this English README is a companion to the [primary Chinese documentation](README.md).
+**0.1.0 is the first official Rust + Slint release. Version numbering starts again at 0.1.0. Future product development uses Rust; Go/Wails 0.9.x is retired.** The native, single-process application requires no Go, Node.js, WebView2 or local HTTP server at runtime.
 
-> **0.9.11 is a preview release.** Release binaries are currently unsigned, and performance and long-term stability validation is ongoing. Only Windows is supported. The application UI is currently in Simplified Chinese; this page is an English translation of the primary Chinese README.
+## Install
 
-## Screenshots
+Download `velo-rust-x64-installer.exe` from the [latest release](https://github.com/HBLADEH/velo-launcher/releases/latest), run it and approve Windows UAC. Software is the default renderer. The OpenGL alternative is `velo-rust-femtovg-x64-installer.exe`; exit Velo from its tray menu before switching renderers.
 
-Actual Windows captures updated on 2026-10-23, showing the current Chinese UI. App lists and search results reflect the maintainer's installed software and usage history.
+This release provides system installers, with `SHA256SUMS.txt`, a license archive and a build manifest.
 
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="docs/images/home-dark.png" />
-    <source media="(prefers-color-scheme: light)" srcset="docs/images/home-light.png" />
-    <img src="docs/images/home-light.png" alt="Velo Chinese home screen with frequently used apps and Windows shortcuts, available in light and dark themes" width="640" />
-  </picture>
-</p>
-<p align="center"><em>Home: quick access to frequently used apps and Windows tools.</em><br /><a href="docs/images/home-light.png">View light theme</a> · <a href="docs/images/home-dark.png">View dark theme</a></p>
+For migration, exit the old application and install manually. The verified official **Go v0.9.11 system installation** supports replacement in its existing directory. Uninstall other old builds while preserving data before installing Rust. The old Go updater cannot handle the reset version numbering.
 
-| List search | Grid search |
-| --- | --- |
-| ![List results for code, with Visual Studio Code selected](docs/images/search-list.png) | ![A unified grid for qk, showing Empty Recycle Bin, Quicker, and QuickerStarter](docs/images/search-grid.png) |
-| View app names and paths, select with arrow keys, and launch with Enter. | Apps and Windows shortcuts share one ranked grid with four-direction navigation. |
-
-| Context menu | Appearance settings |
-| --- | --- |
-| ![Visual Studio Code context menu with launch, installation directory, administrator launch, and pin actions](docs/images/context-menu.png) | ![Appearance settings with theme and result-layout selectors](docs/images/appearance.png) |
-| Open the installation directory, run as administrator, or pin to home. | Choose light, dark, or system theme and switch between list and grid. |
-
-The [user guide (Chinese)](docs/user-guide.md) includes custom-app and configuration-backup screenshots. See the [screenshot notes](docs/images/README.md) for capture details.
+Settings, history, custom applications and pins remain in `%LOCALAPPDATA%\Velo`. Before opening the data store, Rust saves a byte-verified snapshot under `%LOCALAPPDATA%\VeloRustMigrationBackups`; failure prevents initialization. Uninstall preserves user data and recovery archives.
 
 ## Features
 
-- **Keyboard controls**: open with a global shortcut, navigate with arrow keys, and launch with Enter. Supports hiding on focus loss and running in the system tray.
-- **Window and session**: drag the top logo, title, or empty header area to move the launcher. Hiding preserves the current page, unsaved settings, and update progress; the window keeps its chosen position during the current session. Normal and administrator launch requests clear the search immediately, without waiting for startup or a system dialog to finish.
-- **Application search**: exact, prefix, substring, and fuzzy matching with single-character typo tolerance. Ranking considers launch frequency, recent use, and query history.
-- **Automatic indexing**: discovers apps in the Start menu, desktop, Windows Apps, and Program Files, with additional scan directories supported. Duplicate entries are merged; uninstallers, help tools, and updaters are hidden by default.
-- **Quick access**: pinned apps, frequently used apps, and Windows shortcuts on the home screen. System shortcuts support Chinese, English, pinyin, and abbreviation searches.
-- **Result actions**: right-click to launch, open the installation directory, run as administrator, or pin to the home screen.
-- **System actions**: empty the Recycle Bin, shut down, restart, or lock Windows. A nonempty Recycle Bin uses the Windows confirmation dialog; an already empty bin shows an informational notice with one OK button that supports Space. Shutdown and restart require confirmation.
-- **Custom applications**: drag files in, select files, or paste paths to add `.exe` / `.lnk` entries outside scan directories. Custom entries and home-screen pins are managed independently.
-- **Appearance and preferences**: light, dark, and system themes; switch between a list and an icon grid, with configurable shortcut, launch at sign-in, result count, and search weights.
-- **Local storage**: settings, index, and launch history stay on your computer. Index and icon caching are enabled, with a background refresh every 30 minutes by default.
-- **Configuration backups**: Settings → 备份 saves a separate JSON copy of your saved settings and lets you open the backup directory.
-- **Updates**: checks GitHub Releases, verifies downloads with SHA-256, backs up settings before installation, and preserves existing preferences. Supports replacing standalone binaries or upgrading installed copies.
+- Name, pinyin, initials, keyword and fuzzy search with local history ranking.
+- Start menu, desktop, Windows Apps, Program Files and custom directory indexing.
+- Pins, frequently used apps, system shortcuts, custom apps and file drops.
+- List and grid views, keyboard navigation, native context menus, tray and global hotkey.
+- Light/dark/system themes, configuration backups and SHA-256 verified Rust updates.
 
-## Download and installation
+![Rust interface with synthetic data](docs/baselines/2026-11-07-slint-rs13/completion-2026-11-12/static/software/light-home.png)
 
-Choose a Windows x64 asset from [Releases](https://github.com/HBLADEH/velo-launcher/releases):
+## Develop
 
-| Distribution | File | Instructions |
-| --- | --- | --- |
-| Installer | `*-installer.exe` | Run the installation wizard |
-| Standalone | `velo-launcher.exe` | Place it in a permanent directory and run it |
-
-Both distributions store settings and caches in `%LOCALAPPDATA%\Velo`, rather than alongside the executable. Choose a permanent location before enabling launch at sign-in.
-
-[Microsoft Edge WebView2 Runtime](https://developer.microsoft.com/microsoft-edge/webview2/) is required. Install it first if it is missing. macOS and Linux are not supported.
-
-## Quick start
-
-1. Start Velo and wait for the initial index to finish. Subsequent starts use the existing cache first.
-2. Press `Alt+Space` and enter an application name, such as `code`.
-3. Select a result with `↑` / `↓`, then press `Enter`. Use the star button to pin an app to the home screen.
-4. Press `Ctrl+,` to configure the shortcut, theme, and scan directories.
-
-Under **Settings → 快捷键** (Keyboard shortcut), click the recorder and press your key combination. Click **保存设置** (Save settings) to apply it; `Esc` cancels recording.
-
-Enable **全屏时禁止快捷键呼出** to suppress the shortcut while the foreground application is fullscreen; the tray remains available. Opening the home screen immediately focuses search. Names, keywords, and aliases support substring matching.
-
-| Action | Shortcut or location |
-| --- | --- |
-| Show / hide the launcher | `Alt+Space` (configurable) |
-| Select a result | `↑` / `↓`; home and grid also support `←` / `→` |
-| Launch the selected app | `Enter`; `Space` is also enabled by default |
-| Clear the query; hide if already empty | `Esc` |
-| Open settings | `Ctrl+,` or the gear button |
-| Add custom apps | Home → 自定义应用, or Settings → 索引 |
-| Refresh the index | Footer refresh button, or Settings → 索引 |
-| Back up settings | Settings → 备份 → 立即备份 |
-| Check for updates | Settings → 关于 |
-| Quit completely | Right-click the Velo notification-area icon → 退出 (Quit) |
-
-Space launches the selected app by default. To enter queries containing spaces, such as `visual studio`, turn off **按空格键启动选中应用** under **Settings → 常规** (General).
-
-To keep your current settings, click **立即备份** under **Settings → 备份** (Backup). **打开备份目录** opens `%LOCALAPPDATA%\Velo\backups`. Automatic updates also back up settings before installation and stop if the backup fails. Upgrades preserve existing settings; new options receive defaults when loaded. Unsaved edits, custom apps, pins, and history are not included in the settings backup.
-
-The [user guide (Chinese)](docs/user-guide.md) covers custom apps, pinning, updates, storage, and troubleshooting. Updates can be disabled under **Settings → 关于** (About). Downloads are checked against the release's `SHA256SUMS.txt`; automatic installation stops if verification is unavailable or fails. Upgrading a copy installed in Program Files may require UAC confirmation.
-
-## How Velo works
-
-Think of Velo as a local **app workshop**: build a catalog of installed applications, look up a name as you type, and ask Windows to open the selected app when you press Enter.
-
-<p align="center">
-  <img src="docs/diagrams/velo-how-it-works.png" alt="Cartoon implementation overview with Chinese labels: Vue passes user actions through Wails to Go and Windows; three panels show catalog building, in-memory search, and launching followed by history recording" width="960" />
-</p>
-
-### Four helpers, each with a job
-
-| Helper | Responsibility | Implementation |
-| --- | --- | --- |
-| 🖥️ UI | Accept input and display apps, settings, and results | Vue 3 + TypeScript, [App.vue](frontend/src/App.vue), and [components/](frontend/src/components/) |
-| ✉️ Messenger | Pass UI actions to Go and return results and change notifications | Wails 2 generated [wailsjs/](frontend/wailsjs/) bindings and runtime events |
-| 🧑‍🔧 Coordinator | Organize searches, catalog refreshes, settings saves, and launch requests | [app.go](app.go) coordinates desktop operations; [Service](internal/app/service.go) manages business logic and data |
-| 🪟 Operator | Discover and launch apps, register global shortcuts, and manage the tray through Windows | [internal/platform/](internal/platform/) |
-
-### Follow one use of the launcher
-
-1. **📚 Build the catalog.** Starting from [main.go](main.go), `Service` loads settings, the cached index, the application library, and history, then starts a background scan. [indexer](internal/indexer/indexer.go) works with the Windows platform layer to discover apps in the Start menu, desktop, Program Files, custom directories, and Windows Apps, merge duplicates, filter helper entries, and cache icons through [icon](internal/icon/cache.go). Sources share the [AppItem](internal/model/app.go) model. The service combines them with custom entries and pins to build the in-memory search catalog. Windows shortcuts come from the built-in [systemtools](internal/systemtools/catalog.go) catalog.
-2. **🔎 Find an app.** Typing `code` makes `App.vue` call `App.Search` through Wails, which delegates to `Service.Search`. [search](internal/search/search.go) matches names, keywords, pinyin, and abbreviations, with fuzzy matching available. [history](internal/history/history.go) supplies launch frequency, recency, and past choices for the same query to personalize ranking.
-3. **🚀 Launch and remember.** Pressing Enter passes the app ID and query to `App.Launch`, which resolves the item and calls `platform.Launch`. Once Windows accepts the launch request, `Service.Record` saves its history for future searches and home-screen suggestions. The UI clears the search as soon as it sends the launch request.
-
-**Refresh the catalog in the background; search it as you type.** Existing cached results are available first. Refreshes run every 30 minutes by default or on request. Go emits `index:changed` when the catalog changes, prompting the UI to reload results. Each query searches memory while scanning runs in a background task.
-
-Settings, the index, history, and the application library live under `%LOCALAPPDATA%\Velo` in `config.json`, `index.json`, `history.json`, and `application-library.json`; cached icons live in `cache/icons/`. [storage](internal/storage/json.go) saves JSON through a temporary file in the same directory before replacing the previous file.
-
-**The UI ships inside the executable.** Vite builds Vue into `frontend/dist/`, and `main.go` embeds those files with Go's `embed` package. Wails displays them through WebView2 and connects the Go methods and events described above. [update.go](update.go) and [internal/update/](internal/update/) check GitHub Releases, download and verify SHA-256 checksums, back up settings, and delegate installation to Windows.
-
-## Development and builds
-
-Use the CI environment as a reference: **Windows x64, Go 1.25.6, Node.js 22.15.0, npm 10, Wails CLI 2.12.0**, and WebView2 Runtime.
+Product sources live in `rust/`. Install the exact Rust/MSVC/SDK versions locked by `rust/rust-toolchain.toml` and `rust/windows-toolchain.json`, following the [development guide](docs/development.md). Use PowerShell 7.4+.
 
 ```powershell
-git clone https://github.com/HBLADEH/velo-launcher.git
-cd velo-launcher
-go install github.com/wailsapp/wails/v2/cmd/wails@v2.12.0
-wails doctor
-npm --prefix frontend ci
-wails dev
+$env:GOTOOLCHAIN = 'go1.25.6' # Historical compatibility tests only
+./scripts/verify-rust.ps1 -Product -SmokeTest
 ```
 
-Validate and build:
+Both renderers are built separately under `rust/target/product-artifacts/`. Use isolated preview identities and data directories for development; see [Rust documentation](rust/README.md). Never test against installed user data.
 
-```powershell
-# Formatting, frontend checks/build, go vet, Go tests, and Windows packaging
-./scripts/verify.ps1
+Go/Wails sources and scripts remain solely as historical compatibility references, with no new product builds. See [legacy notes](docs/legacy-go-wails.md).
 
-# Validate without producing a Windows executable
-./scripts/verify.ps1 -SkipBuild
+## Validation and license
 
-# Also create an installer (requires NSIS and makensis on PATH)
-./scripts/verify.ps1 -Installer
-```
+[RS-14 / G4 acceptance](docs/baselines/2026-11-07-slint-rs14/machine-completion-2026-11-14/g4-acceptance.md) covers the existing Windows 11 / Intel UHD 630 host and isolated Windows 10 guest. Unavailable physical hardware was skipped. Renderer resource and animation tradeoffs remain documented in the [refactor plan](docs/rust-slint-refactor-plan.md); no universal memory budget is promised.
 
-Artifacts are written to `build/bin/`. GitHub Actions uses the same validation script. Files in `frontend/wailsjs/` are generated by Wails; do not edit them manually.
+Report issues with the Windows version, Velo version and renderer, removing personal information. See [contribution guidelines](CONTRIBUTING.md).
 
-```text
-frontend/src/   Vue UI, styles, and assets
-internal/       Search, indexing, configuration, history, and Windows integration
-build/          Icons, Windows metadata, and installer configuration
-scripts/        Validation and resource measurement scripts
-docs/           User guide, developer notes, and validation records
-```
-
-## Documentation
-
-The following detailed documents are currently in Chinese:
-
-| Document | Contents |
-| --- | --- |
-| [User guide](docs/user-guide.md) | Custom apps, updates, troubleshooting, and storage |
-| [Development guide](docs/development.md) | Debug flags, tests, releases, and resource measurements |
-| [System shortcuts](docs/system-shortcuts.md) | Available entries and Windows compatibility |
-| [Build assets](build/README.md) | Logo, application icons, and installer assets |
-| [Verification records](docs/verification.md) | Completed checks, measurements, and limitations |
-| [Implementation checklist](docs/implementation.md) | Feature progress and pending validation |
-| [Lightweight optimization plan](docs/lightweight-optimization-plan.md) | Task order, status, acceptance criteria, and measurements |
-
-## Project status
-
-Velo focuses on local Windows application search and launch. Plugins and cloud synchronization are not currently available. Core features are implemented; full performance and stability acceptance testing is still in progress.
-
-Previous measurements showed approximately **154–218 MB of private memory**, including WebView2 child processes. The 80 MB design target has not been reached. These are environment-specific measurements, not a guarantee for every device. See the [verification records](docs/verification.md).
-
-## Contributing
-
-Bug reports, feature requests, documentation improvements, and pull requests are welcome in Chinese or English. Chinese is the project's primary working language. Read the bilingual [contribution guide](CONTRIBUTING.md) for the development and validation workflow.
-
-When opening an [issue](https://github.com/HBLADEH/velo-launcher/issues), include your Windows version, Velo version, reproduction steps, and expected and actual behavior. Remove personal paths and other sensitive information from logs and screenshots before sharing.
-
-## License and acknowledgments
-
-Velo is licensed under the [MIT License](LICENSE).
-
-The interface uses a locally bundled SVG subset of [Microsoft Fluent UI System Icons](https://github.com/microsoft/fluentui-system-icons) (MIT). Third-party applications retain their native icons. See the [icon license](frontend/src/assets/fluent/LICENSE.txt) and [integration notes (Chinese)](frontend/src/assets/fluent/README.md). Third-party notices are also available in the application's **Settings → 关于** (About) page.
+Velo is [MIT licensed](LICENSE); dependencies retain their own terms. Slint uses Royalty-free 2.0, with the actual AboutSlint available in Settings / About. Complete notices ship in the installers and license archive. [Fluent icons](rust/ui/assets/fluent/LICENSE.txt) use MIT.

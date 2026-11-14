@@ -1,0 +1,14 @@
+{
+  "Source": "software-events.log",
+  "CapturedAt": "2026-11-03T12:00:17.6438586+08:00",
+  "SnapshotOnly": true,
+  "Lines": [
+    "event=native_window pid=116896 unix_us=1793678114386253 elapsed_us=88508 dropped=0 hwnd=18B00BC scale=1 physical_width=640 physical_height=540",
+    "event=lifecycle_ready pid=116896 unix_us=1793678114388540 elapsed_us=90794 dropped=0 native_visible=false content_ready=true background=false hotkey_available=true",
+    "event=window_layout pid=116896 unix_us=1793678114394788 elapsed_us=97045 dropped=0 reason=show applied=true dpi=96 x=2560 y=248 physical_width=640 physical_height=660 logical_width=640.0 logical_height=660.0 work_x=1920 work_y=42 work_width=1920 work_height=1032",
+    "event=native_focus_sync pid=116896 unix_us=1793678114472591 elapsed_us=174847 dropped=0 focused=true source=GetForegroundWindow+GetFocus",
+    "event=lifecycle_shown pid=116896 unix_us=1793678114489516 elapsed_us=191772 dropped=0 reason=startup generation=1 native_active=true query_bytes=0 appearance_open=false",
+    "event=input_accepted pid=116896 unix_us=1793678162043178 elapsed_us=47746210 dropped=0 utf8_bytes=4 focused=true native_focused=true visible=true composing=false",
+    "event=window_layout pid=116896 unix_us=1793678162054413 elapsed_us=47757445 dropped=0 reason=content applied=true dpi=96 x=2560 y=248 physical_width=640 physical_height=264 logical_width=640.0 logical_height=264.0 work_x=1920 work_y=42 work_width=1920 work_height=1032"
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "Date": "2026-11-13",
+  "Source": "Direct user replies to the task UAC/tray questions",
+  "Reports": [
+    {
+      "Action": "Repair/install VMware Tools and restart guest",
+      "Reply": "已安装/修复并重启虚拟机"
+    },
+    {
+      "Action": "Guest UAC for Microsoft WebView2 and official Go system install",
+      "Reply": "已在虚拟机 UAC 选择“是”"
+    },
+    {
+      "Action": "Go before transition tray exit",
+      "Reply": "已从虚拟机 Velo 托盘退出"
+    },
+    {
+      "Action": "Rollback Go tray exit",
+      "Reply": "退出了，没出现UAC",
+      "Disposition": "Normal stop logged at 17:00:33; original attached-exit-code check stopped before uninstall, no UAC was yet requested"
+    },
+    {
+      "Action": "Separately scheduled guest Go uninstall UAC",
+      "Reply": "已在虚拟机选择“是”"
+    }
+  ],
+  "AgentClickedGuestUAC": false,
+  "HostSystemInstallersExecuted": false
+}

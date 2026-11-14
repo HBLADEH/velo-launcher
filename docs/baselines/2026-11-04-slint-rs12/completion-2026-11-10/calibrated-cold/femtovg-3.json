@@ -1,0 +1,117 @@
+{
+  "SchemaVersion": 1,
+  "RecordedAtUtc": "2026-11-10T18:38:31.7995366Z",
+  "Case": "femtovg-3",
+  "Edition": "femtovg",
+  "ExecutableSHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+  "OriginalInputId": "024397D07DB93ECF20AFE342D982D988B8C0F9D9C1272BC69700447A3C8C0935",
+  "BootUtc": "2026-11-10T18:23:12.5Z",
+  "BootId": "639299317925000000",
+  "PreparedBeforeBoot": true,
+  "UserConfirmedFirstVeloLaunchThisBoot": true,
+  "SharedBootLedgerMatches": true,
+  "CandidateExecutableAndApplicationDataReadBeforeLaunch": false,
+  "MachineGeneratedInput": true,
+  "UserReportedCharacterAppearedAndNormalQuit": true,
+  "NativeProbeExitCode": 0,
+  "CalibratorSHA256": "22BE103D619273F3B1800E8945B09D4CF8372249CB686DEF879EAD0F456457EF",
+  "CalibratorSourceSHA256": "69AD99FC521CEABDA33FB85B053BA939357E4A27DFC88DA1DC343C4FE255F82B",
+  "FrozenCollectorSHA256": {
+    "start-rs12-calibrated-cold.ps1": "3A00A1FC897DB0FBACD579C72BDB372BE06798D4D796F4A30ED702F08FA966C6",
+    "start-rs12-cold.ps1": "169B35A629F8B68EDDF0C9EC2B2AB61F2F2387A6967DEC07D3DD557AF0057201",
+    "collect-rs12-cold.ps1": "4367B0F0403847B79E41E2527415E04E36CACCF52B9796BA9F0381D4A3FFBF11",
+    "export-rs12-readiness.ps1": "B255B51CBF595D920A774D73A59B3E2A663AC6972D9CAA6905EB843C0B104E36"
+  },
+  "CalibrationManifestSHA256": "3D6483F5E6321BFFF4CD37EB7CF56081F4D62F6EE3BE76AC3634A4587344353A",
+  "Valid": true,
+  "DurationUpperMilliseconds": 473.74260000000004,
+  "DeclaredClockGuardAndObservedBracketMilliseconds": 0.10045000000000001,
+  "ObservedClockMappingRangeMilliseconds": 0.00015000000000000001,
+  "Probes": 3,
+  "MaximumProbeGapMilliseconds": 4.3783,
+  "AcceptedEditCount": 3,
+  "SelectedEditIsEarliestTimestamp": true,
+  "ProductEventLossObserved": false,
+  "HiddenOrReactivatedBeforeSelectedEdit": false,
+  "DragEventsBeforeSelectedEdit": 0,
+  "DragEventsAfterSelectedEdit": 1,
+  "Segments": [
+    {
+      "Event": "main_started",
+      "FromProcessCreationMilliseconds": 26.3039,
+      "IsPresentedFrame": false
+    },
+    {
+      "Event": "native_window",
+      "FromProcessCreationMilliseconds": 373.5819,
+      "IsPresentedFrame": false
+    },
+    {
+      "Event": "startup_configuration_ready",
+      "FromProcessCreationMilliseconds": 374.4849,
+      "IsPresentedFrame": false
+    },
+    {
+      "Event": "first_opengl_frame",
+      "FromProcessCreationMilliseconds": 438.5119,
+      "IsPresentedFrame": false
+    },
+    {
+      "Event": "lifecycle_shown",
+      "FromProcessCreationMilliseconds": 472.6179,
+      "IsPresentedFrame": false
+    },
+    {
+      "Event": "input_accepted",
+      "FromProcessCreationMilliseconds": 473.6419,
+      "IsPresentedFrame": false
+    },
+    {
+      "Event": "first_redraw_requested",
+      "FromProcessCreationMilliseconds": 480.7869,
+      "IsPresentedFrame": false
+    }
+  ],
+  "PresentedStartupFrameCaptured": false,
+  "ScanCompleted": true,
+  "ScanWarningRetained": true,
+  "NormalExitCode": 0,
+  "FrozenExecutableMatches": true,
+  "OriginalSeedIdentityMatches": true,
+  "DataMatchesOriginalSeed": {
+    "config.json": true,
+    "index.json": false,
+    "history.json": true,
+    "application-library.json": true
+  },
+  "Cleanup": {
+    "TargetCreationIdentityGone": true,
+    "RecordedHWNDGone": true,
+    "InstanceServiceWindowAbsent": true,
+    "InstanceMutexAbsent": true,
+    "VeloProcessesRemaining": 0,
+    "HelpersRemaining": 0,
+    "IsolatedWebViewsRemaining": 0,
+    "AltSpaceTemporarilyRegisteredAndReleased": true
+  },
+  "FormalPreLaunchHashesTaken": false,
+  "FormalFilesUnchangedClaim": false,
+  "FormalPostExitLastWriteTimesPrecedeBoot": true,
+  "LocalEvidenceRoot": ".reasonix/rs12-calibrated-cold-20261110-final/femtovg-3",
+  "RawEvidenceSHA256": {
+    "case.json": "1126F73F8812464A5EF16DC44E1B491800523FDFCA4597978ABF7EA59B94DFB0",
+    "started.json": "42B76A74F82FC946CB985AB75DD0AB4A28FC3F9C5B3C7A1BC335F99876C0A582",
+    "startup-calibration.jsonl": "0129093D578639CA9DB68711773DCB92AA3266FC4968049D57E4C9FC80E966FB",
+    "machine-input-source.json": "B8B01C098B7EB5C95D2489618DA0E82C56304E0236F6C9DA87A4360182626AB9",
+    "exit.json": "02EFB358BF100663BDF891A1987CE293F44535397FAE701C153B6CC83180A213",
+    "completion.json": "56A4823C1C0C44EE9CB191348597126EC724CC0A49EEFDFB7A593776AF30B982",
+    "session.json": "7256F6A8F285B5D56ED931AC56B9F3474370E01FF57E635C9EB9FC25EFAF8DCD",
+    "cold-input.json": "044636FC0209A661CB0E02017496A7F7F0B7E410ADC2A9D24DE9871AC3440B0E",
+    "measurement-events.log": "85176D0236519196B150336B189B84D4A73B0F2A17C66C4AA916C0927803AD30"
+  },
+  "LocalCleanupSHA256": "8007A7AF08618C48CA7A12AAEA550639A4322DE6EDCC9986F67216B85F42EAC0",
+  "ExactFirstPossibleInputClaim": false,
+  "Scope": "Third independent first-Velo-launch FemtoVG machine calibration. Three fixed probes and three edits retained, earliest edit selected; later dragging is outside the timing interval. User confirmed normal characters and quit. Actual accepted-input upper bound within 500ms supports this trial; three samples remain small-sample observations. Physical/IME records separate; OpenGL callback and redraw request are not desktop presentation. No product source or frozen tool changes.",
+  "ProcessCreationUtc": "2026-11-10T18:35:08.6742971Z",
+  "BootToProcessCreationSeconds": 716.1742971
+}

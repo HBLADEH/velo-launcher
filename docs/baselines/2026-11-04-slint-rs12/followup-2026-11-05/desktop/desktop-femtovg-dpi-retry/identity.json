@@ -1,0 +1,62 @@
+{
+  "Run": "desktop-femtovg-dpi-retry",
+  "Renderer": "femtovg",
+  "SHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+  "ProcessId": 320796,
+  "StartedTicks": 639294407108647671,
+  "Scope": "Native window verified at 96,144,96 DPI; explicit geometry injection placed target on the already-150-percent right display.",
+  "Exit": {
+    "Completed": true,
+    "ProcessId": 320796,
+    "ExitCode": 0,
+    "ForcedCleanup": false,
+    "ExecutableUnchanged": true
+  },
+  "RawSessionSHA256": "D4639A6520E38958E3A1808498418BFA26AA51561669EBA14AF7475BB15DD56A",
+  "RawEventsSHA256": "1369C0C4A042BC4F64D54503CA8BA5338E9F8E8F22DE3894F627039C84AD596B",
+  "ActualAutomatedInput": [
+    "event=input_accepted pid=320796 unix_us=1793844120514589 elapsed_us=209581464 dropped=0 utf8_bytes=9 focused=true native_focused=true visible=true composing=false synthetic=false"
+  ],
+  "RawResponseFiles": [
+    {
+      "SHA256": "D6A6F0FE7A85663683371A81E3B4760BEA57B018220300E5B7AEFC4D22A97488",
+      "Name": "01-home.json"
+    },
+    {
+      "SHA256": "B0B9E2F65C81E1C6C80D266478407B777682826F570D09C1813DBD601DC64A4E",
+      "Name": "02-glyph.json"
+    },
+    {
+      "SHA256": "D047FFD6E9D6F232B539DE2D390EADDB542BAD2E9FD1DF802783E8A219AB24B4",
+      "Name": "03-hide.json"
+    },
+    {
+      "SHA256": "AC174EE07D42038B599E0A6729FB5DAA901C8557122D7DD0C5EE59B4A3263E1A",
+      "Name": "04-150.json"
+    },
+    {
+      "SHA256": "412E0A0A881AC9204B3D165387339CE05574F726AF9D2C943CA942369A900D6F",
+      "Name": "04b-positioned.json"
+    },
+    {
+      "SHA256": "7C8DCD64C4D388553FEED4FF98D4AA557181209ED26E59978648ED0615DA8CA3",
+      "Name": "05-settings.json"
+    },
+    {
+      "SHA256": "FDCEC7649503DEA611483E4BD125A9F675EFE9A5C66C0011C95188C953A7DE86",
+      "Name": "06-hide.json"
+    },
+    {
+      "SHA256": "B50C08F6203E3EF5BF7E345BBB187C720A6EE513F64489DD45053474CCADC4EF",
+      "Name": "07-restored.json"
+    },
+    {
+      "SHA256": "5D4A88B519615F31632E9CFF54AA701F4C15C6AC2A79ECF28B728CB69C29F3C6",
+      "Name": "07b-show.json"
+    },
+    {
+      "SHA256": "71D2AA60397AF71E6D5DDD3504FC9BCEEC762EAC1A6A8A3DF22A2E0A92FD9A6E",
+      "Name": "08-quit.json"
+    }
+  ]
+}

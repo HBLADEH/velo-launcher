@@ -1,0 +1,145 @@
+{
+  "Renderer": "femtovg",
+  "ExecutableSHA256": "D81F31ED8AB3C0D45A3565CDC8AA412B3FB870C0CC350204178CDE44456B6487",
+  "Rows": [
+    {
+      "Clip": "settings-enter-current-active-slice",
+      "Measured": true,
+      "ROIClientLogicalPixels": [
+        74,
+        29,
+        86,
+        62
+      ],
+      "Frames": 17,
+      "IntermediateFrames": 5,
+      "MaximumActiveSourceGapMilliseconds": 16.683800011873245,
+      "DeclaredOpacityMilliseconds": 220,
+      "OpacityFit": {
+        "DurationMilliseconds": 108,
+        "OnsetSourceMilliseconds": -0.31710001826286316,
+        "RMSE": 0.03355007875779485,
+        "DurationRangeAtRMSEPlus002": [
+          54,
+          166
+        ]
+      },
+      "DeclaredEnterShiftDurationMilliseconds": 280,
+      "VerticalShiftFit": {
+        "DurationMilliseconds": 136,
+        "RMSELogicalPixels": 0.5354575117469031
+      },
+      "VisibleExitMaximumAbsoluteShiftLogicalPixels": null,
+      "Samples": [
+        {
+          "SourceMilliseconds": 0.0,
+          "Opacity": 0.0,
+          "VerticalShiftLogicalPixels": -1.0,
+          "PixelRMSE": 0.0
+        },
+        {
+          "SourceMilliseconds": 16.682899981737137,
+          "Opacity": 0.6586000247345757,
+          "VerticalShiftLogicalPixels": 2.75,
+          "PixelRMSE": 9.212044012054589
+        },
+        {
+          "SourceMilliseconds": 33.36669999361038,
+          "Opacity": 0.7981783572042691,
+          "VerticalShiftLogicalPixels": 2.0,
+          "PixelRMSE": 5.607938764627202
+        },
+        {
+          "SourceMilliseconds": 50.04999998211861,
+          "Opacity": 0.8773160451341894,
+          "VerticalShiftLogicalPixels": 2.0,
+          "PixelRMSE": 3.3265400638111906
+        },
+        {
+          "SourceMilliseconds": 66.73249998688698,
+          "Opacity": 0.9341654538281402,
+          "VerticalShiftLogicalPixels": 1.0,
+          "PixelRMSE": 1.7890307112453399
+        },
+        {
+          "SourceMilliseconds": 83.41569998860359,
+          "Opacity": 0.9636509098392821,
+          "VerticalShiftLogicalPixels": 1.0,
+          "PixelRMSE": 0.9810033986351774
+        },
+        {
+          "SourceMilliseconds": 100.09950000047684,
+          "Opacity": 0.9806560076703178,
+          "VerticalShiftLogicalPixels": 0.0,
+          "PixelRMSE": 0.5304520064530126
+        },
+        {
+          "SourceMilliseconds": 133.4660999774933,
+          "Opacity": 0.9955754521172263,
+          "VerticalShiftLogicalPixels": 0.0,
+          "PixelRMSE": 0.19490046538720518
+        },
+        {
+          "SourceMilliseconds": 166.832800000906,
+          "Opacity": 0.9999999999999998,
+          "VerticalShiftLogicalPixels": 0.0,
+          "PixelRMSE": 9.087790281130434e-14
+        },
+        {
+          "SourceMilliseconds": 183.51569998264313,
+          "Opacity": 0.9999999999999998,
+          "VerticalShiftLogicalPixels": 0.0,
+          "PixelRMSE": 9.087790281130434e-14
+        },
+        {
+          "SourceMilliseconds": 200.19929999113083,
+          "Opacity": 0.9999999999999998,
+          "VerticalShiftLogicalPixels": 0.0,
+          "PixelRMSE": 9.087790281130434e-14
+        },
+        {
+          "SourceMilliseconds": 216.8817999958992,
+          "Opacity": 0.9999999999999998,
+          "VerticalShiftLogicalPixels": 0.0,
+          "PixelRMSE": 9.087790281130434e-14
+        },
+        {
+          "SourceMilliseconds": 233.56459999084473,
+          "Opacity": 0.9999999999999998,
+          "VerticalShiftLogicalPixels": 0.0,
+          "PixelRMSE": 9.087790281130434e-14
+        },
+        {
+          "SourceMilliseconds": 250.24829998612404,
+          "Opacity": 0.9999999999999998,
+          "VerticalShiftLogicalPixels": 0.0,
+          "PixelRMSE": 9.087790281130434e-14
+        },
+        {
+          "SourceMilliseconds": 266.93159997463226,
+          "Opacity": 0.9999999999999998,
+          "VerticalShiftLogicalPixels": 0.0,
+          "PixelRMSE": 9.087790281130434e-14
+        },
+        {
+          "SourceMilliseconds": 283.6153999865055,
+          "Opacity": 0.9999999999999998,
+          "VerticalShiftLogicalPixels": 0.0,
+          "PixelRMSE": 9.087790281130434e-14
+        },
+        {
+          "SourceMilliseconds": 300.2983999848366,
+          "Opacity": 0.9999999999999998,
+          "VerticalShiftLogicalPixels": 0.0,
+          "PixelRMSE": 9.087790281130434e-14
+        }
+      ],
+      "BackgroundModel": "Per-frame local plane removed independently of glyph",
+      "ColorModel": "RGB",
+      "Scope": "Title-only optical estimate. Shift is poorly identifiable at near-zero opacity; fit error and original frames must be reviewed before acceptance."
+    }
+  ],
+  "PhysicalInput": false,
+  "RS13Complete": false,
+  "Scope": "Optical native surface measurements, not GPU execution time or final desktop presentation. No fitted curve is automatically accepted."
+}

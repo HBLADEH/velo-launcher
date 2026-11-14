@@ -1,0 +1,1133 @@
+{
+  "Families": [
+    "settings-enter",
+    "settings-exit",
+    "custom-enter",
+    "custom-exit",
+    "dropdown-enter",
+    "dropdown-exit",
+    "recording",
+    "list-enter",
+    "list-selection",
+    "home-entry",
+    "tile-hover",
+    "tile-press",
+    "gear-hover",
+    "scanning"
+  ],
+  "Clips": [
+    {
+      "Edition": "femtovg",
+      "Run": "femtovg-motion",
+      "Clip": "settings-enter-1",
+      "ExecutableSHA256": "EAD49D50F8E206D82C6A15FFB0D20A2300DBA7AFD23142B41F82339C6BD89E97",
+      "SavedFrames": 27,
+      "ChangedIntervals": 17,
+      "MajorChangeIntervals": 8,
+      "Preview": "motion/femtovg-motion/settings-enter-1.webp",
+      "MaximumLiveSourceGapMilliseconds": 133.4624
+    },
+    {
+      "Edition": "femtovg",
+      "Run": "femtovg-motion",
+      "Clip": "settings-exit-1",
+      "ExecutableSHA256": "EAD49D50F8E206D82C6A15FFB0D20A2300DBA7AFD23142B41F82339C6BD89E97",
+      "SavedFrames": 20,
+      "ChangedIntervals": 11,
+      "MajorChangeIntervals": 10,
+      "Preview": "motion/femtovg-motion/settings-exit-1.webp",
+      "MaximumLiveSourceGapMilliseconds": 216.8808
+    },
+    {
+      "Edition": "femtovg",
+      "Run": "femtovg-motion",
+      "Clip": "settings-enter-2",
+      "ExecutableSHA256": "EAD49D50F8E206D82C6A15FFB0D20A2300DBA7AFD23142B41F82339C6BD89E97",
+      "SavedFrames": 26,
+      "ChangedIntervals": 16,
+      "MajorChangeIntervals": 8,
+      "Preview": "motion/femtovg-motion/settings-enter-2.webp",
+      "MaximumLiveSourceGapMilliseconds": 33.3661
+    },
+    {
+      "Edition": "femtovg",
+      "Run": "femtovg-motion",
+      "Clip": "settings-exit-2",
+      "ExecutableSHA256": "EAD49D50F8E206D82C6A15FFB0D20A2300DBA7AFD23142B41F82339C6BD89E97",
+      "SavedFrames": 18,
+      "ChangedIntervals": 12,
+      "MajorChangeIntervals": 10,
+      "Preview": "motion/femtovg-motion/settings-exit-2.webp",
+      "MaximumLiveSourceGapMilliseconds": 216.8814
+    },
+    {
+      "Edition": "femtovg",
+      "Run": "femtovg-motion",
+      "Clip": "custom-enter",
+      "ExecutableSHA256": "EAD49D50F8E206D82C6A15FFB0D20A2300DBA7AFD23142B41F82339C6BD89E97",
+      "SavedFrames": 18,
+      "ChangedIntervals": 12,
+      "MajorChangeIntervals": 4,
+      "Preview": "motion/femtovg-motion/custom-enter.webp",
+      "MaximumLiveSourceGapMilliseconds": 100.0996
+    },
+    {
+      "Edition": "femtovg",
+      "Run": "femtovg-motion",
+      "Clip": "custom-exit",
+      "ExecutableSHA256": "EAD49D50F8E206D82C6A15FFB0D20A2300DBA7AFD23142B41F82339C6BD89E97",
+      "SavedFrames": 16,
+      "ChangedIntervals": 11,
+      "MajorChangeIntervals": 9,
+      "Preview": "motion/femtovg-motion/custom-exit.webp",
+      "MaximumLiveSourceGapMilliseconds": 300.296
+    },
+    {
+      "Edition": "femtovg",
+      "Run": "femtovg-motion",
+      "Clip": "dropdown-enter",
+      "ExecutableSHA256": "EAD49D50F8E206D82C6A15FFB0D20A2300DBA7AFD23142B41F82339C6BD89E97",
+      "SavedFrames": 13,
+      "ChangedIntervals": 10,
+      "MajorChangeIntervals": 8,
+      "Preview": "motion/femtovg-motion/dropdown-enter.webp",
+      "MaximumLiveSourceGapMilliseconds": 33.3652
+    },
+    {
+      "Edition": "femtovg",
+      "Run": "femtovg-motion",
+      "Clip": "dropdown-exit",
+      "ExecutableSHA256": "EAD49D50F8E206D82C6A15FFB0D20A2300DBA7AFD23142B41F82339C6BD89E97",
+      "SavedFrames": 21,
+      "ChangedIntervals": 17,
+      "MajorChangeIntervals": 16,
+      "Preview": "motion/femtovg-motion/dropdown-exit.webp",
+      "MaximumLiveSourceGapMilliseconds": 33.3666
+    },
+    {
+      "Edition": "femtovg",
+      "Run": "femtovg-motion",
+      "Clip": "recording",
+      "ExecutableSHA256": "EAD49D50F8E206D82C6A15FFB0D20A2300DBA7AFD23142B41F82339C6BD89E97",
+      "SavedFrames": 70,
+      "ChangedIntervals": 67,
+      "MajorChangeIntervals": 1,
+      "Preview": "motion/femtovg-motion/recording.webp",
+      "MaximumLiveSourceGapMilliseconds": 33.3672
+    },
+    {
+      "Edition": "femtovg",
+      "Run": "femtovg-secondary",
+      "Clip": "list-enter",
+      "ExecutableSHA256": "EAD49D50F8E206D82C6A15FFB0D20A2300DBA7AFD23142B41F82339C6BD89E97",
+      "SavedFrames": 15,
+      "ChangedIntervals": 11,
+      "MajorChangeIntervals": 3,
+      "Preview": "motion/femtovg-secondary/list-enter.webp",
+      "MaximumLiveSourceGapMilliseconds": 33.3666
+    },
+    {
+      "Edition": "femtovg",
+      "Run": "femtovg-secondary",
+      "Clip": "list-selection",
+      "ExecutableSHA256": "EAD49D50F8E206D82C6A15FFB0D20A2300DBA7AFD23142B41F82339C6BD89E97",
+      "SavedFrames": 14,
+      "ChangedIntervals": 10,
+      "MajorChangeIntervals": 8,
+      "Preview": "motion/femtovg-secondary/list-selection.webp",
+      "MaximumLiveSourceGapMilliseconds": 66.7322
+    },
+    {
+      "Edition": "femtovg",
+      "Run": "femtovg-secondary",
+      "Clip": "home-entry",
+      "ExecutableSHA256": "EAD49D50F8E206D82C6A15FFB0D20A2300DBA7AFD23142B41F82339C6BD89E97",
+      "SavedFrames": 19,
+      "ChangedIntervals": 15,
+      "MajorChangeIntervals": 6,
+      "Preview": "motion/femtovg-secondary/home-entry.webp",
+      "MaximumLiveSourceGapMilliseconds": 316.977
+    },
+    {
+      "Edition": "femtovg",
+      "Run": "femtovg-secondary",
+      "Clip": "tile-hover",
+      "ExecutableSHA256": "EAD49D50F8E206D82C6A15FFB0D20A2300DBA7AFD23142B41F82339C6BD89E97",
+      "SavedFrames": 19,
+      "ChangedIntervals": 13,
+      "MajorChangeIntervals": 4,
+      "Preview": "motion/femtovg-secondary/tile-hover.webp",
+      "MaximumLiveSourceGapMilliseconds": 250.2475
+    },
+    {
+      "Edition": "femtovg",
+      "Run": "femtovg-secondary",
+      "Clip": "tile-press",
+      "ExecutableSHA256": "EAD49D50F8E206D82C6A15FFB0D20A2300DBA7AFD23142B41F82339C6BD89E97",
+      "SavedFrames": 25,
+      "ChangedIntervals": 18,
+      "MajorChangeIntervals": 7,
+      "Preview": "motion/femtovg-secondary/tile-press.webp",
+      "MaximumLiveSourceGapMilliseconds": 100.102
+    },
+    {
+      "Edition": "femtovg",
+      "Run": "femtovg-secondary",
+      "Clip": "gear-hover",
+      "ExecutableSHA256": "EAD49D50F8E206D82C6A15FFB0D20A2300DBA7AFD23142B41F82339C6BD89E97",
+      "SavedFrames": 26,
+      "ChangedIntervals": 21,
+      "MajorChangeIntervals": 1,
+      "Preview": "motion/femtovg-secondary/gear-hover.webp",
+      "MaximumLiveSourceGapMilliseconds": 133.4675
+    },
+    {
+      "Edition": "femtovg",
+      "Run": "femtovg-secondary",
+      "Clip": "scanning",
+      "ExecutableSHA256": "EAD49D50F8E206D82C6A15FFB0D20A2300DBA7AFD23142B41F82339C6BD89E97",
+      "SavedFrames": 63,
+      "ChangedIntervals": 62,
+      "MajorChangeIntervals": 11,
+      "Preview": "motion/femtovg-secondary/scanning.webp",
+      "MaximumLiveSourceGapMilliseconds": 33.3671
+    },
+    {
+      "Edition": "software",
+      "Run": "software-motion",
+      "Clip": "settings-enter-1",
+      "ExecutableSHA256": "D9265467D96436581A6C562E0B49D8F5654D6A102F7ECC19A1A6405B7FB69D50",
+      "SavedFrames": 21,
+      "ChangedIntervals": 12,
+      "MajorChangeIntervals": 9,
+      "Preview": "motion/software-motion/settings-enter-1.webp",
+      "MaximumLiveSourceGapMilliseconds": 50.0491
+    },
+    {
+      "Edition": "software",
+      "Run": "software-motion",
+      "Clip": "settings-exit-1",
+      "ExecutableSHA256": "D9265467D96436581A6C562E0B49D8F5654D6A102F7ECC19A1A6405B7FB69D50",
+      "SavedFrames": 11,
+      "ChangedIntervals": 8,
+      "MajorChangeIntervals": 7,
+      "Preview": "motion/software-motion/settings-exit-1.webp",
+      "MaximumLiveSourceGapMilliseconds": 350.3389
+    },
+    {
+      "Edition": "software",
+      "Run": "software-motion",
+      "Clip": "settings-enter-2",
+      "ExecutableSHA256": "D9265467D96436581A6C562E0B49D8F5654D6A102F7ECC19A1A6405B7FB69D50",
+      "SavedFrames": 25,
+      "ChangedIntervals": 15,
+      "MajorChangeIntervals": 11,
+      "Preview": "motion/software-motion/settings-enter-2.webp",
+      "MaximumLiveSourceGapMilliseconds": 150.15
+    },
+    {
+      "Edition": "software",
+      "Run": "software-motion",
+      "Clip": "settings-exit-2",
+      "ExecutableSHA256": "D9265467D96436581A6C562E0B49D8F5654D6A102F7ECC19A1A6405B7FB69D50",
+      "SavedFrames": 13,
+      "ChangedIntervals": 10,
+      "MajorChangeIntervals": 9,
+      "Preview": "motion/software-motion/settings-exit-2.webp",
+      "MaximumLiveSourceGapMilliseconds": 350.3467
+    },
+    {
+      "Edition": "software",
+      "Run": "software-motion",
+      "Clip": "custom-enter",
+      "ExecutableSHA256": "D9265467D96436581A6C562E0B49D8F5654D6A102F7ECC19A1A6405B7FB69D50",
+      "SavedFrames": 13,
+      "ChangedIntervals": 9,
+      "MajorChangeIntervals": 3,
+      "Preview": "motion/software-motion/custom-enter.webp",
+      "MaximumLiveSourceGapMilliseconds": 66.7322
+    },
+    {
+      "Edition": "software",
+      "Run": "software-motion",
+      "Clip": "custom-exit",
+      "ExecutableSHA256": "D9265467D96436581A6C562E0B49D8F5654D6A102F7ECC19A1A6405B7FB69D50",
+      "SavedFrames": 13,
+      "ChangedIntervals": 9,
+      "MajorChangeIntervals": 5,
+      "Preview": "motion/software-motion/custom-exit.webp",
+      "MaximumLiveSourceGapMilliseconds": 333.6667
+    },
+    {
+      "Edition": "software",
+      "Run": "software-motion",
+      "Clip": "dropdown-enter",
+      "ExecutableSHA256": "D9265467D96436581A6C562E0B49D8F5654D6A102F7ECC19A1A6405B7FB69D50",
+      "SavedFrames": 11,
+      "ChangedIntervals": 7,
+      "MajorChangeIntervals": 7,
+      "Preview": "motion/software-motion/dropdown-enter.webp",
+      "MaximumLiveSourceGapMilliseconds": 33.3673
+    },
+    {
+      "Edition": "software",
+      "Run": "software-motion",
+      "Clip": "dropdown-exit",
+      "ExecutableSHA256": "D9265467D96436581A6C562E0B49D8F5654D6A102F7ECC19A1A6405B7FB69D50",
+      "SavedFrames": 21,
+      "ChangedIntervals": 16,
+      "MajorChangeIntervals": 14,
+      "Preview": "motion/software-motion/dropdown-exit.webp",
+      "MaximumLiveSourceGapMilliseconds": 33.3686
+    },
+    {
+      "Edition": "software",
+      "Run": "software-motion",
+      "Clip": "recording",
+      "ExecutableSHA256": "D9265467D96436581A6C562E0B49D8F5654D6A102F7ECC19A1A6405B7FB69D50",
+      "SavedFrames": 71,
+      "ChangedIntervals": 15,
+      "MajorChangeIntervals": 1,
+      "Preview": "motion/software-motion/recording.webp",
+      "MaximumLiveSourceGapMilliseconds": 33.3677
+    },
+    {
+      "Edition": "software",
+      "Run": "software-secondary",
+      "Clip": "list-enter",
+      "ExecutableSHA256": "D9265467D96436581A6C562E0B49D8F5654D6A102F7ECC19A1A6405B7FB69D50",
+      "SavedFrames": 14,
+      "ChangedIntervals": 8,
+      "MajorChangeIntervals": 4,
+      "Preview": "motion/software-secondary/list-enter.webp",
+      "MaximumLiveSourceGapMilliseconds": 50.0484
+    },
+    {
+      "Edition": "software",
+      "Run": "software-secondary",
+      "Clip": "list-selection",
+      "ExecutableSHA256": "D9265467D96436581A6C562E0B49D8F5654D6A102F7ECC19A1A6405B7FB69D50",
+      "SavedFrames": 13,
+      "ChangedIntervals": 10,
+      "MajorChangeIntervals": 8,
+      "Preview": "motion/software-secondary/list-selection.webp",
+      "MaximumLiveSourceGapMilliseconds": 367.0409
+    },
+    {
+      "Edition": "software",
+      "Run": "software-secondary",
+      "Clip": "home-entry",
+      "ExecutableSHA256": "D9265467D96436581A6C562E0B49D8F5654D6A102F7ECC19A1A6405B7FB69D50",
+      "SavedFrames": 14,
+      "ChangedIntervals": 8,
+      "MajorChangeIntervals": 6,
+      "Preview": "motion/software-secondary/home-entry.webp",
+      "MaximumLiveSourceGapMilliseconds": 33.3665
+    },
+    {
+      "Edition": "software",
+      "Run": "software-secondary",
+      "Clip": "tile-hover",
+      "ExecutableSHA256": "D9265467D96436581A6C562E0B49D8F5654D6A102F7ECC19A1A6405B7FB69D50",
+      "SavedFrames": 17,
+      "ChangedIntervals": 11,
+      "MajorChangeIntervals": 2,
+      "Preview": "motion/software-secondary/tile-hover.webp",
+      "MaximumLiveSourceGapMilliseconds": 33.3667
+    },
+    {
+      "Edition": "software",
+      "Run": "software-secondary",
+      "Clip": "tile-press",
+      "ExecutableSHA256": "D9265467D96436581A6C562E0B49D8F5654D6A102F7ECC19A1A6405B7FB69D50",
+      "SavedFrames": 17,
+      "ChangedIntervals": 9,
+      "MajorChangeIntervals": 4,
+      "Preview": "motion/software-secondary/tile-press.webp",
+      "MaximumLiveSourceGapMilliseconds": 33.3656
+    },
+    {
+      "Edition": "software",
+      "Run": "software-secondary",
+      "Clip": "gear-hover",
+      "ExecutableSHA256": "D9265467D96436581A6C562E0B49D8F5654D6A102F7ECC19A1A6405B7FB69D50",
+      "SavedFrames": 23,
+      "ChangedIntervals": 20,
+      "MajorChangeIntervals": 0,
+      "Preview": "motion/software-secondary/gear-hover.webp",
+      "MaximumLiveSourceGapMilliseconds": 100.0966
+    },
+    {
+      "Edition": "software",
+      "Run": "software-secondary",
+      "Clip": "scanning",
+      "ExecutableSHA256": "D9265467D96436581A6C562E0B49D8F5654D6A102F7ECC19A1A6405B7FB69D50",
+      "SavedFrames": 60,
+      "ChangedIntervals": 58,
+      "MajorChangeIntervals": 12,
+      "Preview": "motion/software-secondary/scanning.webp",
+      "MaximumLiveSourceGapMilliseconds": 50.0503
+    },
+    {
+      "Edition": "wails",
+      "Run": "wails-motion",
+      "Clip": "settings-enter-1",
+      "ExecutableSHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+      "SavedFrames": 25,
+      "ChangedIntervals": 22,
+      "MajorChangeIntervals": 14,
+      "Preview": "motion/wails-motion/settings-enter-1.webp",
+      "MaximumLiveSourceGapMilliseconds": 316.9777
+    },
+    {
+      "Edition": "wails",
+      "Run": "wails-motion",
+      "Clip": "settings-exit-1",
+      "ExecutableSHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+      "SavedFrames": 24,
+      "ChangedIntervals": 22,
+      "MajorChangeIntervals": 14,
+      "Preview": "motion/wails-motion/settings-exit-1.webp",
+      "MaximumLiveSourceGapMilliseconds": 50.0494
+    },
+    {
+      "Edition": "wails",
+      "Run": "wails-motion",
+      "Clip": "settings-enter-2",
+      "ExecutableSHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+      "SavedFrames": 22,
+      "ChangedIntervals": 19,
+      "MajorChangeIntervals": 15,
+      "Preview": "motion/wails-motion/settings-enter-2.webp",
+      "MaximumLiveSourceGapMilliseconds": 200.1958
+    },
+    {
+      "Edition": "wails",
+      "Run": "wails-motion",
+      "Clip": "settings-exit-2",
+      "ExecutableSHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+      "SavedFrames": 31,
+      "ChangedIntervals": 28,
+      "MajorChangeIntervals": 17,
+      "Preview": "motion/wails-motion/settings-exit-2.webp",
+      "MaximumLiveSourceGapMilliseconds": 83.4167
+    },
+    {
+      "Edition": "wails",
+      "Run": "wails-motion",
+      "Clip": "custom-enter",
+      "ExecutableSHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+      "SavedFrames": 19,
+      "ChangedIntervals": 17,
+      "MajorChangeIntervals": 15,
+      "Preview": "motion/wails-motion/custom-enter.webp",
+      "MaximumLiveSourceGapMilliseconds": 233.5643
+    },
+    {
+      "Edition": "wails",
+      "Run": "wails-motion",
+      "Clip": "custom-exit",
+      "ExecutableSHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+      "SavedFrames": 29,
+      "ChangedIntervals": 26,
+      "MajorChangeIntervals": 20,
+      "Preview": "motion/wails-motion/custom-exit.webp",
+      "MaximumLiveSourceGapMilliseconds": 50.05
+    },
+    {
+      "Edition": "wails",
+      "Run": "wails-motion",
+      "Clip": "dropdown-enter",
+      "ExecutableSHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+      "SavedFrames": 16,
+      "ChangedIntervals": 15,
+      "MajorChangeIntervals": 11,
+      "Preview": "motion/wails-motion/dropdown-enter.webp",
+      "MaximumLiveSourceGapMilliseconds": 33.3669
+    },
+    {
+      "Edition": "wails",
+      "Run": "wails-motion",
+      "Clip": "dropdown-exit",
+      "ExecutableSHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+      "SavedFrames": 13,
+      "ChangedIntervals": 12,
+      "MajorChangeIntervals": 8,
+      "Preview": "motion/wails-motion/dropdown-exit.webp",
+      "MaximumLiveSourceGapMilliseconds": 33.3672
+    },
+    {
+      "Edition": "wails",
+      "Run": "wails-motion",
+      "Clip": "recording",
+      "ExecutableSHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+      "SavedFrames": 67,
+      "ChangedIntervals": 62,
+      "MajorChangeIntervals": 2,
+      "Preview": "motion/wails-motion/recording.webp",
+      "MaximumLiveSourceGapMilliseconds": 33.3683
+    },
+    {
+      "Edition": "wails",
+      "Run": "wails-secondary",
+      "Clip": "list-enter",
+      "ExecutableSHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+      "SavedFrames": 12,
+      "ChangedIntervals": 10,
+      "MajorChangeIntervals": 9,
+      "Preview": "motion/wails-secondary/list-enter.webp",
+      "MaximumLiveSourceGapMilliseconds": 316.9752
+    },
+    {
+      "Edition": "wails",
+      "Run": "wails-secondary",
+      "Clip": "list-selection",
+      "ExecutableSHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+      "SavedFrames": 12,
+      "ChangedIntervals": 11,
+      "MajorChangeIntervals": 5,
+      "Preview": "motion/wails-secondary/list-selection.webp",
+      "MaximumLiveSourceGapMilliseconds": 367.0355
+    },
+    {
+      "Edition": "wails",
+      "Run": "wails-secondary",
+      "Clip": "home-entry",
+      "ExecutableSHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+      "SavedFrames": 26,
+      "ChangedIntervals": 23,
+      "MajorChangeIntervals": 11,
+      "Preview": "motion/wails-secondary/home-entry.webp",
+      "MaximumLiveSourceGapMilliseconds": 150.1542
+    },
+    {
+      "Edition": "wails",
+      "Run": "wails-secondary",
+      "Clip": "tile-hover",
+      "ExecutableSHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+      "SavedFrames": 17,
+      "ChangedIntervals": 15,
+      "MajorChangeIntervals": 7,
+      "Preview": "motion/wails-secondary/tile-hover.webp",
+      "MaximumLiveSourceGapMilliseconds": 250.2529
+    },
+    {
+      "Edition": "wails",
+      "Run": "wails-secondary",
+      "Clip": "tile-press",
+      "ExecutableSHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+      "SavedFrames": 17,
+      "ChangedIntervals": 14,
+      "MajorChangeIntervals": 8,
+      "Preview": "motion/wails-secondary/tile-press.webp",
+      "MaximumLiveSourceGapMilliseconds": 316.9803
+    },
+    {
+      "Edition": "wails",
+      "Run": "wails-secondary",
+      "Clip": "gear-hover",
+      "ExecutableSHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+      "SavedFrames": 21,
+      "ChangedIntervals": 18,
+      "MajorChangeIntervals": 1,
+      "Preview": "motion/wails-secondary/gear-hover.webp",
+      "MaximumLiveSourceGapMilliseconds": 183.5105
+    },
+    {
+      "Edition": "wails",
+      "Run": "wails-secondary",
+      "Clip": "scanning",
+      "ExecutableSHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+      "SavedFrames": 61,
+      "ChangedIntervals": 60,
+      "MajorChangeIntervals": 5,
+      "Preview": "motion/wails-secondary/scanning.webp",
+      "MaximumLiveSourceGapMilliseconds": 50.0489
+    }
+  ],
+  "PhaseRows": [
+    {
+      "Edition": "femtovg",
+      "Run": "femtovg-motion",
+      "Clip": "settings-enter-1",
+      "ObservedFrames": 26,
+      "SavedFrames": 26,
+      "NativeDPISamples": [
+        96
+      ],
+      "TargetForegroundOnEveryObservedFrame": true,
+      "SourceSpanMilliseconds": 583.8979
+    },
+    {
+      "Edition": "femtovg",
+      "Run": "femtovg-motion",
+      "Clip": "settings-exit-1",
+      "ObservedFrames": 19,
+      "SavedFrames": 19,
+      "NativeDPISamples": [
+        96
+      ],
+      "TargetForegroundOnEveryObservedFrame": true,
+      "SourceSpanMilliseconds": 550.5423
+    },
+    {
+      "Edition": "femtovg",
+      "Run": "femtovg-motion",
+      "Clip": "settings-enter-2",
+      "ObservedFrames": 25,
+      "SavedFrames": 25,
+      "NativeDPISamples": [
+        96
+      ],
+      "TargetForegroundOnEveryObservedFrame": true,
+      "SourceSpanMilliseconds": 450.4376
+    },
+    {
+      "Edition": "femtovg",
+      "Run": "femtovg-motion",
+      "Clip": "settings-exit-2",
+      "ObservedFrames": 17,
+      "SavedFrames": 17,
+      "NativeDPISamples": [
+        96
+      ],
+      "TargetForegroundOnEveryObservedFrame": true,
+      "SourceSpanMilliseconds": 533.8523
+    },
+    {
+      "Edition": "femtovg",
+      "Run": "femtovg-motion",
+      "Clip": "custom-enter",
+      "ObservedFrames": 17,
+      "SavedFrames": 17,
+      "NativeDPISamples": [
+        96
+      ],
+      "TargetForegroundOnEveryObservedFrame": true,
+      "SourceSpanMilliseconds": 367.0286
+    },
+    {
+      "Edition": "femtovg",
+      "Run": "femtovg-motion",
+      "Clip": "custom-exit",
+      "ObservedFrames": 15,
+      "SavedFrames": 15,
+      "NativeDPISamples": [
+        96
+      ],
+      "TargetForegroundOnEveryObservedFrame": true,
+      "SourceSpanMilliseconds": 583.9003
+    },
+    {
+      "Edition": "femtovg",
+      "Run": "femtovg-motion",
+      "Clip": "dropdown-enter",
+      "ObservedFrames": 12,
+      "SavedFrames": 12,
+      "NativeDPISamples": [
+        96
+      ],
+      "TargetForegroundOnEveryObservedFrame": true,
+      "SourceSpanMilliseconds": 200.2002
+    },
+    {
+      "Edition": "femtovg",
+      "Run": "femtovg-motion",
+      "Clip": "dropdown-exit",
+      "ObservedFrames": 20,
+      "SavedFrames": 20,
+      "NativeDPISamples": [
+        96
+      ],
+      "TargetForegroundOnEveryObservedFrame": true,
+      "SourceSpanMilliseconds": 383.7108
+    },
+    {
+      "Edition": "femtovg",
+      "Run": "femtovg-motion",
+      "Clip": "recording",
+      "ObservedFrames": 69,
+      "SavedFrames": 69,
+      "NativeDPISamples": [
+        96
+      ],
+      "TargetForegroundOnEveryObservedFrame": true,
+      "SourceSpanMilliseconds": 1234.5446
+    },
+    {
+      "Edition": "femtovg",
+      "Run": "femtovg-secondary",
+      "Clip": "list-enter",
+      "ObservedFrames": 14,
+      "SavedFrames": 14,
+      "NativeDPISamples": [
+        96
+      ],
+      "TargetForegroundOnEveryObservedFrame": true,
+      "SourceSpanMilliseconds": 283.6089
+    },
+    {
+      "Edition": "femtovg",
+      "Run": "femtovg-secondary",
+      "Clip": "list-selection",
+      "ObservedFrames": 13,
+      "SavedFrames": 13,
+      "NativeDPISamples": [
+        96
+      ],
+      "TargetForegroundOnEveryObservedFrame": true,
+      "SourceSpanMilliseconds": 250.2449
+    },
+    {
+      "Edition": "femtovg",
+      "Run": "femtovg-secondary",
+      "Clip": "home-entry",
+      "ObservedFrames": 18,
+      "SavedFrames": 18,
+      "NativeDPISamples": [
+        96
+      ],
+      "TargetForegroundOnEveryObservedFrame": true,
+      "SourceSpanMilliseconds": 617.2697
+    },
+    {
+      "Edition": "femtovg",
+      "Run": "femtovg-secondary",
+      "Clip": "tile-hover",
+      "ObservedFrames": 18,
+      "SavedFrames": 18,
+      "NativeDPISamples": [
+        96
+      ],
+      "TargetForegroundOnEveryObservedFrame": true,
+      "SourceSpanMilliseconds": 583.9132
+    },
+    {
+      "Edition": "femtovg",
+      "Run": "femtovg-secondary",
+      "Clip": "tile-press",
+      "ObservedFrames": 24,
+      "SavedFrames": 24,
+      "NativeDPISamples": [
+        96
+      ],
+      "TargetForegroundOnEveryObservedFrame": true,
+      "SourceSpanMilliseconds": 550.5559
+    },
+    {
+      "Edition": "femtovg",
+      "Run": "femtovg-secondary",
+      "Clip": "gear-hover",
+      "ObservedFrames": 25,
+      "SavedFrames": 25,
+      "NativeDPISamples": [
+        96
+      ],
+      "TargetForegroundOnEveryObservedFrame": true,
+      "SourceSpanMilliseconds": 550.5428
+    },
+    {
+      "Edition": "femtovg",
+      "Run": "femtovg-secondary",
+      "Clip": "scanning",
+      "ObservedFrames": 62,
+      "SavedFrames": 62,
+      "NativeDPISamples": [
+        96
+      ],
+      "TargetForegroundOnEveryObservedFrame": true,
+      "SourceSpanMilliseconds": 1167.8049
+    },
+    {
+      "Edition": "software",
+      "Run": "software-motion",
+      "Clip": "settings-enter-1",
+      "ObservedFrames": 20,
+      "SavedFrames": 20,
+      "NativeDPISamples": [
+        96
+      ],
+      "TargetForegroundOnEveryObservedFrame": true,
+      "SourceSpanMilliseconds": 383.7215
+    },
+    {
+      "Edition": "software",
+      "Run": "software-motion",
+      "Clip": "settings-exit-1",
+      "ObservedFrames": 10,
+      "SavedFrames": 10,
+      "NativeDPISamples": [
+        96
+      ],
+      "TargetForegroundOnEveryObservedFrame": true,
+      "SourceSpanMilliseconds": 533.8498
+    },
+    {
+      "Edition": "software",
+      "Run": "software-motion",
+      "Clip": "settings-enter-2",
+      "ObservedFrames": 24,
+      "SavedFrames": 24,
+      "NativeDPISamples": [
+        96
+      ],
+      "TargetForegroundOnEveryObservedFrame": true,
+      "SourceSpanMilliseconds": 550.5362
+    },
+    {
+      "Edition": "software",
+      "Run": "software-motion",
+      "Clip": "settings-exit-2",
+      "ObservedFrames": 12,
+      "SavedFrames": 12,
+      "NativeDPISamples": [
+        96
+      ],
+      "TargetForegroundOnEveryObservedFrame": true,
+      "SourceSpanMilliseconds": 533.8609
+    },
+    {
+      "Edition": "software",
+      "Run": "software-motion",
+      "Clip": "custom-enter",
+      "ObservedFrames": 12,
+      "SavedFrames": 12,
+      "NativeDPISamples": [
+        96
+      ],
+      "TargetForegroundOnEveryObservedFrame": true,
+      "SourceSpanMilliseconds": 350.3387
+    },
+    {
+      "Edition": "software",
+      "Run": "software-motion",
+      "Clip": "custom-exit",
+      "ObservedFrames": 12,
+      "SavedFrames": 12,
+      "NativeDPISamples": [
+        96
+      ],
+      "TargetForegroundOnEveryObservedFrame": true,
+      "SourceSpanMilliseconds": 567.2292
+    },
+    {
+      "Edition": "software",
+      "Run": "software-motion",
+      "Clip": "dropdown-enter",
+      "ObservedFrames": 10,
+      "SavedFrames": 10,
+      "NativeDPISamples": [
+        96
+      ],
+      "TargetForegroundOnEveryObservedFrame": true,
+      "SourceSpanMilliseconds": 183.5148
+    },
+    {
+      "Edition": "software",
+      "Run": "software-motion",
+      "Clip": "dropdown-exit",
+      "ObservedFrames": 20,
+      "SavedFrames": 20,
+      "NativeDPISamples": [
+        96
+      ],
+      "TargetForegroundOnEveryObservedFrame": true,
+      "SourceSpanMilliseconds": 367.0422
+    },
+    {
+      "Edition": "software",
+      "Run": "software-motion",
+      "Clip": "recording",
+      "ObservedFrames": 70,
+      "SavedFrames": 70,
+      "NativeDPISamples": [
+        96
+      ],
+      "TargetForegroundOnEveryObservedFrame": true,
+      "SourceSpanMilliseconds": 1234.5824
+    },
+    {
+      "Edition": "software",
+      "Run": "software-secondary",
+      "Clip": "list-enter",
+      "ObservedFrames": 13,
+      "SavedFrames": 13,
+      "NativeDPISamples": [
+        96
+      ],
+      "TargetForegroundOnEveryObservedFrame": true,
+      "SourceSpanMilliseconds": 266.9283
+    },
+    {
+      "Edition": "software",
+      "Run": "software-secondary",
+      "Clip": "list-selection",
+      "ObservedFrames": 12,
+      "SavedFrames": 12,
+      "NativeDPISamples": [
+        96
+      ],
+      "TargetForegroundOnEveryObservedFrame": true,
+      "SourceSpanMilliseconds": 533.8717
+    },
+    {
+      "Edition": "software",
+      "Run": "software-secondary",
+      "Clip": "home-entry",
+      "ObservedFrames": 13,
+      "SavedFrames": 13,
+      "NativeDPISamples": [
+        96
+      ],
+      "TargetForegroundOnEveryObservedFrame": true,
+      "SourceSpanMilliseconds": 266.9254
+    },
+    {
+      "Edition": "software",
+      "Run": "software-secondary",
+      "Clip": "tile-hover",
+      "ObservedFrames": 16,
+      "SavedFrames": 16,
+      "NativeDPISamples": [
+        96
+      ],
+      "TargetForegroundOnEveryObservedFrame": true,
+      "SourceSpanMilliseconds": 266.9315
+    },
+    {
+      "Edition": "software",
+      "Run": "software-secondary",
+      "Clip": "tile-press",
+      "ObservedFrames": 16,
+      "SavedFrames": 16,
+      "NativeDPISamples": [
+        96
+      ],
+      "TargetForegroundOnEveryObservedFrame": true,
+      "SourceSpanMilliseconds": 283.6064
+    },
+    {
+      "Edition": "software",
+      "Run": "software-secondary",
+      "Clip": "gear-hover",
+      "ObservedFrames": 22,
+      "SavedFrames": 22,
+      "NativeDPISamples": [
+        96
+      ],
+      "TargetForegroundOnEveryObservedFrame": true,
+      "SourceSpanMilliseconds": 533.8619
+    },
+    {
+      "Edition": "software",
+      "Run": "software-secondary",
+      "Clip": "scanning",
+      "ObservedFrames": 59,
+      "SavedFrames": 59,
+      "NativeDPISamples": [
+        96
+      ],
+      "TargetForegroundOnEveryObservedFrame": true,
+      "SourceSpanMilliseconds": 1134.464
+    },
+    {
+      "Edition": "wails",
+      "Run": "wails-motion",
+      "Clip": "settings-enter-1",
+      "ObservedFrames": 24,
+      "SavedFrames": 24,
+      "NativeDPISamples": [
+        96
+      ],
+      "TargetForegroundOnEveryObservedFrame": true,
+      "SourceSpanMilliseconds": 934.2406
+    },
+    {
+      "Edition": "wails",
+      "Run": "wails-motion",
+      "Clip": "settings-exit-1",
+      "ObservedFrames": 23,
+      "SavedFrames": 23,
+      "NativeDPISamples": [
+        96
+      ],
+      "TargetForegroundOnEveryObservedFrame": true,
+      "SourceSpanMilliseconds": 567.2152
+    },
+    {
+      "Edition": "wails",
+      "Run": "wails-motion",
+      "Clip": "settings-enter-2",
+      "ObservedFrames": 21,
+      "SavedFrames": 21,
+      "NativeDPISamples": [
+        96
+      ],
+      "TargetForegroundOnEveryObservedFrame": true,
+      "SourceSpanMilliseconds": 600.5903
+    },
+    {
+      "Edition": "wails",
+      "Run": "wails-motion",
+      "Clip": "settings-exit-2",
+      "ObservedFrames": 30,
+      "SavedFrames": 30,
+      "NativeDPISamples": [
+        96
+      ],
+      "TargetForegroundOnEveryObservedFrame": true,
+      "SourceSpanMilliseconds": 600.584
+    },
+    {
+      "Edition": "wails",
+      "Run": "wails-motion",
+      "Clip": "custom-enter",
+      "ObservedFrames": 18,
+      "SavedFrames": 18,
+      "NativeDPISamples": [
+        96
+      ],
+      "TargetForegroundOnEveryObservedFrame": true,
+      "SourceSpanMilliseconds": 633.9599
+    },
+    {
+      "Edition": "wails",
+      "Run": "wails-motion",
+      "Clip": "custom-exit",
+      "ObservedFrames": 28,
+      "SavedFrames": 28,
+      "NativeDPISamples": [
+        96
+      ],
+      "TargetForegroundOnEveryObservedFrame": true,
+      "SourceSpanMilliseconds": 617.264
+    },
+    {
+      "Edition": "wails",
+      "Run": "wails-motion",
+      "Clip": "dropdown-enter",
+      "ObservedFrames": 15,
+      "SavedFrames": 15,
+      "NativeDPISamples": [
+        96
+      ],
+      "TargetForegroundOnEveryObservedFrame": true,
+      "SourceSpanMilliseconds": 283.6128
+    },
+    {
+      "Edition": "wails",
+      "Run": "wails-motion",
+      "Clip": "dropdown-exit",
+      "ObservedFrames": 12,
+      "SavedFrames": 12,
+      "NativeDPISamples": [
+        96
+      ],
+      "TargetForegroundOnEveryObservedFrame": true,
+      "SourceSpanMilliseconds": 200.1999
+    },
+    {
+      "Edition": "wails",
+      "Run": "wails-motion",
+      "Clip": "recording",
+      "ObservedFrames": 66,
+      "SavedFrames": 66,
+      "NativeDPISamples": [
+        96
+      ],
+      "TargetForegroundOnEveryObservedFrame": true,
+      "SourceSpanMilliseconds": 1301.3087
+    },
+    {
+      "Edition": "wails",
+      "Run": "wails-secondary",
+      "Clip": "list-enter",
+      "ObservedFrames": 11,
+      "SavedFrames": 11,
+      "NativeDPISamples": [
+        96
+      ],
+      "TargetForegroundOnEveryObservedFrame": true,
+      "SourceSpanMilliseconds": 517.1693
+    },
+    {
+      "Edition": "wails",
+      "Run": "wails-secondary",
+      "Clip": "list-selection",
+      "ObservedFrames": 11,
+      "SavedFrames": 11,
+      "NativeDPISamples": [
+        96
+      ],
+      "TargetForegroundOnEveryObservedFrame": true,
+      "SourceSpanMilliseconds": 550.5517
+    },
+    {
+      "Edition": "wails",
+      "Run": "wails-secondary",
+      "Clip": "home-entry",
+      "ObservedFrames": 25,
+      "SavedFrames": 25,
+      "NativeDPISamples": [
+        96
+      ],
+      "TargetForegroundOnEveryObservedFrame": true,
+      "SourceSpanMilliseconds": 667.3485
+    },
+    {
+      "Edition": "wails",
+      "Run": "wails-secondary",
+      "Clip": "tile-hover",
+      "ObservedFrames": 16,
+      "SavedFrames": 16,
+      "NativeDPISamples": [
+        96
+      ],
+      "TargetForegroundOnEveryObservedFrame": true,
+      "SourceSpanMilliseconds": 533.8643
+    },
+    {
+      "Edition": "wails",
+      "Run": "wails-secondary",
+      "Clip": "tile-press",
+      "ObservedFrames": 16,
+      "SavedFrames": 16,
+      "NativeDPISamples": [
+        96
+      ],
+      "TargetForegroundOnEveryObservedFrame": true,
+      "SourceSpanMilliseconds": 617.2749
+    },
+    {
+      "Edition": "wails",
+      "Run": "wails-secondary",
+      "Clip": "gear-hover",
+      "ObservedFrames": 20,
+      "SavedFrames": 20,
+      "NativeDPISamples": [
+        96
+      ],
+      "TargetForegroundOnEveryObservedFrame": true,
+      "SourceSpanMilliseconds": 550.5351
+    },
+    {
+      "Edition": "wails",
+      "Run": "wails-secondary",
+      "Clip": "scanning",
+      "ObservedFrames": 60,
+      "SavedFrames": 60,
+      "NativeDPISamples": [
+        96
+      ],
+      "TargetForegroundOnEveryObservedFrame": true,
+      "SourceSpanMilliseconds": 1251.2362
+    }
+  ],
+  "NamedMotionFamiliesPerEdition": 14,
+  "ClipsTotal": 48,
+  "RecorderQueuesRejected": 0,
+  "StorageLimited": false,
+  "PhysicalInput": false,
+  "FullExactTrajectoryAccepted": false,
+  "Scope": "Four settings clips are repeated observations (two enter/two exit); every edition otherwise has one clip per family. Category coverage and native visual endpoints are separate from exact per-property timing acceptance."
+}

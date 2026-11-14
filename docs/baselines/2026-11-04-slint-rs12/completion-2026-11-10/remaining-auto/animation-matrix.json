@@ -1,0 +1,281 @@
+{
+  "RecordedAtUtc": "2026-11-09T19:58:08.4226354Z",
+  "Conditions": 6,
+  "Queries": 30,
+  "AllNormalExit": true,
+  "Rows": [
+    {
+      "Edition": "software",
+      "CatalogCount": 1000,
+      "Queries": 5,
+      "InvalidQueries": 0,
+      "SHA256": "E85B41C7E77888750817E47F092EABECB1BAB5A68EFCE579378CE2DDAD2DBA4B",
+      "CPUUpperMilliseconds": {
+        "Count": 5,
+        "Minimum": 15.625,
+        "Median": 46.875,
+        "P95": 46.875,
+        "Maximum": 46.875
+      },
+      "MachineCPUPercentUpperOver500ms": {
+        "Count": 5,
+        "Minimum": 0.1953125,
+        "Median": 0.5859375,
+        "P95": 0.5859375,
+        "Maximum": 0.5859375
+      },
+      "ChangedStateIntervalsMilliseconds": {
+        "Count": 56,
+        "Minimum": 15.9371,
+        "Median": 16.68505,
+        "P95": 66.7271,
+        "Maximum": 68.5173
+      },
+      "AverageCPUCounterMillisecondsPerChangedState": {
+        "Count": 5,
+        "Minimum": 1.3020833333333333,
+        "Median": 3.605769230769231,
+        "P95": 3.90625,
+        "Maximum": 3.90625
+      },
+      "ObservedCPUCounterQuantumMilliseconds": 15.625,
+      "CPUSamples": 271,
+      "CompleteCPUSamples": 271,
+      "ResourceObserverCPUSeconds": 4.15625,
+      "FrameObserverCPUSeconds": 1.015625,
+      "NormalExit": 0,
+      "InputSource": "machine-generated fixed Unicode a",
+      "SummarySHA256": "41E519CBFC9EFD59CA03678C1BB4A1839E806C8C6C0A5DE1C7668ED73E76FBD3",
+      "RawResourceSHA256": "7C31A560D0A7737E0A5ADB846775C0C2B1EFED96716EEE9826A2175BEE5C9594",
+      "RawFrameSHA256": "B89617568D24D909D5752958F6B3E804BC180DD7C0A85406AAAF2221E3F102C0"
+    },
+    {
+      "Edition": "femtovg",
+      "CatalogCount": 1000,
+      "Queries": 5,
+      "InvalidQueries": 0,
+      "SHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+      "CPUUpperMilliseconds": {
+        "Count": 5,
+        "Minimum": 46.875,
+        "Median": 171.875,
+        "P95": 250.0,
+        "Maximum": 250.0
+      },
+      "MachineCPUPercentUpperOver500ms": {
+        "Count": 5,
+        "Minimum": 0.5859375,
+        "Median": 2.1484375,
+        "P95": 3.125,
+        "Maximum": 3.125
+      },
+      "ChangedStateIntervalsMilliseconds": {
+        "Count": 78,
+        "Minimum": 15.9943,
+        "Median": 16.658,
+        "P95": 17.235,
+        "Maximum": 17.3949
+      },
+      "AverageCPUCounterMillisecondsPerChangedState": {
+        "Count": 5,
+        "Minimum": 2.9296875,
+        "Median": 10.110294117647058,
+        "P95": 14.705882352941176,
+        "Maximum": 14.705882352941176
+      },
+      "ObservedCPUCounterQuantumMilliseconds": 15.625,
+      "CPUSamples": 273,
+      "CompleteCPUSamples": 273,
+      "ResourceObserverCPUSeconds": 4.3125,
+      "FrameObserverCPUSeconds": 0.84375,
+      "NormalExit": 0,
+      "InputSource": "machine-generated fixed Unicode a",
+      "SummarySHA256": "1BAE60EF6A7EEB846F25ECFCA5FF47268D49973DBE66FF0D04EA12FC4AD73E56",
+      "RawResourceSHA256": "A21C3C3263BEEE073C274DE695093FEB5F5F343FE09093CB4CFE8F3F531FB6CD",
+      "RawFrameSHA256": "1029F128226FD67FBA33A198F46A80349CF6694D0266EA7D002179FA49AA3072"
+    },
+    {
+      "Edition": "wails",
+      "CatalogCount": 1000,
+      "Queries": 5,
+      "InvalidQueries": 0,
+      "SHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+      "CPUUpperMilliseconds": {
+        "Count": 5,
+        "Minimum": 343.75,
+        "Median": 750.0,
+        "P95": 968.75,
+        "Maximum": 968.75
+      },
+      "MachineCPUPercentUpperOver500ms": {
+        "Count": 5,
+        "Minimum": 4.296875,
+        "Median": 9.375,
+        "P95": 12.109375,
+        "Maximum": 12.109375
+      },
+      "ChangedStateIntervalsMilliseconds": {
+        "Count": 124,
+        "Minimum": 14.1339,
+        "Median": 16.71485,
+        "P95": 18.7524,
+        "Maximum": 35.2097
+      },
+      "AverageCPUCounterMillisecondsPerChangedState": {
+        "Count": 5,
+        "Minimum": 22.09051724137931,
+        "Median": 25.862068965517242,
+        "P95": 33.4051724137931,
+        "Maximum": 33.4051724137931
+      },
+      "ObservedCPUCounterQuantumMilliseconds": 15.625,
+      "CPUSamples": 290,
+      "CompleteCPUSamples": 290,
+      "ResourceObserverCPUSeconds": 6.09375,
+      "FrameObserverCPUSeconds": 2.171875,
+      "NormalExit": 0,
+      "InputSource": "machine-generated fixed Unicode a",
+      "SummarySHA256": "C00B29C3CD63D6C2BA0A7C1800BC2A72198203A4071588C525705913F15C2D33",
+      "RawResourceSHA256": "2050E6765161202110A74874D5678108ED0C4BB85D4AE5A10F972DB369974AA6",
+      "RawFrameSHA256": "976EC2D95483F8D1D0E8CFF7A54BF6B9DE4E1342260F26C24277E42EACC14F53"
+    },
+    {
+      "Edition": "software",
+      "CatalogCount": 10000,
+      "Queries": 5,
+      "InvalidQueries": 0,
+      "SHA256": "E85B41C7E77888750817E47F092EABECB1BAB5A68EFCE579378CE2DDAD2DBA4B",
+      "CPUUpperMilliseconds": {
+        "Count": 5,
+        "Minimum": 15.625,
+        "Median": 125.0,
+        "P95": 171.875,
+        "Maximum": 171.875
+      },
+      "MachineCPUPercentUpperOver500ms": {
+        "Count": 5,
+        "Minimum": 0.1953125,
+        "Median": 1.5625,
+        "P95": 2.1484375,
+        "Maximum": 2.1484375
+      },
+      "ChangedStateIntervalsMilliseconds": {
+        "Count": 52,
+        "Minimum": 15.9925,
+        "Median": 16.67825,
+        "P95": 67.011,
+        "Maximum": 67.4909
+      },
+      "AverageCPUCounterMillisecondsPerChangedState": {
+        "Count": 5,
+        "Minimum": 1.3020833333333333,
+        "Median": 11.363636363636363,
+        "P95": 15.625,
+        "Maximum": 15.625
+      },
+      "ObservedCPUCounterQuantumMilliseconds": 15.625,
+      "CPUSamples": 277,
+      "CompleteCPUSamples": 277,
+      "ResourceObserverCPUSeconds": 3.28125,
+      "FrameObserverCPUSeconds": 0.875,
+      "NormalExit": 0,
+      "InputSource": "machine-generated fixed Unicode a",
+      "SummarySHA256": "BF4C2DDD7995884E5FBB361ED2C0CDB38676383A99EE42EA502C0BEE2995D324",
+      "RawResourceSHA256": "F89670AF6E52B97114896F79F9BFF63C81D62CBAD1EF5A0446D8761A7AC9AACB",
+      "RawFrameSHA256": "82D993D8E835871E6AC81C3F1DC3A89ADAD3684036119626E4A8F5478082E86A"
+    },
+    {
+      "Edition": "femtovg",
+      "CatalogCount": 10000,
+      "Queries": 5,
+      "InvalidQueries": 0,
+      "SHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+      "CPUUpperMilliseconds": {
+        "Count": 5,
+        "Minimum": 125.0,
+        "Median": 187.5,
+        "P95": 187.5,
+        "Maximum": 187.5
+      },
+      "MachineCPUPercentUpperOver500ms": {
+        "Count": 5,
+        "Minimum": 1.5625,
+        "Median": 2.34375,
+        "P95": 2.34375,
+        "Maximum": 2.34375
+      },
+      "ChangedStateIntervalsMilliseconds": {
+        "Count": 73,
+        "Minimum": 16.0129,
+        "Median": 16.6926,
+        "P95": 31.9229,
+        "Maximum": 50.4278
+      },
+      "AverageCPUCounterMillisecondsPerChangedState": {
+        "Count": 5,
+        "Minimum": 7.8125,
+        "Median": 11.71875,
+        "P95": 12.5,
+        "Maximum": 12.5
+      },
+      "ObservedCPUCounterQuantumMilliseconds": 15.625,
+      "CPUSamples": 279,
+      "CompleteCPUSamples": 279,
+      "ResourceObserverCPUSeconds": 3.65625,
+      "FrameObserverCPUSeconds": 1.203125,
+      "NormalExit": 0,
+      "InputSource": "machine-generated fixed Unicode a",
+      "SummarySHA256": "3932428EDCDF041117829117B98B47DD9178B3689FF4F0600BB7887068EF78EC",
+      "RawResourceSHA256": "51B8B09E3CDCE2DE9F2048A4F95A1C638424EEBD058FBF581C6F2566B567CD9E",
+      "RawFrameSHA256": "FCE58DF736F5E584E4F01D33F5C2D0112BE1829548BDC6728DEAC76D683BE8D2"
+    },
+    {
+      "Edition": "wails",
+      "CatalogCount": 10000,
+      "Queries": 5,
+      "InvalidQueries": 0,
+      "SHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+      "CPUUpperMilliseconds": {
+        "Count": 5,
+        "Minimum": 531.25,
+        "Median": 640.625,
+        "P95": 765.625,
+        "Maximum": 765.625
+      },
+      "MachineCPUPercentUpperOver500ms": {
+        "Count": 5,
+        "Minimum": 6.640625,
+        "Median": 8.0078125,
+        "P95": 9.5703125,
+        "Maximum": 9.5703125
+      },
+      "ChangedStateIntervalsMilliseconds": {
+        "Count": 140,
+        "Minimum": 13.7225,
+        "Median": 16.6,
+        "P95": 17.9335,
+        "Maximum": 33.9712
+      },
+      "AverageCPUCounterMillisecondsPerChangedState": {
+        "Count": 5,
+        "Minimum": 18.31896551724138,
+        "Median": 22.09051724137931,
+        "P95": 26.400862068965516,
+        "Maximum": 26.400862068965516
+      },
+      "ObservedCPUCounterQuantumMilliseconds": 15.625,
+      "CPUSamples": 305,
+      "CompleteCPUSamples": 304,
+      "ResourceObserverCPUSeconds": 5.5,
+      "FrameObserverCPUSeconds": 2.25,
+      "NormalExit": 0,
+      "InputSource": "machine-generated fixed Unicode a",
+      "SummarySHA256": "78FA4FD5587CDE8731C88F08079763A0A0F9486C8A9C702EC0CA1D379AB7264C",
+      "RawResourceSHA256": "72D3D344DF711EFB47459B1EE940DB244A6B4B2240064C773F175AC81D0F1CC9",
+      "RawFrameSHA256": "DB8465310C23A6F6914050E4EA9FFEE6ED261E67552F5CEFF4E10E3E52B0B963"
+    }
+  ],
+  "MeasuredScope": "Bracketing full-process-tree CPU counters for 500ms query+animation windows plus changed desktop-frame cadence. CPU granularity/overhead retained; not GPU render work or exact individual-frame CPU.",
+  "GPUPerFrameIsOriginalPlanRequirement": false,
+  "RS12Complete": false
+}

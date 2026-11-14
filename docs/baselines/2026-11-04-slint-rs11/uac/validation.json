@@ -1,0 +1,82 @@
+{
+  "date": "2026-11-04",
+  "timezone": "Asia/Shanghai",
+  "passed": true,
+  "g3": "approved for the tested Windows 11 x64 machine and recorded scope",
+  "current_build_identities": "../login/build-identities.json",
+  "current_full_checks": "../login/validation.json",
+  "login_results": "../login/third-login-results.json",
+  "full_source_and_executable_fingerprints_rechecked": true,
+  "product_source_changes_in_this_verification": false,
+  "full_build_repeated": false,
+  "prior_policy": {
+    "PromptOnSecureDesktop": 1,
+    "ConsentPromptBehaviorAdmin": 0,
+    "EnableLUA": 1
+  },
+  "user_changed_policy_before_test": {
+    "PromptOnSecureDesktop": 1,
+    "ConsentPromptBehaviorAdmin": 5,
+    "EnableLUA": 1
+  },
+  "actual_policy_after_test": {
+    "EnableLUA": 1,
+    "ConsentPromptBehaviorAdmin": 5,
+    "PromptOnSecureDesktop": 1
+  },
+  "policy_changed_by_agent": false,
+  "application_uac_cases": 4,
+  "installer_uac_cancel_cases": 2,
+  "additional_real_installer_confirmation_samples": 1,
+  "application_report": "application-uac.json",
+  "installer_report": "installer-uac.json",
+  "cleanup_report": "cleanup.json",
+  "helper_sha256": "CD4EACB91C48783419D86BC9CC70D0B62A7006E7273D51C44170446648BFF6B2",
+  "installer_fixture_helper_sha256": "C95A7879F4C0882CBD36F3D664BFD3CBA66220ED914ABDD6DB2DCC8E881B0458",
+  "source_fingerprints": {
+    "rust/examples/rs11_assisted.rs": "D8F99A6D4D85D9E7DC8592F5528BB53A594A7379BF55FA055C343473A1E57C24",
+    "rust/examples/rs11_installer_fixture.rs": "56CF62EB9808E2D78BAEE09EFF6025EC8344DCB9B715563BC6A56C87B374D742",
+    "rust/src/platform/windows/launch.rs": "8E1BF2FECA4E6A8D93CA7DB438CD123D5BC9F88223F926B676AE35D66BF04645",
+    "rust/src/platform/windows/updater.rs": "973FF1769E7FFE408B56B15EBAA663E4865965C6E6477CE44ED871C27B2DCE78",
+    "rust/src/core/update.rs": "8DA8A732F201FB25BA8037D1A2D3A7169DEFA23E1345DE941C46107FFCF30A74"
+  },
+  "local_verification_scripts": [
+    {
+      "path": "rust/target/rs11-uac-prompt/check-installer-cancel.ps1",
+      "sha256": "B6D6FB43AC423D145AE0B2BD718A9D29436185C0A65BBDE9AE86E860BC233163"
+    },
+    {
+      "path": "rust/target/rs11-uac-prompt/check.ps1",
+      "sha256": "D0D838778A0BBE6CB3442B0596297EBCC68218BB10D0574F975E2BEDF1A5400C"
+    },
+    {
+      "path": "rust/target/rs11-uac-prompt/cleanup-status.ps1",
+      "sha256": "F2050253BCF13BACC0E2DDA60314DC57C0C5B80439D56A7E445C0D82DD01733E"
+    },
+    {
+      "path": "rust/target/rs11-uac-prompt/common.ps1",
+      "sha256": "D6109165C36089F6F916CED0492B5D15ABF87D4D4F0CE5374E66133D96C7CEA1"
+    },
+    {
+      "path": "rust/target/rs11-uac-prompt/export-public.ps1",
+      "sha256": "8412B0F86A2AC8D88D4B098ECAB1667817707EFB470776D3A6496BF041CBC8F1"
+    },
+    {
+      "path": "rust/target/rs11-uac-prompt/launch.ps1",
+      "sha256": "A6358E6019C68F9CE1BD1A1677487A99C7DE3899F493420D80B2622FA1BC6BB0"
+    },
+    {
+      "path": "rust/target/rs11-uac-prompt/schedule-installer-cancel.ps1",
+      "sha256": "7F313008605ADC2237A850A55805264BCCDC2120AE4756B7A1DE263726ACA09D"
+    }
+  ],
+  "retained_observations": [
+    "FemtoVG initial 25-second startup probe did not observe readiness; later independent native/log observation confirmed ready on the same PID; no restart and no latency claim",
+    "Software installer cancellation request was initially accepted by the user; actual consent/replacement result retained, then cancellation retried in a fresh directory"
+  ],
+  "raw_evidence_directory": "rust/target/rs11-uac-prompt",
+  "published_nsis_package": "deferred to RS-14; local fixture is not a release installer",
+  "performance": "not measured",
+  "default_renderer": "not selected",
+  "other_windows_versions": "not validated by this supplement"
+}

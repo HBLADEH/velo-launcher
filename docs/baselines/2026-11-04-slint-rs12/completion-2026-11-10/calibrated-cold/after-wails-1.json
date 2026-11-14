@@ -1,0 +1,128 @@
+{
+  "SchemaVersion": 1,
+  "RecordedAtUtc": "2026-11-10T13:15:07.2067515Z",
+  "Method": "Fixed Unicode a via guarded native SendInput; operational QPC/UTC brackets to actual focused non-composing accepted edit. Separate from physical-key tests.",
+  "Groups": [
+    {
+      "Edition": "wails",
+      "SHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+      "Kind": "ColdStartup",
+      "ValidSamples": 1,
+      "InvalidSamples": 0,
+      "MinimumSamples": 3,
+      "SampleCountSatisfied": false,
+      "UpperMilliseconds": {
+        "Count": 1,
+        "Minimum": 3549.82875,
+        "Median": 3549.82875,
+        "P95": 3549.82875,
+        "Maximum": 3549.82875
+      },
+      "BudgetMilliseconds": 500,
+      "UpperBoundP95WithinBudget": false,
+      "CountsAsPhysicalHotkeys": false
+    },
+    {
+      "Edition": "femtovg",
+      "SHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+      "Kind": "ColdStartup",
+      "ValidSamples": 1,
+      "InvalidSamples": 0,
+      "MinimumSamples": 3,
+      "SampleCountSatisfied": false,
+      "UpperMilliseconds": {
+        "Count": 1,
+        "Minimum": 445.7443,
+        "Median": 445.7443,
+        "P95": 445.7443,
+        "Maximum": 445.7443
+      },
+      "BudgetMilliseconds": 500,
+      "UpperBoundP95WithinBudget": true,
+      "CountsAsPhysicalHotkeys": false
+    },
+    {
+      "Edition": "software",
+      "SHA256": "E85B41C7E77888750817E47F092EABECB1BAB5A68EFCE579378CE2DDAD2DBA4B",
+      "Kind": "ColdStartup",
+      "ValidSamples": 1,
+      "InvalidSamples": 0,
+      "MinimumSamples": 3,
+      "SampleCountSatisfied": false,
+      "UpperMilliseconds": {
+        "Count": 1,
+        "Minimum": 287.4924,
+        "Median": 287.4924,
+        "P95": 287.4924,
+        "Maximum": 287.4924
+      },
+      "BudgetMilliseconds": 500,
+      "UpperBoundP95WithinBudget": true,
+      "CountsAsPhysicalHotkeys": false
+    }
+  ],
+  "Observations": [
+    {
+      "Edition": "femtovg",
+      "SHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+      "Kind": "ColdStartup",
+      "BootId": "639299112115000000",
+      "Valid": true,
+      "DurationUpperMilliseconds": 445.7443,
+      "ClockMappingObservedRangeMilliseconds": 0.00015,
+      "DeclaredClockGuardAndObservedBracketMilliseconds": 0.10045000000000001,
+      "MachineGeneratedInput": true,
+      "CountsAsPhysicalHotkey": false,
+      "Probes": 3,
+      "MaximumProbeGapMilliseconds": 5.8834,
+      "Case": "femtovg-1",
+      "Trace": "startup-calibration.jsonl",
+      "TraceSHA256": "4A0C058AFF7B85787E9129708E129F4107D7C3745FFEDB1B1E13A923EE747B4F",
+      "FinalProductLogSHA256": "F85F347DA2C9D5FA7C34B20CAD4A3B3F197B72FAEEA4538E83FA5CF9687AE7BA",
+      "Reason": "Accepted character, final normal exit, process creation, and observed QPC/UTC calibration checked. Machine-generated input; physical evidence remains separate."
+    },
+    {
+      "Edition": "software",
+      "SHA256": "E85B41C7E77888750817E47F092EABECB1BAB5A68EFCE579378CE2DDAD2DBA4B",
+      "Kind": "ColdStartup",
+      "BootId": "639298852305000000",
+      "Valid": true,
+      "DurationUpperMilliseconds": 287.4924,
+      "ClockMappingObservedRangeMilliseconds": 0.0005,
+      "DeclaredClockGuardAndObservedBracketMilliseconds": 0.1015,
+      "MachineGeneratedInput": true,
+      "CountsAsPhysicalHotkey": false,
+      "Probes": 1,
+      "MaximumProbeGapMilliseconds": 0.0,
+      "Case": "software-1",
+      "Trace": "startup-calibration.jsonl",
+      "TraceSHA256": "6FCF7D425677D855CA4B06A2CD6151F9C27C39E7B88995407ED26A8DC23EF84B",
+      "FinalProductLogSHA256": "DF2C6B038B6E0DFC4D7B5806441798449A90F76A6F8F1DAFB9B9C66553A67845",
+      "Reason": "Accepted character, final normal exit, process creation, and observed QPC/UTC calibration checked. Machine-generated input; physical evidence remains separate."
+    },
+    {
+      "Edition": "wails",
+      "SHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+      "Kind": "ColdStartup",
+      "BootId": "639299122025000000",
+      "Valid": true,
+      "DurationUpperMilliseconds": 3549.82875,
+      "ClockMappingObservedRangeMilliseconds": 0.00035,
+      "DeclaredClockGuardAndObservedBracketMilliseconds": 0.10125,
+      "MachineGeneratedInput": true,
+      "CountsAsPhysicalHotkey": false,
+      "Probes": 6,
+      "MaximumProbeGapMilliseconds": 48.9922,
+      "Case": "wails-1",
+      "Trace": "startup-calibration.jsonl",
+      "TraceSHA256": "C0A2B1EE3BD5141B9AFBE13150841746207ABCAD5CCE04B9FEAA80CE914EA56E",
+      "FinalProductLogSHA256": "384BB05E0E57A67CDC0A48B1A55F2777635B71F48327B4DE20B26DCED45A8004",
+      "Reason": "Accepted character, final normal exit, process creation, and observed QPC/UTC calibration checked. Machine-generated input; physical evidence remains separate."
+    }
+  ],
+  "ColdStartupMeasured": true,
+  "ExactFirstPossibleInputClaim": false,
+  "BudgetInterpretation": "An upper bound within budget supports the tested acceptance target; an above-budget upper bound alone does not prove an earlier possible readiness regression. Windows clock continuity is checked at stored brackets, with a declared 0.1ms guard.",
+  "Scope": "Machine integration calibration only; not real IME or physical Alt+Space. No reinterpretation of earlier manual-delay records.",
+  "RS12Complete": false
+}

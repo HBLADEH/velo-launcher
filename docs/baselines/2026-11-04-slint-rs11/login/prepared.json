@@ -1,0 +1,33 @@
+{
+  "date": "2026-11-04",
+  "timezone": "Asia/Shanghai",
+  "phase": "prepared only; actual logout/login and input pending",
+  "passed_login": false,
+  "before_checkpoint_passed": true,
+  "cases": [
+    {
+      "renderer": "software",
+      "executable_sha256": "A9CFA3999A4A601E72C54716AFA571D55923BE53EDCDCAE4E6CB63E64408E990",
+      "saved_startup_enabled": true,
+      "saved_hotkey": "Ctrl+Alt+J",
+      "run_command_exact": true,
+      "matching_processes": 1,
+      "launcher_windows": 1,
+      "visible_launcher_windows": 0
+    },
+    {
+      "renderer": "femtovg",
+      "executable_sha256": "B6CBC0EE7DC2953D1837F986C1D25AA9D303D64C7004E22538A05521474E0991",
+      "saved_startup_enabled": true,
+      "saved_hotkey": "Ctrl+Alt+U",
+      "run_command_exact": true,
+      "matching_processes": 1,
+      "launcher_windows": 1,
+      "visible_launcher_windows": 0
+    }
+  ],
+  "temporary_owned_login_values": 2,
+  "cleanup": "intentionally pending until actual login test; exact owned-value removal script prepared",
+  "production_data": "not accessed",
+  "security_policy_changed": false
+}

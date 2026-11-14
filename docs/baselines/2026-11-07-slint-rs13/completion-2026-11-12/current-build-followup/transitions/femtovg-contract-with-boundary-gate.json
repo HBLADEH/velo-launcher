@@ -1,0 +1,43 @@
+{
+  "Renderer": "femtovg",
+  "ExecutableSHA256": "D81F31ED8AB3C0D45A3565CDC8AA412B3FB870C0CC350204178CDE44456B6487",
+  "Rows": [
+    {
+      "Clip": "settings-enter-current-femto",
+      "Status": "insufficient",
+      "IntermediateFrames": 6,
+      "MaximumActiveSourceGapMilliseconds": 350.3537999987602,
+      "ReportedMaximumActiveSourceGapMilliseconds": 16.683800011873245,
+      "TriggerBracketGapMilliseconds": 350.3537999987602,
+      "CompletionBracketGapMilliseconds": 16.683800011873245,
+      "Reason": "Need rest, intermediate and settled samples with source gaps <=55ms, including the trigger boundary"
+    },
+    {
+      "Clip": "settings-exit-current-femto",
+      "Status": "insufficient",
+      "IntermediateFrames": 9,
+      "MaximumActiveSourceGapMilliseconds": 483.8192999958992,
+      "ReportedMaximumActiveSourceGapMilliseconds": 16.684999972581863,
+      "TriggerBracketGapMilliseconds": 483.8192999958992,
+      "CompletionBracketGapMilliseconds": 16.683699995279312,
+      "Reason": "Need rest, intermediate and settled samples with source gaps <=55ms, including the trigger boundary"
+    }
+  ],
+  "AllRecordedSettingsCompatible": false,
+  "IndependentWailsReference": {
+    "MainCurve": [
+      0.22,
+      1.0,
+      0.36,
+      1.0
+    ],
+    "IncomingOpacityMilliseconds": 220,
+    "IncomingTranslationMilliseconds": 280,
+    "OutgoingOpacityMilliseconds": 100,
+    "IncomingTranslationLogicalPixels": 8,
+    "CSSSHA256": "B0103A0CCCDC04B80D17F051BE012E55709D66A23CAB6F9DAE1C60BFF39AE915"
+  },
+  "ExactCurveUniquenessEstablished": false,
+  "PhysicalInput": false,
+  "Scope": "Native settings opacity and vertical translation only, at recorded source-frame/pixel tolerance. Does not certify other animation families or physical IME/DPI."
+}

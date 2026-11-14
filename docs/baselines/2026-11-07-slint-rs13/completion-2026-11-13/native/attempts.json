@@ -1,0 +1,129 @@
+[
+  {
+    "Run": "femtovg-pulse-native-1",
+    "CaptureResult": {
+      "Completed": true,
+      "Renderer": "femtovg",
+      "ExecutableSHA256": "D81F31ED8AB3C0D45A3565CDC8AA412B3FB870C0CC350204178CDE44456B6487",
+      "ProcessId": 161800,
+      "StartedTicks": 639301041901348782,
+      "RecorderExecutableSHA256": "F3039B9305C6B9BAE3F26676C1E47417A749C35C67FF377C16D4C171932738F9",
+      "CaptureStartedAtUtc": "2026-11-12T18:21:23.1122701Z",
+      "RecordingEnabledEvent": "event=hotkey_recording pid=161800 unix_us=1794507683085251 elapsed_us=292909683 dropped=0 enabled=true",
+      "RecorderExitCode": 0,
+      "CaptureEnd": {
+        "event": "end",
+        "qpc": 1726977397578,
+        "frames": 155,
+        "clips": 3,
+        "gpu_queue_rejected": 0,
+        "write_queue_rejected": 0,
+        "storage_limited": false
+      },
+      "SegmentMilliseconds": 900,
+      "Segments": 3,
+      "InputSource": "Real operator button click observed through the existing opt-in lifecycle log; no input injection.",
+      "Scope": "Three short selected-window WGC segments with unchanged v6 bounds. Source timing and ROI changes are observations, not final desktop/photon timestamps."
+    },
+    "RawTraceSHA256": "B53A36F827CE7AF2656D77BBBC60067B79B097B2C8DAEBEC10E7091AA81E8918",
+    "ErrorText": "",
+    "Acceptance": "Analyze source timing/ROI before accepting"
+  },
+  {
+    "Run": "femtovg-transitions-native-1",
+    "CaptureResult": null,
+    "RawTraceSHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "ErrorText": "RS13_WINDOW_RECORDER_ERROR Could not capture the given window.",
+    "Acceptance": "No capture: hidden window refused by WGC"
+  },
+  {
+    "Run": "femtovg-transitions-native-2",
+    "CaptureResult": {
+      "Completed": true,
+      "Renderer": "femtovg",
+      "ExecutableSHA256": "D81F31ED8AB3C0D45A3565CDC8AA412B3FB870C0CC350204178CDE44456B6487",
+      "ProcessId": 161800,
+      "StartedTicks": 639301041901348782,
+      "ShowEvent": "Immediate bounded capture after synthetic show setup; subsequent settings clicks are performed by the operator.",
+      "RecorderExecutableSHA256": "F3039B9305C6B9BAE3F26676C1E47417A749C35C67FF377C16D4C171932738F9",
+      "RecorderExitCode": 0,
+      "CaptureEnd": {
+        "event": "end",
+        "qpc": 1731475353930,
+        "frames": 125,
+        "clips": 36,
+        "gpu_queue_rejected": 0,
+        "write_queue_rejected": 0,
+        "storage_limited": false
+      },
+      "SegmentMilliseconds": 900,
+      "Segments": 36,
+      "StartImmediately": true,
+      "InputSource": "Synthetic show/home setup precedes the operator mouse hover/click and settings return actions; no automated typing or native input injection.",
+      "Scope": "Original selected-window WGC surfaces split into bounded files. Analyze source timestamps and title ROI before accepting transition behavior."
+    },
+    "RawTraceSHA256": "2A81C7E2492B3170268D4FC80C194DCB905726176BD5EA3C6668B7438CB8AAC8",
+    "ErrorText": "",
+    "Acceptance": "No settings action inside the fixed recording window"
+  },
+  {
+    "Run": "femtovg-transitions-native-3",
+    "CaptureResult": {
+      "Completed": true,
+      "Renderer": "femtovg",
+      "ExecutableSHA256": "D81F31ED8AB3C0D45A3565CDC8AA412B3FB870C0CC350204178CDE44456B6487",
+      "ProcessId": 161800,
+      "StartedTicks": 639301041901348782,
+      "ShowEvent": "event=lifecycle_shown pid=161800 unix_us=1794508498122199 elapsed_us=1107964806 dropped=0 reason=hotkey generation=13 native_active=true query_bytes=0 appearance_open=false",
+      "RecorderExecutableSHA256": "F3039B9305C6B9BAE3F26676C1E47417A749C35C67FF377C16D4C171932738F9",
+      "RecorderExitCode": 0,
+      "CaptureEnd": {
+        "event": "end",
+        "qpc": 1735428835810,
+        "frames": 693,
+        "clips": 36,
+        "gpu_queue_rejected": 0,
+        "write_queue_rejected": 0,
+        "storage_limited": false
+      },
+      "SegmentMilliseconds": 900,
+      "Segments": 36,
+      "StartImmediately": false,
+      "InputSource": "Synthetic show/home setup precedes the operator mouse hover/click and settings return actions; no automated typing or native input injection.",
+      "Scope": "Original selected-window WGC surfaces split into bounded files. Analyze source timestamps and title ROI before accepting transition behavior."
+    },
+    "RawTraceSHA256": "B80A237C886DD051AC98D26B4E2BB8EA6A16BC2C9D1D13508E7714FEF4FE359F",
+    "ErrorText": "",
+    "Acceptance": "Analyze source timing/ROI before accepting"
+  },
+  {
+    "Run": "femtovg-transitions-native-4",
+    "CaptureResult": {
+      "Completed": true,
+      "Renderer": "femtovg",
+      "ExecutableSHA256": "D81F31ED8AB3C0D45A3565CDC8AA412B3FB870C0CC350204178CDE44456B6487",
+      "ProcessId": 161800,
+      "StartedTicks": 639301041901348782,
+      "ShowEvent": "event=lifecycle_shown pid=161800 unix_us=1794508923273889 elapsed_us=1533125977 dropped=0 reason=hotkey generation=17 native_active=true query_bytes=0 appearance_open=false",
+      "RecorderExecutableSHA256": "F3039B9305C6B9BAE3F26676C1E47417A749C35C67FF377C16D4C171932738F9",
+      "RecorderExitCode": 0,
+      "CaptureEnd": {
+        "event": "end",
+        "qpc": 1739679539350,
+        "frames": 417,
+        "clips": 36,
+        "gpu_queue_rejected": 0,
+        "write_queue_rejected": 0,
+        "storage_limited": false
+      },
+      "SegmentMilliseconds": 900,
+      "Segments": 36,
+      "StartImmediately": false,
+      "InputSource": "Synthetic show/home setup precedes the operator mouse hover/click and settings return actions; no automated typing or native input injection.",
+      "Scope": "Original selected-window WGC surfaces split into bounded files. Analyze source timestamps and title ROI before accepting transition behavior."
+    },
+    "RawTraceSHA256": "7D9FD59D4CADBC480D0C7A27F9E7CDA7B853A38F47C681E2E587F655D4EDE842",
+    "ErrorText": "",
+    "Acceptance": "Analyze source timing/ROI before accepting"
+  }
+]

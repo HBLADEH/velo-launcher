@@ -1,0 +1,19 @@
+{
+  "versions": [
+    ["0.9.9", "0.10.0"], ["v1.2.3", "1.2.3+build"], ["1.2", "1.2.0"],
+    ["1.2.3-beta.2", "1.2.3-beta.11"], ["1.2.3-beta.2", "1.2.3"],
+    ["1.2.3-1", "1.2.3-alpha"], ["1.2.3-beta", "1.2.3-beta.1"],
+    ["  V2.0.0  ", "1.9.99"], ["1", "1.0"], ["1.2.4-alpha", "1.2.3"],
+    ["", "1"], ["1.2.3-", "1"], ["1.2.3.4", "1"], ["-1.0", "1"], ["1.a", "1"]
+  ],
+  "environments": [
+    {"build": 10240, "settings": true, "policies": [], "missing": []},
+    {"build": 17134, "settings": true, "policies": [], "missing": []},
+    {"build": 22631, "settings": true, "policies": [], "missing": []},
+    {"build": 22631, "settings": false, "policies": [], "missing": []},
+    {"build": 22631, "settings": true, "policies": ["HIDE: sound;display"], "missing": []},
+    {"build": 22631, "settings": true, "policies": ["showonly:display;sound;about", "hide:sound"], "missing": []},
+    {"build": 22631, "settings": true, "policies": ["invalid", "unknown:display"], "missing": ["System32/gpedit.msc", "System32/mmc.exe", "System32/calc.exe"]},
+    {"build": 22631, "settings": true, "policies": [], "missing": ["*"]}
+  ]
+}

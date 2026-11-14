@@ -1,0 +1,44 @@
+{
+  "Renderer": "software",
+  "RequestedAt": "2026-11-03T12:35:26.8808632+08:00",
+  "ObservedAt": "2026-11-03T12:39:38.6576909+08:00",
+  "Events": [
+    {
+      "Provider": "Microsoft-Windows-Kernel-Power",
+      "Id": 42,
+      "RecordId": 34955,
+      "Time": "2026-11-03T12:36:47.5937373+08:00",
+      "Data": {
+        "TargetState": "4",
+        "EffectiveState": "4",
+        "Reason": "4",
+        "Flags": "0",
+        "TransitionsToOn": "1"
+      }
+    },
+    {
+      "Provider": "Microsoft-Windows-Kernel-Power",
+      "Id": 107,
+      "RecordId": 34956,
+      "Time": "2026-11-03T12:36:51.526161+08:00",
+      "Data": {
+        "TargetState": "4",
+        "EffectiveState": "4"
+      }
+    },
+    {
+      "Provider": "Microsoft-Windows-Power-Troubleshooter",
+      "Id": 1,
+      "RecordId": 34962,
+      "Time": "2026-11-03T12:38:41.4922152+08:00",
+      "Data": {
+        "SleepTime": "2026-11-03T04:36:46.7934119Z",
+        "WakeTime": "2026-11-03T04:38:39.9424697Z",
+        "SleepDuration": "802",
+        "WakeDuration": "439",
+        "TargetState": "4",
+        "EffectiveState": "4"
+      }
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "RecordedAtUtc": "2026-11-05T04:26:52.4473648Z",
+  "SharedVerification": {
+    "RecordedAtUtc": "2026-11-05T04:25:54.3138415Z",
+    "Command": "GOTOOLCHAIN=go1.25.6 ./scripts/verify.ps1 -SkipBuild",
+    "Passed": true,
+    "LogSHA256": "2EAD69AC2F70628EFE7D84B9FCA1FFAC5276CDE352A0C13E4CE8C152B81AEEED"
+  },
+  "ResourceGuardRegressionSHA256": "181DFB192CBF7C0B5AECC1F6E6EE9B3F8DCBD9164417312448A142B91F85729F",
+  "SlintResourceRegressionSHA256": "294DF382B03D0A99E1745E02638466B8BC7E3675F11E85B0891F8E003988FE51",
+  "Scope": "Collector guards and regression; no product rebuild or new physical timing test."
+}

@@ -4,10 +4,16 @@ Push-Location (Split-Path -Parent $PSScriptRoot)
 try {
     & (Join-Path $PSScriptRoot 'test-resource-measurement.ps1')
     & (Join-Path $PSScriptRoot 'test-slint-measurement.ps1')
+    & (Join-Path $PSScriptRoot 'test-rs12-input.ps1')
+    & (Join-Path $PSScriptRoot 'test-rs12-resources.ps1')
+    & (Join-Path $PSScriptRoot 'test-rs12-frames.ps1')
+    & (Join-Path $PSScriptRoot 'test-rs12-frame-fixtures.ps1')
+    & (Join-Path $PSScriptRoot 'test-rs12-readiness.ps1')
+    & (Join-Path $PSScriptRoot 'test-rs12-animation.ps1')
     & (Join-Path $PSScriptRoot 'test-latency-summary.ps1')
     & (Join-Path $PSScriptRoot 'test-latency-collection.ps1')
     & (Join-Path $PSScriptRoot 'test-latency-startup-cleanup.ps1')
-    $goSources = @((Get-ChildItem -LiteralPath . -Filter '*.go').FullName) + @('internal')
+    $goSources = @((Get-ChildItem -LiteralPath . -Filter '*.go').FullName) + @('internal', 'cmd')
     $unformatted = & gofmt -l @goSources
     if ($LASTEXITCODE -ne 0 -or $unformatted) { throw "Run gofmt: $unformatted" }
     # main_bindings.go 不嵌入 dist：先生成当前 API，避免类型检查使用旧绑定。

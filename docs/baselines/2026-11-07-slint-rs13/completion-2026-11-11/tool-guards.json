@@ -1,0 +1,27 @@
+{
+  "PowerShellParsed": [
+    "capture-rust-visual.ps1",
+    "capture-rust-animation.ps1",
+    "prepare-rs13-visual.ps1",
+    "start-rs13-visual-session.ps1"
+  ],
+  "Passed": true,
+  "NoCandidateLaunched": true,
+  "Cases": [
+    {
+      "RunDirectoryCreated": false,
+      "Case": "wrong-exe",
+      "RefusedBeforeLaunch": true
+    },
+    {
+      "RunDirectoryCreated": false,
+      "Case": "changed-seed",
+      "RefusedBeforeLaunch": true
+    },
+    {
+      "RunDirectoryCreated": false,
+      "Case": "formal-seed",
+      "RefusedBeforeLaunch": true
+    }
+  ]
+}

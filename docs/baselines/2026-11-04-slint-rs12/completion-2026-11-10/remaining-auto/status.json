@@ -1,0 +1,21 @@
+{
+  "RecordedAtUtc": "2026-11-09T20:01:05.7861947Z",
+  "OperationalWarmInputCalibration": "complete for tested same-machine scope: three programs × three launches",
+  "MachineHotkeyCalibration": "complete: three programs × twenty; final upper-bound P95 below 50ms; physical-key records remain separate",
+  "AnimationCPUAndDesktopFrames": "complete in tested query+500ms windows: six conditions × five generated queries",
+  "NativeProbeGuardsAndRegression": "passed",
+  "ColdCharacterObservations": 9,
+  "CalibratedColdLatencySamples": 0,
+  "FutureCalibratedColdCasesReady": 9,
+  "ColdWaitReason": "One first Velo candidate per independent later boot, as required by the refactor plan. Current boot already used; user away. No reboot or startup-setting modification issued.",
+  "NextColdCase": "software-1",
+  "ColdStartup500msBudgetVerified": false,
+  "HistoricalManualFocusRootCauseEstablished": false,
+  "HistoricalFocusStatus": "New controlled regression passed; historical reports and incomplete original foreground evidence retained",
+  "GpuExecutionTimeIsOriginalMandatoryGate": false,
+  "ExactMathematicalFirstPossibleInputClaim": false,
+  "DefaultRendererSelected": false,
+  "RS12Complete": false,
+  "AllTestProcessesCleaned": true,
+  "FinalSharedVerificationExit": 0
+}

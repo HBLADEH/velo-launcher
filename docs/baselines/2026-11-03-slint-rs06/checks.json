@@ -1,0 +1,18 @@
+{
+  "Command": "./scripts/verify-rust.ps1 -SmokeTest",
+  "Result": "passed",
+  "CompletedAt": "2026-11-03T02:48:30.6700785+08:00",
+  "RawLogSHA256": "07B10F73551C22CD29E36A9487A3902E5EA53F3AEE00CC4835F978CA76C84A83",
+  "RustTestsPerRenderer": 26,
+  "InputAssertionsPerRenderer": 20,
+  "Renderers": [
+    "femtovg",
+    "software"
+  ],
+  "NativeCompiler": "19.50.35719.0",
+  "NativeLinker": "14.50.35719.0",
+  "MSVC": "14.50.35717",
+  "SDK": "10.0.26100.0",
+  "Rust": "1.99.1",
+  "GoVueRegression": "Not run: Rust application source and shared verification tools unchanged."
+}

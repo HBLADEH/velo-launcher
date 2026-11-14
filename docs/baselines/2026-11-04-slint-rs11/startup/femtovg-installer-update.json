@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "passed": true,
+  "executable_sha256": "B6CBC0EE7DC2953D1837F986C1D25AA9D303D64C7004E22538A05521474E0991",
+  "previous_executable_sha256": "A9CFA3999A4A601E72C54716AFA571D55923BE53EDCDCAE4E6CB63E64408E990",
+  "fixture_helper_sha256": "DF15CAF30EABD749B1A3C17725F1E4019C0722A3F9CE3B30EF162D3D797F83E8",
+  "consent_prompt_behavior_admin": 0,
+  "normal_administrator_token_verified": true,
+  "cases": [
+    {
+      "mode": "success",
+      "passed": true,
+      "normal_token_write_denied": true,
+      "installer_elevated": true,
+      "target_before_sha256": "A9CFA3999A4A601E72C54716AFA571D55923BE53EDCDCAE4E6CB63E64408E990",
+      "payload_sha256": "B6CBC0EE7DC2953D1837F986C1D25AA9D303D64C7004E22538A05521474E0991",
+      "target_after_sha256": "B6CBC0EE7DC2953D1837F986C1D25AA9D303D64C7004E22538A05521474E0991",
+      "original_config_and_backup_unchanged": true,
+      "restart_isolated": true,
+      "restart_background_argument": true,
+      "installer_preserved_on_failure": false,
+      "script_error_observed": false,
+      "scope": "local installer fixture; does not validate a published NSIS package or a consent dialog",
+      "permissions_restored": true,
+      "test_processes_remaining": 0,
+      "tray_cleanup": true,
+      "process_cleanup": "terminated isolated test copy after validation"
+    },
+    {
+      "mode": "failure",
+      "passed": true,
+      "normal_token_write_denied": true,
+      "installer_elevated": true,
+      "target_before_sha256": "A9CFA3999A4A601E72C54716AFA571D55923BE53EDCDCAE4E6CB63E64408E990",
+      "payload_sha256": "B6CBC0EE7DC2953D1837F986C1D25AA9D303D64C7004E22538A05521474E0991",
+      "target_after_sha256": "A9CFA3999A4A601E72C54716AFA571D55923BE53EDCDCAE4E6CB63E64408E990",
+      "original_config_and_backup_unchanged": true,
+      "restart_isolated": true,
+      "restart_background_argument": true,
+      "installer_preserved_on_failure": true,
+      "script_error_observed": true,
+      "scope": "local installer fixture; does not validate a published NSIS package or a consent dialog",
+      "permissions_restored": true,
+      "test_processes_remaining": 0,
+      "tray_cleanup": true,
+      "process_cleanup": "terminated isolated test copy after validation"
+    }
+  ]
+}

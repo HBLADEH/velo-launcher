@@ -1,0 +1,146 @@
+{
+  "AtUtc": "2026-11-14T16:19:43.737618+00:00",
+  "Passed": true,
+  "Stages": [
+    {
+      "AtUtc": "2026-11-14T16:07:16.1465358Z",
+      "Stage": "Prepare",
+      "Passed": true,
+      "Cases": [
+        {
+          "Passed": true,
+          "Name": "locked-Go-takeover-rejected-before-change"
+        },
+        {
+          "Passed": true,
+          "Name": "unknown-baseline-rejected-without-change"
+        },
+        {
+          "Passed": true,
+          "Name": "actual-Go-to-Software-same-path-HKLM-takeover"
+        }
+      ],
+      "HostModified": false
+    },
+    {
+      "AtUtc": "2026-11-14T16:10:08.1768011Z",
+      "Stage": "Switch",
+      "Passed": true,
+      "Cases": [
+        {
+          "Passed": true,
+          "Name": "locked-Rust-upgrade-and-uninstall-rejected"
+        },
+        {
+          "Name": "post-replacement-fault-restores-exact-Software-state",
+          "Passed": true,
+          "FixtureOnly": true
+        },
+        {
+          "Passed": true,
+          "Name": "actual-Software-to-FemtoVG-machine-upgrade"
+        }
+      ],
+      "HostModified": false
+    },
+    {
+      "AtUtc": "2026-11-14T16:11:03.5885119Z",
+      "Stage": "Rollback",
+      "Passed": true,
+      "Cases": [
+        {
+          "Name": "actual-Go-machine-rollback-byte-exact",
+          "Passed": true,
+          "SemanticUninstallResult": {
+            "LauncherExitCode": 0,
+            "OperationResult": {
+              "Schema": 1,
+              "AtUtc": "2026-11-14T16:11:03.3190611Z",
+              "Action": "Rollback",
+              "Passed": true,
+              "UserDataModified": false
+            }
+          }
+        }
+      ],
+      "HostModified": false
+    },
+    {
+      "AtUtc": "2026-11-14T16:12:39.9195654Z",
+      "Stage": "Cleanup",
+      "Passed": true,
+      "Cases": [
+        {
+          "Name": "actual-Rust-system-uninstall-keeps-unknown-and-rollback-archives",
+          "Passed": true,
+          "SemanticUninstallResult": {
+            "LauncherExitCode": 0,
+            "OperationResult": {
+              "Schema": 1,
+              "AtUtc": "2026-11-14T16:12:39.6947496Z",
+              "Action": "Uninstall",
+              "Passed": true,
+              "UserDataModified": false
+            }
+          }
+        }
+      ],
+      "HostModified": false
+    }
+  ],
+  "Sessions": [
+    {
+      "AtUtc": "2026-11-14T16:07:35.8260597Z",
+      "Renderer": "software",
+      "Passed": true,
+      "ExecutableSHA256": "4C8F9361D1F1BB79FD776E4C7AE9984D4CB7884E9172B492F43257270CE1C9CE",
+      "PID": 4040,
+      "ExitCode": 0,
+      "Ready": true,
+      "DataOriginalsUnchanged": true,
+      "MigrationBackupFiles": 22,
+      "Scope": "Normal-token program in disposable guest; physical IME acceptance is recorded separately."
+    },
+    {
+      "AtUtc": "2026-11-14T16:10:28.6170732Z",
+      "Renderer": "femtovg",
+      "Passed": true,
+      "ExecutableSHA256": "073493BB48F8114485E091A79F533B82F493138B02E973B6488A859B6CD1C609",
+      "PID": 2356,
+      "ExitCode": 0,
+      "Ready": true,
+      "DataOriginalsUnchanged": true,
+      "MigrationBackupFiles": 22,
+      "Scope": "Normal-token program in disposable guest; physical IME acceptance is recorded separately."
+    },
+    {
+      "AtUtc": "2026-11-14T16:11:27.9740500Z",
+      "Renderer": "go",
+      "Passed": true,
+      "ExecutableSHA256": "9A1A898A1E3D70267481BCC68E3368F0B6594F68E8AE43B3F0DCDC06A9B329A6",
+      "PID": 5396,
+      "ExitCode": 0,
+      "Ready": true,
+      "DataOriginalsUnchanged": true,
+      "MigrationBackupFiles": null,
+      "Scope": "Normal-token program in disposable guest; physical IME acceptance is recorded separately."
+    }
+  ],
+  "Cleanup": {
+    "AtUtc": "2026-11-14T16:15:03.9271638Z",
+    "Passed": true,
+    "TaskApplications": 0,
+    "MachineRegistrationAbsent": true,
+    "MachineShortcutsAbsent": true,
+    "ElevationTasksAbsent": true,
+    "UserDataOriginalsUnchanged": true,
+    "PreservedProgramArchives": true,
+    "PhysicalIMEStillPending": true,
+    "GuestOnly": true
+  },
+  "PhysicalIMEPassed": false,
+  "HostFormalProgramOrDataUsed": false,
+  "UACClickClaimedForThisFinalRun": false,
+  "Elevation": "Authenticated VMware Tools service session using the disposable guest account; no scheduled task created.",
+  "Scope": "Actual NSIS machine registration/shortcuts, same-directory official Go takeover, injected post-replacement recovery, renderer upgrade, byte-exact Go rollback, program uninstall. Normal application sessions use the interactive filtered token."
+}

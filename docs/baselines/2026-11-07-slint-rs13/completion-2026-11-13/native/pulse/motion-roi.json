@@ -1,0 +1,24 @@
+{
+  "Edition": "femtovg",
+  "ExecutableSHA256": "D81F31ED8AB3C0D45A3565CDC8AA412B3FB870C0CC350204178CDE44456B6487",
+  "Rows": [
+    {
+      "Clip": "recording",
+      "Measured": true,
+      "ClientROILogicalPixels": [
+        543,
+        251,
+        565,
+        274
+      ],
+      "Frames": 154,
+      "ChangedROIIntervals": 143,
+      "MaximumROIChangeEnergy": 888.0,
+      "ControlChangeObserved": true,
+      "SourceSpanWithoutCachedBaselineMilliseconds": 2702.6964,
+      "Scope": "Local control pixels changed; this does not by itself certify exact amplitude, timing, easing or a completed rotation/pulse period."
+    }
+  ],
+  "PhysicalInput": false,
+  "Scope": "Fixed 96-DPI regions exclude unrelated caret/tooltip changes. No ROI observation automatically accepts an exact trajectory."
+}

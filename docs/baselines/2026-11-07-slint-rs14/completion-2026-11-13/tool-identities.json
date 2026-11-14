@@ -1,0 +1,62 @@
+[
+  {
+    "Path": "scripts/verify-rust.ps1",
+    "SHA256": "A5B7B1DFF5BD6130CC17A3AFCA3EFC8FA88BD6AF8B9C3FA92AEB0B32AEEE1417"
+  },
+  {
+    "Path": "scripts/package-rust-preview.ps1",
+    "SHA256": "AB5D24101ACFC31E46BA97C08C53E217B05BBF53262C2ADE7AE8B46FAE06664D"
+  },
+  {
+    "Path": "scripts/package-rust-installer.ps1",
+    "SHA256": "65CD45704473C5937C5C446CFA8B3274141ED627C33AA9A369CD44647D0CFA9E"
+  },
+  {
+    "Path": "scripts/lib/rust-license-policy.ps1",
+    "SHA256": "0AB865396CB37E59B5CF4326C847AE31EAED3C540A2C5AD5F15E63B7AC2D6B73"
+  },
+  {
+    "Path": "scripts/audit-rust-licenses.ps1",
+    "SHA256": "A40516F66D9185C37C694C3F87265925F7266DABC7714BC03A8DBCD37A1E9C8E"
+  },
+  {
+    "Path": "scripts/test-rust-preview.ps1",
+    "SHA256": "B80162D02A1931EE215D22EE3F495A3335E3665E5417C85EF51DA62F46CC67C2"
+  },
+  {
+    "Path": "scripts/test-rust-installer.ps1",
+    "SHA256": "57077A8CE7A52DDAE62AB64F9DFD41631FD23E3335BF02035585740A3C6D1C03"
+  },
+  {
+    "Path": "scripts/test-rust-user-install.ps1",
+    "SHA256": "7EB086F4171BD9F4EABD59E8C0156974B89079DDA0237E4E24801B340D1B2976"
+  },
+  {
+    "Path": "scripts/test-rust-nsis-update.ps1",
+    "SHA256": "D366E542302D4EB28075BC41FC4C8CEDAB4B8DB88D422D366615B152B9B5AE52"
+  },
+  {
+    "Path": "scripts/test-rust-package-rollback.ps1",
+    "SHA256": "08CD3A3A523CF931B43CAA9E2271C0542CBB0803ED5627E050BAF12C941AC99D"
+  },
+  {
+    "Path": "rust/examples/rs14_update_plan.rs",
+    "SHA256": "1AEB7E87DC42F642CBA8B17C104DD23DF5DE2E9DB66162EE45108D755804F6D8"
+  },
+  {
+    "Path": "rust/windows/preview-installer.nsi",
+    "SHA256": "F48589F833E1F21F766080F05363EEEB44C575AFE52A58C23BCF7A67D328D632"
+  },
+  {
+    "Path": "rust/windows/release-policy.json",
+    "SHA256": "2B54A90F27FDFAA46FF73465A317E203EF30915C1904EC4E6A276F56D483AB98"
+  },
+  {
+    "Path": "rust/licenses/dependency-supplements.json",
+    "SHA256": "7D112C1143FF0F897890E1F71CFB8F2067AAD26BF8B1A88D26A375C2794A4E9F"
+  },
+  {
+    "Path": ".github/workflows/rust-preview.yml",
+    "SHA256": "9372AFEEA7504401FA6BD96A6E703AFD786E30A26F701951CE746B04A5602543"
+  }
+]

@@ -1,0 +1,36 @@
+{
+  "RecordedAtUtc": "2026-11-13T05:18:29.9664884Z",
+  "Renderer": "femtovg",
+  "Passed": true,
+  "NegativeCases": [
+    {
+      "Name": "skipped-checks",
+      "RejectedBeforeOutput": true
+    },
+    {
+      "Name": "missing-smoke",
+      "RejectedBeforeOutput": true
+    },
+    {
+      "Name": "changed-executable",
+      "RejectedBeforeOutput": true
+    },
+    {
+      "Name": "changed-metadata",
+      "RejectedBeforeOutput": true
+    },
+    {
+      "Name": "changed-source",
+      "RejectedBeforeOutput": true
+    }
+  ],
+  "ArchiveEntriesVerified": 605,
+  "ArchiveSHA256": "5601362323C8B2E5C3B8FDC222A588BA9A0E43A63A00A640107DA5DE4AB6DDFE",
+  "MissingRootLicenseTexts": 29,
+  "MissingLicenseTexts": 0,
+  "NestedLicenseTexts": 3,
+  "LicenseOptionsRecorded": true,
+  "EmbeddedNotices": 11,
+  "RedistributionCleared": false,
+  "G4Passed": false
+}

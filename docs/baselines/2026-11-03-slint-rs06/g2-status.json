@@ -1,0 +1,39 @@
+{
+  "DecisionDate": "2026-11-03",
+  "Scope": "Recorded Windows 11 x64 environments and fixed-data/session-preview prototype",
+  "RS06": "verified",
+  "RS07": "verified",
+  "G2": "released within measured scope",
+  "RS08": "not started",
+  "DefaultRenderer": "undecided",
+  "DecisionDocument": "g2-acceptance.md",
+  "Builds": [
+    {
+      "Renderer": "software",
+      "SHA256": "417FF956E78C632E101989586A6CACA30BF0DF7414E13122CC75A26B0338E993",
+      "SourceFingerprints": 49,
+      "Identity": "software-build.json"
+    },
+    {
+      "Renderer": "femtovg",
+      "SHA256": "AD4A650FB62AD4A13FA12239C8CC13299748241FD0B26D1B557AEBAE08B7BCB3",
+      "SourceFingerprints": 49,
+      "Identity": "femtovg-build.json"
+    }
+  ],
+  "AutomaticChecks": "checks.json",
+  "PreviousRS07SourceComparison": "femtovg-unplug/rs07-source-comparison.json",
+  "DualMonitorEvidence": "README.md",
+  "SoftwarePhysicalDisconnect": "followup/README.md",
+  "BothRendererS3": "sleep-recovery/README.md",
+  "LastFemtoVGPhysicalDisconnect": "femtovg-unplug/README.md",
+  "Cleanup": "femtovg-unplug/cleanup.json",
+  "CompatibilityStillUnverified": [
+    "Windows 10",
+    "Other GPU drivers and third-party IMEs",
+    "Full interaction on physically small screens",
+    "Separate keyboard entry into notification area"
+  ],
+  "PerformanceRemeasured": false,
+  "ProductDataMigrated": false
+}

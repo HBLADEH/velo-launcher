@@ -1,0 +1,82 @@
+{
+  "Date": "2026-11-03",
+  "OperatingSystem": {
+    "Caption": "Microsoft Windows 11 专业版 Insider Preview",
+    "Version": "10.0.26340",
+    "BuildNumber": "26340",
+    "OSArchitecture": "64 位"
+  },
+  "Graphics": [
+    {
+      "Name": "OrayIddDriver Device",
+      "DriverVersion": "17.50.19.949",
+      "CurrentHorizontalResolution": null,
+      "CurrentVerticalResolution": null
+    },
+    {
+      "Name": "Todesk Virtual Display Adapter",
+      "DriverVersion": "16.44.2.509",
+      "CurrentHorizontalResolution": 1920,
+      "CurrentVerticalResolution": 1080
+    },
+    {
+      "Name": "GameViewer Virtual Display Adapter",
+      "DriverVersion": "15.6.5.199",
+      "CurrentHorizontalResolution": null,
+      "CurrentVerticalResolution": null
+    },
+    {
+      "Name": "Intel(R) UHD Graphics 630",
+      "DriverVersion": "30.0.100.9805",
+      "CurrentHorizontalResolution": 1920,
+      "CurrentVerticalResolution": 1080
+    }
+  ],
+  "Monitors": [
+    {
+      "Active": true,
+      "Manufacturer": "DEL",
+      "Model": "DELL D2721H"
+    },
+    {
+      "Active": true,
+      "Manufacturer": "DEL",
+      "Model": "DELL D2721H"
+    }
+  ],
+  "CPU": "Intel Core i7-10700",
+  "MemoryGiB": 31.8,
+  "OriginalDisplays": [
+    {
+      "Device": "DISPLAY2",
+      "Primary": true,
+      "X": 0,
+      "Y": 0,
+      "Width": 1920,
+      "Height": 1080,
+      "DPI": 96,
+      "WorkHeight": 1032
+    },
+    {
+      "Device": "DISPLAY1",
+      "Primary": false,
+      "X": 1920,
+      "Y": 42,
+      "Width": 1920,
+      "Height": 1080,
+      "DPI": 96,
+      "WorkHeight": 1032
+    }
+  ],
+  "Compiler": "MSVC 14.50.35717; cl 19.50.35719.0; link 14.50.35719.0",
+  "SDK": "10.0.26100.0",
+  "BuildTools": "18.0.2",
+  "Rust": "1.99.1-x86_64-pc-windows-msvc",
+  "DefaultToolchainPreserved": "stable-x86_64-pc-windows-gnu",
+  "ProjectOverride": "rust/",
+  "CargoConfig": "Malformed legacy config backed up locally; official sparse registry configured.",
+  "NativeInstallExitCode": 0,
+  "RestartRequired": false,
+  "ExistingProduct": "Go/Wails Velo was running initially; no agent stop/restart command targeted it. It was no longer running at final observation; no cause is inferred.",
+  "PhysicalUnplugAndSleep": "Deferred by the user; no passing evidence claimed."
+}

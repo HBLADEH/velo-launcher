@@ -1,0 +1,26 @@
+{
+  "Passed": true,
+  "Checks": [
+    {
+      "Case": "caret-only",
+      "Passed": true,
+      "NativeCaptureUsed": false
+    },
+    {
+      "Case": "control-pulse",
+      "Passed": true,
+      "NativeCaptureUsed": false
+    },
+    {
+      "Case": "wrong-process",
+      "Passed": true,
+      "NativeCaptureUsed": false
+    },
+    {
+      "Case": "uncalibrated-dpi",
+      "Passed": true,
+      "NativeCaptureUsed": false
+    }
+  ],
+  "Scope": "Foreign process and uncalibrated DPI are rejected/excluded. Blinking caret outside the pulse control cannot prove local animation; actual pulse-region changes are detected."
+}

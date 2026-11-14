@@ -1,0 +1,26 @@
+{
+  "Passed": true,
+  "Cases": [
+    {
+      "Case": "wrong-process",
+      "Passed": true,
+      "ExpectedAnalysisSuccess": false
+    },
+    {
+      "Case": "backward-source-clock",
+      "Passed": true,
+      "ExpectedAnalysisSuccess": false
+    },
+    {
+      "Case": "wrong-frame-size",
+      "Passed": true,
+      "ExpectedAnalysisSuccess": false
+    },
+    {
+      "Case": "sparse-valid",
+      "Passed": true,
+      "ExpectedAnalysisSuccess": true
+    }
+  ],
+  "Scope": "Rejects foreign PID, reversed source clock and wrong raw geometry; sparse valid data remains explicitly insufficient for a finite trajectory fit."
+}

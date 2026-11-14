@@ -1,0 +1,145 @@
+{
+  "Renderer": "femtovg",
+  "ExecutableSHA256": "D81F31ED8AB3C0D45A3565CDC8AA412B3FB870C0CC350204178CDE44456B6487",
+  "Rows": [
+    {
+      "Clip": "settings-enter-1",
+      "Status": "insufficient",
+      "IntermediateFrames": 5,
+      "MaximumActiveSourceGapMilliseconds": 333.66310000419617,
+      "ReportedMaximumActiveSourceGapMilliseconds": 333.66310000419617,
+      "TriggerBracketGapMilliseconds": 333.66310000419617,
+      "CompletionBracketGapMilliseconds": 16.683899998664856,
+      "Reason": "Need rest, intermediate and settled samples with source gaps <=55ms, including the trigger boundary"
+    },
+    {
+      "Clip": "settings-exit-1",
+      "Status": "insufficient",
+      "IntermediateFrames": 2,
+      "Reason": "Need at least four intermediate samples"
+    },
+    {
+      "Clip": "settings-enter-2",
+      "Status": "compatible",
+      "FixedOpacityDurationMilliseconds": 220,
+      "FixedOpacityCurve": [
+        0.22,
+        1.0,
+        0.36,
+        1.0
+      ],
+      "FixedEnterTranslationLogicalPixels": 8,
+      "FixedEnterTranslationDurationMilliseconds": 280,
+      "EstimatedTriggerOnsetSourceMilliseconds": 70.59970000386238,
+      "IntermediateFrames": 4,
+      "MaximumActiveSourceGapMilliseconds": 50.04950001835823,
+      "ReportedMaximumActiveSourceGapMilliseconds": 50.04950001835823,
+      "TriggerBracketGapMilliseconds": 50.04950001835823,
+      "CompletionBracketGapMilliseconds": 16.683300018310547,
+      "OpacityRMSE": 0.036242776311362405,
+      "TranslationRMSELogicalPixels": 0.6098247385081136,
+      "MaximumTranslationErrorLogicalPixels": 0.7749596737947773,
+      "FinalProgress": 1.0,
+      "P95TitleOpticalResidualRGB": 0.14812241368286877,
+      "Reason": null,
+      "Tolerance": {
+        "OpacityRMSE": 0.05,
+        "TranslationRMSELogicalPixels": 0.75,
+        "MaximumTranslationErrorLogicalPixels": 1.5,
+        "FinalProgressMinimum": 0.97,
+        "P95TitleOpticalResidualRGB": 18
+      },
+      "Scope": "Comparison of the fixed declared waveform with independent optical samples at their resolution. Nearby waveforms may be indistinguishable; no exact display/presentation latency claim."
+    },
+    {
+      "Clip": "settings-exit-2",
+      "Status": "insufficient",
+      "IntermediateFrames": 4,
+      "MaximumActiveSourceGapMilliseconds": 633.965399980545,
+      "ReportedMaximumActiveSourceGapMilliseconds": 633.965399980545,
+      "TriggerBracketGapMilliseconds": 633.965399980545,
+      "CompletionBracketGapMilliseconds": 16.683899998664856,
+      "Reason": "Need rest, intermediate and settled samples with source gaps <=55ms, including the trigger boundary"
+    },
+    {
+      "Clip": "settings-enter-3",
+      "Status": "compatible",
+      "FixedOpacityDurationMilliseconds": 220,
+      "FixedOpacityCurve": [
+        0.22,
+        1.0,
+        0.36,
+        1.0
+      ],
+      "FixedEnterTranslationLogicalPixels": 8,
+      "FixedEnterTranslationDurationMilliseconds": 280,
+      "EstimatedTriggerOnsetSourceMilliseconds": 34.36569997668266,
+      "IntermediateFrames": 7,
+      "MaximumActiveSourceGapMilliseconds": 16.6836000084877,
+      "ReportedMaximumActiveSourceGapMilliseconds": 16.6836000084877,
+      "TriggerBracketGapMilliseconds": 16.683200001716614,
+      "CompletionBracketGapMilliseconds": 16.68290001153946,
+      "OpacityRMSE": 0.003511377544725365,
+      "TranslationRMSELogicalPixels": 0.2629163737505714,
+      "MaximumTranslationErrorLogicalPixels": 0.3997176043260886,
+      "FinalProgress": 1.0,
+      "P95TitleOpticalResidualRGB": 0.14963777999047348,
+      "Reason": null,
+      "Tolerance": {
+        "OpacityRMSE": 0.05,
+        "TranslationRMSELogicalPixels": 0.75,
+        "MaximumTranslationErrorLogicalPixels": 1.5,
+        "FinalProgressMinimum": 0.97,
+        "P95TitleOpticalResidualRGB": 18
+      },
+      "Scope": "Comparison of the fixed declared waveform with independent optical samples at their resolution. Nearby waveforms may be indistinguishable; no exact display/presentation latency claim."
+    },
+    {
+      "Clip": "settings-exit-3",
+      "Status": "insufficient",
+      "IntermediateFrames": 4,
+      "MaximumActiveSourceGapMilliseconds": 417.087700009346,
+      "ReportedMaximumActiveSourceGapMilliseconds": 417.087700009346,
+      "TriggerBracketGapMilliseconds": 417.087700009346,
+      "CompletionBracketGapMilliseconds": 16.683299988508224,
+      "Reason": "Need rest, intermediate and settled samples with source gaps <=55ms, including the trigger boundary"
+    },
+    {
+      "Clip": "settings-enter-4",
+      "Status": "insufficient",
+      "IntermediateFrames": 7,
+      "MaximumActiveSourceGapMilliseconds": 83.41589999198914,
+      "ReportedMaximumActiveSourceGapMilliseconds": 83.41589999198914,
+      "TriggerBracketGapMilliseconds": 83.41589999198914,
+      "CompletionBracketGapMilliseconds": 16.683700025081635,
+      "Reason": "Need rest, intermediate and settled samples with source gaps <=55ms, including the trigger boundary"
+    },
+    {
+      "Clip": "settings-exit-4",
+      "Status": "insufficient",
+      "IntermediateFrames": 4,
+      "MaximumActiveSourceGapMilliseconds": 400.4054000079632,
+      "ReportedMaximumActiveSourceGapMilliseconds": 400.4054000079632,
+      "TriggerBracketGapMilliseconds": 400.4054000079632,
+      "CompletionBracketGapMilliseconds": 16.68359997868538,
+      "Reason": "Need rest, intermediate and settled samples with source gaps <=55ms, including the trigger boundary"
+    }
+  ],
+  "AllRecordedSettingsCompatible": false,
+  "IndependentWailsReference": {
+    "MainCurve": [
+      0.22,
+      1.0,
+      0.36,
+      1.0
+    ],
+    "IncomingOpacityMilliseconds": 220,
+    "IncomingTranslationMilliseconds": 280,
+    "OutgoingOpacityMilliseconds": 100,
+    "IncomingTranslationLogicalPixels": 8,
+    "CSSSHA256": "B0103A0CCCDC04B80D17F051BE012E55709D66A23CAB6F9DAE1C60BFF39AE915"
+  },
+  "ExactCurveUniquenessEstablished": false,
+  "PhysicalInput": false,
+  "Scope": "Native settings opacity and vertical translation only, at recorded source-frame/pixel tolerance. Does not certify other animation families or physical IME/DPI."
+}

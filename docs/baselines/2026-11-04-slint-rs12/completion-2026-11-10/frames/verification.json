@@ -1,0 +1,27 @@
+{
+  "RecordedAtUtc": "2026-11-09T17:36:44.8028681Z",
+  "Command": "GOTOOLCHAIN=go1.25.6 ./scripts/verify.ps1 -SkipBuild",
+  "Succeeded": true,
+  "ExitCode": 0,
+  "SourceSHA256": {
+    "scripts/build-rs12-observer.ps1": "A653F06D7B54EDE3C236B860F1DB6DF69D7E4D7A218F09148AB1C56BFA95F189",
+    "scripts/lib/rs12-frame-observer.cpp": "618BCFEB8B3BFD441997D7F3BB26C6E9967727168A519190BED9EA3FD8DC3688",
+    "scripts/observe-rs12-frames.ps1": "0C5507BA2D8D395507292F5FD414F6A0E8E2F6B09B8FB29BB99686F30D41C5D5",
+    "scripts/prepare-rs12-frame-fixtures.ps1": "9375BE33FFFB95EE30069265B8A9A8B65DC427495E38EAC982DC7579CFAFEEE0",
+    "scripts/summarize-rs12-frames.ps1": "0991B9CCA9A202FDA319033952F28DA781C02D41F6FFC4F16606D040F90E21D9",
+    "scripts/test-rs12-frames.ps1": "B8AF5B411D2648D7C12684286A0703D98B7EB119824456D610A5DF0D13F5687C",
+    "scripts/test-rs12-frame-fixtures.ps1": "D78D445CC3FF101E696C36FFE4C1E30B3355CD770D1BCCE9857594399DB3306F",
+    "scripts/test-rs12-frame-native.ps1": "9BDCE9CE7142E2A2DEB9475FCD5B17AA3FB3C118CB764746D14EBA2511A3DE89",
+    "scripts/verify.ps1": "BE8924AAFAEBDFF924CF01F79E0B3989F89F3D25E2B03DB552BB3E3FE193984A"
+  },
+  "LogSHA256": "5654C7B4C823EEFDFC9FE2BD0A5BA717262E6D3D57DA01B38D1789EEED640418",
+  "NativeObserverBuildSHA256": "FFAA0B25B59C849F5458B6AA50097E3ADE265D4189737766DB4EE6A8065E2581",
+  "Checks": [
+    "Native observer cl.exe /W4 /WX with locked MSVC/Windows SDK",
+    "Self-owned window move/resize geometry regression; first presentation per decoded pattern",
+    "Frame clocks, drift/explicit segments, PID creation and preservation regression",
+    "1000/10000 fixture IDs, icon namespace/actual decoding, isolation and frozen binary rejection",
+    "Shared measurement/latency tests, frontend lint/26 tests/typecheck/build, Go vet and full Go tests"
+  ],
+  "NewRustBuild": false
+}

@@ -1,0 +1,28 @@
+{
+  "SchemaVersion": 1,
+  "SHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+  "Kind": "WarmStartup",
+  "Boundary": "ProcessStartToEditable",
+  "InputId": "024397D07DB93ECF20AFE342D982D988B8C0F9D9C1272BC69700447A3C8C0935",
+  "EnvironmentId": "919334C89E60F497840DA52B3B7791CC5DD006BCC54E291BAD0A492BC13F2FD7",
+  "RecordedAtUtc": "2026-11-04T18:05:46.4485129Z",
+  "Method": "Direct Explorer launch from prepared shortcut; actual accepted character ends timing. Normal OS cache retained; manual startup/typing delay is not subtracted.",
+  "StartupClockCalibration": "OS creation FILETIME and accepted-input UTC with a 1ms guard; wall-clock step/error is not independently bounded. Not a calibrated first-possible-readiness measurement.",
+  "Result": {
+    "Observations": [
+      {
+        "Number": 1,
+        "Kind": "WarmStartup",
+        "Valid": true,
+        "InjectedStart": false,
+        "StartLowerUnixUs": 1793815537558232,
+        "StartObservedUnixUs": 1793815537559232,
+        "AcceptedUnixUs": 1793815546300202,
+        "DurationUpperMilliseconds": 8741.97,
+        "ClockUncertaintyMilliseconds": 1.0,
+        "Reason": "Actual focused accepted character; includes manual launch/activation and typing interval. No claim of first-possible readiness."
+      }
+    ],
+    "Completed": true
+  }
+}

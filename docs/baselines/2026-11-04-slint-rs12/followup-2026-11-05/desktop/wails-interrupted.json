@@ -1,0 +1,25 @@
+{
+  "RecordedAtUtc": "2026-11-05T03:59:15.0299510Z",
+  "Edition": "wails",
+  "SHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+  "ProcessId": 333820,
+  "StartedTicks": 639294414353565488,
+  "OperatorStoppedComputerUseWithPhysicalEscape": true,
+  "UIActionsAfterStop": 0,
+  "DPISamples": 0,
+  "PresentedFrameSamples": 0,
+  "Cleanup": "Verified PID/executable/creation time and authenticated existing test probe PID; POST /quit, normal completion from session launcher.",
+  "Completion": {
+    "Completed": true,
+    "ExitCode": 0,
+    "ProcessId": 333820,
+    "SHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+    "ForcedCleanup": false
+  },
+  "ExecutableUnchanged": true,
+  "RawSessionSHA256": "0ADA9D7669721B52E959319CB9EFD02A961138B6EC55D4E9CC4834595FCA687B",
+  "RawCompletionSHA256": "FF8F0A1A9B5E66C09C7D19DDCB7574F96495D4D921151EB2D478CCB26B25F1FC",
+  "ColdTestingDeferredByUser": true,
+  "RebootPerformed": false,
+  "LoginItemsChanged": false
+}

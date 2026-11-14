@@ -1,0 +1,70 @@
+{
+  "date": "2026-11-04",
+  "timezone": "Asia/Shanghai",
+  "attempt": 3,
+  "passed": true,
+  "actual_logout_login_reported_by_user": true,
+  "interactive_logon_changed": true,
+  "manual_relaunch_before_capture": false,
+  "cases": [
+    {
+      "renderer": "software",
+      "passed": true,
+      "executable_sha256": "B234714B46F5396B64FA08F2F6001CC4677C6FB03DBD01F52B579CBCD672EA3D",
+      "system_run_present": true,
+      "system_registry_kind": 1,
+      "system_registry_provider": "StdRegProv / HKEY_USERS / exact current account SID",
+      "system_registry_return_value": 0,
+      "run_command_exact": true,
+      "run_command_utf16_units": 194,
+      "auto_started_matching_processes": 1,
+      "visible_launcher_windows": 0,
+      "original_config_bytes_preserved": true,
+      "actual_process_command_creation_and_session_verified": true,
+      "startup_window_not_shown_user_reported": true,
+      "physical_hotkey_user_reported": true,
+      "chinese_ime_typing_without_click_or_paste_user_reported": true,
+      "escape_clear_and_hide_user_reported": true
+    },
+    {
+      "renderer": "femtovg",
+      "passed": true,
+      "executable_sha256": "4CE277451CE75027BCEAE8DC830519158FA6F047BC2040FB43AFCD9181F8A5D6",
+      "system_run_present": true,
+      "system_registry_kind": 1,
+      "system_registry_provider": "StdRegProv / HKEY_USERS / exact current account SID",
+      "system_registry_return_value": 0,
+      "run_command_exact": true,
+      "run_command_utf16_units": 194,
+      "auto_started_matching_processes": 1,
+      "visible_launcher_windows": 0,
+      "original_config_bytes_preserved": true,
+      "actual_process_command_creation_and_session_verified": true,
+      "startup_window_not_shown_user_reported": true,
+      "physical_hotkey_user_reported": true,
+      "chinese_ime_typing_without_click_or_paste_user_reported": true,
+      "escape_clear_and_hide_user_reported": true
+    }
+  ],
+  "assisted_input_scope": "User physically called each automatically started app with its saved chord, typed the requested Chinese sample through an IME without clicking search or pasting, cleared and hid with Escape; both normal and no startup pop-up reported.",
+  "raw_capture": "rust/target/rs11-login3/after-capture.json",
+  "before_capture": "rust/target/rs11-login3/before-capture.json",
+  "build_identity": "build-identities.json",
+  "preserved_failed_logins": [
+    "first-login-failed.json",
+    "second-login-failed.json"
+  ],
+  "cleanup": {
+    "passed": true,
+    "report": "third-cleanup.json",
+    "system_and_local_login_values_remaining": 0,
+    "test_processes_remaining": 0,
+    "settings_saved_startup_disabled": true,
+    "native_endpoints_absent": true,
+    "both_test_hotkeys_released": true,
+    "normal_user_quit": true,
+    "data_retained": true
+  },
+  "performance": "not measured",
+  "uac_consent": "not covered by this login test"
+}

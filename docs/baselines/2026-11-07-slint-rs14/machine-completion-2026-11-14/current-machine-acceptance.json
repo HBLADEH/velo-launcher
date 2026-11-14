@@ -1,0 +1,30 @@
+{
+  "RecordedAtUtc": "2026-11-14T17:49:53.744618+00:00",
+  "Date": "2026-11-15",
+  "Stage": "RS-14",
+  "Complete": true,
+  "G4Passed": true,
+  "Scope": "Only the supplied Windows11 physical host and its Windows10 disposable guest, with explicitly skipped unavailable environments.",
+  "DefaultRenderer": "software",
+  "AlternateRenderer": "femtovg",
+  "Evidence": {
+    "CurrentProductBuilds": "product-builds.json",
+    "FullChecksAndPinnedGoRegression": "verification-summary.json",
+    "ActualMachineTransition": "machine-acceptance.json",
+    "PhysicalSogou": "sogou-acceptance.json",
+    "FinalGuestCleanup": "sogou-final-cleanup.json",
+    "Hotkeys": "sogou-hotkey-cleanup.json",
+    "GuestShutdown": "sogou-guest-shutdown.json"
+  },
+  "SkippedUnavailableEnvironments": [
+    "Additional physical GPU/driver combinations unavailable and excluded by the user.",
+    "200 percent display scale unavailable on this host."
+  ],
+  "NewCurrentProductRemoteCIRunClaimed": false,
+  "PublicReleaseApproved": false,
+  "AllOriginalPerformanceBudgetsMet": false,
+  "HistoricalFocusRootCauseEstablished": false,
+  "ExistingFailureSamplesPreserved": true,
+  "OldBinaryOrPackageMetadataRewritten": false,
+  "HostFormalInstallationUsedForTests": false
+}

@@ -59,7 +59,9 @@ if ($Action -eq 'Snapshot') {
     $accepted = @($events | Where-Object event -EQ 'input_accepted') | Select-Object -First 1
     $native = @($events | Where-Object event -EQ 'native_window') | Select-Object -First 1
     $valid = $null -ne $accepted -and $null -ne $native -and $accepted.focused -eq 'true' -and $accepted.native_focused -eq 'true' -and
-        $accepted.visible -eq 'true' -and $accepted.composing -eq 'false' -and @($events | Where-Object { $_.pid -ne [string]$active.ProcessId -or $_.dropped -ne '0' }).Count -eq 0
+        $accepted.visible -eq 'true' -and $accepted.composing -eq 'false' -and
+        (-not $accepted.PSObject.Properties['synthetic'] -or $accepted.synthetic -ne 'true') -and
+        @($events | Where-Object { $_.pid -ne [string]$active.ProcessId -or $_.dropped -ne '0' }).Count -eq 0
     $at = $(if ($accepted) { [DateTime]::UnixEpoch.AddTicks([long]$accepted.unix_us * 10) } else { [DateTime]::UtcNow })
     $duration = $(if ($valid) { ($at.Ticks - $active.StartedTicks) / 10000.0 } else { $null })
     if ($duration -le 0) { $valid = $false; $duration = $null }

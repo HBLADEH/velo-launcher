@@ -1,0 +1,80 @@
+{
+  "date": "2026-11-04",
+  "timezone": "Asia/Shanghai",
+  "passed": true,
+  "renderers": [
+    {
+      "renderer": "software",
+      "executable_sha256": "B234714B46F5396B64FA08F2F6001CC4677C6FB03DBD01F52B579CBCD672EA3D",
+      "helper_sha256": "CD4EACB91C48783419D86BC9CC70D0B62A7006E7273D51C44170446648BFF6B2",
+      "normal_app_token_verified": true,
+      "real_uac_cancellation": {
+        "passed": true,
+        "human_report": {
+          "real_windows_uac_visible": true,
+          "direct_input_after_cancel_normal": true,
+          "clicked_no": true,
+          "velo_returned": true
+        },
+        "cancelled_helper_never_executed": true,
+        "history_original_bytes_unchanged": true,
+        "cancelled_item_has_no_history": true,
+        "config_and_library_original_bytes_unchanged": true,
+        "failure_restore_shown_and_query_cleared": true
+      },
+      "real_uac_confirmation": {
+        "passed": true,
+        "human_report": {
+          "clicked_yes": true,
+          "helper_completed": true,
+          "real_windows_uac_visible": true
+        },
+        "helper_actual_administrator_token": true,
+        "exact_profile_arguments_verified": true,
+        "unicode_and_space_working_directory_verified": true,
+        "successful_item_learned_once": true,
+        "cancelled_item_has_no_history": true,
+        "app_hidden_after_success": true
+      },
+      "normal_user_quit_cleanup": true,
+      "initialization_observation": "ready within the fixture probe"
+    },
+    {
+      "renderer": "femtovg",
+      "executable_sha256": "4CE277451CE75027BCEAE8DC830519158FA6F047BC2040FB43AFCD9181F8A5D6",
+      "helper_sha256": "CD4EACB91C48783419D86BC9CC70D0B62A7006E7273D51C44170446648BFF6B2",
+      "normal_app_token_verified": true,
+      "real_uac_cancellation": {
+        "passed": true,
+        "human_report": {
+          "clicked_no": true,
+          "real_windows_uac_visible": true,
+          "velo_returned": true,
+          "direct_input_after_cancel_normal": true
+        },
+        "cancelled_helper_never_executed": true,
+        "history_original_bytes_unchanged": true,
+        "cancelled_item_has_no_history": true,
+        "config_and_library_original_bytes_unchanged": true,
+        "failure_restore_shown_and_query_cleared": true
+      },
+      "real_uac_confirmation": {
+        "passed": true,
+        "human_report": {
+          "real_windows_uac_visible": true,
+          "clicked_yes": true,
+          "helper_completed": true
+        },
+        "helper_actual_administrator_token": true,
+        "exact_profile_arguments_verified": true,
+        "unicode_and_space_working_directory_verified": true,
+        "successful_item_learned_once": true,
+        "cancelled_item_has_no_history": true,
+        "app_hidden_after_success": true
+      },
+      "normal_user_quit_cleanup": true,
+      "initialization_observation": "launch.ps1 readiness was not observed within the 25-second limit; subsequent independent read observed ready on the same process"
+    }
+  ],
+  "evidence_scope": "Human operated actual Windows UAC and input; ordinary app token, helper capture, raw history bytes and production diagnostics independently checked"
+}

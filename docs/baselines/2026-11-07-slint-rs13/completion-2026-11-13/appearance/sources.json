@@ -1,0 +1,97 @@
+{
+  "SourceImages": [
+    {
+      "File": "docs\\baselines\\2026-11-07-slint-rs13\\completion-2026-11-12\\autonomous-followup\\pages\\wails-motion\\keycaps-0.jpg",
+      "SHA256": "441D39CDE2909579CEAF8640D47CE7E49308C95E00E90AA196A713D48754F025",
+      "Crop": [
+        20,
+        140,
+        620,
+        330
+      ],
+      "PixelsRescaled": false
+    },
+    {
+      "File": "docs\\baselines\\2026-11-07-slint-rs13\\completion-2026-11-12\\autonomous-followup\\pages\\wails-motion\\dropdown-0.jpg",
+      "SHA256": "4B80C423F639C24370CADAD70F2C58569706460F0DB9A8BF15C98883116F574C",
+      "Crop": [
+        20,
+        230,
+        620,
+        425
+      ],
+      "PixelsRescaled": false
+    },
+    {
+      "File": "docs\\baselines\\2026-11-07-slint-rs13\\completion-2026-11-12\\autonomous-followup\\pages\\software-motion\\keycaps-0.jpg",
+      "SHA256": "465CA72412EE556F15F33691FBAE302A4696D13D68AF40B79BAE1FAB9774F15C",
+      "Crop": [
+        20,
+        140,
+        620,
+        330
+      ],
+      "PixelsRescaled": false
+    },
+    {
+      "File": "docs\\baselines\\2026-11-07-slint-rs13\\completion-2026-11-12\\autonomous-followup\\pages\\software-motion\\dropdown-0.jpg",
+      "SHA256": "AA69AC379484EE142FAD6C64D512178B179139C09DFF9FE075C43259B49A1F53",
+      "Crop": [
+        20,
+        230,
+        620,
+        425
+      ],
+      "PixelsRescaled": false
+    },
+    {
+      "File": "docs\\baselines\\2026-11-07-slint-rs13\\completion-2026-11-12\\autonomous-followup\\pages\\femtovg-motion\\keycaps-0.jpg",
+      "SHA256": "5620E8FE359365B694A9BE00DE31E52229D842EBF5D17C24DA8443AB5D96CD03",
+      "Crop": [
+        20,
+        140,
+        620,
+        330
+      ],
+      "PixelsRescaled": false
+    },
+    {
+      "File": "docs\\baselines\\2026-11-07-slint-rs13\\completion-2026-11-12\\autonomous-followup\\pages\\femtovg-motion\\dropdown-0.jpg",
+      "SHA256": "749361DD0FC6B558B124DD5105B9B994CE0FACA3E2D94F9FD2B69C7CEA756CF5",
+      "Crop": [
+        20,
+        230,
+        620,
+        425
+      ],
+      "PixelsRescaled": false
+    }
+  ],
+  "CurrentStyleSources": [
+    {
+      "Renderer": "software",
+      "Path": "ui/components.slint",
+      "SHA256": "CE237C22A9104069DFF461A528FCE115118CF35098685C46221ED911CC8525D1",
+      "UnchangedSinceNativeReference": true
+    },
+    {
+      "Renderer": "software",
+      "Path": "ui/settings-controls.slint",
+      "SHA256": "8197CB75CC595B97511905B5BC47F6070B4F843A4A1AD842C419D2E6BC6718BB",
+      "UnchangedSinceNativeReference": true
+    },
+    {
+      "Renderer": "femtovg",
+      "Path": "ui/components.slint",
+      "SHA256": "CE237C22A9104069DFF461A528FCE115118CF35098685C46221ED911CC8525D1",
+      "UnchangedSinceNativeReference": true
+    },
+    {
+      "Renderer": "femtovg",
+      "Path": "ui/settings-controls.slint",
+      "SHA256": "8197CB75CC595B97511905B5BC47F6070B4F843A4A1AD842C419D2E6BC6718BB",
+      "UnchangedSinceNativeReference": true
+    }
+  ],
+  "Scope": "Unscaled crops of the prior same-DPI native comparison. Product executable identities remain those of the archived reference; unchanged component/select style fingerprints support reviewing these remaining appearance differences. This does not relabel previous physical-input evidence."
+}

@@ -1,0 +1,124 @@
+{
+  "Passed": true,
+  "Checks": [
+    {
+      "Case": "declared-enter",
+      "Status": "compatible",
+      "Passed": true
+    },
+    {
+      "Case": "declared-exit",
+      "Status": "compatible",
+      "Passed": true
+    },
+    {
+      "Case": "slow-opacity",
+      "Status": "mismatch",
+      "Passed": true
+    },
+    {
+      "Case": "linear-opacity",
+      "Status": "mismatch",
+      "Passed": true
+    },
+    {
+      "Case": "slow-translation",
+      "Status": "mismatch",
+      "Passed": true
+    },
+    {
+      "Case": "sliding-exit",
+      "Status": "mismatch",
+      "Passed": true
+    },
+    {
+      "Case": "poor-optical-model",
+      "Status": "insufficient",
+      "Passed": true
+    },
+    {
+      "Case": "reported-source-gap",
+      "Status": "insufficient",
+      "Passed": true
+    },
+    {
+      "Case": "stale-baseline-dense-motion",
+      "Status": "insufficient",
+      "Passed": true
+    },
+    {
+      "Case": "missing-rest-True",
+      "Status": "insufficient",
+      "Passed": true
+    },
+    {
+      "Case": "missing-settled-True",
+      "Status": "insufficient",
+      "Passed": true
+    },
+    {
+      "Case": "missing-rest-False",
+      "Status": "insufficient",
+      "Passed": true
+    },
+    {
+      "Case": "missing-settled-False",
+      "Status": "insufficient",
+      "Passed": true
+    },
+    {
+      "Case": "actual-gap-despite-dense-metadata",
+      "Status": "insufficient",
+      "Passed": true
+    },
+    {
+      "Case": "distant-settled-sample",
+      "Status": "insufficient",
+      "Passed": true
+    },
+    {
+      "Case": "distant-idle-tail-after-settled",
+      "Status": "compatible",
+      "Passed": true
+    },
+    {
+      "Case": "derive-gaps-from-source",
+      "Status": "compatible",
+      "Passed": true
+    },
+    {
+      "Case": "reversed-clock",
+      "RefusedInvalidData": true,
+      "Passed": true
+    },
+    {
+      "Case": "nonfinite-opacity",
+      "RefusedInvalidData": true,
+      "Passed": true
+    },
+    {
+      "Case": "negative-optical-residual",
+      "RefusedInvalidData": true,
+      "Passed": true
+    },
+    {
+      "Case": "nonfinite-reported-gap",
+      "RefusedInvalidData": true,
+      "Passed": true
+    }
+  ],
+  "Reference": {
+    "MainCurve": [
+      0.22,
+      1.0,
+      0.36,
+      1.0
+    ],
+    "IncomingOpacityMilliseconds": 220,
+    "IncomingTranslationMilliseconds": 280,
+    "OutgoingOpacityMilliseconds": 100,
+    "IncomingTranslationLogicalPixels": 8,
+    "CSSSHA256": "B0103A0CCCDC04B80D17F051BE012E55709D66A23CAB6F9DAE1C60BFF39AE915"
+  },
+  "Scope": "Known waveforms and source-coverage rejection; synthetic calibration only, no product or display acceptance."
+}

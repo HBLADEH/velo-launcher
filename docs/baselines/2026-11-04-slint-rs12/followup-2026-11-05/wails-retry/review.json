@@ -1,0 +1,188 @@
+{
+  "SchemaVersion": 1,
+  "RecordedAtUtc": "2026-11-05T04:26:50.8761498Z",
+  "SHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+  "ProcessId": 333632,
+  "StartedTicks": 639294484678021662,
+  "NormalExit": {
+    "ProcessId": 333632,
+    "Exited": true,
+    "ExitCode": 0,
+    "ForcedCleanup": false,
+    "SHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+    "ExecutableUnchanged": true
+  },
+  "DesktopToolLaunch": "launch_app reported no targetable window; repeated inventories did not expose the Wails window.",
+  "OperatorReport": "窗口出现，可以直接输入",
+  "OperatorAction": "User requested to press Alt+Space once, with no click on search box.",
+  "AcceptedCharacterRecords": 4,
+  "CompositionRecords": 1,
+  "AcceptedCharacterMetadata": [
+    {
+      "UnixMicroseconds": 1793852278815263,
+      "UTF8Bytes": 1,
+      "Focused": "true",
+      "NativeFocused": "true",
+      "Visible": "true",
+      "Trusted": "true",
+      "Composing": "false",
+      "Synthetic": "false",
+      "Dropped": "0"
+    },
+    {
+      "UnixMicroseconds": 1793852279001286,
+      "UTF8Bytes": 2,
+      "Focused": "true",
+      "NativeFocused": "true",
+      "Visible": "true",
+      "Trusted": "true",
+      "Composing": "false",
+      "Synthetic": "false",
+      "Dropped": "0"
+    },
+    {
+      "UnixMicroseconds": 1793852279154483,
+      "UTF8Bytes": 3,
+      "Focused": "true",
+      "NativeFocused": "true",
+      "Visible": "true",
+      "Trusted": "true",
+      "Composing": "false",
+      "Synthetic": "false",
+      "Dropped": "0"
+    },
+    {
+      "UnixMicroseconds": 1793852279294119,
+      "UTF8Bytes": 4,
+      "Focused": "true",
+      "NativeFocused": "true",
+      "Visible": "true",
+      "Trusted": "true",
+      "Composing": "false",
+      "Synthetic": "false",
+      "Dropped": "0"
+    }
+  ],
+  "ActualCharactersSaved": false,
+  "PhysicalHotkeyStartCaptured": false,
+  "CalibratedLatencySample": false,
+  "DPITransitionSample": false,
+  "PresentedFrameSample": false,
+  "FinalNative": {
+    "FocusedClass": "",
+    "Active": false,
+    "DOMWritable": true,
+    "NativeFocusAvailable": true,
+    "DOMDocumentFocused": false,
+    "DOMInputFocused": false,
+    "Visible": false
+  },
+  "EarlierFlashFailureResolved": false,
+  "HotkeyReliabilityPassed": false,
+  "ComputerUseStoppedByPhysicalEscape": true,
+  "UIActionsAfterStop": 0,
+  "Cleanup": "Validated PID/path/creation time and probe PID; used authenticated /quit; session holder confirmed exit code 0.",
+  "OriginalResourceReport": {
+    "AutomaticWarmupText": "Operator desktop session; initial successful scan confirmed, home/icons warmed, state set by operator; controlled 1440-minute refresh and updates-off preset.",
+    "ReviewedEligible": false,
+    "SHA256": "6BDD35EBDBE400D030C5FDD9BB0ED882457FFE704076D1377A1765E6E4F7A0D5",
+    "ActualMode": "ProbeBuild; actual-input and ready probe enabled",
+    "ExclusionReason": "Full home/icon/English/Chinese warmup was not observed before sampling. Entry supplied a canned confirmation and command-line-only mode misclassified an environment/sidecar-activated latencyprobe build. All three samples excluded.",
+    "AllSamplesEligible": true,
+    "Mode": "Production"
+  },
+  "ResourceRows": [
+    {
+      "Number": 1,
+      "Seconds": 15.694,
+      "PrivateBytes": 162820096.0,
+      "WorkingSet": 636067840.0,
+      "PrivateWorkingSet": 125173760.0,
+      "CPUPercentOfMachine": 0.510246,
+      "ProcessCount": 7,
+      "WindowState": "Visible",
+      "OriginalBaselineEligible": true,
+      "ReviewedBaselineEligible": false
+    },
+    {
+      "Number": 2,
+      "Seconds": 15.162,
+      "PrivateBytes": 163332096.0,
+      "WorkingSet": 636444672.0,
+      "PrivateWorkingSet": 125534208.0,
+      "CPUPercentOfMachine": 0.489503,
+      "ProcessCount": 7,
+      "WindowState": "Visible",
+      "OriginalBaselineEligible": true,
+      "ReviewedBaselineEligible": false
+    },
+    {
+      "Number": 3,
+      "Seconds": 15.723,
+      "PrivateBytes": 162320384.0,
+      "WorkingSet": 635510784.0,
+      "PrivateWorkingSet": 124268544.0,
+      "CPUPercentOfMachine": 0.472031,
+      "ProcessCount": 7,
+      "WindowState": "Visible",
+      "OriginalBaselineEligible": true,
+      "ReviewedBaselineEligible": false
+    }
+  ],
+  "EffectiveIdleSampleTotal": 54,
+  "NewEligibleIdleSamples": 0,
+  "RawLocalIdentities": [
+    {
+      "RelativePath": "case.json",
+      "SHA256": "A386885BE65A930FBA50A0D91E8E949C6B3716E1250E207D412BCA4F017971F3"
+    },
+    {
+      "RelativePath": "session.json",
+      "SHA256": "4B03B69C56D508EAAE22A17834800FA0F1C2C6036A110DF7280298084841677C"
+    },
+    {
+      "RelativePath": "completion.json",
+      "SHA256": "5BE2852CEC53D25E510974532CDC7CF24DC13195C867AD566964E53AB4C8AAB4"
+    },
+    {
+      "RelativePath": "visible.json",
+      "SHA256": "6BDD35EBDBE400D030C5FDD9BB0ED882457FFE704076D1377A1765E6E4F7A0D5"
+    },
+    {
+      "RelativePath": "final-native-state.private.json",
+      "SHA256": "E6FBE689E9BF1B03578EE58E4BC40A1616F0AD46446E05B982E65E477DC943AB"
+    },
+    {
+      "RelativePath": "probe/accepted-input.log",
+      "SHA256": "05702747212A9F14F9914AE02B6494629B2494CC91AEADD52103EAC5B7A2507C"
+    },
+    {
+      "RelativePath": "probe/events.jsonl",
+      "SHA256": "219E7956EABA1266722919035BE28C4F22907459940441F4AEFAEE97A16E17E7"
+    },
+    {
+      "RelativePath": "local/Velo/logs/velo.log",
+      "SHA256": "7DE049190821EC336D18CDB3828ED388516411EB117605C62AEB9C80E4767C92"
+    }
+  ],
+  "CorrectedSources": [
+    {
+      "Path": "scripts/measure-rs12-session.ps1",
+      "SHA256": "DCDA733766DC4364FBC4FB85B4F932AEDA2EBB44F2BF8206D966FBD05DFD2E6D"
+    },
+    {
+      "Path": "scripts/measure-resources.ps1",
+      "SHA256": "75535CB76CD83A3FC163A8A60190B784E43D04C14937ED2259DDE6B189343744"
+    },
+    {
+      "Path": "scripts/lib/resource-sample.ps1",
+      "SHA256": "6A939C59BCEB8069ACD28CD1F4B4434B1D7F431BFDB8FBEEFF4474F639AFAE3D"
+    },
+    {
+      "Path": "scripts/test-resource-measurement.ps1",
+      "SHA256": "D4A690EDA671DFE0876EDB85BD2C161E8708D3A322D16F270DE4F7EA5BA0C2D6"
+    }
+  ],
+  "ColdTestingDeferredByUser": true,
+  "RS12Complete": false
+}

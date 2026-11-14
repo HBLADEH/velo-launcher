@@ -1,0 +1,79 @@
+{
+  "SchemaVersion": 1,
+  "DateBeijing": "2026-11-03",
+  "Stage": "RS-08",
+  "Status": "passed",
+  "Scope": "Offline synthetic data contracts; prototype UI still uses fixed data",
+  "WorkspaceCommit": "4d9dbaf9acf5286d9961fae1e89cca908b5af9d7",
+  "WorkspaceDirty": true,
+  "Environment": {
+    "OS": "Windows 11 Pro Insider Preview x64",
+    "OSBuild": "10.0.26340",
+    "Go": "go1.25.6 windows/amd64",
+    "Node": "v22.23.2",
+    "npm": "10.9.8",
+    "Rust": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+    "MSVC": "14.50.35717",
+    "WindowsSDK": "10.0.26100.0"
+  },
+  "Fixture": {
+    "Path": "tests/fixtures/compat/rs08.json",
+    "SHA256": "C9C3DB744C175C8630B8EACC0143B555CE3390F77E4580B9F913F3891B73A0C5",
+    "IdentityCases": 12,
+    "ConfigCases": 30,
+    "FixedTime": "2026-11-03T04:05:06.123456789+08:00"
+  },
+  "Validation": {
+    "RustEntry": "./scripts/verify-rust.ps1",
+    "LegacyEntry": "./scripts/verify.ps1 -SkipBuild (GOTOOLCHAIN=go1.25.6)",
+    "Renderers": [
+      "femtovg",
+      "software"
+    ],
+    "RustTestsPerRenderer": 45,
+    "ExistingPrototypeTests": 26,
+    "DataAndStorageTests": 19,
+    "ClippyAllTargets": true,
+    "ReleaseBuilds": true,
+    "RoundTripsPerRenderer": [
+      "Go -> Rust edit -> Go",
+      "Rust -> Go edit -> Rust"
+    ],
+    "DirectoryAclDeniedAllFourFilesUnchanged": true,
+    "ReadOnlyFileAndSharingViolation": true,
+    "InjectedBeforeFlushAndBeforeReplacement": true,
+    "ChildExitAfterFlushBeforeReplacement": true,
+    "ConcurrentWritersAndNonblockingReaders": true,
+    "VerbatimBackupsAndFutureCorruptFileProtection": true,
+    "LegacyOnceOnlyMigrationAndNoResurrection": true,
+    "RedactedNormalErrorFormatting": true,
+    "LegacyGoVetAndTests": true,
+    "FrontendLintTypecheckBuild": true,
+    "FrontendTests": 26,
+    "WindowAndInputSmokeRun": false,
+    "SourceFingerprintChecks": "72 entries per renderer match current workspace; identical input lists",
+    "TemporaryDirectoriesAndTestProcessesCleaned": true
+  },
+  "Builds": [
+    {
+      "Renderer": "femtovg",
+      "ExecutableSHA256": "D9D071A8CDE23910F1D237CF9DC8649C30C1059AFCE27A7F51F06FE738FA6081",
+      "ExecutableBytes": 10362880,
+      "SourceCount": 72,
+      "Identity": "femtovg-build-identity.json"
+    },
+    {
+      "Renderer": "software",
+      "ExecutableSHA256": "644D3B9D0C038F054B704A237B72BC0B99654AA5F3E53CB65B6B749D3E1822BD",
+      "ExecutableBytes": 10864128,
+      "SourceCount": 72,
+      "Identity": "software-build-identity.json"
+    }
+  ],
+  "Limitations": [
+    "No product directory or real user data copy accessed",
+    "No UI data integration or true search/launch migration",
+    "No new IME, monitor, performance, or long-running stability acceptance",
+    "G3 and default renderer decision remain pending"
+  ]
+}

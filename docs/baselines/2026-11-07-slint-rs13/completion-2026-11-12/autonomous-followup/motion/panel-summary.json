@@ -1,0 +1,359 @@
+{
+  "Rows": [
+    {
+      "Edition": "wails",
+      "Clip": "settings-enter-1",
+      "Measured": true,
+      "ROIClientLogicalPixels": [
+        74,
+        29,
+        86,
+        62
+      ],
+      "Frames": 25,
+      "IntermediateFrames": 12,
+      "MaximumActiveSourceGapMilliseconds": 33.36730000376701,
+      "DeclaredOpacityMilliseconds": 220,
+      "OpacityFit": {
+        "DurationMilliseconds": 244,
+        "OnsetSourceMilliseconds": 1000.357200011611,
+        "RMSE": 0.023274891641600282,
+        "DurationRangeAtRMSEPlus002": [
+          120,
+          346
+        ]
+      },
+      "DeclaredEnterShiftDurationMilliseconds": 280,
+      "VerticalShiftFit": {
+        "DurationMilliseconds": 288,
+        "RMSELogicalPixels": 0.07181849883854749
+      },
+      "VisibleExitMaximumAbsoluteShiftLogicalPixels": null,
+      "Scope": "Title-only optical estimate. Shift is poorly identifiable at near-zero opacity; fit error and original frames must be reviewed before acceptance."
+    },
+    {
+      "Edition": "wails",
+      "Clip": "settings-exit-1",
+      "Measured": true,
+      "ROIClientLogicalPixels": [
+        74,
+        29,
+        86,
+        62
+      ],
+      "Frames": 24,
+      "IntermediateFrames": 6,
+      "MaximumActiveSourceGapMilliseconds": 33.367400005459785,
+      "DeclaredOpacityMilliseconds": 100,
+      "OpacityFit": {
+        "DurationMilliseconds": 120,
+        "OnsetSourceMilliseconds": 16536.90309999883,
+        "RMSE": 0.031150578038351674,
+        "DurationRangeAtRMSEPlus002": [
+          58,
+          208
+        ]
+      },
+      "DeclaredEnterShiftDurationMilliseconds": null,
+      "VerticalShiftFit": null,
+      "VisibleExitMaximumAbsoluteShiftLogicalPixels": 0.25,
+      "Scope": "Title-only optical estimate. Shift is poorly identifiable at near-zero opacity; fit error and original frames must be reviewed before acceptance."
+    },
+    {
+      "Edition": "wails",
+      "Clip": "settings-enter-2",
+      "Measured": true,
+      "ROIClientLogicalPixels": [
+        74,
+        29,
+        86,
+        62
+      ],
+      "Frames": 22,
+      "IntermediateFrames": 14,
+      "MaximumActiveSourceGapMilliseconds": 50.049899995326996,
+      "DeclaredOpacityMilliseconds": 220,
+      "OpacityFit": {
+        "DurationMilliseconds": 254,
+        "OnsetSourceMilliseconds": 264.61500000953674,
+        "RMSE": 0.02526241411185054,
+        "DurationRangeAtRMSEPlus002": [
+          160,
+          420
+        ]
+      },
+      "DeclaredEnterShiftDurationMilliseconds": 280,
+      "VerticalShiftFit": {
+        "DurationMilliseconds": 296,
+        "RMSELogicalPixels": 0.07832401628438442
+      },
+      "VisibleExitMaximumAbsoluteShiftLogicalPixels": null,
+      "Scope": "Title-only optical estimate. Shift is poorly identifiable at near-zero opacity; fit error and original frames must be reviewed before acceptance."
+    },
+    {
+      "Edition": "wails",
+      "Clip": "settings-exit-2",
+      "Measured": true,
+      "ROIClientLogicalPixels": [
+        74,
+        29,
+        86,
+        62
+      ],
+      "Frames": 31,
+      "IntermediateFrames": 6,
+      "MaximumActiveSourceGapMilliseconds": 33.366500005126,
+      "DeclaredOpacityMilliseconds": 100,
+      "OpacityFit": {
+        "DurationMilliseconds": 112,
+        "OnsetSourceMilliseconds": 21126.819199994206,
+        "RMSE": 0.023471523536223157,
+        "DurationRangeAtRMSEPlus002": [
+          64,
+          184
+        ]
+      },
+      "DeclaredEnterShiftDurationMilliseconds": null,
+      "VerticalShiftFit": null,
+      "VisibleExitMaximumAbsoluteShiftLogicalPixels": 0.5,
+      "Scope": "Title-only optical estimate. Shift is poorly identifiable at near-zero opacity; fit error and original frames must be reviewed before acceptance."
+    },
+    {
+      "Edition": "software",
+      "Clip": "settings-enter-1",
+      "Measured": true,
+      "ROIClientLogicalPixels": [
+        74,
+        29,
+        86,
+        62
+      ],
+      "Frames": 21,
+      "IntermediateFrames": 5,
+      "MaximumActiveSourceGapMilliseconds": 50.04909999668598,
+      "DeclaredOpacityMilliseconds": 220,
+      "OpacityFit": {
+        "DurationMilliseconds": 214,
+        "OnsetSourceMilliseconds": 257.3003000020981,
+        "RMSE": 0.0005918675418751724,
+        "DurationRangeAtRMSEPlus002": [
+          130,
+          278
+        ]
+      },
+      "DeclaredEnterShiftDurationMilliseconds": 280,
+      "VerticalShiftFit": {
+        "DurationMilliseconds": 318,
+        "RMSELogicalPixels": 0.19690463141840703
+      },
+      "VisibleExitMaximumAbsoluteShiftLogicalPixels": null,
+      "Scope": "Title-only optical estimate. Shift is poorly identifiable at near-zero opacity; fit error and original frames must be reviewed before acceptance."
+    },
+    {
+      "Edition": "software",
+      "Clip": "settings-exit-1",
+      "Measured": true,
+      "ROIClientLogicalPixels": [
+        74,
+        29,
+        86,
+        62
+      ],
+      "Frames": 11,
+      "IntermediateFrames": 4,
+      "MaximumActiveSourceGapMilliseconds": 33.366799995303154,
+      "DeclaredOpacityMilliseconds": 100,
+      "OpacityFit": {
+        "DurationMilliseconds": 106,
+        "OnsetSourceMilliseconds": 14867.57579998672,
+        "RMSE": 0.014423743825210797,
+        "DurationRangeAtRMSEPlus002": [
+          82,
+          140
+        ]
+      },
+      "DeclaredEnterShiftDurationMilliseconds": null,
+      "VerticalShiftFit": null,
+      "VisibleExitMaximumAbsoluteShiftLogicalPixels": 0.25,
+      "Scope": "Title-only optical estimate. Shift is poorly identifiable at near-zero opacity; fit error and original frames must be reviewed before acceptance."
+    },
+    {
+      "Edition": "software",
+      "Clip": "settings-enter-2",
+      "Measured": true,
+      "ROIClientLogicalPixels": [
+        74,
+        29,
+        86,
+        62
+      ],
+      "Frames": 25,
+      "IntermediateFrames": 6,
+      "MaximumActiveSourceGapMilliseconds": 33.36580000817776,
+      "DeclaredOpacityMilliseconds": 220,
+      "OpacityFit": {
+        "DurationMilliseconds": 210,
+        "OnsetSourceMilliseconds": 717.0547000020742,
+        "RMSE": 0.0023861728093857756,
+        "DurationRangeAtRMSEPlus002": [
+          158,
+          276
+        ]
+      },
+      "DeclaredEnterShiftDurationMilliseconds": 280,
+      "VerticalShiftFit": {
+        "DurationMilliseconds": 296,
+        "RMSELogicalPixels": 0.21701729786059243
+      },
+      "VisibleExitMaximumAbsoluteShiftLogicalPixels": null,
+      "Scope": "Title-only optical estimate. Shift is poorly identifiable at near-zero opacity; fit error and original frames must be reviewed before acceptance."
+    },
+    {
+      "Edition": "software",
+      "Clip": "settings-exit-2",
+      "Measured": true,
+      "ROIClientLogicalPixels": [
+        74,
+        29,
+        86,
+        62
+      ],
+      "Frames": 13,
+      "IntermediateFrames": 6,
+      "MaximumActiveSourceGapMilliseconds": 16.683699995279312,
+      "DeclaredOpacityMilliseconds": 100,
+      "OpacityFit": {
+        "DurationMilliseconds": 126,
+        "OnsetSourceMilliseconds": 14976.335199996829,
+        "RMSE": 0.013541861985446163,
+        "DurationRangeAtRMSEPlus002": [
+          96,
+          162
+        ]
+      },
+      "DeclaredEnterShiftDurationMilliseconds": null,
+      "VerticalShiftFit": null,
+      "VisibleExitMaximumAbsoluteShiftLogicalPixels": 0.25,
+      "Scope": "Title-only optical estimate. Shift is poorly identifiable at near-zero opacity; fit error and original frames must be reviewed before acceptance."
+    },
+    {
+      "Edition": "femtovg",
+      "Clip": "settings-enter-1",
+      "Measured": true,
+      "ROIClientLogicalPixels": [
+        74,
+        29,
+        86,
+        62
+      ],
+      "Frames": 27,
+      "IntermediateFrames": 6,
+      "MaximumActiveSourceGapMilliseconds": 33.36589999496937,
+      "DeclaredOpacityMilliseconds": 220,
+      "OpacityFit": {
+        "DurationMilliseconds": 244,
+        "OnsetSourceMilliseconds": 731.0661000013351,
+        "RMSE": 0.004763239937672552,
+        "DurationRangeAtRMSEPlus002": [
+          198,
+          300
+        ]
+      },
+      "DeclaredEnterShiftDurationMilliseconds": 280,
+      "VerticalShiftFit": {
+        "DurationMilliseconds": 300,
+        "RMSELogicalPixels": 0.23679258494619124
+      },
+      "VisibleExitMaximumAbsoluteShiftLogicalPixels": null,
+      "Scope": "Title-only optical estimate. Shift is poorly identifiable at near-zero opacity; fit error and original frames must be reviewed before acceptance."
+    },
+    {
+      "Edition": "femtovg",
+      "Clip": "settings-exit-1",
+      "Measured": true,
+      "ROIClientLogicalPixels": [
+        74,
+        29,
+        86,
+        62
+      ],
+      "Frames": 20,
+      "IntermediateFrames": 6,
+      "MaximumActiveSourceGapMilliseconds": 33.36540000140667,
+      "DeclaredOpacityMilliseconds": 100,
+      "OpacityFit": {
+        "DurationMilliseconds": 122,
+        "OnsetSourceMilliseconds": 17313.005900010467,
+        "RMSE": 0.012065269906466496,
+        "DurationRangeAtRMSEPlus002": [
+          90,
+          174
+        ]
+      },
+      "DeclaredEnterShiftDurationMilliseconds": null,
+      "VerticalShiftFit": null,
+      "VisibleExitMaximumAbsoluteShiftLogicalPixels": 0.0,
+      "Scope": "Title-only optical estimate. Shift is poorly identifiable at near-zero opacity; fit error and original frames must be reviewed before acceptance."
+    },
+    {
+      "Edition": "femtovg",
+      "Clip": "settings-enter-2",
+      "Measured": true,
+      "ROIClientLogicalPixels": [
+        74,
+        29,
+        86,
+        62
+      ],
+      "Frames": 26,
+      "IntermediateFrames": 7,
+      "MaximumActiveSourceGapMilliseconds": 33.36609999835491,
+      "DeclaredOpacityMilliseconds": 220,
+      "OpacityFit": {
+        "DurationMilliseconds": 294,
+        "OnsetSourceMilliseconds": 250.61210000514984,
+        "RMSE": 0.024891356263635624,
+        "DurationRangeAtRMSEPlus002": [
+          188,
+          390
+        ]
+      },
+      "DeclaredEnterShiftDurationMilliseconds": 280,
+      "VerticalShiftFit": {
+        "DurationMilliseconds": 372,
+        "RMSELogicalPixels": 0.30941965247000125
+      },
+      "VisibleExitMaximumAbsoluteShiftLogicalPixels": null,
+      "Scope": "Title-only optical estimate. Shift is poorly identifiable at near-zero opacity; fit error and original frames must be reviewed before acceptance."
+    },
+    {
+      "Edition": "femtovg",
+      "Clip": "settings-exit-2",
+      "Measured": true,
+      "ROIClientLogicalPixels": [
+        74,
+        29,
+        86,
+        62
+      ],
+      "Frames": 18,
+      "IntermediateFrames": 6,
+      "MaximumActiveSourceGapMilliseconds": 33.3648000061512,
+      "DeclaredOpacityMilliseconds": 100,
+      "OpacityFit": {
+        "DurationMilliseconds": 116,
+        "OnsetSourceMilliseconds": 15801.83980000019,
+        "RMSE": 0.01499563527469666,
+        "DurationRangeAtRMSEPlus002": [
+          86,
+          162
+        ]
+      },
+      "DeclaredEnterShiftDurationMilliseconds": null,
+      "VerticalShiftFit": null,
+      "VisibleExitMaximumAbsoluteShiftLogicalPixels": 0.25,
+      "Scope": "Title-only optical estimate. Shift is poorly identifiable at near-zero opacity; fit error and original frames must be reviewed before acceptance."
+    }
+  ],
+  "Scope": "ROI fits retain error and plausible duration range. Transitions are observed at about 16.7/33.4ms source sampling; precise independent opacity/translation and final display timing are not certified."
+}

@@ -1,0 +1,24 @@
+{
+  "Passed": true,
+  "Checks": [
+    {
+      "Case": "wrong-process",
+      "Passed": true,
+      "NativeCaptureUsed": false,
+      "ExpectedSuccess": false
+    },
+    {
+      "Case": "no-native-frames",
+      "Passed": true,
+      "NativeCaptureUsed": false,
+      "ExpectedSuccess": false
+    },
+    {
+      "Case": "valid-clipped-recording",
+      "Passed": true,
+      "NativeCaptureUsed": false,
+      "ExpectedSuccess": true
+    }
+  ],
+  "Scope": "Refuses wrong creation identity and empty native captures; preserves a bounded valid clip without pretending it is physical input."
+}

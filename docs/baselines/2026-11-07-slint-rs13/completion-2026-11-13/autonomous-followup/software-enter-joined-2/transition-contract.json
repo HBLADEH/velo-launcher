@@ -1,0 +1,56 @@
+{
+  "Renderer": "software",
+  "ExecutableSHA256": "5E7C017DDA3FF691E7FF8DCBFEAF149E5A766C1F8DC73A816BB5C4A9F7C4C66B",
+  "Rows": [
+    {
+      "Clip": "settings-enter-1",
+      "Status": "compatible",
+      "FixedOpacityDurationMilliseconds": 220,
+      "FixedOpacityCurve": [
+        0.22,
+        1.0,
+        0.36,
+        1.0
+      ],
+      "FixedEnterTranslationLogicalPixels": 8,
+      "FixedEnterTranslationDurationMilliseconds": 280,
+      "EstimatedTriggerOnsetSourceMilliseconds": 419.39840000867844,
+      "IntermediateFrames": 5,
+      "MaximumActiveSourceGapMilliseconds": 50.05000001192093,
+      "ReportedMaximumActiveSourceGapMilliseconds": 50.05000001192093,
+      "TriggerBracketGapMilliseconds": 33.36610001325607,
+      "CompletionBracketGapMilliseconds": 33.36710000038147,
+      "OpacityRMSE": 0.04036444809911257,
+      "TranslationRMSELogicalPixels": 0.4895498525641512,
+      "MaximumTranslationErrorLogicalPixels": 0.8540196720148678,
+      "FinalProgress": 1.0,
+      "P95TitleOpticalResidualRGB": 2.6438276555877764,
+      "Reason": null,
+      "Tolerance": {
+        "OpacityRMSE": 0.05,
+        "TranslationRMSELogicalPixels": 0.75,
+        "MaximumTranslationErrorLogicalPixels": 1.5,
+        "FinalProgressMinimum": 0.97,
+        "P95TitleOpticalResidualRGB": 18
+      },
+      "Scope": "Comparison of the fixed declared waveform with independent optical samples at their resolution. Nearby waveforms may be indistinguishable; no exact display/presentation latency claim."
+    }
+  ],
+  "AllRecordedSettingsCompatible": true,
+  "IndependentWailsReference": {
+    "MainCurve": [
+      0.22,
+      1.0,
+      0.36,
+      1.0
+    ],
+    "IncomingOpacityMilliseconds": 220,
+    "IncomingTranslationMilliseconds": 280,
+    "OutgoingOpacityMilliseconds": 100,
+    "IncomingTranslationLogicalPixels": 8,
+    "CSSSHA256": "B0103A0CCCDC04B80D17F051BE012E55709D66A23CAB6F9DAE1C60BFF39AE915"
+  },
+  "ExactCurveUniquenessEstablished": false,
+  "PhysicalInput": false,
+  "Scope": "Native settings opacity and vertical translation only, at recorded source-frame/pixel tolerance. Does not certify other animation families or physical IME/DPI."
+}

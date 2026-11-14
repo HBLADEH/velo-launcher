@@ -1,0 +1,26 @@
+{
+  "RecordedAtUtc": "2026-11-10T12:49:22.6986120Z",
+  "HistoricalManifest": "final-checkpoint/SHA256SUMS.public.txt",
+  "PreviousManifestSHA256": "8392AFB6661F1818A01C92C128DB7735FC78B2E4C323B8C33344D322F9ADF75D",
+  "PreviousManifestPreservedLocally": ".reasonix/rs12-calibrated-cold-20261110-final/reports/public-final-checkpoint-checksums-before-20261110.txt",
+  "UpdatedManifestSHA256": "A160FED4AD80C13A1AFCE3080C09E5A75F55CFCFA9934AC377B8A8C1438D8F84",
+  "CorrectedEntries": [
+    {
+      "Entry": "matrix.json",
+      "PreviousExpectedSHA256": "7718d071a937cb4ed6807ea903daa6c63fc51d23b44c71697ac92763cd170900",
+      "CurrentPublicFileSHA256": "c37dd800a0039402e6e856a9208e140404550ea485a509cb2d1a60f73d4f00bf",
+      "ParentManifestAlreadyMatchesCurrentFile": true,
+      "ContentRewritten": false
+    },
+    {
+      "Entry": "README.md",
+      "PreviousExpectedSHA256": "3aca4142bf9ada25d426293d0a0a63352acb1ee1b643593c9e0f8f2d98fe4e91",
+      "CurrentPublicFileSHA256": "b106f8a9445959599944dce55342eb0941fd66166fc495f339dffeb09c28f75e",
+      "ParentManifestAlreadyMatchesCurrentFile": true,
+      "ContentRewritten": false
+    }
+  ],
+  "OldEvidenceContentsRewritten": false,
+  "HistoricalTimingOrOutcomeClaimsChanged": false,
+  "Scope": "Two existing stale entries were found during the cold-calibration evidence check. The parent index already matched current public contents. This correction reindexes those existing files and preserves the former checksum text; it does not authenticate or reconstruct earlier versions identified only by the obsolete hashes."
+}

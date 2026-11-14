@@ -4,6 +4,11 @@ param(
     [ValidateSet('Wails', 'Slint')][string]$ApplicationKind = 'Wails',
     [string]$WindowHandle,
     [string]$BuildIdentityPath,
+    [ValidateSet('Auto', 'Fixtures', 'Business')][string]$DataMode = 'Auto',
+    [string]$MeasurementLog,
+    [switch]$IncludeAllDescendants,
+    [switch]$AllowScanWarnings,
+    [switch]$OperatorBusinessConfirmed,
     [ValidateRange(1, 60)][int]$Seconds = 15,
     [ValidateRange(1, 20)][int]$Samples = 1,
     [ValidateSet('Installed', 'Candidate', 'Unknown')][string]$Edition = 'Unknown',
@@ -87,7 +92,7 @@ function Get-FileIdentity([string]$Path) {
 }
 
 function Get-DataEvidence {
-    if ($ApplicationKind -eq 'Slint') {
+    if ($DataMode -eq 'Fixtures') {
         return [pscustomobject]@{
             Directory = $null
             Files = [ordered]@{ 'embedded-fixtures' = [pscustomobject]@{ SHA256 = $rustIdentity.Sources | Where-Object Path -EQ 'src/fixtures.rs' | Select-Object -ExpandProperty SHA256 } }
@@ -117,6 +122,13 @@ function Get-DataEvidence {
     [pscustomobject]@{
         Directory = $DataDirectory
         Files = $files
+        Source = 'Business data directory; shared JSON contracts and disk icon cache.'
+        IconDisk = Get-VeloIconDiskEvidence $DataDirectory
+        Business = $(if ($ApplicationKind -eq 'Slint') {
+            if ($OperatorBusinessConfirmed) {
+                [pscustomobject]@{ Complete = $IdleConfirmed.IsPresent; Scanning = $false; Warning = $null; Count = $null; IconCache = $null; PublishedDuringScan = $false; Source = 'Caller confirmed scan/model on this normal business window; see IdleEvidence for human or automation observation. No in-process observer; internal counts/cache unavailable.' }
+            } else { Read-VeloBusinessObservation $MeasurementLog $ProcessId }
+        } else { $null })
         # Raw settings plus a hash distinguish saved fields from in-memory defaults.
         SavedConfig = $config
         CachedIndexCount = $cachedCount
@@ -128,7 +140,9 @@ function Get-DataEvidence {
 }
 
 function Get-DataSignature($Evidence) {
-    [pscustomobject]@{ Files = $Evidence.Files; Session = $Evidence.LogSessionStarted; Refresh = $Evidence.LastRefresh } | ConvertTo-Json -Depth 10 -Compress
+    [pscustomobject]@{ Files = $Evidence.Files; Session = $Evidence.LogSessionStarted; Refresh = $Evidence.LastRefresh;
+        Icons = $(if ($Evidence.PSObject.Properties['IconDisk']) { $Evidence.IconDisk });
+        Business = $(if ($Evidence.PSObject.Properties['Business']) { $Evidence.Business }) } | ConvertTo-Json -Depth 10 -Compress
 }
 
 function Get-InputFingerprint($Evidence) {
@@ -136,7 +150,9 @@ function Get-InputFingerprint($Evidence) {
     foreach ($entry in $Evidence.Files.GetEnumerator()) {
         $hashes[$entry.Key] = $(if ($entry.Value) { $entry.Value.SHA256 } else { $null })
     }
-    [pscustomobject]@{ Files = $hashes; LastRefresh = $Evidence.LastRefresh; CachedIndexCount = $Evidence.CachedIndexCount }
+    [pscustomobject]@{ Files = $hashes; LastRefresh = $Evidence.LastRefresh; CachedIndexCount = $Evidence.CachedIndexCount;
+        IconDisk = $(if ($Evidence.PSObject.Properties['IconDisk']) { $Evidence.IconDisk });
+        Business = $(if ($Evidence.PSObject.Properties['Business']) { $Evidence.Business }) }
 }
 
 function Get-TreeSnapshot {
@@ -146,7 +162,7 @@ function Get-TreeSnapshot {
     if (-not $root[0].ExecutablePath -or $root[0].ExecutablePath -ne $target.Path) { throw 'Target executable path changed or cannot be read.' }
     $liveRoot = Get-Process -Id $ProcessId
     if ($liveRoot.StartTime.ToUniversalTime().Ticks -ne $rootStartedTicks) { throw 'Root PID was reused.' }
-    $tree = @(Get-VeloProcessTree -Processes $all -RootProcessId $ProcessId -AllDescendants:($ApplicationKind -eq 'Slint'))
+    $tree = @(Get-VeloProcessTree -Processes $all -RootProcessId $ProcessId -AllDescendants:($ApplicationKind -eq 'Slint' -or $IncludeAllDescendants))
     $privateWorkingSets = @{}
     try {
         foreach ($counter in (Get-CimInstance Win32_PerfRawData_PerfProc_Process -ErrorAction Stop)) {
@@ -208,6 +224,17 @@ function Get-ToolVersion([string]$Name, [string[]]$Arguments) {
 $root = Get-CimInstance Win32_Process -Filter "ProcessId=$ProcessId"
 $executablePattern = $(if ($ApplicationKind -eq 'Slint') { 'velo-slint*.exe' } else { 'velo-launcher*.exe' })
 if (-not $root -or $root.Name -notlike $executablePattern -or -not $root.ExecutablePath) { throw 'ProcessId must identify a readable executable of the requested application kind.' }
+if ($DataMode -eq 'Auto') {
+    $DataMode = if ($ApplicationKind -eq 'Slint' -and $root.CommandLine -match '--(?:fixtures|isolated|smoke-test|input-smoke-test)(?:\s|$)|--measurement-stdio' -and $root.CommandLine -notmatch '--measurement-business') { 'Fixtures' } else { 'Business' }
+}
+if ($ApplicationKind -eq 'Slint' -and $DataMode -eq 'Business' -and
+    (-not $PSBoundParameters.ContainsKey('DataDirectory') -or (-not $MeasurementLog -and -not $OperatorBusinessConfirmed))) {
+    throw 'Slint business sampling requires explicit DataDirectory and MeasurementLog; fixtures must be selected explicitly.'
+}
+if ($OperatorBusinessConfirmed -and ($ApplicationKind -ne 'Slint' -or $DataMode -ne 'Business' -or $MeasurementLog -or
+    -not $IdleConfirmed -or [string]::IsNullOrWhiteSpace($IdleEvidence))) {
+    throw 'OperatorBusinessConfirmed is only for an uninstrumented Slint business process with explicit operator idle evidence and no MeasurementLog.'
+}
 $rootStartedTicks = (Get-Process -Id $ProcessId).StartTime.ToUniversalTime().Ticks
 $target = Get-FileIdentity $root.ExecutablePath
 if ($ExpectedExecutable -and $target.Path -ne (Resolve-Path -LiteralPath $ExpectedExecutable).Path) { throw 'Running executable does not match ExpectedExecutable (possibly an older single instance).' }
@@ -258,7 +285,7 @@ $executable = [pscustomobject]@{
     GoCompiler = $(if ($binaryInfo.Count) { ($binaryInfo[0] -split ': ')[-1] } else { $null })
     WailsDependency = ($binaryInfo | Where-Object { $_ -match '^\s*dep\s+github.com/wailsapp/wails/v2\s' } | Out-String).Trim()
     BuildSettings = @($binaryInfo | Where-Object { $_ -match '^\s*build\s+(vcs[^=]*=|-tags=|-ldflags=|GOOS=|GOARCH=)' } | ForEach-Object { $_.Trim() })
-    Mode = $(if ($root.CommandLine -match '--measurement-log=') { 'MeasurementProbe' } elseif ($root.CommandLine -match '(?:^|\s)--diagnostics(?:\s|$)') { 'Diagnostics' } else { 'Production' })
+    Mode = Get-VeloExecutableMode -CommandLine $root.CommandLine -GoBuildInfo $binaryInfo
     BackgroundFlag = $root.CommandLine -match '(?:^|\s)--background(?:\s|$)'
 }
 
@@ -285,7 +312,14 @@ $results = @(for ($sample = 1; $sample -le $Samples; $sample++) {
     }
     $inputAfter = Get-DataEvidence
     $stable = (Get-DataSignature $inputBefore) -eq (Get-DataSignature $inputAfter)
-    $result = Get-VeloSampleSummary -Snapshots $snapshots.ToArray() -ExpectedWindowState $WindowState -IdleConfirmed $IdleConfirmed.IsPresent -DataStable $stable
+    $businessIdle = $true
+    if ($ApplicationKind -eq 'Slint' -and $DataMode -eq 'Business') {
+        $businessIdle = $inputBefore.Business.Complete -and $inputAfter.Business.Complete -and
+            -not $inputBefore.Business.Scanning -and -not $inputAfter.Business.Scanning -and
+            ((-not $inputBefore.Business.Warning -and -not $inputAfter.Business.Warning) -or
+                ($AllowScanWarnings -and $inputBefore.Business.PublishedDuringScan -and $inputAfter.Business.PublishedDuringScan))
+    }
+    $result = Get-VeloSampleSummary -Snapshots $snapshots.ToArray() -ExpectedWindowState $WindowState -IdleConfirmed ($IdleConfirmed.IsPresent -and $businessIdle) -DataStable $stable
     $stateContinuous = $stateContinuous -and $result.WindowStateMatches
     $result.BaselineEligible = $result.BaselineEligible -and $stateContinuous
     $result | Add-Member -NotePropertyName StateContinuouslyObserved -NotePropertyValue $stateContinuous
@@ -295,7 +329,7 @@ $results = @(for ($sample = 1; $sample -le $Samples; $sample++) {
     $result | Add-Member -NotePropertyName Threads -NotePropertyValue $snapshots[-1].Threads
     $result | Add-Member -NotePropertyName RawSnapshots -NotePropertyValue $snapshots.ToArray()
     $result | Add-Member -NotePropertyName GPU -NotePropertyValue $snapshots[-1].GPU
-    $result | Add-Member -NotePropertyName ProcessTreePolicy -NotePropertyValue $(if ($ApplicationKind -eq 'Slint') { 'All descendants' } else { 'Root plus WebView descendants; excludes launched applications' })
+    $result | Add-Member -NotePropertyName ProcessTreePolicy -NotePropertyValue $(if ($ApplicationKind -eq 'Slint' -or $IncludeAllDescendants) { 'All descendants' } else { 'Root plus WebView descendants; excludes launched applications' })
     $result.IncludesWebViewChildren = $ApplicationKind -eq 'Wails'
     $result | Add-Member -NotePropertyName InputBefore -NotePropertyValue (Get-InputFingerprint $inputBefore)
     $result | Add-Member -NotePropertyName InputAfter -NotePropertyValue (Get-InputFingerprint $inputAfter)
@@ -305,7 +339,10 @@ $results = @(for ($sample = 1; $sample -le $Samples; $sample++) {
 $dataAfter = Get-DataEvidence
 $binaryStable = $target.SHA256 -eq (Get-FileHash -LiteralPath $target.Path -Algorithm SHA256).Hash
 $report = [pscustomobject]@{
-    SchemaVersion = 3
+    SchemaVersion = 4
+    DataMode = $DataMode
+    AllowScanWarnings = $AllowScanWarnings.IsPresent
+    OperatorBusinessConfirmed = $OperatorBusinessConfirmed.IsPresent
     CapturedAtUtc = [DateTime]::UtcNow.ToString('o')
     Environment = $environment
     Executable = $executable
@@ -318,7 +355,7 @@ $report = [pscustomobject]@{
     StatePollingIntervalMilliseconds = 1000
     AllSamplesEligible = $binaryStable -and @($results | Where-Object { -not $_.BaselineEligible }).Count -eq 0
     Samples = $results
-    UnavailableMetrics = @('GPU fields are null if the Windows GPU Process Memory provider has no readable instance; null is not zero. Renderer-internal texture/glyph cache bytes are unavailable.', 'Embedded icons use Slint caches; no application-owned decoded icon LRU exists yet.')
+    UnavailableMetrics = @('GPU fields are null if the Windows GPU Process Memory provider has no readable instance; null is not zero. Renderer-internal texture/glyph cache bytes are unavailable.', 'Business IconCache reports the application CPU/texture estimate; it excludes renderer-internal caches. Fixture images use Slint caches.')
     Limitations = @(
         'PrivateBytes is private commit, not physical resident memory. WorkingSet sums double-count shared pages.',
         'CPUPercentOfMachine is normalized by logical processors. Process/window polling can miss changes entirely between polls.',

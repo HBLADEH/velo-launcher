@@ -1,0 +1,78 @@
+{
+  "date": "2026-11-04",
+  "timezone": "Asia/Shanghai",
+  "passed": true,
+  "cancelled_installer_cases": [
+    {
+      "renderer": "software",
+      "passed": true,
+      "human_report": {
+        "real_installer_uac_visible": true,
+        "clicked_no": true,
+        "did_not_manually_relaunch": true
+      },
+      "original_executable_sha256": "B234714B46F5396B64FA08F2F6001CC4677C6FB03DBD01F52B579CBCD672EA3D",
+      "executable_after_denial_sha256": "B234714B46F5396B64FA08F2F6001CC4677C6FB03DBD01F52B579CBCD672EA3D",
+      "requested_payload_sha256": "4CE277451CE75027BCEAE8DC830519158FA6F047BC2040FB43AFCD9181F8A5D6",
+      "requested_payload_is_distinct": true,
+      "fixture_installer_sha256": "C95A7879F4C0882CBD36F3D664BFD3CBA66220ED914ABDD6DB2DCC8E881B0458",
+      "actual_windows_error_is_user_cancelled": true,
+      "installer_not_executed_marker_absent": true,
+      "original_target_unchanged": true,
+      "original_config_and_backup_bytes_unchanged": true,
+      "installer_and_script_preserved": true,
+      "script_error_preserved": true,
+      "restarted_exact_original_with_background_and_isolation_arguments": true,
+      "restart_hidden": true,
+      "normal_user_quit_cleanup": true,
+      "scope": "real UAC denial reported separately by user; actual production update script recovery with a local fixture, no formal NSIS package"
+    },
+    {
+      "renderer": "femtovg",
+      "passed": true,
+      "human_report": {
+        "clicked_no": true,
+        "did_not_manually_relaunch": true,
+        "real_installer_uac_visible": true
+      },
+      "original_executable_sha256": "4CE277451CE75027BCEAE8DC830519158FA6F047BC2040FB43AFCD9181F8A5D6",
+      "executable_after_denial_sha256": "4CE277451CE75027BCEAE8DC830519158FA6F047BC2040FB43AFCD9181F8A5D6",
+      "requested_payload_sha256": "B234714B46F5396B64FA08F2F6001CC4677C6FB03DBD01F52B579CBCD672EA3D",
+      "requested_payload_is_distinct": true,
+      "fixture_installer_sha256": "C95A7879F4C0882CBD36F3D664BFD3CBA66220ED914ABDD6DB2DCC8E881B0458",
+      "actual_windows_error_is_user_cancelled": true,
+      "installer_not_executed_marker_absent": true,
+      "original_target_unchanged": true,
+      "original_config_and_backup_bytes_unchanged": true,
+      "installer_and_script_preserved": true,
+      "script_error_preserved": true,
+      "restarted_exact_original_with_background_and_isolation_arguments": true,
+      "restart_hidden": true,
+      "normal_user_quit_cleanup": true,
+      "scope": "real UAC denial reported separately by user; actual production update script recovery with a local fixture, no formal NSIS package"
+    }
+  ],
+  "accepted_instead_of_cancel_preserved": {
+    "captured_utc": "2026-11-04T04:14:56.836511Z",
+    "planned_action": "cancel UAC",
+    "actual_user_action": "clicked Yes; user explicitly requested a fresh cancellation retry",
+    "classified_action": "real installer consent and successful replacement",
+    "passed": true,
+    "old_renderer": "software",
+    "new_renderer": "femtovg",
+    "target_before_sha256": "B234714B46F5396B64FA08F2F6001CC4677C6FB03DBD01F52B579CBCD672EA3D",
+    "target_after_sha256": "4CE277451CE75027BCEAE8DC830519158FA6F047BC2040FB43AFCD9181F8A5D6",
+    "payload_sha256": "4CE277451CE75027BCEAE8DC830519158FA6F047BC2040FB43AFCD9181F8A5D6",
+    "installer_elevated": true,
+    "installer_arguments": "exact /S /D=<isolated fixture target> verified by the fixture; full synthetic path in local marker",
+    "original_config_and_backup_unchanged": true,
+    "restart_matching_processes": 1,
+    "restart_background_and_isolation_verified": true,
+    "restart_hidden": true,
+    "script_removed_on_success": true,
+    "installer_removed_on_success": true,
+    "scope": "actual consent, production update script and local fixture; not a formal NSIS distribution",
+    "cleanup": "normal user quit; native instance endpoint absent, Ctrl+Alt+L available, no remaining process or test Run value; see cleanup.json"
+  },
+  "scope": "Production update script and schedule with isolated local installer fixture; no published NSIS package or formal release validation"
+}

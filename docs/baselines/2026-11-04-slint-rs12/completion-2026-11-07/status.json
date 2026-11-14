@@ -1,0 +1,148 @@
+{
+  "RecordedAtUtc": "2026-11-06T20:17:47.7288764Z",
+  "OriginalBootUtc": "2026-10-31T10:03:28.458604Z",
+  "UserScope": "Cold-start conditions and physical IME first. Exact latency and presented frames postponed because the user currently lacks recording/calibration conditions.",
+  "ColdSamples": 0,
+  "RequiredIndependentBoots": 9,
+  "CurrentBootColdUsable": false,
+  "NextColdCase": "software-1",
+  "Sequence": [
+    "software-1",
+    "femtovg-1",
+    "wails-1",
+    "femtovg-2",
+    "wails-2",
+    "software-2",
+    "wails-3",
+    "software-3",
+    "femtovg-3"
+  ],
+  "FrozenCaseChecks": [
+    {
+      "Case": "femtovg-1",
+      "PreparedAtUtc": "2026-11-04T13:33:42.0250076Z",
+      "SHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+      "ExeMatches": true,
+      "InputMatches": true,
+      "Started": false,
+      "LogExists": false,
+      "ActualInputProbe": true,
+      "LaunchAtStartup": false
+    },
+    {
+      "Case": "femtovg-2",
+      "PreparedAtUtc": "2026-11-04T13:33:48.6304715Z",
+      "SHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+      "ExeMatches": true,
+      "InputMatches": true,
+      "Started": false,
+      "LogExists": false,
+      "ActualInputProbe": true,
+      "LaunchAtStartup": false
+    },
+    {
+      "Case": "femtovg-3",
+      "PreparedAtUtc": "2026-11-04T13:33:55.6899586Z",
+      "SHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+      "ExeMatches": true,
+      "InputMatches": true,
+      "Started": false,
+      "LogExists": false,
+      "ActualInputProbe": true,
+      "LaunchAtStartup": false
+    },
+    {
+      "Case": "software-1",
+      "PreparedAtUtc": "2026-11-04T13:33:38.7313961Z",
+      "SHA256": "E85B41C7E77888750817E47F092EABECB1BAB5A68EFCE579378CE2DDAD2DBA4B",
+      "ExeMatches": true,
+      "InputMatches": true,
+      "Started": false,
+      "LogExists": false,
+      "ActualInputProbe": true,
+      "LaunchAtStartup": false
+    },
+    {
+      "Case": "software-2",
+      "PreparedAtUtc": "2026-11-04T13:33:46.2113478Z",
+      "SHA256": "E85B41C7E77888750817E47F092EABECB1BAB5A68EFCE579378CE2DDAD2DBA4B",
+      "ExeMatches": true,
+      "InputMatches": true,
+      "Started": false,
+      "LogExists": false,
+      "ActualInputProbe": true,
+      "LaunchAtStartup": false
+    },
+    {
+      "Case": "software-3",
+      "PreparedAtUtc": "2026-11-04T13:33:53.3596888Z",
+      "SHA256": "E85B41C7E77888750817E47F092EABECB1BAB5A68EFCE579378CE2DDAD2DBA4B",
+      "ExeMatches": true,
+      "InputMatches": true,
+      "Started": false,
+      "LogExists": false,
+      "ActualInputProbe": true,
+      "LaunchAtStartup": false
+    },
+    {
+      "Case": "wails-1",
+      "PreparedAtUtc": "2026-11-04T13:33:34.4901391Z",
+      "SHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+      "ExeMatches": true,
+      "InputMatches": true,
+      "Started": false,
+      "LogExists": false,
+      "ActualInputProbe": true,
+      "LaunchAtStartup": false
+    },
+    {
+      "Case": "wails-2",
+      "PreparedAtUtc": "2026-11-04T13:33:43.9193284Z",
+      "SHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+      "ExeMatches": true,
+      "InputMatches": true,
+      "Started": false,
+      "LogExists": false,
+      "ActualInputProbe": true,
+      "LaunchAtStartup": false
+    },
+    {
+      "Case": "wails-3",
+      "PreparedAtUtc": "2026-11-04T13:33:50.8683656Z",
+      "SHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+      "ExeMatches": true,
+      "InputMatches": true,
+      "Started": false,
+      "LogExists": false,
+      "ActualInputProbe": true,
+      "LaunchAtStartup": false
+    }
+  ],
+  "RebootPerformed": false,
+  "LoginItemsChanged": false,
+  "PhysicalIME": [
+    {
+      "ProcessId": 428996,
+      "Validated": true,
+      "Status": "Human Microsoft Pinyin exercise passed for recorded single-system scope; normal exit and composition flags verified",
+      "Edition": "software"
+    },
+    {
+      "Validated": true,
+      "Status": "Human Microsoft Pinyin exercise passed for recorded single-system scope; normal exit and composition flags verified",
+      "Edition": "femtovg",
+      "ProcessId": 394268
+    },
+    {
+      "Validated": true,
+      "Status": "Human Microsoft Pinyin exercise passed for recorded single-system scope; normal exit, trust metadata and composition flags verified",
+      "Edition": "wails",
+      "ProcessId": 429276
+    }
+  ],
+  "ExactLatencyVerified": false,
+  "PresentedFrameVerified": false,
+  "RS12Complete": false,
+  "OperatorOffline": true,
+  "IndependentFollowup": "RS-13 static Slint capture and RS-14 validation/package/CI preparation completed independently. Cold launch remains software-1 after a user-operated independent Windows Restart and first-launch attestation."
+}

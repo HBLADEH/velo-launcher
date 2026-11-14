@@ -1,0 +1,11 @@
+{
+  "CheckedAtUtc": "2026-11-04T06:47:49.4633223Z",
+  "RegistryProvider": "System StdRegProv, current user SID only",
+  "StartupValuePresent": false,
+  "StartupApprovalEnabled": true,
+  "AutoStartExpected": false,
+  "RegistryChanged": false,
+  "RebootPerformed": false,
+  "ColdSampleEligibleThisBoot": false,
+  "Reason": "This boot already ran and hashed all candidates. A future cold round must recheck the actual login entry and allow at most one candidate per boot."
+}

@@ -1,0 +1,76 @@
+{
+  "RecordedAtUtc": "2026-11-09T18:49:36.8095530Z",
+  "Scenario": "femtovg-10000-v4-attempt2",
+  "Edition": "femtovg",
+  "Fixture": "v4",
+  "ExpectedCatalogCount": 10000,
+  "ObservedCatalogCount": 10000,
+  "SHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+  "ExecutableMatches": true,
+  "ProcessId": 11268,
+  "NormalExit": {
+    "Completed": true,
+    "ExitCode": 0,
+    "ProcessId": 11268,
+    "SHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+    "ForcedCleanup": false
+  },
+  "OperatorReport": "已完成，结果正常并已退出",
+  "ActualEligibleEdits": 7,
+  "PhysicalKeyFramePairs": 7,
+  "AdditionalAcceptedEdits": [],
+  "EventLoss": 0,
+  "CaptureEndedWithTarget": true,
+  "GeometryFreshnessVerified": true,
+  "ClockOffsetRangeMilliseconds": 0.0012000000000000001,
+  "KeyToFirstChangedResultRegionUpperMilliseconds": {
+    "Count": 7,
+    "Minimum": 51.7201,
+    "Median": 62.1276,
+    "P95": 76.3205,
+    "Maximum": 76.3205
+  },
+  "KeyToStableResultRegionUpperMilliseconds": {
+    "Count": 7,
+    "Minimum": 293.185,
+    "Median": 310.0605,
+    "P95": 319.9042,
+    "Maximum": 319.9042
+  },
+  "CompleteResultContentConfirmation": "body",
+  "AllQueriesHaveReviewedResultEvidence": true,
+  "NativeDPI": 96,
+  "ObserverCPUSeconds": 5.765625,
+  "ObserverElapsedSeconds": 208.7560361,
+  "FormalFilesMatchingPreflight": {
+    "config.json": true,
+    "index.json": true,
+    "history.json": true,
+    "application-library.json": true,
+    "quick-launch.json": true
+  },
+  "SeedFilesMatchingAfterExit": {
+    "config.json": true,
+    "index.json": false,
+    "history.json": true,
+    "application-library.json": true,
+    "quick-launch.json": true
+  },
+  "LauncherWindowsRemaining": 0,
+  "ServiceWindowsRemaining": 0,
+  "ClosedEvidenceSHA256": {
+    "session.json": "195B179047AA9F9CBE73CCDDD86D552ECFCB935C8B34139F80915041C2D75A99",
+    "completion.json": "059D5803C594856FE74190ACD14C41DDEE505F0C105D47F90F08137DF19C5ACC",
+    "final-input-events": "6ED16E0F01E4B3D4FFCCA30DB3A41F86CEAB8B93E5425856D3F7729E74F7E5D4",
+    "events.jsonl": "B0BA6BF92220E0319B2EA4539B0E04FA8F001A099F4F4A8A0DBC99C44A519793",
+    "identity.json": "6E9BAEC6F2491A98F697F1554375BB6E393DBB9DD5416421E21829DED723929A",
+    "summary.json": "90452CE14F6FDFEEAFAC7F1B1C0E564893E54C00E95A6DB76AA803CE6783CAD7",
+    "result-and-animation-review.json": "79C25497BDB0CCA561BEF9540659CC3734EF9262E2E1F66D8C8EA6A541A79DF6"
+  },
+  "RawImagesPublished": false,
+  "FirstPossibleInputLatencyVerified": false,
+  "ExactEarliestCorrectResultFrameVerified": false,
+  "PhotonPresentationVerified": false,
+  "RS12Complete": false,
+  "Scope": "Frozen executable, v4 synthetic snapshots, fixed physical A query, first changed desktop result region plus separately reviewed content/animation stability. Additional edits retained outside the paired A workload. Small one-machine sample; Wails whole-client FNV consistency, Slint saved-body SHA256 comparison."
+}

@@ -1,0 +1,34 @@
+{
+  "date": "2026-11-04",
+  "source": "human reports from this chat, corroborated by isolated helper captures and on-disk history",
+  "failed_sample": {
+    "executable_sha256": "F74582CA2D1267302DFB9324276A7576BC94F482B17834950FF05BD180E25078",
+    "history_incremented": 1,
+    "recycle_cancelled_by_human": true,
+    "renderer": "software",
+    "preserved": true,
+    "passed": false
+  },
+  "software_retest": {
+    "executable_sha256": "B0B7DBA4E7DA1F9FE5D6AC0370C180AAF883F9968E30849F0F92DB6205FC0DE8",
+    "recycle_confirm_visible_human": true,
+    "shutdown_restart_and_admin_scope": "validated on previous Software executable F74582CA2D1267302DFB9324276A7576BC94F482B17834950FF05BD180E25078",
+    "cancel_return_and_input_human": true,
+    "history_byte_identical": true,
+    "passed": true
+  },
+  "femtovg_retest": {
+    "shutdown_restart_recycle_visible_and_cancelled_human": true,
+    "returned_input_human": true,
+    "initial_normal_launch_capture_preserved": true,
+    "admin_retest_passed": true,
+    "admin_token_verified": true,
+    "profile_arguments_verified": true,
+    "executable_sha256": "3189CD58174BF78AEFB116BCBF870037862A66EBC597386AC826ED7C1351C916",
+    "working_directory_verified": true,
+    "no_system_action_history": true
+  },
+  "uac_cancellation": "not covered: current policy does not display consent",
+  "login_session": "not performed: user deferred",
+  "scope": "popup visibility/input from human report; token, parameters, directories and history from local evidence"
+}

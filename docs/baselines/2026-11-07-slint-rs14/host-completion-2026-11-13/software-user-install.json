@@ -1,0 +1,41 @@
+{
+  "RecordedAtUtc": "2026-11-13T05:21:07.0734417Z",
+  "Renderer": "software",
+  "Passed": true,
+  "Cases": [
+    {
+      "Passed": true,
+      "Name": "actual-HKCU-x64-registration"
+    },
+    {
+      "Passed": true,
+      "Name": "actual-start-menu-target-and-isolation"
+    },
+    {
+      "Passed": true,
+      "Name": "registered-program-window-smoke"
+    },
+    {
+      "Passed": true,
+      "Name": "locked-upgrade-and-uninstall-preserve-registration"
+    },
+    {
+      "Passed": true,
+      "Name": "actual-registered-upgrade"
+    },
+    {
+      "Passed": true,
+      "Name": "actual-uninstall-cleans-registration-and-keeps-unknown-file"
+    }
+  ],
+  "RegistryAndShortcutBranchExecuted": true,
+  "RegistryView": 64,
+  "RegistryAndShortcutCleaned": true,
+  "InstallerSHA256": "510A841C8844268A6AA8DFCDB689EC4BA770B213919D575331E3CE140F1DD514",
+  "ExecutableSHA256": "2C84E5D23284777B78402FAAB900817D1D030EFFC783DE0ECFAE9B90D758A1C0",
+  "FormalApplicationReplaced": false,
+  "DefaultPreviewDataWritten": false,
+  "AdministrativeInstallValidated": false,
+  "UACValidated": false,
+  "Scope": "Actual unrestricted per-user NSIS registration/shortcut branches, task-local /D target, synthetic window smoke. No formal application or preview user data opened."
+}

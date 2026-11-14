@@ -1,0 +1,152 @@
+{
+  "Edition": "software",
+  "ExecutableSHA256": "D9265467D96436581A6C562E0B49D8F5654D6A102F7ECC19A1A6405B7FB69D50",
+  "Rows": [
+    {
+      "Clip": "settings-enter-1",
+      "Measured": true,
+      "ClientROILogicalPixels": [
+        74,
+        29,
+        160,
+        66
+      ],
+      "Frames": 21,
+      "ChangedROIIntervals": 9,
+      "MaximumROIChangeEnergy": 344458.0,
+      "ControlChangeObserved": true,
+      "SourceSpanWithoutCachedBaselineMilliseconds": 383.7215,
+      "Scope": "Local control pixels changed; this does not by itself certify exact amplitude, timing, easing or a completed rotation/pulse period."
+    },
+    {
+      "Clip": "settings-exit-1",
+      "Measured": true,
+      "ClientROILogicalPixels": [
+        74,
+        29,
+        160,
+        66
+      ],
+      "Frames": 11,
+      "ChangedROIIntervals": 8,
+      "MaximumROIChangeEnergy": 292913.0,
+      "ControlChangeObserved": true,
+      "SourceSpanWithoutCachedBaselineMilliseconds": 533.8498,
+      "Scope": "Local control pixels changed; this does not by itself certify exact amplitude, timing, easing or a completed rotation/pulse period."
+    },
+    {
+      "Clip": "settings-enter-2",
+      "Measured": true,
+      "ClientROILogicalPixels": [
+        74,
+        29,
+        160,
+        66
+      ],
+      "Frames": 25,
+      "ChangedROIIntervals": 12,
+      "MaximumROIChangeEnergy": 200833.0,
+      "ControlChangeObserved": true,
+      "SourceSpanWithoutCachedBaselineMilliseconds": 550.5362,
+      "Scope": "Local control pixels changed; this does not by itself certify exact amplitude, timing, easing or a completed rotation/pulse period."
+    },
+    {
+      "Clip": "settings-exit-2",
+      "Measured": true,
+      "ClientROILogicalPixels": [
+        74,
+        29,
+        160,
+        66
+      ],
+      "Frames": 13,
+      "ChangedROIIntervals": 10,
+      "MaximumROIChangeEnergy": 152411.0,
+      "ControlChangeObserved": true,
+      "SourceSpanWithoutCachedBaselineMilliseconds": 533.8609,
+      "Scope": "Local control pixels changed; this does not by itself certify exact amplitude, timing, easing or a completed rotation/pulse period."
+    },
+    {
+      "Clip": "custom-enter",
+      "Measured": true,
+      "ClientROILogicalPixels": [
+        24,
+        22,
+        210,
+        74
+      ],
+      "Frames": 13,
+      "ChangedROIIntervals": 5,
+      "MaximumROIChangeEnergy": 738339.0,
+      "ControlChangeObserved": true,
+      "SourceSpanWithoutCachedBaselineMilliseconds": 350.3387,
+      "Scope": "Local control pixels changed; this does not by itself certify exact amplitude, timing, easing or a completed rotation/pulse period."
+    },
+    {
+      "Clip": "custom-exit",
+      "Measured": true,
+      "ClientROILogicalPixels": [
+        24,
+        22,
+        210,
+        74
+      ],
+      "Frames": 13,
+      "ChangedROIIntervals": 8,
+      "MaximumROIChangeEnergy": 525479.0,
+      "ControlChangeObserved": true,
+      "SourceSpanWithoutCachedBaselineMilliseconds": 567.2292,
+      "Scope": "Local control pixels changed; this does not by itself certify exact amplitude, timing, easing or a completed rotation/pulse period."
+    },
+    {
+      "Clip": "dropdown-enter",
+      "Measured": true,
+      "ClientROILogicalPixels": [
+        30,
+        245,
+        600,
+        410
+      ],
+      "Frames": 11,
+      "ChangedROIIntervals": 7,
+      "MaximumROIChangeEnergy": 1336582.0,
+      "ControlChangeObserved": true,
+      "SourceSpanWithoutCachedBaselineMilliseconds": 183.5148,
+      "Scope": "Local control pixels changed; this does not by itself certify exact amplitude, timing, easing or a completed rotation/pulse period."
+    },
+    {
+      "Clip": "dropdown-exit",
+      "Measured": true,
+      "ClientROILogicalPixels": [
+        30,
+        245,
+        600,
+        410
+      ],
+      "Frames": 21,
+      "ChangedROIIntervals": 7,
+      "MaximumROIChangeEnergy": 2164042.0,
+      "ControlChangeObserved": true,
+      "SourceSpanWithoutCachedBaselineMilliseconds": 367.0422,
+      "Scope": "Local control pixels changed; this does not by itself certify exact amplitude, timing, easing or a completed rotation/pulse period."
+    },
+    {
+      "Clip": "recording",
+      "Measured": true,
+      "ClientROILogicalPixels": [
+        503,
+        251,
+        525,
+        274
+      ],
+      "Frames": 71,
+      "ChangedROIIntervals": 15,
+      "MaximumROIChangeEnergy": 34422.0,
+      "ControlChangeObserved": true,
+      "SourceSpanWithoutCachedBaselineMilliseconds": 1234.5824,
+      "Scope": "Local control pixels changed; this does not by itself certify exact amplitude, timing, easing or a completed rotation/pulse period."
+    }
+  ],
+  "PhysicalInput": false,
+  "Scope": "Fixed 96-DPI regions exclude unrelated caret/tooltip changes. No ROI observation automatically accepts an exact trajectory."
+}

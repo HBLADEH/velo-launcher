@@ -1,0 +1,41 @@
+{
+  "Date": "2026-11-13",
+  "Reports": [
+    {
+      "Renderer": "software",
+      "Case": "success",
+      "UACReply": "已选择“是”",
+      "ExitReply": "已从托盘退出",
+      "Source": "Direct user replies to the numbered UAC/exit questions in this task",
+      "AgentClickedUAC": false,
+      "OperatorTrayExit": true
+    },
+    {
+      "Renderer": "software",
+      "Case": "cancel",
+      "UACReply": "已选择“否”",
+      "ExitReply": "已从托盘退出",
+      "Source": "Direct user replies to the numbered UAC/exit questions in this task",
+      "AgentClickedUAC": false,
+      "OperatorTrayExit": true
+    },
+    {
+      "Renderer": "femtovg",
+      "Case": "success",
+      "UACReply": "已选择“是”",
+      "ExitReply": "已从托盘退出",
+      "Source": "Direct user replies to the numbered UAC/exit questions in this task",
+      "AgentClickedUAC": false,
+      "OperatorTrayExit": true
+    },
+    {
+      "Renderer": "femtovg",
+      "Case": "cancel",
+      "UACReply": "已选择“否”",
+      "ExitReply": "已从托盘退出",
+      "Source": "Direct user replies to the numbered UAC/exit questions in this task",
+      "AgentClickedUAC": false,
+      "OperatorTrayExit": true
+    }
+  ]
+}

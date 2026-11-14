@@ -1,0 +1,78 @@
+{
+  "Passed": true,
+  "Checks": [
+    {
+      "Renderer": "software",
+      "Theme": "light",
+      "Scene": "home-empty-pinned",
+      "HeadingOriginPreserved": true
+    },
+    {
+      "Renderer": "software",
+      "Theme": "light",
+      "Scene": "home-empty-frequent",
+      "HeadingOriginPreserved": true
+    },
+    {
+      "Renderer": "software",
+      "Theme": "light",
+      "Scene": "home-two-rows",
+      "HeadingOriginPreserved": true
+    },
+    {
+      "Renderer": "software",
+      "Theme": "dark",
+      "Scene": "home-empty-pinned",
+      "HeadingOriginPreserved": true
+    },
+    {
+      "Renderer": "software",
+      "Theme": "dark",
+      "Scene": "home-empty-frequent",
+      "HeadingOriginPreserved": true
+    },
+    {
+      "Renderer": "software",
+      "Theme": "dark",
+      "Scene": "home-two-rows",
+      "HeadingOriginPreserved": true
+    },
+    {
+      "Renderer": "femtovg",
+      "Theme": "light",
+      "Scene": "home-empty-pinned",
+      "HeadingOriginPreserved": true
+    },
+    {
+      "Renderer": "femtovg",
+      "Theme": "light",
+      "Scene": "home-empty-frequent",
+      "HeadingOriginPreserved": true
+    },
+    {
+      "Renderer": "femtovg",
+      "Theme": "light",
+      "Scene": "home-two-rows",
+      "HeadingOriginPreserved": true
+    },
+    {
+      "Renderer": "femtovg",
+      "Theme": "dark",
+      "Scene": "home-empty-pinned",
+      "HeadingOriginPreserved": true
+    },
+    {
+      "Renderer": "femtovg",
+      "Theme": "dark",
+      "Scene": "home-empty-frequent",
+      "HeadingOriginPreserved": true
+    },
+    {
+      "Renderer": "femtovg",
+      "Theme": "dark",
+      "Scene": "home-two-rows",
+      "HeadingOriginPreserved": true
+    }
+  ],
+  "Scope": "Unscaled component pixels; does not establish native Wails or physical DPI geometric tolerance."
+}

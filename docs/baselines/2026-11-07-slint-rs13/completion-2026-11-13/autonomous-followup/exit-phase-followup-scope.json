@@ -1,0 +1,13 @@
+{
+  "RecordedAtUtc": "2026-11-12T19:34:38.4156238Z",
+  "Renderers": [
+    "software",
+    "femtovg"
+  ],
+  "BaselineWaitMilliseconds": [
+    350,
+    500
+  ],
+  "AttemptsPerRenderer": 2,
+  "Request": "Assess whether capture-frame phase yields sufficient native exit source samples. Preserve both attempts even on failure; fixed analyzer tolerances and product executable remain unchanged."
+}

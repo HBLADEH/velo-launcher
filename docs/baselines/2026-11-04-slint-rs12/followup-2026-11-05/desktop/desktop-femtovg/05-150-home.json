@@ -1,0 +1,748 @@
+{
+  "SchemaVersion": 1,
+  "Row": {
+    "Run": "desktop-femtovg",
+    "Renderer": "femtovg",
+    "SHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+    "Stage": "150-home-settings",
+    "DeclaredScaleMatchesNative": false,
+    "ActualWindowDPI": 96,
+    "PhysicalWindow": {
+      "Visible": true,
+      "X": 640,
+      "Y": 206,
+      "Height": 660,
+      "Width": 640
+    },
+    "Commands": [
+      "home",
+      "warm-bottom",
+      "warm-top",
+      "settings"
+    ],
+    "Automated": true,
+    "PrivateBytesEndpoint": 62607360,
+    "PrivateBytesSampledMaximum": 62607360.0,
+    "WorkingSetEndpoint": 146931712,
+    "Samples": 28,
+    "AllDiscoveredProcessesReadable": true,
+    "ResourceDurationSeconds": 2.9322936,
+    "CPUSeconds": 0.375,
+    "CPUPercentOfMachine": 0.7992889934350368,
+    "ObserverCPUSeconds": 0.953125,
+    "GPU": {
+      "DedicatedUsage": 0,
+      "SharedUsage": 41439232,
+      "TotalCommitted": 35246080
+    },
+    "ApplicationCache": {
+      "Entries": 31,
+      "CPUAndTextureEstimateBytes": 1015808
+    },
+    "ScanWarning": true,
+    "CatalogCount": 619,
+    "PrivateWorkingSet": null,
+    "RendererInternalCacheBytes": null
+  },
+  "Capture": {
+    "ProcessId": 330028,
+    "StartedTicks": 639294402797386811,
+    "IntervalMilliseconds": 100,
+    "RequestedSeconds": 3,
+    "CaptureStartedUtcTicks": 639294404882546448,
+    "ElapsedMilliseconds": 3041.5239,
+    "ObserverCPUSeconds": 0.953125,
+    "RootExited": false,
+    "Snapshots": [
+      {
+        "StartedUtcTicks": 639294404882546665,
+        "ElapsedMilliseconds": 0.0021,
+        "CollectionMilliseconds": 36.2728,
+        "Complete": true,
+        "UnreadableProcessIds": [],
+        "Processes": [
+          {
+            "ProcessId": 330028,
+            "ParentProcessId": 132344,
+            "StartedTicks": 639294402797386811,
+            "PrivateBytes": 58224640,
+            "WorkingSet": 146272256,
+            "CPUSeconds": 14.234375,
+            "Handles": 774,
+            "Threads": 22
+          }
+        ],
+        "PrivateBytes": 58224640,
+        "WorkingSet": 146272256,
+        "Handles": 774,
+        "Threads": 22
+      },
+      {
+        "StartedUtcTicks": 639294404883559938,
+        "ElapsedMilliseconds": 101.3328,
+        "CollectionMilliseconds": 36.0188,
+        "Complete": true,
+        "UnreadableProcessIds": [],
+        "Processes": [
+          {
+            "ProcessId": 330028,
+            "ParentProcessId": 132344,
+            "StartedTicks": 639294402797386811,
+            "PrivateBytes": 62607360,
+            "WorkingSet": 147324928,
+            "CPUSeconds": 14.375,
+            "Handles": 790,
+            "Threads": 22
+          }
+        ],
+        "PrivateBytes": 62607360,
+        "WorkingSet": 147324928,
+        "Handles": 790,
+        "Threads": 22
+      },
+      {
+        "StartedUtcTicks": 639294404884645126,
+        "ElapsedMilliseconds": 209.8548,
+        "CollectionMilliseconds": 32.3817,
+        "Complete": true,
+        "UnreadableProcessIds": [],
+        "Processes": [
+          {
+            "ProcessId": 330028,
+            "ParentProcessId": 132344,
+            "StartedTicks": 639294402797386811,
+            "PrivateBytes": 62607360,
+            "WorkingSet": 147324928,
+            "CPUSeconds": 14.46875,
+            "Handles": 790,
+            "Threads": 22
+          }
+        ],
+        "PrivateBytes": 62607360,
+        "WorkingSet": 147324928,
+        "Handles": 790,
+        "Threads": 22
+      },
+      {
+        "StartedUtcTicks": 639294404885732377,
+        "ElapsedMilliseconds": 318.5792,
+        "CollectionMilliseconds": 41.2245,
+        "Complete": true,
+        "UnreadableProcessIds": [],
+        "Processes": [
+          {
+            "ProcessId": 330028,
+            "ParentProcessId": 132344,
+            "StartedTicks": 639294402797386811,
+            "PrivateBytes": 62607360,
+            "WorkingSet": 146931712,
+            "CPUSeconds": 14.59375,
+            "Handles": 788,
+            "Threads": 22
+          }
+        ],
+        "PrivateBytes": 62607360,
+        "WorkingSet": 146931712,
+        "Handles": 788,
+        "Threads": 22
+      },
+      {
+        "StartedUtcTicks": 639294404886809978,
+        "ElapsedMilliseconds": 426.3412,
+        "CollectionMilliseconds": 30.1678,
+        "Complete": true,
+        "UnreadableProcessIds": [],
+        "Processes": [
+          {
+            "ProcessId": 330028,
+            "ParentProcessId": 132344,
+            "StartedTicks": 639294402797386811,
+            "PrivateBytes": 62607360,
+            "WorkingSet": 146931712,
+            "CPUSeconds": 14.609375,
+            "Handles": 788,
+            "Threads": 22
+          }
+        ],
+        "PrivateBytes": 62607360,
+        "WorkingSet": 146931712,
+        "Handles": 788,
+        "Threads": 22
+      },
+      {
+        "StartedUtcTicks": 639294404887905217,
+        "ElapsedMilliseconds": 535.8669,
+        "CollectionMilliseconds": 31.2936,
+        "Complete": true,
+        "UnreadableProcessIds": [],
+        "Processes": [
+          {
+            "ProcessId": 330028,
+            "ParentProcessId": 132344,
+            "StartedTicks": 639294402797386811,
+            "PrivateBytes": 62607360,
+            "WorkingSet": 146931712,
+            "CPUSeconds": 14.609375,
+            "Handles": 788,
+            "Threads": 22
+          }
+        ],
+        "PrivateBytes": 62607360,
+        "WorkingSet": 146931712,
+        "Handles": 788,
+        "Threads": 22
+      },
+      {
+        "StartedUtcTicks": 639294404888998039,
+        "ElapsedMilliseconds": 645.1498,
+        "CollectionMilliseconds": 32.8245,
+        "Complete": true,
+        "UnreadableProcessIds": [],
+        "Processes": [
+          {
+            "ProcessId": 330028,
+            "ParentProcessId": 132344,
+            "StartedTicks": 639294402797386811,
+            "PrivateBytes": 62607360,
+            "WorkingSet": 146931712,
+            "CPUSeconds": 14.609375,
+            "Handles": 788,
+            "Threads": 22
+          }
+        ],
+        "PrivateBytes": 62607360,
+        "WorkingSet": 146931712,
+        "Handles": 788,
+        "Threads": 22
+      },
+      {
+        "StartedUtcTicks": 639294404890090473,
+        "ElapsedMilliseconds": 754.3981,
+        "CollectionMilliseconds": 29.1109,
+        "Complete": true,
+        "UnreadableProcessIds": [],
+        "Processes": [
+          {
+            "ProcessId": 330028,
+            "ParentProcessId": 132344,
+            "StartedTicks": 639294402797386811,
+            "PrivateBytes": 62607360,
+            "WorkingSet": 146931712,
+            "CPUSeconds": 14.609375,
+            "Handles": 788,
+            "Threads": 22
+          }
+        ],
+        "PrivateBytes": 62607360,
+        "WorkingSet": 146931712,
+        "Handles": 788,
+        "Threads": 22
+      },
+      {
+        "StartedUtcTicks": 639294404891179840,
+        "ElapsedMilliseconds": 863.3332,
+        "CollectionMilliseconds": 33.8225,
+        "Complete": true,
+        "UnreadableProcessIds": [],
+        "Processes": [
+          {
+            "ProcessId": 330028,
+            "ParentProcessId": 132344,
+            "StartedTicks": 639294402797386811,
+            "PrivateBytes": 62607360,
+            "WorkingSet": 146931712,
+            "CPUSeconds": 14.609375,
+            "Handles": 788,
+            "Threads": 22
+          }
+        ],
+        "PrivateBytes": 62607360,
+        "WorkingSet": 146931712,
+        "Handles": 788,
+        "Threads": 22
+      },
+      {
+        "StartedUtcTicks": 639294404892279953,
+        "ElapsedMilliseconds": 973.3464,
+        "CollectionMilliseconds": 29.0513,
+        "Complete": true,
+        "UnreadableProcessIds": [],
+        "Processes": [
+          {
+            "ProcessId": 330028,
+            "ParentProcessId": 132344,
+            "StartedTicks": 639294402797386811,
+            "PrivateBytes": 62607360,
+            "WorkingSet": 146931712,
+            "CPUSeconds": 14.609375,
+            "Handles": 788,
+            "Threads": 22
+          }
+        ],
+        "PrivateBytes": 62607360,
+        "WorkingSet": 146931712,
+        "Handles": 788,
+        "Threads": 22
+      },
+      {
+        "StartedUtcTicks": 639294404893371202,
+        "ElapsedMilliseconds": 1082.4723,
+        "CollectionMilliseconds": 35.1973,
+        "Complete": true,
+        "UnreadableProcessIds": [],
+        "Processes": [
+          {
+            "ProcessId": 330028,
+            "ParentProcessId": 132344,
+            "StartedTicks": 639294402797386811,
+            "PrivateBytes": 62607360,
+            "WorkingSet": 146931712,
+            "CPUSeconds": 14.609375,
+            "Handles": 788,
+            "Threads": 22
+          }
+        ],
+        "PrivateBytes": 62607360,
+        "WorkingSet": 146931712,
+        "Handles": 788,
+        "Threads": 22
+      },
+      {
+        "StartedUtcTicks": 639294404894455965,
+        "ElapsedMilliseconds": 1190.9527,
+        "CollectionMilliseconds": 27.9668,
+        "Complete": true,
+        "UnreadableProcessIds": [],
+        "Processes": [
+          {
+            "ProcessId": 330028,
+            "ParentProcessId": 132344,
+            "StartedTicks": 639294402797386811,
+            "PrivateBytes": 62607360,
+            "WorkingSet": 146931712,
+            "CPUSeconds": 14.609375,
+            "Handles": 788,
+            "Threads": 22
+          }
+        ],
+        "PrivateBytes": 62607360,
+        "WorkingSet": 146931712,
+        "Handles": 788,
+        "Threads": 22
+      },
+      {
+        "StartedUtcTicks": 639294404895544816,
+        "ElapsedMilliseconds": 1299.8368,
+        "CollectionMilliseconds": 33.9156,
+        "Complete": true,
+        "UnreadableProcessIds": [],
+        "Processes": [
+          {
+            "ProcessId": 330028,
+            "ParentProcessId": 132344,
+            "StartedTicks": 639294402797386811,
+            "PrivateBytes": 62607360,
+            "WorkingSet": 146931712,
+            "CPUSeconds": 14.609375,
+            "Handles": 788,
+            "Threads": 22
+          }
+        ],
+        "PrivateBytes": 62607360,
+        "WorkingSet": 146931712,
+        "Handles": 788,
+        "Threads": 22
+      },
+      {
+        "StartedUtcTicks": 639294404896644419,
+        "ElapsedMilliseconds": 1409.8024,
+        "CollectionMilliseconds": 26.5416,
+        "Complete": true,
+        "UnreadableProcessIds": [],
+        "Processes": [
+          {
+            "ProcessId": 330028,
+            "ParentProcessId": 132344,
+            "StartedTicks": 639294402797386811,
+            "PrivateBytes": 62607360,
+            "WorkingSet": 146931712,
+            "CPUSeconds": 14.609375,
+            "Handles": 788,
+            "Threads": 22
+          }
+        ],
+        "PrivateBytes": 62607360,
+        "WorkingSet": 146931712,
+        "Handles": 788,
+        "Threads": 22
+      },
+      {
+        "StartedUtcTicks": 639294404897723179,
+        "ElapsedMilliseconds": 1517.6799,
+        "CollectionMilliseconds": 35.0767,
+        "Complete": true,
+        "UnreadableProcessIds": [],
+        "Processes": [
+          {
+            "ProcessId": 330028,
+            "ParentProcessId": 132344,
+            "StartedTicks": 639294402797386811,
+            "PrivateBytes": 62607360,
+            "WorkingSet": 146931712,
+            "CPUSeconds": 14.609375,
+            "Handles": 788,
+            "Threads": 22
+          }
+        ],
+        "PrivateBytes": 62607360,
+        "WorkingSet": 146931712,
+        "Handles": 788,
+        "Threads": 22
+      },
+      {
+        "StartedUtcTicks": 639294404898814745,
+        "ElapsedMilliseconds": 1626.8355,
+        "CollectionMilliseconds": 25.9467,
+        "Complete": true,
+        "UnreadableProcessIds": [],
+        "Processes": [
+          {
+            "ProcessId": 330028,
+            "ParentProcessId": 132344,
+            "StartedTicks": 639294402797386811,
+            "PrivateBytes": 62607360,
+            "WorkingSet": 146931712,
+            "CPUSeconds": 14.609375,
+            "Handles": 788,
+            "Threads": 22
+          }
+        ],
+        "PrivateBytes": 62607360,
+        "WorkingSet": 146931712,
+        "Handles": 788,
+        "Threads": 22
+      },
+      {
+        "StartedUtcTicks": 639294404899912116,
+        "ElapsedMilliseconds": 1736.5764,
+        "CollectionMilliseconds": 29.5205,
+        "Complete": true,
+        "UnreadableProcessIds": [],
+        "Processes": [
+          {
+            "ProcessId": 330028,
+            "ParentProcessId": 132344,
+            "StartedTicks": 639294402797386811,
+            "PrivateBytes": 62607360,
+            "WorkingSet": 146931712,
+            "CPUSeconds": 14.609375,
+            "Handles": 788,
+            "Threads": 22
+          }
+        ],
+        "PrivateBytes": 62607360,
+        "WorkingSet": 146931712,
+        "Handles": 788,
+        "Threads": 22
+      },
+      {
+        "StartedUtcTicks": 639294404900993527,
+        "ElapsedMilliseconds": 1844.7175,
+        "CollectionMilliseconds": 29.6713,
+        "Complete": true,
+        "UnreadableProcessIds": [],
+        "Processes": [
+          {
+            "ProcessId": 330028,
+            "ParentProcessId": 132344,
+            "StartedTicks": 639294402797386811,
+            "PrivateBytes": 62607360,
+            "WorkingSet": 146931712,
+            "CPUSeconds": 14.609375,
+            "Handles": 788,
+            "Threads": 22
+          }
+        ],
+        "PrivateBytes": 62607360,
+        "WorkingSet": 146931712,
+        "Handles": 788,
+        "Threads": 22
+      },
+      {
+        "StartedUtcTicks": 639294404902088205,
+        "ElapsedMilliseconds": 1954.1877,
+        "CollectionMilliseconds": 28.1184,
+        "Complete": true,
+        "UnreadableProcessIds": [],
+        "Processes": [
+          {
+            "ProcessId": 330028,
+            "ParentProcessId": 132344,
+            "StartedTicks": 639294402797386811,
+            "PrivateBytes": 62607360,
+            "WorkingSet": 146931712,
+            "CPUSeconds": 14.609375,
+            "Handles": 788,
+            "Threads": 22
+          }
+        ],
+        "PrivateBytes": 62607360,
+        "WorkingSet": 146931712,
+        "Handles": 788,
+        "Threads": 22
+      },
+      {
+        "StartedUtcTicks": 639294404903169205,
+        "ElapsedMilliseconds": 2062.2888,
+        "CollectionMilliseconds": 30.3997,
+        "Complete": true,
+        "UnreadableProcessIds": [],
+        "Processes": [
+          {
+            "ProcessId": 330028,
+            "ParentProcessId": 132344,
+            "StartedTicks": 639294402797386811,
+            "PrivateBytes": 62607360,
+            "WorkingSet": 146931712,
+            "CPUSeconds": 14.609375,
+            "Handles": 788,
+            "Threads": 22
+          }
+        ],
+        "PrivateBytes": 62607360,
+        "WorkingSet": 146931712,
+        "Handles": 788,
+        "Threads": 22
+      },
+      {
+        "StartedUtcTicks": 639294404904244399,
+        "ElapsedMilliseconds": 2169.8114,
+        "CollectionMilliseconds": 30.4074,
+        "Complete": true,
+        "UnreadableProcessIds": [],
+        "Processes": [
+          {
+            "ProcessId": 330028,
+            "ParentProcessId": 132344,
+            "StartedTicks": 639294402797386811,
+            "PrivateBytes": 62607360,
+            "WorkingSet": 146931712,
+            "CPUSeconds": 14.609375,
+            "Handles": 788,
+            "Threads": 22
+          }
+        ],
+        "PrivateBytes": 62607360,
+        "WorkingSet": 146931712,
+        "Handles": 788,
+        "Threads": 22
+      },
+      {
+        "StartedUtcTicks": 639294404905333959,
+        "ElapsedMilliseconds": 2278.7663,
+        "CollectionMilliseconds": 34.0253,
+        "Complete": true,
+        "UnreadableProcessIds": [],
+        "Processes": [
+          {
+            "ProcessId": 330028,
+            "ParentProcessId": 132344,
+            "StartedTicks": 639294402797386811,
+            "PrivateBytes": 62607360,
+            "WorkingSet": 146931712,
+            "CPUSeconds": 14.609375,
+            "Handles": 788,
+            "Threads": 22
+          }
+        ],
+        "PrivateBytes": 62607360,
+        "WorkingSet": 146931712,
+        "Handles": 788,
+        "Threads": 22
+      },
+      {
+        "StartedUtcTicks": 639294404906415579,
+        "ElapsedMilliseconds": 2386.93,
+        "CollectionMilliseconds": 40.3365,
+        "Complete": true,
+        "UnreadableProcessIds": [],
+        "Processes": [
+          {
+            "ProcessId": 330028,
+            "ParentProcessId": 132344,
+            "StartedTicks": 639294402797386811,
+            "PrivateBytes": 62607360,
+            "WorkingSet": 146931712,
+            "CPUSeconds": 14.609375,
+            "Handles": 788,
+            "Threads": 22
+          }
+        ],
+        "PrivateBytes": 62607360,
+        "WorkingSet": 146931712,
+        "Handles": 788,
+        "Threads": 22
+      },
+      {
+        "StartedUtcTicks": 639294404907505616,
+        "ElapsedMilliseconds": 2495.9356,
+        "CollectionMilliseconds": 35.293,
+        "Complete": true,
+        "UnreadableProcessIds": [],
+        "Processes": [
+          {
+            "ProcessId": 330028,
+            "ParentProcessId": 132344,
+            "StartedTicks": 639294402797386811,
+            "PrivateBytes": 62607360,
+            "WorkingSet": 146931712,
+            "CPUSeconds": 14.609375,
+            "Handles": 788,
+            "Threads": 22
+          }
+        ],
+        "PrivateBytes": 62607360,
+        "WorkingSet": 146931712,
+        "Handles": 788,
+        "Threads": 22
+      },
+      {
+        "StartedUtcTicks": 639294404908599149,
+        "ElapsedMilliseconds": 2605.2899,
+        "CollectionMilliseconds": 28.4912,
+        "Complete": true,
+        "UnreadableProcessIds": [],
+        "Processes": [
+          {
+            "ProcessId": 330028,
+            "ParentProcessId": 132344,
+            "StartedTicks": 639294402797386811,
+            "PrivateBytes": 62607360,
+            "WorkingSet": 146931712,
+            "CPUSeconds": 14.609375,
+            "Handles": 788,
+            "Threads": 22
+          }
+        ],
+        "PrivateBytes": 62607360,
+        "WorkingSet": 146931712,
+        "Handles": 788,
+        "Threads": 22
+      },
+      {
+        "StartedUtcTicks": 639294404909704958,
+        "ElapsedMilliseconds": 2715.8729,
+        "CollectionMilliseconds": 40.4306,
+        "Complete": true,
+        "UnreadableProcessIds": [],
+        "Processes": [
+          {
+            "ProcessId": 330028,
+            "ParentProcessId": 132344,
+            "StartedTicks": 639294402797386811,
+            "PrivateBytes": 62607360,
+            "WorkingSet": 146931712,
+            "CPUSeconds": 14.609375,
+            "Handles": 788,
+            "Threads": 22
+          }
+        ],
+        "PrivateBytes": 62607360,
+        "WorkingSet": 146931712,
+        "Handles": 788,
+        "Threads": 22
+      },
+      {
+        "StartedUtcTicks": 639294404910786610,
+        "ElapsedMilliseconds": 2824.0396,
+        "CollectionMilliseconds": 28.8403,
+        "Complete": true,
+        "UnreadableProcessIds": [],
+        "Processes": [
+          {
+            "ProcessId": 330028,
+            "ParentProcessId": 132344,
+            "StartedTicks": 639294402797386811,
+            "PrivateBytes": 62607360,
+            "WorkingSet": 146931712,
+            "CPUSeconds": 14.609375,
+            "Handles": 788,
+            "Threads": 22
+          }
+        ],
+        "PrivateBytes": 62607360,
+        "WorkingSet": 146931712,
+        "Handles": 788,
+        "Threads": 22
+      },
+      {
+        "StartedUtcTicks": 639294404911869159,
+        "ElapsedMilliseconds": 2932.2957,
+        "CollectionMilliseconds": 28.1857,
+        "Complete": true,
+        "UnreadableProcessIds": [],
+        "Processes": [
+          {
+            "ProcessId": 330028,
+            "ParentProcessId": 132344,
+            "StartedTicks": 639294402797386811,
+            "PrivateBytes": 62607360,
+            "WorkingSet": 146931712,
+            "CPUSeconds": 14.609375,
+            "Handles": 788,
+            "Threads": 22
+          }
+        ],
+        "PrivateBytes": 62607360,
+        "WorkingSet": 146931712,
+        "Handles": 788,
+        "Threads": 22
+      }
+    ]
+  },
+  "Business": {
+    "ProcessId": 330028,
+    "Complete": true,
+    "Scanning": false,
+    "Warning": true,
+    "Count": 619,
+    "IconCache": {
+      "Entries": 31,
+      "CPUAndTextureEstimateBytes": 1015808
+    },
+    "LastScan": "12128276",
+    "PublishedDuringScan": true,
+    "Dropped": false
+  },
+  "Window": {
+    "height": "660",
+    "visible": "true",
+    "class": "VeloSlintLauncherWindow",
+    "event": "probe_window",
+    "pid": "330028",
+    "y": "206",
+    "hwnd": "9E07F4",
+    "dpi": "96",
+    "width": "640",
+    "x": "640"
+  },
+  "Monitors": [
+    "event=probe_monitor x=1920 y=42 width=1920 height=1080 work_x=1920 work_y=42 work_width=1920 work_height=1008 dpi=144 primary=false",
+    "event=probe_monitor x=0 y=0 width=1920 height=1080 work_x=0 work_y=0 work_width=1920 work_height=1032 dpi=96 primary=true"
+  ],
+  "NativeEvidence": [
+    "event=probe_monitor x=1920 y=42 width=1920 height=1080 work_x=1920 work_y=42 work_width=1920 work_height=1008 dpi=144 primary=false",
+    "event=probe_monitor x=0 y=0 width=1920 height=1080 work_x=0 work_y=0 work_width=1920 work_height=1032 dpi=96 primary=true",
+    "event=probe_window class=VeloSlintLauncherWindow hwnd=9E07F4 pid=330028 visible=true dpi=96 x=640 y=206 width=640 height=660",
+    "event=probe_window class=VeloSlintDesktopService hwnd=D1134E pid=330028 visible=false dpi=96 x=0 y=0 width=0 height=0",
+    "event=probe_tray hwnd=D1134E registered=true x=1475 y=1032 width=32 height=48"
+  ],
+  "ControlAcknowledgments": [
+    "event=measurement_state command=home visible=true presented=true focused=true native_focused=true utf8_bytes=0 business=true scanning=false count=619 settings=false",
+    "event=measurement_state command=warm-bottom visible=true presented=true focused=true native_focused=true utf8_bytes=0 business=true scanning=false count=619 settings=false",
+    "event=measurement_state command=warm-top visible=true presented=true focused=true native_focused=true utf8_bytes=0 business=true scanning=false count=619 settings=false",
+    "event=measurement_state command=settings visible=true presented=true focused=false native_focused=true utf8_bytes=0 business=true scanning=false count=619 settings=true"
+  ],
+  "SourceSHA256": "10756C38BC959A07052885F39A52A2AF6DF52F8A2485BD72765E2A9A433ED769",
+  "Scope": "Invalid DPI trial: target stayed on primary monitor at 96 DPI while the other display changed."
+}

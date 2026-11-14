@@ -1,0 +1,81 @@
+{
+  "date": "2026-11-04",
+  "timezone": "Asia/Shanghai",
+  "passed_automated": true,
+  "g3": "not approved",
+  "full_verification": {
+    "command": "./scripts/verify-rust.ps1 -SmokeTest",
+    "exit_code": 0,
+    "raw_log": "rust/target/rs11-startup-verification-resumed.log"
+  },
+  "interrupted_attempt": {
+    "raw_log": "rust/target/rs11-startup-verification.log",
+    "completion": "no completion status; process absent when resumed; not a passing run"
+  },
+  "legacy_regression": {
+    "command": "./scripts/verify.ps1 -SkipBuild",
+    "go_toolchain": "go1.25.6",
+    "exit_code": 0,
+    "raw_log": "rust/target/rs11-startup-legacy-regression.log"
+  },
+  "source_fingerprints_match_current": true,
+  "renderer_source_sets_equal": true,
+  "renderers": [
+    {
+      "renderer": "software",
+      "executable_sha256": "A9CFA3999A4A601E72C54716AFA571D55923BE53EDCDCAE4E6CB63E64408E990",
+      "executable_bytes": 13597184,
+      "source_fingerprints": 141,
+      "rust_tests": 79,
+      "fixed_component_assertions": 22,
+      "business_component_assertions": 7,
+      "pages_and_restart_assertions": 29,
+      "background_native_cases": 3,
+      "background_native_passed": true,
+      "old_data_copy": {
+        "passed": true,
+        "original_source_files_unchanged": true,
+        "raw_log": "rust/target/rs11-startup-old-copy-software-20261104.log"
+      },
+      "installer": {
+        "passed": true,
+        "cases": 2,
+        "report": "software-installer-update.json"
+      }
+    },
+    {
+      "renderer": "femtovg",
+      "executable_sha256": "B6CBC0EE7DC2953D1837F986C1D25AA9D303D64C7004E22538A05521474E0991",
+      "executable_bytes": 13094912,
+      "source_fingerprints": 141,
+      "rust_tests": 79,
+      "fixed_component_assertions": 22,
+      "business_component_assertions": 7,
+      "pages_and_restart_assertions": 29,
+      "background_native_cases": 3,
+      "background_native_passed": true,
+      "old_data_copy": {
+        "passed": true,
+        "original_source_files_unchanged": true,
+        "raw_log": "rust/target/rs11-startup-old-copy-femtovg-20261104.log"
+      },
+      "installer": {
+        "passed": true,
+        "cases": 2,
+        "report": "femtovg-installer-update.json"
+      }
+    }
+  ],
+  "real_login": "two isolated current Release instances prepared; actual logout/login and physical input pending",
+  "uac_policy_changed": false,
+  "remaining": [
+    "real Windows login and physical hotkey/input check",
+    "real UAC consent and cancellation in an environment showing the prompt",
+    "published Rust NSIS package acceptance (RS-14)"
+  ],
+  "measurements": {
+    "memory": "not sampled",
+    "cpu": "not sampled",
+    "latency": "not sampled"
+  }
+}

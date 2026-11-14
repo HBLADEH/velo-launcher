@@ -1,0 +1,70 @@
+{
+  "Method": "Offline Shell extraction for the same four System32 executables, three fresh application-cache directories; OS cache retained. Go encodes after extraction, Rust also flushes/syncs. Disk-hit Go Populate checks file existence; Rust load decodes PNG. LRU is a CPU reference clone, not a presented texture.",
+  "Go": "go version go1.25.6 windows/amd64",
+  "Rust": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+  "Comparisons": [
+    {
+      "Round": 1,
+      "Items": 4,
+      "SameIconURLs": true,
+      "SamePixels": true,
+      "DecodedGoBytes": 65536,
+      "DecodedRustBytes": 65536
+    },
+    {
+      "Round": 2,
+      "Items": 4,
+      "SameIconURLs": true,
+      "SamePixels": true,
+      "DecodedGoBytes": 65536,
+      "DecodedRustBytes": 65536
+    },
+    {
+      "Round": 3,
+      "Items": 4,
+      "SameIconURLs": true,
+      "SamePixels": true,
+      "DecodedGoBytes": 65536,
+      "DecodedRustBytes": 65536
+    }
+  ],
+  "Sources": [
+    {
+      "SHA256": "9B669632796F7BDB1FCEBF7BD940F593C75C97BF4BEB510A058EAEDE03B10FFB",
+      "Path": "cmd/rs12-icons/main.go"
+    },
+    {
+      "SHA256": "628879B0D02BD1D710EA74F625B6B5CCE0658DFAA20342B49FB8A12C60784E24",
+      "Path": "internal/icon/cache.go"
+    },
+    {
+      "SHA256": "B401808A5D26E78D030CDA672336FAB717DA495506A21BCB668B6814292885AD",
+      "Path": "internal/platform/icon_windows.go"
+    },
+    {
+      "SHA256": "AEB2BA4072F67097A03B85B05031129BF222ED1DC0308B4EED75B5D25069FAB4",
+      "Path": "rust/examples/rs12_icons.rs"
+    },
+    {
+      "SHA256": "930AFD5917DCF69039DDB3AF180CC7126A8D3BF0F3E4A195C406A4E818F19515",
+      "Path": "rust/src/core/icons.rs"
+    },
+    {
+      "SHA256": "79CCCDF06B95FB68C217A595E272D89F7F72680792548BED8A0F296BB39CEBAF",
+      "Path": "rust/src/platform/windows/icons.rs"
+    }
+  ],
+  "Executables": [
+    {
+      "SHA256": "E24339E60B898EE3CA548CA41DA72A85C5F3CDCC464C092FFEFD741A48C5D86A",
+      "Name": "rs12-icons-go.exe"
+    },
+    {
+      "SHA256": "AA7D7BFC0E3E9BCAA44A6BF90F4274309CAEC3E0B557DFE7248D666ADE8A1460",
+      "Name": "rs12-icons-rust.exe"
+    }
+  ],
+  "CompletedAtUtc": "2026-11-04T13:31:56.2941233Z",
+  "OSCacheCold": false,
+  "GPUTextureMeasured": false
+}

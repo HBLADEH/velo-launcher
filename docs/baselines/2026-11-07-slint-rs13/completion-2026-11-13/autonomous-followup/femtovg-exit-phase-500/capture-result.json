@@ -1,0 +1,28 @@
+{
+  "Completed": true,
+  "Renderer": "femtovg",
+  "ExecutableSHA256": "D81F31ED8AB3C0D45A3565CDC8AA412B3FB870C0CC350204178CDE44456B6487",
+  "ProcessId": 164420,
+  "StartedTicks": 639301096834963150,
+  "Trigger": "recording",
+  "ActivityEvent": "event=hotkey_recording pid=164420 unix_us=1794513476192219 elapsed_us=592650203 dropped=0 enabled=true",
+  "TestCallback": "home",
+  "Request": "phase-fg-500 home",
+  "Response": "event=measurement_state command=home visible=true presented=true focused=true native_focused=true utf8_bytes=0 business=true scanning=false count=1002 settings=false",
+  "RecorderExecutableSHA256": "F3039B9305C6B9BAE3F26676C1E47417A749C35C67FF377C16D4C171932738F9",
+  "RecorderExitCode": 0,
+  "CaptureEnd": {
+    "event": "end",
+    "qpc": 1784897876861,
+    "frames": 46,
+    "clips": 2,
+    "gpu_queue_rejected": 0,
+    "write_queue_rejected": 0,
+    "storage_limited": false
+  },
+  "SyntheticStimulus": true,
+  "PhysicalInput": false,
+  "SourceFramesUnmodified": true,
+  "BaselineMilliseconds": 500,
+  "Scope": "Normal callback invoked through the existing opt-in stdio controller while an existing decoration repaints. Analyze original source frames; no UI animation, product code, capture bounds or analyzer tolerance changed."
+}

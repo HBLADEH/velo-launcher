@@ -1,0 +1,23 @@
+[
+  {
+    "Scenario": "Software actual tray Settings",
+    "UserReport": "已从托盘菜单打开设置",
+    "VerifiedBy": "desktop_event action=2 and lifecycle_shown reason=tray_settings native_active=true"
+  },
+  {
+    "Scenario": "Software physical video disconnect",
+    "UserReport": "已实际拔下副屏视频线，保持断开",
+    "VerifiedBy": "Only one monitor in native snapshot; same PID and HWND; actual hotkey and input_accepted focused=true native_focused=true"
+  },
+  {
+    "Scenario": "Software physical reconnect",
+    "UserReport": "副屏已插回，双屏已恢复",
+    "ObservedAt": "2026-11-03T12:11:00.4090398+08:00"
+  },
+  {
+    "Scenario": "Software actual tray Open and cancel; sleep request",
+    "UserReport": "托盘操作完成，已实际睡眠并唤醒解锁",
+    "VerifiedBy": "action=1 and action=4 observed; Windows recorded power request 187 and Away Mode 59; no S3 transition/resume events",
+    "UIStatus": "Physical Escape stopped Computer Use before post-wake input verification"
+  }
+]

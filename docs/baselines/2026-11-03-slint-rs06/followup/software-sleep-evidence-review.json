@@ -1,0 +1,58 @@
+{
+  "ObservedAt": "2026-11-03T12:16:59.4584199+08:00",
+  "SystemLogEnabled": true,
+  "SystemLogRecordCount": 34947,
+  "RecentPowerEvents": [
+    {
+      "ProviderName": "Microsoft-Windows-Kernel-Power",
+      "Id": 566,
+      "RecordId": 33888,
+      "Time": "2026-11-02T12:59:23.3148345+08:00"
+    },
+    {
+      "ProviderName": "Microsoft-Windows-Kernel-Power",
+      "Id": 566,
+      "RecordId": 33889,
+      "Time": "2026-11-02T13:11:13.7888425+08:00"
+    },
+    {
+      "ProviderName": "Microsoft-Windows-Kernel-Power",
+      "Id": 566,
+      "RecordId": 34605,
+      "Time": "2026-11-02T18:45:36.6606481+08:00"
+    },
+    {
+      "ProviderName": "Microsoft-Windows-Kernel-Power",
+      "Id": 566,
+      "RecordId": 34615,
+      "Time": "2026-11-03T01:53:06.1524394+08:00"
+    },
+    {
+      "ProviderName": "Microsoft-Windows-Kernel-Power",
+      "Id": 566,
+      "RecordId": 34648,
+      "Time": "2026-11-03T03:39:32.2198267+08:00"
+    },
+    {
+      "ProviderName": "Microsoft-Windows-Kernel-Power",
+      "Id": 566,
+      "RecordId": 34652,
+      "Time": "2026-11-03T09:33:09.9279593+08:00"
+    },
+    {
+      "ProviderName": "Microsoft-Windows-Kernel-Power",
+      "Id": 187,
+      "RecordId": 34946,
+      "Time": "2026-11-03T12:15:19.9506865+08:00"
+    },
+    {
+      "ProviderName": "Microsoft-Windows-Kernel-Power",
+      "Id": 59,
+      "RecordId": 34947,
+      "Time": "2026-11-03T12:15:19.9510372+08:00"
+    }
+  ],
+  "UserReport": "托盘操作完成，已实际睡眠并唤醒解锁",
+  "PostRequestQuery": "No matching Kernel-Power 42/107/506/507 or Power-Troubleshooter 1 events returned",
+  "PostResumeUI": "Not tested: physical Escape stopped Computer Use"
+}

@@ -1,0 +1,32 @@
+{
+  "Rows": [
+    {
+      "Renderer": "software",
+      "ExecutableSHA256": "5E7C017DDA3FF691E7FF8DCBFEAF149E5A766C1F8DC73A816BB5C4A9F7C4C66B",
+      "OperatorReply": "跨屏后布局和输入全部正常",
+      "PhysicalCrossScreenInputOperatorConfirmed": true,
+      "ObservedDPIs": [
+        168,
+        96
+      ],
+      "PassiveTrace": "sessions/software-physical/native-window-observation-2.json",
+      "PassiveTraceSHA256": "9C4BB5B1AF15472AADDBFADB6A8A4B2DE48B8F3E4388FE3C7F3D05447801B4F1",
+      "Scope": "Physical drag/input is user-confirmed; passive polling and application logs support actual DPI/position changes, not exact per-frame monitor handoff timing."
+    },
+    {
+      "Renderer": "femtovg",
+      "ExecutableSHA256": "D81F31ED8AB3C0D45A3565CDC8AA412B3FB870C0CC350204178CDE44456B6487",
+      "OperatorReply": "跨屏布局和输入正常，已恢复 100%",
+      "PhysicalCrossScreenInputOperatorConfirmed": true,
+      "ObservedDPIs": [
+        168,
+        96
+      ],
+      "PassiveTrace": "sessions/femtovg-physical/native-window-observation-2.json",
+      "PassiveTraceSHA256": "F10029D3C695479B2C55C6C37A9432F59F41B61DA03BF99ECDD3B1FAADEF92AF",
+      "Scope": "Physical drag/input is user-confirmed; passive polling and application logs support actual DPI/position changes, not exact per-frame monitor handoff timing."
+    }
+  ],
+  "DisplayRestoredTo100PercentOperatorConfirmed": true,
+  "FinalNativeDPI": 96
+}

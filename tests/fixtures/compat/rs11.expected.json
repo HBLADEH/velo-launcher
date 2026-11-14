@@ -1,0 +1,4809 @@
+{
+  "versions": [
+    -1,
+    0,
+    0,
+    -1,
+    -1,
+    -1,
+    -1,
+    1,
+    0,
+    1,
+    null,
+    null,
+    null,
+    null,
+    null
+  ],
+  "tools": [
+    [
+      {
+        "pinned": false,
+        "id": "system:empty-recycle-bin",
+        "name": "清空回收站",
+        "path": "velo-action:empty-recycle-bin",
+        "exec_path": "velo-action:empty-recycle-bin",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "清空所有驱动器的回收站（Windows 会提示确认）",
+        "source": "System",
+        "keywords": [
+          "empty recycle bin",
+          "清理回收站",
+          "垃圾"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:shutdown",
+        "name": "关机",
+        "path": "velo-action:shutdown",
+        "exec_path": "velo-action:shutdown",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "确认后关闭电脑，请先保存工作",
+        "source": "System",
+        "keywords": [
+          "shutdown",
+          "power off",
+          "关闭电脑"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:restart",
+        "name": "重启",
+        "path": "velo-action:restart",
+        "exec_path": "velo-action:restart",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "确认后重新启动电脑，请先保存工作",
+        "source": "System",
+        "keywords": [
+          "restart",
+          "reboot",
+          "重新启动"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:lock",
+        "name": "锁屏",
+        "path": "velo-action:lock",
+        "exec_path": "velo-action:lock",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "锁定当前 Windows 会话",
+        "source": "System",
+        "keywords": [
+          "lock",
+          "锁定电脑"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:calculator",
+        "name": "计算器",
+        "path": "D:\\Windows\\System32\\calc.exe",
+        "exec_path": "D:\\Windows\\System32\\calc.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "打开 Windows 计算器",
+        "source": "System",
+        "keywords": [
+          "calc",
+          "calculator"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:explorer",
+        "name": "文件资源管理器",
+        "path": "D:\\Windows\\explorer.exe",
+        "exec_path": "D:\\Windows\\explorer.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "浏览文件与文件夹",
+        "source": "System",
+        "keywords": [
+          "explorer",
+          "file explorer",
+          "files",
+          "文件管理",
+          "资源管理器"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:taskmanager",
+        "name": "任务管理器",
+        "path": "D:\\Windows\\System32\\Taskmgr.exe",
+        "exec_path": "D:\\Windows\\System32\\Taskmgr.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看进程与资源使用情况",
+        "source": "System",
+        "keywords": [
+          "task manager",
+          "taskmgr",
+          "进程"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:terminal",
+        "name": "命令提示符",
+        "path": "D:\\Windows\\System32\\cmd.exe",
+        "exec_path": "D:\\Windows\\System32\\cmd.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "打开命令行终端",
+        "source": "System",
+        "keywords": [
+          "cmd",
+          "command prompt",
+          "terminal",
+          "终端",
+          "命令行"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:control",
+        "name": "控制面板",
+        "path": "D:\\Windows\\System32\\control.exe",
+        "exec_path": "D:\\Windows\\System32\\control.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "打开 Windows 控制面板",
+        "source": "System",
+        "keywords": [
+          "control panel"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:apps",
+        "name": "卸载或更改程序",
+        "path": "D:\\Windows\\System32\\control.exe",
+        "exec_path": "D:\\Windows\\System32\\control.exe",
+        "arguments": "appwiz.cpl",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "管理已安装的桌面程序",
+        "source": "System",
+        "keywords": [
+          "apps",
+          "uninstall",
+          "appwiz",
+          "应用管理",
+          "卸载程序",
+          "xiezai",
+          "xz"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:environment",
+        "name": "环境变量",
+        "path": "D:\\Windows\\System32\\rundll32.exe",
+        "exec_path": "D:\\Windows\\System32\\rundll32.exe",
+        "arguments": "sysdm.cpl,EditEnvironmentVariables",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "编辑用户与系统环境变量",
+        "source": "System",
+        "keywords": [
+          "environment",
+          "env",
+          "path",
+          "系统属性环境变量"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:devices",
+        "name": "设备管理器",
+        "path": "D:\\Windows\\System32\\mmc.exe",
+        "exec_path": "D:\\Windows\\System32\\mmc.exe",
+        "arguments": "\"D:\\Windows\\System32\\devmgmt.msc\"",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看硬件设备与驱动",
+        "source": "System",
+        "keywords": [
+          "device manager",
+          "devmgmt",
+          "驱动"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:systemconfig",
+        "name": "系统配置",
+        "path": "D:\\Windows\\System32\\msconfig.exe",
+        "exec_path": "D:\\Windows\\System32\\msconfig.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看启动与服务配置",
+        "source": "System",
+        "keywords": [
+          "msconfig",
+          "system configuration"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:systeminfo",
+        "name": "系统信息",
+        "path": "D:\\Windows\\System32\\msinfo32.exe",
+        "exec_path": "D:\\Windows\\System32\\msinfo32.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看硬件、组件与系统信息",
+        "source": "System",
+        "keywords": [
+          "msinfo32",
+          "system information"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:computer",
+        "name": "计算机管理",
+        "path": "D:\\Windows\\System32\\mmc.exe",
+        "exec_path": "D:\\Windows\\System32\\mmc.exe",
+        "arguments": "\"D:\\Windows\\System32\\compmgmt.msc\"",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "管理磁盘、服务与本地计算机",
+        "source": "System",
+        "keywords": [
+          "computer management",
+          "compmgmt"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:events",
+        "name": "事件查看器",
+        "path": "D:\\Windows\\System32\\mmc.exe",
+        "exec_path": "D:\\Windows\\System32\\mmc.exe",
+        "arguments": "\"D:\\Windows\\System32\\eventvwr.msc\"",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看 Windows 日志与系统事件",
+        "source": "System",
+        "keywords": [
+          "event viewer",
+          "eventvwr",
+          "系统日志"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:services",
+        "name": "服务管理",
+        "path": "D:\\Windows\\System32\\mmc.exe",
+        "exec_path": "D:\\Windows\\System32\\mmc.exe",
+        "arguments": "\"D:\\Windows\\System32\\services.msc\"",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看与管理 Windows 服务",
+        "source": "System",
+        "keywords": [
+          "services",
+          "系统服务"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:disks",
+        "name": "磁盘管理",
+        "path": "D:\\Windows\\System32\\mmc.exe",
+        "exec_path": "D:\\Windows\\System32\\mmc.exe",
+        "arguments": "\"D:\\Windows\\System32\\diskmgmt.msc\"",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看磁盘、分区与卷",
+        "source": "System",
+        "keywords": [
+          "disk management",
+          "diskmgmt"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:tasks",
+        "name": "任务计划程序",
+        "path": "D:\\Windows\\System32\\mmc.exe",
+        "exec_path": "D:\\Windows\\System32\\mmc.exe",
+        "arguments": "\"D:\\Windows\\System32\\taskschd.msc\"",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看与管理计划任务",
+        "source": "System",
+        "keywords": [
+          "task scheduler",
+          "taskschd",
+          "计划任务"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:components",
+        "name": "组件服务",
+        "path": "D:\\Windows\\System32\\mmc.exe",
+        "exec_path": "D:\\Windows\\System32\\mmc.exe",
+        "arguments": "\"D:\\Windows\\System32\\comexp.msc\"",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "管理 COM+ 应用程序与组件服务",
+        "source": "System",
+        "keywords": [
+          "component services",
+          "comexp",
+          "dcomcnfg"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:grouppolicy",
+        "name": "本地组策略编辑器",
+        "path": "D:\\Windows\\System32\\mmc.exe",
+        "exec_path": "D:\\Windows\\System32\\mmc.exe",
+        "arguments": "\"D:\\Windows\\System32\\gpedit.msc\"",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看与编辑本地组策略",
+        "source": "System",
+        "keywords": [
+          "group policy",
+          "gpedit",
+          "组策略"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:cleanup",
+        "name": "磁盘清理",
+        "path": "D:\\Windows\\System32\\cleanmgr.exe",
+        "exec_path": "D:\\Windows\\System32\\cleanmgr.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "打开磁盘清理，由你选择要清理的项目",
+        "source": "System",
+        "keywords": [
+          "disk cleanup",
+          "cleanmgr"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:optimize",
+        "name": "碎片整理和优化驱动器",
+        "path": "D:\\Windows\\System32\\dfrgui.exe",
+        "exec_path": "D:\\Windows\\System32\\dfrgui.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看驱动器优化状态",
+        "source": "System",
+        "keywords": [
+          "defragment",
+          "optimize drives",
+          "dfrgui",
+          "磁盘优化"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:resources",
+        "name": "资源监视器",
+        "path": "D:\\Windows\\System32\\resmon.exe",
+        "exec_path": "D:\\Windows\\System32\\resmon.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看 CPU、内存、磁盘与网络使用情况",
+        "source": "System",
+        "keywords": [
+          "resource monitor",
+          "resmon"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:colorprofile",
+        "name": "颜色管理",
+        "path": "D:\\Windows\\System32\\colorcpl.exe",
+        "exec_path": "D:\\Windows\\System32\\colorcpl.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "管理显示器颜色配置文件",
+        "source": "System",
+        "keywords": [
+          "color management",
+          "colorcpl"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:display",
+        "name": "显示设置",
+        "path": "ms-settings:display",
+        "exec_path": "ms-settings:display",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "调整分辨率、缩放与显示器布局",
+        "source": "System",
+        "keywords": [
+          "display settings",
+          "分辨率",
+          "屏幕"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:colors",
+        "name": "系统颜色设置",
+        "path": "ms-settings:personalization-colors",
+        "exec_path": "ms-settings:personalization-colors",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "调整 Windows 主题色与外观",
+        "source": "System",
+        "keywords": [
+          "colors",
+          "主题色"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:activation",
+        "name": "系统激活设置",
+        "path": "ms-settings:activation",
+        "exec_path": "ms-settings:activation",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看 Windows 激活状态",
+        "source": "System",
+        "keywords": [
+          "activation",
+          "激活"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:recovery",
+        "name": "系统恢复设置",
+        "path": "ms-settings:recovery",
+        "exec_path": "ms-settings:recovery",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看 Windows 恢复选项",
+        "source": "System",
+        "keywords": [
+          "recovery",
+          "恢复"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:updates",
+        "name": "检查系统更新",
+        "path": "ms-settings:windowsupdate",
+        "exec_path": "ms-settings:windowsupdate",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "打开 Windows 更新页面",
+        "source": "System",
+        "keywords": [
+          "windows update",
+          "系统更新"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:about",
+        "name": "关于系统",
+        "path": "ms-settings:about",
+        "exec_path": "ms-settings:about",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看 Windows 版本与设备规格",
+        "source": "System",
+        "keywords": [
+          "about windows",
+          "系统版本"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:storage",
+        "name": "存储设置",
+        "path": "ms-settings:storagesense",
+        "exec_path": "ms-settings:storagesense",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看磁盘空间与存储管理选项",
+        "source": "System",
+        "keywords": [
+          "storage",
+          "磁盘空间"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:proxy",
+        "name": "网络代理设置",
+        "path": "ms-settings:network-proxy",
+        "exec_path": "ms-settings:network-proxy",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看与配置代理服务器",
+        "source": "System",
+        "keywords": [
+          "proxy",
+          "代理"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:vpn",
+        "name": "VPN 设置",
+        "path": "ms-settings:network-vpn",
+        "exec_path": "ms-settings:network-vpn",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "管理 VPN 连接",
+        "source": "System",
+        "keywords": [
+          "vpn"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:printers",
+        "name": "打印机和扫描仪",
+        "path": "ms-settings:printers",
+        "exec_path": "ms-settings:printers",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "管理打印设备与扫描仪",
+        "source": "System",
+        "keywords": [
+          "printers",
+          "scanners"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:mouse",
+        "name": "鼠标设置",
+        "path": "ms-settings:mousetouchpad",
+        "exec_path": "ms-settings:mousetouchpad",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "调整鼠标按钮与滚动选项",
+        "source": "System",
+        "keywords": [
+          "mouse settings"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:datetime",
+        "name": "日期和时间",
+        "path": "ms-settings:dateandtime",
+        "exec_path": "ms-settings:dateandtime",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "调整日期、时间与时区",
+        "source": "System",
+        "keywords": [
+          "date and time",
+          "时区"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:defaultapps",
+        "name": "默认应用",
+        "path": "ms-settings:defaultapps",
+        "exec_path": "ms-settings:defaultapps",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "选择文件与链接的默认打开应用",
+        "source": "System",
+        "keywords": [
+          "default apps",
+          "默认程序"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:notifications",
+        "name": "通知设置",
+        "path": "ms-settings:notifications",
+        "exec_path": "ms-settings:notifications",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "管理应用与系统通知",
+        "source": "System",
+        "keywords": [
+          "notifications"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:signin",
+        "name": "登录选项",
+        "path": "ms-settings:signinoptions",
+        "exec_path": "ms-settings:signinoptions",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "管理账户登录方式",
+        "source": "System",
+        "keywords": [
+          "sign in options",
+          "登录设置"
+        ]
+      }
+    ],
+    [
+      {
+        "pinned": false,
+        "id": "system:empty-recycle-bin",
+        "name": "清空回收站",
+        "path": "velo-action:empty-recycle-bin",
+        "exec_path": "velo-action:empty-recycle-bin",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "清空所有驱动器的回收站（Windows 会提示确认）",
+        "source": "System",
+        "keywords": [
+          "empty recycle bin",
+          "清理回收站",
+          "垃圾"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:shutdown",
+        "name": "关机",
+        "path": "velo-action:shutdown",
+        "exec_path": "velo-action:shutdown",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "确认后关闭电脑，请先保存工作",
+        "source": "System",
+        "keywords": [
+          "shutdown",
+          "power off",
+          "关闭电脑"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:restart",
+        "name": "重启",
+        "path": "velo-action:restart",
+        "exec_path": "velo-action:restart",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "确认后重新启动电脑，请先保存工作",
+        "source": "System",
+        "keywords": [
+          "restart",
+          "reboot",
+          "重新启动"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:lock",
+        "name": "锁屏",
+        "path": "velo-action:lock",
+        "exec_path": "velo-action:lock",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "锁定当前 Windows 会话",
+        "source": "System",
+        "keywords": [
+          "lock",
+          "锁定电脑"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:calculator",
+        "name": "计算器",
+        "path": "D:\\Windows\\System32\\calc.exe",
+        "exec_path": "D:\\Windows\\System32\\calc.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "打开 Windows 计算器",
+        "source": "System",
+        "keywords": [
+          "calc",
+          "calculator"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:explorer",
+        "name": "文件资源管理器",
+        "path": "D:\\Windows\\explorer.exe",
+        "exec_path": "D:\\Windows\\explorer.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "浏览文件与文件夹",
+        "source": "System",
+        "keywords": [
+          "explorer",
+          "file explorer",
+          "files",
+          "文件管理",
+          "资源管理器"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:taskmanager",
+        "name": "任务管理器",
+        "path": "D:\\Windows\\System32\\Taskmgr.exe",
+        "exec_path": "D:\\Windows\\System32\\Taskmgr.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看进程与资源使用情况",
+        "source": "System",
+        "keywords": [
+          "task manager",
+          "taskmgr",
+          "进程"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:terminal",
+        "name": "命令提示符",
+        "path": "D:\\Windows\\System32\\cmd.exe",
+        "exec_path": "D:\\Windows\\System32\\cmd.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "打开命令行终端",
+        "source": "System",
+        "keywords": [
+          "cmd",
+          "command prompt",
+          "terminal",
+          "终端",
+          "命令行"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:control",
+        "name": "控制面板",
+        "path": "D:\\Windows\\System32\\control.exe",
+        "exec_path": "D:\\Windows\\System32\\control.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "打开 Windows 控制面板",
+        "source": "System",
+        "keywords": [
+          "control panel"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:apps",
+        "name": "卸载或更改程序",
+        "path": "D:\\Windows\\System32\\control.exe",
+        "exec_path": "D:\\Windows\\System32\\control.exe",
+        "arguments": "appwiz.cpl",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "管理已安装的桌面程序",
+        "source": "System",
+        "keywords": [
+          "apps",
+          "uninstall",
+          "appwiz",
+          "应用管理",
+          "卸载程序",
+          "xiezai",
+          "xz"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:environment",
+        "name": "环境变量",
+        "path": "D:\\Windows\\System32\\rundll32.exe",
+        "exec_path": "D:\\Windows\\System32\\rundll32.exe",
+        "arguments": "sysdm.cpl,EditEnvironmentVariables",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "编辑用户与系统环境变量",
+        "source": "System",
+        "keywords": [
+          "environment",
+          "env",
+          "path",
+          "系统属性环境变量"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:devices",
+        "name": "设备管理器",
+        "path": "D:\\Windows\\System32\\mmc.exe",
+        "exec_path": "D:\\Windows\\System32\\mmc.exe",
+        "arguments": "\"D:\\Windows\\System32\\devmgmt.msc\"",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看硬件设备与驱动",
+        "source": "System",
+        "keywords": [
+          "device manager",
+          "devmgmt",
+          "驱动"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:systemconfig",
+        "name": "系统配置",
+        "path": "D:\\Windows\\System32\\msconfig.exe",
+        "exec_path": "D:\\Windows\\System32\\msconfig.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看启动与服务配置",
+        "source": "System",
+        "keywords": [
+          "msconfig",
+          "system configuration"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:systeminfo",
+        "name": "系统信息",
+        "path": "D:\\Windows\\System32\\msinfo32.exe",
+        "exec_path": "D:\\Windows\\System32\\msinfo32.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看硬件、组件与系统信息",
+        "source": "System",
+        "keywords": [
+          "msinfo32",
+          "system information"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:computer",
+        "name": "计算机管理",
+        "path": "D:\\Windows\\System32\\mmc.exe",
+        "exec_path": "D:\\Windows\\System32\\mmc.exe",
+        "arguments": "\"D:\\Windows\\System32\\compmgmt.msc\"",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "管理磁盘、服务与本地计算机",
+        "source": "System",
+        "keywords": [
+          "computer management",
+          "compmgmt"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:events",
+        "name": "事件查看器",
+        "path": "D:\\Windows\\System32\\mmc.exe",
+        "exec_path": "D:\\Windows\\System32\\mmc.exe",
+        "arguments": "\"D:\\Windows\\System32\\eventvwr.msc\"",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看 Windows 日志与系统事件",
+        "source": "System",
+        "keywords": [
+          "event viewer",
+          "eventvwr",
+          "系统日志"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:services",
+        "name": "服务管理",
+        "path": "D:\\Windows\\System32\\mmc.exe",
+        "exec_path": "D:\\Windows\\System32\\mmc.exe",
+        "arguments": "\"D:\\Windows\\System32\\services.msc\"",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看与管理 Windows 服务",
+        "source": "System",
+        "keywords": [
+          "services",
+          "系统服务"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:disks",
+        "name": "磁盘管理",
+        "path": "D:\\Windows\\System32\\mmc.exe",
+        "exec_path": "D:\\Windows\\System32\\mmc.exe",
+        "arguments": "\"D:\\Windows\\System32\\diskmgmt.msc\"",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看磁盘、分区与卷",
+        "source": "System",
+        "keywords": [
+          "disk management",
+          "diskmgmt"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:tasks",
+        "name": "任务计划程序",
+        "path": "D:\\Windows\\System32\\mmc.exe",
+        "exec_path": "D:\\Windows\\System32\\mmc.exe",
+        "arguments": "\"D:\\Windows\\System32\\taskschd.msc\"",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看与管理计划任务",
+        "source": "System",
+        "keywords": [
+          "task scheduler",
+          "taskschd",
+          "计划任务"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:components",
+        "name": "组件服务",
+        "path": "D:\\Windows\\System32\\mmc.exe",
+        "exec_path": "D:\\Windows\\System32\\mmc.exe",
+        "arguments": "\"D:\\Windows\\System32\\comexp.msc\"",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "管理 COM+ 应用程序与组件服务",
+        "source": "System",
+        "keywords": [
+          "component services",
+          "comexp",
+          "dcomcnfg"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:grouppolicy",
+        "name": "本地组策略编辑器",
+        "path": "D:\\Windows\\System32\\mmc.exe",
+        "exec_path": "D:\\Windows\\System32\\mmc.exe",
+        "arguments": "\"D:\\Windows\\System32\\gpedit.msc\"",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看与编辑本地组策略",
+        "source": "System",
+        "keywords": [
+          "group policy",
+          "gpedit",
+          "组策略"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:cleanup",
+        "name": "磁盘清理",
+        "path": "D:\\Windows\\System32\\cleanmgr.exe",
+        "exec_path": "D:\\Windows\\System32\\cleanmgr.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "打开磁盘清理，由你选择要清理的项目",
+        "source": "System",
+        "keywords": [
+          "disk cleanup",
+          "cleanmgr"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:optimize",
+        "name": "碎片整理和优化驱动器",
+        "path": "D:\\Windows\\System32\\dfrgui.exe",
+        "exec_path": "D:\\Windows\\System32\\dfrgui.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看驱动器优化状态",
+        "source": "System",
+        "keywords": [
+          "defragment",
+          "optimize drives",
+          "dfrgui",
+          "磁盘优化"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:resources",
+        "name": "资源监视器",
+        "path": "D:\\Windows\\System32\\resmon.exe",
+        "exec_path": "D:\\Windows\\System32\\resmon.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看 CPU、内存、磁盘与网络使用情况",
+        "source": "System",
+        "keywords": [
+          "resource monitor",
+          "resmon"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:colorprofile",
+        "name": "颜色管理",
+        "path": "D:\\Windows\\System32\\colorcpl.exe",
+        "exec_path": "D:\\Windows\\System32\\colorcpl.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "管理显示器颜色配置文件",
+        "source": "System",
+        "keywords": [
+          "color management",
+          "colorcpl"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:display",
+        "name": "显示设置",
+        "path": "ms-settings:display",
+        "exec_path": "ms-settings:display",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "调整分辨率、缩放与显示器布局",
+        "source": "System",
+        "keywords": [
+          "display settings",
+          "分辨率",
+          "屏幕"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:sound",
+        "name": "声音设置",
+        "path": "ms-settings:sound",
+        "exec_path": "ms-settings:sound",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "管理音频输入、输出与音量",
+        "source": "System",
+        "keywords": [
+          "sound settings",
+          "音量",
+          "麦克风"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:colors",
+        "name": "系统颜色设置",
+        "path": "ms-settings:personalization-colors",
+        "exec_path": "ms-settings:personalization-colors",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "调整 Windows 主题色与外观",
+        "source": "System",
+        "keywords": [
+          "colors",
+          "主题色"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:activation",
+        "name": "系统激活设置",
+        "path": "ms-settings:activation",
+        "exec_path": "ms-settings:activation",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看 Windows 激活状态",
+        "source": "System",
+        "keywords": [
+          "activation",
+          "激活"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:recovery",
+        "name": "系统恢复设置",
+        "path": "ms-settings:recovery",
+        "exec_path": "ms-settings:recovery",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看 Windows 恢复选项",
+        "source": "System",
+        "keywords": [
+          "recovery",
+          "恢复"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:updates",
+        "name": "检查系统更新",
+        "path": "ms-settings:windowsupdate",
+        "exec_path": "ms-settings:windowsupdate",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "打开 Windows 更新页面",
+        "source": "System",
+        "keywords": [
+          "windows update",
+          "系统更新"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:about",
+        "name": "关于系统",
+        "path": "ms-settings:about",
+        "exec_path": "ms-settings:about",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看 Windows 版本与设备规格",
+        "source": "System",
+        "keywords": [
+          "about windows",
+          "系统版本"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:storage",
+        "name": "存储设置",
+        "path": "ms-settings:storagesense",
+        "exec_path": "ms-settings:storagesense",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看磁盘空间与存储管理选项",
+        "source": "System",
+        "keywords": [
+          "storage",
+          "磁盘空间"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:network",
+        "name": "网络状态",
+        "path": "ms-settings:network-status",
+        "exec_path": "ms-settings:network-status",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看网络连接与状态",
+        "source": "System",
+        "keywords": [
+          "network status",
+          "网络设置"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:proxy",
+        "name": "网络代理设置",
+        "path": "ms-settings:network-proxy",
+        "exec_path": "ms-settings:network-proxy",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看与配置代理服务器",
+        "source": "System",
+        "keywords": [
+          "proxy",
+          "代理"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:vpn",
+        "name": "VPN 设置",
+        "path": "ms-settings:network-vpn",
+        "exec_path": "ms-settings:network-vpn",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "管理 VPN 连接",
+        "source": "System",
+        "keywords": [
+          "vpn"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:printers",
+        "name": "打印机和扫描仪",
+        "path": "ms-settings:printers",
+        "exec_path": "ms-settings:printers",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "管理打印设备与扫描仪",
+        "source": "System",
+        "keywords": [
+          "printers",
+          "scanners"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:mouse",
+        "name": "鼠标设置",
+        "path": "ms-settings:mousetouchpad",
+        "exec_path": "ms-settings:mousetouchpad",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "调整鼠标按钮与滚动选项",
+        "source": "System",
+        "keywords": [
+          "mouse settings"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:datetime",
+        "name": "日期和时间",
+        "path": "ms-settings:dateandtime",
+        "exec_path": "ms-settings:dateandtime",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "调整日期、时间与时区",
+        "source": "System",
+        "keywords": [
+          "date and time",
+          "时区"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:defaultapps",
+        "name": "默认应用",
+        "path": "ms-settings:defaultapps",
+        "exec_path": "ms-settings:defaultapps",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "选择文件与链接的默认打开应用",
+        "source": "System",
+        "keywords": [
+          "default apps",
+          "默认程序"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:notifications",
+        "name": "通知设置",
+        "path": "ms-settings:notifications",
+        "exec_path": "ms-settings:notifications",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "管理应用与系统通知",
+        "source": "System",
+        "keywords": [
+          "notifications"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:signin",
+        "name": "登录选项",
+        "path": "ms-settings:signinoptions",
+        "exec_path": "ms-settings:signinoptions",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "管理账户登录方式",
+        "source": "System",
+        "keywords": [
+          "sign in options",
+          "登录设置"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:startup",
+        "name": "启动应用",
+        "path": "ms-settings:startupapps",
+        "exec_path": "ms-settings:startupapps",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "管理登录时自动启动的应用",
+        "source": "System",
+        "keywords": [
+          "startup apps",
+          "开机启动"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:shared",
+        "name": "共享体验设置",
+        "path": "ms-settings:crossdevice",
+        "exec_path": "ms-settings:crossdevice",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "管理 Windows 10 跨设备共享体验",
+        "source": "System",
+        "keywords": [
+          "shared experiences",
+          "跨设备"
+        ]
+      }
+    ],
+    [
+      {
+        "pinned": false,
+        "id": "system:empty-recycle-bin",
+        "name": "清空回收站",
+        "path": "velo-action:empty-recycle-bin",
+        "exec_path": "velo-action:empty-recycle-bin",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "清空所有驱动器的回收站（Windows 会提示确认）",
+        "source": "System",
+        "keywords": [
+          "empty recycle bin",
+          "清理回收站",
+          "垃圾"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:shutdown",
+        "name": "关机",
+        "path": "velo-action:shutdown",
+        "exec_path": "velo-action:shutdown",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "确认后关闭电脑，请先保存工作",
+        "source": "System",
+        "keywords": [
+          "shutdown",
+          "power off",
+          "关闭电脑"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:restart",
+        "name": "重启",
+        "path": "velo-action:restart",
+        "exec_path": "velo-action:restart",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "确认后重新启动电脑，请先保存工作",
+        "source": "System",
+        "keywords": [
+          "restart",
+          "reboot",
+          "重新启动"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:lock",
+        "name": "锁屏",
+        "path": "velo-action:lock",
+        "exec_path": "velo-action:lock",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "锁定当前 Windows 会话",
+        "source": "System",
+        "keywords": [
+          "lock",
+          "锁定电脑"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:calculator",
+        "name": "计算器",
+        "path": "D:\\Windows\\System32\\calc.exe",
+        "exec_path": "D:\\Windows\\System32\\calc.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "打开 Windows 计算器",
+        "source": "System",
+        "keywords": [
+          "calc",
+          "calculator"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:explorer",
+        "name": "文件资源管理器",
+        "path": "D:\\Windows\\explorer.exe",
+        "exec_path": "D:\\Windows\\explorer.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "浏览文件与文件夹",
+        "source": "System",
+        "keywords": [
+          "explorer",
+          "file explorer",
+          "files",
+          "文件管理",
+          "资源管理器"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:taskmanager",
+        "name": "任务管理器",
+        "path": "D:\\Windows\\System32\\Taskmgr.exe",
+        "exec_path": "D:\\Windows\\System32\\Taskmgr.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看进程与资源使用情况",
+        "source": "System",
+        "keywords": [
+          "task manager",
+          "taskmgr",
+          "进程"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:terminal",
+        "name": "命令提示符",
+        "path": "D:\\Windows\\System32\\cmd.exe",
+        "exec_path": "D:\\Windows\\System32\\cmd.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "打开命令行终端",
+        "source": "System",
+        "keywords": [
+          "cmd",
+          "command prompt",
+          "terminal",
+          "终端",
+          "命令行"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:control",
+        "name": "控制面板",
+        "path": "D:\\Windows\\System32\\control.exe",
+        "exec_path": "D:\\Windows\\System32\\control.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "打开 Windows 控制面板",
+        "source": "System",
+        "keywords": [
+          "control panel"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:apps",
+        "name": "卸载或更改程序",
+        "path": "D:\\Windows\\System32\\control.exe",
+        "exec_path": "D:\\Windows\\System32\\control.exe",
+        "arguments": "appwiz.cpl",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "管理已安装的桌面程序",
+        "source": "System",
+        "keywords": [
+          "apps",
+          "uninstall",
+          "appwiz",
+          "应用管理",
+          "卸载程序",
+          "xiezai",
+          "xz"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:environment",
+        "name": "环境变量",
+        "path": "D:\\Windows\\System32\\rundll32.exe",
+        "exec_path": "D:\\Windows\\System32\\rundll32.exe",
+        "arguments": "sysdm.cpl,EditEnvironmentVariables",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "编辑用户与系统环境变量",
+        "source": "System",
+        "keywords": [
+          "environment",
+          "env",
+          "path",
+          "系统属性环境变量"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:devices",
+        "name": "设备管理器",
+        "path": "D:\\Windows\\System32\\mmc.exe",
+        "exec_path": "D:\\Windows\\System32\\mmc.exe",
+        "arguments": "\"D:\\Windows\\System32\\devmgmt.msc\"",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看硬件设备与驱动",
+        "source": "System",
+        "keywords": [
+          "device manager",
+          "devmgmt",
+          "驱动"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:systemconfig",
+        "name": "系统配置",
+        "path": "D:\\Windows\\System32\\msconfig.exe",
+        "exec_path": "D:\\Windows\\System32\\msconfig.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看启动与服务配置",
+        "source": "System",
+        "keywords": [
+          "msconfig",
+          "system configuration"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:systeminfo",
+        "name": "系统信息",
+        "path": "D:\\Windows\\System32\\msinfo32.exe",
+        "exec_path": "D:\\Windows\\System32\\msinfo32.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看硬件、组件与系统信息",
+        "source": "System",
+        "keywords": [
+          "msinfo32",
+          "system information"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:computer",
+        "name": "计算机管理",
+        "path": "D:\\Windows\\System32\\mmc.exe",
+        "exec_path": "D:\\Windows\\System32\\mmc.exe",
+        "arguments": "\"D:\\Windows\\System32\\compmgmt.msc\"",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "管理磁盘、服务与本地计算机",
+        "source": "System",
+        "keywords": [
+          "computer management",
+          "compmgmt"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:events",
+        "name": "事件查看器",
+        "path": "D:\\Windows\\System32\\mmc.exe",
+        "exec_path": "D:\\Windows\\System32\\mmc.exe",
+        "arguments": "\"D:\\Windows\\System32\\eventvwr.msc\"",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看 Windows 日志与系统事件",
+        "source": "System",
+        "keywords": [
+          "event viewer",
+          "eventvwr",
+          "系统日志"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:services",
+        "name": "服务管理",
+        "path": "D:\\Windows\\System32\\mmc.exe",
+        "exec_path": "D:\\Windows\\System32\\mmc.exe",
+        "arguments": "\"D:\\Windows\\System32\\services.msc\"",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看与管理 Windows 服务",
+        "source": "System",
+        "keywords": [
+          "services",
+          "系统服务"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:disks",
+        "name": "磁盘管理",
+        "path": "D:\\Windows\\System32\\mmc.exe",
+        "exec_path": "D:\\Windows\\System32\\mmc.exe",
+        "arguments": "\"D:\\Windows\\System32\\diskmgmt.msc\"",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看磁盘、分区与卷",
+        "source": "System",
+        "keywords": [
+          "disk management",
+          "diskmgmt"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:tasks",
+        "name": "任务计划程序",
+        "path": "D:\\Windows\\System32\\mmc.exe",
+        "exec_path": "D:\\Windows\\System32\\mmc.exe",
+        "arguments": "\"D:\\Windows\\System32\\taskschd.msc\"",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看与管理计划任务",
+        "source": "System",
+        "keywords": [
+          "task scheduler",
+          "taskschd",
+          "计划任务"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:components",
+        "name": "组件服务",
+        "path": "D:\\Windows\\System32\\mmc.exe",
+        "exec_path": "D:\\Windows\\System32\\mmc.exe",
+        "arguments": "\"D:\\Windows\\System32\\comexp.msc\"",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "管理 COM+ 应用程序与组件服务",
+        "source": "System",
+        "keywords": [
+          "component services",
+          "comexp",
+          "dcomcnfg"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:grouppolicy",
+        "name": "本地组策略编辑器",
+        "path": "D:\\Windows\\System32\\mmc.exe",
+        "exec_path": "D:\\Windows\\System32\\mmc.exe",
+        "arguments": "\"D:\\Windows\\System32\\gpedit.msc\"",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看与编辑本地组策略",
+        "source": "System",
+        "keywords": [
+          "group policy",
+          "gpedit",
+          "组策略"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:cleanup",
+        "name": "磁盘清理",
+        "path": "D:\\Windows\\System32\\cleanmgr.exe",
+        "exec_path": "D:\\Windows\\System32\\cleanmgr.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "打开磁盘清理，由你选择要清理的项目",
+        "source": "System",
+        "keywords": [
+          "disk cleanup",
+          "cleanmgr"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:optimize",
+        "name": "碎片整理和优化驱动器",
+        "path": "D:\\Windows\\System32\\dfrgui.exe",
+        "exec_path": "D:\\Windows\\System32\\dfrgui.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看驱动器优化状态",
+        "source": "System",
+        "keywords": [
+          "defragment",
+          "optimize drives",
+          "dfrgui",
+          "磁盘优化"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:resources",
+        "name": "资源监视器",
+        "path": "D:\\Windows\\System32\\resmon.exe",
+        "exec_path": "D:\\Windows\\System32\\resmon.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看 CPU、内存、磁盘与网络使用情况",
+        "source": "System",
+        "keywords": [
+          "resource monitor",
+          "resmon"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:colorprofile",
+        "name": "颜色管理",
+        "path": "D:\\Windows\\System32\\colorcpl.exe",
+        "exec_path": "D:\\Windows\\System32\\colorcpl.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "管理显示器颜色配置文件",
+        "source": "System",
+        "keywords": [
+          "color management",
+          "colorcpl"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:display",
+        "name": "显示设置",
+        "path": "ms-settings:display",
+        "exec_path": "ms-settings:display",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "调整分辨率、缩放与显示器布局",
+        "source": "System",
+        "keywords": [
+          "display settings",
+          "分辨率",
+          "屏幕"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:sound",
+        "name": "声音设置",
+        "path": "ms-settings:sound",
+        "exec_path": "ms-settings:sound",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "管理音频输入、输出与音量",
+        "source": "System",
+        "keywords": [
+          "sound settings",
+          "音量",
+          "麦克风"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:colors",
+        "name": "系统颜色设置",
+        "path": "ms-settings:personalization-colors",
+        "exec_path": "ms-settings:personalization-colors",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "调整 Windows 主题色与外观",
+        "source": "System",
+        "keywords": [
+          "colors",
+          "主题色"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:activation",
+        "name": "系统激活设置",
+        "path": "ms-settings:activation",
+        "exec_path": "ms-settings:activation",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看 Windows 激活状态",
+        "source": "System",
+        "keywords": [
+          "activation",
+          "激活"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:recovery",
+        "name": "系统恢复设置",
+        "path": "ms-settings:recovery",
+        "exec_path": "ms-settings:recovery",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看 Windows 恢复选项",
+        "source": "System",
+        "keywords": [
+          "recovery",
+          "恢复"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:updates",
+        "name": "检查系统更新",
+        "path": "ms-settings:windowsupdate",
+        "exec_path": "ms-settings:windowsupdate",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "打开 Windows 更新页面",
+        "source": "System",
+        "keywords": [
+          "windows update",
+          "系统更新"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:about",
+        "name": "关于系统",
+        "path": "ms-settings:about",
+        "exec_path": "ms-settings:about",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看 Windows 版本与设备规格",
+        "source": "System",
+        "keywords": [
+          "about windows",
+          "系统版本"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:storage",
+        "name": "存储设置",
+        "path": "ms-settings:storagesense",
+        "exec_path": "ms-settings:storagesense",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看磁盘空间与存储管理选项",
+        "source": "System",
+        "keywords": [
+          "storage",
+          "磁盘空间"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:network",
+        "name": "网络状态",
+        "path": "ms-settings:network-status",
+        "exec_path": "ms-settings:network-status",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看网络连接与状态",
+        "source": "System",
+        "keywords": [
+          "network status",
+          "网络设置"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:proxy",
+        "name": "网络代理设置",
+        "path": "ms-settings:network-proxy",
+        "exec_path": "ms-settings:network-proxy",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看与配置代理服务器",
+        "source": "System",
+        "keywords": [
+          "proxy",
+          "代理"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:vpn",
+        "name": "VPN 设置",
+        "path": "ms-settings:network-vpn",
+        "exec_path": "ms-settings:network-vpn",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "管理 VPN 连接",
+        "source": "System",
+        "keywords": [
+          "vpn"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:printers",
+        "name": "打印机和扫描仪",
+        "path": "ms-settings:printers",
+        "exec_path": "ms-settings:printers",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "管理打印设备与扫描仪",
+        "source": "System",
+        "keywords": [
+          "printers",
+          "scanners"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:mouse",
+        "name": "鼠标设置",
+        "path": "ms-settings:mousetouchpad",
+        "exec_path": "ms-settings:mousetouchpad",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "调整鼠标按钮与滚动选项",
+        "source": "System",
+        "keywords": [
+          "mouse settings"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:datetime",
+        "name": "日期和时间",
+        "path": "ms-settings:dateandtime",
+        "exec_path": "ms-settings:dateandtime",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "调整日期、时间与时区",
+        "source": "System",
+        "keywords": [
+          "date and time",
+          "时区"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:defaultapps",
+        "name": "默认应用",
+        "path": "ms-settings:defaultapps",
+        "exec_path": "ms-settings:defaultapps",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "选择文件与链接的默认打开应用",
+        "source": "System",
+        "keywords": [
+          "default apps",
+          "默认程序"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:notifications",
+        "name": "通知设置",
+        "path": "ms-settings:notifications",
+        "exec_path": "ms-settings:notifications",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "管理应用与系统通知",
+        "source": "System",
+        "keywords": [
+          "notifications"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:signin",
+        "name": "登录选项",
+        "path": "ms-settings:signinoptions",
+        "exec_path": "ms-settings:signinoptions",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "管理账户登录方式",
+        "source": "System",
+        "keywords": [
+          "sign in options",
+          "登录设置"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:startup",
+        "name": "启动应用",
+        "path": "ms-settings:startupapps",
+        "exec_path": "ms-settings:startupapps",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "管理登录时自动启动的应用",
+        "source": "System",
+        "keywords": [
+          "startup apps",
+          "开机启动"
+        ]
+      }
+    ],
+    [
+      {
+        "pinned": false,
+        "id": "system:empty-recycle-bin",
+        "name": "清空回收站",
+        "path": "velo-action:empty-recycle-bin",
+        "exec_path": "velo-action:empty-recycle-bin",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "清空所有驱动器的回收站（Windows 会提示确认）",
+        "source": "System",
+        "keywords": [
+          "empty recycle bin",
+          "清理回收站",
+          "垃圾"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:shutdown",
+        "name": "关机",
+        "path": "velo-action:shutdown",
+        "exec_path": "velo-action:shutdown",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "确认后关闭电脑，请先保存工作",
+        "source": "System",
+        "keywords": [
+          "shutdown",
+          "power off",
+          "关闭电脑"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:restart",
+        "name": "重启",
+        "path": "velo-action:restart",
+        "exec_path": "velo-action:restart",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "确认后重新启动电脑，请先保存工作",
+        "source": "System",
+        "keywords": [
+          "restart",
+          "reboot",
+          "重新启动"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:lock",
+        "name": "锁屏",
+        "path": "velo-action:lock",
+        "exec_path": "velo-action:lock",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "锁定当前 Windows 会话",
+        "source": "System",
+        "keywords": [
+          "lock",
+          "锁定电脑"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:calculator",
+        "name": "计算器",
+        "path": "D:\\Windows\\System32\\calc.exe",
+        "exec_path": "D:\\Windows\\System32\\calc.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "打开 Windows 计算器",
+        "source": "System",
+        "keywords": [
+          "calc",
+          "calculator"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:explorer",
+        "name": "文件资源管理器",
+        "path": "D:\\Windows\\explorer.exe",
+        "exec_path": "D:\\Windows\\explorer.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "浏览文件与文件夹",
+        "source": "System",
+        "keywords": [
+          "explorer",
+          "file explorer",
+          "files",
+          "文件管理",
+          "资源管理器"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:taskmanager",
+        "name": "任务管理器",
+        "path": "D:\\Windows\\System32\\Taskmgr.exe",
+        "exec_path": "D:\\Windows\\System32\\Taskmgr.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看进程与资源使用情况",
+        "source": "System",
+        "keywords": [
+          "task manager",
+          "taskmgr",
+          "进程"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:terminal",
+        "name": "命令提示符",
+        "path": "D:\\Windows\\System32\\cmd.exe",
+        "exec_path": "D:\\Windows\\System32\\cmd.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "打开命令行终端",
+        "source": "System",
+        "keywords": [
+          "cmd",
+          "command prompt",
+          "terminal",
+          "终端",
+          "命令行"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:control",
+        "name": "控制面板",
+        "path": "D:\\Windows\\System32\\control.exe",
+        "exec_path": "D:\\Windows\\System32\\control.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "打开 Windows 控制面板",
+        "source": "System",
+        "keywords": [
+          "control panel"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:apps",
+        "name": "卸载或更改程序",
+        "path": "D:\\Windows\\System32\\control.exe",
+        "exec_path": "D:\\Windows\\System32\\control.exe",
+        "arguments": "appwiz.cpl",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "管理已安装的桌面程序",
+        "source": "System",
+        "keywords": [
+          "apps",
+          "uninstall",
+          "appwiz",
+          "应用管理",
+          "卸载程序",
+          "xiezai",
+          "xz"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:environment",
+        "name": "环境变量",
+        "path": "D:\\Windows\\System32\\rundll32.exe",
+        "exec_path": "D:\\Windows\\System32\\rundll32.exe",
+        "arguments": "sysdm.cpl,EditEnvironmentVariables",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "编辑用户与系统环境变量",
+        "source": "System",
+        "keywords": [
+          "environment",
+          "env",
+          "path",
+          "系统属性环境变量"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:devices",
+        "name": "设备管理器",
+        "path": "D:\\Windows\\System32\\mmc.exe",
+        "exec_path": "D:\\Windows\\System32\\mmc.exe",
+        "arguments": "\"D:\\Windows\\System32\\devmgmt.msc\"",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看硬件设备与驱动",
+        "source": "System",
+        "keywords": [
+          "device manager",
+          "devmgmt",
+          "驱动"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:systemconfig",
+        "name": "系统配置",
+        "path": "D:\\Windows\\System32\\msconfig.exe",
+        "exec_path": "D:\\Windows\\System32\\msconfig.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看启动与服务配置",
+        "source": "System",
+        "keywords": [
+          "msconfig",
+          "system configuration"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:systeminfo",
+        "name": "系统信息",
+        "path": "D:\\Windows\\System32\\msinfo32.exe",
+        "exec_path": "D:\\Windows\\System32\\msinfo32.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看硬件、组件与系统信息",
+        "source": "System",
+        "keywords": [
+          "msinfo32",
+          "system information"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:computer",
+        "name": "计算机管理",
+        "path": "D:\\Windows\\System32\\mmc.exe",
+        "exec_path": "D:\\Windows\\System32\\mmc.exe",
+        "arguments": "\"D:\\Windows\\System32\\compmgmt.msc\"",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "管理磁盘、服务与本地计算机",
+        "source": "System",
+        "keywords": [
+          "computer management",
+          "compmgmt"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:events",
+        "name": "事件查看器",
+        "path": "D:\\Windows\\System32\\mmc.exe",
+        "exec_path": "D:\\Windows\\System32\\mmc.exe",
+        "arguments": "\"D:\\Windows\\System32\\eventvwr.msc\"",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看 Windows 日志与系统事件",
+        "source": "System",
+        "keywords": [
+          "event viewer",
+          "eventvwr",
+          "系统日志"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:services",
+        "name": "服务管理",
+        "path": "D:\\Windows\\System32\\mmc.exe",
+        "exec_path": "D:\\Windows\\System32\\mmc.exe",
+        "arguments": "\"D:\\Windows\\System32\\services.msc\"",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看与管理 Windows 服务",
+        "source": "System",
+        "keywords": [
+          "services",
+          "系统服务"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:disks",
+        "name": "磁盘管理",
+        "path": "D:\\Windows\\System32\\mmc.exe",
+        "exec_path": "D:\\Windows\\System32\\mmc.exe",
+        "arguments": "\"D:\\Windows\\System32\\diskmgmt.msc\"",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看磁盘、分区与卷",
+        "source": "System",
+        "keywords": [
+          "disk management",
+          "diskmgmt"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:tasks",
+        "name": "任务计划程序",
+        "path": "D:\\Windows\\System32\\mmc.exe",
+        "exec_path": "D:\\Windows\\System32\\mmc.exe",
+        "arguments": "\"D:\\Windows\\System32\\taskschd.msc\"",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看与管理计划任务",
+        "source": "System",
+        "keywords": [
+          "task scheduler",
+          "taskschd",
+          "计划任务"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:components",
+        "name": "组件服务",
+        "path": "D:\\Windows\\System32\\mmc.exe",
+        "exec_path": "D:\\Windows\\System32\\mmc.exe",
+        "arguments": "\"D:\\Windows\\System32\\comexp.msc\"",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "管理 COM+ 应用程序与组件服务",
+        "source": "System",
+        "keywords": [
+          "component services",
+          "comexp",
+          "dcomcnfg"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:grouppolicy",
+        "name": "本地组策略编辑器",
+        "path": "D:\\Windows\\System32\\mmc.exe",
+        "exec_path": "D:\\Windows\\System32\\mmc.exe",
+        "arguments": "\"D:\\Windows\\System32\\gpedit.msc\"",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看与编辑本地组策略",
+        "source": "System",
+        "keywords": [
+          "group policy",
+          "gpedit",
+          "组策略"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:cleanup",
+        "name": "磁盘清理",
+        "path": "D:\\Windows\\System32\\cleanmgr.exe",
+        "exec_path": "D:\\Windows\\System32\\cleanmgr.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "打开磁盘清理，由你选择要清理的项目",
+        "source": "System",
+        "keywords": [
+          "disk cleanup",
+          "cleanmgr"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:optimize",
+        "name": "碎片整理和优化驱动器",
+        "path": "D:\\Windows\\System32\\dfrgui.exe",
+        "exec_path": "D:\\Windows\\System32\\dfrgui.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看驱动器优化状态",
+        "source": "System",
+        "keywords": [
+          "defragment",
+          "optimize drives",
+          "dfrgui",
+          "磁盘优化"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:resources",
+        "name": "资源监视器",
+        "path": "D:\\Windows\\System32\\resmon.exe",
+        "exec_path": "D:\\Windows\\System32\\resmon.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看 CPU、内存、磁盘与网络使用情况",
+        "source": "System",
+        "keywords": [
+          "resource monitor",
+          "resmon"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:colorprofile",
+        "name": "颜色管理",
+        "path": "D:\\Windows\\System32\\colorcpl.exe",
+        "exec_path": "D:\\Windows\\System32\\colorcpl.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "管理显示器颜色配置文件",
+        "source": "System",
+        "keywords": [
+          "color management",
+          "colorcpl"
+        ]
+      }
+    ],
+    [
+      {
+        "pinned": false,
+        "id": "system:empty-recycle-bin",
+        "name": "清空回收站",
+        "path": "velo-action:empty-recycle-bin",
+        "exec_path": "velo-action:empty-recycle-bin",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "清空所有驱动器的回收站（Windows 会提示确认）",
+        "source": "System",
+        "keywords": [
+          "empty recycle bin",
+          "清理回收站",
+          "垃圾"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:shutdown",
+        "name": "关机",
+        "path": "velo-action:shutdown",
+        "exec_path": "velo-action:shutdown",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "确认后关闭电脑，请先保存工作",
+        "source": "System",
+        "keywords": [
+          "shutdown",
+          "power off",
+          "关闭电脑"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:restart",
+        "name": "重启",
+        "path": "velo-action:restart",
+        "exec_path": "velo-action:restart",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "确认后重新启动电脑，请先保存工作",
+        "source": "System",
+        "keywords": [
+          "restart",
+          "reboot",
+          "重新启动"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:lock",
+        "name": "锁屏",
+        "path": "velo-action:lock",
+        "exec_path": "velo-action:lock",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "锁定当前 Windows 会话",
+        "source": "System",
+        "keywords": [
+          "lock",
+          "锁定电脑"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:calculator",
+        "name": "计算器",
+        "path": "D:\\Windows\\System32\\calc.exe",
+        "exec_path": "D:\\Windows\\System32\\calc.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "打开 Windows 计算器",
+        "source": "System",
+        "keywords": [
+          "calc",
+          "calculator"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:explorer",
+        "name": "文件资源管理器",
+        "path": "D:\\Windows\\explorer.exe",
+        "exec_path": "D:\\Windows\\explorer.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "浏览文件与文件夹",
+        "source": "System",
+        "keywords": [
+          "explorer",
+          "file explorer",
+          "files",
+          "文件管理",
+          "资源管理器"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:taskmanager",
+        "name": "任务管理器",
+        "path": "D:\\Windows\\System32\\Taskmgr.exe",
+        "exec_path": "D:\\Windows\\System32\\Taskmgr.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看进程与资源使用情况",
+        "source": "System",
+        "keywords": [
+          "task manager",
+          "taskmgr",
+          "进程"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:terminal",
+        "name": "命令提示符",
+        "path": "D:\\Windows\\System32\\cmd.exe",
+        "exec_path": "D:\\Windows\\System32\\cmd.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "打开命令行终端",
+        "source": "System",
+        "keywords": [
+          "cmd",
+          "command prompt",
+          "terminal",
+          "终端",
+          "命令行"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:control",
+        "name": "控制面板",
+        "path": "D:\\Windows\\System32\\control.exe",
+        "exec_path": "D:\\Windows\\System32\\control.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "打开 Windows 控制面板",
+        "source": "System",
+        "keywords": [
+          "control panel"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:apps",
+        "name": "卸载或更改程序",
+        "path": "D:\\Windows\\System32\\control.exe",
+        "exec_path": "D:\\Windows\\System32\\control.exe",
+        "arguments": "appwiz.cpl",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "管理已安装的桌面程序",
+        "source": "System",
+        "keywords": [
+          "apps",
+          "uninstall",
+          "appwiz",
+          "应用管理",
+          "卸载程序",
+          "xiezai",
+          "xz"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:environment",
+        "name": "环境变量",
+        "path": "D:\\Windows\\System32\\rundll32.exe",
+        "exec_path": "D:\\Windows\\System32\\rundll32.exe",
+        "arguments": "sysdm.cpl,EditEnvironmentVariables",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "编辑用户与系统环境变量",
+        "source": "System",
+        "keywords": [
+          "environment",
+          "env",
+          "path",
+          "系统属性环境变量"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:devices",
+        "name": "设备管理器",
+        "path": "D:\\Windows\\System32\\mmc.exe",
+        "exec_path": "D:\\Windows\\System32\\mmc.exe",
+        "arguments": "\"D:\\Windows\\System32\\devmgmt.msc\"",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看硬件设备与驱动",
+        "source": "System",
+        "keywords": [
+          "device manager",
+          "devmgmt",
+          "驱动"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:systemconfig",
+        "name": "系统配置",
+        "path": "D:\\Windows\\System32\\msconfig.exe",
+        "exec_path": "D:\\Windows\\System32\\msconfig.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看启动与服务配置",
+        "source": "System",
+        "keywords": [
+          "msconfig",
+          "system configuration"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:systeminfo",
+        "name": "系统信息",
+        "path": "D:\\Windows\\System32\\msinfo32.exe",
+        "exec_path": "D:\\Windows\\System32\\msinfo32.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看硬件、组件与系统信息",
+        "source": "System",
+        "keywords": [
+          "msinfo32",
+          "system information"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:computer",
+        "name": "计算机管理",
+        "path": "D:\\Windows\\System32\\mmc.exe",
+        "exec_path": "D:\\Windows\\System32\\mmc.exe",
+        "arguments": "\"D:\\Windows\\System32\\compmgmt.msc\"",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "管理磁盘、服务与本地计算机",
+        "source": "System",
+        "keywords": [
+          "computer management",
+          "compmgmt"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:events",
+        "name": "事件查看器",
+        "path": "D:\\Windows\\System32\\mmc.exe",
+        "exec_path": "D:\\Windows\\System32\\mmc.exe",
+        "arguments": "\"D:\\Windows\\System32\\eventvwr.msc\"",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看 Windows 日志与系统事件",
+        "source": "System",
+        "keywords": [
+          "event viewer",
+          "eventvwr",
+          "系统日志"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:services",
+        "name": "服务管理",
+        "path": "D:\\Windows\\System32\\mmc.exe",
+        "exec_path": "D:\\Windows\\System32\\mmc.exe",
+        "arguments": "\"D:\\Windows\\System32\\services.msc\"",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看与管理 Windows 服务",
+        "source": "System",
+        "keywords": [
+          "services",
+          "系统服务"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:disks",
+        "name": "磁盘管理",
+        "path": "D:\\Windows\\System32\\mmc.exe",
+        "exec_path": "D:\\Windows\\System32\\mmc.exe",
+        "arguments": "\"D:\\Windows\\System32\\diskmgmt.msc\"",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看磁盘、分区与卷",
+        "source": "System",
+        "keywords": [
+          "disk management",
+          "diskmgmt"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:tasks",
+        "name": "任务计划程序",
+        "path": "D:\\Windows\\System32\\mmc.exe",
+        "exec_path": "D:\\Windows\\System32\\mmc.exe",
+        "arguments": "\"D:\\Windows\\System32\\taskschd.msc\"",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看与管理计划任务",
+        "source": "System",
+        "keywords": [
+          "task scheduler",
+          "taskschd",
+          "计划任务"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:components",
+        "name": "组件服务",
+        "path": "D:\\Windows\\System32\\mmc.exe",
+        "exec_path": "D:\\Windows\\System32\\mmc.exe",
+        "arguments": "\"D:\\Windows\\System32\\comexp.msc\"",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "管理 COM+ 应用程序与组件服务",
+        "source": "System",
+        "keywords": [
+          "component services",
+          "comexp",
+          "dcomcnfg"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:grouppolicy",
+        "name": "本地组策略编辑器",
+        "path": "D:\\Windows\\System32\\mmc.exe",
+        "exec_path": "D:\\Windows\\System32\\mmc.exe",
+        "arguments": "\"D:\\Windows\\System32\\gpedit.msc\"",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看与编辑本地组策略",
+        "source": "System",
+        "keywords": [
+          "group policy",
+          "gpedit",
+          "组策略"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:cleanup",
+        "name": "磁盘清理",
+        "path": "D:\\Windows\\System32\\cleanmgr.exe",
+        "exec_path": "D:\\Windows\\System32\\cleanmgr.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "打开磁盘清理，由你选择要清理的项目",
+        "source": "System",
+        "keywords": [
+          "disk cleanup",
+          "cleanmgr"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:optimize",
+        "name": "碎片整理和优化驱动器",
+        "path": "D:\\Windows\\System32\\dfrgui.exe",
+        "exec_path": "D:\\Windows\\System32\\dfrgui.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看驱动器优化状态",
+        "source": "System",
+        "keywords": [
+          "defragment",
+          "optimize drives",
+          "dfrgui",
+          "磁盘优化"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:resources",
+        "name": "资源监视器",
+        "path": "D:\\Windows\\System32\\resmon.exe",
+        "exec_path": "D:\\Windows\\System32\\resmon.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看 CPU、内存、磁盘与网络使用情况",
+        "source": "System",
+        "keywords": [
+          "resource monitor",
+          "resmon"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:colorprofile",
+        "name": "颜色管理",
+        "path": "D:\\Windows\\System32\\colorcpl.exe",
+        "exec_path": "D:\\Windows\\System32\\colorcpl.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "管理显示器颜色配置文件",
+        "source": "System",
+        "keywords": [
+          "color management",
+          "colorcpl"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:colors",
+        "name": "系统颜色设置",
+        "path": "ms-settings:personalization-colors",
+        "exec_path": "ms-settings:personalization-colors",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "调整 Windows 主题色与外观",
+        "source": "System",
+        "keywords": [
+          "colors",
+          "主题色"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:activation",
+        "name": "系统激活设置",
+        "path": "ms-settings:activation",
+        "exec_path": "ms-settings:activation",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看 Windows 激活状态",
+        "source": "System",
+        "keywords": [
+          "activation",
+          "激活"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:recovery",
+        "name": "系统恢复设置",
+        "path": "ms-settings:recovery",
+        "exec_path": "ms-settings:recovery",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看 Windows 恢复选项",
+        "source": "System",
+        "keywords": [
+          "recovery",
+          "恢复"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:updates",
+        "name": "检查系统更新",
+        "path": "ms-settings:windowsupdate",
+        "exec_path": "ms-settings:windowsupdate",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "打开 Windows 更新页面",
+        "source": "System",
+        "keywords": [
+          "windows update",
+          "系统更新"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:about",
+        "name": "关于系统",
+        "path": "ms-settings:about",
+        "exec_path": "ms-settings:about",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看 Windows 版本与设备规格",
+        "source": "System",
+        "keywords": [
+          "about windows",
+          "系统版本"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:storage",
+        "name": "存储设置",
+        "path": "ms-settings:storagesense",
+        "exec_path": "ms-settings:storagesense",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看磁盘空间与存储管理选项",
+        "source": "System",
+        "keywords": [
+          "storage",
+          "磁盘空间"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:network",
+        "name": "网络状态",
+        "path": "ms-settings:network-status",
+        "exec_path": "ms-settings:network-status",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看网络连接与状态",
+        "source": "System",
+        "keywords": [
+          "network status",
+          "网络设置"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:proxy",
+        "name": "网络代理设置",
+        "path": "ms-settings:network-proxy",
+        "exec_path": "ms-settings:network-proxy",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看与配置代理服务器",
+        "source": "System",
+        "keywords": [
+          "proxy",
+          "代理"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:vpn",
+        "name": "VPN 设置",
+        "path": "ms-settings:network-vpn",
+        "exec_path": "ms-settings:network-vpn",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "管理 VPN 连接",
+        "source": "System",
+        "keywords": [
+          "vpn"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:printers",
+        "name": "打印机和扫描仪",
+        "path": "ms-settings:printers",
+        "exec_path": "ms-settings:printers",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "管理打印设备与扫描仪",
+        "source": "System",
+        "keywords": [
+          "printers",
+          "scanners"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:mouse",
+        "name": "鼠标设置",
+        "path": "ms-settings:mousetouchpad",
+        "exec_path": "ms-settings:mousetouchpad",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "调整鼠标按钮与滚动选项",
+        "source": "System",
+        "keywords": [
+          "mouse settings"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:datetime",
+        "name": "日期和时间",
+        "path": "ms-settings:dateandtime",
+        "exec_path": "ms-settings:dateandtime",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "调整日期、时间与时区",
+        "source": "System",
+        "keywords": [
+          "date and time",
+          "时区"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:defaultapps",
+        "name": "默认应用",
+        "path": "ms-settings:defaultapps",
+        "exec_path": "ms-settings:defaultapps",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "选择文件与链接的默认打开应用",
+        "source": "System",
+        "keywords": [
+          "default apps",
+          "默认程序"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:notifications",
+        "name": "通知设置",
+        "path": "ms-settings:notifications",
+        "exec_path": "ms-settings:notifications",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "管理应用与系统通知",
+        "source": "System",
+        "keywords": [
+          "notifications"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:signin",
+        "name": "登录选项",
+        "path": "ms-settings:signinoptions",
+        "exec_path": "ms-settings:signinoptions",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "管理账户登录方式",
+        "source": "System",
+        "keywords": [
+          "sign in options",
+          "登录设置"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:startup",
+        "name": "启动应用",
+        "path": "ms-settings:startupapps",
+        "exec_path": "ms-settings:startupapps",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "管理登录时自动启动的应用",
+        "source": "System",
+        "keywords": [
+          "startup apps",
+          "开机启动"
+        ]
+      }
+    ],
+    [
+      {
+        "pinned": false,
+        "id": "system:empty-recycle-bin",
+        "name": "清空回收站",
+        "path": "velo-action:empty-recycle-bin",
+        "exec_path": "velo-action:empty-recycle-bin",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "清空所有驱动器的回收站（Windows 会提示确认）",
+        "source": "System",
+        "keywords": [
+          "empty recycle bin",
+          "清理回收站",
+          "垃圾"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:shutdown",
+        "name": "关机",
+        "path": "velo-action:shutdown",
+        "exec_path": "velo-action:shutdown",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "确认后关闭电脑，请先保存工作",
+        "source": "System",
+        "keywords": [
+          "shutdown",
+          "power off",
+          "关闭电脑"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:restart",
+        "name": "重启",
+        "path": "velo-action:restart",
+        "exec_path": "velo-action:restart",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "确认后重新启动电脑，请先保存工作",
+        "source": "System",
+        "keywords": [
+          "restart",
+          "reboot",
+          "重新启动"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:lock",
+        "name": "锁屏",
+        "path": "velo-action:lock",
+        "exec_path": "velo-action:lock",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "锁定当前 Windows 会话",
+        "source": "System",
+        "keywords": [
+          "lock",
+          "锁定电脑"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:calculator",
+        "name": "计算器",
+        "path": "D:\\Windows\\System32\\calc.exe",
+        "exec_path": "D:\\Windows\\System32\\calc.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "打开 Windows 计算器",
+        "source": "System",
+        "keywords": [
+          "calc",
+          "calculator"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:explorer",
+        "name": "文件资源管理器",
+        "path": "D:\\Windows\\explorer.exe",
+        "exec_path": "D:\\Windows\\explorer.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "浏览文件与文件夹",
+        "source": "System",
+        "keywords": [
+          "explorer",
+          "file explorer",
+          "files",
+          "文件管理",
+          "资源管理器"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:taskmanager",
+        "name": "任务管理器",
+        "path": "D:\\Windows\\System32\\Taskmgr.exe",
+        "exec_path": "D:\\Windows\\System32\\Taskmgr.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看进程与资源使用情况",
+        "source": "System",
+        "keywords": [
+          "task manager",
+          "taskmgr",
+          "进程"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:terminal",
+        "name": "命令提示符",
+        "path": "D:\\Windows\\System32\\cmd.exe",
+        "exec_path": "D:\\Windows\\System32\\cmd.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "打开命令行终端",
+        "source": "System",
+        "keywords": [
+          "cmd",
+          "command prompt",
+          "terminal",
+          "终端",
+          "命令行"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:control",
+        "name": "控制面板",
+        "path": "D:\\Windows\\System32\\control.exe",
+        "exec_path": "D:\\Windows\\System32\\control.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "打开 Windows 控制面板",
+        "source": "System",
+        "keywords": [
+          "control panel"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:apps",
+        "name": "卸载或更改程序",
+        "path": "D:\\Windows\\System32\\control.exe",
+        "exec_path": "D:\\Windows\\System32\\control.exe",
+        "arguments": "appwiz.cpl",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "管理已安装的桌面程序",
+        "source": "System",
+        "keywords": [
+          "apps",
+          "uninstall",
+          "appwiz",
+          "应用管理",
+          "卸载程序",
+          "xiezai",
+          "xz"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:environment",
+        "name": "环境变量",
+        "path": "D:\\Windows\\System32\\rundll32.exe",
+        "exec_path": "D:\\Windows\\System32\\rundll32.exe",
+        "arguments": "sysdm.cpl,EditEnvironmentVariables",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "编辑用户与系统环境变量",
+        "source": "System",
+        "keywords": [
+          "environment",
+          "env",
+          "path",
+          "系统属性环境变量"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:devices",
+        "name": "设备管理器",
+        "path": "D:\\Windows\\System32\\mmc.exe",
+        "exec_path": "D:\\Windows\\System32\\mmc.exe",
+        "arguments": "\"D:\\Windows\\System32\\devmgmt.msc\"",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看硬件设备与驱动",
+        "source": "System",
+        "keywords": [
+          "device manager",
+          "devmgmt",
+          "驱动"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:systemconfig",
+        "name": "系统配置",
+        "path": "D:\\Windows\\System32\\msconfig.exe",
+        "exec_path": "D:\\Windows\\System32\\msconfig.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看启动与服务配置",
+        "source": "System",
+        "keywords": [
+          "msconfig",
+          "system configuration"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:systeminfo",
+        "name": "系统信息",
+        "path": "D:\\Windows\\System32\\msinfo32.exe",
+        "exec_path": "D:\\Windows\\System32\\msinfo32.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看硬件、组件与系统信息",
+        "source": "System",
+        "keywords": [
+          "msinfo32",
+          "system information"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:computer",
+        "name": "计算机管理",
+        "path": "D:\\Windows\\System32\\mmc.exe",
+        "exec_path": "D:\\Windows\\System32\\mmc.exe",
+        "arguments": "\"D:\\Windows\\System32\\compmgmt.msc\"",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "管理磁盘、服务与本地计算机",
+        "source": "System",
+        "keywords": [
+          "computer management",
+          "compmgmt"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:events",
+        "name": "事件查看器",
+        "path": "D:\\Windows\\System32\\mmc.exe",
+        "exec_path": "D:\\Windows\\System32\\mmc.exe",
+        "arguments": "\"D:\\Windows\\System32\\eventvwr.msc\"",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看 Windows 日志与系统事件",
+        "source": "System",
+        "keywords": [
+          "event viewer",
+          "eventvwr",
+          "系统日志"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:services",
+        "name": "服务管理",
+        "path": "D:\\Windows\\System32\\mmc.exe",
+        "exec_path": "D:\\Windows\\System32\\mmc.exe",
+        "arguments": "\"D:\\Windows\\System32\\services.msc\"",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看与管理 Windows 服务",
+        "source": "System",
+        "keywords": [
+          "services",
+          "系统服务"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:disks",
+        "name": "磁盘管理",
+        "path": "D:\\Windows\\System32\\mmc.exe",
+        "exec_path": "D:\\Windows\\System32\\mmc.exe",
+        "arguments": "\"D:\\Windows\\System32\\diskmgmt.msc\"",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看磁盘、分区与卷",
+        "source": "System",
+        "keywords": [
+          "disk management",
+          "diskmgmt"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:tasks",
+        "name": "任务计划程序",
+        "path": "D:\\Windows\\System32\\mmc.exe",
+        "exec_path": "D:\\Windows\\System32\\mmc.exe",
+        "arguments": "\"D:\\Windows\\System32\\taskschd.msc\"",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看与管理计划任务",
+        "source": "System",
+        "keywords": [
+          "task scheduler",
+          "taskschd",
+          "计划任务"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:components",
+        "name": "组件服务",
+        "path": "D:\\Windows\\System32\\mmc.exe",
+        "exec_path": "D:\\Windows\\System32\\mmc.exe",
+        "arguments": "\"D:\\Windows\\System32\\comexp.msc\"",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "管理 COM+ 应用程序与组件服务",
+        "source": "System",
+        "keywords": [
+          "component services",
+          "comexp",
+          "dcomcnfg"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:grouppolicy",
+        "name": "本地组策略编辑器",
+        "path": "D:\\Windows\\System32\\mmc.exe",
+        "exec_path": "D:\\Windows\\System32\\mmc.exe",
+        "arguments": "\"D:\\Windows\\System32\\gpedit.msc\"",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看与编辑本地组策略",
+        "source": "System",
+        "keywords": [
+          "group policy",
+          "gpedit",
+          "组策略"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:cleanup",
+        "name": "磁盘清理",
+        "path": "D:\\Windows\\System32\\cleanmgr.exe",
+        "exec_path": "D:\\Windows\\System32\\cleanmgr.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "打开磁盘清理，由你选择要清理的项目",
+        "source": "System",
+        "keywords": [
+          "disk cleanup",
+          "cleanmgr"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:optimize",
+        "name": "碎片整理和优化驱动器",
+        "path": "D:\\Windows\\System32\\dfrgui.exe",
+        "exec_path": "D:\\Windows\\System32\\dfrgui.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看驱动器优化状态",
+        "source": "System",
+        "keywords": [
+          "defragment",
+          "optimize drives",
+          "dfrgui",
+          "磁盘优化"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:resources",
+        "name": "资源监视器",
+        "path": "D:\\Windows\\System32\\resmon.exe",
+        "exec_path": "D:\\Windows\\System32\\resmon.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看 CPU、内存、磁盘与网络使用情况",
+        "source": "System",
+        "keywords": [
+          "resource monitor",
+          "resmon"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:colorprofile",
+        "name": "颜色管理",
+        "path": "D:\\Windows\\System32\\colorcpl.exe",
+        "exec_path": "D:\\Windows\\System32\\colorcpl.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "管理显示器颜色配置文件",
+        "source": "System",
+        "keywords": [
+          "color management",
+          "colorcpl"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:display",
+        "name": "显示设置",
+        "path": "ms-settings:display",
+        "exec_path": "ms-settings:display",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "调整分辨率、缩放与显示器布局",
+        "source": "System",
+        "keywords": [
+          "display settings",
+          "分辨率",
+          "屏幕"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:about",
+        "name": "关于系统",
+        "path": "ms-settings:about",
+        "exec_path": "ms-settings:about",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看 Windows 版本与设备规格",
+        "source": "System",
+        "keywords": [
+          "about windows",
+          "系统版本"
+        ]
+      }
+    ],
+    [
+      {
+        "pinned": false,
+        "id": "system:empty-recycle-bin",
+        "name": "清空回收站",
+        "path": "velo-action:empty-recycle-bin",
+        "exec_path": "velo-action:empty-recycle-bin",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "清空所有驱动器的回收站（Windows 会提示确认）",
+        "source": "System",
+        "keywords": [
+          "empty recycle bin",
+          "清理回收站",
+          "垃圾"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:shutdown",
+        "name": "关机",
+        "path": "velo-action:shutdown",
+        "exec_path": "velo-action:shutdown",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "确认后关闭电脑，请先保存工作",
+        "source": "System",
+        "keywords": [
+          "shutdown",
+          "power off",
+          "关闭电脑"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:restart",
+        "name": "重启",
+        "path": "velo-action:restart",
+        "exec_path": "velo-action:restart",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "确认后重新启动电脑，请先保存工作",
+        "source": "System",
+        "keywords": [
+          "restart",
+          "reboot",
+          "重新启动"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:lock",
+        "name": "锁屏",
+        "path": "velo-action:lock",
+        "exec_path": "velo-action:lock",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "锁定当前 Windows 会话",
+        "source": "System",
+        "keywords": [
+          "lock",
+          "锁定电脑"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:explorer",
+        "name": "文件资源管理器",
+        "path": "D:\\Windows\\explorer.exe",
+        "exec_path": "D:\\Windows\\explorer.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "浏览文件与文件夹",
+        "source": "System",
+        "keywords": [
+          "explorer",
+          "file explorer",
+          "files",
+          "文件管理",
+          "资源管理器"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:taskmanager",
+        "name": "任务管理器",
+        "path": "D:\\Windows\\System32\\Taskmgr.exe",
+        "exec_path": "D:\\Windows\\System32\\Taskmgr.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看进程与资源使用情况",
+        "source": "System",
+        "keywords": [
+          "task manager",
+          "taskmgr",
+          "进程"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:terminal",
+        "name": "命令提示符",
+        "path": "D:\\Windows\\System32\\cmd.exe",
+        "exec_path": "D:\\Windows\\System32\\cmd.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "打开命令行终端",
+        "source": "System",
+        "keywords": [
+          "cmd",
+          "command prompt",
+          "terminal",
+          "终端",
+          "命令行"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:control",
+        "name": "控制面板",
+        "path": "D:\\Windows\\System32\\control.exe",
+        "exec_path": "D:\\Windows\\System32\\control.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "打开 Windows 控制面板",
+        "source": "System",
+        "keywords": [
+          "control panel"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:apps",
+        "name": "卸载或更改程序",
+        "path": "D:\\Windows\\System32\\control.exe",
+        "exec_path": "D:\\Windows\\System32\\control.exe",
+        "arguments": "appwiz.cpl",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "管理已安装的桌面程序",
+        "source": "System",
+        "keywords": [
+          "apps",
+          "uninstall",
+          "appwiz",
+          "应用管理",
+          "卸载程序",
+          "xiezai",
+          "xz"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:environment",
+        "name": "环境变量",
+        "path": "D:\\Windows\\System32\\rundll32.exe",
+        "exec_path": "D:\\Windows\\System32\\rundll32.exe",
+        "arguments": "sysdm.cpl,EditEnvironmentVariables",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "编辑用户与系统环境变量",
+        "source": "System",
+        "keywords": [
+          "environment",
+          "env",
+          "path",
+          "系统属性环境变量"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:systemconfig",
+        "name": "系统配置",
+        "path": "D:\\Windows\\System32\\msconfig.exe",
+        "exec_path": "D:\\Windows\\System32\\msconfig.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看启动与服务配置",
+        "source": "System",
+        "keywords": [
+          "msconfig",
+          "system configuration"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:systeminfo",
+        "name": "系统信息",
+        "path": "D:\\Windows\\System32\\msinfo32.exe",
+        "exec_path": "D:\\Windows\\System32\\msinfo32.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看硬件、组件与系统信息",
+        "source": "System",
+        "keywords": [
+          "msinfo32",
+          "system information"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:cleanup",
+        "name": "磁盘清理",
+        "path": "D:\\Windows\\System32\\cleanmgr.exe",
+        "exec_path": "D:\\Windows\\System32\\cleanmgr.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "打开磁盘清理，由你选择要清理的项目",
+        "source": "System",
+        "keywords": [
+          "disk cleanup",
+          "cleanmgr"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:optimize",
+        "name": "碎片整理和优化驱动器",
+        "path": "D:\\Windows\\System32\\dfrgui.exe",
+        "exec_path": "D:\\Windows\\System32\\dfrgui.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看驱动器优化状态",
+        "source": "System",
+        "keywords": [
+          "defragment",
+          "optimize drives",
+          "dfrgui",
+          "磁盘优化"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:resources",
+        "name": "资源监视器",
+        "path": "D:\\Windows\\System32\\resmon.exe",
+        "exec_path": "D:\\Windows\\System32\\resmon.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看 CPU、内存、磁盘与网络使用情况",
+        "source": "System",
+        "keywords": [
+          "resource monitor",
+          "resmon"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:colorprofile",
+        "name": "颜色管理",
+        "path": "D:\\Windows\\System32\\colorcpl.exe",
+        "exec_path": "D:\\Windows\\System32\\colorcpl.exe",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "管理显示器颜色配置文件",
+        "source": "System",
+        "keywords": [
+          "color management",
+          "colorcpl"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:display",
+        "name": "显示设置",
+        "path": "ms-settings:display",
+        "exec_path": "ms-settings:display",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "调整分辨率、缩放与显示器布局",
+        "source": "System",
+        "keywords": [
+          "display settings",
+          "分辨率",
+          "屏幕"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:sound",
+        "name": "声音设置",
+        "path": "ms-settings:sound",
+        "exec_path": "ms-settings:sound",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "管理音频输入、输出与音量",
+        "source": "System",
+        "keywords": [
+          "sound settings",
+          "音量",
+          "麦克风"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:colors",
+        "name": "系统颜色设置",
+        "path": "ms-settings:personalization-colors",
+        "exec_path": "ms-settings:personalization-colors",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "调整 Windows 主题色与外观",
+        "source": "System",
+        "keywords": [
+          "colors",
+          "主题色"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:activation",
+        "name": "系统激活设置",
+        "path": "ms-settings:activation",
+        "exec_path": "ms-settings:activation",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看 Windows 激活状态",
+        "source": "System",
+        "keywords": [
+          "activation",
+          "激活"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:recovery",
+        "name": "系统恢复设置",
+        "path": "ms-settings:recovery",
+        "exec_path": "ms-settings:recovery",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看 Windows 恢复选项",
+        "source": "System",
+        "keywords": [
+          "recovery",
+          "恢复"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:updates",
+        "name": "检查系统更新",
+        "path": "ms-settings:windowsupdate",
+        "exec_path": "ms-settings:windowsupdate",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "打开 Windows 更新页面",
+        "source": "System",
+        "keywords": [
+          "windows update",
+          "系统更新"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:about",
+        "name": "关于系统",
+        "path": "ms-settings:about",
+        "exec_path": "ms-settings:about",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看 Windows 版本与设备规格",
+        "source": "System",
+        "keywords": [
+          "about windows",
+          "系统版本"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:storage",
+        "name": "存储设置",
+        "path": "ms-settings:storagesense",
+        "exec_path": "ms-settings:storagesense",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看磁盘空间与存储管理选项",
+        "source": "System",
+        "keywords": [
+          "storage",
+          "磁盘空间"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:network",
+        "name": "网络状态",
+        "path": "ms-settings:network-status",
+        "exec_path": "ms-settings:network-status",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看网络连接与状态",
+        "source": "System",
+        "keywords": [
+          "network status",
+          "网络设置"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:proxy",
+        "name": "网络代理设置",
+        "path": "ms-settings:network-proxy",
+        "exec_path": "ms-settings:network-proxy",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看与配置代理服务器",
+        "source": "System",
+        "keywords": [
+          "proxy",
+          "代理"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:vpn",
+        "name": "VPN 设置",
+        "path": "ms-settings:network-vpn",
+        "exec_path": "ms-settings:network-vpn",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "管理 VPN 连接",
+        "source": "System",
+        "keywords": [
+          "vpn"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:printers",
+        "name": "打印机和扫描仪",
+        "path": "ms-settings:printers",
+        "exec_path": "ms-settings:printers",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "管理打印设备与扫描仪",
+        "source": "System",
+        "keywords": [
+          "printers",
+          "scanners"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:mouse",
+        "name": "鼠标设置",
+        "path": "ms-settings:mousetouchpad",
+        "exec_path": "ms-settings:mousetouchpad",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "调整鼠标按钮与滚动选项",
+        "source": "System",
+        "keywords": [
+          "mouse settings"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:datetime",
+        "name": "日期和时间",
+        "path": "ms-settings:dateandtime",
+        "exec_path": "ms-settings:dateandtime",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "调整日期、时间与时区",
+        "source": "System",
+        "keywords": [
+          "date and time",
+          "时区"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:defaultapps",
+        "name": "默认应用",
+        "path": "ms-settings:defaultapps",
+        "exec_path": "ms-settings:defaultapps",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "选择文件与链接的默认打开应用",
+        "source": "System",
+        "keywords": [
+          "default apps",
+          "默认程序"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:notifications",
+        "name": "通知设置",
+        "path": "ms-settings:notifications",
+        "exec_path": "ms-settings:notifications",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "管理应用与系统通知",
+        "source": "System",
+        "keywords": [
+          "notifications"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:signin",
+        "name": "登录选项",
+        "path": "ms-settings:signinoptions",
+        "exec_path": "ms-settings:signinoptions",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "管理账户登录方式",
+        "source": "System",
+        "keywords": [
+          "sign in options",
+          "登录设置"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:startup",
+        "name": "启动应用",
+        "path": "ms-settings:startupapps",
+        "exec_path": "ms-settings:startupapps",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "管理登录时自动启动的应用",
+        "source": "System",
+        "keywords": [
+          "startup apps",
+          "开机启动"
+        ]
+      }
+    ],
+    [
+      {
+        "pinned": false,
+        "id": "system:display",
+        "name": "显示设置",
+        "path": "ms-settings:display",
+        "exec_path": "ms-settings:display",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "调整分辨率、缩放与显示器布局",
+        "source": "System",
+        "keywords": [
+          "display settings",
+          "分辨率",
+          "屏幕"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:sound",
+        "name": "声音设置",
+        "path": "ms-settings:sound",
+        "exec_path": "ms-settings:sound",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "管理音频输入、输出与音量",
+        "source": "System",
+        "keywords": [
+          "sound settings",
+          "音量",
+          "麦克风"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:colors",
+        "name": "系统颜色设置",
+        "path": "ms-settings:personalization-colors",
+        "exec_path": "ms-settings:personalization-colors",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "调整 Windows 主题色与外观",
+        "source": "System",
+        "keywords": [
+          "colors",
+          "主题色"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:activation",
+        "name": "系统激活设置",
+        "path": "ms-settings:activation",
+        "exec_path": "ms-settings:activation",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看 Windows 激活状态",
+        "source": "System",
+        "keywords": [
+          "activation",
+          "激活"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:recovery",
+        "name": "系统恢复设置",
+        "path": "ms-settings:recovery",
+        "exec_path": "ms-settings:recovery",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看 Windows 恢复选项",
+        "source": "System",
+        "keywords": [
+          "recovery",
+          "恢复"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:updates",
+        "name": "检查系统更新",
+        "path": "ms-settings:windowsupdate",
+        "exec_path": "ms-settings:windowsupdate",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "打开 Windows 更新页面",
+        "source": "System",
+        "keywords": [
+          "windows update",
+          "系统更新"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:about",
+        "name": "关于系统",
+        "path": "ms-settings:about",
+        "exec_path": "ms-settings:about",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看 Windows 版本与设备规格",
+        "source": "System",
+        "keywords": [
+          "about windows",
+          "系统版本"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:storage",
+        "name": "存储设置",
+        "path": "ms-settings:storagesense",
+        "exec_path": "ms-settings:storagesense",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看磁盘空间与存储管理选项",
+        "source": "System",
+        "keywords": [
+          "storage",
+          "磁盘空间"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:network",
+        "name": "网络状态",
+        "path": "ms-settings:network-status",
+        "exec_path": "ms-settings:network-status",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看网络连接与状态",
+        "source": "System",
+        "keywords": [
+          "network status",
+          "网络设置"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:proxy",
+        "name": "网络代理设置",
+        "path": "ms-settings:network-proxy",
+        "exec_path": "ms-settings:network-proxy",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "查看与配置代理服务器",
+        "source": "System",
+        "keywords": [
+          "proxy",
+          "代理"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:vpn",
+        "name": "VPN 设置",
+        "path": "ms-settings:network-vpn",
+        "exec_path": "ms-settings:network-vpn",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "管理 VPN 连接",
+        "source": "System",
+        "keywords": [
+          "vpn"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:printers",
+        "name": "打印机和扫描仪",
+        "path": "ms-settings:printers",
+        "exec_path": "ms-settings:printers",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "管理打印设备与扫描仪",
+        "source": "System",
+        "keywords": [
+          "printers",
+          "scanners"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:mouse",
+        "name": "鼠标设置",
+        "path": "ms-settings:mousetouchpad",
+        "exec_path": "ms-settings:mousetouchpad",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "调整鼠标按钮与滚动选项",
+        "source": "System",
+        "keywords": [
+          "mouse settings"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:datetime",
+        "name": "日期和时间",
+        "path": "ms-settings:dateandtime",
+        "exec_path": "ms-settings:dateandtime",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "调整日期、时间与时区",
+        "source": "System",
+        "keywords": [
+          "date and time",
+          "时区"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:defaultapps",
+        "name": "默认应用",
+        "path": "ms-settings:defaultapps",
+        "exec_path": "ms-settings:defaultapps",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "选择文件与链接的默认打开应用",
+        "source": "System",
+        "keywords": [
+          "default apps",
+          "默认程序"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:notifications",
+        "name": "通知设置",
+        "path": "ms-settings:notifications",
+        "exec_path": "ms-settings:notifications",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "管理应用与系统通知",
+        "source": "System",
+        "keywords": [
+          "notifications"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:signin",
+        "name": "登录选项",
+        "path": "ms-settings:signinoptions",
+        "exec_path": "ms-settings:signinoptions",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "管理账户登录方式",
+        "source": "System",
+        "keywords": [
+          "sign in options",
+          "登录设置"
+        ]
+      },
+      {
+        "pinned": false,
+        "id": "system:startup",
+        "name": "启动应用",
+        "path": "ms-settings:startupapps",
+        "exec_path": "ms-settings:startupapps",
+        "arguments": "",
+        "working_directory": "D:\\Windows\\System32",
+        "icon_path": "",
+        "icon_url": "",
+        "description": "管理登录时自动启动的应用",
+        "source": "System",
+        "keywords": [
+          "startup apps",
+          "开机启动"
+        ]
+      }
+    ]
+  ]
+}

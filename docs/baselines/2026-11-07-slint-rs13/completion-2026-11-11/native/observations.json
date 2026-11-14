@@ -1,0 +1,950 @@
+{
+  "RecordedDate": "2026-11-11 Asia/Shanghai",
+  "SceneRecords": 52,
+  "PublishedJPEGs": 43,
+  "SyntheticSeedCount": 1000,
+  "NativeDPI": 96,
+  "OriginalJPEG": true,
+  "CoreGeometryTolerancePassed": false,
+  "PhysicalIMEAdded": false,
+  "PhysicalDPIChangesAdded": false,
+  "FullNativeMatrixComplete": false,
+  "Sessions": [
+    {
+      "Theme": "light",
+      "Run": "femtovg-light",
+      "Edition": "femtovg",
+      "ExecutableSHA256": "068B44441E8335BB3035CE4000435154986DD93FD293E7439758AD466E1FFFA1",
+      "InputSHA256": {
+        "config.json": "D0AD379DB686117CAAC3275AD4F3D39B2BF3C30D3FC09A887AFC9199E761A429",
+        "index.json": "6E387C444930C0591E0BEC175CA0E6D5A2CD3F17671CB5F9B7D1D104271CACE4",
+        "history.json": "E3566B3A06430868D71E9287DFD6C6C520A3DA027AABEA01951D407EE131DC2F",
+        "application-library.json": "A32DCFA1175495EC20CAB36315C2C48F471BFA3C1F6AB91CD0F1670E027D0C5D",
+        "quick-launch.json": null
+      },
+      "ProcessId": 33000,
+      "StartedTicks": 639299376662288163,
+      "Windows": "10.0.26340",
+      "Completion": {
+        "Completed": true,
+        "ExitCode": 0,
+        "ProcessId": 33000,
+        "SHA256": "068B44441E8335BB3035CE4000435154986DD93FD293E7439758AD466E1FFFA1",
+        "ForcedCleanup": false
+      },
+      "Diagnostics": true,
+      "BlurHideDisabled": false,
+      "RawInputLogSHA256": "ADA363FCB25DC50D4DD8B9A7EA9E8D292D8E18AD60DD0CC90A7124E3D91BECB2",
+      "CatalogCount1000Observed": true,
+      "NativeDialogCancelledWithoutFiles": true,
+      "SessionFileSHA256": "E5B1D187B830BD3F9FBBCA4FD1D938548EDA7963E6F5D75553D52545C28754A9"
+    },
+    {
+      "Theme": "light",
+      "Run": "software-light",
+      "Edition": "software",
+      "ExecutableSHA256": "60A671F568EF9BE8DF32DBDB5FED4CBF50A86F186137CCFBC16899DA965F680A",
+      "InputSHA256": {
+        "config.json": "D0AD379DB686117CAAC3275AD4F3D39B2BF3C30D3FC09A887AFC9199E761A429",
+        "index.json": "6E387C444930C0591E0BEC175CA0E6D5A2CD3F17671CB5F9B7D1D104271CACE4",
+        "history.json": "E3566B3A06430868D71E9287DFD6C6C520A3DA027AABEA01951D407EE131DC2F",
+        "application-library.json": "A32DCFA1175495EC20CAB36315C2C48F471BFA3C1F6AB91CD0F1670E027D0C5D",
+        "quick-launch.json": null
+      },
+      "ProcessId": 3748,
+      "StartedTicks": 639299373364555224,
+      "Windows": "10.0.26340",
+      "Completion": {
+        "Completed": false,
+        "ExitCode": -1,
+        "ProcessId": 3748,
+        "SHA256": "60A671F568EF9BE8DF32DBDB5FED4CBF50A86F186137CCFBC16899DA965F680A",
+        "ForcedCleanup": true,
+        "CleanupDetail": {
+          "ProcessId": 3748,
+          "ExecutableSHA256": "60A671F568EF9BE8DF32DBDB5FED4CBF50A86F186137CCFBC16899DA965F680A",
+          "ForcedCleanup": true,
+          "TrayRemovalSucceeded": true,
+          "Reason": "Computer Use binding lost after normal blur-hide; removed only the owned test tray icon and terminated the isolated test process. This is not normal exit evidence."
+        }
+      },
+      "Diagnostics": true,
+      "BlurHideDisabled": false,
+      "RawInputLogSHA256": "F18197F9E4D328D292643D15D1BE952BAD68F01E5D8DA46E143D520AFE1D9526",
+      "CatalogCount1000Observed": true,
+      "NativeDialogCancelledWithoutFiles": false,
+      "SessionFileSHA256": "E4558792277E33CE3CA2145A55D6CD58A24769B56CB40A8076015BB33297E804"
+    },
+    {
+      "Theme": "light",
+      "Run": "software-light-retry",
+      "Edition": "software",
+      "ExecutableSHA256": "60A671F568EF9BE8DF32DBDB5FED4CBF50A86F186137CCFBC16899DA965F680A",
+      "InputSHA256": {
+        "config.json": "D0AD379DB686117CAAC3275AD4F3D39B2BF3C30D3FC09A887AFC9199E761A429",
+        "index.json": "6E387C444930C0591E0BEC175CA0E6D5A2CD3F17671CB5F9B7D1D104271CACE4",
+        "history.json": "E3566B3A06430868D71E9287DFD6C6C520A3DA027AABEA01951D407EE131DC2F",
+        "application-library.json": "A32DCFA1175495EC20CAB36315C2C48F471BFA3C1F6AB91CD0F1670E027D0C5D",
+        "quick-launch.json": null
+      },
+      "ProcessId": 31752,
+      "StartedTicks": 639299382476161773,
+      "Windows": "10.0.26340",
+      "Completion": {
+        "Completed": true,
+        "ExitCode": 0,
+        "ProcessId": 31752,
+        "SHA256": "60A671F568EF9BE8DF32DBDB5FED4CBF50A86F186137CCFBC16899DA965F680A",
+        "ForcedCleanup": false
+      },
+      "Diagnostics": true,
+      "BlurHideDisabled": false,
+      "RawInputLogSHA256": "A5FBF31CD788E6E8374A794715D945531C9C95BEF084AC9F7434C1DB44E82ECE",
+      "CatalogCount1000Observed": true,
+      "NativeDialogCancelledWithoutFiles": true,
+      "SessionFileSHA256": "409AE18B23D29B6C39603966F3279E6AE5FB4261FAF183BE589CD8E7D97BE438"
+    },
+    {
+      "Theme": "light",
+      "Run": "wails-light",
+      "Edition": "wails",
+      "ExecutableSHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+      "InputSHA256": {
+        "config.json": "D0AD379DB686117CAAC3275AD4F3D39B2BF3C30D3FC09A887AFC9199E761A429",
+        "index.json": "6E387C444930C0591E0BEC175CA0E6D5A2CD3F17671CB5F9B7D1D104271CACE4",
+        "history.json": "E3566B3A06430868D71E9287DFD6C6C520A3DA027AABEA01951D407EE131DC2F",
+        "application-library.json": "A32DCFA1175495EC20CAB36315C2C48F471BFA3C1F6AB91CD0F1670E027D0C5D",
+        "quick-launch.json": null
+      },
+      "ProcessId": 32832,
+      "StartedTicks": 639299368724538265,
+      "Windows": "10.0.26340",
+      "Completion": {
+        "Completed": true,
+        "ExitCode": 0,
+        "ProcessId": 32832,
+        "SHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+        "ForcedCleanup": false
+      },
+      "Diagnostics": true,
+      "BlurHideDisabled": true,
+      "RawInputLogSHA256": "06F5872C0296A30C67D8D014FCE10B1209567894D2D90CCE9180E452A493C38F",
+      "SessionFileSHA256": "823412F6747EFAEB995036B396DDC453CB22A2147FEDAB4427ADDA36F64856ED"
+    },
+    {
+      "Theme": "dark",
+      "Run": "femtovg-dark",
+      "Edition": "femtovg",
+      "ExecutableSHA256": "068B44441E8335BB3035CE4000435154986DD93FD293E7439758AD466E1FFFA1",
+      "InputSHA256": {
+        "config.json": "17B5B394C7C962840BBDBA5FC76562562E52FA5D74091BF2280116436075536A",
+        "index.json": "6E387C444930C0591E0BEC175CA0E6D5A2CD3F17671CB5F9B7D1D104271CACE4",
+        "history.json": "E3566B3A06430868D71E9287DFD6C6C520A3DA027AABEA01951D407EE131DC2F",
+        "application-library.json": "A32DCFA1175495EC20CAB36315C2C48F471BFA3C1F6AB91CD0F1670E027D0C5D",
+        "quick-launch.json": null
+      },
+      "ProcessId": 3780,
+      "StartedTicks": 639299392197762527,
+      "Windows": "10.0.26340",
+      "Completion": {
+        "Completed": true,
+        "ExitCode": 0,
+        "ProcessId": 3780,
+        "SHA256": "068B44441E8335BB3035CE4000435154986DD93FD293E7439758AD466E1FFFA1",
+        "ForcedCleanup": false
+      },
+      "Diagnostics": true,
+      "BlurHideDisabled": false,
+      "RawInputLogSHA256": "966142BCA9BA0ECBEA924A9964AA44E01DE33C4ADFD0063863008B0452897E9B",
+      "CatalogCount1000Observed": true,
+      "NativeDialogCancelledWithoutFiles": false,
+      "SessionFileSHA256": "DA919938967CB028A4B8A61866A31F3652EA7FEC9F4F6BFAF3C46D08A86AB719"
+    },
+    {
+      "Theme": "dark",
+      "Run": "software-dark",
+      "Edition": "software",
+      "ExecutableSHA256": "60A671F568EF9BE8DF32DBDB5FED4CBF50A86F186137CCFBC16899DA965F680A",
+      "InputSHA256": {
+        "config.json": "17B5B394C7C962840BBDBA5FC76562562E52FA5D74091BF2280116436075536A",
+        "index.json": "6E387C444930C0591E0BEC175CA0E6D5A2CD3F17671CB5F9B7D1D104271CACE4",
+        "history.json": "E3566B3A06430868D71E9287DFD6C6C520A3DA027AABEA01951D407EE131DC2F",
+        "application-library.json": "A32DCFA1175495EC20CAB36315C2C48F471BFA3C1F6AB91CD0F1670E027D0C5D",
+        "quick-launch.json": null
+      },
+      "ProcessId": 4724,
+      "StartedTicks": 639299390737571007,
+      "Windows": "10.0.26340",
+      "Completion": {
+        "Completed": true,
+        "ExitCode": 0,
+        "ProcessId": 4724,
+        "SHA256": "60A671F568EF9BE8DF32DBDB5FED4CBF50A86F186137CCFBC16899DA965F680A",
+        "ForcedCleanup": false
+      },
+      "Diagnostics": true,
+      "BlurHideDisabled": false,
+      "RawInputLogSHA256": "5C96C7BF3D83B2DE247B9C565EB95EDCB87418507CFEF641EF1A899F9E7AA83E",
+      "CatalogCount1000Observed": true,
+      "NativeDialogCancelledWithoutFiles": false,
+      "SessionFileSHA256": "FB4E40211A8F304CAEE6B1C1D84B5ECE4B755AD0BFC22757F91BD6CB82BDE68A"
+    },
+    {
+      "Theme": "dark",
+      "Run": "wails-dark",
+      "Edition": "wails",
+      "ExecutableSHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+      "InputSHA256": {
+        "config.json": "17B5B394C7C962840BBDBA5FC76562562E52FA5D74091BF2280116436075536A",
+        "index.json": "6E387C444930C0591E0BEC175CA0E6D5A2CD3F17671CB5F9B7D1D104271CACE4",
+        "history.json": "E3566B3A06430868D71E9287DFD6C6C520A3DA027AABEA01951D407EE131DC2F",
+        "application-library.json": "A32DCFA1175495EC20CAB36315C2C48F471BFA3C1F6AB91CD0F1670E027D0C5D",
+        "quick-launch.json": null
+      },
+      "ProcessId": 4860,
+      "StartedTicks": 639299389291364669,
+      "Windows": "10.0.26340",
+      "Completion": {
+        "Completed": true,
+        "ExitCode": 0,
+        "ProcessId": 4860,
+        "SHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+        "ForcedCleanup": false
+      },
+      "Diagnostics": true,
+      "BlurHideDisabled": true,
+      "SessionFileSHA256": "2637DB20102A7BD460E04B1F56562A05E6D37F6148B986740A506F46F5EA955D"
+    }
+  ],
+  "Captures": [
+    {
+      "Session": "femtovg-dark",
+      "Scene": "home",
+      "Width": 640,
+      "Height": 660,
+      "RecordedAtUtc": "2026-11-10T20:28:13.727Z",
+      "SHA256": "4CE058FCADF9C5F01CB2E2314AA75E93D7E95DD28B801034F7AF39AE15131CFB",
+      "Published": true,
+      "Provenance": "Original native Computer Use JPEG; pointer highlight may be added by capture tool; synthetic input",
+      "SessionCompletedNormally": true,
+      "NativeDPISamples": [
+        96
+      ]
+    },
+    {
+      "Session": "femtovg-dark",
+      "Scene": "settings-0",
+      "Width": 640,
+      "Height": 660,
+      "RecordedAtUtc": "2026-11-10T20:28:47.130Z",
+      "SHA256": "6DB66ECA8E0CA29C45296F1EB07537C3C901FA83FBD8626F96C4103C8E4979BE",
+      "Published": true,
+      "Provenance": "Original native Computer Use JPEG; pointer highlight may be added by capture tool; synthetic input",
+      "SessionCompletedNormally": true,
+      "NativeDPISamples": [
+        96
+      ]
+    },
+    {
+      "Session": "femtovg-light",
+      "Scene": "home",
+      "Width": 640,
+      "Height": 660,
+      "RecordedAtUtc": "2026-11-10T20:01:52.824Z",
+      "SHA256": "77AE7677D06C8D6568ED855BCE6B8B8E05F445BB4FB24292E8756BA73F4BB037",
+      "Published": true,
+      "Provenance": "Original native Computer Use JPEG; pointer highlight may be added by capture tool; synthetic input",
+      "SessionCompletedNormally": true,
+      "NativeDPISamples": [
+        96
+      ]
+    },
+    {
+      "Session": "femtovg-light",
+      "Scene": "settings-0",
+      "Width": 640,
+      "Height": 660,
+      "RecordedAtUtc": "2026-11-10T20:02:02.900Z",
+      "SHA256": "B33C26607FBA2B723C355D538C504063299EB033539DE8C595809DEB620F76B4",
+      "Published": true,
+      "Provenance": "Original native Computer Use JPEG; pointer highlight may be added by capture tool; synthetic input",
+      "SessionCompletedNormally": true,
+      "NativeDPISamples": [
+        96
+      ]
+    },
+    {
+      "Session": "femtovg-light",
+      "Scene": "settings-1",
+      "Width": 640,
+      "Height": 660,
+      "RecordedAtUtc": "2026-11-10T20:02:27.454Z",
+      "SHA256": "FEDDC6BEEE4D46F1C66AAC7455174307BD79CD86FE9F6540AA9A246EDBCD5024",
+      "Published": true,
+      "Provenance": "Original native Computer Use JPEG; pointer highlight may be added by capture tool; synthetic input",
+      "SessionCompletedNormally": true,
+      "NativeDPISamples": [
+        96
+      ]
+    },
+    {
+      "Session": "femtovg-light",
+      "Scene": "settings-2",
+      "Width": 640,
+      "Height": 660,
+      "RecordedAtUtc": "2026-11-10T20:02:37.330Z",
+      "SHA256": "8F8250B967D40C18677E8B5F9675FCA5C4B15340AEE5BD98C36106193DE81617",
+      "Published": true,
+      "Provenance": "Original native Computer Use JPEG; pointer highlight may be added by capture tool; synthetic input",
+      "SessionCompletedNormally": true,
+      "NativeDPISamples": [
+        96
+      ]
+    },
+    {
+      "Session": "femtovg-light",
+      "Scene": "settings-3",
+      "Width": 640,
+      "Height": 660,
+      "RecordedAtUtc": "2026-11-10T20:02:47.214Z",
+      "SHA256": "35DC673EE9E2DB0B5F710C451EB9188E8480EB07E25F3F2E4BD9B0B823C087A8",
+      "Published": true,
+      "Provenance": "Original native Computer Use JPEG; pointer highlight may be added by capture tool; synthetic input",
+      "SessionCompletedNormally": true,
+      "NativeDPISamples": [
+        96
+      ]
+    },
+    {
+      "Session": "femtovg-light",
+      "Scene": "settings-4",
+      "Width": 640,
+      "Height": 660,
+      "RecordedAtUtc": "2026-11-10T20:02:57.263Z",
+      "SHA256": "1F183B03736AE891E8B29CDA4CCC277DE1F4A4CACF16B7270C8D0F4D03D2D555",
+      "Published": true,
+      "Provenance": "Original native Computer Use JPEG; pointer highlight may be added by capture tool; synthetic input",
+      "SessionCompletedNormally": true,
+      "NativeDPISamples": [
+        96
+      ]
+    },
+    {
+      "Session": "femtovg-light",
+      "Scene": "settings-5",
+      "Width": 640,
+      "Height": 660,
+      "RecordedAtUtc": "2026-11-10T20:03:06.843Z",
+      "SHA256": "27E4F150F3A2D1E2F8843A44C277DD8148FE7D62363289151F2D877AE2142701",
+      "Published": true,
+      "Provenance": "Original native Computer Use JPEG; pointer highlight may be added by capture tool; synthetic input",
+      "SessionCompletedNormally": true,
+      "NativeDPISamples": [
+        96
+      ]
+    },
+    {
+      "Session": "femtovg-light",
+      "Scene": "settings-6",
+      "Width": 640,
+      "Height": 660,
+      "RecordedAtUtc": "2026-11-10T20:03:18.423Z",
+      "SHA256": "0B4A22F27D4A1549290353B887E5A530D5925E8B6FC2277A3682AD26B8430A57",
+      "Published": true,
+      "Provenance": "Original native Computer Use JPEG; pointer highlight may be added by capture tool; synthetic input",
+      "SessionCompletedNormally": true,
+      "NativeDPISamples": [
+        96
+      ]
+    },
+    {
+      "Session": "femtovg-light",
+      "Scene": "settings-6-bottom",
+      "Width": 640,
+      "Height": 660,
+      "RecordedAtUtc": "2026-11-10T20:04:04.787Z",
+      "SHA256": "8938F71A4D1AF380E32F11F2A8CCF341BB167F7EEE32D15EEC6F2E3C639FAF09",
+      "Published": true,
+      "Provenance": "Original native Computer Use JPEG; pointer highlight may be added by capture tool; synthetic input",
+      "SessionCompletedNormally": true,
+      "NativeDPISamples": [
+        96
+      ]
+    },
+    {
+      "Session": "femtovg-light",
+      "Scene": "list",
+      "Width": 640,
+      "Height": 588,
+      "RecordedAtUtc": "2026-11-10T20:05:41.686Z",
+      "SHA256": "C932B64D82A4DD20E63FA27AE5C619DB2979136B31771A005B5E9A482F1D8E20",
+      "Published": true,
+      "Provenance": "Original native Computer Use JPEG; pointer highlight may be added by capture tool; synthetic input",
+      "SessionCompletedNormally": true,
+      "NativeDPISamples": [
+        96
+      ]
+    },
+    {
+      "Session": "femtovg-light",
+      "Scene": "context-menu",
+      "Width": 640,
+      "Height": 588,
+      "RecordedAtUtc": "2026-11-10T20:06:06.780Z",
+      "SHA256": "1ACACE9813BD9AAB77F14FF148F0108954A3E2C64D9FB62D6B7297F8910BCB35",
+      "Published": true,
+      "Provenance": "Original native Computer Use JPEG; pointer highlight may be added by capture tool; synthetic input",
+      "SessionCompletedNormally": true,
+      "NativeDPISamples": [
+        96
+      ]
+    },
+    {
+      "Session": "femtovg-light",
+      "Scene": "empty",
+      "Width": 640,
+      "Height": 210,
+      "RecordedAtUtc": "2026-11-10T20:07:46.173Z",
+      "SHA256": "36F30F7222E1DBE6B4348D4B309EBF6E06B8C07BF7EF6CAA069209E9FA70CB55",
+      "Published": true,
+      "Provenance": "Original native Computer Use JPEG; pointer highlight may be added by capture tool; synthetic input",
+      "SessionCompletedNormally": true,
+      "NativeDPISamples": [
+        96
+      ]
+    },
+    {
+      "Session": "femtovg-light",
+      "Scene": "custom",
+      "Width": 640,
+      "Height": 660,
+      "RecordedAtUtc": "2026-11-10T20:08:12.554Z",
+      "SHA256": "EB570DC689CB3A2DF32E75CC1AEFE7E0D7D887C9060EC2C59F243CFDCFFC57A0",
+      "Published": true,
+      "Provenance": "Original native Computer Use JPEG; pointer highlight may be added by capture tool; synthetic input",
+      "SessionCompletedNormally": true,
+      "NativeDPISamples": [
+        96
+      ]
+    },
+    {
+      "Session": "femtovg-light",
+      "Scene": "file-dialog",
+      "Width": 640,
+      "Height": 660,
+      "RecordedAtUtc": "2026-11-10T20:08:41.143Z",
+      "SHA256": "027F6AC3FAD0523CFEDB1EA8D29C58E7DE5B0D47B60B58E6AA6C51DD67E0798C",
+      "Published": false,
+      "Provenance": "Original native Computer Use JPEG; pointer highlight may be added by capture tool; synthetic input",
+      "SessionCompletedNormally": true,
+      "NativeDPISamples": [
+        96
+      ]
+    },
+    {
+      "Session": "software-dark",
+      "Scene": "home",
+      "Width": 640,
+      "Height": 660,
+      "RecordedAtUtc": "2026-11-10T20:25:47.223Z",
+      "SHA256": "EEA3DD0305B45DAAF301F36DAB4EF20C9924863771165CABF96AA3DD932DFDD2",
+      "Published": true,
+      "Provenance": "Original native Computer Use JPEG; pointer highlight may be added by capture tool; synthetic input",
+      "SessionCompletedNormally": true,
+      "NativeDPISamples": [
+        96
+      ]
+    },
+    {
+      "Session": "software-dark",
+      "Scene": "settings-0",
+      "Width": 640,
+      "Height": 660,
+      "RecordedAtUtc": "2026-11-10T20:26:20.058Z",
+      "SHA256": "5349CBDD87F86527DAF5995A087EED7D487D3A390662D338E9B9C9571DF9CA4B",
+      "Published": true,
+      "Provenance": "Original native Computer Use JPEG; pointer highlight may be added by capture tool; synthetic input",
+      "SessionCompletedNormally": true,
+      "NativeDPISamples": [
+        96
+      ]
+    },
+    {
+      "Session": "software-light",
+      "Scene": "home",
+      "Width": 640,
+      "Height": 660,
+      "RecordedAtUtc": "2026-11-10T19:56:08.144Z",
+      "SHA256": "1A0E1F18053BF1CCD1CB216A4DF0DE6B7BCDAE519850304BF9F0C30F792D530D",
+      "Published": false,
+      "Provenance": "Original native Computer Use JPEG; pointer highlight may be added by capture tool; synthetic input",
+      "SessionCompletedNormally": false,
+      "NativeDPISamples": [
+        96
+      ]
+    },
+    {
+      "Session": "software-light",
+      "Scene": "settings-0",
+      "Width": 640,
+      "Height": 660,
+      "RecordedAtUtc": "2026-11-10T19:56:18.694Z",
+      "SHA256": "8583475F0339A7E71757256FDC698DFA5C51A2A9CE5672AE91B1939A46CD7CBC",
+      "Published": false,
+      "Provenance": "Original native Computer Use JPEG; pointer highlight may be added by capture tool; synthetic input",
+      "SessionCompletedNormally": false,
+      "NativeDPISamples": [
+        96
+      ]
+    },
+    {
+      "Session": "software-light",
+      "Scene": "settings-1",
+      "Width": 640,
+      "Height": 660,
+      "RecordedAtUtc": "2026-11-10T19:56:46.117Z",
+      "SHA256": "60BC12F20564884E07C46D825DAF8498D9049BA979D3FB8D9E27172C4DEF9FF9",
+      "Published": false,
+      "Provenance": "Original native Computer Use JPEG; pointer highlight may be added by capture tool; synthetic input",
+      "SessionCompletedNormally": false,
+      "NativeDPISamples": [
+        96
+      ]
+    },
+    {
+      "Session": "software-light",
+      "Scene": "settings-2",
+      "Width": 640,
+      "Height": 660,
+      "RecordedAtUtc": "2026-11-10T19:56:55.640Z",
+      "SHA256": "EE451D74CDEA314F41CEBA3F8CE4A94FA5B46C4437AB8BD3D0925693572D013D",
+      "Published": false,
+      "Provenance": "Original native Computer Use JPEG; pointer highlight may be added by capture tool; synthetic input",
+      "SessionCompletedNormally": false,
+      "NativeDPISamples": [
+        96
+      ]
+    },
+    {
+      "Session": "software-light",
+      "Scene": "theme-dropdown",
+      "Width": 640,
+      "Height": 660,
+      "RecordedAtUtc": "2026-11-10T19:57:05.359Z",
+      "SHA256": "0CFFB72571727B10DE25C920812B5EFA8BAA4AF3B7131E91DCC7600E9004855B",
+      "Published": false,
+      "Provenance": "Original native Computer Use JPEG; pointer highlight may be added by capture tool; synthetic input",
+      "SessionCompletedNormally": false,
+      "NativeDPISamples": [
+        96
+      ]
+    },
+    {
+      "Session": "software-light-retry",
+      "Scene": "home",
+      "Width": 640,
+      "Height": 660,
+      "RecordedAtUtc": "2026-11-10T20:11:46.850Z",
+      "SHA256": "7B0DA8DC6DDF0A21BD3E4AD83B0ACA11DBDA78E1051627A43715C18BEFB14461",
+      "Published": true,
+      "Provenance": "Original native Computer Use JPEG; pointer highlight may be added by capture tool; synthetic input",
+      "SessionCompletedNormally": true,
+      "NativeDPISamples": [
+        96
+      ]
+    },
+    {
+      "Session": "software-light-retry",
+      "Scene": "settings-0",
+      "Width": 640,
+      "Height": 660,
+      "RecordedAtUtc": "2026-11-10T20:12:13.159Z",
+      "SHA256": "8583475F0339A7E71757256FDC698DFA5C51A2A9CE5672AE91B1939A46CD7CBC",
+      "Published": true,
+      "Provenance": "Original native Computer Use JPEG; pointer highlight may be added by capture tool; synthetic input",
+      "SessionCompletedNormally": true,
+      "NativeDPISamples": [
+        96
+      ]
+    },
+    {
+      "Session": "software-light-retry",
+      "Scene": "settings-3",
+      "Width": 640,
+      "Height": 660,
+      "RecordedAtUtc": "2026-11-10T20:13:07.295Z",
+      "SHA256": "6E73547A8C0A4BE62C4CD4D4B98F69884336D6687AC3555A2398B40430ABF771",
+      "Published": true,
+      "Provenance": "Original native Computer Use JPEG; pointer highlight may be added by capture tool; synthetic input",
+      "SessionCompletedNormally": true,
+      "NativeDPISamples": [
+        96
+      ]
+    },
+    {
+      "Session": "software-light-retry",
+      "Scene": "settings-4",
+      "Width": 640,
+      "Height": 660,
+      "RecordedAtUtc": "2026-11-10T20:13:34.969Z",
+      "SHA256": "827DEA415D0C7712526F8910921990829699BD209B8F73B759B7667325419083",
+      "Published": true,
+      "Provenance": "Original native Computer Use JPEG; pointer highlight may be added by capture tool; synthetic input",
+      "SessionCompletedNormally": true,
+      "NativeDPISamples": [
+        96
+      ]
+    },
+    {
+      "Session": "software-light-retry",
+      "Scene": "settings-5",
+      "Width": 640,
+      "Height": 660,
+      "RecordedAtUtc": "2026-11-10T20:14:02.349Z",
+      "SHA256": "2674A58C092794890193C2784893CD4426CA58DBFF8251E49CBCE594417DE22A",
+      "Published": true,
+      "Provenance": "Original native Computer Use JPEG; pointer highlight may be added by capture tool; synthetic input",
+      "SessionCompletedNormally": true,
+      "NativeDPISamples": [
+        96
+      ]
+    },
+    {
+      "Session": "software-light-retry",
+      "Scene": "settings-6",
+      "Width": 640,
+      "Height": 660,
+      "RecordedAtUtc": "2026-11-10T20:14:29.415Z",
+      "SHA256": "F0279B9E176052428E8370A249106DDCE4022FF6A9846042298B41D294EB95A2",
+      "Published": true,
+      "Provenance": "Original native Computer Use JPEG; pointer highlight may be added by capture tool; synthetic input",
+      "SessionCompletedNormally": true,
+      "NativeDPISamples": [
+        96
+      ]
+    },
+    {
+      "Session": "software-light-retry",
+      "Scene": "settings-6-bottom",
+      "Width": 640,
+      "Height": 660,
+      "RecordedAtUtc": "2026-11-10T20:14:57.636Z",
+      "SHA256": "508780CB07DA09497CF27553D58F204D89F40E3AFE9604C666A30D8EB04FECC5",
+      "Published": true,
+      "Provenance": "Original native Computer Use JPEG; pointer highlight may be added by capture tool; synthetic input",
+      "SessionCompletedNormally": true,
+      "NativeDPISamples": [
+        96
+      ]
+    },
+    {
+      "Session": "software-light-retry",
+      "Scene": "list",
+      "Width": 640,
+      "Height": 588,
+      "RecordedAtUtc": "2026-11-10T20:16:19.973Z",
+      "SHA256": "E31409F5505356561DA3249659F00E6471C2449205EEDFAD30831A6D1773F81F",
+      "Published": true,
+      "Provenance": "Original native Computer Use JPEG; pointer highlight may be added by capture tool; synthetic input",
+      "SessionCompletedNormally": true,
+      "NativeDPISamples": [
+        96
+      ]
+    },
+    {
+      "Session": "software-light-retry",
+      "Scene": "context-menu",
+      "Width": 640,
+      "Height": 588,
+      "RecordedAtUtc": "2026-11-10T20:16:47.735Z",
+      "SHA256": "A8CCBB9C406E5D1705FE3DDD0515667480B03B3684788B43F87BA059582499DE",
+      "Published": true,
+      "Provenance": "Original native Computer Use JPEG; pointer highlight may be added by capture tool; synthetic input",
+      "SessionCompletedNormally": true,
+      "NativeDPISamples": [
+        96
+      ]
+    },
+    {
+      "Session": "software-light-retry",
+      "Scene": "empty",
+      "Width": 640,
+      "Height": 210,
+      "RecordedAtUtc": "2026-11-10T20:18:46.503Z",
+      "SHA256": "A8A0CF3F34CE6C32DB1036F781AAA995FD87D9436880B720F3BD4D663DB3475D",
+      "Published": true,
+      "Provenance": "Original native Computer Use JPEG; pointer highlight may be added by capture tool; synthetic input",
+      "SessionCompletedNormally": true,
+      "NativeDPISamples": [
+        96
+      ]
+    },
+    {
+      "Session": "software-light-retry",
+      "Scene": "custom",
+      "Width": 640,
+      "Height": 660,
+      "RecordedAtUtc": "2026-11-10T20:19:17.503Z",
+      "SHA256": "A2D29064AD3E9C1F4FAB1112480F2BFE173E702C2B71008351ECB472879C172A",
+      "Published": true,
+      "Provenance": "Original native Computer Use JPEG; pointer highlight may be added by capture tool; synthetic input",
+      "SessionCompletedNormally": true,
+      "NativeDPISamples": [
+        96
+      ]
+    },
+    {
+      "Session": "software-light-retry",
+      "Scene": "file-dialog",
+      "Width": 640,
+      "Height": 660,
+      "RecordedAtUtc": "2026-11-10T20:19:48.423Z",
+      "SHA256": "B7F37E9D4E652734970C02763F7B584B5D22814AD6498892C01EF72AA92B4519",
+      "Published": false,
+      "Provenance": "Original native Computer Use JPEG; pointer highlight may be added by capture tool; synthetic input",
+      "SessionCompletedNormally": true,
+      "NativeDPISamples": [
+        96
+      ]
+    },
+    {
+      "Session": "wails-dark",
+      "Scene": "home",
+      "Width": 640,
+      "Height": 660,
+      "RecordedAtUtc": "2026-11-10T20:23:18.967Z",
+      "SHA256": "ACBEC440DC74383E94CF2FB41F71807E141D41D932E32AA7A91D72D465B944AB",
+      "Published": true,
+      "Provenance": "Original native Computer Use JPEG; pointer highlight may be added by capture tool; synthetic input",
+      "SessionCompletedNormally": true,
+      "NativeDPISamples": [
+        96
+      ]
+    },
+    {
+      "Session": "wails-dark",
+      "Scene": "settings-0",
+      "Width": 640,
+      "Height": 660,
+      "RecordedAtUtc": "2026-11-10T20:23:53.371Z",
+      "SHA256": "F59D9305C2771F5A475776E9DFE710428AC864407793F7C74EEA75EC3D174DBE",
+      "Published": true,
+      "Provenance": "Original native Computer Use JPEG; pointer highlight may be added by capture tool; synthetic input",
+      "SessionCompletedNormally": true,
+      "NativeDPISamples": [
+        96
+      ]
+    },
+    {
+      "Session": "wails-light",
+      "Scene": "home",
+      "Width": 640,
+      "Height": 660,
+      "RecordedAtUtc": "2026-11-10T19:48:24.978Z",
+      "SHA256": "5612CF86DFA64D24AF6F5DB56463FE9C840D99C6DDFDE1A6CC781ED68BCE1815",
+      "Published": true,
+      "Provenance": "Original native Computer Use JPEG; pointer highlight may be added by capture tool; synthetic input",
+      "SessionCompletedNormally": true,
+      "NativeDPISamples": [
+        96
+      ]
+    },
+    {
+      "Session": "wails-light",
+      "Scene": "settings-0",
+      "Width": 640,
+      "Height": 660,
+      "RecordedAtUtc": "2026-11-10T19:48:34.490Z",
+      "SHA256": "8DC71A77FCA6C2B2D9BB45152881A10A5DC66D705FEFA6DABE558417B6DF4FF2",
+      "Published": true,
+      "Provenance": "Original native Computer Use JPEG; pointer highlight may be added by capture tool; synthetic input",
+      "SessionCompletedNormally": true,
+      "NativeDPISamples": [
+        96
+      ]
+    },
+    {
+      "Session": "wails-light",
+      "Scene": "settings-1",
+      "Width": 640,
+      "Height": 660,
+      "RecordedAtUtc": "2026-11-10T19:49:07.262Z",
+      "SHA256": "AA872599EB811A67623513540B16F4906CB23087EE5FE8C409DE0478C4F681E9",
+      "Published": true,
+      "Provenance": "Original native Computer Use JPEG; pointer highlight may be added by capture tool; synthetic input",
+      "SessionCompletedNormally": true,
+      "NativeDPISamples": [
+        96
+      ]
+    },
+    {
+      "Session": "wails-light",
+      "Scene": "settings-2",
+      "Width": 640,
+      "Height": 660,
+      "RecordedAtUtc": "2026-11-10T19:49:27.378Z",
+      "SHA256": "C812A7FE9634AE68AE2DDAA9CECA3E134F994524D54EC3B358A2CBA139B2A053",
+      "Published": true,
+      "Provenance": "Original native Computer Use JPEG; pointer highlight may be added by capture tool; synthetic input",
+      "SessionCompletedNormally": true,
+      "NativeDPISamples": [
+        96
+      ]
+    },
+    {
+      "Session": "wails-light",
+      "Scene": "theme-dropdown",
+      "Width": 640,
+      "Height": 660,
+      "RecordedAtUtc": "2026-11-10T19:49:43.478Z",
+      "SHA256": "4F05F7238BFD5AF64673A140BB28D524B8E472682C93FCA9D85E7C53312CAE39",
+      "Published": true,
+      "Provenance": "Original native Computer Use JPEG; pointer highlight may be added by capture tool; synthetic input",
+      "SessionCompletedNormally": true,
+      "NativeDPISamples": [
+        96
+      ]
+    },
+    {
+      "Session": "wails-light",
+      "Scene": "settings-3",
+      "Width": 640,
+      "Height": 660,
+      "RecordedAtUtc": "2026-11-10T19:50:12.089Z",
+      "SHA256": "F33332177DD8A3A6B533A948B8D92EA2A295A3BC0B406FE2F3C0F8A3588BE17C",
+      "Published": true,
+      "Provenance": "Original native Computer Use JPEG; pointer highlight may be added by capture tool; synthetic input",
+      "SessionCompletedNormally": true,
+      "NativeDPISamples": [
+        96
+      ]
+    },
+    {
+      "Session": "wails-light",
+      "Scene": "settings-4",
+      "Width": 640,
+      "Height": 660,
+      "RecordedAtUtc": "2026-11-10T19:50:29.024Z",
+      "SHA256": "F584CFF01EDA84A06D974AB2E5C294F683D10352B378B8818FB40304821E01FB",
+      "Published": true,
+      "Provenance": "Original native Computer Use JPEG; pointer highlight may be added by capture tool; synthetic input",
+      "SessionCompletedNormally": true,
+      "NativeDPISamples": [
+        96
+      ]
+    },
+    {
+      "Session": "wails-light",
+      "Scene": "settings-4-bottom",
+      "Width": 640,
+      "Height": 660,
+      "RecordedAtUtc": "2026-11-10T19:50:59.200Z",
+      "SHA256": "A2816639266DAC1AEC0E1F24E329455111B5719B20F500C3DEB6B05ACFA1290F",
+      "Published": false,
+      "Provenance": "Original native Computer Use JPEG; pointer highlight may be added by capture tool; synthetic input",
+      "SessionCompletedNormally": true,
+      "NativeDPISamples": [
+        96
+      ]
+    },
+    {
+      "Session": "wails-light",
+      "Scene": "settings-5",
+      "Width": 640,
+      "Height": 660,
+      "RecordedAtUtc": "2026-11-10T19:51:11.527Z",
+      "SHA256": "3FFBFE7D9464EAB1455F17865C3B4E16E0B6085A55050B389B25C125A711E4C6",
+      "Published": true,
+      "Provenance": "Original native Computer Use JPEG; pointer highlight may be added by capture tool; synthetic input",
+      "SessionCompletedNormally": true,
+      "NativeDPISamples": [
+        96
+      ]
+    },
+    {
+      "Session": "wails-light",
+      "Scene": "settings-6",
+      "Width": 640,
+      "Height": 660,
+      "RecordedAtUtc": "2026-11-10T19:51:29.118Z",
+      "SHA256": "B0FBA39CC4CBD2566F348207FB4F0B9AE35E19B93A491C4438AF4F40038A8D5A",
+      "Published": true,
+      "Provenance": "Original native Computer Use JPEG; pointer highlight may be added by capture tool; synthetic input",
+      "SessionCompletedNormally": true,
+      "NativeDPISamples": [
+        96
+      ]
+    },
+    {
+      "Session": "wails-light",
+      "Scene": "custom",
+      "Width": 640,
+      "Height": 660,
+      "RecordedAtUtc": "2026-11-10T19:52:05.761Z",
+      "SHA256": "1D4E14CC6DE391926D0448D8E86ECCF0B01228D41DEB961237C7BC77FFE6D598",
+      "Published": true,
+      "Provenance": "Original native Computer Use JPEG; pointer highlight may be added by capture tool; synthetic input",
+      "SessionCompletedNormally": true,
+      "NativeDPISamples": [
+        96
+      ]
+    },
+    {
+      "Session": "wails-light",
+      "Scene": "file-dialog",
+      "Width": 640,
+      "Height": 660,
+      "RecordedAtUtc": "2026-11-10T19:52:27.450Z",
+      "SHA256": "53F69C4561022D8803C8820E8213713F11A835AD3F478C1C56B4A5A47F1471C3",
+      "Published": false,
+      "Provenance": "Original native Computer Use JPEG; pointer highlight may be added by capture tool; synthetic input",
+      "SessionCompletedNormally": true,
+      "NativeDPISamples": [
+        96
+      ]
+    },
+    {
+      "Session": "wails-light",
+      "Scene": "list",
+      "Width": 640,
+      "Height": 588,
+      "RecordedAtUtc": "2026-11-10T19:53:57.321Z",
+      "SHA256": "C48A2A6AFD6307E01F1FF55D0A47298A13FDD5F4A953A08F50EAE3010200BF2D",
+      "Published": true,
+      "Provenance": "Original native Computer Use JPEG; pointer highlight may be added by capture tool; synthetic input",
+      "SessionCompletedNormally": true,
+      "NativeDPISamples": [
+        96
+      ]
+    },
+    {
+      "Session": "wails-light",
+      "Scene": "context-menu",
+      "Width": 640,
+      "Height": 588,
+      "RecordedAtUtc": "2026-11-10T19:54:18.648Z",
+      "SHA256": "3B44C5659B566241EA773FFD168AB953D02376A15F9465A78E3CFE214E6217E3",
+      "Published": true,
+      "Provenance": "Original native Computer Use JPEG; pointer highlight may be added by capture tool; synthetic input",
+      "SessionCompletedNormally": true,
+      "NativeDPISamples": [
+        96
+      ]
+    },
+    {
+      "Session": "wails-light",
+      "Scene": "empty",
+      "Width": 640,
+      "Height": 210,
+      "RecordedAtUtc": "2026-11-10T19:54:51.420Z",
+      "SHA256": "8E407E9DABA940A1DAB40EA83724A6ED24308A839E81D5E083B0902C61307F9F",
+      "Published": true,
+      "Provenance": "Original native Computer Use JPEG; pointer highlight may be added by capture tool; synthetic input",
+      "SessionCompletedNormally": true,
+      "NativeDPISamples": [
+        96
+      ]
+    }
+  ],
+  "Scope": "Native observations and dated partial comparisons. All original captures/logs retained locally; system file-dialog and personal scanner warnings excluded from published pixels. No image scaling establishes pixel tolerance; no new physical IME/DPI or performance acceptance."
+}

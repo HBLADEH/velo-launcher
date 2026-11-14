@@ -1,0 +1,73 @@
+{
+  "RecordedAtUtc": "2026-11-13T03:25:04.6036589Z",
+  "FormalFiles": [
+    {
+      "Name": "config.json",
+      "SHA256": "6DECBCB844CC656D0EAFBD340F7B8BF3B877FAAD593D543F85A37B15EB95143F",
+      "MatchesBefore": true
+    },
+    {
+      "Name": "history.json",
+      "SHA256": "18767782BD92FC904116A8B376C54049578E596AFA715B08B18D8280F2FCBF5E",
+      "MatchesBefore": true
+    },
+    {
+      "Name": "index.json",
+      "SHA256": "A1C62CEA85156FB48E52874988DE07931AD4386F7F1448DC9ADBD5BC5A1195FC",
+      "MatchesBefore": true
+    },
+    {
+      "Name": "application-library.json",
+      "SHA256": "A5E8BC981B03563AF3D26E5EEF9D263D9EAA4181C5DA758E8DCBF82160FF01F6",
+      "MatchesBefore": true
+    },
+    {
+      "Name": "quick-launch.json",
+      "SHA256": null,
+      "MatchesBefore": true
+    }
+  ],
+  "FormalFilesUnchanged": true,
+  "TaskApplicationProcesses": 0,
+  "PreviewUninstallRegistrationAbsent": true,
+  "PreviewStartMenuShortcutAbsent": true,
+  "InstanceChecks": [
+    {
+      "Instance": "preview",
+      "MutexAbsent": true
+    },
+    {
+      "Instance": "rs11-installer",
+      "MutexAbsent": true
+    },
+    {
+      "Instance": "rs14-package-rollback",
+      "MutexAbsent": true
+    },
+    {
+      "Instance": "rs12-software-current",
+      "MutexAbsent": true
+    },
+    {
+      "Instance": "rs12-femtovg-current",
+      "MutexAbsent": true
+    }
+  ],
+  "Hotkeys": [
+    {
+      "Key": "Alt+Space",
+      "AvailableAndImmediatelyReleased": true
+    },
+    {
+      "Key": "Ctrl+Alt+L",
+      "AvailableAndImmediatelyReleased": true
+    }
+  ],
+  "FourProtectedDirectoriesRestored": true,
+  "FourOperatorTrayExitsRecorded": true,
+  "FormalApplicationReplaced": false,
+  "Published": false,
+  "RunnerRegistered": false,
+  "Pushed": false,
+  "Scope": "Before/after brackets this task. Own applications, helpers, preview registration/shortcut and named instance locks checked; task artifacts and original failures retained."
+}

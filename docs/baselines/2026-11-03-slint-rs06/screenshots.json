@@ -1,0 +1,295 @@
+{
+  "Capture": "Computer Use bounded screenshots; image pixel dimensions do not establish physical window size or latency",
+  "Scenes": [
+    {
+      "name": "femtovg-secondary-search-100",
+      "path": "screenshots/femtovg-secondary-search-100.jpg",
+      "sha256": "d21957fa6d91ead8a6b5b29383608d8953b2fd0b92970e26139823d732f940f0",
+      "width": 640,
+      "height": 264,
+      "originX": 2560,
+      "originY": 248,
+      "notes": "Real Explorer launch on secondary; no click on search field before input."
+    },
+    {
+      "name": "femtovg-secondary-search-150",
+      "path": "screenshots/femtovg-secondary-search-150.jpg",
+      "sha256": "0abd0abd83e7ac30983e43ae4c571a76edd376abb55590e0dd93bccd899b4aab",
+      "width": 640,
+      "height": 264,
+      "originX": 2560,
+      "originY": 248,
+      "notes": "Real system scale changed on secondary while hidden; real hotkey show, same query and HWND."
+    },
+    {
+      "name": "femtovg-drag-to-primary-100",
+      "path": "screenshots/femtovg-drag-to-primary-100.jpg",
+      "sha256": "3294d9e6f3ece4fcd7a16d5f8f25c85f28eae080232c5c0d60215f1dd30d7177",
+      "width": 640,
+      "height": 264,
+      "originX": 1280,
+      "originY": 283,
+      "notes": "Real pointer drag from 150% secondary to 100% primary; same HWND and query."
+    },
+    {
+      "name": "femtovg-primary-empty-210",
+      "path": "screenshots/femtovg-primary-empty-210.jpg",
+      "sha256": "aa123ea9f947daf054db42aba8ee2a9e9a5530daeceedff603312c7e560caf5b",
+      "width": 640,
+      "height": 210,
+      "originX": 1280,
+      "originY": 283,
+      "notes": "After real mixed-DPI drag, typing appends to the preserved query and produces the 210px empty state."
+    },
+    {
+      "name": "femtovg-return-secondary-150",
+      "path": "screenshots/femtovg-return-secondary-150.jpg",
+      "sha256": "270e0ee3da2c31c1c645a4947dec2529be8d3737224778f54733d5aafe2406a0",
+      "width": 640,
+      "height": 210,
+      "originX": 1920,
+      "originY": 248,
+      "notes": "Real pointer drag returns to the 150% secondary monitor."
+    },
+    {
+      "name": "femtovg-secondary-home-150",
+      "path": "screenshots/femtovg-secondary-home-150.jpg",
+      "sha256": "2647a207f92632dfb21f715b803b84fdf586c1604b8c9d4ab18a1cd6c2d3f59e",
+      "width": 640,
+      "height": 660,
+      "originX": 1920,
+      "originY": 60,
+      "notes": "Escape clears the query after the return drag; the home page requests 640x660 logical pixels."
+    },
+    {
+      "name": "femtovg-secondary-ime-preedit-150",
+      "path": "screenshots/femtovg-secondary-ime-preedit-150.jpg",
+      "sha256": "bea2222074446a166c47e3bb3fc830a569a605ab052ec63e452471ee2175d39f",
+      "width": 640,
+      "height": 660,
+      "originX": 1920,
+      "originY": 60,
+      "notes": "Computer Use sends n then i through Microsoft Pinyin; candidate appears near the caret at 150% on the secondary monitor."
+    },
+    {
+      "name": "femtovg-secondary-ime-commit-150",
+      "path": "screenshots/femtovg-secondary-ime-commit-150.jpg",
+      "sha256": "36e1f622f7237980ec66ffab16931f1b69838989e189a9f79ae74c47b1195eea",
+      "width": 640,
+      "height": 210,
+      "originX": 1920,
+      "originY": 60,
+      "notes": "Real Microsoft Pinyin composition committed with Space after mixed-DPI dragging."
+    },
+    {
+      "name": "femtovg-secondary-single-result-150",
+      "path": "screenshots/femtovg-secondary-single-result-150.jpg",
+      "sha256": "138e98f1d37cc7329d25211d79e50edf91275b9a8115a976645d7b40b04f8acc",
+      "width": 640,
+      "height": 210,
+      "originX": 1920,
+      "originY": 60,
+      "notes": "The fixture query system matches one result; observed height is correctly 210 logical pixels."
+    },
+    {
+      "name": "femtovg-secondary-clamped-list-150",
+      "path": "screenshots/femtovg-secondary-clamped-list-150.jpg",
+      "sha256": "e1daaeec6ff07dc39657bd6bcd77cbc5aecc28175541b9fdf0b8194493f367bf",
+      "width": 640,
+      "height": 672,
+      "originX": 1920,
+      "originY": 42,
+      "notes": "The fixed Chinese system-shortcut query matches 13 results; 720 requested logical pixels are clamped to the 1008 physical pixel work area."
+    },
+    {
+      "name": "femtovg-clamped-list-scrolled",
+      "path": "screenshots/femtovg-clamped-list-scrolled.jpg",
+      "sha256": "7679c7520aeaf3704f0043c5cbe135b8f066e6e07ac2fdde5754bc84ff374ca6",
+      "width": 640,
+      "height": 672,
+      "originX": 1920,
+      "originY": 42,
+      "notes": "The clamped list remains scrollable through the final rows."
+    },
+    {
+      "name": "femtovg-negative-recalled",
+      "path": "screenshots/femtovg-negative-recalled.jpg",
+      "sha256": "c44059c2fa3387cb67fef2a3a24c30af4add880014b40a9d8679b8b80d7a004e",
+      "width": 640,
+      "height": 672,
+      "originX": -1920,
+      "originY": 0,
+      "notes": "Left-hand monitor has actual negative coordinates; hidden app is recalled with the test hotkey, keeping its query and HWND."
+    },
+    {
+      "name": "femtovg-negative-to-primary",
+      "path": "screenshots/femtovg-negative-to-primary.jpg",
+      "sha256": "fda6e58dd743a2436fdbd760868530ec3cb125df78a39d84dd74afd985fe5c0c",
+      "width": 640,
+      "height": 720,
+      "originX": 0,
+      "originY": 35,
+      "notes": "Real drag crosses from negative-coordinate 150% secondary to 100% primary; list regains the requested 720px height."
+    },
+    {
+      "name": "femtovg-appearance-660",
+      "path": "screenshots/femtovg-appearance-660.jpg",
+      "sha256": "11710c1f38e3b5c36b8aa7ed1f7ef67342aa4395e5ff72f073f016200e67215f",
+      "width": 640,
+      "height": 660,
+      "originX": 0,
+      "originY": 35,
+      "notes": "Appearance page restores the 660 logical pixel contract after negative mixed-DPI dragging."
+    },
+    {
+      "name": "femtovg-import-660",
+      "path": "screenshots/femtovg-import-660.jpg",
+      "sha256": "6cc546a52c669f3d496675f9bc79c90c5b5def3282792c39cc47fd49b0a04a79",
+      "width": 640,
+      "height": 660,
+      "originX": 0,
+      "originY": 35,
+      "notes": "Import page restores 660 logical pixels after cross-monitor movement."
+    },
+    {
+      "name": "femtovg-primary-fresh-input-150",
+      "path": "screenshots/femtovg-primary-fresh-input-150.jpg",
+      "sha256": "b83773dd05612cde0a5873932b3945bd5af5f08c50a8d9851bc81b8298041333",
+      "width": 640,
+      "height": 264,
+      "originX": 480,
+      "originY": 18,
+      "notes": "Fresh process with cursor on primary; startup native focus was already true before any tool activation; no search-field click."
+    },
+    {
+      "name": "software-primary-fresh-input-150",
+      "path": "screenshots/software-primary-fresh-input-150.jpg",
+      "sha256": "cb38562638694781c7e675485804c57db968134cacdfa35c9c6d1f17531b5597",
+      "width": 640,
+      "height": 264,
+      "originX": 480,
+      "originY": 18,
+      "notes": "Fresh Software process starts on the primary 150% monitor; native focus was true before tool input and no search-field click was required."
+    },
+    {
+      "name": "software-drag-negative-100",
+      "path": "screenshots/software-drag-negative-100.jpg",
+      "sha256": "d4722c709fd6934168b67a4f668d6c102a62d635a0a7f0195f243db69170bc31",
+      "width": 640,
+      "height": 264,
+      "originX": -640,
+      "originY": 53,
+      "notes": "Real pointer drag from the 150% primary monitor to the negative-coordinate 100% secondary; same query and HWND."
+    },
+    {
+      "name": "software-negative-empty-210",
+      "path": "screenshots/software-negative-empty-210.jpg",
+      "sha256": "b62afb4615bd8bc8a1ec20d9a2dbf22ae68f9a26980e3d1e887220e05d5925c2",
+      "width": 640,
+      "height": 210,
+      "originX": -640,
+      "originY": 53,
+      "notes": "Typing continues after the real mixed-DPI drag; empty results use 210 logical pixels."
+    },
+    {
+      "name": "software-negative-ime-preedit-100",
+      "path": "screenshots/software-negative-ime-preedit-100.jpg",
+      "sha256": "2ac97ed33486981854b5fad8753f2795218874b6713cdc2804bfd7e1be8a0be4",
+      "width": 640,
+      "height": 660,
+      "originX": -640,
+      "originY": 53,
+      "notes": "Computer Use sends n and i through Microsoft Pinyin after mixed-DPI dragging; candidate appears beneath the caret on the negative monitor."
+    },
+    {
+      "name": "software-negative-ime-commit-100",
+      "path": "screenshots/software-negative-ime-commit-100.jpg",
+      "sha256": "d2ded1a1187d8250fd8c4fea1f25815b1a44a27b89924cad82031a37778b047e",
+      "width": 640,
+      "height": 210,
+      "originX": -640,
+      "originY": 53,
+      "notes": "Microsoft Pinyin commits the selected character with Space; no launcher item is executed."
+    },
+    {
+      "name": "software-negative-list-720",
+      "path": "screenshots/software-negative-list-720.jpg",
+      "sha256": "a64515657ecbdbcba76ce06f3075fc704bfa27b3ae56f98fce2ce6927b122417",
+      "width": 640,
+      "height": 720,
+      "originX": -640,
+      "originY": 53,
+      "notes": "The 13-result list reaches the full 720 logical pixel height on the 100% negative monitor."
+    },
+    {
+      "name": "software-return-primary-clamped-150",
+      "path": "screenshots/software-return-primary-clamped-150.jpg",
+      "sha256": "bd8d8c6b554c7c17154b66f5be882325f83c1225df074f5b37f5132768a7d65f",
+      "width": 640,
+      "height": 672,
+      "originX": 0,
+      "originY": 0,
+      "notes": "Real return drag changes DPI from 96 to 144; the requested 720 logical pixel list is clamped to the 1008 physical pixel primary work area."
+    },
+    {
+      "name": "software-appearance-660",
+      "path": "screenshots/software-appearance-660.jpg",
+      "sha256": "80ac265341450dcb33a6186276961672f6552e879c49e13f221b8c5530aef3e5",
+      "width": 640,
+      "height": 660,
+      "originX": 0,
+      "originY": 0,
+      "notes": "Software appearance page restores 660 logical pixels after mixed-DPI dragging."
+    },
+    {
+      "name": "software-unapplied-draft-before-hide",
+      "path": "screenshots/software-unapplied-draft-before-hide.jpg",
+      "sha256": "f1d522bdaf4a68a5bc243817fe396933c225157b2cb1a3321ab29ad0f844ae01",
+      "width": 640,
+      "height": 660,
+      "originX": 0,
+      "originY": 0,
+      "notes": "An X is appended to the hotkey draft without applying it; registered hotkey stays Ctrl+Alt+K."
+    },
+    {
+      "name": "software-draft-restored-after-hotkey",
+      "path": "screenshots/software-draft-restored-after-hotkey.jpg",
+      "sha256": "9a7bce9a232e3d69a4c52a66e6aea3aa8392384ed90bf364bc41fb89d5e19c47",
+      "width": 640,
+      "height": 660,
+      "originX": 0,
+      "originY": 0,
+      "notes": "Real hotkey hide/show preserves the same HWND, negative-layout session position, original query, appearance page, and unapplied Ctrl+Alt+KX draft."
+    },
+    {
+      "name": "software-import-660",
+      "path": "screenshots/software-import-660.jpg",
+      "sha256": "00aa686db763861607776e7a8bb42b8bfde65ff55e35681707ab4b0d478da496",
+      "width": 640,
+      "height": 660,
+      "originX": 0,
+      "originY": 0,
+      "notes": "Software import page retains the 660 logical pixel contract at 150% after negative mixed-DPI dragging."
+    },
+    {
+      "name": "software-import-after-dialog-cancel",
+      "path": "screenshots/software-import-after-dialog-cancel.jpg",
+      "sha256": "daf092c446383d7d01b60f954249510aa1617e54d859f4f927f8388ef2bbb6ac",
+      "width": 640,
+      "height": 660,
+      "originX": 0,
+      "originY": 0,
+      "notes": "Owned native file picker at 150% is cancelled; import page remains visible and no files are imported."
+    },
+    {
+      "name": "software-focus-after-native-dialog",
+      "path": "screenshots/software-focus-after-native-dialog.jpg",
+      "sha256": "639485bdae694595f98a12dedc98e1dbbffb413fa205762564d6c975c99338d1",
+      "width": 640,
+      "height": 210,
+      "originX": 0,
+      "originY": 0,
+      "notes": "Typing succeeds immediately after cancelling the owned picker and leaving import mode."
+    }
+  ]
+}

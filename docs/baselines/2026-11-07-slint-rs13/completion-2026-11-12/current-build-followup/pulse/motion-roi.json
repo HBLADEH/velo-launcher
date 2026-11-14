@@ -1,0 +1,24 @@
+{
+  "Edition": "software",
+  "ExecutableSHA256": "5E7C017DDA3FF691E7FF8DCBFEAF149E5A766C1F8DC73A816BB5C4A9F7C4C66B",
+  "Rows": [
+    {
+      "Clip": "recording-1",
+      "Measured": true,
+      "ClientROILogicalPixels": [
+        543,
+        251,
+        565,
+        274
+      ],
+      "Frames": 85,
+      "ChangedROIIntervals": 19,
+      "MaximumROIChangeEnergy": 39018.0,
+      "ControlChangeObserved": true,
+      "SourceSpanWithoutCachedBaselineMilliseconds": 1668.3285,
+      "Scope": "Local control pixels changed; this does not by itself certify exact amplitude, timing, easing or a completed rotation/pulse period."
+    }
+  ],
+  "PhysicalInput": false,
+  "Scope": "Fixed 96-DPI regions exclude unrelated caret/tooltip changes. No ROI observation automatically accepts an exact trajectory."
+}

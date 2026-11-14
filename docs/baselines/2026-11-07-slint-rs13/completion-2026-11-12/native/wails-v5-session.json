@@ -1,0 +1,26 @@
+{
+  "Edition": "wails",
+  "ProcessId": 56852,
+  "StartedTicks": 639300137913800560,
+  "SHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+  "Inputs": {
+    "config.json": "D0AD379DB686117CAAC3275AD4F3D39B2BF3C30D3FC09A887AFC9199E761A429",
+    "index.json": "6E387C444930C0591E0BEC175CA0E6D5A2CD3F17671CB5F9B7D1D104271CACE4",
+    "history.json": "E3566B3A06430868D71E9287DFD6C6C520A3DA027AABEA01951D407EE131DC2F",
+    "application-library.json": "A32DCFA1175495EC20CAB36315C2C48F471BFA3C1F6AB91CD0F1670E027D0C5D",
+    "quick-launch.json": null
+  },
+  "InputId": "07B5C28A192C5A40980C7AA4D70CD90F27CC47DE89C50C6A0CCF1E399681C976",
+  "Environment": {
+    "Windows": "10.0.26340",
+    "Build": "26340",
+    "BootUtc": "2026-11-10T18:23:12.5000000Z",
+    "CPU": [
+      "Intel(R) Core(TM) i7-10700 CPU @ 2.90GHz"
+    ]
+  },
+  "EnvironmentId": "8B3C5D8FC7EBA2241457EBEDECD476D49D193F3A02A9CB008399FC628E6A39CA",
+  "Diagnostics": true,
+  "BlurHideDisabled": true,
+  "Method": "RS-13 native visual session with isolated shared seed. Wails diagnostics suppress blur-hide; Slint diagnostics add logging and retain normal blur-hide. Computer Use input is synthetic, not physical IME or latency evidence."
+}

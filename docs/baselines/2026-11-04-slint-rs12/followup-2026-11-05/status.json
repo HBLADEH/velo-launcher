@@ -1,0 +1,60 @@
+{
+  "RecordedAtUtc": "2026-11-05T04:27:48.4624933Z",
+  "FormalFiles": [
+    {
+      "File": "config.json",
+      "BeforeFinalRunSHA256": "6DECBCB844CC656D0EAFBD340F7B8BF3B877FAAD593D543F85A37B15EB95143F",
+      "CurrentSHA256": "6DECBCB844CC656D0EAFBD340F7B8BF3B877FAAD593D543F85A37B15EB95143F",
+      "UnchangedDuringFinalRun": true
+    },
+    {
+      "File": "index.json",
+      "BeforeFinalRunSHA256": "D9FDC8437135DF652114CB4B802A24434935EF4EF18F4AF643317F017B7B38AE",
+      "CurrentSHA256": "D9FDC8437135DF652114CB4B802A24434935EF4EF18F4AF643317F017B7B38AE",
+      "UnchangedDuringFinalRun": true
+    },
+    {
+      "File": "history.json",
+      "BeforeFinalRunSHA256": "FCA9BBCE5F57A53CCB23A7FB3A2F2BB4B9CFAD46DD241EDA168BBF029B51E8C6",
+      "CurrentSHA256": "FCA9BBCE5F57A53CCB23A7FB3A2F2BB4B9CFAD46DD241EDA168BBF029B51E8C6",
+      "UnchangedDuringFinalRun": true
+    },
+    {
+      "File": "application-library.json",
+      "BeforeFinalRunSHA256": "A5E8BC981B03563AF3D26E5EEF9D263D9EAA4181C5DA758E8DCBF82160FF01F6",
+      "CurrentSHA256": "A5E8BC981B03563AF3D26E5EEF9D263D9EAA4181C5DA758E8DCBF82160FF01F6",
+      "UnchangedDuringFinalRun": true
+    },
+    {
+      "File": "quick-launch.json",
+      "BeforeFinalRunSHA256": null,
+      "CurrentSHA256": null,
+      "UnchangedDuringFinalRun": true
+    }
+  ],
+  "LiveTestProcesses": [],
+  "NormalExitConfirmed": true,
+  "FinalInputExportPending": false,
+  "RS12Complete": false,
+  "WailsWarmMeasuredNormalExits": 3,
+  "WailsWarmCharacterBoundsVerified": 3,
+  "WailsWarmExtraLaunchExcluded": true,
+  "WailsHotkeyReliabilityPassed": false,
+  "ScanCandidatesCaptured": 3,
+  "FinalCleanupVerified": true,
+  "NativeSlintDPIObserved": [
+    "software:96/144/96",
+    "femtovg:96/144/96; injected placement"
+  ],
+  "InvalidDPIStageCount": 4,
+  "PhysicalIMEPassed": false,
+  "FrameLatencyPassed": false,
+  "ColdTestingDeferredByUser": true,
+  "LatestWailsNormalExit": true,
+  "LatestWailsManualCallSucceeded": true,
+  "LatestResourceSamplesExcluded": 3,
+  "EligibleIdleSampleTotal": 54,
+  "WailsDesktopToolStoppedAgain": true,
+  "WailsDPIComparisonComplete": false,
+  "TestRunFormalFilesUnchanged": true
+}

@@ -44,6 +44,7 @@ pub struct Context {
     pub input_focused: bool,
     pub home: bool,
     pub query_empty: bool,
+    pub space_launch: bool,
 }
 
 pub fn command(text: &str, modified: bool, repeat: bool, context: &Context) -> Option<Command> {
@@ -73,15 +74,14 @@ pub fn command(text: &str, modified: bool, repeat: bool, context: &Context) -> O
         Command::Navigate(Direction::Left)
     } else if context.home && key(Key::RightArrow) {
         Command::Navigate(Direction::Right)
-    } else if key(Key::Return) {
+    } else if key(Key::Return) || (text == " " && context.space_launch) {
         if repeat {
             Command::Consume
         } else {
             Command::Choose
         }
     } else {
-        // Space is ordinary text (the product's optional space_launch setting
-        // is not part of this fixed-data prototype). Clipboard/selection,
+        // Fixed fixtures leave space_launch disabled. Clipboard/selection,
         // deletion, cursor motion and other editing stay in native TextInput.
         return None;
     })
@@ -104,6 +104,7 @@ mod tests {
             input_focused: true,
             home: true,
             query_empty: true,
+            space_launch: false,
         }
     }
 
@@ -222,5 +223,27 @@ mod tests {
         ] {
             assert_eq!(command(&text, false, false, &modal), None);
         }
+    }
+
+    #[test]
+    fn configured_space_launch_respects_composition_and_repeat() {
+        let context = Context {
+            space_launch: true,
+            ..context()
+        };
+        assert_eq!(command(" ", false, false, &context), Some(Command::Choose));
+        assert_eq!(command(" ", false, true, &context), Some(Command::Consume));
+        assert_eq!(
+            command(
+                " ",
+                false,
+                false,
+                &Context {
+                    composing: true,
+                    ..context
+                }
+            ),
+            None
+        );
     }
 }

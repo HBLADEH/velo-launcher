@@ -1,0 +1,38 @@
+{
+  "RecordedAtUtc": "2026-11-14T17:52:29.5473166Z",
+  "HostFormalFiles": [
+    {
+      "Name": "config.json",
+      "SHA256": "6DECBCB844CC656D0EAFBD340F7B8BF3B877FAAD593D543F85A37B15EB95143F",
+      "MatchesThisTurnReference": true
+    },
+    {
+      "Name": "history.json",
+      "SHA256": "18767782BD92FC904116A8B376C54049578E596AFA715B08B18D8280F2FCBF5E",
+      "MatchesThisTurnReference": true
+    },
+    {
+      "Name": "index.json",
+      "SHA256": "A1C62CEA85156FB48E52874988DE07931AD4386F7F1448DC9ADBD5BC5A1195FC",
+      "MatchesThisTurnReference": true
+    },
+    {
+      "Name": "application-library.json",
+      "SHA256": "A5E8BC981B03563AF3D26E5EEF9D263D9EAA4181C5DA758E8DCBF82160FF01F6",
+      "MatchesThisTurnReference": true
+    },
+    {
+      "Name": "quick-launch.json",
+      "SHA256": null,
+      "MatchesThisTurnReference": true
+    }
+  ],
+  "AllMatchThisTurnReference": true,
+  "TaskVeloProcesses": 0,
+  "TaskVMRunning": false,
+  "TaskWorkerProcesses": 0,
+  "Branch": "codex/rust-slint-refactor",
+  "StagedFiles": [],
+  "NoReleasePublished": true,
+  "FormalHostProgramUsedForTests": false
+}

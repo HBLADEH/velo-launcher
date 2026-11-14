@@ -1,0 +1,53 @@
+{
+  "RecordedAtUtc": "2026-11-10T18:00:47.8842448Z",
+  "HumanColdCharacterObservations": 9,
+  "CalibratedColdValidSamples": 7,
+  "CalibratedColdInvalidSamples": 0,
+  "RequiredSamples": 9,
+  "SamplesByEdition": {
+    "software": 2,
+    "femtovg": 2,
+    "wails": 3
+  },
+  "RequiredPerEdition": 3,
+  "CurrentUpperMilliseconds": {
+    "software": [
+      287.4924,
+      215.15370000000001
+    ],
+    "femtovg": [
+      445.7443,
+      450.45480000000003
+    ],
+    "wails": [
+      3549.82875,
+      3241.6126,
+      3190.8264
+    ]
+  },
+  "ValidSamplesWithUpperBoundAbove500ms": 3,
+  "WailsColdSampleCountSatisfied": true,
+  "WailsColdUpperMilliseconds": {
+    "Count": 3,
+    "Minimum": 3190.8264,
+    "Median": 3241.6126,
+    "P95": 3549.82875,
+    "Maximum": 3549.82875
+  },
+  "WailsColdUpperBoundP95Within500ms": false,
+  "LatestCaseQuitSource": "Agent requested normal lifecycle quit via isolated endpoint; user later reported tray exit. Effective trigger not exclusively attributed.",
+  "LatestCaseHumanVisualFeedbackReceived": true,
+  "NextCase": "software-3",
+  "RemainingSequence": [
+    "software-3",
+    "femtovg-3"
+  ],
+  "IndependentRestartRequiredBeforeNext": true,
+  "CurrentBootConsumed": "639299297105000000",
+  "ColdStartup500msBudgetVerifiedForCompleteMatrix": false,
+  "HistoricalManualFocusRootCauseEstablished": false,
+  "DefaultRendererSelected": false,
+  "RS12Complete": false,
+  "Scope": "Current calibrated-cold checkpoint. Sample validity, sample-count completion, human visual observations and 500ms budget verification are separate. Earlier status and raw case files retain original counts and identities.",
+  "LatestCaseOperatorFeedback": "wails-3-operator-feedback.json"
+}

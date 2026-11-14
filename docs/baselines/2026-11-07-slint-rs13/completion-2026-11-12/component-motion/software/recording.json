@@ -1,0 +1,4267 @@
+{
+  "Clips": [
+    "home-entry",
+    "settings-enter",
+    "settings-exit",
+    "custom-enter",
+    "custom-exit",
+    "tile-hover",
+    "tile-press",
+    "gear-hover",
+    "scanning",
+    "recording",
+    "reduced-scanning",
+    "hidden-scanning",
+    "reduced-hover"
+  ],
+  "Complete": true,
+  "ComponentSnapshots": true,
+  "Failure": null,
+  "FixtureScenes": [
+    "home",
+    "home-empty-pinned",
+    "list",
+    "grid",
+    "empty",
+    "long-name",
+    "custom",
+    "settings-0",
+    "settings-1",
+    "settings-2",
+    "settings-3",
+    "settings-4",
+    "settings-5",
+    "settings-6",
+    "scanning",
+    "error",
+    "update",
+    "home-two-rows",
+    "home-bottom",
+    "home-empty-frequent",
+    "custom-bottom",
+    "settings-4-bottom",
+    "settings-5-bottom",
+    "settings-6-bottom",
+    "missing-icon",
+    "recording"
+  ],
+  "Frames": [
+    {
+      "active_animations": true,
+      "clip": "home-entry",
+      "elapsed_us": 41,
+      "height": 660,
+      "name": "home-entry-000.png",
+      "snapshot_us": 8249,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "home-entry",
+      "elapsed_us": 40799,
+      "height": 660,
+      "name": "home-entry-001.png",
+      "snapshot_us": 9862,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "home-entry",
+      "elapsed_us": 81210,
+      "height": 660,
+      "name": "home-entry-002.png",
+      "snapshot_us": 9739,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "home-entry",
+      "elapsed_us": 121580,
+      "height": 660,
+      "name": "home-entry-003.png",
+      "snapshot_us": 9925,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "home-entry",
+      "elapsed_us": 162393,
+      "height": 660,
+      "name": "home-entry-004.png",
+      "snapshot_us": 9409,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "home-entry",
+      "elapsed_us": 202712,
+      "height": 660,
+      "name": "home-entry-005.png",
+      "snapshot_us": 9205,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "home-entry",
+      "elapsed_us": 242784,
+      "height": 660,
+      "name": "home-entry-006.png",
+      "snapshot_us": 9908,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "home-entry",
+      "elapsed_us": 283589,
+      "height": 660,
+      "name": "home-entry-007.png",
+      "snapshot_us": 9790,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "home-entry",
+      "elapsed_us": 324961,
+      "height": 660,
+      "name": "home-entry-008.png",
+      "snapshot_us": 10983,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "home-entry",
+      "elapsed_us": 365361,
+      "height": 660,
+      "name": "home-entry-009.png",
+      "snapshot_us": 9471,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "home-entry",
+      "elapsed_us": 405366,
+      "height": 660,
+      "name": "home-entry-010.png",
+      "snapshot_us": 9185,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "home-entry",
+      "elapsed_us": 445739,
+      "height": 660,
+      "name": "home-entry-011.png",
+      "snapshot_us": 9267,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "home-entry",
+      "elapsed_us": 486756,
+      "height": 660,
+      "name": "home-entry-012.png",
+      "snapshot_us": 8899,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "home-entry",
+      "elapsed_us": 527583,
+      "height": 660,
+      "name": "home-entry-013.png",
+      "snapshot_us": 11221,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "home-entry",
+      "elapsed_us": 568934,
+      "height": 660,
+      "name": "home-entry-014.png",
+      "snapshot_us": 9320,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "home-entry",
+      "elapsed_us": 609233,
+      "height": 660,
+      "name": "home-entry-015.png",
+      "snapshot_us": 8917,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "home-entry",
+      "elapsed_us": 649164,
+      "height": 660,
+      "name": "home-entry-016.png",
+      "snapshot_us": 9141,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "home-entry",
+      "elapsed_us": 689230,
+      "height": 660,
+      "name": "home-entry-017.png",
+      "snapshot_us": 8963,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "home-entry",
+      "elapsed_us": 729477,
+      "height": 660,
+      "name": "home-entry-018.png",
+      "snapshot_us": 8944,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "home-entry",
+      "elapsed_us": 769422,
+      "height": 660,
+      "name": "home-entry-019.png",
+      "snapshot_us": 8925,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "home-entry",
+      "elapsed_us": 809112,
+      "height": 660,
+      "name": "home-entry-020.png",
+      "snapshot_us": 9457,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "home-entry",
+      "elapsed_us": 849309,
+      "height": 660,
+      "name": "home-entry-021.png",
+      "snapshot_us": 8848,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "home-entry",
+      "elapsed_us": 889058,
+      "height": 660,
+      "name": "home-entry-022.png",
+      "snapshot_us": 9191,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "home-entry",
+      "elapsed_us": 928753,
+      "height": 660,
+      "name": "home-entry-023.png",
+      "snapshot_us": 9533,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "home-entry",
+      "elapsed_us": 968975,
+      "height": 660,
+      "name": "home-entry-024.png",
+      "snapshot_us": 8792,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "home-entry",
+      "elapsed_us": 1009446,
+      "height": 660,
+      "name": "home-entry-025.png",
+      "snapshot_us": 9176,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "home-entry",
+      "elapsed_us": 1049622,
+      "height": 660,
+      "name": "home-entry-026.png",
+      "snapshot_us": 9142,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "home-entry",
+      "elapsed_us": 1090275,
+      "height": 660,
+      "name": "home-entry-027.png",
+      "snapshot_us": 9649,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "home-entry",
+      "elapsed_us": 1130452,
+      "height": 660,
+      "name": "home-entry-028.png",
+      "snapshot_us": 8974,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "home-entry",
+      "elapsed_us": 1169892,
+      "height": 660,
+      "name": "home-entry-029.png",
+      "snapshot_us": 8813,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "home-entry",
+      "elapsed_us": 1210595,
+      "height": 660,
+      "name": "home-entry-030.png",
+      "snapshot_us": 8883,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "home-entry",
+      "elapsed_us": 1251214,
+      "height": 660,
+      "name": "home-entry-031.png",
+      "snapshot_us": 8910,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "home-entry",
+      "elapsed_us": 1292110,
+      "height": 660,
+      "name": "home-entry-032.png",
+      "snapshot_us": 10349,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "home-entry",
+      "elapsed_us": 1332470,
+      "height": 660,
+      "name": "home-entry-033.png",
+      "snapshot_us": 9309,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "home-entry",
+      "elapsed_us": 1372682,
+      "height": 660,
+      "name": "home-entry-034.png",
+      "snapshot_us": 8957,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "home-entry",
+      "elapsed_us": 1413448,
+      "height": 660,
+      "name": "home-entry-035.png",
+      "snapshot_us": 8924,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "settings-enter",
+      "elapsed_us": 197,
+      "height": 660,
+      "name": "settings-enter-000.png",
+      "snapshot_us": 14630,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "settings-enter",
+      "elapsed_us": 44484,
+      "height": 660,
+      "name": "settings-enter-001.png",
+      "snapshot_us": 14324,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "settings-enter",
+      "elapsed_us": 89510,
+      "height": 660,
+      "name": "settings-enter-002.png",
+      "snapshot_us": 15535,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "settings-enter",
+      "elapsed_us": 133667,
+      "height": 660,
+      "name": "settings-enter-003.png",
+      "snapshot_us": 15147,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "settings-enter",
+      "elapsed_us": 178243,
+      "height": 660,
+      "name": "settings-enter-004.png",
+      "snapshot_us": 14099,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "settings-enter",
+      "elapsed_us": 222821,
+      "height": 660,
+      "name": "settings-enter-005.png",
+      "snapshot_us": 13884,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "settings-enter",
+      "elapsed_us": 265848,
+      "height": 660,
+      "name": "settings-enter-006.png",
+      "snapshot_us": 13868,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "settings-enter",
+      "elapsed_us": 306032,
+      "height": 660,
+      "name": "settings-enter-007.png",
+      "snapshot_us": 12786,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "settings-enter",
+      "elapsed_us": 345650,
+      "height": 660,
+      "name": "settings-enter-008.png",
+      "snapshot_us": 12924,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "settings-enter",
+      "elapsed_us": 385589,
+      "height": 660,
+      "name": "settings-enter-009.png",
+      "snapshot_us": 12788,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "settings-enter",
+      "elapsed_us": 426094,
+      "height": 660,
+      "name": "settings-enter-010.png",
+      "snapshot_us": 13667,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "settings-enter",
+      "elapsed_us": 465802,
+      "height": 660,
+      "name": "settings-enter-011.png",
+      "snapshot_us": 13027,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "settings-enter",
+      "elapsed_us": 505615,
+      "height": 660,
+      "name": "settings-enter-012.png",
+      "snapshot_us": 14369,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "settings-enter",
+      "elapsed_us": 545777,
+      "height": 660,
+      "name": "settings-enter-013.png",
+      "snapshot_us": 12820,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "settings-enter",
+      "elapsed_us": 586126,
+      "height": 660,
+      "name": "settings-enter-014.png",
+      "snapshot_us": 13427,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "settings-enter",
+      "elapsed_us": 626392,
+      "height": 660,
+      "name": "settings-enter-015.png",
+      "snapshot_us": 14623,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "settings-enter",
+      "elapsed_us": 667513,
+      "height": 660,
+      "name": "settings-enter-016.png",
+      "snapshot_us": 13163,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "settings-enter",
+      "elapsed_us": 707732,
+      "height": 660,
+      "name": "settings-enter-017.png",
+      "snapshot_us": 12807,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "settings-enter",
+      "elapsed_us": 747981,
+      "height": 660,
+      "name": "settings-enter-018.png",
+      "snapshot_us": 12899,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "settings-enter",
+      "elapsed_us": 787704,
+      "height": 660,
+      "name": "settings-enter-019.png",
+      "snapshot_us": 13431,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "settings-enter",
+      "elapsed_us": 827774,
+      "height": 660,
+      "name": "settings-enter-020.png",
+      "snapshot_us": 12777,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "settings-enter",
+      "elapsed_us": 868535,
+      "height": 660,
+      "name": "settings-enter-021.png",
+      "snapshot_us": 12751,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "settings-enter",
+      "elapsed_us": 908822,
+      "height": 660,
+      "name": "settings-enter-022.png",
+      "snapshot_us": 13278,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "settings-enter",
+      "elapsed_us": 949459,
+      "height": 660,
+      "name": "settings-enter-023.png",
+      "snapshot_us": 13991,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "settings-enter",
+      "elapsed_us": 990204,
+      "height": 660,
+      "name": "settings-enter-024.png",
+      "snapshot_us": 12768,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "settings-enter",
+      "elapsed_us": 1030791,
+      "height": 660,
+      "name": "settings-enter-025.png",
+      "snapshot_us": 13644,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "settings-enter",
+      "elapsed_us": 1070700,
+      "height": 660,
+      "name": "settings-enter-026.png",
+      "snapshot_us": 13118,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "settings-enter",
+      "elapsed_us": 1110706,
+      "height": 660,
+      "name": "settings-enter-027.png",
+      "snapshot_us": 15222,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "settings-enter",
+      "elapsed_us": 1151070,
+      "height": 660,
+      "name": "settings-enter-028.png",
+      "snapshot_us": 13059,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "settings-enter",
+      "elapsed_us": 1191564,
+      "height": 660,
+      "name": "settings-enter-029.png",
+      "snapshot_us": 13621,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "settings-enter",
+      "elapsed_us": 1231894,
+      "height": 660,
+      "name": "settings-enter-030.png",
+      "snapshot_us": 12915,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "settings-enter",
+      "elapsed_us": 1271698,
+      "height": 660,
+      "name": "settings-enter-031.png",
+      "snapshot_us": 13529,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "settings-enter",
+      "elapsed_us": 1311854,
+      "height": 660,
+      "name": "settings-enter-032.png",
+      "snapshot_us": 12792,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "settings-enter",
+      "elapsed_us": 1352563,
+      "height": 660,
+      "name": "settings-enter-033.png",
+      "snapshot_us": 12967,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "settings-enter",
+      "elapsed_us": 1393193,
+      "height": 660,
+      "name": "settings-enter-034.png",
+      "snapshot_us": 12752,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "settings-enter",
+      "elapsed_us": 1433678,
+      "height": 660,
+      "name": "settings-enter-035.png",
+      "snapshot_us": 13695,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "settings-exit",
+      "elapsed_us": 1855,
+      "height": 660,
+      "name": "settings-exit-000.png",
+      "snapshot_us": 13694,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "settings-exit",
+      "elapsed_us": 44831,
+      "height": 660,
+      "name": "settings-exit-001.png",
+      "snapshot_us": 14727,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "settings-exit",
+      "elapsed_us": 89531,
+      "height": 660,
+      "name": "settings-exit-002.png",
+      "snapshot_us": 8574,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "settings-exit",
+      "elapsed_us": 130306,
+      "height": 660,
+      "name": "settings-exit-003.png",
+      "snapshot_us": 9307,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "settings-exit",
+      "elapsed_us": 170928,
+      "height": 660,
+      "name": "settings-exit-004.png",
+      "snapshot_us": 9588,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "settings-exit",
+      "elapsed_us": 210960,
+      "height": 660,
+      "name": "settings-exit-005.png",
+      "snapshot_us": 9262,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "settings-exit",
+      "elapsed_us": 251149,
+      "height": 660,
+      "name": "settings-exit-006.png",
+      "snapshot_us": 9866,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "settings-exit",
+      "elapsed_us": 292079,
+      "height": 660,
+      "name": "settings-exit-007.png",
+      "snapshot_us": 9018,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "settings-exit",
+      "elapsed_us": 332875,
+      "height": 660,
+      "name": "settings-exit-008.png",
+      "snapshot_us": 9187,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "settings-exit",
+      "elapsed_us": 373090,
+      "height": 660,
+      "name": "settings-exit-009.png",
+      "snapshot_us": 8406,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "settings-exit",
+      "elapsed_us": 414149,
+      "height": 660,
+      "name": "settings-exit-010.png",
+      "snapshot_us": 8685,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "settings-exit",
+      "elapsed_us": 454960,
+      "height": 660,
+      "name": "settings-exit-011.png",
+      "snapshot_us": 8413,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "settings-exit",
+      "elapsed_us": 494976,
+      "height": 660,
+      "name": "settings-exit-012.png",
+      "snapshot_us": 8509,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "settings-exit",
+      "elapsed_us": 534246,
+      "height": 660,
+      "name": "settings-exit-013.png",
+      "snapshot_us": 8344,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "settings-exit",
+      "elapsed_us": 574602,
+      "height": 660,
+      "name": "settings-exit-014.png",
+      "snapshot_us": 8424,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "settings-exit",
+      "elapsed_us": 614311,
+      "height": 660,
+      "name": "settings-exit-015.png",
+      "snapshot_us": 8449,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "settings-exit",
+      "elapsed_us": 655296,
+      "height": 660,
+      "name": "settings-exit-016.png",
+      "snapshot_us": 8632,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "settings-exit",
+      "elapsed_us": 695993,
+      "height": 660,
+      "name": "settings-exit-017.png",
+      "snapshot_us": 8494,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "settings-exit",
+      "elapsed_us": 736219,
+      "height": 660,
+      "name": "settings-exit-018.png",
+      "snapshot_us": 8422,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "settings-exit",
+      "elapsed_us": 776419,
+      "height": 660,
+      "name": "settings-exit-019.png",
+      "snapshot_us": 8361,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "settings-exit",
+      "elapsed_us": 816771,
+      "height": 660,
+      "name": "settings-exit-020.png",
+      "snapshot_us": 8295,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "settings-exit",
+      "elapsed_us": 856671,
+      "height": 660,
+      "name": "settings-exit-021.png",
+      "snapshot_us": 8398,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "settings-exit",
+      "elapsed_us": 897062,
+      "height": 660,
+      "name": "settings-exit-022.png",
+      "snapshot_us": 8799,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "settings-exit",
+      "elapsed_us": 937670,
+      "height": 660,
+      "name": "settings-exit-023.png",
+      "snapshot_us": 8455,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "settings-exit",
+      "elapsed_us": 977738,
+      "height": 660,
+      "name": "settings-exit-024.png",
+      "snapshot_us": 8543,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "settings-exit",
+      "elapsed_us": 1017756,
+      "height": 660,
+      "name": "settings-exit-025.png",
+      "snapshot_us": 8404,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "settings-exit",
+      "elapsed_us": 1057820,
+      "height": 660,
+      "name": "settings-exit-026.png",
+      "snapshot_us": 8429,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "settings-exit",
+      "elapsed_us": 1097955,
+      "height": 660,
+      "name": "settings-exit-027.png",
+      "snapshot_us": 8758,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "settings-exit",
+      "elapsed_us": 1137619,
+      "height": 660,
+      "name": "settings-exit-028.png",
+      "snapshot_us": 8390,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "settings-exit",
+      "elapsed_us": 1178078,
+      "height": 660,
+      "name": "settings-exit-029.png",
+      "snapshot_us": 8631,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "settings-exit",
+      "elapsed_us": 1218600,
+      "height": 660,
+      "name": "settings-exit-030.png",
+      "snapshot_us": 8793,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "settings-exit",
+      "elapsed_us": 1259524,
+      "height": 660,
+      "name": "settings-exit-031.png",
+      "snapshot_us": 8317,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "settings-exit",
+      "elapsed_us": 1299624,
+      "height": 660,
+      "name": "settings-exit-032.png",
+      "snapshot_us": 8507,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "settings-exit",
+      "elapsed_us": 1339961,
+      "height": 660,
+      "name": "settings-exit-033.png",
+      "snapshot_us": 9093,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "settings-exit",
+      "elapsed_us": 1379513,
+      "height": 660,
+      "name": "settings-exit-034.png",
+      "snapshot_us": 8580,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "settings-exit",
+      "elapsed_us": 1419643,
+      "height": 660,
+      "name": "settings-exit-035.png",
+      "snapshot_us": 8480,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "custom-enter",
+      "elapsed_us": 163,
+      "height": 660,
+      "name": "custom-enter-000.png",
+      "snapshot_us": 9174,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "custom-enter",
+      "elapsed_us": 44850,
+      "height": 660,
+      "name": "custom-enter-001.png",
+      "snapshot_us": 14858,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "custom-enter",
+      "elapsed_us": 88899,
+      "height": 660,
+      "name": "custom-enter-002.png",
+      "snapshot_us": 13911,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "custom-enter",
+      "elapsed_us": 133409,
+      "height": 660,
+      "name": "custom-enter-003.png",
+      "snapshot_us": 15886,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "custom-enter",
+      "elapsed_us": 178185,
+      "height": 660,
+      "name": "custom-enter-004.png",
+      "snapshot_us": 16233,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "custom-enter",
+      "elapsed_us": 226171,
+      "height": 660,
+      "name": "custom-enter-005.png",
+      "snapshot_us": 14030,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "custom-enter",
+      "elapsed_us": 271529,
+      "height": 660,
+      "name": "custom-enter-006.png",
+      "snapshot_us": 13246,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "custom-enter",
+      "elapsed_us": 312019,
+      "height": 660,
+      "name": "custom-enter-007.png",
+      "snapshot_us": 14977,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "custom-enter",
+      "elapsed_us": 351625,
+      "height": 660,
+      "name": "custom-enter-008.png",
+      "snapshot_us": 12991,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "custom-enter",
+      "elapsed_us": 392024,
+      "height": 660,
+      "name": "custom-enter-009.png",
+      "snapshot_us": 13006,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "custom-enter",
+      "elapsed_us": 431977,
+      "height": 660,
+      "name": "custom-enter-010.png",
+      "snapshot_us": 13230,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "custom-enter",
+      "elapsed_us": 471687,
+      "height": 660,
+      "name": "custom-enter-011.png",
+      "snapshot_us": 13340,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "custom-enter",
+      "elapsed_us": 511850,
+      "height": 660,
+      "name": "custom-enter-012.png",
+      "snapshot_us": 13259,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "custom-enter",
+      "elapsed_us": 551871,
+      "height": 660,
+      "name": "custom-enter-013.png",
+      "snapshot_us": 13069,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "custom-enter",
+      "elapsed_us": 592962,
+      "height": 660,
+      "name": "custom-enter-014.png",
+      "snapshot_us": 13931,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "custom-enter",
+      "elapsed_us": 633355,
+      "height": 660,
+      "name": "custom-enter-015.png",
+      "snapshot_us": 12898,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "custom-enter",
+      "elapsed_us": 673930,
+      "height": 660,
+      "name": "custom-enter-016.png",
+      "snapshot_us": 12906,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "custom-enter",
+      "elapsed_us": 714518,
+      "height": 660,
+      "name": "custom-enter-017.png",
+      "snapshot_us": 12977,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "custom-enter",
+      "elapsed_us": 754921,
+      "height": 660,
+      "name": "custom-enter-018.png",
+      "snapshot_us": 13425,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "custom-enter",
+      "elapsed_us": 795288,
+      "height": 660,
+      "name": "custom-enter-019.png",
+      "snapshot_us": 13321,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "custom-enter",
+      "elapsed_us": 835878,
+      "height": 660,
+      "name": "custom-enter-020.png",
+      "snapshot_us": 13210,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "custom-enter",
+      "elapsed_us": 875901,
+      "height": 660,
+      "name": "custom-enter-021.png",
+      "snapshot_us": 13424,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "custom-enter",
+      "elapsed_us": 915851,
+      "height": 660,
+      "name": "custom-enter-022.png",
+      "snapshot_us": 13610,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "custom-enter",
+      "elapsed_us": 956283,
+      "height": 660,
+      "name": "custom-enter-023.png",
+      "snapshot_us": 13500,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "custom-enter",
+      "elapsed_us": 996338,
+      "height": 660,
+      "name": "custom-enter-024.png",
+      "snapshot_us": 13134,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "custom-enter",
+      "elapsed_us": 1036335,
+      "height": 660,
+      "name": "custom-enter-025.png",
+      "snapshot_us": 13741,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "custom-enter",
+      "elapsed_us": 1076052,
+      "height": 660,
+      "name": "custom-enter-026.png",
+      "snapshot_us": 12979,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "custom-enter",
+      "elapsed_us": 1115757,
+      "height": 660,
+      "name": "custom-enter-027.png",
+      "snapshot_us": 12912,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "custom-enter",
+      "elapsed_us": 1156650,
+      "height": 660,
+      "name": "custom-enter-028.png",
+      "snapshot_us": 12940,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "custom-enter",
+      "elapsed_us": 1197092,
+      "height": 660,
+      "name": "custom-enter-029.png",
+      "snapshot_us": 13274,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "custom-enter",
+      "elapsed_us": 1236986,
+      "height": 660,
+      "name": "custom-enter-030.png",
+      "snapshot_us": 13559,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "custom-enter",
+      "elapsed_us": 1277854,
+      "height": 660,
+      "name": "custom-enter-031.png",
+      "snapshot_us": 16166,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "custom-enter",
+      "elapsed_us": 1318481,
+      "height": 660,
+      "name": "custom-enter-032.png",
+      "snapshot_us": 13234,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "custom-enter",
+      "elapsed_us": 1359461,
+      "height": 660,
+      "name": "custom-enter-033.png",
+      "snapshot_us": 13811,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "custom-enter",
+      "elapsed_us": 1400214,
+      "height": 660,
+      "name": "custom-enter-034.png",
+      "snapshot_us": 13330,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "custom-enter",
+      "elapsed_us": 1440362,
+      "height": 660,
+      "name": "custom-enter-035.png",
+      "snapshot_us": 13857,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "custom-exit",
+      "elapsed_us": 1926,
+      "height": 660,
+      "name": "custom-exit-000.png",
+      "snapshot_us": 14492,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "custom-exit",
+      "elapsed_us": 45823,
+      "height": 660,
+      "name": "custom-exit-001.png",
+      "snapshot_us": 16517,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "custom-exit",
+      "elapsed_us": 92524,
+      "height": 660,
+      "name": "custom-exit-002.png",
+      "snapshot_us": 9296,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "custom-exit",
+      "elapsed_us": 132812,
+      "height": 660,
+      "name": "custom-exit-003.png",
+      "snapshot_us": 9608,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "custom-exit",
+      "elapsed_us": 173248,
+      "height": 660,
+      "name": "custom-exit-004.png",
+      "snapshot_us": 9792,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "custom-exit",
+      "elapsed_us": 212997,
+      "height": 660,
+      "name": "custom-exit-005.png",
+      "snapshot_us": 8422,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "custom-exit",
+      "elapsed_us": 253355,
+      "height": 660,
+      "name": "custom-exit-006.png",
+      "snapshot_us": 8474,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "custom-exit",
+      "elapsed_us": 294529,
+      "height": 660,
+      "name": "custom-exit-007.png",
+      "snapshot_us": 8498,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "custom-exit",
+      "elapsed_us": 335342,
+      "height": 660,
+      "name": "custom-exit-008.png",
+      "snapshot_us": 8424,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "custom-exit",
+      "elapsed_us": 376273,
+      "height": 660,
+      "name": "custom-exit-009.png",
+      "snapshot_us": 8501,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "custom-exit",
+      "elapsed_us": 416396,
+      "height": 660,
+      "name": "custom-exit-010.png",
+      "snapshot_us": 9669,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "custom-exit",
+      "elapsed_us": 457187,
+      "height": 660,
+      "name": "custom-exit-011.png",
+      "snapshot_us": 9336,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "custom-exit",
+      "elapsed_us": 496329,
+      "height": 660,
+      "name": "custom-exit-012.png",
+      "snapshot_us": 8411,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "custom-exit",
+      "elapsed_us": 536767,
+      "height": 660,
+      "name": "custom-exit-013.png",
+      "snapshot_us": 8431,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "custom-exit",
+      "elapsed_us": 577283,
+      "height": 660,
+      "name": "custom-exit-014.png",
+      "snapshot_us": 8454,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "custom-exit",
+      "elapsed_us": 617592,
+      "height": 660,
+      "name": "custom-exit-015.png",
+      "snapshot_us": 8478,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "custom-exit",
+      "elapsed_us": 657688,
+      "height": 660,
+      "name": "custom-exit-016.png",
+      "snapshot_us": 8364,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "custom-exit",
+      "elapsed_us": 697830,
+      "height": 660,
+      "name": "custom-exit-017.png",
+      "snapshot_us": 8369,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "custom-exit",
+      "elapsed_us": 737792,
+      "height": 660,
+      "name": "custom-exit-018.png",
+      "snapshot_us": 8519,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "custom-exit",
+      "elapsed_us": 777959,
+      "height": 660,
+      "name": "custom-exit-019.png",
+      "snapshot_us": 8340,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "custom-exit",
+      "elapsed_us": 818090,
+      "height": 660,
+      "name": "custom-exit-020.png",
+      "snapshot_us": 8371,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "custom-exit",
+      "elapsed_us": 858074,
+      "height": 660,
+      "name": "custom-exit-021.png",
+      "snapshot_us": 8358,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "custom-exit",
+      "elapsed_us": 898163,
+      "height": 660,
+      "name": "custom-exit-022.png",
+      "snapshot_us": 8589,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "custom-exit",
+      "elapsed_us": 938350,
+      "height": 660,
+      "name": "custom-exit-023.png",
+      "snapshot_us": 9066,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "custom-exit",
+      "elapsed_us": 979410,
+      "height": 660,
+      "name": "custom-exit-024.png",
+      "snapshot_us": 8541,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "custom-exit",
+      "elapsed_us": 1019922,
+      "height": 660,
+      "name": "custom-exit-025.png",
+      "snapshot_us": 8653,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "custom-exit",
+      "elapsed_us": 1060791,
+      "height": 660,
+      "name": "custom-exit-026.png",
+      "snapshot_us": 9161,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "custom-exit",
+      "elapsed_us": 1100494,
+      "height": 660,
+      "name": "custom-exit-027.png",
+      "snapshot_us": 8524,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "custom-exit",
+      "elapsed_us": 1141073,
+      "height": 660,
+      "name": "custom-exit-028.png",
+      "snapshot_us": 8431,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "custom-exit",
+      "elapsed_us": 1181194,
+      "height": 660,
+      "name": "custom-exit-029.png",
+      "snapshot_us": 8447,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "custom-exit",
+      "elapsed_us": 1221560,
+      "height": 660,
+      "name": "custom-exit-030.png",
+      "snapshot_us": 8899,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "custom-exit",
+      "elapsed_us": 1262014,
+      "height": 660,
+      "name": "custom-exit-031.png",
+      "snapshot_us": 8348,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "custom-exit",
+      "elapsed_us": 1302177,
+      "height": 660,
+      "name": "custom-exit-032.png",
+      "snapshot_us": 8438,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "custom-exit",
+      "elapsed_us": 1342310,
+      "height": 660,
+      "name": "custom-exit-033.png",
+      "snapshot_us": 9009,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "custom-exit",
+      "elapsed_us": 1382745,
+      "height": 660,
+      "name": "custom-exit-034.png",
+      "snapshot_us": 8539,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "custom-exit",
+      "elapsed_us": 1423236,
+      "height": 660,
+      "name": "custom-exit-035.png",
+      "snapshot_us": 8480,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "tile-hover",
+      "elapsed_us": 109,
+      "height": 660,
+      "name": "tile-hover-000.png",
+      "snapshot_us": 8380,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "tile-hover",
+      "elapsed_us": 39652,
+      "height": 660,
+      "name": "tile-hover-001.png",
+      "snapshot_us": 8682,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "tile-hover",
+      "elapsed_us": 79395,
+      "height": 660,
+      "name": "tile-hover-002.png",
+      "snapshot_us": 8762,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "tile-hover",
+      "elapsed_us": 119756,
+      "height": 660,
+      "name": "tile-hover-003.png",
+      "snapshot_us": 9202,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "tile-hover",
+      "elapsed_us": 159495,
+      "height": 660,
+      "name": "tile-hover-004.png",
+      "snapshot_us": 8504,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "tile-hover",
+      "elapsed_us": 199717,
+      "height": 660,
+      "name": "tile-hover-005.png",
+      "snapshot_us": 8805,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "tile-hover",
+      "elapsed_us": 240262,
+      "height": 660,
+      "name": "tile-hover-006.png",
+      "snapshot_us": 8828,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "tile-hover",
+      "elapsed_us": 281439,
+      "height": 660,
+      "name": "tile-hover-007.png",
+      "snapshot_us": 8985,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "tile-hover",
+      "elapsed_us": 322366,
+      "height": 660,
+      "name": "tile-hover-008.png",
+      "snapshot_us": 10031,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "tile-hover",
+      "elapsed_us": 362215,
+      "height": 660,
+      "name": "tile-hover-009.png",
+      "snapshot_us": 9394,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "tile-hover",
+      "elapsed_us": 402497,
+      "height": 660,
+      "name": "tile-hover-010.png",
+      "snapshot_us": 9549,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "tile-hover",
+      "elapsed_us": 442924,
+      "height": 660,
+      "name": "tile-hover-011.png",
+      "snapshot_us": 8338,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "tile-hover",
+      "elapsed_us": 483187,
+      "height": 660,
+      "name": "tile-hover-012.png",
+      "snapshot_us": 8858,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "tile-hover",
+      "elapsed_us": 523987,
+      "height": 660,
+      "name": "tile-hover-013.png",
+      "snapshot_us": 8634,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "tile-hover",
+      "elapsed_us": 563793,
+      "height": 660,
+      "name": "tile-hover-014.png",
+      "snapshot_us": 8398,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "tile-hover",
+      "elapsed_us": 603977,
+      "height": 660,
+      "name": "tile-hover-015.png",
+      "snapshot_us": 8637,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "tile-hover",
+      "elapsed_us": 643801,
+      "height": 660,
+      "name": "tile-hover-016.png",
+      "snapshot_us": 8538,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "tile-hover",
+      "elapsed_us": 683425,
+      "height": 660,
+      "name": "tile-hover-017.png",
+      "snapshot_us": 12602,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "tile-hover",
+      "elapsed_us": 724043,
+      "height": 660,
+      "name": "tile-hover-018.png",
+      "snapshot_us": 8409,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "tile-hover",
+      "elapsed_us": 763478,
+      "height": 660,
+      "name": "tile-hover-019.png",
+      "snapshot_us": 8555,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "tile-hover",
+      "elapsed_us": 803665,
+      "height": 660,
+      "name": "tile-hover-020.png",
+      "snapshot_us": 9058,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "tile-hover",
+      "elapsed_us": 843544,
+      "height": 660,
+      "name": "tile-hover-021.png",
+      "snapshot_us": 8435,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "tile-hover",
+      "elapsed_us": 883732,
+      "height": 660,
+      "name": "tile-hover-022.png",
+      "snapshot_us": 8485,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "tile-hover",
+      "elapsed_us": 924070,
+      "height": 660,
+      "name": "tile-hover-023.png",
+      "snapshot_us": 8368,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "tile-hover",
+      "elapsed_us": 965258,
+      "height": 660,
+      "name": "tile-hover-024.png",
+      "snapshot_us": 8626,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "tile-hover",
+      "elapsed_us": 1005894,
+      "height": 660,
+      "name": "tile-hover-025.png",
+      "snapshot_us": 8481,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "tile-hover",
+      "elapsed_us": 1046209,
+      "height": 660,
+      "name": "tile-hover-026.png",
+      "snapshot_us": 8442,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "tile-hover",
+      "elapsed_us": 1087725,
+      "height": 660,
+      "name": "tile-hover-027.png",
+      "snapshot_us": 8400,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "tile-hover",
+      "elapsed_us": 1127638,
+      "height": 660,
+      "name": "tile-hover-028.png",
+      "snapshot_us": 8633,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "tile-hover",
+      "elapsed_us": 1167888,
+      "height": 660,
+      "name": "tile-hover-029.png",
+      "snapshot_us": 8471,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "tile-hover",
+      "elapsed_us": 1208190,
+      "height": 660,
+      "name": "tile-hover-030.png",
+      "snapshot_us": 8861,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "tile-hover",
+      "elapsed_us": 1248571,
+      "height": 660,
+      "name": "tile-hover-031.png",
+      "snapshot_us": 8408,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "tile-hover",
+      "elapsed_us": 1288927,
+      "height": 660,
+      "name": "tile-hover-032.png",
+      "snapshot_us": 9163,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "tile-hover",
+      "elapsed_us": 1329022,
+      "height": 660,
+      "name": "tile-hover-033.png",
+      "snapshot_us": 8611,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "tile-hover",
+      "elapsed_us": 1369529,
+      "height": 660,
+      "name": "tile-hover-034.png",
+      "snapshot_us": 8439,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "tile-hover",
+      "elapsed_us": 1409487,
+      "height": 660,
+      "name": "tile-hover-035.png",
+      "snapshot_us": 8458,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "tile-press",
+      "elapsed_us": 130,
+      "height": 660,
+      "name": "tile-press-000.png",
+      "snapshot_us": 8631,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "tile-press",
+      "elapsed_us": 39649,
+      "height": 660,
+      "name": "tile-press-001.png",
+      "snapshot_us": 8522,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "tile-press",
+      "elapsed_us": 80031,
+      "height": 660,
+      "name": "tile-press-002.png",
+      "snapshot_us": 8447,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "tile-press",
+      "elapsed_us": 119574,
+      "height": 660,
+      "name": "tile-press-003.png",
+      "snapshot_us": 12033,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "tile-press",
+      "elapsed_us": 159841,
+      "height": 660,
+      "name": "tile-press-004.png",
+      "snapshot_us": 8613,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "tile-press",
+      "elapsed_us": 199384,
+      "height": 660,
+      "name": "tile-press-005.png",
+      "snapshot_us": 8713,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "tile-press",
+      "elapsed_us": 240173,
+      "height": 660,
+      "name": "tile-press-006.png",
+      "snapshot_us": 10075,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "tile-press",
+      "elapsed_us": 281156,
+      "height": 660,
+      "name": "tile-press-007.png",
+      "snapshot_us": 8428,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "tile-press",
+      "elapsed_us": 321728,
+      "height": 660,
+      "name": "tile-press-008.png",
+      "snapshot_us": 8535,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "tile-press",
+      "elapsed_us": 361853,
+      "height": 660,
+      "name": "tile-press-009.png",
+      "snapshot_us": 8370,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "tile-press",
+      "elapsed_us": 401364,
+      "height": 660,
+      "name": "tile-press-010.png",
+      "snapshot_us": 9745,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "tile-press",
+      "elapsed_us": 442230,
+      "height": 660,
+      "name": "tile-press-011.png",
+      "snapshot_us": 8723,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "tile-press",
+      "elapsed_us": 482439,
+      "height": 660,
+      "name": "tile-press-012.png",
+      "snapshot_us": 8463,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "tile-press",
+      "elapsed_us": 522729,
+      "height": 660,
+      "name": "tile-press-013.png",
+      "snapshot_us": 9785,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "tile-press",
+      "elapsed_us": 562201,
+      "height": 660,
+      "name": "tile-press-014.png",
+      "snapshot_us": 8390,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "tile-press",
+      "elapsed_us": 602706,
+      "height": 660,
+      "name": "tile-press-015.png",
+      "snapshot_us": 10106,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "tile-press",
+      "elapsed_us": 642803,
+      "height": 660,
+      "name": "tile-press-016.png",
+      "snapshot_us": 9046,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "tile-press",
+      "elapsed_us": 682836,
+      "height": 660,
+      "name": "tile-press-017.png",
+      "snapshot_us": 8481,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "tile-press",
+      "elapsed_us": 723277,
+      "height": 660,
+      "name": "tile-press-018.png",
+      "snapshot_us": 8958,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "tile-press",
+      "elapsed_us": 764299,
+      "height": 660,
+      "name": "tile-press-019.png",
+      "snapshot_us": 8368,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "tile-press",
+      "elapsed_us": 804714,
+      "height": 660,
+      "name": "tile-press-020.png",
+      "snapshot_us": 8542,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "tile-press",
+      "elapsed_us": 844972,
+      "height": 660,
+      "name": "tile-press-021.png",
+      "snapshot_us": 8625,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "tile-press",
+      "elapsed_us": 885246,
+      "height": 660,
+      "name": "tile-press-022.png",
+      "snapshot_us": 8292,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "tile-press",
+      "elapsed_us": 926402,
+      "height": 660,
+      "name": "tile-press-023.png",
+      "snapshot_us": 11031,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "tile-press",
+      "elapsed_us": 967361,
+      "height": 660,
+      "name": "tile-press-024.png",
+      "snapshot_us": 8545,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "tile-press",
+      "elapsed_us": 1007387,
+      "height": 660,
+      "name": "tile-press-025.png",
+      "snapshot_us": 8954,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "tile-press",
+      "elapsed_us": 1047800,
+      "height": 660,
+      "name": "tile-press-026.png",
+      "snapshot_us": 8475,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "tile-press",
+      "elapsed_us": 1087902,
+      "height": 660,
+      "name": "tile-press-027.png",
+      "snapshot_us": 9036,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "tile-press",
+      "elapsed_us": 1127496,
+      "height": 660,
+      "name": "tile-press-028.png",
+      "snapshot_us": 8406,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "tile-press",
+      "elapsed_us": 1167757,
+      "height": 660,
+      "name": "tile-press-029.png",
+      "snapshot_us": 8620,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "tile-press",
+      "elapsed_us": 1208413,
+      "height": 660,
+      "name": "tile-press-030.png",
+      "snapshot_us": 8467,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "tile-press",
+      "elapsed_us": 1248324,
+      "height": 660,
+      "name": "tile-press-031.png",
+      "snapshot_us": 8424,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "tile-press",
+      "elapsed_us": 1288439,
+      "height": 660,
+      "name": "tile-press-032.png",
+      "snapshot_us": 8782,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "tile-press",
+      "elapsed_us": 1328698,
+      "height": 660,
+      "name": "tile-press-033.png",
+      "snapshot_us": 8521,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "tile-press",
+      "elapsed_us": 1370150,
+      "height": 660,
+      "name": "tile-press-034.png",
+      "snapshot_us": 15959,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "tile-press",
+      "elapsed_us": 1410957,
+      "height": 660,
+      "name": "tile-press-035.png",
+      "snapshot_us": 12460,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "gear-hover",
+      "elapsed_us": 98,
+      "height": 660,
+      "name": "gear-hover-000.png",
+      "snapshot_us": 8590,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "gear-hover",
+      "elapsed_us": 40505,
+      "height": 660,
+      "name": "gear-hover-001.png",
+      "snapshot_us": 9030,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "gear-hover",
+      "elapsed_us": 81033,
+      "height": 660,
+      "name": "gear-hover-002.png",
+      "snapshot_us": 12727,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "gear-hover",
+      "elapsed_us": 121313,
+      "height": 660,
+      "name": "gear-hover-003.png",
+      "snapshot_us": 9561,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "gear-hover",
+      "elapsed_us": 162253,
+      "height": 660,
+      "name": "gear-hover-004.png",
+      "snapshot_us": 9718,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "gear-hover",
+      "elapsed_us": 203160,
+      "height": 660,
+      "name": "gear-hover-005.png",
+      "snapshot_us": 11453,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "gear-hover",
+      "elapsed_us": 244033,
+      "height": 660,
+      "name": "gear-hover-006.png",
+      "snapshot_us": 9379,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "gear-hover",
+      "elapsed_us": 283739,
+      "height": 660,
+      "name": "gear-hover-007.png",
+      "snapshot_us": 9475,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "gear-hover",
+      "elapsed_us": 323719,
+      "height": 660,
+      "name": "gear-hover-008.png",
+      "snapshot_us": 9921,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "gear-hover",
+      "elapsed_us": 364363,
+      "height": 660,
+      "name": "gear-hover-009.png",
+      "snapshot_us": 10315,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "gear-hover",
+      "elapsed_us": 404994,
+      "height": 660,
+      "name": "gear-hover-010.png",
+      "snapshot_us": 10386,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "gear-hover",
+      "elapsed_us": 445039,
+      "height": 660,
+      "name": "gear-hover-011.png",
+      "snapshot_us": 8693,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "gear-hover",
+      "elapsed_us": 484712,
+      "height": 660,
+      "name": "gear-hover-012.png",
+      "snapshot_us": 8658,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "gear-hover",
+      "elapsed_us": 525142,
+      "height": 660,
+      "name": "gear-hover-013.png",
+      "snapshot_us": 8551,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "gear-hover",
+      "elapsed_us": 566498,
+      "height": 660,
+      "name": "gear-hover-014.png",
+      "snapshot_us": 8814,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "gear-hover",
+      "elapsed_us": 607105,
+      "height": 660,
+      "name": "gear-hover-015.png",
+      "snapshot_us": 8447,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "gear-hover",
+      "elapsed_us": 647335,
+      "height": 660,
+      "name": "gear-hover-016.png",
+      "snapshot_us": 8757,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "gear-hover",
+      "elapsed_us": 687757,
+      "height": 660,
+      "name": "gear-hover-017.png",
+      "snapshot_us": 8706,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "gear-hover",
+      "elapsed_us": 728367,
+      "height": 660,
+      "name": "gear-hover-018.png",
+      "snapshot_us": 8596,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "gear-hover",
+      "elapsed_us": 768647,
+      "height": 660,
+      "name": "gear-hover-019.png",
+      "snapshot_us": 12959,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "gear-hover",
+      "elapsed_us": 808786,
+      "height": 660,
+      "name": "gear-hover-020.png",
+      "snapshot_us": 8491,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "gear-hover",
+      "elapsed_us": 849126,
+      "height": 660,
+      "name": "gear-hover-021.png",
+      "snapshot_us": 12152,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "gear-hover",
+      "elapsed_us": 888774,
+      "height": 660,
+      "name": "gear-hover-022.png",
+      "snapshot_us": 8995,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "gear-hover",
+      "elapsed_us": 928475,
+      "height": 660,
+      "name": "gear-hover-023.png",
+      "snapshot_us": 8695,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "gear-hover",
+      "elapsed_us": 968841,
+      "height": 660,
+      "name": "gear-hover-024.png",
+      "snapshot_us": 8853,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "gear-hover",
+      "elapsed_us": 1008418,
+      "height": 660,
+      "name": "gear-hover-025.png",
+      "snapshot_us": 9063,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "gear-hover",
+      "elapsed_us": 1049560,
+      "height": 660,
+      "name": "gear-hover-026.png",
+      "snapshot_us": 8582,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "gear-hover",
+      "elapsed_us": 1089978,
+      "height": 660,
+      "name": "gear-hover-027.png",
+      "snapshot_us": 8596,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "gear-hover",
+      "elapsed_us": 1130157,
+      "height": 660,
+      "name": "gear-hover-028.png",
+      "snapshot_us": 9904,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "gear-hover",
+      "elapsed_us": 1170794,
+      "height": 660,
+      "name": "gear-hover-029.png",
+      "snapshot_us": 8431,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "gear-hover",
+      "elapsed_us": 1211244,
+      "height": 660,
+      "name": "gear-hover-030.png",
+      "snapshot_us": 8444,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "gear-hover",
+      "elapsed_us": 1251843,
+      "height": 660,
+      "name": "gear-hover-031.png",
+      "snapshot_us": 9224,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "gear-hover",
+      "elapsed_us": 1292081,
+      "height": 660,
+      "name": "gear-hover-032.png",
+      "snapshot_us": 9042,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "gear-hover",
+      "elapsed_us": 1331223,
+      "height": 660,
+      "name": "gear-hover-033.png",
+      "snapshot_us": 8477,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "gear-hover",
+      "elapsed_us": 1371563,
+      "height": 660,
+      "name": "gear-hover-034.png",
+      "snapshot_us": 8779,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "gear-hover",
+      "elapsed_us": 1411425,
+      "height": 660,
+      "name": "gear-hover-035.png",
+      "snapshot_us": 8833,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "scanning",
+      "elapsed_us": 3,
+      "height": 660,
+      "name": "scanning-000.png",
+      "snapshot_us": 15114,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "scanning",
+      "elapsed_us": 39798,
+      "height": 660,
+      "name": "scanning-001.png",
+      "snapshot_us": 12104,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "scanning",
+      "elapsed_us": 80303,
+      "height": 660,
+      "name": "scanning-002.png",
+      "snapshot_us": 10027,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "scanning",
+      "elapsed_us": 120519,
+      "height": 660,
+      "name": "scanning-003.png",
+      "snapshot_us": 10372,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "scanning",
+      "elapsed_us": 161254,
+      "height": 660,
+      "name": "scanning-004.png",
+      "snapshot_us": 11484,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "scanning",
+      "elapsed_us": 201671,
+      "height": 660,
+      "name": "scanning-005.png",
+      "snapshot_us": 13627,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "scanning",
+      "elapsed_us": 241814,
+      "height": 660,
+      "name": "scanning-006.png",
+      "snapshot_us": 11792,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "scanning",
+      "elapsed_us": 281663,
+      "height": 660,
+      "name": "scanning-007.png",
+      "snapshot_us": 12856,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "scanning",
+      "elapsed_us": 322127,
+      "height": 660,
+      "name": "scanning-008.png",
+      "snapshot_us": 9878,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "scanning",
+      "elapsed_us": 362897,
+      "height": 660,
+      "name": "scanning-009.png",
+      "snapshot_us": 11804,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "scanning",
+      "elapsed_us": 403045,
+      "height": 660,
+      "name": "scanning-010.png",
+      "snapshot_us": 8964,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "scanning",
+      "elapsed_us": 443870,
+      "height": 660,
+      "name": "scanning-011.png",
+      "snapshot_us": 11122,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "scanning",
+      "elapsed_us": 483461,
+      "height": 660,
+      "name": "scanning-012.png",
+      "snapshot_us": 10144,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "scanning",
+      "elapsed_us": 523977,
+      "height": 660,
+      "name": "scanning-013.png",
+      "snapshot_us": 8903,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "scanning",
+      "elapsed_us": 563589,
+      "height": 660,
+      "name": "scanning-014.png",
+      "snapshot_us": 10037,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "scanning",
+      "elapsed_us": 604356,
+      "height": 660,
+      "name": "scanning-015.png",
+      "snapshot_us": 9315,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "scanning",
+      "elapsed_us": 645038,
+      "height": 660,
+      "name": "scanning-016.png",
+      "snapshot_us": 10143,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "scanning",
+      "elapsed_us": 684340,
+      "height": 660,
+      "name": "scanning-017.png",
+      "snapshot_us": 10148,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "scanning",
+      "elapsed_us": 724478,
+      "height": 660,
+      "name": "scanning-018.png",
+      "snapshot_us": 8896,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "scanning",
+      "elapsed_us": 764583,
+      "height": 660,
+      "name": "scanning-019.png",
+      "snapshot_us": 9329,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "scanning",
+      "elapsed_us": 805044,
+      "height": 660,
+      "name": "scanning-020.png",
+      "snapshot_us": 8662,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "scanning",
+      "elapsed_us": 845412,
+      "height": 660,
+      "name": "scanning-021.png",
+      "snapshot_us": 9666,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "scanning",
+      "elapsed_us": 886084,
+      "height": 660,
+      "name": "scanning-022.png",
+      "snapshot_us": 12406,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "scanning",
+      "elapsed_us": 927319,
+      "height": 660,
+      "name": "scanning-023.png",
+      "snapshot_us": 9386,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "scanning",
+      "elapsed_us": 967767,
+      "height": 660,
+      "name": "scanning-024.png",
+      "snapshot_us": 12171,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "scanning",
+      "elapsed_us": 1007819,
+      "height": 660,
+      "name": "scanning-025.png",
+      "snapshot_us": 9355,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "scanning",
+      "elapsed_us": 1047633,
+      "height": 660,
+      "name": "scanning-026.png",
+      "snapshot_us": 9438,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "scanning",
+      "elapsed_us": 1087525,
+      "height": 660,
+      "name": "scanning-027.png",
+      "snapshot_us": 8644,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "scanning",
+      "elapsed_us": 1127466,
+      "height": 660,
+      "name": "scanning-028.png",
+      "snapshot_us": 8785,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "scanning",
+      "elapsed_us": 1167639,
+      "height": 660,
+      "name": "scanning-029.png",
+      "snapshot_us": 8880,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "scanning",
+      "elapsed_us": 1208163,
+      "height": 660,
+      "name": "scanning-030.png",
+      "snapshot_us": 8517,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "scanning",
+      "elapsed_us": 1248977,
+      "height": 660,
+      "name": "scanning-031.png",
+      "snapshot_us": 8889,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "scanning",
+      "elapsed_us": 1288728,
+      "height": 660,
+      "name": "scanning-032.png",
+      "snapshot_us": 8828,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "scanning",
+      "elapsed_us": 1329073,
+      "height": 660,
+      "name": "scanning-033.png",
+      "snapshot_us": 8606,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "scanning",
+      "elapsed_us": 1369797,
+      "height": 660,
+      "name": "scanning-034.png",
+      "snapshot_us": 9274,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "scanning",
+      "elapsed_us": 1409648,
+      "height": 660,
+      "name": "scanning-035.png",
+      "snapshot_us": 8784,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "recording",
+      "elapsed_us": 1,
+      "height": 660,
+      "name": "recording-000.png",
+      "snapshot_us": 14159,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "recording",
+      "elapsed_us": 40227,
+      "height": 660,
+      "name": "recording-001.png",
+      "snapshot_us": 13842,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "recording",
+      "elapsed_us": 80929,
+      "height": 660,
+      "name": "recording-002.png",
+      "snapshot_us": 14049,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "recording",
+      "elapsed_us": 121390,
+      "height": 660,
+      "name": "recording-003.png",
+      "snapshot_us": 15391,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "recording",
+      "elapsed_us": 161994,
+      "height": 660,
+      "name": "recording-004.png",
+      "snapshot_us": 13343,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "recording",
+      "elapsed_us": 201874,
+      "height": 660,
+      "name": "recording-005.png",
+      "snapshot_us": 14944,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "recording",
+      "elapsed_us": 242047,
+      "height": 660,
+      "name": "recording-006.png",
+      "snapshot_us": 13466,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "recording",
+      "elapsed_us": 282519,
+      "height": 660,
+      "name": "recording-007.png",
+      "snapshot_us": 13499,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "recording",
+      "elapsed_us": 323589,
+      "height": 660,
+      "name": "recording-008.png",
+      "snapshot_us": 13950,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "recording",
+      "elapsed_us": 363853,
+      "height": 660,
+      "name": "recording-009.png",
+      "snapshot_us": 13532,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "recording",
+      "elapsed_us": 404039,
+      "height": 660,
+      "name": "recording-010.png",
+      "snapshot_us": 13696,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "recording",
+      "elapsed_us": 443926,
+      "height": 660,
+      "name": "recording-011.png",
+      "snapshot_us": 13735,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "recording",
+      "elapsed_us": 483450,
+      "height": 660,
+      "name": "recording-012.png",
+      "snapshot_us": 13351,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "recording",
+      "elapsed_us": 524168,
+      "height": 660,
+      "name": "recording-013.png",
+      "snapshot_us": 13273,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "recording",
+      "elapsed_us": 564104,
+      "height": 660,
+      "name": "recording-014.png",
+      "snapshot_us": 13463,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "recording",
+      "elapsed_us": 604621,
+      "height": 660,
+      "name": "recording-015.png",
+      "snapshot_us": 13846,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "recording",
+      "elapsed_us": 645376,
+      "height": 660,
+      "name": "recording-016.png",
+      "snapshot_us": 13524,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "recording",
+      "elapsed_us": 685962,
+      "height": 660,
+      "name": "recording-017.png",
+      "snapshot_us": 13117,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "recording",
+      "elapsed_us": 726164,
+      "height": 660,
+      "name": "recording-018.png",
+      "snapshot_us": 13248,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "recording",
+      "elapsed_us": 766026,
+      "height": 660,
+      "name": "recording-019.png",
+      "snapshot_us": 14524,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "recording",
+      "elapsed_us": 805687,
+      "height": 660,
+      "name": "recording-020.png",
+      "snapshot_us": 14125,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "recording",
+      "elapsed_us": 846669,
+      "height": 660,
+      "name": "recording-021.png",
+      "snapshot_us": 12960,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "recording",
+      "elapsed_us": 886683,
+      "height": 660,
+      "name": "recording-022.png",
+      "snapshot_us": 13459,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "recording",
+      "elapsed_us": 926769,
+      "height": 660,
+      "name": "recording-023.png",
+      "snapshot_us": 12847,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "recording",
+      "elapsed_us": 967306,
+      "height": 660,
+      "name": "recording-024.png",
+      "snapshot_us": 12880,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "recording",
+      "elapsed_us": 1008307,
+      "height": 660,
+      "name": "recording-025.png",
+      "snapshot_us": 13944,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "recording",
+      "elapsed_us": 1048662,
+      "height": 660,
+      "name": "recording-026.png",
+      "snapshot_us": 13118,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "recording",
+      "elapsed_us": 1088932,
+      "height": 660,
+      "name": "recording-027.png",
+      "snapshot_us": 12979,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "recording",
+      "elapsed_us": 1129383,
+      "height": 660,
+      "name": "recording-028.png",
+      "snapshot_us": 13433,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "recording",
+      "elapsed_us": 1169950,
+      "height": 660,
+      "name": "recording-029.png",
+      "snapshot_us": 15152,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "recording",
+      "elapsed_us": 1210492,
+      "height": 660,
+      "name": "recording-030.png",
+      "snapshot_us": 13871,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "recording",
+      "elapsed_us": 1251140,
+      "height": 660,
+      "name": "recording-031.png",
+      "snapshot_us": 12847,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "recording",
+      "elapsed_us": 1291247,
+      "height": 660,
+      "name": "recording-032.png",
+      "snapshot_us": 13861,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "recording",
+      "elapsed_us": 1332118,
+      "height": 660,
+      "name": "recording-033.png",
+      "snapshot_us": 12756,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "recording",
+      "elapsed_us": 1371794,
+      "height": 660,
+      "name": "recording-034.png",
+      "snapshot_us": 13327,
+      "width": 640
+    },
+    {
+      "active_animations": true,
+      "clip": "recording",
+      "elapsed_us": 1412418,
+      "height": 660,
+      "name": "recording-035.png",
+      "snapshot_us": 13741,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-scanning",
+      "elapsed_us": 1,
+      "height": 660,
+      "name": "reduced-scanning-000.png",
+      "snapshot_us": 8656,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-scanning",
+      "elapsed_us": 40359,
+      "height": 660,
+      "name": "reduced-scanning-001.png",
+      "snapshot_us": 8837,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-scanning",
+      "elapsed_us": 80283,
+      "height": 660,
+      "name": "reduced-scanning-002.png",
+      "snapshot_us": 8556,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-scanning",
+      "elapsed_us": 120085,
+      "height": 660,
+      "name": "reduced-scanning-003.png",
+      "snapshot_us": 8424,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-scanning",
+      "elapsed_us": 160811,
+      "height": 660,
+      "name": "reduced-scanning-004.png",
+      "snapshot_us": 8276,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-scanning",
+      "elapsed_us": 201972,
+      "height": 660,
+      "name": "reduced-scanning-005.png",
+      "snapshot_us": 8661,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-scanning",
+      "elapsed_us": 242562,
+      "height": 660,
+      "name": "reduced-scanning-006.png",
+      "snapshot_us": 8299,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-scanning",
+      "elapsed_us": 283966,
+      "height": 660,
+      "name": "reduced-scanning-007.png",
+      "snapshot_us": 8843,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-scanning",
+      "elapsed_us": 324769,
+      "height": 660,
+      "name": "reduced-scanning-008.png",
+      "snapshot_us": 8421,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-scanning",
+      "elapsed_us": 364986,
+      "height": 660,
+      "name": "reduced-scanning-009.png",
+      "snapshot_us": 9486,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-scanning",
+      "elapsed_us": 405751,
+      "height": 660,
+      "name": "reduced-scanning-010.png",
+      "snapshot_us": 8603,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-scanning",
+      "elapsed_us": 445905,
+      "height": 660,
+      "name": "reduced-scanning-011.png",
+      "snapshot_us": 8505,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-scanning",
+      "elapsed_us": 486526,
+      "height": 660,
+      "name": "reduced-scanning-012.png",
+      "snapshot_us": 8415,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-scanning",
+      "elapsed_us": 526780,
+      "height": 660,
+      "name": "reduced-scanning-013.png",
+      "snapshot_us": 8293,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-scanning",
+      "elapsed_us": 568008,
+      "height": 660,
+      "name": "reduced-scanning-014.png",
+      "snapshot_us": 8463,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-scanning",
+      "elapsed_us": 608076,
+      "height": 660,
+      "name": "reduced-scanning-015.png",
+      "snapshot_us": 8396,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-scanning",
+      "elapsed_us": 647921,
+      "height": 660,
+      "name": "reduced-scanning-016.png",
+      "snapshot_us": 8499,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-scanning",
+      "elapsed_us": 688163,
+      "height": 660,
+      "name": "reduced-scanning-017.png",
+      "snapshot_us": 8534,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-scanning",
+      "elapsed_us": 728352,
+      "height": 660,
+      "name": "reduced-scanning-018.png",
+      "snapshot_us": 8430,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-scanning",
+      "elapsed_us": 768741,
+      "height": 660,
+      "name": "reduced-scanning-019.png",
+      "snapshot_us": 8525,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-scanning",
+      "elapsed_us": 808796,
+      "height": 660,
+      "name": "reduced-scanning-020.png",
+      "snapshot_us": 8321,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-scanning",
+      "elapsed_us": 849987,
+      "height": 660,
+      "name": "reduced-scanning-021.png",
+      "snapshot_us": 8447,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-scanning",
+      "elapsed_us": 890207,
+      "height": 660,
+      "name": "reduced-scanning-022.png",
+      "snapshot_us": 8349,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-scanning",
+      "elapsed_us": 930166,
+      "height": 660,
+      "name": "reduced-scanning-023.png",
+      "snapshot_us": 8510,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-scanning",
+      "elapsed_us": 970763,
+      "height": 660,
+      "name": "reduced-scanning-024.png",
+      "snapshot_us": 8681,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-scanning",
+      "elapsed_us": 1010997,
+      "height": 660,
+      "name": "reduced-scanning-025.png",
+      "snapshot_us": 8393,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-scanning",
+      "elapsed_us": 1051170,
+      "height": 660,
+      "name": "reduced-scanning-026.png",
+      "snapshot_us": 8505,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-scanning",
+      "elapsed_us": 1091486,
+      "height": 660,
+      "name": "reduced-scanning-027.png",
+      "snapshot_us": 8426,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-scanning",
+      "elapsed_us": 1131535,
+      "height": 660,
+      "name": "reduced-scanning-028.png",
+      "snapshot_us": 8524,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-scanning",
+      "elapsed_us": 1171065,
+      "height": 660,
+      "name": "reduced-scanning-029.png",
+      "snapshot_us": 8895,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-scanning",
+      "elapsed_us": 1211699,
+      "height": 660,
+      "name": "reduced-scanning-030.png",
+      "snapshot_us": 8377,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-scanning",
+      "elapsed_us": 1252004,
+      "height": 660,
+      "name": "reduced-scanning-031.png",
+      "snapshot_us": 8540,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-scanning",
+      "elapsed_us": 1292753,
+      "height": 660,
+      "name": "reduced-scanning-032.png",
+      "snapshot_us": 8381,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-scanning",
+      "elapsed_us": 1333796,
+      "height": 660,
+      "name": "reduced-scanning-033.png",
+      "snapshot_us": 8729,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-scanning",
+      "elapsed_us": 1374315,
+      "height": 660,
+      "name": "reduced-scanning-034.png",
+      "snapshot_us": 9952,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-scanning",
+      "elapsed_us": 1413924,
+      "height": 660,
+      "name": "reduced-scanning-035.png",
+      "snapshot_us": 8384,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "hidden-scanning",
+      "elapsed_us": 1,
+      "height": 660,
+      "name": "hidden-scanning-000.png",
+      "snapshot_us": 7908,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "hidden-scanning",
+      "elapsed_us": 39796,
+      "height": 660,
+      "name": "hidden-scanning-001.png",
+      "snapshot_us": 7914,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "hidden-scanning",
+      "elapsed_us": 79666,
+      "height": 660,
+      "name": "hidden-scanning-002.png",
+      "snapshot_us": 7918,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "hidden-scanning",
+      "elapsed_us": 119868,
+      "height": 660,
+      "name": "hidden-scanning-003.png",
+      "snapshot_us": 7765,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "hidden-scanning",
+      "elapsed_us": 160339,
+      "height": 660,
+      "name": "hidden-scanning-004.png",
+      "snapshot_us": 8382,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "hidden-scanning",
+      "elapsed_us": 200950,
+      "height": 660,
+      "name": "hidden-scanning-005.png",
+      "snapshot_us": 8203,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "hidden-scanning",
+      "elapsed_us": 241138,
+      "height": 660,
+      "name": "hidden-scanning-006.png",
+      "snapshot_us": 8019,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "hidden-scanning",
+      "elapsed_us": 281596,
+      "height": 660,
+      "name": "hidden-scanning-007.png",
+      "snapshot_us": 8440,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "hidden-scanning",
+      "elapsed_us": 321628,
+      "height": 660,
+      "name": "hidden-scanning-008.png",
+      "snapshot_us": 7942,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "hidden-scanning",
+      "elapsed_us": 362547,
+      "height": 660,
+      "name": "hidden-scanning-009.png",
+      "snapshot_us": 8095,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "hidden-scanning",
+      "elapsed_us": 402460,
+      "height": 660,
+      "name": "hidden-scanning-010.png",
+      "snapshot_us": 8018,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "hidden-scanning",
+      "elapsed_us": 443440,
+      "height": 660,
+      "name": "hidden-scanning-011.png",
+      "snapshot_us": 7954,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "hidden-scanning",
+      "elapsed_us": 483939,
+      "height": 660,
+      "name": "hidden-scanning-012.png",
+      "snapshot_us": 8151,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "hidden-scanning",
+      "elapsed_us": 523791,
+      "height": 660,
+      "name": "hidden-scanning-013.png",
+      "snapshot_us": 7779,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "hidden-scanning",
+      "elapsed_us": 564204,
+      "height": 660,
+      "name": "hidden-scanning-014.png",
+      "snapshot_us": 8020,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "hidden-scanning",
+      "elapsed_us": 605074,
+      "height": 660,
+      "name": "hidden-scanning-015.png",
+      "snapshot_us": 8224,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "hidden-scanning",
+      "elapsed_us": 645193,
+      "height": 660,
+      "name": "hidden-scanning-016.png",
+      "snapshot_us": 8058,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "hidden-scanning",
+      "elapsed_us": 686262,
+      "height": 660,
+      "name": "hidden-scanning-017.png",
+      "snapshot_us": 7886,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "hidden-scanning",
+      "elapsed_us": 726569,
+      "height": 660,
+      "name": "hidden-scanning-018.png",
+      "snapshot_us": 8119,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "hidden-scanning",
+      "elapsed_us": 766304,
+      "height": 660,
+      "name": "hidden-scanning-019.png",
+      "snapshot_us": 8049,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "hidden-scanning",
+      "elapsed_us": 807250,
+      "height": 660,
+      "name": "hidden-scanning-020.png",
+      "snapshot_us": 7866,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "hidden-scanning",
+      "elapsed_us": 847573,
+      "height": 660,
+      "name": "hidden-scanning-021.png",
+      "snapshot_us": 8286,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "hidden-scanning",
+      "elapsed_us": 887791,
+      "height": 660,
+      "name": "hidden-scanning-022.png",
+      "snapshot_us": 7906,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "hidden-scanning",
+      "elapsed_us": 928390,
+      "height": 660,
+      "name": "hidden-scanning-023.png",
+      "snapshot_us": 7968,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "hidden-scanning",
+      "elapsed_us": 969251,
+      "height": 660,
+      "name": "hidden-scanning-024.png",
+      "snapshot_us": 8048,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "hidden-scanning",
+      "elapsed_us": 1010047,
+      "height": 660,
+      "name": "hidden-scanning-025.png",
+      "snapshot_us": 7977,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "hidden-scanning",
+      "elapsed_us": 1049596,
+      "height": 660,
+      "name": "hidden-scanning-026.png",
+      "snapshot_us": 8524,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "hidden-scanning",
+      "elapsed_us": 1089745,
+      "height": 660,
+      "name": "hidden-scanning-027.png",
+      "snapshot_us": 8261,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "hidden-scanning",
+      "elapsed_us": 1129962,
+      "height": 660,
+      "name": "hidden-scanning-028.png",
+      "snapshot_us": 7990,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "hidden-scanning",
+      "elapsed_us": 1170104,
+      "height": 660,
+      "name": "hidden-scanning-029.png",
+      "snapshot_us": 8552,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "hidden-scanning",
+      "elapsed_us": 1211225,
+      "height": 660,
+      "name": "hidden-scanning-030.png",
+      "snapshot_us": 7860,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "hidden-scanning",
+      "elapsed_us": 1251723,
+      "height": 660,
+      "name": "hidden-scanning-031.png",
+      "snapshot_us": 8031,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "hidden-scanning",
+      "elapsed_us": 1291829,
+      "height": 660,
+      "name": "hidden-scanning-032.png",
+      "snapshot_us": 8139,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "hidden-scanning",
+      "elapsed_us": 1331722,
+      "height": 660,
+      "name": "hidden-scanning-033.png",
+      "snapshot_us": 8732,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "hidden-scanning",
+      "elapsed_us": 1371680,
+      "height": 660,
+      "name": "hidden-scanning-034.png",
+      "snapshot_us": 8100,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "hidden-scanning",
+      "elapsed_us": 1411381,
+      "height": 660,
+      "name": "hidden-scanning-035.png",
+      "snapshot_us": 7900,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-hover",
+      "elapsed_us": 108,
+      "height": 660,
+      "name": "reduced-hover-000.png",
+      "snapshot_us": 8442,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-hover",
+      "elapsed_us": 40516,
+      "height": 660,
+      "name": "reduced-hover-001.png",
+      "snapshot_us": 8944,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-hover",
+      "elapsed_us": 81115,
+      "height": 660,
+      "name": "reduced-hover-002.png",
+      "snapshot_us": 8418,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-hover",
+      "elapsed_us": 121113,
+      "height": 660,
+      "name": "reduced-hover-003.png",
+      "snapshot_us": 8477,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-hover",
+      "elapsed_us": 161598,
+      "height": 660,
+      "name": "reduced-hover-004.png",
+      "snapshot_us": 8435,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-hover",
+      "elapsed_us": 201975,
+      "height": 660,
+      "name": "reduced-hover-005.png",
+      "snapshot_us": 8340,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-hover",
+      "elapsed_us": 242041,
+      "height": 660,
+      "name": "reduced-hover-006.png",
+      "snapshot_us": 8749,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-hover",
+      "elapsed_us": 281935,
+      "height": 660,
+      "name": "reduced-hover-007.png",
+      "snapshot_us": 8578,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-hover",
+      "elapsed_us": 322350,
+      "height": 660,
+      "name": "reduced-hover-008.png",
+      "snapshot_us": 8455,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-hover",
+      "elapsed_us": 363519,
+      "height": 660,
+      "name": "reduced-hover-009.png",
+      "snapshot_us": 8267,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-hover",
+      "elapsed_us": 404582,
+      "height": 660,
+      "name": "reduced-hover-010.png",
+      "snapshot_us": 8610,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-hover",
+      "elapsed_us": 444659,
+      "height": 660,
+      "name": "reduced-hover-011.png",
+      "snapshot_us": 8419,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-hover",
+      "elapsed_us": 484934,
+      "height": 660,
+      "name": "reduced-hover-012.png",
+      "snapshot_us": 9083,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-hover",
+      "elapsed_us": 524775,
+      "height": 660,
+      "name": "reduced-hover-013.png",
+      "snapshot_us": 8922,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-hover",
+      "elapsed_us": 565419,
+      "height": 660,
+      "name": "reduced-hover-014.png",
+      "snapshot_us": 8627,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-hover",
+      "elapsed_us": 605732,
+      "height": 660,
+      "name": "reduced-hover-015.png",
+      "snapshot_us": 8485,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-hover",
+      "elapsed_us": 645675,
+      "height": 660,
+      "name": "reduced-hover-016.png",
+      "snapshot_us": 8810,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-hover",
+      "elapsed_us": 686526,
+      "height": 660,
+      "name": "reduced-hover-017.png",
+      "snapshot_us": 8418,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-hover",
+      "elapsed_us": 726753,
+      "height": 660,
+      "name": "reduced-hover-018.png",
+      "snapshot_us": 8429,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-hover",
+      "elapsed_us": 767046,
+      "height": 660,
+      "name": "reduced-hover-019.png",
+      "snapshot_us": 8407,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-hover",
+      "elapsed_us": 807024,
+      "height": 660,
+      "name": "reduced-hover-020.png",
+      "snapshot_us": 8379,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-hover",
+      "elapsed_us": 847067,
+      "height": 660,
+      "name": "reduced-hover-021.png",
+      "snapshot_us": 8396,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-hover",
+      "elapsed_us": 887131,
+      "height": 660,
+      "name": "reduced-hover-022.png",
+      "snapshot_us": 8406,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-hover",
+      "elapsed_us": 927371,
+      "height": 660,
+      "name": "reduced-hover-023.png",
+      "snapshot_us": 9013,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-hover",
+      "elapsed_us": 968431,
+      "height": 660,
+      "name": "reduced-hover-024.png",
+      "snapshot_us": 8620,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-hover",
+      "elapsed_us": 1008763,
+      "height": 660,
+      "name": "reduced-hover-025.png",
+      "snapshot_us": 8860,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-hover",
+      "elapsed_us": 1048563,
+      "height": 660,
+      "name": "reduced-hover-026.png",
+      "snapshot_us": 8503,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-hover",
+      "elapsed_us": 1089411,
+      "height": 660,
+      "name": "reduced-hover-027.png",
+      "snapshot_us": 8474,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-hover",
+      "elapsed_us": 1130085,
+      "height": 660,
+      "name": "reduced-hover-028.png",
+      "snapshot_us": 8367,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-hover",
+      "elapsed_us": 1170319,
+      "height": 660,
+      "name": "reduced-hover-029.png",
+      "snapshot_us": 8404,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-hover",
+      "elapsed_us": 1210368,
+      "height": 660,
+      "name": "reduced-hover-030.png",
+      "snapshot_us": 8408,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-hover",
+      "elapsed_us": 1250972,
+      "height": 660,
+      "name": "reduced-hover-031.png",
+      "snapshot_us": 8395,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-hover",
+      "elapsed_us": 1291560,
+      "height": 660,
+      "name": "reduced-hover-032.png",
+      "snapshot_us": 8453,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-hover",
+      "elapsed_us": 1331734,
+      "height": 660,
+      "name": "reduced-hover-033.png",
+      "snapshot_us": 8399,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-hover",
+      "elapsed_us": 1372121,
+      "height": 660,
+      "name": "reduced-hover-034.png",
+      "snapshot_us": 8856,
+      "width": 640
+    },
+    {
+      "active_animations": false,
+      "clip": "reduced-hover",
+      "elapsed_us": 1411729,
+      "height": 660,
+      "name": "reduced-hover-035.png",
+      "snapshot_us": 8343,
+      "width": 640
+    }
+  ],
+  "NominalIntervalMilliseconds": 40,
+  "PresentedFrames": false,
+  "Renderer": "software",
+  "Scope": "Timestamped component snapshots; encoding and capture add overhead. Not physical input, native Wails, desktop frames or product performance.",
+  "SyntheticInput": true
+}

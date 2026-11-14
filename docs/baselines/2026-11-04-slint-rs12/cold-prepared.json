@@ -1,0 +1,79 @@
+{
+  "Cases": [
+    {
+      "Case": "femtovg-1",
+      "Edition": "femtovg",
+      "PreparedAtUtc": "2026-11-04T07:25:10.6069008Z",
+      "SHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+      "ExecutableMatches": true,
+      "ConfigMatchesSeed": true
+    },
+    {
+      "Case": "femtovg-2",
+      "Edition": "femtovg",
+      "PreparedAtUtc": "2026-11-04T07:25:26.0459454Z",
+      "SHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+      "ExecutableMatches": true,
+      "ConfigMatchesSeed": true
+    },
+    {
+      "Case": "femtovg-3",
+      "Edition": "femtovg",
+      "PreparedAtUtc": "2026-11-04T07:25:46.6632067Z",
+      "SHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+      "ExecutableMatches": true,
+      "ConfigMatchesSeed": true
+    },
+    {
+      "Case": "software-1",
+      "Edition": "software",
+      "PreparedAtUtc": "2026-11-04T07:25:07.4844363Z",
+      "SHA256": "E85B41C7E77888750817E47F092EABECB1BAB5A68EFCE579378CE2DDAD2DBA4B",
+      "ExecutableMatches": true,
+      "ConfigMatchesSeed": true
+    },
+    {
+      "Case": "software-2",
+      "Edition": "software",
+      "PreparedAtUtc": "2026-11-04T07:25:17.1580749Z",
+      "SHA256": "E85B41C7E77888750817E47F092EABECB1BAB5A68EFCE579378CE2DDAD2DBA4B",
+      "ExecutableMatches": true,
+      "ConfigMatchesSeed": true
+    },
+    {
+      "Case": "software-3",
+      "Edition": "software",
+      "PreparedAtUtc": "2026-11-04T07:25:43.3184739Z",
+      "SHA256": "E85B41C7E77888750817E47F092EABECB1BAB5A68EFCE579378CE2DDAD2DBA4B",
+      "ExecutableMatches": true,
+      "ConfigMatchesSeed": true
+    },
+    {
+      "Case": "wails-1",
+      "Edition": "wails",
+      "PreparedAtUtc": "2026-11-04T07:24:56.7284308Z",
+      "SHA256": "9A1A898A1E3D70267481BCC68E3368F0B6594F68E8AE43B3F0DCDC06A9B329A6",
+      "ExecutableMatches": true,
+      "ConfigMatchesSeed": true
+    },
+    {
+      "Case": "wails-2",
+      "Edition": "wails",
+      "PreparedAtUtc": "2026-11-04T07:25:13.1524925Z",
+      "SHA256": "9A1A898A1E3D70267481BCC68E3368F0B6594F68E8AE43B3F0DCDC06A9B329A6",
+      "ExecutableMatches": true,
+      "ConfigMatchesSeed": true
+    },
+    {
+      "Case": "wails-3",
+      "Edition": "wails",
+      "PreparedAtUtc": "2026-11-04T07:25:35.974813Z",
+      "SHA256": "9A1A898A1E3D70267481BCC68E3368F0B6594F68E8AE43B3F0DCDC06A9B329A6",
+      "ExecutableMatches": true,
+      "ConfigMatchesSeed": true
+    }
+  ],
+  "SameBootLaunchRejected": true,
+  "RebootPerformed": false,
+  "ColdSamples": 0
+}

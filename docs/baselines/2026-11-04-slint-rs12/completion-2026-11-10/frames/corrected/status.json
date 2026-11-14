@@ -1,0 +1,37 @@
+{
+  "RecordedAtUtc": "2026-11-09T18:13:44.3760780Z",
+  "PriorFemtoVG1000FinalExitConfirmed": true,
+  "Software1000": {
+    "Queries": 5,
+    "Fixture": "v3",
+    "IconCondition": "fallback",
+    "NormalExit": 0,
+    "GeometryAndClockChecks": true,
+    "CompleteResultBodyMatch": true
+  },
+  "Software10000": {
+    "Queries": 6,
+    "Fixture": "v4",
+    "IconCondition": "actual checker PNGs",
+    "NormalExit": 0,
+    "GeometryAndClockChecks": true,
+    "CompleteResultBodyMatch": true
+  },
+  "FemtoVG10000": {
+    "ProcessId": 26528,
+    "SameProcessRunning": true,
+    "CapturedPhysicalQueries": 0,
+    "RecordingEnded": true,
+    "ExitConfirmed": false,
+    "Status": "300s bounded recording ended before any physical query; no timing sample accepted."
+  },
+  "Remaining": [
+    "Finish or normally exit current FemtoVG 10000 instance before another candidate",
+    "Geometry-checked physical queries for FemtoVG/Wails at both sizes",
+    "Match Software 1000 actual-icon condition to v4",
+    "Calibrate first possible startup/hotkey input; investigate historic focus/activation failures"
+  ],
+  "ColdConditionCharacters": 9,
+  "RS12Complete": false,
+  "DefaultRendererSelected": false
+}

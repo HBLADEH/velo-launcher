@@ -1,0 +1,34 @@
+{
+  "cases": [
+    {
+      "cached_items": 10000,
+      "case": "default",
+      "configured": true,
+      "ever_visible": true,
+      "expected_visible": false,
+      "passed": false,
+      "registered_chord_failures": 1,
+      "scope": "current-session command startup; no real login or keyboard evidence",
+      "startup_shown": true,
+      "visible": true
+    },
+    {
+      "cached_items": 10000,
+      "case": "saved",
+      "configured": true,
+      "ever_visible": true,
+      "expected_visible": true,
+      "passed": true,
+      "registered_chord_failures": 2,
+      "scope": "current-session command startup; no real login or keyboard evidence",
+      "startup_shown": true,
+      "visible": true
+    }
+  ],
+  "default_already_busy": true,
+  "login_values_created": false,
+  "passed": false,
+  "process_cleanup": "isolated PID terminated after removing owned tray icon",
+  "executable_sha256": "B0B7DBA4E7DA1F9FE5D6AC0370C180AAF883F9968E30849F0F92DB6205FC0DE8",
+  "sample": "original Release before background startup ordering fix"
+}

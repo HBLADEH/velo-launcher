@@ -1,0 +1,134 @@
+{
+  "RecordedAtUtc": "2026-11-09T18:11:50.8364752Z",
+  "Scenario": "software-10000-v4",
+  "ReferenceImage": "frame-605.bmp",
+  "ReferenceResultsHash": "14919158925832767843",
+  "Queries": [
+    {
+      "KeyQpc": 95657225491,
+      "FirstStableResultCropQpc": 95659817169,
+      "KeyToStableResultCropUpperMs": 274.7928,
+      "ChangedResultStates": 12,
+      "ChangedStateIntervalsMilliseconds": [
+        16.5316,
+        16.6085,
+        16.6652,
+        16.6392,
+        16.8644,
+        17.2463,
+        16.2098,
+        16.3899,
+        16.6686,
+        17.0708,
+        49.7257
+      ],
+      "AccumulatedDesktopFramesMaximum": 1.0,
+      "Scope": "Observed changed result-region cadence through first equality with the reviewed settled reference. Desktop/compositor observation only; not GPU render work or guaranteed no missed display frames."
+    },
+    {
+      "KeyQpc": 95764532151,
+      "FirstStableResultCropQpc": 95767090891,
+      "KeyToStableResultCropUpperMs": 286.499,
+      "ChangedResultStates": 12,
+      "ChangedStateIntervalsMilliseconds": [
+        16.3031,
+        16.22,
+        16.4599,
+        17.0683,
+        16.6983,
+        16.5958,
+        16.6788,
+        16.4686,
+        16.9468,
+        16.7323,
+        49.8472
+      ],
+      "AccumulatedDesktopFramesMaximum": 1.0,
+      "Scope": "Observed changed result-region cadence through first equality with the reviewed settled reference. Desktop/compositor observation only; not GPU render work or guaranteed no missed display frames."
+    },
+    {
+      "KeyQpc": 95823735337,
+      "FirstStableResultCropQpc": 95826481732,
+      "KeyToStableResultCropUpperMs": 290.2645,
+      "ChangedResultStates": 12,
+      "ChangedStateIntervalsMilliseconds": [
+        17.5287,
+        16.1413,
+        16.7469,
+        17.1345,
+        15.9165,
+        17.5005,
+        15.8965,
+        16.5099,
+        16.4593,
+        16.8207,
+        66.5665
+      ],
+      "AccumulatedDesktopFramesMaximum": 1.0,
+      "Scope": "Observed changed result-region cadence through first equality with the reviewed settled reference. Desktop/compositor observation only; not GPU render work or guaranteed no missed display frames."
+    },
+    {
+      "KeyQpc": 95858158735,
+      "FirstStableResultCropQpc": 95860687006,
+      "KeyToStableResultCropUpperMs": 268.4521,
+      "ChangedResultStates": 11,
+      "ChangedStateIntervalsMilliseconds": [
+        16.5614,
+        16.6847,
+        16.698,
+        16.7801,
+        16.5178,
+        16.6235,
+        16.7439,
+        16.9311,
+        16.5668,
+        67.0637
+      ],
+      "AccumulatedDesktopFramesMaximum": 1.0,
+      "Scope": "Observed changed result-region cadence through first equality with the reviewed settled reference. Desktop/compositor observation only; not GPU render work or guaranteed no missed display frames."
+    },
+    {
+      "KeyQpc": 95897501467,
+      "FirstStableResultCropQpc": 95900224323,
+      "KeyToStableResultCropUpperMs": 287.9106,
+      "ChangedResultStates": 12,
+      "ChangedStateIntervalsMilliseconds": [
+        16.3238,
+        16.6588,
+        16.6555,
+        16.7039,
+        16.8659,
+        16.5006,
+        16.7954,
+        16.9951,
+        16.3887,
+        16.7548,
+        66.7673
+      ],
+      "AccumulatedDesktopFramesMaximum": 1.0,
+      "Scope": "Observed changed result-region cadence through first equality with the reviewed settled reference. Desktop/compositor observation only; not GPU render work or guaranteed no missed display frames."
+    },
+    {
+      "KeyQpc": 95943539860,
+      "FirstStableResultCropQpc": 95946100380,
+      "KeyToStableResultCropUpperMs": 287.677,
+      "ChangedResultStates": 12,
+      "ChangedStateIntervalsMilliseconds": [
+        16.6377,
+        16.5635,
+        16.7286,
+        16.7907,
+        16.8958,
+        16.591,
+        16.6117,
+        16.6957,
+        16.7577,
+        16.4913,
+        49.8706
+      ],
+      "AccumulatedDesktopFramesMaximum": 1.0,
+      "Scope": "Observed changed result-region cadence through first equality with the reviewed settled reference. Desktop/compositor observation only; not GPU render work or guaranteed no missed display frames."
+    }
+  ],
+  "Scope": "Native desktop frames tied to physical keys, same result region and dimensions. LastPresentTime is not photon time; result-region stability differs from earliest result visibility."
+}

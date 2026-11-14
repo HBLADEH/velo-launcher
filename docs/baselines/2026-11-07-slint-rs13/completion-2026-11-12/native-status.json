@@ -1,0 +1,36 @@
+{
+  "OriginalWailsSHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+  "V5": {
+    "SettingsEnterExitCaptured": true,
+    "WriterQueueRejected": 0,
+    "StorageLimited": false,
+    "MaximumLiveSourceGapMilliseconds": 66.7366,
+    "SettingsEnterIntermediateFrames": 3,
+    "ExactCurveAccepted": false,
+    "ExcludedClip": "settings-enter-2 (physical Escape stop)"
+  },
+  "V6": {
+    "BuiltWithWarningsAsErrors": true,
+    "GPUReadbackSlots": 3,
+    "WriterBoundMiB": 128,
+    "NamedClipsCaptured": 0,
+    "CaptureEnd": {
+      "event": "end",
+      "qpc": 843614032569,
+      "frames": 104,
+      "clips": 0,
+      "gpu_queue_rejected": 0,
+      "write_queue_rejected": 0,
+      "storage_limited": false
+    },
+    "ExactCurveAccepted": false
+  },
+  "Stop": "After user explicitly resumed, the next Computer Use selection call again returned physical Escape stop. No new UI input was issued. A second key versus latched helper stop cannot be distinguished.",
+  "NormalExit": true,
+  "RS13Complete": false,
+  "Remaining": [
+    "Dense native Wails/Software/FemtoVG transition review",
+    "Final product native inspection of repaired details",
+    "Existing physical matrix retains its original build identity; current input protection/native DPI code compared separately"
+  ]
+}

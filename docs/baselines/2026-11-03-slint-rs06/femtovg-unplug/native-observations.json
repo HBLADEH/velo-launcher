@@ -1,0 +1,77 @@
+{
+  "Mode": "Native read-only probe invoked without parameters",
+  "ProbeSHA256": "EFF35D370DCDFA3E5A12E304BC8FCA75FF6E5D7FC41E874B91720AA8125CEB49",
+  "Observations": [
+    {
+      "File": "after-exit-native.txt",
+      "SHA256": "0AEFDBD7389008963430F21BECE834152272C27BCB74F23343F4B9BD9B2780D4",
+      "Lines": [
+        "event=probe_monitor x=1920 y=42 width=1920 height=1080 work_x=1920 work_y=42 work_width=1920 work_height=1032 dpi=96 primary=false",
+        "event=probe_monitor x=0 y=0 width=1920 height=1080 work_x=0 work_y=0 work_width=1920 work_height=1032 dpi=96 primary=true"
+      ]
+    },
+    {
+      "File": "before-unplug-native.txt",
+      "SHA256": "54DAF8DE6D1EA7C9D8B64A4EA0410A6AEA2097E7ED22CA1A51821DCB1174EAC0",
+      "Lines": [
+        "event=probe_monitor x=1920 y=42 width=1920 height=1080 work_x=1920 work_y=42 work_width=1920 work_height=1032 dpi=96 primary=false",
+        "event=probe_monitor x=0 y=0 width=1920 height=1080 work_x=0 work_y=0 work_width=1920 work_height=1032 dpi=96 primary=true",
+        "event=probe_window class=VeloSlintLauncherWindow hwnd=DF0AC4 pid=194856 visible=true dpi=96 x=2560 y=248 width=640 height=264",
+        "event=probe_window class=VeloSlintDesktopService hwnd=2516A0 pid=194856 visible=false dpi=96 x=0 y=0 width=0 height=0",
+        "event=probe_tray hwnd=2516A0 registered=true x=1475 y=1032 width=32 height=48"
+      ]
+    },
+    {
+      "File": "disconnected-after-hotkey-native.txt",
+      "SHA256": "32E97DE437B0BA4C935AE2F299EF87501C773792817851BA5B6AA0E08B64466E",
+      "Lines": [
+        "event=probe_monitor x=0 y=0 width=1920 height=1080 work_x=0 work_y=0 work_width=1920 work_height=1032 dpi=96 primary=true",
+        "event=probe_window class=VeloSlintLauncherWindow hwnd=DF0AC4 pid=194856 visible=true dpi=96 x=640 y=206 width=640 height=210",
+        "event=probe_window class=VeloSlintDesktopService hwnd=2516A0 pid=194856 visible=false dpi=96 x=0 y=0 width=0 height=0",
+        "event=probe_tray hwnd=2516A0 registered=true x=1475 y=1032 width=32 height=48"
+      ]
+    },
+    {
+      "File": "disconnected-after-input-native.txt",
+      "SHA256": "32E97DE437B0BA4C935AE2F299EF87501C773792817851BA5B6AA0E08B64466E",
+      "Lines": [
+        "event=probe_monitor x=0 y=0 width=1920 height=1080 work_x=0 work_y=0 work_width=1920 work_height=1032 dpi=96 primary=true",
+        "event=probe_window class=VeloSlintLauncherWindow hwnd=DF0AC4 pid=194856 visible=true dpi=96 x=640 y=206 width=640 height=210",
+        "event=probe_window class=VeloSlintDesktopService hwnd=2516A0 pid=194856 visible=false dpi=96 x=0 y=0 width=0 height=0",
+        "event=probe_tray hwnd=2516A0 registered=true x=1475 y=1032 width=32 height=48"
+      ]
+    },
+    {
+      "File": "physically-disconnected-native.txt",
+      "SHA256": "542B72E8D5415775CA6BB22FC0F2D2C3013C3B739DE5F79124039DB810975885",
+      "Lines": [
+        "event=probe_monitor x=0 y=0 width=1920 height=1080 work_x=0 work_y=0 work_width=1920 work_height=1032 dpi=96 primary=true",
+        "event=probe_window class=VeloSlintLauncherWindow hwnd=DF0AC4 pid=194856 visible=true dpi=96 x=640 y=206 width=640 height=264",
+        "event=probe_window class=VeloSlintDesktopService hwnd=2516A0 pid=194856 visible=false dpi=96 x=0 y=0 width=0 height=0",
+        "event=probe_tray hwnd=2516A0 registered=true x=1475 y=1032 width=32 height=48"
+      ]
+    },
+    {
+      "File": "physically-reconnected-native.txt",
+      "SHA256": "B14E252D0566F0E7723CB5914A61823256DC33C58096F05D617C2489D7D98E18",
+      "Lines": [
+        "event=probe_monitor x=1920 y=42 width=1920 height=1080 work_x=1920 work_y=42 work_width=1920 work_height=1032 dpi=96 primary=false",
+        "event=probe_monitor x=0 y=0 width=1920 height=1080 work_x=0 work_y=0 work_width=1920 work_height=1032 dpi=96 primary=true",
+        "event=probe_window class=VeloSlintLauncherWindow hwnd=DF0AC4 pid=194856 visible=false dpi=96 x=2560 y=248 width=640 height=210",
+        "event=probe_window class=VeloSlintDesktopService hwnd=2516A0 pid=194856 visible=false dpi=96 x=0 y=0 width=0 height=0",
+        "event=probe_tray hwnd=2516A0 registered=true x=1475 y=1032 width=32 height=48"
+      ]
+    },
+    {
+      "File": "reconnected-after-input-native.txt",
+      "SHA256": "37639C2999988131378316D2CE4169EF3D28777E9E15352AB48693398465631B",
+      "Lines": [
+        "event=probe_monitor x=1920 y=42 width=1920 height=1080 work_x=1920 work_y=42 work_width=1920 work_height=1032 dpi=96 primary=false",
+        "event=probe_monitor x=0 y=0 width=1920 height=1080 work_x=0 work_y=0 work_width=1920 work_height=1032 dpi=96 primary=true",
+        "event=probe_window class=VeloSlintLauncherWindow hwnd=DF0AC4 pid=194856 visible=true dpi=96 x=2560 y=248 width=640 height=210",
+        "event=probe_window class=VeloSlintDesktopService hwnd=2516A0 pid=194856 visible=false dpi=96 x=0 y=0 width=0 height=0",
+        "event=probe_tray hwnd=2516A0 registered=true x=1475 y=1032 width=32 height=48"
+      ]
+    }
+  ]
+}

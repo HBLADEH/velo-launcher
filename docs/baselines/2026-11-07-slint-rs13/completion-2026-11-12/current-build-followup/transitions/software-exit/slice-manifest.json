@@ -1,0 +1,71 @@
+{
+  "SourceRun": ".reasonix/rs13-current-build-20261112/light/runs/software-current-3",
+  "SourceClip": "settings-exit-current-short",
+  "DerivedClip": "settings-exit-current-active-slice",
+  "OriginalTraceSHA256": "2BF9E9B9A195C16963759A8E2CEA3262FBC6E836E02DBC8FAE57C7BA9BF10C78",
+  "ParentStorageLimited": true,
+  "ParentGPUQueueRejected": 0,
+  "ParentWriterQueueRejected": 0,
+  "ExecutableSHA256": "5E7C017DDA3FF691E7FF8DCBFEAF149E5A766C1F8DC73A816BB5C4A9F7C4C66B",
+  "SelectedFrameIndices": [
+    250,
+    251,
+    252,
+    253,
+    254,
+    255,
+    256,
+    257,
+    258
+  ],
+  "FrameSHA256": [
+    {
+      "Index": 250,
+      "SourceTime100ns": 1500902257839,
+      "SHA256": "5B98E56BDEAE13B29533ABA199DA3B1BF77E50338FFB7F0D04940ED64A41499F"
+    },
+    {
+      "Index": 251,
+      "SourceTime100ns": 1500902424668,
+      "SHA256": "68CC9158950CA95FFEC6A6681DBA486CDCD778F58655B77E14FAC401AC422B38"
+    },
+    {
+      "Index": 252,
+      "SourceTime100ns": 1500902591497,
+      "SHA256": "C9AE9FCCF5D8BA9A3DEA3C3DC2706B6B530510B9E3F9FCB950D7311D333FC3F5"
+    },
+    {
+      "Index": 253,
+      "SourceTime100ns": 1500902758328,
+      "SHA256": "4325EB73A13E11A34A5FFA8DD4DE0FDD0D1C14B5343DBBA0193BFD3A8410ED43"
+    },
+    {
+      "Index": 254,
+      "SourceTime100ns": 1500902925159,
+      "SHA256": "D1DE86779C352173E58480B68ED77BFD28DBD80CE59878436104350A1FCE17DC"
+    },
+    {
+      "Index": 255,
+      "SourceTime100ns": 1500903258836,
+      "SHA256": "62386D1F7D7DA68879BADB672A1AD885988EDAF3E7221E70905945B72E6F323B"
+    },
+    {
+      "Index": 256,
+      "SourceTime100ns": 1500903425671,
+      "SHA256": "3DC0AC49B6CE785399E4E33E628E86C33AC6DB270987B2B4EC570D8D7F08AD28"
+    },
+    {
+      "Index": 257,
+      "SourceTime100ns": 1500903592502,
+      "SHA256": "3DC0AC49B6CE785399E4E33E628E86C33AC6DB270987B2B4EC570D8D7F08AD28"
+    },
+    {
+      "Index": 258,
+      "SourceTime100ns": 1500903759340,
+      "SHA256": "3DC0AC49B6CE785399E4E33E628E86C33AC6DB270987B2B4EC570D8D7F08AD28"
+    }
+  ],
+  "MaximumSourceGapMilliseconds": 33.3677,
+  "SourceSpanMilliseconds": 150.1501,
+  "Scope": "Derived contiguous active transition frames copied from the original trace before its later per-clip storage limit. Full-run limit remains recorded; derived slice does not certify all-session storage."
+}

@@ -1,0 +1,31 @@
+{
+  "ArtifactIntegrityPassed": true,
+  "RecordedAtUtc": "2026-11-12T13:31:05.638987+00:00",
+  "BuildInputsMatchedPerRenderer": 206,
+  "TransitionSlicesSHA256Checked": 4,
+  "NativeFrameSHA256Checked": 147,
+  "NormalProductExits": 6,
+  "NormalRecorderExits": 5,
+  "QueueRejected": 0,
+  "StorageLimitedRuns": [
+    "software-current",
+    "software-current-3",
+    "software-recording-current-1"
+  ],
+  "HistoryUnchangedRuns": 6,
+  "LaunchCallbacks": 0,
+  "BoundaryCalibrationChecks": 21,
+  "ROIIntegrityChecks": 4,
+  "RS13Complete": false,
+  "Scope": "Current component checks, calibrated native analysis gates and artifact integrity. Native transition timing and current-build physical IME/DPI are unaccepted; RS-13 stays in progress.",
+  "StaticPNGsSHA256Checked": 104,
+  "ComponentFramesSHA256Checked": 936,
+  "ComponentClipsPassed": 26,
+  "CoreRectanglesPassed": 132,
+  "HeadingRegressionsPassed": 12,
+  "DocumentLocalLinksChecked": 22,
+  "CleanupPassed": true,
+  "NativeSettingsContractsAccepted": 0,
+  "NativeSettingsContractsInsufficient": 4,
+  "FemtoVGNativePulseAttemptHadAppInput": false
+}

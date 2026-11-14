@@ -1,0 +1,56 @@
+{
+  "Renderer": "software",
+  "ExecutableSHA256": "5E7C017DDA3FF691E7FF8DCBFEAF149E5A766C1F8DC73A816BB5C4A9F7C4C66B",
+  "Rows": [
+    {
+      "Clip": "settings-exit-1",
+      "Status": "mismatch",
+      "FixedOpacityDurationMilliseconds": 100,
+      "FixedOpacityCurve": [
+        0.25,
+        0.1,
+        0.25,
+        1
+      ],
+      "FixedEnterTranslationLogicalPixels": 8,
+      "FixedEnterTranslationDurationMilliseconds": 280,
+      "EstimatedTriggerOnsetSourceMilliseconds": 58225.5421000123,
+      "IntermediateFrames": 6,
+      "MaximumActiveSourceGapMilliseconds": 33.36550000309944,
+      "ReportedMaximumActiveSourceGapMilliseconds": 33.36550000309944,
+      "TriggerBracketGapMilliseconds": 33.36550000309944,
+      "CompletionBracketGapMilliseconds": 16.682099997997284,
+      "OpacityRMSE": 0.055761082817003184,
+      "TranslationRMSELogicalPixels": 0.0,
+      "MaximumTranslationErrorLogicalPixels": 0.0,
+      "FinalProgress": 1.0,
+      "P95TitleOpticalResidualRGB": 12.405549427515306,
+      "Reason": null,
+      "Tolerance": {
+        "OpacityRMSE": 0.05,
+        "TranslationRMSELogicalPixels": 0.75,
+        "MaximumTranslationErrorLogicalPixels": 1.5,
+        "FinalProgressMinimum": 0.97,
+        "P95TitleOpticalResidualRGB": 18
+      },
+      "Scope": "Comparison of the fixed declared waveform with independent optical samples at their resolution. Nearby waveforms may be indistinguishable; no exact display/presentation latency claim."
+    }
+  ],
+  "AllRecordedSettingsCompatible": false,
+  "IndependentWailsReference": {
+    "MainCurve": [
+      0.22,
+      1.0,
+      0.36,
+      1.0
+    ],
+    "IncomingOpacityMilliseconds": 220,
+    "IncomingTranslationMilliseconds": 280,
+    "OutgoingOpacityMilliseconds": 100,
+    "IncomingTranslationLogicalPixels": 8,
+    "CSSSHA256": "B0103A0CCCDC04B80D17F051BE012E55709D66A23CAB6F9DAE1C60BFF39AE915"
+  },
+  "ExactCurveUniquenessEstablished": false,
+  "PhysicalInput": false,
+  "Scope": "Native settings opacity and vertical translation only, at recorded source-frame/pixel tolerance. Does not certify other animation families or physical IME/DPI."
+}

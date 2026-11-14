@@ -1,0 +1,22 @@
+{
+  "Date": "2026-11-14",
+  "G4Passed": true,
+  "LocalAutomaticVerificationPassed": true,
+  "ProductMachineTakeoverPassed": true,
+  "ProductGoRollbackPassed": true,
+  "ThirdPartyPhysicalIMEValidated": true,
+  "AdditionalHardware": "Skipped by user-defined current-machine scope",
+  "CurrentProductGitHubCIExecuted": false,
+  "PriorGitHubCIPassed": true,
+  "PriorCICommit": "4bab4c940fd01c7a1219cc4991ddeaadf5a37e26",
+  "AllOriginalPerformanceBudgetsMet": false,
+  "PublicationApproved": false,
+  "HostFormalInstallationUsed": false,
+  "CompletedDate": "2026-11-15",
+  "Scope": "Current supplied machine and its disposable Windows10 guest only.",
+  "PhysicalIMEEvidence": "sogou-acceptance.json",
+  "Acceptance": "g4-acceptance.md",
+  "GlobalHardwareCompatibilityClaimed": false,
+  "PriorPackageG4FalseFlagsRetainedAsOriginalBuildMetadata": true,
+  "KnownBudgetAndHistoricalFocusLimitsRetained": true
+}

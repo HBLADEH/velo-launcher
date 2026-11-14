@@ -3,6 +3,15 @@ Set-StrictMode -Version Latest
 . (Join-Path $PSScriptRoot 'lib/resource-sample.ps1')
 
 function Assert($Condition, [string]$Message) { if (-not $Condition) { throw $Message } }
+Assert ((Get-VeloExecutableMode -CommandLine 'velo-launcher.exe' -GoBuildInfo @("`tbuild`t-tags=desktop,latencyprobe,production")) -eq 'ProbeBuild') 'An environment-activated Wails probe build must not be labelled normal production.'
+Assert ((Get-VeloExecutableMode -CommandLine 'velo-launcher.exe' -GoBuildInfo @("`tbuild`t-tags=desktop,production")) -eq 'Production') 'An official Wails release without probe tags retains production mode.'
+Assert ((Get-VeloExecutableMode -CommandLine 'velo-slint.exe --measurement-log=test.log') -eq 'MeasurementProbe') 'Slint measurement-log marks an active in-process observer.'
+Assert ((Get-VeloExecutableMode -CommandLine 'velo-slint.exe --diagnostics') -eq 'Diagnostics') 'Diagnostics must stay separate from production.'
+$missingWarmupRejected = $false
+try {
+    & (Join-Path $PSScriptRoot 'measure-rs12-session.ps1') -SessionDirectory 'unused-session-must-not-be-read' -Phase visible
+} catch { $missingWarmupRejected = $_.Exception.Message -like 'Explicit IdleEvidence is required*' }
+Assert $missingWarmupRejected 'Session sampling must reject absent warmup evidence before reading session metadata or claiming idle eligibility.'
 function New-Snapshot([double]$At, [double]$CPU, [string]$State = 'Hidden', [string]$Identity = '42/100', [bool]$Complete = $true) {
     [pscustomobject]@{
         TimestampUtc = ([DateTimeOffset]'2026-10-27T00:00:00Z').AddSeconds($At).ToString('o')
@@ -74,7 +83,7 @@ try {
     if (Test-Path -LiteralPath $jsonPath) { Remove-Item -LiteralPath $jsonPath }
 }
 
-foreach ($script in @('measure-resources.ps1', 'measure-slint-ab.ps1', 'collect-slint-latency.ps1', 'lib/resource-sample.ps1', 'test-resource-measurement.ps1')) {
+foreach ($script in @('measure-resources.ps1', 'measure-slint-ab.ps1', 'collect-slint-latency.ps1', 'prepare-rs12.ps1', 'prepare-rs12-cold.ps1', 'start-rs12-cold.ps1', 'measure-rs12-slint.ps1', 'measure-rs12-search.ps1', 'measure-rs12-icons.ps1', 'start-rs12-session.ps1', 'measure-rs12-session.ps1', 'observe-rs12-session.ps1', 'summarize-rs12.ps1', 'lib/resource-sample.ps1', 'lib/native-observation.ps1', 'test-resource-measurement.ps1')) {
     $tokens = $null; $parseErrors = $null
     [void][System.Management.Automation.Language.Parser]::ParseFile((Join-Path $PSScriptRoot $script), [ref]$tokens, [ref]$parseErrors)
     Assert (-not $parseErrors) "PowerShell syntax errors in $script"

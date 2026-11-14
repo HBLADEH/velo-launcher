@@ -1,0 +1,26 @@
+{
+  "CheckedAtUtc": "2026-11-04T07:33:37.9578123Z",
+  "RemainingVeloProcesses": 0,
+  "RemainingTestEndpoints": [],
+  "AltSpaceAvailable": true,
+  "OriginalFormalFilesChanged": [],
+  "UnmeasuredSessionCleanup": {
+    "ProcessId": 284000,
+    "SHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+    "IdentityChecked": true,
+    "TrayServiceCleanupRequested": true,
+    "ProcessStopped": true,
+    "ForcedCleanup": true,
+    "ResourceSamples": 0,
+    "CompletedAtUtc": "2026-11-04T07:32:57.4537287Z",
+    "Reason": "Ordinary no-probe session was not measured because actual prewarm was never confirmed. Disposable instance cleaned; this is not a normal-exit or performance sample."
+  },
+  "MeasuredLoopNormalExits": {
+    "software": 0,
+    "femtovg": 0,
+    "wails": 0
+  },
+  "StartupRegistryModified": false,
+  "RebootPerformed": false,
+  "FormalExecutableReplaced": false
+}

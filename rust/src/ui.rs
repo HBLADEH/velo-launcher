@@ -1,4 +1,4 @@
-//! UI-thread adapter for the fixed fixture; never opens paths or user data.
+//! UI-thread adapters. Disk, Shell and persistence remain on bounded workers.
 
 use std::cell::RefCell;
 use std::rc::Rc;
@@ -27,7 +27,8 @@ fn model(items: impl Iterator<Item = FixtureItem>) -> ModelRc<LauncherItem> {
                     .to_string()
                     .into(),
                 system: item.group == Group::System,
-                pinned: item.group == Group::Pinned,
+                pinned: item.pinned,
+                icon: slint::Image::default(),
             })
             .collect::<Vec<_>>(),
     ))
@@ -37,7 +38,7 @@ fn model(items: impl Iterator<Item = FixtureItem>) -> ModelRc<LauncherItem> {
 pub fn connect(
     app: &AppWindow,
     diagnostics: bool,
-    empty_pinned: bool,
+    snapshot: fixtures::Snapshot,
     measurement: Option<crate::measurement::Observer>,
 ) {
     for (group, setter) in [
@@ -51,17 +52,15 @@ pub fn connect(
         setter(
             app,
             model(
-                fixtures::ITEMS.iter().copied().filter(|item| {
-                    item.group == group && !(empty_pinned && group == Group::Pinned)
-                }),
+                snapshot
+                    .home
+                    .iter()
+                    .copied()
+                    .filter(|item| item.group == group),
             ),
         );
     }
-    let initial: Vec<_> = fixtures::ITEMS
-        .iter()
-        .copied()
-        .filter(|item| !(empty_pinned && item.group == Group::Pinned))
-        .collect();
+    let initial = snapshot.home.clone();
     app.set_item_count(fixtures::ITEMS.len() as i32);
     app.set_selected_id(initial.first().map_or("", |item| item.id).into());
     let section_lengths = [Group::Pinned, Group::Frequent, Group::System]
@@ -74,11 +73,19 @@ pub fn connect(
         let Some(app) = weak_app.upgrade() else {
             return;
         };
-        let home = text.trim().is_empty();
-        let items: Vec<_> = fixtures::filter(&text)
-            .into_iter()
-            .filter(|item| !home || !(empty_pinned && item.group == Group::Pinned))
-            .collect();
+        let home = velo_slint::core::normalize::normalize(&text).is_empty();
+        let items = if home {
+            snapshot.home.clone()
+        } else {
+            match snapshot.query(&text) {
+                Ok(items) => items,
+                Err(_) => {
+                    eprintln!("event=search_error operation=fixture_query");
+                    app.set_selection_notice("搜索失败，请重启后重试".into());
+                    return;
+                }
+            }
+        };
         app.set_is_home(home);
         app.set_selected_id(items.first().map_or("", |item| item.id).into());
         app.set_selection_notice("".into());
@@ -111,38 +118,54 @@ pub fn connect(
         // Only fixed, synthetic IDs are logged. Never execute a fixture path.
         eprintln!("event=fixture_chosen id={} action=record_only", item.id);
     });
+    connect_commands(app, move |app, home, direction| {
+        let items = visible.borrow();
+        let list_rows;
+        let rows = if home {
+            &home_rows
+        } else {
+            list_rows = navigation::choice_rows(&[items.len()], 1);
+            &list_rows
+        };
+        let selected = app.get_selected_id();
+        let current = items.iter().position(|item| item.id == selected.as_str());
+        if let Some(index) = navigation::navigate(rows, current, direction) {
+            app.set_selected_id(items[index].id.into());
+            app.set_selection_notice("".into());
+            app.invoke_ensure_selection_visible(index as i32);
+            if diagnostics {
+                eprintln!(
+                    "event=keyboard_navigation direction={direction:?} index={index} home={home}"
+                );
+            }
+        }
+    });
+}
+
+pub fn connect_commands(
+    app: &AppWindow,
+    navigate: impl Fn(&AppWindow, bool, navigation::Direction) + 'static,
+) {
     let weak_app = app.as_weak();
     app.on_key_requested(move |text, modified, repeat| {
-        let Some(app) = weak_app.upgrade() else { return false; };
+        let Some(app) = weak_app.upgrade() else {
+            return false;
+        };
         let context = Context {
             composing: app.get_native_composing() || app.get_has_preedit(),
             appearance_open: app.get_appearance_open(),
             import_open: app.get_import_open(),
             native_dialog: app.get_native_dialog_active(),
             input_focused: app.get_input_has_focus(),
-            home: app.get_is_home(),
+            home: app.get_is_home() || app.get_grid_results(),
             query_empty: app.get_input_text().is_empty(),
+            space_launch: app.get_space_launch(),
         };
-        let Some(command) = input::command(&text, modified, repeat, &context) else { return false; };
+        let Some(command) = input::command(&text, modified, repeat, &context) else {
+            return false;
+        };
         match command {
-            Command::Navigate(direction) => {
-                let items = visible.borrow();
-                let list_rows;
-                let rows = if context.home { &home_rows } else {
-                    list_rows = navigation::choice_rows(&[items.len()], 1);
-                    &list_rows
-                };
-                let selected = app.get_selected_id();
-                let current = items.iter().position(|item| item.id == selected.as_str());
-                if let Some(index) = navigation::navigate(rows, current, direction) {
-                    app.set_selected_id(items[index].id.into());
-                    app.set_selection_notice("".into());
-                    app.invoke_ensure_selection_visible(index as i32);
-                    if diagnostics {
-                        eprintln!("event=keyboard_navigation direction={direction:?} index={index} id={} home={}", items[index].id, context.home);
-                    }
-                }
-            }
+            Command::Navigate(direction) => navigate(&app, context.home, direction),
             Command::Choose => {
                 if !app.get_selected_id().is_empty() {
                     app.invoke_item_chosen(app.get_selected_id());

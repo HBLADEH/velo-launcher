@@ -1,5 +1,6 @@
 //! Locks are acquired before Slint or any future data store is opened. The
-//! prototype deliberately cannot target the Go application's data directory.
+//! Preview/test identities cannot target the product data directory. A product
+//! build also requires the machine installer's receipt before using that path.
 
 use std::path::{Component, Path, PathBuf};
 use std::ptr::null;
@@ -26,6 +27,7 @@ pub fn activation_message() -> u32 {
 pub struct Identity {
     pub id: String,
     pub data_dir: PathBuf,
+    pub migration_id: Option<String>,
 }
 
 impl Identity {
@@ -57,6 +59,44 @@ impl Identity {
         Ok(Self {
             id: id.to_ascii_lowercase(),
             data_dir,
+            migration_id: None,
+        })
+    }
+
+    pub fn resolve_launch(
+        id: Option<String>,
+        data_dir: Option<PathBuf>,
+        normal_lifecycle: bool,
+    ) -> Result<Self, String> {
+        if !cfg!(feature = "product") || !normal_lifecycle || id.is_some() || data_dir.is_some() {
+            return Self::resolve(id, data_dir);
+        }
+        let executable = std::env::current_exe().map_err(|_| "无法确认正式安装位置")?;
+        let directory = executable.parent().ok_or("无法确认正式安装位置")?;
+        if directory.join(".velo-rollback/pending.json").exists() {
+            return Err("正式安装尚未完成恢复；请退出并重新运行系统安装器".into());
+        }
+        let receipt: serde_json::Value = serde_json::from_slice(
+            &std::fs::read(directory.join(".velo-rust/installation.json"))
+                .map_err(|_| "正式构建须通过系统安装器安装；测试须指定隔离参数")?,
+        )
+        .map_err(|_| "正式安装回执损坏；请修复安装")?;
+        let migration_id = receipt["MigrationID"].as_str().ok_or("正式安装回执缺失")?;
+        if receipt["Schema"] != 1
+            || migration_id.len() != 32
+            || !migration_id.bytes().all(|c| c.is_ascii_hexdigit())
+        {
+            return Err("正式安装回执无效；请修复安装".into());
+        }
+        let registered = product_location()?;
+        if path_key(&normalize(Path::new(&registered))?) != path_key(&normalize(directory)?) {
+            return Err("正式安装位置与回执不一致".into());
+        }
+        let base = std::env::var_os("LOCALAPPDATA").ok_or("LOCALAPPDATA is not set")?;
+        Ok(Self {
+            id: "product".into(),
+            data_dir: normalize(&Path::new(&base).join("Velo"))?,
+            migration_id: Some(migration_id.into()),
         })
     }
 
@@ -72,6 +112,17 @@ impl Identity {
             self.wake(Duration::from_secs(4))?;
             return Ok(Acquisition::Forwarded);
         }
+        let legacy = if self.migration_id.is_some() {
+            // Wails v2's mutex name comes from its checked-in UniqueId. Do not
+            // open the same store while an old installed/portable Go is active.
+            let (lock, exists) = Lock::open("wails-app-6ab2e7d8-15d5-456b-a8eb-f924ac650291sim")?;
+            if exists {
+                return Err("旧版 Velo 正在运行，请先从托盘退出后重试".into());
+            }
+            Some(lock)
+        } else {
+            None
+        };
         let (data, exists) = Lock::open(&format!(
             "Local\\VeloSlint.Data.{:016x}",
             fingerprint(&path_key(&self.data_dir))
@@ -84,6 +135,7 @@ impl Identity {
         Ok(Acquisition::Primary(Guard {
             _instance: instance,
             _data: data,
+            _legacy: legacy,
         }))
     }
 
@@ -116,6 +168,35 @@ impl Identity {
         }
         Err("已有实例尚未就绪或没有响应；未启动第二个实例".into())
     }
+}
+
+fn product_location() -> Result<String, String> {
+    use windows_sys::Win32::System::Registry::{
+        HKEY_LOCAL_MACHINE, RRF_RT_REG_SZ, RRF_SUBKEY_WOW6464KEY, RegGetValueW,
+    };
+    let mut buffer = vec![0u16; 32768];
+    let mut size = (buffer.len() * 2) as u32;
+    // SAFETY: fixed-width caller-owned buffer and terminated immutable names;
+    // RegGetValueW retains no pointer. Always read the machine x64 install view.
+    let result = unsafe {
+        RegGetValueW(
+            HKEY_LOCAL_MACHINE,
+            wide(r"Software\Microsoft\Windows\CurrentVersion\Uninstall\HBLADEHVelo").as_ptr(),
+            wide("InstallLocation").as_ptr(),
+            RRF_RT_REG_SZ | RRF_SUBKEY_WOW6464KEY,
+            std::ptr::null_mut(),
+            buffer.as_mut_ptr().cast(),
+            &mut size,
+        )
+    };
+    if result != 0 {
+        return Err("正式系统安装尚未注册".into());
+    }
+    let end = buffer
+        .iter()
+        .position(|&c| c == 0)
+        .ok_or("正式安装路径无效")?;
+    Ok(String::from_utf16_lossy(&buffer[..end]))
 }
 
 // Resolve existing ancestors too, so junction/symlink spellings share a lock.
@@ -182,6 +263,7 @@ impl Drop for Lock {
 pub struct Guard {
     _instance: Lock,
     _data: Lock,
+    _legacy: Option<Lock>,
 }
 pub enum Acquisition {
     Primary(Guard),
@@ -191,6 +273,31 @@ pub enum Acquisition {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn product_build_still_isolates_smokes_and_explicit_test_copies() {
+        let smoke = Identity::resolve_launch(None, None, false).unwrap();
+        assert_eq!(smoke.id, "prototype");
+        assert!(smoke.migration_id.is_none());
+        assert!(Identity::resolve_launch(Some("test".into()), None, true).is_err());
+        if cfg!(feature = "product") {
+            // Cargo's test executable has no machine-installer receipt.
+            assert!(Identity::resolve_launch(None, None, true).is_err());
+        }
+    }
+
+    #[test]
+    fn product_refuses_an_existing_go_instance_before_accessing_data() {
+        let (_legacy, _) = Lock::open("wails-app-6ab2e7d8-15d5-456b-a8eb-f924ac650291sim").unwrap();
+        let root = tempfile::tempdir().unwrap();
+        let identity = Identity {
+            id: format!("product-lock-test-{}", std::process::id()),
+            data_dir: root.path().join("never-created"),
+            migration_id: Some("abcdef0123456789abcdef0123456789".into()),
+        };
+        assert!(identity.acquire().is_err());
+        assert!(!identity.data_dir.exists());
+    }
 
     #[test]
     fn prototype_and_test_copies_cannot_open_product_or_share_a_data_store() {

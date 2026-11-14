@@ -1,0 +1,46 @@
+{
+  "Method": "Sequential Go then Rust Release; fixed clock; 8 warm-up queries then 3 x 256 timed queries per case. Kernel excludes history scoring; service includes it. No UI, disk I/O or fixture setup in timed scope.",
+  "Go": "go version go1.25.6 windows/amd64",
+  "Rust": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+  "WorkspaceCommit": "4d9dbaf9acf5286d9961fae1e89cca908b5af9d7",
+  "FixtureSHA256": "DD24ECA466E5A002B361E342BF64C5AFE7616547F507F892E78F9B46D0B73500",
+  "GoSHA256": "0A2C97B4C86FFD6EF8EACDDF6108D6AF7437DBB995A2079DA07D77B5A208DCC9",
+  "RustSHA256": "E9E60909546712A33D7E08C49A6E53BA72D9874308999BBD07D2E91CAE860F32",
+  "Sources": [
+    {
+      "Path": "internal/app/rs12_benchmark_test.go",
+      "SHA256": "5D072ACF6EEFD923A3C254778D4B44C10F38248AFABBDB2A4829BFE705CFA61C"
+    },
+    {
+      "Path": "internal/app/service.go",
+      "SHA256": "AB9037D0AA469EC4BCC55172D3BEB9CF4EF74C72DC396B18A92FF3C27AA04044"
+    },
+    {
+      "Path": "internal/search/search.go",
+      "SHA256": "8D77B73258BE9983BEEEB5CD0C42EC63110F3E4D8C0ACF9AD7143AF66A111B9F"
+    },
+    {
+      "Path": "internal/history/history.go",
+      "SHA256": "483FFE6D4B258ED441DD66EF6A89BE703C7A3E9B5D94FBAAFE9ED7EF9DF8F8CA"
+    },
+    {
+      "Path": "rust/examples/rs12_search.rs",
+      "SHA256": "50A9A7D2AB6B6437E9A6D2F9A37B5E58AC7933255A12257955442ACDF2BFE447"
+    },
+    {
+      "Path": "rust/src/core/search.rs",
+      "SHA256": "000562865DD973F9439662F63DC1CC5D85FF4BEEDFAC75EF72E8800DD021E953"
+    },
+    {
+      "Path": "rust/src/core/catalog.rs",
+      "SHA256": "4FAEAE263661E76C329FA294B22BB9C4B769861B1F9C0FD1AF1D726ADDEB89EA"
+    },
+    {
+      "Path": "rust/src/core/history.rs",
+      "SHA256": "CBDA53A72E9853C1C434EEFFBBA33E75ABE388223A66F3B1961EBE1B9E6EB264"
+    }
+  ],
+  "ExecutableSHA256": "9D1D27AD37FD69782B47DADAFE452CBA3C808DD6591C64C39222DBCF45B52230",
+  "CompletedAtUtc": "2026-11-04T05:17:59.0598695Z",
+  "GoEvidence": "Serial Go round from rs12-search-serial-20261104; fixture/go.json copied byte-for-byte. Rust rerun after all desktop checks, with no concurrent build or desktop test."
+}

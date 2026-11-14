@@ -1,0 +1,1183 @@
+{
+  "SchemaVersion": 3,
+  "SHA256": "E85B41C7E77888750817E47F092EABECB1BAB5A68EFCE579378CE2DDAD2DBA4B",
+  "ObserverSHA256": "90924FCD48C2F58FEF2C3F4441D0591BCED3E7E3E4E44FACAD8EDB2527E9EB0D",
+  "CollectorSHA256": "BE97D59C80DC7ADE43BDEA1509426413A921A17303C392263E8BF54C8CD4C1AE",
+  "ObserverIdentityScope": "Source at load, before capture",
+  "CountMode": "UntilExit",
+  "RequestedCount": 20,
+  "Kind": "HotkeyActivation",
+  "Result": {
+    "Kind": "HotkeyActivation",
+    "ProcessId": 22100,
+    "HWND": "45008C",
+    "EventClockQuantumMilliseconds": 15.625,
+    "Observations": [
+      {
+        "Number": 1,
+        "Kind": "HotkeyActivation",
+        "Valid": true,
+        "InjectedStart": false,
+        "Reason": "Actual character accepted; upper bound includes manual delay before typing. No subtraction of human waiting or claim of first-possible readiness.",
+        "StartLowerUnixUs": 1794243224980011,
+        "StartObservedUnixUs": 1794243224995735,
+        "AcceptedUnixUs": 1794243225585539,
+        "DurationUpperMilliseconds": 605.528,
+        "ClockUncertaintyMilliseconds": 15.724,
+        "WallClockDriftMilliseconds": 0.11030000000005202
+      },
+      {
+        "Number": 2,
+        "Kind": "HotkeyActivation",
+        "Valid": true,
+        "InjectedStart": false,
+        "Reason": "Actual character accepted; upper bound includes manual delay before typing. No subtraction of human waiting or claim of first-possible readiness.",
+        "StartLowerUnixUs": 1794243227389140,
+        "StartObservedUnixUs": 1794243227404766,
+        "AcceptedUnixUs": 1794243227883472,
+        "DurationUpperMilliseconds": 494.332,
+        "ClockUncertaintyMilliseconds": 15.626,
+        "WallClockDriftMilliseconds": 0.001099999999951251
+      },
+      {
+        "Number": 3,
+        "Kind": "HotkeyActivation",
+        "Valid": true,
+        "InjectedStart": false,
+        "Reason": "Actual character accepted; upper bound includes manual delay before typing. No subtraction of human waiting or claim of first-possible readiness.",
+        "StartLowerUnixUs": 1794243229257128,
+        "StartObservedUnixUs": 1794243229272754,
+        "AcceptedUnixUs": 1794243229692495,
+        "DurationUpperMilliseconds": 435.367,
+        "ClockUncertaintyMilliseconds": 15.626,
+        "WallClockDriftMilliseconds": 0.006899999999973261
+      },
+      {
+        "Number": 4,
+        "Kind": "HotkeyActivation",
+        "Valid": true,
+        "InjectedStart": false,
+        "Reason": "Actual character accepted; upper bound includes manual delay before typing. No subtraction of human waiting or claim of first-possible readiness.",
+        "StartLowerUnixUs": 1794243230961201,
+        "StartObservedUnixUs": 1794243230976831,
+        "AcceptedUnixUs": 1794243231324665,
+        "DurationUpperMilliseconds": 363.464,
+        "ClockUncertaintyMilliseconds": 15.63,
+        "WallClockDriftMilliseconds": 0.0008000000000265572
+      },
+      {
+        "Number": 5,
+        "Kind": "HotkeyActivation",
+        "Valid": true,
+        "InjectedStart": false,
+        "Reason": "Actual character accepted; upper bound includes manual delay before typing. No subtraction of human waiting or claim of first-possible readiness.",
+        "StartLowerUnixUs": 1794243232500886,
+        "StartObservedUnixUs": 1794243232516511,
+        "AcceptedUnixUs": 1794243232878633,
+        "DurationUpperMilliseconds": 377.747,
+        "ClockUncertaintyMilliseconds": 15.625,
+        "WallClockDriftMilliseconds": 0.001599999999996271
+      },
+      {
+        "Number": 6,
+        "Kind": "HotkeyActivation",
+        "Valid": true,
+        "InjectedStart": false,
+        "Reason": "Actual character accepted; upper bound includes manual delay before typing. No subtraction of human waiting or claim of first-possible readiness.",
+        "StartLowerUnixUs": 1794243234337183,
+        "StartObservedUnixUs": 1794243234352808,
+        "AcceptedUnixUs": 1794243234694819,
+        "DurationUpperMilliseconds": 357.636,
+        "ClockUncertaintyMilliseconds": 15.625,
+        "WallClockDriftMilliseconds": 0.0011000000000080945
+      },
+      {
+        "Number": 7,
+        "Kind": "HotkeyActivation",
+        "Valid": true,
+        "InjectedStart": false,
+        "Reason": "Actual character accepted; upper bound includes manual delay before typing. No subtraction of human waiting or claim of first-possible readiness.",
+        "StartLowerUnixUs": 1794243235917376,
+        "StartObservedUnixUs": 1794243235933001,
+        "AcceptedUnixUs": 1794243236327173,
+        "DurationUpperMilliseconds": 409.797,
+        "ClockUncertaintyMilliseconds": 15.625,
+        "WallClockDriftMilliseconds": 0.001099999999951251
+      },
+      {
+        "Number": 8,
+        "Kind": "HotkeyActivation",
+        "Valid": true,
+        "InjectedStart": false,
+        "Reason": "Actual character accepted; upper bound includes manual delay before typing. No subtraction of human waiting or claim of first-possible readiness.",
+        "StartLowerUnixUs": 1794243237535566,
+        "StartObservedUnixUs": 1794243237551191,
+        "AcceptedUnixUs": 1794243238042204,
+        "DurationUpperMilliseconds": 506.638,
+        "ClockUncertaintyMilliseconds": 15.625,
+        "WallClockDriftMilliseconds": 0.0003999999999564352
+      },
+      {
+        "Number": 9,
+        "Kind": "HotkeyActivation",
+        "Valid": true,
+        "InjectedStart": false,
+        "Reason": "Actual character accepted; upper bound includes manual delay before typing. No subtraction of human waiting or claim of first-possible readiness.",
+        "StartLowerUnixUs": 1794243240223436,
+        "StartObservedUnixUs": 1794243240239061,
+        "AcceptedUnixUs": 1794243240557422,
+        "DurationUpperMilliseconds": 333.986,
+        "ClockUncertaintyMilliseconds": 15.625,
+        "WallClockDriftMilliseconds": 0.0011000000000080945
+      },
+      {
+        "Number": 10,
+        "Kind": "HotkeyActivation",
+        "Valid": true,
+        "InjectedStart": false,
+        "Reason": "Actual character accepted; upper bound includes manual delay before typing. No subtraction of human waiting or claim of first-possible readiness.",
+        "StartLowerUnixUs": 1794243242873263,
+        "StartObservedUnixUs": 1794243242888888,
+        "AcceptedUnixUs": 1794243243323545,
+        "DurationUpperMilliseconds": 450.282,
+        "ClockUncertaintyMilliseconds": 15.625,
+        "WallClockDriftMilliseconds": 0.0008999999999446118
+      },
+      {
+        "Number": 11,
+        "Kind": "HotkeyActivation",
+        "Valid": true,
+        "InjectedStart": false,
+        "Reason": "Actual character accepted; upper bound includes manual delay before typing. No subtraction of human waiting or claim of first-possible readiness.",
+        "StartLowerUnixUs": 1794243244701490,
+        "StartObservedUnixUs": 1794243244717115,
+        "AcceptedUnixUs": 1794243245079433,
+        "DurationUpperMilliseconds": 377.943,
+        "ClockUncertaintyMilliseconds": 15.625,
+        "WallClockDriftMilliseconds": 9.999999997489795E-05
+      },
+      {
+        "Number": 12,
+        "Kind": "HotkeyActivation",
+        "Valid": true,
+        "InjectedStart": false,
+        "Reason": "Actual character accepted; upper bound includes manual delay before typing. No subtraction of human waiting or claim of first-possible readiness.",
+        "StartLowerUnixUs": 1794243246565346,
+        "StartObservedUnixUs": 1794243246580971,
+        "AcceptedUnixUs": 1794243246931133,
+        "DurationUpperMilliseconds": 365.787,
+        "ClockUncertaintyMilliseconds": 15.625,
+        "WallClockDriftMilliseconds": 0.0006999999999948159
+      },
+      {
+        "Number": 13,
+        "Kind": "HotkeyActivation",
+        "Valid": true,
+        "InjectedStart": false,
+        "Reason": "Actual character accepted; upper bound includes manual delay before typing. No subtraction of human waiting or claim of first-possible readiness.",
+        "StartLowerUnixUs": 1794243248388811,
+        "StartObservedUnixUs": 1794243248404436,
+        "AcceptedUnixUs": 1794243248808073,
+        "DurationUpperMilliseconds": 419.262,
+        "ClockUncertaintyMilliseconds": 15.625,
+        "WallClockDriftMilliseconds": 0.0002000000000066393
+      },
+      {
+        "Number": 14,
+        "Kind": "HotkeyActivation",
+        "Valid": true,
+        "InjectedStart": false,
+        "Reason": "Actual character accepted; upper bound includes manual delay before typing. No subtraction of human waiting or claim of first-possible readiness.",
+        "StartLowerUnixUs": 1794243250153875,
+        "StartObservedUnixUs": 1794243250169500,
+        "AcceptedUnixUs": 1794243250517739,
+        "DurationUpperMilliseconds": 363.864,
+        "ClockUncertaintyMilliseconds": 15.625,
+        "WallClockDriftMilliseconds": 0.0009999999999763531
+      },
+      {
+        "Number": 15,
+        "Kind": "HotkeyActivation",
+        "Valid": true,
+        "InjectedStart": false,
+        "Reason": "Actual character accepted; upper bound includes manual delay before typing. No subtraction of human waiting or claim of first-possible readiness.",
+        "StartLowerUnixUs": 1794243251876400,
+        "StartObservedUnixUs": 1794243251892026,
+        "AcceptedUnixUs": 1794243252236097,
+        "DurationUpperMilliseconds": 359.697,
+        "ClockUncertaintyMilliseconds": 15.626,
+        "WallClockDriftMilliseconds": 0.0006999999999948159
+      },
+      {
+        "Number": 16,
+        "Kind": "HotkeyActivation",
+        "Valid": true,
+        "InjectedStart": false,
+        "Reason": "Actual character accepted; upper bound includes manual delay before typing. No subtraction of human waiting or claim of first-possible readiness.",
+        "StartLowerUnixUs": 1794243253527599,
+        "StartObservedUnixUs": 1794243253543224,
+        "AcceptedUnixUs": 1794243253939227,
+        "DurationUpperMilliseconds": 411.628,
+        "ClockUncertaintyMilliseconds": 15.625,
+        "WallClockDriftMilliseconds": 0.0024000000000228283
+      },
+      {
+        "Number": 17,
+        "Kind": "HotkeyActivation",
+        "Valid": true,
+        "InjectedStart": false,
+        "Reason": "Actual character accepted; upper bound includes manual delay before typing. No subtraction of human waiting or claim of first-possible readiness.",
+        "StartLowerUnixUs": 1794243255270569,
+        "StartObservedUnixUs": 1794243255286195,
+        "AcceptedUnixUs": 1794243255605836,
+        "DurationUpperMilliseconds": 335.267,
+        "ClockUncertaintyMilliseconds": 15.626,
+        "WallClockDriftMilliseconds": 0.0006000000000199179
+      },
+      {
+        "Number": 18,
+        "Kind": "HotkeyActivation",
+        "Valid": true,
+        "InjectedStart": false,
+        "Reason": "Actual character accepted; upper bound includes manual delay before typing. No subtraction of human waiting or claim of first-possible readiness.",
+        "StartLowerUnixUs": 1794243256841631,
+        "StartObservedUnixUs": 1794243256857256,
+        "AcceptedUnixUs": 1794243257196360,
+        "DurationUpperMilliseconds": 354.729,
+        "ClockUncertaintyMilliseconds": 15.625,
+        "WallClockDriftMilliseconds": 0.0008000000000265572
+      },
+      {
+        "Number": 19,
+        "Kind": "HotkeyActivation",
+        "Valid": true,
+        "InjectedStart": false,
+        "Reason": "Actual character accepted; upper bound includes manual delay before typing. No subtraction of human waiting or claim of first-possible readiness.",
+        "StartLowerUnixUs": 1794243258565555,
+        "StartObservedUnixUs": 1794243258581181,
+        "AcceptedUnixUs": 1794243258942842,
+        "DurationUpperMilliseconds": 377.287,
+        "ClockUncertaintyMilliseconds": 15.626,
+        "WallClockDriftMilliseconds": 0.0008000000000265572
+      },
+      {
+        "Number": 20,
+        "Kind": "HotkeyActivation",
+        "Valid": true,
+        "InjectedStart": false,
+        "Reason": "Actual character accepted; upper bound includes manual delay before typing. No subtraction of human waiting or claim of first-possible readiness.",
+        "StartLowerUnixUs": 1794243260162339,
+        "StartObservedUnixUs": 1794243260177964,
+        "AcceptedUnixUs": 1794243260510636,
+        "DurationUpperMilliseconds": 348.297,
+        "ClockUncertaintyMilliseconds": 15.625,
+        "WallClockDriftMilliseconds": 0.0012999999999578904
+      },
+      {
+        "Number": 21,
+        "Kind": "HotkeyActivation",
+        "Valid": true,
+        "InjectedStart": false,
+        "Reason": "Actual character accepted; upper bound includes manual delay before typing. No subtraction of human waiting or claim of first-possible readiness.",
+        "StartLowerUnixUs": 1794243261721157,
+        "StartObservedUnixUs": 1794243261736782,
+        "AcceptedUnixUs": 1794243262132712,
+        "DurationUpperMilliseconds": 411.555,
+        "ClockUncertaintyMilliseconds": 15.625,
+        "WallClockDriftMilliseconds": 0.0011000000000080945
+      }
+    ],
+    "Completed": false,
+    "CountMode": "UntilExit",
+    "EndReason": "Timeout",
+    "ValidSampleCountSatisfied": true,
+    "NativeEventsDropped": false,
+    "NativeEvents": [
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1794243210691335,
+        "ElapsedMilliseconds": 663619.28,
+        "Visible": true,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "hide",
+        "UnixMicroseconds": 1794243210724826,
+        "ElapsedMilliseconds": 663652.7675,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1794243214616770,
+        "ElapsedMilliseconds": 667544.7118,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1794243216562206,
+        "ElapsedMilliseconds": 669490.147,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "alt_space",
+        "UnixMicroseconds": 1794243224995499,
+        "ElapsedMilliseconds": 677923.4404,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "show",
+        "UnixMicroseconds": 1794243225007695,
+        "ElapsedMilliseconds": 677935.6447,
+        "Visible": true,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1794243225008429,
+        "ElapsedMilliseconds": 677936.3746,
+        "Visible": true,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "hide",
+        "UnixMicroseconds": 1794243226424190,
+        "ElapsedMilliseconds": 679352.1312,
+        "Visible": false,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1794243226425301,
+        "ElapsedMilliseconds": 679353.2415,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "alt_space",
+        "UnixMicroseconds": 1794243227404760,
+        "ElapsedMilliseconds": 680332.701,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "show",
+        "UnixMicroseconds": 1794243227407710,
+        "ElapsedMilliseconds": 680335.6506,
+        "Visible": true,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1794243227407907,
+        "ElapsedMilliseconds": 680335.8472,
+        "Visible": true,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "hide",
+        "UnixMicroseconds": 1794243228580642,
+        "ElapsedMilliseconds": 681508.5827,
+        "Visible": false,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1794243228582003,
+        "ElapsedMilliseconds": 681509.9451,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "alt_space",
+        "UnixMicroseconds": 1794243229272749,
+        "ElapsedMilliseconds": 682200.6897,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "show",
+        "UnixMicroseconds": 1794243229277320,
+        "ElapsedMilliseconds": 682205.2616,
+        "Visible": true,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1794243229277513,
+        "ElapsedMilliseconds": 682205.4541,
+        "Visible": true,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "hide",
+        "UnixMicroseconds": 1794243230316041,
+        "ElapsedMilliseconds": 683243.982,
+        "Visible": false,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1794243230317235,
+        "ElapsedMilliseconds": 683245.1771,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "alt_space",
+        "UnixMicroseconds": 1794243230976820,
+        "ElapsedMilliseconds": 683904.7617,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "show",
+        "UnixMicroseconds": 1794243230984548,
+        "ElapsedMilliseconds": 683912.4892,
+        "Visible": true,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1794243230984756,
+        "ElapsedMilliseconds": 683912.6962,
+        "Visible": true,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "hide",
+        "UnixMicroseconds": 1794243231867261,
+        "ElapsedMilliseconds": 684795.2023,
+        "Visible": false,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1794243231868573,
+        "ElapsedMilliseconds": 684796.5135,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "alt_space",
+        "UnixMicroseconds": 1794243232516506,
+        "ElapsedMilliseconds": 685444.4471,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "show",
+        "UnixMicroseconds": 1794243232522169,
+        "ElapsedMilliseconds": 685450.1099,
+        "Visible": true,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1794243232522343,
+        "ElapsedMilliseconds": 685450.2838,
+        "Visible": true,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "hide",
+        "UnixMicroseconds": 1794243233602960,
+        "ElapsedMilliseconds": 686530.9012,
+        "Visible": false,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1794243233604486,
+        "ElapsedMilliseconds": 686532.4282,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "alt_space",
+        "UnixMicroseconds": 1794243234352797,
+        "ElapsedMilliseconds": 687280.7377,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "show",
+        "UnixMicroseconds": 1794243234372171,
+        "ElapsedMilliseconds": 687300.1113,
+        "Visible": true,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1794243234372218,
+        "ElapsedMilliseconds": 687300.1583,
+        "Visible": true,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "hide",
+        "UnixMicroseconds": 1794243235272681,
+        "ElapsedMilliseconds": 688200.6218,
+        "Visible": false,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1794243235273819,
+        "ElapsedMilliseconds": 688201.7599,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "alt_space",
+        "UnixMicroseconds": 1794243235932996,
+        "ElapsedMilliseconds": 688860.9373,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "show",
+        "UnixMicroseconds": 1794243235941280,
+        "ElapsedMilliseconds": 688869.2204,
+        "Visible": true,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1794243235941464,
+        "ElapsedMilliseconds": 688869.4049,
+        "Visible": true,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "hide",
+        "UnixMicroseconds": 1794243236905755,
+        "ElapsedMilliseconds": 689833.696,
+        "Visible": false,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1794243236906821,
+        "ElapsedMilliseconds": 689834.7651,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "alt_space",
+        "UnixMicroseconds": 1794243237551165,
+        "ElapsedMilliseconds": 690479.1214,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "show",
+        "UnixMicroseconds": 1794243237561151,
+        "ElapsedMilliseconds": 690489.0918,
+        "Visible": true,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1794243237561332,
+        "ElapsedMilliseconds": 690489.2727,
+        "Visible": true,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "hide",
+        "UnixMicroseconds": 1794243238660430,
+        "ElapsedMilliseconds": 691588.3713,
+        "Visible": false,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1794243238661772,
+        "ElapsedMilliseconds": 691589.7126,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "alt_space",
+        "UnixMicroseconds": 1794243240239057,
+        "ElapsedMilliseconds": 693166.9973,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "show",
+        "UnixMicroseconds": 1794243240262063,
+        "ElapsedMilliseconds": 693190.0037,
+        "Visible": true,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1794243240262158,
+        "ElapsedMilliseconds": 693190.0979,
+        "Visible": true,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "hide",
+        "UnixMicroseconds": 1794243241110374,
+        "ElapsedMilliseconds": 694038.3145,
+        "Visible": false,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1794243241111637,
+        "ElapsedMilliseconds": 694039.5781,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "alt_space",
+        "UnixMicroseconds": 1794243242888884,
+        "ElapsedMilliseconds": 695816.8243,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "show",
+        "UnixMicroseconds": 1794243242907257,
+        "ElapsedMilliseconds": 695835.1972,
+        "Visible": true,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1794243242907460,
+        "ElapsedMilliseconds": 695835.4004,
+        "Visible": true,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "hide",
+        "UnixMicroseconds": 1794243243913971,
+        "ElapsedMilliseconds": 696841.9122,
+        "Visible": false,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1794243243915151,
+        "ElapsedMilliseconds": 696843.0924,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "alt_space",
+        "UnixMicroseconds": 1794243244717110,
+        "ElapsedMilliseconds": 697645.051,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "show",
+        "UnixMicroseconds": 1794243244725670,
+        "ElapsedMilliseconds": 697653.611,
+        "Visible": true,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1794243244725907,
+        "ElapsedMilliseconds": 697653.8469,
+        "Visible": true,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "hide",
+        "UnixMicroseconds": 1794243245773768,
+        "ElapsedMilliseconds": 698701.7092,
+        "Visible": false,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1794243245775360,
+        "ElapsedMilliseconds": 698703.3014,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "alt_space",
+        "UnixMicroseconds": 1794243246580961,
+        "ElapsedMilliseconds": 699508.902,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "show",
+        "UnixMicroseconds": 1794243246583861,
+        "ElapsedMilliseconds": 699511.8011,
+        "Visible": true,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1794243246584066,
+        "ElapsedMilliseconds": 699512.0065,
+        "Visible": true,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "hide",
+        "UnixMicroseconds": 1794243247634449,
+        "ElapsedMilliseconds": 700562.3893,
+        "Visible": false,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1794243247635575,
+        "ElapsedMilliseconds": 700563.517,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "alt_space",
+        "UnixMicroseconds": 1794243248404429,
+        "ElapsedMilliseconds": 701332.3694,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "show",
+        "UnixMicroseconds": 1794243248420994,
+        "ElapsedMilliseconds": 701348.9343,
+        "Visible": true,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1794243248421217,
+        "ElapsedMilliseconds": 701349.1569,
+        "Visible": true,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "hide",
+        "UnixMicroseconds": 1794243249396632,
+        "ElapsedMilliseconds": 702324.5724,
+        "Visible": false,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1794243249398158,
+        "ElapsedMilliseconds": 702326.1006,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "alt_space",
+        "UnixMicroseconds": 1794243250169496,
+        "ElapsedMilliseconds": 703097.4369,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "show",
+        "UnixMicroseconds": 1794243250187370,
+        "ElapsedMilliseconds": 703115.3106,
+        "Visible": true,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1794243250187444,
+        "ElapsedMilliseconds": 703115.3838,
+        "Visible": true,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "hide",
+        "UnixMicroseconds": 1794243251125943,
+        "ElapsedMilliseconds": 704053.8835,
+        "Visible": false,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1794243251127044,
+        "ElapsedMilliseconds": 704054.9842,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "alt_space",
+        "UnixMicroseconds": 1794243251892022,
+        "ElapsedMilliseconds": 704819.9622,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "show",
+        "UnixMicroseconds": 1794243251897422,
+        "ElapsedMilliseconds": 704825.3628,
+        "Visible": true,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1794243251897590,
+        "ElapsedMilliseconds": 704825.5301,
+        "Visible": true,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "hide",
+        "UnixMicroseconds": 1794243252822806,
+        "ElapsedMilliseconds": 705750.747,
+        "Visible": false,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1794243252824013,
+        "ElapsedMilliseconds": 705751.9535,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "alt_space",
+        "UnixMicroseconds": 1794243253543219,
+        "ElapsedMilliseconds": 706471.16,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "show",
+        "UnixMicroseconds": 1794243253550463,
+        "ElapsedMilliseconds": 706478.4033,
+        "Visible": true,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1794243253550710,
+        "ElapsedMilliseconds": 706478.6506,
+        "Visible": true,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "hide",
+        "UnixMicroseconds": 1794243254552865,
+        "ElapsedMilliseconds": 707480.8054,
+        "Visible": false,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1794243254554212,
+        "ElapsedMilliseconds": 707482.1525,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "alt_space",
+        "UnixMicroseconds": 1794243255286190,
+        "ElapsedMilliseconds": 708214.131,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "show",
+        "UnixMicroseconds": 1794243255296564,
+        "ElapsedMilliseconds": 708224.5055,
+        "Visible": true,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1794243255296775,
+        "ElapsedMilliseconds": 708224.7154,
+        "Visible": true,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "hide",
+        "UnixMicroseconds": 1794243256183278,
+        "ElapsedMilliseconds": 709111.2187,
+        "Visible": false,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1794243256184458,
+        "ElapsedMilliseconds": 709112.3993,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "alt_space",
+        "UnixMicroseconds": 1794243256857252,
+        "ElapsedMilliseconds": 709785.1926,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "show",
+        "UnixMicroseconds": 1794243256870574,
+        "ElapsedMilliseconds": 709798.5151,
+        "Visible": true,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1794243256870809,
+        "ElapsedMilliseconds": 709798.7488,
+        "Visible": true,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "hide",
+        "UnixMicroseconds": 1794243257794496,
+        "ElapsedMilliseconds": 710722.4363,
+        "Visible": false,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1794243257795597,
+        "ElapsedMilliseconds": 710723.5386,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "alt_space",
+        "UnixMicroseconds": 1794243258581167,
+        "ElapsedMilliseconds": 711509.1168,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "show",
+        "UnixMicroseconds": 1794243258585009,
+        "ElapsedMilliseconds": 711512.9499,
+        "Visible": true,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1794243258585178,
+        "ElapsedMilliseconds": 711513.1183,
+        "Visible": true,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "hide",
+        "UnixMicroseconds": 1794243259478556,
+        "ElapsedMilliseconds": 712406.4967,
+        "Visible": false,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1794243259479793,
+        "ElapsedMilliseconds": 712407.734,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "alt_space",
+        "UnixMicroseconds": 1794243260177960,
+        "ElapsedMilliseconds": 713105.9009,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "show",
+        "UnixMicroseconds": 1794243260189349,
+        "ElapsedMilliseconds": 713117.2903,
+        "Visible": true,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1794243260189576,
+        "ElapsedMilliseconds": 713117.5164,
+        "Visible": true,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "hide",
+        "UnixMicroseconds": 1794243261097679,
+        "ElapsedMilliseconds": 714025.6199,
+        "Visible": false,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1794243261109880,
+        "ElapsedMilliseconds": 714037.8222,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "alt_space",
+        "UnixMicroseconds": 1794243261736779,
+        "ElapsedMilliseconds": 714664.7198,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "show",
+        "UnixMicroseconds": 1794243261741776,
+        "ElapsedMilliseconds": 714669.7174,
+        "Visible": true,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1794243261741950,
+        "ElapsedMilliseconds": 714669.8903,
+        "Visible": true,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "hide",
+        "UnixMicroseconds": 1794243262698746,
+        "ElapsedMilliseconds": 715626.6866,
+        "Visible": false,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1794243262699880,
+        "ElapsedMilliseconds": 715627.8214,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      }
+    ]
+  },
+  "RecordedAtUtc": "2026-11-09T16:57:27.1196650Z",
+  "EnvironmentId": "4FA2965BEABE3752CB643C4032B28EC1B014CC9695652667FA1CE6B468BFB5D4",
+  "InputId": "4F199EEA23BF1258C3A98A684D259AF3DAFD9F0766A1D920592C905F4BDC2D5F",
+  "Method": "Physical Alt+Space Windows event lower bound to actual non-composing character accepted by the focused visible launcher. Includes manual typing delay. Injected hotkeys excluded.",
+  "Boundary": "KeyDownToEditable",
+  "Limitations": [
+    "Actual accepted character is later than first-possible readiness; human delay is not removed. Above-budget upper bounds alone cannot establish a readiness regression.",
+    "Windows keyboard-event clock quantum and UTC mapping bounds are reported. Native timestamps are callback observations, not presented frames or application-level cause.",
+    "Only starts on the selected hidden launcher; no other typed keys or text are collected.",
+    "Completed describes capture termination only. It does not establish reliable activation or absence of operator-reported failures.",
+    "UntilExit retains all bounded-session attempts until the target window ends or the timeout; minimum sample counts are reported separately."
+  ],
+  "StartupClockCalibration": null
+}

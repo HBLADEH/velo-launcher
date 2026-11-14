@@ -1,0 +1,59 @@
+[
+  {
+    "Run": "software-native-auto",
+    "Renderer": "software",
+    "ExecutableSHA256": "5E7C017DDA3FF691E7FF8DCBFEAF149E5A766C1F8DC73A816BB5C4A9F7C4C66B",
+    "ProcessId": 137372,
+    "StartedTicks": 639301067627146388,
+    "Completion": {
+      "Completed": true,
+      "ExitCode": 0,
+      "ProcessId": 137372,
+      "SHA256": "5E7C017DDA3FF691E7FF8DCBFEAF149E5A766C1F8DC73A816BB5C4A9F7C4C66B",
+      "ForcedCleanup": false,
+      "CleanupScope": "This wrapper never terminates a process. External cleanup records take precedence on nonzero exit."
+    },
+    "ConfigUnchanged": true,
+    "HistoryUnchanged": true,
+    "InputLogSHA256": "5C662F1F717DAE22D1EDDFA835260E2AE08CD40805B08C9E6987612173819B57",
+    "PhysicalInput": false
+  },
+  {
+    "Run": "software-native-phase",
+    "Renderer": "software",
+    "ExecutableSHA256": "5E7C017DDA3FF691E7FF8DCBFEAF149E5A766C1F8DC73A816BB5C4A9F7C4C66B",
+    "ProcessId": 157048,
+    "StartedTicks": 639301088806111716,
+    "Completion": {
+      "Completed": true,
+      "ExitCode": 0,
+      "ProcessId": 157048,
+      "SHA256": "5E7C017DDA3FF691E7FF8DCBFEAF149E5A766C1F8DC73A816BB5C4A9F7C4C66B",
+      "ForcedCleanup": false,
+      "CleanupScope": "This wrapper never terminates a process. External cleanup records take precedence on nonzero exit."
+    },
+    "ConfigUnchanged": true,
+    "HistoryUnchanged": true,
+    "InputLogSHA256": "0CB862A4F8ED8B414FDBBB66A64265D6C6A259754328D5E8760F3484FBAC20B4",
+    "PhysicalInput": false
+  },
+  {
+    "Run": "femtovg-native-phase",
+    "Renderer": "femtovg",
+    "ExecutableSHA256": "D81F31ED8AB3C0D45A3565CDC8AA412B3FB870C0CC350204178CDE44456B6487",
+    "ProcessId": 164420,
+    "StartedTicks": 639301096834963150,
+    "Completion": {
+      "Completed": true,
+      "ExitCode": 0,
+      "ProcessId": 164420,
+      "SHA256": "D81F31ED8AB3C0D45A3565CDC8AA412B3FB870C0CC350204178CDE44456B6487",
+      "ForcedCleanup": false,
+      "CleanupScope": "This wrapper never terminates a process. External cleanup records take precedence on nonzero exit."
+    },
+    "ConfigUnchanged": true,
+    "HistoryUnchanged": true,
+    "InputLogSHA256": "7FECE97B3F6E1EAD951C750868768E5529EF5A6F0E83349D9172553AF269FD9A",
+    "PhysicalInput": false
+  }
+]

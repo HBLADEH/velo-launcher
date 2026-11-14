@@ -1,0 +1,27 @@
+{
+  "RecordedAtUtc": "2026-11-09T18:26:19.9101062Z",
+  "Scenario": "femtovg-10000-v4",
+  "ProcessId": 26528,
+  "Completion": {
+    "Completed": true,
+    "ExitCode": 0,
+    "ProcessId": 26528,
+    "SHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+    "ForcedCleanup": false
+  },
+  "OperatorReport": "查询正常，已点退出",
+  "AcceptedEditEvents": 0,
+  "NativeKeyEvents": 2,
+  "FinalLogSHA256": "19D780AD3BC4C7D9BFD6960FAA014CDD6818C1EF6510AA745207B6E7063A64D9",
+  "ExecutableMatches": true,
+  "FormalFilesMatchingPreflight": {
+    "config.json": true,
+    "index.json": true,
+    "history.json": true,
+    "application-library.json": true,
+    "quick-launch.json": true
+  },
+  "ValidQueryTimingSamples": 0,
+  "Reason": "Bounded recording had no physical A keys; final product log also has no accepted-edit event. Operator normal-query report retained, but no measured-query evidence established.",
+  "RS12Complete": false
+}

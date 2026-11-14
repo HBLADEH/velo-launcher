@@ -1,0 +1,89 @@
+{
+  "RecordedAtUtc": "2026-11-09T18:49:37.9745066Z",
+  "Scenario": "wails-10000-v4",
+  "Edition": "wails",
+  "Fixture": "v4",
+  "ExpectedCatalogCount": 10000,
+  "ObservedCatalogCount": 10000,
+  "SHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+  "ExecutableMatches": true,
+  "ProcessId": 29688,
+  "NormalExit": {
+    "Completed": true,
+    "ExitCode": 0,
+    "ProcessId": 29688,
+    "SHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+    "ForcedCleanup": false
+  },
+  "OperatorReport": "5 次正常，已从托盘退出",
+  "ActualEligibleEdits": 7,
+  "PhysicalKeyFramePairs": 5,
+  "AdditionalAcceptedEdits": [
+    {
+      "UnixMicroseconds": 1794249585675840,
+      "Utf8Bytes": 2,
+      "Composing": false,
+      "Scope": "Additional accepted edit outside the fixed A pair list; contents not collected."
+    },
+    {
+      "UnixMicroseconds": 1794249586715193,
+      "Utf8Bytes": 1,
+      "Composing": false,
+      "Scope": "Additional accepted edit outside the fixed A pair list; contents not collected."
+    }
+  ],
+  "EventLoss": 0,
+  "CaptureEndedWithTarget": true,
+  "GeometryFreshnessVerified": true,
+  "ClockOffsetRangeMilliseconds": 0.0014500000000000001,
+  "KeyToFirstChangedResultRegionUpperMilliseconds": {
+    "Count": 5,
+    "Minimum": 47.1887,
+    "Median": 68.1654,
+    "P95": 77.6576,
+    "Maximum": 77.6576
+  },
+  "KeyToStableResultRegionUpperMilliseconds": {
+    "Count": 5,
+    "Minimum": 294.5072,
+    "Median": 315.7563,
+    "P95": 324.9072,
+    "Maximum": 324.9072
+  },
+  "CompleteResultContentConfirmation": "full-window-fnv-reference",
+  "AllQueriesHaveReviewedResultEvidence": true,
+  "NativeDPI": 96,
+  "ObserverCPUSeconds": 3.390625,
+  "ObserverElapsedSeconds": 64.7076002,
+  "FormalFilesMatchingPreflight": {
+    "config.json": true,
+    "index.json": true,
+    "history.json": true,
+    "application-library.json": true,
+    "quick-launch.json": true
+  },
+  "SeedFilesMatchingAfterExit": {
+    "config.json": true,
+    "index.json": false,
+    "history.json": true,
+    "application-library.json": true,
+    "quick-launch.json": true
+  },
+  "LauncherWindowsRemaining": 0,
+  "ServiceWindowsRemaining": 0,
+  "ClosedEvidenceSHA256": {
+    "session.json": "F18AFCA380B802FC24283C44A87D98123D4D441BDC4E57D42EAB08984E574332",
+    "completion.json": "57CFE1774A0357274CCFE5A16923641F91BDAB3D899FB89280FD91BFE9CC07D0",
+    "final-input-events": "67CB40356F31CC502287688198A99939D5F160A0BDFE2E3C1590D276C149E7BA",
+    "events.jsonl": "67638D09E735E8FA9D8F038678FED126A76CCFFB19DA24E45108DF4127636425",
+    "identity.json": "A6910EBE94A1E55993B10146802C892E9DC38C73D7979FB5ABFA6A252BC06656",
+    "summary.json": "C58C26EC5E26C162E57DCDF61866DD3478793389CB7FD58B348F484DA097769F",
+    "result-and-animation-review.json": "71752A98568B7B956CDBC1B41C153F5CE26FA1854055CE53D47D450B22C215BD"
+  },
+  "RawImagesPublished": false,
+  "FirstPossibleInputLatencyVerified": false,
+  "ExactEarliestCorrectResultFrameVerified": false,
+  "PhotonPresentationVerified": false,
+  "RS12Complete": false,
+  "Scope": "Frozen executable, v4 synthetic snapshots, fixed physical A query, first changed desktop result region plus separately reviewed content/animation stability. Additional edits retained outside the paired A workload. Small one-machine sample; Wails whole-client FNV consistency, Slint saved-body SHA256 comparison."
+}

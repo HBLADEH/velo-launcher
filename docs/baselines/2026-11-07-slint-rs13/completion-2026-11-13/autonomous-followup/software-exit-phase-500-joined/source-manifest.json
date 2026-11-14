@@ -1,0 +1,339 @@
+{
+  "OriginalTrace": ".reasonix\\rs13-assisted-20261113\\software-exit-phase-500\\events.jsonl",
+  "OriginalTraceSHA256": "1CB9A8496A458E3DEB03BADACCAE366EAA8E3127C1A7A74E01057A64FCFA10CD",
+  "ParentEnd": {
+    "event": "end",
+    "qpc": 1776815213813,
+    "frames": 46,
+    "clips": 2,
+    "gpu_queue_rejected": 0,
+    "write_queue_rejected": 0,
+    "storage_limited": false
+  },
+  "UniqueFrames": 46,
+  "Frames": [
+    {
+      "OriginalFile": ".reasonix\\rs13-assisted-20261113\\software-exit-phase-500\\controlled-01\\frame-0.bmp",
+      "File": "settings-exit-1/frame-0.bmp",
+      "SHA256": "45025F4A442914F810C89F5AC6FAF8B89CE912F4B02F58CF739FE0BA92929B3B",
+      "Index": 0,
+      "SourceTime100ns": 1776271849707
+    },
+    {
+      "OriginalFile": ".reasonix\\rs13-assisted-20261113\\software-exit-phase-500\\controlled-01\\frame-1.bmp",
+      "File": "settings-exit-1/frame-1.bmp",
+      "SHA256": "5AD11AAF08B0FD805CC8848CB10340F75C0B33BC9EE3BEAA9C1CC73BB190BDDE",
+      "Index": 1,
+      "SourceTime100ns": 1776799877902
+    },
+    {
+      "OriginalFile": ".reasonix\\rs13-assisted-20261113\\software-exit-phase-500\\controlled-01\\frame-2.bmp",
+      "File": "settings-exit-1/frame-2.bmp",
+      "SHA256": "5AD11AAF08B0FD805CC8848CB10340F75C0B33BC9EE3BEAA9C1CC73BB190BDDE",
+      "Index": 2,
+      "SourceTime100ns": 1776800044734
+    },
+    {
+      "OriginalFile": ".reasonix\\rs13-assisted-20261113\\software-exit-phase-500\\controlled-01\\frame-3.bmp",
+      "File": "settings-exit-1/frame-3.bmp",
+      "SHA256": "5AD11AAF08B0FD805CC8848CB10340F75C0B33BC9EE3BEAA9C1CC73BB190BDDE",
+      "Index": 3,
+      "SourceTime100ns": 1776800211564
+    },
+    {
+      "OriginalFile": ".reasonix\\rs13-assisted-20261113\\software-exit-phase-500\\controlled-01\\frame-4.bmp",
+      "File": "settings-exit-1/frame-4.bmp",
+      "SHA256": "5AD11AAF08B0FD805CC8848CB10340F75C0B33BC9EE3BEAA9C1CC73BB190BDDE",
+      "Index": 4,
+      "SourceTime100ns": 1776800378394
+    },
+    {
+      "OriginalFile": ".reasonix\\rs13-assisted-20261113\\software-exit-phase-500\\controlled-01\\frame-5.bmp",
+      "File": "settings-exit-1/frame-5.bmp",
+      "SHA256": "5AD11AAF08B0FD805CC8848CB10340F75C0B33BC9EE3BEAA9C1CC73BB190BDDE",
+      "Index": 5,
+      "SourceTime100ns": 1776800545213
+    },
+    {
+      "OriginalFile": ".reasonix\\rs13-assisted-20261113\\software-exit-phase-500\\controlled-01\\frame-6.bmp",
+      "File": "settings-exit-1/frame-6.bmp",
+      "SHA256": "5AD11AAF08B0FD805CC8848CB10340F75C0B33BC9EE3BEAA9C1CC73BB190BDDE",
+      "Index": 6,
+      "SourceTime100ns": 1776800878867
+    },
+    {
+      "OriginalFile": ".reasonix\\rs13-assisted-20261113\\software-exit-phase-500\\controlled-01\\frame-7.bmp",
+      "File": "settings-exit-1/frame-7.bmp",
+      "SHA256": "5AD11AAF08B0FD805CC8848CB10340F75C0B33BC9EE3BEAA9C1CC73BB190BDDE",
+      "Index": 7,
+      "SourceTime100ns": 1776801045694
+    },
+    {
+      "OriginalFile": ".reasonix\\rs13-assisted-20261113\\software-exit-phase-500\\controlled-01\\frame-8.bmp",
+      "File": "settings-exit-1/frame-8.bmp",
+      "SHA256": "5AD11AAF08B0FD805CC8848CB10340F75C0B33BC9EE3BEAA9C1CC73BB190BDDE",
+      "Index": 8,
+      "SourceTime100ns": 1776801379369
+    },
+    {
+      "OriginalFile": ".reasonix\\rs13-assisted-20261113\\software-exit-phase-500\\controlled-01\\frame-9.bmp",
+      "File": "settings-exit-1/frame-9.bmp",
+      "SHA256": "5AD11AAF08B0FD805CC8848CB10340F75C0B33BC9EE3BEAA9C1CC73BB190BDDE",
+      "Index": 9,
+      "SourceTime100ns": 1776801713030
+    },
+    {
+      "OriginalFile": ".reasonix\\rs13-assisted-20261113\\software-exit-phase-500\\controlled-01\\frame-10.bmp",
+      "File": "settings-exit-1/frame-10.bmp",
+      "SHA256": "01E900C5EBD66954172619A41EB8D0843ED14B1B0C9C4C4E890138DDEFA4097F",
+      "Index": 10,
+      "SourceTime100ns": 1776802046683
+    },
+    {
+      "OriginalFile": ".reasonix\\rs13-assisted-20261113\\software-exit-phase-500\\controlled-01\\frame-11.bmp",
+      "File": "settings-exit-1/frame-11.bmp",
+      "SHA256": "01E900C5EBD66954172619A41EB8D0843ED14B1B0C9C4C4E890138DDEFA4097F",
+      "Index": 11,
+      "SourceTime100ns": 1776802213513
+    },
+    {
+      "OriginalFile": ".reasonix\\rs13-assisted-20261113\\software-exit-phase-500\\controlled-01\\frame-12.bmp",
+      "File": "settings-exit-1/frame-12.bmp",
+      "SHA256": "90CAF4BAF781B0FE51974B1FAFE0BF04530EA4FF300C750575FE6C91B138D72E",
+      "Index": 12,
+      "SourceTime100ns": 1776802547173
+    },
+    {
+      "OriginalFile": ".reasonix\\rs13-assisted-20261113\\software-exit-phase-500\\controlled-01\\frame-13.bmp",
+      "File": "settings-exit-1/frame-13.bmp",
+      "SHA256": "90CAF4BAF781B0FE51974B1FAFE0BF04530EA4FF300C750575FE6C91B138D72E",
+      "Index": 13,
+      "SourceTime100ns": 1776802713997
+    },
+    {
+      "OriginalFile": ".reasonix\\rs13-assisted-20261113\\software-exit-phase-500\\controlled-01\\frame-14.bmp",
+      "File": "settings-exit-1/frame-14.bmp",
+      "SHA256": "90CAF4BAF781B0FE51974B1FAFE0BF04530EA4FF300C750575FE6C91B138D72E",
+      "Index": 14,
+      "SourceTime100ns": 1776802880835
+    },
+    {
+      "OriginalFile": ".reasonix\\rs13-assisted-20261113\\software-exit-phase-500\\controlled-01\\frame-15.bmp",
+      "File": "settings-exit-1/frame-15.bmp",
+      "SHA256": "126111E871438C8944FC608B5FCA32892684B7E84A7FE476E4850F9B718A4685",
+      "Index": 15,
+      "SourceTime100ns": 1776803214503
+    },
+    {
+      "OriginalFile": ".reasonix\\rs13-assisted-20261113\\software-exit-phase-500\\controlled-01\\frame-16.bmp",
+      "File": "settings-exit-1/frame-16.bmp",
+      "SHA256": "126111E871438C8944FC608B5FCA32892684B7E84A7FE476E4850F9B718A4685",
+      "Index": 16,
+      "SourceTime100ns": 1776803381334
+    },
+    {
+      "OriginalFile": ".reasonix\\rs13-assisted-20261113\\software-exit-phase-500\\controlled-01\\frame-17.bmp",
+      "File": "settings-exit-1/frame-17.bmp",
+      "SHA256": "E9D6F710FCEA267E024C18C11E06B49468494A9228C3B335322D1DEB6EF44F97",
+      "Index": 17,
+      "SourceTime100ns": 1776803548166
+    },
+    {
+      "OriginalFile": ".reasonix\\rs13-assisted-20261113\\software-exit-phase-500\\controlled-01\\frame-18.bmp",
+      "File": "settings-exit-1/frame-18.bmp",
+      "SHA256": "E9D6F710FCEA267E024C18C11E06B49468494A9228C3B335322D1DEB6EF44F97",
+      "Index": 18,
+      "SourceTime100ns": 1776803715003
+    },
+    {
+      "OriginalFile": ".reasonix\\rs13-assisted-20261113\\software-exit-phase-500\\controlled-01\\frame-19.bmp",
+      "File": "settings-exit-1/frame-19.bmp",
+      "SHA256": "E9D6F710FCEA267E024C18C11E06B49468494A9228C3B335322D1DEB6EF44F97",
+      "Index": 19,
+      "SourceTime100ns": 1776803881833
+    },
+    {
+      "OriginalFile": ".reasonix\\rs13-assisted-20261113\\software-exit-phase-500\\controlled-01\\frame-20.bmp",
+      "File": "settings-exit-1/frame-20.bmp",
+      "SHA256": "FCF93BBCD6D61737FF703C51835EDFCBCECCB4843FC4B3E258230CC82F40773A",
+      "Index": 20,
+      "SourceTime100ns": 1776804048664
+    },
+    {
+      "OriginalFile": ".reasonix\\rs13-assisted-20261113\\software-exit-phase-500\\controlled-01\\frame-21.bmp",
+      "File": "settings-exit-1/frame-21.bmp",
+      "SHA256": "FCF93BBCD6D61737FF703C51835EDFCBCECCB4843FC4B3E258230CC82F40773A",
+      "Index": 21,
+      "SourceTime100ns": 1776804215495
+    },
+    {
+      "OriginalFile": ".reasonix\\rs13-assisted-20261113\\software-exit-phase-500\\controlled-01\\frame-22.bmp",
+      "File": "settings-exit-1/frame-22.bmp",
+      "SHA256": "FCF93BBCD6D61737FF703C51835EDFCBCECCB4843FC4B3E258230CC82F40773A",
+      "Index": 22,
+      "SourceTime100ns": 1776804382326
+    },
+    {
+      "OriginalFile": ".reasonix\\rs13-assisted-20261113\\software-exit-phase-500\\controlled-01\\frame-23.bmp",
+      "File": "settings-exit-1/frame-23.bmp",
+      "SHA256": "68A2298F0CCF37C7D71BD4DEDC6DB6CEBD51A10BD71D8503F782CBF44651F901",
+      "Index": 23,
+      "SourceTime100ns": 1776804549153
+    },
+    {
+      "OriginalFile": ".reasonix\\rs13-assisted-20261113\\software-exit-phase-500\\controlled-01\\frame-24.bmp",
+      "File": "settings-exit-1/frame-24.bmp",
+      "SHA256": "68A2298F0CCF37C7D71BD4DEDC6DB6CEBD51A10BD71D8503F782CBF44651F901",
+      "Index": 24,
+      "SourceTime100ns": 1776804715983
+    },
+    {
+      "OriginalFile": ".reasonix\\rs13-assisted-20261113\\software-exit-phase-500\\controlled-01\\frame-25.bmp",
+      "File": "settings-exit-1/frame-25.bmp",
+      "SHA256": "68A2298F0CCF37C7D71BD4DEDC6DB6CEBD51A10BD71D8503F782CBF44651F901",
+      "Index": 25,
+      "SourceTime100ns": 1776804882806
+    },
+    {
+      "OriginalFile": ".reasonix\\rs13-assisted-20261113\\software-exit-phase-500\\controlled-01\\frame-26.bmp",
+      "File": "settings-exit-1/frame-26.bmp",
+      "SHA256": "68A2298F0CCF37C7D71BD4DEDC6DB6CEBD51A10BD71D8503F782CBF44651F901",
+      "Index": 26,
+      "SourceTime100ns": 1776805049657
+    },
+    {
+      "OriginalFile": ".reasonix\\rs13-assisted-20261113\\software-exit-phase-500\\controlled-01\\frame-27.bmp",
+      "File": "settings-exit-1/frame-27.bmp",
+      "SHA256": "26353382AF964E69EDD4EF413DC926020BC00CC8B3751C5640C3C66765FB1236",
+      "Index": 27,
+      "SourceTime100ns": 1776805216507
+    },
+    {
+      "OriginalFile": ".reasonix\\rs13-assisted-20261113\\software-exit-phase-500\\controlled-01\\frame-28.bmp",
+      "File": "settings-exit-1/frame-28.bmp",
+      "SHA256": "26353382AF964E69EDD4EF413DC926020BC00CC8B3751C5640C3C66765FB1236",
+      "Index": 28,
+      "SourceTime100ns": 1776805383350
+    },
+    {
+      "OriginalFile": ".reasonix\\rs13-assisted-20261113\\software-exit-phase-500\\controlled-01\\frame-29.bmp",
+      "File": "settings-exit-1/frame-29.bmp",
+      "SHA256": "26353382AF964E69EDD4EF413DC926020BC00CC8B3751C5640C3C66765FB1236",
+      "Index": 29,
+      "SourceTime100ns": 1776805717031
+    },
+    {
+      "OriginalFile": ".reasonix\\rs13-assisted-20261113\\software-exit-phase-500\\controlled-01\\frame-30.bmp",
+      "File": "settings-exit-1/frame-30.bmp",
+      "SHA256": "26353382AF964E69EDD4EF413DC926020BC00CC8B3751C5640C3C66765FB1236",
+      "Index": 30,
+      "SourceTime100ns": 1776805883855
+    },
+    {
+      "OriginalFile": ".reasonix\\rs13-assisted-20261113\\software-exit-phase-500\\controlled-01\\frame-31.bmp",
+      "File": "settings-exit-1/frame-31.bmp",
+      "SHA256": "DAC992EF12ED810011F4CE82CD1E46410886C793614C4EC7DBB1B128095F6E4A",
+      "Index": 31,
+      "SourceTime100ns": 1776806217521
+    },
+    {
+      "OriginalFile": ".reasonix\\rs13-assisted-20261113\\software-exit-phase-500\\controlled-01\\frame-32.bmp",
+      "File": "settings-exit-1/frame-32.bmp",
+      "SHA256": "4464CF1A0967EADD475145710FF59DEEB706692C094A09952B1DD485E3DD5FCE",
+      "Index": 32,
+      "SourceTime100ns": 1776806384346
+    },
+    {
+      "OriginalFile": ".reasonix\\rs13-assisted-20261113\\software-exit-phase-500\\controlled-01\\frame-33.bmp",
+      "File": "settings-exit-1/frame-33.bmp",
+      "SHA256": "E74039D0D8029EDF017550299240F3F648D238D4BB36B815FDCC4BA541DD24C0",
+      "Index": 33,
+      "SourceTime100ns": 1776806551185
+    },
+    {
+      "OriginalFile": ".reasonix\\rs13-assisted-20261113\\software-exit-phase-500\\controlled-01\\frame-34.bmp",
+      "File": "settings-exit-1/frame-34.bmp",
+      "SHA256": "C9C6587F4202AB01448E71F6C54F12F61D419642FA824EBAF8F2DCDBFE439B43",
+      "Index": 34,
+      "SourceTime100ns": 1776806718014
+    },
+    {
+      "OriginalFile": ".reasonix\\rs13-assisted-20261113\\software-exit-phase-500\\controlled-01\\frame-35.bmp",
+      "File": "settings-exit-1/frame-35.bmp",
+      "SHA256": "BF2941C48772951CD6B402F7D39C22315DF3F8AB8C4DC5EC1A42B47A515372DC",
+      "Index": 35,
+      "SourceTime100ns": 1776806884840
+    },
+    {
+      "OriginalFile": ".reasonix\\rs13-assisted-20261113\\software-exit-phase-500\\controlled-01\\frame-36.bmp",
+      "File": "settings-exit-1/frame-36.bmp",
+      "SHA256": "89D8F8BA4BE30E6DF64A55C9CA029B1DECA12F58025EEBB07C433DD19BE76B8C",
+      "Index": 36,
+      "SourceTime100ns": 1776807051676
+    },
+    {
+      "OriginalFile": ".reasonix\\rs13-assisted-20261113\\software-exit-phase-500\\controlled-01\\frame-37.bmp",
+      "File": "settings-exit-1/frame-37.bmp",
+      "SHA256": "C1BE92BF3F649F2722B3CBA2652769EE45E8F094F4B183C6C566DD8EE2EC9B46",
+      "Index": 37,
+      "SourceTime100ns": 1776807218504
+    },
+    {
+      "OriginalFile": ".reasonix\\rs13-assisted-20261113\\software-exit-phase-500\\controlled-01\\frame-38.bmp",
+      "File": "settings-exit-1/frame-38.bmp",
+      "SHA256": "CF8EF29008BCA19A4A02D9A46B45130D9FE9E81E55C237C2488C45E88A55F695",
+      "Index": 38,
+      "SourceTime100ns": 1776807385343
+    },
+    {
+      "OriginalFile": ".reasonix\\rs13-assisted-20261113\\software-exit-phase-500\\controlled-02\\frame-39.bmp",
+      "File": "settings-exit-1/frame-39.bmp",
+      "SHA256": "3E12B96877C0BC009BC501091E74E201A18F954FCDA0497EBE3F6E2088CE754C",
+      "Index": 39,
+      "SourceTime100ns": 1776807552170
+    },
+    {
+      "OriginalFile": ".reasonix\\rs13-assisted-20261113\\software-exit-phase-500\\controlled-02\\frame-40.bmp",
+      "File": "settings-exit-1/frame-40.bmp",
+      "SHA256": "C16435D02A2B3CD0B416E3532675CB58783B080EB68E3192E919779EAA2E657B",
+      "Index": 40,
+      "SourceTime100ns": 1776807718998
+    },
+    {
+      "OriginalFile": ".reasonix\\rs13-assisted-20261113\\software-exit-phase-500\\controlled-02\\frame-41.bmp",
+      "File": "settings-exit-1/frame-41.bmp",
+      "SHA256": "3DC0AC49B6CE785399E4E33E628E86C33AC6DB270987B2B4EC570D8D7F08AD28",
+      "Index": 41,
+      "SourceTime100ns": 1776807885829
+    },
+    {
+      "OriginalFile": ".reasonix\\rs13-assisted-20261113\\software-exit-phase-500\\controlled-02\\frame-42.bmp",
+      "File": "settings-exit-1/frame-42.bmp",
+      "SHA256": "3DC0AC49B6CE785399E4E33E628E86C33AC6DB270987B2B4EC570D8D7F08AD28",
+      "Index": 42,
+      "SourceTime100ns": 1776808052660
+    },
+    {
+      "OriginalFile": ".reasonix\\rs13-assisted-20261113\\software-exit-phase-500\\controlled-02\\frame-43.bmp",
+      "File": "settings-exit-1/frame-43.bmp",
+      "SHA256": "3DC0AC49B6CE785399E4E33E628E86C33AC6DB270987B2B4EC570D8D7F08AD28",
+      "Index": 43,
+      "SourceTime100ns": 1776808386327
+    },
+    {
+      "OriginalFile": ".reasonix\\rs13-assisted-20261113\\software-exit-phase-500\\controlled-02\\frame-44.bmp",
+      "File": "settings-exit-1/frame-44.bmp",
+      "SHA256": "3DC0AC49B6CE785399E4E33E628E86C33AC6DB270987B2B4EC570D8D7F08AD28",
+      "Index": 44,
+      "SourceTime100ns": 1776808553155
+    },
+    {
+      "OriginalFile": ".reasonix\\rs13-assisted-20261113\\software-exit-phase-500\\controlled-02\\frame-45.bmp",
+      "File": "settings-exit-1/frame-45.bmp",
+      "SHA256": "3C77052373DD974DB3E9AA9E34270135F3009094444FF92DB67AF3D84E148437",
+      "Index": 45,
+      "SourceTime100ns": 1776811556134
+    }
+  ],
+  "Scope": "Whole original sequence; identical cached boundary duplicates removed after SHA check. No pixels, source clocks, endpoint amplitudes, thresholds or durations modified."
+}

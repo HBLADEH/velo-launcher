@@ -1,0 +1,62 @@
+{
+  "RecordedAtUtc": "2026-11-09T17:19:48.5011188Z",
+  "Edition": "software",
+  "Scenario": "Original RS-12 seed; physical A after hidden Alt+Space activation",
+  "ExecutableSHA256": "E85B41C7E77888750817E47F092EABECB1BAB5A68EFCE579378CE2DDAD2DBA4B",
+  "ExecutableUnchanged": true,
+  "UserReport": "已完成并退出，全部正常",
+  "FollowupReport": "现在已从托盘退出",
+  "NormalExit": {
+    "Completed": true,
+    "ExitCode": 0,
+    "ProcessId": 22100,
+    "SHA256": "E85B41C7E77888750817E47F092EABECB1BAB5A68EFCE579378CE2DDAD2DBA4B",
+    "ForcedCleanup": false
+  },
+  "InputCaptureCompleted": false,
+  "InputCaptureEndReason": "Timeout",
+  "ValidPhysicalHotkeyPairs": 21,
+  "InvalidPairs": 0,
+  "PhysicalFixedAKeys": 21,
+  "ValidPhysicalCropChangeRows": 21,
+  "KeyToChangedResultCropUpperMilliseconds": {
+    "Count": 21,
+    "Minimum": 19.7717,
+    "Median": 34.3732,
+    "P95": 47.2812,
+    "Maximum": 48.3891
+  },
+  "WholeCaptureClockJumpMilliseconds": -1142.95835,
+  "ClockJumpBeforeFirstPhysicalKey": true,
+  "ClockSegmentStartQpc": 52360996862,
+  "StableSegmentOffsetRangeMilliseconds": 0.0034000000000000002,
+  "PhysicalKeysOutsideSelectedClockSegment": 0,
+  "PhysicalKeysOverlappingFixturePreparation": 0,
+  "FullCaptureClockPairingRejected": true,
+  "LocalImages": "Image allowance was consumed by idle blinking before actual rounds; no correct result text is independently verified for these crop-change timestamps.",
+  "FormalFilesUnchangedAcrossSoftwareSession": {
+    "config.json": true,
+    "index.json": true,
+    "history.json": true,
+    "application-library.json": true,
+    "quick-launch.json": true
+  },
+  "RawHashes": {
+    "session.json": "63977089EA3015B0AFAF7621F00645C67045EBDBAC9355A2876FBD59F89F8C9B",
+    "completion.json": "58CC308C1174D13955C44AFDA52DC3C6E343698E22D7BE1D176217D6D99328EC",
+    "physical-input.json": "87E82CD91BB65384ADE668ECD413363B468E1725861D991E045C39C6C81130CE",
+    "input-events.log": "50882802E65F8B3D4C0CB7C15FB38FE2477A7730CF81EA41BE96B6D00213B81E",
+    "software/events.jsonl": "DD25551722BE79ED19D1EE027802D8F86F21955B72A482C95E811E363198C90B",
+    "software/identity.json": "C0F286429B33E3550E86648B51CCB2A9C92026CD6D34CF0AF5ECE19FE166523B",
+    "software/segment-summary-final.json": "4DE150920712F88C6398246018E628230D8422E3C42B1764D5B27A11AB2AC24F",
+    "context.json": "4E3346D841D075A34A539BEC12C8679CD679083DEA3DDCD41B4683621F41ACE8",
+    "femtovg-1000-context.json": "C26E3649BD1D94A31200EB4317FF84A78B24B2FD5A70D7FD05A8FADA3CBE374E",
+    "fixture-preparation-interval.json": "09169411DDAE7DFA29DE38B21AF9FDDE1A2B424730BF3799152703CE2DAD67AE"
+  },
+  "Scope": "21 physical key-to-crop-change observations, original seed and frozen exe. Capture hit its 900s limit before normal product exit. Not a <50ms hotkey/readiness result or an exact 1000/10000 workload.",
+  "FirstPossibleInputLatencyVerified": false,
+  "CorrectResultFrameIndependentlyVerified": false,
+  "RS12Complete": false,
+  "ProductFrameEvidenceEligible": false,
+  "FinalFrameAssessment": "Development-only: subsequent discovery of stale geometry/pixel capture affects this observer family. Earlier crop-change figures are retained as development observations and excluded from RS-12 latency/frame acceptance."
+}

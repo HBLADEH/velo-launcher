@@ -1,0 +1,277 @@
+{
+  "Passed": true,
+  "Clips": 26,
+  "SourceMatched": true,
+  "SyntheticComponentEvents": true,
+  "PhysicalInput": false,
+  "PresentedFrames": false,
+  "RS13Complete": false,
+  "SummarizerSHA256": "A372689F8F11E6792A411AE760A1362664425687052127F1C0AFC062DF0EE628",
+  "Scope": "Lossless WebP previews use actual snapshot intervals. Snapshot/encoding overhead prevents performance or native presentation conclusions.",
+  "Checks": [
+    {
+      "Renderer": "software",
+      "Clip": "home-entry",
+      "Frames": 36,
+      "ChangedIntervals": 12,
+      "StaticExpected": false,
+      "FinalActiveAnimations": false,
+      "ElapsedMilliseconds": 1413.407,
+      "MaximumSnapshotGapMilliseconds": 41.372,
+      "SameColumnProgressDifference": 0.019510069935735785,
+      "ComparedAtMilliseconds": 81.21
+    },
+    {
+      "Renderer": "software",
+      "Clip": "settings-enter",
+      "Frames": 36,
+      "ChangedIntervals": 5,
+      "StaticExpected": false,
+      "FinalActiveAnimations": false,
+      "ElapsedMilliseconds": 1433.481,
+      "MaximumSnapshotGapMilliseconds": 45.026
+    },
+    {
+      "Renderer": "software",
+      "Clip": "settings-exit",
+      "Frames": 36,
+      "ChangedIntervals": 4,
+      "StaticExpected": false,
+      "FinalActiveAnimations": false,
+      "ElapsedMilliseconds": 1417.788,
+      "MaximumSnapshotGapMilliseconds": 44.7
+    },
+    {
+      "Renderer": "software",
+      "Clip": "custom-enter",
+      "Frames": 36,
+      "ChangedIntervals": 7,
+      "StaticExpected": false,
+      "FinalActiveAnimations": false,
+      "ElapsedMilliseconds": 1440.199,
+      "MaximumSnapshotGapMilliseconds": 47.986
+    },
+    {
+      "Renderer": "software",
+      "Clip": "custom-exit",
+      "Frames": 36,
+      "ChangedIntervals": 2,
+      "StaticExpected": false,
+      "FinalActiveAnimations": false,
+      "ElapsedMilliseconds": 1421.31,
+      "MaximumSnapshotGapMilliseconds": 46.701
+    },
+    {
+      "Renderer": "software",
+      "Clip": "tile-hover",
+      "Frames": 36,
+      "ChangedIntervals": 3,
+      "StaticExpected": false,
+      "FinalActiveAnimations": false,
+      "ElapsedMilliseconds": 1409.378,
+      "MaximumSnapshotGapMilliseconds": 41.516
+    },
+    {
+      "Renderer": "software",
+      "Clip": "tile-press",
+      "Frames": 36,
+      "ChangedIntervals": 3,
+      "StaticExpected": false,
+      "FinalActiveAnimations": false,
+      "ElapsedMilliseconds": 1410.827,
+      "MaximumSnapshotGapMilliseconds": 41.452
+    },
+    {
+      "Renderer": "software",
+      "Clip": "gear-hover",
+      "Frames": 36,
+      "ChangedIntervals": 9,
+      "StaticExpected": false,
+      "FinalActiveAnimations": false,
+      "ElapsedMilliseconds": 1411.327,
+      "MaximumSnapshotGapMilliseconds": 41.356
+    },
+    {
+      "Renderer": "software",
+      "Clip": "scanning",
+      "Frames": 36,
+      "ChangedIntervals": 35,
+      "StaticExpected": false,
+      "FinalActiveAnimations": true,
+      "ElapsedMilliseconds": 1409.645,
+      "MaximumSnapshotGapMilliseconds": 41.235
+    },
+    {
+      "Renderer": "software",
+      "Clip": "recording",
+      "Frames": 36,
+      "ChangedIntervals": 14,
+      "StaticExpected": false,
+      "FinalActiveAnimations": true,
+      "ElapsedMilliseconds": 1412.417,
+      "MaximumSnapshotGapMilliseconds": 41.07
+    },
+    {
+      "Renderer": "software",
+      "Clip": "reduced-scanning",
+      "Frames": 36,
+      "ChangedIntervals": 0,
+      "StaticExpected": true,
+      "FinalActiveAnimations": false,
+      "ElapsedMilliseconds": 1413.923,
+      "MaximumSnapshotGapMilliseconds": 41.404
+    },
+    {
+      "Renderer": "software",
+      "Clip": "hidden-scanning",
+      "Frames": 36,
+      "ChangedIntervals": 0,
+      "StaticExpected": true,
+      "FinalActiveAnimations": false,
+      "ElapsedMilliseconds": 1411.38,
+      "MaximumSnapshotGapMilliseconds": 41.121
+    },
+    {
+      "Renderer": "software",
+      "Clip": "reduced-hover",
+      "Frames": 36,
+      "ChangedIntervals": 0,
+      "StaticExpected": true,
+      "FinalActiveAnimations": false,
+      "ElapsedMilliseconds": 1411.621,
+      "MaximumSnapshotGapMilliseconds": 41.169
+    },
+    {
+      "Renderer": "femtovg",
+      "Clip": "home-entry",
+      "Frames": 36,
+      "ChangedIntervals": 12,
+      "StaticExpected": false,
+      "FinalActiveAnimations": false,
+      "ElapsedMilliseconds": 1411.609,
+      "MaximumSnapshotGapMilliseconds": 41.644,
+      "SameColumnProgressDifference": 0.026192010656496456,
+      "ComparedAtMilliseconds": 80.816
+    },
+    {
+      "Renderer": "femtovg",
+      "Clip": "settings-enter",
+      "Frames": 36,
+      "ChangedIntervals": 7,
+      "StaticExpected": false,
+      "FinalActiveAnimations": false,
+      "ElapsedMilliseconds": 1412.758,
+      "MaximumSnapshotGapMilliseconds": 41.345
+    },
+    {
+      "Renderer": "femtovg",
+      "Clip": "settings-exit",
+      "Frames": 36,
+      "ChangedIntervals": 4,
+      "StaticExpected": false,
+      "FinalActiveAnimations": false,
+      "ElapsedMilliseconds": 1408.783,
+      "MaximumSnapshotGapMilliseconds": 41.37
+    },
+    {
+      "Renderer": "femtovg",
+      "Clip": "custom-enter",
+      "Frames": 36,
+      "ChangedIntervals": 7,
+      "StaticExpected": false,
+      "FinalActiveAnimations": false,
+      "ElapsedMilliseconds": 1409.55,
+      "MaximumSnapshotGapMilliseconds": 41.15
+    },
+    {
+      "Renderer": "femtovg",
+      "Clip": "custom-exit",
+      "Frames": 36,
+      "ChangedIntervals": 3,
+      "StaticExpected": false,
+      "FinalActiveAnimations": false,
+      "ElapsedMilliseconds": 1412.455,
+      "MaximumSnapshotGapMilliseconds": 41.112
+    },
+    {
+      "Renderer": "femtovg",
+      "Clip": "tile-hover",
+      "Frames": 36,
+      "ChangedIntervals": 7,
+      "StaticExpected": false,
+      "FinalActiveAnimations": false,
+      "ElapsedMilliseconds": 1414.113,
+      "MaximumSnapshotGapMilliseconds": 41.203
+    },
+    {
+      "Renderer": "femtovg",
+      "Clip": "tile-press",
+      "Frames": 36,
+      "ChangedIntervals": 6,
+      "StaticExpected": false,
+      "FinalActiveAnimations": false,
+      "ElapsedMilliseconds": 1414.325,
+      "MaximumSnapshotGapMilliseconds": 41.198
+    },
+    {
+      "Renderer": "femtovg",
+      "Clip": "gear-hover",
+      "Frames": 36,
+      "ChangedIntervals": 9,
+      "StaticExpected": false,
+      "FinalActiveAnimations": false,
+      "ElapsedMilliseconds": 1417.033,
+      "MaximumSnapshotGapMilliseconds": 41.699
+    },
+    {
+      "Renderer": "femtovg",
+      "Clip": "scanning",
+      "Frames": 36,
+      "ChangedIntervals": 35,
+      "StaticExpected": false,
+      "FinalActiveAnimations": true,
+      "ElapsedMilliseconds": 1411.813,
+      "MaximumSnapshotGapMilliseconds": 41.216
+    },
+    {
+      "Renderer": "femtovg",
+      "Clip": "recording",
+      "Frames": 36,
+      "ChangedIntervals": 34,
+      "StaticExpected": false,
+      "FinalActiveAnimations": true,
+      "ElapsedMilliseconds": 1415.211,
+      "MaximumSnapshotGapMilliseconds": 41.72
+    },
+    {
+      "Renderer": "femtovg",
+      "Clip": "reduced-scanning",
+      "Frames": 36,
+      "ChangedIntervals": 0,
+      "StaticExpected": true,
+      "FinalActiveAnimations": false,
+      "ElapsedMilliseconds": 1410.588,
+      "MaximumSnapshotGapMilliseconds": 41.116
+    },
+    {
+      "Renderer": "femtovg",
+      "Clip": "hidden-scanning",
+      "Frames": 36,
+      "ChangedIntervals": 0,
+      "StaticExpected": true,
+      "FinalActiveAnimations": false,
+      "ElapsedMilliseconds": 1411.804,
+      "MaximumSnapshotGapMilliseconds": 41.28
+    },
+    {
+      "Renderer": "femtovg",
+      "Clip": "reduced-hover",
+      "Frames": 36,
+      "ChangedIntervals": 0,
+      "StaticExpected": true,
+      "FinalActiveAnimations": false,
+      "ElapsedMilliseconds": 1411.325,
+      "MaximumSnapshotGapMilliseconds": 41.248
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "RecordedAtUtc": "2026-11-09T17:50:02.5344172Z",
+  "Edition": "femtovg",
+  "ProcessId": 16264,
+  "NormalExit": {
+    "Completed": true,
+    "ExitCode": 0,
+    "ProcessId": 16264,
+    "SHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+    "ForcedCleanup": false
+  },
+  "UserExitConfirmation": [
+    "已点击系统托盘菜单的“退出”",
+    "已点击退出，窗口已关闭",
+    "已退出，进程已消失"
+  ],
+  "ExecutableMatches": true,
+  "PhysicalInputPairs": 20,
+  "ActualEligibleEditEvents": 20,
+  "UnpairedEligibleEditEvents": 0,
+  "DroppedEventLines": 0,
+  "FinalInputLogSHA256": "D51CC352DCCB4FBE3DE41AE962A058A8918EF986D613D77397CE2E04DB449AD9",
+  "CompletionSHA256": "B9D75232E6D4189352F12E3BBC4751E10ABFEF56021DC00507CAA7D30A0694B3",
+  "LauncherWindowsRemaining": 0,
+  "DesktopServiceWindowsRemaining": 0,
+  "VeloProcessesRemaining": 0,
+  "FormalFilesMatchingSessionPreflight": {
+    "config.json": true,
+    "index.json": true,
+    "history.json": true,
+    "application-library.json": true,
+    "quick-launch.json": true
+  },
+  "InputCaptureCompleted": false,
+  "InputCaptureEndReason": "Timeout",
+  "ProductFrameTimingEligible": false,
+  "Scope": "Normal exit/final input log confirmed after the prior checkpoint. Original Timeout and legacy geometry/fallback icon limitations remain."
+}

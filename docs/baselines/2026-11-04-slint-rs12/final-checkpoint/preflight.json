@@ -1,0 +1,181 @@
+{
+  "RecordedAtUtc": "2026-11-05T04:35:26.8589527Z",
+  "CurrentBootUtc": "2026-10-31T10:03:28.458604Z",
+  "CurrentBootIsColdEligible": false,
+  "NextCase": "software-1",
+  "Sequence": [
+    "software-1",
+    "femtovg-1",
+    "wails-1",
+    "femtovg-2",
+    "wails-2",
+    "software-2",
+    "wails-3",
+    "software-3",
+    "femtovg-3"
+  ],
+  "Cases": [
+    {
+      "Case": "femtovg-1",
+      "Edition": "femtovg",
+      "SHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+      "ExeMatches": true,
+      "ActualInputProbe": true,
+      "PreparedAtUtc": "2026-11-04T13:33:42.0250076Z",
+      "InputId": "024397D07DB93ECF20AFE342D982D988B8C0F9D9C1272BC69700447A3C8C0935",
+      "CurrentInputId": "024397D07DB93ECF20AFE342D982D988B8C0F9D9C1272BC69700447A3C8C0935",
+      "MatchesOriginalSeed": true,
+      "PreviousAttemptExists": false,
+      "ActualInputLogExists": false,
+      "LaunchAtStartup": false
+    },
+    {
+      "Case": "femtovg-2",
+      "Edition": "femtovg",
+      "SHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+      "ExeMatches": true,
+      "ActualInputProbe": true,
+      "PreparedAtUtc": "2026-11-04T13:33:48.6304715Z",
+      "InputId": "024397D07DB93ECF20AFE342D982D988B8C0F9D9C1272BC69700447A3C8C0935",
+      "CurrentInputId": "024397D07DB93ECF20AFE342D982D988B8C0F9D9C1272BC69700447A3C8C0935",
+      "MatchesOriginalSeed": true,
+      "PreviousAttemptExists": false,
+      "ActualInputLogExists": false,
+      "LaunchAtStartup": false
+    },
+    {
+      "Case": "femtovg-3",
+      "Edition": "femtovg",
+      "SHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+      "ExeMatches": true,
+      "ActualInputProbe": true,
+      "PreparedAtUtc": "2026-11-04T13:33:55.6899586Z",
+      "InputId": "024397D07DB93ECF20AFE342D982D988B8C0F9D9C1272BC69700447A3C8C0935",
+      "CurrentInputId": "024397D07DB93ECF20AFE342D982D988B8C0F9D9C1272BC69700447A3C8C0935",
+      "MatchesOriginalSeed": true,
+      "PreviousAttemptExists": false,
+      "ActualInputLogExists": false,
+      "LaunchAtStartup": false
+    },
+    {
+      "Case": "software-1",
+      "Edition": "software",
+      "SHA256": "E85B41C7E77888750817E47F092EABECB1BAB5A68EFCE579378CE2DDAD2DBA4B",
+      "ExeMatches": true,
+      "ActualInputProbe": true,
+      "PreparedAtUtc": "2026-11-04T13:33:38.7313961Z",
+      "InputId": "024397D07DB93ECF20AFE342D982D988B8C0F9D9C1272BC69700447A3C8C0935",
+      "CurrentInputId": "024397D07DB93ECF20AFE342D982D988B8C0F9D9C1272BC69700447A3C8C0935",
+      "MatchesOriginalSeed": true,
+      "PreviousAttemptExists": false,
+      "ActualInputLogExists": false,
+      "LaunchAtStartup": false
+    },
+    {
+      "Case": "software-2",
+      "Edition": "software",
+      "SHA256": "E85B41C7E77888750817E47F092EABECB1BAB5A68EFCE579378CE2DDAD2DBA4B",
+      "ExeMatches": true,
+      "ActualInputProbe": true,
+      "PreparedAtUtc": "2026-11-04T13:33:46.2113478Z",
+      "InputId": "024397D07DB93ECF20AFE342D982D988B8C0F9D9C1272BC69700447A3C8C0935",
+      "CurrentInputId": "024397D07DB93ECF20AFE342D982D988B8C0F9D9C1272BC69700447A3C8C0935",
+      "MatchesOriginalSeed": true,
+      "PreviousAttemptExists": false,
+      "ActualInputLogExists": false,
+      "LaunchAtStartup": false
+    },
+    {
+      "Case": "software-3",
+      "Edition": "software",
+      "SHA256": "E85B41C7E77888750817E47F092EABECB1BAB5A68EFCE579378CE2DDAD2DBA4B",
+      "ExeMatches": true,
+      "ActualInputProbe": true,
+      "PreparedAtUtc": "2026-11-04T13:33:53.3596888Z",
+      "InputId": "024397D07DB93ECF20AFE342D982D988B8C0F9D9C1272BC69700447A3C8C0935",
+      "CurrentInputId": "024397D07DB93ECF20AFE342D982D988B8C0F9D9C1272BC69700447A3C8C0935",
+      "MatchesOriginalSeed": true,
+      "PreviousAttemptExists": false,
+      "ActualInputLogExists": false,
+      "LaunchAtStartup": false
+    },
+    {
+      "Case": "wails-1",
+      "Edition": "wails",
+      "SHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+      "ExeMatches": true,
+      "ActualInputProbe": true,
+      "PreparedAtUtc": "2026-11-04T13:33:34.4901391Z",
+      "InputId": "024397D07DB93ECF20AFE342D982D988B8C0F9D9C1272BC69700447A3C8C0935",
+      "CurrentInputId": "024397D07DB93ECF20AFE342D982D988B8C0F9D9C1272BC69700447A3C8C0935",
+      "MatchesOriginalSeed": true,
+      "PreviousAttemptExists": false,
+      "ActualInputLogExists": false,
+      "LaunchAtStartup": false
+    },
+    {
+      "Case": "wails-2",
+      "Edition": "wails",
+      "SHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+      "ExeMatches": true,
+      "ActualInputProbe": true,
+      "PreparedAtUtc": "2026-11-04T13:33:43.9193284Z",
+      "InputId": "024397D07DB93ECF20AFE342D982D988B8C0F9D9C1272BC69700447A3C8C0935",
+      "CurrentInputId": "024397D07DB93ECF20AFE342D982D988B8C0F9D9C1272BC69700447A3C8C0935",
+      "MatchesOriginalSeed": true,
+      "PreviousAttemptExists": false,
+      "ActualInputLogExists": false,
+      "LaunchAtStartup": false
+    },
+    {
+      "Case": "wails-3",
+      "Edition": "wails",
+      "SHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+      "ExeMatches": true,
+      "ActualInputProbe": true,
+      "PreparedAtUtc": "2026-11-04T13:33:50.8683656Z",
+      "InputId": "024397D07DB93ECF20AFE342D982D988B8C0F9D9C1272BC69700447A3C8C0935",
+      "CurrentInputId": "024397D07DB93ECF20AFE342D982D988B8C0F9D9C1272BC69700447A3C8C0935",
+      "MatchesOriginalSeed": true,
+      "PreviousAttemptExists": false,
+      "ActualInputLogExists": false,
+      "LaunchAtStartup": false
+    }
+  ],
+  "VeloProcesses": 0,
+  "ObservedLoginEntries": 0,
+  "RegistryObservationScope": "Read-only local registry-provider view only. OS logon and other persistence sources require operator confirmation; earlier RS-11 local-view discrepancy remains relevant.",
+  "UserAuthorizedColdTesting": true,
+  "RebootPerformed": false,
+  "LoginItemsChanged": false,
+  "ColdSamples": 0,
+  "InputGuardPassed": true,
+  "RawPreflightSHA256": "7984353825A69362B1EBBBB2301609EF277998DD8FB060CC41B0F02E948DB15B",
+  "GuardLogSHA256": "69FB25950E148D5C8156639B2815161C5E932C3CD7C4A49E8CC9E95038480033",
+  "Tools": [
+    {
+      "Path": "scripts/start-rs12-cold.ps1",
+      "SHA256": "169B35A629F8B68EDDF0C9EC2B2AB61F2F2387A6967DEC07D3DD557AF0057201"
+    },
+    {
+      "Path": "scripts/collect-rs12-cold.ps1",
+      "SHA256": "B15F2EA174FAF13381C51362DDA0651153699CF65F965982FECCBA9044A96C07"
+    },
+    {
+      "Path": "scripts/prepare-rs12-cold.ps1",
+      "SHA256": "BD0914FADCEB9173EB4F23E3E516867F78553667828F6D120D399139CE1A3359"
+    },
+    {
+      "Path": "scripts/lib/resource-sample.ps1",
+      "SHA256": "6A939C59BCEB8069ACD28CD1F4B4434B1D7F431BFDB8FBEEFF4474F639AFAE3D"
+    },
+    {
+      "Path": "scripts/lib/rs12-input-observer.cs",
+      "SHA256": "2D5494F9B14263E99E7FD0D5AE178481C1B153BB1473BDA1ADEDA92C4B7A0209"
+    },
+    {
+      "Path": "scripts/test-rs12-input.ps1",
+      "SHA256": "B424D9233DB019FCBFE72D0FD7929A32DF204BD50D210897813AE0FD5BD5D460"
+    }
+  ]
+}

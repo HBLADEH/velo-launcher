@@ -1,0 +1,74 @@
+{
+  "FinalBothPass": true,
+  "RustTestsPerRenderer": 80,
+  "InputAssertionsPerRenderer": 22,
+  "BusinessAssertionsPerRenderer": 7,
+  "PagesAssertionsPerRenderer": 33,
+  "Attempts": [
+    {
+      "Log": "verify-rust-v1.log",
+      "SHA256": "957D80981AB35FF262E921C1FC59A06F3C2D69E2621BE6FC7D1BA64FCDFA048C",
+      "VerifiedRenderers": [],
+      "ExplicitFailedSmokeOrProbe": true,
+      "Scope": "Historical attempts retained. An injected NTFS write error is expected only when the following contract check passes; no raw path log is published."
+    },
+    {
+      "Log": "verify-rust-v2.log",
+      "SHA256": "A67F59809CA823B770ECFBA967A88B3D9197E5ACE427784806434373D7464E20",
+      "VerifiedRenderers": [],
+      "ExplicitFailedSmokeOrProbe": true,
+      "Scope": "Historical attempts retained. An injected NTFS write error is expected only when the following contract check passes; no raw path log is published."
+    },
+    {
+      "Log": "verify-rust-v3.log",
+      "SHA256": "2941F174036ADEF057B5316193C04EBF76485D5A686BFFB926840A778D8A433C",
+      "VerifiedRenderers": [],
+      "ExplicitFailedSmokeOrProbe": true,
+      "Scope": "Historical attempts retained. An injected NTFS write error is expected only when the following contract check passes; no raw path log is published."
+    },
+    {
+      "Log": "verify-rust-v4.log",
+      "SHA256": "09823707727AFCF97257C69A4905B7CB5FD4170BA648B27C8FA654E2CF2BF8A4",
+      "VerifiedRenderers": [
+        "femtovg",
+        "software"
+      ],
+      "ExplicitFailedSmokeOrProbe": false,
+      "Scope": "Historical attempts retained. An injected NTFS write error is expected only when the following contract check passes; no raw path log is published."
+    },
+    {
+      "Log": "verify-rust-final.log",
+      "SHA256": "EA2795C86D4A52A32277E7F0F550AC1FFA548658CE1C155FD2DD145D4486E61D",
+      "VerifiedRenderers": [],
+      "ExplicitFailedSmokeOrProbe": false,
+      "Scope": "Historical attempts retained. An injected NTFS write error is expected only when the following contract check passes; no raw path log is published."
+    },
+    {
+      "Log": "verify-rust-final-v2.log",
+      "SHA256": "DB0C80A0E07536E5625A14C298A73191CFEACEE0CDF9AF9B20F8D19207DCE9C0",
+      "VerifiedRenderers": [],
+      "ExplicitFailedSmokeOrProbe": true,
+      "Scope": "Historical attempts retained. An injected NTFS write error is expected only when the following contract check passes; no raw path log is published."
+    },
+    {
+      "Log": "verify-rust-acceptance.log",
+      "SHA256": "B008319A5D80EB4F99C5E61B20EDBEDCD4E584E645C03F5ED21DA4584E776090",
+      "VerifiedRenderers": [
+        "femtovg",
+        "software"
+      ],
+      "ExplicitFailedSmokeOrProbe": false,
+      "Scope": "Historical attempts retained. An injected NTFS write error is expected only when the following contract check passes; no raw path log is published."
+    },
+    {
+      "Log": "verify-rust-final-femtovg.log",
+      "SHA256": "61113AB03F117D345F75B42CF5E6FA27B21494A82B2FC45CA39AD3A8A61BA5FC",
+      "VerifiedRenderers": [
+        "femtovg"
+      ],
+      "ExplicitFailedSmokeOrProbe": false,
+      "Scope": "Historical attempts retained. An injected NTFS write error is expected only when the following contract check passes; no raw path log is published."
+    }
+  ],
+  "Scope": "Full current source/exe identity and smoke receipts verified. Tests are component/native automation, not replacements for physical IME rows."
+}

@@ -1,0 +1,21 @@
+{
+  "ArtifactIntegrityPassed": true,
+  "RecordedAtUtc": "2026-11-12T13:19:47.539675+00:00",
+  "BuildInputsMatchedPerRenderer": 206,
+  "TransitionSlicesSHA256Checked": 4,
+  "NativeFrameSHA256Checked": 147,
+  "NormalProductExits": 6,
+  "NormalRecorderExits": 5,
+  "QueueRejected": 0,
+  "StorageLimitedRuns": [
+    "software-current",
+    "software-current-3",
+    "software-recording-current-1"
+  ],
+  "HistoryUnchangedRuns": 6,
+  "LaunchCallbacks": 0,
+  "BoundaryCalibrationChecks": 21,
+  "ROIIntegrityChecks": 4,
+  "RS13Complete": false,
+  "Scope": "Artifact checks only; all four settings contracts remain insufficient and physical IME/DPI is separate."
+}

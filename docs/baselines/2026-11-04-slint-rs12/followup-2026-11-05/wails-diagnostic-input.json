@@ -1,0 +1,312 @@
+{
+  "SchemaVersion": 2,
+  "SHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+  "ObserverSHA256": "7D48FA7692DF797F0425378764383CC349AF8449B5F1092C2039444DC22A1FC5",
+  "CountMode": "PhysicalStarts",
+  "Kind": "HotkeyActivation",
+  "Result": {
+    "Kind": "HotkeyActivation",
+    "ProcessId": 307928,
+    "HWND": "2B0610",
+    "EventClockQuantumMilliseconds": 15.625,
+    "Observations": [
+      {
+        "Number": 1,
+        "Kind": "HotkeyActivation",
+        "Valid": false,
+        "InjectedStart": false,
+        "Reason": "No focused non-composing character accepted within ten seconds of the hotkey.",
+        "StartLowerUnixUs": 1793814114252303,
+        "StartObservedUnixUs": 1793814114268038,
+        "AcceptedUnixUs": 0,
+        "DurationUpperMilliseconds": 0.0,
+        "ClockUncertaintyMilliseconds": 15.735,
+        "WallClockDriftMilliseconds": 0.0
+      },
+      {
+        "Number": 2,
+        "Kind": "HotkeyActivation",
+        "Valid": true,
+        "InjectedStart": false,
+        "Reason": "Actual character accepted; upper bound includes manual delay before typing. No subtraction of human waiting or claim of first-possible readiness.",
+        "StartLowerUnixUs": 1793814130133627,
+        "StartObservedUnixUs": 1793814130149253,
+        "AcceptedUnixUs": 1793814133564012,
+        "DurationUpperMilliseconds": 3430.385,
+        "ClockUncertaintyMilliseconds": 15.626,
+        "WallClockDriftMilliseconds": 0.04790000000002692
+      },
+      {
+        "Number": 3,
+        "Kind": "HotkeyActivation",
+        "Valid": true,
+        "InjectedStart": false,
+        "Reason": "Actual character accepted; upper bound includes manual delay before typing. No subtraction of human waiting or claim of first-possible readiness.",
+        "StartLowerUnixUs": 1793814142084836,
+        "StartObservedUnixUs": 1793814142100462,
+        "AcceptedUnixUs": 1793814142581655,
+        "DurationUpperMilliseconds": 496.819,
+        "ClockUncertaintyMilliseconds": 15.626,
+        "WallClockDriftMilliseconds": 0.005999999999971806
+      },
+      {
+        "Number": 4,
+        "Kind": "HotkeyActivation",
+        "Valid": true,
+        "InjectedStart": false,
+        "Reason": "Actual character accepted; upper bound includes manual delay before typing. No subtraction of human waiting or claim of first-possible readiness.",
+        "StartLowerUnixUs": 1793814150818683,
+        "StartObservedUnixUs": 1793814150834308,
+        "AcceptedUnixUs": 1793814151485080,
+        "DurationUpperMilliseconds": 666.397,
+        "ClockUncertaintyMilliseconds": 15.625,
+        "WallClockDriftMilliseconds": 0.007500000000050022
+      },
+      {
+        "Number": 5,
+        "Kind": "HotkeyActivation",
+        "Valid": true,
+        "InjectedStart": false,
+        "Reason": "Actual character accepted; upper bound includes manual delay before typing. No subtraction of human waiting or claim of first-possible readiness.",
+        "StartLowerUnixUs": 1793814156923671,
+        "StartObservedUnixUs": 1793814156939296,
+        "AcceptedUnixUs": 1793814157595851,
+        "DurationUpperMilliseconds": 672.18,
+        "ClockUncertaintyMilliseconds": 15.625,
+        "WallClockDriftMilliseconds": 0.007699999999999818
+      }
+    ],
+    "Completed": true,
+    "CountMode": "PhysicalStarts",
+    "NativeEventsDropped": false,
+    "NativeEvents": [
+      {
+        "Kind": "alt_space",
+        "UnixMicroseconds": 1793814114267802,
+        "ElapsedMilliseconds": 89679.6788,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "show",
+        "UnixMicroseconds": 1793814114272104,
+        "ElapsedMilliseconds": 89683.9835,
+        "Visible": true,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793814114274135,
+        "ElapsedMilliseconds": 89686.0111,
+        "Visible": true,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793814122708257,
+        "ElapsedMilliseconds": 98120.254,
+        "Visible": true,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "hide",
+        "UnixMicroseconds": 1793814122712401,
+        "ElapsedMilliseconds": 98124.3985,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793814124293246,
+        "ElapsedMilliseconds": 99705.2647,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793814124413176,
+        "ElapsedMilliseconds": 99825.1975,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793814128318231,
+        "ElapsedMilliseconds": 103730.3085,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793814129498864,
+        "ElapsedMilliseconds": 104910.9585,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "alt_space",
+        "UnixMicroseconds": 1793814130149244,
+        "ElapsedMilliseconds": 105561.3467,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "show",
+        "UnixMicroseconds": 1793814130151493,
+        "ElapsedMilliseconds": 105563.5959,
+        "Visible": true,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793814130153772,
+        "ElapsedMilliseconds": 105565.8759,
+        "Visible": true,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793814140876563,
+        "ElapsedMilliseconds": 116288.8192,
+        "Visible": true,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "hide",
+        "UnixMicroseconds": 1793814140880875,
+        "ElapsedMilliseconds": 116293.1336,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "alt_space",
+        "UnixMicroseconds": 1793814142100459,
+        "ElapsedMilliseconds": 117512.7332,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "show",
+        "UnixMicroseconds": 1793814142102433,
+        "ElapsedMilliseconds": 117514.7073,
+        "Visible": true,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793814142104444,
+        "ElapsedMilliseconds": 117516.7182,
+        "Visible": true,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793814148900788,
+        "ElapsedMilliseconds": 124313.1632,
+        "Visible": true,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "hide",
+        "UnixMicroseconds": 1793814148905670,
+        "ElapsedMilliseconds": 124318.0416,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "alt_space",
+        "UnixMicroseconds": 1793814150834305,
+        "ElapsedMilliseconds": 126246.7043,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "show",
+        "UnixMicroseconds": 1793814150836491,
+        "ElapsedMilliseconds": 126248.8895,
+        "Visible": true,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793814150838612,
+        "ElapsedMilliseconds": 126251.0109,
+        "Visible": true,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793814154456421,
+        "ElapsedMilliseconds": 129868.8724,
+        "Visible": true,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "hide",
+        "UnixMicroseconds": 1793814154460055,
+        "ElapsedMilliseconds": 129872.5065,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "alt_space",
+        "UnixMicroseconds": 1793814156939294,
+        "ElapsedMilliseconds": 132351.7799,
+        "Visible": false,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "show",
+        "UnixMicroseconds": 1793814156941592,
+        "ElapsedMilliseconds": 132354.0783,
+        "Visible": true,
+        "ForegroundTargetProcess": false,
+        "Injected": false
+      },
+      {
+        "Kind": "foreground",
+        "UnixMicroseconds": 1793814156944609,
+        "ElapsedMilliseconds": 132357.0954,
+        "Visible": true,
+        "ForegroundTargetProcess": true,
+        "Injected": false
+      }
+    ]
+  },
+  "RecordedAtUtc": "2026-11-04T17:42:37.6337456Z",
+  "EnvironmentId": "919334C89E60F497840DA52B3B7791CC5DD006BCC54E291BAD0A492BC13F2FD7",
+  "InputId": "4F199EEA23BF1258C3A98A684D259AF3DAFD9F0766A1D920592C905F4BDC2D5F",
+  "Method": "Physical Alt+Space Windows event lower bound to actual non-composing character accepted by the focused visible launcher. Includes manual typing delay. Injected hotkeys excluded.",
+  "Boundary": "KeyDownToEditable",
+  "Limitations": [
+    "Actual accepted character is later than first-possible readiness; human delay is not removed. Above-budget upper bounds alone cannot establish a readiness regression.",
+    "Windows keyboard-event clock quantum and UTC mapping bounds are reported. This does not measure a presented result frame.",
+    "Only starts on the selected hidden launcher; no other typed keys or text are collected."
+  ],
+  "StartupClockCalibration": null
+}

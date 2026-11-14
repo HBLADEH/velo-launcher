@@ -1,0 +1,17 @@
+{
+  "RecordedAtUtc": "2026-11-12T19:32:18.259099+00:00",
+  "Problem": "The wide title ROI reaches the search-field/magnifier boundary during simultaneous home repaint and can bias the estimated title alpha. The default wide-ROI Software exit result remains mismatch (0.05576) and is not overwritten.",
+  "PreExistingROIReference": ".reasonix/rs13-acceptance-20261112/software-title-glyph.json",
+  "FixedDiagnosticROIClientPixels": [
+    74,
+    29,
+    80,
+    53
+  ],
+  "ColorModel": "luminance",
+  "BackgroundModel": "per-frame local plane",
+  "CalibrationRequiredBeforeNativeUse": true,
+  "ApplyToAllCurrentSequences": true,
+  "NativeThresholdsUnchanged": true,
+  "Scope": "Measurement-model diagnostic using the same glyph ROI chosen before this pass; results from both wide and narrow models are retained. A different valid model cannot by itself erase contradictory native observations."
+}

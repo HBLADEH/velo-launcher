@@ -1,0 +1,157 @@
+{
+  "RecordedAtUtc": "2026-11-04T18:08:36.9113727Z",
+  "OperatorReport": "三次完成，均已退出",
+  "ObservedMeasuredProcesses": 3,
+  "MeasuredNormalExits": 3,
+  "VerifiedSourceMatches": 3,
+  "ValidAcceptedCharacterBounds": 3,
+  "ObservedExtraLaunches": 1,
+  "ExtraLaunch": {
+    "Reason": "Later launch appended to the same case log after its original measured process exited. Its normal exit code and OS creation identity were not retained by the collector; application-stop log and operator report are separate evidence.",
+    "IncludedInThreeSampleMatrix": false,
+    "ProcessId": 281980,
+    "Case": "wails-warm-1"
+  },
+  "Cases": [
+    {
+      "Case": "wails-warm-1",
+      "ProcessId": 302420,
+      "StartedTicks": 639294123375592326,
+      "AcceptedUnixUs": 1793815546300202,
+      "DurationUpperMilliseconds": 8741.97,
+      "NormalExitCode": 0,
+      "SourceMatchingEvents": 1,
+      "DroppedTargetEvents": 0,
+      "OtherProcessIds": [
+        281980
+      ],
+      "FinalLogSHA256": "A8692E64952DF1D97FDA0D17BE0DE847A077AE9039ABFB2664C3C352A6FEF99F",
+      "ExitTimeLogSHA256": "B4AD8C149F7BF2A6A00C8664518860430096B3EC25E819A20EFD07429CC7437A",
+      "LogUnchangedSinceExit": false,
+      "ExecutableMatches": true,
+      "RawIdentities": [
+        {
+          "RelativePath": "session.json",
+          "SHA256": "53AB855551A3ACAB5600B1697786B3AC26C9C4DCE52D6190F6B737BF332F2883"
+        },
+        {
+          "RelativePath": "completion.json",
+          "SHA256": "8ADB7EE9C847EDCEFB2312587A7B051B5857234F9C1788B9866537D03B31E6E4"
+        },
+        {
+          "RelativePath": "case.json",
+          "SHA256": "D5954154190AE0005131D9FC488562EFF9F6DB51065CFBFF1653BC358A79E229"
+        },
+        {
+          "RelativePath": "warm-input.json",
+          "SHA256": "D1943F82D0CB6E4D493E47736A068B24A17D2E8DC9E0D723FDA3665D4C593E76"
+        },
+        {
+          "RelativePath": "probe/accepted-input.log",
+          "SHA256": "A8692E64952DF1D97FDA0D17BE0DE847A077AE9039ABFB2664C3C352A6FEF99F"
+        },
+        {
+          "RelativePath": "probe/events.jsonl",
+          "SHA256": "B5AC8D3A863083B232FC3F0595D515AD9D215BA5B7D83825B49568CEE208481B"
+        },
+        {
+          "RelativePath": "local/Velo/logs/velo.log",
+          "SHA256": "BD2A9E3C38CDFF097FA76E7A0851339918422E93365B91A1F62C7C95B4E9C928"
+        }
+      ]
+    },
+    {
+      "Case": "wails-warm-2",
+      "ProcessId": 309308,
+      "StartedTicks": 639294123653143642,
+      "AcceptedUnixUs": 1793815566678993,
+      "DurationUpperMilliseconds": 1365.629,
+      "NormalExitCode": 0,
+      "SourceMatchingEvents": 1,
+      "DroppedTargetEvents": 0,
+      "OtherProcessIds": [],
+      "FinalLogSHA256": "C962F5E74D2C8E0F74379B78FD7A0B5FBB9014626305E0DE9B4A4A02D911B566",
+      "ExitTimeLogSHA256": "C962F5E74D2C8E0F74379B78FD7A0B5FBB9014626305E0DE9B4A4A02D911B566",
+      "LogUnchangedSinceExit": true,
+      "ExecutableMatches": true,
+      "RawIdentities": [
+        {
+          "RelativePath": "session.json",
+          "SHA256": "742F945AD6BBF81FD1DF1ECD82CF7A79C57120ED47A0EFED253BBBF005C1E03A"
+        },
+        {
+          "RelativePath": "completion.json",
+          "SHA256": "734832053D71DB4C59D6A89DBEEC5F72F3BE265B06AC5586331046C918D8232F"
+        },
+        {
+          "RelativePath": "case.json",
+          "SHA256": "C7C8B14C8580702AD5189F49372FB1FE4105B78817760608C34A3C0F48DB360E"
+        },
+        {
+          "RelativePath": "warm-input.json",
+          "SHA256": "A7B8CDDF25AF89E35277059B372760235D4EE2A95B1C80A5F3DEA363978E1ED1"
+        },
+        {
+          "RelativePath": "probe/accepted-input.log",
+          "SHA256": "C962F5E74D2C8E0F74379B78FD7A0B5FBB9014626305E0DE9B4A4A02D911B566"
+        },
+        {
+          "RelativePath": "probe/events.jsonl",
+          "SHA256": "EB60B46CC8669E6FA661BE54C2EB233B6DFEDF042FEE68EDC8821AEF64B57ABA"
+        },
+        {
+          "RelativePath": "local/Velo/logs/velo.log",
+          "SHA256": "D9FF4D49B601BE883AB354F7E20CBA416077F5421F5232EA17E53FE764E2C4A8"
+        }
+      ]
+    },
+    {
+      "Case": "wails-warm-3",
+      "ProcessId": 278016,
+      "StartedTicks": 639294123801511761,
+      "AcceptedUnixUs": 1793815581701344,
+      "DurationUpperMilliseconds": 1551.168,
+      "NormalExitCode": 0,
+      "SourceMatchingEvents": 1,
+      "DroppedTargetEvents": 0,
+      "OtherProcessIds": [],
+      "FinalLogSHA256": "52F731B365B3B8281EDB6A6F4AC9F06E8535C2900021779B737197343CA80C6F",
+      "ExitTimeLogSHA256": "52F731B365B3B8281EDB6A6F4AC9F06E8535C2900021779B737197343CA80C6F",
+      "LogUnchangedSinceExit": true,
+      "ExecutableMatches": true,
+      "RawIdentities": [
+        {
+          "RelativePath": "session.json",
+          "SHA256": "6199A6AD1FC0C0AF1C043614A1CC6442BC809298F1AB2C531E9D0113456DA406"
+        },
+        {
+          "RelativePath": "completion.json",
+          "SHA256": "017B35FAEDB38E006BBC24BB770FCA445AE7FC895F4EBAF44CCEE36ABC4500A0"
+        },
+        {
+          "RelativePath": "case.json",
+          "SHA256": "0865E67D326D7469537D1432A52352F8AAF7C3C3D7F8F3C5F8D375F87C703C83"
+        },
+        {
+          "RelativePath": "warm-input.json",
+          "SHA256": "63C3896AD70006602B12B91C82938962570D2917C81C7A6F16D798D68C4666D2"
+        },
+        {
+          "RelativePath": "probe/accepted-input.log",
+          "SHA256": "52F731B365B3B8281EDB6A6F4AC9F06E8535C2900021779B737197343CA80C6F"
+        },
+        {
+          "RelativePath": "probe/events.jsonl",
+          "SHA256": "DECCEE956CB5A8E64864133EB0155A028FA9CFCB33897951A94E12F8F1CD829A"
+        },
+        {
+          "RelativePath": "local/Velo/logs/velo.log",
+          "SHA256": "D378B8F904175DC45C5C3FAF4220E13CC2BFCC54963AB1CEB3204EF9523A8027"
+        }
+      ]
+    }
+  ],
+  "Scope": "Warm OS cache and seeded WebView profile; actual accepted-character bounds include manual delay. Not calibrated first-possible readiness or strict cold startup. Original slow first sample retained.",
+  "HotkeyReliabilityPassed": false,
+  "RS12Complete": false
+}

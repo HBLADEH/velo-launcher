@@ -1,0 +1,28 @@
+{
+  "RecordedAtUtc": "2026-11-12T18:15:37.5169526Z",
+  "Renderer": "femtovg",
+  "Run": "femtovg-physical",
+  "ProcessId": 94504,
+  "ExecutableSHA256": "D81F31ED8AB3C0D45A3565CDC8AA412B3FB870C0CC350204178CDE44456B6487",
+  "OperatorReply": "跨屏布局和输入正常，已恢复 100%",
+  "OperatorConfirmedScope": "Physical drag from 175% screen to another screen; normal layout, Pinyin candidate location and word selection, ceshi Escape cancellation, English abc; changed display scale restored to original 100%.",
+  "NativeDPIs": [
+    96
+  ],
+  "NativeChanges": [
+    {
+      "UnixMicroseconds": 1794507336399780,
+      "ElapsedMilliseconds": 0.3972,
+      "Visible": false,
+      "ForegroundTargetProcess": false,
+      "DPI": 96,
+      "X": 205,
+      "Y": 170,
+      "Width": 640,
+      "Height": 660
+    }
+  ],
+  "NativeSnapshotSHA256": "16244E5A264D49362DCCA2BFAFD0E5AA965D9720939D70F746566641633E910B",
+  "DisplayRestorationOperatorConfirmed": true,
+  "Scope": "Direct operator physical-keyboard/cross-screen report plus passive native endpoint. Continuous observer and logs preserve the intermediate DPI/position transitions."
+}

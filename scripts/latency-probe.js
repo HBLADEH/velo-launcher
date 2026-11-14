@@ -44,6 +44,15 @@
   for (const name of ['focus', 'blur', 'focusin', 'focusout', 'DOMContentLoaded']) {
     window.addEventListener(name, schedule, true)
   }
+  window.addEventListener('input', event => {
+    if (!(event.target instanceof HTMLInputElement) || event.target.getAttribute('role') !== 'combobox') return
+    const mark = bridge()
+    if (!mark) return
+    // The Go observer discards this stage unless the RS-12 flag is set. Keep
+    // only byte count/trust/composition, never the character or query itself.
+    void mark({ ...state(), stage: 'input', inputTrusted: event.isTrusted, composing: event.isComposing,
+      utf8Bytes: new TextEncoder().encode(event.target.value).length }).catch(() => {})
+  }, true)
   new MutationObserver(schedule).observe(document.documentElement, { childList: true, subtree: true, attributes: true, attributeFilter: ['disabled', 'readonly', 'style', 'class'] })
   setInterval(schedule, 25)
   schedule()

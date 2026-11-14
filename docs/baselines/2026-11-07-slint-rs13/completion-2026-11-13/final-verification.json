@@ -1,0 +1,56 @@
+{
+  "RecordedAtUtc": "2026-11-12T20:07:47.062078+00:00",
+  "Stage": "RS-13",
+  "Status": "已验证（本机可测范围）",
+  "TestedScope": {
+    "OS": "Existing recorded Windows 11 x64 host",
+    "PhysicalIMEAndScaleRows": 8,
+    "PhysicalScalePercent": [
+      100,
+      125,
+      150,
+      175
+    ],
+    "CrossScreenInputRows": 2,
+    "CurrentBuildInputsMatchedPerRenderer": 206,
+    "CurrentComponentStaticImages": 104,
+    "CurrentComponentAnimationClips": 26,
+    "CurrentComponentAnimationFrames": 936,
+    "CoreRectangleChecks": 132,
+    "HeadingOriginChecks": 12,
+    "PriorNativeFamiliesPerEdition": 14,
+    "PriorNativeClips": 48,
+    "PriorNativeClipsRetainOriginalExecutableIdentity": true,
+    "CompatibleCurrentNativeSettingsIntervals": 7,
+    "CurrentFemtoVGPulseLiveFrames": 153,
+    "CurrentFemtoVGPulsePeakSeparationMilliseconds": 1201.2043999999999
+  },
+  "AppearanceTradeoffsAcceptedByOperator": true,
+  "NativeWaveformThresholdsChanged": false,
+  "OriginalMatricesOverwritten": false,
+  "NativeTransitionOutcomeCounts": {
+    "compatible": 7,
+    "mismatch": 1,
+    "insufficient": 10
+  },
+  "AdditionalNativeFrameHashReferencesChecked": 297,
+  "TotalNormalProductExitsThisPass": 6,
+  "TotalCompletedRecorderExitsThisPass": 11,
+  "RecorderFailuresPreserved": 2,
+  "FormalFilesUnchanged": 5,
+  "DisplayRestoredTo100Percent": true,
+  "CleanupPassed": true,
+  "RS13VerifiedInTestedScope": true,
+  "AllScalesOrEnvironmentsVerified": false,
+  "ScopeLimits": [
+    "200% is not selectable on the reported display; untested and not passed.",
+    "One earlier Software exit optical fit exceeded alpha RMSE 0.05; later fixed phase repeats passed on the same exe. Original mismatch retained.",
+    "Insufficient or failed attempts remain recorded. Seven compatible intervals do not establish every-frame perfection or a uniquely identifiable easing curve.",
+    "Windows Graphics Capture source samples do not measure final desktop/photon timestamps or individual GPU execution.",
+    "Windows 10, other GPU drivers and third-party input methods are outside this host acceptance."
+  ],
+  "DefaultRendererChosen": false,
+  "G4Passed": false,
+  "ReleasePublished": false,
+  "AcceptanceBasis": "Plan section 6.2 requires layout/image comparison, recorded native motion and actual DPI/IME review with explicit differences. Current measured Windows 11 scope now has each category, accepted appearance tradeoffs and sampled native enter/exit consistency for both renderers. Exact photon timing and untestable environments are limits, not fabricated passes."
+}

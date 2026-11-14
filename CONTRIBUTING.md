@@ -19,10 +19,10 @@
 1. Fork 仓库并创建主题分支，每个 PR 聚焦一个问题。
 2. 按 [开发说明](docs/development.md) 配置 Windows 开发环境。
 3. 修改代码并为行为变化补充适当测试；界面修改请附上实际截图。
-4. 运行 `./scripts/verify.ps1 -SkipBuild`。涉及打包时运行 `./scripts/verify.ps1`；涉及安装程序时使用 `-Installer`（需要 NSIS）。
+4. 运行 `./scripts/verify-rust.ps1 -Product -SmokeTest`；界面开发预览可使用不带 `-Product` 的入口。安装器改动还需固定 NSIS 打包与隔离客户机验证。
 5. 在 PR 中说明问题、修改后的行为、验证方式和已知限制，并关联相关 Issue。
 
-仅修改文档时，请检查链接、命令和术语，无需执行完整程序构建。请勿提交本地日志、用户数据或 `build/bin/` 中的构建产物。Wails 绑定由工具生成，请勿手工修改；安装包模板的构建后恢复方式见开发说明。
+仅修改文档时，请检查链接、命令和术语，无需执行完整程序构建。请勿提交本地日志、用户数据或 `rust/target/` 中的构建产物。自 0.1.0 起只在 Rust 主线上开发；Go/Wails 与旧绑定仅保留为历史兼容基线，详见[旧版说明](docs/legacy-go-wails.md)。
 
 ## 文档与截图
 
@@ -36,6 +36,6 @@
 
 Chinese is the project's primary working language; English reports and contributions are also welcome. Search existing [issues](https://github.com/HBLADEH/velo-launcher/issues) before opening a new one. You can use the Chinese issue forms or open a blank issue in English. Bug reports should include the Windows and Velo versions, distribution type, reproduction steps, expected and actual behavior, and relevant screenshots or log excerpts. Logs are stored in `%LOCALAPPDATA%\Velo\logs`; remove personal information before sharing. For substantial changes, discuss the scope in an issue first.
 
-Fork the repository, create a focused branch, and follow the [development guide (Chinese)](docs/development.md). Add appropriate tests for behavior changes and screenshots for UI changes. Run `./scripts/verify.ps1 -SkipBuild`; use the full script for packaging changes or `-Installer` for installer changes (requires NSIS). Describe the problem, resulting behavior, validation, and limitations in your PR.
+Fork the repository, create a focused branch, and follow the [development guide (Chinese)](docs/development.md). Product development uses Rust from 0.1.0 onward. Add appropriate tests for behavior changes and screenshots for UI changes. Run `./scripts/verify-rust.ps1 -Product -SmokeTest`; installer changes also require pinned NSIS packaging and disposable-guest validation. Describe the problem, resulting behavior, validation, and limitations in your PR.
 
 Documentation-only changes require checking links, commands, and terminology rather than a full application build. Keep both READMEs in sync. Use actual UI screenshots in `docs/images/`, with no personal information. Do not commit local data, logs, or build outputs, and do not manually edit generated Wails bindings. Preserve third-party notices; contributions are covered by the project's [MIT License](LICENSE).

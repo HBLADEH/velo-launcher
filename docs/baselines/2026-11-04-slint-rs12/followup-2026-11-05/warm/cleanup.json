@@ -1,0 +1,58 @@
+{
+  "RecordedAtUtc": "2026-11-04T18:12:29.5981523Z",
+  "VeloProcessCount": 0,
+  "IsolatedWebViewProcessCount": 0,
+  "AltSpaceAvailable": true,
+  "TemporaryCheckReleased": true,
+  "ObserverEndpoints": [
+    {
+      "Case": "wails-warm-1",
+      "ObserverEndpointStillListening": false
+    },
+    {
+      "Case": "wails-warm-2",
+      "ObserverEndpointStillListening": false
+    },
+    {
+      "Case": "wails-warm-3",
+      "ObserverEndpointStillListening": false
+    }
+  ],
+  "FormalFiles": [
+    {
+      "File": "config.json",
+      "BeforeSHA256": "6DECBCB844CC656D0EAFBD340F7B8BF3B877FAAD593D543F85A37B15EB95143F",
+      "CurrentSHA256": "6DECBCB844CC656D0EAFBD340F7B8BF3B877FAAD593D543F85A37B15EB95143F",
+      "Unchanged": true
+    },
+    {
+      "File": "index.json",
+      "BeforeSHA256": "EAC34FE47C2CB743479CCE2E29A37348F700D67C5BC14DAF2DC73CB93D64508D",
+      "CurrentSHA256": "EAC34FE47C2CB743479CCE2E29A37348F700D67C5BC14DAF2DC73CB93D64508D",
+      "Unchanged": true
+    },
+    {
+      "File": "history.json",
+      "BeforeSHA256": "300716DFFF2BCBF12B317BAD430A3F553842C13616BB28C636E620E69681CA11",
+      "CurrentSHA256": "300716DFFF2BCBF12B317BAD430A3F553842C13616BB28C636E620E69681CA11",
+      "Unchanged": true
+    },
+    {
+      "File": "application-library.json",
+      "BeforeSHA256": "A5E8BC981B03563AF3D26E5EEF9D263D9EAA4181C5DA758E8DCBF82160FF01F6",
+      "CurrentSHA256": "A5E8BC981B03563AF3D26E5EEF9D263D9EAA4181C5DA758E8DCBF82160FF01F6",
+      "Unchanged": true
+    },
+    {
+      "File": "quick-launch.json",
+      "BeforeSHA256": null,
+      "CurrentSHA256": null,
+      "Unchanged": true
+    }
+  ],
+  "MeasuredWarmNormalExits": 3,
+  "ExtraLaunchIncludedInMatrix": false,
+  "UserReport": "三次完成，均已退出",
+  "HotkeyReliabilityPassed": false,
+  "RS12Complete": false
+}

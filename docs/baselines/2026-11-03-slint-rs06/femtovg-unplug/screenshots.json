@@ -1,0 +1,55 @@
+{
+  "Capture": "Computer Use bounded screenshots; physical geometry checked separately",
+  "Scenes": [
+    {
+      "name": "femtovg-before-unplug",
+      "path": "screenshots/femtovg-before-unplug.jpg",
+      "sha256": "3294d9e6f3ece4fcd7a16d5f8f25c85f28eae080232c5c0d60215f1dd30d7177",
+      "width": 640,
+      "height": 264,
+      "originX": 2560,
+      "originY": 248,
+      "notes": "Normal FemtoVG instance on right-hand secondary; actual code input accepted, two results, original HWND captured before physical disconnect."
+    },
+    {
+      "name": "femtovg-physical-disconnect-input",
+      "path": "screenshots/femtovg-physical-disconnect-input.jpg",
+      "sha256": "2ed62358bcad729585e8f2481bb5730f8d4507de86fd52e2132c7983187eaf73",
+      "width": 640,
+      "height": 210,
+      "originX": 640,
+      "originY": 206,
+      "notes": "Secondary video cable physically removed by user; only primary remains; same PID/HWND and preserved code query, x input and redraw succeed."
+    },
+    {
+      "name": "femtovg-disconnected-hotkey",
+      "path": "screenshots/femtovg-disconnected-hotkey.jpg",
+      "sha256": "2ed62358bcad729585e8f2481bb5730f8d4507de86fd52e2132c7983187eaf73",
+      "width": 640,
+      "height": 210,
+      "originX": 640,
+      "originY": 206,
+      "notes": "With secondary physically disconnected, real Ctrl+Alt+K recalls same window on primary with codex query preserved."
+    },
+    {
+      "name": "femtovg-reconnected-hotkey",
+      "path": "screenshots/femtovg-reconnected-hotkey.jpg",
+      "sha256": "2ed62358bcad729585e8f2481bb5730f8d4507de86fd52e2132c7983187eaf73",
+      "width": 640,
+      "height": 210,
+      "originX": 2560,
+      "originY": 248,
+      "notes": "Secondary physically reconnected; real hotkey recalls same HWND on accessible secondary, codex query preserved, no component recreation."
+    },
+    {
+      "name": "femtovg-reconnected-input",
+      "path": "screenshots/femtovg-reconnected-input.jpg",
+      "sha256": "f33c0420531a354df974777f291d87dc7f8636259047ad47eeca187c856555b9",
+      "width": 640,
+      "height": 210,
+      "originX": 2560,
+      "originY": 248,
+      "notes": "Focused character input succeeds after physical reconnect; codex becomes codexx in the same HWND; updated content renders normally."
+    }
+  ]
+}

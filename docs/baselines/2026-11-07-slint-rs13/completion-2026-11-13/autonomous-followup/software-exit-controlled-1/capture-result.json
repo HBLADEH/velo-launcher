@@ -1,0 +1,27 @@
+{
+  "Completed": true,
+  "Renderer": "software",
+  "ExecutableSHA256": "5E7C017DDA3FF691E7FF8DCBFEAF149E5A766C1F8DC73A816BB5C4A9F7C4C66B",
+  "ProcessId": 137372,
+  "StartedTicks": 639301067627146388,
+  "Trigger": "recording",
+  "ActivityEvent": "event=hotkey_recording pid=137372 unix_us=1794510958882790 elapsed_us=996111380 dropped=0 enabled=true",
+  "TestCallback": "home",
+  "Request": "pulse-exit-1 home",
+  "Response": "event=measurement_state command=home visible=true presented=true focused=true native_focused=true utf8_bytes=0 business=true scanning=false count=1002 settings=false",
+  "RecorderExecutableSHA256": "F3039B9305C6B9BAE3F26676C1E47417A749C35C67FF377C16D4C171932738F9",
+  "RecorderExitCode": 0,
+  "CaptureEnd": {
+    "event": "end",
+    "qpc": 1759724292653,
+    "frames": 39,
+    "clips": 2,
+    "gpu_queue_rejected": 0,
+    "write_queue_rejected": 0,
+    "storage_limited": false
+  },
+  "SyntheticStimulus": true,
+  "PhysicalInput": false,
+  "SourceFramesUnmodified": true,
+  "Scope": "Normal callback invoked through the existing opt-in stdio controller while an existing decoration repaints. Analyze original source frames; no UI animation, product code, capture bounds or analyzer tolerance changed."
+}

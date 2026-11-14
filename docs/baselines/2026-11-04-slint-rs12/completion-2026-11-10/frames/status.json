@@ -1,0 +1,24 @@
+{
+  "RecordedAtUtc": "2026-11-09T17:38:10.9270939Z",
+  "SoftwarePhysicalPairs": 21,
+  "SoftwareNormalExitConfirmed": true,
+  "FemtoVG1000LivePhysicalPairs": 20,
+  "FemtoVG1000NormalExitConfirmed": false,
+  "FemtoVGProcessId": 16264,
+  "SoftwareTimingFigures": "Excluded from product acceptance: legacy geometry capture.",
+  "FemtoVG1000TimingFigures": "Excluded: legacy geometry capture and pending normal exit; fallback icon scenario.",
+  "RawImagesPublished": false,
+  "NativeGeometryRegressionPassed": true,
+  "FinalObserverBuild": "FFAA0B25B59C849F5458B6AA50097E3ADE265D4189737766DB4EE6A8065E2581",
+  "FinalObserverSource": "618BCFEB8B3BFD441997D7F3BB26C6E9967727168A519190BED9EA3FD8DC3688",
+  "CorrectedFixtureVersion": "v3",
+  "ColdCharacterObservations": 9,
+  "RS12Complete": false,
+  "Remaining": [
+    "Normal exit/final input log/cleanup of FemtoVG PID 16264",
+    "Fresh geometry-checked product frame capture for Wails and both Slint renderers, controlled 1000/10000 datasets",
+    "Correct-result pixel verification, animation frame cadence and same-method comparison",
+    "First possible startup/hotkey readiness calibration; historical focus failures remain unlocated"
+  ],
+  "ToolAvailability": "Computer Use native pipe unavailable after bounded retries and reset; no shell/UI input workaround attempted."
+}

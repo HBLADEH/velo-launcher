@@ -1,4 +1,10 @@
-//! Synthetic, embedded RS-02 content. This is not the product index or search engine.
+//! Synthetic content using the RS-09 search/home kernel. Never opens user data.
+
+use chrono::{DateTime, Utc};
+use velo_slint::core::catalog::Catalog;
+use velo_slint::core::config::Config;
+use velo_slint::core::data::{ApplicationLibrary, History, HistoryEntry};
+use velo_slint::core::model::AppItem;
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Group {
@@ -14,6 +20,7 @@ pub struct FixtureItem {
     pub subtitle: &'static str,
     pub icon_key: &'static str,
     pub group: Group,
+    pub pinned: bool,
 }
 
 pub const ITEMS: &[FixtureItem] = &[
@@ -228,21 +235,115 @@ const fn item(
         subtitle,
         icon_key,
         group,
+        pinned: matches!(group, Group::Pinned),
     }
 }
 
-/// Deliberately simple filtering for the UI fixture, with stable fixture order.
-/// No pinyin, ranking, filesystem access, history, or product search semantics.
-pub fn filter(query: &str) -> Vec<FixtureItem> {
-    let needle = query.trim().to_lowercase();
+pub struct Snapshot {
+    catalog: Catalog,
+    history: History,
+    config: Config,
+    now: DateTime<Utc>,
+    pub home: Vec<FixtureItem>,
+}
+
+fn display(item: &AppItem) -> Option<FixtureItem> {
     ITEMS
         .iter()
-        .copied()
-        .filter(|item| {
-            item.name.to_lowercase().contains(&needle)
-                || item.subtitle.to_lowercase().contains(&needle)
+        .find(|fixture| fixture.id == item.id)
+        .map(|fixture| FixtureItem {
+            pinned: item.pinned,
+            ..*fixture
         })
-        .collect()
+}
+
+impl Snapshot {
+    /// One finite startup job, before the Slint window is created. The fixed
+    /// history keeps the original screenshot/navigation fixture in its order.
+    pub fn new(empty_pinned: bool) -> Result<Self, &'static str> {
+        let now = DateTime::parse_from_rfc3339("2026-11-03T00:00:00Z")
+            .map_err(|_| "invalid fixture clock")?
+            .with_timezone(&Utc);
+        let mut history = History::default();
+        let mut frequent = 12;
+        let items: Vec<_> = ITEMS
+            .iter()
+            .map(|fixture| {
+                if fixture.group == Group::Frequent {
+                    history.0.insert(
+                        fixture.id.into(),
+                        HistoryEntry {
+                            launch_count: frequent,
+                            last_launch_time: "2026-11-03T00:00:00Z".into(),
+                            ..HistoryEntry::default()
+                        },
+                    );
+                    frequent -= 1;
+                }
+                AppItem {
+                    id: fixture.id.into(),
+                    name: fixture.name.into(),
+                    description: fixture.subtitle.into(),
+                    // Retain path/subtitle fixture coverage through real keywords.
+                    keywords: Some(vec![fixture.subtitle.into()]),
+                    source: if fixture.group == Group::System {
+                        "System"
+                    } else {
+                        "Desktop"
+                    }
+                    .into(),
+                    ..AppItem::default()
+                }
+            })
+            .collect();
+        let library = ApplicationLibrary {
+            pinned: Some(
+                items
+                    .iter()
+                    .filter(|item| {
+                        !empty_pinned
+                            && ITEMS
+                                .iter()
+                                .any(|f| f.id == item.id && f.group == Group::Pinned)
+                    })
+                    .cloned()
+                    .collect(),
+            ),
+            ..ApplicationLibrary::empty()
+        };
+        let (tools, apps): (Vec<_>, Vec<_>) =
+            items.into_iter().partition(|item| item.source == "System");
+        let catalog = Catalog::new(&apps, &library, &tools);
+        let home = catalog
+            .home(&history, now)
+            .map_err(|_| "invalid fixture history")?;
+        let home = home
+            .pinned
+            .into_iter()
+            .chain(home.frequent)
+            .chain(home.tools)
+            .filter_map(|item| display(&item))
+            .collect();
+        Ok(Self {
+            catalog,
+            history,
+            now,
+            home,
+            config: Config {
+                max_results: 20,
+                ..Config::default()
+            },
+        })
+    }
+
+    pub fn query(&self, query: &str) -> velo_slint::core::Result<Vec<FixtureItem>> {
+        Ok(self
+            .catalog
+            .search(query, &self.config, &self.history, self.now)?
+            .iter()
+            .filter_map(|result| display(&result.item))
+            .collect())
+    }
 }
 
 pub fn selection<'a>(visible: &'a [FixtureItem], id: &str) -> Option<&'a FixtureItem> {
@@ -283,26 +384,37 @@ mod tests {
     }
 
     #[test]
-    fn fixture_filter_handles_cjk_case_paths_whitespace_and_no_matches() {
+    fn fixture_search_uses_ranked_pinyin_and_keywords() {
+        let snapshot = Snapshot::new(false).unwrap();
         assert_eq!(
-            filter("  CODE  ").iter().map(|i| i.id).collect::<Vec<_>>(),
+            snapshot
+                .query("  CODE  ")
+                .unwrap()
+                .iter()
+                .map(|i| i.id)
+                .collect::<Vec<_>>(),
             ["code", "editor"]
         );
-        assert_eq!(filter("研发资料")[0].id, "docs");
-        assert_eq!(filter(r"d:\tools\").len(), 6);
-        assert_eq!(filter("系统").len(), 13);
-        assert_eq!(filter("  ").len(), ITEMS.len());
-        assert!(filter("zz-no-matches-无结果").is_empty());
+        assert_eq!(snapshot.query("研发资料").unwrap()[0].id, "docs");
+        assert_eq!(snapshot.query("jsb").unwrap()[0].id, "notes");
+        assert_eq!(snapshot.query(r"d:\tools\").unwrap().len(), 6);
+        assert_eq!(snapshot.query("系统").unwrap().len(), 13);
+        assert_eq!(
+            snapshot.home.iter().map(|i| i.id).collect::<Vec<_>>(),
+            ITEMS.iter().map(|i| i.id).collect::<Vec<_>>()
+        );
+        assert!(snapshot.query("zz-no-matches-无结果").unwrap().is_empty());
     }
 
     #[test]
     fn stale_or_unknown_choices_cannot_be_recorded_after_filtering() {
-        let visible = filter("code");
+        let snapshot = Snapshot::new(false).unwrap();
+        let visible = snapshot.query("code").unwrap();
         assert_eq!(
             selection(&visible, "editor").unwrap().name,
             "Code Editor Preview"
         );
         assert!(selection(&visible, "calculator").is_none());
-        assert!(selection(&filter("no-matches"), "code").is_none());
+        assert!(selection(&snapshot.query("no-matches").unwrap(), "code").is_none());
     }
 }

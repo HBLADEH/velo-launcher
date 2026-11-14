@@ -40,6 +40,9 @@ type latencyDOMState struct {
 	Writable        bool    `json:"writable"`
 	Displayed       bool    `json:"displayed"`
 	BrowserTimeMS   float64 `json:"browserTimeMS"`
+	InputTrusted    bool    `json:"inputTrusted"`
+	Composing       bool    `json:"composing"`
+	UTF8Bytes       int     `json:"utf8Bytes"`
 }
 
 type latencyRecord struct {
@@ -85,7 +88,7 @@ func init() {
 				var environment map[string]string
 				if json.Unmarshal(data, &environment) == nil {
 					for key, value := range environment {
-						if key == "LOCALAPPDATA" || key == "VELO_LATENCY_DIR" || key == "VELO_LATENCY_KIND" || key == "VELO_LATENCY_SHA256" || key == "VELO_LATENCY_BOOT_ID" {
+						if key == "LOCALAPPDATA" || key == "VELO_LATENCY_DIR" || key == "VELO_LATENCY_KIND" || key == "VELO_LATENCY_SHA256" || key == "VELO_LATENCY_BOOT_ID" || key == "VELO_LATENCY_ACTUAL_INPUT" {
 							_ = os.Setenv(key, value)
 						}
 					}
@@ -217,6 +220,22 @@ func (a *App) LatencyProbeMark(state latencyDOMState) bool {
 	}
 	ack := time.Now()
 	visible, active, foregroundPID := latencyNativeState()
+	if state.Stage == "input" {
+		// RS-12 observes actual trusted input separately from the older
+		// focus-ready observer. Never collect the query or change legacy records.
+		if os.Getenv("VELO_LATENCY_ACTUAL_INPUT") == "1" && state.UTF8Bytes > 0 {
+			file, err := os.OpenFile(filepath.Join(r.dir, "accepted-input.log"), os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0600)
+			if err != nil {
+				return false
+			}
+			defer file.Close()
+			_, err = fmt.Fprintf(file, "event=input_accepted pid=%d unix_us=%d dropped=0 focused=%t native_focused=%t visible=%t composing=%t synthetic=%t trusted=%t utf8_bytes=%d\n",
+				os.Getpid(), ack.UnixMicro(), state.DocumentFocused && state.InputFocused && state.Writable && state.Displayed,
+				active && foregroundPID == uint32(os.Getpid()), visible, state.Composing, !state.InputTrusted, state.InputTrusted, state.UTF8Bytes)
+			return err == nil
+		}
+		return true
+	}
 	r.mu.Lock()
 	r.app = a
 	if state.Stage != "attach" {

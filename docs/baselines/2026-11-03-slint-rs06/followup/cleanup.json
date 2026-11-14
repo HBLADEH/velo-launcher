@@ -1,0 +1,20 @@
+{
+  "ObservedAt": "2026-11-03T12:18:17.5459160+08:00",
+  "StoppedOwnedTestProcesses": [
+    {
+      "Pid": 216160,
+      "Name": "rs05_desktop_fixture"
+    },
+    {
+      "Pid": 116896,
+      "Name": "velo-slint"
+    }
+  ],
+  "StopReason": "Computer Use stopped by physical Escape; terminal cleanup only",
+  "ExitMethod": "Stop-Process on exact owned test PIDs, not a graceful tray Exit acceptance",
+  "RemainingPrototypePids": [],
+  "DesktopEndpointsRemain": false,
+  "TestHotkeyAcquiredAndReleased": true,
+  "DisplayConfiguration": "Primary (0,0), secondary (1920,42); both 96 DPI",
+  "TestExplorer": "Followup shortcut folder remains open; no further UI actions after stop"
+}

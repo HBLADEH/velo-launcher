@@ -1,0 +1,68 @@
+{
+  "RecordedAtUtc": "2026-11-10T20:36:59.6606068Z",
+  "TestProcessCount": 0,
+  "IsolatedWebViewCount": 0,
+  "InstanceEndpoints": [
+    {
+      "Run": "software-light",
+      "Exists": false
+    },
+    {
+      "Run": "software-light-retry",
+      "Exists": false
+    },
+    {
+      "Run": "software-dark",
+      "Exists": false
+    },
+    {
+      "Run": "femtovg-light",
+      "Exists": false
+    },
+    {
+      "Run": "femtovg-dark",
+      "Exists": false
+    }
+  ],
+  "AltSpaceRegistrationAvailable": true,
+  "FormalHashBracketBeforeUtc": "2026-11-10T19:16:15.0107548Z",
+  "FormalFiles": [
+    {
+      "Name": "config.json",
+      "Exists": true,
+      "BeforeSHA256": "6DECBCB844CC656D0EAFBD340F7B8BF3B877FAAD593D543F85A37B15EB95143F",
+      "AfterSHA256": "6DECBCB844CC656D0EAFBD340F7B8BF3B877FAAD593D543F85A37B15EB95143F",
+      "Unchanged": true
+    },
+    {
+      "Name": "application-library.json",
+      "Exists": true,
+      "BeforeSHA256": "A5E8BC981B03563AF3D26E5EEF9D263D9EAA4181C5DA758E8DCBF82160FF01F6",
+      "AfterSHA256": "A5E8BC981B03563AF3D26E5EEF9D263D9EAA4181C5DA758E8DCBF82160FF01F6",
+      "Unchanged": true
+    },
+    {
+      "Name": "history.json",
+      "Exists": true,
+      "BeforeSHA256": "18767782BD92FC904116A8B376C54049578E596AFA715B08B18D8280F2FCBF5E",
+      "AfterSHA256": "18767782BD92FC904116A8B376C54049578E596AFA715B08B18D8280F2FCBF5E",
+      "Unchanged": true
+    },
+    {
+      "Name": "quick-launch.json",
+      "Exists": false,
+      "BeforeSHA256": null,
+      "AfterSHA256": null,
+      "Unchanged": true
+    },
+    {
+      "Name": "index.json",
+      "Exists": true,
+      "BeforeSHA256": "A1C62CEA85156FB48E52874988DE07931AD4386F7F1448DC9ADBD5BC5A1195FC",
+      "AfterSHA256": "A1C62CEA85156FB48E52874988DE07931AD4386F7F1448DC9ADBD5BC5A1195FC",
+      "Unchanged": true
+    }
+  ],
+  "EarlierForcedCleanupPreserved": true,
+  "Scope": "Final task-owned resources and named formal files in this before/after bracket only; no assertion about earlier unbracketed runs."
+}

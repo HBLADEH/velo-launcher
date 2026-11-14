@@ -1,0 +1,1059 @@
+{
+  "SchemaVersion": 1,
+  "CreatedAtUtc": "2026-11-04T06:25:41.2736014Z",
+  "Rows": [
+    {
+      "Run": "femtovg-full",
+      "RunCompleted": true,
+      "Edition": "femtovg",
+      "SHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+      "Phase": "visible",
+      "Samples": 3,
+      "Mode": "MeasurementProbe",
+      "PrivateBytesMedian": 56123392.0,
+      "PrivateBytesMin": 56123392.0,
+      "PrivateBytesMax": 56123392.0,
+      "PrivateBytesPollingMin": 56123392.0,
+      "PrivateBytesPollingMax": 58691584.0,
+      "PrivateMiB": 53.5234375,
+      "WorkingSetMiB": 120.80078125,
+      "PrivateWorkingSetMiB": 45.2109375,
+      "CPUPercentOfMachineMedian": 0.056914,
+      "Processes": [
+        1
+      ],
+      "Threads": [
+        18.0
+      ],
+      "Handles": [
+        670.0
+      ],
+      "CatalogCount": 619,
+      "CachedIndexCount": 736,
+      "IconDisk": {
+        "Files": 746,
+        "Bytes": 2098924,
+        "SHA256": "195F08E032E7D366AE68F8EF0495EC3F20B3888CF5BB8DEE92B360BCA9D557C7"
+      },
+      "IconCache": {
+        "Entries": 25,
+        "CPUAndTextureEstimateBytes": 819200
+      },
+      "ScanWarningsAccepted": true,
+      "ScanWarning": true,
+      "InputsBefore": {
+        "Files": {
+          "config.json": "1839E326E5501DAA350418D81B7732C103EB7DB5455D145BD94B72B48349775D",
+          "index.json": "E3C79E01A3D9C7691B2B2E622DF94B33EE52933A35E73C8B2E0CED28927D0253",
+          "history.json": "300716DFFF2BCBF12B317BAD430A3F553842C13616BB28C636E620E69681CA11",
+          "application-library.json": "A5E8BC981B03563AF3D26E5EEF9D263D9EAA4181C5DA758E8DCBF82160FF01F6",
+          "quick-launch.json": null
+        },
+        "LastRefresh": null,
+        "CachedIndexCount": 736,
+        "IconDisk": {
+          "Files": 746,
+          "Bytes": 2098924,
+          "SHA256": "195F08E032E7D366AE68F8EF0495EC3F20B3888CF5BB8DEE92B360BCA9D557C7"
+        },
+        "Business": {
+          "ProcessId": 275980,
+          "Complete": true,
+          "Scanning": false,
+          "Warning": true,
+          "Count": 619,
+          "IconCache": {
+            "Entries": 25,
+            "CPUAndTextureEstimateBytes": 819200
+          },
+          "LastScan": "27152675",
+          "PublishedDuringScan": true,
+          "Dropped": false
+        }
+      },
+      "InputsAfter": {
+        "Files": {
+          "config.json": "1839E326E5501DAA350418D81B7732C103EB7DB5455D145BD94B72B48349775D",
+          "index.json": "E3C79E01A3D9C7691B2B2E622DF94B33EE52933A35E73C8B2E0CED28927D0253",
+          "history.json": "300716DFFF2BCBF12B317BAD430A3F553842C13616BB28C636E620E69681CA11",
+          "application-library.json": "A5E8BC981B03563AF3D26E5EEF9D263D9EAA4181C5DA758E8DCBF82160FF01F6",
+          "quick-launch.json": null
+        },
+        "LastRefresh": null,
+        "CachedIndexCount": 736,
+        "IconDisk": {
+          "Files": 746,
+          "Bytes": 2098924,
+          "SHA256": "195F08E032E7D366AE68F8EF0495EC3F20B3888CF5BB8DEE92B360BCA9D557C7"
+        },
+        "Business": {
+          "ProcessId": 275980,
+          "Complete": true,
+          "Scanning": false,
+          "Warning": true,
+          "Count": 619,
+          "IconCache": {
+            "Entries": 25,
+            "CPUAndTextureEstimateBytes": 819200
+          },
+          "LastScan": "27152675",
+          "PublishedDuringScan": true,
+          "Dropped": false
+        }
+      },
+      "GPU": [
+        {
+          "DedicatedBytes": 0.0,
+          "SharedBytes": 35135488.0,
+          "TotalCommittedBytes": 28942336.0,
+          "InstanceCount": 1
+        },
+        {
+          "DedicatedBytes": 0.0,
+          "SharedBytes": 35135488.0,
+          "TotalCommittedBytes": 28942336.0,
+          "InstanceCount": 1
+        },
+        {
+          "DedicatedBytes": 0.0,
+          "SharedBytes": 35135488.0,
+          "TotalCommittedBytes": 28942336.0,
+          "InstanceCount": 1
+        }
+      ],
+      "EvidenceSHA256": "FFF7C4EE5CB1BAF1A4C989E684EE8F42DF70544B9EBA5290F8A43ABF9F73D5E5",
+      "CollectorSHA256": "70402ADC5EFF2D8CE7D4CBC74C3EC0D5994A316895147ADB6BCA8D1278E73942",
+      "ValidatorSHA256": "B0EDC89C3A1BE157F8A8B9E46EF97AE3072AF0654E8B06312534674D9A02439A"
+    },
+    {
+      "Run": "femtovg-full",
+      "RunCompleted": true,
+      "Edition": "femtovg",
+      "SHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+      "Phase": "hidden-30s",
+      "Samples": 3,
+      "Mode": "MeasurementProbe",
+      "PrivateBytesMedian": 56123392.0,
+      "PrivateBytesMin": 56123392.0,
+      "PrivateBytesMax": 56123392.0,
+      "PrivateBytesPollingMin": 56123392.0,
+      "PrivateBytesPollingMax": 56123392.0,
+      "PrivateMiB": 53.5234375,
+      "WorkingSetMiB": 120.80859375,
+      "PrivateWorkingSetMiB": 45.2109375,
+      "CPUPercentOfMachineMedian": 0.025131,
+      "Processes": [
+        1
+      ],
+      "Threads": [
+        18.0
+      ],
+      "Handles": [
+        670.0
+      ],
+      "CatalogCount": 619,
+      "CachedIndexCount": 736,
+      "IconDisk": {
+        "Files": 746,
+        "Bytes": 2098924,
+        "SHA256": "195F08E032E7D366AE68F8EF0495EC3F20B3888CF5BB8DEE92B360BCA9D557C7"
+      },
+      "IconCache": {
+        "Entries": 25,
+        "CPUAndTextureEstimateBytes": 819200
+      },
+      "ScanWarningsAccepted": true,
+      "ScanWarning": true,
+      "InputsBefore": {
+        "Files": {
+          "config.json": "1839E326E5501DAA350418D81B7732C103EB7DB5455D145BD94B72B48349775D",
+          "index.json": "E3C79E01A3D9C7691B2B2E622DF94B33EE52933A35E73C8B2E0CED28927D0253",
+          "history.json": "300716DFFF2BCBF12B317BAD430A3F553842C13616BB28C636E620E69681CA11",
+          "application-library.json": "A5E8BC981B03563AF3D26E5EEF9D263D9EAA4181C5DA758E8DCBF82160FF01F6",
+          "quick-launch.json": null
+        },
+        "LastRefresh": null,
+        "CachedIndexCount": 736,
+        "IconDisk": {
+          "Files": 746,
+          "Bytes": 2098924,
+          "SHA256": "195F08E032E7D366AE68F8EF0495EC3F20B3888CF5BB8DEE92B360BCA9D557C7"
+        },
+        "Business": {
+          "ProcessId": 275980,
+          "Complete": true,
+          "Scanning": false,
+          "Warning": true,
+          "Count": 619,
+          "IconCache": {
+            "Entries": 25,
+            "CPUAndTextureEstimateBytes": 819200
+          },
+          "LastScan": "27152675",
+          "PublishedDuringScan": true,
+          "Dropped": false
+        }
+      },
+      "InputsAfter": {
+        "Files": {
+          "config.json": "1839E326E5501DAA350418D81B7732C103EB7DB5455D145BD94B72B48349775D",
+          "index.json": "E3C79E01A3D9C7691B2B2E622DF94B33EE52933A35E73C8B2E0CED28927D0253",
+          "history.json": "300716DFFF2BCBF12B317BAD430A3F553842C13616BB28C636E620E69681CA11",
+          "application-library.json": "A5E8BC981B03563AF3D26E5EEF9D263D9EAA4181C5DA758E8DCBF82160FF01F6",
+          "quick-launch.json": null
+        },
+        "LastRefresh": null,
+        "CachedIndexCount": 736,
+        "IconDisk": {
+          "Files": 746,
+          "Bytes": 2098924,
+          "SHA256": "195F08E032E7D366AE68F8EF0495EC3F20B3888CF5BB8DEE92B360BCA9D557C7"
+        },
+        "Business": {
+          "ProcessId": 275980,
+          "Complete": true,
+          "Scanning": false,
+          "Warning": true,
+          "Count": 619,
+          "IconCache": {
+            "Entries": 25,
+            "CPUAndTextureEstimateBytes": 819200
+          },
+          "LastScan": "27152675",
+          "PublishedDuringScan": true,
+          "Dropped": false
+        }
+      },
+      "GPU": [
+        {
+          "DedicatedBytes": 0.0,
+          "SharedBytes": 35135488.0,
+          "TotalCommittedBytes": 28942336.0,
+          "InstanceCount": 1
+        },
+        {
+          "DedicatedBytes": 0.0,
+          "SharedBytes": 35135488.0,
+          "TotalCommittedBytes": 28942336.0,
+          "InstanceCount": 1
+        },
+        {
+          "DedicatedBytes": 0.0,
+          "SharedBytes": 35135488.0,
+          "TotalCommittedBytes": 28942336.0,
+          "InstanceCount": 1
+        }
+      ],
+      "EvidenceSHA256": "020E880777D8783D8014DFF04D642430D47C64740EEC73073755269D79EE7640",
+      "CollectorSHA256": "70402ADC5EFF2D8CE7D4CBC74C3EC0D5994A316895147ADB6BCA8D1278E73942",
+      "ValidatorSHA256": "B0EDC89C3A1BE157F8A8B9E46EF97AE3072AF0654E8B06312534674D9A02439A"
+    },
+    {
+      "Run": "femtovg-full",
+      "RunCompleted": true,
+      "Edition": "femtovg",
+      "SHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+      "Phase": "hidden-5m",
+      "Samples": 3,
+      "Mode": "MeasurementProbe",
+      "PrivateBytesMedian": 59645952.0,
+      "PrivateBytesMin": 59645952.0,
+      "PrivateBytesMax": 59645952.0,
+      "PrivateBytesPollingMin": 59645952.0,
+      "PrivateBytesPollingMax": 59645952.0,
+      "PrivateMiB": 56.8828125,
+      "WorkingSetMiB": 125.0,
+      "PrivateWorkingSetMiB": 48.58203125,
+      "CPUPercentOfMachineMedian": 0.006308,
+      "Processes": [
+        1
+      ],
+      "Threads": [
+        19.0
+      ],
+      "Handles": [
+        695.0
+      ],
+      "CatalogCount": 619,
+      "CachedIndexCount": 736,
+      "IconDisk": {
+        "Files": 746,
+        "Bytes": 2098924,
+        "SHA256": "195F08E032E7D366AE68F8EF0495EC3F20B3888CF5BB8DEE92B360BCA9D557C7"
+      },
+      "IconCache": {
+        "Entries": 25,
+        "CPUAndTextureEstimateBytes": 819200
+      },
+      "ScanWarningsAccepted": true,
+      "ScanWarning": true,
+      "InputsBefore": {
+        "Files": {
+          "config.json": "1839E326E5501DAA350418D81B7732C103EB7DB5455D145BD94B72B48349775D",
+          "index.json": "E3C79E01A3D9C7691B2B2E622DF94B33EE52933A35E73C8B2E0CED28927D0253",
+          "history.json": "300716DFFF2BCBF12B317BAD430A3F553842C13616BB28C636E620E69681CA11",
+          "application-library.json": "A5E8BC981B03563AF3D26E5EEF9D263D9EAA4181C5DA758E8DCBF82160FF01F6",
+          "quick-launch.json": null
+        },
+        "LastRefresh": null,
+        "CachedIndexCount": 736,
+        "IconDisk": {
+          "Files": 746,
+          "Bytes": 2098924,
+          "SHA256": "195F08E032E7D366AE68F8EF0495EC3F20B3888CF5BB8DEE92B360BCA9D557C7"
+        },
+        "Business": {
+          "ProcessId": 275980,
+          "Complete": true,
+          "Scanning": false,
+          "Warning": true,
+          "Count": 619,
+          "IconCache": {
+            "Entries": 25,
+            "CPUAndTextureEstimateBytes": 819200
+          },
+          "LastScan": "27152675",
+          "PublishedDuringScan": true,
+          "Dropped": false
+        }
+      },
+      "InputsAfter": {
+        "Files": {
+          "config.json": "1839E326E5501DAA350418D81B7732C103EB7DB5455D145BD94B72B48349775D",
+          "index.json": "E3C79E01A3D9C7691B2B2E622DF94B33EE52933A35E73C8B2E0CED28927D0253",
+          "history.json": "300716DFFF2BCBF12B317BAD430A3F553842C13616BB28C636E620E69681CA11",
+          "application-library.json": "A5E8BC981B03563AF3D26E5EEF9D263D9EAA4181C5DA758E8DCBF82160FF01F6",
+          "quick-launch.json": null
+        },
+        "LastRefresh": null,
+        "CachedIndexCount": 736,
+        "IconDisk": {
+          "Files": 746,
+          "Bytes": 2098924,
+          "SHA256": "195F08E032E7D366AE68F8EF0495EC3F20B3888CF5BB8DEE92B360BCA9D557C7"
+        },
+        "Business": {
+          "ProcessId": 275980,
+          "Complete": true,
+          "Scanning": false,
+          "Warning": true,
+          "Count": 619,
+          "IconCache": {
+            "Entries": 25,
+            "CPUAndTextureEstimateBytes": 819200
+          },
+          "LastScan": "27152675",
+          "PublishedDuringScan": true,
+          "Dropped": false
+        }
+      },
+      "GPU": [
+        {
+          "DedicatedBytes": 0.0,
+          "SharedBytes": 39071744.0,
+          "TotalCommittedBytes": 32878592.0,
+          "InstanceCount": 1
+        },
+        {
+          "DedicatedBytes": 0.0,
+          "SharedBytes": 39071744.0,
+          "TotalCommittedBytes": 32878592.0,
+          "InstanceCount": 1
+        },
+        {
+          "DedicatedBytes": 0.0,
+          "SharedBytes": 39071744.0,
+          "TotalCommittedBytes": 32878592.0,
+          "InstanceCount": 1
+        }
+      ],
+      "EvidenceSHA256": "27625C625B6580A095FB2678E8085E4EB76A2F76FCDB26C59019E66468828CC7",
+      "CollectorSHA256": "70402ADC5EFF2D8CE7D4CBC74C3EC0D5994A316895147ADB6BCA8D1278E73942",
+      "ValidatorSHA256": "B0EDC89C3A1BE157F8A8B9E46EF97AE3072AF0654E8B06312534674D9A02439A"
+    },
+    {
+      "Run": "femtovg-full",
+      "RunCompleted": true,
+      "Edition": "femtovg",
+      "SHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+      "Phase": "visible-after-100-cycles",
+      "Samples": 3,
+      "Mode": "MeasurementProbe",
+      "PrivateBytesMedian": 56266752.0,
+      "PrivateBytesMin": 56266752.0,
+      "PrivateBytesMax": 56266752.0,
+      "PrivateBytesPollingMin": 56266752.0,
+      "PrivateBytesPollingMax": 57757696.0,
+      "PrivateMiB": 53.66015625,
+      "WorkingSetMiB": 121.28125,
+      "PrivateWorkingSetMiB": 45.24609375,
+      "CPUPercentOfMachineMedian": 0.120091,
+      "Processes": [
+        1
+      ],
+      "Threads": [
+        24.0
+      ],
+      "Handles": [
+        669.0
+      ],
+      "CatalogCount": 619,
+      "CachedIndexCount": 736,
+      "IconDisk": {
+        "Files": 746,
+        "Bytes": 2098924,
+        "SHA256": "195F08E032E7D366AE68F8EF0495EC3F20B3888CF5BB8DEE92B360BCA9D557C7"
+      },
+      "IconCache": {
+        "Entries": 25,
+        "CPUAndTextureEstimateBytes": 819200
+      },
+      "ScanWarningsAccepted": true,
+      "ScanWarning": true,
+      "InputsBefore": {
+        "Files": {
+          "config.json": "1839E326E5501DAA350418D81B7732C103EB7DB5455D145BD94B72B48349775D",
+          "index.json": "E3C79E01A3D9C7691B2B2E622DF94B33EE52933A35E73C8B2E0CED28927D0253",
+          "history.json": "300716DFFF2BCBF12B317BAD430A3F553842C13616BB28C636E620E69681CA11",
+          "application-library.json": "A5E8BC981B03563AF3D26E5EEF9D263D9EAA4181C5DA758E8DCBF82160FF01F6",
+          "quick-launch.json": null
+        },
+        "LastRefresh": null,
+        "CachedIndexCount": 736,
+        "IconDisk": {
+          "Files": 746,
+          "Bytes": 2098924,
+          "SHA256": "195F08E032E7D366AE68F8EF0495EC3F20B3888CF5BB8DEE92B360BCA9D557C7"
+        },
+        "Business": {
+          "ProcessId": 275980,
+          "Complete": true,
+          "Scanning": false,
+          "Warning": true,
+          "Count": 619,
+          "IconCache": {
+            "Entries": 25,
+            "CPUAndTextureEstimateBytes": 819200
+          },
+          "LastScan": "27152675",
+          "PublishedDuringScan": true,
+          "Dropped": false
+        }
+      },
+      "InputsAfter": {
+        "Files": {
+          "config.json": "1839E326E5501DAA350418D81B7732C103EB7DB5455D145BD94B72B48349775D",
+          "index.json": "E3C79E01A3D9C7691B2B2E622DF94B33EE52933A35E73C8B2E0CED28927D0253",
+          "history.json": "300716DFFF2BCBF12B317BAD430A3F553842C13616BB28C636E620E69681CA11",
+          "application-library.json": "A5E8BC981B03563AF3D26E5EEF9D263D9EAA4181C5DA758E8DCBF82160FF01F6",
+          "quick-launch.json": null
+        },
+        "LastRefresh": null,
+        "CachedIndexCount": 736,
+        "IconDisk": {
+          "Files": 746,
+          "Bytes": 2098924,
+          "SHA256": "195F08E032E7D366AE68F8EF0495EC3F20B3888CF5BB8DEE92B360BCA9D557C7"
+        },
+        "Business": {
+          "ProcessId": 275980,
+          "Complete": true,
+          "Scanning": false,
+          "Warning": true,
+          "Count": 619,
+          "IconCache": {
+            "Entries": 25,
+            "CPUAndTextureEstimateBytes": 819200
+          },
+          "LastScan": "27152675",
+          "PublishedDuringScan": true,
+          "Dropped": false
+        }
+      },
+      "GPU": [
+        {
+          "DedicatedBytes": 0.0,
+          "SharedBytes": 35000320.0,
+          "TotalCommittedBytes": 28807168.0,
+          "InstanceCount": 1
+        },
+        {
+          "DedicatedBytes": 0.0,
+          "SharedBytes": 35000320.0,
+          "TotalCommittedBytes": 28807168.0,
+          "InstanceCount": 1
+        },
+        {
+          "DedicatedBytes": 0.0,
+          "SharedBytes": 35000320.0,
+          "TotalCommittedBytes": 28807168.0,
+          "InstanceCount": 1
+        }
+      ],
+      "EvidenceSHA256": "24EA3B893090C5D5A50234BD046190F2EFDC7EA839505A7D85142401BB3F6A79",
+      "CollectorSHA256": "70402ADC5EFF2D8CE7D4CBC74C3EC0D5994A316895147ADB6BCA8D1278E73942",
+      "ValidatorSHA256": "B0EDC89C3A1BE157F8A8B9E46EF97AE3072AF0654E8B06312534674D9A02439A"
+    },
+    {
+      "Run": "femtovg-full",
+      "RunCompleted": true,
+      "Edition": "femtovg",
+      "SHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+      "Phase": "visible-after-loop",
+      "Samples": 3,
+      "Mode": "MeasurementProbe",
+      "PrivateBytesMedian": 56815616.0,
+      "PrivateBytesMin": 56815616.0,
+      "PrivateBytesMax": 57004032.0,
+      "PrivateBytesPollingMin": 56815616.0,
+      "PrivateBytesPollingMax": 57073664.0,
+      "PrivateMiB": 54.18359375,
+      "WorkingSetMiB": 122.453125,
+      "PrivateWorkingSetMiB": 44.71875,
+      "CPUPercentOfMachineMedian": 0.088469,
+      "Processes": [
+        1
+      ],
+      "Threads": [
+        15.0
+      ],
+      "Handles": [
+        697.0
+      ],
+      "CatalogCount": 619,
+      "CachedIndexCount": 736,
+      "IconDisk": {
+        "Files": 766,
+        "Bytes": 2207071,
+        "SHA256": "49ACDA6AB09C21F285788F8CAFDBC8A8BE04F165978479711B822853EE41E7D2"
+      },
+      "IconCache": {
+        "Entries": 53,
+        "CPUAndTextureEstimateBytes": 1736704
+      },
+      "ScanWarningsAccepted": true,
+      "ScanWarning": true,
+      "InputsBefore": {
+        "Files": {
+          "config.json": "1839E326E5501DAA350418D81B7732C103EB7DB5455D145BD94B72B48349775D",
+          "index.json": "E3C79E01A3D9C7691B2B2E622DF94B33EE52933A35E73C8B2E0CED28927D0253",
+          "history.json": "300716DFFF2BCBF12B317BAD430A3F553842C13616BB28C636E620E69681CA11",
+          "application-library.json": "A5E8BC981B03563AF3D26E5EEF9D263D9EAA4181C5DA758E8DCBF82160FF01F6",
+          "quick-launch.json": null
+        },
+        "LastRefresh": null,
+        "CachedIndexCount": 736,
+        "IconDisk": {
+          "Files": 766,
+          "Bytes": 2207071,
+          "SHA256": "49ACDA6AB09C21F285788F8CAFDBC8A8BE04F165978479711B822853EE41E7D2"
+        },
+        "Business": {
+          "ProcessId": 275980,
+          "Complete": true,
+          "Scanning": false,
+          "Warning": true,
+          "Count": 619,
+          "IconCache": {
+            "Entries": 53,
+            "CPUAndTextureEstimateBytes": 1736704
+          },
+          "LastScan": "27152675",
+          "PublishedDuringScan": true,
+          "Dropped": false
+        }
+      },
+      "InputsAfter": {
+        "Files": {
+          "config.json": "1839E326E5501DAA350418D81B7732C103EB7DB5455D145BD94B72B48349775D",
+          "index.json": "E3C79E01A3D9C7691B2B2E622DF94B33EE52933A35E73C8B2E0CED28927D0253",
+          "history.json": "300716DFFF2BCBF12B317BAD430A3F553842C13616BB28C636E620E69681CA11",
+          "application-library.json": "A5E8BC981B03563AF3D26E5EEF9D263D9EAA4181C5DA758E8DCBF82160FF01F6",
+          "quick-launch.json": null
+        },
+        "LastRefresh": null,
+        "CachedIndexCount": 736,
+        "IconDisk": {
+          "Files": 766,
+          "Bytes": 2207071,
+          "SHA256": "49ACDA6AB09C21F285788F8CAFDBC8A8BE04F165978479711B822853EE41E7D2"
+        },
+        "Business": {
+          "ProcessId": 275980,
+          "Complete": true,
+          "Scanning": false,
+          "Warning": true,
+          "Count": 619,
+          "IconCache": {
+            "Entries": 53,
+            "CPUAndTextureEstimateBytes": 1736704
+          },
+          "LastScan": "27152675",
+          "PublishedDuringScan": true,
+          "Dropped": false
+        }
+      },
+      "GPU": [
+        {
+          "DedicatedBytes": 0.0,
+          "SharedBytes": 35061760.0,
+          "TotalCommittedBytes": 28868608.0,
+          "InstanceCount": 1
+        },
+        {
+          "DedicatedBytes": 0.0,
+          "SharedBytes": 34865152.0,
+          "TotalCommittedBytes": 28672000.0,
+          "InstanceCount": 1
+        },
+        {
+          "DedicatedBytes": 0.0,
+          "SharedBytes": 34865152.0,
+          "TotalCommittedBytes": 28672000.0,
+          "InstanceCount": 1
+        }
+      ],
+      "EvidenceSHA256": "BB2A3C7CF32C3E1F037DD789E23DC0E0C168ADF2F9A17ABBEB7F3ADF59159777",
+      "CollectorSHA256": "70402ADC5EFF2D8CE7D4CBC74C3EC0D5994A316895147ADB6BCA8D1278E73942",
+      "ValidatorSHA256": "B0EDC89C3A1BE157F8A8B9E46EF97AE3072AF0654E8B06312534674D9A02439A"
+    },
+    {
+      "Run": "software-full",
+      "RunCompleted": false,
+      "Edition": "software",
+      "SHA256": "E85B41C7E77888750817E47F092EABECB1BAB5A68EFCE579378CE2DDAD2DBA4B",
+      "Phase": "visible",
+      "Samples": 3,
+      "Mode": "MeasurementProbe",
+      "PrivateBytesMedian": 25255936.0,
+      "PrivateBytesMin": 25255936.0,
+      "PrivateBytesMax": 25350144.0,
+      "PrivateBytesPollingMin": 25255936.0,
+      "PrivateBytesPollingMax": 25391104.0,
+      "PrivateMiB": 24.0859375,
+      "WorkingSetMiB": 60.03125,
+      "PrivateWorkingSetMiB": 19.80859375,
+      "CPUPercentOfMachineMedian": 0.00635,
+      "Processes": [
+        1
+      ],
+      "Threads": [
+        15.0,
+        18.0
+      ],
+      "Handles": [
+        532.0,
+        533.0
+      ],
+      "CatalogCount": 619,
+      "CachedIndexCount": 736,
+      "IconDisk": {
+        "Files": 745,
+        "Bytes": 2092882,
+        "SHA256": "51256CAAD7AD30D7FE2448B6702018C9EC38B22D30B03837690F42433A5939B4"
+      },
+      "IconCache": {
+        "Entries": 25,
+        "CPUAndTextureEstimateBytes": 819200
+      },
+      "ScanWarningsAccepted": true,
+      "ScanWarning": true,
+      "InputsBefore": {
+        "Files": {
+          "config.json": "1839E326E5501DAA350418D81B7732C103EB7DB5455D145BD94B72B48349775D",
+          "index.json": "DAC24002B4970ECBA6AE03BEE6A5D327B6FD12A8228738B4E22A3289BD5FF6D2",
+          "history.json": "300716DFFF2BCBF12B317BAD430A3F553842C13616BB28C636E620E69681CA11",
+          "application-library.json": "A5E8BC981B03563AF3D26E5EEF9D263D9EAA4181C5DA758E8DCBF82160FF01F6",
+          "quick-launch.json": null
+        },
+        "LastRefresh": null,
+        "CachedIndexCount": 736,
+        "IconDisk": {
+          "Files": 745,
+          "Bytes": 2092882,
+          "SHA256": "51256CAAD7AD30D7FE2448B6702018C9EC38B22D30B03837690F42433A5939B4"
+        },
+        "Business": {
+          "ProcessId": 209832,
+          "Complete": true,
+          "Scanning": false,
+          "Warning": true,
+          "Count": 619,
+          "IconCache": {
+            "Entries": 25,
+            "CPUAndTextureEstimateBytes": 819200
+          },
+          "LastScan": "13811229",
+          "PublishedDuringScan": true,
+          "Dropped": false
+        }
+      },
+      "InputsAfter": {
+        "Files": {
+          "config.json": "1839E326E5501DAA350418D81B7732C103EB7DB5455D145BD94B72B48349775D",
+          "index.json": "DAC24002B4970ECBA6AE03BEE6A5D327B6FD12A8228738B4E22A3289BD5FF6D2",
+          "history.json": "300716DFFF2BCBF12B317BAD430A3F553842C13616BB28C636E620E69681CA11",
+          "application-library.json": "A5E8BC981B03563AF3D26E5EEF9D263D9EAA4181C5DA758E8DCBF82160FF01F6",
+          "quick-launch.json": null
+        },
+        "LastRefresh": null,
+        "CachedIndexCount": 736,
+        "IconDisk": {
+          "Files": 745,
+          "Bytes": 2092882,
+          "SHA256": "51256CAAD7AD30D7FE2448B6702018C9EC38B22D30B03837690F42433A5939B4"
+        },
+        "Business": {
+          "ProcessId": 209832,
+          "Complete": true,
+          "Scanning": false,
+          "Warning": true,
+          "Count": 619,
+          "IconCache": {
+            "Entries": 25,
+            "CPUAndTextureEstimateBytes": 819200
+          },
+          "LastScan": "13811229",
+          "PublishedDuringScan": true,
+          "Dropped": false
+        }
+      },
+      "GPU": [
+        null,
+        null,
+        null
+      ],
+      "EvidenceSHA256": "1587A5CB8D139C5132796C8076DE5EEC5E5A06637DD68C92C480106922AFB1F7",
+      "CollectorSHA256": "70402ADC5EFF2D8CE7D4CBC74C3EC0D5994A316895147ADB6BCA8D1278E73942",
+      "ValidatorSHA256": "B0EDC89C3A1BE157F8A8B9E46EF97AE3072AF0654E8B06312534674D9A02439A"
+    },
+    {
+      "Run": "software-full",
+      "RunCompleted": false,
+      "Edition": "software",
+      "SHA256": "E85B41C7E77888750817E47F092EABECB1BAB5A68EFCE579378CE2DDAD2DBA4B",
+      "Phase": "hidden-30s",
+      "Samples": 3,
+      "Mode": "MeasurementProbe",
+      "PrivateBytesMedian": 25255936.0,
+      "PrivateBytesMin": 25255936.0,
+      "PrivateBytesMax": 25255936.0,
+      "PrivateBytesPollingMin": 25255936.0,
+      "PrivateBytesPollingMax": 25255936.0,
+      "PrivateMiB": 24.0859375,
+      "WorkingSetMiB": 60.15625,
+      "PrivateWorkingSetMiB": 19.80859375,
+      "CPUPercentOfMachineMedian": 0.019171,
+      "Processes": [
+        1
+      ],
+      "Threads": [
+        15.0
+      ],
+      "Handles": [
+        533.0
+      ],
+      "CatalogCount": 619,
+      "CachedIndexCount": 736,
+      "IconDisk": {
+        "Files": 745,
+        "Bytes": 2092882,
+        "SHA256": "51256CAAD7AD30D7FE2448B6702018C9EC38B22D30B03837690F42433A5939B4"
+      },
+      "IconCache": {
+        "Entries": 25,
+        "CPUAndTextureEstimateBytes": 819200
+      },
+      "ScanWarningsAccepted": true,
+      "ScanWarning": true,
+      "InputsBefore": {
+        "Files": {
+          "config.json": "1839E326E5501DAA350418D81B7732C103EB7DB5455D145BD94B72B48349775D",
+          "index.json": "DAC24002B4970ECBA6AE03BEE6A5D327B6FD12A8228738B4E22A3289BD5FF6D2",
+          "history.json": "300716DFFF2BCBF12B317BAD430A3F553842C13616BB28C636E620E69681CA11",
+          "application-library.json": "A5E8BC981B03563AF3D26E5EEF9D263D9EAA4181C5DA758E8DCBF82160FF01F6",
+          "quick-launch.json": null
+        },
+        "LastRefresh": null,
+        "CachedIndexCount": 736,
+        "IconDisk": {
+          "Files": 745,
+          "Bytes": 2092882,
+          "SHA256": "51256CAAD7AD30D7FE2448B6702018C9EC38B22D30B03837690F42433A5939B4"
+        },
+        "Business": {
+          "ProcessId": 209832,
+          "Complete": true,
+          "Scanning": false,
+          "Warning": true,
+          "Count": 619,
+          "IconCache": {
+            "Entries": 25,
+            "CPUAndTextureEstimateBytes": 819200
+          },
+          "LastScan": "13811229",
+          "PublishedDuringScan": true,
+          "Dropped": false
+        }
+      },
+      "InputsAfter": {
+        "Files": {
+          "config.json": "1839E326E5501DAA350418D81B7732C103EB7DB5455D145BD94B72B48349775D",
+          "index.json": "DAC24002B4970ECBA6AE03BEE6A5D327B6FD12A8228738B4E22A3289BD5FF6D2",
+          "history.json": "300716DFFF2BCBF12B317BAD430A3F553842C13616BB28C636E620E69681CA11",
+          "application-library.json": "A5E8BC981B03563AF3D26E5EEF9D263D9EAA4181C5DA758E8DCBF82160FF01F6",
+          "quick-launch.json": null
+        },
+        "LastRefresh": null,
+        "CachedIndexCount": 736,
+        "IconDisk": {
+          "Files": 745,
+          "Bytes": 2092882,
+          "SHA256": "51256CAAD7AD30D7FE2448B6702018C9EC38B22D30B03837690F42433A5939B4"
+        },
+        "Business": {
+          "ProcessId": 209832,
+          "Complete": true,
+          "Scanning": false,
+          "Warning": true,
+          "Count": 619,
+          "IconCache": {
+            "Entries": 25,
+            "CPUAndTextureEstimateBytes": 819200
+          },
+          "LastScan": "13811229",
+          "PublishedDuringScan": true,
+          "Dropped": false
+        }
+      },
+      "GPU": [
+        null,
+        null,
+        null
+      ],
+      "EvidenceSHA256": "DD105B03FA741223BA2748BB59C90A5B78C5D3D1EE4D661ACF1D87DBC00FD9F3",
+      "CollectorSHA256": "70402ADC5EFF2D8CE7D4CBC74C3EC0D5994A316895147ADB6BCA8D1278E73942",
+      "ValidatorSHA256": "B0EDC89C3A1BE157F8A8B9E46EF97AE3072AF0654E8B06312534674D9A02439A"
+    },
+    {
+      "Run": "software-full",
+      "RunCompleted": false,
+      "Edition": "software",
+      "SHA256": "E85B41C7E77888750817E47F092EABECB1BAB5A68EFCE579378CE2DDAD2DBA4B",
+      "Phase": "hidden-5m",
+      "Samples": 3,
+      "Mode": "MeasurementProbe",
+      "PrivateBytesMedian": 25264128.0,
+      "PrivateBytesMin": 25264128.0,
+      "PrivateBytesMax": 25264128.0,
+      "PrivateBytesPollingMin": 25264128.0,
+      "PrivateBytesPollingMax": 25264128.0,
+      "PrivateMiB": 24.09375,
+      "WorkingSetMiB": 60.5703125,
+      "PrivateWorkingSetMiB": 19.8359375,
+      "CPUPercentOfMachineMedian": 0.0,
+      "Processes": [
+        1
+      ],
+      "Threads": [
+        15.0
+      ],
+      "Handles": [
+        530.0
+      ],
+      "CatalogCount": 619,
+      "CachedIndexCount": 736,
+      "IconDisk": {
+        "Files": 745,
+        "Bytes": 2092882,
+        "SHA256": "51256CAAD7AD30D7FE2448B6702018C9EC38B22D30B03837690F42433A5939B4"
+      },
+      "IconCache": {
+        "Entries": 25,
+        "CPUAndTextureEstimateBytes": 819200
+      },
+      "ScanWarningsAccepted": true,
+      "ScanWarning": true,
+      "InputsBefore": {
+        "Files": {
+          "config.json": "1839E326E5501DAA350418D81B7732C103EB7DB5455D145BD94B72B48349775D",
+          "index.json": "DAC24002B4970ECBA6AE03BEE6A5D327B6FD12A8228738B4E22A3289BD5FF6D2",
+          "history.json": "300716DFFF2BCBF12B317BAD430A3F553842C13616BB28C636E620E69681CA11",
+          "application-library.json": "A5E8BC981B03563AF3D26E5EEF9D263D9EAA4181C5DA758E8DCBF82160FF01F6",
+          "quick-launch.json": null
+        },
+        "LastRefresh": null,
+        "CachedIndexCount": 736,
+        "IconDisk": {
+          "Files": 745,
+          "Bytes": 2092882,
+          "SHA256": "51256CAAD7AD30D7FE2448B6702018C9EC38B22D30B03837690F42433A5939B4"
+        },
+        "Business": {
+          "ProcessId": 209832,
+          "Complete": true,
+          "Scanning": false,
+          "Warning": true,
+          "Count": 619,
+          "IconCache": {
+            "Entries": 25,
+            "CPUAndTextureEstimateBytes": 819200
+          },
+          "LastScan": "13811229",
+          "PublishedDuringScan": true,
+          "Dropped": false
+        }
+      },
+      "InputsAfter": {
+        "Files": {
+          "config.json": "1839E326E5501DAA350418D81B7732C103EB7DB5455D145BD94B72B48349775D",
+          "index.json": "DAC24002B4970ECBA6AE03BEE6A5D327B6FD12A8228738B4E22A3289BD5FF6D2",
+          "history.json": "300716DFFF2BCBF12B317BAD430A3F553842C13616BB28C636E620E69681CA11",
+          "application-library.json": "A5E8BC981B03563AF3D26E5EEF9D263D9EAA4181C5DA758E8DCBF82160FF01F6",
+          "quick-launch.json": null
+        },
+        "LastRefresh": null,
+        "CachedIndexCount": 736,
+        "IconDisk": {
+          "Files": 745,
+          "Bytes": 2092882,
+          "SHA256": "51256CAAD7AD30D7FE2448B6702018C9EC38B22D30B03837690F42433A5939B4"
+        },
+        "Business": {
+          "ProcessId": 209832,
+          "Complete": true,
+          "Scanning": false,
+          "Warning": true,
+          "Count": 619,
+          "IconCache": {
+            "Entries": 25,
+            "CPUAndTextureEstimateBytes": 819200
+          },
+          "LastScan": "13811229",
+          "PublishedDuringScan": true,
+          "Dropped": false
+        }
+      },
+      "GPU": [
+        null,
+        null,
+        null
+      ],
+      "EvidenceSHA256": "EF5F0F0258E4D596B840AC4F5331BBA46FBF1814D4D5363DD845358C626EE299",
+      "CollectorSHA256": "70402ADC5EFF2D8CE7D4CBC74C3EC0D5994A316895147ADB6BCA8D1278E73942",
+      "ValidatorSHA256": "B0EDC89C3A1BE157F8A8B9E46EF97AE3072AF0654E8B06312534674D9A02439A"
+    },
+    {
+      "Run": "software-full",
+      "RunCompleted": false,
+      "Edition": "software",
+      "SHA256": "E85B41C7E77888750817E47F092EABECB1BAB5A68EFCE579378CE2DDAD2DBA4B",
+      "Phase": "visible-after-100-cycles",
+      "Samples": 3,
+      "Mode": "MeasurementProbe",
+      "PrivateBytesMedian": 25284608.0,
+      "PrivateBytesMin": 25284608.0,
+      "PrivateBytesMax": 25374720.0,
+      "PrivateBytesPollingMin": 25284608.0,
+      "PrivateBytesPollingMax": 25374720.0,
+      "PrivateMiB": 24.11328125,
+      "WorkingSetMiB": 60.59765625,
+      "PrivateWorkingSetMiB": 19.85546875,
+      "CPUPercentOfMachineMedian": 0.006346,
+      "Processes": [
+        1
+      ],
+      "Threads": [
+        15.0,
+        18.0
+      ],
+      "Handles": [
+        528.0,
+        530.0
+      ],
+      "CatalogCount": 619,
+      "CachedIndexCount": 736,
+      "IconDisk": {
+        "Files": 745,
+        "Bytes": 2092882,
+        "SHA256": "51256CAAD7AD30D7FE2448B6702018C9EC38B22D30B03837690F42433A5939B4"
+      },
+      "IconCache": {
+        "Entries": 25,
+        "CPUAndTextureEstimateBytes": 819200
+      },
+      "ScanWarningsAccepted": true,
+      "ScanWarning": true,
+      "InputsBefore": {
+        "Files": {
+          "config.json": "1839E326E5501DAA350418D81B7732C103EB7DB5455D145BD94B72B48349775D",
+          "index.json": "DAC24002B4970ECBA6AE03BEE6A5D327B6FD12A8228738B4E22A3289BD5FF6D2",
+          "history.json": "300716DFFF2BCBF12B317BAD430A3F553842C13616BB28C636E620E69681CA11",
+          "application-library.json": "A5E8BC981B03563AF3D26E5EEF9D263D9EAA4181C5DA758E8DCBF82160FF01F6",
+          "quick-launch.json": null
+        },
+        "LastRefresh": null,
+        "CachedIndexCount": 736,
+        "IconDisk": {
+          "Files": 745,
+          "Bytes": 2092882,
+          "SHA256": "51256CAAD7AD30D7FE2448B6702018C9EC38B22D30B03837690F42433A5939B4"
+        },
+        "Business": {
+          "ProcessId": 209832,
+          "Complete": true,
+          "Scanning": false,
+          "Warning": true,
+          "Count": 619,
+          "IconCache": {
+            "Entries": 25,
+            "CPUAndTextureEstimateBytes": 819200
+          },
+          "LastScan": "13811229",
+          "PublishedDuringScan": true,
+          "Dropped": false
+        }
+      },
+      "InputsAfter": {
+        "Files": {
+          "config.json": "1839E326E5501DAA350418D81B7732C103EB7DB5455D145BD94B72B48349775D",
+          "index.json": "DAC24002B4970ECBA6AE03BEE6A5D327B6FD12A8228738B4E22A3289BD5FF6D2",
+          "history.json": "300716DFFF2BCBF12B317BAD430A3F553842C13616BB28C636E620E69681CA11",
+          "application-library.json": "A5E8BC981B03563AF3D26E5EEF9D263D9EAA4181C5DA758E8DCBF82160FF01F6",
+          "quick-launch.json": null
+        },
+        "LastRefresh": null,
+        "CachedIndexCount": 736,
+        "IconDisk": {
+          "Files": 745,
+          "Bytes": 2092882,
+          "SHA256": "51256CAAD7AD30D7FE2448B6702018C9EC38B22D30B03837690F42433A5939B4"
+        },
+        "Business": {
+          "ProcessId": 209832,
+          "Complete": true,
+          "Scanning": false,
+          "Warning": true,
+          "Count": 619,
+          "IconCache": {
+            "Entries": 25,
+            "CPUAndTextureEstimateBytes": 819200
+          },
+          "LastScan": "13811229",
+          "PublishedDuringScan": true,
+          "Dropped": false
+        }
+      },
+      "GPU": [
+        null,
+        null,
+        null
+      ],
+      "EvidenceSHA256": "E24FB11B72D7E47A45F57B6533038BE62BC6122EBEC39DE0452275AEA64A18EF",
+      "CollectorSHA256": "70402ADC5EFF2D8CE7D4CBC74C3EC0D5994A316895147ADB6BCA8D1278E73942",
+      "ValidatorSHA256": "B0EDC89C3A1BE157F8A8B9E46EF97AE3072AF0654E8B06312534674D9A02439A"
+    }
+  ],
+  "Scope": "Observed business-mode idle resource samples only. Synthetic workload cycles do not establish physical input latency, strict cold-start performance, DPI transition costs or renderer selection.",
+  "RS12Complete": false
+}

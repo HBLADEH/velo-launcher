@@ -1,0 +1,40 @@
+{
+  "RecordedAtUtc": "2026-11-13T09:10:33.9243405Z",
+  "HostFormalFiles": [
+    {
+      "Name": "config.json",
+      "SHA256": "6DECBCB844CC656D0EAFBD340F7B8BF3B877FAAD593D543F85A37B15EB95143F",
+      "MatchesEarlierRS14Reference": true
+    },
+    {
+      "Name": "history.json",
+      "SHA256": "18767782BD92FC904116A8B376C54049578E596AFA715B08B18D8280F2FCBF5E",
+      "MatchesEarlierRS14Reference": true
+    },
+    {
+      "Name": "index.json",
+      "SHA256": "A1C62CEA85156FB48E52874988DE07931AD4386F7F1448DC9ADBD5BC5A1195FC",
+      "MatchesEarlierRS14Reference": true
+    },
+    {
+      "Name": "application-library.json",
+      "SHA256": "A5E8BC981B03563AF3D26E5EEF9D263D9EAA4181C5DA758E8DCBF82160FF01F6",
+      "MatchesEarlierRS14Reference": true
+    },
+    {
+      "Name": "quick-launch.json",
+      "SHA256": null,
+      "MatchesEarlierRS14Reference": true
+    }
+  ],
+  "AllMatchEarlierRS14Reference": true,
+  "FormalReferenceScope": "Earlier RS14 task snapshot, not a new performance measurement",
+  "TaskApplicationRunnerOrVMProcesses": 0,
+  "TaskRunnerRegistrationAbsent": true,
+  "TaskRunnerServiceInstalled": false,
+  "CurrentWorkingBranch": "codex/rust-slint-refactor",
+  "StagedChanges": [],
+  "AuthorizedTemporaryBranch": "codex/rs14-ci-validation-20261113-ea19bc0e",
+  "PublicReleaseCreated": false,
+  "TaskGuestShutdown": true
+}

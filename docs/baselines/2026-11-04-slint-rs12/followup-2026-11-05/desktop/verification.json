@@ -1,0 +1,30 @@
+{
+  "RecordedAtUtc": "2026-11-05T03:59:17.0068953Z",
+  "PublicStageRows": 23,
+  "CompleteResourceSnapshots": 644.0,
+  "ExcludedWrongNativeDPIStages": 4,
+  "NativeHighDPIContractsVerified": true,
+  "NormalSlintExits": 3,
+  "InterruptedWailsNormalExits": 1,
+  "ScreenshotCount": 5,
+  "MonitorOriginalRestored": true,
+  "EventLoss": 0,
+  "ScriptSyntaxChecked": true,
+  "ProductSourcesChangedInThisSupplement": false,
+  "FrozenReleasesRebuilt": false,
+  "Tools": [
+    {
+      "SHA256": "70AD3B07318FAB2CCA1D7707DD454245C8C7E5A0E20C291687D8E053C267075B",
+      "Name": "desktop-session.ps1"
+    },
+    {
+      "SHA256": "26CFE42F09118BB117B01D140D04FA48B24B134A89F96F82EEBA1D03D6DEC3EB",
+      "Name": "export-desktop.ps1"
+    }
+  ],
+  "ToolIdentityScope": "Final local harness snapshot includes the later RunSuffix option. Original application exe identities and per-run raw session/event/response hashes are retained separately.",
+  "PhysicalIMEPassed": false,
+  "FrameLatencyPassed": false,
+  "ColdSamples": 0,
+  "ColdTestingDeferredByUser": true
+}

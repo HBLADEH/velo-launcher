@@ -1,0 +1,110 @@
+[
+  {
+    "PreparedAtUtc": "2026-11-04T11:07:27.3340392Z",
+    "WailsMeasurementSHA256": "CC3936F4040DCCED0DCC20B8A9BBEA8D11B6B1625B6F0E0229A00176835337C3",
+    "WailsScope": "v0.9.11 behavior baseline rebuilt with latencyprobe and actual trusted input callback; a separate measurement binary, not the official release SHA. Runtime differences from tag are two fixed-clock test seams delegating to time.Now plus instrumentation.",
+    "SoftwareSHA256": "E85B41C7E77888750817E47F092EABECB1BAB5A68EFCE579378CE2DDAD2DBA4B",
+    "FemtoVGSHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+    "Sources": [
+      {
+        "SHA256": "1EEE006024D4FE630011F81AD188BA56A33291D3D57E0749A0C517F88A2CAF77",
+        "Path": "latency_probe_windows.go"
+      },
+      {
+        "SHA256": "E3CE798BB99EAF3E0C0AC9C132BBE07F1AFAFC6D639C4637EA2CEA1EE0A49981",
+        "Path": "scripts/latency-probe.js"
+      },
+      {
+        "SHA256": "1E973C13524A86F0BAB8B7EC0873F9EA4B8CFEF7DEB0209C1BABE299C8740EEA",
+        "Path": "scripts/lib/rs12-input-observer.cs"
+      },
+      {
+        "SHA256": "4BEE959542488172499FA98B89CF33FBA42304134382A3AB4A84EDA41D6062C5",
+        "Path": "scripts/collect-rs12-input.ps1"
+      },
+      {
+        "SHA256": "F7BF5CF8777631F0ED51A1D4972DB1C660A4FF5E287105DC8FF788EEBD697D0F",
+        "Path": "main.go"
+      },
+      {
+        "SHA256": "ACAD1374D2E60091C6F5EE1B9B7AF124BA9710A8343752AF8E949CEBBABC1B7B",
+        "Path": "app.go"
+      },
+      {
+        "SHA256": "AB9037D0AA469EC4BCC55172D3BEB9CF4EF74C72DC396B18A92FF3C27AA04044",
+        "Path": "internal/app/service.go"
+      },
+      {
+        "SHA256": "3A41DBBF7E28ABA88F0D8583B021D92D363E11F23504C57A18E4C348A5B1F4E3",
+        "Path": "internal/app/quick.go"
+      },
+      {
+        "SHA256": "BEF5062BBB15DCE3654C04DB3C62CE8B261FC04960227F37DE63FDB9D0FFEC35",
+        "Path": "frontend/dist/index.html"
+      },
+      {
+        "SHA256": "B48670B02E3FABF3281B94C5647533F7FA7B025EF99EF4C5C14B559CD8DAD178",
+        "Path": "go.mod"
+      },
+      {
+        "SHA256": "82D3FEAF2FEBEF959AB74E598A0245C7F02663A22A9304F667C601632434FAA0",
+        "Path": "go.sum"
+      }
+    ],
+    "WailsRunObserved": false
+  },
+  {
+    "PreparedAtUtc": "2026-11-04T11:28:25.1895919Z",
+    "WailsMeasurementSHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+    "WailsScope": "v0.9.11 behavior baseline rebuilt with latencyprobe and actual trusted input callback; a separate measurement binary, not the official release SHA. Runtime differences from tag are two fixed-clock test seams delegating to time.Now plus instrumentation.",
+    "SoftwareSHA256": "E85B41C7E77888750817E47F092EABECB1BAB5A68EFCE579378CE2DDAD2DBA4B",
+    "FemtoVGSHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+    "Sources": [
+      {
+        "Path": "latency_probe_windows.go",
+        "SHA256": "2EEA14AB427727AD225AE227395B613D24B10CADF2E25676CFD24C535F21D33C"
+      },
+      {
+        "Path": "scripts/latency-probe.js",
+        "SHA256": "E3CE798BB99EAF3E0C0AC9C132BBE07F1AFAFC6D639C4637EA2CEA1EE0A49981"
+      },
+      {
+        "Path": "scripts/lib/rs12-input-observer.cs",
+        "SHA256": "1E973C13524A86F0BAB8B7EC0873F9EA4B8CFEF7DEB0209C1BABE299C8740EEA"
+      },
+      {
+        "Path": "scripts/collect-rs12-input.ps1",
+        "SHA256": "4BEE959542488172499FA98B89CF33FBA42304134382A3AB4A84EDA41D6062C5"
+      },
+      {
+        "Path": "main.go",
+        "SHA256": "F7BF5CF8777631F0ED51A1D4972DB1C660A4FF5E287105DC8FF788EEBD697D0F"
+      },
+      {
+        "Path": "app.go",
+        "SHA256": "ACAD1374D2E60091C6F5EE1B9B7AF124BA9710A8343752AF8E949CEBBABC1B7B"
+      },
+      {
+        "Path": "internal/app/service.go",
+        "SHA256": "AB9037D0AA469EC4BCC55172D3BEB9CF4EF74C72DC396B18A92FF3C27AA04044"
+      },
+      {
+        "Path": "internal/app/quick.go",
+        "SHA256": "3A41DBBF7E28ABA88F0D8583B021D92D363E11F23504C57A18E4C348A5B1F4E3"
+      },
+      {
+        "Path": "frontend/dist/index.html",
+        "SHA256": "BEF5062BBB15DCE3654C04DB3C62CE8B261FC04960227F37DE63FDB9D0FFEC35"
+      },
+      {
+        "Path": "go.mod",
+        "SHA256": "B48670B02E3FABF3281B94C5647533F7FA7B025EF99EF4C5C14B559CD8DAD178"
+      },
+      {
+        "Path": "go.sum",
+        "SHA256": "82D3FEAF2FEBEF959AB74E598A0245C7F02663A22A9304F667C601632434FAA0"
+      }
+    ],
+    "WailsRunObserved": false
+  }
+]

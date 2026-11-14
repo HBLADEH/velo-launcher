@@ -1,0 +1,447 @@
+{
+  "SourceTrace": ".reasonix\\rs13-assisted-20261113\\femtovg-transitions-native-4\\events.jsonl",
+  "SourceTraceSHA256": "7D9FD59D4CADBC480D0C7A27F9E7CDA7B853A38F47C681E2E587F655D4EDE842",
+  "HomeReference": ".reasonix\\rs13-assisted-20261113\\femtovg-transitions-native-3\\manual-03\\frame-240.bmp",
+  "PanelReference": ".reasonix\\rs13-assisted-20261113\\femtovg-pulse-native-1\\recording-3\\frame-154.bmp",
+  "ParentEnd": {
+    "event": "end",
+    "qpc": 1739679539350,
+    "frames": 417,
+    "clips": 36,
+    "gpu_queue_rejected": 0,
+    "write_queue_rejected": 0,
+    "storage_limited": false
+  },
+  "Clips": [
+    {
+      "Clip": "settings-enter-1",
+      "OriginalFrames": [
+        {
+          "OriginalFile": ".reasonix\\rs13-assisted-20261113\\femtovg-transitions-native-4\\manual-08\\frame-263.bmp",
+          "File": "settings-enter-1/frame-263.bmp",
+          "Index": 263,
+          "SourceTime100ns": 1739420677485,
+          "SHA256": "F944D3311E46160765E39ECD22E613DF2EB7EE02D5E1BDCB087F0408395758D6"
+        },
+        {
+          "OriginalFile": ".reasonix\\rs13-assisted-20261113\\femtovg-transitions-native-4\\manual-08\\frame-264.bmp",
+          "File": "settings-enter-1/frame-264.bmp",
+          "Index": 264,
+          "SourceTime100ns": 1739421177986,
+          "SHA256": "23FE3C8B475B0D95FCEC7003DF61CB81F26B73CBC0686EF98F291B4DFAB6124E"
+        },
+        {
+          "OriginalFile": ".reasonix\\rs13-assisted-20261113\\femtovg-transitions-native-4\\manual-08\\frame-265.bmp",
+          "File": "settings-enter-1/frame-265.bmp",
+          "Index": 265,
+          "SourceTime100ns": 1739421344820,
+          "SHA256": "23FE3C8B475B0D95FCEC7003DF61CB81F26B73CBC0686EF98F291B4DFAB6124E"
+        },
+        {
+          "OriginalFile": ".reasonix\\rs13-assisted-20261113\\femtovg-transitions-native-4\\manual-09\\frame-266.bmp",
+          "File": "settings-enter-1/frame-266.bmp",
+          "Index": 266,
+          "SourceTime100ns": 1739426349767,
+          "SHA256": "59B404AB57BC8026A13B191BFE96B7A8803FC0B33FC32CD1EC9552CB54FAC37D"
+        },
+        {
+          "OriginalFile": ".reasonix\\rs13-assisted-20261113\\femtovg-transitions-native-4\\manual-09\\frame-267.bmp",
+          "File": "settings-enter-1/frame-267.bmp",
+          "Index": 267,
+          "SourceTime100ns": 1739426516608,
+          "SHA256": "5CAC8E991483E066196A321C7A1F9BBB6356BE3A8F5A7FE72AC7D593B7352D97"
+        },
+        {
+          "OriginalFile": ".reasonix\\rs13-assisted-20261113\\femtovg-transitions-native-4\\manual-09\\frame-268.bmp",
+          "File": "settings-enter-1/frame-268.bmp",
+          "Index": 268,
+          "SourceTime100ns": 1739426850265,
+          "SHA256": "550318A32C0C081216F8F88E0C09CC79402EAC3ADB2B08E1AB2F5BF5E42ED48D"
+        },
+        {
+          "OriginalFile": ".reasonix\\rs13-assisted-20261113\\femtovg-transitions-native-4\\manual-09\\frame-269.bmp",
+          "File": "settings-enter-1/frame-269.bmp",
+          "Index": 269,
+          "SourceTime100ns": 1739427017101,
+          "SHA256": "1C330D147B3E4ECFE9891F457E418B3F27AA815CF2CDB6C3E51186EFD612001C"
+        },
+        {
+          "OriginalFile": ".reasonix\\rs13-assisted-20261113\\femtovg-transitions-native-4\\manual-09\\frame-270.bmp",
+          "File": "settings-enter-1/frame-270.bmp",
+          "Index": 270,
+          "SourceTime100ns": 1739427183932,
+          "SHA256": "EE342D53A77240B8D5E765ED7ACD046F11DEF76D72B1C38288EF851C6568A776"
+        },
+        {
+          "OriginalFile": ".reasonix\\rs13-assisted-20261113\\femtovg-transitions-native-4\\manual-09\\frame-271.bmp",
+          "File": "settings-enter-1/frame-271.bmp",
+          "Index": 271,
+          "SourceTime100ns": 1739427350771,
+          "SHA256": "1FF7460BD94C418ED0A50F4427829B7C4010DED63F9CD2FA5C35D02F2AAE897B"
+        },
+        {
+          "OriginalFile": ".reasonix\\rs13-assisted-20261113\\femtovg-transitions-native-4\\manual-09\\frame-272.bmp",
+          "File": "settings-enter-1/frame-272.bmp",
+          "Index": 272,
+          "SourceTime100ns": 1739427517599,
+          "SHA256": "4A7F3919E58DBE6C74457F8C1FA30B88812F6894C8896B33162447B0EBBA720B"
+        },
+        {
+          "OriginalFile": ".reasonix\\rs13-assisted-20261113\\femtovg-transitions-native-4\\manual-09\\frame-273.bmp",
+          "File": "settings-enter-1/frame-273.bmp",
+          "Index": 273,
+          "SourceTime100ns": 1739427684435,
+          "SHA256": "134321565C65392697F16EED0198A36EA691A113DE13C73199998225BF41ADDC"
+        },
+        {
+          "OriginalFile": ".reasonix\\rs13-assisted-20261113\\femtovg-transitions-native-4\\manual-09\\frame-274.bmp",
+          "File": "settings-enter-1/frame-274.bmp",
+          "Index": 274,
+          "SourceTime100ns": 1739427851272,
+          "SHA256": "CBC2E20409BF17908C470672533D17331B8400146B3D06B5D79F45BC80280B38"
+        },
+        {
+          "OriginalFile": ".reasonix\\rs13-assisted-20261113\\femtovg-transitions-native-4\\manual-09\\frame-275.bmp",
+          "File": "settings-enter-1/frame-275.bmp",
+          "Index": 275,
+          "SourceTime100ns": 1739428018099,
+          "SHA256": "713CB3E9588DF21AAB1CC9EE377FEE86D7BAB544643E66BBC0F3AACE4396E30D"
+        },
+        {
+          "OriginalFile": ".reasonix\\rs13-assisted-20261113\\femtovg-transitions-native-4\\manual-09\\frame-276.bmp",
+          "File": "settings-enter-1/frame-276.bmp",
+          "Index": 276,
+          "SourceTime100ns": 1739428184939,
+          "SHA256": "7C47DF874DCFB63CC5761D45FE14E76C5212C424D784AB723D0FD01DC9A21566"
+        },
+        {
+          "OriginalFile": ".reasonix\\rs13-assisted-20261113\\femtovg-transitions-native-4\\manual-09\\frame-277.bmp",
+          "File": "settings-enter-1/frame-277.bmp",
+          "Index": 277,
+          "SourceTime100ns": 1739428351778,
+          "SHA256": "7C47DF874DCFB63CC5761D45FE14E76C5212C424D784AB723D0FD01DC9A21566"
+        },
+        {
+          "OriginalFile": ".reasonix\\rs13-assisted-20261113\\femtovg-transitions-native-4\\manual-09\\frame-278.bmp",
+          "File": "settings-enter-1/frame-278.bmp",
+          "Index": 278,
+          "SourceTime100ns": 1739428685436,
+          "SHA256": "879EBB20D28223C32557CCCE9E8279ADC758D8F6981AF126E76D8AF2B58B7804"
+        },
+        {
+          "OriginalFile": ".reasonix\\rs13-assisted-20261113\\femtovg-transitions-native-4\\manual-09\\frame-279.bmp",
+          "File": "settings-enter-1/frame-279.bmp",
+          "Index": 279,
+          "SourceTime100ns": 1739428852268,
+          "SHA256": "AD047D5ACD59982F15D02DB3BE5C25418187AF3887CB61624B5273A67415FF3E"
+        },
+        {
+          "OriginalFile": ".reasonix\\rs13-assisted-20261113\\femtovg-transitions-native-4\\manual-09\\frame-280.bmp",
+          "File": "settings-enter-1/frame-280.bmp",
+          "Index": 280,
+          "SourceTime100ns": 1739429019101,
+          "SHA256": "4FD92F9E95554A5E9E47E3D7D560C960C8601FB0DA90835B3E74E2F0BE6EE7FC"
+        },
+        {
+          "OriginalFile": ".reasonix\\rs13-assisted-20261113\\femtovg-transitions-native-4\\manual-09\\frame-281.bmp",
+          "File": "settings-enter-1/frame-281.bmp",
+          "Index": 281,
+          "SourceTime100ns": 1739429185937,
+          "SHA256": "3F3FDECB55C722E9CF358EAD1E56872C713D6BEB063D70D8AD5132633A207FB6"
+        }
+      ]
+    },
+    {
+      "Clip": "settings-exit-1",
+      "OriginalFrames": [
+        {
+          "OriginalFile": ".reasonix\\rs13-assisted-20261113\\femtovg-transitions-native-4\\manual-27\\frame-320.bmp",
+          "File": "settings-exit-1/frame-320.bmp",
+          "Index": 320,
+          "SourceTime100ns": 1739596186325,
+          "SHA256": "E585241404C38687A2708C45C4B5EF5D14C0251A91BE066157D2C8905FF0FFDC"
+        },
+        {
+          "OriginalFile": ".reasonix\\rs13-assisted-20261113\\femtovg-transitions-native-4\\manual-27\\frame-321.bmp",
+          "File": "settings-exit-1/frame-321.bmp",
+          "Index": 321,
+          "SourceTime100ns": 1739596353152,
+          "SHA256": "E585241404C38687A2708C45C4B5EF5D14C0251A91BE066157D2C8905FF0FFDC"
+        },
+        {
+          "OriginalFile": ".reasonix\\rs13-assisted-20261113\\femtovg-transitions-native-4\\manual-27\\frame-322.bmp",
+          "File": "settings-exit-1/frame-322.bmp",
+          "Index": 322,
+          "SourceTime100ns": 1739596519980,
+          "SHA256": "E585241404C38687A2708C45C4B5EF5D14C0251A91BE066157D2C8905FF0FFDC"
+        },
+        {
+          "OriginalFile": ".reasonix\\rs13-assisted-20261113\\femtovg-transitions-native-4\\manual-27\\frame-323.bmp",
+          "File": "settings-exit-1/frame-323.bmp",
+          "Index": 323,
+          "SourceTime100ns": 1739597520990,
+          "SHA256": "2F4A96A14C693AF56493DDFC0047A4C5A853DF89D575BC82569D633B23DC84D7"
+        },
+        {
+          "OriginalFile": ".reasonix\\rs13-assisted-20261113\\femtovg-transitions-native-4\\manual-27\\frame-324.bmp",
+          "File": "settings-exit-1/frame-324.bmp",
+          "Index": 324,
+          "SourceTime100ns": 1739597687841,
+          "SHA256": "D441C4ABA6D466F58A5B3F9545D7C6C82EA515F9F4D400B4239DAAE3D85880D7"
+        },
+        {
+          "OriginalFile": ".reasonix\\rs13-assisted-20261113\\femtovg-transitions-native-4\\manual-28\\frame-325.bmp",
+          "File": "settings-exit-1/frame-325.bmp",
+          "Index": 325,
+          "SourceTime100ns": 1739598021510,
+          "SHA256": "22C35D0646B18486E9C54D2792D203F061E86FCF4B96015787B0638F5FAF34DC"
+        },
+        {
+          "OriginalFile": ".reasonix\\rs13-assisted-20261113\\femtovg-transitions-native-4\\manual-28\\frame-326.bmp",
+          "File": "settings-exit-1/frame-326.bmp",
+          "Index": 326,
+          "SourceTime100ns": 1739598188337,
+          "SHA256": "654750D8DAA2D1B676F7BED7F9769C0B367B5722793FB06B9F2D76A00A975D93"
+        },
+        {
+          "OriginalFile": ".reasonix\\rs13-assisted-20261113\\femtovg-transitions-native-4\\manual-28\\frame-327.bmp",
+          "File": "settings-exit-1/frame-327.bmp",
+          "Index": 327,
+          "SourceTime100ns": 1739598355167,
+          "SHA256": "16D1E61BBC57D3C8174F05120732EC5D0C562524F324DA3912DF41FEE481C3BB"
+        },
+        {
+          "OriginalFile": ".reasonix\\rs13-assisted-20261113\\femtovg-transitions-native-4\\manual-28\\frame-328.bmp",
+          "File": "settings-exit-1/frame-328.bmp",
+          "Index": 328,
+          "SourceTime100ns": 1739598521993,
+          "SHA256": "AB3D1C72C287DCE4587932D09DF30D5120574F47D5C78B08EE0FE89D9DC4DA59"
+        },
+        {
+          "OriginalFile": ".reasonix\\rs13-assisted-20261113\\femtovg-transitions-native-4\\manual-28\\frame-329.bmp",
+          "File": "settings-exit-1/frame-329.bmp",
+          "Index": 329,
+          "SourceTime100ns": 1739598688828,
+          "SHA256": "07AAB8ACB00AB5554D0006A5A04ADDE213D2FB97654C4D86902779BAE5F9267C"
+        },
+        {
+          "OriginalFile": ".reasonix\\rs13-assisted-20261113\\femtovg-transitions-native-4\\manual-28\\frame-330.bmp",
+          "File": "settings-exit-1/frame-330.bmp",
+          "Index": 330,
+          "SourceTime100ns": 1739598855658,
+          "SHA256": "0FF1E8C8CA00B6C1911CC2816CA77F9EE65F3B0E64358C063E7FA1ECEDB99E26"
+        },
+        {
+          "OriginalFile": ".reasonix\\rs13-assisted-20261113\\femtovg-transitions-native-4\\manual-28\\frame-331.bmp",
+          "File": "settings-exit-1/frame-331.bmp",
+          "Index": 331,
+          "SourceTime100ns": 1739599022495,
+          "SHA256": "E2275A32F8DD5D15D93B3EBD162D8AE05030A45C84F2B4EA337E7D33F8CFB593"
+        },
+        {
+          "OriginalFile": ".reasonix\\rs13-assisted-20261113\\femtovg-transitions-native-4\\manual-28\\frame-332.bmp",
+          "File": "settings-exit-1/frame-332.bmp",
+          "Index": 332,
+          "SourceTime100ns": 1739599189339,
+          "SHA256": "041E117277518A386A458BED94064AB7AD8B2C704A540DEBA5432FCFD341EA79"
+        },
+        {
+          "OriginalFile": ".reasonix\\rs13-assisted-20261113\\femtovg-transitions-native-4\\manual-28\\frame-333.bmp",
+          "File": "settings-exit-1/frame-333.bmp",
+          "Index": 333,
+          "SourceTime100ns": 1739599356165,
+          "SHA256": "4B9385F15C02EB264AC1EC677C07186D7037CF5235763487432554FF7A59BE3F"
+        },
+        {
+          "OriginalFile": ".reasonix\\rs13-assisted-20261113\\femtovg-transitions-native-4\\manual-28\\frame-334.bmp",
+          "File": "settings-exit-1/frame-334.bmp",
+          "Index": 334,
+          "SourceTime100ns": 1739599523003,
+          "SHA256": "4B9385F15C02EB264AC1EC677C07186D7037CF5235763487432554FF7A59BE3F"
+        },
+        {
+          "OriginalFile": ".reasonix\\rs13-assisted-20261113\\femtovg-transitions-native-4\\manual-28\\frame-335.bmp",
+          "File": "settings-exit-1/frame-335.bmp",
+          "Index": 335,
+          "SourceTime100ns": 1739599689835,
+          "SHA256": "4B9385F15C02EB264AC1EC677C07186D7037CF5235763487432554FF7A59BE3F"
+        },
+        {
+          "OriginalFile": ".reasonix\\rs13-assisted-20261113\\femtovg-transitions-native-4\\manual-28\\frame-336.bmp",
+          "File": "settings-exit-1/frame-336.bmp",
+          "Index": 336,
+          "SourceTime100ns": 1739599856668,
+          "SHA256": "4B9385F15C02EB264AC1EC677C07186D7037CF5235763487432554FF7A59BE3F"
+        },
+        {
+          "OriginalFile": ".reasonix\\rs13-assisted-20261113\\femtovg-transitions-native-4\\manual-28\\frame-337.bmp",
+          "File": "settings-exit-1/frame-337.bmp",
+          "Index": 337,
+          "SourceTime100ns": 1739600023506,
+          "SHA256": "4B9385F15C02EB264AC1EC677C07186D7037CF5235763487432554FF7A59BE3F"
+        },
+        {
+          "OriginalFile": ".reasonix\\rs13-assisted-20261113\\femtovg-transitions-native-4\\manual-28\\frame-338.bmp",
+          "File": "settings-exit-1/frame-338.bmp",
+          "Index": 338,
+          "SourceTime100ns": 1739600190334,
+          "SHA256": "4B9385F15C02EB264AC1EC677C07186D7037CF5235763487432554FF7A59BE3F"
+        },
+        {
+          "OriginalFile": ".reasonix\\rs13-assisted-20261113\\femtovg-transitions-native-4\\manual-28\\frame-339.bmp",
+          "File": "settings-exit-1/frame-339.bmp",
+          "Index": 339,
+          "SourceTime100ns": 1739600357170,
+          "SHA256": "4B9385F15C02EB264AC1EC677C07186D7037CF5235763487432554FF7A59BE3F"
+        },
+        {
+          "OriginalFile": ".reasonix\\rs13-assisted-20261113\\femtovg-transitions-native-4\\manual-28\\frame-340.bmp",
+          "File": "settings-exit-1/frame-340.bmp",
+          "Index": 340,
+          "SourceTime100ns": 1739600524004,
+          "SHA256": "4B9385F15C02EB264AC1EC677C07186D7037CF5235763487432554FF7A59BE3F"
+        }
+      ]
+    },
+    {
+      "Clip": "settings-enter-2",
+      "OriginalFrames": [
+        {
+          "OriginalFile": ".reasonix\\rs13-assisted-20261113\\femtovg-transitions-native-4\\manual-33\\frame-378.bmp",
+          "File": "settings-enter-2/frame-378.bmp",
+          "Index": 378,
+          "SourceTime100ns": 1739649406090,
+          "SHA256": "23FE3C8B475B0D95FCEC7003DF61CB81F26B73CBC0686EF98F291B4DFAB6124E"
+        },
+        {
+          "OriginalFile": ".reasonix\\rs13-assisted-20261113\\femtovg-transitions-native-4\\manual-33\\frame-379.bmp",
+          "File": "settings-enter-2/frame-379.bmp",
+          "Index": 379,
+          "SourceTime100ns": 1739650573904,
+          "SHA256": "F944D3311E46160765E39ECD22E613DF2EB7EE02D5E1BDCB087F0408395758D6"
+        },
+        {
+          "OriginalFile": ".reasonix\\rs13-assisted-20261113\\femtovg-transitions-native-4\\manual-33\\frame-380.bmp",
+          "File": "settings-enter-2/frame-380.bmp",
+          "Index": 380,
+          "SourceTime100ns": 1739650740729,
+          "SHA256": "F944D3311E46160765E39ECD22E613DF2EB7EE02D5E1BDCB087F0408395758D6"
+        },
+        {
+          "OriginalFile": ".reasonix\\rs13-assisted-20261113\\femtovg-transitions-native-4\\manual-34\\frame-381.bmp",
+          "File": "settings-enter-2/frame-381.bmp",
+          "Index": 381,
+          "SourceTime100ns": 1739653076375,
+          "SHA256": "C414F685FC4ECA0E0DD12F0F9C3E686159853786AAD32ED1C2178DB237DA8D35"
+        },
+        {
+          "OriginalFile": ".reasonix\\rs13-assisted-20261113\\femtovg-transitions-native-4\\manual-34\\frame-382.bmp",
+          "File": "settings-enter-2/frame-382.bmp",
+          "Index": 382,
+          "SourceTime100ns": 1739653243210,
+          "SHA256": "55280C75C8D2D656AA12191806393591A36351BB011DC70D56BFD3BA2294C726"
+        },
+        {
+          "OriginalFile": ".reasonix\\rs13-assisted-20261113\\femtovg-transitions-native-4\\manual-34\\frame-383.bmp",
+          "File": "settings-enter-2/frame-383.bmp",
+          "Index": 383,
+          "SourceTime100ns": 1739653576874,
+          "SHA256": "E98B1B3F266B8396A795778775792050EF005E170A975079CB8D29D0B5E06DB3"
+        },
+        {
+          "OriginalFile": ".reasonix\\rs13-assisted-20261113\\femtovg-transitions-native-4\\manual-34\\frame-384.bmp",
+          "File": "settings-enter-2/frame-384.bmp",
+          "Index": 384,
+          "SourceTime100ns": 1739653743707,
+          "SHA256": "4064A9E5CEBF48DF08B0564B523509D5E51EB568A8E732D46B5A61A1C510F167"
+        },
+        {
+          "OriginalFile": ".reasonix\\rs13-assisted-20261113\\femtovg-transitions-native-4\\manual-34\\frame-385.bmp",
+          "File": "settings-enter-2/frame-385.bmp",
+          "Index": 385,
+          "SourceTime100ns": 1739653910544,
+          "SHA256": "6742768E95E2F79096AFAD1EEA4996F140547D6368E4BF11264BDA0813A9D142"
+        },
+        {
+          "OriginalFile": ".reasonix\\rs13-assisted-20261113\\femtovg-transitions-native-4\\manual-34\\frame-386.bmp",
+          "File": "settings-enter-2/frame-386.bmp",
+          "Index": 386,
+          "SourceTime100ns": 1739654077376,
+          "SHA256": "E86A3835E3D4F4E6EA160BB8FC8020ADADD9510FE3E5D461E9B4ED371A1EE822"
+        },
+        {
+          "OriginalFile": ".reasonix\\rs13-assisted-20261113\\femtovg-transitions-native-4\\manual-34\\frame-387.bmp",
+          "File": "settings-enter-2/frame-387.bmp",
+          "Index": 387,
+          "SourceTime100ns": 1739654244207,
+          "SHA256": "52449CAA3B666EBC1965F5D1F3E5FB28959FE7726F9EA5170567827B6A2E1646"
+        },
+        {
+          "OriginalFile": ".reasonix\\rs13-assisted-20261113\\femtovg-transitions-native-4\\manual-34\\frame-388.bmp",
+          "File": "settings-enter-2/frame-388.bmp",
+          "Index": 388,
+          "SourceTime100ns": 1739654411043,
+          "SHA256": "80745DE3B8926101F7EE2B4AD5215030B5AFD133888187AA9D28174CAF43FDDD"
+        },
+        {
+          "OriginalFile": ".reasonix\\rs13-assisted-20261113\\femtovg-transitions-native-4\\manual-34\\frame-389.bmp",
+          "File": "settings-enter-2/frame-389.bmp",
+          "Index": 389,
+          "SourceTime100ns": 1739654577872,
+          "SHA256": "A3E8664464F837F332182FB2009BD416C1DAD41E9D90BEFD1FC272057BF4376B"
+        },
+        {
+          "OriginalFile": ".reasonix\\rs13-assisted-20261113\\femtovg-transitions-native-4\\manual-34\\frame-390.bmp",
+          "File": "settings-enter-2/frame-390.bmp",
+          "Index": 390,
+          "SourceTime100ns": 1739654744708,
+          "SHA256": "9A187EAEEEF1E4D0378E8FC2791B44B50C83A78DB946FBB412C043D986269A36"
+        },
+        {
+          "OriginalFile": ".reasonix\\rs13-assisted-20261113\\femtovg-transitions-native-4\\manual-34\\frame-391.bmp",
+          "File": "settings-enter-2/frame-391.bmp",
+          "Index": 391,
+          "SourceTime100ns": 1739654911547,
+          "SHA256": "B5676247CDACEDAFC328FB65903C93EC5666F7518C6CF748D81D816177E30F7C"
+        },
+        {
+          "OriginalFile": ".reasonix\\rs13-assisted-20261113\\femtovg-transitions-native-4\\manual-34\\frame-392.bmp",
+          "File": "settings-enter-2/frame-392.bmp",
+          "Index": 392,
+          "SourceTime100ns": 1739655078384,
+          "SHA256": "B5676247CDACEDAFC328FB65903C93EC5666F7518C6CF748D81D816177E30F7C"
+        },
+        {
+          "OriginalFile": ".reasonix\\rs13-assisted-20261113\\femtovg-transitions-native-4\\manual-34\\frame-393.bmp",
+          "File": "settings-enter-2/frame-393.bmp",
+          "Index": 393,
+          "SourceTime100ns": 1739655245221,
+          "SHA256": "B5676247CDACEDAFC328FB65903C93EC5666F7518C6CF748D81D816177E30F7C"
+        },
+        {
+          "OriginalFile": ".reasonix\\rs13-assisted-20261113\\femtovg-transitions-native-4\\manual-34\\frame-394.bmp",
+          "File": "settings-enter-2/frame-394.bmp",
+          "Index": 394,
+          "SourceTime100ns": 1739655412061,
+          "SHA256": "30A82CAEB3A79AD5A4B64FEDC11490AE8D0485B846BF05BD12335B5AA0AAD95C"
+        },
+        {
+          "OriginalFile": ".reasonix\\rs13-assisted-20261113\\femtovg-transitions-native-4\\manual-34\\frame-395.bmp",
+          "File": "settings-enter-2/frame-395.bmp",
+          "Index": 395,
+          "SourceTime100ns": 1739655578895,
+          "SHA256": "66FBBF282D4E95F8B991ED3E1903877D41E7262D9C2BF4EAD6E4D03E3A1B0AA5"
+        },
+        {
+          "OriginalFile": ".reasonix\\rs13-assisted-20261113\\femtovg-transitions-native-4\\manual-34\\frame-396.bmp",
+          "File": "settings-enter-2/frame-396.bmp",
+          "Index": 396,
+          "SourceTime100ns": 1739655745734,
+          "SHA256": "0FD6146317E03C6410E6927E9A2A6AB32D2A5D937195E186551F9FE1F6522A45"
+        }
+      ]
+    }
+  ],
+  "SourceFramesUnmodified": true,
+  "Scope": "Endpoint-distance locator only. All candidates keep original pre-transition/rest and settled frames, pixels, timestamps and hashes; no opacity renormalization."
+}

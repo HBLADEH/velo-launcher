@@ -1,0 +1,1307 @@
+{
+  "WorkspaceCommit": "4d9dbaf9acf5286d9961fae1e89cca908b5af9d7",
+  "WorkspaceDirty": true,
+  "PatchSHA256": "60BA5BFCB028DE4E7B014B2DEE9740123078746B0F59AC1B37EE0E6CA66DB97E",
+  "SourceSnapshotFiles": 937,
+  "Wails": {
+    "Version": "0.9.11",
+    "Commit": "abde1353117add4b58b9c34eb442e1ad9c445d97",
+    "Origin": "https://github.com/HBLADEH/velo-launcher/releases/download/v0.9.11/",
+    "SHA256": "9A1A898A1E3D70267481BCC68E3368F0B6594F68E8AE43B3F0DCDC06A9B329A6",
+    "Bytes": 13452800,
+    "GoBuildInfo": [
+      "<WAILS_RELEASE>/velo-launcher.exe: go1.25.6",
+      "\tpath\tvelo-launcher",
+      "\tmod\tvelo-launcher\t(devel)\t",
+      "\tdep\tgit.sr.ht/~jackmordaunt/go-toast/v2\tv2.0.3\th1:N3IGoHHp9pb6mj1cbXbuaSXV/UMKwmbKLf53nQmtqMA=",
+      "\tdep\tgithub.com/bep/debounce\tv1.2.1\th1:v67fRdBA9UQu2NhLFXrSg0Brw7CexQekrBwDMM8bzeY=",
+      "\tdep\tgithub.com/go-ole/go-ole\tv1.3.0\th1:Dt6ye7+vXGIKZ7Xtk4s6/xVdGDQynvom7xCFEdWr6uE=",
+      "\tdep\tgithub.com/google/uuid\tv1.6.0\th1:NIvaJDMOsjHA8n1jAhLSgzrAzy1Hgr+hNrb57e+94F0=",
+      "\tdep\tgithub.com/leaanthony/go-ansi-parser\tv1.6.1\th1:xd8bzARK3dErqkPFtoF9F3/HgN8UQk0ed1YDKpEz01A=",
+      "\tdep\tgithub.com/leaanthony/slicer\tv1.6.0\th1:1RFP5uiPJvT93TAHi+ipd3NACobkW53yUiBqZheE/Js=",
+      "\tdep\tgithub.com/leaanthony/u\tv1.1.1\th1:TUFjwDGlNX+WuwVEzDqQwC2lOv0P4uhTQw7CMFdiK7M=",
+      "\tdep\tgithub.com/mozillazg/go-pinyin\tv0.21.0\th1:Wo8/NT45z7P3er/9YSLHA3/kjZzbLz5hR7i+jGeIGao=",
+      "\tdep\tgithub.com/pkg/browser\tv0.0.0-20240102092130-5ac0b6a4141c\th1:+mdjkGKdHQG3305AYmdv1U2eRNDiU2ErMBj1gwrq8eQ=",
+      "\tdep\tgithub.com/pkg/errors\tv0.9.1\th1:FEBLx1zS214owpjy7qsBeixbURkuhQAwrK5UwLGTwt4=",
+      "\tdep\tgithub.com/rivo/uniseg\tv0.4.7\th1:WUdvkW8uEhrYfLC4ZzdpI2ztxP1I582+49Oc5Mq64VQ=",
+      "\tdep\tgithub.com/samber/lo\tv1.49.1\th1:4BIFyVfuQSEpluc7Fua+j1NolZHiEHEpaSEKdsH0tew=",
+      "\tdep\tgithub.com/tkrajina/go-reflector\tv0.5.8\th1:yPADHrwmUbMq4RGEyaOUpz2H90sRsETNVpjzo3DLVQQ=",
+      "\tdep\tgithub.com/wailsapp/go-webview2\tv1.0.22\th1:YT61F5lj+GGaat5OB96Aa3b4QA+mybD0Ggq6NZijQ58=",
+      "\tdep\tgithub.com/wailsapp/mimetype\tv1.4.1\th1:pQN9ycO7uo4vsUUuPeHEYoUkLVkaRntMnHJxVwYhwHs=",
+      "\tdep\tgithub.com/wailsapp/wails/v2\tv2.12.0\th1:BHO/kLNWFHYjCzucxbzAYZWUjub1Tvb4cSguQozHn5c=",
+      "\tdep\tgolang.org/x/net\tv0.35.0\th1:T5GQRQb2y08kTAByq9L4/bz8cipCdA8FbRTXewonqY8=",
+      "\tdep\tgolang.org/x/sys\tv0.30.0\th1:QjkSwP/36a20jFYWkSue1YwXzLmsV5Gfq7Eiy72C1uc=",
+      "\tdep\tgolang.org/x/text\tv0.22.0\th1:bofq7m3/HAFvbF51jz3Q9wLg3jkvSPuiZu/pD1XwgtM=",
+      "\tbuild\t-buildmode=exe",
+      "\tbuild\t-compiler=gc",
+      "\tbuild\t-ldflags=\"-w -s -H windowsgui\"",
+      "\tbuild\t-tags=desktop,wv2runtime.download,production",
+      "\tbuild\tDefaultGODEBUG=containermaxprocs=0,decoratemappings=0,gotestjsonbuildtext=1,httpcookiemaxnum=0,multipathtcp=0,randseednop=0,rsa1024min=0,tlsmlkem=0,tlssha1=1,updatemaxprocs=0,urlmaxqueryparams=0,x509rsacrt=0,x509sha256skid=0,x509usepolicies=0",
+      "\tbuild\tCGO_ENABLED=1",
+      "\tbuild\tCGO_CFLAGS=",
+      "\tbuild\tCGO_CPPFLAGS=",
+      "\tbuild\tCGO_CXXFLAGS=",
+      "\tbuild\tCGO_LDFLAGS=",
+      "\tbuild\tGOARCH=amd64",
+      "\tbuild\tGOOS=windows",
+      "\tbuild\tGOAMD64=v1"
+    ]
+  },
+  "Software": {
+    "Renderer": "software",
+    "Backend": "winit",
+    "Target": "x86_64-pc-windows-msvc",
+    "Rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+    "Cargo": "cargo 1.99.1 (5f94df478 2026-08-27)",
+    "MsvcToolsVersion": "14.50.35717",
+    "WindowsSdkVersion": "10.0.26100.0",
+    "CompilerFileVersion": "19.50.35719.0",
+    "LinkerFileVersion": "14.50.35719.0",
+    "SlintVersion": "1.18.1",
+    "SlintFeatures": [
+      "backend-winit",
+      "compat-1-18",
+      "raw-window-handle-06",
+      "renderer-software",
+      "std",
+      "unstable-winit-030"
+    ],
+    "WinitBackendFeatures": [
+      "default",
+      "muda",
+      "raw-window-handle-06",
+      "renderer-software",
+      "wayland",
+      "x11"
+    ],
+    "WorkspaceCommit": "4d9dbaf9acf5286d9961fae1e89cca908b5af9d7",
+    "WorkspaceDirty": true,
+    "ExecutableSHA256": "E85B41C7E77888750817E47F092EABECB1BAB5A68EFCE579378CE2DDAD2DBA4B",
+    "ExecutableBytes": 13603328,
+    "Sources": [
+      {
+        "Path": "../cmd/rs08-compat/main.go",
+        "SHA256": "C77A023A7FF737FDB15A78590FB56FF7EC148B06065A38E0F87AD95B00770893"
+      },
+      {
+        "Path": "../cmd/rs09-tables/main.go",
+        "SHA256": "C7F3FBC850F18929D4D92215E2614CC240A41D6F476066F73CD4DF60C0BF4F68"
+      },
+      {
+        "Path": "../cmd/rs10-compat/main.go",
+        "SHA256": "4BD99AF0BCC976507718893399DC00A81D4B83BBBBE419E027FA8021FCAD0BB9"
+      },
+      {
+        "Path": "../cmd/rs11-compat/main.go",
+        "SHA256": "5FA99FA58E7322E9BFC34EB0C912783334B98AFE7AA1F89C4B2A015ABC5221A2"
+      },
+      {
+        "Path": "../internal/app/compat_test.go",
+        "SHA256": "B2D9DA8E40AB81A22DC43B09934F820752FDFF714876143D127B56637C1E6102"
+      },
+      {
+        "Path": "../internal/app/library.go",
+        "SHA256": "816B17D5A4AB5111B336701698EC2229E01D269C440DA85C24C1F1B5917B4788"
+      },
+      {
+        "Path": "../internal/app/quick.go",
+        "SHA256": "3A41DBBF7E28ABA88F0D8583B021D92D363E11F23504C57A18E4C348A5B1F4E3"
+      },
+      {
+        "Path": "../internal/app/rs09_compat_test.go",
+        "SHA256": "BFB0BFDE5BEA357D8FF1DB1404C2FA9FF4A391AA82EA157162B75D673B2A5937"
+      },
+      {
+        "Path": "../internal/app/service.go",
+        "SHA256": "AB9037D0AA469EC4BCC55172D3BEB9CF4EF74C72DC396B18A92FF3C27AA04044"
+      },
+      {
+        "Path": "../internal/compat/rs08_test.go",
+        "SHA256": "619DF6C685DEFC65A2BD787AB6B294C35D43B31E549F771A461965E14DDBEF4A"
+      },
+      {
+        "Path": "../internal/compat/rs08.go",
+        "SHA256": "E58E138BB0C3245E2FCBA0BCF1BCE55F539E7A0BC8F2DBB70004C1B4973FD828"
+      },
+      {
+        "Path": "../internal/compat/rs09.go",
+        "SHA256": "C7E1327A454047D62CFFEF3076142C8C9EFAB68B7FF2C0FF63223FDCED843281"
+      },
+      {
+        "Path": "../internal/config/backup.go",
+        "SHA256": "AA6D00C90B99C4F6429025B1009C6DA9B1A536EFA4752B7815FFB240A26966F4"
+      },
+      {
+        "Path": "../internal/config/config.go",
+        "SHA256": "A72BE1E9436E20AFEAD1ECB63B196E0DE199F7215C83D03183C2B156A28D4C8D"
+      },
+      {
+        "Path": "../internal/history/history.go",
+        "SHA256": "483FFE6D4B258ED441DD66EF6A89BE703C7A3E9B5D94FBAAFE9ED7EF9DF8F8CA"
+      },
+      {
+        "Path": "../internal/icon/cache.go",
+        "SHA256": "628879B0D02BD1D710EA74F625B6B5CCE0658DFAA20342B49FB8A12C60784E24"
+      },
+      {
+        "Path": "../internal/indexer/filter.go",
+        "SHA256": "BAF3A39E7FFEC1B6C8BBB49A4918AAC4C07A7116F374C6815A0FDA82A707201F"
+      },
+      {
+        "Path": "../internal/indexer/indexer.go",
+        "SHA256": "E065DC1F9FF9B24B45DCEA2ACC97DA204245B94D756AE7CF48B93917701B5F09"
+      },
+      {
+        "Path": "../internal/model/app.go",
+        "SHA256": "26A998E648CF21E5070243895CE6530A10F59766BD4EB7E6C3628592C14EBF19"
+      },
+      {
+        "Path": "../internal/platform/actions_windows.go",
+        "SHA256": "E413331EED31163321DB0460CD2C1D2E0D1D88483AC80287BE641D20E4A90DD0"
+      },
+      {
+        "Path": "../internal/platform/apps_windows.go",
+        "SHA256": "5626DDCD21B71BACEC016931FD4E000EF58F2246FF7C10DD916E26818802C81C"
+      },
+      {
+        "Path": "../internal/platform/icon_windows.go",
+        "SHA256": "B401808A5D26E78D030CDA672336FAB717DA495506A21BCB668B6814292885AD"
+      },
+      {
+        "Path": "../internal/platform/item_actions_windows.go",
+        "SHA256": "52924A3286490E215A318DD5D0590DD1D87D48675341C535BAEFD6E270938780"
+      },
+      {
+        "Path": "../internal/platform/update_script.go",
+        "SHA256": "6FDC9FB2A1B48FA8AF206B3EDB7746E7FBD04D891B07C4F12423468A5A95F094"
+      },
+      {
+        "Path": "../internal/search/search.go",
+        "SHA256": "8D77B73258BE9983BEEEB5CD0C42EC63110F3E4D8C0ACF9AD7143AF66A111B9F"
+      },
+      {
+        "Path": "../internal/storage/json.go",
+        "SHA256": "07AA47004F75785EEB8FFB25936F30536D616A903441104875D8F3C6EBFEAE6B"
+      },
+      {
+        "Path": "../internal/systemtools/catalog.go",
+        "SHA256": "3D44F4C6C90212D169580F3D89D2B5224E45D6387F77005927E0E6D0855EDBD9"
+      },
+      {
+        "Path": "../internal/systemtools/rs11_compat_test.go",
+        "SHA256": "EAC053C3DED10D05CB77F721B4F9DF02FB825CC75D718DB4A4B56F00148CEE14"
+      },
+      {
+        "Path": "../internal/update/client.go",
+        "SHA256": "196660A0B74E8AA2D105A8DA33FB29B0EA7E7D6E4BBA164812C63EE4A3557F0D"
+      },
+      {
+        "Path": "../internal/update/version.go",
+        "SHA256": "7C04D798075188A832E475E5835C99507A82738B838127E586F3C0CB8F573F0F"
+      },
+      {
+        "Path": "../scripts/collect-latency.ps1",
+        "SHA256": "8EDE186EAA826AD365F2100DBDCADF5850B28F2525242CBF22A56BED07502E30"
+      },
+      {
+        "Path": "../scripts/collect-slint-latency.ps1",
+        "SHA256": "562577E1D2F6F80EFF6E365E3489C5134FEEF2E11C806D1A4EF59508E02799B0"
+      },
+      {
+        "Path": "../scripts/lib/resource-sample.ps1",
+        "SHA256": "D11419F93AA8A6DDC55A7EC31F514D56BD83FE84494B4852E4FE58BF037373D3"
+      },
+      {
+        "Path": "../scripts/lib/rust-environment.ps1",
+        "SHA256": "330D5ECE195714C182B949C18D6C62951CEF4EE23BAF2982DEE43B68F9B521BC"
+      },
+      {
+        "Path": "../scripts/measure-resources.ps1",
+        "SHA256": "1112C6E1CD7661ECB875D96FEECCF8DF0B218B39FF8A70CC6AF252CCD098B2EA"
+      },
+      {
+        "Path": "../scripts/measure-slint-ab.ps1",
+        "SHA256": "E13A61419F62F0785AA8DB8690BB299B8CD6151A942AE96AAEFE2E3EF2F73B47"
+      },
+      {
+        "Path": "../scripts/test-business-ui.ps1",
+        "SHA256": "E7DC3E8BAA8A70B38626591352734063D92A23B16AE1F76A1ED56D9BD44156BA"
+      },
+      {
+        "Path": "../scripts/test-data-compat.ps1",
+        "SHA256": "BFF1CC83DCF2C179CCC519553340B3FA414A5223909F07D2757236BEF2C6244E"
+      },
+      {
+        "Path": "../scripts/test-discovery-compat.ps1",
+        "SHA256": "9F364CD874E4879D6059165201BB398A0A0E086B8D19C0F88F09383459B2FCE0"
+      },
+      {
+        "Path": "../scripts/test-pages-ui.ps1",
+        "SHA256": "2070BB982D5EC432256108728811F3E9EB0E897282C61D374F6F65539F30BBAB"
+      },
+      {
+        "Path": "../scripts/test-search-compat.ps1",
+        "SHA256": "17D759104CB4B9F791F5C4E9FB19B0D42CD08EB8D31B390BB1025F2E7864E55A"
+      },
+      {
+        "Path": "../scripts/verify-rust.ps1",
+        "SHA256": "1D1D22209EA2395A9571CEEFAB5B539E0E180E8BB52FF530514D49F4768C10B1"
+      },
+      {
+        "Path": "../tests/fixtures/compat/rs08.json",
+        "SHA256": "C9C3DB744C175C8630B8EACC0143B555CE3390F77E4580B9F913F3891B73A0C5"
+      },
+      {
+        "Path": "../tests/fixtures/compat/rs09.json",
+        "SHA256": "1523870B12B3260312FCC00D05E33794D56FD98A2FD9F07B8DBFBA9AC0474598"
+      },
+      {
+        "Path": "../tests/fixtures/compat/rs10.json",
+        "SHA256": "28147A4B149BA0BF2C0EDEC2EF5C1C3EABD2363BB8BAA02E035F5A160E9264D7"
+      },
+      {
+        "Path": "../tests/fixtures/compat/rs11.expected.json",
+        "SHA256": "C11A51235B436DB967E6FC363AF05A52A04DEE1C39189F8DC409B0DD723CF299"
+      },
+      {
+        "Path": "../tests/fixtures/compat/rs11.json",
+        "SHA256": "B1096DA59AF311B6D07E1F2C6C0D74E39B9B0819011C07291B252EA5D975A50D"
+      },
+      {
+        "Path": ".cargo/config.toml",
+        "SHA256": "B30E5A93F3EE1E18D93D09516EB08D9CCCCDDA15027615C61D58BE7264185711"
+      },
+      {
+        "Path": "build.rs",
+        "SHA256": "E3DE7AFD93F01A7A60914DA159B45516DA0429705E56C9EA10425AC33B332E07"
+      },
+      {
+        "Path": "Cargo.lock",
+        "SHA256": "4DACDF9E0FC09E868BC5B8E38A8D70231F67CB4BA3FA4DDBB0D8CA6A7694C65C"
+      },
+      {
+        "Path": "Cargo.toml",
+        "SHA256": "765E3D1548AF72F139BFE92D93E4571DA1BD878F5D3C0C39B71A7A2292278803"
+      },
+      {
+        "Path": "examples/rs05_desktop_fixture.rs",
+        "SHA256": "84B0EB35E79A4BF4D588EA7852EECDD8F63BED0017355820CEC6E4F670A851F6"
+      },
+      {
+        "Path": "examples/rs06_native_probe.rs",
+        "SHA256": "007BB15D480B1EF7A42F63A6EBF19083D9A699EF44AECA63185909438EC45154"
+      },
+      {
+        "Path": "examples/rs08_data_contract.rs",
+        "SHA256": "4FED48526B53763FB8DD0798BFC72579B792B23C45BF954A4AEA73D55532AAB9"
+      },
+      {
+        "Path": "examples/rs10_windows.rs",
+        "SHA256": "43DBEFE8312728089DBEDA4CB6D92E84F673EE3DAE41C8E16A360FEB38981960"
+      },
+      {
+        "Path": "examples/rs11_assisted.rs",
+        "SHA256": "D8F99A6D4D85D9E7DC8592F5528BB53A594A7379BF55FA055C343473A1E57C24"
+      },
+      {
+        "Path": "examples/rs11_installer_fixture.rs",
+        "SHA256": "56CF62EB9808E2D78BAEE09EFF6025EC8344DCB9B715563BC6A56C87B374D742"
+      },
+      {
+        "Path": "examples/rs11_startup.rs",
+        "SHA256": "33F7A033746D81CD6B1478414DA4FFC199B403D1261734A60BDDDF35C435AC78"
+      },
+      {
+        "Path": "examples/rs11_windows.rs",
+        "SHA256": "975EAEDD4A41F20CEFFF2D15A68B0CB4718D031B5DA7381A1BE6051B94DA8EA2"
+      },
+      {
+        "Path": "examples/rs12_search.rs",
+        "SHA256": "50A9A7D2AB6B6437E9A6D2F9A37B5E58AC7933255A12257955442ACDF2BFE447"
+      },
+      {
+        "Path": "licenses/Go-BSD.txt",
+        "SHA256": "911F8F5782931320F5B8D1160A76365B83AEA6447EE6C04FA6D5591467DB9DAD"
+      },
+      {
+        "Path": "licenses/go-pinyin-MIT.txt",
+        "SHA256": "DBEE1336F5286B3B26FB6B4A71AB1E8D89F80B4073D9C8D2B2B33C06ABC3BCBE"
+      },
+      {
+        "Path": "rust-toolchain.toml",
+        "SHA256": "4387889E7EF217B7A0CEA12EE152FB5570EC33880F985BFF2EBCD49B963B3B24"
+      },
+      {
+        "Path": "src/business_probe.rs",
+        "SHA256": "B8E8DE05D22AF90712E598E12127E28042CA7055A58F6DEB77E27D538F50CC52"
+      },
+      {
+        "Path": "src/business.rs",
+        "SHA256": "5413A913D828915191D73A3B4C678B3B8DB7D6D79AA5C000181784E8A422611C"
+      },
+      {
+        "Path": "src/core/catalog.rs",
+        "SHA256": "4FAEAE263661E76C329FA294B22BB9C4B769861B1F9C0FD1AF1D726ADDEB89EA"
+      },
+      {
+        "Path": "src/core/config.rs",
+        "SHA256": "21967D4767972234D4B69D2385D969DB6BA4A9267025139252C71F2A537EA842"
+      },
+      {
+        "Path": "src/core/data.rs",
+        "SHA256": "018BF5419D40BCFE5F13E3E89059C50C34F65AF05098211B34AEFC175E264076"
+      },
+      {
+        "Path": "src/core/history.rs",
+        "SHA256": "CBDA53A72E9853C1C434EEFFBBA33E75ABE388223A66F3B1961EBE1B9E6EB264"
+      },
+      {
+        "Path": "src/core/icons.rs",
+        "SHA256": "930AFD5917DCF69039DDB3AF180CC7126A8D3BF0F3E4A195C406A4E818F19515"
+      },
+      {
+        "Path": "src/core/indexer.rs",
+        "SHA256": "E9A860C99FA4471434F1FBF2D7CD28E42DA41625A39371D73C2373B302FF886F"
+      },
+      {
+        "Path": "src/core/launch.rs",
+        "SHA256": "AB988DF5D181A3CB52D8DA4E132A374C7A166A9D0F3599A0B5CC813CC240DF22"
+      },
+      {
+        "Path": "src/core/library.rs",
+        "SHA256": "7D50AE86D50D1918503F8C105E8DC4611FB1299D9574822E080BC7F0141F1EA9"
+      },
+      {
+        "Path": "src/core/mod.rs",
+        "SHA256": "1B7F93B7C3EDC508F78AFC5EBF3E65F874FFAE312382F8AC74DBC492536F0C5D"
+      },
+      {
+        "Path": "src/core/model.rs",
+        "SHA256": "72D19E7A219898D2CC36F65E28574BBF9A5908E09C4FFC38A561A09959D21CB8"
+      },
+      {
+        "Path": "src/core/normalize.rs",
+        "SHA256": "A3B5FE9A64F91DBA0C899E6AC77C5128881472606AFF1353AABEB46648BCE9BD"
+      },
+      {
+        "Path": "src/core/search_data/han.bin",
+        "SHA256": "6EC174BED053B9A5D8AE3E8CFD573A1090889D192DFE30FFAB352134D0E029C8"
+      },
+      {
+        "Path": "src/core/search_data/lower.bin",
+        "SHA256": "94D58375AF65669A3D8E0123C3182587C95B7598FC3DC198D670F1FA9F518F50"
+      },
+      {
+        "Path": "src/core/search_data/pinyin.bin",
+        "SHA256": "B69F349D9DC06131BAEF0F97AF8E943E39B673F875A127D6941313755AA04800"
+      },
+      {
+        "Path": "src/core/search_data/README.md",
+        "SHA256": "BB28692D7CEEDF55A64535C10CD589F3BAF1FEE6127F70095D2D19BEAF72515F"
+      },
+      {
+        "Path": "src/core/search_data/syllables.bin",
+        "SHA256": "628CCE0F6CE3330842AA8B4A050231638984CA5F7FE74CA868496D290C00969F"
+      },
+      {
+        "Path": "src/core/search_data/version.txt",
+        "SHA256": "E1847500CF6699FB51E6A56ABA6185579455C44B51EEB4F90810C95AB74DBFC1"
+      },
+      {
+        "Path": "src/core/search_data/word.bin",
+        "SHA256": "FF6C888311DC1C53995DDB17FF9AFCB8B4FA889658A5BB3DDEEEBE96352B2085"
+      },
+      {
+        "Path": "src/core/search.rs",
+        "SHA256": "000562865DD973F9439662F63DC1CC5D85FF4BEEDFAC75EF72E8800DD021E953"
+      },
+      {
+        "Path": "src/core/service.rs",
+        "SHA256": "D06EBF339D670BFC52CD0F84FF7FC5D44E78F6A7DF357E7F20CBEE0C54201B26"
+      },
+      {
+        "Path": "src/core/storage.rs",
+        "SHA256": "846E24AA389B6C62B8E3D72DB0BFBE5D16864717C2847484F22F1A4312AAB1A5"
+      },
+      {
+        "Path": "src/core/system_tools.json",
+        "SHA256": "5F0E7077EAF1E4E5F63B2366B1ADE0B58FD7D80C8C8599D0E70025F3547D89A4"
+      },
+      {
+        "Path": "src/core/system_tools.rs",
+        "SHA256": "0DB67B0E7E9613B882035E33EBE2649D24A0B8AB2F32D384F1DCAB4CC77DFD8A"
+      },
+      {
+        "Path": "src/core/update.rs",
+        "SHA256": "8DA8A732F201FB25BA8037D1A2D3A7169DEFA23E1345DE941C46107FFCF30A74"
+      },
+      {
+        "Path": "src/fixtures.rs",
+        "SHA256": "5044C57122FDA4DBBE229E6035BB684E5A3A39189FF0D6782FE616AC39A6D2E8"
+      },
+      {
+        "Path": "src/import_preview.rs",
+        "SHA256": "A77D39EE51B1CE807C100D431512551E1928B4F4BAF8C93C447A406CBD77FE80"
+      },
+      {
+        "Path": "src/input.rs",
+        "SHA256": "0DB7C700509C506CF102FD35F03157A51D31853C18D4A532DA7F743C188FD6AF"
+      },
+      {
+        "Path": "src/interaction_probe.rs",
+        "SHA256": "E0EBB04611031C24D5A751D21DE6AAB12CA4675C98423F5F729DA633AD5108F9"
+      },
+      {
+        "Path": "src/lib.rs",
+        "SHA256": "BD639BE4FABB98FA1CA7953CC0FC83DB7CF94E14E24110D3BC6F54F4872AB8EC"
+      },
+      {
+        "Path": "src/lifecycle.rs",
+        "SHA256": "D02A21967A3EA089981B963838612EC4F45EF00CC8AEEE69F9EE56FAE0F47EE8"
+      },
+      {
+        "Path": "src/main.rs",
+        "SHA256": "13FE63EB6E6BE454BF4D2BE8D3412695AE42FA414CAB25FF52BB20C539A81536"
+      },
+      {
+        "Path": "src/measurement.rs",
+        "SHA256": "3E1D9868B0A3B15253F34B93A0F32A6EAE10AD4BC6C70979E8E1F5CC4DB50D02"
+      },
+      {
+        "Path": "src/navigation.rs",
+        "SHA256": "6A5E428C74E0C9D10D6A17281883D1D576ACB14A90A8F0CE16EA76F999176B8A"
+      },
+      {
+        "Path": "src/pages_probe.rs",
+        "SHA256": "7577839315C9B608AD2D36EAC30E14044ABA8E96D5CDBE83EB3F76839ECA0752"
+      },
+      {
+        "Path": "src/platform/mod.rs",
+        "SHA256": "CC20A7A7BFA53DD45CA2DA1D238D4643E8D59C3AC5EBE045DD2F3390B84ADC5E"
+      },
+      {
+        "Path": "src/platform/windows/atomic_file.rs",
+        "SHA256": "C368ED45BB69FA244C717BA5F046D89D76011B7A8920B4FB6E37446CB9777AF5"
+      },
+      {
+        "Path": "src/platform/windows/desktop.rs",
+        "SHA256": "9C3C7FB3144FBD086A0E5086117959A885B342E4A391B865B336C45FB275A955"
+      },
+      {
+        "Path": "src/platform/windows/geometry.rs",
+        "SHA256": "5B64CAD3273A87C02D61094DACEDF2F845008FAABB0B708F0EB9B5640ADFF8CE"
+      },
+      {
+        "Path": "src/platform/windows/hotkey.rs",
+        "SHA256": "A50C26EEF3FAAC952A076FE11776EF239BBAFC4DCEF4C98B1BF95FE581C99ACA"
+      },
+      {
+        "Path": "src/platform/windows/http.rs",
+        "SHA256": "EE10C4334536F8222D975142C050A302547C88031C58F3D6D3F257585580E3B2"
+      },
+      {
+        "Path": "src/platform/windows/icons.rs",
+        "SHA256": "79CCCDF06B95FB68C217A595E272D89F7F72680792548BED8A0F296BB39CEBAF"
+      },
+      {
+        "Path": "src/platform/windows/instance.rs",
+        "SHA256": "B393ED2CAA414A825E1925B11E1650B2EF0585C59246CEEF527297C641C970DD"
+      },
+      {
+        "Path": "src/platform/windows/interaction.rs",
+        "SHA256": "934FDFF1D462D17D51CB8211A9FDB234DE43D774DCBF63600BA54DC9670FBFA8"
+      },
+      {
+        "Path": "src/platform/windows/launch.rs",
+        "SHA256": "8E1BF2FECA4E6A8D93CA7DB438CD123D5BC9F88223F926B676AE35D66BF04645"
+      },
+      {
+        "Path": "src/platform/windows/mod.rs",
+        "SHA256": "F39110A3DE72BCE0860A73626A143FA532BB3DF32D07FD1A5C9417CC5E791DC4"
+      },
+      {
+        "Path": "src/platform/windows/preferences.rs",
+        "SHA256": "61D555E5E0BB1E520878DEC986D5FBC1674ACE628003B7606E7468D6DB8F7319"
+      },
+      {
+        "Path": "src/platform/windows/shell.rs",
+        "SHA256": "9D81D7E7C8182EBD97AA5E7A3860E93F84757B64EDA0EB51DAFDCB888F77056E"
+      },
+      {
+        "Path": "src/platform/windows/system_tools.rs",
+        "SHA256": "9E4C8AAE3F97B7D47D4FF240AC57D934853F157AD016526A7F9ABDF24D6B9E3C"
+      },
+      {
+        "Path": "src/platform/windows/updater.rs",
+        "SHA256": "973FF1769E7FFE408B56B15EBAA663E4865965C6E6477CE44ED871C27B2DCE78"
+      },
+      {
+        "Path": "src/platform/windows/window.rs",
+        "SHA256": "C32A3A4080497D249E110275F93097EB7F2D1EDB84C3A88EFE10C42345A7E1E5"
+      },
+      {
+        "Path": "src/ui.rs",
+        "SHA256": "16336095D5275316E12263040FFE3EF187A8ACB40FC4395FCA2B970B806CB46B"
+      },
+      {
+        "Path": "tests/behavior_contract.rs",
+        "SHA256": "04DEF5F41396B09BF84F1454FFB211A925B8F6D0DEDCA6976D1F70D55BE0DDEC"
+      },
+      {
+        "Path": "tests/data_contract.rs",
+        "SHA256": "AE02D88F866C91C7B37DB97DDA6506FA5928FCFF9A84A9E9856AA0D6BDFC3F17"
+      },
+      {
+        "Path": "tests/discovery_contract.rs",
+        "SHA256": "F4263511B1D393975CBEAEDF827862C98D2BAE464E757A31C8087D5CEECC6336"
+      },
+      {
+        "Path": "tests/discovery_runtime.rs",
+        "SHA256": "039FFE104AF498A7B17080AEA900A7B5867CF3A0B73A1C6E15149B5128228B95"
+      },
+      {
+        "Path": "tests/history_library.rs",
+        "SHA256": "AD2152B83CE70DCCB9E36E87208AAD81E55FA6659EEED339A434377B1A23F13D"
+      },
+      {
+        "Path": "tests/pages_contract.rs",
+        "SHA256": "F489C6995FB438BB54FADA395EEA9FA36995D7963FDD280A9BC933AB375D690D"
+      },
+      {
+        "Path": "tests/support/mod.rs",
+        "SHA256": "7D6CFC3E11D926A36ABB0DF6EA6FA32B3BBD196C796460F7AFC73A97139F3ADB"
+      },
+      {
+        "Path": "ui/app.slint",
+        "SHA256": "5194E36277C955E6C4B0E36250650467A1666FA3BFEDA6F265967D84DC2A69B0"
+      },
+      {
+        "Path": "ui/assets/fluent/ic_fluent_apps_24_regular.svg",
+        "SHA256": "49ACD3CA4B7FFFCE746312A729EBC007EC82D3D7372BE9830577F50B541FA6DF"
+      },
+      {
+        "Path": "ui/assets/fluent/ic_fluent_calculator_24_regular.svg",
+        "SHA256": "142C592DD1E26ABD4395507B32B7AE1DC9A3D18FEE30C4E7653D7B8811701D3D"
+      },
+      {
+        "Path": "ui/assets/fluent/ic_fluent_code_24_regular.svg",
+        "SHA256": "03090C9E30C66BD926AD19FB1E5CCD07BDD9C2815881CA5A83A8788F6FCE2F63"
+      },
+      {
+        "Path": "ui/assets/fluent/ic_fluent_desktop_pulse_24_regular.svg",
+        "SHA256": "073D8DE9BE495F9E58C18A66EC2F8D35B7CD134C5B71FCDFC36B024F4FFDE4A1"
+      },
+      {
+        "Path": "ui/assets/fluent/ic_fluent_developer_board_24_regular.svg",
+        "SHA256": "CACA0F3C34ABFD3F0D80544FDCF3359C7A14646B8ED0C704C9D90A1CC666440D"
+      },
+      {
+        "Path": "ui/assets/fluent/ic_fluent_folder_24_regular.svg",
+        "SHA256": "B223F863F213DCC1BF75A65D31A287830380C08503C79565B317C77B10E7A2E1"
+      },
+      {
+        "Path": "ui/assets/fluent/ic_fluent_search_20_regular.svg",
+        "SHA256": "5AC1EAC82DF532662CD1BAD2C8E55763846E1B258740BCBB0612A48D22630D40"
+      },
+      {
+        "Path": "ui/assets/fluent/ic_fluent_settings_24_regular.svg",
+        "SHA256": "5AC05E6E11C9EC9F24703091C42CA1F5C91F4032CB0EEE35C892D1872A38871B"
+      },
+      {
+        "Path": "ui/assets/fluent/ic_fluent_star_16_filled.svg",
+        "SHA256": "3F96EC326175B38593F80DFA9EA47D1EA7A726D8614D042C19871B9155667638"
+      },
+      {
+        "Path": "ui/assets/fluent/ic_fluent_star_16_regular.svg",
+        "SHA256": "C5ABB68053095622285EDB425B1C072665EC3FEF7FB4FA0777C978169AD5889E"
+      },
+      {
+        "Path": "ui/assets/fluent/ic_fluent_window_console_20_regular.svg",
+        "SHA256": "F2B46D93F5B922C79ECD04C9CBAD61C26F6BD0491B80763DE4409F059C43A202"
+      },
+      {
+        "Path": "ui/assets/fluent/LICENSE.txt",
+        "SHA256": "69BC45DC42B9ACB96A69823ADBC6AE538374E3C0BDE169B855B32C48EAAEF52F"
+      },
+      {
+        "Path": "ui/assets/logo.png",
+        "SHA256": "EE4C40D5765E2596B2EBDC20FAB3AB04301E6B26FB33A65074FEBB477DEFD82A"
+      },
+      {
+        "Path": "ui/assets/README.md",
+        "SHA256": "5E02B4DE68208FD58A88600E77688BB82DA4433F947E294C3E69F2456DEA9D70"
+      },
+      {
+        "Path": "ui/assets/velo.ico",
+        "SHA256": "90B1410469F1F2D7BD87D1979E356EB74586429C9AA0ED8B45168A8085B00298"
+      },
+      {
+        "Path": "ui/components.slint",
+        "SHA256": "6459ECEF30BECE5BB2BF0900D08E5FA5155847C459E549A88418B0503EFDBEEA"
+      },
+      {
+        "Path": "ui/settings.slint",
+        "SHA256": "0DAC7D7C0E3407E498472BE04E2C231453774FF9E5CCDB17F030FEF9D2D3B224"
+      },
+      {
+        "Path": "windows-toolchain.json",
+        "SHA256": "850BE7ABA1DC71C8FDEB44A9950DDFC80E5D1EBE3E77B6E93D9E51126042194C"
+      }
+    ]
+  },
+  "FemtoVG": {
+    "Renderer": "femtovg",
+    "Backend": "winit",
+    "Target": "x86_64-pc-windows-msvc",
+    "Rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+    "Cargo": "cargo 1.99.1 (5f94df478 2026-08-27)",
+    "MsvcToolsVersion": "14.50.35717",
+    "WindowsSdkVersion": "10.0.26100.0",
+    "CompilerFileVersion": "19.50.35719.0",
+    "LinkerFileVersion": "14.50.35719.0",
+    "SlintVersion": "1.18.1",
+    "SlintFeatures": [
+      "backend-winit",
+      "compat-1-18",
+      "i-slint-renderer-femtovg",
+      "raw-window-handle-06",
+      "renderer-femtovg",
+      "std",
+      "unstable-winit-030"
+    ],
+    "WinitBackendFeatures": [
+      "default",
+      "muda",
+      "raw-window-handle-06",
+      "renderer-femtovg",
+      "wayland",
+      "x11"
+    ],
+    "WorkspaceCommit": "4d9dbaf9acf5286d9961fae1e89cca908b5af9d7",
+    "WorkspaceDirty": true,
+    "ExecutableSHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+    "ExecutableBytes": 13101568,
+    "Sources": [
+      {
+        "Path": "../cmd/rs08-compat/main.go",
+        "SHA256": "C77A023A7FF737FDB15A78590FB56FF7EC148B06065A38E0F87AD95B00770893"
+      },
+      {
+        "Path": "../cmd/rs09-tables/main.go",
+        "SHA256": "C7F3FBC850F18929D4D92215E2614CC240A41D6F476066F73CD4DF60C0BF4F68"
+      },
+      {
+        "Path": "../cmd/rs10-compat/main.go",
+        "SHA256": "4BD99AF0BCC976507718893399DC00A81D4B83BBBBE419E027FA8021FCAD0BB9"
+      },
+      {
+        "Path": "../cmd/rs11-compat/main.go",
+        "SHA256": "5FA99FA58E7322E9BFC34EB0C912783334B98AFE7AA1F89C4B2A015ABC5221A2"
+      },
+      {
+        "Path": "../internal/app/compat_test.go",
+        "SHA256": "B2D9DA8E40AB81A22DC43B09934F820752FDFF714876143D127B56637C1E6102"
+      },
+      {
+        "Path": "../internal/app/library.go",
+        "SHA256": "816B17D5A4AB5111B336701698EC2229E01D269C440DA85C24C1F1B5917B4788"
+      },
+      {
+        "Path": "../internal/app/quick.go",
+        "SHA256": "3A41DBBF7E28ABA88F0D8583B021D92D363E11F23504C57A18E4C348A5B1F4E3"
+      },
+      {
+        "Path": "../internal/app/rs09_compat_test.go",
+        "SHA256": "BFB0BFDE5BEA357D8FF1DB1404C2FA9FF4A391AA82EA157162B75D673B2A5937"
+      },
+      {
+        "Path": "../internal/app/service.go",
+        "SHA256": "AB9037D0AA469EC4BCC55172D3BEB9CF4EF74C72DC396B18A92FF3C27AA04044"
+      },
+      {
+        "Path": "../internal/compat/rs08_test.go",
+        "SHA256": "619DF6C685DEFC65A2BD787AB6B294C35D43B31E549F771A461965E14DDBEF4A"
+      },
+      {
+        "Path": "../internal/compat/rs08.go",
+        "SHA256": "E58E138BB0C3245E2FCBA0BCF1BCE55F539E7A0BC8F2DBB70004C1B4973FD828"
+      },
+      {
+        "Path": "../internal/compat/rs09.go",
+        "SHA256": "C7E1327A454047D62CFFEF3076142C8C9EFAB68B7FF2C0FF63223FDCED843281"
+      },
+      {
+        "Path": "../internal/config/backup.go",
+        "SHA256": "AA6D00C90B99C4F6429025B1009C6DA9B1A536EFA4752B7815FFB240A26966F4"
+      },
+      {
+        "Path": "../internal/config/config.go",
+        "SHA256": "A72BE1E9436E20AFEAD1ECB63B196E0DE199F7215C83D03183C2B156A28D4C8D"
+      },
+      {
+        "Path": "../internal/history/history.go",
+        "SHA256": "483FFE6D4B258ED441DD66EF6A89BE703C7A3E9B5D94FBAAFE9ED7EF9DF8F8CA"
+      },
+      {
+        "Path": "../internal/icon/cache.go",
+        "SHA256": "628879B0D02BD1D710EA74F625B6B5CCE0658DFAA20342B49FB8A12C60784E24"
+      },
+      {
+        "Path": "../internal/indexer/filter.go",
+        "SHA256": "BAF3A39E7FFEC1B6C8BBB49A4918AAC4C07A7116F374C6815A0FDA82A707201F"
+      },
+      {
+        "Path": "../internal/indexer/indexer.go",
+        "SHA256": "E065DC1F9FF9B24B45DCEA2ACC97DA204245B94D756AE7CF48B93917701B5F09"
+      },
+      {
+        "Path": "../internal/model/app.go",
+        "SHA256": "26A998E648CF21E5070243895CE6530A10F59766BD4EB7E6C3628592C14EBF19"
+      },
+      {
+        "Path": "../internal/platform/actions_windows.go",
+        "SHA256": "E413331EED31163321DB0460CD2C1D2E0D1D88483AC80287BE641D20E4A90DD0"
+      },
+      {
+        "Path": "../internal/platform/apps_windows.go",
+        "SHA256": "5626DDCD21B71BACEC016931FD4E000EF58F2246FF7C10DD916E26818802C81C"
+      },
+      {
+        "Path": "../internal/platform/icon_windows.go",
+        "SHA256": "B401808A5D26E78D030CDA672336FAB717DA495506A21BCB668B6814292885AD"
+      },
+      {
+        "Path": "../internal/platform/item_actions_windows.go",
+        "SHA256": "52924A3286490E215A318DD5D0590DD1D87D48675341C535BAEFD6E270938780"
+      },
+      {
+        "Path": "../internal/platform/update_script.go",
+        "SHA256": "6FDC9FB2A1B48FA8AF206B3EDB7746E7FBD04D891B07C4F12423468A5A95F094"
+      },
+      {
+        "Path": "../internal/search/search.go",
+        "SHA256": "8D77B73258BE9983BEEEB5CD0C42EC63110F3E4D8C0ACF9AD7143AF66A111B9F"
+      },
+      {
+        "Path": "../internal/storage/json.go",
+        "SHA256": "07AA47004F75785EEB8FFB25936F30536D616A903441104875D8F3C6EBFEAE6B"
+      },
+      {
+        "Path": "../internal/systemtools/catalog.go",
+        "SHA256": "3D44F4C6C90212D169580F3D89D2B5224E45D6387F77005927E0E6D0855EDBD9"
+      },
+      {
+        "Path": "../internal/systemtools/rs11_compat_test.go",
+        "SHA256": "EAC053C3DED10D05CB77F721B4F9DF02FB825CC75D718DB4A4B56F00148CEE14"
+      },
+      {
+        "Path": "../internal/update/client.go",
+        "SHA256": "196660A0B74E8AA2D105A8DA33FB29B0EA7E7D6E4BBA164812C63EE4A3557F0D"
+      },
+      {
+        "Path": "../internal/update/version.go",
+        "SHA256": "7C04D798075188A832E475E5835C99507A82738B838127E586F3C0CB8F573F0F"
+      },
+      {
+        "Path": "../scripts/collect-latency.ps1",
+        "SHA256": "8EDE186EAA826AD365F2100DBDCADF5850B28F2525242CBF22A56BED07502E30"
+      },
+      {
+        "Path": "../scripts/collect-slint-latency.ps1",
+        "SHA256": "562577E1D2F6F80EFF6E365E3489C5134FEEF2E11C806D1A4EF59508E02799B0"
+      },
+      {
+        "Path": "../scripts/lib/resource-sample.ps1",
+        "SHA256": "D11419F93AA8A6DDC55A7EC31F514D56BD83FE84494B4852E4FE58BF037373D3"
+      },
+      {
+        "Path": "../scripts/lib/rust-environment.ps1",
+        "SHA256": "330D5ECE195714C182B949C18D6C62951CEF4EE23BAF2982DEE43B68F9B521BC"
+      },
+      {
+        "Path": "../scripts/measure-resources.ps1",
+        "SHA256": "1112C6E1CD7661ECB875D96FEECCF8DF0B218B39FF8A70CC6AF252CCD098B2EA"
+      },
+      {
+        "Path": "../scripts/measure-slint-ab.ps1",
+        "SHA256": "E13A61419F62F0785AA8DB8690BB299B8CD6151A942AE96AAEFE2E3EF2F73B47"
+      },
+      {
+        "Path": "../scripts/test-business-ui.ps1",
+        "SHA256": "E7DC3E8BAA8A70B38626591352734063D92A23B16AE1F76A1ED56D9BD44156BA"
+      },
+      {
+        "Path": "../scripts/test-data-compat.ps1",
+        "SHA256": "BFF1CC83DCF2C179CCC519553340B3FA414A5223909F07D2757236BEF2C6244E"
+      },
+      {
+        "Path": "../scripts/test-discovery-compat.ps1",
+        "SHA256": "9F364CD874E4879D6059165201BB398A0A0E086B8D19C0F88F09383459B2FCE0"
+      },
+      {
+        "Path": "../scripts/test-pages-ui.ps1",
+        "SHA256": "2070BB982D5EC432256108728811F3E9EB0E897282C61D374F6F65539F30BBAB"
+      },
+      {
+        "Path": "../scripts/test-search-compat.ps1",
+        "SHA256": "17D759104CB4B9F791F5C4E9FB19B0D42CD08EB8D31B390BB1025F2E7864E55A"
+      },
+      {
+        "Path": "../scripts/verify-rust.ps1",
+        "SHA256": "1D1D22209EA2395A9571CEEFAB5B539E0E180E8BB52FF530514D49F4768C10B1"
+      },
+      {
+        "Path": "../tests/fixtures/compat/rs08.json",
+        "SHA256": "C9C3DB744C175C8630B8EACC0143B555CE3390F77E4580B9F913F3891B73A0C5"
+      },
+      {
+        "Path": "../tests/fixtures/compat/rs09.json",
+        "SHA256": "1523870B12B3260312FCC00D05E33794D56FD98A2FD9F07B8DBFBA9AC0474598"
+      },
+      {
+        "Path": "../tests/fixtures/compat/rs10.json",
+        "SHA256": "28147A4B149BA0BF2C0EDEC2EF5C1C3EABD2363BB8BAA02E035F5A160E9264D7"
+      },
+      {
+        "Path": "../tests/fixtures/compat/rs11.expected.json",
+        "SHA256": "C11A51235B436DB967E6FC363AF05A52A04DEE1C39189F8DC409B0DD723CF299"
+      },
+      {
+        "Path": "../tests/fixtures/compat/rs11.json",
+        "SHA256": "B1096DA59AF311B6D07E1F2C6C0D74E39B9B0819011C07291B252EA5D975A50D"
+      },
+      {
+        "Path": ".cargo/config.toml",
+        "SHA256": "B30E5A93F3EE1E18D93D09516EB08D9CCCCDDA15027615C61D58BE7264185711"
+      },
+      {
+        "Path": "build.rs",
+        "SHA256": "E3DE7AFD93F01A7A60914DA159B45516DA0429705E56C9EA10425AC33B332E07"
+      },
+      {
+        "Path": "Cargo.lock",
+        "SHA256": "4DACDF9E0FC09E868BC5B8E38A8D70231F67CB4BA3FA4DDBB0D8CA6A7694C65C"
+      },
+      {
+        "Path": "Cargo.toml",
+        "SHA256": "765E3D1548AF72F139BFE92D93E4571DA1BD878F5D3C0C39B71A7A2292278803"
+      },
+      {
+        "Path": "examples/rs05_desktop_fixture.rs",
+        "SHA256": "84B0EB35E79A4BF4D588EA7852EECDD8F63BED0017355820CEC6E4F670A851F6"
+      },
+      {
+        "Path": "examples/rs06_native_probe.rs",
+        "SHA256": "007BB15D480B1EF7A42F63A6EBF19083D9A699EF44AECA63185909438EC45154"
+      },
+      {
+        "Path": "examples/rs08_data_contract.rs",
+        "SHA256": "4FED48526B53763FB8DD0798BFC72579B792B23C45BF954A4AEA73D55532AAB9"
+      },
+      {
+        "Path": "examples/rs10_windows.rs",
+        "SHA256": "43DBEFE8312728089DBEDA4CB6D92E84F673EE3DAE41C8E16A360FEB38981960"
+      },
+      {
+        "Path": "examples/rs11_assisted.rs",
+        "SHA256": "D8F99A6D4D85D9E7DC8592F5528BB53A594A7379BF55FA055C343473A1E57C24"
+      },
+      {
+        "Path": "examples/rs11_installer_fixture.rs",
+        "SHA256": "56CF62EB9808E2D78BAEE09EFF6025EC8344DCB9B715563BC6A56C87B374D742"
+      },
+      {
+        "Path": "examples/rs11_startup.rs",
+        "SHA256": "33F7A033746D81CD6B1478414DA4FFC199B403D1261734A60BDDDF35C435AC78"
+      },
+      {
+        "Path": "examples/rs11_windows.rs",
+        "SHA256": "975EAEDD4A41F20CEFFF2D15A68B0CB4718D031B5DA7381A1BE6051B94DA8EA2"
+      },
+      {
+        "Path": "examples/rs12_search.rs",
+        "SHA256": "50A9A7D2AB6B6437E9A6D2F9A37B5E58AC7933255A12257955442ACDF2BFE447"
+      },
+      {
+        "Path": "licenses/Go-BSD.txt",
+        "SHA256": "911F8F5782931320F5B8D1160A76365B83AEA6447EE6C04FA6D5591467DB9DAD"
+      },
+      {
+        "Path": "licenses/go-pinyin-MIT.txt",
+        "SHA256": "DBEE1336F5286B3B26FB6B4A71AB1E8D89F80B4073D9C8D2B2B33C06ABC3BCBE"
+      },
+      {
+        "Path": "rust-toolchain.toml",
+        "SHA256": "4387889E7EF217B7A0CEA12EE152FB5570EC33880F985BFF2EBCD49B963B3B24"
+      },
+      {
+        "Path": "src/business_probe.rs",
+        "SHA256": "B8E8DE05D22AF90712E598E12127E28042CA7055A58F6DEB77E27D538F50CC52"
+      },
+      {
+        "Path": "src/business.rs",
+        "SHA256": "5413A913D828915191D73A3B4C678B3B8DB7D6D79AA5C000181784E8A422611C"
+      },
+      {
+        "Path": "src/core/catalog.rs",
+        "SHA256": "4FAEAE263661E76C329FA294B22BB9C4B769861B1F9C0FD1AF1D726ADDEB89EA"
+      },
+      {
+        "Path": "src/core/config.rs",
+        "SHA256": "21967D4767972234D4B69D2385D969DB6BA4A9267025139252C71F2A537EA842"
+      },
+      {
+        "Path": "src/core/data.rs",
+        "SHA256": "018BF5419D40BCFE5F13E3E89059C50C34F65AF05098211B34AEFC175E264076"
+      },
+      {
+        "Path": "src/core/history.rs",
+        "SHA256": "CBDA53A72E9853C1C434EEFFBBA33E75ABE388223A66F3B1961EBE1B9E6EB264"
+      },
+      {
+        "Path": "src/core/icons.rs",
+        "SHA256": "930AFD5917DCF69039DDB3AF180CC7126A8D3BF0F3E4A195C406A4E818F19515"
+      },
+      {
+        "Path": "src/core/indexer.rs",
+        "SHA256": "E9A860C99FA4471434F1FBF2D7CD28E42DA41625A39371D73C2373B302FF886F"
+      },
+      {
+        "Path": "src/core/launch.rs",
+        "SHA256": "AB988DF5D181A3CB52D8DA4E132A374C7A166A9D0F3599A0B5CC813CC240DF22"
+      },
+      {
+        "Path": "src/core/library.rs",
+        "SHA256": "7D50AE86D50D1918503F8C105E8DC4611FB1299D9574822E080BC7F0141F1EA9"
+      },
+      {
+        "Path": "src/core/mod.rs",
+        "SHA256": "1B7F93B7C3EDC508F78AFC5EBF3E65F874FFAE312382F8AC74DBC492536F0C5D"
+      },
+      {
+        "Path": "src/core/model.rs",
+        "SHA256": "72D19E7A219898D2CC36F65E28574BBF9A5908E09C4FFC38A561A09959D21CB8"
+      },
+      {
+        "Path": "src/core/normalize.rs",
+        "SHA256": "A3B5FE9A64F91DBA0C899E6AC77C5128881472606AFF1353AABEB46648BCE9BD"
+      },
+      {
+        "Path": "src/core/search_data/han.bin",
+        "SHA256": "6EC174BED053B9A5D8AE3E8CFD573A1090889D192DFE30FFAB352134D0E029C8"
+      },
+      {
+        "Path": "src/core/search_data/lower.bin",
+        "SHA256": "94D58375AF65669A3D8E0123C3182587C95B7598FC3DC198D670F1FA9F518F50"
+      },
+      {
+        "Path": "src/core/search_data/pinyin.bin",
+        "SHA256": "B69F349D9DC06131BAEF0F97AF8E943E39B673F875A127D6941313755AA04800"
+      },
+      {
+        "Path": "src/core/search_data/README.md",
+        "SHA256": "BB28692D7CEEDF55A64535C10CD589F3BAF1FEE6127F70095D2D19BEAF72515F"
+      },
+      {
+        "Path": "src/core/search_data/syllables.bin",
+        "SHA256": "628CCE0F6CE3330842AA8B4A050231638984CA5F7FE74CA868496D290C00969F"
+      },
+      {
+        "Path": "src/core/search_data/version.txt",
+        "SHA256": "E1847500CF6699FB51E6A56ABA6185579455C44B51EEB4F90810C95AB74DBFC1"
+      },
+      {
+        "Path": "src/core/search_data/word.bin",
+        "SHA256": "FF6C888311DC1C53995DDB17FF9AFCB8B4FA889658A5BB3DDEEEBE96352B2085"
+      },
+      {
+        "Path": "src/core/search.rs",
+        "SHA256": "000562865DD973F9439662F63DC1CC5D85FF4BEEDFAC75EF72E8800DD021E953"
+      },
+      {
+        "Path": "src/core/service.rs",
+        "SHA256": "D06EBF339D670BFC52CD0F84FF7FC5D44E78F6A7DF357E7F20CBEE0C54201B26"
+      },
+      {
+        "Path": "src/core/storage.rs",
+        "SHA256": "846E24AA389B6C62B8E3D72DB0BFBE5D16864717C2847484F22F1A4312AAB1A5"
+      },
+      {
+        "Path": "src/core/system_tools.json",
+        "SHA256": "5F0E7077EAF1E4E5F63B2366B1ADE0B58FD7D80C8C8599D0E70025F3547D89A4"
+      },
+      {
+        "Path": "src/core/system_tools.rs",
+        "SHA256": "0DB67B0E7E9613B882035E33EBE2649D24A0B8AB2F32D384F1DCAB4CC77DFD8A"
+      },
+      {
+        "Path": "src/core/update.rs",
+        "SHA256": "8DA8A732F201FB25BA8037D1A2D3A7169DEFA23E1345DE941C46107FFCF30A74"
+      },
+      {
+        "Path": "src/fixtures.rs",
+        "SHA256": "5044C57122FDA4DBBE229E6035BB684E5A3A39189FF0D6782FE616AC39A6D2E8"
+      },
+      {
+        "Path": "src/import_preview.rs",
+        "SHA256": "A77D39EE51B1CE807C100D431512551E1928B4F4BAF8C93C447A406CBD77FE80"
+      },
+      {
+        "Path": "src/input.rs",
+        "SHA256": "0DB7C700509C506CF102FD35F03157A51D31853C18D4A532DA7F743C188FD6AF"
+      },
+      {
+        "Path": "src/interaction_probe.rs",
+        "SHA256": "E0EBB04611031C24D5A751D21DE6AAB12CA4675C98423F5F729DA633AD5108F9"
+      },
+      {
+        "Path": "src/lib.rs",
+        "SHA256": "BD639BE4FABB98FA1CA7953CC0FC83DB7CF94E14E24110D3BC6F54F4872AB8EC"
+      },
+      {
+        "Path": "src/lifecycle.rs",
+        "SHA256": "D02A21967A3EA089981B963838612EC4F45EF00CC8AEEE69F9EE56FAE0F47EE8"
+      },
+      {
+        "Path": "src/main.rs",
+        "SHA256": "13FE63EB6E6BE454BF4D2BE8D3412695AE42FA414CAB25FF52BB20C539A81536"
+      },
+      {
+        "Path": "src/measurement.rs",
+        "SHA256": "3E1D9868B0A3B15253F34B93A0F32A6EAE10AD4BC6C70979E8E1F5CC4DB50D02"
+      },
+      {
+        "Path": "src/navigation.rs",
+        "SHA256": "6A5E428C74E0C9D10D6A17281883D1D576ACB14A90A8F0CE16EA76F999176B8A"
+      },
+      {
+        "Path": "src/pages_probe.rs",
+        "SHA256": "7577839315C9B608AD2D36EAC30E14044ABA8E96D5CDBE83EB3F76839ECA0752"
+      },
+      {
+        "Path": "src/platform/mod.rs",
+        "SHA256": "CC20A7A7BFA53DD45CA2DA1D238D4643E8D59C3AC5EBE045DD2F3390B84ADC5E"
+      },
+      {
+        "Path": "src/platform/windows/atomic_file.rs",
+        "SHA256": "C368ED45BB69FA244C717BA5F046D89D76011B7A8920B4FB6E37446CB9777AF5"
+      },
+      {
+        "Path": "src/platform/windows/desktop.rs",
+        "SHA256": "9C3C7FB3144FBD086A0E5086117959A885B342E4A391B865B336C45FB275A955"
+      },
+      {
+        "Path": "src/platform/windows/geometry.rs",
+        "SHA256": "5B64CAD3273A87C02D61094DACEDF2F845008FAABB0B708F0EB9B5640ADFF8CE"
+      },
+      {
+        "Path": "src/platform/windows/hotkey.rs",
+        "SHA256": "A50C26EEF3FAAC952A076FE11776EF239BBAFC4DCEF4C98B1BF95FE581C99ACA"
+      },
+      {
+        "Path": "src/platform/windows/http.rs",
+        "SHA256": "EE10C4334536F8222D975142C050A302547C88031C58F3D6D3F257585580E3B2"
+      },
+      {
+        "Path": "src/platform/windows/icons.rs",
+        "SHA256": "79CCCDF06B95FB68C217A595E272D89F7F72680792548BED8A0F296BB39CEBAF"
+      },
+      {
+        "Path": "src/platform/windows/instance.rs",
+        "SHA256": "B393ED2CAA414A825E1925B11E1650B2EF0585C59246CEEF527297C641C970DD"
+      },
+      {
+        "Path": "src/platform/windows/interaction.rs",
+        "SHA256": "934FDFF1D462D17D51CB8211A9FDB234DE43D774DCBF63600BA54DC9670FBFA8"
+      },
+      {
+        "Path": "src/platform/windows/launch.rs",
+        "SHA256": "8E1BF2FECA4E6A8D93CA7DB438CD123D5BC9F88223F926B676AE35D66BF04645"
+      },
+      {
+        "Path": "src/platform/windows/mod.rs",
+        "SHA256": "F39110A3DE72BCE0860A73626A143FA532BB3DF32D07FD1A5C9417CC5E791DC4"
+      },
+      {
+        "Path": "src/platform/windows/preferences.rs",
+        "SHA256": "61D555E5E0BB1E520878DEC986D5FBC1674ACE628003B7606E7468D6DB8F7319"
+      },
+      {
+        "Path": "src/platform/windows/shell.rs",
+        "SHA256": "9D81D7E7C8182EBD97AA5E7A3860E93F84757B64EDA0EB51DAFDCB888F77056E"
+      },
+      {
+        "Path": "src/platform/windows/system_tools.rs",
+        "SHA256": "9E4C8AAE3F97B7D47D4FF240AC57D934853F157AD016526A7F9ABDF24D6B9E3C"
+      },
+      {
+        "Path": "src/platform/windows/updater.rs",
+        "SHA256": "973FF1769E7FFE408B56B15EBAA663E4865965C6E6477CE44ED871C27B2DCE78"
+      },
+      {
+        "Path": "src/platform/windows/window.rs",
+        "SHA256": "C32A3A4080497D249E110275F93097EB7F2D1EDB84C3A88EFE10C42345A7E1E5"
+      },
+      {
+        "Path": "src/ui.rs",
+        "SHA256": "16336095D5275316E12263040FFE3EF187A8ACB40FC4395FCA2B970B806CB46B"
+      },
+      {
+        "Path": "tests/behavior_contract.rs",
+        "SHA256": "04DEF5F41396B09BF84F1454FFB211A925B8F6D0DEDCA6976D1F70D55BE0DDEC"
+      },
+      {
+        "Path": "tests/data_contract.rs",
+        "SHA256": "AE02D88F866C91C7B37DB97DDA6506FA5928FCFF9A84A9E9856AA0D6BDFC3F17"
+      },
+      {
+        "Path": "tests/discovery_contract.rs",
+        "SHA256": "F4263511B1D393975CBEAEDF827862C98D2BAE464E757A31C8087D5CEECC6336"
+      },
+      {
+        "Path": "tests/discovery_runtime.rs",
+        "SHA256": "039FFE104AF498A7B17080AEA900A7B5867CF3A0B73A1C6E15149B5128228B95"
+      },
+      {
+        "Path": "tests/history_library.rs",
+        "SHA256": "AD2152B83CE70DCCB9E36E87208AAD81E55FA6659EEED339A434377B1A23F13D"
+      },
+      {
+        "Path": "tests/pages_contract.rs",
+        "SHA256": "F489C6995FB438BB54FADA395EEA9FA36995D7963FDD280A9BC933AB375D690D"
+      },
+      {
+        "Path": "tests/support/mod.rs",
+        "SHA256": "7D6CFC3E11D926A36ABB0DF6EA6FA32B3BBD196C796460F7AFC73A97139F3ADB"
+      },
+      {
+        "Path": "ui/app.slint",
+        "SHA256": "5194E36277C955E6C4B0E36250650467A1666FA3BFEDA6F265967D84DC2A69B0"
+      },
+      {
+        "Path": "ui/assets/fluent/ic_fluent_apps_24_regular.svg",
+        "SHA256": "49ACD3CA4B7FFFCE746312A729EBC007EC82D3D7372BE9830577F50B541FA6DF"
+      },
+      {
+        "Path": "ui/assets/fluent/ic_fluent_calculator_24_regular.svg",
+        "SHA256": "142C592DD1E26ABD4395507B32B7AE1DC9A3D18FEE30C4E7653D7B8811701D3D"
+      },
+      {
+        "Path": "ui/assets/fluent/ic_fluent_code_24_regular.svg",
+        "SHA256": "03090C9E30C66BD926AD19FB1E5CCD07BDD9C2815881CA5A83A8788F6FCE2F63"
+      },
+      {
+        "Path": "ui/assets/fluent/ic_fluent_desktop_pulse_24_regular.svg",
+        "SHA256": "073D8DE9BE495F9E58C18A66EC2F8D35B7CD134C5B71FCDFC36B024F4FFDE4A1"
+      },
+      {
+        "Path": "ui/assets/fluent/ic_fluent_developer_board_24_regular.svg",
+        "SHA256": "CACA0F3C34ABFD3F0D80544FDCF3359C7A14646B8ED0C704C9D90A1CC666440D"
+      },
+      {
+        "Path": "ui/assets/fluent/ic_fluent_folder_24_regular.svg",
+        "SHA256": "B223F863F213DCC1BF75A65D31A287830380C08503C79565B317C77B10E7A2E1"
+      },
+      {
+        "Path": "ui/assets/fluent/ic_fluent_search_20_regular.svg",
+        "SHA256": "5AC1EAC82DF532662CD1BAD2C8E55763846E1B258740BCBB0612A48D22630D40"
+      },
+      {
+        "Path": "ui/assets/fluent/ic_fluent_settings_24_regular.svg",
+        "SHA256": "5AC05E6E11C9EC9F24703091C42CA1F5C91F4032CB0EEE35C892D1872A38871B"
+      },
+      {
+        "Path": "ui/assets/fluent/ic_fluent_star_16_filled.svg",
+        "SHA256": "3F96EC326175B38593F80DFA9EA47D1EA7A726D8614D042C19871B9155667638"
+      },
+      {
+        "Path": "ui/assets/fluent/ic_fluent_star_16_regular.svg",
+        "SHA256": "C5ABB68053095622285EDB425B1C072665EC3FEF7FB4FA0777C978169AD5889E"
+      },
+      {
+        "Path": "ui/assets/fluent/ic_fluent_window_console_20_regular.svg",
+        "SHA256": "F2B46D93F5B922C79ECD04C9CBAD61C26F6BD0491B80763DE4409F059C43A202"
+      },
+      {
+        "Path": "ui/assets/fluent/LICENSE.txt",
+        "SHA256": "69BC45DC42B9ACB96A69823ADBC6AE538374E3C0BDE169B855B32C48EAAEF52F"
+      },
+      {
+        "Path": "ui/assets/logo.png",
+        "SHA256": "EE4C40D5765E2596B2EBDC20FAB3AB04301E6B26FB33A65074FEBB477DEFD82A"
+      },
+      {
+        "Path": "ui/assets/README.md",
+        "SHA256": "5E02B4DE68208FD58A88600E77688BB82DA4433F947E294C3E69F2456DEA9D70"
+      },
+      {
+        "Path": "ui/assets/velo.ico",
+        "SHA256": "90B1410469F1F2D7BD87D1979E356EB74586429C9AA0ED8B45168A8085B00298"
+      },
+      {
+        "Path": "ui/components.slint",
+        "SHA256": "6459ECEF30BECE5BB2BF0900D08E5FA5155847C459E549A88418B0503EFDBEEA"
+      },
+      {
+        "Path": "ui/settings.slint",
+        "SHA256": "0DAC7D7C0E3407E498472BE04E2C231453774FF9E5CCDB17F030FEF9D2D3B224"
+      },
+      {
+        "Path": "windows-toolchain.json",
+        "SHA256": "850BE7ABA1DC71C8FDEB44A9950DDFC80E5D1EBE3E77B6E93D9E51126042194C"
+      }
+    ]
+  },
+  "Inputs": {
+    "config.json": "1839E326E5501DAA350418D81B7732C103EB7DB5455D145BD94B72B48349775D",
+    "index.json": "EAC34FE47C2CB743479CCE2E29A37348F700D67C5BC14DAF2DC73CB93D64508D",
+    "history.json": "300716DFFF2BCBF12B317BAD430A3F553842C13616BB28C636E620E69681CA11",
+    "application-library.json": "A5E8BC981B03563AF3D26E5EEF9D263D9EAA4181C5DA758E8DCBF82160FF01F6",
+    "quick-launch.json": null
+  },
+  "OriginalInputs": {
+    "config.json": "6DECBCB844CC656D0EAFBD340F7B8BF3B877FAAD593D543F85A37B15EB95143F",
+    "index.json": "EAC34FE47C2CB743479CCE2E29A37348F700D67C5BC14DAF2DC73CB93D64508D",
+    "history.json": "300716DFFF2BCBF12B317BAD430A3F553842C13616BB28C636E620E69681CA11",
+    "application-library.json": "A5E8BC981B03563AF3D26E5EEF9D263D9EAA4181C5DA758E8DCBF82160FF01F6",
+    "quick-launch.json": null
+  },
+  "IconDisk": {
+    "Files": 742,
+    "Bytes": 2077113,
+    "SHA256": "DF987A35587C858884B58A0F4933684FF36F4DBFF50A49729CC68F6A3DE86BE7"
+  },
+  "Environment": {
+    "Locale": "zh-CN",
+    "Build": "26340",
+    "Windows": "10.0.26340",
+    "BootUtc": "2026-10-31T10:03:28.458604Z",
+    "Monitors": [
+      "event=probe_monitor x=1920 y=42 width=1920 height=1080 work_x=1920 work_y=42 work_width=1920 work_height=1032 dpi=96 primary=false",
+      "event=probe_monitor x=0 y=0 width=1920 height=1080 work_x=0 work_y=0 work_width=1920 work_height=1032 dpi=96 primary=true"
+    ],
+    "ActiveIME": null,
+    "GPU": [
+      {
+        "Caption": "OrayIddDriver Device",
+        "DriverVersion": "17.50.19.949"
+      },
+      {
+        "Caption": "Todesk Virtual Display Adapter",
+        "DriverVersion": "16.44.2.509"
+      },
+      {
+        "Caption": "GameViewer Virtual Display Adapter",
+        "DriverVersion": "15.6.5.199"
+      },
+      {
+        "Caption": "Intel(R) UHD Graphics 630",
+        "DriverVersion": "30.0.100.9805"
+      }
+    ],
+    "PowerScheme": "电源方案 GUID: 387451dd-3b73-490f-bd3a-318661c90156  (卓越性能)",
+    "CPU": [
+      "Intel(R) Core(TM) i7-10700 CPU @ 2.90GHz"
+    ]
+  }
+}

@@ -1,0 +1,395 @@
+{
+  "Sessions": [
+    {
+      "Run": "femtovg-dark-pages",
+      "RelativeRun": "final-native/dark/runs/femtovg-dark-pages",
+      "Edition": "femtovg",
+      "ExecutableSHA256": "8C5A183653EB678E68B81091EDB3428628EE059ED3CA746BE8453EFA5291D547",
+      "PID": 64052,
+      "StartedTicks": 639300051022027298,
+      "FilesSHA256": {
+        "completion.json": "71ED3BDDFC243040040D66534C080275BDEFBDCC918BA8E27FFC7C894B1C3C43",
+        "session.json": "795A606F5DB26098B93EBFB4E9D71F226EECC37E05BE255D0D79594FBC35CA7D"
+      },
+      "Completion": {
+        "Completed": true,
+        "ExitCode": 0,
+        "ProcessId": 64052,
+        "SHA256": "8C5A183653EB678E68B81091EDB3428628EE059ED3CA746BE8453EFA5291D547",
+        "ForcedCleanup": false,
+        "CleanupScope": "This wrapper never terminates a process. External cleanup records take precedence on nonzero exit."
+      },
+      "Cleanup": {}
+    },
+    {
+      "Run": "software-dark-pages",
+      "RelativeRun": "final-native/dark/runs/software-dark-pages",
+      "Edition": "software",
+      "ExecutableSHA256": "A64BE7CCBA0F187EA89EA0C1933658DFE67BC440825EB29D73DDF2C430848659",
+      "PID": 90844,
+      "StartedTicks": 639300043038999182,
+      "FilesSHA256": {
+        "completion.json": "B918D950E6A74FDE7EC9014F1416EA45A58C9E49878E5DC719D8FBAA78FD24B7",
+        "session.json": "29F9AA99C005CB1162F25F73E069AE26867AF2C782FF0D2064B3BBF426E2893B"
+      },
+      "Completion": {
+        "Completed": true,
+        "ExitCode": 0,
+        "ProcessId": 90844,
+        "SHA256": "A64BE7CCBA0F187EA89EA0C1933658DFE67BC440825EB29D73DDF2C430848659",
+        "ForcedCleanup": false,
+        "CleanupScope": "This wrapper never terminates a process. External cleanup records take precedence on nonzero exit."
+      },
+      "Cleanup": {}
+    },
+    {
+      "Run": "wails-dark-pages",
+      "RelativeRun": "final-native/dark/runs/wails-dark-pages",
+      "Edition": "wails",
+      "ExecutableSHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+      "PID": 84504,
+      "StartedTicks": 639300057649371751,
+      "FilesSHA256": {
+        "completion.json": "0452AA5A7E4514F6952A883B80878D337F3879781BF9DA456F055FB77CCEAD09",
+        "session.json": "EC97E37F7C258AB41D9EAC7E687FAC76B5FF6B3AF13F5A13E8F0E76A29E7B02A"
+      },
+      "Completion": {
+        "Completed": true,
+        "ExitCode": 0,
+        "ProcessId": 84504,
+        "SHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+        "ForcedCleanup": false,
+        "CleanupScope": "This wrapper never terminates a process. External cleanup records take precedence on nonzero exit."
+      },
+      "Cleanup": {}
+    },
+    {
+      "Run": "femtovg-final",
+      "RelativeRun": "final-native/light/runs/femtovg-final",
+      "Edition": "femtovg",
+      "ExecutableSHA256": "8C5A183653EB678E68B81091EDB3428628EE059ED3CA746BE8453EFA5291D547",
+      "PID": 64668,
+      "StartedTicks": 639299989573989972,
+      "FilesSHA256": {
+        "completion.json": "0E59C6E43FDB07662E115F0E9C24177296EE5351445A9EDB49AE3CB21481D725",
+        "native-recording.json": "BF05D925C8F885968C86FFAFD8AA456E8F940D6ACAE3DF8D4068ACB1A673F69C",
+        "native-resources.json": "96838B4F36BDBDC1D5BA3C46776E7A962356F8A0875BDBF49C9ADF8E9F00AFA9",
+        "session.json": "7EDEC299BE288D2A8CFAB5D130A752C8A98F58E6D96B13BAE5BEE009974E59CE"
+      },
+      "Completion": {
+        "Completed": true,
+        "ExitCode": 0,
+        "ProcessId": 64668,
+        "SHA256": "8C5A183653EB678E68B81091EDB3428628EE059ED3CA746BE8453EFA5291D547",
+        "ForcedCleanup": false,
+        "CleanupScope": "This wrapper never terminates a process. External cleanup records take precedence on nonzero exit."
+      },
+      "Cleanup": {}
+    },
+    {
+      "Run": "software-final",
+      "RelativeRun": "final-native/light/runs/software-final",
+      "Edition": "software",
+      "ExecutableSHA256": "A64BE7CCBA0F187EA89EA0C1933658DFE67BC440825EB29D73DDF2C430848659",
+      "PID": 89416,
+      "StartedTicks": 639299999036189927,
+      "FilesSHA256": {
+        "completion.json": "A640A1DC0070936CED2861E6E41F2919B41DABBB6BD554D8693593F0781567BC",
+        "native-recording.json": "0B3B7896917F22048B487437F1C522D545BFF71E5A5980A16D8626A26B988B90",
+        "native-resources.json": "C8B73A1C05D0480B8077F541042D8DF2190264D0C0E56C6A3D0D231ABCEA63C7",
+        "session.json": "2D9C7D9AC6500102E3DC230E54E6C036FBA0DC5FC094366ED5BED57C9867721F"
+      },
+      "Completion": {
+        "Completed": true,
+        "ExitCode": 0,
+        "ProcessId": 89416,
+        "SHA256": "A64BE7CCBA0F187EA89EA0C1933658DFE67BC440825EB29D73DDF2C430848659",
+        "ForcedCleanup": false,
+        "CleanupScope": "This wrapper never terminates a process. External cleanup records take precedence on nonzero exit."
+      },
+      "Cleanup": {}
+    },
+    {
+      "Run": "software-final-input",
+      "RelativeRun": "final-native/light/runs/software-final-input",
+      "Edition": "software",
+      "ExecutableSHA256": "A64BE7CCBA0F187EA89EA0C1933658DFE67BC440825EB29D73DDF2C430848659",
+      "PID": 63512,
+      "StartedTicks": 639300006720347570,
+      "FilesSHA256": {
+        "completion.json": "99DE71BAA8229021C08B3D9D03BFD7ABB75B5C28BFFA8B12F80051FCAE5F25F4",
+        "session.json": "CFCACD2C2B1FA455056EBDFF94605E951B049CE4FFE825B517B586683A9FA0E1"
+      },
+      "Completion": {
+        "Completed": true,
+        "ExitCode": 0,
+        "ProcessId": 63512,
+        "SHA256": "A64BE7CCBA0F187EA89EA0C1933658DFE67BC440825EB29D73DDF2C430848659",
+        "ForcedCleanup": false,
+        "CleanupScope": "This wrapper never terminates a process. External cleanup records take precedence on nonzero exit."
+      },
+      "Cleanup": {}
+    },
+    {
+      "Run": "femtovg-physical",
+      "RelativeRun": "native/light/runs/femtovg-physical",
+      "Edition": "femtovg",
+      "ExecutableSHA256": "C55E36CB3D6659E839C25F7888AD907BBB33B4368058B5ED38CB2684AEF9139F",
+      "PID": 54756,
+      "StartedTicks": 639299675253421263,
+      "FilesSHA256": {
+        "session.json": "C9E36EA4B1D6D30A628A4849B0365AC0AF5B18D21790002202B0CE35747C5998"
+      },
+      "Completion": null,
+      "Cleanup": {}
+    },
+    {
+      "Run": "femtovg-resume",
+      "RelativeRun": "native/light/runs/femtovg-resume",
+      "Edition": "femtovg",
+      "ExecutableSHA256": "C55E36CB3D6659E839C25F7888AD907BBB33B4368058B5ED38CB2684AEF9139F",
+      "PID": 64444,
+      "StartedTicks": 639299711863146275,
+      "FilesSHA256": {
+        "animation-resources.json": "41EA8D4237D8B3D149FA68CDDD359569ADD4823B4131A7499F30811E47C63A8A",
+        "completion.json": "D0C36FCF338DCA5AFBD5CE75A97BC461CAF2D79B7BFB84AFDB8942D06B790F3F",
+        "session.json": "FEF06FD47416DEC719EE25A5B75736E397DB64BA028F68A3084B1449948054CB"
+      },
+      "Completion": {
+        "Completed": true,
+        "ExitCode": 0,
+        "ProcessId": 64444,
+        "SHA256": "C55E36CB3D6659E839C25F7888AD907BBB33B4368058B5ED38CB2684AEF9139F",
+        "ForcedCleanup": false,
+        "CleanupScope": "This wrapper never terminates a process. External cleanup records take precedence on nonzero exit."
+      },
+      "Cleanup": {}
+    },
+    {
+      "Run": "software-175",
+      "RelativeRun": "native/light/runs/software-175",
+      "Edition": "software",
+      "ExecutableSHA256": "5EB0E03B365B2FD33F4D892F589316C7876235173FF0B28161AA1CB6BD919287",
+      "PID": 62568,
+      "StartedTicks": 639299667923024418,
+      "FilesSHA256": {
+        "completion.json": "FB6E5E35BDB5EC7CC6D5F15407A64FD9DF70804DC9E8D76C9ABA645540825E35",
+        "session.json": "E921250A621E31B0FF40FAF7E7ADED576C786DDC8CAC1C0332DF740EE39884B2"
+      },
+      "Completion": {
+        "Completed": true,
+        "ExitCode": 0,
+        "ProcessId": 62568,
+        "SHA256": "5EB0E03B365B2FD33F4D892F589316C7876235173FF0B28161AA1CB6BD919287",
+        "ForcedCleanup": false,
+        "CleanupScope": "This wrapper never terminates a process. External cleanup records take precedence on nonzero exit."
+      },
+      "Cleanup": {}
+    },
+    {
+      "Run": "software-motion-final",
+      "RelativeRun": "native/light/runs/software-motion-final",
+      "Edition": "software",
+      "ExecutableSHA256": "5EB0E03B365B2FD33F4D892F589316C7876235173FF0B28161AA1CB6BD919287",
+      "PID": 65908,
+      "StartedTicks": 639299939646851885,
+      "FilesSHA256": {
+        "completion.json": "6FE321F9EF2247729E5F6676562C5F004E61FBE2C1FED0CF90D389F122C25286",
+        "native-recording.json": "0EF701A51B5ED5623B9EFA08EC6B53ACA702743F7010A648A95337DBAB45ABD8",
+        "native-resources.json": "D30A17F014F464CBA4252B7249D2436BA8934BE59713988282B70D58C5F54267",
+        "session.json": "4AC24C656DDA9A3CB2B9424CE630617CA1480518D6BBCF2FDD699061EE72D14E"
+      },
+      "Completion": {
+        "Completed": true,
+        "ExitCode": 0,
+        "ProcessId": 65908,
+        "SHA256": "5EB0E03B365B2FD33F4D892F589316C7876235173FF0B28161AA1CB6BD919287",
+        "ForcedCleanup": false,
+        "CleanupScope": "This wrapper never terminates a process. External cleanup records take precedence on nonzero exit."
+      },
+      "Cleanup": {}
+    },
+    {
+      "Run": "software-native-v2",
+      "RelativeRun": "native/light/runs/software-native-v2",
+      "Edition": "software",
+      "ExecutableSHA256": "5EB0E03B365B2FD33F4D892F589316C7876235173FF0B28161AA1CB6BD919287",
+      "PID": 66548,
+      "StartedTicks": 639299637081276987,
+      "FilesSHA256": {
+        "incomplete-cleanup.json": "0448F7D88B09781F2663ABC077C239F1B1320500D3098FA46C51AECEE1C7C19D",
+        "session.json": "D375A13DF035CC7BF2BF03D7788A386ACE3C7BE5083CFE3D7B8517412741935B"
+      },
+      "Completion": null,
+      "Cleanup": {
+        "incomplete-cleanup.json": {
+          "Exited": true,
+          "NormalQuitRequested": true,
+          "Reason": "Session cleanup after an incomplete observation; retain original failure."
+        }
+      }
+    },
+    {
+      "Run": "software-native-v3",
+      "RelativeRun": "native/light/runs/software-native-v3",
+      "Edition": "software",
+      "ExecutableSHA256": "5EB0E03B365B2FD33F4D892F589316C7876235173FF0B28161AA1CB6BD919287",
+      "PID": 60220,
+      "StartedTicks": 639299638616195081,
+      "FilesSHA256": {
+        "completion.json": "678FC5BF8B706C3B7B151A9E2F58006135B1B16A2095E94704B6915E9F4ECF9E",
+        "native-recording.json": "4929236807EC468440F1DC6BD06CF39DDC5A2A635FC8E1276E3B21A1C9F9AE75",
+        "native-resources.json": "EBF01D7BE5C303890048819A9AFF4EC3B17CB8529E09989D01CE9EF911FE8A82",
+        "session.json": "E0B71C2AB50579721C6D2E1338246EA9BDD2B12EF5E108014DEB9E966DE89FFE"
+      },
+      "Completion": {
+        "Completed": true,
+        "ExitCode": 0,
+        "ProcessId": 60220,
+        "SHA256": "5EB0E03B365B2FD33F4D892F589316C7876235173FF0B28161AA1CB6BD919287",
+        "ForcedCleanup": false,
+        "CleanupScope": "This wrapper never terminates a process. External cleanup records take precedence on nonzero exit."
+      },
+      "Cleanup": {}
+    },
+    {
+      "Run": "software-physical",
+      "RelativeRun": "native/light/runs/software-physical",
+      "Edition": "software",
+      "ExecutableSHA256": "5EB0E03B365B2FD33F4D892F589316C7876235173FF0B28161AA1CB6BD919287",
+      "PID": 45716,
+      "StartedTicks": 639299626403326429,
+      "FilesSHA256": {
+        "completion.json": "E78C0325171793E8D0E354001E156A43628AE1B8271375A8FC8F6E08B20383BB",
+        "native-recording.json": "5CDCA4C6E426AC1A75E602CEFE2EBBCFFF86C1A09118F783423E96E96A9C0D17",
+        "native-resources.json": "5A339D6FBFF1BB590C439B33CB261D40CCE11F3ACDA765D883B70C5DD3A89C92",
+        "session.json": "11AA350753450A01269DFBAFF9D0C7BFF177E5709A1147DBB71FB646573A2547"
+      },
+      "Completion": {
+        "Completed": true,
+        "ExitCode": 0,
+        "ProcessId": 45716,
+        "SHA256": "5EB0E03B365B2FD33F4D892F589316C7876235173FF0B28161AA1CB6BD919287",
+        "ForcedCleanup": false,
+        "CleanupScope": "This wrapper never terminates a process. External cleanup records take precedence on nonzero exit."
+      },
+      "Cleanup": {}
+    },
+    {
+      "Run": "software-window-v1",
+      "RelativeRun": "native/light/runs/software-window-v1",
+      "Edition": "software",
+      "ExecutableSHA256": "5EB0E03B365B2FD33F4D892F589316C7876235173FF0B28161AA1CB6BD919287",
+      "PID": 59668,
+      "StartedTicks": 639299644655812357,
+      "FilesSHA256": {
+        "incomplete-cleanup.json": "0448F7D88B09781F2663ABC077C239F1B1320500D3098FA46C51AECEE1C7C19D",
+        "session.json": "CE0CE84287BC4043A8699384804B0DCFDF679A70AD14CE94042026B4447AE71A"
+      },
+      "Completion": null,
+      "Cleanup": {
+        "incomplete-cleanup.json": {
+          "Exited": true,
+          "NormalQuitRequested": true,
+          "Reason": "Session cleanup after an incomplete observation; retain original failure."
+        }
+      }
+    },
+    {
+      "Run": "wails-motion",
+      "RelativeRun": "native/light/runs/wails-motion",
+      "Edition": "wails",
+      "ExecutableSHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+      "PID": 86512,
+      "StartedTicks": 639299918463656542,
+      "FilesSHA256": {
+        "followup-cleanup.json": "C587E259D5F3C34BA1DB4B898BDEDF0F613E1695FAB1EEC9BC4C7A2975FB5279",
+        "session.json": "35BC7532CBF76F6C9C35F33C69E6FF79781BBFF92D10C9C91E61076EC658F9EC"
+      },
+      "Completion": null,
+      "Cleanup": {
+        "followup-cleanup.json": {
+          "ProcessId": 86512,
+          "ExitObserved": true,
+          "CleanupRequest": "normal API quit after recorder startup race",
+          "PriorWrapperFailed": true
+        }
+      }
+    },
+    {
+      "Run": "wails-motion-v2",
+      "RelativeRun": "native/light/runs/wails-motion-v2",
+      "Edition": "wails",
+      "ExecutableSHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+      "PID": 71468,
+      "StartedTicks": 639299920164937951,
+      "FilesSHA256": {
+        "completion.json": "9A5557B9C7A711C0EA91CFC0C3DAFFB9580CE9A191404E81F8DBB5E46728059A",
+        "native-recording.json": "A07280EEFE29660457E036B0916DA260C5FBA8696C9E2930913416D648117953",
+        "native-resources.json": "7B4DB7F1067055C8BC0D18C8B0602F8278A4A8F0E847C01875DC401CCB19BFF2",
+        "session.json": "A09DFA16E1C54016E294A5523F72441F72CC7B74595DD1E7E1B18058691A60C4"
+      },
+      "Completion": {
+        "Completed": true,
+        "ExitCode": 0,
+        "ProcessId": 71468,
+        "SHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+        "ForcedCleanup": false,
+        "CleanupScope": "This wrapper never terminates a process. External cleanup records take precedence on nonzero exit."
+      },
+      "Cleanup": {}
+    },
+    {
+      "Run": "wails-recording-final",
+      "RelativeRun": "native/light/runs/wails-recording-final",
+      "Edition": "wails",
+      "ExecutableSHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+      "PID": 78716,
+      "StartedTicks": 639299951811895132,
+      "FilesSHA256": {
+        "collector-cleanup.json": "CB49A9D21D3F0A6EF50D36D9F67C5087376AE486E2B162CCFA92C0ECADF46187",
+        "completion.json": "630CF1DA4BD529286CA983153F63FAF1C1716DC7E0F66F73A05E3DF1DF962E10",
+        "session.json": "CC70ABF18450CD69AC0E02D303F474C84D4EDB5A6C1D6C6AB26890C1C02A63B9"
+      },
+      "Completion": {
+        "Completed": true,
+        "ExitCode": 0,
+        "ProcessId": 78716,
+        "SHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+        "ForcedCleanup": false,
+        "CleanupScope": "This wrapper never terminates a process. External cleanup records take precedence on nonzero exit."
+      },
+      "Cleanup": {
+        "collector-cleanup.json": {
+          "CollectorProcessId": 70760,
+          "ForcedCollectorCleanup": true,
+          "TargetExitedNormally": true,
+          "TraceEnded": true,
+          "Reason": "WGC teardown blocked after the end row was flushed; only this read-only collector process was terminated."
+        }
+      }
+    },
+    {
+      "Run": "wails-geometry",
+      "RelativeRun": "runs/wails-geometry",
+      "Edition": "wails",
+      "ExecutableSHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+      "PID": 46036,
+      "StartedTicks": 639299582219121982,
+      "FilesSHA256": {
+        "completion.json": "C561303E94BD96577F4E6D23D3006A648AADDCAAD919941457643449A9AAF2AF",
+        "session.json": "72946D6D17919E7585FF8503D474F033FEDCF22B8FC721D7CC73EA024A5608B3"
+      },
+      "Completion": {
+        "Completed": true,
+        "ExitCode": 0,
+        "ProcessId": 46036,
+        "SHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+        "ForcedCleanup": false,
+        "CleanupScope": "This wrapper never terminates a process. External cleanup records take precedence on nonzero exit."
+      },
+      "Cleanup": {}
+    }
+  ],
+  "Scope": "Missing completion remains unknown; collector forced cleanup is separate from the target exit. No reconstructed exit code."
+}

@@ -1,0 +1,210 @@
+{
+  "Date": "2026-11-13 Asia/Shanghai",
+  "Rows": [
+    {
+      "Renderer": "software",
+      "ScalePercent": 100,
+      "ActualInputDPI": 96,
+      "ExecutableSHA256": "5E7C017DDA3FF691E7FF8DCBFEAF149E5A766C1F8DC73A816BB5C4A9F7C4C66B",
+      "OperatorReply": "100% 全部正常",
+      "OperatorConfirmed": [
+        "Layout",
+        "Pinyin candidate location",
+        "Candidate paging",
+        "Word selection",
+        "Escape cancellation",
+        "English abc"
+      ],
+      "Evidence": "Direct operator reply plus passive native DPI checkpoint and application layouts/edits.",
+      "Checkpoint": "physical/software-100-physical.json",
+      "LoggedEditCountsAtDPIWholeRun": {
+        "Edits": 11,
+        "Composing": 5,
+        "NonComposing": 6,
+        "ThreeByteNonComposing": 2
+      },
+      "CandidateUIIndependentlyInstrumented": false,
+      "Scope": "Physical-keyboard behavior is operator-confirmed. Logs retain composition/visibility/focus and redacted byte counts; synthetic=false alone is not physical-input proof."
+    },
+    {
+      "Renderer": "software",
+      "ScalePercent": 125,
+      "ActualInputDPI": 120,
+      "ExecutableSHA256": "5E7C017DDA3FF691E7FF8DCBFEAF149E5A766C1F8DC73A816BB5C4A9F7C4C66B",
+      "OperatorReply": "125% 布局和输入全部正常",
+      "OperatorConfirmed": [
+        "Layout",
+        "Pinyin candidate location",
+        "Candidate paging",
+        "Word selection",
+        "Escape cancellation",
+        "English abc"
+      ],
+      "Evidence": "Direct operator reply plus passive native DPI checkpoint and application layouts/edits.",
+      "Checkpoint": "physical/software-125-physical.json",
+      "LoggedEditCountsAtDPIWholeRun": {
+        "Edits": 12,
+        "Composing": 4,
+        "NonComposing": 8,
+        "ThreeByteNonComposing": 1
+      },
+      "CandidateUIIndependentlyInstrumented": false,
+      "Scope": "Physical-keyboard behavior is operator-confirmed. Logs retain composition/visibility/focus and redacted byte counts; synthetic=false alone is not physical-input proof."
+    },
+    {
+      "Renderer": "software",
+      "ScalePercent": 150,
+      "ActualInputDPI": 144,
+      "ExecutableSHA256": "5E7C017DDA3FF691E7FF8DCBFEAF149E5A766C1F8DC73A816BB5C4A9F7C4C66B",
+      "OperatorReply": "150% 布局和输入全部正常",
+      "OperatorConfirmed": [
+        "Layout",
+        "Pinyin candidate location",
+        "Candidate paging",
+        "Word selection",
+        "Escape cancellation",
+        "English abc"
+      ],
+      "Evidence": "Direct operator reply plus passive native DPI checkpoint and application layouts/edits.",
+      "Checkpoint": "physical/software-150-physical.json",
+      "LoggedEditCountsAtDPIWholeRun": {
+        "Edits": 11,
+        "Composing": 3,
+        "NonComposing": 8,
+        "ThreeByteNonComposing": 2
+      },
+      "CandidateUIIndependentlyInstrumented": false,
+      "Scope": "Physical-keyboard behavior is operator-confirmed. Logs retain composition/visibility/focus and redacted byte counts; synthetic=false alone is not physical-input proof."
+    },
+    {
+      "Renderer": "software",
+      "ScalePercent": 175,
+      "ActualInputDPI": 168,
+      "ExecutableSHA256": "5E7C017DDA3FF691E7FF8DCBFEAF149E5A766C1F8DC73A816BB5C4A9F7C4C66B",
+      "OperatorReply": "175% 布局和输入全部正常",
+      "OperatorConfirmed": [
+        "Layout",
+        "Pinyin candidate location",
+        "Candidate paging",
+        "Word selection",
+        "Escape cancellation",
+        "English abc"
+      ],
+      "Evidence": "Direct operator reply plus passive native DPI checkpoint and application layouts/edits.",
+      "Checkpoint": "physical/software-175-physical.json",
+      "LoggedEditCountsAtDPIWholeRun": {
+        "Edits": 9,
+        "Composing": 4,
+        "NonComposing": 5,
+        "ThreeByteNonComposing": 1
+      },
+      "CandidateUIIndependentlyInstrumented": false,
+      "Scope": "Physical-keyboard behavior is operator-confirmed. Logs retain composition/visibility/focus and redacted byte counts; synthetic=false alone is not physical-input proof."
+    },
+    {
+      "Renderer": "femtovg",
+      "ScalePercent": 100,
+      "ActualInputDPI": 96,
+      "ExecutableSHA256": "D81F31ED8AB3C0D45A3565CDC8AA412B3FB870C0CC350204178CDE44456B6487",
+      "OperatorReply": "FemtoVG 100% 布局和输入全部正常",
+      "OperatorConfirmed": [
+        "Layout",
+        "Pinyin candidate location",
+        "Candidate paging",
+        "Word selection",
+        "Escape cancellation",
+        "English abc"
+      ],
+      "Evidence": "Direct operator reply plus passive native DPI checkpoint and application layouts/edits.",
+      "Checkpoint": "physical/femtovg-100-physical.json",
+      "LoggedEditCountsAtDPIWholeRun": {
+        "Edits": 17,
+        "Composing": 4,
+        "NonComposing": 13,
+        "ThreeByteNonComposing": 4
+      },
+      "CandidateUIIndependentlyInstrumented": false,
+      "Scope": "Physical-keyboard behavior is operator-confirmed. Logs retain composition/visibility/focus and redacted byte counts; synthetic=false alone is not physical-input proof."
+    },
+    {
+      "Renderer": "femtovg",
+      "ScalePercent": 125,
+      "ActualInputDPI": 120,
+      "ExecutableSHA256": "D81F31ED8AB3C0D45A3565CDC8AA412B3FB870C0CC350204178CDE44456B6487",
+      "OperatorReply": "FemtoVG 125% 布局和输入全部正常",
+      "OperatorConfirmed": [
+        "Layout",
+        "Pinyin candidate location",
+        "Candidate paging",
+        "Word selection",
+        "Escape cancellation",
+        "English abc"
+      ],
+      "Evidence": "Direct operator reply plus passive native DPI checkpoint and application layouts/edits.",
+      "Checkpoint": "physical/femtovg-125-physical.json",
+      "LoggedEditCountsAtDPIWholeRun": {
+        "Edits": 5,
+        "Composing": 2,
+        "NonComposing": 3,
+        "ThreeByteNonComposing": 1
+      },
+      "CandidateUIIndependentlyInstrumented": false,
+      "Scope": "Physical-keyboard behavior is operator-confirmed. Logs retain composition/visibility/focus and redacted byte counts; synthetic=false alone is not physical-input proof."
+    },
+    {
+      "Renderer": "femtovg",
+      "ScalePercent": 150,
+      "ActualInputDPI": 144,
+      "ExecutableSHA256": "D81F31ED8AB3C0D45A3565CDC8AA412B3FB870C0CC350204178CDE44456B6487",
+      "OperatorReply": "FemtoVG 150% 布局和输入全部正常",
+      "OperatorConfirmed": [
+        "Layout",
+        "Pinyin candidate location",
+        "Candidate paging",
+        "Word selection",
+        "Escape cancellation",
+        "English abc"
+      ],
+      "Evidence": "Direct operator reply and 144 DPI application layouts enclosing the actual edits. Later passive 96 DPI checkpoint kept as a mismatching post-restoration snapshot.",
+      "Checkpoint": "physical/femtovg-150-physical.json",
+      "LoggedEditCountsAtDPIWholeRun": {
+        "Edits": 6,
+        "Composing": 3,
+        "NonComposing": 3,
+        "ThreeByteNonComposing": 1
+      },
+      "CandidateUIIndependentlyInstrumented": false,
+      "Scope": "Physical-keyboard behavior is operator-confirmed. Logs retain composition/visibility/focus and redacted byte counts; synthetic=false alone is not physical-input proof."
+    },
+    {
+      "Renderer": "femtovg",
+      "ScalePercent": 175,
+      "ActualInputDPI": 168,
+      "ExecutableSHA256": "D81F31ED8AB3C0D45A3565CDC8AA412B3FB870C0CC350204178CDE44456B6487",
+      "OperatorReply": "FemtoVG 175% 布局和输入全部正常，已保持",
+      "OperatorConfirmed": [
+        "Layout",
+        "Pinyin candidate location",
+        "Candidate paging",
+        "Word selection",
+        "Escape cancellation",
+        "English abc"
+      ],
+      "Evidence": "Direct operator reply plus passive native DPI checkpoint and application layouts/edits.",
+      "Checkpoint": "physical/femtovg-175-physical.json",
+      "LoggedEditCountsAtDPIWholeRun": {
+        "Edits": 5,
+        "Composing": 2,
+        "NonComposing": 3,
+        "ThreeByteNonComposing": 1
+      },
+      "CandidateUIIndependentlyInstrumented": false,
+      "Scope": "Physical-keyboard behavior is operator-confirmed. Logs retain composition/visibility/focus and redacted byte counts; synthetic=false alone is not physical-input proof."
+    }
+  ],
+  "CurrentExecutableMatrixRows": 8,
+  "PhysicalInputSource": "Direct user participation in this chat, with no automated typing in these sessions.",
+  "Scale200Percent": "Not tested: prior user display choices stop at 175%; not relabeled as passed.",
+  "OriginalPhysicalMatricesUnchanged": true,
+  "RS13Complete": false
+}

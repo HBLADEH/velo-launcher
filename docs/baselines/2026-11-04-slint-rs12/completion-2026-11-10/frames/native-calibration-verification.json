@@ -1,0 +1,25 @@
+{
+  "RecordedAtUtc": "2026-11-09T17:35:39.6452969Z",
+  "Passed": true,
+  "ObserverSHA256": "FFAA0B25B59C849F5458B6AA50097E3ADE265D4189737766DB4EE6A8065E2581",
+  "ObserverSourceSHA256": "618BCFEB8B3BFD441997D7F3BB26C6E9967727168A519190BED9EA3FD8DC3688",
+  "Frames": 137,
+  "GeometryTransitions": 4,
+  "CapturedSizes": [
+    {
+      "Name": "380, 217",
+      "Count": 46
+    },
+    {
+      "Name": "380, 237",
+      "Count": 73
+    },
+    {
+      "Name": "480, 277",
+      "Count": 18
+    }
+  ],
+  "NoImagesSaved": true,
+  "ProductProcessesStarted": false,
+  "Scope": "Self-owned non-activating test window resized/moved on its timer; present timestamps must follow observed geometry. No input synthesized; no application frame/readiness acceptance implied."
+}

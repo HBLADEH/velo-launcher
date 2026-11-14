@@ -1,0 +1,42 @@
+{
+  "SchemaVersion": 1,
+  "InputPath": "desktop-latency.csv",
+  "InputSHA256": "027DDCFF29587767AC3FDEBB2D094EF81E28CF2C50E4E590A395A3D6469FF8B9",
+  "PercentileMethod": "Nearest rank: sorted[ceil(0.95*n)-1]; median averages the middle pair when n is even.",
+  "Groups": [
+    {
+      "Kind": "HotkeyActivation",
+      "ExecutableSHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+      "EnvironmentId": "3B1434C9C99AFA1997B4B26882AA485B489A2EB93FEDB670C07E48803DA16823",
+      "InputId": "4F199EEA23BF1258C3A98A684D259AF3DAFD9F0766A1D920592C905F4BDC2D5F",
+      "Method": "PhysicalKeyboardToAcceptedCharacterUpperBound",
+      "Boundary": "KeyDownToEditable",
+      "ValidSamples": 20,
+      "InvalidSamples": 0,
+      "MedianMilliseconds": 561.1479999999999,
+      "P95Milliseconds": 1241.055,
+      "MinimumSamples": 20,
+      "SampleCountSatisfied": true
+    }
+  ],
+  "Coverage": [
+    {
+      "ExecutableSHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+      "EnvironmentId": "3B1434C9C99AFA1997B4B26882AA485B489A2EB93FEDB670C07E48803DA16823",
+      "InputId": "4F199EEA23BF1258C3A98A684D259AF3DAFD9F0766A1D920592C905F4BDC2D5F",
+      "Method": "PhysicalKeyboardToAcceptedCharacterUpperBound",
+      "MissingKinds": [
+        "ColdStartup",
+        "WarmStartup"
+      ],
+      "AllSampleCountsSatisfied": false
+    }
+  ],
+  "MissingKinds": [
+    "ColdStartup",
+    "WarmStartup"
+  ],
+  "AllSampleCountsSatisfied": false,
+  "Note": "Summarizes supplied desktop evidence only; does not measure latency or establish that a cold condition/input-readiness claim is true.",
+  "ExportNote": "Evidence references made relative; statistics unchanged. Collector completion and operator reliability review are separate from valid-character count."
+}

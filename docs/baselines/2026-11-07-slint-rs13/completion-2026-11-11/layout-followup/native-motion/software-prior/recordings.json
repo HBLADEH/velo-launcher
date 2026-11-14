@@ -1,0 +1,4017 @@
+{
+  "Edition": "software",
+  "ExecutableSHA256": "5EB0E03B365B2FD33F4D892F589316C7876235173FF0B28161AA1CB6BD919287",
+  "ProcessId": 65908,
+  "StartedTicks": 639299939646851885,
+  "CaptureReady": {
+    "event": "capture_ready",
+    "qpc": 621758811433,
+    "qpc_frequency": 10000000,
+    "pid": 65908,
+    "creation_filetime_100ns": 134388707646851885,
+    "backend": "WindowsGraphicsCapture",
+    "desktop_frame": false,
+    "cursor_captured": false,
+    "secondary_windows": true
+  },
+  "CollectorSHA256": "AD6A75A6EA945AB22055E5581EA387A9065EA0C388E3A04DC795616ED7D703EE",
+  "RawTraceSHA256": "D61B2B8C4A6E22F1AAF7E55BA8026BA1C00F3603B35D9D83C287BA82060FA71B",
+  "Ended": true,
+  "Clips": [
+    {
+      "Name": "settings-enter",
+      "SavedFrames": 7,
+      "ChangedIntervals": 6,
+      "MajorChangeIntervals": 5,
+      "PossibleStorageLimit": false,
+      "NativeDPI": [
+        96
+      ],
+      "OriginalFrames": [
+        {
+          "File": "settings-enter/frame-0.bmp",
+          "SHA256": "68D9F8A071C4E7ACEED9A0BFF27D2210CB94BC3C479F6AB7D2A0D7BCA05D260F",
+          "Bytes": 1567158
+        },
+        {
+          "File": "settings-enter/frame-2.bmp",
+          "SHA256": "4D1A429A392A3E9C5B67B8128605018DCC7CFCF57FC31F1BF9260980CF124114",
+          "Bytes": 1567158
+        },
+        {
+          "File": "settings-enter/frame-4.bmp",
+          "SHA256": "47BCA2E209048D374F568178DDB735970ABC56FF86293D9D2F40B3FB46448751",
+          "Bytes": 1567158
+        },
+        {
+          "File": "settings-enter/frame-6.bmp",
+          "SHA256": "0CCA33631B61A97F0F94223F121CA5B70E8850DECABA5B3BDEC04399CE4DC2A8",
+          "Bytes": 1567158
+        },
+        {
+          "File": "settings-enter/frame-7.bmp",
+          "SHA256": "3C6F358810B3D2BE0481F41E044F655FBF3BA9F19E650A6C869730FF7DA49C48",
+          "Bytes": 1567158
+        },
+        {
+          "File": "settings-enter/frame-9.bmp",
+          "SHA256": "4B48C5D84CA70A34FA98F3032792EA61985CED23020DF5A0FAFB9ADE652C90AA",
+          "Bytes": 1567158
+        },
+        {
+          "File": "settings-enter/frame-10.bmp",
+          "SHA256": "E3D510211FAA774244946BD6861C06CA2B31229977B37ADC9D57F1D7BA4754B8",
+          "Bytes": 1567158
+        }
+      ],
+      "Published": true,
+      "Clock": "Original WGC surface time and observer QPC; not final desktop/photon time",
+      "ObservedSpanMilliseconds": 264.5527,
+      "MaximumObservedGapMilliseconds": 93.7894,
+      "PreviewOriginalFrameRange": [
+        0,
+        6
+      ],
+      "PreviewClock": "Actual observer intervals, idle lead/trail trimmed; last frame held 200ms for review",
+      "PreviewScaled": false
+    },
+    {
+      "Name": "private-idle-1",
+      "SavedFrames": 0,
+      "ChangedIntervals": 0,
+      "MajorChangeIntervals": 0,
+      "PossibleStorageLimit": false,
+      "NativeDPI": [],
+      "OriginalFrames": [],
+      "Published": false,
+      "Clock": "Original WGC surface time and observer QPC; not final desktop/photon time"
+    },
+    {
+      "Name": "settings-exit",
+      "SavedFrames": 7,
+      "ChangedIntervals": 6,
+      "MajorChangeIntervals": 4,
+      "PossibleStorageLimit": false,
+      "NativeDPI": [
+        96
+      ],
+      "OriginalFrames": [
+        {
+          "File": "settings-exit/frame-16.bmp",
+          "SHA256": "A30AAD2D45AB0C454FD393DDC9AEE662FA27A4EC514FBB93D07103EE6F20DAD1",
+          "Bytes": 1567158
+        },
+        {
+          "File": "settings-exit/frame-17.bmp",
+          "SHA256": "6AF0220E757580C739FF61B3DD3FA87C5EF3111F23D8BFC2AA6F906C46B51A53",
+          "Bytes": 1567158
+        },
+        {
+          "File": "settings-exit/frame-18.bmp",
+          "SHA256": "7B001BB7685A1E7C48DBE200408C3CEAA8825D4BD8CA658E03873FA4C18B54A6",
+          "Bytes": 1567158
+        },
+        {
+          "File": "settings-exit/frame-21.bmp",
+          "SHA256": "0633F4A939A18A29B0866CBE4349F0D4D62D4FECAF4FB45B7D04993D1338B5DB",
+          "Bytes": 1567158
+        },
+        {
+          "File": "settings-exit/frame-23.bmp",
+          "SHA256": "44FD0D1F037201F2F4769384597C3D19CAF4DE0BC7CD3E1648E8DBA9767F36E9",
+          "Bytes": 1567158
+        },
+        {
+          "File": "settings-exit/frame-24.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "settings-exit/frame-30.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        }
+      ],
+      "Published": true,
+      "Clock": "Original WGC surface time and observer QPC; not final desktop/photon time",
+      "ObservedSpanMilliseconds": 516.6581,
+      "MaximumObservedGapMilliseconds": 322.9419,
+      "PreviewOriginalFrameRange": [
+        0,
+        5
+      ],
+      "PreviewClock": "Actual observer intervals, idle lead/trail trimmed; last frame held 200ms for review",
+      "PreviewScaled": false
+    },
+    {
+      "Name": "private-idle-2",
+      "SavedFrames": 59,
+      "ChangedIntervals": 58,
+      "MajorChangeIntervals": 0,
+      "PossibleStorageLimit": false,
+      "NativeDPI": [
+        96
+      ],
+      "OriginalFrames": [
+        {
+          "File": "private-idle-2/frame-31.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-2/frame-32.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-2/frame-33.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-2/frame-34.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-2/frame-35.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-2/frame-75.bmp",
+          "SHA256": "A3D840571F3EFECBE60B9472362681A807BEB238B313D9466DA38056FDA8342E",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-2/frame-76.bmp",
+          "SHA256": "148C8B93AD16F64D707046368C4FDC5DF42B93471A29B970C39363F06D88A5AF",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-2/frame-77.bmp",
+          "SHA256": "CD4DE973D72463AB0CA48F69B500F00C0196C9376CE8D91DA71C2BA9C2B490D8",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-2/frame-79.bmp",
+          "SHA256": "06B0F3E6978AA73CCFFFF9999FA984242D00B220E0EA1BB1E7C02CBF9D099BB1",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-2/frame-80.bmp",
+          "SHA256": "9E2032E2798525B2F3D232D9819B3A4A2DF90FEE5AB24023129B5E05C29D8166",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-2/frame-81.bmp",
+          "SHA256": "7A6BA5C9B1B8A4D3FB52D2289FC922E8C90F0FBD9A82AC25A43F56A42E24101D",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-2/frame-83.bmp",
+          "SHA256": "27E4C4A61435630B6B723A12E4A40F029723A20AEFC0C0D2AC1CA53367B5239B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-2/frame-85.bmp",
+          "SHA256": "1BC27DD40D689B9EFBE81DEDF110C62E56CF8166370B375FFA35E27921C186F3",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-2/frame-86.bmp",
+          "SHA256": "3EB8576B3AC7F8CE575D337A2FEFE3113BD753F160A14AE511621425CA7C8AEB",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-2/frame-87.bmp",
+          "SHA256": "197ADA4E881501BFF1EDC448C1543C1BDE90E52C8887DC06BCB32A7976D39B87",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-2/frame-89.bmp",
+          "SHA256": "E1615E94C7DDFC5018AED974EC9C1F01014D40198DF6334C921563ACE7B97831",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-2/frame-90.bmp",
+          "SHA256": "1D0BFD51B011A067E69FAAF12B2D0B02FE8F5C366B3CB6BA7A091B30D69E9119",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-2/frame-91.bmp",
+          "SHA256": "B2B88FED5CC50011F7431F3DA722F23E497B267B49D440A03B3096279230FCA3",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-2/frame-93.bmp",
+          "SHA256": "32D4E4CFB455DF9B2406529DA76C486205F3009A7F982B0F272E4104449C0040",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-2/frame-94.bmp",
+          "SHA256": "EB690807A43BA764012D373A42360B61DDA37FB4318D5CF94EC8BAD0433316A9",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-2/frame-96.bmp",
+          "SHA256": "810F2DBC151C81FE59D7A4AB9428B526C29ADC22D73E574281C689412A4BE737",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-2/frame-97.bmp",
+          "SHA256": "A642C45ABEB034C03C2CAF8A45B3370430931464EA816AC1B0FC4C5EBB3DE458",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-2/frame-98.bmp",
+          "SHA256": "32C2D4C69FBB0AD2085D452D172A7CBC2E280CD66DCD55138EEB216B5F5D05B9",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-2/frame-99.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-2/frame-101.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-2/frame-102.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-2/frame-103.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-2/frame-104.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-2/frame-105.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-2/frame-106.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-2/frame-107.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-2/frame-108.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-2/frame-109.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-2/frame-110.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-2/frame-111.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-2/frame-112.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-2/frame-113.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-2/frame-114.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-2/frame-115.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-2/frame-116.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-2/frame-117.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-2/frame-118.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-2/frame-119.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-2/frame-120.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-2/frame-121.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-2/frame-122.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-2/frame-123.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-2/frame-124.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-2/frame-125.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-2/frame-126.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-2/frame-127.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-2/frame-128.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-2/frame-129.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-2/frame-130.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-2/frame-131.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-2/frame-132.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-2/frame-133.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-2/frame-134.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-2/frame-135.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        }
+      ],
+      "Published": false,
+      "Clock": "Original WGC surface time and observer QPC; not final desktop/photon time",
+      "ObservedSpanMilliseconds": 22651.784,
+      "MaximumObservedGapMilliseconds": 1362.9665
+    },
+    {
+      "Name": "custom-enter",
+      "SavedFrames": 85,
+      "ChangedIntervals": 84,
+      "MajorChangeIntervals": 6,
+      "PossibleStorageLimit": true,
+      "NativeDPI": [
+        96
+      ],
+      "OriginalFrames": [
+        {
+          "File": "custom-enter/frame-136.bmp",
+          "SHA256": "A491FB3A504075EAD9AB4762169E48D822BCBB9AA1EC381EA3866C9ED24F21C2",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-138.bmp",
+          "SHA256": "466B920F3015BEA29FD66D1A51C2B7517589D16D2CFCE80A582DC3E078E926C7",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-139.bmp",
+          "SHA256": "C3BDA3DFC2D163CF731E2C6175A4369A78BE1065B6E6DB1F8AC85975025C31F2",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-141.bmp",
+          "SHA256": "0E5D29B520AAAC993CFFFBADBF1D8A7B1B2E9168AE5B6F6E48A836C97D1720E4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-142.bmp",
+          "SHA256": "43E5F00E0F4894CDC619ED76D5B0815C65F362AF7070BFDE53EEDE6730400CAA",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-144.bmp",
+          "SHA256": "779F4DB237A6EFBF15B917EB2365670B6AD95865612756076C2F7F571DE0CD6D",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-145.bmp",
+          "SHA256": "C44E71FE5E388B6A2C08783BE8407FA7CAD0AD476E2975FE5E6FC9904A4F83B7",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-148.bmp",
+          "SHA256": "57AE6F1923A32A5C1AF8A1F4734A16534EFB1AFC95090F93237AC7F472C3F0BF",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-149.bmp",
+          "SHA256": "6A4AA77C3F1687FD01D890BF9A8044C52A6CDF983F13C718EA8698264028127A",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-150.bmp",
+          "SHA256": "C3BDA3DFC2D163CF731E2C6175A4369A78BE1065B6E6DB1F8AC85975025C31F2",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-157.bmp",
+          "SHA256": "0E5D29B520AAAC993CFFFBADBF1D8A7B1B2E9168AE5B6F6E48A836C97D1720E4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-219.bmp",
+          "SHA256": "C3BDA3DFC2D163CF731E2C6175A4369A78BE1065B6E6DB1F8AC85975025C31F2",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-220.bmp",
+          "SHA256": "0E5D29B520AAAC993CFFFBADBF1D8A7B1B2E9168AE5B6F6E48A836C97D1720E4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-221.bmp",
+          "SHA256": "C3BDA3DFC2D163CF731E2C6175A4369A78BE1065B6E6DB1F8AC85975025C31F2",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-222.bmp",
+          "SHA256": "0E5D29B520AAAC993CFFFBADBF1D8A7B1B2E9168AE5B6F6E48A836C97D1720E4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-223.bmp",
+          "SHA256": "C3BDA3DFC2D163CF731E2C6175A4369A78BE1065B6E6DB1F8AC85975025C31F2",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-224.bmp",
+          "SHA256": "0E5D29B520AAAC993CFFFBADBF1D8A7B1B2E9168AE5B6F6E48A836C97D1720E4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-225.bmp",
+          "SHA256": "C3BDA3DFC2D163CF731E2C6175A4369A78BE1065B6E6DB1F8AC85975025C31F2",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-226.bmp",
+          "SHA256": "0E5D29B520AAAC993CFFFBADBF1D8A7B1B2E9168AE5B6F6E48A836C97D1720E4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-227.bmp",
+          "SHA256": "C3BDA3DFC2D163CF731E2C6175A4369A78BE1065B6E6DB1F8AC85975025C31F2",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-228.bmp",
+          "SHA256": "0E5D29B520AAAC993CFFFBADBF1D8A7B1B2E9168AE5B6F6E48A836C97D1720E4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-229.bmp",
+          "SHA256": "C3BDA3DFC2D163CF731E2C6175A4369A78BE1065B6E6DB1F8AC85975025C31F2",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-230.bmp",
+          "SHA256": "0E5D29B520AAAC993CFFFBADBF1D8A7B1B2E9168AE5B6F6E48A836C97D1720E4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-231.bmp",
+          "SHA256": "C3BDA3DFC2D163CF731E2C6175A4369A78BE1065B6E6DB1F8AC85975025C31F2",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-232.bmp",
+          "SHA256": "0E5D29B520AAAC993CFFFBADBF1D8A7B1B2E9168AE5B6F6E48A836C97D1720E4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-233.bmp",
+          "SHA256": "C3BDA3DFC2D163CF731E2C6175A4369A78BE1065B6E6DB1F8AC85975025C31F2",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-234.bmp",
+          "SHA256": "0E5D29B520AAAC993CFFFBADBF1D8A7B1B2E9168AE5B6F6E48A836C97D1720E4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-235.bmp",
+          "SHA256": "C3BDA3DFC2D163CF731E2C6175A4369A78BE1065B6E6DB1F8AC85975025C31F2",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-236.bmp",
+          "SHA256": "0E5D29B520AAAC993CFFFBADBF1D8A7B1B2E9168AE5B6F6E48A836C97D1720E4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-237.bmp",
+          "SHA256": "C3BDA3DFC2D163CF731E2C6175A4369A78BE1065B6E6DB1F8AC85975025C31F2",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-238.bmp",
+          "SHA256": "0E5D29B520AAAC993CFFFBADBF1D8A7B1B2E9168AE5B6F6E48A836C97D1720E4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-239.bmp",
+          "SHA256": "C3BDA3DFC2D163CF731E2C6175A4369A78BE1065B6E6DB1F8AC85975025C31F2",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-240.bmp",
+          "SHA256": "0E5D29B520AAAC993CFFFBADBF1D8A7B1B2E9168AE5B6F6E48A836C97D1720E4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-241.bmp",
+          "SHA256": "C3BDA3DFC2D163CF731E2C6175A4369A78BE1065B6E6DB1F8AC85975025C31F2",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-242.bmp",
+          "SHA256": "0E5D29B520AAAC993CFFFBADBF1D8A7B1B2E9168AE5B6F6E48A836C97D1720E4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-243.bmp",
+          "SHA256": "C3BDA3DFC2D163CF731E2C6175A4369A78BE1065B6E6DB1F8AC85975025C31F2",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-244.bmp",
+          "SHA256": "0E5D29B520AAAC993CFFFBADBF1D8A7B1B2E9168AE5B6F6E48A836C97D1720E4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-245.bmp",
+          "SHA256": "C3BDA3DFC2D163CF731E2C6175A4369A78BE1065B6E6DB1F8AC85975025C31F2",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-246.bmp",
+          "SHA256": "0E5D29B520AAAC993CFFFBADBF1D8A7B1B2E9168AE5B6F6E48A836C97D1720E4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-247.bmp",
+          "SHA256": "C3BDA3DFC2D163CF731E2C6175A4369A78BE1065B6E6DB1F8AC85975025C31F2",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-248.bmp",
+          "SHA256": "0E5D29B520AAAC993CFFFBADBF1D8A7B1B2E9168AE5B6F6E48A836C97D1720E4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-249.bmp",
+          "SHA256": "C3BDA3DFC2D163CF731E2C6175A4369A78BE1065B6E6DB1F8AC85975025C31F2",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-250.bmp",
+          "SHA256": "0E5D29B520AAAC993CFFFBADBF1D8A7B1B2E9168AE5B6F6E48A836C97D1720E4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-251.bmp",
+          "SHA256": "C3BDA3DFC2D163CF731E2C6175A4369A78BE1065B6E6DB1F8AC85975025C31F2",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-252.bmp",
+          "SHA256": "0E5D29B520AAAC993CFFFBADBF1D8A7B1B2E9168AE5B6F6E48A836C97D1720E4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-253.bmp",
+          "SHA256": "C3BDA3DFC2D163CF731E2C6175A4369A78BE1065B6E6DB1F8AC85975025C31F2",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-254.bmp",
+          "SHA256": "0E5D29B520AAAC993CFFFBADBF1D8A7B1B2E9168AE5B6F6E48A836C97D1720E4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-255.bmp",
+          "SHA256": "C3BDA3DFC2D163CF731E2C6175A4369A78BE1065B6E6DB1F8AC85975025C31F2",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-256.bmp",
+          "SHA256": "0E5D29B520AAAC993CFFFBADBF1D8A7B1B2E9168AE5B6F6E48A836C97D1720E4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-257.bmp",
+          "SHA256": "C3BDA3DFC2D163CF731E2C6175A4369A78BE1065B6E6DB1F8AC85975025C31F2",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-258.bmp",
+          "SHA256": "0E5D29B520AAAC993CFFFBADBF1D8A7B1B2E9168AE5B6F6E48A836C97D1720E4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-259.bmp",
+          "SHA256": "C3BDA3DFC2D163CF731E2C6175A4369A78BE1065B6E6DB1F8AC85975025C31F2",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-260.bmp",
+          "SHA256": "0E5D29B520AAAC993CFFFBADBF1D8A7B1B2E9168AE5B6F6E48A836C97D1720E4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-261.bmp",
+          "SHA256": "C3BDA3DFC2D163CF731E2C6175A4369A78BE1065B6E6DB1F8AC85975025C31F2",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-262.bmp",
+          "SHA256": "0E5D29B520AAAC993CFFFBADBF1D8A7B1B2E9168AE5B6F6E48A836C97D1720E4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-263.bmp",
+          "SHA256": "C3BDA3DFC2D163CF731E2C6175A4369A78BE1065B6E6DB1F8AC85975025C31F2",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-264.bmp",
+          "SHA256": "0E5D29B520AAAC993CFFFBADBF1D8A7B1B2E9168AE5B6F6E48A836C97D1720E4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-265.bmp",
+          "SHA256": "C3BDA3DFC2D163CF731E2C6175A4369A78BE1065B6E6DB1F8AC85975025C31F2",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-266.bmp",
+          "SHA256": "0E5D29B520AAAC993CFFFBADBF1D8A7B1B2E9168AE5B6F6E48A836C97D1720E4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-267.bmp",
+          "SHA256": "C3BDA3DFC2D163CF731E2C6175A4369A78BE1065B6E6DB1F8AC85975025C31F2",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-268.bmp",
+          "SHA256": "0E5D29B520AAAC993CFFFBADBF1D8A7B1B2E9168AE5B6F6E48A836C97D1720E4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-269.bmp",
+          "SHA256": "C3BDA3DFC2D163CF731E2C6175A4369A78BE1065B6E6DB1F8AC85975025C31F2",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-270.bmp",
+          "SHA256": "0E5D29B520AAAC993CFFFBADBF1D8A7B1B2E9168AE5B6F6E48A836C97D1720E4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-271.bmp",
+          "SHA256": "C3BDA3DFC2D163CF731E2C6175A4369A78BE1065B6E6DB1F8AC85975025C31F2",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-272.bmp",
+          "SHA256": "0E5D29B520AAAC993CFFFBADBF1D8A7B1B2E9168AE5B6F6E48A836C97D1720E4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-273.bmp",
+          "SHA256": "C3BDA3DFC2D163CF731E2C6175A4369A78BE1065B6E6DB1F8AC85975025C31F2",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-274.bmp",
+          "SHA256": "0E5D29B520AAAC993CFFFBADBF1D8A7B1B2E9168AE5B6F6E48A836C97D1720E4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-275.bmp",
+          "SHA256": "C3BDA3DFC2D163CF731E2C6175A4369A78BE1065B6E6DB1F8AC85975025C31F2",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-276.bmp",
+          "SHA256": "0E5D29B520AAAC993CFFFBADBF1D8A7B1B2E9168AE5B6F6E48A836C97D1720E4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-277.bmp",
+          "SHA256": "C3BDA3DFC2D163CF731E2C6175A4369A78BE1065B6E6DB1F8AC85975025C31F2",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-278.bmp",
+          "SHA256": "0E5D29B520AAAC993CFFFBADBF1D8A7B1B2E9168AE5B6F6E48A836C97D1720E4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-279.bmp",
+          "SHA256": "C3BDA3DFC2D163CF731E2C6175A4369A78BE1065B6E6DB1F8AC85975025C31F2",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-280.bmp",
+          "SHA256": "0E5D29B520AAAC993CFFFBADBF1D8A7B1B2E9168AE5B6F6E48A836C97D1720E4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-281.bmp",
+          "SHA256": "C3BDA3DFC2D163CF731E2C6175A4369A78BE1065B6E6DB1F8AC85975025C31F2",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-282.bmp",
+          "SHA256": "0E5D29B520AAAC993CFFFBADBF1D8A7B1B2E9168AE5B6F6E48A836C97D1720E4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-283.bmp",
+          "SHA256": "C3BDA3DFC2D163CF731E2C6175A4369A78BE1065B6E6DB1F8AC85975025C31F2",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-284.bmp",
+          "SHA256": "0E5D29B520AAAC993CFFFBADBF1D8A7B1B2E9168AE5B6F6E48A836C97D1720E4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-285.bmp",
+          "SHA256": "C3BDA3DFC2D163CF731E2C6175A4369A78BE1065B6E6DB1F8AC85975025C31F2",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-286.bmp",
+          "SHA256": "0E5D29B520AAAC993CFFFBADBF1D8A7B1B2E9168AE5B6F6E48A836C97D1720E4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-287.bmp",
+          "SHA256": "C3BDA3DFC2D163CF731E2C6175A4369A78BE1065B6E6DB1F8AC85975025C31F2",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-288.bmp",
+          "SHA256": "0E5D29B520AAAC993CFFFBADBF1D8A7B1B2E9168AE5B6F6E48A836C97D1720E4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-289.bmp",
+          "SHA256": "C3BDA3DFC2D163CF731E2C6175A4369A78BE1065B6E6DB1F8AC85975025C31F2",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-290.bmp",
+          "SHA256": "0E5D29B520AAAC993CFFFBADBF1D8A7B1B2E9168AE5B6F6E48A836C97D1720E4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-291.bmp",
+          "SHA256": "C3BDA3DFC2D163CF731E2C6175A4369A78BE1065B6E6DB1F8AC85975025C31F2",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter/frame-292.bmp",
+          "SHA256": "0E5D29B520AAAC993CFFFBADBF1D8A7B1B2E9168AE5B6F6E48A836C97D1720E4",
+          "Bytes": 1567158
+        }
+      ],
+      "Published": true,
+      "Clock": "Original WGC surface time and observer QPC; not final desktop/photon time",
+      "ObservedSpanMilliseconds": 43146.5836,
+      "MaximumObservedGapMilliseconds": 2697.8121,
+      "PreviewOriginalFrameRange": [
+        0,
+        10
+      ],
+      "PreviewClock": "Actual observer intervals, idle lead/trail trimmed; last frame held 200ms for review",
+      "PreviewScaled": false
+    },
+    {
+      "Name": "custom-enter-retry",
+      "SavedFrames": 7,
+      "ChangedIntervals": 6,
+      "MajorChangeIntervals": 4,
+      "PossibleStorageLimit": false,
+      "NativeDPI": [
+        96
+      ],
+      "OriginalFrames": [
+        {
+          "File": "custom-enter-retry/frame-439.bmp",
+          "SHA256": "0E5D29B520AAAC993CFFFBADBF1D8A7B1B2E9168AE5B6F6E48A836C97D1720E4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter-retry/frame-440.bmp",
+          "SHA256": "843C44125A88C65FAAAEF5D37443EB1238E34A6DFF17E3C91C28AC944243AA12",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter-retry/frame-443.bmp",
+          "SHA256": "779C3A86CCE555E4953EE84422BCD7321BA332DA188E6C84D32AFB4FE39B54A5",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter-retry/frame-444.bmp",
+          "SHA256": "CBD546D896C1DF12C71D77F6D91518DBACC2EB6E00D04F7D018AB0E06755378E",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter-retry/frame-445.bmp",
+          "SHA256": "E4EF0B57F8654A8EDEDEF34FA4B558EA3B4BBB36E1960A82F664F2EB9CF0B30A",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter-retry/frame-446.bmp",
+          "SHA256": "1029CB4836FAC7E9EE6D7D8A06A294A879AAD178566D62C96660B167A987A96C",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-enter-retry/frame-448.bmp",
+          "SHA256": "47BD7511907A90DA288D9907771240FFA5685E489908E710E3510644B809CE88",
+          "Bytes": 1567158
+        }
+      ],
+      "Published": true,
+      "Clock": "Original WGC surface time and observer QPC; not final desktop/photon time",
+      "ObservedSpanMilliseconds": 446.1362,
+      "MaximumObservedGapMilliseconds": 109.335,
+      "PreviewOriginalFrameRange": [
+        1,
+        6
+      ],
+      "PreviewClock": "Actual observer intervals, idle lead/trail trimmed; last frame held 200ms for review",
+      "PreviewScaled": false
+    },
+    {
+      "Name": "private-idle-3b",
+      "SavedFrames": 0,
+      "ChangedIntervals": 0,
+      "MajorChangeIntervals": 0,
+      "PossibleStorageLimit": false,
+      "NativeDPI": [],
+      "OriginalFrames": [],
+      "Published": false,
+      "Clock": "Original WGC surface time and observer QPC; not final desktop/photon time"
+    },
+    {
+      "Name": "custom-exit",
+      "SavedFrames": 6,
+      "ChangedIntervals": 5,
+      "MajorChangeIntervals": 4,
+      "PossibleStorageLimit": false,
+      "NativeDPI": [
+        96
+      ],
+      "OriginalFrames": [
+        {
+          "File": "custom-exit/frame-450.bmp",
+          "SHA256": "47BD7511907A90DA288D9907771240FFA5685E489908E710E3510644B809CE88",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-exit/frame-452.bmp",
+          "SHA256": "4D41C8577E9B4EAF3F2C33DC39EFC15EF0E17CDFCB50DEA62C2F5F3D27F1A909",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-exit/frame-453.bmp",
+          "SHA256": "6A49CB1D6274B2B82A889E143962B829E3B097A52984FB8735A63406678E09F5",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-exit/frame-455.bmp",
+          "SHA256": "A8E7E61541A93A7083DCB8577AA93F42A49848474DF7BD235FBB259CCCC4F6C8",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-exit/frame-456.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "custom-exit/frame-462.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        }
+      ],
+      "Published": true,
+      "Clock": "Original WGC surface time and observer QPC; not final desktop/photon time",
+      "ObservedSpanMilliseconds": 616.078,
+      "MaximumObservedGapMilliseconds": 398.5823,
+      "PreviewOriginalFrameRange": [
+        0,
+        5
+      ],
+      "PreviewClock": "Actual observer intervals, idle lead/trail trimmed; last frame held 200ms for review",
+      "PreviewScaled": false
+    },
+    {
+      "Name": "private-idle-4",
+      "SavedFrames": 79,
+      "ChangedIntervals": 78,
+      "MajorChangeIntervals": 0,
+      "PossibleStorageLimit": false,
+      "NativeDPI": [
+        96
+      ],
+      "OriginalFrames": [
+        {
+          "File": "private-idle-4/frame-463.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-464.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-465.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-466.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-467.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-468.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-469.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-470.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-471.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-472.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-473.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-474.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-475.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-476.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-477.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-478.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-479.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-480.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-481.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-482.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-483.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-484.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-485.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-486.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-487.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-488.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-489.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-490.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-491.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-492.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-493.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-494.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-495.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-496.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-497.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-498.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-499.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-500.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-501.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-502.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-503.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-504.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-505.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-506.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-507.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-508.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-509.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-510.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-511.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-512.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-513.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-514.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-515.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-516.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-517.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-518.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-519.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-520.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-521.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-522.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-523.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-524.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-525.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-526.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-527.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-528.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-529.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-530.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-531.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-532.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-533.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-534.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-535.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-536.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-537.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-538.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-539.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-540.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-4/frame-541.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        }
+      ],
+      "Published": false,
+      "Clock": "Original WGC surface time and observer QPC; not final desktop/photon time",
+      "ObservedSpanMilliseconds": 41391.4846,
+      "MaximumObservedGapMilliseconds": 572.3054
+    },
+    {
+      "Name": "list-enter",
+      "SavedFrames": 8,
+      "ChangedIntervals": 6,
+      "MajorChangeIntervals": 4,
+      "PossibleStorageLimit": false,
+      "NativeDPI": [
+        96
+      ],
+      "OriginalFrames": [
+        {
+          "File": "list-enter/frame-542.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "list-enter/frame-543.bmp",
+          "SHA256": "844C3EC846C033AE5B68C36B01DFB8748A631B6EC54CDDAC63C5787F34734F2B",
+          "Bytes": 1389750
+        },
+        {
+          "File": "list-enter/frame-545.bmp",
+          "SHA256": "108121AC13CC6C3531D809F891549F4AC6F2CE9AD95A16AB8BDDCD643355BF8E",
+          "Bytes": 1389750
+        },
+        {
+          "File": "list-enter/frame-546.bmp",
+          "SHA256": "E4A70ED11A06AA5DAC2C63333FA32EF752DF05AA4CDE09D86A0C3D8206AC980C",
+          "Bytes": 1389750
+        },
+        {
+          "File": "list-enter/frame-548.bmp",
+          "SHA256": "6A796356ED10111DEFCDF87842154538087C7BF9D2C358C648E01767A5B43414",
+          "Bytes": 1389750
+        },
+        {
+          "File": "list-enter/frame-551.bmp",
+          "SHA256": "8F9F46A6A36CC4B39A8CF0F8FB3C9FB42B6116EB937D3764B078B54216666F08",
+          "Bytes": 1389750
+        },
+        {
+          "File": "list-enter/frame-553.bmp",
+          "SHA256": "25B0E27B9834C156EA626D68CD4E8C0D4D2856861D006E98FADB820CDDC02FB5",
+          "Bytes": 1389750
+        },
+        {
+          "File": "list-enter/frame-554.bmp",
+          "SHA256": "8F9F46A6A36CC4B39A8CF0F8FB3C9FB42B6116EB937D3764B078B54216666F08",
+          "Bytes": 1389750
+        }
+      ],
+      "Published": true,
+      "Clock": "Original WGC surface time and observer QPC; not final desktop/photon time",
+      "ObservedSpanMilliseconds": 1081.8628,
+      "MaximumObservedGapMilliseconds": 555.1903,
+      "PreviewOriginalFrameRange": [
+        0,
+        5
+      ],
+      "PreviewClock": "Actual observer intervals, idle lead/trail trimmed; last frame held 200ms for review",
+      "PreviewScaled": false
+    },
+    {
+      "Name": "private-idle-5",
+      "SavedFrames": 38,
+      "ChangedIntervals": 37,
+      "MajorChangeIntervals": 0,
+      "PossibleStorageLimit": false,
+      "NativeDPI": [
+        96
+      ],
+      "OriginalFrames": [
+        {
+          "File": "private-idle-5/frame-555.bmp",
+          "SHA256": "25B0E27B9834C156EA626D68CD4E8C0D4D2856861D006E98FADB820CDDC02FB5",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-5/frame-556.bmp",
+          "SHA256": "8F9F46A6A36CC4B39A8CF0F8FB3C9FB42B6116EB937D3764B078B54216666F08",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-5/frame-557.bmp",
+          "SHA256": "25B0E27B9834C156EA626D68CD4E8C0D4D2856861D006E98FADB820CDDC02FB5",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-5/frame-558.bmp",
+          "SHA256": "8F9F46A6A36CC4B39A8CF0F8FB3C9FB42B6116EB937D3764B078B54216666F08",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-5/frame-559.bmp",
+          "SHA256": "25B0E27B9834C156EA626D68CD4E8C0D4D2856861D006E98FADB820CDDC02FB5",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-5/frame-560.bmp",
+          "SHA256": "8F9F46A6A36CC4B39A8CF0F8FB3C9FB42B6116EB937D3764B078B54216666F08",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-5/frame-561.bmp",
+          "SHA256": "25B0E27B9834C156EA626D68CD4E8C0D4D2856861D006E98FADB820CDDC02FB5",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-5/frame-562.bmp",
+          "SHA256": "8F9F46A6A36CC4B39A8CF0F8FB3C9FB42B6116EB937D3764B078B54216666F08",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-5/frame-563.bmp",
+          "SHA256": "25B0E27B9834C156EA626D68CD4E8C0D4D2856861D006E98FADB820CDDC02FB5",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-5/frame-564.bmp",
+          "SHA256": "8F9F46A6A36CC4B39A8CF0F8FB3C9FB42B6116EB937D3764B078B54216666F08",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-5/frame-565.bmp",
+          "SHA256": "25B0E27B9834C156EA626D68CD4E8C0D4D2856861D006E98FADB820CDDC02FB5",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-5/frame-566.bmp",
+          "SHA256": "8F9F46A6A36CC4B39A8CF0F8FB3C9FB42B6116EB937D3764B078B54216666F08",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-5/frame-567.bmp",
+          "SHA256": "25B0E27B9834C156EA626D68CD4E8C0D4D2856861D006E98FADB820CDDC02FB5",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-5/frame-568.bmp",
+          "SHA256": "8F9F46A6A36CC4B39A8CF0F8FB3C9FB42B6116EB937D3764B078B54216666F08",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-5/frame-569.bmp",
+          "SHA256": "25B0E27B9834C156EA626D68CD4E8C0D4D2856861D006E98FADB820CDDC02FB5",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-5/frame-570.bmp",
+          "SHA256": "8F9F46A6A36CC4B39A8CF0F8FB3C9FB42B6116EB937D3764B078B54216666F08",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-5/frame-571.bmp",
+          "SHA256": "25B0E27B9834C156EA626D68CD4E8C0D4D2856861D006E98FADB820CDDC02FB5",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-5/frame-572.bmp",
+          "SHA256": "8F9F46A6A36CC4B39A8CF0F8FB3C9FB42B6116EB937D3764B078B54216666F08",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-5/frame-573.bmp",
+          "SHA256": "25B0E27B9834C156EA626D68CD4E8C0D4D2856861D006E98FADB820CDDC02FB5",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-5/frame-574.bmp",
+          "SHA256": "8F9F46A6A36CC4B39A8CF0F8FB3C9FB42B6116EB937D3764B078B54216666F08",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-5/frame-575.bmp",
+          "SHA256": "25B0E27B9834C156EA626D68CD4E8C0D4D2856861D006E98FADB820CDDC02FB5",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-5/frame-576.bmp",
+          "SHA256": "8F9F46A6A36CC4B39A8CF0F8FB3C9FB42B6116EB937D3764B078B54216666F08",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-5/frame-577.bmp",
+          "SHA256": "25B0E27B9834C156EA626D68CD4E8C0D4D2856861D006E98FADB820CDDC02FB5",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-5/frame-578.bmp",
+          "SHA256": "8F9F46A6A36CC4B39A8CF0F8FB3C9FB42B6116EB937D3764B078B54216666F08",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-5/frame-579.bmp",
+          "SHA256": "25B0E27B9834C156EA626D68CD4E8C0D4D2856861D006E98FADB820CDDC02FB5",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-5/frame-580.bmp",
+          "SHA256": "8F9F46A6A36CC4B39A8CF0F8FB3C9FB42B6116EB937D3764B078B54216666F08",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-5/frame-581.bmp",
+          "SHA256": "25B0E27B9834C156EA626D68CD4E8C0D4D2856861D006E98FADB820CDDC02FB5",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-5/frame-582.bmp",
+          "SHA256": "8F9F46A6A36CC4B39A8CF0F8FB3C9FB42B6116EB937D3764B078B54216666F08",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-5/frame-583.bmp",
+          "SHA256": "25B0E27B9834C156EA626D68CD4E8C0D4D2856861D006E98FADB820CDDC02FB5",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-5/frame-584.bmp",
+          "SHA256": "8F9F46A6A36CC4B39A8CF0F8FB3C9FB42B6116EB937D3764B078B54216666F08",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-5/frame-585.bmp",
+          "SHA256": "25B0E27B9834C156EA626D68CD4E8C0D4D2856861D006E98FADB820CDDC02FB5",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-5/frame-586.bmp",
+          "SHA256": "8F9F46A6A36CC4B39A8CF0F8FB3C9FB42B6116EB937D3764B078B54216666F08",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-5/frame-587.bmp",
+          "SHA256": "25B0E27B9834C156EA626D68CD4E8C0D4D2856861D006E98FADB820CDDC02FB5",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-5/frame-588.bmp",
+          "SHA256": "8F9F46A6A36CC4B39A8CF0F8FB3C9FB42B6116EB937D3764B078B54216666F08",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-5/frame-589.bmp",
+          "SHA256": "25B0E27B9834C156EA626D68CD4E8C0D4D2856861D006E98FADB820CDDC02FB5",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-5/frame-590.bmp",
+          "SHA256": "8F9F46A6A36CC4B39A8CF0F8FB3C9FB42B6116EB937D3764B078B54216666F08",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-5/frame-591.bmp",
+          "SHA256": "25B0E27B9834C156EA626D68CD4E8C0D4D2856861D006E98FADB820CDDC02FB5",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-5/frame-592.bmp",
+          "SHA256": "8F9F46A6A36CC4B39A8CF0F8FB3C9FB42B6116EB937D3764B078B54216666F08",
+          "Bytes": 1389750
+        }
+      ],
+      "Published": false,
+      "Clock": "Original WGC surface time and observer QPC; not final desktop/photon time",
+      "ObservedSpanMilliseconds": 19654.301,
+      "MaximumObservedGapMilliseconds": 561.1099
+    },
+    {
+      "Name": "list-selection",
+      "SavedFrames": 4,
+      "ChangedIntervals": 3,
+      "MajorChangeIntervals": 2,
+      "PossibleStorageLimit": false,
+      "NativeDPI": [
+        96
+      ],
+      "OriginalFrames": [
+        {
+          "File": "list-selection/frame-593.bmp",
+          "SHA256": "F8817C3779195132CF288A97878A98E23EF320DC9FF80B7CB71FADA1D6C09E51",
+          "Bytes": 1389750
+        },
+        {
+          "File": "list-selection/frame-594.bmp",
+          "SHA256": "A52754C897F08AE2DC9C877C155C611D1D0E37543C212D2895C86F595A119853",
+          "Bytes": 1389750
+        },
+        {
+          "File": "list-selection/frame-596.bmp",
+          "SHA256": "05D65D0BB88D5D78C262CEFEDA2D64EA303328A05A71C2C2DB4B71042562DDD2",
+          "Bytes": 1389750
+        },
+        {
+          "File": "list-selection/frame-599.bmp",
+          "SHA256": "E35EC1B3A8E653B5A2E5B5C97A8119D31A6E23EE2ED8E889E4BD3458146CDA46",
+          "Bytes": 1389750
+        }
+      ],
+      "Published": true,
+      "Clock": "Original WGC surface time and observer QPC; not final desktop/photon time",
+      "ObservedSpanMilliseconds": 591.6835,
+      "MaximumObservedGapMilliseconds": 494.2418,
+      "PreviewOriginalFrameRange": [
+        0,
+        3
+      ],
+      "PreviewClock": "Actual observer intervals, idle lead/trail trimmed; last frame held 200ms for review",
+      "PreviewScaled": false
+    },
+    {
+      "Name": "private-idle-6",
+      "SavedFrames": 35,
+      "ChangedIntervals": 34,
+      "MajorChangeIntervals": 0,
+      "PossibleStorageLimit": false,
+      "NativeDPI": [
+        96
+      ],
+      "OriginalFrames": [
+        {
+          "File": "private-idle-6/frame-600.bmp",
+          "SHA256": "05D65D0BB88D5D78C262CEFEDA2D64EA303328A05A71C2C2DB4B71042562DDD2",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-6/frame-601.bmp",
+          "SHA256": "E35EC1B3A8E653B5A2E5B5C97A8119D31A6E23EE2ED8E889E4BD3458146CDA46",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-6/frame-602.bmp",
+          "SHA256": "05D65D0BB88D5D78C262CEFEDA2D64EA303328A05A71C2C2DB4B71042562DDD2",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-6/frame-603.bmp",
+          "SHA256": "E35EC1B3A8E653B5A2E5B5C97A8119D31A6E23EE2ED8E889E4BD3458146CDA46",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-6/frame-604.bmp",
+          "SHA256": "05D65D0BB88D5D78C262CEFEDA2D64EA303328A05A71C2C2DB4B71042562DDD2",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-6/frame-605.bmp",
+          "SHA256": "E35EC1B3A8E653B5A2E5B5C97A8119D31A6E23EE2ED8E889E4BD3458146CDA46",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-6/frame-606.bmp",
+          "SHA256": "05D65D0BB88D5D78C262CEFEDA2D64EA303328A05A71C2C2DB4B71042562DDD2",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-6/frame-607.bmp",
+          "SHA256": "E35EC1B3A8E653B5A2E5B5C97A8119D31A6E23EE2ED8E889E4BD3458146CDA46",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-6/frame-608.bmp",
+          "SHA256": "05D65D0BB88D5D78C262CEFEDA2D64EA303328A05A71C2C2DB4B71042562DDD2",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-6/frame-609.bmp",
+          "SHA256": "E35EC1B3A8E653B5A2E5B5C97A8119D31A6E23EE2ED8E889E4BD3458146CDA46",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-6/frame-610.bmp",
+          "SHA256": "05D65D0BB88D5D78C262CEFEDA2D64EA303328A05A71C2C2DB4B71042562DDD2",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-6/frame-611.bmp",
+          "SHA256": "E35EC1B3A8E653B5A2E5B5C97A8119D31A6E23EE2ED8E889E4BD3458146CDA46",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-6/frame-612.bmp",
+          "SHA256": "05D65D0BB88D5D78C262CEFEDA2D64EA303328A05A71C2C2DB4B71042562DDD2",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-6/frame-613.bmp",
+          "SHA256": "E35EC1B3A8E653B5A2E5B5C97A8119D31A6E23EE2ED8E889E4BD3458146CDA46",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-6/frame-614.bmp",
+          "SHA256": "05D65D0BB88D5D78C262CEFEDA2D64EA303328A05A71C2C2DB4B71042562DDD2",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-6/frame-615.bmp",
+          "SHA256": "E35EC1B3A8E653B5A2E5B5C97A8119D31A6E23EE2ED8E889E4BD3458146CDA46",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-6/frame-616.bmp",
+          "SHA256": "05D65D0BB88D5D78C262CEFEDA2D64EA303328A05A71C2C2DB4B71042562DDD2",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-6/frame-617.bmp",
+          "SHA256": "E35EC1B3A8E653B5A2E5B5C97A8119D31A6E23EE2ED8E889E4BD3458146CDA46",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-6/frame-618.bmp",
+          "SHA256": "05D65D0BB88D5D78C262CEFEDA2D64EA303328A05A71C2C2DB4B71042562DDD2",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-6/frame-619.bmp",
+          "SHA256": "E35EC1B3A8E653B5A2E5B5C97A8119D31A6E23EE2ED8E889E4BD3458146CDA46",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-6/frame-620.bmp",
+          "SHA256": "05D65D0BB88D5D78C262CEFEDA2D64EA303328A05A71C2C2DB4B71042562DDD2",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-6/frame-621.bmp",
+          "SHA256": "E35EC1B3A8E653B5A2E5B5C97A8119D31A6E23EE2ED8E889E4BD3458146CDA46",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-6/frame-622.bmp",
+          "SHA256": "05D65D0BB88D5D78C262CEFEDA2D64EA303328A05A71C2C2DB4B71042562DDD2",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-6/frame-623.bmp",
+          "SHA256": "E35EC1B3A8E653B5A2E5B5C97A8119D31A6E23EE2ED8E889E4BD3458146CDA46",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-6/frame-624.bmp",
+          "SHA256": "05D65D0BB88D5D78C262CEFEDA2D64EA303328A05A71C2C2DB4B71042562DDD2",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-6/frame-625.bmp",
+          "SHA256": "E35EC1B3A8E653B5A2E5B5C97A8119D31A6E23EE2ED8E889E4BD3458146CDA46",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-6/frame-626.bmp",
+          "SHA256": "05D65D0BB88D5D78C262CEFEDA2D64EA303328A05A71C2C2DB4B71042562DDD2",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-6/frame-627.bmp",
+          "SHA256": "E35EC1B3A8E653B5A2E5B5C97A8119D31A6E23EE2ED8E889E4BD3458146CDA46",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-6/frame-628.bmp",
+          "SHA256": "05D65D0BB88D5D78C262CEFEDA2D64EA303328A05A71C2C2DB4B71042562DDD2",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-6/frame-629.bmp",
+          "SHA256": "E35EC1B3A8E653B5A2E5B5C97A8119D31A6E23EE2ED8E889E4BD3458146CDA46",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-6/frame-630.bmp",
+          "SHA256": "05D65D0BB88D5D78C262CEFEDA2D64EA303328A05A71C2C2DB4B71042562DDD2",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-6/frame-631.bmp",
+          "SHA256": "E35EC1B3A8E653B5A2E5B5C97A8119D31A6E23EE2ED8E889E4BD3458146CDA46",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-6/frame-632.bmp",
+          "SHA256": "05D65D0BB88D5D78C262CEFEDA2D64EA303328A05A71C2C2DB4B71042562DDD2",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-6/frame-633.bmp",
+          "SHA256": "E35EC1B3A8E653B5A2E5B5C97A8119D31A6E23EE2ED8E889E4BD3458146CDA46",
+          "Bytes": 1389750
+        },
+        {
+          "File": "private-idle-6/frame-634.bmp",
+          "SHA256": "05D65D0BB88D5D78C262CEFEDA2D64EA303328A05A71C2C2DB4B71042562DDD2",
+          "Bytes": 1389750
+        }
+      ],
+      "Published": false,
+      "Clock": "Original WGC surface time and observer QPC; not final desktop/photon time",
+      "ObservedSpanMilliseconds": 18019.4026,
+      "MaximumObservedGapMilliseconds": 571.9689
+    },
+    {
+      "Name": "home-entry",
+      "SavedFrames": 8,
+      "ChangedIntervals": 7,
+      "MajorChangeIntervals": 3,
+      "PossibleStorageLimit": false,
+      "NativeDPI": [
+        96
+      ],
+      "OriginalFrames": [
+        {
+          "File": "home-entry/frame-635.bmp",
+          "SHA256": "FA2561337D2964CF7BC3FE1EAEF1707DA6948D91727F77E2ED6A8D81615E19D6",
+          "Bytes": 1567158
+        },
+        {
+          "File": "home-entry/frame-637.bmp",
+          "SHA256": "F8559CF4F4CC9BB6A719E73537806BFAF29B81FD1AD00D6B1B76206C3081F53B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "home-entry/frame-638.bmp",
+          "SHA256": "CAAF1B7BDA57260F9325166A3D5B6F3C82205A8216CD5EC12E53FC9F57A89BDA",
+          "Bytes": 1567158
+        },
+        {
+          "File": "home-entry/frame-641.bmp",
+          "SHA256": "0C150599EF92143AE016E36F88A4EC491C8367541940FD67C1C1C50E7D3A89B6",
+          "Bytes": 1567158
+        },
+        {
+          "File": "home-entry/frame-642.bmp",
+          "SHA256": "7B714B0FC9E85C0B957FE702DEEE3BD2019E5ACE8D801BB9CB8069C2C6853C2A",
+          "Bytes": 1567158
+        },
+        {
+          "File": "home-entry/frame-645.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "home-entry/frame-647.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "home-entry/frame-648.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        }
+      ],
+      "Published": true,
+      "Clock": "Original WGC surface time and observer QPC; not final desktop/photon time",
+      "ObservedSpanMilliseconds": 1202.8699,
+      "MaximumObservedGapMilliseconds": 569.8694,
+      "PreviewOriginalFrameRange": [
+        0,
+        4
+      ],
+      "PreviewClock": "Actual observer intervals, idle lead/trail trimmed; last frame held 200ms for review",
+      "PreviewScaled": false
+    },
+    {
+      "Name": "private-idle-7",
+      "SavedFrames": 33,
+      "ChangedIntervals": 32,
+      "MajorChangeIntervals": 0,
+      "PossibleStorageLimit": false,
+      "NativeDPI": [
+        96
+      ],
+      "OriginalFrames": [
+        {
+          "File": "private-idle-7/frame-649.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-7/frame-650.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-7/frame-651.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-7/frame-652.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-7/frame-653.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-7/frame-654.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-7/frame-655.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-7/frame-656.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-7/frame-657.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-7/frame-658.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-7/frame-659.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-7/frame-660.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-7/frame-661.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-7/frame-662.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-7/frame-663.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-7/frame-664.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-7/frame-665.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-7/frame-666.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-7/frame-667.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-7/frame-668.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-7/frame-669.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-7/frame-670.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-7/frame-671.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-7/frame-672.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-7/frame-673.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-7/frame-674.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-7/frame-675.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-7/frame-676.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-7/frame-677.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-7/frame-678.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-7/frame-679.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-7/frame-680.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-7/frame-681.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        }
+      ],
+      "Published": false,
+      "Clock": "Original WGC surface time and observer QPC; not final desktop/photon time",
+      "ObservedSpanMilliseconds": 16982.2077,
+      "MaximumObservedGapMilliseconds": 572.8037
+    },
+    {
+      "Name": "tile-hover",
+      "SavedFrames": 6,
+      "ChangedIntervals": 5,
+      "MajorChangeIntervals": 2,
+      "PossibleStorageLimit": false,
+      "NativeDPI": [
+        96
+      ],
+      "OriginalFrames": [
+        {
+          "File": "tile-hover/frame-682.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "tile-hover/frame-683.bmp",
+          "SHA256": "B3FA190181EE62AE0B01718EBE38338BE0F8529634A30C014AC5E05C433ECD67",
+          "Bytes": 1567158
+        },
+        {
+          "File": "tile-hover/frame-685.bmp",
+          "SHA256": "9A18BE402664894F25646991D951EDA0FB21A5BE17A27856D273655A8B2227A4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "tile-hover/frame-689.bmp",
+          "SHA256": "0FCB98CF2CA787C83B8835CE896128B74877263984288416ED68E9C639E747C7",
+          "Bytes": 1567158
+        },
+        {
+          "File": "tile-hover/frame-694.bmp",
+          "SHA256": "87C872900EA5DAF651F3306FB4A1E1A95F1FFA05D3F3495D6E3CF0EDC3BE3CF6",
+          "Bytes": 1567158
+        },
+        {
+          "File": "tile-hover/frame-695.bmp",
+          "SHA256": "0FCB98CF2CA787C83B8835CE896128B74877263984288416ED68E9C639E747C7",
+          "Bytes": 1567158
+        }
+      ],
+      "Published": true,
+      "Clock": "Original WGC surface time and observer QPC; not final desktop/photon time",
+      "ObservedSpanMilliseconds": 1068.7947,
+      "MaximumObservedGapMilliseconds": 555.1399,
+      "PreviewOriginalFrameRange": [
+        0,
+        3
+      ],
+      "PreviewClock": "Actual observer intervals, idle lead/trail trimmed; last frame held 200ms for review",
+      "PreviewScaled": false
+    },
+    {
+      "Name": "private-idle-8",
+      "SavedFrames": 36,
+      "ChangedIntervals": 35,
+      "MajorChangeIntervals": 0,
+      "PossibleStorageLimit": false,
+      "NativeDPI": [
+        96
+      ],
+      "OriginalFrames": [
+        {
+          "File": "private-idle-8/frame-696.bmp",
+          "SHA256": "87C872900EA5DAF651F3306FB4A1E1A95F1FFA05D3F3495D6E3CF0EDC3BE3CF6",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-8/frame-697.bmp",
+          "SHA256": "0FCB98CF2CA787C83B8835CE896128B74877263984288416ED68E9C639E747C7",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-8/frame-698.bmp",
+          "SHA256": "87C872900EA5DAF651F3306FB4A1E1A95F1FFA05D3F3495D6E3CF0EDC3BE3CF6",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-8/frame-699.bmp",
+          "SHA256": "0FCB98CF2CA787C83B8835CE896128B74877263984288416ED68E9C639E747C7",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-8/frame-700.bmp",
+          "SHA256": "87C872900EA5DAF651F3306FB4A1E1A95F1FFA05D3F3495D6E3CF0EDC3BE3CF6",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-8/frame-701.bmp",
+          "SHA256": "0FCB98CF2CA787C83B8835CE896128B74877263984288416ED68E9C639E747C7",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-8/frame-702.bmp",
+          "SHA256": "87C872900EA5DAF651F3306FB4A1E1A95F1FFA05D3F3495D6E3CF0EDC3BE3CF6",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-8/frame-703.bmp",
+          "SHA256": "0FCB98CF2CA787C83B8835CE896128B74877263984288416ED68E9C639E747C7",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-8/frame-704.bmp",
+          "SHA256": "87C872900EA5DAF651F3306FB4A1E1A95F1FFA05D3F3495D6E3CF0EDC3BE3CF6",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-8/frame-705.bmp",
+          "SHA256": "0FCB98CF2CA787C83B8835CE896128B74877263984288416ED68E9C639E747C7",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-8/frame-706.bmp",
+          "SHA256": "87C872900EA5DAF651F3306FB4A1E1A95F1FFA05D3F3495D6E3CF0EDC3BE3CF6",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-8/frame-707.bmp",
+          "SHA256": "0FCB98CF2CA787C83B8835CE896128B74877263984288416ED68E9C639E747C7",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-8/frame-708.bmp",
+          "SHA256": "87C872900EA5DAF651F3306FB4A1E1A95F1FFA05D3F3495D6E3CF0EDC3BE3CF6",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-8/frame-709.bmp",
+          "SHA256": "0FCB98CF2CA787C83B8835CE896128B74877263984288416ED68E9C639E747C7",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-8/frame-710.bmp",
+          "SHA256": "87C872900EA5DAF651F3306FB4A1E1A95F1FFA05D3F3495D6E3CF0EDC3BE3CF6",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-8/frame-711.bmp",
+          "SHA256": "0FCB98CF2CA787C83B8835CE896128B74877263984288416ED68E9C639E747C7",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-8/frame-712.bmp",
+          "SHA256": "87C872900EA5DAF651F3306FB4A1E1A95F1FFA05D3F3495D6E3CF0EDC3BE3CF6",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-8/frame-713.bmp",
+          "SHA256": "0FCB98CF2CA787C83B8835CE896128B74877263984288416ED68E9C639E747C7",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-8/frame-714.bmp",
+          "SHA256": "87C872900EA5DAF651F3306FB4A1E1A95F1FFA05D3F3495D6E3CF0EDC3BE3CF6",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-8/frame-715.bmp",
+          "SHA256": "0FCB98CF2CA787C83B8835CE896128B74877263984288416ED68E9C639E747C7",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-8/frame-716.bmp",
+          "SHA256": "87C872900EA5DAF651F3306FB4A1E1A95F1FFA05D3F3495D6E3CF0EDC3BE3CF6",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-8/frame-717.bmp",
+          "SHA256": "0FCB98CF2CA787C83B8835CE896128B74877263984288416ED68E9C639E747C7",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-8/frame-718.bmp",
+          "SHA256": "87C872900EA5DAF651F3306FB4A1E1A95F1FFA05D3F3495D6E3CF0EDC3BE3CF6",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-8/frame-719.bmp",
+          "SHA256": "0FCB98CF2CA787C83B8835CE896128B74877263984288416ED68E9C639E747C7",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-8/frame-720.bmp",
+          "SHA256": "87C872900EA5DAF651F3306FB4A1E1A95F1FFA05D3F3495D6E3CF0EDC3BE3CF6",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-8/frame-721.bmp",
+          "SHA256": "0FCB98CF2CA787C83B8835CE896128B74877263984288416ED68E9C639E747C7",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-8/frame-722.bmp",
+          "SHA256": "87C872900EA5DAF651F3306FB4A1E1A95F1FFA05D3F3495D6E3CF0EDC3BE3CF6",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-8/frame-723.bmp",
+          "SHA256": "0FCB98CF2CA787C83B8835CE896128B74877263984288416ED68E9C639E747C7",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-8/frame-724.bmp",
+          "SHA256": "87C872900EA5DAF651F3306FB4A1E1A95F1FFA05D3F3495D6E3CF0EDC3BE3CF6",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-8/frame-725.bmp",
+          "SHA256": "0FCB98CF2CA787C83B8835CE896128B74877263984288416ED68E9C639E747C7",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-8/frame-726.bmp",
+          "SHA256": "87C872900EA5DAF651F3306FB4A1E1A95F1FFA05D3F3495D6E3CF0EDC3BE3CF6",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-8/frame-727.bmp",
+          "SHA256": "0FCB98CF2CA787C83B8835CE896128B74877263984288416ED68E9C639E747C7",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-8/frame-728.bmp",
+          "SHA256": "87C872900EA5DAF651F3306FB4A1E1A95F1FFA05D3F3495D6E3CF0EDC3BE3CF6",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-8/frame-729.bmp",
+          "SHA256": "0FCB98CF2CA787C83B8835CE896128B74877263984288416ED68E9C639E747C7",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-8/frame-730.bmp",
+          "SHA256": "87C872900EA5DAF651F3306FB4A1E1A95F1FFA05D3F3495D6E3CF0EDC3BE3CF6",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-8/frame-731.bmp",
+          "SHA256": "0FCB98CF2CA787C83B8835CE896128B74877263984288416ED68E9C639E747C7",
+          "Bytes": 1567158
+        }
+      ],
+      "Published": false,
+      "Clock": "Original WGC surface time and observer QPC; not final desktop/photon time",
+      "ObservedSpanMilliseconds": 18574.5922,
+      "MaximumObservedGapMilliseconds": 565.1442
+    },
+    {
+      "Name": "tile-press",
+      "SavedFrames": 8,
+      "ChangedIntervals": 7,
+      "MajorChangeIntervals": 4,
+      "PossibleStorageLimit": false,
+      "NativeDPI": [
+        96
+      ],
+      "OriginalFrames": [
+        {
+          "File": "tile-press/frame-732.bmp",
+          "SHA256": "87C872900EA5DAF651F3306FB4A1E1A95F1FFA05D3F3495D6E3CF0EDC3BE3CF6",
+          "Bytes": 1567158
+        },
+        {
+          "File": "tile-press/frame-733.bmp",
+          "SHA256": "0FCB98CF2CA787C83B8835CE896128B74877263984288416ED68E9C639E747C7",
+          "Bytes": 1567158
+        },
+        {
+          "File": "tile-press/frame-734.bmp",
+          "SHA256": "695A07BBFBDBB5780D2A93E11709D3EED0FA26A56CC191EDDB4584299EE11441",
+          "Bytes": 1567158
+        },
+        {
+          "File": "tile-press/frame-735.bmp",
+          "SHA256": "E0C14D1ED67283FC37F6B725AB20A53498F87C66701FA5BD956A27372A741FCB",
+          "Bytes": 1567158
+        },
+        {
+          "File": "tile-press/frame-736.bmp",
+          "SHA256": "37E162F4214A01E852DECB62E9DEA6CA33639EABBB92B332F126FE752CC92E28",
+          "Bytes": 1567158
+        },
+        {
+          "File": "tile-press/frame-737.bmp",
+          "SHA256": "C6A3A847B3287914ABEA481E5D2CF2DA4E240871F3E319CEE82D9E9EEBEC6E6A",
+          "Bytes": 1567158
+        },
+        {
+          "File": "tile-press/frame-743.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "tile-press/frame-747.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        }
+      ],
+      "Published": true,
+      "Clock": "Original WGC surface time and observer QPC; not final desktop/photon time",
+      "ObservedSpanMilliseconds": 1060.2089,
+      "MaximumObservedGapMilliseconds": 524.4962,
+      "PreviewOriginalFrameRange": [
+        1,
+        7
+      ],
+      "PreviewClock": "Actual observer intervals, idle lead/trail trimmed; last frame held 200ms for review",
+      "PreviewScaled": false
+    },
+    {
+      "Name": "private-idle-9",
+      "SavedFrames": 38,
+      "ChangedIntervals": 37,
+      "MajorChangeIntervals": 0,
+      "PossibleStorageLimit": false,
+      "NativeDPI": [
+        96
+      ],
+      "OriginalFrames": [
+        {
+          "File": "private-idle-9/frame-748.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-9/frame-749.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-9/frame-750.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-9/frame-751.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-9/frame-752.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-9/frame-753.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-9/frame-754.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-9/frame-755.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-9/frame-756.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-9/frame-757.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-9/frame-758.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-9/frame-759.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-9/frame-760.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-9/frame-761.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-9/frame-762.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-9/frame-763.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-9/frame-764.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-9/frame-765.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-9/frame-766.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-9/frame-767.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-9/frame-768.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-9/frame-769.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-9/frame-770.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-9/frame-771.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-9/frame-772.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-9/frame-773.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-9/frame-774.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-9/frame-775.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-9/frame-776.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-9/frame-777.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-9/frame-778.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-9/frame-779.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-9/frame-780.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-9/frame-781.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-9/frame-782.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-9/frame-783.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-9/frame-784.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-9/frame-785.bmp",
+          "SHA256": "50682723AFF7356050CB628907166B9F4C231D1341C9178F566C2886E8CC38F4",
+          "Bytes": 1567158
+        }
+      ],
+      "Published": false,
+      "Clock": "Original WGC surface time and observer QPC; not final desktop/photon time",
+      "ObservedSpanMilliseconds": 19598.5935,
+      "MaximumObservedGapMilliseconds": 555.0251
+    },
+    {
+      "Name": "gear-hover",
+      "SavedFrames": 12,
+      "ChangedIntervals": 11,
+      "MajorChangeIntervals": 0,
+      "PossibleStorageLimit": false,
+      "NativeDPI": [
+        96
+      ],
+      "OriginalFrames": [
+        {
+          "File": "gear-hover/frame-786.bmp",
+          "SHA256": "DD0D83BB09D383F595C115C3BFC949BA0F8A4595A470C598BC73DF7570FD128B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "gear-hover/frame-787.bmp",
+          "SHA256": "AF1265F0F5D14098CA6D61306272DC2F856E2FDFCF41B4571D01C9DEBF8F4D36",
+          "Bytes": 1567158
+        },
+        {
+          "File": "gear-hover/frame-788.bmp",
+          "SHA256": "AA157A9CFBEDB84C4B50460B4211E995CAC1EAE3A0061938773CB795742E1D72",
+          "Bytes": 1567158
+        },
+        {
+          "File": "gear-hover/frame-789.bmp",
+          "SHA256": "14842FCD20E13E7A94ED189751F2E72821ED711A47A25689CBDC36A5E9111B25",
+          "Bytes": 1567158
+        },
+        {
+          "File": "gear-hover/frame-790.bmp",
+          "SHA256": "146D7F4ADF271BBA61615F79F56878E9415F4ED83C15CBCEDB8249EC2E3559F8",
+          "Bytes": 1567158
+        },
+        {
+          "File": "gear-hover/frame-792.bmp",
+          "SHA256": "9CCC0E79F5B2D87B7F73B315CB4D5D39C1F28410641829C031814E8FDF31D9FA",
+          "Bytes": 1567158
+        },
+        {
+          "File": "gear-hover/frame-793.bmp",
+          "SHA256": "87BB12CEAA3418FEB86A0F4C49F07E46CF942DCF56D0744A3D689903CAB49656",
+          "Bytes": 1567158
+        },
+        {
+          "File": "gear-hover/frame-794.bmp",
+          "SHA256": "C1FFEDBB77FF8934321514DFE3504662E1E824AF87009250F94474FDBB17E7A2",
+          "Bytes": 1567158
+        },
+        {
+          "File": "gear-hover/frame-795.bmp",
+          "SHA256": "A4D65F4E0DBCB09E03A901E0F4FFF03C2545E8965D1BBF9D9F01608CF4E64813",
+          "Bytes": 1567158
+        },
+        {
+          "File": "gear-hover/frame-797.bmp",
+          "SHA256": "69479CED0B540769F129B582E3B95C2C157F6607E11D47555CE402708477442E",
+          "Bytes": 1567158
+        },
+        {
+          "File": "gear-hover/frame-798.bmp",
+          "SHA256": "F0ABAE3F3FAF1DA4DF9756C5DE4B7B22B2DB75D4BF35EFCB8419B49C983A934F",
+          "Bytes": 1567158
+        },
+        {
+          "File": "gear-hover/frame-800.bmp",
+          "SHA256": "AC2F57C3C1016E9E3905096DE04616116069834CD342AD6A027DB0FDDCA9D1F7",
+          "Bytes": 1567158
+        }
+      ],
+      "Published": true,
+      "Clock": "Original WGC surface time and observer QPC; not final desktop/photon time",
+      "ObservedSpanMilliseconds": 1059.4674,
+      "MaximumObservedGapMilliseconds": 532.6515,
+      "PreviewOriginalFrameRange": [
+        0,
+        11
+      ],
+      "PreviewClock": "Actual observer intervals, idle lead/trail trimmed; last frame held 200ms for review",
+      "PreviewScaled": false
+    },
+    {
+      "Name": "private-idle-10",
+      "SavedFrames": 37,
+      "ChangedIntervals": 36,
+      "MajorChangeIntervals": 0,
+      "PossibleStorageLimit": false,
+      "NativeDPI": [
+        96
+      ],
+      "OriginalFrames": [
+        {
+          "File": "private-idle-10/frame-801.bmp",
+          "SHA256": "F0ABAE3F3FAF1DA4DF9756C5DE4B7B22B2DB75D4BF35EFCB8419B49C983A934F",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-10/frame-802.bmp",
+          "SHA256": "AC2F57C3C1016E9E3905096DE04616116069834CD342AD6A027DB0FDDCA9D1F7",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-10/frame-803.bmp",
+          "SHA256": "F0ABAE3F3FAF1DA4DF9756C5DE4B7B22B2DB75D4BF35EFCB8419B49C983A934F",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-10/frame-804.bmp",
+          "SHA256": "AC2F57C3C1016E9E3905096DE04616116069834CD342AD6A027DB0FDDCA9D1F7",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-10/frame-805.bmp",
+          "SHA256": "F0ABAE3F3FAF1DA4DF9756C5DE4B7B22B2DB75D4BF35EFCB8419B49C983A934F",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-10/frame-806.bmp",
+          "SHA256": "AC2F57C3C1016E9E3905096DE04616116069834CD342AD6A027DB0FDDCA9D1F7",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-10/frame-807.bmp",
+          "SHA256": "F0ABAE3F3FAF1DA4DF9756C5DE4B7B22B2DB75D4BF35EFCB8419B49C983A934F",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-10/frame-808.bmp",
+          "SHA256": "AC2F57C3C1016E9E3905096DE04616116069834CD342AD6A027DB0FDDCA9D1F7",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-10/frame-809.bmp",
+          "SHA256": "F0ABAE3F3FAF1DA4DF9756C5DE4B7B22B2DB75D4BF35EFCB8419B49C983A934F",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-10/frame-810.bmp",
+          "SHA256": "AC2F57C3C1016E9E3905096DE04616116069834CD342AD6A027DB0FDDCA9D1F7",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-10/frame-811.bmp",
+          "SHA256": "F0ABAE3F3FAF1DA4DF9756C5DE4B7B22B2DB75D4BF35EFCB8419B49C983A934F",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-10/frame-812.bmp",
+          "SHA256": "AC2F57C3C1016E9E3905096DE04616116069834CD342AD6A027DB0FDDCA9D1F7",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-10/frame-813.bmp",
+          "SHA256": "F0ABAE3F3FAF1DA4DF9756C5DE4B7B22B2DB75D4BF35EFCB8419B49C983A934F",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-10/frame-814.bmp",
+          "SHA256": "AC2F57C3C1016E9E3905096DE04616116069834CD342AD6A027DB0FDDCA9D1F7",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-10/frame-815.bmp",
+          "SHA256": "F0ABAE3F3FAF1DA4DF9756C5DE4B7B22B2DB75D4BF35EFCB8419B49C983A934F",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-10/frame-816.bmp",
+          "SHA256": "AC2F57C3C1016E9E3905096DE04616116069834CD342AD6A027DB0FDDCA9D1F7",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-10/frame-817.bmp",
+          "SHA256": "F0ABAE3F3FAF1DA4DF9756C5DE4B7B22B2DB75D4BF35EFCB8419B49C983A934F",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-10/frame-818.bmp",
+          "SHA256": "AC2F57C3C1016E9E3905096DE04616116069834CD342AD6A027DB0FDDCA9D1F7",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-10/frame-819.bmp",
+          "SHA256": "F0ABAE3F3FAF1DA4DF9756C5DE4B7B22B2DB75D4BF35EFCB8419B49C983A934F",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-10/frame-820.bmp",
+          "SHA256": "AC2F57C3C1016E9E3905096DE04616116069834CD342AD6A027DB0FDDCA9D1F7",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-10/frame-821.bmp",
+          "SHA256": "F0ABAE3F3FAF1DA4DF9756C5DE4B7B22B2DB75D4BF35EFCB8419B49C983A934F",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-10/frame-822.bmp",
+          "SHA256": "AC2F57C3C1016E9E3905096DE04616116069834CD342AD6A027DB0FDDCA9D1F7",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-10/frame-823.bmp",
+          "SHA256": "F0ABAE3F3FAF1DA4DF9756C5DE4B7B22B2DB75D4BF35EFCB8419B49C983A934F",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-10/frame-824.bmp",
+          "SHA256": "AC2F57C3C1016E9E3905096DE04616116069834CD342AD6A027DB0FDDCA9D1F7",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-10/frame-825.bmp",
+          "SHA256": "F0ABAE3F3FAF1DA4DF9756C5DE4B7B22B2DB75D4BF35EFCB8419B49C983A934F",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-10/frame-826.bmp",
+          "SHA256": "AC2F57C3C1016E9E3905096DE04616116069834CD342AD6A027DB0FDDCA9D1F7",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-10/frame-827.bmp",
+          "SHA256": "F0ABAE3F3FAF1DA4DF9756C5DE4B7B22B2DB75D4BF35EFCB8419B49C983A934F",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-10/frame-828.bmp",
+          "SHA256": "AC2F57C3C1016E9E3905096DE04616116069834CD342AD6A027DB0FDDCA9D1F7",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-10/frame-829.bmp",
+          "SHA256": "F0ABAE3F3FAF1DA4DF9756C5DE4B7B22B2DB75D4BF35EFCB8419B49C983A934F",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-10/frame-830.bmp",
+          "SHA256": "AC2F57C3C1016E9E3905096DE04616116069834CD342AD6A027DB0FDDCA9D1F7",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-10/frame-831.bmp",
+          "SHA256": "F0ABAE3F3FAF1DA4DF9756C5DE4B7B22B2DB75D4BF35EFCB8419B49C983A934F",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-10/frame-832.bmp",
+          "SHA256": "AC2F57C3C1016E9E3905096DE04616116069834CD342AD6A027DB0FDDCA9D1F7",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-10/frame-833.bmp",
+          "SHA256": "F0ABAE3F3FAF1DA4DF9756C5DE4B7B22B2DB75D4BF35EFCB8419B49C983A934F",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-10/frame-834.bmp",
+          "SHA256": "AC2F57C3C1016E9E3905096DE04616116069834CD342AD6A027DB0FDDCA9D1F7",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-10/frame-835.bmp",
+          "SHA256": "F0ABAE3F3FAF1DA4DF9756C5DE4B7B22B2DB75D4BF35EFCB8419B49C983A934F",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-10/frame-836.bmp",
+          "SHA256": "AC2F57C3C1016E9E3905096DE04616116069834CD342AD6A027DB0FDDCA9D1F7",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-10/frame-837.bmp",
+          "SHA256": "F0ABAE3F3FAF1DA4DF9756C5DE4B7B22B2DB75D4BF35EFCB8419B49C983A934F",
+          "Bytes": 1567158
+        }
+      ],
+      "Published": false,
+      "Clock": "Original WGC surface time and observer QPC; not final desktop/photon time",
+      "ObservedSpanMilliseconds": 19093.9402,
+      "MaximumObservedGapMilliseconds": 564.7056
+    },
+    {
+      "Name": "scanning",
+      "SavedFrames": 41,
+      "ChangedIntervals": 40,
+      "MajorChangeIntervals": 7,
+      "PossibleStorageLimit": false,
+      "NativeDPI": [
+        96
+      ],
+      "OriginalFrames": [
+        {
+          "File": "scanning/frame-838.bmp",
+          "SHA256": "AC2F57C3C1016E9E3905096DE04616116069834CD342AD6A027DB0FDDCA9D1F7",
+          "Bytes": 1567158
+        },
+        {
+          "File": "scanning/frame-839.bmp",
+          "SHA256": "15D7C3A35EB29B7E6FF936F2BB010984B4905475137C4241389911BACB256020",
+          "Bytes": 1567158
+        },
+        {
+          "File": "scanning/frame-840.bmp",
+          "SHA256": "AA0BC50417B2E00366D88AFE1A68E8F18822E277227951C6A226FCDD5B7380FA",
+          "Bytes": 1567158
+        },
+        {
+          "File": "scanning/frame-841.bmp",
+          "SHA256": "61204933DD2B863A7FAB0E212890305A503CCE47EBB0C007A96F3166852BD7C5",
+          "Bytes": 1567158
+        },
+        {
+          "File": "scanning/frame-842.bmp",
+          "SHA256": "D81BEC484D9B6AD886DAC7E48FF6989F34FF8C84C25D89E612021F29C53F23E9",
+          "Bytes": 1567158
+        },
+        {
+          "File": "scanning/frame-843.bmp",
+          "SHA256": "6CF98F1FE1DFC8F40292DBC3E962B617A3F6625FB1AC4250ED2C6CE5372F16BE",
+          "Bytes": 1567158
+        },
+        {
+          "File": "scanning/frame-844.bmp",
+          "SHA256": "1ED9E01E635AB1CAE7815DC79B9B6A33B1A6E25B6484CF8A5314515E537EBAAD",
+          "Bytes": 1567158
+        },
+        {
+          "File": "scanning/frame-845.bmp",
+          "SHA256": "8D17DDA959FD2E0B6B8FA5C38023D39B1D20C6D09B8430EC43ECB0E86FC14595",
+          "Bytes": 1567158
+        },
+        {
+          "File": "scanning/frame-846.bmp",
+          "SHA256": "3F6A00F60815DF2159EFC28E3216E6818BE9BFBA84EBD68A93821435A0645B86",
+          "Bytes": 1567158
+        },
+        {
+          "File": "scanning/frame-847.bmp",
+          "SHA256": "ECED1050723696CEA13150719F02E2C6AF021BD570B70C15D5D9C4E465BBA025",
+          "Bytes": 1567158
+        },
+        {
+          "File": "scanning/frame-848.bmp",
+          "SHA256": "8B8CDABB1C5AFA5BFF347374A1EEB4B457E47E3DBF9795CC0728A92BDAB103DA",
+          "Bytes": 1567158
+        },
+        {
+          "File": "scanning/frame-851.bmp",
+          "SHA256": "8720991A7504D14127CDDBD98B890F5763C723000BCC9E598BB7BE5B8A59EDBB",
+          "Bytes": 1567158
+        },
+        {
+          "File": "scanning/frame-852.bmp",
+          "SHA256": "AB751E55A342561483ACC487CD67205D8C3D16BC8FFE48CDE2930DFFB4039956",
+          "Bytes": 1567158
+        },
+        {
+          "File": "scanning/frame-853.bmp",
+          "SHA256": "6CFC04FFF8A1F03011410554E40C90EE55DFE0B81D5766505D8A0C848BDE2737",
+          "Bytes": 1567158
+        },
+        {
+          "File": "scanning/frame-855.bmp",
+          "SHA256": "4A09C615EB7FA4A00892F43517AA8ECCC31B101C00D6ED5977DC2A0E02311061",
+          "Bytes": 1567158
+        },
+        {
+          "File": "scanning/frame-856.bmp",
+          "SHA256": "27C202C1E08110B750FEAA12522BBF5FA0AEBB2A2DB9AF43D6F1F6E15CF825C6",
+          "Bytes": 1567158
+        },
+        {
+          "File": "scanning/frame-857.bmp",
+          "SHA256": "8884B4420A2594ACBF44E95537F94DE799851FD52EE6BA0E4986EDE1E4C6CB39",
+          "Bytes": 1567158
+        },
+        {
+          "File": "scanning/frame-859.bmp",
+          "SHA256": "BF9D6964686F3EF6AF08DE952FE96CCCD6FF8635AA9546121CA74289D5CBCCDD",
+          "Bytes": 1567158
+        },
+        {
+          "File": "scanning/frame-860.bmp",
+          "SHA256": "E52C0D4C1295CDBF6A8B7A6E6759EC737B524D834E2966E615ACE0C488B8D055",
+          "Bytes": 1567158
+        },
+        {
+          "File": "scanning/frame-861.bmp",
+          "SHA256": "731ACC60A0B253B149C298917D0DCEA0F93E98DC2A48FA132039FB08A1FAC414",
+          "Bytes": 1567158
+        },
+        {
+          "File": "scanning/frame-863.bmp",
+          "SHA256": "3E70ED6CEB15324DE2F4BF0A27E52C9122740168CC462B55F338A4AA76130204",
+          "Bytes": 1567158
+        },
+        {
+          "File": "scanning/frame-866.bmp",
+          "SHA256": "BD122D8BDABDC4E329336A52563805A6D282B1BD52DD11C0944D6FD3A526BDBD",
+          "Bytes": 1567158
+        },
+        {
+          "File": "scanning/frame-867.bmp",
+          "SHA256": "1F0003523501EEA361B8ED5EAE3D58DAE5064B20B750C0A05C4A3FA3BBDFE658",
+          "Bytes": 1567158
+        },
+        {
+          "File": "scanning/frame-869.bmp",
+          "SHA256": "5525CA958147D692DE91C1CAB79E8DA55CD5EB28B05E2BC2F97401E1065B6143",
+          "Bytes": 1567158
+        },
+        {
+          "File": "scanning/frame-870.bmp",
+          "SHA256": "F46F41DE571AA90F79E45138CBC7EDCF7F8F820E7B039CF42CE1C97E547C386F",
+          "Bytes": 1567158
+        },
+        {
+          "File": "scanning/frame-871.bmp",
+          "SHA256": "6A79F42AC28553E5C313300282B2889105D150900A3A896F016D45C19E50C121",
+          "Bytes": 1567158
+        },
+        {
+          "File": "scanning/frame-874.bmp",
+          "SHA256": "F76E28BBBBEC63358A2657E3A71E2872150F133B35BEF8DF02807A1CF93B7620",
+          "Bytes": 1567158
+        },
+        {
+          "File": "scanning/frame-875.bmp",
+          "SHA256": "DECAD50341A093F6282B8ADDB472CFC02C17248CBA65CE0F5857AE60E8A9C125",
+          "Bytes": 1567158
+        },
+        {
+          "File": "scanning/frame-876.bmp",
+          "SHA256": "53EB1B22B6D44905027F9058EC5EF0422F7F22CEBA9093C0D2C33FD3CCA63CD7",
+          "Bytes": 1567158
+        },
+        {
+          "File": "scanning/frame-877.bmp",
+          "SHA256": "DBDD2B24E107DBBD42ABB70352822C46BBA0D0D47D4E00B0F898E4450D2E974B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "scanning/frame-878.bmp",
+          "SHA256": "4079330AF91CD0943EFB51326DF68198CD6FBB20AD1BCC09F2B7B8788AE0D567",
+          "Bytes": 1567158
+        },
+        {
+          "File": "scanning/frame-879.bmp",
+          "SHA256": "809F9ACDED2D0D2966B64D5F86A98428F37527E66466BE26528357B5534E949B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "scanning/frame-880.bmp",
+          "SHA256": "2D21FC92CC9EE1E15CEEBA72B5450A5CD52ED166F0D7A30322AB4B74B67F4065",
+          "Bytes": 1567158
+        },
+        {
+          "File": "scanning/frame-882.bmp",
+          "SHA256": "6CFC04FFF8A1F03011410554E40C90EE55DFE0B81D5766505D8A0C848BDE2737",
+          "Bytes": 1567158
+        },
+        {
+          "File": "scanning/frame-883.bmp",
+          "SHA256": "6E7004697ABCF8AF00A1EC70AA00BD29130E4F43B3A67798986BECD738E3662A",
+          "Bytes": 1567158
+        },
+        {
+          "File": "scanning/frame-884.bmp",
+          "SHA256": "4A09C615EB7FA4A00892F43517AA8ECCC31B101C00D6ED5977DC2A0E02311061",
+          "Bytes": 1567158
+        },
+        {
+          "File": "scanning/frame-886.bmp",
+          "SHA256": "8884B4420A2594ACBF44E95537F94DE799851FD52EE6BA0E4986EDE1E4C6CB39",
+          "Bytes": 1567158
+        },
+        {
+          "File": "scanning/frame-887.bmp",
+          "SHA256": "90CA5720FC96AD662B82F801F9A639062675C44D55B4044A7761F03E3E59E6F7",
+          "Bytes": 1567158
+        },
+        {
+          "File": "scanning/frame-888.bmp",
+          "SHA256": "9651A0335E2DFBF3B66459DA622215FD5A77A839F3848BE91DB973D5311296F1",
+          "Bytes": 1567158
+        },
+        {
+          "File": "scanning/frame-889.bmp",
+          "SHA256": "D0DB790F4861D01EC846B7A550ACDFBA0F8AC4C13CB25CDD8004B683A1C45193",
+          "Bytes": 1567158
+        },
+        {
+          "File": "scanning/frame-892.bmp",
+          "SHA256": "866A10F7686D4922A01D8D8A0CB32E28F2245D99277EADCAD809E50847AB5119",
+          "Bytes": 1567158
+        }
+      ],
+      "Published": true,
+      "Clock": "Original WGC surface time and observer QPC; not final desktop/photon time",
+      "ObservedSpanMilliseconds": 2122.4851,
+      "MaximumObservedGapMilliseconds": 195.6309,
+      "PreviewOriginalFrameRange": [
+        1,
+        38
+      ],
+      "PreviewClock": "Actual observer intervals, idle lead/trail trimmed; last frame held 200ms for review",
+      "PreviewScaled": false
+    },
+    {
+      "Name": "private-idle-11",
+      "SavedFrames": 13,
+      "ChangedIntervals": 12,
+      "MajorChangeIntervals": 7,
+      "PossibleStorageLimit": false,
+      "NativeDPI": [
+        96
+      ],
+      "OriginalFrames": [
+        {
+          "File": "private-idle-11/frame-893.bmp",
+          "SHA256": "6D5BD2DE10A96A20036B712956722C57C2EE0C904C08F24240D7267FE2436218",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-11/frame-895.bmp",
+          "SHA256": "D841F8FA25A0DFC63960043DE2181F7EA12767C2375F110F292CAA634DEC1E09",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-11/frame-896.bmp",
+          "SHA256": "2E51FB63A1A3B93F1A42C8FF7039F26FF0BA1EC6F59D570A72ABD2C658513317",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-11/frame-899.bmp",
+          "SHA256": "2A79A79140ABCB928A017A22C418E85BDA5ED48D319D23F0A67C481962FD24A5",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-11/frame-900.bmp",
+          "SHA256": "24EFEA85804343ABC95C2BC8979538E593275A0B170AC323CE67E4018DE39028",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-11/frame-902.bmp",
+          "SHA256": "3C6F358810B3D2BE0481F41E044F655FBF3BA9F19E650A6C869730FF7DA49C48",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-11/frame-903.bmp",
+          "SHA256": "4B48C5D84CA70A34FA98F3032792EA61985CED23020DF5A0FAFB9ADE652C90AA",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-11/frame-905.bmp",
+          "SHA256": "E3D510211FAA774244946BD6861C06CA2B31229977B37ADC9D57F1D7BA4754B8",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-11/frame-910.bmp",
+          "SHA256": "E831BBD1BCD7CD4971663D0A9719B70604F66F35088E9969C93F43E94E7796CA",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-11/frame-912.bmp",
+          "SHA256": "28B538734654E2B27A20E0A32291DC1F49163C24292C74B5A142B6E768C975C2",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-11/frame-913.bmp",
+          "SHA256": "F4CB3F1754606BBBD7468B4300E24C91BB2EAA2F301966164B76BF6BE90F5AF8",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-11/frame-915.bmp",
+          "SHA256": "0B805CF1D3069739BE20888D8AA89AE421E6466415312AC51D8EBE2F1DB184BE",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-11/frame-916.bmp",
+          "SHA256": "9CC8570C03BCE95B2BFAE85AC4870C66FB110BE9EBF3B8132EA05504B550DE5C",
+          "Bytes": 1567158
+        }
+      ],
+      "Published": false,
+      "Clock": "Original WGC surface time and observer QPC; not final desktop/photon time",
+      "ObservedSpanMilliseconds": 40186.9322,
+      "MaximumObservedGapMilliseconds": 20273.2144
+    },
+    {
+      "Name": "recording",
+      "SavedFrames": 35,
+      "ChangedIntervals": 34,
+      "MajorChangeIntervals": 0,
+      "PossibleStorageLimit": false,
+      "NativeDPI": [
+        96
+      ],
+      "OriginalFrames": [
+        {
+          "File": "recording/frame-919.bmp",
+          "SHA256": "D8A71A696AF02507C957E603C7C6CD4C564433B582EC569526050626E44221C6",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-924.bmp",
+          "SHA256": "06BDC03886D98441EF3C2B71E4A1ED0D6DC8D2F083365C25F4C237CFEB1A89D3",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-927.bmp",
+          "SHA256": "B457FE8FC100B17D6EC186329514FA832946F1CDEA0BB64BBE416B2805398C97",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-928.bmp",
+          "SHA256": "63AAAACAB7E6DBBA6A7723171897B347F74E444B71A7050F99A05B0320B59824",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-929.bmp",
+          "SHA256": "036C1B0B822E239E46062D1DF39CC49C620A9985055CA414FC0D02E6D1A061C2",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-932.bmp",
+          "SHA256": "949AC870C957FA3DDFAFB385A62189098AC10F8CF95E8C4192D85A2A128BEB79",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-933.bmp",
+          "SHA256": "15EAE29B46D2F0554463242C92AF15D9AC0F525DF573271B523D2B7650EA7579",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-934.bmp",
+          "SHA256": "BEE805A47AD1BB9B46BB580E94C55B99182C25BB6D9A3C596ABDBCB7ABAD5203",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-936.bmp",
+          "SHA256": "EC34F271530262CD3D577B009B94909CBBED272C24D76E2EAC33835879E2A467",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-938.bmp",
+          "SHA256": "6FC1C248A60B640170267F18A84997F0A561F48F5FBE365BA75E53E0D2C1C185",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-941.bmp",
+          "SHA256": "B10E07642594557E05EFB73BFFD5D4C331F498C4F7F3564878BD9435156004DB",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-942.bmp",
+          "SHA256": "1F64030AD7333AA06D3EE042546432A73F82159C6E6F6A1B6C2848BC3039E057",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-945.bmp",
+          "SHA256": "4B4092240E2AF39BA189E7137F8903CEF87F92B23A7483205AAE185D107192A8",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-946.bmp",
+          "SHA256": "B10E07642594557E05EFB73BFFD5D4C331F498C4F7F3564878BD9435156004DB",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-948.bmp",
+          "SHA256": "91558A5B27236FD49C4A3B4BD1F7A6004D4F2686ABF964DD4C1E358D1DA07AA0",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-949.bmp",
+          "SHA256": "6FC1C248A60B640170267F18A84997F0A561F48F5FBE365BA75E53E0D2C1C185",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-951.bmp",
+          "SHA256": "346FA89952A812835ADAD7D3C0590BCD3E46C439C71A289EED996E77F99F94C1",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-953.bmp",
+          "SHA256": "E8500D5506927F62BE9BBF86B3923CE18BC1F8D63A5C7456EAAC97452120A925",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-954.bmp",
+          "SHA256": "0EA1ECFFCE0C3F2708D23BB446F4F20956DC8AB954CEDB9310E4956D07A7E5F9",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-956.bmp",
+          "SHA256": "D4C46DE2E4092E4A8E20B00B8C448672ADEDC77E31AB5E412E1E5CF94DE2CC25",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-957.bmp",
+          "SHA256": "BE0E16AAF8C32E8B888F5A8FC63EB4186A695EEE5F742AD26E2B6C9583F8F030",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-960.bmp",
+          "SHA256": "D9837678034199AFC299671ABF76A999467D1D3CA5D0582C75C5115156AA112D",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-961.bmp",
+          "SHA256": "4DB03840EB4B86AD524BD17D09C27A1A37EA7841B011073C241F02462639BC04",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-962.bmp",
+          "SHA256": "F1FEFB1915E5CF39D02EDB9901BC41F5F81638A0F5211C5C467310445134CF52",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-963.bmp",
+          "SHA256": "35B61FA26BA3617E8C138AED75EA26C1C797F12E0D69EBC5A284A0FB3809F91A",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-965.bmp",
+          "SHA256": "DDB2B00FDB52CEBCABE0699CA78BBE194663CAFEA6D55B3DDD4FFFD97CEA92A0",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-966.bmp",
+          "SHA256": "DB81EFD7018BA58760065E3A1CD75F23C099DBFFF8833920C0BA1CDC3044119A",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-967.bmp",
+          "SHA256": "9B9AC5134860A6282A77E010DFCD854C8431101C8C51BAA34789647FEA77B0D7",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-970.bmp",
+          "SHA256": "9B07C6262197DD6ACB51D2A288B5EE37199FC7F18B42B3D23AA4E9C7E6BD65C0",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-971.bmp",
+          "SHA256": "09D930B21AB9A82C308B198642AA1065EB15F440CF3DACB49103BE0E1580217D",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-972.bmp",
+          "SHA256": "18A878FFB9BDD7CD6897352B681DD136599CC6CD02EB9EADCB1D905F23555357",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-974.bmp",
+          "SHA256": "7B00418BFDD743C06DFC4B3FFFBFD17D392EDA6EB9D16CE1E501B04BA7CC670C",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-976.bmp",
+          "SHA256": "B407E03D5C76B9C3A239965A556DCEF43C3D02B1990E445B4B61A6D3CE3C5A4F",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-978.bmp",
+          "SHA256": "3B48E27EE95370837F554E3C56ED5AE9C6CC45EE468CB0EB95E5857E3E2955ED",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-979.bmp",
+          "SHA256": "6129D63C7E9F212155BD820792900146BEE4E6DDA0042F51F772126F72F25BE1",
+          "Bytes": 1567158
+        }
+      ],
+      "Published": true,
+      "Clock": "Original WGC surface time and observer QPC; not final desktop/photon time",
+      "ObservedSpanMilliseconds": 1647.9361,
+      "MaximumObservedGapMilliseconds": 132.9818,
+      "PreviewOriginalFrameRange": [
+        0,
+        34
+      ],
+      "PreviewClock": "Actual observer intervals, idle lead/trail trimmed; last frame held 200ms for review",
+      "PreviewScaled": false
+    },
+    {
+      "Name": "private-idle-12",
+      "SavedFrames": 85,
+      "ChangedIntervals": 84,
+      "MajorChangeIntervals": 0,
+      "PossibleStorageLimit": true,
+      "NativeDPI": [
+        96
+      ],
+      "OriginalFrames": [
+        {
+          "File": "private-idle-12/frame-980.bmp",
+          "SHA256": "FA5C50812C738A46E9002742C995E927CFC0E9B3272038747C9AA7E8788FCE09",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-981.bmp",
+          "SHA256": "9758D9AC0BBFBCEBD5B7789923D6718C4CC4A3C06755D3AD1B98D1B568EC6ADD",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-984.bmp",
+          "SHA256": "B10E07642594557E05EFB73BFFD5D4C331F498C4F7F3564878BD9435156004DB",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-985.bmp",
+          "SHA256": "1F64030AD7333AA06D3EE042546432A73F82159C6E6F6A1B6C2848BC3039E057",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-986.bmp",
+          "SHA256": "1CD5DC3C9299329D92E6CAF998535FE6817AC6471D58D86AB81CFC834D7B9CC7",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-988.bmp",
+          "SHA256": "408E9C36B4620537B0BCCC99DA9250F309B5CB54ED75A51431D57C5A9874461E",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-989.bmp",
+          "SHA256": "50704ACA9256131E306B3EB91EC6EADAF6ECBF7B062080716AE53D25A89D0E87",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-990.bmp",
+          "SHA256": "DE4A53D80EB66B0999DB7B4FF4731ABC5AF67E3D39A9BFE39F5D3FD0D2E5A612",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-991.bmp",
+          "SHA256": "C1C22711A4D837AEF641DAE11D879C3B10544494037B25FE8A4E94A132D313B6",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-992.bmp",
+          "SHA256": "0A35F0ECD75D1C52CE8C2621E3779D36E673BF8AC8421CD528CA1EAC444FE9DE",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-993.bmp",
+          "SHA256": "C81FBF59E9CBB6E9F1710753E20460C8D8B627E01A5D68AB15A4C4CECB313F75",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-994.bmp",
+          "SHA256": "BEE805A47AD1BB9B46BB580E94C55B99182C25BB6D9A3C596ABDBCB7ABAD5203",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-995.bmp",
+          "SHA256": "15EAE29B46D2F0554463242C92AF15D9AC0F525DF573271B523D2B7650EA7579",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-996.bmp",
+          "SHA256": "BE681022EB7F4843D9B975E336D6FAE2BFA0148E85C7AE960C4F62E349BDF071",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-997.bmp",
+          "SHA256": "63AAAACAB7E6DBBA6A7723171897B347F74E444B71A7050F99A05B0320B59824",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-998.bmp",
+          "SHA256": "00C766115B364075CC5416044AB16ACB16EB61196EB09554A048E92C9BAD2C94",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-999.bmp",
+          "SHA256": "EC8E98322ADFD8AA6E679CF30B71C46048C5FA377FA4ECCC673A873517C0BEC1",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1002.bmp",
+          "SHA256": "D8A71A696AF02507C957E603C7C6CD4C564433B582EC569526050626E44221C6",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1003.bmp",
+          "SHA256": "473024CAD1FC919CF97D106307216CE11CE66A0698105E956FEAF4F785D8910D",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1005.bmp",
+          "SHA256": "30803F45925AC681A98CA098393D7943AED427F9D455B0B6520D1F91D4AC89BD",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1007.bmp",
+          "SHA256": "ADFD0D47A248EB32C9F4ECFABAB119A3ACCCF8C04FEC4E85EA3DCD92D51676AC",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1008.bmp",
+          "SHA256": "35B61FA26BA3617E8C138AED75EA26C1C797F12E0D69EBC5A284A0FB3809F91A",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1009.bmp",
+          "SHA256": "A4A6058D7DC77BB965C00E0BD662DC309E5EB7FB2C00B2EA3F7D927764341F7C",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1010.bmp",
+          "SHA256": "F50017589D9BFFBE997A4260B2F2AF5F1651344329D5E476679B1076601DD7E7",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1012.bmp",
+          "SHA256": "237E38DB7DDE39F91FCF68BA48B1A54729DE967CCCCF98366E7FECD8019D5E17",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1015.bmp",
+          "SHA256": "3B48E27EE95370837F554E3C56ED5AE9C6CC45EE468CB0EB95E5857E3E2955ED",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1017.bmp",
+          "SHA256": "598DAEBA2C28084C343E94691ABE752A63F55BA9D9350F2EFFEC3BFAD4098079",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1018.bmp",
+          "SHA256": "1A111555A8F9D063BD447AE6FF23F78B5479CC998833049D80FEF69BEA64F326",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1019.bmp",
+          "SHA256": "50704ACA9256131E306B3EB91EC6EADAF6ECBF7B062080716AE53D25A89D0E87",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1020.bmp",
+          "SHA256": "6E5023EECD122452AFDA03F22121C0B9DC5461C8C91E405F8759BFABDB95F427",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1021.bmp",
+          "SHA256": "C14F326D2498808A44898D43792CF5DC4AD977528F1D896C703B36A57271A8D8",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1022.bmp",
+          "SHA256": "B10E07642594557E05EFB73BFFD5D4C331F498C4F7F3564878BD9435156004DB",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1025.bmp",
+          "SHA256": "1CD5DC3C9299329D92E6CAF998535FE6817AC6471D58D86AB81CFC834D7B9CC7",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1026.bmp",
+          "SHA256": "34D745236FEAC477A0BFD2D0AE42E268E5CFC60444655791C1BE3A10A3D4CF6B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1027.bmp",
+          "SHA256": "DD10624527945ACE559A603CB6307E81F3DA13E1A1EB631CE8458BAC54FC6970",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1030.bmp",
+          "SHA256": "71A9E164FCD064428588038F077EA0D609D677C0DDE1AEF0E77985E40C55353F",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1031.bmp",
+          "SHA256": "02DB6E7A2B65BFA3D12C9D9012BBC5001B2C4F06D00D79B0E83C00229448D957",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1033.bmp",
+          "SHA256": "C0E95F9CB8BA7CBBA7457428436AD597D1622283F9695F2377BE6581DE2FF411",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1034.bmp",
+          "SHA256": "AA1E02ADCEE05BF7CADD8AC748C9BD4DB68F8B3F5F0278B5F7D8771A3A7339FB",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1035.bmp",
+          "SHA256": "A015F03A2D67FCA5CED813F992B5FBBF9F721834C2B3E9C49D45A6BC8F51D306",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1037.bmp",
+          "SHA256": "4435FC3B33A30E2BDA4E96E1655BDA2408CEDF231F21EC222C5896C2FF68EE0F",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1038.bmp",
+          "SHA256": "AD77CC06E4CB9B0E135AB12DD6F0C5D6168C177DF6AE2A361B14BC96727833BB",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1039.bmp",
+          "SHA256": "F1FEFB1915E5CF39D02EDB9901BC41F5F81638A0F5211C5C467310445134CF52",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1042.bmp",
+          "SHA256": "9B9AC5134860A6282A77E010DFCD854C8431101C8C51BAA34789647FEA77B0D7",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1046.bmp",
+          "SHA256": "DB81EFD7018BA58760065E3A1CD75F23C099DBFFF8833920C0BA1CDC3044119A",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1047.bmp",
+          "SHA256": "B69477EDF87026C415C77E0CE4A0BD07D3C0C7C3CDDEE644A62FD4DE7D4C2947",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1048.bmp",
+          "SHA256": "DDB2B00FDB52CEBCABE0699CA78BBE194663CAFEA6D55B3DDD4FFFD97CEA92A0",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1049.bmp",
+          "SHA256": "B0497E830FA7CEDC98D4935C4850B06CFFBE981E9B8079178148B5E02AEBEF83",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1050.bmp",
+          "SHA256": "18A878FFB9BDD7CD6897352B681DD136599CC6CD02EB9EADCB1D905F23555357",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1052.bmp",
+          "SHA256": "8DACB7321AA4EE43BC745F4E5DFEED2E7CACE45C2CBE56571B4B67F0AF4FF7E8",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1053.bmp",
+          "SHA256": "C81FBF59E9CBB6E9F1710753E20460C8D8B627E01A5D68AB15A4C4CECB313F75",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1055.bmp",
+          "SHA256": "E84E990A26E574F9003FA14D59856BE7A47A0A7A8A65D91B9AB95A9F92B1488D",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1056.bmp",
+          "SHA256": "EC34F271530262CD3D577B009B94909CBBED272C24D76E2EAC33835879E2A467",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1057.bmp",
+          "SHA256": "1AB0AC67F337C64B9E5ED91FD22FEC07B75BB64DE37FE1407F59C07B27B294C0",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1059.bmp",
+          "SHA256": "A14AA4DA48C147F7BCC4F612CECAA24260043EC1A8F91333AD0575879162EAF2",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1060.bmp",
+          "SHA256": "9D1A38C812479BFED628D5A3E3D0A2FDFD7788B741C8D976424BD9E28CA811C4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1061.bmp",
+          "SHA256": "1F64030AD7333AA06D3EE042546432A73F82159C6E6F6A1B6C2848BC3039E057",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1062.bmp",
+          "SHA256": "1CD5DC3C9299329D92E6CAF998535FE6817AC6471D58D86AB81CFC834D7B9CC7",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1064.bmp",
+          "SHA256": "DBDE03FC56F92282FC86F282B71B493658486D4D57D78DCE8A74F548D16748C0",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1065.bmp",
+          "SHA256": "78D6806EA33BEDED76D92BCD22A448F94E758B22C4D8AC6CAA8CD913C57CE635",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1066.bmp",
+          "SHA256": "62FC2ADF35DD74DC2BF5EEAAF70472F4AE46F5AB00631AF9BAC25F9B7CDEEF88",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1069.bmp",
+          "SHA256": "A0C2A0BF7AEA4B2C7C402D7557C25BE1184F028A7A81B4F51476D5DAD2684E52",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1070.bmp",
+          "SHA256": "C3CE856D2C6BEB962FBAB0C0B621DE6CF614C7261F55F8897A75E97D7769B1B8",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1071.bmp",
+          "SHA256": "A35A34F31741DCEC66E5D2FAA134B427FF1FE69BB7254545634CD449445D59DA",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1072.bmp",
+          "SHA256": "4A89BEA825BE70C541702E13FC4AA86902DF9DCDBE8397ECC620074F28B44493",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1073.bmp",
+          "SHA256": "BE681022EB7F4843D9B975E336D6FAE2BFA0148E85C7AE960C4F62E349BDF071",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1075.bmp",
+          "SHA256": "00C766115B364075CC5416044AB16ACB16EB61196EB09554A048E92C9BAD2C94",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1076.bmp",
+          "SHA256": "9B9AC5134860A6282A77E010DFCD854C8431101C8C51BAA34789647FEA77B0D7",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1080.bmp",
+          "SHA256": "DDB2B00FDB52CEBCABE0699CA78BBE194663CAFEA6D55B3DDD4FFFD97CEA92A0",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1082.bmp",
+          "SHA256": "30803F45925AC681A98CA098393D7943AED427F9D455B0B6520D1F91D4AC89BD",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1084.bmp",
+          "SHA256": "F1FEFB1915E5CF39D02EDB9901BC41F5F81638A0F5211C5C467310445134CF52",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1085.bmp",
+          "SHA256": "4DB03840EB4B86AD524BD17D09C27A1A37EA7841B011073C241F02462639BC04",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1087.bmp",
+          "SHA256": "D9837678034199AFC299671ABF76A999467D1D3CA5D0582C75C5115156AA112D",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1088.bmp",
+          "SHA256": "B59A37E1AFBAFB8FD7266112249FF98DD6005A34744E3D79FFFD12FEFB632A89",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1091.bmp",
+          "SHA256": "6EED32541C59DBB7D2522AD0994735EFCF56EBE0A44A77227D2C2D001C7FCF97",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1093.bmp",
+          "SHA256": "536BC8E35003C001BE1390422C936C12C52E20041E217BD26A2098C79B025826",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1095.bmp",
+          "SHA256": "E026C169F2926BA377E9345EF697C646F75BFFB1893AFE487B4E672B968B8391",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1096.bmp",
+          "SHA256": "EA78E29885A2DF45D1668224151C6E0CBAE643CEAA6FA0B7AA5BC7E368E296F5",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1098.bmp",
+          "SHA256": "C14F326D2498808A44898D43792CF5DC4AD977528F1D896C703B36A57271A8D8",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1100.bmp",
+          "SHA256": "1CD5DC3C9299329D92E6CAF998535FE6817AC6471D58D86AB81CFC834D7B9CC7",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1103.bmp",
+          "SHA256": "34D745236FEAC477A0BFD2D0AE42E268E5CFC60444655791C1BE3A10A3D4CF6B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1104.bmp",
+          "SHA256": "C14F326D2498808A44898D43792CF5DC4AD977528F1D896C703B36A57271A8D8",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1106.bmp",
+          "SHA256": "EA78E29885A2DF45D1668224151C6E0CBAE643CEAA6FA0B7AA5BC7E368E296F5",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1108.bmp",
+          "SHA256": "346FA89952A812835ADAD7D3C0590BCD3E46C439C71A289EED996E77F99F94C1",
+          "Bytes": 1567158
+        },
+        {
+          "File": "private-idle-12/frame-1109.bmp",
+          "SHA256": "E8500D5506927F62BE9BBF86B3923CE18BC1F8D63A5C7456EAAC97452120A925",
+          "Bytes": 1567158
+        }
+      ],
+      "Published": false,
+      "Clock": "Original WGC surface time and observer QPC; not final desktop/photon time",
+      "ObservedSpanMilliseconds": 3949.1352,
+      "MaximumObservedGapMilliseconds": 112.9511
+    },
+    {
+      "Name": "dropdown-enter",
+      "SavedFrames": 4,
+      "ChangedIntervals": 3,
+      "MajorChangeIntervals": 3,
+      "PossibleStorageLimit": false,
+      "NativeDPI": [
+        96
+      ],
+      "OriginalFrames": [
+        {
+          "File": "dropdown-enter/frame-1713.bmp",
+          "SHA256": "7336ED04DE9C17A53DB690EF23D95E395BDACC94C3B6C0E34CC22FA1B2CB7824",
+          "Bytes": 1567158
+        },
+        {
+          "File": "dropdown-enter/frame-1714.bmp",
+          "SHA256": "C6E6BDF130395F76358D1A35B1B1C57A3D001FEE2254BCF80F7898B8A2943497",
+          "Bytes": 1567158
+        },
+        {
+          "File": "dropdown-enter/frame-1715.bmp",
+          "SHA256": "BE64F3EF2D986D82B2465E260E0EE52BC48DBC83C6495D23C6956E501A302716",
+          "Bytes": 1567158
+        },
+        {
+          "File": "dropdown-enter/frame-1717.bmp",
+          "SHA256": "879A846DC6DE267CEE2CAD5E3DD050F25FBD24EF7AD00FAF0BB35F49BA0DACF5",
+          "Bytes": 1567158
+        }
+      ],
+      "Published": true,
+      "Clock": "Original WGC surface time and observer QPC; not final desktop/photon time",
+      "ObservedSpanMilliseconds": 120.8448,
+      "MaximumObservedGapMilliseconds": 48.3696,
+      "PreviewOriginalFrameRange": [
+        0,
+        3
+      ],
+      "PreviewClock": "Actual observer intervals, idle lead/trail trimmed; last frame held 200ms for review",
+      "PreviewScaled": false
+    },
+    {
+      "Name": "private-idle-13",
+      "SavedFrames": 0,
+      "ChangedIntervals": 0,
+      "MajorChangeIntervals": 0,
+      "PossibleStorageLimit": false,
+      "NativeDPI": [],
+      "OriginalFrames": [],
+      "Published": false,
+      "Clock": "Original WGC surface time and observer QPC; not final desktop/photon time"
+    },
+    {
+      "Name": "dropdown-exit",
+      "SavedFrames": 1,
+      "ChangedIntervals": 0,
+      "MajorChangeIntervals": 0,
+      "PossibleStorageLimit": false,
+      "NativeDPI": [
+        96
+      ],
+      "OriginalFrames": [
+        {
+          "File": "dropdown-exit/frame-1720.bmp",
+          "SHA256": "0B844A9CBDA93E6032ECB6E58D953BAD09B5AF6E0F91FB64C2DDE0631D815352",
+          "Bytes": 1567158
+        }
+      ],
+      "Published": true,
+      "Clock": "Original WGC surface time and observer QPC; not final desktop/photon time",
+      "PreviewOriginalFrameRange": [
+        0,
+        0
+      ],
+      "PreviewClock": "Actual observer intervals, idle lead/trail trimmed; last frame held 200ms for review",
+      "PreviewScaled": false
+    },
+    {
+      "Name": "private-idle-14",
+      "SavedFrames": 0,
+      "ChangedIntervals": 0,
+      "MajorChangeIntervals": 0,
+      "PossibleStorageLimit": false,
+      "NativeDPI": [],
+      "OriginalFrames": [],
+      "Published": false,
+      "Clock": "Original WGC surface time and observer QPC; not final desktop/photon time"
+    }
+  ],
+  "PhysicalInputProvenByThisFile": false,
+  "RS13Complete": false,
+  "Scope": "Native selected-window surface records. Stimulus identity and physical-input proof belong to the operator/session logs. Preview trimming/padding never changes the raw frames or original clocks."
+}

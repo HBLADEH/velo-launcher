@@ -1,0 +1,113 @@
+{
+  "CheckedAtUtc": "2026-11-04T13:49:32.5437049Z",
+  "OriginalVerification": {
+    "FrontendTests": 26,
+    "ExitCode": 0,
+    "LogSHA256": "E3C97670336D0437863AB406A49D263AF4BBB9424C060704EEBEE87C38CAF740",
+    "Command": "GOTOOLCHAIN=go1.25.6 ./scripts/verify.ps1 -SkipBuild"
+  },
+  "ProbeVerification": {
+    "ExitCode": 0,
+    "LogSHA256": "AF5431D7BBCF7C12E61CFC762C26D359E4588FE14D782D2CDFB9C57CCFC32FFF",
+    "Command": "GOTOOLCHAIN=go1.25.6 go test -tags latencyprobe ./..."
+  },
+  "IconVerification": {
+    "FemtoVGClippy": true,
+    "SoftwareFmtClippyRelease": true,
+    "LogSHA256": "63CA8AFFEA71FCA58835C96031A8CB3E97A372C8729FC293B078B10A9BB74166",
+    "OfflineRows": 18,
+    "SerialTimingAfterBuilds": true,
+    "RoundPixelAndKeyEquality": true
+  },
+  "ObserverVerification": {
+    "CompositionOrFocusFailureRejected": true,
+    "KeyboardClockRolloverChecked": true,
+    "InvalidSamplesRetained": true,
+    "FinalSourceEventsMatched": 46,
+    "SyntheticOrUntrustedInputRejected": true,
+    "EmptyInputRejected": true,
+    "AbnormalExitRejected": true,
+    "FinalEventLossRejectsLiveSuccess": true,
+    "SameBootColdRejectedBeforeLaunch": true
+  },
+  "FrozenToolSources": [
+    {
+      "Path": "latency_probe_windows_test.go",
+      "SHA256": "EB449024C94821AA766C2532C66D4F88034AD98E5403DD1E187B4B6540D6A6CE"
+    },
+    {
+      "Path": "latency_probe_windows.go",
+      "SHA256": "2EEA14AB427727AD225AE227395B613D24B10CADF2E25676CFD24C535F21D33C"
+    },
+    {
+      "Path": "cmd/rs12-icons/main.go",
+      "SHA256": "9B669632796F7BDB1FCEBF7BD940F593C75C97BF4BEB510A058EAEDE03B10FFB"
+    },
+    {
+      "Path": "rust/examples/rs12_icons.rs",
+      "SHA256": "AEB2BA4072F67097A03B85B05031129BF222ED1DC0308B4EED75B5D25069FAB4"
+    },
+    {
+      "Path": "scripts/collect-rs12-cold.ps1",
+      "SHA256": "B15F2EA174FAF13381C51362DDA0651153699CF65F965982FECCBA9044A96C07"
+    },
+    {
+      "Path": "scripts/collect-rs12-input.ps1",
+      "SHA256": "F7B5D6CD79CFAE2B07DDE5ECE1E1DAA10731FC6BB1D1AD0D8B28C72A36866129"
+    },
+    {
+      "Path": "scripts/collect-rs12-warm.ps1",
+      "SHA256": "75ADB820FE8D2F8248EAE7ADF9A2450FB5D9BB08AAB3E9CA8F1FD6B119835518"
+    },
+    {
+      "Path": "scripts/export-rs12-input.ps1",
+      "SHA256": "90D388E0F82487587C48A6BCEE8D163D7EC11227ABD662E6553A2EB97211E9E4"
+    },
+    {
+      "Path": "scripts/latency-probe.js",
+      "SHA256": "E3CE798BB99EAF3E0C0AC9C132BBE07F1AFAFC6D639C4637EA2CEA1EE0A49981"
+    },
+    {
+      "Path": "scripts/measure-rs12-icons.ps1",
+      "SHA256": "7224141FBBC80A2BD08246BEE7E597CA7B9E2E7FEB3926DEF6BC02229ACB5DED"
+    },
+    {
+      "Path": "scripts/prepare-rs12-cold.ps1",
+      "SHA256": "BD0914FADCEB9173EB4F23E3E516867F78553667828F6D120D399139CE1A3359"
+    },
+    {
+      "Path": "scripts/prepare-rs12-input.ps1",
+      "SHA256": "7416D03F05D2A8B31E55DFFDDEA92B969950757ABB70B039E3DE360307B3CDD1"
+    },
+    {
+      "Path": "scripts/prepare-rs12-warm.ps1",
+      "SHA256": "6BCFDA3774EF669791F9972600A5E5211FD48B24116E3BE3E27CEB35055B1ACD"
+    },
+    {
+      "Path": "scripts/start-rs12-cold.ps1",
+      "SHA256": "169B35A629F8B68EDDF0C9EC2B2AB61F2F2387A6967DEC07D3DD557AF0057201"
+    },
+    {
+      "Path": "scripts/start-rs12-input-session.ps1",
+      "SHA256": "8A28FD4DC0FEFCC6A2EF8BF5C7B8C8F651AF3383E729614168009F283C2A717B"
+    },
+    {
+      "Path": "scripts/test-rs12-input.ps1",
+      "SHA256": "2C71260DDF4D1A1D891F1DEBA8F96314015B2EF4A18AE4F21ECE7B5B6635ED0D"
+    },
+    {
+      "Path": "scripts/lib/native-observation.ps1",
+      "SHA256": "53AD57FB0010387C5B0E645181EC0294F95057E56DF87512EB764561A398CA9C"
+    },
+    {
+      "Path": "scripts/lib/rs12-input-observer.cs",
+      "SHA256": "B2A3EB2A6EB7855E6BD680DA25D2B6D619D60BD9D1107914604A3D970ADE2D22"
+    }
+  ],
+  "ManualDeferredAtUserRequest": [
+    "Wails physical input and default network",
+    "Wails three warmed-profile starts",
+    "Independent cold conditions",
+    "Actual DPI/IME/frame timing and full-tree scan peak"
+  ]
+}

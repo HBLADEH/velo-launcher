@@ -1,0 +1,31 @@
+{
+  "Stage": "RS-14",
+  "Date": "2026-11-13",
+  "Complete": false,
+  "G4Passed": false,
+  "DefaultRenderer": "software",
+  "Completed": [
+    "Real GitHub Actions job 43370007545 succeeded on a repository-scoped ephemeral runner on this host; both renderers, ZIP/license checks, actual installers, registration/cleanup and artifact upload passed.",
+    "Rust toolchain now pins its MSVC host as well as exact version; clean checkout no longer depends on a local directory override.",
+    "Pinned NSIS accepts a verified local archive without permitting HTTPS downgrade; valid/invalid inputs tested.",
+    "Windows 10 Pro 22H2 build 19045 guest: both exact CI exe files passed 10 window/input/business/pages/restart/actual installation groups.",
+    "VMware Tools direct authenticated execution, file transfer and screen capture verified; no guest network or host mouse/keyboard needed for automatic cases.",
+    "Official Go v0.9.11 system installation with Microsoft-signed offline WebView2, both Rust preview data-copy transitions, return to the retained Go application and explicit guest system uninstall completed; original synthetic user files/backups remained unchanged."
+  ],
+  "CompletedSystemPackageVerification": {
+    "ID": "official-system-Go-to-preview-Rust-and-back",
+    "EnvironmentAvailable": true,
+    "Method": "Official Go system installer and signed offline WebView2 in the disposable guest. Preserve the Go program/HKLM registration and original synthetic data, explicitly copy data to separate Rust preview directories, then return to the retained Go application.",
+    "Status": "Six accepted stages and final cleanup complete",
+    "AlreadyObserved": "Official machine installation, first Go frontend/normal exit, both Rust copied-data reads and cleanup, rollback Go frontend/user tray exit and normal stop log, explicit Go system uninstall and shortcut/registration/hotkey cleanup passed. The rollback attach did not retain a readable ExitCode; it stays null, not zero.",
+    "AutomaticInPlaceMachineMigrationClaim": false
+  },
+  "RemainingCompatibilityBoundaries": [
+    "Additional physical GPU/driver combinations are not supplied by this single host; VMware SVGA 3D is a virtual driver, not independent physical hardware coverage.",
+    "Third-party IMEs are not installed; no third-party IME result claimed. Actual Windows 11 Microsoft Pinyin acceptance remains under the original RS13 evidence.",
+    "Windows 10 automatic component input is not a physical keyboard/IME test. High-DPI and physical display timing conclusions are not extended from the 100-percent VM."
+  ],
+  "ProductReleaseBoundary": "Current internal Rust package retains independent prototype/preview identity and per-user installation. It does not implement automatic same-directory takeover of the official Go machine installation; public/formal migration cannot be approved by relabelling the manual copy procedure.",
+  "Publication": "No release published. The explicitly authorized temporary CI source branch is retained for review; original working branch/index preserved.",
+  "PreviousRunnerZeroAsBlockingCondition": false
+}

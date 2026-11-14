@@ -1,0 +1,62 @@
+[
+  {
+    "RecordedAtUtc": "2026-11-14T08:34:52.4372489Z",
+    "Stage": "Prepare",
+    "Passed": false,
+    "PassedCasesBeforeFailure": [
+      {
+        "Name": "locked-Go-takeover-rejected-before-change",
+        "Passed": true
+      },
+      {
+        "Name": "unknown-baseline-rejected-without-change",
+        "Passed": true
+      }
+    ],
+    "Error": "The Software installer returned 30 instead of 0. This earlier result is preserved; it is not evidence that takeover passed.",
+    "OriginalSHA256": "FAFD4EB4571FC9BADB46ACBB4D5928CC09FDFC78722D786E5DCCFCA5C210C7F2",
+    "OriginalRecordRetainedLocally": true
+  },
+  {
+    "Record": "full-verification-r3.log",
+    "SHA256": "F42EAEDDE5C6E65E2487267481064F04A087DC13A33D550F2534D6B15BBF401A",
+    "Observation": "Product verification compared the renderer-only feature with the combined renderer/product request. The assertion was corrected and later full verification passed."
+  },
+  {
+    "Record": "full-verification-r4.log",
+    "SHA256": "74EDB01EB0842E8D4D03379F662031C78E0DB78655E592CA5C3FEEE77798C515",
+    "Observation": "Successful full product verification: both renderer identities are bound in product-builds.json."
+  },
+  {
+    "Record": "preview-full.log",
+    "SHA256": "F7CA22026F0B134A9E722A80281B804C540F4BA25D032947443B3FDF0B44F3C5",
+    "Observation": "Preview verification had an unexplained MSVC linker exit 1. The original output is retained; a later single-job full run passed."
+  },
+  {
+    "Record": "product-full-r3.log",
+    "SHA256": "EF5CCD5ED461D846F5E2FCAEDA2BB1B5CE277F52E0E5647DC8C6B52372C0FA9C",
+    "Observation": "Duplicate queued product run was explicitly stopped before completion; it produced no successful final receipt."
+  },
+  {
+    "Record": "product-full-r4.log",
+    "SHA256": "C027AEBC367AF1A2AC94589A6C25CCA970E654D4221B05E642F6D2613030F64D",
+    "Observation": "FemtoVG smoke returned zero observed redraw events while its OpenGL frame and snapshot existed. It remains a failed attempt; thresholds were unchanged for the full rerun."
+  },
+  {
+    "Record": "product-full-r5.log",
+    "SHA256": "53A05A412615E45788DA2FDCD281A555F893B50277D1E86BE38CC22337EDCEEB",
+    "Observation": "Final full product checks and component smokes passed for both renderers."
+  },
+  {
+    "Observation": "Windows PowerShell 5.1 inherited PowerShell 7 PSModulePath and could not load Get-Acl. The system installer now clears only its child environment before starting Windows PowerShell. A real diagnostic takeover then returned zero.",
+    "Fixed": true
+  },
+  {
+    "Observation": "Windows PowerShell 5.1 bound a null File.Replace backup-name argument as an empty string. Explicit NullString fixed atomic updates of existing transaction receipts; exact helper tests passed under Windows PowerShell 5.1.",
+    "Fixed": true
+  },
+  {
+    "Observation": "A pending UAC and black guest display were observed before any product change. A VMware Tools graceful guest restart restored the desktop. The remaining installer checks use the authorized VMware guest service token; no elevated scheduled task was created.",
+    "NewUACClickClaimed": false
+  }
+]

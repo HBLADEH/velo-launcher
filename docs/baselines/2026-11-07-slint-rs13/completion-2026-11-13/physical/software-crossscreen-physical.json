@@ -1,0 +1,27 @@
+{
+  "RecordedAtUtc": "2026-11-12T17:31:39.7575452Z",
+  "Renderer": "software",
+  "Run": "software-physical",
+  "ProcessId": 156608,
+  "ExecutableSHA256": "5E7C017DDA3FF691E7FF8DCBFEAF149E5A766C1F8DC73A816BB5C4A9F7C4C66B",
+  "OperatorReply": "跨屏后布局和输入全部正常",
+  "OperatorConfirmedScope": "Physical drag from 175% screen to another screen; normal layout, Microsoft Pinyin candidate location and selection, ceshi Escape cancellation, and English abc.",
+  "NativeDPIs": [
+    96
+  ],
+  "NativeChanges": [
+    {
+      "UnixMicroseconds": 1794504698639669,
+      "ElapsedMilliseconds": 0.3906,
+      "Visible": false,
+      "ForegroundTargetProcess": false,
+      "DPI": 96,
+      "X": 541,
+      "Y": 144,
+      "Width": 640,
+      "Height": 660
+    }
+  ],
+  "NativeSnapshotSHA256": "F98401EEB8E8A8321F74C2CD319F136AF0F37051DA8041D65A45F93A7E4EF0CA",
+  "Scope": "Operator report with passive native window geometry and application logs; no synthetic typing."
+}

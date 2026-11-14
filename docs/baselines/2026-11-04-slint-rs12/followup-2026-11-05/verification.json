@@ -1,0 +1,80 @@
+{
+  "RecordedAtUtc": "2026-11-04T17:52:05.540781Z",
+  "SharedVerification": {
+    "CompletedAtUtc": "2026-11-04T17:50:09.2336658Z",
+    "Success": true,
+    "Command": "GOTOOLCHAIN=go1.25.6 ./scripts/verify.ps1 -SkipBuild",
+    "LogSHA256": "9CB95DC8AEB5FCF216D5782878A0F57DD534FF474FCECCAC764F6B30B8D29708"
+  },
+  "InitialAttempt": {
+    "Passed": false,
+    "Reason": "go vet rejected an existing fmt.Fprint HTML fixture containing percent-encoded URL; no product or fixture change was made. Re-run used project documented Go 1.25.6.",
+    "Toolchain": "go1.23.0 from PATH"
+  },
+  "InputExportRegressionPassed": true,
+  "Sources": [
+    {
+      "Path": "scripts/lib/rs12-input-observer.cs",
+      "SHA256": "2D5494F9B14263E99E7FD0D5AE178481C1B153BB1473BDA1ADEDA92C4B7A0209"
+    },
+    {
+      "Path": "scripts/collect-rs12-input.ps1",
+      "SHA256": "70642C1AB8C5EDE1282EB6C183228B1818D63ED4AF60EE35F75E07B7694E073B"
+    },
+    {
+      "Path": "scripts/export-rs12-input.ps1",
+      "SHA256": "C4DD1F86AD2367779B5859A2197172940725FD2A753F70128DB41E1A812ED660"
+    },
+    {
+      "Path": "scripts/test-rs12-input.ps1",
+      "SHA256": "B424D9233DB019FCBFE72D0FD7929A32DF204BD50D210897813AE0FD5BD5D460"
+    },
+    {
+      "Path": "scripts/lib/rs12-resource-observer.cs",
+      "SHA256": "5B8A1AA420A96D8C663C4BC81E015C279CE8DEB72CD9D650AB24FAD408A067C3"
+    },
+    {
+      "Path": "scripts/measure-rs12-peak.ps1",
+      "SHA256": "11244DB16020ABAE15A9418992A8D2E240A307E710D31D527F2C73FA265A18DB"
+    },
+    {
+      "Path": "scripts/test-rs12-resources.ps1",
+      "SHA256": "18E70732C7F1B5C0ABF724A0B30A67435CDBF1164AC02E4099D3054ECBD7CC1A"
+    },
+    {
+      "Path": "scripts/start-rs12-session.ps1",
+      "SHA256": "C2F37D736525B4FB9F6F66A3F91CB884DC8A24BEF36E31913FA49D82D747C412"
+    },
+    {
+      "Path": "scripts/verify.ps1",
+      "SHA256": "FD1B3532BA7B17391D68CC57588B6EABE289FD9D9541B24F140F851DF41D290D"
+    },
+    {
+      "Path": "scripts/collect-rs12-warm.ps1",
+      "SHA256": "9F5D19ABD2BD0D3A151948749DD2C5966792B3C62326421D629E27D45A6BD412"
+    }
+  ],
+  "Logs": [
+    {
+      "LocalName": "input-observer-until-exit-check.log",
+      "SHA256": "69FB25950E148D5C8156639B2815161C5E932C3CD7C4A49E8CC9E95038480033"
+    },
+    {
+      "LocalName": "input-export-check.log",
+      "SHA256": "69FB25950E148D5C8156639B2815161C5E932C3CD7C4A49E8CC9E95038480033"
+    },
+    {
+      "LocalName": "shared-verification.log",
+      "SHA256": "DC718B190AA2027DD00531FB0A644F77CB21DF2D68426695419D6B3510C2ECFC"
+    },
+    {
+      "LocalName": "shared-verification-go1256.log",
+      "SHA256": "9CB95DC8AEB5FCF216D5782878A0F57DD534FF474FCECCAC764F6B30B8D29708"
+    },
+    {
+      "LocalName": "warm-session-export-check.log",
+      "SHA256": "69FB25950E148D5C8156639B2815161C5E932C3CD7C4A49E8CC9E95038480033"
+    }
+  ],
+  "WarmSessionLogPathRegressionPassed": true
+}

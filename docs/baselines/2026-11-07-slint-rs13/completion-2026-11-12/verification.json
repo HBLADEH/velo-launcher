@@ -1,0 +1,36 @@
+{
+  "FinalComplete": true,
+  "RustTestsPerRenderer": 80,
+  "InputAssertions": 22,
+  "BusinessAssertions": 7,
+  "PageAssertions": 33,
+  "Logs": [
+    {
+      "File": "verify-rust-v1.log",
+      "SHA256": "369F6751E17512A86C8152C092030C1C05A74F08EDB6A49248D73277EC36DD9E",
+      "VerifiedRenderers": [
+        "femtovg",
+        "software"
+      ],
+      "Scope": "Historical source versions remain separate. v3 is the final product source verification."
+    },
+    {
+      "File": "verify-rust-v2.log",
+      "SHA256": "EB82CA4D284CD3BE1A8656827A64258457262E091AD6925D54DFCB99842907EF",
+      "VerifiedRenderers": [
+        "femtovg",
+        "software"
+      ],
+      "Scope": "Historical source versions remain separate. v3 is the final product source verification."
+    },
+    {
+      "File": "verify-rust-v3.log",
+      "SHA256": "71C39E7F32955BA63751B49337AD5E3A6358FB362C6FD5E8FF0D8EC9E368AA72",
+      "VerifiedRenderers": [
+        "femtovg",
+        "software"
+      ],
+      "Scope": "Historical source versions remain separate. v3 is the final product source verification."
+    }
+  ]
+}

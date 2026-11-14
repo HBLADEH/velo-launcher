@@ -1,0 +1,27 @@
+{
+  "Failures": [
+    {
+      "Attempt": "component-motion/femtovg",
+      "Complete": false,
+      "Failure": "animation snapshot queue full or closed",
+      "CapturedFrames": 291,
+      "SHA256": "DDD3A8D5529C2BFEAF999BFA207AD5E0D079E35A24FE96E53E38945A37801D6C"
+    },
+    {
+      "Attempt": "component-motion-v2/femtovg",
+      "Complete": false,
+      "Failure": "animation snapshot queue full or closed",
+      "CapturedFrames": 435,
+      "SHA256": "440935EF0415541668B42B2986799F56B53A8CC66DB11D7F6019959A14D578D3"
+    },
+    {
+      "Attempt": "static-v2/femtovg",
+      "Complete": false,
+      "CapturedPNGs": 44,
+      "Reason": "Capture wrapper recorded exit 1; no stderr available from that wrapper version. Do not infer a specific cause."
+    }
+  ],
+  "FinalStatic": "Same already-built FemtoVG static exe retried with no other capture running; all 52 scenes and sources verified. Successful Software copied unchanged.",
+  "FinalComponent": "Same already-built FemtoVG component exe retried serially; all 468 frames complete. Original two-slot queue unchanged. Successful Software copied unchanged.",
+  "Scope": "No failed attempt is relabelled as successful; final runs have independent manifests."
+}

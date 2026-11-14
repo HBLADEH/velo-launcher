@@ -1,0 +1,45 @@
+{
+  "RecordedAtUtc": "2026-11-09T20:01:05.7521405Z",
+  "GuardFailures": [
+    {
+      "Name": "wails-build4-startup-focus-refusal",
+      "SHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+      "CalibratorSHA256": "2CAC01858B3081700B9991FC0F4C7336EE02DFADC3FBBBC709C7A405E38165A8",
+      "TraceSHA256": "6B693EB0853B1E42D7D32470C810DF1C95EDFD98976E8A231FA8BD0B8CFF4D45",
+      "NativeFailure": [
+        "foreground_left_target_during_probe"
+      ],
+      "NativeInputProbesLogged": 1,
+      "ProductNormalExit": 0,
+      "FinalAcceptedInputLogExists": false,
+      "InvalidSampleRetained": true,
+      "ProductCrashObserved": false,
+      "HistoricalPhysicalFailureExplained": false
+    },
+    {
+      "Name": "wails-build7-startup-presend-refusal",
+      "SHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+      "CalibratorSHA256": "07F7DFFE6989658736BCCA294E190D84B99830D8A7EAB84180C4F32CFCB5D055",
+      "TraceSHA256": "245EF654640833BBBFD53357244DA7169A93EB7ED9546AFA3F92762CD5684AFF",
+      "NativeFailure": [
+        "target_focus_or_modifiers_changed"
+      ],
+      "NativeInputProbesLogged": 0,
+      "ProductNormalExit": 0,
+      "FinalAcceptedInputLogExists": false,
+      "InvalidSampleRetained": true,
+      "ProductCrashObserved": false,
+      "HistoricalPhysicalFailureExplained": false
+    }
+  ],
+  "FinalBuild": "build8",
+  "Correction": "If focus changes between poll and immediate pre-send guard, no key is emitted; record a deferral and continue bounded waiting. Distinguish target focus handoff from another process foreground. All actual SendInput failures still abort without retry.",
+  "FinalCommonBuildWarmPasses": 9,
+  "FinalCommonBuildMachineHotkeyPasses": 60,
+  "CurrentPhysicalWailsHotkeyPassesFromPriorEvidence": 20,
+  "CurrentPhysicalSlintPassesFromPriorEvidence": "Software 21; FemtoVG 20; original records separate",
+  "HistoricalRootCauseEstablished": false,
+  "Conclusion": "New machine safety refusals localized to observer guard/focus handoff; they do not establish a product crash or explain the original manual flash reports. Final controlled regression passed; historical cause remains evidence-limited and explicitly retained.",
+  "OriginalSoftwareColdBlurReference": "../../completion-2026-11-09/cold-software-3.json",
+  "Scope": "No product focus/blur behavior altered to make tests pass."
+}

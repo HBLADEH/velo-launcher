@@ -1,0 +1,47 @@
+{
+  "Date": "2026-11-03",
+  "Scope": "Windows 11 x64; dual monitors at 96 DPI; one actual S3 cycle per renderer; normal lifecycle; independent instance/data path",
+  "Runs": [
+    {
+      "Renderer": "software",
+      "ExeSHA256": "417FF956E78C632E101989586A6CACA30BF0DF7414E13122CC75A26B0338E993",
+      "Pid": 225288,
+      "Hwnd": "761456",
+      "SleepTime": "2026-11-03T12:36:46.7934119+08:00",
+      "WakeTime": "2026-11-03T12:38:39.9424697+08:00",
+      "SleepToWakeSeconds": 113.149,
+      "State": "S3; Windows SYSTEM_POWER_STATE value 4",
+      "Events": [
+        42,
+        107,
+        1
+      ],
+      "PostWakeActualHotkey": true,
+      "PostWakeFocusedInput": true,
+      "SameWindowPositionDPI": true,
+      "TrayRegistered": true
+    },
+    {
+      "Renderer": "femtovg",
+      "ExeSHA256": "AD4A650FB62AD4A13FA12239C8CC13299748241FD0B26D1B557AEBAE08B7BCB3",
+      "Pid": 219264,
+      "Hwnd": "3F80DF8",
+      "SleepTime": "2026-11-03T12:51:16.6703148+08:00",
+      "WakeTime": "2026-11-03T12:53:43.9323143+08:00",
+      "SleepToWakeSeconds": 147.262,
+      "State": "S3; Windows SYSTEM_POWER_STATE value 4",
+      "Events": [
+        42,
+        107,
+        1
+      ],
+      "PostWakeActualHotkey": true,
+      "PostWakeFocusedInput": true,
+      "SameWindowPositionDPI": true,
+      "TrayRegistered": true
+    }
+  ],
+  "PowerPrerequisite": "AC away-mode permission temporarily changed 1 -> 0; icssvc AWAYMODE request observed",
+  "PowerRestore": "Verified original AC=1, DC=0",
+  "NoPerformanceClaim": true
+}

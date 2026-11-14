@@ -1,3 +1,5 @@
+import { RotatingGlyph } from "rotating-icons.slint";
+
 export struct LauncherItem {
     id: string,
     name: string,
@@ -6,6 +8,7 @@ export struct LauncherItem {
     fallback: string,
     system: bool,
     pinned: bool,
+    icon: image,
 }
 
 export struct PreviewEntry {
@@ -20,6 +23,7 @@ export struct PreviewEntry {
 export global Theme {
     in-out property <bool> dark: false;
     in-out property <bool> reduce-motion: false;
+    in-out property <bool> presented: false;
     out property <color> bg: dark ? #111b2b : #f6f8fc;
     out property <color> fg: dark ? #e8eff9 : #192b43;
     out property <color> muted: dark ? #99abc3 : #63758c;
@@ -30,6 +34,35 @@ export global Theme {
     out property <color> surface: dark ? #1c2b3e : #ffffff;
     out property <color> hover: dark ? #23364e : #edf3fb;
     out property <color> accent-line: dark ? #365f8b : #b4d5ff;
+    out property <color> shadow: dark ? #00000020 : #1d4b8210;
+    out property <color> glow: dark ? #0078d418 : #0078d40c;
+}
+
+export component SurfaceBackground inherits Rectangle {
+    background: Theme.bg;
+    Rectangle { width: parent.width; height: parent.height; background: @radial-gradient(circle 640px at 608px 0px, Theme.glow, transparent 60%); }
+}
+
+// Slint 1.18 has no dashed Rectangle stroke. Keep the border as small vector
+// segments in logical pixels, so both renderers preserve dash width at any DPI.
+export component DashedBorder {
+    in property <color> color: Theme.accent;
+    for index in Math.floor((root.width - 24px) / 6px): Rectangle {
+        x: 12px + index * 6px; y: 0px; width: 3px; height: 1px; background: root.color;
+    }
+    for index in Math.floor((root.width - 24px) / 6px): Rectangle {
+        x: 12px + index * 6px; y: parent.height - 1px; width: 3px; height: 1px; background: root.color;
+    }
+    for index in Math.floor((root.height - 24px) / 6px): Rectangle {
+        x: 0px; y: 12px + index * 6px; width: 1px; height: 3px; background: root.color;
+    }
+    for index in Math.floor((root.height - 24px) / 6px): Rectangle {
+        x: parent.width - 1px; y: 12px + index * 6px; width: 1px; height: 3px; background: root.color;
+    }
+    Path { x: 0px; y: 0px; width: 12px; height: 12px; fill: transparent; stroke: root.color; stroke-width: 1px; commands: "M .5 12 C .5 5.65 5.65 .5 12 .5"; }
+    Path { x: parent.width - 12px; y: 0px; width: 12px; height: 12px; fill: transparent; stroke: root.color; stroke-width: 1px; commands: "M 0 .5 C 6.35 .5 11.5 5.65 11.5 12"; }
+    Path { x: 0px; y: parent.height - 12px; width: 12px; height: 12px; fill: transparent; stroke: root.color; stroke-width: 1px; commands: "M .5 0 C .5 6.35 5.65 11.5 12 11.5"; }
+    Path { x: parent.width - 12px; y: parent.height - 12px; width: 12px; height: 12px; fill: transparent; stroke: root.color; stroke-width: 1px; commands: "M 0 11.5 C 6.35 11.5 11.5 6.35 11.5 0"; }
 }
 
 export component Glyph inherits Image {
@@ -44,6 +77,12 @@ export component Glyph inherits Image {
     : icon-key == "search" ? @image-url("assets/fluent/ic_fluent_search_20_regular.svg")
     : icon-key == "star" ? @image-url("assets/fluent/ic_fluent_star_16_regular.svg")
     : icon-key == "pinned" ? @image-url("assets/fluent/ic_fluent_star_16_filled.svg")
+    : icon-key == "refresh" ? @image-url("assets/fluent/ic_fluent_arrow_clockwise_20_regular.svg")
+    : icon-key == "plus" ? @image-url("assets/fluent/ic_fluent_add_20_regular.svg")
+    : icon-key == "enter" ? @image-url("assets/fluent/ic_fluent_arrow_enter_left_20_regular.svg")
+    : icon-key == "check" ? @image-url("assets/fluent/ic_fluent_checkmark_20_regular.svg")
+    : icon-key == "chevron" ? @image-url("assets/fluent/ic_fluent_chevron_down_20_regular.svg")
+    : icon-key == "keyboard" ? @image-url("assets/fluent/ic_fluent_keyboard_20_regular.svg")
     : @image-url("assets/fluent/ic_fluent_settings_24_regular.svg");
     colorize: Theme.accent;
     image-fit: contain;
@@ -54,14 +93,19 @@ export component LauncherIcon inherits Rectangle {
     width: 32px;
     height: 32px;
     border-radius: 7px;
-    background: root.item.system ? Theme.selected : Theme.field;
-    border-width: root.item.system ? 0px : 1px;
+    background: root.item.system ? Theme.selected : root.item.icon.width > 0 ? transparent : Theme.field;
+    border-width: root.item.system || root.item.icon.width > 0 ? 0px : 1px;
     border-color: Theme.border;
-    if root.item.icon-key != "": Glyph {
+    if root.item.icon.width > 0: Image {
+        width: parent.width; height: parent.height;
+        source: root.item.icon;
+        image-fit: contain;
+    }
+    if root.item.icon.width == 0 && root.item.icon-key != "": Glyph {
         x: 4px; y: 4px; width: parent.width - 8px; height: parent.height - 8px;
         icon-key: root.item.icon-key;
     }
-    if root.item.icon-key == "": Text {
+    if root.item.icon.width == 0 && root.item.icon-key == "": Text {
         text: root.item.fallback;
         color: Theme.accent;
         font-size: 16px;
@@ -76,6 +120,15 @@ export component ActionButton inherits Rectangle {
     in property <bool> checked;
     in property <bool> checkable;
     in property <bool> enabled: true;
+    in property <bool> rotate-on-hover: false;
+    in property <bool> spinning: false;
+    in property <bool> flat: false;
+    in property <bool> primary: false;
+    in property <length> text-size: 11px;
+    in property <length> radius: 8px;
+    in property <bool> show-shadow: false;
+    private property <angle> icon-angle: root.spinning && Theme.presented && !Theme.reduce-motion ? 360deg * Math.mod(animation-tick(), 1s) / 1s : !Theme.reduce-motion && root.rotate-on-hover && touch.has-hover ? 35deg : 0deg;
+    animate icon-angle { duration: Theme.reduce-motion || root.spinning ? 0ms : 350ms; easing: cubic-bezier(0.22, 1, 0.36, 1); }
     callback activated();
     private property <float> press-scale: Theme.reduce-motion || !touch.pressed ? 1 : 0.96;
     animate press-scale { duration: Theme.reduce-motion ? 0ms : 180ms; easing: cubic-bezier(0.22, 1, 0.36, 1); }
@@ -85,21 +138,26 @@ export component ActionButton inherits Rectangle {
         x: (parent.width - self.width) / 2; y: (parent.height - self.height) / 2;
         width: parent.width * (Theme.reduce-motion ? 1 : root.press-scale);
         height: parent.height * (Theme.reduce-motion ? 1 : root.press-scale);
-        border-radius: 8px;
-        background: root.checked ? Theme.selected : touch.pressed ? Theme.selected : touch.has-hover ? Theme.hover : Theme.field;
-        border-width: 1px;
-        border-color: focus.has-focus ? Theme.accent : root.checked ? Theme.accent-line : Theme.border;
+        border-radius: root.radius;
+        background: root.primary ? (touch.has-hover ? #0067c0 : #0078d4) : root.checked ? Theme.selected : touch.pressed ? Theme.selected : touch.has-hover && !root.flat ? Theme.hover : root.flat ? transparent : Theme.field;
+        border-width: root.flat && !root.checked ? 0px : 1px;
+        border-color: focus.has-focus ? Theme.accent : root.primary ? #0078d4 : root.checked ? Theme.accent-line : Theme.border;
+        drop-shadow-blur: root.show-shadow ? 12px : 0px; drop-shadow-offset-y: root.show-shadow ? 3px : 0px; drop-shadow-color: Theme.shadow;
         animate background, border-color { duration: Theme.reduce-motion ? 0ms : 160ms; }
-        if root.icon-key != "": Glyph {
+        if root.icon-key != "" && !((root.icon-key == "refresh" || root.icon-key == "settings") && root.icon-angle != 0deg): Glyph {
             x: (parent.width - self.width) / 2;
             y: (parent.height - self.height) / 2;
             width: 18px; height: 18px;
             icon-key: root.icon-key;
         }
+        if (root.icon-key == "refresh" || root.icon-key == "settings") && root.icon-angle != 0deg: RotatingGlyph {
+            x: (parent.width - self.width) / 2; y: (parent.height - self.height) / 2;
+            width: 18px; height: 18px; icon-key: root.icon-key; angle: root.icon-angle; tint: Theme.accent;
+        }
         if root.icon-key == "": Text {
             text: root.text;
-            font-size: 11px;
-            color: root.checked ? Theme.accent : Theme.fg;
+            font-size: root.text-size;
+            color: root.primary ? white : root.checked ? Theme.accent : root.flat ? Theme.muted : Theme.fg;
             horizontal-alignment: center;
             vertical-alignment: center;
         }
@@ -127,12 +185,33 @@ export component ActionButton inherits Rectangle {
     forward-focus: focus;
 }
 
+// Keep the outgoing panel painted while disabling its input immediately. The
+// incoming panel is mounted and interactive from the first transition frame.
+export component PageTransition inherits FocusScope {
+    in property <bool> open;
+    in property <bool> presented;
+    private property <float> progress: root.open ? 1 : 0;
+    // Wails leaves with opacity only. Reset the incoming offset after the
+    // outgoing surface has become invisible, instead of sliding it on close.
+    private property <length> offset: root.open || root.progress > 0 ? 0px : 8px;
+    animate progress { duration: Theme.reduce-motion || !root.presented ? 0ms : root.open ? 220ms : 100ms; easing: root.open ? cubic-bezier(0.22, 1, 0.36, 1) : ease; }
+    animate offset { duration: Theme.reduce-motion || !root.presented || !root.open ? 0ms : 280ms; easing: cubic-bezier(0.22, 1, 0.36, 1); }
+    visible: root.presented && (root.open || (!Theme.reduce-motion && root.progress > 0));
+    enabled: root.presented && root.open;
+    focus-on-click: false;
+    focus-on-tab-navigation: false;
+    opacity: Theme.reduce-motion ? (root.open ? 1 : 0) : root.progress;
+    y: Theme.reduce-motion ? 0px : root.offset;
+}
+
 // Flickable owns wheel handling and clipping. A fixed, theme-aware thumb avoids
 // the stock Fluent scrollbar's unconditionally animated width/arrows.
 export component ContentScroll inherits Rectangle {
+    in property <bool> enabled: true;
     in property <length> content-height;
+    in property <bool> reserve-scrollbar: false;
     in-out property <length> content-y <=> flick.content-y;
-    out property <length> visible-width: root.width;
+    out property <length> visible-width: root.width - (root.reserve-scrollbar && root.maximum > 0px ? 15px : 0px);
     private property <length> maximum: max(0px, root.content-height - root.height);
     public function ensure-visible(top: length, item-height: length) {
         if top < -root.content-y {
@@ -147,11 +226,13 @@ export component ContentScroll inherits Rectangle {
         content-width: root.width;
         content-height: max(root.height, root.content-height);
         mouse-drag-pan-enabled: false;
+        interactive: root.enabled;
         @children
     }
     if root.maximum > 0px: Rectangle {
         x: parent.width - 10px; y: 0px; width: 10px; height: parent.height;
         TouchArea {
+            enabled: root.enabled;
             clicked => {
                 root.content-y = max(-root.maximum, min(0px, root.content-y + (self.mouse-y < thumb.y ? root.height * 0.85 : -root.height * 0.85)));
             }
@@ -167,6 +248,7 @@ export component ContentScroll inherits Rectangle {
             border-radius: 3px;
             background: drag.has-hover || drag.pressed ? Theme.muted : Theme.border;
             drag := TouchArea {
+                enabled: root.enabled;
                 private property <length> start-y;
                 private property <length> start-content-y;
                 pointer-event(event) => {
@@ -190,20 +272,25 @@ export component AppTile inherits Rectangle {
     in property <bool> selected;
     in property <bool> entered;
     in property <int> order;
+    in property <bool> animate-entry: true;
+    in property <bool> grid: false;
     callback hovered(string);
     callback chosen(string);
+    callback context-menu(string);
+    callback pin-toggled(string);
     private property <float> entry: root.entered ? 1 : 0;
     private property <length> lift: !Theme.reduce-motion && touch.has-hover ? -2px : 0px;
-    private property <length> icon-size: !Theme.reduce-motion && touch.has-hover ? 34.56px : 32px;
+    private property <length> base-icon-size: root.grid ? 38px : 32px;
+    private property <length> icon-size: !Theme.reduce-motion && touch.has-hover ? root.base-icon-size * 1.08 : root.base-icon-size;
     private property <float> press-scale: !Theme.reduce-motion && touch.pressed ? 0.96 : 1;
     animate entry {
-        duration: Theme.reduce-motion ? 0ms : 360ms;
-        delay: Theme.reduce-motion || !root.entered ? 0ms : root.order * 24ms;
+        duration: Theme.reduce-motion || !root.animate-entry ? 0ms : 360ms;
+        delay: Theme.reduce-motion || !root.animate-entry || !root.entered ? 0ms : root.order * 24ms;
         easing: cubic-bezier(0.22, 1, 0.36, 1);
     }
     animate lift, press-scale { duration: Theme.reduce-motion ? 0ms : 220ms; easing: cubic-bezier(0.22, 1, 0.36, 1); }
     animate icon-size { duration: Theme.reduce-motion ? 0ms : 280ms; easing: cubic-bezier(0.22, 1, 0.36, 1); }
-    height: 89px;
+    height: root.grid ? 100px : 89px;
     opacity: Theme.reduce-motion ? 1 : root.entry;
     background: transparent;
     Rectangle {
@@ -215,32 +302,35 @@ export component AppTile inherits Rectangle {
         border-width: 1px;
         border-color: root.selected ? Theme.accent-line : transparent;
         background: root.selected ? Theme.selected : touch.has-hover ? Theme.hover : transparent;
+        drop-shadow-blur: root.selected ? 12px : 0px; drop-shadow-offset-y: root.selected ? 3px : 0px; drop-shadow-color: Theme.shadow;
         animate background, border-color { duration: Theme.reduce-motion ? 0ms : 180ms; }
         LauncherIcon {
-            width: Theme.reduce-motion ? 32px : root.icon-size;
+            width: Theme.reduce-motion ? root.base-icon-size : root.icon-size;
             height: self.width;
-            x: (parent.width - self.width) / 2; y: 13px + (Theme.reduce-motion ? 0px : root.lift) - (self.height - 32px) / 2;
+            x: (parent.width - self.width) / 2; y: (root.grid ? 11px : 13px) + (Theme.reduce-motion ? 0px : root.lift) - (self.height - root.base-icon-size) / 2;
             item: root.item;
         }
         Text {
-            x: 4px; y: 53px; width: parent.width - 8px; height: 30px;
+            x: 4px; y: root.grid ? 57px : 54px; width: parent.width - 8px; height: root.grid ? 34px : 28px;
             text: root.item.name;
-            font-size: 10px;
-            color: Theme.fg;
+            font-size: root.grid ? 12px : 10px;
+            color: root.grid && root.selected ? Theme.accent : Theme.fg;
             wrap: word-wrap;
             overflow: elide;
             horizontal-alignment: center;
             vertical-alignment: top;
-        }
-        if root.item.pinned: Glyph {
-            x: parent.width - 20px; y: 4px; width: 14px; height: 14px;
-            icon-key: "pinned";
         }
     }
     touch := TouchArea {
         mouse-cursor: pointer;
         moved => { root.hovered(root.item.id); }
         clicked => { root.chosen(root.item.id); }
+        pointer-event(event) => { if event.kind == PointerEventKind.up && event.button == PointerEventButton.right { root.context-menu(root.item.id); } }
+    }
+    if root.item.pinned || root.selected || touch.has-hover: Rectangle {
+        x: parent.width - 23px; y: 3px; width: 20px; height: 20px; border-radius: 5px; background: Theme.field;
+        Glyph { x: 2px; y: 2px; width: 16px; height: 16px; icon-key: root.item.pinned ? "pinned" : "star"; colorize: root.item.pinned ? Theme.accent : Theme.muted; }
+        TouchArea { mouse-cursor: pointer; clicked => { root.pin-toggled(root.item.id); } }
     }
     accessible-role: list-item;
     accessible-label: root.item.name + " · " + root.item.subtitle;
@@ -250,32 +340,47 @@ export component AppTile inherits Rectangle {
 export component HomeSection inherits Rectangle {
     in property <string> title;
     in property <string> hint;
+    in property <string> empty-message;
     in property <[LauncherItem]> items;
     in property <string> selected-id;
     in property <bool> entered;
+    in property <bool> expandable: false;
+    in property <bool> expanded: false;
+    in property <int> total-count: root.items.length;
+    callback expansion-toggled();
     callback hovered(string);
     callback chosen(string);
-    height: 28px + Math.ceil(root.items.length / 6) * 96px;
+    callback context-menu(string);
+    callback pin-toggled(string);
+    height: 26px + (root.items.length == 0 && root.empty-message != "" ? 51px : Math.ceil(root.items.length / 6) * 96px - 7px);
     background: transparent;
     Rectangle { x: 2px; y: 3px; width: 3px; height: 11px; border-radius: 2px; background: Theme.accent; }
     HorizontalLayout {
-        x: 12px; y: 0px; width: parent.width - 14px; height: 18px;
+        x: 12px; y: 0px; width: parent.width - 14px; height: 16px;
         spacing: 7px;
         Text { text: root.title; font-size: 12px; font-weight: 600; color: Theme.fg; }
-        Text { text: root.items.length; font-size: 10px; color: Theme.muted; }
+        Text { text: root.total-count; font-size: 10px; color: Theme.muted; }
         Rectangle { horizontal-stretch: 1; background: transparent; }
         Text { text: root.hint; font-size: 10px; color: Theme.muted; }
+        if root.expandable: ActionButton { text: root.expanded ? "收起" : "展开全部"; flat: true; width: 62px; height: 22px; activated => { root.expansion-toggled(); } }
+    }
+    if root.items.length == 0 && root.empty-message != "": Rectangle {
+        x: 2px; y: 28px; width: parent.width - 4px; height: 51px;
+        border-radius: 8px; border-width: 1px; border-color: Theme.accent-line; background: Theme.surface;
+        Text { x: 16px; y: 15px; width: parent.width - 32px; height: 20px; text: root.empty-message; font-size: 11px; color: Theme.muted; }
     }
     for item[index] in root.items: AppTile {
         width: (parent.width - 35px) / 6;
         x: Math.mod(index, 6) * (self.width + 7px);
-        y: 28px + Math.floor(index / 6) * 96px;
+        y: 26px + Math.floor(index / 6) * 96px;
         item: item;
         selected: root.selected-id == item.id;
         entered: root.entered;
-        order: index;
+        order: Math.mod(index, 6);
         hovered(id) => { root.hovered(id); }
         chosen(id) => { root.chosen(id); }
+        context-menu(id) => { root.context-menu(id); }
+        pin-toggled(id) => { root.pin-toggled(id); }
     }
 }
 
@@ -284,6 +389,8 @@ export component ResultRow inherits Rectangle {
     in property <bool> selected;
     callback hovered(string);
     callback chosen(string);
+    callback context-menu(string);
+    callback pin-toggled(string);
     height: 54px;
     border-radius: 9px;
     border-width: 1px;
@@ -292,27 +399,29 @@ export component ResultRow inherits Rectangle {
     animate background, border-color { duration: Theme.reduce-motion ? 0ms : 140ms; }
     LauncherIcon { x: 12px; y: 11px; item: root.item; }
     Text {
-        x: 56px; y: 6px; width: parent.width - 102px; height: 22px;
+        x: 57px; y: 8.5px; width: parent.width - 102px; height: 19px;
         text: root.item.name;
         color: root.selected ? Theme.accent : Theme.fg;
         font-size: 14px; font-weight: 550;
         overflow: elide;
     }
     Text {
-        x: 56px; y: 30px; width: parent.width - 102px; height: 16px;
+        x: 57px; y: 30.5px; width: parent.width - 102px; height: 15px;
         text: root.item.subtitle;
         color: Theme.muted; font-size: 11px;
         overflow: elide;
-    }
-    if root.item.pinned: Glyph {
-        x: parent.width - 32px; y: 19px; width: 16px; height: 16px;
-        icon-key: "pinned";
     }
     touch := TouchArea {
         mouse-cursor: pointer;
         moved => { root.hovered(root.item.id); }
         clicked => { root.chosen(root.item.id); }
+        pointer-event(event) => { if event.kind == PointerEventKind.up && event.button == PointerEventButton.right { root.context-menu(root.item.id); } }
     }
+    Rectangle { x: parent.width - (root.selected ? 77px : 47px); y: 12px; width: 34px; height: 30px;
+        Glyph { x: 9px; y: 6px; width: 18px; height: 18px; icon-key: root.item.pinned ? "pinned" : "star"; colorize: Theme.muted; }
+        TouchArea { mouse-cursor: pointer; clicked => { root.pin-toggled(root.item.id); } }
+    }
+    if root.selected: Glyph { x: parent.width - 30px; y: 20px; width: 14px; height: 14px; icon-key: "enter"; }
     accessible-role: list-item;
     accessible-label: root.item.name + " · " + root.item.subtitle;
 }

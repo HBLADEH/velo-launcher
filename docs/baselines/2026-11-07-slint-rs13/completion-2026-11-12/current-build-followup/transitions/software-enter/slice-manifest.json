@@ -1,0 +1,125 @@
+{
+  "SourceRun": ".reasonix/rs13-current-build-20261112/light/runs/software-current-3",
+  "SourceClip": "settings-enter-current-short",
+  "DerivedClip": "settings-enter-current-active-slice",
+  "OriginalTraceSHA256": "2BF9E9B9A195C16963759A8E2CEA3262FBC6E836E02DBC8FAE57C7BA9BF10C78",
+  "ParentStorageLimited": true,
+  "ParentGPUQueueRejected": 0,
+  "ParentWriterQueueRejected": 0,
+  "ExecutableSHA256": "5E7C017DDA3FF691E7FF8DCBFEAF149E5A766C1F8DC73A816BB5C4A9F7C4C66B",
+  "SelectedFrameIndices": [
+    232,
+    233,
+    234,
+    235,
+    236,
+    237,
+    238,
+    239,
+    240,
+    241,
+    242,
+    243,
+    244,
+    245,
+    246,
+    247,
+    248,
+    249
+  ],
+  "FrameSHA256": [
+    {
+      "Index": 232,
+      "SourceTime100ns": 1499448971729,
+      "SHA256": "2984AC03C786F59341F3B6B065FDA07E6DB5E034E26659F047D20D1F4CEC17A6"
+    },
+    {
+      "Index": 233,
+      "SourceTime100ns": 1499449138565,
+      "SHA256": "C04CB3E2C9EEC512A8230D2A39E2520E214BD54037FAA2A8D7F16A2238D943F7"
+    },
+    {
+      "Index": 234,
+      "SourceTime100ns": 1499449305414,
+      "SHA256": "6AA6DA6C07AB96BE58089B1BD4C42B7FA569F5FB031E8913AB5E643AC1EEA4EF"
+    },
+    {
+      "Index": 235,
+      "SourceTime100ns": 1499449639085,
+      "SHA256": "130AD73FDE400CF90F2940A6BC07FDEA93164F237DAB26018489B07DE25964BC"
+    },
+    {
+      "Index": 236,
+      "SourceTime100ns": 1499449805915,
+      "SHA256": "84DFBB364700ED835524DECA09E3C521A0DF1C0A6CD51E5EBBFF3FA12B5ED695"
+    },
+    {
+      "Index": 237,
+      "SourceTime100ns": 1499449972753,
+      "SHA256": "4EBC840AA7457447DF477C41CD84D2C9E544A61D18F52617899DED751F9C7440"
+    },
+    {
+      "Index": 238,
+      "SourceTime100ns": 1499450139582,
+      "SHA256": "74CACB31DCEB052372392C64E2C250FB31A0C411BBA435B70C5A5A18A87A840E"
+    },
+    {
+      "Index": 239,
+      "SourceTime100ns": 1499450306424,
+      "SHA256": "E35298B3E85C7C17D07454A2BB12D30402F5DDEEE9E5EF8A1ABFFF4D67491ED0"
+    },
+    {
+      "Index": 240,
+      "SourceTime100ns": 1499450640094,
+      "SHA256": "1985A7FB651BF171D06E4DB054554B898BE13DE89669744DC09AB5D99FE4948B"
+    },
+    {
+      "Index": 241,
+      "SourceTime100ns": 1499450806929,
+      "SHA256": "4791D4FE6E3E0AD919DCC3A1A83EA8463BEB5D64548432DDD2AF34B8F49E74E6"
+    },
+    {
+      "Index": 242,
+      "SourceTime100ns": 1499451140597,
+      "SHA256": "E3D510211FAA774244946BD6861C06CA2B31229977B37ADC9D57F1D7BA4754B8"
+    },
+    {
+      "Index": 243,
+      "SourceTime100ns": 1499451307438,
+      "SHA256": "E3D510211FAA774244946BD6861C06CA2B31229977B37ADC9D57F1D7BA4754B8"
+    },
+    {
+      "Index": 244,
+      "SourceTime100ns": 1499451474272,
+      "SHA256": "E3D510211FAA774244946BD6861C06CA2B31229977B37ADC9D57F1D7BA4754B8"
+    },
+    {
+      "Index": 245,
+      "SourceTime100ns": 1499451641110,
+      "SHA256": "E3D510211FAA774244946BD6861C06CA2B31229977B37ADC9D57F1D7BA4754B8"
+    },
+    {
+      "Index": 246,
+      "SourceTime100ns": 1499451807947,
+      "SHA256": "E3D510211FAA774244946BD6861C06CA2B31229977B37ADC9D57F1D7BA4754B8"
+    },
+    {
+      "Index": 247,
+      "SourceTime100ns": 1499451974783,
+      "SHA256": "E3D510211FAA774244946BD6861C06CA2B31229977B37ADC9D57F1D7BA4754B8"
+    },
+    {
+      "Index": 248,
+      "SourceTime100ns": 1499452141615,
+      "SHA256": "E3D510211FAA774244946BD6861C06CA2B31229977B37ADC9D57F1D7BA4754B8"
+    },
+    {
+      "Index": 249,
+      "SourceTime100ns": 1499452308440,
+      "SHA256": "E3D510211FAA774244946BD6861C06CA2B31229977B37ADC9D57F1D7BA4754B8"
+    }
+  ],
+  "MaximumSourceGapMilliseconds": 33.3671,
+  "SourceSpanMilliseconds": 333.6711,
+  "Scope": "Derived contiguous active transition frames copied from the original trace before its later per-clip storage limit. Full-run limit remains recorded; derived slice does not certify all-session storage."
+}

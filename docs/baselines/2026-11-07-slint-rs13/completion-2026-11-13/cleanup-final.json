@@ -1,0 +1,109 @@
+{
+  "CleanupPassed": true,
+  "RecordedAtUtc": "2026-11-12T20:02:23.9401580Z",
+  "TestProcessCount": 0,
+  "Sessions": [
+    {
+      "Run": "femtovg-native-current",
+      "Renderer": "femtovg",
+      "ExecutableSHA256": "D81F31ED8AB3C0D45A3565CDC8AA412B3FB870C0CC350204178CDE44456B6487",
+      "ProcessId": 161800,
+      "EndpointPresent": false,
+      "ExitCode": 0,
+      "ForcedCleanup": false
+    },
+    {
+      "Run": "femtovg-native-phase",
+      "Renderer": "femtovg",
+      "ExecutableSHA256": "D81F31ED8AB3C0D45A3565CDC8AA412B3FB870C0CC350204178CDE44456B6487",
+      "ProcessId": 164420,
+      "EndpointPresent": false,
+      "ExitCode": 0,
+      "ForcedCleanup": false
+    },
+    {
+      "Run": "femtovg-physical",
+      "Renderer": "femtovg",
+      "ExecutableSHA256": "D81F31ED8AB3C0D45A3565CDC8AA412B3FB870C0CC350204178CDE44456B6487",
+      "ProcessId": 94504,
+      "EndpointPresent": false,
+      "ExitCode": 0,
+      "ForcedCleanup": false
+    },
+    {
+      "Run": "software-native-auto",
+      "Renderer": "software",
+      "ExecutableSHA256": "5E7C017DDA3FF691E7FF8DCBFEAF149E5A766C1F8DC73A816BB5C4A9F7C4C66B",
+      "ProcessId": 137372,
+      "EndpointPresent": false,
+      "ExitCode": 0,
+      "ForcedCleanup": false
+    },
+    {
+      "Run": "software-native-phase",
+      "Renderer": "software",
+      "ExecutableSHA256": "5E7C017DDA3FF691E7FF8DCBFEAF149E5A766C1F8DC73A816BB5C4A9F7C4C66B",
+      "ProcessId": 157048,
+      "EndpointPresent": false,
+      "ExitCode": 0,
+      "ForcedCleanup": false
+    },
+    {
+      "Run": "software-physical",
+      "Renderer": "software",
+      "ExecutableSHA256": "5E7C017DDA3FF691E7FF8DCBFEAF149E5A766C1F8DC73A816BB5C4A9F7C4C66B",
+      "ProcessId": 156608,
+      "EndpointPresent": false,
+      "ExitCode": 0,
+      "ForcedCleanup": false
+    }
+  ],
+  "AltSpaceAvailable": true,
+  "TemporaryRegistrationReleased": true,
+  "FormalFiles": [
+    {
+      "Name": "config.json",
+      "BeforeExists": true,
+      "AfterExists": true,
+      "BeforeSHA256": "6DECBCB844CC656D0EAFBD340F7B8BF3B877FAAD593D543F85A37B15EB95143F",
+      "AfterSHA256": "6DECBCB844CC656D0EAFBD340F7B8BF3B877FAAD593D543F85A37B15EB95143F",
+      "Unchanged": true
+    },
+    {
+      "Name": "history.json",
+      "BeforeExists": true,
+      "AfterExists": true,
+      "BeforeSHA256": "18767782BD92FC904116A8B376C54049578E596AFA715B08B18D8280F2FCBF5E",
+      "AfterSHA256": "18767782BD92FC904116A8B376C54049578E596AFA715B08B18D8280F2FCBF5E",
+      "Unchanged": true
+    },
+    {
+      "Name": "index.json",
+      "BeforeExists": true,
+      "AfterExists": true,
+      "BeforeSHA256": "A1C62CEA85156FB48E52874988DE07931AD4386F7F1448DC9ADBD5BC5A1195FC",
+      "AfterSHA256": "A1C62CEA85156FB48E52874988DE07931AD4386F7F1448DC9ADBD5BC5A1195FC",
+      "Unchanged": true
+    },
+    {
+      "Name": "application-library.json",
+      "BeforeExists": true,
+      "AfterExists": true,
+      "BeforeSHA256": "A5E8BC981B03563AF3D26E5EEF9D263D9EAA4181C5DA758E8DCBF82160FF01F6",
+      "AfterSHA256": "A5E8BC981B03563AF3D26E5EEF9D263D9EAA4181C5DA758E8DCBF82160FF01F6",
+      "Unchanged": true
+    },
+    {
+      "Name": "quick-launch.json",
+      "BeforeExists": false,
+      "AfterExists": false,
+      "BeforeSHA256": null,
+      "AfterSHA256": null,
+      "Unchanged": true
+    }
+  ],
+  "FormalBeforeSHA256": "6065514C60226AB470CFF000D5A44905E07B8E93B39879D42A6409CF2A07F564",
+  "DisplayRestoredOperatorReply": "跨屏布局和输入正常，已恢复 100%",
+  "FinalObservedDPI": 96,
+  "Scope": "Task product normal exits, absent isolated service windows/processes, temporary hotkey immediately released, and five formal file states matched against the fresh pre-pass snapshot."
+}

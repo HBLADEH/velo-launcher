@@ -1,0 +1,27 @@
+{
+  "RecordedAtUtc": "2026-11-09T18:51:31.2778334Z",
+  "CompletedConditions": 6,
+  "PairedPhysicalQueries": 33,
+  "AdditionalAcceptedEditsRetained": 2,
+  "ColdConditionCharacterObservations": 9,
+  "AllNormalExits": true,
+  "VeloProcessesRemaining": 0,
+  "IsolatedWebViewProcessesRemaining": 0,
+  "AltSpaceReleased": true,
+  "AllFormalFileHashesMatched": true,
+  "FixedAQueryResultContentConfirmed": true,
+  "DesktopResultRegionChangesAndSettlingObserved": true,
+  "ExactEarliestCorrectResultFrameVerified": false,
+  "FirstPossibleInputLatencyVerified": false,
+  "AnimationGpuWorkAndTargetCpuPerFrameVerified": false,
+  "PhotonPresentationVerified": false,
+  "HistoricalIntermittentActivationRootCauseEstablished": false,
+  "RS12Complete": false,
+  "DefaultRendererSelected": false,
+  "Remaining": [
+    "First possible cold/warm startup and hotkey input readiness: existing manual waits cannot be subtracted or replaced with ready flags.",
+    "Historical first-show blur and Wails intermittent flash/input failures: not reproduced in these normal runs, original cause remains unproven.",
+    "GPU rendering work/target CPU per animation frame and broader query/DPI/driver coverage exceed this small 96-DPI fixed-query observation."
+  ],
+  "Scope": "Six completed v4 conditions and normal cleanup; measured desktop result-pixel boundaries are explicitly separated from input readiness, exact first correct frame and physical screen scanout."
+}

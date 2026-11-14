@@ -1,0 +1,818 @@
+{
+  "Edition": "femtovg",
+  "ExecutableSHA256": "D81F31ED8AB3C0D45A3565CDC8AA412B3FB870C0CC350204178CDE44456B6487",
+  "ProcessId": 161800,
+  "StartedTicks": 639301041901348782,
+  "CaptureReady": {
+    "event": "capture_ready",
+    "qpc": 1726797895490,
+    "qpc_frequency": 10000000,
+    "pid": 161800,
+    "creation_filetime_100ns": 134389809901348782,
+    "backend": "WindowsGraphicsCapture",
+    "desktop_frame": false,
+    "cursor_captured": false,
+    "secondary_windows": true
+  },
+  "CollectorSHA256": "3DB66C258905693001A31B43D27A887DDC3D1F2F080142F65DF31C19243DF0CA",
+  "RawTraceSHA256": "2016E6BE046BB0B245D2B9E3B006191DC17309A73BB6106788C941C8E4E5F878",
+  "Ended": true,
+  "Clips": [
+    {
+      "Name": "recording",
+      "SavedFrames": 154,
+      "ChangedIntervals": 150,
+      "MajorChangeIntervals": 0,
+      "PossibleStorageLimit": true,
+      "NativeDPI": [
+        96
+      ],
+      "OriginalFrames": [
+        {
+          "File": "recording/frame-1.bmp",
+          "SHA256": "D3571DB3E7BFEF105AD416A86954D4BA60F650CB49421B2B87B8D2A12750E28C",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-2.bmp",
+          "SHA256": "4E5792453736AAAA680259AA49F3A8A255B3F77D4FAF28EA6AFE19FBC4E18D16",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-3.bmp",
+          "SHA256": "DC2CB3FE53AAABD2CD233C7FB068FD5E5660B7C66FF3B2096FC0CD835F340D0D",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-4.bmp",
+          "SHA256": "9FDB5C91F1380AE14BF0FC0ACC05DF2A3C544CCC557AD4D0B3FBB38C3307AA20",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-5.bmp",
+          "SHA256": "CEE99CE8186237206866D5EAB7C9450980C2BF9D2A3F05865D434A8D8B96FEE1",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-6.bmp",
+          "SHA256": "047A3F4D90B85BA83DD55B8F1C296264CF622D3B983E141D310642688978293E",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-7.bmp",
+          "SHA256": "910B4D8A582A3ADA6E67EA5B9021B529AF002CC6B8971F2E32619649B0F86BD8",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-8.bmp",
+          "SHA256": "63EA9BF0F6DF3B22817873378D638A1E82EE608CFE1C94AAC991E13C0142AD97",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-9.bmp",
+          "SHA256": "30F60EFFDB16A9DA47D6C7E5A64F8040127A47D2E07AAEF9625C4ECFB98F058D",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-10.bmp",
+          "SHA256": "B15F6BD9D734A8F6CEA2FEF64609681EED39B8C6A869F4B933D51C853C164453",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-11.bmp",
+          "SHA256": "7CFB08B7981F7A4770D1A45B0C82A669DF51040EB3761F2AE33B932BFB8A5DFB",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-12.bmp",
+          "SHA256": "D43EF88EA9AD2CDC37D830BCF18E4950F3F13B42C47203BF5A70D62CE7CC83B9",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-13.bmp",
+          "SHA256": "9AD2C713F5E36520CE5862A844622AAE469BF67EF2548419CAAA9135D90FE99D",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-14.bmp",
+          "SHA256": "A3D2C2367140533262B2D65888F8D9FC9EAA3A846FD4A98E66838658B4D1FA28",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-15.bmp",
+          "SHA256": "628A8DCEAF800DE41F9AA9587A125C7E7A2953092BBB13ED3F350E3DA593ACE6",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-16.bmp",
+          "SHA256": "906642CE35D9342CCCECB57B622A8AB04EDCF11E9F18335EECE429B8360FBFFD",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-17.bmp",
+          "SHA256": "218F16E25F00902134D7299AB017C0D160D9A5A653F5DD5BB175352D84FE78F6",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-18.bmp",
+          "SHA256": "91BBC0EB6E852B2665E810DA0257A83F7179327B80A45A999EDBA43859F869E5",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-19.bmp",
+          "SHA256": "A02D5652E9B4A1FD58182729FEBD26DDF658AC346EED24C6CF7F19D0F5D4D965",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-20.bmp",
+          "SHA256": "F75F6DF27B41C9C73B9024BE3F8F80A561911DFCC462989FE4D277B2B50E4388",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-21.bmp",
+          "SHA256": "B389A8A7E1A7F5D6876951D31A45F3078112047F7C42C4D4D08F00D9E7EE68C0",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-22.bmp",
+          "SHA256": "22016A777B6881A80AA9EB1B12DEB530754D28713332C3DACE36719FC693E218",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-23.bmp",
+          "SHA256": "91B2B133E83837324F38F135E84C49A76D3A1EB8B287258181AC98A217E6689C",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-24.bmp",
+          "SHA256": "DD00EDF48EF53B039FE5546E6CB951E93694BB385E45A530E53021BD17F54893",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-25.bmp",
+          "SHA256": "F8F134F3D88043908554A2B8D457CA6E5DAF2E37BACD7D7957C85190516BCCDE",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-26.bmp",
+          "SHA256": "ABB8D7871938C4AF95E6F9D2D841CC21256BE04D8BF0133ED3B9F1ECB3A4FDF5",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-27.bmp",
+          "SHA256": "BF71E49D547526E02F573CCADC46E1B7774841FB1FEE27A81AD5C0E764498E00",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-28.bmp",
+          "SHA256": "2A115D3ADB1F3E2D54726355EDA7E6F9A40545B676B9F231A2E105F7130A02A6",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-29.bmp",
+          "SHA256": "2A115D3ADB1F3E2D54726355EDA7E6F9A40545B676B9F231A2E105F7130A02A6",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-30.bmp",
+          "SHA256": "D8E308DCC72ED052989DF214DE1AFE68DB59366A78FBDF74A80363955A72F7AF",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-31.bmp",
+          "SHA256": "3418EC64E9B5E7E90ABBD9B6600A648D6681EEF48D3EE94D6493919E854DEEB2",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-32.bmp",
+          "SHA256": "B87DBB0CE6027C033FBCF7651AD653D391B952304A5F8F93EDF11813DAEB425D",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-33.bmp",
+          "SHA256": "FEFAD943F085F37543D62F8CDDE44DB8F55CDF77C7A072280336414E97B17D82",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-34.bmp",
+          "SHA256": "7FF43F6B42A043B196AEF88D450ADFB5CB17AF19DAF24AEDB4F0829749C3F254",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-35.bmp",
+          "SHA256": "C0537E80A10F0A6F8C90C6302EF518DB4B3C010DF753CBE210528F3ABC676A54",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-36.bmp",
+          "SHA256": "636BEAC902B5458A1251C4190FDD41EFD5F11F27F012DBB7F2A638508ED33B7C",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-37.bmp",
+          "SHA256": "CE47D788977AB94951AD8B852B785D6DE42DE22791717AE8203C6493FE3DA74E",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-38.bmp",
+          "SHA256": "29381FFFAC356B94F595F10A68737445FBCCD446EF0AB0DE36A1EAC1BEF258BB",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-39.bmp",
+          "SHA256": "94D16944CEE35AD1E1E7195A4425B858BF2DE5E545F9874E6C5B539DEB3A5FB1",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-40.bmp",
+          "SHA256": "48EECA33CD5A6D1F4DC7EE9F4D14D29439DA44AFDBD2133E1FDD4E0127E9469E",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-41.bmp",
+          "SHA256": "218F16E25F00902134D7299AB017C0D160D9A5A653F5DD5BB175352D84FE78F6",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-42.bmp",
+          "SHA256": "B49191AEED2A55A9A02CF8889AB4AA84A630A2ACE432CEF810D2981C76521147",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-43.bmp",
+          "SHA256": "AE59F1F89A7D9D466E8A0B8C29A83C886DA3AAD3B17798293AAB776BF38C61A7",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-44.bmp",
+          "SHA256": "E7AF80F331B8CF8F15EC538B637D6D8A3FB54DD81C982F641DE788C8E144EAB2",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-45.bmp",
+          "SHA256": "90A5A3E6554B88626C1C9D1ED2CF5090D6F86DF453BF95C7628D55012DD466BD",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-46.bmp",
+          "SHA256": "6B9F5FC1D73788B4D60AED3A47F47E7236036700F9A1EEBB983BC4E6FCB1A7E7",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-47.bmp",
+          "SHA256": "1A2055F241C5A3D815BEBC44D9A119EC6BCA6500580E25DD258941E94C13D3DE",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-48.bmp",
+          "SHA256": "FDA75A47F7E6FBBEB2C0ECDFB3E85E602453B68155FE2E0AA97806A943F8092B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-49.bmp",
+          "SHA256": "B4E73B741E77C119F4E70912D8F47A22140A02AA0FFC45B666C6F71594B46EC7",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-50.bmp",
+          "SHA256": "40882D3B97F0BC9AD1D193BE331003E837962481B5E9C308D5E065EA0705CEF3",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-51.bmp",
+          "SHA256": "3657DFC1C0BC814197AC1348A98AA6838786D6B1EB0C9B8CE9EBBC05A8748E0D",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-52.bmp",
+          "SHA256": "1C4AFB301B9A77691EA3996C7394AA0858E48EC495734235735E30A3719115D7",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-53.bmp",
+          "SHA256": "715617DC328EB59AB9EF8F956996A66F93F584FB8282AD694A71F75953EA82B5",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-54.bmp",
+          "SHA256": "056C7E4D79A3AD0D2E0CA29F8F49E36BC66126154C26C7FDD6730BF97A9ADF38",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-55.bmp",
+          "SHA256": "DCD034A8E87EA6AFE37D9D60FB20623DCCEB2F9AD031E494EE27FE94583FB473",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-56.bmp",
+          "SHA256": "A331F78C973C59346BF2829A46C221DFCCD9CB1A7B1342273BDE01EC86645E99",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-57.bmp",
+          "SHA256": "4F6B8D8B107F9EDB32888CD8044AE733587A1344D7FCEF3658F429E9C4368A7F",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-58.bmp",
+          "SHA256": "C0EC5FE65C79EDDEC64055882D0C5012F92C1239C4D415D3AA9F455CDD63BD46",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-59.bmp",
+          "SHA256": "AE9C547E527E5030F98CCD12A90A60E11D7B123E882D22BC726D4B977B0AE98B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-60.bmp",
+          "SHA256": "92A1A7E7DA325B7FFC7A03441B8C1B626714EBB632D386A8D8FD05A3605360C2",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-61.bmp",
+          "SHA256": "6FB171EA9A42551A8FFFB22EFF5135E8F41471B2A87D40C56D51A0408AC94127",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-62.bmp",
+          "SHA256": "6FB171EA9A42551A8FFFB22EFF5135E8F41471B2A87D40C56D51A0408AC94127",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-63.bmp",
+          "SHA256": "6FB171EA9A42551A8FFFB22EFF5135E8F41471B2A87D40C56D51A0408AC94127",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-64.bmp",
+          "SHA256": "0D214265DFB18852E0A8436956C30AC7E82D8CB7019A614CA7BAA2EE80A13B65",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-65.bmp",
+          "SHA256": "3CB0606650CE2D0AA5D1A49B9AAED4A4C92C5A8264C7E322FB6B76290420CE9D",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-66.bmp",
+          "SHA256": "51B30E71F149496B8A6205DD16BD063A972285B342C498B655F3027C50ACA10E",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-67.bmp",
+          "SHA256": "A7180915804E07A91EAD8F7ED6F0621C3D2720186ECF872393872D9B295CCCE2",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-68.bmp",
+          "SHA256": "631AC93923097A1D4FC318FA295852F53B7B82B7A27919E45D53E5B6C926BA5B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-69.bmp",
+          "SHA256": "4395E18FE2EBDAE4D2C9A02E0822E35121A0DD0A8FA884F91C4F3A80F320A2BB",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-70.bmp",
+          "SHA256": "9A4BA155FC2C1B7711311221980DFA4946535B0EC6088A32B5409D3B37129AB8",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-71.bmp",
+          "SHA256": "B93527643490FDEFFAD687FF97D21233315E842C06E142327B6D2920841B692A",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-72.bmp",
+          "SHA256": "A94891199BF9E4F6B0DAF95F4F6D75CD813CC2C978EC1A02B0CAC178B0A1FC43",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-73.bmp",
+          "SHA256": "3657DFC1C0BC814197AC1348A98AA6838786D6B1EB0C9B8CE9EBBC05A8748E0D",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-74.bmp",
+          "SHA256": "2044B7CE08DC938EC9CFA4F27F78F98B88A1F8C8B590DA03BA9BFF8030E689B8",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-75.bmp",
+          "SHA256": "918BD2A2D545038DD22464C3B89FC160A56E7CAB91990227393BD4BF42B8B0E0",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-76.bmp",
+          "SHA256": "FB967561557686F556A2618092AD06371674EBC4CEF27696AD41C1CE3E950679",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-77.bmp",
+          "SHA256": "1EF23C3C7BDF34AC7B1971629A658EE4A7D2E87A3911C01525F03DB2DF660A1B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-78.bmp",
+          "SHA256": "7A066A34785B72EAF2C49CB92FB86C8EC692535DA8198D9319EFD9FCE3E0C2C1",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-79.bmp",
+          "SHA256": "7F6E3DB65F9453FDAE5A98119602950586E22297C0056687A4C77C58286E849B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-80.bmp",
+          "SHA256": "C1C8440B53B9BF8956DF00C9717D7408E531674E9AC6A2A56A314084F32E968D",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-81.bmp",
+          "SHA256": "C1C2B14F6BB3983DCCAC1A289FC6CBF18E11C66E0DF3ADEC91E4690B29B96A1F",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-82.bmp",
+          "SHA256": "C54439ACE63CBE5860BBA0DC6B08133BCB745C9FF40024370E8282525E26D882",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-83.bmp",
+          "SHA256": "C92122C455FBA8758213B35B767FCADAFB875D2D52F9DB890CD736E1A51AE7CF",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-84.bmp",
+          "SHA256": "4821157A9FCB71F083A3899923ABEEBE41BF2A6B31046238FA5F2F2FE17902CB",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-85.bmp",
+          "SHA256": "3A1BAB30641AD277CCFAFFC80FD296275F32FC6D04AE2FEF0229C703B19EFE3C",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-86.bmp",
+          "SHA256": "B43E2CD0BB43FF6AC01FBF334AD35EE8C20725A633377E4D0F60C34F598483A3",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-87.bmp",
+          "SHA256": "745EE2F9CF914CDF7F788A2DC5F9C4EA820EB621D921FA895CB862A0582E52B9",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-88.bmp",
+          "SHA256": "BF1A33C1B59A9E49E68663BF60C10B6572BD41244742341C852CF3CC73699064",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-89.bmp",
+          "SHA256": "270E60FFF76E0518FC7CF087FC58517013999856950C75094BD6786F11C0E4E7",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-90.bmp",
+          "SHA256": "9F9ED661302EFB0D68DD6B0CAABC4731746AF171B0F27B2E667B5ACD82864186",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-91.bmp",
+          "SHA256": "C03CCAD4AACB5C6862E7BAADD259432109C0E26F9970D1AC9369252532371A45",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-92.bmp",
+          "SHA256": "345CF7FAAA15AB279088CD25FE243E7602F6F516FFF704899A1BFD88630949BD",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-93.bmp",
+          "SHA256": "759190F6153523342158ECED750973C58394B6AB1D02CC9CE1C1E9DEC298B88D",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-94.bmp",
+          "SHA256": "1D17FBF92A02C782B43EEBAC8D36860274525899627D068F2E3A874EFCDEEEC8",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-95.bmp",
+          "SHA256": "6D72730CAB54FFB7F2D92EBD8AA85286D2AA8B059C5189088772658D5DC4A34E",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-96.bmp",
+          "SHA256": "0C0CD353C06A7BAAA0F497A66E540B0097063CB9948FDEA9E46B2152D12EF68C",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-97.bmp",
+          "SHA256": "9C162F841B17AAFE3FF2053191785FECF5762A486B81089AA1E97D3FBC30624E",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-98.bmp",
+          "SHA256": "2A115D3ADB1F3E2D54726355EDA7E6F9A40545B676B9F231A2E105F7130A02A6",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-99.bmp",
+          "SHA256": "3418EC64E9B5E7E90ABBD9B6600A648D6681EEF48D3EE94D6493919E854DEEB2",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-100.bmp",
+          "SHA256": "1D17FBF92A02C782B43EEBAC8D36860274525899627D068F2E3A874EFCDEEEC8",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-101.bmp",
+          "SHA256": "43C6A4B7C71E93FCACB0FC75A99BA4A4A982A5B591E76890CAF92C91E7AD945E",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-102.bmp",
+          "SHA256": "91B2B133E83837324F38F135E84C49A76D3A1EB8B287258181AC98A217E6689C",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-103.bmp",
+          "SHA256": "22016A777B6881A80AA9EB1B12DEB530754D28713332C3DACE36719FC693E218",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-104.bmp",
+          "SHA256": "B389A8A7E1A7F5D6876951D31A45F3078112047F7C42C4D4D08F00D9E7EE68C0",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-105.bmp",
+          "SHA256": "F75F6DF27B41C9C73B9024BE3F8F80A561911DFCC462989FE4D277B2B50E4388",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-106.bmp",
+          "SHA256": "A02D5652E9B4A1FD58182729FEBD26DDF658AC346EED24C6CF7F19D0F5D4D965",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-107.bmp",
+          "SHA256": "70194EE6BFEB8B122D3E2C04070BBC4238CB176B2BF40788B27434CBB34FA0C5",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-108.bmp",
+          "SHA256": "0D6BB0F3944B361F72434076FB3DDC01D54C3ED3FFF098EB13A7D44C725D39EC",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-109.bmp",
+          "SHA256": "86A0D8D178C423A1E23FFE3D1BF037382E801BBAC1E626C079EFA4EEE2D6C19A",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-110.bmp",
+          "SHA256": "0B68BB513A90159E306034D3D30EE8D3372E312D65ED0FFBEA29CD9FA5371EE9",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-111.bmp",
+          "SHA256": "0C031A45BD5838884F10901856836A27F91BAFCD935E3E3580E7D35C34A5E0C5",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-112.bmp",
+          "SHA256": "CA07DEEEDF30F9FCE692A83779439EA91D5FFE9947EB69E3E12FB364A420A8CC",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-113.bmp",
+          "SHA256": "CAC05CBD7894D184C7050BCA76669551772583C548C6399B4B92CF0C7AA935DD",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-114.bmp",
+          "SHA256": "50A326079535D2ABDAAB5A5BFFD4DF55995C5AD5469575D4E9F9E16800761F69",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-115.bmp",
+          "SHA256": "51687498DCF26331C3744A8CBD817D210BE9D22A747ECC02C23013461A9EC8C4",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-116.bmp",
+          "SHA256": "FDA75A47F7E6FBBEB2C0ECDFB3E85E602453B68155FE2E0AA97806A943F8092B",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-117.bmp",
+          "SHA256": "305325080CD20A9CC61B9359756FCC9FC956DE6B084628BBFCFF0D88053A7151",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-118.bmp",
+          "SHA256": "6FE79FE791F83C9C01DC52CCCEC8F98E5DE99C2DE539CCD751C466FF0E37D1F8",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-119.bmp",
+          "SHA256": "BB98C90DEE72141013E6988D50B45E5BD8A8B4D361F6EBCFE122768CCF208D61",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-120.bmp",
+          "SHA256": "0D88A4CC88D661AC0F3D691E8BA88E8DD50A9BBF248D387BD2FF2C2C66631859",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-121.bmp",
+          "SHA256": "E16F7E62E61B246B78F6DE1F113DFB45B3431D141D0036497F0D7015206BDA00",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-122.bmp",
+          "SHA256": "715617DC328EB59AB9EF8F956996A66F93F584FB8282AD694A71F75953EA82B5",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-123.bmp",
+          "SHA256": "58C063764D0EBF34C4B25EDD75FF769047ADA7A71D890983C8BD6B7C22ED68A8",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-124.bmp",
+          "SHA256": "17A78EEAF2A7F7F0DE87D7065779199C751B1C2F638C621E1A89C0C6046E0EC6",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-125.bmp",
+          "SHA256": "4F6B8D8B107F9EDB32888CD8044AE733587A1344D7FCEF3658F429E9C4368A7F",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-126.bmp",
+          "SHA256": "C0EC5FE65C79EDDEC64055882D0C5012F92C1239C4D415D3AA9F455CDD63BD46",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-127.bmp",
+          "SHA256": "391033988D58850AA298C4A9D77352C3A6F717149BB678CEA3C776B6AE836265",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-128.bmp",
+          "SHA256": "92A1A7E7DA325B7FFC7A03441B8C1B626714EBB632D386A8D8FD05A3605360C2",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-129.bmp",
+          "SHA256": "6FB171EA9A42551A8FFFB22EFF5135E8F41471B2A87D40C56D51A0408AC94127",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-130.bmp",
+          "SHA256": "80C8B7BC124FACD0569C01A9750258572E56D57242EA6F40C61EA68920450FB5",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-131.bmp",
+          "SHA256": "6FB171EA9A42551A8FFFB22EFF5135E8F41471B2A87D40C56D51A0408AC94127",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-132.bmp",
+          "SHA256": "3B03DB44EED7FE526246A83BBAA9E7CDDDD7050F06238D6026ABBE2D7E2FC435",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-133.bmp",
+          "SHA256": "3CB0606650CE2D0AA5D1A49B9AAED4A4C92C5A8264C7E322FB6B76290420CE9D",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-134.bmp",
+          "SHA256": "F4FA5F5445056CD598DE96C9E38BCC018BCF6B7E8C12BC5FC3728F931867D873",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-135.bmp",
+          "SHA256": "3334605D3953678D502714FBA1BE7AB0E36992A04A749699EABA2E740068F773",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-136.bmp",
+          "SHA256": "97ED8E0E864815339B9AF7989834CBEA0E3A5CCF273AD8E1E436E4BF201B3D49",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-137.bmp",
+          "SHA256": "00AE4B390510B2724D1D5555EEF819867DE843795D566D9E96F061605A2862CB",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-138.bmp",
+          "SHA256": "9BA3E167F48900275074BA8A1E04D867226F5003B2DD9E05A1A605921879F159",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-139.bmp",
+          "SHA256": "EC0DACC920AA807DF5AD0F3A7B3B1268D624D542E17F0EB13D98347833AF9B7C",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-140.bmp",
+          "SHA256": "0559622C1E14085149B31696AA35972ADCFFFF830CFCB336692B22E58B4D1D36",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-141.bmp",
+          "SHA256": "2044B7CE08DC938EC9CFA4F27F78F98B88A1F8C8B590DA03BA9BFF8030E689B8",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-142.bmp",
+          "SHA256": "8838D058F54A434E873EB03A5AF17F1BB2B226948D5908A6CA4724EA3806B97C",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-143.bmp",
+          "SHA256": "A142132D774C241E08438E7DB03A27888B9FC43164DBA4EED9D454C34978F3F7",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-144.bmp",
+          "SHA256": "26C67646D30794C3A81A92B9BC6FB78B69B22B871AD4D7A9EC4A30113AB977D6",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-145.bmp",
+          "SHA256": "8A287950FA65FE73EDE4B63328410D53EC08A2681FF19C3C0FD297B6931E8318",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-146.bmp",
+          "SHA256": "564F05BDF43EF55247FAECA1A1ECDD18697B8266EC4DD7F1AD2AD541EABF04EF",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-147.bmp",
+          "SHA256": "AB22B2FDF85486D58F72B27D552C0AFD8625C17D7B9024DC35710893B6CA7107",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-148.bmp",
+          "SHA256": "F88ED3DF13020763CF022298BA4810EF0EDC129794451E4D0CBA6D46E5E6CC9F",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-149.bmp",
+          "SHA256": "4E11692C0EA4A66408E9F3E79FBEABEE2062E294878123627928031038E40692",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-150.bmp",
+          "SHA256": "DB3D69049FCD0EB21752A8081372EBB1356BE9AD5204B9012DCCF3628B2412D5",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-151.bmp",
+          "SHA256": "2BB7AE7848218EF3F190D204461464C2B4C601DE7DF9D445D10874B672A32A06",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-152.bmp",
+          "SHA256": "86A0D8D178C423A1E23FFE3D1BF037382E801BBAC1E626C079EFA4EEE2D6C19A",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-153.bmp",
+          "SHA256": "0D6BB0F3944B361F72434076FB3DDC01D54C3ED3FFF098EB13A7D44C725D39EC",
+          "Bytes": 1567158
+        },
+        {
+          "File": "recording/frame-154.bmp",
+          "SHA256": "D13280AB62DF78CF4D692F9DDB78261D347627F003E3B13F22D79204EC48B7ED",
+          "Bytes": 1567158
+        }
+      ],
+      "Published": true,
+      "Clock": "Original WGC surface time and observer QPC; not final desktop/photon time",
+      "ObservedSpanMilliseconds": 2729.1458,
+      "MaximumObservedGapMilliseconds": 46.5817,
+      "MaximumSourceGapMilliseconds": 33.3688,
+      "PreviewOriginalFrameRange": [
+        0,
+        153
+      ],
+      "PreviewClock": "WGC source intervals, idle lead/trail trimmed; last frame held 200ms for review",
+      "PreviewScaled": false
+    }
+  ],
+  "PhysicalInputProvenByThisFile": false,
+  "RS13Complete": false,
+  "Scope": "Native selected-window surface records. Stimulus identity and physical-input proof belong to the operator/session logs. Preview trimming/padding never changes the raw frames or original clocks."
+}

@@ -1,0 +1,42 @@
+{
+  "PreparedAtUtc": "2026-11-09T17:57:52.108185Z",
+  "ReferenceIndexSHA256": [
+    "EE71305C7CF5E3DF94347FDB16DE28491454AFC774E1F90719BB7B1D55D991BE",
+    "1285E5D72D9E556E072B04B001A18F40A730114C7ACE4A3FC4853AEFEA0631BA"
+  ],
+  "ReferenceIDUnionCount": 736,
+  "Seeds": [
+    {
+      "Count": 1000,
+      "ShadowedReferenceIDs": 736,
+      "Inputs": {
+        "config.json": "D0AD379DB686117CAAC3275AD4F3D39B2BF3C30D3FC09A887AFC9199E761A429",
+        "index.json": "6E387C444930C0591E0BEC175CA0E6D5A2CD3F17671CB5F9B7D1D104271CACE4",
+        "history.json": "E3566B3A06430868D71E9287DFD6C6C520A3DA027AABEA01951D407EE131DC2F",
+        "application-library.json": "A32DCFA1175495EC20CAB36315C2C48F471BFA3C1F6AB91CD0F1670E027D0C5D",
+        "cache/icons/5fdf3b469f3174b898c3f6b1016afa18.png": "B39D6A584D7F5782854BA9A2E1A6CA839A14E7688F60A0B7D8F5FE6563E25EDF",
+        "frame-icon-preparation.json": "D831CF9F9057BE276953963ADAC5F75B384E6DEAF1F19D992EE4B6573B22343F"
+      }
+    },
+    {
+      "Count": 10000,
+      "ShadowedReferenceIDs": 736,
+      "Inputs": {
+        "config.json": "D0AD379DB686117CAAC3275AD4F3D39B2BF3C30D3FC09A887AFC9199E761A429",
+        "index.json": "D9B29020D33915D8AD5B4AFDFBE831CF9B13F0AD13C1169F330A24D14C511072",
+        "history.json": "E3566B3A06430868D71E9287DFD6C6C520A3DA027AABEA01951D407EE131DC2F",
+        "application-library.json": "56CF4662B3A5B27667E06DB1C62FB1F91DEF476492C484FE831A3074ABFD3604",
+        "cache/icons/5fdf3b469f3174b898c3f6b1016afa18.png": "B39D6A584D7F5782854BA9A2E1A6CA839A14E7688F60A0B7D8F5FE6563E25EDF",
+        "frame-icon-preparation.json": "BB96E2E89E19A050791B369D79EC339EAF9A3048D6B310176E020F5D54354452"
+      }
+    }
+  ],
+  "Version": "v4",
+  "VisibleIconPreparation": "First 16 rows populated using actual Go icon.Populate, including per-path/source-mtime signature; shared PNG template decoded before population. Actual Rust UI checker icons subsequently observed.",
+  "SourceSHA256": {
+    "cmd/rs12-icons/main.go": "57583EF4E99D26F80053A389CE92D70616A2787498A469DF9A18C3883877F8F7",
+    "cmd/rs12-icons/frame_fixture.go": "CFB15F796B758B7B11862C118A62C615AE24DB34CDCF70AB9D7362BD9F985758",
+    "scripts/prepare-rs12-frame-fixtures.ps1": "6EDEC64DC9D473A36D98B0A978E4CEB4D8018A08CC05112B2E7C175C2EC7544D"
+  },
+  "Scope": "Controlled synthetic entries; launch targets never created, normal discovery retained; published count checked separately."
+}

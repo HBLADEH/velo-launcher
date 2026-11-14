@@ -15,6 +15,7 @@ pub struct Observer {
     started: Instant,
     sender: mpsc::SyncSender<String>,
     dropped: Arc<std::sync::atomic::AtomicU32>,
+    controlled: Arc<std::sync::atomic::AtomicBool>,
 }
 
 impl Observer {
@@ -39,6 +40,7 @@ impl Observer {
             started,
             sender,
             dropped: Arc::default(),
+            controlled: Arc::default(),
         })
     }
 
@@ -64,11 +66,12 @@ impl Observer {
             self.event(
                 "input_accepted",
                 &format!(
-                    "utf8_bytes={bytes} focused={} native_focused={} visible={} composing={}",
+                    "utf8_bytes={bytes} focused={} native_focused={} visible={} composing={} synthetic={}",
                     app.get_input_has_focus(),
                     app.get_native_focused(),
                     app.get_presented(),
-                    app.get_native_composing() || app.get_has_preedit()
+                    app.get_native_composing() || app.get_has_preedit(),
+                    self.controlled.load(std::sync::atomic::Ordering::Relaxed)
                 ),
             );
         }
@@ -92,33 +95,66 @@ pub fn connect_stdio(app: &AppWindow, observer: Observer) {
             let observer = observer.clone();
             if slint::invoke_from_event_loop(move || {
                 let Some(app) = weak_app.upgrade() else { return };
+                observer.controlled.store(true, std::sync::atomic::Ordering::Relaxed);
                 match command.as_str() {
                     "hide" => {
-                        app.set_presented(false);
-                        app.window().with_winit_window(|window| window.set_visible(false));
+                        if app.get_lifecycle_enabled() {
+                            app.invoke_hide_requested();
+                        } else {
+                            app.set_presented(false);
+                            app.window().with_winit_window(|window| window.set_visible(false));
+                        }
                     }
                     "show" => {
-                        app.window().with_winit_window(|window| {
-                            window.set_visible(true);
-                            window.focus_window();
-                        });
-                        app.set_presented(true);
-                        app.invoke_focus_input();
+                        if app.get_lifecycle_enabled() {
+                            app.invoke_desktop_event(1);
+                        } else {
+                            app.window().with_winit_window(|window| {
+                                window.set_visible(true);
+                                window.focus_window();
+                            });
+                            app.set_presented(true);
+                            app.invoke_focus_input();
+                        }
                     }
                     "clear" => app.invoke_clear_input(),
-                    "warm-bottom" => app.invoke_ensure_selection_visible(27),
+                    "warm-bottom" => {
+                        use slint::Model;
+                        let count = if app.get_is_home() {
+                            app.get_pinned_items().row_count() + app.get_frequent_items().row_count() + app.get_system_items().row_count()
+                        } else {
+                            app.get_result_items().row_count()
+                        };
+                        app.invoke_ensure_selection_visible(count.saturating_sub(1) as i32);
+                    }
                     "warm-top" => app.invoke_ensure_selection_visible(0),
+                    // Fixed synthetic workloads never execute a selected item or
+                    // persist settings. Their input events are explicitly marked.
+                    "query-editor" | "query-chinese" => {
+                        let text = if command == "query-editor" { "editor" } else { "计算器" };
+                        app.set_input_text(text.into());
+                        app.invoke_input_edited(text.into());
+                    }
+                    "settings" => app.invoke_show_appearance(true),
+                    "home" => { app.invoke_show_appearance(false); app.invoke_clear_input(); }
+                    "refresh" => app.invoke_refresh_requested(),
                     "status" => {}
-                    "quit" => { let _ = slint::quit_event_loop(); }
+                    "quit" => {
+                        if app.get_lifecycle_enabled() { app.invoke_quit_requested(); }
+                        else { let _ = slint::quit_event_loop(); }
+                    }
                     _ => {
+                        observer.controlled.store(false, std::sync::atomic::Ordering::Relaxed);
                         println!("event=measurement_error reason=unknown_command");
                         return;
                     }
                 }
+                observer.controlled.store(false, std::sync::atomic::Ordering::Relaxed);
                 let visible = app.window().with_winit_window(|window| window.is_visible()).flatten();
-                let fields = format!("command={command} visible={} presented={} focused={} native_focused={} utf8_bytes={}",
+                let fields = format!("command={command} visible={} presented={} focused={} native_focused={} utf8_bytes={} business={} scanning={} count={} settings={}",
                     visible.unwrap_or(false), app.get_presented(), app.get_input_has_focus(),
-                    app.get_native_focused(), app.get_input_text().len());
+                    app.get_native_focused(), app.get_input_text().len(), app.get_business_enabled(),
+                    app.get_scanning(), app.get_item_count(), app.get_appearance_open());
                 observer.event("measurement_state", &fields);
                 println!("event=measurement_state {fields}");
             }).is_err() { break; }

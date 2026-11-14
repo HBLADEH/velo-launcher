@@ -1,0 +1,19 @@
+{
+  "RecordedAtUtc": "2026-11-09T19:46:44.8150225Z",
+  "FormalFilesMatchPreviousSixConditionPreflight": {
+    "config.json": true,
+    "index.json": true,
+    "history.json": true,
+    "application-library.json": true,
+    "quick-launch.json": true
+  },
+  "Scope": "Post-auto-calibration comparison against the preceding final Wails manual session preflight. No claim of continuous write monitoring.",
+  "CalibratorBuilds": [
+    "build3 ordinary Sleep; retained original upper bounds",
+    "build4 high-resolution per-process timer; common final three-edition calibration",
+    "build6 added foreground categories; Wails final high-resolution calibration",
+    "build7 separates target focus handoff from external foreground loss"
+  ],
+  "NoGlobalTimerPeriodChanged": true,
+  "NoSecurityOrLoginSettingsChanged": true
+}

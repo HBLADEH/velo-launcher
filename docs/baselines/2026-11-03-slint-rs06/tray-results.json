@@ -1,0 +1,33 @@
+{
+  "FemtoVG": {
+    "UserReply": "全部通过，图标清晰，已退出",
+    "TaskbarDPI": 144,
+    "ObservedEvents": [
+      "Open / left activation action=1",
+      "Menu cancellation action=4"
+    ],
+    "NotObserved": [
+      "Settings action=2",
+      "Tray Quit action=3"
+    ],
+    "Exit": "lifecycle_quit confirmed; no endpoint remains"
+  },
+  "Software": {
+    "UserReply": "全部通过，显示清晰，已退出",
+    "TaskbarDPI": 144,
+    "ObservedEvents": [
+      "Tray Quit action=3"
+    ],
+    "NotObserved": [
+      "Open / left activation action=1",
+      "Settings action=2",
+      "Menu cancellation action=4"
+    ],
+    "Exit": "Tray Quit and lifecycle_quit confirmed; no endpoint remains"
+  },
+  "Interpretation": "User reports and narrower log coverage are retained separately; missing menu evidence remains pending, no tray notifications were injected.",
+  "OverflowPanel": "User did not specify whether the overflow panel was used.",
+  "Followup": "User deferred further manual work and stopped Computer Use with physical Escape.",
+  "FollowupEvidence": "followup/desktop-events.json confirms Software actual Settings action=2, Open action=1 and user-confirmed menu cancellation action=4. Previous sessions retain their original coverage. FemtoVG Settings/Quit remain pending.",
+  "SleepRecoveryFollowup": "sleep-recovery/femtovg-desktop-events.json confirms actual tray Settings action=2 and Quit action=3 after successful S3 recovery; all previously missing tray entries now have evidence across the linked runs."
+}

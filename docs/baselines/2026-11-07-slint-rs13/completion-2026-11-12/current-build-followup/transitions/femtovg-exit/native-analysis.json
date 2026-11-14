@@ -1,0 +1,116 @@
+{
+  "ExecutableSHA256": "D81F31ED8AB3C0D45A3565CDC8AA412B3FB870C0CC350204178CDE44456B6487",
+  "PID": 124188,
+  "RawTraceSHA256": "913259277F1B8C94454DD77D2A9CC413BC49D09D55AFA400AEAE8E20D0AA9BCA",
+  "CompleteTrace": false,
+  "WriterQueueRejected": null,
+  "GPUQueueRejected": null,
+  "Clips": [
+    {
+      "Name": "settings-exit-current-active-slice",
+      "Frames": 18,
+      "CachedBaseline": false,
+      "SourceSpanMilliseconds": 316.9854000210762,
+      "SourceIntervalsMilliseconds": [
+        16.68350002169609,
+        16.684999972581863,
+        16.68290001153946,
+        16.6836000084877,
+        16.68349999189377,
+        16.683400005102158,
+        16.682599991559982,
+        16.682700008153915,
+        16.683699995279312,
+        16.682700008153915,
+        16.683200001716614,
+        16.682599991559982,
+        16.683699995279312,
+        16.684599995613098,
+        33.36779999732971,
+        16.683400005102158,
+        33.36650002002716
+      ],
+      "MaximumSourceGapMilliseconds": 33.36779999732971,
+      "EndpointProgress": [
+        {
+          "SourceMilliseconds": 0.0,
+          "Progress": 0.0
+        },
+        {
+          "SourceMilliseconds": 16.68350002169609,
+          "Progress": 0.49897128343582153
+        },
+        {
+          "SourceMilliseconds": 33.368499994277954,
+          "Progress": 0.756432056427002
+        },
+        {
+          "SourceMilliseconds": 50.05140000581741,
+          "Progress": 0.906703770160675
+        },
+        {
+          "SourceMilliseconds": 66.73500001430511,
+          "Progress": 0.9779019951820374
+        },
+        {
+          "SourceMilliseconds": 83.41850000619888,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 100.10190001130104,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 116.78450000286102,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 133.46720001101494,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 150.15090000629425,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 166.83360001444817,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 183.51680001616478,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 200.19940000772476,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 216.88310000300407,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 233.56769999861717,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 266.9354999959469,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 283.61890000104904,
+          "Progress": 1.0
+        },
+        {
+          "SourceMilliseconds": 316.9854000210762,
+          "Progress": 1.0
+        }
+      ],
+      "IntermediateFrames": 3,
+      "FiniteFitAvailable": false,
+      "Reason": "Fewer than four intermediate native frames; exact curve unverified."
+    }
+  ],
+  "PhysicalInput": false,
+  "RS13Complete": false,
+  "Scope": "Original selected-window WGC surface times; source intervals distinguish cached idle baselines. Scalar fits are diagnostic and do not certify final desktop or isolated opacity/translation curves."
+}

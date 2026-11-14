@@ -1,0 +1,54 @@
+{
+  "Run": "desktop-software",
+  "Renderer": "software",
+  "SHA256": "E85B41C7E77888750817E47F092EABECB1BAB5A68EFCE579378CE2DDAD2DBA4B",
+  "ProcessId": 318524,
+  "StartedTicks": 639294399219078670,
+  "Scope": "Native window verified at 96,144,96 DPI; system Settings changed right display scale.",
+  "Exit": {
+    "Completed": true,
+    "ProcessId": 318524,
+    "ExitCode": 0,
+    "ForcedCleanup": false,
+    "ExecutableUnchanged": true
+  },
+  "RawSessionSHA256": "FFCFCB310B0EAD1E0AC71E67EC310BC446DA75E465B6CDF71127482A7FCDD7BA",
+  "RawEventsSHA256": "CC7C3CCDE78D46B928CB4698CD2F327F2C2E6D9C8D22CCA26EE28A0F0E444047",
+  "ActualAutomatedInput": [
+    "event=input_accepted pid=318524 unix_us=1793843333480359 elapsed_us=211529313 dropped=0 utf8_bytes=9 focused=true native_focused=true visible=true composing=false synthetic=false"
+  ],
+  "RawResponseFiles": [
+    {
+      "SHA256": "9495683C2CAC32DF4480F59D4AC1C2E5CC2EA8F81FFB2D5DF2C5625BD4BAB7A6",
+      "Name": "01-home.json"
+    },
+    {
+      "SHA256": "72EFCB40C83BB38D73054C6F236E740234CADFE3BE7B3BE525BB1DBFD89825CE",
+      "Name": "02-glyph.json"
+    },
+    {
+      "SHA256": "E6170B4605866AE58BFEEC3228E54E726E82E8ADA6F4BF13453EA3F28168DCE6",
+      "Name": "03-hide.json"
+    },
+    {
+      "SHA256": "7499385C454D17EA2A6F65C37C7B81A706CC1506961819C4160B883DE4297744",
+      "Name": "04-150.json"
+    },
+    {
+      "SHA256": "C0C8F1EB43DF66B8F174C2EB5876D3AAA7E4C1F85AAB7E81F0BCF1AD3ADBEECC",
+      "Name": "05-150-home.json"
+    },
+    {
+      "SHA256": "16312310F56431D4C21D3E092B984B90C8771843A19920D9E26D3C939727B3F0",
+      "Name": "06-hide.json"
+    },
+    {
+      "SHA256": "93C9544851C38AB1E0D7566E6848A3C9B90D18A6BBD131B0DBFFB319DAF3CF3A",
+      "Name": "07-restored.json"
+    },
+    {
+      "SHA256": "F5DC3C08B411E2C3B42D473104BCD39E72086DD68F2AAD5F3066247175EB435B",
+      "Name": "08-quit.json"
+    }
+  ]
+}

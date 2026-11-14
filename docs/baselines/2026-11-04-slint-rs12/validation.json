@@ -1,0 +1,135 @@
+{
+  "CheckedAtUtc": "2026-11-04T13:49:32.5660664Z",
+  "RustTestsPerRenderer": 80,
+  "RustFmtAndClippy": true,
+  "DataCompatibilityBothRenderers": true,
+  "NativeIntegrationBothRenderers": true,
+  "WindowFixtureBusinessSmokeBoth": true,
+  "FemtoVGPagesPassed": true,
+  "SoftwarePagesPassedSameBinaryAfterForegroundAssistance": true,
+  "SoftwareUnassistedPageFailures": [
+    "Grid key assertion after blur hid the window",
+    "Timeout after blur hid the window"
+  ],
+  "OriginalRegression": {
+    "GoTests": true,
+    "Node": "22.23.2",
+    "Build": true,
+    "Lint": true,
+    "FrontendTests": 26,
+    "Typecheck": true,
+    "Go": "1.25.6",
+    "Vet": true
+  },
+  "BusinessCollectorChecks": {
+    "femtovg": {
+      "ForcedCleanup": false,
+      "Exit": 0,
+      "Complete": true
+    },
+    "software": {
+      "ForcedCleanup": false,
+      "Exit": 0,
+      "Complete": true
+    }
+  },
+  "ComputerUse": "Original helper pipe unavailable; later unified desktop surface recovered for Software warmup. User physical Escape stopped automation, respected. Remaining actions human-assisted; no new interactive task while user away.",
+  "StrictColdStartup": "Pending independent cold conditions",
+  "PhysicalKeyLatency": "Two Slint builds each have 20 valid physical-key to actual-character observations, human delay retained; no first-editable performance claim.",
+  "RS12Complete": false,
+  "RustEntryPoint": {
+    "ExitCode": 1,
+    "Reason": "Software pages probe lost foreground focus; other checks and builds passed. Same binary passed the separately recorded foreground-assisted page/restart run."
+  },
+  "WailsLongObservation": {
+    "NormalExit": 0,
+    "PhysicalCyclesUserConfirmed": 100,
+    "Samples": 30,
+    "Seconds": 1815.3530000000005,
+    "Completed": true
+  },
+  "ResourceMatrix": {
+    "SampleSeconds": 15,
+    "EligibleIdleGroups": 12,
+    "WailsPhysicalCyclesUserConfirmed": 100,
+    "SoftwareFinalVisibleGroupInvalid": true,
+    "WailsFiveMinuteRetryPassed": true,
+    "EligibleIdleSamples": 36,
+    "WailsObservedSeconds": 1815.353,
+    "SlintTwoLoopsCompleted": true,
+    "WailsFiveMinuteFirstAttemptInvalid": true,
+    "ThreeEditionsThreeStates": true
+  },
+  "Outstanding": [
+    "Wails actual-input physical-key and warm-start observations, skipped while user away",
+    "Independent calibration of first-editable latency and frame presentation for all candidates",
+    "Three independent cold conditions per edition; newer actual-input cases prepared, no reboot performed",
+    "True DPI transition, full UI/GPU glyph/icon-cache and full-tree scan peak matrix"
+  ],
+  "FinalOriginalVerification": {
+    "Command": "GOTOOLCHAIN=go1.25.6 ./scripts/verify.ps1 -SkipBuild",
+    "ExitCode": 0,
+    "LogSHA256": "D94B89333F649DCAB849107E6B06DEDCDFAFDC0CC9B4526AFD17800CF4BFA89C"
+  },
+  "CleanupPassed": true,
+  "ColdCasesPrepared": 9,
+  "UninstrumentedVisibleFollowup": {
+    "NormalExits": {
+      "software": 0,
+      "femtovg": 0
+    },
+    "Groups": 2,
+    "ResourceEvidence": "normal/resources-summary.json",
+    "SampleSeconds": 15,
+    "ProductionMode": true,
+    "CleanupEvidence": "normal/cleanup.json",
+    "Renderers": [
+      "femtovg",
+      "software"
+    ],
+    "FemtoVGPrivateMiB": 55.03125,
+    "Scope": "Visible only; does not establish hidden-state resource use or isolate probe overhead.",
+    "SoftwarePrivateMiB": 26.32421875,
+    "Passed": true,
+    "InternalScanCacheMetricsAvailable": false,
+    "OperatorPrewarmConfirmed": true,
+    "EligibleSamples": 6
+  },
+  "TotalEligibleIdleSamples": 54,
+  "RemainingVerificationFollowup": {
+    "CumulativeEligibleSamples": 54,
+    "OfflineIconNativeRounds": 3,
+    "AddedEligibleIdleSamples": 12,
+    "FirstEditableBudgetAccepted": false,
+    "OfflineIconCount": 4,
+    "GPUTextureMeasured": false,
+    "Evidence": "remaining/README.md",
+    "WarmStartupValid": {
+      "FemtoVG": 3,
+      "Software": 3
+    },
+    "PhysicalHotkeyValid": {
+      "FemtoVG": 20,
+      "Software": 20
+    },
+    "UserAwayManualItemsSkipped": true,
+    "StartupClockIndependentlyCalibrated": false,
+    "IconPixelHashesEqual": true,
+    "DefaultNetworkObserved": [
+      "software",
+      "femtovg"
+    ],
+    "HiddenGroups": 4,
+    "RetainedIMEFailures": 2
+  },
+  "LatestAutomaticVerification": {
+    "SourceInputEventsVerified": 46,
+    "UserAwayItemsDeferred": true,
+    "Evidence": "remaining/verification.json",
+    "ProbeTaggedGoTestsExitCode": 0,
+    "LatestCleanup": "remaining/cleanup.json",
+    "NewIconExampleBothFeatureClippy": true,
+    "NoPendingInteractiveProcess": true,
+    "GoVueFullEntryExitCode": 0
+  }
+}

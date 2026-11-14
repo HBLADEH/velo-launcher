@@ -30,7 +30,9 @@ pub fn run(app: &AppWindow) -> Result<(), String> {
     )?;
     press(app, Key::DownArrow);
     check(
-        app.get_selected_id() == first && app.get_home_scroll_y() >= -116.0,
+        // The Wails-aligned heading puts the first tile at content y=124.
+        // Allow two logical pixels while checking the wrapped row is visible.
+        app.get_selected_id() == first && app.get_home_scroll_y() >= -126.0,
         "home_wrap_back",
     )?;
     press(app, Key::Return);
@@ -80,9 +82,11 @@ pub fn run(app: &AppWindow) -> Result<(), String> {
     )?;
 
     press(app, "系统");
+    let results = app.get_result_items();
+    let last = results.row_data(results.row_count() - 1).unwrap().id;
     press(app, Key::UpArrow);
     check(
-        app.get_selected_id() == "environment" && app.get_result_scroll_y() < -200.0,
+        app.get_selected_id() == last && app.get_result_scroll_y() < -200.0,
         "list_wrap_and_scroll",
     )?;
     app.invoke_show_appearance(true);
@@ -93,9 +97,9 @@ pub fn run(app: &AppWindow) -> Result<(), String> {
         "panel_escape_restores_focus",
     )?;
     press(app, Key::Escape);
-    press(app, "z");
+    press(app, "zz-no-matches");
     check(
-        app.get_input_text() == "z" && app.get_result_items().row_count() == 0,
+        app.get_input_text() == "zz-no-matches" && app.get_result_items().row_count() == 0,
         "typing_after_panel_close_and_empty_results",
     )?;
     press(app, Key::Return);
@@ -133,6 +137,18 @@ pub fn run(app: &AppWindow) -> Result<(), String> {
         "settings_ends_import_protection",
     )?;
     app.invoke_show_appearance(false);
+    app.invoke_clear_input();
+    press(app, "jsb");
+    check(
+        app.get_selected_id() == "notes",
+        "pinyin_initials_use_search_kernel",
+    )?;
+    app.invoke_clear_input();
+    press(app, "\u{3000} CODE \u{a0}");
+    check(
+        app.get_selected_id() == "code" && app.get_result_items().row_count() == 2,
+        "unicode_query_normalization",
+    )?;
     app.invoke_clear_input();
     Ok(())
 }

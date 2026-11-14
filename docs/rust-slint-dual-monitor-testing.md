@@ -1,8 +1,10 @@
 # Rust + Slint 双屏电脑复验清单
 
-交接日期：2026-10-30（北京时间）。分支：`codex/rust-slint-refactor`。当前 RS-01 至 RS-05、RS-07 已完成本机 Windows 11 验证，RS-06 的物理多屏/混合 DPI、拔插、休眠和实际通知区入口仍待补验，G2 尚未放行。详细状态见 [重构计划](rust-slint-refactor-plan.md)、[RS-06](baselines/2026-10-28-slint-rs06/README.md)与 [RS-07 补验](baselines/2026-10-29-slint-rs07/followup-2026-10-30/README.md)。
+交接日期：2026-10-30，最新验收：2026-11-03（北京时间）。分支：`codex/rust-slint-refactor`。RS-06 的双屏/混合 DPI、负坐标、两种渲染器物理拔插、实际 S3 及真实通知区入口已补齐，RS-06、RS-07 在已测 Windows 11 x64 范围已验证，**G2 放行**。详细证据与边界见 [G2 验收](baselines/2026-11-03-slint-rs06/g2-acceptance.md)，RS-08 本轮尚未开始。
 
 本次交接包含源码、锁定依赖、构建脚本及公开证据。`rust/target/`、`.reasonix/`、原始日志、测试数据和 exe 不随 Git 提交，另一台电脑需要本地构建。现有 Go 产品与数据不替换，业务迁移尚未开始。
+
+2026-11-03 在双屏电脑配置锁定环境并完成两种完整自动检查，[双屏记录](baselines/2026-11-03-slint-rs06/README.md)覆盖混合 DPI、负坐标和输入；[继续记录](baselines/2026-11-03-slint-rs06/followup/README.md)补齐 Software 副屏启动、真实托盘及物理拔插；[S3 记录](baselines/2026-11-03-slint-rs06/sleep-recovery/README.md)覆盖实际睡眠/恢复及 FemtoVG 真实托盘设置/退出；[最后拔插](baselines/2026-11-03-slint-rs06/femtovg-unplug/README.md)完成 FemtoVG 物理拔插/重新连接。原电源、显示配置已恢复，测试实例及热键已清理。下文保留供其他机器复验的完整步骤，每次结果仍须对应实际环境与构建。
 
 ## 获取与构建
 

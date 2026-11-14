@@ -1,0 +1,22 @@
+[
+  {
+    "Renderer": "software",
+    "SHA256": "E85B41C7E77888750817E47F092EABECB1BAB5A68EFCE579378CE2DDAD2DBA4B",
+    "Polls": 61,
+    "ObservedLastSeconds": 14.0071989,
+    "RootPrivateBytesObservedMax": 25145344.0,
+    "RootWorkingSetObservedMax": 62369792.0,
+    "Limitations": "Root only, command-driven approximately 200ms-or-slower polls. Observed maximum is a lower bound on the true peak; not a calibrated full-tree startup or scan peak.",
+    "RawSHA256": "55C7CF682725F86BA8C229D03E758C7C925027844361DE5E020A7983EAF0A900"
+  },
+  {
+    "Renderer": "femtovg",
+    "SHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+    "Polls": 113,
+    "ObservedLastSeconds": 27.162517,
+    "RootPrivateBytesObservedMax": 55701504.0,
+    "RootWorkingSetObservedMax": 125366272.0,
+    "Limitations": "Root only, command-driven approximately 200ms-or-slower polls. Observed maximum is a lower bound on the true peak; not a calibrated full-tree startup or scan peak.",
+    "RawSHA256": "8D593C50A199AF8534604F04E6DA3DFF1D2AAAA36338EA32CE333357CFFD7BE6"
+  }
+]

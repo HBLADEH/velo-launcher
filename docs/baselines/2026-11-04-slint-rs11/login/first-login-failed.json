@@ -1,0 +1,45 @@
+{
+  "date": "2026-11-04",
+  "timezone": "Asia/Shanghai",
+  "actual_logout_login_reported_by_user": true,
+  "interactive_logon_changed": true,
+  "manual_relaunch_before_capture": false,
+  "passed": false,
+  "cases": [
+    {
+      "renderer": "software",
+      "executable_sha256": "A9CFA3999A4A601E72C54716AFA571D55923BE53EDCDCAE4E6CB63E64408E990",
+      "command_utf16_units": 264,
+      "matches_documented_run_length_limit": false,
+      "saved_startup_enabled": true,
+      "run_command_matches_generated": true,
+      "matching_processes": 0,
+      "config_original_bytes_preserved": true,
+      "passed": false
+    },
+    {
+      "renderer": "femtovg",
+      "executable_sha256": "B6CBC0EE7DC2953D1837F986C1D25AA9D303D64C7004E22538A05521474E0991",
+      "command_utf16_units": 261,
+      "matches_documented_run_length_limit": false,
+      "saved_startup_enabled": true,
+      "run_command_matches_generated": true,
+      "matching_processes": 0,
+      "config_original_bytes_preserved": true,
+      "passed": false
+    }
+  ],
+  "finding": "Both Run commands exceed the documented 260-character limit; no test process after login, no matching application crash event or StartupApproved value found",
+  "documentation": "https://learn.microsoft.com/en-us/windows/win32/setupapi/run-and-runonce-registry-keys",
+  "raw_report": "rust/target/rs11-login-assisted-20261104/first-login-failed.json",
+  "cleanup": {
+    "exact_owned_values_removed": 2,
+    "remaining_owned_values": 0,
+    "matching_processes": 0,
+    "data_retained": true
+  },
+  "not_covered": [
+    "login hotkey",
+    "actual text input"
+  ]
+}

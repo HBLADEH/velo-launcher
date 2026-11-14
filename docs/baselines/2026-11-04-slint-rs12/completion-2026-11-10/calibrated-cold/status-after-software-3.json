@@ -1,0 +1,78 @@
+{
+  "RecordedAtUtc": "2026-11-10T18:16:53.7050190Z",
+  "HumanColdCharacterObservations": 9,
+  "CalibratedColdValidSamples": 8,
+  "CalibratedColdInvalidSamples": 0,
+  "RequiredSamples": 9,
+  "SamplesByEdition": {
+    "software": 3,
+    "femtovg": 2,
+    "wails": 3
+  },
+  "RequiredPerEdition": 3,
+  "CurrentUpperMilliseconds": {
+    "software": [
+      287.4924,
+      215.15370000000001,
+      237.8731
+    ],
+    "femtovg": [
+      445.7443,
+      450.45480000000003
+    ],
+    "wails": [
+      3549.82875,
+      3241.6126,
+      3190.8264
+    ]
+  },
+  "ValidSamplesWithUpperBoundAbove500ms": 3,
+  "Groups": {
+    "software": {
+      "SampleCountSatisfied": true,
+      "UpperMilliseconds": {
+        "Count": 3,
+        "Minimum": 215.15370000000001,
+        "Median": 237.8731,
+        "P95": 287.4924,
+        "Maximum": 287.4924
+      },
+      "UpperBoundP95Within500ms": true
+    },
+    "femtovg": {
+      "SampleCountSatisfied": false,
+      "UpperMilliseconds": {
+        "Count": 2,
+        "Minimum": 445.7443,
+        "Median": 448.09955,
+        "P95": 450.45480000000003,
+        "Maximum": 450.45480000000003
+      },
+      "UpperBoundP95Within500ms": true
+    },
+    "wails": {
+      "SampleCountSatisfied": true,
+      "UpperMilliseconds": {
+        "Count": 3,
+        "Minimum": 3190.8264,
+        "Median": 3241.6126,
+        "P95": 3549.82875,
+        "Maximum": 3549.82875
+      },
+      "UpperBoundP95Within500ms": false
+    }
+  },
+  "LatestCaseQuitSource": "User confirmed visible characters and normal quit",
+  "LatestCaseHumanVisualFeedbackReceived": true,
+  "NextCase": "femtovg-3",
+  "RemainingSequence": [
+    "femtovg-3"
+  ],
+  "IndependentRestartRequiredBeforeNext": true,
+  "CurrentBootConsumed": "639299309425000000",
+  "ColdStartup500msBudgetVerifiedForCompleteMatrix": false,
+  "HistoricalManualFocusRootCauseEstablished": false,
+  "DefaultRendererSelected": false,
+  "RS12Complete": false,
+  "Scope": "Current calibrated-cold checkpoint. Software/Wails each meet three-sample count; FemtoVG needs one independent boot. Sample validity, sample-count completion and budget verification are separate. Earlier status and raw case files retain original counts and identities."
+}

@@ -1,0 +1,22 @@
+{
+  "RecordedAtUtc": "2026-11-04T17:44:32.4771587Z",
+  "Edition": "wails",
+  "SHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+  "TwentyRoundOperatorReport": "20 轮完成，有几轮无法呼出Velo",
+  "FailureDescription": "出现一下就消失，或窗口出现但不能输入",
+  "TwentyRoundAcceptedMatches": 20,
+  "DiagnosticOperatorRounds": 5,
+  "DiagnosticOperatorFailedRound": 4,
+  "DiagnosticObserverAttempts": 5,
+  "DiagnosticObserverAcceptedMatches": 4,
+  "DiagnosticObserverInvalidAttempts": 1,
+  "DiagnosticObservedIMEComposition": true,
+  "OperatorAndObserverRoundAlignmentConfirmed": false,
+  "HotkeyReliabilityPassed": false,
+  "RS12Complete": false,
+  "Notes": [
+    "Original successful matches remain timing upper-bound evidence, not proof of reliable activation.",
+    "The five-start observer ended before the entire operator exercise; later input exists outside the native-event capture.",
+    "Do not invent a precise failure count or diagnose a focus-race root cause without aligned evidence."
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "SchemaVersion": 1,
+  "SHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+  "Kind": "WarmStartup",
+  "Boundary": "ProcessStartToEditable",
+  "InputId": "024397D07DB93ECF20AFE342D982D988B8C0F9D9C1272BC69700447A3C8C0935",
+  "EnvironmentId": "75E9C9390084E8DBB7C0DEF0418B8A6AF035985EBF2F89F93639E1890B9483AE",
+  "RecordedAtUtc": "2026-11-04T11:33:21.6524345Z",
+  "Method": "Direct Explorer launch from prepared shortcut; actual accepted character ends timing. Normal OS cache retained; manual startup/typing delay is not subtracted.",
+  "Result": {
+    "Completed": false,
+    "Observations": [
+      {
+        "Number": 1,
+        "Kind": "WarmStartup",
+        "Valid": false,
+        "InjectedStart": false,
+        "StartLowerUnixUs": 1793791989709798,
+        "StartObservedUnixUs": 1793791989710798,
+        "AcceptedUnixUs": 0,
+        "DurationUpperMilliseconds": 0,
+        "ClockUncertaintyMilliseconds": 1.0,
+        "Reason": "No focused non-composing character accepted, or input evidence was lost."
+      }
+    ]
+  }
+}

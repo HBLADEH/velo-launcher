@@ -1,0 +1,72 @@
+{
+  "RecordedAtUtc": "2026-11-09T20:09:51.0100921Z",
+  "OriginalManifestSHA256": "854FAB2AF9F5299DB2A0D161360D6770B619409973373D6B6C6BE33EF8947098",
+  "FinalManifestSHA256": "3D6483F5E6321BFFF4CD37EB7CF56081F4D62F6EE3BE76AC3634A4587344353A",
+  "UnattemptedMetadataSourceUpgrades": [
+    {
+      "Case": "femtovg-1",
+      "OriginalMetadataSHA256": "579FAF2AA49B4EF8E64006C68224BE459A9572D081F87456233975141A3AA2BE",
+      "FinalMetadataSHA256": "235A1C78A0C6C43F4E4234B070F1333742F4C8585FF12414C8A7A2E0C5C3F41D",
+      "InputSource": "MachineCalibration",
+      "ExecutableAndDataRewritten": false
+    },
+    {
+      "Case": "femtovg-2",
+      "OriginalMetadataSHA256": "DA3DFBD0BD1F8A1EF4DD0CE2A04A7C68540C1D69144C79653F6247965B69AC37",
+      "FinalMetadataSHA256": "FA1B0630E233FED8A0F79FBD3B1E092AD42AAF59EAB98AF17D956D0E7113BABB",
+      "InputSource": "MachineCalibration",
+      "ExecutableAndDataRewritten": false
+    },
+    {
+      "Case": "femtovg-3",
+      "OriginalMetadataSHA256": "6E76BECFCD5AD3271AD91DC90F42BC426E3EDE02BA6BAA331D81B14E08C405FB",
+      "FinalMetadataSHA256": "1126F73F8812464A5EF16DC44E1B491800523FDFCA4597978ABF7EA59B94DFB0",
+      "InputSource": "MachineCalibration",
+      "ExecutableAndDataRewritten": false
+    },
+    {
+      "Case": "software-1",
+      "OriginalMetadataSHA256": "C9B8C550F1D1D0F17EB10F67469940CADB41D66B8B4DE98E63A21091E2FA92B7",
+      "FinalMetadataSHA256": "819B6374D36C1551E04C45F34B0CBA7A070371FB101D708D9C31308D629381F8",
+      "InputSource": "MachineCalibration",
+      "ExecutableAndDataRewritten": false
+    },
+    {
+      "Case": "software-2",
+      "OriginalMetadataSHA256": "5A3AEECF7E16971C3FDC331F4AD7E4BE55E4344606E06780748AD52F64763DAB",
+      "FinalMetadataSHA256": "FA5EF12056419707E4AB02EC12264EE337EC23DE30AE5FB91CF24751BB47297D",
+      "InputSource": "MachineCalibration",
+      "ExecutableAndDataRewritten": false
+    },
+    {
+      "Case": "software-3",
+      "OriginalMetadataSHA256": "3D84C248A321F01A3E66C7C40B7AF79A4E0DF0BEC37DB2D8FAF9DA0F00837CDE",
+      "FinalMetadataSHA256": "DC3DBBDAD96DCDA172906C4F59A2C0026E8A73847765273FBFD1847E6E226B3A",
+      "InputSource": "MachineCalibration",
+      "ExecutableAndDataRewritten": false
+    },
+    {
+      "Case": "wails-1",
+      "OriginalMetadataSHA256": "F5615670ECA8AC4CC90D98C543AC55FCD6C9DA0275410E8286AFDA56F81B1815",
+      "FinalMetadataSHA256": "3CC310EC226C00F77255125CE80345FAC3A0C185EA5118E1A4FF1708A494717C",
+      "InputSource": "MachineCalibration",
+      "ExecutableAndDataRewritten": false
+    },
+    {
+      "Case": "wails-2",
+      "OriginalMetadataSHA256": "AC92BDB9BAA24329162A758A14B82E01BA2405B0395AF711F2DE77BD3A0690F8",
+      "FinalMetadataSHA256": "B4589808E6081F207A21C2951B74989A7D6A99EACE042EC3F3A60289A313B4AA",
+      "InputSource": "MachineCalibration",
+      "ExecutableAndDataRewritten": false
+    },
+    {
+      "Case": "wails-3",
+      "OriginalMetadataSHA256": "A1125ED18030E60E8455E2E309991D1A4A388469C5C758715EB81AD9D05DF32F",
+      "FinalMetadataSHA256": "A0855629B1F8FD65261DC3DBE5511F560972CA94890991146F985817CFB49CDA",
+      "InputSource": "MachineCalibration",
+      "ExecutableAndDataRewritten": false
+    }
+  ],
+  "ExecutableAndSeedBytesUnchanged": true,
+  "Scope": "Machine-source provenance added before any attempt. Original metadata snapshot retained locally; no captured sample was rewritten."
+}

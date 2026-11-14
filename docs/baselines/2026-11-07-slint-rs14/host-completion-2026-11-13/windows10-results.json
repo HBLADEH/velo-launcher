@@ -1,0 +1,74 @@
+{
+  "RecordedAtUtc": "2026-11-13T08:29:35.4677466Z",
+  "Passed": true,
+  "Cases": [
+    {
+      "Renderer": "software",
+      "Case": "smoke-test",
+      "Passed": true,
+      "ExecutableSHA256": "2C84E5D23284777B78402FAAB900817D1D030EFFC783DE0ECFAE9B90D758A1C0",
+      "LogSHA256": "8D3F36D75CFE75DB9349FA93B417F73078F4F5059C48B4A7F4DD865633AC6F0B"
+    },
+    {
+      "Renderer": "software",
+      "Case": "input-smoke-test",
+      "Passed": true,
+      "ExecutableSHA256": "2C84E5D23284777B78402FAAB900817D1D030EFFC783DE0ECFAE9B90D758A1C0",
+      "LogSHA256": "4079D950574AC278132470F2609BD3515A86A380331AFE47235AF6C74F9E87DB"
+    },
+    {
+      "Renderer": "software",
+      "Case": "business",
+      "Passed": true,
+      "ExecutableSHA256": "2C84E5D23284777B78402FAAB900817D1D030EFFC783DE0ECFAE9B90D758A1C0"
+    },
+    {
+      "Renderer": "software",
+      "Case": "pages",
+      "Passed": true,
+      "ExecutableSHA256": "2C84E5D23284777B78402FAAB900817D1D030EFFC783DE0ECFAE9B90D758A1C0"
+    },
+    {
+      "Renderer": "software",
+      "Case": "actual-install-locked-upgrade-uninstall",
+      "Passed": true,
+      "ExecutableSHA256": "2C84E5D23284777B78402FAAB900817D1D030EFFC783DE0ECFAE9B90D758A1C0"
+    },
+    {
+      "Renderer": "femtovg",
+      "Case": "smoke-test",
+      "Passed": true,
+      "ExecutableSHA256": "404971AB61D2291E8F48C2375664DA279CA6BAED9B3AD1CF3BACC7C233A78733",
+      "LogSHA256": "F729A1F3CE4AFB517E6E3C79B89590ABF1892BA8E6463070C29D340E54958636"
+    },
+    {
+      "Renderer": "femtovg",
+      "Case": "input-smoke-test",
+      "Passed": true,
+      "ExecutableSHA256": "404971AB61D2291E8F48C2375664DA279CA6BAED9B3AD1CF3BACC7C233A78733",
+      "LogSHA256": "98088BB3008BA676F4829171D903898622075D6F757BC8795051C7E7B1E72808"
+    },
+    {
+      "Renderer": "femtovg",
+      "Case": "business",
+      "Passed": true,
+      "ExecutableSHA256": "404971AB61D2291E8F48C2375664DA279CA6BAED9B3AD1CF3BACC7C233A78733"
+    },
+    {
+      "Renderer": "femtovg",
+      "Case": "pages",
+      "Passed": true,
+      "ExecutableSHA256": "404971AB61D2291E8F48C2375664DA279CA6BAED9B3AD1CF3BACC7C233A78733"
+    },
+    {
+      "Renderer": "femtovg",
+      "Case": "actual-install-locked-upgrade-uninstall",
+      "Passed": true,
+      "ExecutableSHA256": "404971AB61D2291E8F48C2375664DA279CA6BAED9B3AD1CF3BACC7C233A78733"
+    }
+  ],
+  "SourceCommit": "4bab4c940fd01c7a1219cc4991ddeaadf5a37e26",
+  "VMGuest": true,
+  "RealHardwareOrPhysicalIMEClaim": false,
+  "FormalProductMigrationValidated": false
+}

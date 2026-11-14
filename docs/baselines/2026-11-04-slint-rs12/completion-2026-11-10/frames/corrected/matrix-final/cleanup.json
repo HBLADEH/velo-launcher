@@ -1,0 +1,32 @@
+{
+  "RecordedAtUtc": "2026-11-09T18:50:20.2953866Z",
+  "VeloProcessesRemaining": 0,
+  "IsolatedWebViewProcessesRemaining": 0,
+  "InstanceChecks": [
+    {
+      "Instance": "rs12-input-frame-sw-1k-v4-20261110-1",
+      "MutexAbsent": true
+    },
+    {
+      "Instance": "rs12-input-frame-sw-10k-v4-20261110-1",
+      "MutexAbsent": true
+    },
+    {
+      "Instance": "rs12-input-frame-fg-1k-v4-20261110-1",
+      "MutexAbsent": true
+    },
+    {
+      "Instance": "rs12-input-frame-fg-10k-v4-20261110-2",
+      "MutexAbsent": true
+    },
+    {
+      "Instance": "rs12-input-frame-fg-10k-v4-20261110-1",
+      "MutexAbsent": true
+    }
+  ],
+  "AltSpaceTemporarilyRegisteredAndReleased": true,
+  "NoInputSynthesized": true,
+  "AllCapturedTargetWindowsEnded": true,
+  "AllFormalFileComparisonsMatched": true,
+  "Scope": "Normal exits and per-session final logs reviewed; no processes forcibly terminated. WebView matching limited to this isolated fixture root."
+}

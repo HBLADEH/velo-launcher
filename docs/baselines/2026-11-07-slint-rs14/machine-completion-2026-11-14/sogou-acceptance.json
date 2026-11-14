@@ -1,0 +1,195 @@
+{
+  "RecordedAtUtc": "2026-11-14T17:46:28.366642+00:00",
+  "Date": "2026-11-15",
+  "Passed": true,
+  "Environment": {
+    "RecordedAtUtc": "2026-11-14T17:39:56.2446495Z",
+    "OS": "Microsoft Windows 10 专业版",
+    "Version": "10.0.19045",
+    "Build": "19045",
+    "GPU": [
+      {
+        "Name": "VMware SVGA 3D",
+        "DriverVersion": "9.17.4.1",
+        "Width": 1024,
+        "Height": 768
+      }
+    ],
+    "Sogou": [
+      {
+        "Name": "搜狗输入法 16.10.0正式版",
+        "Version": "16.10.0.5858"
+      }
+    ],
+    "PhysicalKeysSuppliedByUser": true,
+    "Environment": "Existing isolated VMware guest on the supplied host",
+    "AdditionalPhysicalGPUClaimed": false
+  },
+  "Cases": [
+    {
+      "Renderer": "software",
+      "Passed": true,
+      "ExecutableSHA256": "4C8F9361D1F1BB79FD776E4C7AE9984D4CB7884E9172B492F43257270CE1C9CE",
+      "PID": 6652,
+      "SessionStartUtc": "2026-11-14T17:07:45.5676700Z",
+      "Exit": {
+        "AtUtc": "2026-11-14T17:37:48.3891472Z",
+        "PID": 6652,
+        "ExitCode": 0,
+        "ExitCodeObserved": true,
+        "HandleAcquiredWhileRunning": true
+      },
+      "DiagnosticSummary": {
+        "Renderer": "software",
+        "ExecutableSHA256": "4C8F9361D1F1BB79FD776E4C7AE9984D4CB7884E9172B492F43257270CE1C9CE",
+        "PID": 6652,
+        "ObservedPIDs": [
+          6652
+        ],
+        "ImeEvents": {
+          "enabled": 2,
+          "preedit": 2,
+          "commit": 2,
+          "disabled": 2
+        },
+        "NativeKeyDown": 74,
+        "AcceptedCallbacks": 7,
+        "NonSyntheticMultibyteAccepted": 4,
+        "SyntheticAccepted": 0,
+        "DroppedEvents": 0,
+        "HiddenWhileCompositionActive": [],
+        "LaunchEvents": [],
+        "NormalLifecycleQuit": true,
+        "TrayRemoved": true,
+        "StderrSHA256": "49332C0591E3A2BAB0A8CFC9AD3B2DABF6B8BC568A28A5DC20A4035791DFF377",
+        "EventsSHA256": "F8515BE13A7F618CE8084AF9DAFF8046C9D9C2553AE769B426FB143B21D62DA5",
+        "Scope": "Diagnostics only; candidate placement, paging, key semantics and IME identity require screenshot/operator evidence."
+      },
+      "UserReport": {
+        "RecordedAtUtc": "2026-11-14T17:38:52.6008679Z",
+        "Renderer": "software",
+        "Operator": "User physical keyboard in disposable Windows10 guest",
+        "CandidateInitiallyShown": true,
+        "PagingAndReturn": true,
+        "ArrowAndSpaceSelection": true,
+        "EscapeCancelsCandidateWithoutHiding": true,
+        "EnterCommitsWithoutLaunching": true,
+        "EnglishAbcAndChineseToggle": true,
+        "TrayExitRequestedAndConfirmed": true,
+        "DirectReport": "均正常"
+      },
+      "OriginalUserFilesPreserved": [
+        {
+          "Name": "application-library.json",
+          "SHA256": "A32DCFA1175495EC20CAB36315C2C48F471BFA3C1F6AB91CD0F1670E027D0C5D"
+        },
+        {
+          "Name": "config.json",
+          "SHA256": "D0AD379DB686117CAAC3275AD4F3D39B2BF3C30D3FC09A887AFC9199E761A429"
+        },
+        {
+          "Name": "history.json",
+          "SHA256": "E3566B3A06430868D71E9287DFD6C6C520A3DA027AABEA01951D407EE131DC2F"
+        }
+      ],
+      "CandidateScreenshot": "software-sogou-candidate.png",
+      "CandidateScreenshotSHA256": "BF2B574F920AB9212EC587A065AF59599CEF6C281E9ABB63534602796B03747F",
+      "CandidatePlacement": "Shown directly below the search input at 1024x768 / 100 percent; test composition visible.",
+      "OriginalLocalArtifacts": {
+        "session.json": "6567705A1D20A41503D74E472A31E9C53D50088E1DB1FC60E52BA1634631409B",
+        "state.json": "E5394001CD5FCE2DA5B9BAE3597ADE1D09B07D127F0538231B25ADC9200A0FFE",
+        "stderr.log": "49332C0591E3A2BAB0A8CFC9AD3B2DABF6B8BC568A28A5DC20A4035791DFF377",
+        "events.log": "F8515BE13A7F618CE8084AF9DAFF8046C9D9C2553AE769B426FB143B21D62DA5",
+        "exit.json": "A3AA55596603FF31E78989F0BAF7483B733A3450AC1DC517626A67FB9CCAE937",
+        "operator.json": "FEA6572B2EF72AF4625AA627E7C7C5D865B8B911A8C56CC8E4F2B271B4769B9E"
+      },
+      "NoAgentKeyboardInputDuringIMEAcceptance": true
+    },
+    {
+      "Renderer": "femtovg",
+      "Passed": true,
+      "ExecutableSHA256": "073493BB48F8114485E091A79F533B82F493138B02E973B6488A859B6CD1C609",
+      "PID": 1212,
+      "SessionStartUtc": "2026-11-14T17:38:56.0776163Z",
+      "Exit": {
+        "AtUtc": "2026-11-14T17:45:06.4597856Z",
+        "PID": 1212,
+        "ExitCode": 0,
+        "ExitCodeObserved": true,
+        "HandleAcquiredWhileRunning": true
+      },
+      "DiagnosticSummary": {
+        "Renderer": "femtovg",
+        "ExecutableSHA256": "073493BB48F8114485E091A79F533B82F493138B02E973B6488A859B6CD1C609",
+        "PID": 1212,
+        "ObservedPIDs": [
+          1212
+        ],
+        "ImeEvents": {
+          "enabled": 3,
+          "preedit": 3,
+          "commit": 3,
+          "disabled": 3
+        },
+        "NativeKeyDown": 69,
+        "AcceptedCallbacks": 7,
+        "NonSyntheticMultibyteAccepted": 4,
+        "SyntheticAccepted": 0,
+        "DroppedEvents": 0,
+        "HiddenWhileCompositionActive": [],
+        "LaunchEvents": [],
+        "NormalLifecycleQuit": true,
+        "TrayRemoved": true,
+        "StderrSHA256": "C375F561EA1897B5AEA5B32EB2838B33C3B42C47E22061E5EE53FB21CB6E5D26",
+        "EventsSHA256": "9FA3D46F709FD46813FCF4BC4E41FCBA1E206760694321232ABC9195067030D9",
+        "Scope": "Diagnostics only; candidate placement, paging, key semantics and IME identity require screenshot/operator evidence."
+      },
+      "UserReport": {
+        "RecordedAtUtc": "2026-11-14T17:46:28.1870290Z",
+        "Renderer": "femtovg",
+        "Operator": "User physical keyboard in disposable Windows10 guest",
+        "CandidateInitiallyShown": true,
+        "PagingAndReturn": true,
+        "ArrowAndSpaceSelection": true,
+        "EscapeCancelsCandidateWithoutHiding": true,
+        "EnterCommitsWithoutLaunching": true,
+        "EnglishAbcAndChineseToggle": true,
+        "TrayExitRequestedAndConfirmed": true,
+        "DirectReport": "各项正常"
+      },
+      "OriginalUserFilesPreserved": [
+        {
+          "Name": "application-library.json",
+          "SHA256": "A32DCFA1175495EC20CAB36315C2C48F471BFA3C1F6AB91CD0F1670E027D0C5D"
+        },
+        {
+          "Name": "config.json",
+          "SHA256": "D0AD379DB686117CAAC3275AD4F3D39B2BF3C30D3FC09A887AFC9199E761A429"
+        },
+        {
+          "Name": "history.json",
+          "SHA256": "E3566B3A06430868D71E9287DFD6C6C520A3DA027AABEA01951D407EE131DC2F"
+        }
+      ],
+      "CandidateScreenshot": "femtovg-sogou-candidate.png",
+      "CandidateScreenshotSHA256": "999DCA3E56EED918B258D5B72E681A3D72D550592C83017B1C9D2CABAF2D7D78",
+      "CandidatePlacement": "Shown directly below the search input at 1024x768 / 100 percent; test composition visible.",
+      "OriginalLocalArtifacts": {
+        "session.json": "D66AA321BD4314426C1DB27E35540E4E609E12D2407F380D3CDE2D6F55F72A87",
+        "state.json": "7AAE92422300FE938F7D45E2921E591052C3300E5E35FA4B09EF640958E67B88",
+        "stderr.log": "C375F561EA1897B5AEA5B32EB2838B33C3B42C47E22061E5EE53FB21CB6E5D26",
+        "events.log": "9FA3D46F709FD46813FCF4BC4E41FCBA1E206760694321232ABC9195067030D9",
+        "exit.json": "ECB9EB0B720CB171B148A5C085240198B0ED04F9AB62A457F6EFE607BCC181B7",
+        "operator.json": "22673FD53370177FA075B158EBDBDC402D6786FFAD23E9027D7F7E02DE6DED2E"
+      },
+      "NoAgentKeyboardInputDuringIMEAcceptance": true
+    }
+  ],
+  "Method": "Real keyboard/IME operations by the user; guest API only launched programs, read logs and captured screenshots.",
+  "SameExactExecutablesAsMachineAcceptance": true,
+  "ExplicitIsolatedIdentityAndData": true,
+  "ScopeLimit": "Windows10 build19045 guest, VMware SVGA3D9.17.4.1, 100 percent. This does not expand third-party IME coverage to other versions, physical GPU drivers or DPI combinations.",
+  "InitialCandidateProbeImeEventsAbsent": true,
+  "LaterCompositionAndCommitEventsPresent": true,
+  "ExitObserverPriorAttempt": "A timestamp text comparison in the read-only observer falsely rejected the process identity because PowerShell parsed the JSON timestamp as DateTime. It was changed to UTC ticks and acquired a native handle while the original process was still running; the final exit codes are observed, not inferred."
+}

@@ -1,0 +1,164 @@
+{
+  "date": "2026-11-03",
+  "timezone": "Asia/Shanghai",
+  "operating_system": "Microsoft Windows 11 专业版 Insider Preview",
+  "windows_version": "10.0.26340",
+  "renderer_decision": "undecided",
+  "g3": "not approved; real UAC/login/installer acceptance pending",
+  "full_rust_verification": {
+    "passed": true,
+    "command": "./scripts/verify-rust.ps1 -SmokeTest",
+    "raw_log": "rust/target/rs11-acceptance-verification.log"
+  },
+  "legacy_verification": {
+    "passed": true,
+    "command": "./scripts/verify.ps1 -SkipBuild",
+    "frontend_tests": 26,
+    "go": "1.25.6",
+    "raw_log": "rust/target/rs11-legacy-verification.log"
+  },
+  "shared_cases": {
+    "versions": 15,
+    "no_proxy": 15,
+    "windows_capabilities": 8
+  },
+  "renderers": [
+    {
+      "renderer": "software",
+      "executable_sha256": "F74582CA2D1267302DFB9324276A7576BC94F482B17834950FF05BD180E25078",
+      "executable_bytes": 13592064,
+      "rust_tests": 75,
+      "fixed_component_assertions": 22,
+      "business_component_assertions": 7,
+      "pages_assertions": {
+        "pages-smoke-test": [
+          "isolated_catalog_loaded",
+          "pin_callback_persists_and_publishes",
+          "settings_tab_0_light",
+          "settings_tab_1_light",
+          "settings_tab_2_light",
+          "settings_tab_3_light",
+          "settings_tab_4_light",
+          "settings_tab_5_light",
+          "settings_tab_6_light",
+          "settings_tab_0_dark",
+          "settings_tab_1_dark",
+          "settings_tab_2_dark",
+          "settings_tab_3_dark",
+          "settings_tab_4_dark",
+          "settings_tab_5_dark",
+          "settings_tab_6_dark",
+          "settings_committed_to_platform_and_store",
+          "grid_horizontal_navigation_keeps_query",
+          "grid_composition_protects_navigation",
+          "real_import_preview_callback",
+          "import_callback_persists_without_launch_or_pin",
+          "backup_callback_returns_saved_original",
+          "hide_preserves_settings_draft"
+        ],
+        "pages-restart-test": [
+          "isolated_catalog_loaded",
+          "saved_grid_reloaded",
+          "pin_survives_restart",
+          "custom_import_survives_restart",
+          "import_is_searchable_after_restart",
+          "delete_callback_commits_without_revival"
+        ]
+      },
+      "screenshot_count": 18,
+      "source_fingerprints": 138,
+      "native_update": {
+        "destructive_actions": "not executed",
+        "installer_uac": "not executed",
+        "passed": true,
+        "portable_update": [
+          "replace",
+          "hash-failure-recovery"
+        ],
+        "system_tools": 43,
+        "windows_directory_available": true
+      },
+      "old_data_copy": {
+        "passed": true,
+        "raw_log": "rust/target/rs11-old-copy-final-software.log",
+        "original_files_unchanged": true
+      }
+    },
+    {
+      "renderer": "femtovg",
+      "executable_sha256": "B2D1B6060FFEECB60411B73E22CCC56F970A68E4F1C1673F9A856C878CA62376",
+      "executable_bytes": 13089792,
+      "rust_tests": 75,
+      "fixed_component_assertions": 22,
+      "business_component_assertions": 7,
+      "pages_assertions": {
+        "pages-smoke-test": [
+          "isolated_catalog_loaded",
+          "pin_callback_persists_and_publishes",
+          "settings_tab_0_light",
+          "settings_tab_1_light",
+          "settings_tab_2_light",
+          "settings_tab_3_light",
+          "settings_tab_4_light",
+          "settings_tab_5_light",
+          "settings_tab_6_light",
+          "settings_tab_0_dark",
+          "settings_tab_1_dark",
+          "settings_tab_2_dark",
+          "settings_tab_3_dark",
+          "settings_tab_4_dark",
+          "settings_tab_5_dark",
+          "settings_tab_6_dark",
+          "settings_committed_to_platform_and_store",
+          "grid_horizontal_navigation_keeps_query",
+          "grid_composition_protects_navigation",
+          "real_import_preview_callback",
+          "import_callback_persists_without_launch_or_pin",
+          "backup_callback_returns_saved_original",
+          "hide_preserves_settings_draft"
+        ],
+        "pages-restart-test": [
+          "isolated_catalog_loaded",
+          "saved_grid_reloaded",
+          "pin_survives_restart",
+          "custom_import_survives_restart",
+          "import_is_searchable_after_restart",
+          "delete_callback_commits_without_revival"
+        ]
+      },
+      "screenshot_count": 18,
+      "source_fingerprints": 138,
+      "native_update": {
+        "destructive_actions": "not executed",
+        "installer_uac": "not executed",
+        "passed": true,
+        "portable_update": [
+          "replace",
+          "hash-failure-recovery"
+        ],
+        "system_tools": 43,
+        "windows_directory_available": true
+      },
+      "old_data_copy": {
+        "passed": true,
+        "raw_log": "rust/target/rs11-old-copy-final-femtovg.log",
+        "original_files_unchanged": true
+      }
+    }
+  ],
+  "measurements": {
+    "memory": "not measured",
+    "latency": "not measured",
+    "cpu": "not measured"
+  },
+  "remaining": [
+    "real UAC/admin confirmation and cancellation",
+    "real Windows login startup",
+    "released Rust installer upgrade/UAC/recovery"
+  ],
+  "cleanup": {
+    "active_test_processes": 0,
+    "temporary_startup_values": 0,
+    "native_temporary_directories": 0
+  }
+}

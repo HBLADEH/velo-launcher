@@ -1,0 +1,32 @@
+{
+  "FieldsCompared": [
+    "id",
+    "name",
+    "path",
+    "exec_path",
+    "arguments",
+    "working_directory",
+    "source"
+  ],
+  "Reference": "Initial Software business measurement scan, software-full",
+  "Editions": {
+    "femtovg": {
+      "CachedApps": 736,
+      "Files": {
+        "config.json": "1839E326E5501DAA350418D81B7732C103EB7DB5455D145BD94B72B48349775D",
+        "history.json": "300716DFFF2BCBF12B317BAD430A3F553842C13616BB28C636E620E69681CA11",
+        "application-library.json": "A5E8BC981B03563AF3D26E5EEF9D263D9EAA4181C5DA758E8DCBF82160FF01F6"
+      },
+      "SemanticDifferencesFromReference": 0
+    },
+    "software": {
+      "CachedApps": 736,
+      "Files": {
+        "config.json": "1839E326E5501DAA350418D81B7732C103EB7DB5455D145BD94B72B48349775D",
+        "history.json": "300716DFFF2BCBF12B317BAD430A3F553842C13616BB28C636E620E69681CA11",
+        "application-library.json": "A5E8BC981B03563AF3D26E5EEF9D263D9EAA4181C5DA758E8DCBF82160FF01F6"
+      },
+      "SemanticDifferencesFromReference": 0
+    }
+  }
+}

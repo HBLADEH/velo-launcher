@@ -1,0 +1,84 @@
+{
+  "SchemaVersion": 1,
+  "Date": "2026-11-03",
+  "Timezone": "Asia/Shanghai",
+  "Scope": "Windows 11 x64 10.0.26340; 100% DPI screenshots; synthetic component input, not native IME or performance acceptance",
+  "RustCommand": "./scripts/verify-rust.ps1 -SmokeTest",
+  "RustExitCode": 0,
+  "RustLogLocalPath": "rust/target/rs10-acceptance-complete.log",
+  "RustLogSHA256": "4980A86D82D4A3466B7DD3725F9FED14E6EC6B86C9ADD40A2E2D02A8F5B8DEC2",
+  "LegacyCommand": "./scripts/verify.ps1 -SkipBuild",
+  "LegacyGoVersion": "1.25.6",
+  "LegacyExitCode": 0,
+  "LegacyLogLocalPath": "rust/target/rs10-go-verification.log",
+  "LegacyLogSHA256": "6A5C723416814270E9E2FBFA14298783D6F741799758C00D67631B0F8933B4F5",
+  "SharedNoiseCases": 37,
+  "SharedDiscoveryActionGroups": 4,
+  "EarlierDataTestProcessAnomaly": {
+    "ExitCode": 1,
+    "CompletedTestOutput": 13,
+    "ExpectedTests": 15,
+    "FailureAssertionOrPanicLogged": false,
+    "LocalLogPath": "rust/target/rs10-acceptance-verification.log",
+    "LogSHA256": "5F66B0802C23FD99CB678E39C5E35556F3B78974C1B91865CCF05614A0C6EB90",
+    "SameBinaryNoCaptureRerun": "15/15 passed",
+    "AdditionalRuns": 10,
+    "AdditionalTestsPassed": 150,
+    "Cause": "not identified; not reproduced in isolated repeats or final full verification"
+  },
+  "Renderers": [
+    {
+      "Renderer": "femtovg",
+      "UnitAndIntegrationTests": 66,
+      "FixedComponentAssertions": 22,
+      "BusinessComponentAssertions": [
+        "real_catalog_query_and_visible_icon",
+        "real_result_component_navigation",
+        "refresh_preserves_newer_query",
+        "normal_lifecycle_hide",
+        "late_refresh_does_not_show_hidden_window",
+        "hide_and_refresh_keep_session_query",
+        "hidden_models_release_image_references"
+      ],
+      "NativePackagedAppsCompared": 51,
+      "NativePackagedIconsLoaded": 3,
+      "ExecutableSHA256": "3973120A871FBE5E7F8891446CB6C704AC97F609BE7A3B2009FCEE8461893830",
+      "ExecutableBytes": 11605504,
+      "InputFingerprints": 116,
+      "SourceFingerprintsVerified": true,
+      "BusinessProcessExited": true,
+      "TrayRemoved": true
+    },
+    {
+      "Renderer": "software",
+      "UnitAndIntegrationTests": 66,
+      "FixedComponentAssertions": 22,
+      "BusinessComponentAssertions": [
+        "real_catalog_query_and_visible_icon",
+        "real_result_component_navigation",
+        "refresh_preserves_newer_query",
+        "normal_lifecycle_hide",
+        "late_refresh_does_not_show_hidden_window",
+        "hide_and_refresh_keep_session_query",
+        "hidden_models_release_image_references"
+      ],
+      "NativePackagedAppsCompared": 51,
+      "NativePackagedIconsLoaded": 3,
+      "ExecutableSHA256": "C7AF72C1923152858E1C391EC710B938622E257F36CD1EF464FABB185414DC39",
+      "ExecutableBytes": 12107264,
+      "InputFingerprints": 116,
+      "SourceFingerprintsVerified": true,
+      "BusinessProcessExited": true,
+      "TrayRemoved": true
+    }
+  ],
+  "SameRendererInputFingerprints": true,
+  "RemainingSlintTestProcesses": 0,
+  "NotCovered": [
+    "real UAC desktop cancellation/elevated launch",
+    "native keyboard or IME beyond historical evidence",
+    "RS-11 full pages/import/system actions/settings/update",
+    "Windows 10 and additional drivers",
+    "new memory/CPU/latency or long-run performance measurements"
+  ]
+}

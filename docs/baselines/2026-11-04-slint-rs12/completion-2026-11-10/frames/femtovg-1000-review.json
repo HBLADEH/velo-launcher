@@ -1,0 +1,37 @@
+{
+  "RecordedAtUtc": "2026-11-09T17:37:22.720924Z",
+  "Edition": "femtovg",
+  "ExpectedCatalogCount": 1000,
+  "ObservedCatalogCount": 1000,
+  "ExecutableSHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+  "InputCaptureCompleted": false,
+  "InputCaptureEndReason": "Timeout",
+  "LiveValidPhysicalHotkeyPairs": 20,
+  "InvalidPhysicalPairs": 0,
+  "PhysicalFixedAKeys": 20,
+  "UserReport": "已完成并从托盘退出，全部正常",
+  "NormalExitConfirmed": false,
+  "ProcessStillRunning": true,
+  "ProcessId": 16264,
+  "FixtureIconScope": "v1 fixture used unsupported icon cache name; fallback initials visible. Corrected v3 fixtures separate and not yet measured.",
+  "FrameContentValidationPassed": false,
+  "FrameTimingEligible": false,
+  "Reason": "Observer build4 geometry race; pixel evidence excluded from public product conclusions. Paired actual-input records remain provisional until normal exit/final log recheck.",
+  "FormalFilesMatchingPreflightAtReview": {
+    "config.json": true,
+    "index.json": true,
+    "history.json": true,
+    "application-library.json": true,
+    "quick-launch.json": true
+  },
+  "ClosedEvidenceHashes": {
+    "session.json": "2E4CEFC4B88E113799EACBEE7DA4AACFC6B668B2E9A028A8910F912CE9E21B47",
+    "physical-input.json": "D8E061BC00A3915BFA55F2FAD67C1E20B88B9ABEFD7305BE573EDCBDD0F5A1B5",
+    "femtovg-1000/events.jsonl": "CB5DD49CBDC6519C78AB6150A2455B185AD4F08AD86E3CEC2160432ED93DEC9E",
+    "femtovg-1000/identity.json": "F07423957823F23B01DF2739042DA262A91EFFF4B4F88E89C66F408261F61566",
+    "geometry-capture-failure.json": "B789D5459417A5F56563720D2A27C1CD9F53A8216D5C50642160B1BF6C89A090"
+  },
+  "FinalInputLogSHA256": null,
+  "InputLogScope": "Still-open log is not frozen or represented as a final hash.",
+  "RS12Complete": false
+}

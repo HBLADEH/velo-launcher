@@ -1,0 +1,160 @@
+{
+  "Reports": [
+    {
+      "RecordedAtUtc": "2026-11-12T17:09:01.1227934Z",
+      "Renderer": "software",
+      "Run": "software-physical",
+      "ProcessId": 156608,
+      "ExecutableSHA256": "5E7C017DDA3FF691E7FF8DCBFEAF149E5A766C1F8DC73A816BB5C4A9F7C4C66B",
+      "RequestedScalePercent": 100,
+      "OperatorReply": "100% 全部正常",
+      "OperatorConfirmedScope": "Real keyboard Microsoft Pinyin candidate location, paging, word selection; ceshi Escape cancellation without hiding; English abc.",
+      "PhysicalEvidenceSource": "Direct operator reply; no synthetic typing performed by the agent in this session."
+    },
+    {
+      "RecordedAtUtc": "2026-11-12T17:18:19.7969559Z",
+      "Renderer": "software",
+      "Run": "software-physical",
+      "ProcessId": 156608,
+      "ExecutableSHA256": "5E7C017DDA3FF691E7FF8DCBFEAF149E5A766C1F8DC73A816BB5C4A9F7C4C66B",
+      "RequestedScalePercent": 125,
+      "OperatorReply": "125% 布局和输入全部正常",
+      "OperatorConfirmedScope": "Physical Windows scaling to 125%; Microsoft Pinyin candidate location, paging, selection, ceshi Escape cancellation, English abc, and normal layout.",
+      "PhysicalEvidenceSource": "Direct operator reply with a passive 120 DPI check; no automated typing."
+    },
+    {
+      "RecordedAtUtc": "2026-11-12T17:24:01.3485259Z",
+      "Renderer": "software",
+      "Run": "software-physical",
+      "ProcessId": 156608,
+      "ExecutableSHA256": "5E7C017DDA3FF691E7FF8DCBFEAF149E5A766C1F8DC73A816BB5C4A9F7C4C66B",
+      "RequestedScalePercent": 150,
+      "OperatorReply": "150% 布局和输入全部正常",
+      "OperatorConfirmedScope": "Physical Windows scaling to 150%; Microsoft Pinyin candidate location, paging, selection, ceshi Escape cancellation, English abc, and normal layout.",
+      "PhysicalEvidenceSource": "Direct operator reply with passive native DPI confirmation; no automated typing."
+    },
+    {
+      "RecordedAtUtc": "2026-11-12T17:26:28.1954509Z",
+      "Renderer": "software",
+      "Run": "software-physical",
+      "ProcessId": 156608,
+      "ExecutableSHA256": "5E7C017DDA3FF691E7FF8DCBFEAF149E5A766C1F8DC73A816BB5C4A9F7C4C66B",
+      "RequestedScalePercent": 175,
+      "OperatorReply": "175% 布局和输入全部正常",
+      "OperatorConfirmedScope": "Physical Windows scaling to 175%; Microsoft Pinyin candidate location, paging, selection, ceshi Escape cancellation, English abc, layout and scroll availability.",
+      "PhysicalEvidenceSource": "Direct operator reply with passive native DPI confirmation; no automated typing."
+    },
+    {
+      "RecordedAtUtc": "2026-11-12T17:31:39.7661470Z",
+      "Renderer": "software",
+      "Run": "software-physical",
+      "ProcessId": 156608,
+      "ExecutableSHA256": "5E7C017DDA3FF691E7FF8DCBFEAF149E5A766C1F8DC73A816BB5C4A9F7C4C66B",
+      "Scenario": "crossscreen-from-175",
+      "OperatorReply": "跨屏后布局和输入全部正常",
+      "OperatorConfirmedScope": "Physical drag, layout and Chinese/English input on the other monitor."
+    },
+    {
+      "RecordedAtUtc": "2026-11-12T17:36:09.7791924Z",
+      "Renderer": "femtovg",
+      "Run": "femtovg-physical",
+      "ProcessId": 94504,
+      "ExecutableSHA256": "D81F31ED8AB3C0D45A3565CDC8AA412B3FB870C0CC350204178CDE44456B6487",
+      "RequestedScalePercent": 100,
+      "OperatorReply": "FemtoVG 100% 布局和输入全部正常",
+      "OperatorConfirmedScope": "Physical keyboard at actual 100% scale; Microsoft Pinyin candidate location, paging and selection, ceshi Escape cancellation, English abc, normal layout.",
+      "PhysicalEvidenceSource": "Direct operator feedback with passive native DPI confirmation; no automated typing."
+    },
+    {
+      "RecordedAtUtc": "2026-11-12T18:04:26.7472330Z",
+      "Renderer": "femtovg",
+      "Run": "femtovg-physical",
+      "ProcessId": 94504,
+      "ExecutableSHA256": "D81F31ED8AB3C0D45A3565CDC8AA412B3FB870C0CC350204178CDE44456B6487",
+      "RequestedScalePercent": 125,
+      "OperatorReply": "FemtoVG 125% 布局和输入全部正常",
+      "OperatorConfirmedScope": "Physical Windows scaling to 125%; Microsoft Pinyin candidate location, paging, word selection, ceshi Escape cancellation, English abc, and normal layout.",
+      "PhysicalEvidenceSource": "Direct operator feedback with passive native DPI confirmation; no automated typing."
+    },
+    {
+      "RecordedAtUtc": "2026-11-12T18:07:44.8146721Z",
+      "Renderer": "femtovg",
+      "Run": "femtovg-physical",
+      "ProcessId": 94504,
+      "ExecutableSHA256": "D81F31ED8AB3C0D45A3565CDC8AA412B3FB870C0CC350204178CDE44456B6487",
+      "RequestedScalePercent": 150,
+      "OperatorReply": "FemtoVG 150% 布局和输入全部正常",
+      "OperatorConfirmedScope": "Operator reports completing candidate positioning, paging, selection, ceshi Escape cancellation, English abc, and normal layout at the requested 150% setting.",
+      "NativeDPIMatchedAtCheckpoint": false,
+      "Scope": "Exact operator reply preserved; native DPI mismatch is being investigated before acceptance."
+    },
+    {
+      "RecordedAtUtc": "2026-11-12T18:12:06.6702610Z",
+      "Renderer": "femtovg",
+      "Run": "femtovg-physical",
+      "ProcessId": 94504,
+      "ExecutableSHA256": "D81F31ED8AB3C0D45A3565CDC8AA412B3FB870C0CC350204178CDE44456B6487",
+      "RequestedScalePercent": 175,
+      "OperatorReply": "FemtoVG 175% 布局和输入全部正常，已保持",
+      "OperatorConfirmedScope": "Physical Windows scaling to 175%; Microsoft Pinyin candidate location, paging, word selection, ceshi Escape cancellation, English abc, layout and scrolling; operator kept 175% after the step.",
+      "PhysicalEvidenceSource": "Direct operator feedback with passive native DPI confirmation; no automated typing."
+    },
+    {
+      "RecordedAtUtc": "2026-11-12T18:15:37.5254827Z",
+      "Renderer": "femtovg",
+      "Run": "femtovg-physical",
+      "ProcessId": 94504,
+      "ExecutableSHA256": "D81F31ED8AB3C0D45A3565CDC8AA412B3FB870C0CC350204178CDE44456B6487",
+      "Scenario": "crossscreen-and-display-restored",
+      "OperatorReply": "跨屏布局和输入正常，已恢复 100%",
+      "OperatorConfirmedScope": "Cross-screen layout and Chinese/English input normal; display restored to 100%."
+    },
+    {
+      "RecordedAtUtc": "2026-11-12T18:23:36.7669438Z",
+      "Renderer": "femtovg",
+      "Run": "femtovg-native-current",
+      "Scenario": "recording-pulse-and-cancel",
+      "ExecutableSHA256": "D81F31ED8AB3C0D45A3565CDC8AA412B3FB870C0CC350204178CDE44456B6487",
+      "OperatorReply": "蓝点脉冲正常，Esc 已恢复原快捷键",
+      "Scope": "Direct operator observation after manual recording-button click, held for at least five seconds as instructed, followed by physical Escape."
+    },
+    {
+      "RecordedAtUtc": "2026-11-12T18:30:46.2203565Z",
+      "Renderer": "femtovg",
+      "Run": "femtovg-native-current",
+      "Scenario": "manual-settings-enter-exit",
+      "ExecutableSHA256": "D81F31ED8AB3C0D45A3565CDC8AA412B3FB870C0CC350204178CDE44456B6487",
+      "OperatorReply": "已完成，设置进出正常",
+      "OperatorConfirmedScope": "Manual settings button/return cycles with no reported flicker, stalls or misalignment.",
+      "NativeCaptureAcceptancePending": true
+    },
+    {
+      "RecordedAtUtc": "2026-11-12T18:36:21.5213265Z",
+      "Renderer": "femtovg",
+      "Run": "femtovg-native-current",
+      "Scenario": "hotkey-triggered-manual-settings-cycles",
+      "ExecutableSHA256": "D81F31ED8AB3C0D45A3565CDC8AA412B3FB870C0CC350204178CDE44456B6487",
+      "OperatorReply": "已完成，设置进出正常",
+      "Instructions": "Two physical Alt+Space keys, one extra if still hidden, then four quick-hover/click enter/return cycles within about twenty seconds.",
+      "NativeCaptureAcceptancePending": true
+    },
+    {
+      "RecordedAtUtc": "2026-11-12T18:44:28.4459263Z",
+      "Renderer": "femtovg",
+      "Run": "femtovg-native-current",
+      "Scenario": "tab-refresh-then-escape-settings-exit",
+      "ExecutableSHA256": "D81F31ED8AB3C0D45A3565CDC8AA412B3FB870C0CC350204178CDE44456B6487",
+      "OperatorReply": "已完成，退出正常",
+      "OperatorConfirmedScope": "Four manual settings entry cycles followed by selecting a different tab and immediate Escape; no reported abnormal exit.",
+      "NativeAcceptancePending": true
+    },
+    {
+      "RecordedAtUtc": "2026-11-12T18:52:55.8410138Z",
+      "Scenario": "appearance-tradeoffs",
+      "OperatorReply": "接受这些外观差异",
+      "AcceptedScope": "Text antialiasing/minor weight, shadow/glow strength, Windows native menu/file picker appearance only; exact animation and untested 200% remain separate."
+    }
+  ],
+  "SourceSHA256": "2BDAF5D28DC4EEACB8E854CA3115F2D5FB27467A6E6895B75E529A33F629A134",
+  "Scope": "Direct human replies preserved verbatim; native checks and acceptance scopes are recorded separately."
+}

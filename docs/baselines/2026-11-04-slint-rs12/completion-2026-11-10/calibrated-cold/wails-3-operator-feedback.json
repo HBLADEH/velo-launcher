@@ -1,0 +1,15 @@
+{
+  "RecordedAtUtc": "2026-11-10T18:00:47.8425782Z",
+  "Case": "wails-3",
+  "Source": "Explicit user reply to pending visual and tray-exit question",
+  "ReportedText": "字母显示正常，已从托盘退出",
+  "UserReportedCharactersDisplayedNormally": true,
+  "UserReportedTrayExit": true,
+  "NormalQuitAlreadyRequestedByAgent": true,
+  "AgentQuitRequestRecordedAtUtc": "2026-11-10T17:57:29.941751Z",
+  "EffectiveQuitTriggerExclusivelyAttributed": false,
+  "Scope": "Feedback arrived after the agent requested the exact isolated test process to quit normally. Actual user-action timing was not measured; do not attribute the effective quit solely to either route.",
+  "RawFeedbackSHA256": "1712FF36C0178308BA5F8DC0338D50773EE7A39902CB44CF32DD67A7918E5512",
+  "OriginalCaseReviewSHA256": "4AA6C1A79FCA8B1FFAF45699477AC6DC2DA3C9C9004D299132427A07FC696793",
+  "OriginalCaseReviewRetainsBeforeFeedbackCheckpoint": true
+}

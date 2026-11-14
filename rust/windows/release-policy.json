@@ -1,0 +1,12 @@
+{
+  "DefaultRenderer": "software",
+  "AlternateRenderer": "femtovg",
+  "Scope": "Current Windows 11 x64 Intel UHD 630 host and isolated Windows 10 x64 VMware guest; unavailable hardware skipped",
+  "Evidence": "docs/baselines/2026-11-07-slint-rs14/machine-completion-2026-11-14/g4-acceptance.md",
+  "LicenseReview": "docs/baselines/2026-11-07-slint-rs14/completion-2026-11-13/license-review.md",
+  "ReleaseTag": "0.1.0",
+  "G4Passed": true,
+  "RedistributionCleared": true,
+  "PublicReleaseApproved": true,
+  "Approval": "Owner requested the first Rust release with exact tag 0.1.0 on 2026-11-15; Go/Wails retired from active development"
+}

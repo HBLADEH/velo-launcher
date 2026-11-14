@@ -1,0 +1,999 @@
+{
+  "SchemaVersion": 1,
+  "RecordedAtUtc": "2026-11-05T02:07:54.8487673Z",
+  "Rows": [
+    {
+      "Run": "desktop-software",
+      "Renderer": "software",
+      "SHA256": "E85B41C7E77888750817E47F092EABECB1BAB5A68EFCE579378CE2DDAD2DBA4B",
+      "Stage": "100-cold-home",
+      "DeclaredScaleMatchesNative": true,
+      "ActualWindowDPI": 96,
+      "PhysicalWindow": {
+        "Visible": true,
+        "X": 2560,
+        "Y": 248,
+        "Height": 660,
+        "Width": 640
+      },
+      "Commands": [
+        "show",
+        "home"
+      ],
+      "Automated": true,
+      "PrivateBytesEndpoint": 24920064,
+      "PrivateBytesSampledMaximum": 24920064.0,
+      "WorkingSetEndpoint": 72249344,
+      "Samples": 28,
+      "AllDiscoveredProcessesReadable": true,
+      "ResourceDurationSeconds": 2.9381491,
+      "CPUSeconds": 0.09375,
+      "CPUPercentOfMachine": 0.19942401833862008,
+      "ObserverCPUSeconds": 0.96875,
+      "GPU": null,
+      "ApplicationCache": {
+        "Entries": 25,
+        "CPUAndTextureEstimateBytes": 819200
+      },
+      "ScanWarning": true,
+      "CatalogCount": 619,
+      "PrivateWorkingSet": null,
+      "RendererInternalCacheBytes": null
+    },
+    {
+      "Run": "desktop-software",
+      "Renderer": "software",
+      "SHA256": "E85B41C7E77888750817E47F092EABECB1BAB5A68EFCE579378CE2DDAD2DBA4B",
+      "Stage": "100-glyph-and-icons",
+      "DeclaredScaleMatchesNative": true,
+      "ActualWindowDPI": 96,
+      "PhysicalWindow": {
+        "Visible": true,
+        "X": 2560,
+        "Y": 248,
+        "Height": 264,
+        "Width": 640
+      },
+      "Commands": [
+        "warm-bottom",
+        "warm-top",
+        "query-chinese"
+      ],
+      "Automated": true,
+      "PrivateBytesEndpoint": 23867392,
+      "PrivateBytesSampledMaximum": 23867392.0,
+      "WorkingSetEndpoint": 71385088,
+      "Samples": 28,
+      "AllDiscoveredProcessesReadable": true,
+      "ResourceDurationSeconds": 2.9380707999999998,
+      "CPUSeconds": 0.03125,
+      "CPUPercentOfMachine": 0.0664764443389179,
+      "ObserverCPUSeconds": 0.859375,
+      "GPU": null,
+      "ApplicationCache": {
+        "Entries": 26,
+        "CPUAndTextureEstimateBytes": 851968
+      },
+      "ScanWarning": true,
+      "CatalogCount": 619,
+      "PrivateWorkingSet": null,
+      "RendererInternalCacheBytes": null
+    },
+    {
+      "Run": "desktop-software",
+      "Renderer": "software",
+      "SHA256": "E85B41C7E77888750817E47F092EABECB1BAB5A68EFCE579378CE2DDAD2DBA4B",
+      "Stage": "hidden-before-dpi",
+      "DeclaredScaleMatchesNative": true,
+      "ActualWindowDPI": 96,
+      "PhysicalWindow": {
+        "Visible": false,
+        "X": 2560,
+        "Y": 248,
+        "Height": 264,
+        "Width": 640
+      },
+      "Commands": [
+        "hide"
+      ],
+      "Automated": true,
+      "PrivateBytesEndpoint": 23769088,
+      "PrivateBytesSampledMaximum": 23769088.0,
+      "WorkingSetEndpoint": 71331840,
+      "Samples": 28,
+      "AllDiscoveredProcessesReadable": true,
+      "ResourceDurationSeconds": 2.9383948,
+      "CPUSeconds": 0.0,
+      "CPUPercentOfMachine": 0.0,
+      "ObserverCPUSeconds": 0.703125,
+      "GPU": null,
+      "ApplicationCache": {
+        "Entries": 26,
+        "CPUAndTextureEstimateBytes": 851968
+      },
+      "ScanWarning": true,
+      "CatalogCount": 619,
+      "PrivateWorkingSet": null,
+      "RendererInternalCacheBytes": null
+    },
+    {
+      "Run": "desktop-software",
+      "Renderer": "software",
+      "SHA256": "E85B41C7E77888750817E47F092EABECB1BAB5A68EFCE579378CE2DDAD2DBA4B",
+      "Stage": "150-glyph",
+      "DeclaredScaleMatchesNative": true,
+      "ActualWindowDPI": 144,
+      "PhysicalWindow": {
+        "Visible": true,
+        "X": 2560,
+        "Y": 248,
+        "Height": 396,
+        "Width": 960
+      },
+      "Commands": [
+        "show",
+        "query-chinese",
+        "warm-bottom",
+        "warm-top"
+      ],
+      "Automated": true,
+      "PrivateBytesEndpoint": 24768512,
+      "PrivateBytesSampledMaximum": 24768512.0,
+      "WorkingSetEndpoint": 75714560,
+      "Samples": 28,
+      "AllDiscoveredProcessesReadable": true,
+      "ResourceDurationSeconds": 2.9338322,
+      "CPUSeconds": 0.09375,
+      "CPUPercentOfMachine": 0.19971745487011835,
+      "ObserverCPUSeconds": 0.890625,
+      "GPU": null,
+      "ApplicationCache": {
+        "Entries": 26,
+        "CPUAndTextureEstimateBytes": 851968
+      },
+      "ScanWarning": true,
+      "CatalogCount": 619,
+      "PrivateWorkingSet": null,
+      "RendererInternalCacheBytes": null
+    },
+    {
+      "Run": "desktop-software",
+      "Renderer": "software",
+      "SHA256": "E85B41C7E77888750817E47F092EABECB1BAB5A68EFCE579378CE2DDAD2DBA4B",
+      "Stage": "150-home-icons",
+      "DeclaredScaleMatchesNative": true,
+      "ActualWindowDPI": 144,
+      "PhysicalWindow": {
+        "Visible": true,
+        "X": 2560,
+        "Y": 60,
+        "Height": 990,
+        "Width": 960
+      },
+      "Commands": [
+        "home",
+        "warm-bottom",
+        "warm-top",
+        "settings"
+      ],
+      "Automated": true,
+      "PrivateBytesEndpoint": 28205056,
+      "PrivateBytesSampledMaximum": 28205056.0,
+      "WorkingSetEndpoint": 79941632,
+      "Samples": 28,
+      "AllDiscoveredProcessesReadable": true,
+      "ResourceDurationSeconds": 2.9352549,
+      "CPUSeconds": 0.140625,
+      "CPUPercentOfMachine": 0.2994309795718253,
+      "ObserverCPUSeconds": 0.8125,
+      "GPU": null,
+      "ApplicationCache": {
+        "Entries": 26,
+        "CPUAndTextureEstimateBytes": 851968
+      },
+      "ScanWarning": true,
+      "CatalogCount": 619,
+      "PrivateWorkingSet": null,
+      "RendererInternalCacheBytes": null
+    },
+    {
+      "Run": "desktop-software",
+      "Renderer": "software",
+      "SHA256": "E85B41C7E77888750817E47F092EABECB1BAB5A68EFCE579378CE2DDAD2DBA4B",
+      "Stage": "150-hide",
+      "DeclaredScaleMatchesNative": true,
+      "ActualWindowDPI": 144,
+      "PhysicalWindow": {
+        "Visible": false,
+        "X": 2560,
+        "Y": 60,
+        "Height": 990,
+        "Width": 960
+      },
+      "Commands": [
+        "home",
+        "hide"
+      ],
+      "Automated": true,
+      "PrivateBytesEndpoint": 26546176,
+      "PrivateBytesSampledMaximum": 28217344.0,
+      "WorkingSetEndpoint": 78680064,
+      "Samples": 28,
+      "AllDiscoveredProcessesReadable": true,
+      "ResourceDurationSeconds": 2.9250702,
+      "CPUSeconds": 0.046875,
+      "CPUPercentOfMachine": 0.10015785262179348,
+      "ObserverCPUSeconds": 1.0,
+      "GPU": null,
+      "ApplicationCache": {
+        "Entries": 26,
+        "CPUAndTextureEstimateBytes": 851968
+      },
+      "ScanWarning": true,
+      "CatalogCount": 619,
+      "PrivateWorkingSet": null,
+      "RendererInternalCacheBytes": null
+    },
+    {
+      "Run": "desktop-software",
+      "Renderer": "software",
+      "SHA256": "E85B41C7E77888750817E47F092EABECB1BAB5A68EFCE579378CE2DDAD2DBA4B",
+      "Stage": "100-restored",
+      "DeclaredScaleMatchesNative": true,
+      "ActualWindowDPI": 96,
+      "PhysicalWindow": {
+        "Visible": true,
+        "X": 2560,
+        "Y": 60,
+        "Height": 264,
+        "Width": 640
+      },
+      "Commands": [
+        "show",
+        "home",
+        "query-chinese"
+      ],
+      "Automated": true,
+      "PrivateBytesEndpoint": 23846912,
+      "PrivateBytesSampledMaximum": 28291072.0,
+      "WorkingSetEndpoint": 76201984,
+      "Samples": 28,
+      "AllDiscoveredProcessesReadable": true,
+      "ResourceDurationSeconds": 2.9297605,
+      "CPUSeconds": 0.109375,
+      "CPUPercentOfMachine": 0.23332751943375574,
+      "ObserverCPUSeconds": 0.953125,
+      "GPU": null,
+      "ApplicationCache": {
+        "Entries": 26,
+        "CPUAndTextureEstimateBytes": 851968
+      },
+      "ScanWarning": true,
+      "CatalogCount": 619,
+      "PrivateWorkingSet": null,
+      "RendererInternalCacheBytes": null
+    },
+    {
+      "Run": "desktop-femtovg",
+      "Renderer": "femtovg",
+      "SHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+      "Stage": "100-home",
+      "DeclaredScaleMatchesNative": true,
+      "ActualWindowDPI": 96,
+      "PhysicalWindow": {
+        "Visible": true,
+        "X": 640,
+        "Y": 206,
+        "Height": 660,
+        "Width": 640
+      },
+      "Commands": [
+        "show",
+        "home",
+        "warm-bottom",
+        "warm-top"
+      ],
+      "Automated": true,
+      "PrivateBytesEndpoint": 58892288,
+      "PrivateBytesSampledMaximum": 59060224.0,
+      "WorkingSetEndpoint": 139542528,
+      "Samples": 28,
+      "AllDiscoveredProcessesReadable": true,
+      "ResourceDurationSeconds": 2.9387159,
+      "CPUSeconds": 0.296875,
+      "CPUPercentOfMachine": 0.6313875900695266,
+      "ObserverCPUSeconds": 1.046875,
+      "GPU": {
+        "DedicatedUsage": 0,
+        "SharedUsage": 37572608,
+        "TotalCommitted": 31391744
+      },
+      "ApplicationCache": {
+        "Entries": 30,
+        "CPUAndTextureEstimateBytes": 983040
+      },
+      "ScanWarning": true,
+      "CatalogCount": 619,
+      "PrivateWorkingSet": null,
+      "RendererInternalCacheBytes": null
+    },
+    {
+      "Run": "desktop-femtovg",
+      "Renderer": "femtovg",
+      "SHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+      "Stage": "100-chinese",
+      "DeclaredScaleMatchesNative": true,
+      "ActualWindowDPI": 96,
+      "PhysicalWindow": {
+        "Visible": true,
+        "X": 640,
+        "Y": 206,
+        "Height": 264,
+        "Width": 640
+      },
+      "Commands": [
+        "query-chinese"
+      ],
+      "Automated": true,
+      "PrivateBytesEndpoint": 58793984,
+      "PrivateBytesSampledMaximum": 58793984.0,
+      "WorkingSetEndpoint": 136118272,
+      "Samples": 28,
+      "AllDiscoveredProcessesReadable": true,
+      "ResourceDurationSeconds": 2.9423443000000002,
+      "CPUSeconds": 0.0625,
+      "CPUPercentOfMachine": 0.13275978613379813,
+      "ObserverCPUSeconds": 1.078125,
+      "GPU": {
+        "DedicatedUsage": 0,
+        "SharedUsage": 36384768,
+        "TotalCommitted": 29212672
+      },
+      "ApplicationCache": {
+        "Entries": 31,
+        "CPUAndTextureEstimateBytes": 1015808
+      },
+      "ScanWarning": true,
+      "CatalogCount": 619,
+      "PrivateWorkingSet": null,
+      "RendererInternalCacheBytes": null
+    },
+    {
+      "Run": "desktop-femtovg",
+      "Renderer": "femtovg",
+      "SHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+      "Stage": "hide-before-dpi",
+      "DeclaredScaleMatchesNative": true,
+      "ActualWindowDPI": 96,
+      "PhysicalWindow": {
+        "Visible": false,
+        "X": 640,
+        "Y": 206,
+        "Height": 264,
+        "Width": 640
+      },
+      "Commands": [
+        "hide"
+      ],
+      "Automated": true,
+      "PrivateBytesEndpoint": 58658816,
+      "PrivateBytesSampledMaximum": 58658816.0,
+      "WorkingSetEndpoint": 136044544,
+      "Samples": 28,
+      "AllDiscoveredProcessesReadable": true,
+      "ResourceDurationSeconds": 2.9335045999999996,
+      "CPUSeconds": 0.015625,
+      "CPUPercentOfMachine": 0.03328995972939672,
+      "ObserverCPUSeconds": 0.953125,
+      "GPU": {
+        "DedicatedUsage": 0,
+        "SharedUsage": 36384768,
+        "TotalCommitted": 29212672
+      },
+      "ApplicationCache": {
+        "Entries": 31,
+        "CPUAndTextureEstimateBytes": 1015808
+      },
+      "ScanWarning": true,
+      "CatalogCount": 619,
+      "PrivateWorkingSet": null,
+      "RendererInternalCacheBytes": null
+    },
+    {
+      "Run": "desktop-femtovg",
+      "Renderer": "femtovg",
+      "SHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+      "Stage": "150-glyph",
+      "DeclaredScaleMatchesNative": false,
+      "ActualWindowDPI": 96,
+      "PhysicalWindow": {
+        "Visible": true,
+        "X": 640,
+        "Y": 206,
+        "Height": 264,
+        "Width": 640
+      },
+      "Commands": [
+        "show",
+        "query-chinese"
+      ],
+      "Automated": true,
+      "PrivateBytesEndpoint": 58753024,
+      "PrivateBytesSampledMaximum": 58753024.0,
+      "WorkingSetEndpoint": 136126464,
+      "Samples": 28,
+      "AllDiscoveredProcessesReadable": true,
+      "ResourceDurationSeconds": 2.9371168,
+      "CPUSeconds": 0.0,
+      "CPUPercentOfMachine": 0.0,
+      "ObserverCPUSeconds": 0.875,
+      "GPU": {
+        "DedicatedUsage": 0,
+        "SharedUsage": 36184064,
+        "TotalCommitted": 29011968
+      },
+      "ApplicationCache": {
+        "Entries": 31,
+        "CPUAndTextureEstimateBytes": 1015808
+      },
+      "ScanWarning": true,
+      "CatalogCount": 619,
+      "PrivateWorkingSet": null,
+      "RendererInternalCacheBytes": null
+    },
+    {
+      "Run": "desktop-femtovg",
+      "Renderer": "femtovg",
+      "SHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+      "Stage": "150-home-settings",
+      "DeclaredScaleMatchesNative": false,
+      "ActualWindowDPI": 96,
+      "PhysicalWindow": {
+        "Visible": true,
+        "X": 640,
+        "Y": 206,
+        "Height": 660,
+        "Width": 640
+      },
+      "Commands": [
+        "home",
+        "warm-bottom",
+        "warm-top",
+        "settings"
+      ],
+      "Automated": true,
+      "PrivateBytesEndpoint": 62607360,
+      "PrivateBytesSampledMaximum": 62607360.0,
+      "WorkingSetEndpoint": 146931712,
+      "Samples": 28,
+      "AllDiscoveredProcessesReadable": true,
+      "ResourceDurationSeconds": 2.9322936,
+      "CPUSeconds": 0.375,
+      "CPUPercentOfMachine": 0.7992889934350368,
+      "ObserverCPUSeconds": 0.953125,
+      "GPU": {
+        "DedicatedUsage": 0,
+        "SharedUsage": 41439232,
+        "TotalCommitted": 35246080
+      },
+      "ApplicationCache": {
+        "Entries": 31,
+        "CPUAndTextureEstimateBytes": 1015808
+      },
+      "ScanWarning": true,
+      "CatalogCount": 619,
+      "PrivateWorkingSet": null,
+      "RendererInternalCacheBytes": null
+    },
+    {
+      "Run": "desktop-femtovg",
+      "Renderer": "femtovg",
+      "SHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+      "Stage": "150-hide",
+      "DeclaredScaleMatchesNative": false,
+      "ActualWindowDPI": 96,
+      "PhysicalWindow": {
+        "Visible": false,
+        "X": 640,
+        "Y": 206,
+        "Height": 660,
+        "Width": 640
+      },
+      "Commands": [
+        "home",
+        "hide"
+      ],
+      "Automated": true,
+      "PrivateBytesEndpoint": 62619648,
+      "PrivateBytesSampledMaximum": 62619648.0,
+      "WorkingSetEndpoint": 146952192,
+      "Samples": 28,
+      "AllDiscoveredProcessesReadable": true,
+      "ResourceDurationSeconds": 2.9300303999999997,
+      "CPUSeconds": 0.015625,
+      "CPUPercentOfMachine": 0.033329432349916914,
+      "ObserverCPUSeconds": 1.03125,
+      "GPU": {
+        "DedicatedUsage": 0,
+        "SharedUsage": 41439232,
+        "TotalCommitted": 35246080
+      },
+      "ApplicationCache": {
+        "Entries": 31,
+        "CPUAndTextureEstimateBytes": 1015808
+      },
+      "ScanWarning": true,
+      "CatalogCount": 619,
+      "PrivateWorkingSet": null,
+      "RendererInternalCacheBytes": null
+    },
+    {
+      "Run": "desktop-femtovg",
+      "Renderer": "femtovg",
+      "SHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+      "Stage": "100-restored",
+      "DeclaredScaleMatchesNative": true,
+      "ActualWindowDPI": 96,
+      "PhysicalWindow": {
+        "Visible": true,
+        "X": 640,
+        "Y": 206,
+        "Height": 264,
+        "Width": 640
+      },
+      "Commands": [
+        "show",
+        "home",
+        "query-chinese"
+      ],
+      "Automated": true,
+      "PrivateBytesEndpoint": 69177344,
+      "PrivateBytesSampledMaximum": 69177344.0,
+      "WorkingSetEndpoint": 149127168,
+      "Samples": 28,
+      "AllDiscoveredProcessesReadable": true,
+      "ResourceDurationSeconds": 2.9414146,
+      "CPUSeconds": 0.34375,
+      "CPUPercentOfMachine": 0.7304096131160837,
+      "ObserverCPUSeconds": 1.03125,
+      "GPU": {
+        "DedicatedUsage": 0,
+        "SharedUsage": 42106880,
+        "TotalCommitted": 34930688
+      },
+      "ApplicationCache": {
+        "Entries": 31,
+        "CPUAndTextureEstimateBytes": 1015808
+      },
+      "ScanWarning": true,
+      "CatalogCount": 619,
+      "PrivateWorkingSet": null,
+      "RendererInternalCacheBytes": null
+    },
+    {
+      "Run": "desktop-femtovg-dpi-retry",
+      "Renderer": "femtovg",
+      "SHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+      "Stage": "100-home-right-monitor",
+      "DeclaredScaleMatchesNative": true,
+      "ActualWindowDPI": 96,
+      "PhysicalWindow": {
+        "Visible": true,
+        "X": 2560,
+        "Y": 248,
+        "Height": 660,
+        "Width": 640
+      },
+      "Commands": [
+        "show",
+        "home"
+      ],
+      "Automated": true,
+      "PrivateBytesEndpoint": 55783424,
+      "PrivateBytesSampledMaximum": 55926784.0,
+      "WorkingSetEndpoint": 131981312,
+      "Samples": 28,
+      "AllDiscoveredProcessesReadable": true,
+      "ResourceDurationSeconds": 2.9450202,
+      "CPUSeconds": 0.078125,
+      "CPUPercentOfMachine": 0.16579894766086833,
+      "ObserverCPUSeconds": 0.953125,
+      "GPU": {
+        "DedicatedUsage": 0,
+        "SharedUsage": 36220928,
+        "TotalCommitted": 30040064
+      },
+      "ApplicationCache": {
+        "Entries": 25,
+        "CPUAndTextureEstimateBytes": 819200
+      },
+      "ScanWarning": true,
+      "CatalogCount": 619,
+      "PrivateWorkingSet": null,
+      "RendererInternalCacheBytes": null
+    },
+    {
+      "Run": "desktop-femtovg-dpi-retry",
+      "Renderer": "femtovg",
+      "SHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+      "Stage": "100-glyph",
+      "DeclaredScaleMatchesNative": true,
+      "ActualWindowDPI": 96,
+      "PhysicalWindow": {
+        "Visible": true,
+        "X": 983,
+        "Y": 166,
+        "Height": 264,
+        "Width": 640
+      },
+      "Commands": [
+        "warm-bottom",
+        "warm-top",
+        "query-chinese"
+      ],
+      "Automated": true,
+      "PrivateBytesEndpoint": 58413056,
+      "PrivateBytesSampledMaximum": 58413056.0,
+      "WorkingSetEndpoint": 130199552,
+      "Samples": 28,
+      "AllDiscoveredProcessesReadable": true,
+      "ResourceDurationSeconds": 2.9368220000000003,
+      "CPUSeconds": 0.296875,
+      "CPUPercentOfMachine": 0.6317947597777461,
+      "ObserverCPUSeconds": 1.09375,
+      "GPU": {
+        "DedicatedUsage": 0,
+        "SharedUsage": 34013184,
+        "TotalCommitted": 26841088
+      },
+      "ApplicationCache": {
+        "Entries": 26,
+        "CPUAndTextureEstimateBytes": 851968
+      },
+      "ScanWarning": true,
+      "CatalogCount": 619,
+      "PrivateWorkingSet": null,
+      "RendererInternalCacheBytes": null
+    },
+    {
+      "Run": "desktop-femtovg-dpi-retry",
+      "Renderer": "femtovg",
+      "SHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+      "Stage": "hide-before-dpi",
+      "DeclaredScaleMatchesNative": true,
+      "ActualWindowDPI": 96,
+      "PhysicalWindow": {
+        "Visible": false,
+        "X": 983,
+        "Y": 166,
+        "Height": 264,
+        "Width": 640
+      },
+      "Commands": [
+        "hide"
+      ],
+      "Automated": true,
+      "PrivateBytesEndpoint": 55169024,
+      "PrivateBytesSampledMaximum": 55169024.0,
+      "WorkingSetEndpoint": 127008768,
+      "Samples": 28,
+      "AllDiscoveredProcessesReadable": true,
+      "ResourceDurationSeconds": 2.9377907,
+      "CPUSeconds": 0.0,
+      "CPUPercentOfMachine": 0.0,
+      "ObserverCPUSeconds": 0.890625,
+      "GPU": {
+        "DedicatedUsage": 0,
+        "SharedUsage": 30769152,
+        "TotalCommitted": 23597056
+      },
+      "ApplicationCache": {
+        "Entries": 26,
+        "CPUAndTextureEstimateBytes": 851968
+      },
+      "ScanWarning": true,
+      "CatalogCount": 619,
+      "PrivateWorkingSet": null,
+      "RendererInternalCacheBytes": null
+    },
+    {
+      "Run": "desktop-femtovg-dpi-retry",
+      "Renderer": "femtovg",
+      "SHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+      "Stage": "150-glyph",
+      "DeclaredScaleMatchesNative": false,
+      "ActualWindowDPI": 96,
+      "PhysicalWindow": {
+        "Visible": true,
+        "X": 983,
+        "Y": 166,
+        "Height": 264,
+        "Width": 640
+      },
+      "Commands": [
+        "show",
+        "query-chinese"
+      ],
+      "Automated": true,
+      "PrivateBytesEndpoint": 55255040,
+      "PrivateBytesSampledMaximum": 55255040.0,
+      "WorkingSetEndpoint": 127123456,
+      "Samples": 28,
+      "AllDiscoveredProcessesReadable": true,
+      "ResourceDurationSeconds": 2.9337652,
+      "CPUSeconds": 0.140625,
+      "CPUPercentOfMachine": 0.29958302389025543,
+      "ObserverCPUSeconds": 0.953125,
+      "GPU": {
+        "DedicatedUsage": 0,
+        "SharedUsage": 30687232,
+        "TotalCommitted": 23515136
+      },
+      "ApplicationCache": {
+        "Entries": 26,
+        "CPUAndTextureEstimateBytes": 851968
+      },
+      "ScanWarning": true,
+      "CatalogCount": 619,
+      "PrivateWorkingSet": null,
+      "RendererInternalCacheBytes": null
+    },
+    {
+      "Run": "desktop-femtovg-dpi-retry",
+      "Renderer": "femtovg",
+      "SHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+      "Stage": "144-native-confirmed-chinese",
+      "DeclaredScaleMatchesNative": true,
+      "ActualWindowDPI": 144,
+      "PhysicalWindow": {
+        "Visible": true,
+        "X": 2560,
+        "Y": 248,
+        "Height": 396,
+        "Width": 960
+      },
+      "Commands": [
+        "query-chinese"
+      ],
+      "Automated": true,
+      "PrivateBytesEndpoint": 59256832,
+      "PrivateBytesSampledMaximum": 59256832.0,
+      "WorkingSetEndpoint": 134946816,
+      "Samples": 28,
+      "AllDiscoveredProcessesReadable": true,
+      "ResourceDurationSeconds": 2.9264962,
+      "CPUSeconds": 0.0625,
+      "CPUPercentOfMachine": 0.13347873132382676,
+      "ObserverCPUSeconds": 0.84375,
+      "GPU": {
+        "DedicatedUsage": 0,
+        "SharedUsage": 38576128,
+        "TotalCommitted": 32256000
+      },
+      "ApplicationCache": {
+        "Entries": 26,
+        "CPUAndTextureEstimateBytes": 851968
+      },
+      "ScanWarning": true,
+      "CatalogCount": 619,
+      "PrivateWorkingSet": null,
+      "RendererInternalCacheBytes": null
+    },
+    {
+      "Run": "desktop-femtovg-dpi-retry",
+      "Renderer": "femtovg",
+      "SHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+      "Stage": "144-confirmed-settings",
+      "DeclaredScaleMatchesNative": true,
+      "ActualWindowDPI": 144,
+      "PhysicalWindow": {
+        "Visible": true,
+        "X": 2560,
+        "Y": 60,
+        "Height": 990,
+        "Width": 960
+      },
+      "Commands": [
+        "home",
+        "warm-bottom",
+        "warm-top",
+        "settings"
+      ],
+      "Automated": true,
+      "PrivateBytesEndpoint": 70750208,
+      "PrivateBytesSampledMaximum": 70750208.0,
+      "WorkingSetEndpoint": 157323264,
+      "Samples": 28,
+      "AllDiscoveredProcessesReadable": true,
+      "ResourceDurationSeconds": 2.9323159,
+      "CPUSeconds": 0.15625,
+      "CPUPercentOfMachine": 0.3330345478807382,
+      "ObserverCPUSeconds": 0.828125,
+      "GPU": {
+        "DedicatedUsage": 0,
+        "SharedUsage": 59006976,
+        "TotalCommitted": 54910976
+      },
+      "ApplicationCache": {
+        "Entries": 26,
+        "CPUAndTextureEstimateBytes": 851968
+      },
+      "ScanWarning": true,
+      "CatalogCount": 619,
+      "PrivateWorkingSet": null,
+      "RendererInternalCacheBytes": null
+    },
+    {
+      "Run": "desktop-femtovg-dpi-retry",
+      "Renderer": "femtovg",
+      "SHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+      "Stage": "144-hide",
+      "DeclaredScaleMatchesNative": true,
+      "ActualWindowDPI": 144,
+      "PhysicalWindow": {
+        "Visible": false,
+        "X": 2560,
+        "Y": 60,
+        "Height": 990,
+        "Width": 960
+      },
+      "Commands": [
+        "home",
+        "hide"
+      ],
+      "Automated": true,
+      "PrivateBytesEndpoint": 70750208,
+      "PrivateBytesSampledMaximum": 70750208.0,
+      "WorkingSetEndpoint": 157401088,
+      "Samples": 28,
+      "AllDiscoveredProcessesReadable": true,
+      "ResourceDurationSeconds": 2.936902,
+      "CPUSeconds": 0.015625,
+      "CPUPercentOfMachine": 0.03325144999731009,
+      "ObserverCPUSeconds": 0.9375,
+      "GPU": {
+        "DedicatedUsage": 0,
+        "SharedUsage": 59006976,
+        "TotalCommitted": 54910976
+      },
+      "ApplicationCache": {
+        "Entries": 26,
+        "CPUAndTextureEstimateBytes": 851968
+      },
+      "ScanWarning": true,
+      "CatalogCount": 619,
+      "PrivateWorkingSet": null,
+      "RendererInternalCacheBytes": null
+    },
+    {
+      "Run": "desktop-femtovg-dpi-retry",
+      "Renderer": "femtovg",
+      "SHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+      "Stage": "96-restored-no-show",
+      "DeclaredScaleMatchesNative": true,
+      "ActualWindowDPI": 96,
+      "PhysicalWindow": {
+        "Visible": false,
+        "X": 2560,
+        "Y": 60,
+        "Height": 264,
+        "Width": 640
+      },
+      "Commands": [
+        "query-chinese"
+      ],
+      "Automated": true,
+      "PrivateBytesEndpoint": 70754304,
+      "PrivateBytesSampledMaximum": 70754304.0,
+      "WorkingSetEndpoint": 157786112,
+      "Samples": 28,
+      "AllDiscoveredProcessesReadable": true,
+      "ResourceDurationSeconds": 2.9296542999999997,
+      "CPUSeconds": 0.03125,
+      "CPUPercentOfMachine": 0.06666742215967257,
+      "ObserverCPUSeconds": 0.890625,
+      "GPU": {
+        "DedicatedUsage": 0,
+        "SharedUsage": 59006976,
+        "TotalCommitted": 54910976
+      },
+      "ApplicationCache": {
+        "Entries": 26,
+        "CPUAndTextureEstimateBytes": 851968
+      },
+      "ScanWarning": true,
+      "CatalogCount": 619,
+      "PrivateWorkingSet": null,
+      "RendererInternalCacheBytes": null
+    },
+    {
+      "Run": "desktop-femtovg-dpi-retry",
+      "Renderer": "femtovg",
+      "SHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+      "Stage": "96-final-show",
+      "DeclaredScaleMatchesNative": true,
+      "ActualWindowDPI": 96,
+      "PhysicalWindow": {
+        "Visible": false,
+        "X": 2560,
+        "Y": 60,
+        "Height": 264,
+        "Width": 640
+      },
+      "Commands": [
+        "show",
+        "query-chinese"
+      ],
+      "Automated": true,
+      "PrivateBytesEndpoint": 74702848,
+      "PrivateBytesSampledMaximum": 74702848.0,
+      "WorkingSetEndpoint": 148119552,
+      "Samples": 28,
+      "AllDiscoveredProcessesReadable": true,
+      "ResourceDurationSeconds": 2.9283451,
+      "CPUSeconds": 0.109375,
+      "CPUPercentOfMachine": 0.23344029704695665,
+      "ObserverCPUSeconds": 0.984375,
+      "GPU": {
+        "DedicatedUsage": 0,
+        "SharedUsage": 47247360,
+        "TotalCommitted": 40071168
+      },
+      "ApplicationCache": {
+        "Entries": 26,
+        "CPUAndTextureEstimateBytes": 851968
+      },
+      "ScanWarning": true,
+      "CatalogCount": 619,
+      "PrivateWorkingSet": null,
+      "RendererInternalCacheBytes": null
+    }
+  ],
+  "MonitorsBefore": [
+    "event=probe_monitor x=1920 y=42 width=1920 height=1080 work_x=1920 work_y=42 work_width=1920 work_height=1032 dpi=96 primary=false",
+    "event=probe_monitor x=0 y=0 width=1920 height=1080 work_x=0 work_y=0 work_width=1920 work_height=1032 dpi=96 primary=true"
+  ],
+  "MonitorsAfter": [
+    "event=probe_monitor x=1920 y=42 width=1920 height=1080 work_x=1920 work_y=42 work_width=1920 work_height=1032 dpi=96 primary=false",
+    "event=probe_monitor x=0 y=0 width=1920 height=1080 work_x=0 work_y=0 work_width=1920 work_height=1032 dpi=96 primary=true"
+  ],
+  "MonitorConfigurationRestored": true,
+  "NativeDPIVerifiedRenderers": [
+    "software",
+    "femtovg"
+  ],
+  "InvalidDPIRun": "desktop-femtovg",
+  "RequestedStageSamplingMilliseconds": 100,
+  "Method": "Frozen Release business data, labeled synthetic commands, Computer Use Unicode input, actual Windows display-scale changes and native read-only HWND/DPI records.",
+  "HarnessSHA256": "70AD3B07318FAB2CCA1D7707DD454245C8C7E5A0E20C291687D8E053C267075B",
+  "ResourceObserverSHA256": "5B8A1AA420A96D8C663C4BC81E015C279CE8DEB72CD9D650AB24FAD408A067C3",
+  "NativeProbeSHA256": "97D79CFB1181AB7ED28E8C91F732CC03817C7A1CCF23BB9279858B8728DAEB93",
+  "GeometryInjection": {
+    "UsedIn": "desktop-femtovg-dpi-retry",
+    "Evidence": "Tool invocation and subsequent native DPI/window records. A separate placement stdout file was not retained.",
+    "Action": "Existing rs06_native_probe --move for the observed target HWND to physical 2560,248",
+    "LogSHA256": null,
+    "Scope": "Explicit test placement on a real mixed-DPI monitor; not physical drag evidence."
+  },
+  "Screenshots": [
+    "desktop-software/screenshots/software-150-chinese.png",
+    "desktop-software/screenshots/software-150-settings.png",
+    "desktop-software/screenshots/software-100-restored.png",
+    "desktop-femtovg-dpi-retry/screenshots/femtovg-144-confirmed.png",
+    "desktop-femtovg-dpi-retry/screenshots/femtovg-144-settings.png"
+  ],
+  "Limitations": [
+    "The capture tool returns images normalized to logical window size; physical dimensions come from native records. Not pixel-perfect RS-13 acceptance.",
+    "Three-second operation samples are neither 15-second idle baselines nor long-term memory/CPU evidence. Stage commands are sequential and not identical workloads across every renderer.",
+    "Samples begin around commands; the system Settings transition between stages is not fully enclosed, so these are not DPI-transition CPU peaks or frame times.",
+    "Software GPU provider yielded no rows; null is unavailable, not zero. FemtoVG GPU rows are process provider snapshots, not texture/glyph allocation accounting.",
+    "App 64px icon cache budget differs from renderer-private font/image caches; unchanged app counts do not prove no GPU glyph allocations.",
+    "Computer Use native text delivery can log synthetic=false because the app distinguishes stdio injection only. Every tool-delivered character here is still automated; no physical IME, physical key or calibrated latency claim.",
+    "The first FemtoVG run never left 96 DPI and is retained as an invalid DPI trial. Retry window placement used a labeled native geometry injection.",
+    "Final retry show was hidden after unrelated foreground activity; snapshot failure is retained locally and is not a successful restored-window screenshot."
+  ],
+  "PhysicalIMEValidated": false,
+  "CalibratedLatencyValidated": false,
+  "PresentedFrameLatencyValidated": false,
+  "RS12Complete": false
+}

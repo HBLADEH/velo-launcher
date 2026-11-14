@@ -1,0 +1,43 @@
+{
+  "Renderer": "software",
+  "ExecutableSHA256": "5E7C017DDA3FF691E7FF8DCBFEAF149E5A766C1F8DC73A816BB5C4A9F7C4C66B",
+  "Rows": [
+    {
+      "Clip": "settings-enter-current-short",
+      "Status": "insufficient",
+      "IntermediateFrames": 5,
+      "MaximumActiveSourceGapMilliseconds": 500.5009000003338,
+      "ReportedMaximumActiveSourceGapMilliseconds": 500.5009000003338,
+      "TriggerBracketGapMilliseconds": 500.5009000003338,
+      "CompletionBracketGapMilliseconds": 16.683799982070923,
+      "Reason": "Need rest, intermediate and settled samples with source gaps <=55ms, including the trigger boundary"
+    },
+    {
+      "Clip": "settings-exit-current-short",
+      "Status": "insufficient",
+      "IntermediateFrames": 5,
+      "MaximumActiveSourceGapMilliseconds": 144994.93989998102,
+      "ReportedMaximumActiveSourceGapMilliseconds": 33.3677000105381,
+      "TriggerBracketGapMilliseconds": 144994.93989998102,
+      "CompletionBracketGapMilliseconds": 33.3677000105381,
+      "Reason": "Need rest, intermediate and settled samples with source gaps <=55ms, including the trigger boundary"
+    }
+  ],
+  "AllRecordedSettingsCompatible": false,
+  "IndependentWailsReference": {
+    "MainCurve": [
+      0.22,
+      1.0,
+      0.36,
+      1.0
+    ],
+    "IncomingOpacityMilliseconds": 220,
+    "IncomingTranslationMilliseconds": 280,
+    "OutgoingOpacityMilliseconds": 100,
+    "IncomingTranslationLogicalPixels": 8,
+    "CSSSHA256": "B0103A0CCCDC04B80D17F051BE012E55709D66A23CAB6F9DAE1C60BFF39AE915"
+  },
+  "ExactCurveUniquenessEstablished": false,
+  "PhysicalInput": false,
+  "Scope": "Native settings opacity and vertical translation only, at recorded source-frame/pixel tolerance. Does not certify other animation families or physical IME/DPI."
+}

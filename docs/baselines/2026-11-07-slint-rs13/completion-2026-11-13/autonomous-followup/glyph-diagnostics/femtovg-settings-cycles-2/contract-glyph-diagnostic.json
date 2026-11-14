@@ -1,0 +1,53 @@
+{
+  "Renderer": "femtovg",
+  "ExecutableSHA256": "D81F31ED8AB3C0D45A3565CDC8AA412B3FB870C0CC350204178CDE44456B6487",
+  "Rows": [
+    {
+      "Clip": "settings-enter-1",
+      "Status": "insufficient",
+      "IntermediateFrames": 7,
+      "MaximumActiveSourceGapMilliseconds": 500.4947000145912,
+      "ReportedMaximumActiveSourceGapMilliseconds": 500.4947000145912,
+      "TriggerBracketGapMilliseconds": 500.4947000145912,
+      "CompletionBracketGapMilliseconds": 16.6836000084877,
+      "Reason": "Need rest, intermediate and settled samples with source gaps <=55ms, including the trigger boundary"
+    },
+    {
+      "Clip": "settings-exit-1",
+      "Status": "insufficient",
+      "IntermediateFrames": 4,
+      "MaximumActiveSourceGapMilliseconds": 100.10100001096725,
+      "ReportedMaximumActiveSourceGapMilliseconds": 100.10100001096725,
+      "TriggerBracketGapMilliseconds": 100.10100001096725,
+      "CompletionBracketGapMilliseconds": 16.68299999833107,
+      "Reason": "Need rest, intermediate and settled samples with source gaps <=55ms, including the trigger boundary"
+    },
+    {
+      "Clip": "settings-enter-2",
+      "Status": "insufficient",
+      "IntermediateFrames": 7,
+      "MaximumActiveSourceGapMilliseconds": 233.56459999084473,
+      "ReportedMaximumActiveSourceGapMilliseconds": 233.56459999084473,
+      "TriggerBracketGapMilliseconds": 233.56459999084473,
+      "CompletionBracketGapMilliseconds": 16.68359997868538,
+      "Reason": "Need rest, intermediate and settled samples with source gaps <=55ms, including the trigger boundary"
+    }
+  ],
+  "AllRecordedSettingsCompatible": false,
+  "IndependentWailsReference": {
+    "MainCurve": [
+      0.22,
+      1.0,
+      0.36,
+      1.0
+    ],
+    "IncomingOpacityMilliseconds": 220,
+    "IncomingTranslationMilliseconds": 280,
+    "OutgoingOpacityMilliseconds": 100,
+    "IncomingTranslationLogicalPixels": 8,
+    "CSSSHA256": "B0103A0CCCDC04B80D17F051BE012E55709D66A23CAB6F9DAE1C60BFF39AE915"
+  },
+  "ExactCurveUniquenessEstablished": false,
+  "PhysicalInput": false,
+  "Scope": "Native settings opacity and vertical translation only, at recorded source-frame/pixel tolerance. Does not certify other animation families or physical IME/DPI."
+}

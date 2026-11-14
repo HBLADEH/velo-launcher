@@ -1,0 +1,65 @@
+{
+  "RecordedAtUtc": "2026-11-09T18:11:07.7396687Z",
+  "Scenario": "software-10000-v4",
+  "ComparedRegion": "All saved BGRA pixels y>=66, including eight result rows and footer",
+  "Reference": "frame-605.bmp",
+  "ReferenceBodySHA256": "FFE506913193F14531F88FAFE233F2965F1E327DE06AB0E8E344252B627DB73D",
+  "Queries": [
+    {
+      "KeyQpc": 95657225491,
+      "KeyLowerQpc": 95657069241,
+      "MatchingSavedImages": 2,
+      "FirstVerifiedImage": "frame-602.bmp",
+      "FirstVerifiedPresentQpc": 95659817169,
+      "KeyToVerifiedSavedFrameUpperMs": 274.7928,
+      "BodySHA256": "FFE506913193F14531F88FAFE233F2965F1E327DE06AB0E8E344252B627DB73D"
+    },
+    {
+      "KeyQpc": 95764532151,
+      "KeyLowerQpc": 95764225901,
+      "MatchingSavedImages": 1,
+      "FirstVerifiedImage": "frame-757.bmp",
+      "FirstVerifiedPresentQpc": 95770101733,
+      "KeyToVerifiedSavedFrameUpperMs": 587.5832,
+      "BodySHA256": "FFE506913193F14531F88FAFE233F2965F1E327DE06AB0E8E344252B627DB73D"
+    },
+    {
+      "KeyQpc": 95823735337,
+      "KeyLowerQpc": 95823579087,
+      "MatchingSavedImages": 2,
+      "FirstVerifiedImage": "frame-844.bmp",
+      "FirstVerifiedPresentQpc": 95826481732,
+      "KeyToVerifiedSavedFrameUpperMs": 290.2645,
+      "BodySHA256": "FFE506913193F14531F88FAFE233F2965F1E327DE06AB0E8E344252B627DB73D"
+    },
+    {
+      "KeyQpc": 95858158735,
+      "KeyLowerQpc": 95858002485,
+      "MatchingSavedImages": 2,
+      "FirstVerifiedImage": "frame-913.bmp",
+      "FirstVerifiedPresentQpc": 95860687006,
+      "KeyToVerifiedSavedFrameUpperMs": 268.4521,
+      "BodySHA256": "FFE506913193F14531F88FAFE233F2965F1E327DE06AB0E8E344252B627DB73D"
+    },
+    {
+      "KeyQpc": 95897501467,
+      "KeyLowerQpc": 95897345217,
+      "MatchingSavedImages": 2,
+      "FirstVerifiedImage": "frame-997.bmp",
+      "FirstVerifiedPresentQpc": 95900224323,
+      "KeyToVerifiedSavedFrameUpperMs": 287.9106,
+      "BodySHA256": "FFE506913193F14531F88FAFE233F2965F1E327DE06AB0E8E344252B627DB73D"
+    },
+    {
+      "KeyQpc": 95943539860,
+      "KeyLowerQpc": 95943223610,
+      "MatchingSavedImages": 2,
+      "FirstVerifiedImage": "frame-1068.bmp",
+      "FirstVerifiedPresentQpc": 95946100380,
+      "KeyToVerifiedSavedFrameUpperMs": 287.677,
+      "BodySHA256": "FFE506913193F14531F88FAFE233F2965F1E327DE06AB0E8E344252B627DB73D"
+    }
+  ],
+  "AllQueriesMatchReviewedBody": true,
+  "Scope": "Earliest retained saved image matching the reviewed final body; later than first possible correct-result frame. Images saved at least 100ms apart; conservative observation, not exact rendering latency."
+}

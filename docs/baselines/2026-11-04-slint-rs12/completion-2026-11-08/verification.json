@@ -1,0 +1,67 @@
+{
+  "RecordedAtUtc": "2026-11-07T19:14:46.7136099Z",
+  "WorkspaceCommit": "4d9dbaf9acf5286d9961fae1e89cca908b5af9d7",
+  "WorkspaceDirty": true,
+  "Environment": {
+    "OS": "Windows x64",
+    "LastBootUtc": "2026-10-31T10:03:28.4586040Z",
+    "Rust": "1.99.1",
+    "Cargo": "1.99.1",
+    "Slint": "1.18.1",
+    "Go": "1.25.6",
+    "Node": "22.23.2",
+    "Npm": "10.9.8"
+  },
+  "Checks": [
+    {
+      "Command": "./scripts/verify-rust.ps1 -SmokeTest",
+      "ExitCode": 0,
+      "Renderers": [
+        {
+          "Name": "femtovg",
+          "RustTestsPassed": 80,
+          "ReleaseSha256": "CD7A0ADD37E744639C528C22B9819BF4128D4A1EDD2D71A0D1F35A0E9434D223",
+          "BuildIdentitySha256": "ACDB7EAB77592D09825FC65A66A6E475A15FD8E4B31A7702CC63F0E027B863BD"
+        },
+        {
+          "Name": "software",
+          "RustTestsPassed": 80,
+          "ReleaseSha256": "8899E51D737F36271FA7CE022AC1711A28F836E71CE4936362637585C92A7C00",
+          "BuildIdentitySha256": "C19307031A334A658163B25FEBE7C3E381E0E7B86AF9F71135D0280A59211D91"
+        }
+      ],
+      "SmokeTestPassed": true
+    },
+    {
+      "Command": "GOTOOLCHAIN=go1.25.6 ./scripts/verify.ps1 -SkipBuild",
+      "ExitCode": 0,
+      "IncludesRs12ObserverRegression": true,
+      "FrontendTestsPassed": 26,
+      "GoVetPassed": true,
+      "GoTestsPassed": true
+    },
+    {
+      "Command": "GOTOOLCHAIN=go1.25.6 go test -tags latencyprobe ./...",
+      "ExitCode": 0
+    }
+  ],
+  "ColdStart": {
+    "RequiredIndependentBoots": 9,
+    "Samples": 0,
+    "CurrentBootUsable": false,
+    "NextCase": "software-1",
+    "PreparedCasesAttempted": 0,
+    "RebootedByThisRun": false,
+    "LoginItemsChanged": false
+  },
+  "PhysicalIme": {
+    "Status": "Passed for Software, FemtoVG and Wails on this machine at 96 DPI with Microsoft Pinyin; see completion-2026-11-07.",
+    "NewSamplesInThisRun": false
+  },
+  "OpenItems": [
+    "Wails hotkey reliability did not reach 20 valid physical samples; two of four observed starts had valid character bounds.",
+    "Calibrated first-input latency remains unverified.",
+    "Input-to-result and animation presented-frame timing remains unverified.",
+    "RS-12 and renderer selection remain open."
+  ]
+}

@@ -1,0 +1,1489 @@
+{
+  "schema_version": 1,
+  "names": [
+    {
+      "name": "Uninstall 7-Zip",
+      "noise": true
+    },
+    {
+      "name": "7-Zip Help",
+      "noise": true
+    },
+    {
+      "name": "Visual Studio Code 帮助",
+      "noise": true
+    },
+    {
+      "name": "unins000",
+      "noise": true
+    },
+    {
+      "name": "unins",
+      "noise": true
+    },
+    {
+      "name": "unins１２",
+      "noise": false
+    },
+    {
+      "name": "unins²",
+      "noise": false
+    },
+    {
+      "name": "卸载 Visual Studio Code",
+      "noise": true
+    },
+    {
+      "name": "Visual Studio Code 更新程序",
+      "noise": true
+    },
+    {
+      "name": "About GIMP",
+      "noise": true
+    },
+    {
+      "name": "Notepad++ 网站",
+      "noise": true
+    },
+    {
+      "name": "Microsoft Edge Update",
+      "noise": true
+    },
+    {
+      "name": "Readme",
+      "noise": true
+    },
+    {
+      "name": "Release Notes",
+      "noise": true
+    },
+    {
+      "name": "X 安装程序",
+      "noise": true
+    },
+    {
+      "name": "用户手册",
+      "noise": true
+    },
+    {
+      "name": "命令提示符 在线帮助",
+      "noise": true
+    },
+    {
+      "name": "read me",
+      "noise": true
+    },
+    {
+      "name": "what's new",
+      "noise": true
+    },
+    {
+      "name": "help-center",
+      "noise": true
+    },
+    {
+      "name": "help1",
+      "noise": false
+    },
+    {
+      "name": "①help",
+      "noise": true
+    },
+    {
+      "name": "Visual Studio Code",
+      "noise": false
+    },
+    {
+      "name": "7-Zip File Manager",
+      "noise": false
+    },
+    {
+      "name": "Helpdesk",
+      "noise": false
+    },
+    {
+      "name": "UpdateTool",
+      "noise": false
+    },
+    {
+      "name": "微信",
+      "noise": false
+    },
+    {
+      "name": "NVIDIA app",
+      "noise": false
+    },
+    {
+      "name": "Windows Terminal",
+      "noise": false
+    },
+    {
+      "name": "小米妙享",
+      "noise": false
+    },
+    {
+      "name": "Python 3.12",
+      "noise": false
+    },
+    {
+      "name": "Adobe Photoshop 2024",
+      "noise": false
+    },
+    {
+      "name": "InstallShield",
+      "noise": false
+    },
+    {
+      "name": "",
+      "noise": false
+    },
+    {
+      "name": " HELP  ",
+      "noise": true
+    },
+    {
+      "name": "İHELP",
+      "noise": false
+    },
+    {
+      "name": "helpͅ",
+      "noise": true
+    }
+  ],
+  "cases": [
+    {
+      "name": "source-precedence-aliases-and-profile-identity",
+      "items": [
+        {
+          "pinned": false,
+          "id": "same",
+          "name": "Start Name",
+          "path": "C:\\Start\\Alias.lnk",
+          "exec_path": "C:\\Apps\\Code.exe",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Start Menu",
+          "keywords": [
+            "alias",
+            "共同"
+          ]
+        },
+        {
+          "pinned": false,
+          "id": "same",
+          "name": "桌面名称",
+          "path": "C:\\Desktop\\Code.lnk",
+          "exec_path": "C:\\Apps\\Code.exe",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Desktop",
+          "keywords": [
+            "共同"
+          ]
+        },
+        {
+          "pinned": false,
+          "id": "same",
+          "name": "Raw",
+          "path": "C:\\Apps\\Code.exe",
+          "exec_path": "C:\\Apps\\Code.exe",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Program Files",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "profile",
+          "name": "Profile One",
+          "path": "C:\\Desktop\\Profile.lnk",
+          "exec_path": "C:\\Apps\\Code.exe",
+          "arguments": "--profile 1",
+          "working_directory": "D:\\Workspace",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Desktop",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "package",
+          "name": "Code Packaged",
+          "path": "shell:AppsFolder\\Package!App",
+          "exec_path": "shell:AppsFolder\\Package!App",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Windows Apps",
+          "keywords": null
+        }
+      ],
+      "deduplicated": [
+        {
+          "pinned": false,
+          "id": "package",
+          "name": "Code Packaged",
+          "path": "shell:AppsFolder\\Package!App",
+          "exec_path": "shell:AppsFolder\\Package!App",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Windows Apps",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "profile",
+          "name": "Profile One",
+          "path": "C:\\Desktop\\Profile.lnk",
+          "exec_path": "C:\\Apps\\Code.exe",
+          "arguments": "--profile 1",
+          "working_directory": "D:\\Workspace",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Desktop",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "same",
+          "name": "桌面名称",
+          "path": "C:\\Desktop\\Code.lnk",
+          "exec_path": "C:\\Apps\\Code.exe",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Desktop",
+          "keywords": [
+            "共同",
+            "Start Name",
+            "alias",
+            "Raw"
+          ]
+        }
+      ],
+      "filtered": [
+        {
+          "pinned": false,
+          "id": "package",
+          "name": "Code Packaged",
+          "path": "shell:AppsFolder\\Package!App",
+          "exec_path": "shell:AppsFolder\\Package!App",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Windows Apps",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "profile",
+          "name": "Profile One",
+          "path": "C:\\Desktop\\Profile.lnk",
+          "exec_path": "C:\\Apps\\Code.exe",
+          "arguments": "--profile 1",
+          "working_directory": "D:\\Workspace",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Desktop",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "same",
+          "name": "桌面名称",
+          "path": "C:\\Desktop\\Code.lnk",
+          "exec_path": "C:\\Apps\\Code.exe",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Desktop",
+          "keywords": [
+            "共同",
+            "Start Name",
+            "alias",
+            "Raw"
+          ]
+        }
+      ],
+      "all": [
+        {
+          "pinned": false,
+          "id": "package",
+          "name": "Code Packaged",
+          "path": "shell:AppsFolder\\Package!App",
+          "exec_path": "shell:AppsFolder\\Package!App",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Windows Apps",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "profile",
+          "name": "Profile One",
+          "path": "C:\\Desktop\\Profile.lnk",
+          "exec_path": "C:\\Apps\\Code.exe",
+          "arguments": "--profile 1",
+          "working_directory": "D:\\Workspace",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Desktop",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "same",
+          "name": "桌面名称",
+          "path": "C:\\Desktop\\Code.lnk",
+          "exec_path": "C:\\Apps\\Code.exe",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Desktop",
+          "keywords": [
+            "共同",
+            "Start Name",
+            "alias",
+            "Raw"
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "open_directory": true,
+          "run_as_admin": true
+        },
+        {
+          "open_directory": true,
+          "run_as_admin": true
+        },
+        {
+          "open_directory": true,
+          "run_as_admin": true
+        },
+        {
+          "open_directory": true,
+          "run_as_admin": true
+        },
+        {
+          "open_directory": false,
+          "run_as_admin": false
+        }
+      ]
+    },
+    {
+      "name": "depth-name-target-case-and-whitespace",
+      "items": [
+        {
+          "pinned": false,
+          "id": "deep",
+          "name": "7z",
+          "path": "C:\\Apps\\Vendor\\Product\\7z.exe",
+          "exec_path": "C:\\Apps\\Vendor\\Product\\7z.exe",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Program Files",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "shallow",
+          "name": "7z",
+          "path": "C:\\Apps\\7-Zip\\7z.exe",
+          "exec_path": "C:\\Apps\\7-Zip\\7z.exe",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Program Files",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "second-target",
+          "name": "7z",
+          "path": "C:\\Other\\7zip.exe",
+          "exec_path": "C:\\Other\\7zip.exe",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Custom",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "user",
+          "name": " Foo \t Bar ",
+          "path": "C:\\Users\\Fixture\\Foo.lnk",
+          "exec_path": "C:\\Apps\\FOO.exe",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Start Menu",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "common",
+          "name": "foo bar",
+          "path": "C:\\Common\\Foo.lnk",
+          "exec_path": "C:\\Apps\\foo.EXE",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Start Menu",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "unicode",
+          "name": "中文工具",
+          "path": "D:\\应用 空格\\工具.exe",
+          "exec_path": "D:\\应用 空格\\工具.exe",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Custom",
+          "keywords": []
+        }
+      ],
+      "deduplicated": [
+        {
+          "pinned": false,
+          "id": "second-target",
+          "name": "7z",
+          "path": "C:\\Other\\7zip.exe",
+          "exec_path": "C:\\Other\\7zip.exe",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Custom",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "shallow",
+          "name": "7z",
+          "path": "C:\\Apps\\7-Zip\\7z.exe",
+          "exec_path": "C:\\Apps\\7-Zip\\7z.exe",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Program Files",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "common",
+          "name": "foo bar",
+          "path": "C:\\Common\\Foo.lnk",
+          "exec_path": "C:\\Apps\\foo.EXE",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Start Menu",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "unicode",
+          "name": "中文工具",
+          "path": "D:\\应用 空格\\工具.exe",
+          "exec_path": "D:\\应用 空格\\工具.exe",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Custom",
+          "keywords": []
+        }
+      ],
+      "filtered": [
+        {
+          "pinned": false,
+          "id": "second-target",
+          "name": "7z",
+          "path": "C:\\Other\\7zip.exe",
+          "exec_path": "C:\\Other\\7zip.exe",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Custom",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "shallow",
+          "name": "7z",
+          "path": "C:\\Apps\\7-Zip\\7z.exe",
+          "exec_path": "C:\\Apps\\7-Zip\\7z.exe",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Program Files",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "common",
+          "name": "foo bar",
+          "path": "C:\\Common\\Foo.lnk",
+          "exec_path": "C:\\Apps\\foo.EXE",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Start Menu",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "unicode",
+          "name": "中文工具",
+          "path": "D:\\应用 空格\\工具.exe",
+          "exec_path": "D:\\应用 空格\\工具.exe",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Custom",
+          "keywords": []
+        }
+      ],
+      "all": [
+        {
+          "pinned": false,
+          "id": "second-target",
+          "name": "7z",
+          "path": "C:\\Other\\7zip.exe",
+          "exec_path": "C:\\Other\\7zip.exe",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Custom",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "shallow",
+          "name": "7z",
+          "path": "C:\\Apps\\7-Zip\\7z.exe",
+          "exec_path": "C:\\Apps\\7-Zip\\7z.exe",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Program Files",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "common",
+          "name": "foo bar",
+          "path": "C:\\Common\\Foo.lnk",
+          "exec_path": "C:\\Apps\\foo.EXE",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Start Menu",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "unicode",
+          "name": "中文工具",
+          "path": "D:\\应用 空格\\工具.exe",
+          "exec_path": "D:\\应用 空格\\工具.exe",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Custom",
+          "keywords": []
+        }
+      ],
+      "actions": [
+        {
+          "open_directory": true,
+          "run_as_admin": true
+        },
+        {
+          "open_directory": true,
+          "run_as_admin": true
+        },
+        {
+          "open_directory": true,
+          "run_as_admin": true
+        },
+        {
+          "open_directory": true,
+          "run_as_admin": true
+        },
+        {
+          "open_directory": true,
+          "run_as_admin": true
+        },
+        {
+          "open_directory": true,
+          "run_as_admin": true
+        }
+      ]
+    },
+    {
+      "name": "noise-background-components-and-explicit-entrypoints",
+      "items": [
+        {
+          "pinned": false,
+          "id": "help",
+          "name": "App Help",
+          "path": "C:\\Start\\Help.lnk",
+          "exec_path": "",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Start Menu",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "engine",
+          "name": "Engine",
+          "path": "C:\\Apps\\hYpErViSoR\\engine.EXE",
+          "exec_path": "C:\\Apps\\hYpErViSoR\\engine.EXE",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Program Files",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "custom-engine",
+          "name": "Other Engine",
+          "path": "C:\\Apps\\Hypervisor\\other.exe",
+          "exec_path": "",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Custom",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "manual",
+          "name": "Engine",
+          "path": "C:\\Apps\\Hypervisor\\engine.EXE",
+          "exec_path": "",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Manual",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "shortcut",
+          "name": "VM Console",
+          "path": "C:\\Start\\Console.lnk",
+          "exec_path": "C:\\Apps\\Hypervisor\\engine.EXE",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Start Menu",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "neighbor",
+          "name": "Hypervisor Manager",
+          "path": "C:\\Apps\\Hypervisor Manager\\manager.exe",
+          "exec_path": "",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Program Files (x86)",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "updatetool",
+          "name": "UpdateTool",
+          "path": "C:\\Apps\\UpdateTool.exe",
+          "exec_path": "",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Custom",
+          "keywords": null
+        }
+      ],
+      "deduplicated": [
+        {
+          "pinned": false,
+          "id": "help",
+          "name": "App Help",
+          "path": "C:\\Start\\Help.lnk",
+          "exec_path": "",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Start Menu",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "engine",
+          "name": "Engine",
+          "path": "C:\\Apps\\hYpErViSoR\\engine.EXE",
+          "exec_path": "C:\\Apps\\hYpErViSoR\\engine.EXE",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Program Files",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "neighbor",
+          "name": "Hypervisor Manager",
+          "path": "C:\\Apps\\Hypervisor Manager\\manager.exe",
+          "exec_path": "",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Program Files (x86)",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "custom-engine",
+          "name": "Other Engine",
+          "path": "C:\\Apps\\Hypervisor\\other.exe",
+          "exec_path": "",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Custom",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "updatetool",
+          "name": "UpdateTool",
+          "path": "C:\\Apps\\UpdateTool.exe",
+          "exec_path": "",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Custom",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "shortcut",
+          "name": "VM Console",
+          "path": "C:\\Start\\Console.lnk",
+          "exec_path": "C:\\Apps\\Hypervisor\\engine.EXE",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Start Menu",
+          "keywords": null
+        }
+      ],
+      "filtered": [
+        {
+          "pinned": false,
+          "id": "manual",
+          "name": "Engine",
+          "path": "C:\\Apps\\Hypervisor\\engine.EXE",
+          "exec_path": "",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Manual",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "neighbor",
+          "name": "Hypervisor Manager",
+          "path": "C:\\Apps\\Hypervisor Manager\\manager.exe",
+          "exec_path": "",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Program Files (x86)",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "updatetool",
+          "name": "UpdateTool",
+          "path": "C:\\Apps\\UpdateTool.exe",
+          "exec_path": "",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Custom",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "shortcut",
+          "name": "VM Console",
+          "path": "C:\\Start\\Console.lnk",
+          "exec_path": "C:\\Apps\\Hypervisor\\engine.EXE",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Start Menu",
+          "keywords": null
+        }
+      ],
+      "all": [
+        {
+          "pinned": false,
+          "id": "help",
+          "name": "App Help",
+          "path": "C:\\Start\\Help.lnk",
+          "exec_path": "",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Start Menu",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "engine",
+          "name": "Engine",
+          "path": "C:\\Apps\\hYpErViSoR\\engine.EXE",
+          "exec_path": "C:\\Apps\\hYpErViSoR\\engine.EXE",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Program Files",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "neighbor",
+          "name": "Hypervisor Manager",
+          "path": "C:\\Apps\\Hypervisor Manager\\manager.exe",
+          "exec_path": "",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Program Files (x86)",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "custom-engine",
+          "name": "Other Engine",
+          "path": "C:\\Apps\\Hypervisor\\other.exe",
+          "exec_path": "",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Custom",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "updatetool",
+          "name": "UpdateTool",
+          "path": "C:\\Apps\\UpdateTool.exe",
+          "exec_path": "",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Custom",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "shortcut",
+          "name": "VM Console",
+          "path": "C:\\Start\\Console.lnk",
+          "exec_path": "C:\\Apps\\Hypervisor\\engine.EXE",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Start Menu",
+          "keywords": null
+        }
+      ],
+      "actions": [
+        {
+          "open_directory": false,
+          "run_as_admin": false
+        },
+        {
+          "open_directory": true,
+          "run_as_admin": true
+        },
+        {
+          "open_directory": true,
+          "run_as_admin": true
+        },
+        {
+          "open_directory": true,
+          "run_as_admin": true
+        },
+        {
+          "open_directory": true,
+          "run_as_admin": true
+        },
+        {
+          "open_directory": true,
+          "run_as_admin": true
+        },
+        {
+          "open_directory": true,
+          "run_as_admin": true
+        }
+      ]
+    },
+    {
+      "name": "stable-equal-name-and-action-capabilities",
+      "items": [
+        {
+          "pinned": false,
+          "id": "b",
+          "name": "Same",
+          "path": "B:\\App\\second.exe",
+          "exec_path": "",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Custom",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "a",
+          "name": "Same",
+          "path": "A:\\App\\first.exe",
+          "exec_path": "",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Custom",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "console",
+          "name": "Console",
+          "path": "C:\\Windows\\System32\\diskmgmt.msc",
+          "exec_path": "",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "System",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "relative",
+          "name": "Relative",
+          "path": "app.exe",
+          "exec_path": "",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Custom",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "unresolved",
+          "name": "Unresolved",
+          "path": "C:\\Desktop\\App.lnk",
+          "exec_path": "",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Desktop",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "settings",
+          "name": "Settings",
+          "path": "ms-settings:appsfeatures",
+          "exec_path": "",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "System",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "action",
+          "name": "Action",
+          "path": "velo-action:shutdown",
+          "exec_path": "",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "System",
+          "keywords": null
+        }
+      ],
+      "deduplicated": [
+        {
+          "pinned": false,
+          "id": "action",
+          "name": "Action",
+          "path": "velo-action:shutdown",
+          "exec_path": "",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "System",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "console",
+          "name": "Console",
+          "path": "C:\\Windows\\System32\\diskmgmt.msc",
+          "exec_path": "",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "System",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "relative",
+          "name": "Relative",
+          "path": "app.exe",
+          "exec_path": "",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Custom",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "a",
+          "name": "Same",
+          "path": "A:\\App\\first.exe",
+          "exec_path": "",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Custom",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "b",
+          "name": "Same",
+          "path": "B:\\App\\second.exe",
+          "exec_path": "",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Custom",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "settings",
+          "name": "Settings",
+          "path": "ms-settings:appsfeatures",
+          "exec_path": "",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "System",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "unresolved",
+          "name": "Unresolved",
+          "path": "C:\\Desktop\\App.lnk",
+          "exec_path": "",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Desktop",
+          "keywords": null
+        }
+      ],
+      "filtered": [
+        {
+          "pinned": false,
+          "id": "action",
+          "name": "Action",
+          "path": "velo-action:shutdown",
+          "exec_path": "",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "System",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "console",
+          "name": "Console",
+          "path": "C:\\Windows\\System32\\diskmgmt.msc",
+          "exec_path": "",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "System",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "relative",
+          "name": "Relative",
+          "path": "app.exe",
+          "exec_path": "",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Custom",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "a",
+          "name": "Same",
+          "path": "A:\\App\\first.exe",
+          "exec_path": "",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Custom",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "b",
+          "name": "Same",
+          "path": "B:\\App\\second.exe",
+          "exec_path": "",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Custom",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "settings",
+          "name": "Settings",
+          "path": "ms-settings:appsfeatures",
+          "exec_path": "",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "System",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "unresolved",
+          "name": "Unresolved",
+          "path": "C:\\Desktop\\App.lnk",
+          "exec_path": "",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Desktop",
+          "keywords": null
+        }
+      ],
+      "all": [
+        {
+          "pinned": false,
+          "id": "action",
+          "name": "Action",
+          "path": "velo-action:shutdown",
+          "exec_path": "",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "System",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "console",
+          "name": "Console",
+          "path": "C:\\Windows\\System32\\diskmgmt.msc",
+          "exec_path": "",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "System",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "relative",
+          "name": "Relative",
+          "path": "app.exe",
+          "exec_path": "",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Custom",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "a",
+          "name": "Same",
+          "path": "A:\\App\\first.exe",
+          "exec_path": "",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Custom",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "b",
+          "name": "Same",
+          "path": "B:\\App\\second.exe",
+          "exec_path": "",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Custom",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "settings",
+          "name": "Settings",
+          "path": "ms-settings:appsfeatures",
+          "exec_path": "",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "System",
+          "keywords": null
+        },
+        {
+          "pinned": false,
+          "id": "unresolved",
+          "name": "Unresolved",
+          "path": "C:\\Desktop\\App.lnk",
+          "exec_path": "",
+          "arguments": "",
+          "working_directory": "",
+          "icon_path": "",
+          "icon_url": "",
+          "description": "",
+          "source": "Desktop",
+          "keywords": null
+        }
+      ],
+      "actions": [
+        {
+          "open_directory": true,
+          "run_as_admin": true
+        },
+        {
+          "open_directory": true,
+          "run_as_admin": true
+        },
+        {
+          "open_directory": true,
+          "run_as_admin": false
+        },
+        {
+          "open_directory": false,
+          "run_as_admin": false
+        },
+        {
+          "open_directory": false,
+          "run_as_admin": false
+        },
+        {
+          "open_directory": false,
+          "run_as_admin": false
+        },
+        {
+          "open_directory": false,
+          "run_as_admin": false
+        }
+      ]
+    }
+  ]
+}

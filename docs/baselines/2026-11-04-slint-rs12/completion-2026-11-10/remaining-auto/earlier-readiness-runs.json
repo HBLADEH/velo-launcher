@@ -1,0 +1,459 @@
+[
+  {
+    "Run": "readiness-sw-final-1",
+    "OriginalReportSHA256": "B4F0DB65E872513A28ED7D8D97426936978CE90FC20588AE686AAC3FBA67F310",
+    "Groups": [
+      {
+        "Edition": "software",
+        "SHA256": "E85B41C7E77888750817E47F092EABECB1BAB5A68EFCE579378CE2DDAD2DBA4B",
+        "Kind": "InjectedHotkeyCalibration",
+        "ValidSamples": 20,
+        "InvalidSamples": 0,
+        "MinimumSamples": 20,
+        "SampleCountSatisfied": true,
+        "UpperMilliseconds": {
+          "Count": 20,
+          "Minimum": 42.851299999999995,
+          "Median": 53.406225,
+          "P95": 68.07679999999999,
+          "Maximum": 70.2974
+        },
+        "BudgetMilliseconds": 50,
+        "UpperBoundP95WithinBudget": false,
+        "CountsAsPhysicalHotkeys": false
+      },
+      {
+        "Edition": "software",
+        "SHA256": "E85B41C7E77888750817E47F092EABECB1BAB5A68EFCE579378CE2DDAD2DBA4B",
+        "Kind": "WarmStartup",
+        "ValidSamples": 3,
+        "InvalidSamples": 0,
+        "MinimumSamples": 3,
+        "SampleCountSatisfied": true,
+        "UpperMilliseconds": {
+          "Count": 3,
+          "Minimum": 149.42530000000002,
+          "Median": 167.5094,
+          "P95": 186.69735,
+          "Maximum": 186.69735
+        },
+        "BudgetMilliseconds": 500,
+        "UpperBoundP95WithinBudget": true,
+        "CountsAsPhysicalHotkeys": false
+      }
+    ],
+    "Scope": "Earlier method/development run; retained separately, not merged with final build8 common-method matrix."
+  },
+  {
+    "Run": "readiness-fg-final-1",
+    "OriginalReportSHA256": "5E3BA70035FC366DDA3927DECF392887281EDC035F0D497CDB8B28F38A1DB312",
+    "Groups": [
+      {
+        "Edition": "femtovg",
+        "SHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+        "Kind": "InjectedHotkeyCalibration",
+        "ValidSamples": 20,
+        "InvalidSamples": 0,
+        "MinimumSamples": 20,
+        "SampleCountSatisfied": true,
+        "UpperMilliseconds": {
+          "Count": 20,
+          "Minimum": 30.947,
+          "Median": 39.064325,
+          "P95": 55.3083,
+          "Maximum": 62.729
+        },
+        "BudgetMilliseconds": 50,
+        "UpperBoundP95WithinBudget": false,
+        "CountsAsPhysicalHotkeys": false
+      },
+      {
+        "Edition": "femtovg",
+        "SHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+        "Kind": "WarmStartup",
+        "ValidSamples": 3,
+        "InvalidSamples": 0,
+        "MinimumSamples": 3,
+        "SampleCountSatisfied": true,
+        "UpperMilliseconds": {
+          "Count": 3,
+          "Minimum": 616.2651999999999,
+          "Median": 627.7393000000001,
+          "P95": 672.3668,
+          "Maximum": 672.3668
+        },
+        "BudgetMilliseconds": 500,
+        "UpperBoundP95WithinBudget": false,
+        "CountsAsPhysicalHotkeys": false
+      }
+    ],
+    "Scope": "Earlier method/development run; retained separately, not merged with final build8 common-method matrix."
+  },
+  {
+    "Run": "readiness-wl-final-1",
+    "OriginalReportSHA256": "36C5354AFD76F5E7226F73BB145B759ED331F30AF613E321572F488284BFDFAC",
+    "Groups": [
+      {
+        "Edition": "wails",
+        "SHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+        "Kind": "InjectedHotkeyCalibration",
+        "ValidSamples": 20,
+        "InvalidSamples": 0,
+        "MinimumSamples": 20,
+        "SampleCountSatisfied": true,
+        "UpperMilliseconds": {
+          "Count": 20,
+          "Minimum": 16.5764,
+          "Median": 28.256,
+          "P95": 36.2772,
+          "Maximum": 50.530100000000004
+        },
+        "BudgetMilliseconds": 50,
+        "UpperBoundP95WithinBudget": true,
+        "CountsAsPhysicalHotkeys": false
+      },
+      {
+        "Edition": "wails",
+        "SHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+        "Kind": "WarmStartup",
+        "ValidSamples": 3,
+        "InvalidSamples": 0,
+        "MinimumSamples": 3,
+        "SampleCountSatisfied": true,
+        "UpperMilliseconds": {
+          "Count": 3,
+          "Minimum": 778.34505,
+          "Median": 809.32835,
+          "P95": 852.26145,
+          "Maximum": 852.26145
+        },
+        "BudgetMilliseconds": 500,
+        "UpperBoundP95WithinBudget": false,
+        "CountsAsPhysicalHotkeys": false
+      }
+    ],
+    "Scope": "Earlier method/development run; retained separately, not merged with final build8 common-method matrix."
+  },
+  {
+    "Run": "readiness-sw-hires-1",
+    "OriginalReportSHA256": "74F493B8FEE4E900A2E2A31921C15BF27EC8B75BA28AE5E848B52DFC3F1E915D",
+    "Groups": [
+      {
+        "Edition": "software",
+        "SHA256": "E85B41C7E77888750817E47F092EABECB1BAB5A68EFCE579378CE2DDAD2DBA4B",
+        "Kind": "InjectedHotkeyCalibration",
+        "ValidSamples": 20,
+        "InvalidSamples": 0,
+        "MinimumSamples": 20,
+        "SampleCountSatisfied": true,
+        "UpperMilliseconds": {
+          "Count": 20,
+          "Minimum": 22.3961,
+          "Median": 32.124575,
+          "P95": 39.6328,
+          "Maximum": 40.0587
+        },
+        "BudgetMilliseconds": 50,
+        "UpperBoundP95WithinBudget": true,
+        "CountsAsPhysicalHotkeys": false
+      },
+      {
+        "Edition": "software",
+        "SHA256": "E85B41C7E77888750817E47F092EABECB1BAB5A68EFCE579378CE2DDAD2DBA4B",
+        "Kind": "WarmStartup",
+        "ValidSamples": 3,
+        "InvalidSamples": 0,
+        "MinimumSamples": 3,
+        "SampleCountSatisfied": true,
+        "UpperMilliseconds": {
+          "Count": 3,
+          "Minimum": 160.3679,
+          "Median": 187.94005,
+          "P95": 191.77370000000002,
+          "Maximum": 191.77370000000002
+        },
+        "BudgetMilliseconds": 500,
+        "UpperBoundP95WithinBudget": true,
+        "CountsAsPhysicalHotkeys": false
+      }
+    ],
+    "Scope": "Earlier method/development run; retained separately, not merged with final build8 common-method matrix."
+  },
+  {
+    "Run": "readiness-fg-hires-1",
+    "OriginalReportSHA256": "E67E74FF891BD649609533F67BB3880391DB48F3ECE5B2922CC2687065EEE474",
+    "Groups": [
+      {
+        "Edition": "femtovg",
+        "SHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+        "Kind": "InjectedHotkeyCalibration",
+        "ValidSamples": 20,
+        "InvalidSamples": 0,
+        "MinimumSamples": 20,
+        "SampleCountSatisfied": true,
+        "UpperMilliseconds": {
+          "Count": 20,
+          "Minimum": 20.877000000000002,
+          "Median": 24.051074999999997,
+          "P95": 29.470350000000003,
+          "Maximum": 29.84795
+        },
+        "BudgetMilliseconds": 50,
+        "UpperBoundP95WithinBudget": true,
+        "CountsAsPhysicalHotkeys": false
+      },
+      {
+        "Edition": "femtovg",
+        "SHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+        "Kind": "WarmStartup",
+        "ValidSamples": 3,
+        "InvalidSamples": 0,
+        "MinimumSamples": 3,
+        "SampleCountSatisfied": true,
+        "UpperMilliseconds": {
+          "Count": 3,
+          "Minimum": 531.8061,
+          "Median": 555.9363,
+          "P95": 578.4095500000001,
+          "Maximum": 578.4095500000001
+        },
+        "BudgetMilliseconds": 500,
+        "UpperBoundP95WithinBudget": false,
+        "CountsAsPhysicalHotkeys": false
+      }
+    ],
+    "Scope": "Earlier method/development run; retained separately, not merged with final build8 common-method matrix."
+  },
+  {
+    "Run": "readiness-wl-hires-1",
+    "OriginalReportSHA256": "037A9063EE7E9EEE5482988817813141BFF6FDF696A7866B2DDD531AADFEB412",
+    "Groups": [
+      {
+        "Edition": "wails",
+        "SHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+        "Kind": "WarmStartup",
+        "ValidSamples": 2,
+        "InvalidSamples": 1,
+        "MinimumSamples": 3,
+        "SampleCountSatisfied": false,
+        "UpperMilliseconds": {
+          "Count": 2,
+          "Minimum": 802.1068,
+          "Median": 822.420725,
+          "P95": 842.73465,
+          "Maximum": 842.73465
+        },
+        "BudgetMilliseconds": 500,
+        "UpperBoundP95WithinBudget": false,
+        "CountsAsPhysicalHotkeys": false
+      }
+    ],
+    "Scope": "Earlier method/development run; retained separately, not merged with final build8 common-method matrix."
+  },
+  {
+    "Run": "readiness-wl-focus-1",
+    "OriginalReportSHA256": "D196E6AFF5A3BE7792A845208A3CCD42FF4BEDA02A9732C00A89F94BF038E880",
+    "Groups": [
+      {
+        "Edition": "wails",
+        "SHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+        "Kind": "InjectedHotkeyCalibration",
+        "ValidSamples": 20,
+        "InvalidSamples": 0,
+        "MinimumSamples": 20,
+        "SampleCountSatisfied": true,
+        "UpperMilliseconds": {
+          "Count": 20,
+          "Minimum": 19.1081,
+          "Median": 29.697824999999998,
+          "P95": 37.9418,
+          "Maximum": 41.18645
+        },
+        "BudgetMilliseconds": 50,
+        "UpperBoundP95WithinBudget": true,
+        "CountsAsPhysicalHotkeys": false
+      },
+      {
+        "Edition": "wails",
+        "SHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+        "Kind": "WarmStartup",
+        "ValidSamples": 3,
+        "InvalidSamples": 0,
+        "MinimumSamples": 3,
+        "SampleCountSatisfied": true,
+        "UpperMilliseconds": {
+          "Count": 3,
+          "Minimum": 786.9101499999999,
+          "Median": 798.31165,
+          "P95": 852.30775,
+          "Maximum": 852.30775
+        },
+        "BudgetMilliseconds": 500,
+        "UpperBoundP95WithinBudget": false,
+        "CountsAsPhysicalHotkeys": false
+      }
+    ],
+    "Scope": "Earlier method/development run; retained separately, not merged with final build8 common-method matrix."
+  },
+  {
+    "Run": "readiness-wl-focus-2",
+    "OriginalReportSHA256": "24633FEB0F180F519D41D72F2C8E26F047708FB665EDE9BF35EAF33552EFD8BB",
+    "Groups": [
+      {
+        "Edition": "wails",
+        "SHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+        "Kind": "WarmStartup",
+        "ValidSamples": 3,
+        "InvalidSamples": 0,
+        "MinimumSamples": 3,
+        "SampleCountSatisfied": true,
+        "UpperMilliseconds": {
+          "Count": 3,
+          "Minimum": 773.4168999999999,
+          "Median": 793.96285,
+          "P95": 823.8907499999999,
+          "Maximum": 823.8907499999999
+        },
+        "BudgetMilliseconds": 500,
+        "UpperBoundP95WithinBudget": false,
+        "CountsAsPhysicalHotkeys": false
+      }
+    ],
+    "Scope": "Earlier method/development run; retained separately, not merged with final build8 common-method matrix."
+  },
+  {
+    "Run": "readiness-sw-common-1",
+    "OriginalReportSHA256": "2BFB206FF004B65522E25CF44DD1F3D66736CEA325572C891F291E80DC14A6A9",
+    "Groups": [
+      {
+        "Edition": "software",
+        "SHA256": "E85B41C7E77888750817E47F092EABECB1BAB5A68EFCE579378CE2DDAD2DBA4B",
+        "Kind": "InjectedHotkeyCalibration",
+        "ValidSamples": 20,
+        "InvalidSamples": 0,
+        "MinimumSamples": 20,
+        "SampleCountSatisfied": true,
+        "UpperMilliseconds": {
+          "Count": 20,
+          "Minimum": 21.36385,
+          "Median": 31.852849999999997,
+          "P95": 39.2277,
+          "Maximum": 43.64165
+        },
+        "BudgetMilliseconds": 50,
+        "UpperBoundP95WithinBudget": true,
+        "CountsAsPhysicalHotkeys": false
+      },
+      {
+        "Edition": "software",
+        "SHA256": "E85B41C7E77888750817E47F092EABECB1BAB5A68EFCE579378CE2DDAD2DBA4B",
+        "Kind": "WarmStartup",
+        "ValidSamples": 3,
+        "InvalidSamples": 0,
+        "MinimumSamples": 3,
+        "SampleCountSatisfied": true,
+        "UpperMilliseconds": {
+          "Count": 3,
+          "Minimum": 145.60625,
+          "Median": 149.1113,
+          "P95": 174.47344999999999,
+          "Maximum": 174.47344999999999
+        },
+        "BudgetMilliseconds": 500,
+        "UpperBoundP95WithinBudget": true,
+        "CountsAsPhysicalHotkeys": false
+      }
+    ],
+    "Scope": "Earlier method/development run; retained separately, not merged with final build8 common-method matrix."
+  },
+  {
+    "Run": "readiness-fg-common-1",
+    "OriginalReportSHA256": "1EDA98ABBA45437BD1213D59165AAFCC1B66F70C2DF91E7A87E06C3808C601A8",
+    "Groups": [
+      {
+        "Edition": "femtovg",
+        "SHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+        "Kind": "InjectedHotkeyCalibration",
+        "ValidSamples": 20,
+        "InvalidSamples": 0,
+        "MinimumSamples": 20,
+        "SampleCountSatisfied": true,
+        "UpperMilliseconds": {
+          "Count": 20,
+          "Minimum": 24.891000000000002,
+          "Median": 33.903324999999995,
+          "P95": 37.22405,
+          "Maximum": 41.3564
+        },
+        "BudgetMilliseconds": 50,
+        "UpperBoundP95WithinBudget": true,
+        "CountsAsPhysicalHotkeys": false
+      },
+      {
+        "Edition": "femtovg",
+        "SHA256": "C52F84F0D2CC2BF8FBD30335FC61381090C8981FABB91795843AB3AA267160BC",
+        "Kind": "WarmStartup",
+        "ValidSamples": 3,
+        "InvalidSamples": 0,
+        "MinimumSamples": 3,
+        "SampleCountSatisfied": true,
+        "UpperMilliseconds": {
+          "Count": 3,
+          "Minimum": 533.77665,
+          "Median": 535.40845,
+          "P95": 550.3443500000001,
+          "Maximum": 550.3443500000001
+        },
+        "BudgetMilliseconds": 500,
+        "UpperBoundP95WithinBudget": false,
+        "CountsAsPhysicalHotkeys": false
+      }
+    ],
+    "Scope": "Earlier method/development run; retained separately, not merged with final build8 common-method matrix."
+  },
+  {
+    "Run": "readiness-wl-common-1",
+    "OriginalReportSHA256": "A1095769C43F35B1814A2354AAC22492800EBAB63A48D5A892B29DDCFC57B2BC",
+    "Groups": [
+      {
+        "Edition": "wails",
+        "SHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+        "Kind": "InjectedHotkeyCalibration",
+        "ValidSamples": 20,
+        "InvalidSamples": 0,
+        "MinimumSamples": 20,
+        "SampleCountSatisfied": true,
+        "UpperMilliseconds": {
+          "Count": 20,
+          "Minimum": 18.96105,
+          "Median": 27.20395,
+          "P95": 50.0433,
+          "Maximum": 56.52525
+        },
+        "BudgetMilliseconds": 50,
+        "UpperBoundP95WithinBudget": false,
+        "CountsAsPhysicalHotkeys": false
+      },
+      {
+        "Edition": "wails",
+        "SHA256": "14FB81E432B0543A32DC5E7B1698596A15BB5824136BA045C0AFBB36201B7AFA",
+        "Kind": "WarmStartup",
+        "ValidSamples": 2,
+        "InvalidSamples": 1,
+        "MinimumSamples": 3,
+        "SampleCountSatisfied": false,
+        "UpperMilliseconds": {
+          "Count": 2,
+          "Minimum": 837.339,
+          "Median": 842.021825,
+          "P95": 846.7046499999999,
+          "Maximum": 846.7046499999999
+        },
+        "BudgetMilliseconds": 500,
+        "UpperBoundP95WithinBudget": false,
+        "CountsAsPhysicalHotkeys": false
+      }
+    ],
+    "Scope": "Earlier method/development run; retained separately, not merged with final build8 common-method matrix."
+  }
+]

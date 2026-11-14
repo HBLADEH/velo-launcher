@@ -1,0 +1,535 @@
+{
+  "SchemaVersion": 1,
+  "RecordedAtUtc": "2026-11-09T17:35:39.6020586Z",
+  "Method": "DXGI Desktop Duplication LastPresentTime QPC to cropped pixels; separate callback/read times.",
+  "RawLogSHA256": "688AF58AAA75DC5C8246222C766D3880054A253EF011FC6843157B1C468416C6",
+  "Calibration": true,
+  "Frames": 137,
+  "ChangedFrames": 80,
+  "RejectedFrames": 5,
+  "GeometryFreshnessVerified": true,
+  "LegacyGeometryDiagnosticsOnly": false,
+  "ProductFrameEvidenceEligible": false,
+  "MaximumAccumulatedFrames": 1.0,
+  "FrameReadLagMilliseconds": {
+    "Count": 137,
+    "Minimum": 0.8408,
+    "Median": 1.9596,
+    "P95": 9.4556,
+    "Maximum": 11.5026
+  },
+  "ClockOffsetRangeMilliseconds": 0.0004,
+  "ClockBracketMaximumMilliseconds": 0.0009,
+  "QpcFrequency": 10000000.0,
+  "ClockSegmentStartQpc": 0,
+  "SelectedClockPairs": 4,
+  "TotalClockPairs": 4,
+  "PhysicalKeysOutsideSelectedClockSegment": 0,
+  "ObserverCPUSeconds": 0.3125,
+  "ObserverElapsedSeconds": 3.1125112,
+  "CalibrationRows": [
+    {
+      "Sequence": 1,
+      "PaintToDesktopPresentMilliseconds": 18.6383,
+      "DesktopPresentToReadMilliseconds": 6.6288,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 2,
+      "PaintToDesktopPresentMilliseconds": 6.8575,
+      "DesktopPresentToReadMilliseconds": 0.94,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 4,
+      "PaintToDesktopPresentMilliseconds": 14.9781,
+      "DesktopPresentToReadMilliseconds": 1.6752,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 6,
+      "PaintToDesktopPresentMilliseconds": 6.8743,
+      "DesktopPresentToReadMilliseconds": 1.0957,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 7,
+      "PaintToDesktopPresentMilliseconds": 31.1326,
+      "DesktopPresentToReadMilliseconds": 1.3496,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 9,
+      "PaintToDesktopPresentMilliseconds": 15.1123,
+      "DesktopPresentToReadMilliseconds": 1.6397,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 10,
+      "PaintToDesktopPresentMilliseconds": 31.1425,
+      "DesktopPresentToReadMilliseconds": 1.2002,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 11,
+      "PaintToDesktopPresentMilliseconds": 31.596,
+      "DesktopPresentToReadMilliseconds": 1.193,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 13,
+      "PaintToDesktopPresentMilliseconds": 4.1957,
+      "DesktopPresentToReadMilliseconds": 1.1086,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 15,
+      "PaintToDesktopPresentMilliseconds": 15.7596,
+      "DesktopPresentToReadMilliseconds": 1.5213,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 16,
+      "PaintToDesktopPresentMilliseconds": 31.392,
+      "DesktopPresentToReadMilliseconds": 1.6981,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 18,
+      "PaintToDesktopPresentMilliseconds": 11.0908,
+      "DesktopPresentToReadMilliseconds": 1.0071,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 20,
+      "PaintToDesktopPresentMilliseconds": 31.5907,
+      "DesktopPresentToReadMilliseconds": 1.9606,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 23,
+      "PaintToDesktopPresentMilliseconds": 1.9878,
+      "DesktopPresentToReadMilliseconds": 1.5132,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 25,
+      "PaintToDesktopPresentMilliseconds": 22.1753,
+      "DesktopPresentToReadMilliseconds": 1.3379,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 27,
+      "PaintToDesktopPresentMilliseconds": 11.1058,
+      "DesktopPresentToReadMilliseconds": 1.5542,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 28,
+      "PaintToDesktopPresentMilliseconds": 30.7999,
+      "DesktopPresentToReadMilliseconds": 1.6943,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 29,
+      "PaintToDesktopPresentMilliseconds": 31.1635,
+      "DesktopPresentToReadMilliseconds": 1.3852,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 30,
+      "PaintToDesktopPresentMilliseconds": 30.8159,
+      "DesktopPresentToReadMilliseconds": 1.5921,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 32,
+      "PaintToDesktopPresentMilliseconds": 7.3986,
+      "DesktopPresentToReadMilliseconds": 1.4004,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 33,
+      "PaintToDesktopPresentMilliseconds": 25.0754,
+      "DesktopPresentToReadMilliseconds": 7.7112,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 34,
+      "PaintToDesktopPresentMilliseconds": 25.2676,
+      "DesktopPresentToReadMilliseconds": 7.0209,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 35,
+      "PaintToDesktopPresentMilliseconds": 25.0772,
+      "DesktopPresentToReadMilliseconds": 1.4787,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 37,
+      "PaintToDesktopPresentMilliseconds": 17.3376,
+      "DesktopPresentToReadMilliseconds": 1.3923,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 38,
+      "PaintToDesktopPresentMilliseconds": 14.2296,
+      "DesktopPresentToReadMilliseconds": 1.2852,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 39,
+      "PaintToDesktopPresentMilliseconds": 30.8362,
+      "DesktopPresentToReadMilliseconds": 7.733,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 41,
+      "PaintToDesktopPresentMilliseconds": 16.5781,
+      "DesktopPresentToReadMilliseconds": 1.9394,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 42,
+      "PaintToDesktopPresentMilliseconds": 23.6516,
+      "DesktopPresentToReadMilliseconds": 1.2733,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 43,
+      "PaintToDesktopPresentMilliseconds": 30.0393,
+      "DesktopPresentToReadMilliseconds": 1.9596,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 44,
+      "PaintToDesktopPresentMilliseconds": 30.9761,
+      "DesktopPresentToReadMilliseconds": 1.3639,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 46,
+      "PaintToDesktopPresentMilliseconds": 3.2614,
+      "DesktopPresentToReadMilliseconds": 6.3823,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 47,
+      "PaintToDesktopPresentMilliseconds": 23.948,
+      "DesktopPresentToReadMilliseconds": 1.2898,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 49,
+      "PaintToDesktopPresentMilliseconds": 9.41,
+      "DesktopPresentToReadMilliseconds": 6.8463,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 50,
+      "PaintToDesktopPresentMilliseconds": 9.732,
+      "DesktopPresentToReadMilliseconds": 7.0259,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 51,
+      "PaintToDesktopPresentMilliseconds": 8.7152,
+      "DesktopPresentToReadMilliseconds": 6.6476,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 52,
+      "PaintToDesktopPresentMilliseconds": 24.0962,
+      "DesktopPresentToReadMilliseconds": 7.2589,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 54,
+      "PaintToDesktopPresentMilliseconds": 8.3343,
+      "DesktopPresentToReadMilliseconds": 6.9225,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 56,
+      "PaintToDesktopPresentMilliseconds": 2.1772,
+      "DesktopPresentToReadMilliseconds": 7.0423,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 57,
+      "PaintToDesktopPresentMilliseconds": 25.7411,
+      "DesktopPresentToReadMilliseconds": 8.1444,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 59,
+      "PaintToDesktopPresentMilliseconds": 8.2094,
+      "DesktopPresentToReadMilliseconds": 7.0453,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 60,
+      "PaintToDesktopPresentMilliseconds": 25.4881,
+      "DesktopPresentToReadMilliseconds": 7.6139,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 61,
+      "PaintToDesktopPresentMilliseconds": 24.6958,
+      "DesktopPresentToReadMilliseconds": 7.624,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 63,
+      "PaintToDesktopPresentMilliseconds": 9.5509,
+      "DesktopPresentToReadMilliseconds": 2.0357,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 64,
+      "PaintToDesktopPresentMilliseconds": 13.9556,
+      "DesktopPresentToReadMilliseconds": 3.0825,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 66,
+      "PaintToDesktopPresentMilliseconds": 9.2701,
+      "DesktopPresentToReadMilliseconds": 1.765,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 67,
+      "PaintToDesktopPresentMilliseconds": 24.9409,
+      "DesktopPresentToReadMilliseconds": 2.478,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 69,
+      "PaintToDesktopPresentMilliseconds": 9.4521,
+      "DesktopPresentToReadMilliseconds": 9.2831,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 70,
+      "PaintToDesktopPresentMilliseconds": 6.8868,
+      "DesktopPresentToReadMilliseconds": 7.707,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 71,
+      "PaintToDesktopPresentMilliseconds": 8.347,
+      "DesktopPresentToReadMilliseconds": 2.5424,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 72,
+      "PaintToDesktopPresentMilliseconds": 29.8224,
+      "DesktopPresentToReadMilliseconds": 1.987,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 74,
+      "PaintToDesktopPresentMilliseconds": 9.0787,
+      "DesktopPresentToReadMilliseconds": 2.1097,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 76,
+      "PaintToDesktopPresentMilliseconds": 6.1269,
+      "DesktopPresentToReadMilliseconds": 10.0512,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 77,
+      "PaintToDesktopPresentMilliseconds": 6.362,
+      "DesktopPresentToReadMilliseconds": 8.7251,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 79,
+      "PaintToDesktopPresentMilliseconds": 6.5849,
+      "DesktopPresentToReadMilliseconds": 6.8574,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 81,
+      "PaintToDesktopPresentMilliseconds": 15.5739,
+      "DesktopPresentToReadMilliseconds": 8.8681,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 82,
+      "PaintToDesktopPresentMilliseconds": 24.0191,
+      "DesktopPresentToReadMilliseconds": 2.2276,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 84,
+      "PaintToDesktopPresentMilliseconds": 4.0762,
+      "DesktopPresentToReadMilliseconds": 1.563,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 85,
+      "PaintToDesktopPresentMilliseconds": 5.7097,
+      "DesktopPresentToReadMilliseconds": 1.9028,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 86,
+      "PaintToDesktopPresentMilliseconds": 31.2651,
+      "DesktopPresentToReadMilliseconds": 1.3524,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 87,
+      "PaintToDesktopPresentMilliseconds": 31.426,
+      "DesktopPresentToReadMilliseconds": 1.4326,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 89,
+      "PaintToDesktopPresentMilliseconds": 12.7743,
+      "DesktopPresentToReadMilliseconds": 9.3279,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 90,
+      "PaintToDesktopPresentMilliseconds": 6.824,
+      "DesktopPresentToReadMilliseconds": 1.5497,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 91,
+      "PaintToDesktopPresentMilliseconds": 14.4025,
+      "DesktopPresentToReadMilliseconds": 1.3169,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 92,
+      "PaintToDesktopPresentMilliseconds": 23.5698,
+      "DesktopPresentToReadMilliseconds": 1.4523,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 94,
+      "PaintToDesktopPresentMilliseconds": 14.9254,
+      "DesktopPresentToReadMilliseconds": 7.5138,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 96,
+      "PaintToDesktopPresentMilliseconds": 7.8982,
+      "DesktopPresentToReadMilliseconds": 1.3319,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 97,
+      "PaintToDesktopPresentMilliseconds": 30.9973,
+      "DesktopPresentToReadMilliseconds": 2.1267,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 99,
+      "PaintToDesktopPresentMilliseconds": 8.964,
+      "DesktopPresentToReadMilliseconds": 6.2278,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 100,
+      "PaintToDesktopPresentMilliseconds": 9.7931,
+      "DesktopPresentToReadMilliseconds": 1.0734,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 101,
+      "PaintToDesktopPresentMilliseconds": 15.145,
+      "DesktopPresentToReadMilliseconds": 7.3285,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 102,
+      "PaintToDesktopPresentMilliseconds": 31.3963,
+      "DesktopPresentToReadMilliseconds": 9.4556,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 104,
+      "PaintToDesktopPresentMilliseconds": 22.447,
+      "DesktopPresentToReadMilliseconds": 1.4069,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 105,
+      "PaintToDesktopPresentMilliseconds": 24.7852,
+      "DesktopPresentToReadMilliseconds": 11.5026,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 106,
+      "PaintToDesktopPresentMilliseconds": 21.2565,
+      "DesktopPresentToReadMilliseconds": 10.7099,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 107,
+      "PaintToDesktopPresentMilliseconds": 22.0645,
+      "DesktopPresentToReadMilliseconds": 9.4125,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 108,
+      "PaintToDesktopPresentMilliseconds": 23.504,
+      "DesktopPresentToReadMilliseconds": 11.2559,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 110,
+      "PaintToDesktopPresentMilliseconds": 10.8594,
+      "DesktopPresentToReadMilliseconds": 2.4901,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 111,
+      "PaintToDesktopPresentMilliseconds": 26.0473,
+      "DesktopPresentToReadMilliseconds": 6.5564,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 113,
+      "PaintToDesktopPresentMilliseconds": 14.8797,
+      "DesktopPresentToReadMilliseconds": 8.6703,
+      "AccumulatedDesktopFrames": 1
+    },
+    {
+      "Sequence": 114,
+      "PaintToDesktopPresentMilliseconds": 7.2686,
+      "DesktopPresentToReadMilliseconds": 1.1556,
+      "AccumulatedDesktopFrames": 1
+    }
+  ],
+  "CalibrationPaintToDesktopPresentMilliseconds": {
+    "Count": 80,
+    "Minimum": 1.9878,
+    "Median": 15.359449999999999,
+    "P95": 31.392,
+    "Maximum": 31.596
+  },
+  "RepeatedPatternFrames": 57,
+  "PhysicalInputRows": [],
+  "PhysicalFixedAKeys": 0,
+  "ValidPhysicalCropChangeRows": 0,
+  "KeyToChangedResultCropUpperMilliseconds": null,
+  "FirstPossibleInputLatencyVerified": false,
+  "CorrectResultFrameIndependentlyVerified": false,
+  "PhotonPresentationVerified": false,
+  "RS12Complete": false,
+  "Limitations": [
+    "Composed desktop timestamp, not photon scanout; occluded/hidden/out-of-monitor crops rejected.",
+    "Background updates can change the desktop with identical target pixels; only changed crop hashes describe target changes.",
+    "Accumulated frames may omit intermediate states. Pixel hashes alone do not prove correct results or quantify GPU rendering work.",
+    "The physical key lower bound retains Windows event-clock quantum and callback delay. Actual input is paired using bracketed QPC/UTC mapping.",
+    "No subtraction of human startup delay, no first possible readiness or calibrated cold startup claim."
+  ]
+}

@@ -1,0 +1,229 @@
+{
+  "Date": "2026-11-11 Asia/Shanghai",
+  "CurrentAtPhysicalTestBuilds": true,
+  "SourceIdentityKeptPerRun": true,
+  "NativeDPI": [
+    96,
+    120,
+    144,
+    168
+  ],
+  "PhysicalInputScope": "Operator used real keyboard and changed Windows scaling; no injected keys substitute for these rows. Edits/IME flags alone do not prove candidate page behavior; operator confirmations and saved candidate observation supplement them.",
+  "200Percent": "Unavailable in the user display configuration; maximum selectable scale reported as 175%. Not passed.",
+  "RestoredDisplay": "User confirmed restoration to 100%; FemtoVG native logs returned to 96 DPI.",
+  "ExtraLaunch": "The earlier launch in software-physical was separately confirmed by the operator as a manual app click; not attributed to IME.",
+  "Rows": [
+    {
+      "Renderer": "software",
+      "Run": "software-window-v1",
+      "ExecutableSHA256": "5EB0E03B365B2FD33F4D892F589316C7876235173FF0B28161AA1CB6BD919287",
+      "ProcessId": 59668,
+      "StartedTicks": 639299644655812357,
+      "NativeDPI": 96,
+      "ScalePercent": 100,
+      "OperatorReport": "已完成",
+      "Observations": {
+        "NonSyntheticAcceptedEdits": 6,
+        "ComposingAcceptedEdits": 2,
+        "NonComposingAcceptedEdits": 4,
+        "ByteCounts": [
+          1,
+          2,
+          3,
+          6,
+          12,
+          13
+        ]
+      },
+      "RawInputLogSHA256": "D57BF6904A528091FF99F6597B526FFB2827592AA77D95ED45E11669094BFE4D"
+    },
+    {
+      "Renderer": "software",
+      "Run": "software-window-v1",
+      "ExecutableSHA256": "5EB0E03B365B2FD33F4D892F589316C7876235173FF0B28161AA1CB6BD919287",
+      "ProcessId": 59668,
+      "StartedTicks": 639299644655812357,
+      "NativeDPI": 120,
+      "ScalePercent": 125,
+      "OperatorReport": "已设 150%，刚才候选位置正常",
+      "Observations": {
+        "NonSyntheticAcceptedEdits": 1,
+        "ComposingAcceptedEdits": 1,
+        "NonComposingAcceptedEdits": 0,
+        "ByteCounts": [
+          12
+        ]
+      },
+      "RawInputLogSHA256": "D57BF6904A528091FF99F6597B526FFB2827592AA77D95ED45E11669094BFE4D"
+    },
+    {
+      "Renderer": "software",
+      "Run": "software-window-v1",
+      "ExecutableSHA256": "5EB0E03B365B2FD33F4D892F589316C7876235173FF0B28161AA1CB6BD919287",
+      "ProcessId": 59668,
+      "StartedTicks": 639299644655812357,
+      "NativeDPI": 144,
+      "ScalePercent": 150,
+      "OperatorReport": "候选定位、选词和取消均正常",
+      "Observations": {
+        "NonSyntheticAcceptedEdits": 1,
+        "ComposingAcceptedEdits": 1,
+        "NonComposingAcceptedEdits": 0,
+        "ByteCounts": [
+          6
+        ]
+      },
+      "RawInputLogSHA256": "D57BF6904A528091FF99F6597B526FFB2827592AA77D95ED45E11669094BFE4D"
+    },
+    {
+      "Renderer": "software",
+      "Run": "software-175",
+      "ExecutableSHA256": "5EB0E03B365B2FD33F4D892F589316C7876235173FF0B28161AA1CB6BD919287",
+      "ProcessId": 62568,
+      "StartedTicks": 639299667923024418,
+      "NativeDPI": 168,
+      "ScalePercent": 175,
+      "OperatorReport": "都正常",
+      "Observations": {
+        "NonSyntheticAcceptedEdits": 6,
+        "ComposingAcceptedEdits": 1,
+        "NonComposingAcceptedEdits": 5,
+        "ByteCounts": [
+          1,
+          6,
+          7,
+          8,
+          9,
+          10
+        ]
+      },
+      "RawInputLogSHA256": "A7FF7035492318B1D1930A28DC79D83147DCC14F6B113023A2514B3F47518564"
+    },
+    {
+      "Renderer": "femtovg",
+      "Run": "femtovg-physical",
+      "ExecutableSHA256": "C55E36CB3D6659E839C25F7888AD907BBB33B4368058B5ED38CB2684AEF9139F",
+      "ProcessId": 54756,
+      "StartedTicks": 639299675253421263,
+      "NativeDPI": 168,
+      "ScalePercent": 175,
+      "OperatorReport": "完成，全部正常",
+      "Observations": {
+        "NonSyntheticAcceptedEdits": 22,
+        "ComposingAcceptedEdits": 2,
+        "NonComposingAcceptedEdits": 20,
+        "ByteCounts": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13
+        ]
+      },
+      "RawInputLogSHA256": "E0E5D4D164AFADD4B28013AFA1E19B16AA54C3F6176A674D845E35F711071372"
+    },
+    {
+      "Renderer": "femtovg",
+      "Run": "femtovg-resume",
+      "ExecutableSHA256": "C55E36CB3D6659E839C25F7888AD907BBB33B4368058B5ED38CB2684AEF9139F",
+      "ProcessId": 64444,
+      "StartedTicks": 639299711863146275,
+      "NativeDPI": 96,
+      "ScalePercent": 100,
+      "OperatorReport": "100% 完成，全部正常，已恢复",
+      "Observations": {
+        "NonSyntheticAcceptedEdits": 30,
+        "ComposingAcceptedEdits": 4,
+        "NonComposingAcceptedEdits": 26,
+        "ByteCounts": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          12
+        ]
+      },
+      "RawInputLogSHA256": "83E0C6468045B3C627FBF7371BF8ADF5432E1FC443CEB8C0E5BC649DF5187DEB"
+    },
+    {
+      "Renderer": "femtovg",
+      "Run": "femtovg-resume",
+      "ExecutableSHA256": "C55E36CB3D6659E839C25F7888AD907BBB33B4368058B5ED38CB2684AEF9139F",
+      "ProcessId": 64444,
+      "StartedTicks": 639299711863146275,
+      "NativeDPI": 144,
+      "ScalePercent": 150,
+      "OperatorReport": "150% 完成，全部正常",
+      "Observations": {
+        "NonSyntheticAcceptedEdits": 5,
+        "ComposingAcceptedEdits": 2,
+        "NonComposingAcceptedEdits": 3,
+        "ByteCounts": [
+          1,
+          2,
+          3,
+          6,
+          12
+        ]
+      },
+      "RawInputLogSHA256": "83E0C6468045B3C627FBF7371BF8ADF5432E1FC443CEB8C0E5BC649DF5187DEB"
+    },
+    {
+      "Renderer": "femtovg",
+      "Run": "femtovg-resume",
+      "ExecutableSHA256": "C55E36CB3D6659E839C25F7888AD907BBB33B4368058B5ED38CB2684AEF9139F",
+      "ProcessId": 64444,
+      "StartedTicks": 639299711863146275,
+      "NativeDPI": 120,
+      "ScalePercent": 125,
+      "OperatorReport": "125% 完成，全部正常",
+      "Observations": {
+        "NonSyntheticAcceptedEdits": 14,
+        "ComposingAcceptedEdits": 3,
+        "NonComposingAcceptedEdits": 11,
+        "ByteCounts": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          12
+        ]
+      },
+      "RawInputLogSHA256": "83E0C6468045B3C627FBF7371BF8ADF5432E1FC443CEB8C0E5BC649DF5187DEB"
+    }
+  ],
+  "Limitations": [
+    "150% Software candidate confirmation was supplied later from operator recollection; original log/pixels retained.",
+    "Later icon/dropdown changes have separate build identities; these physical rows are not relabelled with those executable hashes.",
+    "Computer Use high-DPI JPEGs may be normalized by the tool; HWND DPI and WGC source dimensions establish the physical scale."
+  ],
+  "Software150Confirmation": "候选定位、选词和取消均正常",
+  "FemtoVGResumeConfirmations": [
+    "150% 完成，全部正常",
+    "125% 完成，全部正常",
+    "100% 完成，全部正常，已恢复"
+  ],
+  "Scope": "Physical matrix belongs to the named layout builds; final icon/dropdown-only rebuilds are linked by source delta and receive separate current-build checks.",
+  "FinalDeltaChanges": [
+    "Custom list bounded icon wiring and Shell canonical-path spelling",
+    "Dropdown visual transition and pulse outline",
+    "Scrollbar reservation; no changes to Windows IME or command protection implementation"
+  ],
+  "FinalBuildSupplement": "final-physical-input.json; operator-confirmed final 100% checks, with explicit limits on the FemtoVG log corroboration."
+}

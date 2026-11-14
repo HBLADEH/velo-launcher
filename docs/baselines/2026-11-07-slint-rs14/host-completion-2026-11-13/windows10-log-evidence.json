@@ -1,0 +1,212 @@
+[
+  {
+    "Renderer": "software",
+    "Logs": [
+      {
+        "Path": "software/business/business.stderr.log",
+        "SHA256": "9A31747C90526FCA8DB1D12BDCF9176074530E400A1A43B8F21C2D1AD3CD7904",
+        "Assertions": 7,
+        "Results": [
+          "true"
+        ]
+      },
+      {
+        "Path": "software/business-wrapper.log",
+        "SHA256": "21064B9620E1330A2714BBB6283B7AB3122D603618C3D10CE3B6BA45E03D7708",
+        "Assertions": 7,
+        "Results": [
+          "true"
+        ]
+      },
+      {
+        "Path": "software/input-smoke-test.log",
+        "SHA256": "4079D950574AC278132470F2609BD3515A86A380331AFE47235AF6C74F9E87DB",
+        "Assertions": 22,
+        "Results": [
+          "true",
+          "true"
+        ]
+      },
+      {
+        "Path": "software/install.log",
+        "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+        "Assertions": 0,
+        "Results": []
+      },
+      {
+        "Path": "software/installed-window.log",
+        "SHA256": "211B1C03B9B72295CDBFADE80AAAFCB650E7A98DDA9EBA7817B47640EE09D2A4",
+        "Assertions": 0,
+        "Results": [
+          "true"
+        ]
+      },
+      {
+        "Path": "software/locked-install.log",
+        "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+        "Assertions": 0,
+        "Results": []
+      },
+      {
+        "Path": "software/locked-uninstall.log",
+        "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+        "Assertions": 0,
+        "Results": []
+      },
+      {
+        "Path": "software/pages/pages-restart-test.stderr.log",
+        "SHA256": "A626FD77572D4DB8F0567020B3E782E2AD43C5A6040819E2766160F64C6F0553",
+        "Assertions": 6,
+        "Results": [
+          "true"
+        ]
+      },
+      {
+        "Path": "software/pages/pages-smoke-test.stderr.log",
+        "SHA256": "3FD4CDCBEF9F8DE5FE28B3C2D006B766A1BEC845DF7EA2EA60CA574544A7549F",
+        "Assertions": 27,
+        "Results": [
+          "true"
+        ]
+      },
+      {
+        "Path": "software/pages-wrapper.log",
+        "SHA256": "09C0E92A66A12D28FD6FB2A187F102FC3D5B838BCE3715992F93EFD5C8343E45",
+        "Assertions": 33,
+        "Results": [
+          "true",
+          "true"
+        ]
+      },
+      {
+        "Path": "software/smoke-test.log",
+        "SHA256": "8D3F36D75CFE75DB9349FA93B417F73078F4F5059C48B4A7F4DD865633AC6F0B",
+        "Assertions": 0,
+        "Results": [
+          "true"
+        ]
+      },
+      {
+        "Path": "software/uninstall.log",
+        "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+        "Assertions": 0,
+        "Results": []
+      },
+      {
+        "Path": "software/upgrade.log",
+        "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+        "Assertions": 0,
+        "Results": []
+      }
+    ],
+    "WindowAndInput": true,
+    "BusinessAndPagesRestart": true,
+    "ActualRegistrationUpgradeLockAndUninstall": true,
+    "PhysicalInputOrIMEClaim": false
+  },
+  {
+    "Renderer": "femtovg",
+    "Logs": [
+      {
+        "Path": "femtovg/business/business.stderr.log",
+        "SHA256": "3FCFC64C67ECCE26873C874B0F257C492291B9F7AD8C6B1297C78E0A361138E7",
+        "Assertions": 7,
+        "Results": [
+          "true"
+        ]
+      },
+      {
+        "Path": "femtovg/business-wrapper.log",
+        "SHA256": "247D89A69171EE76E5670F3187DBB034B9F4E6BC66F6A862FF1527EDCA7C1837",
+        "Assertions": 7,
+        "Results": [
+          "true"
+        ]
+      },
+      {
+        "Path": "femtovg/input-smoke-test.log",
+        "SHA256": "98088BB3008BA676F4829171D903898622075D6F757BC8795051C7E7B1E72808",
+        "Assertions": 22,
+        "Results": [
+          "true",
+          "true"
+        ]
+      },
+      {
+        "Path": "femtovg/install.log",
+        "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+        "Assertions": 0,
+        "Results": []
+      },
+      {
+        "Path": "femtovg/installed-window.log",
+        "SHA256": "B0A1A8010F8D4CAC00C111C21E9EEF9BE81E4714A87CF614922C3D0B05966F5D",
+        "Assertions": 0,
+        "Results": [
+          "true"
+        ]
+      },
+      {
+        "Path": "femtovg/locked-install.log",
+        "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+        "Assertions": 0,
+        "Results": []
+      },
+      {
+        "Path": "femtovg/locked-uninstall.log",
+        "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+        "Assertions": 0,
+        "Results": []
+      },
+      {
+        "Path": "femtovg/pages/pages-restart-test.stderr.log",
+        "SHA256": "BBB0B41139B3999385001C20DF807903F74A0224FDA2AB445358731C6186383E",
+        "Assertions": 6,
+        "Results": [
+          "true"
+        ]
+      },
+      {
+        "Path": "femtovg/pages/pages-smoke-test.stderr.log",
+        "SHA256": "9412F9814B4ABD61065FE981F32934DD48D5641AFBF270C6C5D4151F3FAB9781",
+        "Assertions": 27,
+        "Results": [
+          "true"
+        ]
+      },
+      {
+        "Path": "femtovg/pages-wrapper.log",
+        "SHA256": "47AC57D624A6D54422F04212E0D427965D4D262FEEA1514BAD428BEB5CA405FC",
+        "Assertions": 33,
+        "Results": [
+          "true",
+          "true"
+        ]
+      },
+      {
+        "Path": "femtovg/smoke-test.log",
+        "SHA256": "F729A1F3CE4AFB517E6E3C79B89590ABF1892BA8E6463070C29D340E54958636",
+        "Assertions": 0,
+        "Results": [
+          "true"
+        ]
+      },
+      {
+        "Path": "femtovg/uninstall.log",
+        "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+        "Assertions": 0,
+        "Results": []
+      },
+      {
+        "Path": "femtovg/upgrade.log",
+        "SHA256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+        "Assertions": 0,
+        "Results": []
+      }
+    ],
+    "WindowAndInput": true,
+    "BusinessAndPagesRestart": true,
+    "ActualRegistrationUpgradeLockAndUninstall": true,
+    "PhysicalInputOrIMEClaim": false
+  }
+]

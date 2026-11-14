@@ -1,0 +1,40 @@
+{
+  "Stage": "RS-14",
+  "Date": "2026-11-13",
+  "Complete": false,
+  "DefaultRenderer": "software",
+  "AlternateRenderer": "femtovg",
+  "G4Passed": false,
+  "LocalVerificationScope": "Windows 11 x64 on this host; current code, isolated packages, actual per-user registration and protected-directory NSIS UAC updates",
+  "CompletedSincePreviousAudit": [
+    "Current measured-exe resource bracket, three idle states and 100 show-hide cycles per renderer",
+    "Default-renderer decision with memory, CPU, latency, frame cadence, input and visual tradeoffs retained",
+    "Explicit dependency license choices, recursive nested texts, embedded Khronos notices and exact ANGLE BSD provenance",
+    "Uninstaller locked-file refusal, corrected quoted uninstall command, x64 registry view and warning-free NSIS compilation",
+    "Actual per-user installation/upgrade/uninstall registration and shortcut branches with cleanup",
+    "Current Go portable -> actual NSIS Rust -> preserved Go package/data rollback for both renderers",
+    "Actual protected-directory NSIS updates: Software/FemtoVG Yes/No UAC with original backups, restart, tray exit and ACL restoration",
+    "Local Rust checks, legacy Go/Vue regression, ZIP/installer checks and source-bound verification receipts"
+  ],
+  "PendingConditions": [
+    {
+      "ID": "remote-CI",
+      "Status": "Not executed",
+      "Evidence": "Read-only GitHub query still returned zero self-hosted runners; the remote repository only has ci.yml. Local rust-preview.yml has not been pushed.",
+      "Required": "An authorized remote workflow and an interactive Windows x64 runner with the velo-locked-toolchain label and the exact pinned toolchain. No remote CI success inferred from local checks."
+    },
+    {
+      "ID": "compatibility-environments",
+      "Status": "Not available on this host",
+      "Required": "Windows 10, additional GPU drivers/third-party IMEs and any release-mandated display configurations. RS13 current-host 100/125/150/175 percent and mixed-screen acceptance is complete; 200 percent was unavailable."
+    },
+    {
+      "ID": "formal-system-package-transition",
+      "Status": "Isolated package and elevated update branches verified; full system transition not executed",
+      "Required": "A disposable Windows environment or explicitly isolated official installer setup for formal Go NSIS -> Rust system installation and Rust -> Go registration/data rollback. The user's formal installed program/data were preserved."
+    }
+  ],
+  "Publication": "Not performed; current version 0.1.0 remains an internal reconstruction version. Publication is separate from this verification request.",
+  "HistoricalFailuresPreserved": true,
+  "ExternalConditionsReplacedWithPassClaims": false
+}

@@ -1,0 +1,77 @@
+{
+  "date": "2026-11-04",
+  "timezone": "Asia/Shanghai",
+  "passed_automatic": true,
+  "g3": "not approved",
+  "full_verification": {
+    "femtovg_all_checks_completed": true,
+    "femtovg_raw_log": "rust/target/rs11-login-limit-verification-sequential.log",
+    "all_renderer_command_exit_code": 1,
+    "all_renderer_command_failure": "Software page startup denied foreground focus and hid on blur; timed out",
+    "software_retry_command": "./scripts/verify-rust.ps1 -Renderer Software -SmokeTest",
+    "software_retry_exit_code": 0,
+    "software_retry_raw_log": "rust/target/rs11-login2/desktop-verification.log",
+    "desktop_run_assisted": true
+  },
+  "retained_failure": {
+    "raw_log": "rust/target/rs11-login-limit-verification.log",
+    "old_copy": "rust/target/rs11-login-limit-old-copy-femtovg",
+    "reason": "Two UI suites were accidentally run concurrently using Ctrl+Alt+K; old-copy log records 99 hotkey reservation failures and grid navigation failure. Sequential full and old-copy runs are required."
+  },
+  "source_fingerprints_match_current": true,
+  "renderer_source_sets_equal": true,
+  "renderers": [
+    {
+      "renderer": "software",
+      "executable_sha256": "B234714B46F5396B64FA08F2F6001CC4677C6FB03DBD01F52B579CBCD672EA3D",
+      "executable_bytes": 13598208,
+      "source_fingerprints": 141,
+      "rust_tests": 80,
+      "fixed_component_assertions": 22,
+      "business_component_assertions": 7,
+      "pages_and_restart_assertions": 29,
+      "background_native_cases": 3,
+      "background_native_passed": true,
+      "old_data_copy": {
+        "passed": true,
+        "original_source_files_unchanged": true,
+        "raw_log": "rust/target/rs11-login2/desktop-verification.log"
+      }
+    },
+    {
+      "renderer": "femtovg",
+      "executable_sha256": "4CE277451CE75027BCEAE8DC830519158FA6F047BC2040FB43AFCD9181F8A5D6",
+      "executable_bytes": 13095424,
+      "source_fingerprints": 141,
+      "rust_tests": 80,
+      "fixed_component_assertions": 22,
+      "business_component_assertions": 7,
+      "pages_and_restart_assertions": 29,
+      "background_native_cases": 3,
+      "background_native_passed": true,
+      "old_data_copy": {
+        "passed": true,
+        "original_source_files_unchanged": true,
+        "raw_log": "rust/target/rs11-login2/desktop-verification.log"
+      }
+    }
+  ],
+  "original_login_failure": "first-login-failed.json",
+  "real_login_retry": "third actual login passed on both current Release builds: exact auto-started process command, new interactive logon, creation time, session, unchanged saved config and hidden launchers; user physical hotkeys and Chinese IME input passed; real/local login items, processes, endpoints and chords cleaned after normal quit",
+  "installer_fixture_scope": "Current change is login command validation/settings transaction only. Four installer scenarios are historical evidence for the prior startup-order build; full entry covers current portable native update.",
+  "uac_policy_changed": false,
+  "measurements": {
+    "memory": "not sampled",
+    "cpu": "not sampled",
+    "latency": "not sampled"
+  },
+  "second_login_failure": "second-login-failed.json",
+  "third_system_preparation": "prepared-third.json",
+  "passed_real_login": true,
+  "real_login_report": "third-login-results.json",
+  "cleanup_report": "third-cleanup.json",
+  "remaining": [
+    "real UAC consent and cancellation in an environment showing the prompt",
+    "published Rust NSIS package acceptance at RS-14"
+  ]
+}

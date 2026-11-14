@@ -1,0 +1,20 @@
+{
+  "RecordedAtUtc": "2026-11-06T11:03:13.0481897Z",
+  "FrozenCollectorSources": [
+    {
+      "Path": "scripts/measure-rs12-peak.ps1",
+      "SHA256": "11244DB16020ABAE15A9418992A8D2E240A307E710D31D527F2C73FA265A18DB"
+    },
+    {
+      "Path": "scripts/lib/resource-sample.ps1",
+      "SHA256": "B0EDC89C3A1BE157F8A8B9E46EF97AE3072AF0654E8B06312534674D9A02439A"
+    },
+    {
+      "Path": "scripts/lib/rs12-resource-observer.cs",
+      "SHA256": "5B8A1AA420A96D8C663C4BC81E015C279CE8DEB72CD9D650AB24FAD408A067C3"
+    }
+  ],
+  "HarnessSHA256": "A235B6D8A5AEAE7C2B204CEA7422710C2AD244B2C87B354CC76EBEBF4EA6DC8E",
+  "CollectionLogSHA256": "01935C2A4F3216D66F256A35CBE3A6E8C7FBE13EA25668EE8FC2834A20C8599F",
+  "RawDataPolicy": "Unredacted paths and business data remain local; public captures include only process/resource/scan metadata."
+}

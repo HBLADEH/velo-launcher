@@ -1,0 +1,12 @@
+﻿{
+    "AtUtc":  "2026-11-14T15:55:17.0929807Z",
+    "Passed":  true,
+    "Cases":  [
+                  "existing-receipt-atomically-replaced",
+                  "durable-byte-verified-program-registry-shortcut-snapshot",
+                  "restore-original-program-registry-types-shortcuts-keep-unknown",
+                  "corrupt-backup-rejected-before-restore",
+                  "machine-registry-and-real-shortcuts-not-used"
+              ],
+    "Scope":  "Exact installer helper functions, synthetic program paths and temporary HKCU key; not an elevated system-install substitute."
+}

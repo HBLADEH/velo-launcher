@@ -1,0 +1,29 @@
+{
+  "Passed": true,
+  "SyntheticReference": true,
+  "DeclaredDurationsMilliseconds": [
+    220,
+    100
+  ],
+  "RecoveredOpacityFits": [
+    {
+      "DurationMilliseconds": 210,
+      "OnsetSourceMilliseconds": 50.66670000000158,
+      "RMSE": 0.009644318121526635,
+      "DurationRangeAtRMSEPlus002": [
+        146,
+        272
+      ]
+    },
+    {
+      "DurationMilliseconds": 102,
+      "OnsetSourceMilliseconds": 49.66670000000158,
+      "RMSE": 0.0014038366364383286,
+      "DurationRangeAtRMSEPlus002": [
+        76,
+        130
+      ]
+    }
+  ],
+  "Scope": "Calibrates title optical fitting with known opacity/translation using bicubic raster transforms. Does not establish native timing acceptance."
+}
