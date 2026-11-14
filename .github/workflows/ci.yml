@@ -11,6 +11,9 @@ jobs:
     # interactive Windows desktop for native component smoke tests.
     runs-on: [self-hosted, Windows, X64, velo-locked-toolchain]
     timeout-minutes: 180
+    env:
+      CARGO_BUILD_JOBS: '1'
+      GOTOOLCHAIN: go1.25.6
     concurrency:
       group: velo-rust-desktop-validation
       cancel-in-progress: false
@@ -21,6 +24,7 @@ jobs:
       - uses: actions/setup-go@v5
         with:
           go-version: '1.25.6'
+          cache: false
       - name: Verify both product renderers
         shell: pwsh
         run: ./scripts/verify-rust.ps1 -Product -SmokeTest
