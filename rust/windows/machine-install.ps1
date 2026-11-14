@@ -15,6 +15,8 @@ $journal = Join-Path $archive 'pending.json'
 $machine = $null
 $transaction = $null
 $canRecover = $false
+$installMutex = $null
+$installLockHeld = $false
 $code = 30
 function Assert-Ordinary([string]$Path) {
     $next = [IO.Path]::GetFullPath($Path)
@@ -199,6 +201,12 @@ function Validate-Payload {
 try {
     $principal = [Security.Principal.WindowsPrincipal]::new([Security.Principal.WindowsIdentity]::GetCurrent())
     if (-not $principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator) -or -not [Environment]::Is64BitProcess) { throw 'The machine installer requires an elevated x64 process.' }
+    # All install directories share one HKLM registration. Exclude other
+    # installers before reading a journal or changing any program resources.
+    $installMutex = [Threading.Mutex]::new($false,'Global\Velo.MachineInstaller')
+    try { $installLockHeld = $installMutex.WaitOne(0) }
+    catch [Threading.AbandonedMutexException] { $installLockHeld = $true }
+    if (-not $installLockHeld) { $code = 33; throw 'Another Velo installer or uninstaller is running; wait for it to finish.' }
     $programFiles = [Environment]::GetFolderPath('ProgramFiles').TrimEnd('\')
     if (-not $root.StartsWith($programFiles+'\',[StringComparison]::OrdinalIgnoreCase) -or $root -eq $programFiles) { throw 'Machine installs must use a protected Program Files subdirectory.' }
     Assert-Ordinary $root
@@ -305,7 +313,13 @@ try {
         try { Restore-Snapshot (Join-Path $archive $transaction); [IO.File]::Delete($journal); $code=31 } catch { $code=32 }
     }
     # Local diagnostic only; caller exports selected fields, never user paths.
-    try { if (Test-Path -LiteralPath $archive) { Write-DurableJson (Join-Path $archive 'last-error.json') ([ordered]@{ AtUtc=[datetime]::UtcNow.ToString('o'); Action=$Action; ExitCode=$code; Message=$message; RecoveryRequired=($code -eq 32) }) } } catch { }
+    try { if ($installLockHeld -and (Test-Path -LiteralPath $archive)) { Write-DurableJson (Join-Path $archive 'last-error.json') ([ordered]@{ AtUtc=[datetime]::UtcNow.ToString('o'); Action=$Action; ExitCode=$code; Message=$message; RecoveryRequired=($code -eq 32) }) } } catch { }
     Write-Error -Message $message -ErrorAction Continue
-} finally { if ($machine) { $machine.Dispose() } }
+} finally {
+    if ($machine) { $machine.Dispose() }
+    if ($installMutex) {
+        if ($installLockHeld) { $installMutex.ReleaseMutex() }
+        $installMutex.Dispose()
+    }
+}
 exit $code

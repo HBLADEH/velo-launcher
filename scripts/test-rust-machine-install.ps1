@@ -87,6 +87,15 @@ try {
             Assert-Go
             $original=Program-State
             $original|Set-Content -LiteralPath (Join-Path $EvidenceDirectory 'original-go-state.json') -Encoding utf8NoBOM
+            $installMutex=[Threading.Mutex]::new($false,'Global\Velo.MachineInstaller')
+            $installMutexHeld=$false
+            try {
+                $installMutexHeld=$installMutex.WaitOne(0)
+                if(-not $installMutexHeld){throw 'Another machine acceptance transaction is active.'}
+                Invoke-Installer 'software-installer.exe' 33
+                if((Program-State) -ne $original -or (Test-Path -LiteralPath (Join-Path $root '.velo-rollback'))){throw 'Concurrent installer changed program, registration, shortcuts or journal.'}
+            } finally {if($installMutexHeld){$installMutex.ReleaseMutex()};$installMutex.Dispose()}
+            $cases.Add(@{Name='concurrent-machine-installer-rejected-before-snapshot';Passed=$true})
             [IO.File]::WriteAllText((Join-Path $root 'user-owned.keep'),'Synthetic unknown file must survive takeover, rollback and Rust uninstall.')
             $locked=[IO.File]::Open($exe,'Open','Read','Read')
             try{Invoke-Installer 'software-installer.exe' 30}finally{$locked.Dispose()}

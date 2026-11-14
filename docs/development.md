@@ -46,6 +46,8 @@ $tools = Get-Content -Raw rust/target/packaging-tools-new/tools.json | ConvertFr
 
 ## 数据与恢复
 
+系统安装、卸载与回退共享 `Global\Velo.MachineInstaller` 互斥锁，覆盖不同 renderer 和目标目录使用的共同 HKLM 注册。忙时返回 33 并保持程序、注册与事务记录不变；进程异常终止后，新持有者仍按持久化 journal 恢复。最终安装器验收包含真实 NSIS 的跨进程互斥拒绝。
+
 正式数据为 `%LOCALAPPDATA%\Velo`；有效旧配置读取后不重写。数据层打开前为每个安装事务建立 `VeloRustMigrationBackups` 原文快照，失败时拒绝初始化。更新安装前仍要求 SHA-256 校验与配置备份成功，安装版通过 UAC 系统安装器更新，保持当前 renderer。
 
 安装目录中的 `.velo-rollback` 保存程序、注册与快捷方式恢复档案；有原始 Go 快照时，`uninstall.exe /ROLLBACK` 可恢复旧程序。普通卸载保留用户数据、未知文件和恢复档案。用户启动实例以普通权限运行，安装器不以管理员身份遍历用户数据。

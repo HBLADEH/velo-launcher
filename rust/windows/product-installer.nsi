@@ -83,6 +83,12 @@ Section "Install"
   !insertmacro SetPowerShell
   nsExec::ExecToLog '$\"$PowerShell$\" -NoProfile -NonInteractive -ExecutionPolicy Bypass -WindowStyle Hidden -File $\"$PLUGINSDIR\payload\machine-install.ps1$\" -Action Install -InstallDirectory $\"$INSTDIR$\" -Payload $\"$PLUGINSDIR\payload$\"'
   Pop $0
+  ${If} $0 == 33
+    SetErrorLevel 33
+    IfSilent +2
+      MessageBox MB_OK|MB_ICONSTOP "另一个 Velo 安装或卸载正在进行，请等待完成后再试。"
+    Quit
+  ${EndIf}
   ${If} $0 != 0
     SetErrorLevel 30
     IfSilent +2
@@ -114,6 +120,12 @@ Section "Uninstall"
   !insertmacro SetPowerShell
   nsExec::ExecToLog '$\"$PowerShell$\" -NoProfile -NonInteractive -ExecutionPolicy Bypass -WindowStyle Hidden -File $\"$PLUGINSDIR\machine-install.ps1$\" -Action $Operation -InstallDirectory $\"$INSTDIR$\"'
   Pop $0
+  ${If} $0 == 33
+    SetErrorLevel 33
+    IfSilent +2
+      MessageBox MB_OK|MB_ICONSTOP "另一个 Velo 安装或卸载正在进行，请等待完成后再试。"
+    Quit
+  ${EndIf}
   ${If} $0 != 0
     SetErrorLevel 30
     IfSilent +2
