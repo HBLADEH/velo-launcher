@@ -1,0 +1,24 @@
+{
+  "AtUtc": "2026-11-15T19:09:45.9769139Z",
+  "Stage": "Prepare",
+  "Passed": true,
+  "Cases": [
+    {
+      "Passed": true,
+      "Name": "concurrent-machine-installer-rejected-before-snapshot"
+    },
+    {
+      "Passed": true,
+      "Name": "locked-Go-takeover-rejected-before-change"
+    },
+    {
+      "Passed": true,
+      "Name": "unknown-baseline-rejected-without-change"
+    },
+    {
+      "Passed": true,
+      "Name": "actual-Go-to-Software-same-path-HKLM-takeover"
+    }
+  ],
+  "HostModified": false
+}

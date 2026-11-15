@@ -1,0 +1,22 @@
+{
+  "AtUtc": "2026-11-15T19:12:21.5266050Z",
+  "Stage": "Rollback",
+  "Passed": true,
+  "Cases": [
+    {
+      "SemanticUninstallResult": {
+        "LauncherExitCode": 0,
+        "OperationResult": {
+          "Schema": 1,
+          "AtUtc": "2026-11-15T19:12:21.1751606Z",
+          "Action": "Rollback",
+          "Passed": true,
+          "UserDataModified": false
+        }
+      },
+      "Passed": true,
+      "Name": "actual-Go-machine-rollback-byte-exact"
+    }
+  ],
+  "HostModified": false
+}

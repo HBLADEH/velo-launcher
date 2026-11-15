@@ -1,0 +1,21 @@
+{
+  "AtUtc": "2026-11-15T19:11:56.2379507Z",
+  "Stage": "Switch",
+  "Passed": true,
+  "Cases": [
+    {
+      "Passed": true,
+      "Name": "locked-Rust-upgrade-and-uninstall-rejected"
+    },
+    {
+      "FixtureOnly": true,
+      "Passed": true,
+      "Name": "post-replacement-fault-restores-exact-Software-state"
+    },
+    {
+      "Passed": true,
+      "Name": "actual-Software-to-FemtoVG-machine-upgrade"
+    }
+  ],
+  "HostModified": false
+}

@@ -1,0 +1,22 @@
+{
+  "AtUtc": "2026-11-15T19:13:16.2824691Z",
+  "Stage": "Cleanup",
+  "Passed": true,
+  "Cases": [
+    {
+      "SemanticUninstallResult": {
+        "LauncherExitCode": 0,
+        "OperationResult": {
+          "Schema": 1,
+          "AtUtc": "2026-11-15T19:13:16.2501045Z",
+          "Action": "Uninstall",
+          "Passed": true,
+          "UserDataModified": false
+        }
+      },
+      "Passed": true,
+      "Name": "actual-Rust-system-uninstall-keeps-unknown-and-rollback-archives"
+    }
+  ],
+  "HostModified": false
+}

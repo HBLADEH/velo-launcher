@@ -1,0 +1,267 @@
+{
+  "Tag": "v0.10.0",
+  "PublicAssets": [
+    {
+      "Name": "release-manifest.json",
+      "SHA256": "C5FABB920B9F151F7CD91B252CF0648D2B07EDD1BA52E15E7957F634C917A9B7",
+      "Bytes": 78218
+    },
+    {
+      "Name": "velo-launcher-amd64-installer.exe",
+      "SHA256": "34FC0D1CF1A3F0636AB1A1D2FCC3AB16612E4E1AF6ECFE1F3BB5D6321187159D",
+      "Bytes": 5333148
+    },
+    {
+      "Name": "velo-rust-0.10.0-licenses.zip",
+      "SHA256": "996B673F2AC43E19AE09B59DA9593ECE0D56662BF2DCEBFBECF00D0C9816DB64",
+      "Bytes": 2520406
+    },
+    {
+      "Name": "velo-rust-femtovg-x64-installer.exe",
+      "SHA256": "2121BF75A4735122B4988851F649708FC0389EEE5EBA76DAD67B256961A82316",
+      "Bytes": 5284076
+    },
+    {
+      "Name": "velo-rust-x64-installer.exe",
+      "SHA256": "34FC0D1CF1A3F0636AB1A1D2FCC3AB16612E4E1AF6ECFE1F3BB5D6321187159D",
+      "Bytes": 5333148
+    }
+  ],
+  "Builds": [
+    {
+      "Renderer": "software",
+      "SourceCommit": "a9f06efc14df6c525626183caa5a6ac9598d0e6d",
+      "SourceInputsVerified": 225,
+      "PayloadEntriesVerified": 601,
+      "Dependencies": 322,
+      "MissingLicenseTexts": 0,
+      "ExecutableSHA256": "3689F6DDFA5D7D4619DB8987D95C37897B02E36A33FC4064EFDF713053378777"
+    },
+    {
+      "Renderer": "femtovg",
+      "SourceCommit": "a9f06efc14df6c525626183caa5a6ac9598d0e6d",
+      "SourceInputsVerified": 225,
+      "PayloadEntriesVerified": 605,
+      "Dependencies": 324,
+      "MissingLicenseTexts": 0,
+      "ExecutableSHA256": "F2C0B6D495C5245AFB0296F082884818181E3A2932D6ABFC81F714CD65D11C21"
+    }
+  ],
+  "MachineAcceptance": {
+    "prepare": {
+      "AtUtc": "2026-11-15T19:09:45.9769139Z",
+      "Stage": "Prepare",
+      "Passed": true,
+      "Cases": [
+        {
+          "Passed": true,
+          "Name": "concurrent-machine-installer-rejected-before-snapshot"
+        },
+        {
+          "Passed": true,
+          "Name": "locked-Go-takeover-rejected-before-change"
+        },
+        {
+          "Passed": true,
+          "Name": "unknown-baseline-rejected-without-change"
+        },
+        {
+          "Passed": true,
+          "Name": "actual-Go-to-Software-same-path-HKLM-takeover"
+        }
+      ],
+      "HostModified": false
+    },
+    "switch": {
+      "AtUtc": "2026-11-15T19:11:56.2379507Z",
+      "Stage": "Switch",
+      "Passed": true,
+      "Cases": [
+        {
+          "Passed": true,
+          "Name": "locked-Rust-upgrade-and-uninstall-rejected"
+        },
+        {
+          "FixtureOnly": true,
+          "Passed": true,
+          "Name": "post-replacement-fault-restores-exact-Software-state"
+        },
+        {
+          "Passed": true,
+          "Name": "actual-Software-to-FemtoVG-machine-upgrade"
+        }
+      ],
+      "HostModified": false
+    },
+    "rollback": {
+      "AtUtc": "2026-11-15T19:12:21.5266050Z",
+      "Stage": "Rollback",
+      "Passed": true,
+      "Cases": [
+        {
+          "SemanticUninstallResult": {
+            "LauncherExitCode": 0,
+            "OperationResult": {
+              "Schema": 1,
+              "AtUtc": "2026-11-15T19:12:21.1751606Z",
+              "Action": "Rollback",
+              "Passed": true,
+              "UserDataModified": false
+            }
+          },
+          "Passed": true,
+          "Name": "actual-Go-machine-rollback-byte-exact"
+        }
+      ],
+      "HostModified": false
+    },
+    "cleanup": {
+      "AtUtc": "2026-11-15T19:13:16.2824691Z",
+      "Stage": "Cleanup",
+      "Passed": true,
+      "Cases": [
+        {
+          "SemanticUninstallResult": {
+            "LauncherExitCode": 0,
+            "OperationResult": {
+              "Schema": 1,
+              "AtUtc": "2026-11-15T19:13:16.2501045Z",
+              "Action": "Uninstall",
+              "Passed": true,
+              "UserDataModified": false
+            }
+          },
+          "Passed": true,
+          "Name": "actual-Rust-system-uninstall-keeps-unknown-and-rollback-archives"
+        }
+      ],
+      "HostModified": false
+    },
+    "fresh-install": {
+      "Passed": true,
+      "FreshPublicInstall": true,
+      "OfficialDisplayName": true,
+      "NoGoSnapshot": true,
+      "UnavailableRollbackRejected": true,
+      "FreshUninstall": true,
+      "GuestOnly": true
+    },
+    "rust-0.1.0-upgrade": {
+      "Passed": true,
+      "FromVersion": "0.1.0",
+      "ToVersion": "0.10.0",
+      "ToTag": "v0.10.0",
+      "Renderer": "software",
+      "OldInstallerSHA256": "683823731FB4D1E7E501A802BBDC67E34A2F0312BF7A590F74ABE8C81038D5C9",
+      "NewInstallerSHA256": "34FC0D1CF1A3F0636AB1A1D2FCC3AB16612E4E1AF6ECFE1F3BB5D6321187159D",
+      "GuestOnly": true
+    },
+    "batch": {
+      "Passed": true,
+      "Stages": [
+        "Prepare",
+        "Switch",
+        "Rollback",
+        "Cleanup",
+        "Rust010Upgrade",
+        "Fresh"
+      ],
+      "InstallerOnly": true,
+      "CurrentPhysicalIMEClaimed": false,
+      "HostModified": false
+    },
+    "final-cleanup": {
+      "Passed": true,
+      "NoVeloProcess": true,
+      "MachineRegistrationAbsent": true,
+      "MachineShortcutsAbsent": true,
+      "UserDataOriginalsUnchanged": true,
+      "ArchivesPreserved": true,
+      "GuestOnly": true
+    }
+  },
+  "HistoricalG4Evidence": "docs/baselines/2026-11-07-slint-rs14/machine-completion-2026-11-14/g4-acceptance.md",
+  "CurrentPhysicalIMERetested": false,
+  "HostFormalInstallationUsedForTests": false,
+  "ProductVersion": "0.10.0",
+  "DefaultHotkey": "Alt+Space",
+  "ExistingHotkeysPreserved": true,
+  "GitHubCI": {
+    "id": 43750461214,
+    "html_url": "https://github.com/HBLADEH/velo-launcher/actions/runs/43750461214",
+    "head_sha": "a9f06efc14df6c525626183caa5a6ac9598d0e6d",
+    "status": "completed",
+    "conclusion": "success"
+  },
+  "LegacyUpdaterSourcesMatchTag": "v0.9.11",
+  "LegacyFullRegressionPassed": true,
+  "LegacyFrontendTestsPassed": 26,
+  "LegacyPortableMigration": "Manual installation with data preserved; no standalone exe asset provided",
+  "InstallerAcceptanceScope": "Elevated installer-only transactions through authenticated VMware Tools in the disposable Windows 10 guest; no current consent-dialog or physical IME claim",
+  "PreparationNotes": [
+    "An obsolete unattended-setup credential was rejected; the stored current test account then authenticated successfully. No account or security setting was changed.",
+    "Input transfer was retried after an already-existing seed-directory error; no installer had started. Subsequent full acceptance passed.",
+    "One status-copy observation failed after installer acceptance completed; a fresh read succeeded and all completed evidence was retained."
+  ],
+  "GuestCleanup": {
+    "VMShutDown": true,
+    "ExecutionStateRequestReleased": true,
+    "PowerSettingsChanged": false
+  },
+  "ProductVerification": {
+    "software": {
+      "RecordedAtUtc": "2026-11-15T19:04:55.8571696Z",
+      "Renderer": "software",
+      "ProductIdentity": true,
+      "ChecksPassed": true,
+      "SmokeTestPassed": true,
+      "ExecutableSHA256": "3689F6DDFA5D7D4619DB8987D95C37897B02E36A33FC4064EFDF713053378777",
+      "BuildIdentitySHA256": "FD93AD211E875A5AEFC7EDBE3D406815BEF327648E9BAE4890333CDFDF0724A8",
+      "CargoMetadataSHA256": "11D69D0E0BA372DF477D814B5C7BD5E8C9542455970EB091FB959F0434BF8FE1",
+      "RustTestsPassed": 89
+    },
+    "femtovg": {
+      "RecordedAtUtc": "2026-11-15T18:55:23.8518629Z",
+      "Renderer": "femtovg",
+      "ProductIdentity": true,
+      "ChecksPassed": true,
+      "SmokeTestPassed": true,
+      "ExecutableSHA256": "F2C0B6D495C5245AFB0296F082884818181E3A2932D6ABFC81F714CD65D11C21",
+      "BuildIdentitySHA256": "359AC074BBB3FC44E3C6B5E8270A7CE9D529FCE5A43B8676D343DAC8FDCEAB7C",
+      "CargoMetadataSHA256": "6444AD1B949F13208FE44C6CC7885AA72133B5D38881CCCF98A92C5DA0C24E58",
+      "RustTestsPassed": 89
+    }
+  },
+  "PublicFiles": [
+    {
+      "Name": "release-manifest.json",
+      "SHA256": "C5FABB920B9F151F7CD91B252CF0648D2B07EDD1BA52E15E7957F634C917A9B7",
+      "Bytes": 78218
+    },
+    {
+      "Name": "SHA256SUMS.txt",
+      "SHA256": "27F8DD86AF5CFBCB5A4BD30D51E27A259C3F141A2F88DD277A427FC858AB7113",
+      "Bytes": 485
+    },
+    {
+      "Name": "velo-launcher-amd64-installer.exe",
+      "SHA256": "34FC0D1CF1A3F0636AB1A1D2FCC3AB16612E4E1AF6ECFE1F3BB5D6321187159D",
+      "Bytes": 5333148
+    },
+    {
+      "Name": "velo-rust-0.10.0-licenses.zip",
+      "SHA256": "996B673F2AC43E19AE09B59DA9593ECE0D56662BF2DCEBFBECF00D0C9816DB64",
+      "Bytes": 2520406
+    },
+    {
+      "Name": "velo-rust-femtovg-x64-installer.exe",
+      "SHA256": "2121BF75A4735122B4988851F649708FC0389EEE5EBA76DAD67B256961A82316",
+      "Bytes": 5284076
+    },
+    {
+      "Name": "velo-rust-x64-installer.exe",
+      "SHA256": "34FC0D1CF1A3F0636AB1A1D2FCC3AB16612E4E1AF6ECFE1F3BB5D6321187159D",
+      "Bytes": 5333148
+    }
+  ]
+}
