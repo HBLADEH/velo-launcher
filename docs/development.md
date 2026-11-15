@@ -42,7 +42,7 @@ $tools = Get-Content -Raw rust/target/packaging-tools-new/tools.json | ConvertFr
 
 输出目录必须全新。打包校验完整检查/冒烟回执、exe、metadata 和全部源码指纹，收集依赖许可及明确许可选项，生成两个系统安装器、许可 ZIP、构建清单和 SHA256。没有独立免安装版。内部候选继续使用 `package-rust-product.ps1`；只有显式 `-Release` 且策略批准时才接受正式包元数据。
 
-发布时先上传 `velo-launcher-amd64-installer.exe`，再上传其余资产。此文件必须与 `velo-rust-x64-installer.exe` 字节和 SHA-256 完全相同；旧 Go 更新器选择第一个安装包，GitHub API 按上传顺序和公开资产列表按名称顺序都应先得到该 Software 副本。发布后运行 `go run ./cmd/check-legacy-update -download-dir rust/target/legacy-public-check`，另用 `-feed` 和新目录核对限流备用通道；命令只下载和校验，不执行安装。禁止提供名为 `velo-launcher.exe` 的裸 Rust 正式构建充当免安装迁移包。
+发布时先上传 `velo-launcher-amd64-installer.exe`，再上传其余资产。此文件必须与 `velo-rust-x64-installer.exe` 字节和 SHA-256 完全相同；旧 Go 更新器选择第一个安装包，发布前后都要检查 GitHub API 和公开资产列表中的第一个 `-installer.exe` 是该 Software 副本，不能将校验清单等非安装资产计入。发布后运行 `go run ./cmd/check-legacy-update -download-dir rust/target/legacy-public-check`，另用 `-feed` 和新目录核对限流备用通道；命令只下载和校验，不执行安装。禁止提供名为 `velo-launcher.exe` 的裸 Rust 正式构建充当免安装迁移包。
 
 在隔离测试客户机验证最终安装包的新装、原位接管、升级、失败恢复、回退和卸载。不要在宿主机正式安装中运行测试。只有验证后的精确文件才进入 GitHub Release，保留校验值与构建身份。发布采用正式 Release，并显式设为 latest，避免旧 Go 的数值更大版本影响 GitHub 的默认选择。
 

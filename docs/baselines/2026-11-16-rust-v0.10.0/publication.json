@@ -1,0 +1,68 @@
+{
+  "RecordedAt": "2026-11-16T03:36:59.6879036+08:00",
+  "Release": {
+    "URL": "https://github.com/HBLADEH/velo-launcher/releases/tag/v0.10.0",
+    "Tag": "v0.10.0",
+    "Latest": "v0.10.0",
+    "Draft": false,
+    "Prerelease": false,
+    "FirstInstaller": "velo-launcher-amd64-installer.exe",
+    "Assets": 6,
+    "PublishedAt": "2026-11-15T19:34:58Z",
+    "SHA256": "34FC0D1CF1A3F0636AB1A1D2FCC3AB16612E4E1AF6ECFE1F3BB5D6321187159D"
+  },
+  "LegacyNormalCheck": {
+    "current": "0.9.11",
+    "version": "0.10.0",
+    "installer": "velo-launcher-amd64-installer.exe",
+    "sha256": "34fc0d1cf1a3f0636ab1a1d2fcc3ab16612e4e1af6ecfe1f3bb5d6321187159d",
+    "feed": false
+  },
+  "LegacyForcedPublicFeedCheck": {
+    "current": "0.9.11",
+    "version": "0.10.0",
+    "installer": "velo-launcher-amd64-installer.exe",
+    "sha256": "34fc0d1cf1a3f0636ab1a1d2fcc3ab16612e4e1af6ecfe1f3bb5d6321187159d",
+    "feed": true
+  },
+  "UploadedAssetsReadBack": [
+    {
+      "Name": "release-manifest.json",
+      "SHA256": "C5FABB920B9F151F7CD91B252CF0648D2B07EDD1BA52E15E7957F634C917A9B7"
+    },
+    {
+      "Name": "SHA256SUMS.txt",
+      "SHA256": "27F8DD86AF5CFBCB5A4BD30D51E27A259C3F141A2F88DD277A427FC858AB7113"
+    },
+    {
+      "Name": "velo-launcher-amd64-installer.exe",
+      "SHA256": "34FC0D1CF1A3F0636AB1A1D2FCC3AB16612E4E1AF6ECFE1F3BB5D6321187159D"
+    },
+    {
+      "Name": "velo-rust-0.10.0-licenses.zip",
+      "SHA256": "996B673F2AC43E19AE09B59DA9593ECE0D56662BF2DCEBFBECF00D0C9816DB64"
+    },
+    {
+      "Name": "velo-rust-femtovg-x64-installer.exe",
+      "SHA256": "2121BF75A4735122B4988851F649708FC0389EEE5EBA76DAD67B256961A82316"
+    },
+    {
+      "Name": "velo-rust-x64-installer.exe",
+      "SHA256": "34FC0D1CF1A3F0636AB1A1D2FCC3AB16612E4E1AF6ECFE1F3BB5D6321187159D"
+    }
+  ],
+  "CI": {
+    "id": 43750461214,
+    "html_url": "https://github.com/HBLADEH/velo-launcher/actions/runs/43750461214",
+    "head_sha": "a9f06efc14df6c525626183caa5a6ac9598d0e6d",
+    "status": "completed",
+    "conclusion": "success"
+  },
+  "RunnerCleanup": {
+    "RunnerRegistrationRemoved": true,
+    "ServiceInstalled": false,
+    "RunId": 43750461214,
+    "Conclusion": "success"
+  },
+  "PhysicalIMEOrConsentRetested": false
+}
