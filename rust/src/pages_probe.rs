@@ -316,6 +316,24 @@ impl Controller {
                         && app.get_settings_draft().maximum == "17",
                     "hide_preserves_settings_draft",
                 )?;
+                let toggle = crate::platform::windows::desktop::Event::Toggle as i32;
+                app.invoke_desktop_event(toggle);
+                self.check(
+                    app.get_presented()
+                        && app.get_appearance_open()
+                        && app.get_settings_draft().maximum == "17",
+                    "tray_show_preserves_settings_draft",
+                )?;
+                app.invoke_desktop_event(toggle);
+                self.check(!app.get_presented(), "tray_second_activation_hides")?;
+                app.set_native_dialog_active(true);
+                app.invoke_desktop_event(toggle);
+                self.check(!app.get_presented(), "tray_defers_to_native_dialog")?;
+                app.set_native_dialog_active(false);
+                let open = crate::platform::windows::desktop::Event::Open as i32;
+                app.invoke_desktop_event(open);
+                app.invoke_desktop_event(open);
+                self.check(app.get_presented(), "tray_open_menu_always_shows")?;
                 self.complete(app);
             }
             40 => {

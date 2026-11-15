@@ -130,7 +130,7 @@ impl Transport for Http {
                 .unwrap_or_default();
             let direct = bypass(&host, parts.nPort, &excluded);
             let session = Handle::new(WinHttpOpen(
-                wide("Velo-Slint/0.1.0").as_ptr(),
+                wide(concat!("Velo-Slint/", env!("CARGO_PKG_VERSION"))).as_ptr(),
                 if direct {
                     WINHTTP_ACCESS_TYPE_NO_PROXY
                 } else if proxy.is_some() {

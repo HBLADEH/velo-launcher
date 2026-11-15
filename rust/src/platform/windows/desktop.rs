@@ -44,6 +44,8 @@ pub enum Event {
     TrayRestored = 6,
     TrayUnavailable = 7,
     SecondInstance = 8,
+    Toggle = 9,
+    Hide = 10,
 }
 
 struct Context {
@@ -51,6 +53,7 @@ struct Context {
     icon: Cell<HICON>,
     added: Cell<bool>,
     retries: Cell<u32>,
+    visible_at_press: Cell<Option<bool>>,
     menu_active: Arc<AtomicBool>,
     taskbar_created: u32,
     activate: u32,
@@ -100,7 +103,7 @@ impl Context {
         data.uFlags = NIF_MESSAGE | NIF_ICON | NIF_TIP | NIF_SHOWTIP;
         data.uCallbackMessage = TRAY_MESSAGE;
         data.hIcon = icon;
-        for (target, source) in data.szTip.iter_mut().zip(wide("Velo · Rust + Slint")) {
+        for (target, source) in data.szTip.iter_mut().zip(wide("Velo")) {
             *target = source;
         }
         let operation = if self.added.get() {
@@ -218,8 +221,32 @@ unsafe extern "system" fn procedure(
         }
         TRAY_MESSAGE => {
             match lparam as u32 & 0xffff {
-                NIN_SELECT | NIN_KEYSELECT => (context.callback)(Event::Open),
-                WM_CONTEXTMENU => context.menu(hwnd),
+                WM_LBUTTONDOWN | WM_LBUTTONDBLCLK => {
+                    // Explorer can take focus before NIN_SELECT. Remember the
+                    // press state so blur cannot turn a hide click into a show.
+                    // SAFETY: Only query the owner; no HWND is retained here.
+                    let owner = unsafe { GetWindow(hwnd, GW_OWNER) };
+                    context.visible_at_press.set((!owner.is_null()).then(|| {
+                        // SAFETY: Win32 handles an owner destroyed after GetWindow.
+                        unsafe { IsWindowVisible(owner) != 0 }
+                    }));
+                }
+                NIN_SELECT => {
+                    let event = match context.visible_at_press.take() {
+                        Some(true) => Event::Hide,
+                        Some(false) => Event::Open,
+                        None => Event::Toggle,
+                    };
+                    (context.callback)(event);
+                }
+                NIN_KEYSELECT => {
+                    context.visible_at_press.set(None);
+                    (context.callback)(Event::Toggle);
+                }
+                WM_CONTEXTMENU => {
+                    context.visible_at_press.set(None);
+                    context.menu(hwnd);
+                }
                 _ => {}
             }
             0
@@ -345,6 +372,7 @@ impl Service {
                         icon: Cell::new(null_mut()),
                         added: Cell::new(false),
                         retries: Cell::new(0),
+                        visible_at_press: Cell::new(None),
                         menu_active: menu,
                         taskbar_created: RegisterWindowMessageW(wide("TaskbarCreated").as_ptr()),
                         activate: instance::activation_message(),
@@ -420,6 +448,15 @@ mod tests {
     use super::*;
     use std::time::Duration;
 
+    struct Owner(HWND);
+
+    impl Drop for Owner {
+        fn drop(&mut self) {
+            // SAFETY: This thread created the test owner; the service drops first.
+            unsafe { DestroyWindow(self.0) };
+        }
+    }
+
     #[test]
     fn native_endpoint_second_launch_tray_recovery_and_cleanup() {
         let identity = Identity::resolve(
@@ -431,6 +468,25 @@ mod tests {
             panic!("not primary")
         };
         let (events, received) = mpsc::channel();
+        // A zero-sized owner exercises visibility without showing test content.
+        // SAFETY: STATIC is a system class; this thread owns the returned HWND.
+        let owner = Owner(unsafe {
+            CreateWindowExW(
+                WS_EX_TOOLWINDOW,
+                wide("STATIC").as_ptr(),
+                null(),
+                WS_POPUP,
+                0,
+                0,
+                0,
+                0,
+                null_mut(),
+                null_mut(),
+                GetModuleHandleW(null()),
+                null(),
+            )
+        });
+        assert!(!owner.0.is_null());
         let service = Service::start(&identity, move |event| {
             let _ = events.send(event);
         })
@@ -447,6 +503,54 @@ mod tests {
             received.recv_timeout(Duration::from_secs(2)).unwrap(),
             Event::SecondInstance
         );
+        // SAFETY: The service owns its endpoint, and the test owner outlives it.
+        unsafe {
+            SendMessageW(service.hwnd as HWND, OWNER_MESSAGE, owner.0 as usize, 0);
+            ShowWindow(owner.0, SW_SHOWNOACTIVATE);
+            SendMessageW(
+                service.hwnd as HWND,
+                TRAY_MESSAGE,
+                0,
+                WM_LBUTTONDOWN as isize,
+            );
+            ShowWindow(owner.0, SW_HIDE);
+            SendMessageW(service.hwnd as HWND, TRAY_MESSAGE, 0, NIN_SELECT as isize);
+        }
+        // Blur between press and release must not reopen the visible launcher.
+        assert_eq!(
+            received.recv_timeout(Duration::from_secs(2)).unwrap(),
+            Event::Hide
+        );
+        // SAFETY: Both windows are still owned by their live test/service threads.
+        unsafe {
+            SendMessageW(
+                service.hwnd as HWND,
+                TRAY_MESSAGE,
+                0,
+                WM_LBUTTONDOWN as isize,
+            );
+            SendMessageW(service.hwnd as HWND, TRAY_MESSAGE, 0, NIN_SELECT as isize);
+        }
+        assert_eq!(
+            received.recv_timeout(Duration::from_secs(2)).unwrap(),
+            Event::Open
+        );
+        // SAFETY: These synchronous callbacks use the live service endpoint.
+        unsafe {
+            SendMessageW(
+                service.hwnd as HWND,
+                TRAY_MESSAGE,
+                0,
+                NIN_KEYSELECT as isize,
+            );
+            SendMessageW(service.hwnd as HWND, TRAY_MESSAGE, 0, NIN_SELECT as isize);
+        }
+        for _ in 0..2 {
+            assert_eq!(
+                received.recv_timeout(Duration::from_secs(2)).unwrap(),
+                Event::Toggle
+            );
+        }
         unsafe {
             PostMessageW(
                 service.hwnd as HWND,

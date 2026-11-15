@@ -1,0 +1,87 @@
+{
+  "RecordedAt": "2026-11-16T02:17:28.7286751+08:00",
+  "Version": "0.10.0",
+  "Published": false,
+  "VerificationCommand": "./scripts/verify-rust.ps1 -Product -SmokeTest",
+  "VerificationExitCode": 0,
+  "PreviousSourceFingerprints": "../2026-11-16-velo-0.10.0-ui/verification.json",
+  "Builds": [
+    {
+      "Renderer": "software",
+      "ExecutableSHA256": "29F9825219165057AFA0F87F028958A019310C84C7970AFB77D6C5E7394B02B4",
+      "BuildIdentitySHA256": "3DDC1C5FB21BBA979BB85B7B2D209C4829319826AA6FF372FF11D93A5CC037F2",
+      "CargoMetadataSHA256": "11D69D0E0BA372DF477D814B5C7BD5E8C9542455970EB091FB959F0434BF8FE1",
+      "ChecksPassed": true,
+      "SmokeTestPassed": true,
+      "RustTestsPassed": 88,
+      "SourceBaseCommit": "04097d4bac1226531531f98ff6d339366af4ac0d",
+      "WorkspaceDirty": true,
+      "SourceChangesFromPreviousEvidence": [
+        {
+          "Path": "ui/app.slint",
+          "SHA256": "AAF63867A5CF1A5AB086657ABD2AC828BE464B937B9C9CECFA6B134EF20191A7"
+        }
+      ]
+    },
+    {
+      "Renderer": "femtovg",
+      "ExecutableSHA256": "28C323EE47017820C88D66924E31D502DEABDB436614D383529E3F7C6285EE62",
+      "BuildIdentitySHA256": "0685DA2C7A65DB7CB8DC92C4316DC9CB2517A21660A763CAC423E35536CC23B5",
+      "CargoMetadataSHA256": "6444AD1B949F13208FE44C6CC7885AA72133B5D38881CCCF98A92C5DA0C24E58",
+      "ChecksPassed": true,
+      "SmokeTestPassed": true,
+      "RustTestsPassed": 88,
+      "SourceBaseCommit": "04097d4bac1226531531f98ff6d339366af4ac0d",
+      "WorkspaceDirty": true,
+      "SourceChangesFromPreviousEvidence": [
+        {
+          "Path": "ui/app.slint",
+          "SHA256": "AAF63867A5CF1A5AB086657ABD2AC828BE464B937B9C9CECFA6B134EF20191A7"
+        }
+      ]
+    }
+  ],
+  "CaptureIdentity": {
+    "Renderer": "software",
+    "Profile": "debug",
+    "ExecutableSHA256": "7960408D4606297B40A227B82F637634116D9B32124C00A825986DD017A0CE2C",
+    "UISourceSHA256": "AAF63867A5CF1A5AB086657ABD2AC828BE464B937B9C9CECFA6B134EF20191A7",
+    "Captures": 58
+  },
+  "SelectedVisuals": [
+    {
+      "File": "dark-grid-space.png",
+      "SHA256": "F117BED59CD924A6E1F62827B54991DC081474FB21721AC40F856C5B565CCBD6"
+    },
+    {
+      "File": "dark-home-space.png",
+      "SHA256": "6B68DC239C18C07B8FA3B8B0CF10CB4A7E9666D12E390FBD4D5A808584DA61BC"
+    },
+    {
+      "File": "dark-list-space.png",
+      "SHA256": "95A4739E42F158403DF1AC3A5ED4772B2FEAE75C81BAF725FE67A702DBE8A7C9"
+    },
+    {
+      "File": "footer-space-keycap.png",
+      "SHA256": "83B114461C4A9FAE0A5ACE3C94D9D9D1F411B2F6D3E0AA44D7EFDB18C5F6F2B1"
+    },
+    {
+      "File": "light-grid-space.png",
+      "SHA256": "240759888D94BD20B513291F7C6BAFE712A1A1FB50A123D0E5FE2B0F3C370149"
+    },
+    {
+      "File": "light-home-space.png",
+      "SHA256": "AAA22CD497E5F471E097B960DDAC2191629DC33FAFEA45A2CC5A888984EC5FB7"
+    },
+    {
+      "File": "light-list-space.png",
+      "SHA256": "EA0E9CCE24EC05D571FDE6921F74A45A24FA73E7E9DE7C1027C1C3902B245D2B"
+    }
+  ],
+  "Scope": "Current Windows 11 x64 host, product build with isolated fixtures, software and femtovg",
+  "Limits": [
+    "Software static debug component screenshots only; full product smoke tests cover both renderers",
+    "No new physical IME, taskbar mouse click or multi-monitor acceptance",
+    "No commit, push, installer or public release"
+  ]
+}

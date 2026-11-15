@@ -602,6 +602,28 @@ mod tests {
         }
     }
     #[test]
+    fn prefixed_rust_release_keeps_renderer_when_legacy_alias_is_first() {
+        let cancel = AtomicBool::new(false);
+        let data = br#"[{"tag_name":"v0.10.0","assets":[
+            {"name":"velo-launcher-amd64-installer.exe"},
+            {"name":"velo-rust-x64-installer.exe"},
+            {"name":"velo-rust-femtovg-x64-installer.exe"},
+            {"name":"SHA256SUMS.txt"}
+        ]}]"#;
+        for installer in [
+            "velo-rust-x64-installer.exe",
+            "velo-rust-femtovg-x64-installer.exe",
+        ] {
+            let mut client = client(vec![response(200, data)]);
+            client.installer = installer.into();
+            let info = client.check("0.1.0", &cancel).unwrap();
+            assert_eq!(info.release.unwrap().tag_name, "v0.10.0");
+            assert_eq!(info.installer.unwrap().name, installer);
+            assert!(info.checksum.is_some());
+            assert!(info.portable.is_none());
+        }
+    }
+    #[test]
     fn rust_feed_fallback_continues_past_higher_legacy_versions() {
         let cancel = AtomicBool::new(false);
         let feed = br#"<feed xmlns="http://www.w3.org/2005/Atom"><entry><link href="https://github.com/HBLADEH/velo-launcher/releases/tag/v0.9.11"/></entry><entry><link href="https://github.com/HBLADEH/velo-launcher/releases/tag/0.2.0"/></entry></feed>"#;

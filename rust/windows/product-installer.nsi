@@ -26,7 +26,8 @@ ManifestDPIAware true
 SetCompressor /SOLID lzma
 VIProductVersion "${VERSION}.0"
 VIAddVersionKey "ProductName" "Velo"
-VIAddVersionKey "FileDescription" "Velo Rust system installer (${RENDERER})"
+VIAddVersionKey "FileDescription" "Velo 安装程序"
+VIAddVersionKey "Comments" "Renderer: ${RENDERER}"
 VIAddVersionKey "FileVersion" "${VERSION}"
 VIAddVersionKey "ProductVersion" "${VERSION}"
 VIAddVersionKey "CompanyName" "HBLADEH"

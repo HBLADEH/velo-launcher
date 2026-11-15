@@ -4,15 +4,15 @@
 
 面向 **Windows 10/11 x64** 的中文应用启动器。按 `Alt+Space` 呼出，输入应用名称、拼音或首字母，按 `Enter` 启动。
 
-**0.1.0 是 Rust + Slint 重构后的首个正式版本，版本号重新起算。后续开发以 Rust 为主线，Go/Wails 0.9.x 停止维护。** 程序采用原生单进程，不需要 Go、Node.js、WebView2 或本地 HTTP 服务。
+**Velo v0.10.0 延续 Go 0.9.x 的版本顺序，正式切换到 Rust + Slint。** 程序采用原生单进程，不需要 Go、Node.js、WebView2 或本地 HTTP 服务。Go/Wails 版本停止维护，已发布的 Rust 0.1.0 用户也可升级，见 [v0.10.0 版本说明](docs/releases/0.10.0.md)。
 
 ## 安装
 
 从 [最新发布](https://github.com/HBLADEH/velo-launcher/releases/latest) 下载 `velo-rust-x64-installer.exe`，运行安装器并确认 Windows UAC。默认使用 Software 渲染器；`velo-rust-femtovg-x64-installer.exe` 是使用 OpenGL 的替代构建，切换前请从托盘完全退出 Velo。
 
-0.1.0 提供系统安装版。发布页同时提供 `SHA256SUMS.txt`、依赖许可包和构建清单，可用 `Get-FileHash` 核对安装包。
+提供系统安装版。发布页同时提供 `SHA256SUMS.txt`、依赖许可包和构建清单，可用 `Get-FileHash` 核对安装包。`velo-launcher-amd64-installer.exe` 是默认 Software 安装器的相同字节副本，供旧 Go 更新器识别。
 
-从旧版迁移时，先退出 Go/Wails Velo，再运行安装器。已核对的官方 Go **v0.9.11 系统安装**可在原目录接管；其他旧构建请先卸载并保留数据，再安装 Rust。由于版本号重新起算，请手动下载安装器，不依赖旧 Go 更新器。
+官方 Go **v0.9.11 系统安装**可在“设置 → 关于”检查更新，阅读迁移说明后下载安装；正常以普通权限运行、安装目录不可写时，旧更新器使用兼容安装包原位升级。也可先从托盘退出旧 Velo，再手动运行默认安装器。其他旧构建请先卸载并保留数据，再安装；免安装版请退出后手动安装，不使用旧版“下载并安装”。迁移继续保留自定义快捷键，新安装默认 `Alt+Space`。
 
 设置、历史、自定义应用和固定项继续位于 `%LOCALAPPDATA%\Velo`。Rust 首次打开数据前会将原文快照保存在 `%LOCALAPPDATA%\VeloRustMigrationBackups`，备份失败时停止初始化。卸载保留用户数据与程序恢复档案。
 

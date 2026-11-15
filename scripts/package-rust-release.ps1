@@ -8,7 +8,8 @@ $ErrorActionPreference = 'Stop'
 $repository = Split-Path -Parent $PSScriptRoot
 $policy = Get-Content -LiteralPath (Join-Path $repository 'rust/windows/release-policy.json') -Raw | ConvertFrom-Json
 if (-not $policy.G4Passed -or -not $policy.PublicReleaseApproved -or -not $policy.RedistributionCleared -or
-    $policy.ReleaseTag -notmatch '^\d+\.\d+\.\d+$') { throw 'An approved numbered Rust release is required.' }
+    $policy.ReleaseTag -notmatch '^v?\d+\.\d+\.\d+$') { throw 'An approved numbered Rust release is required.' }
+$version = $policy.ReleaseTag -replace '^v', ''
 $target = (Resolve-Path -LiteralPath (Join-Path $repository 'rust/target')).Path
 $OutputDirectory = $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($OutputDirectory)
 if (-not $OutputDirectory.StartsWith($target + '\', [StringComparison]::OrdinalIgnoreCase) -or
@@ -32,6 +33,11 @@ $builds = @(foreach ($renderer in 'software','femtovg') {
     }
 })
 if ($builds[0].SourceCommit -ne $builds[1].SourceCommit) { throw 'Both renderers must bind the same source commit.' }
+# Old Go clients choose the first installer. Upload this Software alias first;
+# its name also precedes the Rust assets on GitHub's public asset list.
+$legacyInstaller = 'velo-launcher-amd64-installer.exe'
+$software = $builds | Where-Object Renderer -eq 'software'
+Copy-Item -LiteralPath (Join-Path $assets $software.Installer) -Destination (Join-Path $assets $legacyInstaller)
 $notices = Join-Path $OutputDirectory 'notices'
 New-Item -ItemType Directory -Path $notices | Out-Null
 Copy-Item -LiteralPath (Join-Path $repository 'LICENSE') -Destination $notices
@@ -42,13 +48,15 @@ foreach ($renderer in 'software','femtovg') {
         Copy-Item -LiteralPath (Join-Path $OutputDirectory "$renderer/package/content/$name") -Destination $rendererNotices -Recurse
     }
 }
-Compress-Archive -Path (Join-Path $notices '*') -DestinationPath (Join-Path $assets "velo-rust-$($policy.ReleaseTag)-licenses.zip")
+Compress-Archive -Path (Join-Path $notices '*') -DestinationPath (Join-Path $assets "velo-rust-$version-licenses.zip")
 [ordered]@{
-    Version = $policy.ReleaseTag; Tag = $policy.ReleaseTag; Runtime = 'rust'; Architecture = 'x64'
+    Version = $version; Tag = $policy.ReleaseTag; Runtime = 'rust'; Architecture = 'x64'
     DefaultRenderer = $policy.DefaultRenderer; AcceptanceScope = $policy.Scope
     G4Evidence = $policy.Evidence; LicenseReview = $policy.LicenseReview
+    ReleaseEvidence = $policy.ReleaseEvidence
     PublicReleaseApproved = $true; RedistributionCleared = $true
     PortableDistribution = $false; Builds = $builds
+    LegacyUpdate = [ordered]@{ Installer=$legacyInstaller; Renderer='software'; UploadFirst=$legacyInstaller; VerifiedGoVersion='0.9.11'; PortableAutomaticMigration=$false }
 } | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath (Join-Path $assets 'release-manifest.json') -Encoding utf8NoBOM
 Get-ChildItem -LiteralPath $assets -File | Sort-Object Name | ForEach-Object {
     '{0}  {1}' -f (Get-FileHash -LiteralPath $_.FullName).Hash.ToLowerInvariant(), $_.Name

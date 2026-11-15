@@ -4,15 +4,15 @@
 
 A Chinese application launcher for **Windows 10/11 x64**. Press `Alt+Space`, search by name, Chinese pinyin or initials, and press `Enter` to launch.
 
-**0.1.0 is the first official Rust + Slint release. Version numbering starts again at 0.1.0. Future product development uses Rust; Go/Wails 0.9.x is retired.** The native, single-process application requires no Go, Node.js, WebView2 or local HTTP server at runtime.
+**Velo v0.10.0 continues the Go 0.9.x version sequence and moves the product to Rust + Slint.** The native, single-process application requires no Go, Node.js, WebView2 or local HTTP server at runtime. Go/Wails is retired; Rust 0.1.0 users can also upgrade. See the [v0.10.0 release notes (Chinese)](docs/releases/0.10.0.md).
 
 ## Install
 
 Download `velo-rust-x64-installer.exe` from the [latest release](https://github.com/HBLADEH/velo-launcher/releases/latest), run it and approve Windows UAC. Software is the default renderer. The OpenGL alternative is `velo-rust-femtovg-x64-installer.exe`; exit Velo from its tray menu before switching renderers.
 
-This release provides system installers, with `SHA256SUMS.txt`, a license archive and a build manifest.
+This release provides system installers, with `SHA256SUMS.txt`, a license archive and a build manifest. `velo-launcher-amd64-installer.exe` is a byte-identical copy of the default Software installer for legacy Go update checks.
 
-For migration, exit the old application and install manually. The verified official **Go v0.9.11 system installation** supports replacement in its existing directory. Uninstall other old builds while preserving data before installing Rust. The old Go updater cannot handle the reset version numbering.
+Official **Go v0.9.11 system installations** can check for updates in Settings / About. When running normally without elevation and the installation directory is not writable, the old updater selects the compatible installer for an in-place upgrade. You can also exit Velo from its tray and install manually. Uninstall other old builds while preserving data before installing Rust. Portable users should exit and run the installer manually. Existing hotkeys are preserved; new installations default to `Alt+Space`.
 
 Settings, history, custom applications and pins remain in `%LOCALAPPDATA%\Velo`. Before opening the data store, Rust saves a byte-verified snapshot under `%LOCALAPPDATA%\VeloRustMigrationBackups`; failure prevents initialization. Uninstall preserves user data and recovery archives.
 

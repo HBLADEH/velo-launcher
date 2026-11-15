@@ -29,6 +29,9 @@ pub const SCENES: &[&str] = &[
     "settings-6-bottom",
     "missing-icon",
     "recording",
+    "home-space",
+    "list-space",
+    "grid-space",
 ];
 
 fn items(range: std::ops::Range<usize>) -> ModelRc<LauncherItem> {
@@ -92,6 +95,7 @@ pub fn prepare(app: &AppWindow, scene: &str, dark: bool) {
     app.set_business_enabled(true);
     app.set_is_home(true);
     app.set_grid_results(false);
+    app.set_space_launch(scene.ends_with("-space"));
     app.set_input_text("".into());
     app.set_scanning(false);
     app.set_hotkey_recording(false);
@@ -176,13 +180,13 @@ pub fn prepare(app: &AppWindow, scene: &str, dark: bool) {
                 .into(),
             );
         }
-        "list" | "grid" | "empty" | "long-name" => {
+        "list" | "list-space" | "grid" | "grid-space" | "empty" | "long-name" => {
             app.set_is_home(false);
             app.set_input_text("应用".into());
-            app.set_grid_results(scene == "grid");
+            app.set_grid_results(scene.starts_with("grid"));
             app.set_viewport_height(if scene == "empty" {
                 210.0
-            } else if scene == "grid" {
+            } else if scene.starts_with("grid") {
                 396.0
             } else {
                 588.0

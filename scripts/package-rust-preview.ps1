@@ -116,7 +116,8 @@ $inventory | ConvertTo-Json -Depth 7 | Set-Content -LiteralPath (Join-Path $cont
 $missing = @($inventory | Where-Object { -not $_.RootLicenseTextsFound } | ForEach-Object { "$($_.Name)@$($_.Version)" })
 $missingTexts = @($inventory | Where-Object { -not $_.LicenseTextsFound } | ForEach-Object { "$($_.Name)@$($_.Version)" })
 $version = ([Diagnostics.FileVersionInfo]::GetVersionInfo($executable)).ProductVersion
-if ($Release -and ($missingTexts.Count -or $version -ne $releasePolicy.ReleaseTag)) {
+if ($Release -and ($missingTexts.Count -or $releasePolicy.ReleaseTag -notmatch '^v?\d+\.\d+\.\d+$' -or
+    $version -ne ($releasePolicy.ReleaseTag -replace '^v', ''))) {
     throw 'Release version or collected dependency licenses do not match the approved policy.'
 }
 @'

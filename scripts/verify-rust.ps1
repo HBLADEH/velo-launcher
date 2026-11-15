@@ -112,6 +112,7 @@ try {
         $sourcePaths += @('../scripts/test-rust-nsis-update.ps1')
         $sourcePaths += @('../scripts/package-rust-product.ps1', '../scripts/test-rust-machine-install.ps1', '../scripts/prepare-rust-machine-install.ps1', '../scripts/test-rust-machine-cleanup.ps1')
         $sourcePaths += @('../scripts/package-rust-release.ps1')
+        $sourcePaths += @('../cmd/check-legacy-update/main.go', '../internal/update/migration_release_test.go')
         $sourcePaths += @('../scripts/test-pages-ui.ps1', '../tests/fixtures/compat/rs11.json', '../tests/fixtures/compat/rs11.expected.json', '../cmd/rs11-compat/main.go', '../internal/systemtools/catalog.go', '../internal/systemtools/rs11_compat_test.go', '../internal/update/version.go', '../internal/update/client.go', '../internal/platform/actions_windows.go', '../internal/platform/update_script.go')
         # Include UI modules, assets, native probes, and shared data-contract tests.
         $sourcePaths += @(Get-ChildItem -LiteralPath 'src', 'ui', 'examples', 'tests', 'windows', 'licenses' -Recurse -File | ForEach-Object {

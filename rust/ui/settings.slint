@@ -116,7 +116,7 @@ export component SettingsPanel inherits FocusScope {
                 SettingCheck { x: 24px; y: 223px; width: parent.width - 48px; enabled: root.enabled; checked <=> root.draft.fullscreen; text: "全屏时禁止快捷键呼出"; }
                 SettingHint { x: 24px; y: 263.8px; width: parent.width - 48px; text: "当前前台应用全屏时不响应呼出快捷键，仍可通过托盘打开 Velo。"; }
                 SettingHint { x: 24px; y: 305.4px; width: parent.width - 48px; text: "支持 Ctrl、Alt、Shift、Win 配合字母、数字、Space、Enter、Tab 或 F1–F24。系统保留的组合键可能无法录制或注册；若快捷键被占用，保存时会提示并保留原快捷键。"; }
-                SettingHint { x: 24px; y: 368.6px; width: parent.width - 48px; text: "托盘图标常驻通知区域：左键单击打开启动器，右键菜单可打开启动器、设置或退出。"; }
+                SettingHint { x: 24px; y: 368.6px; width: parent.width - 48px; text: "托盘图标常驻通知区域：左键单击显示或隐藏启动器，右键菜单可打开启动器、设置或退出。"; }
             }
             Rectangle { visible: root.tab == 2; width: parent.width; height: parent.height;
                 SettingHeading { x: 24px; y: 24px; text: "界面主题"; }

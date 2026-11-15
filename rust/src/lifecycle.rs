@@ -72,6 +72,16 @@ impl State {
         self.visible && !self.closing && self.generation == generation
     }
 
+    fn tray(&self) -> Action {
+        if self.closing {
+            Action::None
+        } else if self.visible {
+            Action::Hide
+        } else {
+            Action::Show
+        }
+    }
+
     fn hotkey(&self, active: bool, fullscreen: bool, disable_fullscreen: bool) -> Action {
         if self.closing || !self.hotkey_available {
             Action::None
@@ -570,6 +580,8 @@ impl Controller {
             .is_some_and(|app| app.get_native_dialog_active())
             && [
                 desktop::Event::Open,
+                desktop::Event::Toggle,
+                desktop::Event::Hide,
                 desktop::Event::SecondInstance,
                 desktop::Event::Settings,
                 desktop::Event::Quit,
@@ -586,6 +598,15 @@ impl Controller {
         self.log("desktop_event", &format!("action={event}"));
         match event {
             n if n == desktop::Event::Open as i32 => self.show("tray"),
+            n if n == desktop::Event::Hide as i32 => self.hide("tray"),
+            n if n == desktop::Event::Toggle as i32 => {
+                let action = self.state.borrow().tray();
+                match action {
+                    Action::Show => self.show("tray"),
+                    Action::Hide => self.hide("tray"),
+                    _ => {}
+                }
+            }
             n if n == desktop::Event::SecondInstance as i32 => self.show("second_instance"),
             n if n == desktop::Event::Settings as i32 => {
                 if let Some(app) = self.app.upgrade() {
@@ -940,6 +961,23 @@ mod tests {
         assert_eq!(state.blur(false, false, false), Action::None);
         state.tray_available = true;
         assert_eq!(state.blur(true, false, false), Action::None);
+    }
+
+    #[test]
+    fn tray_toggles_visibility_without_a_hotkey_and_invalidates_late_focus() {
+        let mut state = State::default();
+        for _ in 0..3 {
+            assert_eq!(state.tray(), Action::Show);
+            state.transition(true);
+            let generation = state.generation;
+            state.recording = true;
+            assert_eq!(state.tray(), Action::Hide);
+            state.transition(false);
+            assert!(!state.recording);
+            assert!(!state.focus_allowed(generation));
+        }
+        state.closing = true;
+        assert_eq!(state.tray(), Action::None);
     }
 
     #[test]

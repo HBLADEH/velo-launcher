@@ -12,7 +12,8 @@ if(Test-Path -LiteralPath $OutputDirectory){throw 'Use a fresh PE metadata evide
 $cargo=Get-Content -LiteralPath (Join-Path $repository 'rust/Cargo.toml') -Raw
 $version=[regex]::Match($cargo,'(?m)^version = "(\d+\.\d+\.\d+)"$').Groups[1].Value
 $info=[Diagnostics.FileVersionInfo]::GetVersionInfo($Executable)
-if(-not $version -or $info.ProductVersion -ne $version -or $info.FileVersion -ne $version -or $info.OriginalFilename -ne 'velo-slint.exe' -or $info.FileDescription -notmatch [regex]::Escape($Renderer)){
+if(-not $version -or $info.ProductVersion -ne $version -or $info.FileVersion -ne $version -or $info.OriginalFilename -ne 'velo-slint.exe' -or
+    $info.ProductName -ne 'Velo' -or $info.FileDescription -ne 'Velo' -or $info.Comments -ne "Renderer: $Renderer"){
     throw 'PE version/renderer metadata differs from Cargo or product identity.'
 }
 New-Item -ItemType Directory -Path $OutputDirectory|Out-Null
@@ -25,7 +26,7 @@ $manager.AddNamespace('a','urn:schemas-microsoft-com:asm.v1')
 $manager.AddNamespace('t','urn:schemas-microsoft-com:asm.v3')
 $manager.AddNamespace('d','http://schemas.microsoft.com/SMI/2016/WindowsSettings')
 $level=$xml.SelectSingleNode('//t:requestedExecutionLevel',$manager)
-if($xml.SelectSingleNode('/a:assembly/a:assemblyIdentity',$manager).version -ne "$version.0" -or $level.level -ne 'asInvoker' -or $level.uiAccess -ne 'false' -or
+if($xml.SelectSingleNode('/a:assembly/a:assemblyIdentity',$manager).version -ne "$version.0" -or $xml.SelectSingleNode('/a:assembly/a:description',$manager).InnerText -ne 'Velo' -or $level.level -ne 'asInvoker' -or $level.uiAccess -ne 'false' -or
     $xml.SelectSingleNode('//d:dpiAwareness',$manager).InnerText -ne 'PerMonitorV2' -or $xml.SelectSingleNode('//d:longPathAware',$manager).InnerText -ne 'true'){
     throw 'Embedded manifest version, privilege or DPI settings differ.'
 }
@@ -44,7 +45,7 @@ $process.WaitForExit()
 if($process.ExitCode -ne 0 -or $text -notmatch "^velo-slint $([regex]::Escape($version)) slint=1\.18\.1 backend=winit renderer=$Renderer target=x86_64-pc-windows-msvc"){throw 'Command-line version differs from PE/Cargo.'}
 $process.Dispose()
 [ordered]@{Passed=$true;Version=$version;Renderer=$Renderer;ExecutableSHA256=(Get-FileHash -LiteralPath $Executable).Hash;
-    ProductVersion=$info.ProductVersion;FileVersion=$info.FileVersion;ManifestSHA256=(Get-FileHash -LiteralPath $manifest).Hash;
+    ProductVersion=$info.ProductVersion;FileVersion=$info.FileVersion;ProductName=$info.ProductName;FileDescription=$info.FileDescription;RendererMetadata=$info.Comments;ManifestSHA256=(Get-FileHash -LiteralPath $manifest).Hash;
     ManifestAsInvoker=$true;PerMonitorV2=$true;LongPathAware=$true;NoWebViewOrDynamicVCRuntimeImports=$true;
     Scope='Actual PE resources, CLI identity and direct import table. Windows 10/other drivers still require execution on those systems.'
 }|ConvertTo-Json|Set-Content -LiteralPath (Join-Path $OutputDirectory 'result.json') -Encoding utf8NoBOM

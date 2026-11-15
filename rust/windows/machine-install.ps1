@@ -192,7 +192,8 @@ function Validate-Payload {
     if ($package.InternalValidationOnly) {
         if ($package.RedistributionCleared) { throw 'Internal product metadata is inconsistent.' }
     } elseif (-not $package.RedistributionCleared -or -not $package.G4Passed -or
-        -not $package.PublicReleaseApproved -or $package.ReleaseTag -ne $package.Version) {
+        -not $package.PublicReleaseApproved -or $package.ReleaseTag -notmatch '^v?\d+\.\d+\.\d+$' -or
+        ($package.ReleaseTag -replace '^v', '') -ne $package.Version) {
         throw 'Product release metadata is not approved.'
     }
     if ((Get-FileHash -LiteralPath (Join-Path $Payload 'velo-slint.exe')).Hash -ne $package.ExecutableSHA256) { throw 'Product executable identity mismatch.' }
