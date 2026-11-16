@@ -1,0 +1,140 @@
+{
+  "Date": "2026-11-16",
+  "Branch": "codex/launch-groups",
+  "BaseCommit": "63763d33f2468d792bcb947f4c49b08bec27e1d6",
+  "Uncommitted": true,
+  "OSVersion": "10.0.26340.0",
+  "Rust": "1.99.1-x86_64-pc-windows-msvc",
+  "BuildJobs": 2,
+  "Status": "implemented-unreleased",
+  "PerformanceMeasured": false,
+  "RendererBuilds": [
+    {
+      "Renderer": "software",
+      "ChecksPassed": true,
+      "SmokeTestPassed": true,
+      "RustTests": 107.0,
+      "ExecutableSHA256": "7F9D041123EAB1DD4EE0A43A80284D697515DA0871B24C956DF7F97EC39FA5AF",
+      "ExecutableBytes": 14240768,
+      "BuildIdentitySHA256": "25DBAB6884AD8FEBD1AEB40EDDCC92A3042B9720299201F06C403E2EA4EECABE",
+      "SourceFingerprintsMatched": 234,
+      "RecordedAtUtc": "2026-11-16T04:40:23.7532545Z",
+      "GroupEditorPassed": true,
+      "NativeGroupPassed": true,
+      "NativeHelperSHA256": "B9A4F4478F149A25ED79A8B7F29D2377DD60603641060E20998F421687AFD9E5",
+      "HelpersExited": true
+    },
+    {
+      "Renderer": "femtovg",
+      "ChecksPassed": true,
+      "SmokeTestPassed": true,
+      "RustTests": 107.0,
+      "ExecutableSHA256": "EBFE5C4A05C72A918729CAD1E18B7EB28F7F3D41598D47169A4E578C8E14A7B8",
+      "ExecutableBytes": 13737984,
+      "BuildIdentitySHA256": "ED300AAB27BCEDD760352837CBDF5BE28A5B5BCB35210DE94A2EC6F73B262944",
+      "SourceFingerprintsMatched": 234,
+      "RecordedAtUtc": "2026-11-16T04:50:10.5444984Z",
+      "GroupEditorPassed": true,
+      "NativeGroupPassed": true,
+      "NativeHelperSHA256": "A1BE59841E2BEE59E9713AF06A2454DFB8C41F1EDF6749C85DA1A0F806433D1E",
+      "HelpersExited": true
+    }
+  ],
+  "ChangedSources": [
+    {
+      "Path": "rust/Cargo.toml",
+      "SHA256": "6005F9388F14731B526E24C72624D563A0221F345095E921CDB5E3C178BDF592"
+    },
+    {
+      "Path": "rust/src/business.rs",
+      "SHA256": "B1FCCBD0D3B6EE5558BD0136568DB6DDB12FA9096258D06A894D223C383CA31A"
+    },
+    {
+      "Path": "rust/src/core/mod.rs",
+      "SHA256": "6053F392897DDA5B3215C8CF92F1A26179756A35047B2F673F7D2FCB1F7538FA"
+    },
+    {
+      "Path": "rust/src/core/service.rs",
+      "SHA256": "333B3F938AA9811731DC580245065DB3A1F3DF2711852DDD672EF109ADBC02E7"
+    },
+    {
+      "Path": "rust/src/import_preview.rs",
+      "SHA256": "C512859DF569BE507A1219A53A605CAD702DC22CFC7E2A2DD469743AF9522E6D"
+    },
+    {
+      "Path": "rust/src/lifecycle.rs",
+      "SHA256": "45A385CF4595AC7147FD819E8391073EEF9C8BBB4CE9B0224F2E2E8129BF96DC"
+    },
+    {
+      "Path": "rust/src/main.rs",
+      "SHA256": "72D412DF61D9609CCCE272C730A03FAF4138CCB78AC7D16AB8864D4018B75E05"
+    },
+    {
+      "Path": "rust/src/platform/windows/interaction.rs",
+      "SHA256": "118CABBF9BB8203D18C21F2E62543FAD157FD6B43EB79D02BC02EDC42AC0D31F"
+    },
+    {
+      "Path": "rust/src/platform/windows/mod.rs",
+      "SHA256": "F6BD557F378578D95E66D41DC66D0FEF3C359932B452B2A553C7503C54745390"
+    },
+    {
+      "Path": "rust/src/ui.rs",
+      "SHA256": "480B758F9818737CEA32CF9BD249DAFE823599E48E316901604BF4E680E35033"
+    },
+    {
+      "Path": "rust/ui/app.slint",
+      "SHA256": "94C5BBBAD3FF2B60F1523C4726FBFAED511178E83A19F2ED8554FFBFA0A56FEA"
+    },
+    {
+      "Path": "rust/ui/components.slint",
+      "SHA256": "7F539FE9AAB095BD126A1D63E67DEA94816B70E9BBCCC05CC616419A58BF731D"
+    },
+    {
+      "Path": "rust/ui/settings.slint",
+      "SHA256": "A5E09BEADD9318B4D1874C3F02B1CF3BC7A5EF6311DC2549E6A4BA005C7440D1"
+    },
+    {
+      "Path": "rust/examples/launch_groups_editor.rs",
+      "SHA256": "3C5C670A85D4B5455F32F3EF7FB42EF8F9A91B9183F534861613CB96C552AF6E"
+    },
+    {
+      "Path": "rust/examples/launch_groups_helper.rs",
+      "SHA256": "AE2E1320B7C0D3889FE3F3D1A7C3F5B4850CEC5F0C776F98497874D3CE04E933"
+    },
+    {
+      "Path": "rust/examples/launch_groups_native.rs",
+      "SHA256": "7AD1B6F1C3AAEE8E3D1D717D36B88A74D0803F0775F1F542D8E8A9C5AE0F6138"
+    },
+    {
+      "Path": "rust/src/core/group_run.rs",
+      "SHA256": "65B0CF457E9FEE588C584FA4A3F7A9A5C5B6AD0E47A696BB89764B214FEC8508"
+    },
+    {
+      "Path": "rust/src/core/launch_groups.rs",
+      "SHA256": "1C298895C10089807BDCE3C6AAA3CD0C46B37AE85F67DE6D27BE8E893A5B6C56"
+    },
+    {
+      "Path": "rust/src/group_editor.rs",
+      "SHA256": "27BB27486A826B2253CC3ED4E5E593F8FE74B616947C29709078351D00BDCBBF"
+    },
+    {
+      "Path": "rust/src/platform/windows/group_launch.rs",
+      "SHA256": "570CCBC52BFD56608C8B79F5C997303B0BF519A696EC0CFFD14CAA4A0F54115A"
+    },
+    {
+      "Path": "rust/src/platform/windows/processes.rs",
+      "SHA256": "D72839E12CBBD37DC34DA2E99F527F01ED1A3AEC87BA8A85E88230909FE1A628"
+    },
+    {
+      "Path": "rust/ui/launch-groups.slint",
+      "SHA256": "7FA6F740491B74B4B943E4D0807E1939199BCD931FE342AB5BCCA1A6C75C25F2"
+    }
+  ],
+  "FullCheckLog": "rust/target/launch-groups-accepted-8afdb5f40d6340708c550495c1f0e484/verification.log",
+  "FullCheckLogSHA256": "94C89A53A4AFEE1E1CDFFAA448D9468EDF25B03B643EAC9322DEC6A1F8A0E87F",
+  "FinalFemtoVGLog": "rust/target/launch-groups-final-renderer-9e4d38f10c2c454ab120b3435bed994c/verification.log",
+  "FinalFemtoVGLogSHA256": "90B8361125E034ACC62B62716595E5632FE14787395BD239ED1BE84F5F80B134",
+  "ScreenshotsSynthetic": true,
+  "NativeApplicationsSynthetic": true,
+  "Published": false
+}

@@ -268,6 +268,7 @@ export component ContentScroll inherits Rectangle {
 }
 
 export component AppTile inherits Rectangle {
+    in property <bool> pinnable: true;
     in property <LauncherItem> item;
     in property <bool> selected;
     in property <bool> entered;
@@ -327,7 +328,7 @@ export component AppTile inherits Rectangle {
         clicked => { root.chosen(root.item.id); }
         pointer-event(event) => { if event.kind == PointerEventKind.up && event.button == PointerEventButton.right { root.context-menu(root.item.id); } }
     }
-    if root.item.pinned || root.selected || touch.has-hover: Rectangle {
+    if root.pinnable && (root.item.pinned || root.selected || touch.has-hover): Rectangle {
         x: parent.width - 23px; y: 3px; width: 20px; height: 20px; border-radius: 5px; background: Theme.field;
         Glyph { x: 2px; y: 2px; width: 16px; height: 16px; icon-key: root.item.pinned ? "pinned" : "star"; colorize: root.item.pinned ? Theme.accent : Theme.muted; }
         TouchArea { mouse-cursor: pointer; clicked => { root.pin-toggled(root.item.id); } }
@@ -385,6 +386,7 @@ export component HomeSection inherits Rectangle {
 }
 
 export component ResultRow inherits Rectangle {
+    in property <bool> pinnable: true;
     in property <LauncherItem> item;
     in property <bool> selected;
     callback hovered(string);
@@ -417,7 +419,7 @@ export component ResultRow inherits Rectangle {
         clicked => { root.chosen(root.item.id); }
         pointer-event(event) => { if event.kind == PointerEventKind.up && event.button == PointerEventButton.right { root.context-menu(root.item.id); } }
     }
-    Rectangle { x: parent.width - (root.selected ? 77px : 47px); y: 12px; width: 34px; height: 30px;
+    if root.pinnable: Rectangle { x: parent.width - (root.selected ? 77px : 47px); y: 12px; width: 34px; height: 30px;
         Glyph { x: 9px; y: 6px; width: 18px; height: 18px; icon-key: root.item.pinned ? "pinned" : "star"; colorize: Theme.muted; }
         TouchArea { mouse-cursor: pointer; clicked => { root.pin-toggled(root.item.id); } }
     }

@@ -154,7 +154,7 @@ pub fn connect_commands(
         let context = Context {
             composing: app.get_native_composing() || app.get_has_preedit(),
             appearance_open: app.get_appearance_open(),
-            import_open: app.get_import_open(),
+            import_open: app.get_import_open() || app.get_groups_open(),
             native_dialog: app.get_native_dialog_active(),
             input_focused: app.get_input_has_focus(),
             home: app.get_is_home() || app.get_grid_results(),
@@ -172,7 +172,13 @@ pub fn connect_commands(
                 }
             }
             Command::CloseAppearance => app.invoke_show_appearance(false),
-            Command::CloseImport => app.invoke_show_import(false),
+            Command::CloseImport => {
+                if app.get_groups_open() {
+                    app.invoke_group_close();
+                } else {
+                    app.invoke_show_import(false);
+                }
+            }
             Command::ClearQuery => app.invoke_clear_input(),
             Command::Hide => app.invoke_hide_requested(),
             Command::Consume => {}

@@ -4,7 +4,7 @@
 use std::cell::Cell;
 use std::ptr::{null, null_mut};
 use std::sync::{
-    Arc,
+    Arc, Mutex,
     atomic::{AtomicBool, Ordering},
     mpsc,
 };
@@ -19,6 +19,7 @@ use windows_sys::Win32::UI::HiDpi::{
     DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2, GetSystemMetricsForDpi,
     SetThreadDpiAwarenessContext,
 };
+use windows_sys::Win32::UI::Input::KeyboardAndMouse::{GetAsyncKeyState, VK_LBUTTON, VK_RBUTTON};
 use windows_sys::Win32::UI::Shell::*;
 use windows_sys::Win32::UI::WindowsAndMessaging::*;
 
@@ -48,12 +49,50 @@ pub enum Event {
     Hide = 10,
 }
 
+#[derive(Default)]
+struct TrayPress {
+    visible: Option<bool>,
+    received_down: bool,
+}
+
+impl TrayPress {
+    fn before_blur(&mut self, visible: bool) {
+        if self.visible.is_none() {
+            self.visible = Some(visible);
+            self.received_down = false;
+        }
+    }
+
+    fn down(&mut self, visible: Option<bool>) {
+        // Focus loss can arrive on the UI thread before Explorer posts the
+        // mouse-down callback. Keep that earlier snapshot for this gesture.
+        // A new down replaces an unfinished previous press.
+        if self.received_down || self.visible.is_none() {
+            self.visible = visible;
+        }
+        self.received_down = true;
+    }
+
+    fn select(&mut self) -> Event {
+        self.received_down = false;
+        match self.visible.take() {
+            Some(true) => Event::Hide,
+            Some(false) => Event::Open,
+            None => Event::Toggle,
+        }
+    }
+
+    fn clear(&mut self) {
+        *self = Self::default();
+    }
+}
+
 struct Context {
     callback: Box<dyn Fn(Event)>,
     icon: Cell<HICON>,
     added: Cell<bool>,
     retries: Cell<u32>,
-    visible_at_press: Cell<Option<bool>>,
+    press: Arc<Mutex<TrayPress>>,
     menu_active: Arc<AtomicBool>,
     taskbar_created: u32,
     activate: u32,
@@ -142,6 +181,9 @@ impl Context {
     }
 
     fn remove_icon(&self, hwnd: HWND) {
+        if let Ok(mut press) = self.press.lock() {
+            press.clear();
+        }
         unsafe {
             KillTimer(hwnd, RETRY_TIMER);
             Shell_NotifyIconW(NIM_DELETE, &self.notify_data(hwnd));
@@ -226,25 +268,31 @@ unsafe extern "system" fn procedure(
                     // press state so blur cannot turn a hide click into a show.
                     // SAFETY: Only query the owner; no HWND is retained here.
                     let owner = unsafe { GetWindow(hwnd, GW_OWNER) };
-                    context.visible_at_press.set((!owner.is_null()).then(|| {
+                    let visible = (!owner.is_null()).then(|| {
                         // SAFETY: Win32 handles an owner destroyed after GetWindow.
                         unsafe { IsWindowVisible(owner) != 0 }
-                    }));
+                    });
+                    if let Ok(mut press) = context.press.lock() {
+                        press.down(visible);
+                    }
                 }
                 NIN_SELECT => {
-                    let event = match context.visible_at_press.take() {
-                        Some(true) => Event::Hide,
-                        Some(false) => Event::Open,
-                        None => Event::Toggle,
-                    };
+                    let event = context
+                        .press
+                        .lock()
+                        .map_or(Event::Toggle, |mut press| press.select());
                     (context.callback)(event);
                 }
                 NIN_KEYSELECT => {
-                    context.visible_at_press.set(None);
+                    if let Ok(mut press) = context.press.lock() {
+                        press.clear();
+                    }
                     (context.callback)(Event::Toggle);
                 }
                 WM_CONTEXTMENU => {
-                    context.visible_at_press.set(None);
+                    if let Ok(mut press) = context.press.lock() {
+                        press.clear();
+                    }
                     context.menu(hwnd);
                 }
                 _ => {}
@@ -338,6 +386,7 @@ fn create_icon(size: i32) -> Result<HICON, String> {
 pub struct Service {
     hwnd: isize,
     menu_active: Arc<AtomicBool>,
+    press: Arc<Mutex<TrayPress>>,
     worker: Option<JoinHandle<()>>,
 }
 
@@ -349,6 +398,8 @@ impl Service {
         let title = wide(&identity.window_title());
         let menu_active = Arc::new(AtomicBool::new(false));
         let menu = menu_active.clone();
+        let press = Arc::new(Mutex::new(TrayPress::default()));
+        let context_press = press.clone();
         let (ready, result) = mpsc::sync_channel(1);
         let worker = std::thread::Builder::new()
             .name("velo-desktop".into())
@@ -372,7 +423,7 @@ impl Service {
                         icon: Cell::new(null_mut()),
                         added: Cell::new(false),
                         retries: Cell::new(0),
-                        visible_at_press: Cell::new(None),
+                        press: context_press,
                         menu_active: menu,
                         taskbar_created: RegisterWindowMessageW(wide("TaskbarCreated").as_ptr()),
                         activate: instance::activation_message(),
@@ -414,6 +465,7 @@ impl Service {
             Ok(hwnd) => Ok(Self {
                 hwnd,
                 menu_active,
+                press,
                 worker: Some(worker),
             }),
             Err(error) => {
@@ -425,6 +477,45 @@ impl Service {
 
     pub fn set_owner(&self, owner: isize) {
         unsafe { PostMessageW(self.hwnd as HWND, OWNER_MESSAGE, owner as usize, 0) };
+    }
+    pub fn preserve_press_before_blur(&self, visible: bool) -> bool {
+        if !visible {
+            return false;
+        }
+        let id = NOTIFYICONIDENTIFIER {
+            cbSize: std::mem::size_of::<NOTIFYICONIDENTIFIER>() as u32,
+            hWnd: self.hwnd as HWND,
+            uID: 1,
+            ..Default::default()
+        };
+        let mut rect = RECT::default();
+        let mut point = POINT::default();
+        // SAFETY: these read-only calls use live stack outputs. Async key state
+        // uses physical buttons, so account for the user's swapped-button setting.
+        let own_press = unsafe {
+            let primary = if GetSystemMetrics(SM_SWAPBUTTON) != 0 {
+                VK_RBUTTON
+            } else {
+                VK_LBUTTON
+            };
+            GetAsyncKeyState(i32::from(primary)) < 0
+                && Shell_NotifyIconGetRect(&id, &mut rect) >= 0
+                && GetCursorPos(&mut point) != 0
+                && point.x >= rect.left
+                && point.x < rect.right
+                && point.y >= rect.top
+                && point.y < rect.bottom
+        };
+        if !own_press {
+            return false;
+        }
+        if let Ok(mut press) = self.press.lock() {
+            press.before_blur(visible);
+            true
+        } else {
+            eprintln!("event=tray_press_state_unavailable");
+            false
+        }
     }
     pub fn menu_active(&self) -> bool {
         self.menu_active.load(Ordering::SeqCst)
@@ -447,6 +538,31 @@ impl Drop for Service {
 mod tests {
     use super::*;
     use std::time::Duration;
+
+    #[test]
+    fn tray_press_keeps_click_intent_when_blur_precedes_mouse_down() {
+        let mut press = TrayPress::default();
+        // Explorer takes focus, the UI snapshots the click, then blur hides the
+        // launcher before Explorer's delayed mouse-down callback is delivered.
+        press.before_blur(true);
+        press.down(Some(false));
+        assert_eq!(press.select(), Event::Hide);
+
+        // The opposite ordering and a long held press have the same intent.
+        press.down(Some(true));
+        press.before_blur(true);
+        assert_eq!(press.select(), Event::Hide);
+        press.down(Some(false));
+        assert_eq!(press.select(), Event::Open);
+
+        // A cancelled prior gesture must not poison the next complete press.
+        press.down(Some(true));
+        press.down(Some(false));
+        assert_eq!(press.select(), Event::Open);
+        press.before_blur(true);
+        press.clear();
+        assert_eq!(press.select(), Event::Toggle);
+    }
 
     struct Owner(HWND);
 
@@ -517,6 +633,24 @@ mod tests {
             SendMessageW(service.hwnd as HWND, TRAY_MESSAGE, 0, NIN_SELECT as isize);
         }
         // Blur between press and release must not reopen the visible launcher.
+        assert_eq!(
+            received.recv_timeout(Duration::from_secs(2)).unwrap(),
+            Event::Hide
+        );
+        // Reproduce the ordering missed by the original regression: the focus
+        // callback captures visible=true, then the owner hides BEFORE down.
+        service.press.lock().unwrap().before_blur(true);
+        // SAFETY: the test still owns owner, and the endpoint lives on its worker.
+        unsafe {
+            ShowWindow(owner.0, SW_HIDE);
+            SendMessageW(
+                service.hwnd as HWND,
+                TRAY_MESSAGE,
+                0,
+                WM_LBUTTONDOWN as isize,
+            );
+            SendMessageW(service.hwnd as HWND, TRAY_MESSAGE, 0, NIN_SELECT as isize);
+        }
         assert_eq!(
             received.recv_timeout(Duration::from_secs(2)).unwrap(),
             Event::Hide

@@ -1,0 +1,59 @@
+[
+  {
+    "Case": "software",
+    "RunnerExited": true,
+    "Helpers": [
+      {
+        "Elevated": true,
+        "Exited": true
+      },
+      {
+        "Elevated": false,
+        "Exited": true
+      },
+      {
+        "Elevated": false,
+        "Exited": true
+      }
+    ],
+    "HelperCount": 3
+  },
+  {
+    "Case": "software-retry",
+    "RunnerExited": true,
+    "Helpers": [
+      {
+        "Elevated": true,
+        "Exited": true
+      },
+      {
+        "Elevated": false,
+        "Exited": true
+      },
+      {
+        "Elevated": false,
+        "Exited": true
+      }
+    ],
+    "HelperCount": 3
+  },
+  {
+    "Case": "femtovg",
+    "RunnerExited": true,
+    "Helpers": [
+      {
+        "Elevated": true,
+        "Exited": true
+      },
+      {
+        "Elevated": false,
+        "Exited": true
+      },
+      {
+        "Elevated": false,
+        "Exited": true
+      }
+    ],
+    "HelperCount": 3
+  }
+]

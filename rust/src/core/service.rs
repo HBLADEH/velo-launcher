@@ -3,7 +3,7 @@
 
 use std::collections::VecDeque;
 use std::path::{Path, PathBuf};
-use std::sync::atomic::{AtomicBool, Ordering};
+use std::sync::atomic::{AtomicBool, AtomicU64, Ordering};
 use std::sync::mpsc::{SyncSender, sync_channel};
 use std::sync::{Arc, Condvar, Mutex, OnceLock, RwLock};
 use std::thread::JoinHandle;
@@ -14,15 +14,18 @@ use chrono::{DateTime, Utc};
 use super::catalog::Catalog;
 use super::config::Config;
 use super::data::{ApplicationLibrary, DataStore, History, IndexCache, IndexLoad};
+use super::group_run::{Report, State};
 use super::icons::{self, Pixels};
 use super::indexer::{self, Generation, Ticket};
 use super::launch::Action;
+use super::launch_groups::{self, Collection, DraftTicket, Group};
 use super::model::AppItem;
+use super::search::Index;
 use super::storage;
 use super::{DataError, JsonDocument, Result, library, update};
 use crate::platform::windows::{
-    hotkey, http, icons as native_icons, instance::Identity, launch, preferences, shell,
-    system_tools, updater,
+    group_launch, hotkey, http, icons as native_icons, instance::Identity, launch, preferences,
+    shell, system_tools, updater,
 };
 
 pub fn now() -> DateTime<Utc> {
@@ -35,6 +38,9 @@ pub struct Snapshot {
     pub history: Arc<History>,
     pub cache: Arc<IndexCache>,
     pub library: Arc<ApplicationLibrary>,
+    pub groups: Arc<Collection>,
+    pub group_index: Arc<Index>,
+    pub groups_available: bool,
 }
 
 pub struct LoadedIcon {
@@ -43,6 +49,11 @@ pub struct LoadedIcon {
 }
 
 pub enum Event {
+    GroupDetection {
+        ticket: DraftTicket,
+        result: Result<String>,
+    },
+    GroupRun(Box<Report>),
     Snapshot(Arc<Snapshot>),
     Status {
         scanning: bool,
@@ -72,6 +83,8 @@ pub struct UpdateState {
     pub scheduled: bool,
 }
 pub enum Manage {
+    SaveGroup(Group),
+    DeleteGroup(String),
     Save(Config),
     Pin(String, bool),
     Import(Vec<PathBuf>),
@@ -80,6 +93,14 @@ pub enum Manage {
     OpenBackups(isize),
 }
 enum Work {
+    GroupDetection(DraftTicket, PathBuf),
+    Group {
+        id: String,
+        only: Vec<String>,
+        force: Option<String>,
+        owner: isize,
+        run_id: u64,
+    },
     Launch(LaunchRequest),
     Manage(Manage),
 }
@@ -100,6 +121,10 @@ struct IconMailbox {
 }
 
 struct Shared {
+    groups: OnceLock<storage::Store<Collection>>,
+    group_run_id: AtomicU64,
+    group_cancelled: AtomicBool,
+    pending_groups: group_launch::Pending,
     directory: PathBuf,
     store: OnceLock<Arc<DataStore>>,
     snapshot: RwLock<Option<Arc<Snapshot>>>,
@@ -167,7 +192,26 @@ impl Shared {
             cache.apps.as_deref().unwrap_or_default(),
             config.filter_noise,
         );
+        let groups = self
+            .groups
+            .get()
+            .map(|store| store.snapshot())
+            .transpose()?
+            .unwrap_or_else(|| Arc::new(Collection::default()));
+        let group_index = Arc::new(Index::new(groups.groups.iter().map(|group| {
+            Arc::new(AppItem {
+                id: group.id.clone(),
+                name: group.name.clone(),
+                keywords: Some(group.aliases.clone()),
+                source: "LaunchGroup".into(),
+                description: format!("启动组合 · {} 个应用", group.members.len()),
+                ..AppItem::default()
+            })
+        })));
         let snapshot = Arc::new(Snapshot {
+            groups,
+            group_index,
+            groups_available: self.groups.get().is_some(),
             catalog: Arc::new(Catalog::new(
                 &items,
                 &library,
@@ -220,6 +264,10 @@ impl Runtime {
         notify: impl Fn() + Send + Sync + 'static,
     ) -> Result<Self> {
         let shared = Arc::new(Shared {
+            groups: OnceLock::new(),
+            group_run_id: AtomicU64::new(0),
+            group_cancelled: AtomicBool::new(false),
+            pending_groups: Mutex::new(Default::default()),
             directory: directory.into(),
             store: OnceLock::new(),
             snapshot: RwLock::new(None),
@@ -299,6 +347,32 @@ impl Runtime {
                             break;
                         }
                         match request {
+                            Work::GroupDetection(ticket, path) => {
+                                let result = (|| -> Result<String> {
+                                    let path_text = path.to_string_lossy();
+                                    if !path.is_absolute()
+                                        || !indexer::extension(&path_text, "exe")
+                                        || !std::fs::metadata(&path)
+                                            .is_ok_and(|metadata| metadata.is_file())
+                                    {
+                                        return Err(DataError::new(
+                                            "check group detection",
+                                            "readable executable required",
+                                        ));
+                                    }
+                                    Ok(path_text.into_owned())
+                                })();
+                                action_state.event(Event::GroupDetection { ticket, result });
+                            }
+                            Work::Group {
+                                id,
+                                only,
+                                force,
+                                owner,
+                                run_id,
+                            } => {
+                                run_group(&action_state, &id, &only, force, owner, run_id);
+                            }
                             Work::Launch(request) => {
                                 let result = run_action(&action_state, &request);
                                 action_state.event(Event::Launched {
@@ -308,6 +382,8 @@ impl Runtime {
                             }
                             Work::Manage(request) => {
                                 let kind = match request {
+                                    Manage::SaveGroup(_) => "group_save",
+                                    Manage::DeleteGroup(_) => "group_delete",
                                     Manage::Save(_) => "settings",
                                     Manage::Import(_) => "import",
                                     Manage::Delete(_) => "delete",
@@ -360,10 +436,12 @@ impl Runtime {
         };
         events.0 = false;
         let drained: Vec<_> = events.1.drain(..).collect();
-        if drained
-            .iter()
-            .any(|event| matches!(event, Event::Launched { .. } | Event::Managed { .. }))
-        {
+        if drained.iter().any(|event| {
+            matches!(
+                event,
+                Event::Launched { .. } | Event::Managed { .. } | Event::GroupDetection { .. }
+            ) || matches!(event, Event::GroupRun(report) if report.done)
+        }) {
             self.action_busy.store(false, Ordering::Release);
         }
         drained
@@ -389,6 +467,49 @@ impl Runtime {
         }
         self.action_busy.store(false, Ordering::Release);
         false
+    }
+    fn group_work(&self, work: Work) -> bool {
+        if self.shared.stopping.load(Ordering::Acquire)
+            || self.update_busy.load(Ordering::Acquire)
+            || self.action_busy.swap(true, Ordering::AcqRel)
+        {
+            return false;
+        }
+        if self
+            .actions
+            .as_ref()
+            .is_some_and(|sender| sender.try_send(work).is_ok())
+        {
+            return true;
+        }
+        self.action_busy.store(false, Ordering::Release);
+        false
+    }
+    pub fn group_detection(&self, ticket: DraftTicket, path: PathBuf) -> bool {
+        self.group_work(Work::GroupDetection(ticket, path))
+    }
+    pub fn launch_group(
+        &self,
+        id: String,
+        only: Vec<String>,
+        force: Option<String>,
+        owner: isize,
+    ) -> bool {
+        if self.action_busy.load(Ordering::Acquire) {
+            return false;
+        }
+        self.shared.group_cancelled.store(false, Ordering::Release);
+        let run_id = self.shared.group_run_id.fetch_add(1, Ordering::Relaxed) + 1;
+        self.group_work(Work::Group {
+            id,
+            only,
+            force,
+            owner,
+            run_id,
+        })
+    }
+    pub fn cancel_group(&self) {
+        self.shared.group_cancelled.store(true, Ordering::Release);
     }
     pub fn manage(&self, request: Manage) -> bool {
         if self.shared.stopping.load(Ordering::Acquire)
@@ -488,6 +609,22 @@ fn manage(shared: &Shared, request: Manage) -> Result<String> {
         .snapshot()?
         .ok_or_else(|| DataError::new("commit application change", "not initialized"))?;
     let message = match request {
+        Manage::SaveGroup(group) => {
+            shared
+                .groups
+                .get()
+                .ok_or_else(|| DataError::new("save launch group", "groups unavailable"))?
+                .update(|current| current.with_group(group))?;
+            "启动组合已保存".into()
+        }
+        Manage::DeleteGroup(id) => {
+            shared
+                .groups
+                .get()
+                .ok_or_else(|| DataError::new("delete launch group", "groups unavailable"))?
+                .update(|current| current.without_group(&id))?;
+            "启动组合已删除".into()
+        }
         Manage::Save(config) => {
             config.validate()?;
             let key = hotkey::Key::parse(&config.hotkey)
@@ -736,6 +873,15 @@ fn initialize(shared: &Shared) -> Result<()> {
         super::migration::preserve(&shared.directory, id)?;
     }
     let store = Arc::new(DataStore::open(&shared.directory)?);
+    match launch_groups::open(&shared.directory) {
+        Ok(groups) => {
+            let _ = shared.groups.set(groups);
+        }
+        Err(error) => eprintln!(
+            "event=launch_groups_unavailable operation={}",
+            error.operation
+        ),
+    }
     if matches!(store.index, IndexLoad::RebuildRequired(_)) {
         let original = std::fs::read(shared.directory.join("index.json"))
             .map_err(|e| DataError::new("preserve unusable index", e))?;
@@ -871,6 +1017,91 @@ fn commit_index(
     Ok(!ticket.current() || icons::prune(&shared.directory, retained.into_iter()).is_ok())
 }
 
+fn run_group(
+    shared: &Shared,
+    id: &str,
+    only: &[String],
+    force: Option<String>,
+    owner: isize,
+    run_id: u64,
+) {
+    let snapshot = shared.snapshot().ok().flatten();
+    let group = snapshot
+        .as_ref()
+        .and_then(|snapshot| snapshot.groups.groups.iter().find(|group| group.id == id))
+        .cloned();
+    let Some(mut group) = group else {
+        shared.event(Event::GroupRun(Box::new(Report {
+            run_id,
+            group_id: id.into(),
+            name: "启动组合不可用".into(),
+            entries: Vec::new(),
+            done: true,
+            history_saved: true,
+        })));
+        return;
+    };
+    if !only.is_empty() {
+        group.members.retain(|member| only.contains(&member.app_id));
+    }
+    let items = group
+        .members
+        .iter()
+        .map(|member| {
+            snapshot.as_ref().and_then(|snapshot| {
+                snapshot
+                    .catalog
+                    .item(&member.app_id)
+                    .map(|item| item.as_ref().clone())
+            })
+        })
+        .collect();
+    let mut report = group_launch::run(
+        group_launch::Request {
+            group,
+            items,
+            run_id,
+            owner,
+            force,
+        },
+        &shared.pending_groups,
+        &shared.stopping,
+        &shared.group_cancelled,
+        |report| shared.event(Event::GroupRun(Box::new(report))),
+    );
+    let successes: Vec<_> = report
+        .entries
+        .iter()
+        .filter(|entry| entry.state == State::Submitted)
+        .map(|entry| entry.app_id.as_str())
+        .collect();
+    if !successes.is_empty() {
+        report.history_saved = (|| -> Result<()> {
+            let _commit = shared
+                .commit
+                .lock()
+                .map_err(|_| DataError::new("record group history", "poisoned lock"))?;
+            let store = shared
+                .store
+                .get()
+                .ok_or_else(|| DataError::new("record group history", "not initialized"))?;
+            store.history.update(|current| {
+                let mut history = current.clone();
+                for id in &successes {
+                    history = history.record(id, "", now().fixed_offset())?;
+                }
+                Ok(history)
+            })?;
+            if let Some(snapshot) = shared.snapshot()? {
+                shared.publish(snapshot.cache.clone())?;
+            }
+            Ok(())
+        })()
+        .is_ok();
+    }
+    shared.event(Event::GroupRun(Box::new(report)));
+}
+
 fn run_action(
     shared: &Shared,
     request: &LaunchRequest,
@@ -979,6 +1210,10 @@ mod tests {
 
     fn shared(directory: &Path) -> Shared {
         Shared {
+            groups: OnceLock::new(),
+            group_run_id: AtomicU64::new(0),
+            group_cancelled: AtomicBool::new(false),
+            pending_groups: Mutex::new(Default::default()),
             directory: directory.into(),
             store: OnceLock::new(),
             snapshot: RwLock::new(None),
@@ -1007,6 +1242,104 @@ mod tests {
             }]),
             ..IndexCache::default()
         }
+    }
+
+    #[test]
+    fn broken_optional_group_file_does_not_block_the_catalogue_or_change_original_bytes() {
+        let directory = tempfile::tempdir().unwrap();
+        let path = directory.path().join("launch-groups.json");
+        let original = br#"{"version":200,"future":"preserve"}"#;
+        fs::write(&path, original).unwrap();
+        let shared = shared(directory.path());
+        initialize(&shared).unwrap();
+        assert!(shared.snapshot().unwrap().is_some());
+        assert!(!shared.snapshot().unwrap().unwrap().groups_available);
+        assert_eq!(fs::read(path).unwrap(), original);
+        assert!(manage(&shared, Manage::DeleteGroup("group:missing".into())).is_err());
+    }
+
+    #[test]
+    fn saved_groups_search_restart_and_native_partial_results_preserve_application_history() {
+        use super::launch_groups::{Group, Member};
+        let directory = tempfile::tempdir().unwrap();
+        let shared = shared(directory.path());
+        initialize(&shared).unwrap();
+        let apartment = shell::Apartment::new().unwrap();
+        let running = library::item(
+            &std::env::current_exe().unwrap(),
+            &mut shell::ShortcutResolver(&apartment),
+        )
+        .unwrap();
+        let missing_path = directory
+            .path()
+            .join("synthetic-missing.exe")
+            .to_string_lossy()
+            .into_owned();
+        let missing = AppItem {
+            id: super::super::model::identity(&missing_path, ""),
+            path: missing_path.clone(),
+            exec_path: missing_path,
+            name: "失效成员".into(),
+            ..AppItem::default()
+        };
+        shared
+            .store
+            .get()
+            .unwrap()
+            .library
+            .update(|current| {
+                let mut library = current.clone();
+                library.applications = Some(vec![running.clone(), missing.clone()]);
+                Ok(library)
+            })
+            .unwrap();
+        let cache = shared.snapshot().unwrap().unwrap().cache.clone();
+        shared.publish(cache).unwrap();
+        let group = Group {
+            id: "group:synthetic".into(),
+            name: "开黑".into(),
+            members: vec![
+                Member::from_app(&running).unwrap(),
+                Member::from_app(&missing).unwrap(),
+            ],
+            ..Group::default()
+        };
+        manage(&shared, Manage::SaveGroup(group.clone())).unwrap();
+        let snapshot = shared.snapshot().unwrap().unwrap();
+        assert_eq!(
+            snapshot
+                .group_index
+                .query("kh", 10, true, &Default::default(), 0.0)[0]
+                .item
+                .id,
+            group.id
+        );
+        assert_eq!(
+            launch_groups::open(directory.path())
+                .unwrap()
+                .snapshot()
+                .unwrap()
+                .groups[0],
+            group
+        );
+        let before = shared.store.get().unwrap().history.snapshot().unwrap();
+        run_group(&shared, &group.id, &[], None, 0, 1);
+        let events = &shared.events.lock().unwrap().1;
+        let report = events
+            .iter()
+            .find_map(|event| match event {
+                Event::GroupRun(report) if report.done => Some(report),
+                _ => None,
+            })
+            .unwrap();
+        assert_eq!(report.entries.len(), 2);
+        assert_eq!(report.entries[0].state, State::AlreadyRunning);
+        assert_eq!(report.entries[1].state, State::Failed);
+        assert!(report.accepted());
+        assert_eq!(
+            before,
+            shared.store.get().unwrap().history.snapshot().unwrap()
+        );
     }
 
     #[test]

@@ -24,6 +24,8 @@ Settings, history, custom applications and pins remain in `%LOCALAPPDATA%\Velo`.
 - List and grid views, keyboard navigation, native context menus, tray and global hotkey.
 - Light/dark/system themes, configuration backups and SHA-256 verified Rust updates.
 
+This branch adds **launch groups (unreleased)**: name a group, drag members from Velo's app library with icons, then search its name to open missing members while skipping apps already running. See the [Chinese guide](docs/user-guide.md#启动组合本分支新增尚未发布) and [design and validation scope](docs/launch-groups-proposal.md).
+
 ![Rust interface with synthetic data](docs/baselines/2026-11-07-slint-rs13/completion-2026-11-12/static/software/light-home.png)
 
 ## Develop

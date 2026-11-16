@@ -22,6 +22,7 @@ slint::include_modules!();
 mod business;
 mod business_probe;
 mod fixtures;
+mod group_editor;
 mod import_preview;
 mod input;
 mod interaction_probe;

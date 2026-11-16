@@ -177,6 +177,10 @@ impl Controller {
         if !app.get_presented() || app.get_native_dialog_active() {
             return;
         }
+        if app.get_groups_open() {
+            app.set_drop_hovering(false);
+            return;
+        }
         app.invoke_show_import(true);
         app.set_drop_hovering(false);
         let count = paths.len();
@@ -314,7 +318,11 @@ impl Controller {
         let Some(app) = self.app.upgrade() else {
             return;
         };
-        if !app.get_presented() || !app.get_import_open() || app.get_native_dialog_active() {
+        if !app.get_presented()
+            || !(app.get_import_open()
+                || (app.get_groups_open() && request == interaction::BROWSE_EXECUTABLE))
+            || app.get_native_dialog_active()
+        {
             return;
         }
         let owner = app
@@ -374,7 +382,21 @@ impl Controller {
             ),
         );
         if !error.is_empty() {
+            if app.get_groups_open() {
+                app.set_group_notice(error.clone());
+            }
             app.set_import_notice(error);
+        }
+        if request == interaction::BROWSE_EXECUTABLE && app.get_groups_open() {
+            if action == interaction::BROWSE && paths.row_count() == 1 {
+                if let Some(path) = paths.row_data(0) {
+                    app.invoke_group_detection_selected(path);
+                }
+            } else {
+                app.invoke_group_picker_cancelled();
+            }
+            app.invoke_native_interaction_finished();
+            return;
         }
         if request == interaction::MENU
             && matches!(action, interaction::BROWSE | interaction::CLEAR)
