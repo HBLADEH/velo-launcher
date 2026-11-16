@@ -491,6 +491,15 @@ impl Controller {
             self.defer_focus();
             return;
         }
+        // Explorer can deactivate us before its tray thread sends mouse down.
+        // Snapshot this click before the normal blur path hides the owner.
+        if self
+            .desktop
+            .as_ref()
+            .is_some_and(|desktop| desktop.preserve_press_before_blur(self.state.borrow().visible))
+        {
+            self.log("tray_press_preserved", "before=blur");
+        }
         // Native activation/ownership settles after Focused(false). A single
         // queued check handles owned popups without blanket IME/blur immunity.
         let generation = self.state.borrow().generation;
