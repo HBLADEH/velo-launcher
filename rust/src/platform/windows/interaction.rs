@@ -19,6 +19,25 @@ pub const BROWSE: i32 = 1;
 pub const CLEAR: i32 = 2;
 pub const BACK: i32 = 3;
 pub const MENU: i32 = 4;
+pub const BROWSE_EXECUTABLE: i32 = 5;
+
+pub fn new_group_id() -> Option<String> {
+    let mut id = windows_sys::core::GUID::from_u128(0);
+    // SAFETY: id is a live writable GUID; CoCreateGuid needs no COM apartment.
+    if unsafe { windows_sys::Win32::System::Com::CoCreateGuid(&mut id) } < 0 {
+        return None;
+    }
+    Some(format!(
+        "group:{:08x}{:04x}{:04x}{}",
+        id.data1,
+        id.data2,
+        id.data3,
+        id.data4
+            .iter()
+            .map(|byte| format!("{byte:02x}"))
+            .collect::<String>()
+    ))
+}
 
 #[derive(Default)]
 pub struct Completion {
@@ -58,7 +77,7 @@ pub fn run(owner: isize, request: i32) -> Completion {
         let initialized = CoInitializeEx(null(), COINIT_APARTMENTTHREADED as u32) >= 0;
         let owner = owner as HWND;
         let result = match request {
-            BROWSE => browse(owner),
+            BROWSE | BROWSE_EXECUTABLE => browse(owner, request == BROWSE_EXECUTABLE),
             CLEAR => Completion {
                 action: if MessageBoxW(
                     owner,
@@ -83,10 +102,18 @@ pub fn run(owner: isize, request: i32) -> Completion {
     }
 }
 
-unsafe fn browse(owner: HWND) -> Completion {
+unsafe fn browse(owner: HWND, executable_only: bool) -> Completion {
     let mut buffer = vec![0u16; 65536];
-    let title = wide("Velo · 选择应用文件");
-    let filter = wide("应用与快捷方式 (*.exe;*.lnk)\0*.exe;*.lnk\0所有文件 (*.*)\0*.*\0");
+    let title = wide(if executable_only {
+        "Velo · 选择实际运行的主程序"
+    } else {
+        "Velo · 选择应用文件"
+    });
+    let filter = wide(if executable_only {
+        "应用程序 (*.exe)\0*.exe\0"
+    } else {
+        "应用与快捷方式 (*.exe;*.lnk)\0*.exe;*.lnk\0所有文件 (*.*)\0*.*\0"
+    });
     let mut options = OPENFILENAMEW {
         lStructSize: std::mem::size_of::<OPENFILENAMEW>() as u32,
         hwndOwner: owner,
@@ -96,7 +123,11 @@ unsafe fn browse(owner: HWND) -> Completion {
         lpstrFile: buffer.as_mut_ptr(),
         nMaxFile: buffer.len() as u32,
         Flags: OFN_EXPLORER
-            | OFN_ALLOWMULTISELECT
+            | if executable_only {
+                0
+            } else {
+                OFN_ALLOWMULTISELECT
+            }
             | OFN_FILEMUSTEXIST
             | OFN_PATHMUSTEXIST
             | OFN_NOCHANGEDIR

@@ -36,7 +36,7 @@ export component SettingsPanel inherits FocusScope {
     in property <int> update-progress;
     private property <bool> licenses-open: false;
     out property <bool> licenses-expanded: root.licenses-open;
-    callback close(); callback save(); callback record(bool); callback manage();
+    callback close(); callback save(); callback record(bool); callback manage(); callback groups();
     callback refresh(); callback backup(); callback open-backups(); callback check-update(); callback install-update(); callback drag();
     focus-on-click: false; focus-on-tab-navigation: false;
     public function focus-panel() { root.focus(); }
@@ -137,6 +137,7 @@ export component SettingsPanel inherits FocusScope {
             Rectangle { visible: root.tab == 4; width: parent.width; height: parent.height;
                 SettingHeading { x: 24px; y: 24px; text: "应用来源"; }
                 ActionButton { x: 24px; y: 68px; width: 117px; height: 33px; text: "管理自定义应用"; text-size: 13px; radius: 6px; enabled: root.enabled; activated => { root.manage(); } }
+                ActionButton { x: 153px; y: 68px; width: 110px; height: 33px; text: "启动组合"; text-size: 13px; radius: 6px; enabled: root.enabled; activated => { root.groups(); } }
                 SettingHint { x: 24px; y: 109px; width: parent.width - 48px; text: "单独添加或删除扫描范围外的应用，重启后仍可搜索；无需添加整个目录。"; }
                 SettingHint { x: 24px; y: 150.6px; width: parent.width - 48px; text: "默认扫描开始菜单、桌面和 Windows Apps。"; }
                 SettingCheck { x: 24px; y: 192.2px; width: parent.width - 48px; enabled: root.enabled; text: "同时扫描 Program Files / Program Files (x86)"; checked <=> root.draft.program-files; }

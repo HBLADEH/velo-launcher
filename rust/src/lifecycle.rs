@@ -510,7 +510,7 @@ impl Controller {
             let importing = controller
                 .app
                 .upgrade()
-                .is_some_and(|app| app.get_import_open());
+                .is_some_and(|app| app.get_import_open() || app.get_groups_open());
             let modal = controller
                 .app
                 .upgrade()
@@ -688,6 +688,7 @@ impl Controller {
         let height = if !app.get_is_home()
             && !app.get_appearance_open()
             && !app.get_import_open()
+            && !app.get_groups_open()
             && app.get_grid_results()
         {
             (156 + ((app.get_result_items().row_count().div_ceil(6) * 106 + 32).max(160)))
@@ -696,7 +697,7 @@ impl Controller {
             geometry::content_height(
                 app.get_is_home(),
                 app.get_appearance_open(),
-                app.get_import_open(),
+                app.get_import_open() || app.get_groups_open(),
                 app.get_result_items().row_count(),
             )
         };

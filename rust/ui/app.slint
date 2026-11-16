@@ -1,4 +1,6 @@
 import { CustomPanel } from "custom.slint";
+import { LaunchGroupsPanel, GroupMemberRow } from "launch-groups.slint";
+export { GroupMemberRow } from "launch-groups.slint";
 import { AboutSlint, Palette } from "std-widgets.slint";
 import { ActionButton, AppTile, ContentScroll, Glyph, HomeSection, LauncherItem, PageTransition, PreviewEntry, ResultRow, SurfaceBackground, Theme } from "components.slint";
 import { ControlBounds, LicenseEntry, SettingsPanel, SettingsDraft } from "settings.slint";
@@ -25,6 +27,30 @@ export component AppWindow inherits Window {
     in property <string> product-version;
     in property <string> native-status;
     out property <bool> import-open: false;
+    out property <bool> groups-open: false;
+    in property <[LauncherItem]> group-items;
+    in property <[LauncherItem]> group-sources;
+    in property <[GroupMemberRow]> group-members;
+    in property <[GroupMemberRow]> group-results;
+    in-out property <string> group-name;
+    in-out property <string> group-aliases;
+    in-out property <string> group-filter;
+    in-out property <int> group-mode: 0;
+    in property <bool> group-busy;
+    in property <bool> group-run-busy;
+    in property <bool> group-retryable;
+    in property <bool> groups-available;
+    in property <bool> group-confirm;
+    in property <string> group-confirm-text;
+    in property <string> group-notice;
+    in property <string> group-summary;
+    in property <string> group-report-id;
+    callback groups-requested(); callback group-new(); callback group-edit(string);
+    callback group-delete(string); callback group-save(); callback group-close();
+    callback group-add(string); callback group-remove(string); callback group-detect(string);
+    callback group-detection-selected(string); callback group-picker-cancelled();
+    callback group-retry(); callback group-force(string); callback group-cancel(); callback group-answer(bool);
+    callback group-filter-changed(); callback group-draft-changed();
     in property <[PreviewEntry]> preview-entries;
     in property <bool> import-busy: false;
     in property <bool> import-elevated: false;
@@ -50,12 +76,15 @@ export component AppWindow inherits Window {
     in property <[LicenseEntry]> third-party-licenses;
     out property <bool> licenses-expanded: settings.licenses-expanded;
     pure callback hotkey-parts(string) -> [string];
+    pure callback item-pinnable(string) -> bool;
+    item-pinnable(id) => { return true; }
     in property <string> update-message;
     in property <string> update-notes;
     in property <int> update-progress;
     in property <bool> update-busy: false;
     in property <bool> update-available: false;
     in-out property <bool> import-return-settings: false;
+    private property <bool> group-return-settings: false;
     in property <[LauncherItem]> pinned-items;
     in property <[LauncherItem]> frequent-items;
     in property <[LauncherItem]> system-items;
@@ -120,8 +149,9 @@ export component AppWindow inherits Window {
     callback environment-changed();
     callback startup-configuration-ready(bool);
     public function icon-visible(group: int, index: int) -> bool {
+        if group == 5 { return root.presented && root.groups-open && groups-panel.icon-visible(index); }
         if group == 4 { return root.presented && root.import-open && custom-panel.icon-visible(index); }
-        if !root.presented || root.appearance-open || root.import-open { return false; }
+        if !root.presented || root.appearance-open || root.import-open || root.groups-open { return false; }
         if group == 3 {
             if root.grid-results { return !root.is-home && 16px + Math.floor(index / 6) * 106px + 89px > -results.content-y && 16px + Math.floor(index / 6) * 106px < -results.content-y + results.height; }
             return !root.is-home && 6px + index * 54px + 54px > -results.content-y && 6px + index * 54px < -results.content-y + results.height;
@@ -132,7 +162,8 @@ export component AppWindow inherits Window {
     }
     public function focus-input() {
         if root.presented && !root.native-dialog-active {
-            if root.import-open { custom-panel.focus-panel(); }
+            if root.groups-open { groups-panel.focus-panel(); }
+            else if root.import-open { custom-panel.focus-panel(); }
             else if !root.appearance-open { input.focus(); }
         }
     }
@@ -141,17 +172,24 @@ export component AppWindow inherits Window {
     public function show-licenses(open: bool) { settings.show-licenses(open); }
     public function show-appearance(open: bool) {
         if open && !root.appearance-open && root.business-enabled { root.settings-requested(); }
-        if open { root.import-open = false; }
+        if open { root.import-open = false; root.groups-open = false; }
         root.appearance-open = open;
         if open { if root.business-enabled { settings.focus-panel(); } else { appearance-focus.focus(); } } else { input.focus(); }
     }
     public function show-import(open: bool) {
-        if open { root.appearance-open = false; root.hotkey-record(false); }
+        if open { root.appearance-open = false; root.groups-open = false; root.hotkey-record(false); }
         root.import-open = open;
         if !open && root.import-return-settings { root.import-return-settings = false; root.appearance-open = true; settings.focus-panel(); return; }
         if root.presented {
             if open { custom-panel.focus-panel(); } else { root.focus-input(); }
         }
+    }
+    public function show-groups(open: bool) {
+        if open && !root.groups-open { root.group-return-settings = root.appearance-open; }
+        if open { root.appearance-open = false; root.import-open = false; root.hotkey-record(false); }
+        root.groups-open = open;
+        if !open && root.group-return-settings { root.group-return-settings = false; root.appearance-open = true; settings.focus-panel(); return; }
+        if open { root.groups-requested(); groups-panel.focus-panel(); } else { root.focus-input(); }
     }
     public function clear-input() {
         root.input-text = "";
@@ -178,6 +216,11 @@ export component AppWindow inherits Window {
     changed input-has-focus => { root.input-focus-changed(root.input-has-focus); }
     changed appearance-open => { if !root.appearance-open { root.hotkey-record(false); } root.layout-changed(); root.icon-viewport-changed(); }
     changed import-open => { root.layout-changed(); root.icon-viewport-changed(); }
+    changed groups-open => { root.layout-changed(); root.icon-viewport-changed(); }
+    changed group-mode => { root.icon-viewport-changed(); }
+    changed group-filter => { root.group-filter-changed(); }
+    changed group-name => { root.group-draft-changed(); }
+    changed group-aliases => { root.group-draft-changed(); }
     changed presented => { root.icon-viewport-changed(); }
     changed home-scroll-y => { root.icon-viewport-changed(); }
     changed result-scroll-y => { root.icon-viewport-changed(); }
@@ -281,6 +324,7 @@ export component AppWindow inherits Window {
                     text: "+ 自定义应用"; show-shadow: true;
                     activated => { root.show-import(true); }
                 }
+                if root.business-enabled: ActionButton { x: parent.width - 228px; y: 35px; width: 98px; height: 32px; text: "启动组合"; activated => { root.show-groups(true); } }
                 pinned := HomeSection {
                     x: 22px; y: 98px; width: parent.width - 44px;
                     title: "已固定"; items: root.pinned-items;
@@ -331,6 +375,7 @@ export component AppWindow inherits Window {
             x: 0px; y: 0px;
             width: results.visible-width; height: results.content-height;
             for item[index] in root.result-items: ResultRow {
+                pinnable: root.item-pinnable(item.id);
                 x: 12px; y: 6px + index * 54px; width: results.visible-width - 24px;
                 item: item; selected: root.selected-id == item.id;
                 hovered(id) => { root.selected-id = id; }
@@ -343,6 +388,7 @@ export component AppWindow inherits Window {
                 x: 0px; y: 0px;
                 width: results.visible-width; height: results.content-height;
                 for item[index] in root.result-items: AppTile {
+                    pinnable: root.item-pinnable(item.id);
                     x: 16px + Math.mod(index,6) * ((parent.width - 32px + 8px) / 6); y: 18px + Math.floor(index / 6) * 108px;
                     width: (parent.width - 32px - 40px) / 6;
                     grid: true;
@@ -403,6 +449,26 @@ export component AppWindow inherits Window {
                 remove(id) => { root.application-delete(id); } menu(id) => { root.application-menu(id); }
                 drag => { root.drag-requested(); } more => { root.import-native-requested(4); }
                 viewport-changed => { root.icon-viewport-changed(); }
+            }
+        }
+
+        PageTransition {
+            open: root.groups-open; presented: root.presented;
+            width: parent.width; height: parent.height;
+            groups-panel := LaunchGroupsPanel {
+                width: parent.width; height: parent.height;
+                enabled: root.presented && root.groups-open && !root.native-dialog-active;
+                groups: root.group-items; sources: root.group-sources; members: root.group-members; results: root.group-results;
+                name <=> root.group-name; aliases <=> root.group-aliases; filter <=> root.group-filter; mode <=> root.group-mode;
+                busy: root.group-busy; run-busy: root.group-run-busy; retryable: root.group-retryable; available: root.groups-available;
+                notice: root.group-notice; summary: root.group-summary; confirm: root.group-confirm; confirm-text: root.group-confirm-text;
+                report-id: root.group-report-id;
+                close => { root.group-close(); } create => { root.group-new(); } edit(id) => { root.group-edit(id); } remove-group(id) => { root.group-delete(id); }
+                save => { root.group-save(); } add(id) => { root.group-add(id); } remove(id) => { root.group-remove(id); }
+                detect(id) => { root.group-detect(id); }
+                viewport-changed => { root.icon-viewport-changed(); }
+                retry => { root.group-retry(); } force(id) => { root.group-force(id); } cancel => { root.group-cancel(); } answer(yes) => { root.group-answer(yes); }
+                drag => { root.drag-requested(); }
             }
         }
 
@@ -482,6 +548,7 @@ export component AppWindow inherits Window {
             save => { root.settings-save(); }
             record(enabled) => { root.hotkey-record(enabled); }
             manage => { root.import-return-settings = true; root.show-import(true); }
+            groups => { root.show-groups(true); }
             refresh => { root.refresh-requested(); }
             backup => { root.backup-requested(false); }
             open-backups => { root.backup-requested(true); }

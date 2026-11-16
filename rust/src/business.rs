@@ -19,6 +19,7 @@ use velo_slint::core::{icons, launch::Action, normalize::normalize, service};
 use crate::{AppWindow, LauncherItem, SettingsDraft, navigation, ui};
 
 pub struct Controller {
+    groups: RefCell<Option<Rc<crate::group_editor::Controller>>>,
     app: slint::Weak<AppWindow>,
     runtime: RefCell<Runtime>,
     snapshot: RefCell<Option<Arc<Snapshot>>>,
@@ -48,6 +49,7 @@ impl Controller {
             let _ = weak_app.upgrade_in_event_loop(|app| app.invoke_backend_changed());
         })?;
         let controller = Rc::new(Self {
+            groups: RefCell::new(None),
             app: app.as_weak(),
             runtime: RefCell::new(runtime),
             snapshot: RefCell::new(None),
@@ -63,6 +65,22 @@ impl Controller {
             observer,
         });
         app.set_business_enabled(true);
+        let weak = Rc::downgrade(&controller);
+        app.on_item_pinnable(move |id| {
+            weak.upgrade().is_none_or(|controller| {
+                controller
+                    .snapshot
+                    .borrow()
+                    .as_ref()
+                    .is_none_or(|snapshot| {
+                        !snapshot
+                            .groups
+                            .groups
+                            .iter()
+                            .any(|group| group.id == id.as_str())
+                    })
+            })
+        });
         app.set_business_status("正在读取应用索引…".into());
         app.set_data_directory(directory.to_string_lossy().into_owned().into());
         app.set_third_party_licenses(
@@ -219,6 +237,33 @@ impl Controller {
                 app.invoke_ensure_selection_visible(index as i32);
             }
         });
+        let weak = Rc::downgrade(&controller);
+        *controller.groups.borrow_mut() = Some(crate::group_editor::Controller::connect(
+            app,
+            move |command| {
+                let Some(controller) = weak.upgrade() else {
+                    return false;
+                };
+                match command {
+                    crate::group_editor::Command::Save(group) => {
+                        controller.runtime.borrow().manage(Manage::SaveGroup(group))
+                    }
+                    crate::group_editor::Command::Delete(id) => {
+                        controller.runtime.borrow().manage(Manage::DeleteGroup(id))
+                    }
+                    crate::group_editor::Command::Detection(ticket, path) => {
+                        controller.runtime.borrow().group_detection(ticket, path)
+                    }
+                    crate::group_editor::Command::Run { id, only, force } => {
+                        controller.launch_group(id, only, force)
+                    }
+                    crate::group_editor::Command::Cancel => {
+                        controller.runtime.borrow().cancel_group();
+                        true
+                    }
+                }
+            },
+        ));
         Ok(controller)
     }
 
@@ -229,7 +274,24 @@ impl Controller {
         };
         for event in events {
             match event {
+                Event::GroupDetection { ticket, result } => {
+                    if let Some(editor) = self.groups.borrow().as_ref() {
+                        editor.detection_ready(ticket, result);
+                    }
+                }
+                Event::GroupRun(report) => {
+                    if report.done {
+                        app.invoke_launch_finished(report.accepted());
+                        app.set_selection_notice(report.summary().into());
+                    }
+                    if let Some(editor) = self.groups.borrow().as_ref() {
+                        editor.report(*report);
+                    }
+                }
                 Event::Snapshot(snapshot) => {
+                    if let Some(editor) = self.groups.borrow().as_ref() {
+                        editor.snapshot(snapshot.clone());
+                    }
                     if let Some(observer) = &self.observer {
                         observer.event(
                             "catalog_published",
@@ -380,6 +442,12 @@ impl Controller {
                     }
                 }
                 Event::Managed { kind, result } => {
+                    if kind.starts_with("group_") {
+                        if let Some(editor) = self.groups.borrow().as_ref() {
+                            editor.managed(kind, result.is_ok());
+                        }
+                        continue;
+                    }
                     app.set_management_busy(false);
                     match result {
                         Ok(message) => {
@@ -478,7 +546,7 @@ impl Controller {
             self.lengths.set(groups.each_ref().map(|group| group.len()));
             groups.iter().flatten().cloned().collect::<Vec<_>>()
         } else {
-            let Ok(results) = snapshot.catalog.search(
+            let Ok(mut results) = snapshot.catalog.search(
                 &app.get_input_text(),
                 &snapshot.config,
                 &snapshot.history,
@@ -487,6 +555,27 @@ impl Controller {
                 app.set_selection_notice("搜索失败，请刷新后重试".into());
                 return;
             };
+            results.extend(snapshot.group_index.query(
+                &app.get_input_text(),
+                snapshot.config.max_results as usize,
+                snapshot.config.search.fuzzy,
+                &Default::default(),
+                0.0,
+            ));
+            let query = normalize(&app.get_input_text());
+            results.sort_by(|a, b| {
+                let a_group = a.item.source == "LaunchGroup";
+                let b_group = b.item.source == "LaunchGroup";
+                if a_group != b_group
+                    && normalize(&a.item.name) == query
+                    && normalize(&b.item.name) == query
+                {
+                    a_group.cmp(&b_group)
+                } else {
+                    b.score.total_cmp(&a.score)
+                }
+            });
+            results.truncate(snapshot.config.max_results as usize);
             results.into_iter().map(|result| result.item).collect()
         };
         let selected = app.get_selected_id();
@@ -503,7 +592,12 @@ impl Controller {
                     .map(|item| LauncherItem {
                         id: item.id.as_str().into(),
                         name: item.name.as_str().into(),
-                        subtitle: item.path.as_str().into(),
+                        subtitle: if item.source == "LaunchGroup" {
+                            item.description.as_str()
+                        } else {
+                            item.path.as_str()
+                        }
+                        .into(),
                         fallback: item
                             .name
                             .chars()
@@ -551,6 +645,16 @@ impl Controller {
     }
 
     fn choose(self: &Rc<Self>, id: &str, action: Action) {
+        if action == Action::Launch
+            && self
+                .snapshot
+                .borrow()
+                .as_ref()
+                .is_some_and(|snapshot| snapshot.groups.groups.iter().any(|group| group.id == id))
+        {
+            self.launch_group(id.into(), Vec::new(), None);
+            return;
+        }
         let Some(app) = self.app.upgrade() else {
             return;
         };
@@ -578,6 +682,28 @@ impl Controller {
             }
         } else {
             app.set_selection_notice("正在打开应用，请稍候".into());
+        }
+    }
+
+    fn launch_group(&self, id: String, only: Vec<String>, force: Option<String>) -> bool {
+        let Some(app) = self.app.upgrade() else {
+            return false;
+        };
+        if !app.get_presented() || app.get_native_dialog_active() {
+            return false;
+        }
+        let Some(owner) = owner(&app) else {
+            return false;
+        };
+        if self.runtime.borrow().launch_group(id, only, force, owner) {
+            app.set_group_run_busy(true);
+            app.set_group_mode(2);
+            app.invoke_clear_input();
+            app.invoke_launch_started();
+            true
+        } else {
+            app.set_selection_notice("正在处理启动或保存，请稍候".into());
+            false
         }
     }
 
@@ -807,6 +933,7 @@ impl Controller {
             app.get_system_items(),
             app.get_result_items(),
             app.get_custom_items(),
+            app.get_group_sources(),
         ]
         .into_iter()
         .enumerate()

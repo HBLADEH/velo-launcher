@@ -3,10 +3,12 @@
 pub mod catalog;
 pub mod config;
 pub mod data;
+pub mod group_run;
 pub mod history;
 pub mod icons;
 pub mod indexer;
 pub mod launch;
+pub mod launch_groups;
 pub mod library;
 pub mod migration;
 pub mod model;

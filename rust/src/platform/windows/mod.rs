@@ -1,5 +1,6 @@
 pub mod desktop;
 pub mod geometry;
+pub(crate) mod group_launch;
 pub mod hotkey;
 pub mod http;
 pub mod icons;
@@ -7,6 +8,7 @@ pub mod instance;
 pub mod interaction;
 pub mod launch;
 pub mod preferences;
+pub mod processes;
 pub mod shell;
 pub mod system_tools;
 pub mod updater;

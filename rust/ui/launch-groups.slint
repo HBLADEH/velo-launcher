@@ -1,0 +1,150 @@
+import { ActionButton, ContentScroll, DashedBorder, LauncherIcon, LauncherItem, SurfaceBackground, Theme } from "components.slint";
+import { SettingField, SettingHint } from "settings-controls.slint";
+
+export struct GroupMemberRow { id: string, name: string, status: string, review: bool }
+
+export component LaunchGroupsPanel inherits FocusScope {
+    in property <[LauncherItem]> groups;
+    in property <[LauncherItem]> sources;
+    in property <[GroupMemberRow]> members;
+    in property <[GroupMemberRow]> results;
+    in-out property <string> name;
+    in-out property <string> aliases;
+    in-out property <string> filter;
+    in-out property <int> mode;
+    in property <bool> busy;
+    in property <bool> run-busy;
+    in property <bool> retryable;
+    in property <bool> available;
+    in property <bool> confirm;
+    in property <string> confirm-text;
+    in property <string> notice;
+    in property <string> summary;
+    in property <string> report-id;
+    callback close(); callback create(); callback edit(string); callback remove-group(string);
+    callback save(); callback add(string); callback remove(string); callback detect(string);
+    callback viewport-changed();
+    callback retry(); callback force(string); callback cancel(); callback answer(bool); callback drag();
+    private property <string> dragging-id;
+    private property <string> dragging-name;
+    private property <length> drag-x;
+    private property <length> drag-y;
+    focus-on-click: false; focus-on-tab-navigation: false;
+    public function focus-panel() { root.focus(); }
+    public function icon-visible(index: int) -> bool {
+        return root.visible && root.mode == 1 && index * 44px + 44px > -apps.content-y && index * 44px < -apps.content-y + apps.height;
+    }
+    private property <length> source-scroll-y: apps.content-y;
+    changed source-scroll-y => { root.viewport-changed(); }
+    changed filter => { apps.content-y = 0px; }
+    SurfaceBackground { width: parent.width; height: parent.height; }
+    Rectangle {
+        x: 0px; y: 0px; width: parent.width; height: 65px;
+        TouchArea { enabled: root.enabled; pointer-event(event) => { if event.kind == PointerEventKind.down && event.button == PointerEventButton.left { root.drag(); } } }
+        Text { x: 24px; y: 21px; text: "启动组合"; font-size: 20px; font-weight: 600; color: Theme.fg; }
+        ActionButton { x: parent.width - 108px; y: 22px; width: 84px; height: 28px; text: "返回 · Esc"; flat: true; enabled: root.enabled && !root.busy; activated => { root.close(); } }
+    }
+    if root.mode == 0: Rectangle {
+        x: 0px; y: 72px; width: parent.width; height: parent.height - 125px;
+        SettingHint { x: 24px; y: 0px; width: parent.width - 48px; text: "给一组应用起个名字，一次搜索补齐它们。"; }
+        ActionButton { x: 24px; y: 40px; width: 112px; height: 36px; primary: true; text: "+ 新建组合"; enabled: root.enabled && root.available && !root.busy && !root.run-busy; activated => { root.create(); } }
+        if root.summary != "": ActionButton { x: 150px; y: 40px; width: 118px; height: 36px; text: "查看最近启动"; enabled: root.enabled; activated => { root.mode = 2; } }
+        list := ContentScroll { x: 24px; y: 95px; width: parent.width - 48px; height: parent.height - 100px; content-height: max(72px, root.groups.length * 70px); enabled: root.enabled;
+            Rectangle { x: 0px; y: 0px; width: list.visible-width; height: list.content-height;
+                for group[index] in root.groups: Rectangle { y: index * 70px; width: parent.width; height: 66px;
+                    Text { x: 0px; y: 8px; width: parent.width - 136px; text: group.name; color: Theme.fg; font-size: 15px; overflow: elide; }
+                    Text { x: 0px; y: 34px; width: parent.width - 136px; text: group.subtitle; color: Theme.muted; font-size: 12px; overflow: elide; }
+                    ActionButton { x: parent.width - 122px; y: 12px; width: 54px; height: 32px; text: "编辑"; enabled: root.enabled && !root.busy && !root.run-busy; activated => { root.edit(group.id); } }
+                    ActionButton { x: parent.width - 58px; y: 12px; width: 54px; height: 32px; text: "删除"; enabled: root.enabled && !root.busy && !root.run-busy; activated => { root.remove-group(group.id); } }
+                    Rectangle { y: 65px; width: parent.width; height: 1px; background: Theme.border; }
+                }
+                if root.groups.length == 0: SettingHint { y: 8px; width: parent.width; text: root.available ? "还没有组合。新建后拖入两个或更多应用即可。" : "组合文件无法读取，原件已保留。请检查数据文件后重启；其他应用仍可使用。"; }
+            }
+        }
+    }
+    editor := Rectangle {
+        visible: root.mode == 1;
+        x: 0px; y: 74px; width: parent.width; height: parent.height - 128px;
+        SettingField { x: 24px; y: 0px; width: parent.width - 48px; text <=> root.name; label: "组合名称"; placeholder: "组合名称，例如：开黑"; enabled: root.enabled && !root.busy; }
+        SettingField { x: 24px; y: 47px; width: parent.width - 48px; text <=> root.aliases; label: "组合别名（可选）"; placeholder: "别名（可选，用逗号分隔）"; enabled: root.enabled && !root.busy; }
+        source := Rectangle { x: 24px; y: 103px; width: (parent.width - 64px) / 2; height: parent.height - 156px;
+            Text { x: 0px; y: 0px; text: "应用库"; font-size: 14px; font-weight: 600; color: Theme.fg; }
+            SettingField { x: 0px; y: 28px; width: parent.width; text <=> root.filter; label: "搜索要添加的应用"; placeholder: "搜索应用，拖到右侧"; enabled: root.enabled && !root.busy; }
+            apps := ContentScroll { x: 0px; y: 75px; width: parent.width; height: parent.height - 75px; content-height: root.sources.length * 44px; enabled: root.enabled;
+                Rectangle { x: 0px; y: 0px; width: apps.visible-width; height: apps.content-height;
+                    for app[index] in root.sources: Rectangle { y: index * 44px; width: parent.width; height: 44px;
+                        Rectangle { width: parent.width; height: parent.height; background: touch.has-hover ? Theme.hover : transparent; border-radius: 6px; }
+                        LauncherIcon { x: 7px; y: 10px; width: 24px; height: 24px; item: app; }
+                        Text { x: 41px; y: 12px; width: parent.width - 95px; text: app.name; font-size: 13px; color: Theme.fg; overflow: elide; }
+                        touch := TouchArea {
+                            enabled: root.enabled && !root.busy;
+                            pointer-event(event) => {
+                                if event.button == PointerEventButton.left && event.kind == PointerEventKind.down {
+                                    root.dragging-id = app.id; root.dragging-name = app.name;
+                                    root.drag-x = source.x + self.mouse-x;
+                                    root.drag-y = 74px + source.y + apps.y + index * 44px + apps.content-y + self.mouse-y;
+                                }
+                                if event.button == PointerEventButton.left && event.kind == PointerEventKind.up {
+                                    if source.x + self.mouse-x >= target.x && source.x + self.mouse-x <= target.x + target.width
+                                        && apps.y + index * 44px + apps.content-y + self.mouse-y >= 0px
+                                        && apps.y + index * 44px + apps.content-y + self.mouse-y <= target.height {
+                                        root.add(app.id);
+                                    }
+                                    root.dragging-id = "";
+                                }
+                            }
+                            moved => { if self.pressed { root.drag-x = source.x + self.mouse-x; root.drag-y = 74px + source.y + apps.y + index * 44px + apps.content-y + self.mouse-y; } }
+                        }
+                        ActionButton { x: parent.width - 49px; y: (parent.height - self.height) / 2; width: 46px; height: 30px; text: "添加 " + app.name; icon-key: "plus"; enabled: root.enabled && !root.busy; activated => { root.add(app.id); } }
+                    }
+                }
+            }
+        }
+        target := Rectangle { x: parent.width / 2 + 8px; y: 103px; width: (parent.width - 64px) / 2; height: parent.height - 156px;
+            border-radius: 8px; background: root.dragging-id != "" ? Theme.selected : Theme.field;
+            DashedBorder { width: parent.width; height: parent.height; color: Theme.accent-line; }
+            Text { x: 10px; y: 9px; text: "组合成员 · " + root.members.length; font-size: 14px; font-weight: 600; color: Theme.fg; }
+            SettingHint { x: 10px; y: 34px; width: parent.width - 20px; font-size: 11px; text: "从左侧应用库拖入，相同应用只保留一份"; }
+            members := ContentScroll { x: 7px; y: 77px; width: parent.width - 14px; height: parent.height - 84px; content-height: max(60px, root.members.length * 71px); enabled: root.enabled;
+                Rectangle { x: 0px; y: 0px; width: members.visible-width; height: members.content-height;
+                    for member[index] in root.members: Rectangle { y: index * 71px; width: parent.width; height: 68px;
+                        Text { x: 4px; y: 3px; width: parent.width - 43px; text: member.name; font-size: 13px; color: Theme.fg; overflow: elide; }
+                        ActionButton { x: parent.width - 35px; y: 0px; width: 32px; height: 26px; text: "×"; flat: true; enabled: root.enabled && !root.busy; activated => { root.remove(member.id); } }
+                        Text { x: 4px; y: 28px; width: parent.width - 8px; text: member.status; font-size: 10px; color: Theme.muted; overflow: elide; }
+                        ActionButton { x: 4px; y: 44px; width: 100px; height: 23px; text: member.review ? "选择运行程序" : "修改运行检测"; text-size: 10px; flat: true; enabled: root.enabled && !root.busy; activated => { root.detect(member.id); } }
+                    }
+                    if root.members.length == 0: SettingHint { x: 6px; y: 5px; width: parent.width - 12px; text: "将左侧应用拖到这里，或点击应用旁的 + 添加。"; }
+                }
+            }
+        }
+        Text { x: 24px; y: parent.height - 30px; width: parent.width - 176px; text: "从应用库添加至少两个应用后保存"; font-size: 11px; color: Theme.muted; overflow: elide; }
+        ActionButton { x: parent.width - 132px; y: parent.height - 40px; width: 108px; height: 34px; text: root.busy ? "处理中…" : "保存组合"; primary: true; enabled: root.enabled && !root.busy && root.name != "" && root.members.length >= 2; activated => { root.save(); } }
+    }
+    if root.mode == 2: Rectangle {
+        x: 24px; y: 79px; width: parent.width - 48px; height: parent.height - 138px;
+        SettingHint { x: 0px; y: 0px; width: parent.width; text: root.summary; }
+        results := ContentScroll { x: 0px; y: 68px; width: parent.width; height: parent.height - 120px; content-height: root.results.length * 70px; enabled: root.enabled;
+            Rectangle { x: 0px; y: 0px; width: results.visible-width; height: results.content-height;
+                for item[index] in root.results: Rectangle { y: index * 70px; width: parent.width; height: 66px;
+                    Text { x: 0px; y: 2px; width: parent.width - 110px; text: item.name; color: Theme.fg; font-size: 14px; overflow: elide; }
+                    Text { x: 0px; y: 26px; width: parent.width - 110px; text: item.status; color: Theme.muted; font-size: 11px; wrap: word-wrap; }
+                    if item.review: ActionButton { x: parent.width - 104px; y: 7px; width: 100px; height: 32px; text: "仍然打开"; enabled: root.enabled && !root.run-busy; activated => { root.force(item.id); } }
+                }
+            }
+        }
+        ActionButton { x: 0px; y: parent.height - 40px; width: 140px; height: 34px; text: root.run-busy ? "取消尚未启动项" : "重新检查 / 重试"; enabled: root.enabled && (root.run-busy || root.retryable); activated => { if root.run-busy { root.cancel(); } else { root.retry(); } } }
+        ActionButton { x: 154px; y: parent.height - 40px; width: 100px; height: 34px; text: "组合列表"; enabled: root.enabled; activated => { root.mode = 0; } }
+        ActionButton { x: 268px; y: parent.height - 40px; width: 108px; height: 34px; text: "编辑此组合"; enabled: root.enabled && !root.run-busy; activated => { root.edit(root.report-id); } }
+    }
+    SettingHint { x: 24px; y: parent.height - 43px; width: parent.width - 48px; text: root.notice; font-size: 11px; }
+    if root.dragging-id != "": Rectangle { x: min(root.width - 170px, max(0px, root.drag-x + 8px)); y: min(root.height - 38px, max(0px, root.drag-y)); width: 160px; height: 32px; border-radius: 6px; background: Theme.selected; border-width: 1px; border-color: Theme.accent-line; Text { x: 8px; y: 7px; width: parent.width - 16px; text: root.dragging-name; color: Theme.fg; font-size: 12px; overflow: elide; } }
+    if root.confirm: Rectangle {
+        width: parent.width; height: parent.height; background: #00000050;
+        TouchArea { }
+        Rectangle { x: 36px; y: (parent.height - 155px) / 2; width: parent.width - 72px; height: 155px; border-radius: 10px; background: Theme.surface;
+            SettingHint { x: 20px; y: 23px; width: parent.width - 40px; text: root.confirm-text; color: Theme.fg; }
+            ActionButton { x: parent.width - 196px; y: 103px; width: 76px; height: 32px; text: "取消"; activated => { root.answer(false); } }
+            ActionButton { x: parent.width - 108px; y: 103px; width: 88px; height: 32px; text: "确认"; activated => { root.answer(true); } }
+        }
+    }
+}
