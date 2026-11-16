@@ -1,0 +1,63 @@
+{
+  "Date": "2026-11-16",
+  "Branch": "codex/launch-groups",
+  "BaseCommit": "63763d33f2468d792bcb947f4c49b08bec27e1d6",
+  "Uncommitted": true,
+  "ProductSourceChanged": false,
+  "PreviousFullVerification": "../2026-11-16-launch-groups-library-only/verification.json",
+  "ExistingRustTestsPerRenderer": 106,
+  "FullVerificationRepeated": false,
+  "OSVersion": "10.0.26340.0",
+  "PolicyBefore": {
+    "EnableLUA": 1,
+    "ConsentPromptBehaviorAdmin": 5,
+    "PromptOnSecureDesktop": 1
+  },
+  "PolicyAfter": {
+    "EnableLUA": 1,
+    "ConsentPromptBehaviorAdmin": 5,
+    "PromptOnSecureDesktop": 1
+  },
+  "PolicyModified": false,
+  "UACResponses": "human-operated native secure desktop",
+  "TestInterface": "production Runtime and Shell calls from a normal-token local runner linked to each product renderer library",
+  "ActualSlintUILifecycleTested": false,
+  "SourceHashesMatched": 22,
+  "HelperSourceSHA256": "052F53E2ACD5C81B706417FD4B85C6D48D572B6EEAE19349B87DA85C371203E9",
+  "RunnerSourceSHA256": "57001897E608E995EC3A11A46C60B7D1A2D7EC9D9045138E1C46B7A45354532F",
+  "RendererCases": [
+    {
+      "Renderer": "software",
+      "Features": "[\"product\", \"renderer-software\"]",
+      "LibrarySHA256": "3A7E235AFD3158DE725D5959DDE87F8DCCE2BE78CFF7F7A1A61E037388894DED",
+      "RunnerSHA256": "BF2E90F24C858B7F05323F105AC8C0683BA9A0D3A860FB9F2FB1C276442E02AF",
+      "HelperSHA256": "C42D241A539F31FA7E51145E72E87FF9CD08CD6BC2C6FC8341484E360E44E368",
+      "ShortcutSHA256": "4B3C4BEB6D1931A5B4D0C8FDDB4F119074B3CD51616883127D16013E7003CAA4",
+      "RunAsShortcutFlag": true,
+      "Result": "software-result.json",
+      "LocalAttempt": "software-retry",
+      "Passed": true,
+      "UserCancelReported": true,
+      "UserAcceptanceReported": true
+    },
+    {
+      "Renderer": "femtovg",
+      "Features": "[\"product\", \"renderer-femtovg\"]",
+      "LibrarySHA256": "F5A95BCDA333A2DD2578F5188BB5AC235A135A08184AB823F5C64B71898C4614",
+      "RunnerSHA256": "F9F31CC0C29213AF426A2876DCD8CEF4C0EC7937BCAEFCA0B1A2CF6A9AF44017",
+      "HelperSHA256": "1242FC8378ACD3296A5EB88E68022D8C913BEFAAAF020B3122B10FB539E32537",
+      "ShortcutSHA256": "A7190B892259E7887532BF6A21A03F54DF9AB2C4F4F309DEAB39DFAE21F2C274",
+      "RunAsShortcutFlag": true,
+      "Result": "femtovg-result.json",
+      "LocalAttempt": "femtovg",
+      "Passed": true,
+      "UserCancelReported": true,
+      "UserAcceptanceReported": true
+    }
+  ],
+  "InitialAcceptObservation": "initial-accept-observation.json",
+  "Cleanup": "cleanup.json",
+  "RawLocalEvidence": "rust/target/groups-uac-assisted-e52b43af895f4069bba3ed36ed9fe0dc",
+  "PerformanceMeasured": false,
+  "Published": false
+}

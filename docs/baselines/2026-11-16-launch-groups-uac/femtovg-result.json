@@ -1,0 +1,32 @@
+{
+  "cancel": {
+    "admin_history": false,
+    "admin_started": false,
+    "normal_elevated": false,
+    "normal_submitted": 2
+  },
+  "config_library_group_bytes_unchanged": true,
+  "helpers_exited": true,
+  "history": {
+    "count_each": 1,
+    "entries": 3,
+    "query_learning_empty": true
+  },
+  "passed": true,
+  "production_service": true,
+  "repeat": {
+    "already_running": 3,
+    "elevated_member_detected_from_normal_runner": true,
+    "submitted": 0
+  },
+  "retry_accept": {
+    "elevated": true,
+    "submitted": 1,
+    "unicode_arguments_preserved": true,
+    "working_directory_preserved": true
+  },
+  "runner_elevated": false,
+  "uac_operator_actions_required": true,
+  "ui_input": false,
+  "renderer_library": "femtovg"
+}

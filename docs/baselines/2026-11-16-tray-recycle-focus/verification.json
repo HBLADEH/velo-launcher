@@ -1,0 +1,54 @@
+{
+  "Date": "2026-11-16",
+  "Branch": "codex/launch-groups",
+  "BaseCommit": "63763d33f2468d792bcb947f4c49b08bec27e1d6",
+  "Uncommitted": true,
+  "OSVersion": "10.0.26340.0",
+  "Status": "implemented-unreleased",
+  "Builds": [
+    {
+      "Renderer": "software",
+      "RustTests": 108,
+      "ChecksPassed": true,
+      "SmokeTestPassed": true,
+      "ExecutableSHA256": "96563748666BAEEDDFBA82274EE9EDB1CA7DA4156C86C2BE56C57F89FBD9AAF6",
+      "BuildIdentitySHA256": "0E60AAB957A66FD0429766B7197E02292A4F8512E40CFDE51C3AFA70154A082D",
+      "SourceFingerprintsMatched": 234,
+      "RecordedAtUtc": "2026-11-16T08:32:46.6870106Z"
+    },
+    {
+      "Renderer": "femtovg",
+      "RustTests": 108,
+      "ChecksPassed": true,
+      "SmokeTestPassed": true,
+      "ExecutableSHA256": "3B30469CCED9F90C099D182583E26C349322F5BE0AE766B39BCAEC34529323B0",
+      "BuildIdentitySHA256": "6EB996B12BC199F3E6F5E2CA9F486F69B11B9410B5F56E5F0D4FEBA37822E8FD",
+      "SourceFingerprintsMatched": 234,
+      "RecordedAtUtc": "2026-11-16T08:19:24.414872Z"
+    }
+  ],
+  "CurrentFixSources": [
+    {
+      "Path": "rust/src/platform/windows/system_tools.rs",
+      "SHA256": "AE2AD644CBEF672700C5A9FBAF57C211B66E6EBB4F534FDC0A1406E28515B083"
+    },
+    {
+      "Path": "rust/src/platform/windows/desktop.rs",
+      "SHA256": "791F052438B22B4C17F595F2E1882EFC52F3E5F9019E890AF7040ED727AD42B1"
+    },
+    {
+      "Path": "rust/src/lifecycle.rs",
+      "SHA256": "C8EA46434B04E09629406EE380F2ACC312E2AF80B8000576BB9DD925DDEBC5AF"
+    }
+  ],
+  "ConfirmationDefault": "IDOK",
+  "ConfirmationOnlyTest": "confirmation.json",
+  "ConfirmationScreenshot": "confirmation-default-ok.png",
+  "DeletionPerformed": false,
+  "PhysicalTray": "physical-tray.json",
+  "PhysicalTrayRenderer": "femtovg",
+  "PhysicalTrayUserReportedPassed": true,
+  "RawEvidence": "rust/target/tray-recycle-fix-4890e836ee2540a280f286f7d0a5c15c",
+  "FullLogSHA256": "7D76EDACE94183A084F3F79BCD25867A118B5B0E82F433801EA1D084AE00E222",
+  "Published": false
+}

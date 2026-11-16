@@ -24,6 +24,8 @@
 - 列表与网格、键盘导航、原生右键菜单、托盘与全局快捷键。
 - 浅色、深色、跟随系统主题、设置备份及带 SHA-256 校验的 Rust 更新。
 
+本分支新增 **启动组合（尚未发布）**：命名后从带图标的应用库拖入成员，保存后搜索组合名称即可批量打开，并跳过已运行的成员。见[操作说明](docs/user-guide.md#启动组合本分支新增尚未发布)及[设计和验证范围](docs/launch-groups-proposal.md)。
+
 ![Rust 界面示例，使用合成数据](docs/baselines/2026-11-07-slint-rs13/completion-2026-11-12/static/software/light-home.png)
 
 ## 开发
