@@ -2,12 +2,15 @@
 
 use std::collections::{BTreeMap, BTreeSet};
 use std::fs;
+use std::os::windows::fs::MetadataExt;
 use std::path::{Path, PathBuf};
 use std::sync::{
     Arc,
     atomic::{AtomicU64, Ordering},
 };
 use std::time::UNIX_EPOCH;
+
+use windows_sys::Win32::Storage::FileSystem::FILE_ATTRIBUTE_REPARSE_POINT;
 
 use super::data::{IndexCache, IndexedFile};
 use super::model::{AppItem, identity};
@@ -18,7 +21,7 @@ use super::{DataError, Result};
 pub struct Root {
     pub path: PathBuf,
     pub source: String,
-    /// Zero is unlimited. Keep walking deeper directories, like the Go baseline.
+    /// Maximum directory depth, with the root at depth zero. Zero is unlimited.
     pub max_depth: usize,
 }
 
@@ -120,9 +123,15 @@ impl Scan<'_> {
         }
     }
 
-    fn walk(&mut self, root: &Root, path: &Path, depth: usize) -> Result<()> {
+    fn walk(
+        &mut self,
+        root: &Root,
+        path: &Path,
+        depth: usize,
+        enumerated: Option<fs::Metadata>,
+    ) -> Result<()> {
         self.ticket.check()?;
-        let metadata = match fs::symlink_metadata(path) {
+        let metadata = match enumerated.map_or_else(|| fs::symlink_metadata(path), Ok) {
             Ok(metadata) => metadata,
             Err(error) => {
                 self.failed_subtree(path, &error, path == root.path);
@@ -136,11 +145,12 @@ impl Scan<'_> {
             return Ok(());
         }
         if metadata.is_dir() {
-            if root.source.starts_with("Program Files")
-                && depth == 1
-                && path
-                    .file_name()
-                    .is_some_and(|name| name.eq_ignore_ascii_case("WindowsApps"))
+            if (root.max_depth > 0 && depth > root.max_depth)
+                || (root.source.starts_with("Program Files")
+                    && depth == 1
+                    && path
+                        .file_name()
+                        .is_some_and(|name| name.eq_ignore_ascii_case("WindowsApps")))
             {
                 return Ok(());
             }
@@ -155,20 +165,25 @@ impl Scan<'_> {
             for entry in entries {
                 self.ticket.check()?;
                 match entry {
-                    Ok(entry) => children.push(entry.path()),
+                    Ok(entry) => {
+                        // Windows already supplies these attributes during enumeration.
+                        // Query reparse points by path to preserve link detection.
+                        let metadata = entry.metadata().ok().filter(|metadata| {
+                            metadata.file_attributes() & FILE_ATTRIBUTE_REPARSE_POINT == 0
+                        });
+                        children.push((entry.path(), metadata));
+                    }
                     Err(error) => self.failed_subtree(path, &error, false),
                 }
             }
-            children.sort();
-            for child in children {
-                self.walk(root, &child, depth + 1)?;
+            children.sort_by(|(left, _), (right, _)| left.cmp(right));
+            for (child, metadata) in children {
+                self.walk(root, &child, depth + 1, metadata)?;
             }
             return Ok(());
         }
-        if (!extension(&path.to_string_lossy(), "exe")
-            && !extension(&path.to_string_lossy(), "lnk"))
-            || (root.max_depth > 0 && depth.saturating_sub(1) > root.max_depth)
-        {
+        let path_text = path.to_string_lossy();
+        if !extension(&path_text, "exe") && !extension(&path_text, "lnk") {
             return Ok(());
         }
         let key = path_key(path);
@@ -187,7 +202,7 @@ impl Scan<'_> {
             }
             return Ok(());
         }
-        let path_text = path.to_string_lossy().into_owned();
+        let path_text = path_text.into_owned();
         let mut item = AppItem {
             name: path
                 .file_stem()
@@ -265,6 +280,7 @@ pub fn scan(
                 },
                 &path,
                 0,
+                None,
             )?;
         }
     }
