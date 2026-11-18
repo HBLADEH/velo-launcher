@@ -2,14 +2,22 @@
 
 use super::indexer::extension;
 use super::model::AppItem;
-use super::{DataError, Result};
+use std::io::{self, ErrorKind};
 use std::path::Path;
+
+pub const APPS_FOLDER_PREFIX: &str = "shell:AppsFolder\\";
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Action {
     Launch,
     RunAsAdmin,
     OpenDirectory,
+}
+
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum CommandError {
+    MissingTarget,
+    Unavailable,
 }
 
 #[derive(Debug, PartialEq, Eq)]
@@ -34,35 +42,46 @@ pub fn capabilities(item: &AppItem) -> (bool, bool) {
     (file, file && extension(path, "exe"))
 }
 
+fn target_metadata(
+    path: &Path,
+    metadata: impl FnOnce(&Path) -> io::Result<bool>,
+) -> Result<bool, CommandError> {
+    metadata(path).map_err(|error| {
+        if path.is_absolute() && error.kind() == ErrorKind::NotFound {
+            CommandError::MissingTarget
+        } else {
+            CommandError::Unavailable
+        }
+    })
+}
+
 pub fn command(
     item: &AppItem,
     action: Action,
     windows_directory: &Path,
-    metadata: impl Fn(&Path) -> std::io::Result<bool>,
-) -> Result<Command> {
+    metadata: impl Fn(&Path) -> io::Result<bool>,
+) -> Result<Command, CommandError> {
     let empty = |path: String| Command {
         verb: "",
         path,
         arguments: String::new(),
         directory: String::new(),
     };
-    let fail = || DataError::new("prepare launch", "unsupported or unavailable target");
     if action == Action::OpenDirectory {
         if !capabilities(item).0 {
-            return Err(fail());
+            return Err(CommandError::Unavailable);
         }
-        let directory = Path::new(target(item)).parent().ok_or_else(fail)?;
-        if !metadata(directory).map_err(|e| DataError::new("open install directory", e))? {
-            return Err(fail());
+        let directory = Path::new(target(item))
+            .parent()
+            .ok_or(CommandError::Unavailable)?;
+        if !metadata(directory).map_err(|_| CommandError::Unavailable)? {
+            return Err(CommandError::Unavailable);
         }
         return Ok(empty(directory.to_string_lossy().into_owned()));
     }
     if action == Action::RunAsAdmin {
-        if !capabilities(item).1
-            || metadata(Path::new(target(item)))
-                .map_err(|e| DataError::new("find executable", e))?
-        {
-            return Err(fail());
+        if !capabilities(item).1 || target_metadata(Path::new(target(item)), metadata)? {
+            return Err(CommandError::Unavailable);
         }
         return Ok(Command {
             verb: "runas",
@@ -75,10 +94,10 @@ pub fn command(
         return if item.path.starts_with("ms-settings:") && super::system_tools::special(item) {
             Ok(empty(item.path.clone()))
         } else {
-            Err(fail())
+            Err(CommandError::Unavailable)
         };
     }
-    if item.path.starts_with("shell:AppsFolder\\") {
+    if item.path.starts_with(APPS_FOLDER_PREFIX) {
         return Ok(Command {
             arguments: item.path.clone(),
             ..empty(
@@ -89,7 +108,7 @@ pub fn command(
             )
         });
     }
-    metadata(Path::new(&item.path)).map_err(|e| DataError::new("find application", e))?;
+    target_metadata(Path::new(&item.path), metadata)?;
     if extension(&item.path, "lnk") {
         return Ok(empty(item.path.clone()));
     }

@@ -1,16 +1,24 @@
+use std::io::{self, ErrorKind};
+use std::path::Path;
 use std::ptr::{null, null_mut};
-use windows_sys::Win32::Foundation::{ERROR_CANCELLED, HWND};
+use windows_sys::Win32::Foundation::{
+    ERROR_CANCELLED, ERROR_FILE_NOT_FOUND, ERROR_PATH_NOT_FOUND, HWND,
+};
+use windows_sys::Win32::System::Com::CoTaskMemFree;
 use windows_sys::Win32::UI::Shell::{
-    SEE_MASK_FLAG_NO_UI, SEE_MASK_NOASYNC, SHELLEXECUTEINFOW, ShellExecuteExW, ShellExecuteW,
+    SEE_MASK_FLAG_NO_UI, SEE_MASK_NOASYNC, SHELLEXECUTEINFOW, SHParseDisplayName, ShellExecuteExW,
+    ShellExecuteW,
 };
 use windows_sys::Win32::UI::WindowsAndMessaging::SW_SHOWNORMAL;
 
-use super::shell::{Apartment, wide};
-use crate::core::launch::{self, Action};
+use super::shell::{Apartment, ShortcutResolver, wide};
+use crate::core::indexer::{Resolver, extension};
+use crate::core::launch::{self, Action, CommandError};
 use crate::core::model::AppItem;
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Failure {
+    MissingTarget,
     Unavailable,
     Cancelled,
     Shell,
@@ -19,6 +27,7 @@ pub enum Failure {
 impl Failure {
     pub fn message(self) -> &'static str {
         match self {
+            Self::MissingTarget => "找不到应用，可能已卸载或移动",
             Self::Unavailable => "应用已移动、删除或不支持此操作，请刷新后重试",
             Self::Cancelled => "已取消启动",
             Self::Shell => "Windows 无法打开此应用，请检查权限或文件关联后重试",
@@ -27,7 +36,7 @@ impl Failure {
 }
 
 pub fn execute(
-    _apartment: &Apartment,
+    apartment: &Apartment,
     owner: isize,
     item: &AppItem,
     action: Action,
@@ -36,10 +45,19 @@ pub fn execute(
         return super::system_tools::action(owner, item);
     }
     let windows = std::env::var_os("WINDIR").ok_or(Failure::Unavailable)?;
-    let command = launch::command(item, action, std::path::Path::new(&windows), |p| {
-        std::fs::metadata(p).map(|m| m.is_dir())
+    let command = launch::command(item, action, Path::new(&windows), |path| {
+        std::fs::metadata(path).map(|metadata| metadata.is_dir())
     })
-    .map_err(|_| Failure::Unavailable)?;
+    .map_err(|error| match error {
+        CommandError::MissingTarget => Failure::MissingTarget,
+        CommandError::Unavailable => Failure::Unavailable,
+    })?;
+    if action == Action::Launch
+        && item.path.starts_with(launch::APPS_FOLDER_PREFIX)
+        && missing_apps_folder_target(&item.path)?
+    {
+        return Err(Failure::MissingTarget);
+    }
     let path = wide(&command.path).map_err(|_| Failure::Unavailable)?;
     let arguments = wide(&command.arguments).map_err(|_| Failure::Unavailable)?;
     let directory = wide(&command.directory).map_err(|_| Failure::Unavailable)?;
@@ -63,15 +81,47 @@ pub fn execute(
     // SAFETY: caller holds an STA; HWND remains owned by the UI until worker
     // completion. NOASYNC keeps Shell from retaining stack-backed strings.
     if unsafe { ShellExecuteExW(&mut info) } == 0 {
-        return Err(
-            if std::io::Error::last_os_error().raw_os_error() == Some(ERROR_CANCELLED as i32) {
-                Failure::Cancelled
-            } else {
-                Failure::Shell
-            },
-        );
+        let code = io::Error::last_os_error()
+            .raw_os_error()
+            .map(|code| code as u32);
+        return Err(match code {
+            Some(ERROR_FILE_NOT_FOUND | ERROR_PATH_NOT_FOUND | ERROR_CANCELLED)
+                if action != Action::OpenDirectory
+                    && Path::new(&item.path).is_absolute()
+                    && missing_file_target(apartment, &command.path) =>
+            {
+                Failure::MissingTarget
+            }
+            Some(ERROR_CANCELLED) => Failure::Cancelled,
+            _ => Failure::Shell,
+        });
     }
     Ok(())
+}
+
+fn missing_file_target(apartment: &Apartment, path: &str) -> bool {
+    let missing = |path: &Path| {
+        path.is_absolute()
+            && std::fs::metadata(path).is_err_and(|error| error.kind() == ErrorKind::NotFound)
+    };
+    let target = Path::new(path);
+    missing(target)
+        || (extension(path, "lnk")
+            && ShortcutResolver(apartment)
+                .resolve(target)
+                .is_ok_and(|shortcut| missing(Path::new(&shortcut.exec_path))))
+}
+
+fn missing_apps_folder_target(path: &str) -> Result<bool, Failure> {
+    let path = wide(path).map_err(|_| Failure::Unavailable)?;
+    let mut item = null_mut();
+    let status = unsafe { SHParseDisplayName(path.as_ptr(), null_mut(), &mut item, 0, null_mut()) };
+    if !item.is_null() {
+        unsafe { CoTaskMemFree(item.cast()) };
+    }
+    Ok([ERROR_FILE_NOT_FOUND, ERROR_PATH_NOT_FOUND]
+        .into_iter()
+        .any(|code| status == windows::core::HRESULT::from_win32(code).0))
 }
 
 pub fn open_native(path: &str, owner: isize, locate: bool) -> Result<(), Failure> {

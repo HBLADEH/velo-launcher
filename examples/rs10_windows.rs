@@ -20,6 +20,7 @@ use velo_slint::core::{
 use velo_slint::platform::windows::{
     icons as native_icons,
     instance::{Acquisition, Identity},
+    launch::Failure,
     shell,
 };
 use windows::Win32::System::Com::{CLSCTX_INPROC_SERVER, CoCreateInstance, IPersistFile};
@@ -206,9 +207,10 @@ fn main() -> Result {
         matches!(
             event,
             Event::Launched {
+                id,
                 result: Ok(()),
                 history_saved: true
-            }
+            } if id == &app_id
         )
     })?;
     let started = Instant::now();
@@ -247,9 +249,10 @@ fn main() -> Result {
         .clone();
     fs::rename(&executable, apps.join("helper.saved"))?;
     assert!(runtime.launch(raw_id.clone(), "failed".into(), Action::Launch, 0));
-    await_event(&runtime, |event| {
-        matches!(event, Event::Launched { result: Err(_), .. })
-    })?;
+    await_event(
+        &runtime,
+        |event| matches!(event, Event::Launched { id, result: Err(Failure::MissingTarget), .. } if id == &raw_id),
+    )?;
     let history_after: History = storage::read(&identity.data_dir.join("history.json"))?;
     assert_eq!(history_after, history);
     fs::rename(apps.join("helper.saved"), &executable)?;

@@ -24,6 +24,8 @@ pub const CLEAR: i32 = 2;
 pub const BACK: i32 = 3;
 pub const MENU: i32 = 4;
 pub const BROWSE_EXECUTABLE: i32 = 5;
+pub const UNPIN_MISSING_APP: i32 = 7;
+pub const DELETE_MISSING_CUSTOM_APP: i32 = 8;
 
 pub fn new_group_id() -> Option<String> {
     let mut id = windows_sys::core::GUID::from_u128(0);
@@ -261,22 +263,35 @@ pub fn application(owner: isize, item: Option<&AppItem>, request: i32) -> i32 {
     // SAFETY: UI retains owner and suppresses hide/quit for this interaction.
     // All Win32 objects are created/destroyed on this temporary worker thread.
     unsafe {
-        if request == 5 || request == 6 {
-            let message = if request == 5 {
-                "移除此自定义应用及其固定项？原文件不会被删除。"
-            } else {
-                "下载并安装更新？Velo 将备份已保存的配置，退出并重新启动。"
+        if matches!(
+            request,
+            5 | 6 | UNPIN_MISSING_APP | DELETE_MISSING_CUSTOM_APP
+        ) {
+            let message = match (request, item) {
+                (5, _) => "移除此自定义应用及其固定项？原文件不会被删除。".into(),
+                (6, _) => "下载并安装更新？Velo 将备份已保存的配置，退出并重新启动。".into(),
+                (UNPIN_MISSING_APP | DELETE_MISSING_CUSTOM_APP, Some(item)) => {
+                    let question = if request == DELETE_MISSING_CUSTOM_APP {
+                        "是否从 Velo 删除这条自定义应用记录？对应的固定项也会移除，不会删除任何文件。"
+                    } else {
+                        "是否取消固定？"
+                    };
+                    format!(
+                        "找不到应用“{}”。它可能已被卸载或移动。\n\n{question}",
+                        item.name
+                    )
+                }
+                _ => return 0,
             };
-            return if MessageBoxW(
+            return match MessageBoxW(
                 owner,
-                wide(message).as_ptr(),
+                wide(&message).as_ptr(),
                 wide("Velo · 确认操作").as_ptr(),
                 MB_OKCANCEL | MB_DEFBUTTON2 | MB_ICONQUESTION | MB_SETFOREGROUND,
-            ) == IDOK
-            {
-                request
-            } else {
-                0
+            ) {
+                IDOK => request,
+                0 => -1,
+                _ => 0,
             };
         }
         let Some(item) = item else {

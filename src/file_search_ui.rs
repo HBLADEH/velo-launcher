@@ -318,7 +318,7 @@ impl Controller {
                         app.set_file_items(ModelRc::default());
                         app.set_file_total(0);
                         app.set_file_status("".into());
-                        app.invoke_launch_started();
+                        app.invoke_launch_started(true);
                         app.invoke_launch_finished(true);
                     }
                     Err(error) => {
@@ -327,7 +327,8 @@ impl Controller {
                                 "Windows 无法在资源管理器中显示该文件；它可能已被移动或删除。"
                             } else {
                                 match error {
-                                    velo_slint::platform::windows::launch::Failure::Unavailable => {
+                                    velo_slint::platform::windows::launch::Failure::MissingTarget
+                                    | velo_slint::platform::windows::launch::Failure::Unavailable => {
                                         "文件已移动或删除，请重试搜索。"
                                     }
                                     velo_slint::platform::windows::launch::Failure::Cancelled => {
