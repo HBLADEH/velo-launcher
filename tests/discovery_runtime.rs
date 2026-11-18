@@ -164,7 +164,7 @@ fn inaccessible_subtree_retains_old_entries_but_missing_subtree_removes_them() {
         CreateFileW, FILE_FLAG_BACKUP_SEMANTICS, FILE_LIST_DIRECTORY, OPEN_EXISTING,
     };
     let directory = tempfile::tempdir().unwrap();
-    let child = directory.path().join("protected");
+    let child = directory.path().join("container/protected");
     touch(&child.join("application.exe"));
     let roots = [root(directory.path(), "Custom", 0)];
     let ticket = Generation::default().ticket();
@@ -194,12 +194,21 @@ fn inaccessible_subtree_retains_old_entries_but_missing_subtree_removes_them() {
     };
     assert_ne!(lock, INVALID_HANDLE_VALUE);
     let result = indexer::scan(&roots, &old, &mut resolver, &ticket);
+    let shallow = indexer::scan(
+        &[root(directory.path(), "Custom", 1)],
+        &old,
+        &mut resolver,
+        &ticket,
+    );
     unsafe {
         CloseHandle(lock);
     }
     let (retained, stats) = result.unwrap();
     assert_eq!(old.apps, retained.apps);
     assert_eq!(stats.warnings, 1);
+    let (shallow, stats) = shallow.unwrap();
+    assert!(shallow.files.as_ref().unwrap().is_empty());
+    assert_eq!(stats.warnings, 0);
     fs::remove_file(child.join("application.exe")).unwrap();
     fs::remove_dir(&child).unwrap();
     let (missing, _) = indexer::scan(&roots, &old, &mut resolver, &ticket).unwrap();
