@@ -31,6 +31,14 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.3.1
         with:
           persist-credentials: false
+      - name: Install the pinned Rust toolchain
+        shell: pwsh
+        run: |
+          $toolchain = Get-Content -Raw -LiteralPath rust-toolchain.toml
+          if ($toolchain -notmatch '(?m)^channel\s*=\s*"(?<channel>[0-9]+\.[0-9]+\.[0-9]+-x86_64-pc-windows-msvc)"\s*$') {
+            throw 'Expected a pinned Windows x64 MSVC channel in rust-toolchain.toml.'
+          }
+          rustup toolchain install $Matches.channel --profile minimal --component rustfmt --component clippy --no-self-update
       - name: Check and test the product feature
         shell: pwsh
         run: ./scripts/test-rust-ci.ps1 -Renderer $env:VELO_RENDERER
