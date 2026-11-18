@@ -1,4 +1,4 @@
-; Machine installer: same product path/key, retained Go rollback.
+; Machine installer: in-place upgrades with retained Go rollback.
 Unicode true
 !include "MUI2.nsh"
 !include "LogicLib.nsh"
@@ -19,7 +19,7 @@ Unicode true
 !endif
 Name "Velo"
 OutFile "${OUTPUT}"
-InstallDir "$PROGRAMFILES64\HBLADEH\Velo"
+InstallDir "$PROGRAMFILES64\Velo"
 InstallDirRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\HBLADEHVelo" "InstallLocation"
 RequestExecutionLevel admin
 ManifestDPIAware true
