@@ -30,7 +30,4 @@ if ($version -cne $cargoVersion -or $Tag -cne $policy.ReleaseTag) { throw 'Tag, 
 foreach ($field in 'G4Passed', 'RedistributionCleared', 'PublicReleaseApproved') {
     if ($policy.$field -isnot [bool] -or -not $policy.$field) { throw "Release requires explicit $field approval." }
 }
-if (-not (Test-Path -LiteralPath (Join-Path $repository "docs/releases/$version.md") -PathType Leaf)) {
-    throw "The tagged commit must include docs/releases/$version.md."
-}
 Write-Output $commit

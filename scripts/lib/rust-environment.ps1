@@ -25,7 +25,7 @@ function Initialize-VeloRustEnvironment {
     if ($LASTEXITCODE -ne 0) { throw 'vswhere failed.' }
     $devArgs = "-winsdk=$($toolchain.windowsSdkVersion)"
     if ($HostedCI) {
-        # The hosted check uses the image's MSVC, never a release build receipt.
+        # Hosted validation records the compiler and linker supplied by the image.
         $vsPath = $installations | Select-Object -First 1
         if (-not $vsPath) { throw 'The Windows CI image must provide the x64 MSVC toolchain.' }
     } else {

@@ -41,7 +41,7 @@ $veloPackagingTools = Get-Content -Raw target/packaging-tools/tools.json | Conve
 
 ## 正式发行资产
 
-正式打包要求干净工作区和匹配版本的发行策略。在创建输出目录之前，检查两种渲染器的完整验证回执均绑定当前 `HEAD`，且输入路径集合和每个文件的 SHA-256 均未改变。策略满足后使用：
+正式打包要求干净工作区和匹配版本的发行策略。打包前检查两种渲染器的验证回执均绑定当前 `HEAD`，同时重核输入路径和文件 SHA-256。本地打包可使用以下命令。
 
 ```powershell
 ./scripts/package-rust-release.ps1 -OutputDirectory target/release-0.11.0 -Makensis $veloPackagingTools.Compiler
@@ -50,18 +50,17 @@ $veloPackagingTools = Get-Content -Raw target/packaging-tools/tools.json | Conve
 
 默认安装器为 `velo-rust-x64-installer.exe`，替代安装器为 `velo-rust-femtovg-x64-installer.exe`。兼容名称 `velo-launcher-amd64-installer.exe` 必须与默认安装器字节一致；发布时先上传兼容名称，再上传其余资产。发行清单、独立许可包 `velo-rust-<版本>-licenses.zip` 和三个安装器都必须列入 `SHA256SUMS.txt` 并通过校验。打包过程生成的载荷 ZIP 不是免安装版，不随正式资产分发。
 
-README 的[产品 CI](../.github/workflows/ci.yml)使用托管 `windows-2025`，以固定 Rust、SDK 和镜像自带 MSVC 对 Software 与 FemtoVG 分别执行 fmt、Clippy 和大部分 Rust 测试。托盘、全局快捷键和原生确认焦点三个桌面测试，以及 `-SmokeTest`，留在完整验证中。托管 CI 不生成正式打包回执。[内部预览验证](../.github/workflows/rust-preview.yml)仅供手动触发。
+产品 CI 在托管 `windows-2025` 上对 Software 与 FemtoVG 执行 fmt、Clippy 和 Rust 测试。tag 发布在同一镜像上增加 Release 构建、PE 元数据检查和 NSIS 打包。托管构建固定 Rust、Windows SDK、Cargo 依赖和 NSIS，并在发行清单中记录镜像实际使用的 MSVC 版本及 `hosted-ci` 验证范围。托盘、全局快捷键、原生确认焦点和窗口冒烟由独立的桌面验证覆盖。[产品 CI](../.github/workflows/ci.yml) · [内部预览验证](../.github/workflows/rust-preview.yml)
 
 ## 推送 tag 发版
 
-[发布工作流](../.github/workflows/release.yml)仅在本仓库的版本 tag 推送时发版，不随分支 push 公开发行。
+1. **准备并批准版本。** 同步 `Cargo.toml`、`Cargo.lock` 和 `windows/release-policy.json`。审核对应版本的许可和实机证据，获得所有者的公开发布批准。将改动合入 `main` 并确认 CI 通过。可提交 `docs/releases/<版本>.md` 作为发布正文。
+2. **推送版本 tag。** 在已批准且可从 `origin/main` 到达的提交上创建带注释的 `vMAJOR.MINOR.PATCH`。将 `$tag` 和 `$commit` 设为实际版本和提交 SHA 后，运行 `git tag -a $tag $commit -m "Velo $tag"` 和 `git push origin "refs/tags/$tag"`。
+3. **查看 Actions 和 Release。** GitHub 托管 runner 下载并校验 NSIS，测试、构建和打包两个渲染器。若该版本没有手写说明，git-cliff 按 `.github/cliff.toml` 从上一个可达版本 tag 生成发布说明。发布 job 创建草稿，先上传 Go 兼容安装器，再上传其余资产，核对 GitHub 返回的 SHA-256 后公开。若 `public-release` 环境配置了必需审阅者，发布会等待审批。[发布工作流](../.github/workflows/release.yml)
 
-1. **准备 runner。** 使用带 `velo-locked-toolchain`、`release-publisher` 标签的独立 Windows x64 可交互 runner，安装锁定工具链、PowerShell 7.4+。为 runner 进程提供 `VELO_NSIS_ARCHIVE`，指向 checkout 目录外按 `windows/nsis-toolchain.json` 锁定的 ZIP。流程校验归档及编译器 SHA-256，不跟随不安全的下载跳转。配置 `public-release` 环境仅允许版本 tag；若设了必需审阅者，公开发布会等待该审批。不要用个人日常桌面或执行未经信任的 fork 工作流。
-2. **准备并批准版本。** 同步 `Cargo.toml`、`Cargo.lock`、`windows/release-policy.json` 和 `docs/releases/<版本>.md`。审核对应版本的许可和实机证据；所有者同意公开发布后才将策略中的 `PublicReleaseApproved` 设为 `true`。将这些改动合入 `main`，确保 CI 通过。
-3. **推送一个 tag。** 在已批准且可从 `origin/main` 到达的提交上创建带注释的 `vMAJOR.MINOR.PATCH`，例如 `git tag -a $tag $commit -m "Velo $tag"`，再 `git push origin "refs/tags/$tag"`。`$tag` 和 `$commit` 分别取实际版本和提交 SHA。tag、Cargo 版本、发行策略必须一致；不要重新指向已发布 tag。
-4. **核对发布结果。** 工作流按已校验的提交执行双渲染器完整验证与打包。托管发布 job 使用内置 `GITHUB_TOKEN` 创建草稿，先上传兼容安装器，再上传其他五项资产，核对 GitHub 对所有资产返回的 SHA-256 后才公开。只有这个 job 拥有 `contents: write`。不会替换已有草稿或已发布版本。
+Actions 中手动运行 `Publish Velo release` 可以预演打包。该入口只上传 Actions 产物，包含安装器、校验文件和未发布的更新日志。
 
-专用 runner 不可用时，可在已进入 `origin/main` 的干净提交上用锁定工具链完成相同的双渲染器桌面验证和正式打包。用 `publish-rust-release.ps1 -Tag $tag -Commit $commit -Directory $assets -StageDraft` 将已核对的资产上传到指定提交的草稿。该命令使用已核实为 HBLADEH 的 `GH_TOKEN`，并输出 `Velo-Release-Draft: <SHA-256>`。创建注释 tag 时用第二个 `-m` 写入这行返回值。托管发布任务会下载草稿，对照 tag 中的 `SHA256SUMS.txt` 哈希、逐项校验资产和构建提交，通过后发布。
+如需发布本地验收过的同一份安装包，可用 `publish-rust-release.ps1 -Tag $tag -Commit $commit -Directory $assets -StageDraft` 上传草稿。命令使用有仓库发布权限的 `GH_TOKEN`，并输出 `Velo-Release-Draft: <SHA-256>`。创建注释 tag 时用第二个 `-m` 写入该行，托管发布任务会按 tag 里的校验值核对草稿资产和构建提交后公开。
 
 检查未通过时，先查看 Actions 日志和 Release 状态。预上传草稿可以直接重跑发布任务，前提是仍然与 tag 绑定的校验文件和提交完全一致。已公开版本以新的版本号发布后续修复。
 

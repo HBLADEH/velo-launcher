@@ -4,6 +4,7 @@ param(
     [Parameter(Mandatory)][ValidatePattern('\Av[0-9]+\.[0-9]+\.[0-9]+\z')][string]$Tag,
     [Parameter(Mandatory)][ValidatePattern('\A[0-9a-f]{40}\z')][string]$Commit,
     [Parameter(Mandatory)][string]$Directory,
+    [string]$NotesFile,
     [switch]$ValidateOnly,
     [switch]$StageDraft,
     [ValidatePattern('\A[0-9a-f]{64}\z')][string]$DraftChecksumsSHA256
@@ -14,11 +15,17 @@ $PSNativeCommandUseErrorActionPreference = $true
 $repository = Split-Path -Parent $PSScriptRoot
 $repo = 'HBLADEH/velo-launcher'
 $version = $Tag.Substring(1)
-$notes = Join-Path $repository "docs/releases/$version.md"
-if (-not (Test-Path -LiteralPath $notes -PathType Leaf)) { throw "Release notes are missing for $Tag." }
 if ($DraftChecksumsSHA256 -and ($StageDraft -or $ValidateOnly)) { throw 'Use the staged draft digest only when publishing.' }
 if ($StageDraft -and $ValidateOnly) { throw 'Choose either local verification or draft staging.' }
 if (-not $ValidateOnly -and -not $env:GH_TOKEN) { throw 'Set GH_TOKEN for GitHub release operations.' }
+if (-not $DraftChecksumsSHA256 -and (-not $ValidateOnly -or $NotesFile)) {
+    if (-not $NotesFile) { $NotesFile = Join-Path $repository "docs/releases/$version.md" }
+    if (-not (Test-Path -LiteralPath $NotesFile -PathType Leaf) -or
+        [string]::IsNullOrWhiteSpace((Get-Content -LiteralPath $NotesFile -Raw))) {
+        throw "Release notes are missing or empty for $Tag."
+    }
+    $NotesFile = (Resolve-Path -LiteralPath $NotesFile).Path
+}
 
 function Assert-RemoteTag {
     $remoteCommit = & gh api "repos/$repo/commits/refs/tags/$Tag" --jq .sha
@@ -88,7 +95,7 @@ if (-not $DraftChecksumsSHA256) {
     # Unlike the published-release endpoint, this also returns existing drafts.
     $existingTags = @(& gh api "repos/$repo/releases?per_page=100" --paginate --jq '.[].tag_name')
     if ($Tag -in $existingTags) { throw 'A release or draft already exists for this tag. Do not overwrite it.' }
-    & gh release create $Tag --repo $repo @tagOptions --draft --title "Velo $Tag" --notes-file $notes
+    & gh release create $Tag --repo $repo @tagOptions --draft --title "Velo $Tag" --notes-file $NotesFile
     # Upload separately so the older Go updater sees the Software alias first.
     & gh release upload $Tag (Join-Path $Directory $alias) --repo $repo
     $otherFiles = @($names | Select-Object -Skip 1 | ForEach-Object { Join-Path $Directory $_ })
