@@ -68,7 +68,7 @@ Custom apps, configuration backup, the file-search toggle and version-page captu
 - **Quick access**: pins and frequently used apps on home, plus Windows shortcuts searchable by Chinese, English, pinyin and abbreviations.
 - **Result actions**: ranked list and grid views; context menus can launch, open the installation directory, run as administrator or pin an app.
 - **Custom apps**: drop files, select files or paste paths to add `.exe` / `.lnk` entries outside scanned directories. Custom entries and home pins are managed separately.
-- **Appearance and preferences**: light, dark or system theme, list or grid layout, login startup, result limits, ranking weights and index refresh settings.
+- **Appearance and preferences**: light, dark or system theme, list or grid layout, login startup, result limits, ranking weights and index refresh settings. Development builds add a thin outline that follows the theme and use native rounded corners on Windows 11.
 - **Local data and backups**: background index refresh, visible-range icon loading with a cache budget, and backups of saved configuration.
 - **Updates**: GitHub Releases checks, SHA-256 verification, configuration backup before installation, and system-installer upgrades that preserve settings.
 

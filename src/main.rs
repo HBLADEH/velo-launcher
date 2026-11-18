@@ -13,7 +13,7 @@ use std::time::Duration;
 use std::time::Instant;
 
 use raw_window_handle::{HasWindowHandle, RawWindowHandle};
-use slint::winit_030::winit::platform::windows::WindowAttributesExtWindows;
+use slint::winit_030::winit::platform::windows::{CornerPreference, WindowAttributesExtWindows};
 use slint::winit_030::{EventResult, WinitWindowAccessor, winit::event::WindowEvent};
 use slint::{ComponentHandle, GraphicsAPI, RenderingState};
 
@@ -32,7 +32,7 @@ mod lifecycle;
 mod measurement;
 mod navigation;
 mod pages_probe;
-use velo_slint::platform;
+use velo_slint::platform::{self, windows::window::NativeWindow};
 mod ui;
 
 const RENDERER: &str = if cfg!(feature = "renderer-femtovg") {
@@ -206,6 +206,9 @@ fn main() -> Result<(), Box<dyn Error>> {
                 .with_class_name("VeloSlintLauncherWindow")
                 .with_resizable(false)
                 .with_skip_taskbar(!isolated)
+                // An opaque surface lets DWM shape the frameless window itself.
+                .with_transparent(false)
+                .with_corner_preference(CornerPreference::Round)
         })
         .select()?;
     let app = AppWindow::new()?;
@@ -296,7 +299,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     let event_imports = imports.clone();
     app.window().on_winit_window_event(move |_, event| {
         if let Some(app) = weak_app.upgrade() {
-            observe_native(&app, &event_probe, &event_measurement);
+            prepare_native_window(&app, &event_probe, &event_measurement);
         }
         match event {
             WindowEvent::ScaleFactorChanged { scale_factor, .. } => {
@@ -503,7 +506,7 @@ fn main() -> Result<(), Box<dyn Error>> {
                 Some(handle.hwnd.get())
             });
             if let Some(hwnd) = hwnd {
-                observe_native(&app, &ready_probe, &ready_measurement);
+                prepare_native_window(&app, &ready_probe, &ready_measurement);
                 // The accessor future can resolve inside native creation,
                 // before winit has registered the HWND for focus events.
                 slint::Timer::single_shot(Duration::ZERO, move || controller.native_ready(hwnd));
@@ -560,7 +563,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     Ok(())
 }
 
-fn observe_native(
+fn prepare_native_window(
     app: &AppWindow,
     probe: &Rc<RefCell<Probe>>,
     measurement: &Option<measurement::Observer>,
@@ -584,6 +587,16 @@ fn observe_native(
         probe.logical_size_ok = (f64::from(size.width) / scale - 640.0).abs() <= 1.0
             && (f64::from(size.height) / scale - 540.0).abs() <= 1.0;
         drop(probe);
+        let window = NativeWindow::new(hwnd);
+        let apply_border = move |color: slint::Color| {
+            window.set_border_color([color.red(), color.green(), color.blue()])
+        };
+        if apply_border(app.global::<Theme>().get_window_border()) {
+            app.set_draw_window_border(false);
+            app.on_window_border_changed(move |color| {
+                apply_border(color);
+            });
+        }
         measurement::event(
             measurement,
             "native_window",
