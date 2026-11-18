@@ -97,6 +97,8 @@ Data lives in `%LOCALAPPDATA%\Velo`. Before initial data-store setup, Velo prese
 3. Select a result with the arrow keys and press `Enter`. Use the star button to pin an app to home.
 4. Press `Ctrl+,` to open settings, adjust the hotkey, theme, search preferences or index directories, then save.
 
+If a custom app cannot be found, Velo asks whether to remove its entry, even if it is not pinned. OK removes the custom entry and any pin without deleting files; Cancel keeps the entry and returns to the launcher. For other pinned apps, Velo only offers to unpin them.
+
 Common controls:
 
 - **Show / hide**: `Alt+Space`, configurable in Settings / Hotkeys.

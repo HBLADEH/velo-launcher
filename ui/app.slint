@@ -160,7 +160,7 @@ export component AppWindow inherits Window {
     callback import-native-requested(int);
     callback import-native-completed(int, [string], string);
     callback native-interaction-finished();
-    callback launch-started();
+    callback launch-started(bool);
     callback launch-finished(bool);
     callback settings-requested();
     callback settings-save();

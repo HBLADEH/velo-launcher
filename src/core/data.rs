@@ -29,6 +29,10 @@ impl ApplicationLibrary {
         }
     }
 
+    pub fn has_custom_app(&self, id: &str) -> bool {
+        self.applications.iter().flatten().any(|item| item.id == id)
+    }
+
     pub fn migrate(legacy: Option<Vec<AppItem>>) -> Self {
         let mut applications = Vec::new();
         let pinned = legacy.map(|mut items| {

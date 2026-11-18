@@ -333,11 +333,11 @@ fn launch_shortcuts_keep_shell_semantics_admin_retains_profile_and_invalid_targe
     assert_eq!(admin.path, item.exec_path);
     assert_eq!(admin.arguments, item.arguments);
     assert_eq!(admin.directory, item.working_directory);
-    assert!(
+    assert_eq!(
         launch::command(&item, launch::Action::Launch, windows, |_| Err(
             std::io::ErrorKind::NotFound.into()
-        ))
-        .is_err()
+        )),
+        Err(launch::CommandError::MissingTarget)
     );
     assert!(launch::command(&item, launch::Action::RunAsAdmin, windows, |_| Ok(true)).is_err());
     for path in [
@@ -353,4 +353,94 @@ fn launch_shortcuts_keep_shell_semantics_admin_retains_profile_and_invalid_targe
             launch::command(&item, launch::Action::RunAsAdmin, windows, |_| Ok(false)).is_err()
         );
     }
+}
+
+#[test]
+fn launch_preparation_only_flags_missing_application_targets() {
+    use launch::{Action, CommandError};
+    use std::io::ErrorKind;
+
+    let item = AppItem {
+        path: r"C:\Apps\Missing.exe".into(),
+        exec_path: r"C:\Apps\Missing.exe".into(),
+        ..AppItem::default()
+    };
+    for (action, error, expected) in [
+        (
+            Action::Launch,
+            ErrorKind::NotFound,
+            CommandError::MissingTarget,
+        ),
+        (
+            Action::RunAsAdmin,
+            ErrorKind::NotFound,
+            CommandError::MissingTarget,
+        ),
+        (
+            Action::Launch,
+            ErrorKind::PermissionDenied,
+            CommandError::Unavailable,
+        ),
+        (
+            Action::OpenDirectory,
+            ErrorKind::NotFound,
+            CommandError::Unavailable,
+        ),
+    ] {
+        assert_eq!(
+            launch::command(&item, action, Path::new(r"C:\Windows"), |_| Err(
+                error.into()
+            )),
+            Err(expected),
+        );
+    }
+}
+
+#[test]
+fn windows_launch_reports_missing_targets_behind_shortcuts() {
+    use velo_slint::platform::windows::{launch as native, shell};
+    use windows::Win32::System::Com::{CLSCTX_INPROC_SERVER, CoCreateInstance, IPersistFile};
+    use windows::Win32::UI::Shell::{IShellLinkW, ShellLink};
+    use windows::core::{Interface, PCWSTR};
+
+    let directory = tempfile::tempdir().unwrap();
+    let executable = directory.path().join("Missing.exe");
+    let shortcut = directory.path().join("Pinned.lnk");
+    fs::write(&executable, b"synthetic target").unwrap();
+    let apartment = shell::Apartment::new().unwrap();
+    let target_path = shell::wide(executable.to_str().unwrap()).unwrap();
+    let shortcut_path = shell::wide(shortcut.to_str().unwrap()).unwrap();
+    unsafe {
+        let link: IShellLinkW = CoCreateInstance(&ShellLink, None, CLSCTX_INPROC_SERVER).unwrap();
+        link.SetPath(PCWSTR(target_path.as_ptr())).unwrap();
+        let file: IPersistFile = link.cast().unwrap();
+        file.Save(PCWSTR(shortcut_path.as_ptr()), true).unwrap();
+    }
+    fs::remove_file(executable).unwrap();
+    let item = AppItem {
+        path: shortcut.to_string_lossy().into_owned(),
+        ..AppItem::default()
+    };
+    assert_eq!(
+        native::execute(&apartment, 0, &item, launch::Action::Launch),
+        Err(native::Failure::MissingTarget),
+    );
+}
+
+#[test]
+fn windows_launch_reports_missing_apps_folder_entries() {
+    use velo_slint::platform::windows::{launch as native, shell};
+
+    let apartment = shell::Apartment::new().unwrap();
+    let item = AppItem {
+        path: format!(
+            "{}Velo.Test.Missing_abcdefghij012!MissingApp",
+            launch::APPS_FOLDER_PREFIX
+        ),
+        ..AppItem::default()
+    };
+    assert_eq!(
+        native::execute(&apartment, 0, &item, launch::Action::Launch),
+        Err(native::Failure::MissingTarget),
+    );
 }

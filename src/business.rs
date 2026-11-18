@@ -12,9 +12,11 @@ use raw_window_handle::{HasWindowHandle, RawWindowHandle};
 use slint::winit_030::WinitWindowAccessor;
 use slint::{ComponentHandle, Model, ModelRc, VecModel};
 use velo_slint::core::config::Config;
+use velo_slint::core::launch::{APPS_FOLDER_PREFIX, Action};
 use velo_slint::core::model::AppItem;
 use velo_slint::core::service::{Event, Manage, Options, Runtime, Snapshot};
-use velo_slint::core::{icons, launch::Action, normalize::normalize, service};
+use velo_slint::core::{icons, normalize::normalize, service};
+use velo_slint::platform::windows::launch::Failure as LaunchFailure;
 
 use crate::{AppWindow, LauncherItem, SettingsDraft, navigation, ui};
 
@@ -442,6 +444,7 @@ impl Controller {
                 }
                 Event::Icons { .. } => {}
                 Event::Launched {
+                    id,
                     result,
                     history_saved,
                 } => {
@@ -450,6 +453,9 @@ impl Controller {
                     app.invoke_launch_finished(result.is_ok());
                     if let Err(error) = result {
                         app.set_selection_notice(error.message().into());
+                        if error == LaunchFailure::MissingTarget {
+                            self.prompt_for_missing_app(&id);
+                        }
                     } else if !history_saved {
                         app.set_selection_notice(
                             "应用已启动，但历史记录保存失败，请检查数据目录权限".into(),
@@ -685,16 +691,22 @@ impl Controller {
         let Some(app) = self.app.upgrade() else {
             return;
         };
-        if !app.get_presented()
-            || app.get_native_dialog_active()
-            || !self
-                .snapshot
-                .borrow()
-                .as_ref()
-                .is_some_and(|s| s.catalog.item(id).is_some())
-        {
+        if !app.get_presented() || app.get_native_dialog_active() {
             return;
         }
+        let keep_visible = {
+            let snapshot = self.snapshot.borrow();
+            let Some(snapshot) = snapshot.as_ref() else {
+                return;
+            };
+            let Some(item) = snapshot.catalog.item(id) else {
+                return;
+            };
+            snapshot.library.has_custom_app(id)
+                || (item.pinned
+                    && (Path::new(&item.path).is_absolute()
+                        || item.path.starts_with(APPS_FOLDER_PREFIX)))
+        };
         let Some(owner) = owner(&app) else {
             return;
         };
@@ -704,8 +716,10 @@ impl Controller {
             .launch(id.into(), app.get_input_text().to_string(), action, owner)
         {
             if action != Action::OpenDirectory {
-                app.invoke_clear_input();
-                app.invoke_launch_started();
+                if !keep_visible {
+                    app.invoke_clear_input();
+                }
+                app.invoke_launch_started(!keep_visible);
             }
         } else {
             app.set_selection_notice("正在打开应用，请稍候".into());
@@ -726,7 +740,7 @@ impl Controller {
             app.set_group_run_busy(true);
             app.set_group_mode(2);
             app.invoke_clear_input();
-            app.invoke_launch_started();
+            app.invoke_launch_started(true);
             true
         } else {
             app.set_selection_notice("正在处理启动或保存，请稍候".into());
@@ -867,6 +881,20 @@ impl Controller {
             }
         }
     }
+    fn prompt_for_missing_app(self: &Rc<Self>, id: &str) {
+        let request = self.snapshot.borrow().as_ref().and_then(|snapshot| {
+            let item = snapshot.catalog.item(id)?;
+            if snapshot.library.has_custom_app(id) {
+                Some(interaction::DELETE_MISSING_CUSTOM_APP)
+            } else {
+                item.pinned.then_some(interaction::UNPIN_MISSING_APP)
+            }
+        });
+        if let Some(request) = request {
+            self.native(id, request);
+        }
+    }
+
     fn native(self: &Rc<Self>, id: &str, request: i32) {
         let Some(app) = self.app.upgrade() else {
             return;
@@ -920,8 +948,9 @@ impl Controller {
                     .is_some_and(|s| s.library.pinned.iter().flatten().any(|i| i.id == id));
                 self.manage(Manage::Pin(id.into(), !pinned));
             }
-            5 => self.manage(Manage::Delete(id.into())),
+            5 | interaction::DELETE_MISSING_CUSTOM_APP => self.manage(Manage::Delete(id.into())),
             6 => self.update(true),
+            interaction::UNPIN_MISSING_APP => self.manage(Manage::Pin(id.into(), false)),
             -1 => app.set_selection_notice("无法打开原生菜单或确认框，请重试".into()),
             _ => {}
         }

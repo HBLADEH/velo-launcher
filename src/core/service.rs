@@ -66,6 +66,7 @@ pub enum Event {
         items: Vec<LoadedIcon>,
     },
     Launched {
+        id: String,
         result: std::result::Result<(), launch::Failure>,
         history_saved: bool,
     },
@@ -407,6 +408,7 @@ impl Runtime {
                             Work::Launch(request) => {
                                 let result = run_action(&action_state, &request);
                                 action_state.event(Event::Launched {
+                                    id: request.id,
                                     result: result.0,
                                     history_saved: result.1,
                                 });
@@ -1579,6 +1581,7 @@ mod tests {
         };
         for failure in [
             launch::Failure::Cancelled,
+            launch::Failure::MissingTarget,
             launch::Failure::Unavailable,
             launch::Failure::Shell,
         ] {
@@ -1790,6 +1793,65 @@ mod tests {
         assert!(library.applications.as_ref().unwrap().is_empty());
         assert!(library.pinned.as_ref().unwrap().is_empty());
         assert!(path.exists());
+    }
+
+    #[test]
+    fn deleting_missing_custom_apps_removes_pins_and_search_results() {
+        for keep_pin in [true, false] {
+            let directory = tempfile::tempdir().unwrap();
+            let shared = shared(directory.path());
+            initialize(&shared).unwrap();
+            let name = "VeloMissingCustomFixture";
+            let path = directory.path().join(format!("{name}.exe"));
+            fs::write(&path, b"never execute").unwrap();
+            manage(&shared, Manage::Import(vec![path.clone()])).unwrap();
+            let snapshot = shared.snapshot().unwrap().unwrap();
+            let id = snapshot.library.applications.as_ref().unwrap()[0]
+                .id
+                .clone();
+            manage(&shared, Manage::Pin(id.clone(), true)).unwrap();
+            if !keep_pin {
+                manage(&shared, Manage::Pin(id.clone(), false)).unwrap();
+            }
+            fs::remove_file(path).unwrap();
+            let request = LaunchRequest {
+                id: id.clone(),
+                query: name.into(),
+                action: Action::Launch,
+                owner: 0,
+            };
+            assert_eq!(
+                run_action(&shared, &request),
+                (Err(launch::Failure::MissingTarget), true)
+            );
+            let before = shared.snapshot().unwrap().unwrap();
+            assert!(before.library.has_custom_app(&id));
+            assert_eq!(before.catalog.item(&id).unwrap().pinned, keep_pin);
+            assert!(
+                before
+                    .catalog
+                    .search(name, &before.config, &before.history, now())
+                    .unwrap()
+                    .iter()
+                    .any(|result| result.item.id == id)
+            );
+
+            manage(&shared, Manage::Delete(id.clone())).unwrap();
+            let after = shared.snapshot().unwrap().unwrap();
+            assert!(after.catalog.item(&id).is_none());
+            assert!(
+                after
+                    .catalog
+                    .search(name, &after.config, &after.history, now())
+                    .unwrap()
+                    .iter()
+                    .all(|result| result.item.id != id)
+            );
+            let restarted = DataStore::open(directory.path()).unwrap();
+            let library = restarted.library.snapshot().unwrap();
+            assert!(!library.has_custom_app(&id));
+            assert!(library.pinned.as_ref().unwrap().is_empty());
+        }
     }
 
     #[test]

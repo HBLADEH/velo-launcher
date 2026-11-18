@@ -276,27 +276,49 @@ impl Controller {
             }
         });
         let weak = Rc::downgrade(&controller);
-        app.on_launch_started(move || {
+        app.on_launch_started(move |hide_immediately| {
             if let Some(controller) = weak.upgrade() {
-                controller.hide("launch");
+                if hide_immediately {
+                    controller.hide("launch");
+                }
                 controller
                     .launch_generation
                     .set(Some(controller.state.borrow().generation));
                 if let Some(app) = controller.app.upgrade() {
                     app.set_native_dialog_active(true);
+                    if !hide_immediately {
+                        app.invoke_suspend_input();
+                    }
                 }
             }
         });
         let weak = Rc::downgrade(&controller);
         app.on_launch_finished(move |success| {
-            if let Some(controller) = weak.upgrade() {
-                if let Some(app) = controller.app.upgrade() {
-                    app.set_native_dialog_active(false);
+            let Some(controller) = weak.upgrade() else {
+                return;
+            };
+            let Some(generation) = controller.launch_generation.take() else {
+                return;
+            };
+            let Some(app) = controller.app.upgrade() else {
+                return;
+            };
+            app.set_native_dialog_active(false);
+            let visible = {
+                let state = controller.state.borrow();
+                if state.generation != generation || state.closing {
+                    return;
                 }
-                let generation = controller.launch_generation.take();
-                if !success && generation == Some(controller.state.borrow().generation) {
-                    controller.show("launch_failure");
+                state.visible
+            };
+            match (success, visible) {
+                (true, true) => {
+                    app.invoke_clear_input();
+                    controller.hide("launch");
                 }
+                (false, true) => controller.defer_focus(),
+                (false, false) => controller.show("launch_failure"),
+                (true, false) => {}
             }
         });
         let weak = Rc::downgrade(&controller);

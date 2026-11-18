@@ -115,12 +115,7 @@ pub fn import(
     Ok(result)
 }
 pub fn delete(library: &ApplicationLibrary, id: &str) -> Result<ApplicationLibrary> {
-    if !library
-        .applications
-        .iter()
-        .flatten()
-        .any(|item| item.id == id)
-    {
+    if !library.has_custom_app(id) {
         return Err(DataError::new(
             "delete custom application",
             "missing application",
