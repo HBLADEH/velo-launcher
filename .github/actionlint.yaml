@@ -1,5 +1,5 @@
 self-hosted-runner:
-  labels: [velo-locked-toolchain, release-publisher]
+  labels: [velo-locked-toolchain]
 paths:
   # GitHub supports concurrency.queue; actionlint 1.7.12 predates it.
   .github/workflows/release.yml:

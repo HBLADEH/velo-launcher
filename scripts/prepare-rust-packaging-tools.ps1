@@ -19,8 +19,14 @@ $archive=Join-Path $OutputDirectory 'nsis.zip'
 if($ArchivePath){
     Copy-Item -LiteralPath $ArchivePath -Destination $archive
 }else{
-    try{Invoke-WebRequest -Uri $identity.archiveUrl -OutFile $archive}
-    catch{throw "Pinned NSIS download failed with HTTPS redirect protection intact. Supply the pinned ZIP with -ArchivePath. $($_.Exception.Message)"}
+    $downloadArguments = @(
+        '--fail', '--silent', '--show-error', '--location',
+        '--proto', '=https', '--proto-redir', '=https',
+        '--connect-timeout', '15', '--max-time', '60', '--retry', '2',
+        '--output', $archive, '--', $identity.archiveUrl
+    )
+    & curl.exe @downloadArguments
+    if ($LASTEXITCODE -ne 0) { throw 'Pinned NSIS HTTPS download failed. Supply the pinned ZIP with -ArchivePath.' }
 }
 if((Get-FileHash -LiteralPath $archive).Hash -ne $identity.archiveSHA256){throw 'Downloaded NSIS archive checksum differs; no compiler was executed.'}
 Expand-Archive -LiteralPath $archive -DestinationPath (Join-Path $OutputDirectory 'tools')

@@ -78,8 +78,8 @@ $tools = Get-Content -Raw target/packaging-tools/tools.json | ConvertFrom-Json
 ./scripts/package-rust-release.ps1 -OutputDirectory target/release-0.11.0 -Makensis $tools.Compiler
 ```
 
-输出目录必须全新。正式打包在创建目录前检查当前工作区干净，并确认两种渲染器的完整验证回执均对应当前 `HEAD`。打包核对 exe、Cargo 元数据、完整输入文件清单及各文件的 SHA-256；新增、删除或修改输入均需重新验证。保留真实 AboutSlint，Slint 使用 Royalty-free 2.0。系统安装、更新校验、首次数据快照、失败恢复与旧 Go 回退逻辑继续保留；清理旧源码不会取消现有用户的升级路径。
+输出目录必须全新。正式打包要求干净工作区及与当前 `HEAD` 对应的双渲染器验证回执。打包会重核 exe、Cargo 元数据、输入文件清单及 SHA-256。新增、删除或修改输入后需要重新验证。保留真实 AboutSlint，Slint 使用 Royalty-free 2.0。系统安装、更新校验、首次数据快照、失败恢复与旧 Go 回退逻辑继续保留。
 
-README 的 Rust Windows CI 徽章使用托管 `windows-2025` 检查两个 renderer，不等待自托管桌面 runner，也不代表发行验收。正式发版仍需专用可交互 Windows runner 完成 `-Product -SmokeTest` 与打包。tag 触发方式和所需环境见[发行准备](rust-slint-release-readiness.md#推送-tag-发版)；未经批准不要推正式版本 tag。
+README 的 Rust Windows CI 徽章对应两个渲染器的托管检查。推送已批准的版本 tag 后，托管 `windows-2025` runner 另行完成正式构建、打包和发布。完整桌面冒烟和隔离客户机验收用于准备版本的发行证据。操作见[推送 tag 发版](rust-slint-release-readiness.md#推送-tag-发版)。
 
 在隔离客户机验证新装、升级、失败恢复和卸载；不得用宿主正式安装作测试。正式资产需包含先上传的 `velo-launcher-amd64-installer.exe`（默认 Software 安装器的同字节副本）、其余安装器、SHA-256 清单和发行清单对应版本的 `velo-rust-<版本>-licenses.zip`。发布器逐项比对 GitHub 上的 SHA-256 后才将 Release 草稿公开。

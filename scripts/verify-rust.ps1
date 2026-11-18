@@ -2,17 +2,28 @@ param(
     [ValidateSet('All', 'FemtoVG', 'Software')][string]$Renderer = 'All',
     [switch]$SkipChecks,
     [switch]$SmokeTest,
-    [switch]$Product
+    [switch]$Product,
+    [switch]$HostedCI,
+    [switch]$ChecksOnly
 )
 $ErrorActionPreference = 'Stop'
+if ($HostedCI -and (-not $Product -or $SkipChecks -or $SmokeTest)) {
+    throw 'Hosted validation requires -Product and runs the non-desktop checks.'
+}
+if ($ChecksOnly -and -not $HostedCI) { throw '-ChecksOnly requires -HostedCI.' }
 . (Join-Path $PSScriptRoot 'lib/rust-environment.ps1')
 . (Join-Path $PSScriptRoot 'lib/rust-build-identity.ps1')
-$environment = Initialize-VeloRustEnvironment
+$environment = Initialize-VeloRustEnvironment -HostedCI:$HostedCI
+if ($HostedCI) {
+    Write-Output "Hosted validation: MSVC $($environment.MsvcToolsVersion), link $($environment.LinkerFileVersion), SDK $($environment.WindowsSdkVersion)"
+}
 $renderers = if ($Renderer -eq 'All') { @('femtovg', 'software') } else { @($Renderer.ToLowerInvariant()) }
 $artifactGroup = if ($Product) { 'product-artifacts' } else { 'artifacts' }
-foreach ($name in $renderers) {
-    $receipt = Join-Path $environment.RustRoot "target/$artifactGroup/$name/verification.json"
-    if (Test-Path -LiteralPath $receipt) { Remove-Item -LiteralPath $receipt }
+if (-not $ChecksOnly) {
+    foreach ($name in $renderers) {
+        $receipt = Join-Path $environment.RustRoot "target/$artifactGroup/$name/verification.json"
+        if (Test-Path -LiteralPath $receipt) { Remove-Item -LiteralPath $receipt }
+    }
 }
 Push-Location $environment.RustRoot
 try {
@@ -31,8 +42,10 @@ try {
         $cargoVersion -notlike "cargo $pinnedRust *") {
         throw 'rustc/cargo do not match rust-toolchain.toml.'
     }
-    $workspace = Get-VeloWorkspaceIdentity -Repository $environment.RustRoot
-    $sources = @(Get-VeloRustSources -Repository $environment.RustRoot)
+    if (-not $ChecksOnly) {
+        $workspace = Get-VeloWorkspaceIdentity -Repository $environment.RustRoot
+        $sources = @(Get-VeloRustSources -Repository $environment.RustRoot)
+    }
     if (-not $SkipChecks) {
         & (Join-Path $PSScriptRoot 'test-project-tools.ps1')
         & cargo fmt --all -- --check
@@ -44,8 +57,21 @@ try {
         if (-not $SkipChecks) {
             & cargo clippy --locked --no-default-features --features $feature --all-targets -- -D warnings
             if ($LASTEXITCODE -ne 0) { throw "clippy failed: $name" }
-            & cargo test --locked --no-default-features --features $feature
+            $testArguments = @('test', '--locked', '--no-default-features', '--features', $feature)
+            if ($HostedCI) {
+                # These tests need taskbar, global hotkey or modal focus ownership.
+                $testArguments += @(
+                    '--',
+                    '--skip', 'platform::windows::desktop::tests::native_endpoint_second_launch_tray_recovery_and_cleanup',
+                    '--skip', 'platform::windows::hotkey::tests::native_conflict_rollback_dispatch_rebind_and_cleanup',
+                    '--skip', 'platform::windows::system_tools::tests::native_recycle_confirmation_focuses_ok_and_enter_confirms_without_deleting'
+                )
+            }
+            & cargo @testArguments
             if ($LASTEXITCODE -ne 0) { throw "Rust tests failed: $name" }
+        }
+        if ($ChecksOnly) { continue }
+        if (-not $SkipChecks -and -not $HostedCI) {
             & (Join-Path $PSScriptRoot 'test-data-compat.ps1') -Renderer $name
             $nativeDirectory = Join-Path $environment.RustRoot ('target/compat-rs10/' + [guid]::NewGuid().ToString('N'))
             New-Item -ItemType Directory -Path $nativeDirectory -Force | Out-Null
@@ -66,7 +92,7 @@ try {
         $executable = Join-Path $outputDirectory 'velo-slint.exe'
         Copy-Item -LiteralPath 'target/x86_64-pc-windows-msvc/release/velo-slint.exe' -Destination $executable -Force
         & (Join-Path $PSScriptRoot 'test-rust-metadata.ps1') -Renderer $name -Executable $executable -OutputDirectory (Join-Path $outputDirectory ('metadata-' + [guid]::NewGuid().ToString('N')))
-        if (-not $SkipChecks) {
+        if (-not $SkipChecks -and -not $HostedCI) {
             $startupDirectory = Join-Path $outputDirectory ('startup-' + [guid]::NewGuid().ToString('N'))
             & cargo run --locked --no-default-features --features $feature --example rs11_startup -- $executable $startupDirectory
             if ($LASTEXITCODE -ne 0) { throw "RS-11 background startup verification failed: $name" }
@@ -170,6 +196,7 @@ try {
             ProductIdentity = $Product.IsPresent
             ChecksPassed = -not $SkipChecks.IsPresent
             SmokeTestPassed = $SmokeTest.IsPresent
+            VerificationScope = if ($HostedCI) { 'hosted-ci' } else { 'desktop' }
             ExecutableSHA256 = $identity.ExecutableSHA256
             BuildIdentitySHA256 = (Get-FileHash -LiteralPath (Join-Path $outputDirectory 'build-identity.json')).Hash
             CargoMetadataSHA256 = (Get-FileHash -LiteralPath (Join-Path $outputDirectory 'cargo-metadata.json')).Hash

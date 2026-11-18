@@ -59,15 +59,19 @@ function Read-VeloVerifiedBuild {
     if ($identity.ProductIdentity -ne $Product.IsPresent -or $receipt.ProductIdentity -ne $Product.IsPresent) {
         throw 'Product and preview verification receipts cannot be interchanged.'
     }
+    $desktopVerified = $receipt.VerificationScope -in $null, 'desktop' -and
+        $receipt.SmokeTestPassed -is [bool] -and $receipt.SmokeTestPassed
+    $hostedVerified = $Product -and $Release -and $receipt.VerificationScope -ceq 'hosted-ci' -and
+        $receipt.SmokeTestPassed -is [bool] -and -not $receipt.SmokeTestPassed
     if ($receipt.ChecksPassed -isnot [bool] -or -not $receipt.ChecksPassed -or
-        $receipt.SmokeTestPassed -isnot [bool] -or -not $receipt.SmokeTestPassed -or
+        (-not $desktopVerified -and -not $hostedVerified) -or
         $receipt.Renderer -ne $Renderer -or $identity.Renderer -ne $Renderer -or
         $identity.Target -ne 'x86_64-pc-windows-msvc' -or
         (Get-FileHash -LiteralPath $executable).Hash -ne $receipt.ExecutableSHA256 -or
         $identity.ExecutableSHA256 -ne $receipt.ExecutableSHA256 -or
         (Get-FileHash -LiteralPath $identityPath).Hash -ne $receipt.BuildIdentitySHA256 -or
         (Get-FileHash -LiteralPath $metadataPath).Hash -ne $receipt.CargoMetadataSHA256) {
-        throw "Packaging $Renderer requires a matching successful full verification with -SmokeTest."
+        throw "Packaging $Renderer requires a matching verification receipt for desktop or hosted release builds."
     }
     if ($Release) {
         $workspace = Get-VeloWorkspaceIdentity -Repository $Repository

@@ -107,7 +107,7 @@ function Test-ReleaseInputGate {
     }
 
     $sources = @(Get-VeloRustSources -Repository $source)
-    function Write-TestReceipt([string]$Renderer, [switch]$Dirty) {
+    function Write-TestReceipt([string]$Renderer, [switch]$Dirty, [switch]$Hosted, [switch]$WithoutSmokeTest) {
         $artifact = Join-Path $source "target/product-artifacts/$Renderer"
         Set-Content -LiteralPath "$artifact/velo-slint.exe", "$artifact/cargo-metadata.json" -Value 'synthetic artifact, never executed'
         $exeHash = (Get-FileHash -LiteralPath "$artifact/velo-slint.exe").Hash
@@ -115,11 +115,14 @@ function Test-ReleaseInputGate {
             Renderer=$Renderer; ProductIdentity=$true; Target='x86_64-pc-windows-msvc'
             ExecutableSHA256=$exeHash; WorkspaceCommit=$gitState.Commit; WorkspaceDirty=$Dirty.IsPresent; Sources=$sources
         } | ConvertTo-Json -Depth 6 | Set-Content -LiteralPath "$artifact/build-identity.json"
-        @{
-            Renderer=$Renderer; ProductIdentity=$true; ChecksPassed=$true; SmokeTestPassed=$true; ExecutableSHA256=$exeHash
+        $receipt = @{
+            Renderer=$Renderer; ProductIdentity=$true; ChecksPassed=$true
+            SmokeTestPassed=-not ($Hosted -or $WithoutSmokeTest); ExecutableSHA256=$exeHash
             BuildIdentitySHA256=(Get-FileHash -LiteralPath "$artifact/build-identity.json").Hash
             CargoMetadataSHA256=(Get-FileHash -LiteralPath "$artifact/cargo-metadata.json").Hash
-        } | ConvertTo-Json | Set-Content -LiteralPath "$artifact/verification.json"
+        }
+        if ($Hosted) { $receipt.VerificationScope = 'hosted-ci' }
+        $receipt | ConvertTo-Json | Set-Content -LiteralPath "$artifact/verification.json"
     }
 
     Write-TestReceipt software
@@ -132,6 +135,14 @@ function Test-ReleaseInputGate {
         Assert-Rejected { & "$source/scripts/package-rust-release.ps1" -OutputDirectory $output -Makensis 'unused.exe' } $Message
         if (Test-Path -LiteralPath $output) { throw 'Rejected release created a staging directory.' }
     }
+
+    Write-TestReceipt software -WithoutSmokeTest
+    Assert-PackagingDidNotStart '*requires a matching verification receipt*'
+    Write-TestReceipt software -Hosted
+    Read-VeloVerifiedBuild -Repository $source -Renderer software -Product -Release | Out-Null
+    Assert-Rejected {
+        Read-VeloVerifiedBuild -Repository $source -Renderer software -Product
+    } '*requires a matching verification receipt*'
 
     $gitState.Dirty = $true
     Assert-PackagingDidNotStart '*clean current worktree*'
@@ -184,7 +195,7 @@ function Test-ReleasePublisherValidation {
     Assert-Rejected { & $publisher -Tag 'v9.8.7' -Commit ('2' * 40) -Directory $assets -ValidateOnly } '*not bound to the tagged commit*'
 
     # Stub every GitHub command, using real digests from the synthetic assets.
-    $state = @{ Commit = $commit; Exists = $false; IsDraft = $true; BadDigest = $true; Target = $null }
+    $state = @{ Commit = $commit; Exists = $false; IsDraft = $true; BadDigest = $true; Target = $null; Notes = $null }
     $uploaded = [Collections.Generic.List[object]]::new()
     function gh {
         $repo = 'HBLADEH/velo-launcher'
@@ -199,6 +210,9 @@ function Test-ReleasePublisherValidation {
         switch -Exact ($args[1]) {
             'create' {
                 if ('--draft' -notin $args) { throw 'Release must start as a draft.' }
+                $notesOption = [array]::IndexOf($args, '--notes-file')
+                if ($notesOption -lt 0) { throw 'Release must have a notes file.' }
+                $state.Notes = (Get-Content -LiteralPath $args[$notesOption + 1] -Raw).Trim()
                 $targetOption = [array]::IndexOf($args, '--target')
                 if ($targetOption -ge 0) {
                     $state.Target = $args[$targetOption + 1]
@@ -251,13 +265,18 @@ function Test-ReleasePublisherValidation {
         $state.Exists = $false
         $state.BadDigest = $false
         $uploaded.Clear()
-        & $publish | Out-Null
-        if ($state.IsDraft) { throw 'A fully verified draft was not published.' }
+        $generatedNotes = Join-Path $source 'target/generated-release-notes.md'
+        Set-Content -LiteralPath $generatedNotes -Value 'Generated release notes.'
+        & $publisher -Tag 'v9.8.7' -Commit $commit -Directory $assets -NotesFile $generatedNotes | Out-Null
+        if ($state.IsDraft -or $state.Notes -ne 'Generated release notes.') {
+            throw 'A fully verified draft must publish with the supplied notes.'
+        }
 
         $state.Exists = $false
         $state.IsDraft = $true
         $uploaded.Clear()
         $staged = @(& $publisher -Tag 'v9.8.7' -Commit $commit -Directory $assets -StageDraft)
+        if ($state.Notes -ne 'Synthetic release notes.') { throw 'Draft staging must use the handwritten notes by default.' }
         $checksumDigest = (Get-FileHash -LiteralPath (Join-Path $assets 'SHA256SUMS.txt')).Hash.ToLowerInvariant()
         if (-not $state.IsDraft -or "Velo-Release-Draft: $checksumDigest" -notin $staged) { throw 'Staging must return the checksum list digest and leave a draft.' }
         Assert-Rejected {
@@ -272,19 +291,17 @@ function Test-ReleasePublisherValidation {
 function Test-ReleaseTagGate {
     $PSNativeCommandUseErrorActionPreference = $true
     $source = Join-Path $fixture 'release-tag-gate'
-    New-Item -ItemType Directory -Path (Join-Path $source 'scripts'), (Join-Path $source 'windows'),
-        (Join-Path $source 'docs/releases') -Force | Out-Null
+    New-Item -ItemType Directory -Path (Join-Path $source 'scripts'), (Join-Path $source 'windows') -Force | Out-Null
     Copy-Item -LiteralPath (Join-Path $PSScriptRoot 'check-rust-release-tag.ps1') -Destination (Join-Path $source 'scripts/check-rust-release-tag.ps1')
     Set-Content -LiteralPath (Join-Path $source 'Cargo.toml') -Value '[package]', 'name = "release-fixture"', 'version = "9.8.7"'
     Set-Content -LiteralPath (Join-Path $source 'windows/release-policy.json') -Value '{"ReleaseTag":"v9.8.7","G4Passed":true,"RedistributionCleared":true,"PublicReleaseApproved":true}'
-    Set-Content -LiteralPath (Join-Path $source 'docs/releases/9.8.7.md') -Value 'Synthetic release notes.'
     & git -C $source init --initial-branch=main --template= | Out-Null
     & git -C $source config --local user.name 'Release Fixture'
     & git -C $source config --local user.email release-fixture@example.invalid
     & git -C $source config --local core.hooksPath (Join-Path $source 'unused-hooks')
     & git -C $source config --local commit.gpgsign false
     & git -C $source config --local tag.gpgSign false
-    & git -C $source add scripts/check-rust-release-tag.ps1 Cargo.toml windows/release-policy.json docs/releases/9.8.7.md
+    & git -C $source add scripts/check-rust-release-tag.ps1 Cargo.toml windows/release-policy.json
     & git -C $source commit -m 'synthetic release candidate' | Out-Null
     $mainCommit = & git -C $source rev-parse HEAD
     & git -C $source update-ref refs/remotes/origin/main $mainCommit

@@ -28,6 +28,7 @@ $builds = @(foreach ($renderer in $renderers) {
     & (Join-Path $PSScriptRoot 'package-rust-product.ps1') -Renderer $renderer -OutputDirectory $directory -Makensis $Makensis -Release | Out-Host
     $receipt = Get-Content -LiteralPath (Join-Path $directory 'installer.json') -Raw | ConvertFrom-Json
     $identity = Get-Content -LiteralPath (Join-Path $directory 'package/content/build-identity.json') -Raw | ConvertFrom-Json
+    $verification = Get-Content -LiteralPath (Join-Path $directory 'package/content/verification.json') -Raw | ConvertFrom-Json
     Copy-Item -LiteralPath (Join-Path $directory $receipt.InstallerFile) -Destination $assets
     [ordered]@{
         Renderer = $renderer; Installer = $receipt.InstallerFile
@@ -35,6 +36,8 @@ $builds = @(foreach ($renderer in $renderers) {
         SourceCommit = $identity.WorkspaceCommit; SourceInputs = $identity.Sources
         Rustc = $identity.Rustc; SlintVersion = $identity.SlintVersion
         MsvcToolsVersion = $identity.MsvcToolsVersion; WindowsSdkVersion = $identity.WindowsSdkVersion
+        CompilerFileVersion = $identity.CompilerFileVersion; LinkerFileVersion = $identity.LinkerFileVersion
+        VerificationScope = $verification.VerificationScope ?? 'desktop'
     }
 })
 if ($builds[0].SourceCommit -ne $builds[1].SourceCommit) { throw 'Both renderers must bind the same source commit.' }
