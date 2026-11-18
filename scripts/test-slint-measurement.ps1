@@ -5,6 +5,27 @@ Set-StrictMode -Version Latest
 function Assert($Condition, [string]$Message) { if (-not $Condition) { throw $Message } }
 $testRoot = Join-Path ([IO.Path]::GetTempPath()) ('velo-slint-measurement-' + [guid]::NewGuid().ToString('N'))
 try {
+    # CIM does not guarantee parent-before-child order. Include every descendant
+    # while keeping unrelated processes out of the application's resource sum.
+    $processes = @(
+        [pscustomobject]@{ ProcessId = 13; ParentProcessId = 12; Name = 'helper.exe' },
+        [pscustomobject]@{ ProcessId = 99; ParentProcessId = 0; Name = 'unrelated.exe' },
+        [pscustomobject]@{ ProcessId = 11; ParentProcessId = 0; Name = 'velo-slint.exe' },
+        [pscustomobject]@{ ProcessId = 12; ParentProcessId = 11; Name = 'helper.exe' }
+    )
+    $tree = @(Get-VeloProcessTree -Processes $processes -RootProcessId 11)
+    Assert (($tree.ProcessId | Sort-Object) -join ',' -eq '11,12,13') 'Include nested descendants regardless of enumeration order, excluding unrelated processes.'
+    $snapshots = @(0, 1 | ForEach-Object {
+        [pscustomobject]@{
+            TimestampUtc = [DateTime]::UnixEpoch.AddSeconds($_).ToString('o'); MonotonicSeconds = [double]$_
+            Complete = $true; Window = [pscustomobject]@{ State = 'Visible' }
+            Processes = @([pscustomobject]@{ Identity = '11/1'; CPUSeconds = [double]$_ })
+            PrivateBytes = 1048576; WorkingSet = 2097152
+        }
+    })
+    Assert (Get-VeloSampleSummary $snapshots Visible $true $true).BaselineEligible 'Stable process/window/data snapshots are eligible.'
+    $snapshots[1].Processes += [pscustomobject]@{ Identity = '12/1'; CPUSeconds = 0.0 }
+    Assert (-not (Get-VeloSampleSummary $snapshots Visible $true $true).BaselineEligible) 'A child appearing during sampling invalidates CPU comparison and baseline eligibility.'
     New-Item -ItemType Directory -Path $testRoot | Out-Null
     $exe = Join-Path $testRoot 'velo-slint.exe'
     'synthetic executable bytes' | Set-Content -LiteralPath $exe
@@ -95,7 +116,7 @@ try {
     [IO.File]::WriteAllBytes((Join-Path $iconDir 'fixture.png'), [byte[]]@(1, 2, 3))
     $icons = Get-VeloIconDiskEvidence $testRoot
     Assert ($empty.Files -eq 0 -and $icons.Files -eq 1 -and $icons.Bytes -eq 3 -and $empty.SHA256 -ne $icons.SHA256) 'Fingerprint disk icon content independently of decoded/GPU estimates.'
-    Write-Output 'Slint measurement checks passed (build identity, feature isolation, actual input boundary, focus/composition, loss/PID rejection and missing-input failure).'
+    Write-Output 'Slint measurement checks passed (full process tree, unstable samples, build identity, feature isolation, actual input boundary, focus/composition, loss/PID rejection and missing-input failure).'
 } finally {
     if (Test-Path -LiteralPath $testRoot) {
         $resolved = (Resolve-Path -LiteralPath $testRoot).Path

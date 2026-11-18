@@ -1,0 +1,932 @@
+{
+  "Renderer": "femtovg",
+  "ProductIdentity": true,
+  "Backend": "winit",
+  "Target": "x86_64-pc-windows-msvc",
+  "Rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+  "Cargo": "cargo 1.99.1 (5f94df478 2026-08-27)",
+  "MsvcToolsVersion": "14.50.35717",
+  "WindowsSdkVersion": "10.0.26100.0",
+  "CompilerFileVersion": "19.50.35719.0",
+  "LinkerFileVersion": "14.50.35719.0",
+  "SlintVersion": "1.18.1",
+  "SlintFeatures": [
+    "backend-winit",
+    "compat-1-18",
+    "i-slint-renderer-femtovg",
+    "raw-window-handle-06",
+    "renderer-femtovg",
+    "std",
+    "unstable-winit-030"
+  ],
+  "WinitBackendFeatures": [
+    "default",
+    "muda",
+    "raw-window-handle-06",
+    "renderer-femtovg",
+    "wayland",
+    "x11"
+  ],
+  "WorkspaceCommit": "cc656198b53ed049ba6abb13ff6f76738e247004",
+  "WorkspaceDirty": true,
+  "ExecutableSHA256": "12C6613C7234939CE1745A1495F66A7B83E856F1DE56872961DB264B955120C8",
+  "ExecutableBytes": 14009856,
+  "Sources": [
+    {
+      "Path": ".cargo/config.toml",
+      "SHA256": "B30E5A93F3EE1E18D93D09516EB08D9CCCCDDA15027615C61D58BE7264185711"
+    },
+    {
+      "Path": "build.rs",
+      "SHA256": "868DABFE020DFC6330610EF3F4EB51FE04016A0774F7613000DF7D437C74A489"
+    },
+    {
+      "Path": "Cargo.lock",
+      "SHA256": "F57B4D9F86082C0F25514B0DA5EF76F57111525A68FE9E906B7859D58109A1F5"
+    },
+    {
+      "Path": "Cargo.toml",
+      "SHA256": "E235E4AF7A16F582348739EBEE80737BB69993BC00602AFDB6B25BD48B874EB6"
+    },
+    {
+      "Path": "examples/launch_groups_editor.rs",
+      "SHA256": "6A4306F5F04F65B937B112D4A3CEE01ACCA3BB40416CB4394B8712094712EE67"
+    },
+    {
+      "Path": "examples/launch_groups_helper.rs",
+      "SHA256": "AE2E1320B7C0D3889FE3F3D1A7C3F5B4850CEC5F0C776F98497874D3CE04E933"
+    },
+    {
+      "Path": "examples/launch_groups_native.rs",
+      "SHA256": "73DE4BC64D7E8F4CB768EE5FBE55EF1BAAE454FE722156B7BE35D54C4FBFB64C"
+    },
+    {
+      "Path": "examples/rs05_desktop_fixture.rs",
+      "SHA256": "84B0EB35E79A4BF4D588EA7852EECDD8F63BED0017355820CEC6E4F670A851F6"
+    },
+    {
+      "Path": "examples/rs06_native_probe.rs",
+      "SHA256": "007BB15D480B1EF7A42F63A6EBF19083D9A699EF44AECA63185909438EC45154"
+    },
+    {
+      "Path": "examples/rs08_data_contract.rs",
+      "SHA256": "33755249DE34C83CC163F24401E0845784DB377956CB5D46DFCAC2F07B1CA701"
+    },
+    {
+      "Path": "examples/rs10_windows.rs",
+      "SHA256": "2ECB0FD223F7A015EFE5072A822AEA62B07C9B4047490495082B9637AC4D4CE5"
+    },
+    {
+      "Path": "examples/rs11_assisted.rs",
+      "SHA256": "D8F99A6D4D85D9E7DC8592F5528BB53A594A7379BF55FA055C343473A1E57C24"
+    },
+    {
+      "Path": "examples/rs11_installer_fixture.rs",
+      "SHA256": "EC3314769053487240E3620329DE0C9D21293D1BF44A1595C210122B930DFA96"
+    },
+    {
+      "Path": "examples/rs11_startup.rs",
+      "SHA256": "3C5E84C84DA61349945B115DCD8BFF20FCA1FC04694E8E78A3E9ADA67ED11187"
+    },
+    {
+      "Path": "examples/rs11_update_capture.rs",
+      "SHA256": "7D5C775DF988934339EE163CADED74C2F5C6D4FE74972DA8F2AD8207D6B2E28D"
+    },
+    {
+      "Path": "examples/rs11_windows.rs",
+      "SHA256": "76DC6833B5DFE96DA693BA85C00FA6A71CC946210D4190AD178DA74D66846DAA"
+    },
+    {
+      "Path": "examples/rs12_icons.rs",
+      "SHA256": "AEB2BA4072F67097A03B85B05031129BF222ED1DC0308B4EED75B5D25069FAB4"
+    },
+    {
+      "Path": "examples/rs12_search.rs",
+      "SHA256": "50A9A7D2AB6B6437E9A6D2F9A37B5E58AC7933255A12257955442ACDF2BFE447"
+    },
+    {
+      "Path": "examples/rs13_animation.rs",
+      "SHA256": "FE55B468AC9F0E8155D7FE6DB5F3425C6923E4B70FFEC769936DA3A5E1594686"
+    },
+    {
+      "Path": "examples/rs13_visual.rs",
+      "SHA256": "31B31E743A9C68FF9666F800DE88D54DCCFADE7056C8391BE366D9C449B141FE"
+    },
+    {
+      "Path": "examples/rs14_update_plan.rs",
+      "SHA256": "3E373656293D6F6B047DF22F3E364E37BAC3505CB1F43F8E41171027C8DADD7F"
+    },
+    {
+      "Path": "examples/support/rs13_fixture.rs",
+      "SHA256": "D9D29F87C2AF6E47FE93B6ED3111A0D8C5D55199216A5112094D1A3143578811"
+    },
+    {
+      "Path": "LICENSE",
+      "SHA256": "6F9B9F930DFC50C1D2B57FEFA552C9F82FB207B65BEDA7B986ED9CC4D4EA2878"
+    },
+    {
+      "Path": "licenses/dependencies/clipboard-win-5.4.3/LICENSE",
+      "SHA256": "C9BFF75738922193E67FA726FA225535870D2AA1059F91452C411736284AD566"
+    },
+    {
+      "Path": "licenses/dependencies/const-field-offset-0.2.1/Apache-2.0.txt",
+      "SHA256": "074E6E32C86A4C0EF8B3ED25B721CA23ACA83DF277CD88106EF7177C354615FF"
+    },
+    {
+      "Path": "licenses/dependencies/const-field-offset-0.2.1/MIT.txt",
+      "SHA256": "B85DCD3E453D05982552C52B5FC9E0BDD6D23C6F8E844B984A88AF32570B0CC0"
+    },
+    {
+      "Path": "licenses/dependencies/const-field-offset-macro-0.2.1/Apache-2.0.txt",
+      "SHA256": "074E6E32C86A4C0EF8B3ED25B721CA23ACA83DF277CD88106EF7177C354615FF"
+    },
+    {
+      "Path": "licenses/dependencies/const-field-offset-macro-0.2.1/MIT.txt",
+      "SHA256": "B85DCD3E453D05982552C52B5FC9E0BDD6D23C6F8E844B984A88AF32570B0CC0"
+    },
+    {
+      "Path": "licenses/dependencies/gl_generator-0.14.0/LICENSE",
+      "SHA256": "CFC7749B96F63BD31C3C42B5C471BF756814053E847C10F3EB003417BC523D30"
+    },
+    {
+      "Path": "licenses/dependencies/i-slint-backend-selector-1.18.1/LicenseRef-Slint-Royalty-free-2.0.md",
+      "SHA256": "5167F5056E850419106AB6265EFBDCA7CBA4D99C849D1445CA0BBF6A1E2315FE"
+    },
+    {
+      "Path": "licenses/dependencies/i-slint-backend-testing-1.18.1/LicenseRef-Slint-Royalty-free-2.0.md",
+      "SHA256": "5167F5056E850419106AB6265EFBDCA7CBA4D99C849D1445CA0BBF6A1E2315FE"
+    },
+    {
+      "Path": "licenses/dependencies/i-slint-backend-winit-1.18.1/LicenseRef-Slint-Royalty-free-2.0.md",
+      "SHA256": "5167F5056E850419106AB6265EFBDCA7CBA4D99C849D1445CA0BBF6A1E2315FE"
+    },
+    {
+      "Path": "licenses/dependencies/i-slint-common-1.18.1/LicenseRef-Slint-Royalty-free-2.0.md",
+      "SHA256": "5167F5056E850419106AB6265EFBDCA7CBA4D99C849D1445CA0BBF6A1E2315FE"
+    },
+    {
+      "Path": "licenses/dependencies/i-slint-compiler-1.18.1/Apache-2.0.txt",
+      "SHA256": "074E6E32C86A4C0EF8B3ED25B721CA23ACA83DF277CD88106EF7177C354615FF"
+    },
+    {
+      "Path": "licenses/dependencies/i-slint-compiler-1.18.1/LicenseRef-Slint-Royalty-free-2.0.md",
+      "SHA256": "5167F5056E850419106AB6265EFBDCA7CBA4D99C849D1445CA0BBF6A1E2315FE"
+    },
+    {
+      "Path": "licenses/dependencies/i-slint-compiler-1.18.1/MIT.txt",
+      "SHA256": "B85DCD3E453D05982552C52B5FC9E0BDD6D23C6F8E844B984A88AF32570B0CC0"
+    },
+    {
+      "Path": "licenses/dependencies/i-slint-core-1.18.1/LicenseRef-Slint-Royalty-free-2.0.md",
+      "SHA256": "5167F5056E850419106AB6265EFBDCA7CBA4D99C849D1445CA0BBF6A1E2315FE"
+    },
+    {
+      "Path": "licenses/dependencies/i-slint-core-macros-1.18.1/LicenseRef-Slint-Royalty-free-2.0.md",
+      "SHA256": "5167F5056E850419106AB6265EFBDCA7CBA4D99C849D1445CA0BBF6A1E2315FE"
+    },
+    {
+      "Path": "licenses/dependencies/i-slint-renderer-femtovg-1.18.1/LicenseRef-Slint-Royalty-free-2.0.md",
+      "SHA256": "5167F5056E850419106AB6265EFBDCA7CBA4D99C849D1445CA0BBF6A1E2315FE"
+    },
+    {
+      "Path": "licenses/dependencies/i-slint-renderer-skia-1.18.1/LicenseRef-Slint-Royalty-free-2.0.md",
+      "SHA256": "5167F5056E850419106AB6265EFBDCA7CBA4D99C849D1445CA0BBF6A1E2315FE"
+    },
+    {
+      "Path": "licenses/dependencies/i-slint-renderer-software-1.18.1/LicenseRef-Slint-Royalty-free-2.0.md",
+      "SHA256": "5167F5056E850419106AB6265EFBDCA7CBA4D99C849D1445CA0BBF6A1E2315FE"
+    },
+    {
+      "Path": "licenses/dependencies/khronos_api-3.1.0/ANGLE-LICENSE.txt",
+      "SHA256": "BF4DA21BD20BCFB5B60B7ECC67FA864A79BE049E21D6178076887F178DD6C71A"
+    },
+    {
+      "Path": "licenses/dependencies/khronos_api-3.1.0/LICENSE",
+      "SHA256": "CFC7749B96F63BD31C3C42B5C471BF756814053E847C10F3EB003417BC523D30"
+    },
+    {
+      "Path": "licenses/dependencies/lyon_algorithms-1.0.22/LICENSE-APACHE",
+      "SHA256": "216486F29671A4262EFE32AF6D84A75BEF398127F8C5F369B5C8305983887A06"
+    },
+    {
+      "Path": "licenses/dependencies/lyon_algorithms-1.0.22/LICENSE-MIT",
+      "SHA256": "80F275E90D799911ED3830A7F242A2EF5A4ADE2092FE0AA07BFB2D2CF2F2B95E"
+    },
+    {
+      "Path": "licenses/dependencies/lyon_extra-1.1.0/LICENSE-APACHE",
+      "SHA256": "216486F29671A4262EFE32AF6D84A75BEF398127F8C5F369B5C8305983887A06"
+    },
+    {
+      "Path": "licenses/dependencies/lyon_extra-1.1.0/LICENSE-MIT",
+      "SHA256": "80F275E90D799911ED3830A7F242A2EF5A4ADE2092FE0AA07BFB2D2CF2F2B95E"
+    },
+    {
+      "Path": "licenses/dependencies/lyon_geom-1.0.20/LICENSE-APACHE",
+      "SHA256": "216486F29671A4262EFE32AF6D84A75BEF398127F8C5F369B5C8305983887A06"
+    },
+    {
+      "Path": "licenses/dependencies/lyon_geom-1.0.20/LICENSE-MIT",
+      "SHA256": "80F275E90D799911ED3830A7F242A2EF5A4ADE2092FE0AA07BFB2D2CF2F2B95E"
+    },
+    {
+      "Path": "licenses/dependencies/lyon_path-1.0.19/LICENSE-APACHE",
+      "SHA256": "216486F29671A4262EFE32AF6D84A75BEF398127F8C5F369B5C8305983887A06"
+    },
+    {
+      "Path": "licenses/dependencies/lyon_path-1.0.19/LICENSE-MIT",
+      "SHA256": "80F275E90D799911ED3830A7F242A2EF5A4ADE2092FE0AA07BFB2D2CF2F2B95E"
+    },
+    {
+      "Path": "licenses/dependencies/profiling-1.0.18/LICENSE-APACHE",
+      "SHA256": "10D30A673CD5E9349BDC02AEB48F14B3386D27D0DA32DF8F0A555D4AA16AA551"
+    },
+    {
+      "Path": "licenses/dependencies/profiling-1.0.18/LICENSE-MIT",
+      "SHA256": "C8167FDEEED46D3F244D3F85C5BF998CE889343691C32BE2C61A8BC4B5C08333"
+    },
+    {
+      "Path": "licenses/dependencies/rspolib-0.1.2/LICENSE",
+      "SHA256": "4FE9B5FCE8FD028261959D039D19EF66182BE088AB48FFA97DBEAEF7B35E39C3"
+    },
+    {
+      "Path": "licenses/dependencies/skia-bindings-0.153.3/LICENSE",
+      "SHA256": "4B33ED5B329A3A79EB1243FD91373C68B0AE0B9DF7503BFC50D0C5253ADF1B9A"
+    },
+    {
+      "Path": "licenses/dependencies/skia-safe-0.153.3/LICENSE",
+      "SHA256": "4B33ED5B329A3A79EB1243FD91373C68B0AE0B9DF7503BFC50D0C5253ADF1B9A"
+    },
+    {
+      "Path": "licenses/dependencies/slint-1.18.1/LicenseRef-Slint-Royalty-free-2.0.md",
+      "SHA256": "5167F5056E850419106AB6265EFBDCA7CBA4D99C849D1445CA0BBF6A1E2315FE"
+    },
+    {
+      "Path": "licenses/dependencies/slint-build-1.18.1/LicenseRef-Slint-Royalty-free-2.0.md",
+      "SHA256": "5167F5056E850419106AB6265EFBDCA7CBA4D99C849D1445CA0BBF6A1E2315FE"
+    },
+    {
+      "Path": "licenses/dependencies/slint-macros-1.18.1/LicenseRef-Slint-Royalty-free-2.0.md",
+      "SHA256": "5167F5056E850419106AB6265EFBDCA7CBA4D99C849D1445CA0BBF6A1E2315FE"
+    },
+    {
+      "Path": "licenses/dependencies/spirv-0.4.0+sdk-1.4.341.0/LICENSE",
+      "SHA256": "CFC7749B96F63BD31C3C42B5C471BF756814053E847C10F3EB003417BC523D30"
+    },
+    {
+      "Path": "licenses/dependencies/taffy-0.10.1/LICENSE.md",
+      "SHA256": "A7083EF3DD41A65EEB2162C2C091B0082E2724FB4C6ED029B363C7840D244ECD"
+    },
+    {
+      "Path": "licenses/dependencies/vtable-0.5.0/Apache-2.0.txt",
+      "SHA256": "074E6E32C86A4C0EF8B3ED25B721CA23ACA83DF277CD88106EF7177C354615FF"
+    },
+    {
+      "Path": "licenses/dependencies/vtable-0.5.0/MIT.txt",
+      "SHA256": "B85DCD3E453D05982552C52B5FC9E0BDD6D23C6F8E844B984A88AF32570B0CC0"
+    },
+    {
+      "Path": "licenses/dependencies/vtable-macro-0.5.0/Apache-2.0.txt",
+      "SHA256": "074E6E32C86A4C0EF8B3ED25B721CA23ACA83DF277CD88106EF7177C354615FF"
+    },
+    {
+      "Path": "licenses/dependencies/vtable-macro-0.5.0/MIT.txt",
+      "SHA256": "B85DCD3E453D05982552C52B5FC9E0BDD6D23C6F8E844B984A88AF32570B0CC0"
+    },
+    {
+      "Path": "licenses/dependency-supplements.json",
+      "SHA256": "7D112C1143FF0F897890E1F71CFB8F2067AAD26BF8B1A88D26A375C2794A4E9F"
+    },
+    {
+      "Path": "licenses/Everything-SDK-MIT.txt",
+      "SHA256": "D249E329A48157A35D3918CA1BC2B0E5AED7C2FD43D64E86F9FC0B31CAEB433F"
+    },
+    {
+      "Path": "licenses/Go-BSD.txt",
+      "SHA256": "911F8F5782931320F5B8D1160A76365B83AEA6447EE6C04FA6D5591467DB9DAD"
+    },
+    {
+      "Path": "licenses/go-pinyin-MIT.txt",
+      "SHA256": "DBEE1336F5286B3B26FB6B4A71AB1E8D89F80B4073D9C8D2B2B33C06ABC3BCBE"
+    },
+    {
+      "Path": "licenses/Slint-Royalty-free-2.0.md",
+      "SHA256": "5167F5056E850419106AB6265EFBDCA7CBA4D99C849D1445CA0BBF6A1E2315FE"
+    },
+    {
+      "Path": "rust-toolchain.toml",
+      "SHA256": "7FE42E66491CA29C5B7C2A86BC1DBC39DC88F2FFE27C31318FB313808CB6D524"
+    },
+    {
+      "Path": "scripts/audit-rust-licenses.ps1",
+      "SHA256": "1BBC96814006F452DE3EC8F82DA9068F729CAED5E38E4CB3B699BCE383A0ACA8"
+    },
+    {
+      "Path": "scripts/capture-rust-animation.ps1",
+      "SHA256": "79293B42150175B64BB8E2D0FA7ECC834F78F5546199680D19B9A5A3EC63D4D0"
+    },
+    {
+      "Path": "scripts/capture-rust-visual.ps1",
+      "SHA256": "3195BC86E77DDF368315008095D4C3EF09E25D44AA73AE02374EC0324F1CB216"
+    },
+    {
+      "Path": "scripts/check-release-assets.ps1",
+      "SHA256": "5BEDDC78A8627FA2FC8A969D615DA3FBF4EE0146A11545CA6FD2C754092E1119"
+    },
+    {
+      "Path": "scripts/clean.ps1",
+      "SHA256": "E2CE6C4430519BF787FC1F5C3200BE6F97C4E2F8C6E330C6F2F998D44ACF948C"
+    },
+    {
+      "Path": "scripts/collect-slint-latency.ps1",
+      "SHA256": "562577E1D2F6F80EFF6E365E3489C5134FEEF2E11C806D1A4EF59508E02799B0"
+    },
+    {
+      "Path": "scripts/fixtures/rs07-drag-source.cs",
+      "SHA256": "BB4CF81325CB08AE851CB35C7B31AEA7F18FCD3A155E35F7286F400BDD6D9C5F"
+    },
+    {
+      "Path": "scripts/generate-readme-diagrams.py",
+      "SHA256": "39FC276FF89C6618EFDEBDA8C87323B4FDDA4F6CE2C9C9D1E0FA04D7790A84BB"
+    },
+    {
+      "Path": "scripts/generate-rust-rotating-icons.py",
+      "SHA256": "097019605D9923B23DF5A285AFF8E1FBA1A800C3DFDA69B941E22859A17151E9"
+    },
+    {
+      "Path": "scripts/lib/resource-sample.ps1",
+      "SHA256": "81D5287748DA56967BAD426FBE321322B727E548B5CB2511CA27B0F69D11E75E"
+    },
+    {
+      "Path": "scripts/lib/rust-environment.ps1",
+      "SHA256": "CF79497C932A3F73257DD936B8BC6E7AFCB2AABC454ABC34C242486978BBE4A3"
+    },
+    {
+      "Path": "scripts/lib/rust-license-policy.ps1",
+      "SHA256": "0AB865396CB37E59B5CF4326C847AE31EAED3C540A2C5AD5F15E63B7AC2D6B73"
+    },
+    {
+      "Path": "scripts/measure-resources.ps1",
+      "SHA256": "D23C00E9752D3313BD7FA3363C4DD91C97C6C028FCEECD1AA7DFB2753AC9BEEC"
+    },
+    {
+      "Path": "scripts/measure-slint-ab.ps1",
+      "SHA256": "5C61DA6724A0A53311E77724EECF440951959D3F78421E54117CDC9BE9C1183C"
+    },
+    {
+      "Path": "scripts/package-rust-installer.ps1",
+      "SHA256": "B863195922BE1AB64A81310B40858C8ADDC60F40DECB80CB6B99D2AE1E1C7F0D"
+    },
+    {
+      "Path": "scripts/package-rust-preview.ps1",
+      "SHA256": "FDC5F023F606F395A59BC2D09AAD2138AC6558F2022D3AC124E6AB0E71FDB103"
+    },
+    {
+      "Path": "scripts/package-rust-product.ps1",
+      "SHA256": "DFC4E4F83DEACE0850D8136C9AA3F91F73C2D849C85323F943708E625BA33015"
+    },
+    {
+      "Path": "scripts/package-rust-release.ps1",
+      "SHA256": "560BCA746FB1CBA1216175869E49C27D46F3C4616DC91B6D025DC9031024A80C"
+    },
+    {
+      "Path": "scripts/prepare-rust-machine-install.ps1",
+      "SHA256": "D5B1DBCBE805B7ADA8732D10A7E6DF99C8653A9DC620D8DAE6C92683B8A7E5AC"
+    },
+    {
+      "Path": "scripts/prepare-rust-packaging-tools.ps1",
+      "SHA256": "45100F3F38A25FA88994B641B89DE9E64CB606C6BD4BDCDC497368961D9F44BA"
+    },
+    {
+      "Path": "scripts/run-preview.ps1",
+      "SHA256": "CCDD467296D20BACA73E31A41F0C85A6A767C4CF3E3CED0E4ECDFF44974FBEA4"
+    },
+    {
+      "Path": "scripts/summarize-rust-animation.py",
+      "SHA256": "A372689F8F11E6792A411AE760A1362664425687052127F1C0AFC062DF0EE628"
+    },
+    {
+      "Path": "scripts/summarize-rust-visual.py",
+      "SHA256": "7469DA8678E4E068D13D1D50F08C374FB1BDAF83E99C72E04F70EA9B79F5B008"
+    },
+    {
+      "Path": "scripts/test-business-ui.ps1",
+      "SHA256": "E7DC3E8BAA8A70B38626591352734063D92A23B16AE1F76A1ED56D9BD44156BA"
+    },
+    {
+      "Path": "scripts/test-data-compat.ps1",
+      "SHA256": "324F770B1093684A8651E7219BDCBF123ABA0C4BC4F3DC3C9E4657249503D28C"
+    },
+    {
+      "Path": "scripts/test-discovery-compat.ps1",
+      "SHA256": "4C3210E97E2C1089E1D9DE60381CE36EF8CA79C463144281C9A3C4E8EF1EF752"
+    },
+    {
+      "Path": "scripts/test-everything-ui.ps1",
+      "SHA256": "AA2C44AB61AB54FB78C0818C32238163FFB58E185E7EFF6AB99EE3508DC97E77"
+    },
+    {
+      "Path": "scripts/test-installer-update.ps1",
+      "SHA256": "E56037E9CD4D5A9F4CD0497E1BC3324374A4B83EA586FF2B19F059B68C93B201"
+    },
+    {
+      "Path": "scripts/test-pages-ui.ps1",
+      "SHA256": "2070BB982D5EC432256108728811F3E9EB0E897282C61D374F6F65539F30BBAB"
+    },
+    {
+      "Path": "scripts/test-project-tools.ps1",
+      "SHA256": "9D58533DA832C523FA82655EED1E6D93DE8D3EB2D2542E296F9382D4CD27F9A8"
+    },
+    {
+      "Path": "scripts/test-rust-installer.ps1",
+      "SHA256": "E2194F9967AA66D33DBB5ECC7AE1C1E82F9FAF97687414C5C6C62B111DE14DDF"
+    },
+    {
+      "Path": "scripts/test-rust-machine-cleanup.ps1",
+      "SHA256": "E53EE86F25B6BC0E2703A48FD1F86FE28D01AFFC5562EC5AABB51B1A7F42A756"
+    },
+    {
+      "Path": "scripts/test-rust-machine-install.ps1",
+      "SHA256": "0F4CB8110E55EA70C8CF01947EE18ED9A95D8EE03F845979C35D9327833B3AF8"
+    },
+    {
+      "Path": "scripts/test-rust-metadata.ps1",
+      "SHA256": "3B0F604C6A60EC33C923B5BEC0AA25B952A5EBF2584BDB2AB6938B1C3F3E570E"
+    },
+    {
+      "Path": "scripts/test-rust-nsis-update.ps1",
+      "SHA256": "BABC65AAAA023AEC953E7D9185813A929497ED203EBB9A649E3F283B146ECBC4"
+    },
+    {
+      "Path": "scripts/test-rust-preview.ps1",
+      "SHA256": "8C8670482CA16B3298D7B088CE6EB3EB465886BFF91427AF8B9668E599CCC610"
+    },
+    {
+      "Path": "scripts/test-rust-user-install.ps1",
+      "SHA256": "A94E32F12FF8AA6D06AAA56D161F22CE85D9BE476227019D54C47F1C7101D05B"
+    },
+    {
+      "Path": "scripts/test-search-compat.ps1",
+      "SHA256": "82833013CAE570D7ACF2A60B95D5EDA391C09EC0990FE960166AE984E956CD08"
+    },
+    {
+      "Path": "scripts/test-slint-measurement.ps1",
+      "SHA256": "2F32A690ED56FB199BDE53096D427852A589FBB0E8F249FAC864E52AF8A1E5CC"
+    },
+    {
+      "Path": "scripts/verify-rust.ps1",
+      "SHA256": "44D33586C750C34CC0DFA9C0E259B2F668456EB009405943C11DA1CD5DD3718B"
+    },
+    {
+      "Path": "src/business_probe.rs",
+      "SHA256": "B8E8DE05D22AF90712E598E12127E28042CA7055A58F6DEB77E27D538F50CC52"
+    },
+    {
+      "Path": "src/business.rs",
+      "SHA256": "C85CB890F5695DFF2557CD91A78CDC2324798CBA1DD7DA423C2D2CF2C0A15534"
+    },
+    {
+      "Path": "src/core/catalog.rs",
+      "SHA256": "4FAEAE263661E76C329FA294B22BB9C4B769861B1F9C0FD1AF1D726ADDEB89EA"
+    },
+    {
+      "Path": "src/core/config.rs",
+      "SHA256": "E6A3CE6BF1F9082B2571044AC4F79A8CCDA04C2CF4179100E0D44B7220285D4E"
+    },
+    {
+      "Path": "src/core/data.rs",
+      "SHA256": "018BF5419D40BCFE5F13E3E89059C50C34F65AF05098211B34AEFC175E264076"
+    },
+    {
+      "Path": "src/core/file_search.rs",
+      "SHA256": "F38351FB02E82CF4B539BB079A26B167444AC2610FC4011ED41179BA5E1B96AC"
+    },
+    {
+      "Path": "src/core/group_run.rs",
+      "SHA256": "65B0CF457E9FEE588C584FA4A3F7A9A5C5B6AD0E47A696BB89764B214FEC8508"
+    },
+    {
+      "Path": "src/core/history.rs",
+      "SHA256": "CBDA53A72E9853C1C434EEFFBBA33E75ABE388223A66F3B1961EBE1B9E6EB264"
+    },
+    {
+      "Path": "src/core/icons.rs",
+      "SHA256": "930AFD5917DCF69039DDB3AF180CC7126A8D3BF0F3E4A195C406A4E818F19515"
+    },
+    {
+      "Path": "src/core/indexer.rs",
+      "SHA256": "E9A860C99FA4471434F1FBF2D7CD28E42DA41625A39371D73C2373B302FF886F"
+    },
+    {
+      "Path": "src/core/launch_groups.rs",
+      "SHA256": "CBC1DC350C5DE7242F68EE0BB379284BD92B13B71651E4B8B42F06F1C527CA62"
+    },
+    {
+      "Path": "src/core/launch.rs",
+      "SHA256": "AB988DF5D181A3CB52D8DA4E132A374C7A166A9D0F3599A0B5CC813CC240DF22"
+    },
+    {
+      "Path": "src/core/library.rs",
+      "SHA256": "7D50AE86D50D1918503F8C105E8DC4611FB1299D9574822E080BC7F0141F1EA9"
+    },
+    {
+      "Path": "src/core/migration.rs",
+      "SHA256": "9C2EF214245F101F6C904E781A6CE908C505088435D3B5549886076E9C571135"
+    },
+    {
+      "Path": "src/core/mod.rs",
+      "SHA256": "74ED9176D2E300C6069474AFA2F4E2EC4C1804047E038376FC0DB1A0D45708E0"
+    },
+    {
+      "Path": "src/core/model.rs",
+      "SHA256": "72D19E7A219898D2CC36F65E28574BBF9A5908E09C4FFC38A561A09959D21CB8"
+    },
+    {
+      "Path": "src/core/normalize.rs",
+      "SHA256": "A3B5FE9A64F91DBA0C899E6AC77C5128881472606AFF1353AABEB46648BCE9BD"
+    },
+    {
+      "Path": "src/core/search_data/han.bin",
+      "SHA256": "6EC174BED053B9A5D8AE3E8CFD573A1090889D192DFE30FFAB352134D0E029C8"
+    },
+    {
+      "Path": "src/core/search_data/lower.bin",
+      "SHA256": "94D58375AF65669A3D8E0123C3182587C95B7598FC3DC198D670F1FA9F518F50"
+    },
+    {
+      "Path": "src/core/search_data/pinyin.bin",
+      "SHA256": "B69F349D9DC06131BAEF0F97AF8E943E39B673F875A127D6941313755AA04800"
+    },
+    {
+      "Path": "src/core/search_data/README.md",
+      "SHA256": "6D568F4B08EAC0C8B4AEDF7E204EDD1171E23E980193B915866EE3AB8EB051CA"
+    },
+    {
+      "Path": "src/core/search_data/syllables.bin",
+      "SHA256": "628CCE0F6CE3330842AA8B4A050231638984CA5F7FE74CA868496D290C00969F"
+    },
+    {
+      "Path": "src/core/search_data/version.txt",
+      "SHA256": "E1847500CF6699FB51E6A56ABA6185579455C44B51EEB4F90810C95AB74DBFC1"
+    },
+    {
+      "Path": "src/core/search_data/word.bin",
+      "SHA256": "FF6C888311DC1C53995DDB17FF9AFCB8B4FA889658A5BB3DDEEEBE96352B2085"
+    },
+    {
+      "Path": "src/core/search.rs",
+      "SHA256": "000562865DD973F9439662F63DC1CC5D85FF4BEEDFAC75EF72E8800DD021E953"
+    },
+    {
+      "Path": "src/core/service.rs",
+      "SHA256": "A7274E5AB1517D9E8F867B387777130BF562B4ECC966FA0B8D128099480FD584"
+    },
+    {
+      "Path": "src/core/storage.rs",
+      "SHA256": "846E24AA389B6C62B8E3D72DB0BFBE5D16864717C2847484F22F1A4312AAB1A5"
+    },
+    {
+      "Path": "src/core/system_tools.json",
+      "SHA256": "5F0E7077EAF1E4E5F63B2366B1ADE0B58FD7D80C8C8599D0E70025F3547D89A4"
+    },
+    {
+      "Path": "src/core/system_tools.rs",
+      "SHA256": "0DB67B0E7E9613B882035E33EBE2649D24A0B8AB2F32D384F1DCAB4CC77DFD8A"
+    },
+    {
+      "Path": "src/core/update.rs",
+      "SHA256": "DB572ECEFD4330FA268BE819654A58D419402AAE7849CBC406C29458AE21DE6C"
+    },
+    {
+      "Path": "src/everything_probe.rs",
+      "SHA256": "F1FD44331F819A7BCB571DB273F5224863E8BFC4B610CE1075483787F36E9FCD"
+    },
+    {
+      "Path": "src/file_search_ui.rs",
+      "SHA256": "525786156F22BE19F6564648C29C6F14ECB90950115830513035D46E71364AF4"
+    },
+    {
+      "Path": "src/fixtures.rs",
+      "SHA256": "5044C57122FDA4DBBE229E6035BB684E5A3A39189FF0D6782FE616AC39A6D2E8"
+    },
+    {
+      "Path": "src/group_editor.rs",
+      "SHA256": "E0F45BF3AD7357CFF736C0241ECB6C1A9B283BF6054056DC16FEAA0FCACA189B"
+    },
+    {
+      "Path": "src/import_preview.rs",
+      "SHA256": "6D31F3D956556F44C701F50347B5F96C31C367E15D3D273A496FC6E5B298E8FB"
+    },
+    {
+      "Path": "src/input.rs",
+      "SHA256": "CA0D8A0BE7DFCD2E9A91EF6B412F4803402C5BDA88D348711254FF8E491FFE18"
+    },
+    {
+      "Path": "src/interaction_probe.rs",
+      "SHA256": "0406CA23516DA5C8E2AB83BDCA8A47D994D81C0C0ADFECD00F1918865682D408"
+    },
+    {
+      "Path": "src/lib.rs",
+      "SHA256": "BD639BE4FABB98FA1CA7953CC0FC83DB7CF94E14E24110D3BC6F54F4872AB8EC"
+    },
+    {
+      "Path": "src/lifecycle.rs",
+      "SHA256": "EA9D335B045AFC48D9671026CC710654B642E655BEE9676C8C5F49987C42A513"
+    },
+    {
+      "Path": "src/main.rs",
+      "SHA256": "52092F091BB1127DD93B03213460778EAA01D81D99CCE2C58AEA74F572363E89"
+    },
+    {
+      "Path": "src/measurement.rs",
+      "SHA256": "3E1D9868B0A3B15253F34B93A0F32A6EAE10AD4BC6C70979E8E1F5CC4DB50D02"
+    },
+    {
+      "Path": "src/navigation.rs",
+      "SHA256": "0444A70E22669AB7D344D633A7F78463AF2C2D484504FA6A2B012C8D710BB4C8"
+    },
+    {
+      "Path": "src/pages_probe.rs",
+      "SHA256": "E51E437E6187CBD8F82058FE4B54E584936A1CC20DAD0752A5C80A8D355ACA17"
+    },
+    {
+      "Path": "src/platform/mod.rs",
+      "SHA256": "CC20A7A7BFA53DD45CA2DA1D238D4643E8D59C3AC5EBE045DD2F3390B84ADC5E"
+    },
+    {
+      "Path": "src/platform/windows/atomic_file.rs",
+      "SHA256": "C368ED45BB69FA244C717BA5F046D89D76011B7A8920B4FB6E37446CB9777AF5"
+    },
+    {
+      "Path": "src/platform/windows/desktop.rs",
+      "SHA256": "791F052438B22B4C17F595F2E1882EFC52F3E5F9019E890AF7040ED727AD42B1"
+    },
+    {
+      "Path": "src/platform/windows/everything.rs",
+      "SHA256": "CF16C1ED93139DE1E9FE93798C8BF1DD43818CDE16667F38E0B31D8D9889BE8E"
+    },
+    {
+      "Path": "src/platform/windows/geometry.rs",
+      "SHA256": "5B64CAD3273A87C02D61094DACEDF2F845008FAABB0B708F0EB9B5640ADFF8CE"
+    },
+    {
+      "Path": "src/platform/windows/group_launch.rs",
+      "SHA256": "C56960AE5D74DC9889ADB2079CD5004670AE866CB9E555B62A52B2BDBE665792"
+    },
+    {
+      "Path": "src/platform/windows/hotkey.rs",
+      "SHA256": "A50C26EEF3FAAC952A076FE11776EF239BBAFC4DCEF4C98B1BF95FE581C99ACA"
+    },
+    {
+      "Path": "src/platform/windows/http.rs",
+      "SHA256": "EB1724CC65E0D60C5CBDAC410C03149FA8925FF5E6188AE9F64D0A59CE63DACF"
+    },
+    {
+      "Path": "src/platform/windows/icons.rs",
+      "SHA256": "5232FE903F6DCF69764DC15F604C026DF1A7D9C02FC74822264E20FFC1286E8A"
+    },
+    {
+      "Path": "src/platform/windows/instance.rs",
+      "SHA256": "A4533C6BD175F33867614298B8F1C9414886F97D715AED2B9F04292D574C0FA1"
+    },
+    {
+      "Path": "src/platform/windows/interaction.rs",
+      "SHA256": "2AC5A97CE6712B78B38378E77E1359D2958CEC308C13D80A183B1704C2A68C47"
+    },
+    {
+      "Path": "src/platform/windows/launch.rs",
+      "SHA256": "F2EA741977E40DAC3838771BBF8BC45F036ABD08CA8A1FFF774E58847C067EF2"
+    },
+    {
+      "Path": "src/platform/windows/mod.rs",
+      "SHA256": "351D79BE1B372E29A729ED0C9AD282618FAB61A5566B3DE5544E5D7EE4DB424A"
+    },
+    {
+      "Path": "src/platform/windows/preferences.rs",
+      "SHA256": "F5626A5798E735294D55D47D02027A7039379330E1AC8ACF046C16E605C21D93"
+    },
+    {
+      "Path": "src/platform/windows/processes.rs",
+      "SHA256": "D72839E12CBBD37DC34DA2E99F527F01ED1A3AEC87BA8A85E88230909FE1A628"
+    },
+    {
+      "Path": "src/platform/windows/shell.rs",
+      "SHA256": "5D195BFD32D90AFC683824B11D9F787C90A1250E1AE5A4F5FD053847F54C611A"
+    },
+    {
+      "Path": "src/platform/windows/system_tools.rs",
+      "SHA256": "AE2AD644CBEF672700C5A9FBAF57C211B66E6EBB4F534FDC0A1406E28515B083"
+    },
+    {
+      "Path": "src/platform/windows/updater.rs",
+      "SHA256": "BEF15D4B26E5186CF26096C18493175115C5AE136649ECF76772BC5DBEBA3B9B"
+    },
+    {
+      "Path": "src/platform/windows/window.rs",
+      "SHA256": "8A326F3942AD97E15C9CDC218165FBA2B20E1B153B443BCB6B6C80C75C9D1553"
+    },
+    {
+      "Path": "src/ui.rs",
+      "SHA256": "E30BA83243C07732F9ACF34D48863A564C16C5E9F573CD3ABF9624D75BBE4637"
+    },
+    {
+      "Path": "tests/behavior_contract.rs",
+      "SHA256": "284076B87128A99B36A0AB49DD52FC4B8E7BBB6D48AFB6AA00B8913690573D94"
+    },
+    {
+      "Path": "tests/data_contract.rs",
+      "SHA256": "A93DC5024C15CB784E0096FDA3D7413D151CD4C201601B8BC1C303F6326E6854"
+    },
+    {
+      "Path": "tests/discovery_contract.rs",
+      "SHA256": "303224A537CF5211934B34A957D012E509B73E29AE89998BAEC6D1DB28D5ECD8"
+    },
+    {
+      "Path": "tests/discovery_runtime.rs",
+      "SHA256": "039FFE104AF498A7B17080AEA900A7B5867CF3A0B73A1C6E15149B5128228B95"
+    },
+    {
+      "Path": "tests/fixtures/compat/README.md",
+      "SHA256": "217C8554558ACF4EB5B7D3AB964AA2860DEC46EB8DDD9660C69309A95CC70C69"
+    },
+    {
+      "Path": "tests/fixtures/compat/rs08.json",
+      "SHA256": "C9C3DB744C175C8630B8EACC0143B555CE3390F77E4580B9F913F3891B73A0C5"
+    },
+    {
+      "Path": "tests/fixtures/compat/rs09.json",
+      "SHA256": "1523870B12B3260312FCC00D05E33794D56FD98A2FD9F07B8DBFBA9AC0474598"
+    },
+    {
+      "Path": "tests/fixtures/compat/rs10.json",
+      "SHA256": "28147A4B149BA0BF2C0EDEC2EF5C1C3EABD2363BB8BAA02E035F5A160E9264D7"
+    },
+    {
+      "Path": "tests/fixtures/compat/rs11.expected.json",
+      "SHA256": "C11A51235B436DB967E6FC363AF05A52A04DEE1C39189F8DC409B0DD723CF299"
+    },
+    {
+      "Path": "tests/fixtures/compat/rs11.json",
+      "SHA256": "B1096DA59AF311B6D07E1F2C6C0D74E39B9B0819011C07291B252EA5D975A50D"
+    },
+    {
+      "Path": "tests/fixtures/compat/search-tables.json",
+      "SHA256": "7F5F86D60713707CD21071FE305EE9A70B07E430A716FD1D0D8609C8653F6316"
+    },
+    {
+      "Path": "tests/history_library.rs",
+      "SHA256": "AD2152B83CE70DCCB9E36E87208AAD81E55FA6659EEED339A434377B1A23F13D"
+    },
+    {
+      "Path": "tests/pages_contract.rs",
+      "SHA256": "05D724DA9752EE35476826F3DFEE23906ADA80CE24E10B014B7B8EC517C0749A"
+    },
+    {
+      "Path": "tests/support/mod.rs",
+      "SHA256": "7D6CFC3E11D926A36ABB0DF6EA6FA32B3BBD196C796460F7AFC73A97139F3ADB"
+    },
+    {
+      "Path": "ui/app.slint",
+      "SHA256": "21CFA611F6F0A58AC75819399AD4488A69FE56BAF4EC3FF9792427C3EEB36308"
+    },
+    {
+      "Path": "ui/assets/fluent/ic_fluent_add_20_regular.svg",
+      "SHA256": "FDF9FEFAF083FF2349AC94AFD47AAB8ECB554650781C5797176B9D6AD3CAEE05"
+    },
+    {
+      "Path": "ui/assets/fluent/ic_fluent_apps_24_regular.svg",
+      "SHA256": "49ACD3CA4B7FFFCE746312A729EBC007EC82D3D7372BE9830577F50B541FA6DF"
+    },
+    {
+      "Path": "ui/assets/fluent/ic_fluent_arrow_clockwise_20_regular.svg",
+      "SHA256": "AB803364462AA202E1D26EB8FEC8FF988C108F742E62B1442A0DB4E0D3304800"
+    },
+    {
+      "Path": "ui/assets/fluent/ic_fluent_arrow_enter_left_20_regular.svg",
+      "SHA256": "5FE518E6862F427B77AE5466681D749A11A099A0FAB658A31BAE87113CD22739"
+    },
+    {
+      "Path": "ui/assets/fluent/ic_fluent_calculator_24_regular.svg",
+      "SHA256": "142C592DD1E26ABD4395507B32B7AE1DC9A3D18FEE30C4E7653D7B8811701D3D"
+    },
+    {
+      "Path": "ui/assets/fluent/ic_fluent_checkmark_20_regular.svg",
+      "SHA256": "D4EB7C05FCFE45D7799925431902DC0079FA0A8CF4C647CFD4CB3DB22C3FD2B7"
+    },
+    {
+      "Path": "ui/assets/fluent/ic_fluent_chevron_down_20_regular.svg",
+      "SHA256": "56CB3F544124A67C79A5FA021EE35BB5488403A840BAC1AE3291C5F6D71ABCCD"
+    },
+    {
+      "Path": "ui/assets/fluent/ic_fluent_code_24_regular.svg",
+      "SHA256": "03090C9E30C66BD926AD19FB1E5CCD07BDD9C2815881CA5A83A8788F6FCE2F63"
+    },
+    {
+      "Path": "ui/assets/fluent/ic_fluent_desktop_pulse_24_regular.svg",
+      "SHA256": "073D8DE9BE495F9E58C18A66EC2F8D35B7CD134C5B71FCDFC36B024F4FFDE4A1"
+    },
+    {
+      "Path": "ui/assets/fluent/ic_fluent_developer_board_24_regular.svg",
+      "SHA256": "CACA0F3C34ABFD3F0D80544FDCF3359C7A14646B8ED0C704C9D90A1CC666440D"
+    },
+    {
+      "Path": "ui/assets/fluent/ic_fluent_folder_24_regular.svg",
+      "SHA256": "B223F863F213DCC1BF75A65D31A287830380C08503C79565B317C77B10E7A2E1"
+    },
+    {
+      "Path": "ui/assets/fluent/ic_fluent_keyboard_20_regular.svg",
+      "SHA256": "3EBFABE0B682FDA1F581511C20BDF228FC70600C33411F3BF3281E00A37E74E1"
+    },
+    {
+      "Path": "ui/assets/fluent/ic_fluent_search_20_regular.svg",
+      "SHA256": "5AC1EAC82DF532662CD1BAD2C8E55763846E1B258740BCBB0612A48D22630D40"
+    },
+    {
+      "Path": "ui/assets/fluent/ic_fluent_settings_24_regular.svg",
+      "SHA256": "5AC05E6E11C9EC9F24703091C42CA1F5C91F4032CB0EEE35C892D1872A38871B"
+    },
+    {
+      "Path": "ui/assets/fluent/ic_fluent_star_16_filled.svg",
+      "SHA256": "3F96EC326175B38593F80DFA9EA47D1EA7A726D8614D042C19871B9155667638"
+    },
+    {
+      "Path": "ui/assets/fluent/ic_fluent_star_16_regular.svg",
+      "SHA256": "C5ABB68053095622285EDB425B1C072665EC3FEF7FB4FA0777C978169AD5889E"
+    },
+    {
+      "Path": "ui/assets/fluent/ic_fluent_window_console_20_regular.svg",
+      "SHA256": "F2B46D93F5B922C79ECD04C9CBAD61C26F6BD0491B80763DE4409F059C43A202"
+    },
+    {
+      "Path": "ui/assets/fluent/LICENSE.txt",
+      "SHA256": "69BC45DC42B9ACB96A69823ADBC6AE538374E3C0BDE169B855B32C48EAAEF52F"
+    },
+    {
+      "Path": "ui/assets/logo.png",
+      "SHA256": "EE4C40D5765E2596B2EBDC20FAB3AB04301E6B26FB33A65074FEBB477DEFD82A"
+    },
+    {
+      "Path": "ui/assets/README.md",
+      "SHA256": "0AD73A6CCFF13FDA967B7F8AE4E7F31B5DFF5023844C597C37F126878D400974"
+    },
+    {
+      "Path": "ui/assets/velo.ico",
+      "SHA256": "90B1410469F1F2D7BD87D1979E356EB74586429C9AA0ED8B45168A8085B00298"
+    },
+    {
+      "Path": "ui/components.slint",
+      "SHA256": "13F56BF2F92897CB4EBC0417F20F5D5F463F9B8B28F2802F2A75838CF6F36E69"
+    },
+    {
+      "Path": "ui/custom.slint",
+      "SHA256": "405FD2BCFDB229B260C23C6D61782C4601B95ECE8ADB40AEC8FC336C6D9EE250"
+    },
+    {
+      "Path": "ui/file-search.slint",
+      "SHA256": "AA883AC252A644F8F0D3E1F5C3923FA944A93445F92B8ABFE96D7C8B93384748"
+    },
+    {
+      "Path": "ui/launch-groups.slint",
+      "SHA256": "EA45713AD5469A6081EECE84859355247EE6EFCF531BA196CAF796DA6E268605"
+    },
+    {
+      "Path": "ui/rotating-icons.slint",
+      "SHA256": "B47F748060E0770E37C6EC88ED3C6F990FF7E3BFCDCAC863FB67384936FA2ACE"
+    },
+    {
+      "Path": "ui/settings-controls.slint",
+      "SHA256": "C5C0F7D85902EA4A7EB26832977663B0301C6CA43D4889E94CF1C1CDF93030FD"
+    },
+    {
+      "Path": "ui/settings.slint",
+      "SHA256": "2C74599C07914F4A16EC74A620120A22B9349E134A0700D1BBAC15B56D6CBC08"
+    },
+    {
+      "Path": "windows-toolchain.json",
+      "SHA256": "850BE7ABA1DC71C8FDEB44A9950DDFC80E5D1EBE3E77B6E93D9E51126042194C"
+    },
+    {
+      "Path": "windows/app.manifest",
+      "SHA256": "233E19A30787CA078532989E82E83163F51CB892AB47CC931D84535A55FA7D22"
+    },
+    {
+      "Path": "windows/machine-install.ps1",
+      "SHA256": "D7ACD555CAC240C058658BFD72F0B4F743CA9FD1FEA983F342A150EA21A60728"
+    },
+    {
+      "Path": "windows/nsis-toolchain.json",
+      "SHA256": "C92B047A30C60055672925AB9EFBF857F65A332E021795B29A9CE36319B518B9"
+    },
+    {
+      "Path": "windows/preview-installer.nsi",
+      "SHA256": "F48589F833E1F21F766080F05363EEEB44C575AFE52A58C23BCF7A67D328D632"
+    },
+    {
+      "Path": "windows/product-installer.nsi",
+      "SHA256": "BDD088662EB9A339C47649ED90AAB0EA9348EFEC3E5B61DFB0F2EDD93DC78980"
+    },
+    {
+      "Path": "windows/release-policy.json",
+      "SHA256": "F22448EF456FC44730B300B8382A51914C76926F74529E83516E9738E25B7A2F"
+    }
+  ]
+}

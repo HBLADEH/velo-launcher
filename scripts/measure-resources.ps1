@@ -1,12 +1,10 @@
 [CmdletBinding()]
 param(
     [Parameter(Mandatory)][ValidateRange(1, 2147483647)][int]$ProcessId,
-    [ValidateSet('Wails', 'Slint')][string]$ApplicationKind = 'Wails',
     [string]$WindowHandle,
     [string]$BuildIdentityPath,
     [ValidateSet('Auto', 'Fixtures', 'Business')][string]$DataMode = 'Auto',
     [string]$MeasurementLog,
-    [switch]$IncludeAllDescendants,
     [switch]$AllowScanWarnings,
     [switch]$OperatorBusinessConfirmed,
     [ValidateRange(1, 60)][int]$Seconds = 15,
@@ -26,7 +24,7 @@ $ErrorActionPreference = 'Stop'
 if ($MinimumStateSeconds -gt 0 -and $WindowState -eq 'Unknown') { throw 'A settling period requires Visible or Hidden.' }
 if ($IdleConfirmed -and [string]::IsNullOrWhiteSpace($IdleEvidence)) { throw 'IdleConfirmed requires IdleEvidence describing how scanning completion was confirmed.' }
 if ($OutputPath -and (Test-Path -LiteralPath $OutputPath)) { throw 'OutputPath already exists; keep previous evidence and use a new filename.' }
-if ($ApplicationKind -eq 'Slint' -and $WindowHandle -notmatch '^(?:0x)?[0-9A-Fa-f]+$') { throw 'Slint requires an observed hexadecimal WindowHandle; PID alone cannot distinguish helper windows.' }
+if ($WindowHandle -notmatch '^(?:0x)?[0-9A-Fa-f]+$') { throw 'Slint requires an observed hexadecimal WindowHandle; PID alone cannot distinguish helper windows.' }
 $nativeHandle = $(if ($WindowHandle) { [Convert]::ToInt64(($WindowHandle -replace '^0x', ''), 16) } else { 0 })
 
 # Read-only native observation: match both class and owner PID. FindWindow alone
@@ -59,7 +57,7 @@ namespace VeloMeasurement {
                 if (owner != pid) return true;
                 var name = new StringBuilder(256);
                 GetClassName(window, name, name.Capacity);
-                if ((handle == 0 && name.ToString() == "VeloLauncherWindow") || (handle != 0 && window.ToInt64() == handle)) {
+                if (window.ToInt64() == handle) {
                     result.Add(new WindowInfo { Handle=window.ToInt64().ToString("X"), Visible=IsWindowVisible(window), DPI=GetDpiForWindow(window), ClassName=name.ToString() });
                 }
                 return true;
@@ -96,51 +94,35 @@ function Get-DataEvidence {
         return [pscustomobject]@{
             Directory = $null
             Files = [ordered]@{ 'embedded-fixtures' = [pscustomobject]@{ SHA256 = $rustIdentity.Sources | Where-Object Path -EQ 'src/fixtures.rs' | Select-Object -ExpandProperty SHA256 } }
-            LogSessionStarted = $null; LastRefresh = $null; CachedIndexCount = 28
+            CachedIndexCount = 28
             Source = 'Embedded synthetic fixture; no product data directory, scanning or user icon cache.'
             IconCache = $null
         }
     }
     $files = [ordered]@{}
-    foreach ($name in @('config.json', 'index.json', 'history.json', 'application-library.json', 'quick-launch.json')) {
+    foreach ($name in @('config.json', 'index.json', 'history.json', 'application-library.json', 'launch-groups.json')) {
         $files[$name] = Get-FileIdentity (Join-Path $DataDirectory $name)
     }
     $config = $null
     $cachedCount = $null
     if ($files['config.json']) { $config = Read-VeloMetadataJson $files['config.json'].Path }
     if ($files['index.json']) { $cachedCount = @((Read-VeloMetadataJson $files['index.json'].Path).apps).Count }
-    $lastRefresh = $null
-    $sessionStarted = $null
-    $logPath = Join-Path $DataDirectory 'logs/velo.log'
-    if (Test-Path -LiteralPath $logPath -PathType Leaf) {
-        foreach ($line in (Get-Content -LiteralPath $logPath -Encoding UTF8 -Tail 2000)) {
-            try { $entry = $line | ConvertFrom-Json } catch { continue }
-            if ($entry.msg -eq 'application started') { $sessionStarted = $entry.time; $lastRefresh = $null }
-            if ($entry.msg -eq 'index refreshed') { $lastRefresh = $entry }
-        }
-    }
     [pscustomobject]@{
         Directory = $DataDirectory
         Files = $files
-        Source = 'Business data directory; shared JSON contracts and disk icon cache.'
+        Source = 'Rust business data directory; JSON documents and disk icon cache.'
         IconDisk = Get-VeloIconDiskEvidence $DataDirectory
-        Business = $(if ($ApplicationKind -eq 'Slint') {
-            if ($OperatorBusinessConfirmed) {
-                [pscustomobject]@{ Complete = $IdleConfirmed.IsPresent; Scanning = $false; Warning = $null; Count = $null; IconCache = $null; PublishedDuringScan = $false; Source = 'Caller confirmed scan/model on this normal business window; see IdleEvidence for human or automation observation. No in-process observer; internal counts/cache unavailable.' }
-            } else { Read-VeloBusinessObservation $MeasurementLog $ProcessId }
-        } else { $null })
+        Business = $(if ($OperatorBusinessConfirmed) {
+            [pscustomobject]@{ Complete = $IdleConfirmed.IsPresent; Scanning = $false; Warning = $null; Count = $null; IconCache = $null; PublishedDuringScan = $false; Source = 'Caller confirmed scan/model on this normal business window; see IdleEvidence for human or automation observation. No in-process observer; internal counts/cache unavailable.' }
+        } else { Read-VeloBusinessObservation $MeasurementLog $ProcessId })
         # Raw settings plus a hash distinguish saved fields from in-memory defaults.
         SavedConfig = $config
         CachedIndexCount = $cachedCount
-        LogSessionStarted = $sessionStarted
-        LastRefresh = $lastRefresh
-        VisibleIndexCount = $(if ($lastRefresh) { $lastRefresh.apps } else { $null })
-        VisibleIndexCountSource = 'Last completed refresh log; not a live service-state query'
     }
 }
 
 function Get-DataSignature($Evidence) {
-    [pscustomobject]@{ Files = $Evidence.Files; Session = $Evidence.LogSessionStarted; Refresh = $Evidence.LastRefresh;
+    [pscustomobject]@{ Files = $Evidence.Files;
         Icons = $(if ($Evidence.PSObject.Properties['IconDisk']) { $Evidence.IconDisk });
         Business = $(if ($Evidence.PSObject.Properties['Business']) { $Evidence.Business }) } | ConvertTo-Json -Depth 10 -Compress
 }
@@ -150,7 +132,7 @@ function Get-InputFingerprint($Evidence) {
     foreach ($entry in $Evidence.Files.GetEnumerator()) {
         $hashes[$entry.Key] = $(if ($entry.Value) { $entry.Value.SHA256 } else { $null })
     }
-    [pscustomobject]@{ Files = $hashes; LastRefresh = $Evidence.LastRefresh; CachedIndexCount = $Evidence.CachedIndexCount;
+    [pscustomobject]@{ Files = $hashes; CachedIndexCount = $Evidence.CachedIndexCount;
         IconDisk = $(if ($Evidence.PSObject.Properties['IconDisk']) { $Evidence.IconDisk });
         Business = $(if ($Evidence.PSObject.Properties['Business']) { $Evidence.Business }) }
 }
@@ -162,7 +144,7 @@ function Get-TreeSnapshot {
     if (-not $root[0].ExecutablePath -or $root[0].ExecutablePath -ne $target.Path) { throw 'Target executable path changed or cannot be read.' }
     $liveRoot = Get-Process -Id $ProcessId
     if ($liveRoot.StartTime.ToUniversalTime().Ticks -ne $rootStartedTicks) { throw 'Root PID was reused.' }
-    $tree = @(Get-VeloProcessTree -Processes $all -RootProcessId $ProcessId -AllDescendants:($ApplicationKind -eq 'Slint' -or $IncludeAllDescendants))
+    $tree = @(Get-VeloProcessTree -Processes $all -RootProcessId $ProcessId)
     $privateWorkingSets = @{}
     try {
         foreach ($counter in (Get-CimInstance Win32_PerfRawData_PerfProc_Process -ErrorAction Stop)) {
@@ -214,57 +196,36 @@ function Get-TreeSnapshot {
         Window = Get-WindowObservation
     }
 }
-function Get-ToolVersion([string]$Name, [string[]]$Arguments) {
-    if (-not (Get-Command $Name -ErrorAction SilentlyContinue)) { return $null }
-    $lines = @(& $Name @Arguments 2>$null)
-    if ($LASTEXITCODE -ne 0) { return $null }
-    ($lines | Select-Object -First 1).ToString().Trim()
-}
-
 $root = Get-CimInstance Win32_Process -Filter "ProcessId=$ProcessId"
-$executablePattern = $(if ($ApplicationKind -eq 'Slint') { 'velo-slint*.exe' } else { 'velo-launcher*.exe' })
+$executablePattern = 'velo-slint*.exe'
 if (-not $root -or $root.Name -notlike $executablePattern -or -not $root.ExecutablePath) { throw 'ProcessId must identify a readable executable of the requested application kind.' }
 if ($DataMode -eq 'Auto') {
-    $DataMode = if ($ApplicationKind -eq 'Slint' -and $root.CommandLine -match '--(?:fixtures|isolated|smoke-test|input-smoke-test)(?:\s|$)|--measurement-stdio' -and $root.CommandLine -notmatch '--measurement-business') { 'Fixtures' } else { 'Business' }
+    $DataMode = if ($root.CommandLine -match '--(?:fixtures|isolated|smoke-test|input-smoke-test)(?:\s|$)|--measurement-stdio' -and $root.CommandLine -notmatch '--measurement-business') { 'Fixtures' } else { 'Business' }
 }
-if ($ApplicationKind -eq 'Slint' -and $DataMode -eq 'Business' -and
+if ($DataMode -eq 'Business' -and
     (-not $PSBoundParameters.ContainsKey('DataDirectory') -or (-not $MeasurementLog -and -not $OperatorBusinessConfirmed))) {
     throw 'Slint business sampling requires explicit DataDirectory and MeasurementLog; fixtures must be selected explicitly.'
 }
-if ($OperatorBusinessConfirmed -and ($ApplicationKind -ne 'Slint' -or $DataMode -ne 'Business' -or $MeasurementLog -or
+if ($OperatorBusinessConfirmed -and ($DataMode -ne 'Business' -or $MeasurementLog -or
     -not $IdleConfirmed -or [string]::IsNullOrWhiteSpace($IdleEvidence))) {
     throw 'OperatorBusinessConfirmed is only for an uninstrumented Slint business process with explicit operator idle evidence and no MeasurementLog.'
 }
 $rootStartedTicks = (Get-Process -Id $ProcessId).StartTime.ToUniversalTime().Ticks
 $target = Get-FileIdentity $root.ExecutablePath
 if ($ExpectedExecutable -and $target.Path -ne (Resolve-Path -LiteralPath $ExpectedExecutable).Path) { throw 'Running executable does not match ExpectedExecutable (possibly an older single instance).' }
-$binaryInfo = @()
-$rustIdentity = $null
-if ($ApplicationKind -eq 'Slint') {
-    if (-not $BuildIdentityPath) { $BuildIdentityPath = Join-Path (Split-Path -Parent $target.Path) 'build-identity.json' }
-    $rustIdentity = Read-VeloRustBuildIdentity -Executable $target.Path -IdentityPath $BuildIdentityPath
-} elseif (Get-Command go -ErrorAction SilentlyContinue) { $binaryInfo = @(& go version -m $target.Path); if ($LASTEXITCODE -ne 0) { throw 'Cannot read Go executable build information.' } }
-$revisionLine = $binaryInfo | Where-Object { $_ -match '^\s*build\s+vcs.revision=' } | Select-Object -First 1
-$embeddedRevision = $(if ($revisionLine) { ($revisionLine -split 'vcs.revision=', 2)[1].Trim() } else { $null })
-if ($ExecutableCommit -and $embeddedRevision -and $ExecutableCommit -ne $embeddedRevision) { throw 'ExecutableCommit disagrees with embedded vcs.revision; supply a full commit ID.' }
+if (-not $BuildIdentityPath) { $BuildIdentityPath = Join-Path (Split-Path -Parent $target.Path) 'build-identity.json' }
+$rustIdentity = Read-VeloRustBuildIdentity -Executable $target.Path -IdentityPath $BuildIdentityPath
+if ($ExecutableCommit -and $ExecutableCommit -ne $rustIdentity.WorkspaceCommit) { throw 'ExecutableCommit disagrees with the Rust build identity.' }
 $versionInfo = (Get-Item -LiteralPath $target.Path).VersionInfo
 $workspace = Split-Path -Parent $PSScriptRoot
 $workspaceCommit = (& git -C $workspace rev-parse HEAD 2>$null | Out-String).Trim()
 $workspaceStatus = @(& git -C $workspace status --porcelain 2>$null)
-$initialTree = @(Get-VeloProcessTree -Processes @(Get-CimInstance Win32_Process) -RootProcessId $ProcessId)
-$webviewVersions = @($initialTree | Where-Object { $_.Name -eq 'msedgewebview2.exe' -and $_.ExecutablePath } | ForEach-Object {
-    [pscustomobject]@{ Path = $_.ExecutablePath; Version = (Get-Item -LiteralPath $_.ExecutablePath).VersionInfo.FileVersion }
-} | Sort-Object Path -Unique)
 $os = Get-CimInstance Win32_OperatingSystem
 $environment = [pscustomobject]@{
     Windows = [pscustomobject]@{ Caption = $os.Caption; Version = $os.Version; Build = $os.BuildNumber; LastBootUtc = $os.LastBootUpTime.ToUniversalTime().ToString('o') }
     Processor = @((Get-CimInstance Win32_Processor).Name)
     LogicalProcessors = [Environment]::ProcessorCount
     PowerShell = $PSVersionTable.PSVersion.ToString()
-    Go = Get-ToolVersion 'go' @('version')
-    WailsCLI = Get-ToolVersion 'wails' @('version')
-    Node = Get-ToolVersion 'node' @('--version')
-    WebView2 = $webviewVersions
     GraphicsAdapters = @(Get-CimInstance Win32_VideoController | Select-Object Caption, DriverVersion, DriverDate)
     PowerScheme = ((& powercfg /getactivescheme) | Out-String).Trim()
     # Repository HEAD describes the collector workspace, never an installed exe.
@@ -274,18 +235,15 @@ $environment = [pscustomobject]@{
     ValidatorSHA256 = (Get-FileHash -LiteralPath (Join-Path $PSScriptRoot 'lib/resource-sample.ps1') -Algorithm SHA256).Hash
 }
 $executable = [pscustomobject]@{
-    ApplicationKind = $ApplicationKind
+    ApplicationKind = 'Slint'
     RustBuildIdentity = $rustIdentity
     Edition = $Edition; Path = $target.Path; SHA256 = $target.SHA256; Bytes = $target.Bytes
     FileVersion = $versionInfo.FileVersion; ProductVersion = $versionInfo.ProductVersion
     FixedFileVersion = ('{0}.{1}.{2}.{3}' -f $versionInfo.FileMajorPart, $versionInfo.FileMinorPart, $versionInfo.FileBuildPart, $versionInfo.FilePrivatePart)
     ProcessId = $ProcessId; StartedAtUtc = $root.CreationDate.ToUniversalTime().ToString('o')
-    SourceCommit = $(if ($embeddedRevision) { $embeddedRevision } elseif ($ExecutableCommit) { $ExecutableCommit } else { $null })
-    SourceCommitEvidence = $(if ($embeddedRevision) { 'Embedded vcs.revision' } elseif ($ExecutableCommit) { 'Operator supplied; verify against build manifest' } else { 'Unknown; no vcs.revision in binary' })
-    GoCompiler = $(if ($binaryInfo.Count) { ($binaryInfo[0] -split ': ')[-1] } else { $null })
-    WailsDependency = ($binaryInfo | Where-Object { $_ -match '^\s*dep\s+github.com/wailsapp/wails/v2\s' } | Out-String).Trim()
-    BuildSettings = @($binaryInfo | Where-Object { $_ -match '^\s*build\s+(vcs[^=]*=|-tags=|-ldflags=|GOOS=|GOARCH=)' } | ForEach-Object { $_.Trim() })
-    Mode = Get-VeloExecutableMode -CommandLine $root.CommandLine -GoBuildInfo $binaryInfo
+    SourceCommit = $rustIdentity.WorkspaceCommit
+    SourceCommitEvidence = 'SHA-256 matched Rust build manifest; workspace dirty state recorded separately'
+    Mode = Get-VeloExecutableMode -CommandLine $root.CommandLine
     BackgroundFlag = $root.CommandLine -match '(?:^|\s)--background(?:\s|$)'
 }
 
@@ -313,7 +271,7 @@ $results = @(for ($sample = 1; $sample -le $Samples; $sample++) {
     $inputAfter = Get-DataEvidence
     $stable = (Get-DataSignature $inputBefore) -eq (Get-DataSignature $inputAfter)
     $businessIdle = $true
-    if ($ApplicationKind -eq 'Slint' -and $DataMode -eq 'Business') {
+    if ($DataMode -eq 'Business') {
         $businessIdle = $inputBefore.Business.Complete -and $inputAfter.Business.Complete -and
             -not $inputBefore.Business.Scanning -and -not $inputAfter.Business.Scanning -and
             ((-not $inputBefore.Business.Warning -and -not $inputAfter.Business.Warning) -or
@@ -329,8 +287,6 @@ $results = @(for ($sample = 1; $sample -le $Samples; $sample++) {
     $result | Add-Member -NotePropertyName Threads -NotePropertyValue $snapshots[-1].Threads
     $result | Add-Member -NotePropertyName RawSnapshots -NotePropertyValue $snapshots.ToArray()
     $result | Add-Member -NotePropertyName GPU -NotePropertyValue $snapshots[-1].GPU
-    $result | Add-Member -NotePropertyName ProcessTreePolicy -NotePropertyValue $(if ($ApplicationKind -eq 'Slint' -or $IncludeAllDescendants) { 'All descendants' } else { 'Root plus WebView descendants; excludes launched applications' })
-    $result.IncludesWebViewChildren = $ApplicationKind -eq 'Wails'
     $result | Add-Member -NotePropertyName InputBefore -NotePropertyValue (Get-InputFingerprint $inputBefore)
     $result | Add-Member -NotePropertyName InputAfter -NotePropertyValue (Get-InputFingerprint $inputAfter)
     $result | Add-Member -NotePropertyName ObservedStateSecondsAtStart -NotePropertyValue $(if ($stateContinuous) { [math]::Round($snapshots[0].MonotonicSeconds - $settleStartSeconds, 3) } else { $null })
@@ -339,7 +295,7 @@ $results = @(for ($sample = 1; $sample -le $Samples; $sample++) {
 $dataAfter = Get-DataEvidence
 $binaryStable = $target.SHA256 -eq (Get-FileHash -LiteralPath $target.Path -Algorithm SHA256).Hash
 $report = [pscustomobject]@{
-    SchemaVersion = 4
+    SchemaVersion = 5
     DataMode = $DataMode
     AllowScanWarnings = $AllowScanWarnings.IsPresent
     OperatorBusinessConfirmed = $OperatorBusinessConfirmed.IsPresent

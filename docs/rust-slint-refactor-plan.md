@@ -1,5 +1,15 @@
 # Rust + Slint 重构实施方案
 
+- 托管 CI 与 tag 发版（2026-11-18）：README 对应的 Windows CI 不再依赖桌面 runner；正式 tag 发布继续要求审批、锁定工具链、双渲染器实机冒烟及远端资产校验。修复冒烟偶发未收到重绘事件。本机验证和候选打包通过，远端 runner 配置及真实发布待验，见[本轮记录](baselines/2026-11-18-tag-release-ci/README.md)。
+
+- 工程终审问题修复（2026-11-18，0.11.0 尚未发布）：正式打包在创建目录前核对当前工作区、两种渲染器的回执与完整输入，资产校验要求对应版本的许可 ZIP；修复 Everything 隐藏与设置往返的分页和选中项恢复，以及清理脚本误判其他项目构建。双渲染器完整检查、独立 Everything 专项与内部候选打包通过；构建身份与范围见[复验记录](baselines/2026-11-18-review-followup/README.md)。
+
+- 工程审视与文档收尾（2026-11-18，0.11.0 尚未发布）：确认根目录 Rust + Slint 工程边界，清理旧界面注释与测量分支，当前发行说明使用根目录命令；中英文 README、可重新生成的 SVG 流程图及 12 张当前 Software 实机截图已补齐。两 renderer 各 117 项 Rust 测试、完整检查与冒烟通过，各 224 个输入指纹对齐。临时实例已退出，目录清理限制及本轮适用范围见[本轮记录](baselines/2026-11-18-project-review/README.md)。下文阶段沿革保留原日期、目录与验收身份，日常命令以[开发说明](development.md)为准。
+
+- 主线整理（2026-11-17，v0.11.0 发版准备）：Cargo 工程、src、ui、tests、windows 与 licenses 提升到仓库根目录；旧 Go/Wails/Vue、旧 CI 及动态 oracle 移至历史范围，go 分支保留 v0.9.11。当前测试读取固化兼容用例与静态表指纹，构建和完整验证不再需要 Go/Node。新增独立预览与清理入口，历史证据保持原身份。见[本轮验收](baselines/2026-11-17-rust-project/README.md)和[开发说明](development.md)。
+
+- Everything 文件搜索（2026-11-17，本分支新增，尚未发布）：默认关闭的可选开关、Tab 文件模式、官方 Unicode Query2 IPC、独立结果模型、有界分页与打开/定位/复制动作已接通。两 renderer 各 116 项测试与完整检查、各 18 项文件搜索专项断言通过，241 个输入指纹对齐；真实 Query2、空闲回收、截图与资源样本见[本轮证据](baselines/2026-11-17-everything/README.md)。先行原生输入保留自身构建身份，不扩展多屏/DPI 或跨环境性能结论；见[实现说明](everything-file-search-proposal.md)。
+
 - 原生交互修复（2026-11-16，未发布）：清空回收站确认默认聚焦确定；托盘左键保留失焦前的点击意图，修复关闭时窗口隐藏又重现的通知竞态。回归覆盖真实确认按钮焦点与先失焦后按下的原生消息顺序，最终两 renderer 检查及实机范围见[本轮证据](baselines/2026-11-16-tray-recycle-focus/README.md)。
 
 - 启动组合 UAC 专项（2026-11-16，未发布）：用户手动取消/同意真实安全桌面提示；两份 renderer 产品 feature 业务库的取消不记历史、其余继续、仅重试失败项、真实提权与参数/工作目录保留、已提权成员运行跳过及进程清理通过。范围为当前机器的生产 Runtime/Shell 路径与本地 helper，未验证 Slint 所属窗口焦点、多 UAC 同时弹出或任意受保护进程；见[本轮证据](baselines/2026-11-16-launch-groups-uac/README.md)。
@@ -24,16 +34,16 @@
 
 目标是在尽量压低常驻内存的前提下，用 Rust + Slint 还原现有页面、动画和 Windows 交互，随后迁移业务与数据。先证明界面与桌面能力可行，再迁移核心逻辑，最后用同机数据决定渲染器与发布方案。任何内存数字在测量前都只是预算，不能写成重构收益。
 
-本方案是本分支后续工作的执行依据。[原轻量化方案](lightweight-optimization-plan.md)与[架构评估](architecture-review.md)保留为历史背景；其中保留 Go/Wails、暂缓完整换栈的路线约束由本方案更新。既有测量证据和行为约束继续有效。
+本方案是本分支后续工作的执行依据。[原轻量化方案](https://github.com/HBLADEH/velo-launcher/blob/cc65619/docs/lightweight-optimization-plan.md)与[架构评估](https://github.com/HBLADEH/velo-launcher/blob/cc65619/docs/architecture-review.md)保留为历史背景；其中保留 Go/Wails、暂缓完整换栈的路线约束由本方案更新。既有测量证据和行为约束继续有效。
 
 ## 1. 已确认的现状与重构边界
 
 | 项目 | 当前依据 | 对实施的要求 |
 | --- | --- | --- |
-| 窗口 | [main.go](../main.go) 初始为 640 × 540、无边框、置顶、禁止用户缩放、先隐藏再显示 | 第一阶段固定使用 640 × 540 逻辑像素；第二阶段补齐实际窗口尺寸规则 |
-| 动态高度 | [App.vue](../frontend/src/App.vue) 的首页、设置和自定义应用页使用 660；搜索按结果计算高度；[app.go](../app.go) 将高度限制在 160–720 | 完整还原需覆盖 640 × 660 及搜索动态高度，并服从显示器工作区；不能把所有页面强制压成 540 高 |
+| 窗口 | [main.go](https://github.com/HBLADEH/velo-launcher/blob/cc65619/main.go) 初始为 640 × 540、无边框、置顶、禁止用户缩放、先隐藏再显示 | 第一阶段固定使用 640 × 540 逻辑像素；第二阶段补齐实际窗口尺寸规则 |
+| 动态高度 | [App.vue](https://github.com/HBLADEH/velo-launcher/blob/cc65619/frontend/src/App.vue) 的首页、设置和自定义应用页使用 660；搜索按结果计算高度；[app.go](https://github.com/HBLADEH/velo-launcher/blob/cc65619/app.go) 将高度限制在 160–720 | 完整还原需覆盖 640 × 660 及搜索动态高度，并服从显示器工作区；不能把所有页面强制压成 540 高 |
 | 页面 | 首页六列，固定/常用/系统快捷分组；搜索支持列表和六列网格；另有右键菜单、自定义应用、七个设置页签 | 第一阶段只做首页与列表；其余页面在第三阶段逐项补齐，第四阶段统一截图验收 |
-| 动效 | [style.css](../frontend/src/style.css) 的最终层叠样式包含入场、悬停、选中、按压、面板过渡和扫描旋转 | 从最终样式提取参数，避免把前面被覆盖的旧声明当成基线 |
+| 动效 | [style.css](https://github.com/HBLADEH/velo-launcher/blob/cc65619/frontend/src/style.css) 的最终层叠样式包含入场、悬停、选中、按压、面板过渡和扫描旋转 | 从最终样式提取参数，避免把前面被覆盖的旧声明当成基线 |
 | 资源压力 | [历史受控矩阵](baselines/2026-10-27-opt00-controlled/README.md)的候选私有提交中位数：可见 149.32 MiB、隐藏五分钟 138.83 MiB | 这是 v0.9.10 的历史参照，不能代替新一轮 v0.9.11 对照测量；PrivateBytes 不等于物理常驻 |
 | 输入焦点 | [首次启动修复](baselines/2026-10-28-focus-fix/README.md)已覆盖宿主先获得焦点、子控件稍后就绪的回归 | Slint 仍需独立验证窗口激活、控件焦点和实际字符输入，不能仅以窗口可见判为成功 |
 | 工具链 | 规划时 PATH 中未找到 `rustc`、`cargo`；RS-01 已安装 Rust/Cargo 1.99.1，并复用本机 MSVC 14.50.35717 / SDK 10.0.26100.0 | 版本与校验入口已锁定，后续使用 [Rust 验证脚本](../scripts/verify-rust.ps1) |
@@ -116,7 +126,7 @@ RS-04 首轮结果：Software 的固定数据可见私有提交中位数为 **6.
 
 - 首次启动、页面切回及控件点击后无需再次点击搜索框即可输入；中文与英文可选择、复制、粘贴和删除。
 - 至少覆盖 Windows 微软拼音的候选框定位、翻页、选词、取消、中英切换；有条件补测用户实际使用的第三方输入法。合成期间 Enter/Space/方向键/Esc 由输入法处理，不能误启动、导航或隐藏。
-- 主页方向键语义以 [navigation.ts](../frontend/src/navigation.ts) 与[现有导航测试](../frontend/tests/navigation.test.mjs)为准，包含跨分组、不完整行和循环选择；列表上下选择，选中项保持可见。
+- 主页方向键语义以 [navigation.ts](https://github.com/HBLADEH/velo-launcher/blob/cc65619/frontend/src/navigation.ts) 与[现有导航测试](https://github.com/HBLADEH/velo-launcher/blob/cc65619/frontend/tests/navigation.test.mjs)为准，包含跨分组、不完整行和循环选择；列表上下选择，选中项保持可见。
 - 初验 100%、125%、150%、200% DPI 的文字、图标、候选框与布局；第一阶段允许滚动展示 540 高容纳不下的内容，不更改六列规则。
 - 一开始就实现可切换的减少动画模式，后续接入系统偏好。录制过程与稳定截图分开，持续动画不混入空闲测量。
 
@@ -144,7 +154,7 @@ RS-04 首轮结果：Software 的固定数据可见私有提交中位数为 **6.
 | 显示器与 DPI | 主屏、副屏、左侧/上方负坐标、混合 DPI、100/125/150/200% 缩放、任务栏工作区、小屏约束、显示器拔出与休眠恢复；正确转换逻辑/物理坐标 |
 | 拖放 | `.exe`/`.lnk`、多文件、中文/空格路径、无效文件；第一阶段测试记录升级为导入预览；进入导入模式后可从资源管理器拖入，不因失焦先隐藏；普通权限与提权场景分别记录 |
 
-沿用 [app_test.go](../app_test.go)、[窗口测试](../internal/platform/window_windows_test.go)、[热键测试](../internal/platform/hotkey_windows_test.go)及[托盘测试](../internal/platform/tray_windows_test.go)的行为；与 Slint 句柄、事件循环和 UI 线程有关的部分重新实现，不直接搬用 Wails 的焦点补丁。
+沿用 [app_test.go](https://github.com/HBLADEH/velo-launcher/blob/cc65619/app_test.go)、[窗口测试](https://github.com/HBLADEH/velo-launcher/blob/cc65619/internal/platform/window_windows_test.go)、[热键测试](https://github.com/HBLADEH/velo-launcher/blob/cc65619/internal/platform/hotkey_windows_test.go)及[托盘测试](https://github.com/HBLADEH/velo-launcher/blob/cc65619/internal/platform/tray_windows_test.go)的行为；与 Slint 句柄、事件循环和 UI 线程有关的部分重新实现，不直接搬用 Wails 的焦点补丁。
 
 **G2 进入条件：** 正常生产模式的热键、托盘、显隐、焦点、混合 DPI/多屏及文件拖放有通过证据；测试后不存在遗留热键、托盘或进程。没有条件实测的 Windows 版本/第三方 IME 明确标记待验证，不扩大兼容承诺；用户日常环境的关键交互不能留阻断问题。
 
@@ -165,14 +175,14 @@ RS-04 首轮结果：Software 的固定数据可见私有提交中位数为 **6.
 
 | 模块 | 行为依据 | 关键验收 |
 | --- | --- | --- |
-| 搜索与排序 | [search_test.go](../internal/search/search_test.go) | exact/prefix/word/substring/fuzzy、单字符容错、中文/拼音/缩写/别名、历史权重、精确名称不被置顶挤掉；稳定排序与结果限制保持一致 |
-| 历史 | [history_test.go](../internal/history/history_test.go) | 次数、最近使用、query→app、每应用查询记录上限；失败启动不记历史；写失败回滚；持久化不阻塞搜索读锁 |
-| 索引 | [indexer_test.go](../internal/indexer/indexer_test.go)、[过滤测试](../internal/indexer/filter_test.go)、[组件测试](../internal/indexer/components_test.go) | 开始菜单/桌面/Program Files/Windows Apps/自定义目录；快捷方式参数和工作目录；增量、删除、不可访问目录保留旧项、取消及辅助项过滤 |
-| 服务与应用库 | [service_test.go](../internal/app/service_test.go)、[quick_test.go](../internal/app/quick_test.go)、[library_test.go](../internal/app/library_test.go) | 缓存先用、旧扫描结果不得覆盖新扫描、自定义与扫描条目合并、删除不复活、固定与自定义独立、保存失败不发布新状态 |
-| 图标 | [cache_test.go](../internal/icon/cache_test.go)与[缓存实现](../internal/icon/cache.go) | 复用磁盘缓存、失效签名、缺失降级、取消/过期扫描不清理仍在使用的图标；索引持久化成功后才清理 |
-| 配置与备份 | [config_test.go](../internal/config/config_test.go)、[backup_test.go](../internal/config/backup_test.go)、[settings_backup_test.go](../settings_backup_test.go) | 缺省补齐、读取旧配置不重写、损坏保留原件、未来版本保护、原文备份、快捷键回滚、备份失败阻止安装更新 |
-| Windows 动作与更新 | [平台实现](../internal/platform/)、[更新测试](../internal/update/)和 [app_test.go](../app_test.go) | 普通/管理员启动、打开目录、UAC 取消、系统工具与确认提示、安装/免安装更新、SHA-256 校验；迁移不放松现有保护 |
-| 页面与交互 | [App.vue](../frontend/src/App.vue)、[组件](../frontend/src/components/)、[前端测试](../frontend/tests/) | 搜索列表/网格、右键菜单、导入、常规/快捷键/外观/搜索/索引/备份/关于；显隐保留草稿和更新任务，启动请求发出后立即清空查询 |
+| 搜索与排序 | [search_test.go](https://github.com/HBLADEH/velo-launcher/blob/cc65619/internal/search/search_test.go) | exact/prefix/word/substring/fuzzy、单字符容错、中文/拼音/缩写/别名、历史权重、精确名称不被置顶挤掉；稳定排序与结果限制保持一致 |
+| 历史 | [history_test.go](https://github.com/HBLADEH/velo-launcher/blob/cc65619/internal/history/history_test.go) | 次数、最近使用、query→app、每应用查询记录上限；失败启动不记历史；写失败回滚；持久化不阻塞搜索读锁 |
+| 索引 | [indexer_test.go](https://github.com/HBLADEH/velo-launcher/blob/cc65619/internal/indexer/indexer_test.go)、[过滤测试](https://github.com/HBLADEH/velo-launcher/blob/cc65619/internal/indexer/filter_test.go)、[组件测试](https://github.com/HBLADEH/velo-launcher/blob/cc65619/internal/indexer/components_test.go) | 开始菜单/桌面/Program Files/Windows Apps/自定义目录；快捷方式参数和工作目录；增量、删除、不可访问目录保留旧项、取消及辅助项过滤 |
+| 服务与应用库 | [service_test.go](https://github.com/HBLADEH/velo-launcher/blob/cc65619/internal/app/service_test.go)、[quick_test.go](https://github.com/HBLADEH/velo-launcher/blob/cc65619/internal/app/quick_test.go)、[library_test.go](https://github.com/HBLADEH/velo-launcher/blob/cc65619/internal/app/library_test.go) | 缓存先用、旧扫描结果不得覆盖新扫描、自定义与扫描条目合并、删除不复活、固定与自定义独立、保存失败不发布新状态 |
+| 图标 | [cache_test.go](https://github.com/HBLADEH/velo-launcher/blob/cc65619/internal/icon/cache_test.go)与[缓存实现](https://github.com/HBLADEH/velo-launcher/blob/cc65619/internal/icon/cache.go) | 复用磁盘缓存、失效签名、缺失降级、取消/过期扫描不清理仍在使用的图标；索引持久化成功后才清理 |
+| 配置与备份 | [config_test.go](https://github.com/HBLADEH/velo-launcher/blob/cc65619/internal/config/config_test.go)、[backup_test.go](https://github.com/HBLADEH/velo-launcher/blob/cc65619/internal/config/backup_test.go)、[settings_backup_test.go](https://github.com/HBLADEH/velo-launcher/blob/cc65619/settings_backup_test.go) | 缺省补齐、读取旧配置不重写、损坏保留原件、未来版本保护、原文备份、快捷键回滚、备份失败阻止安装更新 |
+| Windows 动作与更新 | [平台实现](https://github.com/HBLADEH/velo-launcher/tree/cc65619/internal/platform)、[更新测试](https://github.com/HBLADEH/velo-launcher/tree/cc65619/internal/update)和 [app_test.go](https://github.com/HBLADEH/velo-launcher/blob/cc65619/app_test.go) | 普通/管理员启动、打开目录、UAC 取消、系统工具与确认提示、安装/免安装更新、SHA-256 校验；迁移不放松现有保护 |
+| 页面与交互 | [App.vue](https://github.com/HBLADEH/velo-launcher/blob/cc65619/frontend/src/App.vue)、[组件](https://github.com/HBLADEH/velo-launcher/tree/cc65619/frontend/src/components)、[前端测试](https://github.com/HBLADEH/velo-launcher/tree/cc65619/frontend/tests) | 搜索列表/网格、右键菜单、导入、常规/快捷键/外观/搜索/索引/备份/关于；显隐保留草稿和更新任务，启动请求发出后立即清空查询 |
 
 索引深度剪枝等旧路线的优化不夹带进第一次行为移植。先确认 Go 基线语义；有意修复旧行为时单独列用例、说明差异并重新测量。
 
@@ -188,7 +198,7 @@ RS-04 首轮结果：Software 的固定数据可见私有提交中位数为 **6.
 | `application-library.json` | 保留 version/applications/pinned 和应用身份；自定义与固定共同原子提交，删除失败不能只改一半 |
 | `quick-launch.json` | 保持旧文件的一次迁移语义；已有新应用库时以新库为准，不能重新导入已删除应用；保留旧文件 |
 | `cache/icons/` | 尽量复用已有 PNG；旧 `icon_url` 的 `/icons/<name>.png` 由适配层映射为 Slint 本地资源，无需运行 HTTP 服务；不清空未知文件 |
-| 应用 ID | 与 [model.Identity](../internal/model/app.go)一致：小写路径 + NUL + 原始参数，SHA-256 前 16 字节的十六进制；验证大小写、参数不同的 profile 与中文路径，防止历史/固定失联 |
+| 应用 ID | 与 [model.Identity](https://github.com/HBLADEH/velo-launcher/blob/cc65619/internal/model/app.go)一致：小写路径 + NUL + 原始参数，SHA-256 前 16 字节的十六进制；验证大小写、参数不同的 profile 与中文路径，防止历史/固定失联 |
 | 写入与备份 | 同目录临时文件、flush、Windows 原子替换、串行提交；先成功持久化再发布快照；注入写失败和中断测试，保留之前可读文件；备份保留磁盘原文 |
 
 数据往返验收：Go 生成 fixture → Rust 读取/修改/保存 → Go 再读取，核对配置、应用身份、历史、固定与自定义内容；再反向验证 Rust 生成的数据。未来配置版本、损坏 JSON、未知字段、旧迁移文件及只读目录都有独立用例。图标/索引是可重建缓存，用户配置、历史与应用库不能通过重置来“恢复”。
@@ -266,7 +276,7 @@ RS-04 首轮结果：Software 的固定数据可见私有提交中位数为 **6.
 - 启动与热呼出均以搜索框实际接收输入为结束边界，记录窗口出现、首帧、焦点与输入接受等分段时间。输入失败/超时保留，不能用日志“ready”或工具调用耗时替代。
 - 1000/10000 项分别测搜索内核、服务查询、输入到结果呈现；图标冷热缓存与系统冷/暖启动是不同维度，分别命名和留证。
 
-现有 [measure-resources.ps1](../scripts/measure-resources.ps1)绑定 `VeloLauncherWindow`、`velo-launcher*.exe` 和 `go version -m`；[计时工具](../scripts/collect-latency.ps1)依赖既有探针。RS-04 必须先增加按 PID/原生句柄识别、Rust 构建身份和 Slint 输入就绪观察，区分应用类型并保留旧采集兼容性；不能原样运行后把缺失字段当成有效结果。优先复用[资源采样](../scripts/lib/resource-sample.ps1)与[延迟汇总](../scripts/summarize-latency.ps1)的有效性和统计规则。
+现有 [measure-resources.ps1](../scripts/measure-resources.ps1)绑定 `VeloLauncherWindow`、`velo-launcher*.exe` 和 `go version -m`；[计时工具](https://github.com/HBLADEH/velo-launcher/blob/cc65619/scripts/collect-latency.ps1)依赖既有探针。RS-04 必须先增加按 PID/原生句柄识别、Rust 构建身份和 Slint 输入就绪观察，区分应用类型并保留旧采集兼容性；不能原样运行后把缺失字段当成有效结果。优先复用[资源采样](../scripts/lib/resource-sample.ps1)与[延迟汇总](https://github.com/HBLADEH/velo-launcher/blob/cc65619/scripts/summarize-latency.ps1)的有效性和统计规则。
 
 ### 6.2 视觉与动画基线
 
@@ -311,7 +321,7 @@ RS-04 首轮结果：Software 的固定数据可见私有提交中位数为 **6.
 - 第一阶段新增 Rust 验证入口，执行格式、clippy、必要行为测试和两种 Release 构建；具体命令在锁定版本/features 后写入脚本，避免方案中的示意命令被当成已验证用法。
 - 第二、三阶段根据改动执行有关的窗口/契约/兼容测试。变更既有 Go/Vue 或共享采集工具时运行相关回归及 `./scripts/verify.ps1 -SkipBuild`，打包变更执行完整检查。
 - 每阶段末更新本方案的任务表和 `docs/baselines/` 证据入口。原始本地日志、用户数据与构建产物不提交；公开测量保留身份指纹并脱敏。
-- RS-01、RS-02 已验证，工具链、构建入口、Windows 接入、固定界面及实机边界见 [Rust 工程说明](../rust/README.md)、[RS-01 证据](baselines/2026-10-28-slint-rs01/README.md)与 [RS-02 证据](baselines/2026-10-28-slint-rs02/README.md)。
+- RS-01、RS-02 已验证，工具链、构建入口、Windows 接入、固定界面及实机边界见 [Rust 工程说明](rust-engineering.md)、[RS-01 证据](baselines/2026-10-28-slint-rs01/README.md)与 [RS-02 证据](baselines/2026-10-28-slint-rs02/README.md)。
 - RS-03 已修复 RS-02 走查中的方向键/Enter 无反馈，补齐跨分组/不完整行/循环选择、选中项滚动、IME 合成保护、面板焦点及有限动画；构建、检查和本机 125% 的微软拼音矩阵见 [RS-03 记录](baselines/2026-10-28-slint-rs03/README.md)。
 - RS-03 的真实系统 100%/150%/200% DPI 已补验，并恢复原来的 125%；两种渲染器的候选框、中文提交、六列布局与列表滚动通过。`SLINT_SCALE_FACTOR` 与原生 DPI 不一致时的偏移仍保留为开发覆盖模式限制，不作为真实 DPI 缺陷；运行中 DPI 变化/混合 DPI 多屏归 RS-06，第三方 IME 仍按实际环境补测。
 - RS-04 已完成：共享采集保留 Wails 兼容并增加 Slint 的 PID/HWND、Rust 构建身份、原始资源轮询及真实输入回调；两种渲染器的首轮/反序/无探针对照、隐藏态、100 次诊断显隐、截图和 G1 判断见 [RS-04](baselines/2026-10-28-slint-rs04/README.md)。Software 通过固定原型 30 MiB 预算；FemtoVG、校准延迟、内部缓存与长期增长未标为通过。原采样身份和重建补验分开保存，未将旧记录改标为新 SHA。

@@ -6,6 +6,7 @@ param(
 )
 $ErrorActionPreference = 'Stop'
 . (Join-Path $PSScriptRoot 'lib/rust-environment.ps1')
+. (Join-Path $PSScriptRoot 'lib/rust-build-identity.ps1')
 $environment = Initialize-VeloRustEnvironment
 $renderers = if ($Renderer -eq 'All') { @('femtovg', 'software') } else { @($Renderer.ToLowerInvariant()) }
 $artifactGroup = if ($Product) { 'product-artifacts' } else { 'artifacts' }
@@ -18,7 +19,7 @@ try {
     $toolchainText = Get-Content -LiteralPath 'rust-toolchain.toml' -Raw
     $pinnedChannel = [regex]::Match($toolchainText, '(?m)^channel\s*=\s*"([^"]+)"').Groups[1].Value
     $pinnedRust = [regex]::Match($pinnedChannel, '^(\d+\.\d+\.\d+)-x86_64-pc-windows-msvc$').Groups[1].Value
-    if (-not $pinnedRust) { throw 'Pin an exact Rust version and x86_64-pc-windows-msvc host in rust/rust-toolchain.toml.' }
+    if (-not $pinnedRust) { throw 'Pin an exact Rust version and x86_64-pc-windows-msvc host in rust-toolchain.toml.' }
     $rustcVersion = @(& rustc --version --verbose)
     if ($LASTEXITCODE -ne 0) { throw 'The pinned Rust toolchain is unavailable.' }
     Write-Output $rustcVersion
@@ -28,18 +29,14 @@ try {
     if ($rustcVersion -notcontains "release: $pinnedRust" -or
         $rustcVersion -notcontains 'host: x86_64-pc-windows-msvc' -or
         $cargoVersion -notlike "cargo $pinnedRust *") {
-        throw 'rustc/cargo do not match rust/rust-toolchain.toml.'
+        throw 'rustc/cargo do not match rust-toolchain.toml.'
     }
+    $workspace = Get-VeloWorkspaceIdentity -Repository $environment.RustRoot
+    $sources = @(Get-VeloRustSources -Repository $environment.RustRoot)
     if (-not $SkipChecks) {
+        & (Join-Path $PSScriptRoot 'test-project-tools.ps1')
         & cargo fmt --all -- --check
         if ($LASTEXITCODE -ne 0) { throw 'Rust formatting failed.' }
-        & (Join-Path $PSScriptRoot 'test-search-compat.ps1') -GoOnly
-        & (Join-Path $PSScriptRoot 'test-discovery-compat.ps1') -GoOnly
-        Push-Location ..
-        try {
-            & go run ./cmd/rs11-compat
-            if ($LASTEXITCODE -ne 0) { throw 'RS-11 version/system tool Go oracle failed.' }
-        } finally { Pop-Location }
     }
     foreach ($name in $renderers) {
         $feature = "renderer-$name"
@@ -97,31 +94,6 @@ try {
         & cargo tree --locked --no-default-features --features $feature -e normal,build,features |
             Set-Content -LiteralPath (Join-Path $outputDirectory 'cargo-tree.txt') -Encoding utf8
         if ($LASTEXITCODE -ne 0) { throw "Dependency tree failed: $name" }
-        $sourcePaths = @('Cargo.toml', 'Cargo.lock', 'rust-toolchain.toml', 'windows-toolchain.json', '.cargo/config.toml', 'build.rs', '../scripts/verify-rust.ps1', '../scripts/lib/rust-environment.ps1', '../scripts/measure-resources.ps1', '../scripts/measure-slint-ab.ps1', '../scripts/collect-latency.ps1', '../scripts/collect-slint-latency.ps1', '../scripts/lib/resource-sample.ps1')
-        $sourcePaths += @('../scripts/test-data-compat.ps1', '../tests/fixtures/compat/rs08.json', '../cmd/rs08-compat/main.go', '../internal/compat/rs08.go', '../internal/compat/rs08_test.go', '../internal/app/compat_test.go')
-        $sourcePaths += @('../internal/model/app.go', '../internal/config/config.go', '../internal/config/backup.go', '../internal/storage/json.go', '../internal/history/history.go', '../internal/indexer/indexer.go', '../internal/app/library.go')
-        $sourcePaths += @('../scripts/test-search-compat.ps1', '../tests/fixtures/compat/rs09.json', '../cmd/rs09-tables/main.go', '../internal/compat/rs09.go', '../internal/app/rs09_compat_test.go', '../internal/app/service.go', '../internal/app/quick.go', '../internal/search/search.go', 'licenses/go-pinyin-MIT.txt', 'licenses/Go-BSD.txt')
-        $sourcePaths += @('../scripts/test-discovery-compat.ps1', '../tests/fixtures/compat/rs10.json', '../cmd/rs10-compat/main.go', '../internal/indexer/filter.go', '../internal/icon/cache.go', '../internal/platform/apps_windows.go', '../internal/platform/item_actions_windows.go', '../internal/platform/icon_windows.go')
-        $sourcePaths += @('../scripts/test-business-ui.ps1')
-        $sourcePaths += @('../scripts/capture-rust-visual.ps1', '../scripts/package-rust-preview.ps1')
-        $sourcePaths += @('../scripts/test-rust-preview.ps1')
-        $sourcePaths += @('../scripts/lib/rust-license-policy.ps1')
-        $sourcePaths += @('../scripts/audit-rust-licenses.ps1')
-        $sourcePaths += @('../scripts/test-rust-metadata.ps1', '../scripts/package-rust-installer.ps1', '../scripts/test-rust-installer.ps1')
-        $sourcePaths += @('../scripts/test-rust-user-install.ps1')
-        $sourcePaths += @('../scripts/test-rust-nsis-update.ps1')
-        $sourcePaths += @('../scripts/package-rust-product.ps1', '../scripts/test-rust-machine-install.ps1', '../scripts/prepare-rust-machine-install.ps1', '../scripts/test-rust-machine-cleanup.ps1')
-        $sourcePaths += @('../scripts/package-rust-release.ps1')
-        $sourcePaths += @('../cmd/check-legacy-update/main.go', '../internal/update/migration_release_test.go')
-        $sourcePaths += @('../scripts/test-pages-ui.ps1', '../tests/fixtures/compat/rs11.json', '../tests/fixtures/compat/rs11.expected.json', '../cmd/rs11-compat/main.go', '../internal/systemtools/catalog.go', '../internal/systemtools/rs11_compat_test.go', '../internal/update/version.go', '../internal/update/client.go', '../internal/platform/actions_windows.go', '../internal/platform/update_script.go')
-        # Include UI modules, assets, native probes, and shared data-contract tests.
-        $sourcePaths += @(Get-ChildItem -LiteralPath 'src', 'ui', 'examples', 'tests', 'windows', 'licenses' -Recurse -File | ForEach-Object {
-            $_.FullName.Substring($environment.RustRoot.Length + 1).Replace('\', '/')
-        })
-        $sourcePaths = @($sourcePaths | Sort-Object -Unique)
-        $sources = foreach ($source in $sourcePaths) {
-            [ordered]@{ Path = $source; SHA256 = (Get-FileHash -LiteralPath $source -Algorithm SHA256).Hash }
-        }
         $identity = [ordered]@{
             Renderer = $name
             ProductIdentity = $Product.IsPresent
@@ -136,8 +108,8 @@ try {
             SlintVersion = $slintPackage.version
             SlintFeatures = $slintNode.features
             WinitBackendFeatures = $winitBackendNode.features
-            WorkspaceCommit = (& git rev-parse HEAD)
-            WorkspaceDirty = [bool](& git status --porcelain)
+            WorkspaceCommit = $workspace.Commit
+            WorkspaceDirty = $workspace.Dirty
             ExecutableSHA256 = (Get-FileHash -LiteralPath $executable -Algorithm SHA256).Hash
             ExecutableBytes = (Get-Item -LiteralPath $executable).Length
             Sources = @($sources)
@@ -185,6 +157,12 @@ try {
             $pagesDirectory = Join-Path $outputDirectory ('pages-' + [guid]::NewGuid().ToString('N'))
             & (Join-Path $PSScriptRoot 'test-pages-ui.ps1') -Executable $executable `
                 -Helper (Join-Path $environment.RustRoot 'target/x86_64-pc-windows-msvc/debug/examples/rs10_windows.exe') -OutputDirectory $pagesDirectory
+        }
+        # A successful test cannot certify source files edited while it was running.
+        Assert-VeloRustSources -Repository $environment.RustRoot -Recorded $sources
+        $current = Get-VeloWorkspaceIdentity -Repository $environment.RustRoot
+        if ($current.Commit -ne $workspace.Commit -or $current.Dirty -ne $workspace.Dirty) {
+            throw 'Worktree changed during verification; run verification again.'
         }
         [ordered]@{
             RecordedAtUtc = [DateTime]::UtcNow.ToString('o')

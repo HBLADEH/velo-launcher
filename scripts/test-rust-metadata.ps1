@@ -9,8 +9,8 @@ $ErrorActionPreference='Stop'
 $repository=Split-Path -Parent $PSScriptRoot
 $Executable=(Resolve-Path -LiteralPath $Executable).Path
 if(Test-Path -LiteralPath $OutputDirectory){throw 'Use a fresh PE metadata evidence directory.'}
-$cargo=Get-Content -LiteralPath (Join-Path $repository 'rust/Cargo.toml') -Raw
-$version=[regex]::Match($cargo,'(?m)^version = "(\d+\.\d+\.\d+)"$').Groups[1].Value
+$cargo=Get-Content -LiteralPath (Join-Path $repository 'Cargo.toml') -Raw
+$version=[regex]::Match($cargo,'(?m)^version = "(\d+\.\d+\.\d+)"\r?$').Groups[1].Value
 $info=[Diagnostics.FileVersionInfo]::GetVersionInfo($Executable)
 if(-not $version -or $info.ProductVersion -ne $version -or $info.FileVersion -ne $version -or $info.OriginalFilename -ne 'velo-slint.exe' -or
     $info.ProductName -ne 'Velo' -or $info.FileDescription -ne 'Velo' -or $info.Comments -ne "Renderer: $Renderer"){

@@ -9,15 +9,15 @@ $Executable = (Resolve-Path -LiteralPath $Executable).Path
 $PreviousExecutable = (Resolve-Path -LiteralPath $PreviousExecutable).Path
 $FixtureHelper = (Resolve-Path -LiteralPath $FixtureHelper).Path
 $repository = Split-Path -Parent $PSScriptRoot
-$allowedRoot = (Resolve-Path -LiteralPath (Join-Path $repository 'rust/target')).Path
+$allowedRoot = (Resolve-Path -LiteralPath (Join-Path $repository 'target')).Path
 $OutputDirectory = $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($OutputDirectory)
 if (-not $OutputDirectory.StartsWith($allowedRoot + '\', [StringComparison]::OrdinalIgnoreCase)) {
-    throw 'Installer verification must stay inside rust/target.'
+    throw 'Installer verification must stay inside target.'
 }
 if (Test-Path -LiteralPath $OutputDirectory) { throw 'Installer verification needs a fresh directory.' }
 $parent = (Resolve-Path -LiteralPath (Split-Path -Parent $OutputDirectory)).Path
 if ($parent -ne $allowedRoot -and -not $parent.StartsWith($allowedRoot + '\', [StringComparison]::OrdinalIgnoreCase)) {
-    throw 'Resolved output parent leaves rust/target.'
+    throw 'Resolved output parent leaves target.'
 }
 $policy = Get-ItemProperty -LiteralPath 'HKLM:/SOFTWARE/Microsoft/Windows/CurrentVersion/Policies/System'
 # This optional native check must never open an unattended consent dialog. It

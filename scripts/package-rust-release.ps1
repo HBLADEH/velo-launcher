@@ -5,24 +5,29 @@ param(
     [Parameter(Mandatory)][string]$Makensis
 )
 $ErrorActionPreference = 'Stop'
+. (Join-Path $PSScriptRoot 'lib/rust-build-identity.ps1')
 $repository = Split-Path -Parent $PSScriptRoot
-$policy = Get-Content -LiteralPath (Join-Path $repository 'rust/windows/release-policy.json') -Raw | ConvertFrom-Json
+$policy = Get-Content -LiteralPath (Join-Path $repository 'windows/release-policy.json') -Raw | ConvertFrom-Json
 if (-not $policy.G4Passed -or -not $policy.PublicReleaseApproved -or -not $policy.RedistributionCleared -or
     $policy.ReleaseTag -notmatch '^v?\d+\.\d+\.\d+$') { throw 'An approved numbered Rust release is required.' }
 $version = $policy.ReleaseTag -replace '^v', ''
-$target = (Resolve-Path -LiteralPath (Join-Path $repository 'rust/target')).Path
+$target = (Resolve-Path -LiteralPath (Join-Path $repository 'target')).Path
 $OutputDirectory = $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($OutputDirectory)
 if (-not $OutputDirectory.StartsWith($target + '\', [StringComparison]::OrdinalIgnoreCase) -or
-    (Test-Path -LiteralPath $OutputDirectory)) { throw 'Use a fresh release output inside rust/target.' }
+    (Test-Path -LiteralPath $OutputDirectory)) { throw 'Use a fresh release output inside target.' }
+$renderers = @('software', 'femtovg')
+# Either renderer can invalidate the release. Check both before staging anything.
+foreach ($renderer in $renderers) {
+    Read-VeloVerifiedBuild -Repository $repository -Renderer $renderer -Product -Release | Out-Null
+}
 New-Item -ItemType Directory -Path $OutputDirectory | Out-Null
 $assets = Join-Path $OutputDirectory 'assets'
 New-Item -ItemType Directory -Path $assets | Out-Null
-$builds = @(foreach ($renderer in 'software','femtovg') {
+$builds = @(foreach ($renderer in $renderers) {
     $directory = Join-Path $OutputDirectory $renderer
     & (Join-Path $PSScriptRoot 'package-rust-product.ps1') -Renderer $renderer -OutputDirectory $directory -Makensis $Makensis -Release | Out-Host
     $receipt = Get-Content -LiteralPath (Join-Path $directory 'installer.json') -Raw | ConvertFrom-Json
     $identity = Get-Content -LiteralPath (Join-Path $directory 'package/content/build-identity.json') -Raw | ConvertFrom-Json
-    if ($identity.WorkspaceDirty) { throw 'Public release builds must bind a clean source commit.' }
     Copy-Item -LiteralPath (Join-Path $directory $receipt.InstallerFile) -Destination $assets
     [ordered]@{
         Renderer = $renderer; Installer = $receipt.InstallerFile
@@ -41,7 +46,7 @@ Copy-Item -LiteralPath (Join-Path $assets $software.Installer) -Destination (Joi
 $notices = Join-Path $OutputDirectory 'notices'
 New-Item -ItemType Directory -Path $notices | Out-Null
 Copy-Item -LiteralPath (Join-Path $repository 'LICENSE') -Destination $notices
-foreach ($renderer in 'software','femtovg') {
+foreach ($renderer in $renderers) {
     $rendererNotices = Join-Path $notices $renderer
     New-Item -ItemType Directory -Path $rendererNotices | Out-Null
     foreach ($name in 'licenses','dependency-inventory.json') {
@@ -61,4 +66,5 @@ Compress-Archive -Path (Join-Path $notices '*') -DestinationPath (Join-Path $ass
 Get-ChildItem -LiteralPath $assets -File | Sort-Object Name | ForEach-Object {
     '{0}  {1}' -f (Get-FileHash -LiteralPath $_.FullName).Hash.ToLowerInvariant(), $_.Name
 } | Set-Content -LiteralPath (Join-Path $assets 'SHA256SUMS.txt') -Encoding utf8NoBOM
+& (Join-Path $PSScriptRoot 'check-release-assets.ps1') -Directory $assets
 Write-Output "Prepared Rust $($policy.ReleaseTag) release assets. Final installer acceptance and publishing are separate steps."

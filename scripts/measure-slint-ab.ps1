@@ -12,7 +12,7 @@ $OutputDirectory = $ExecutionContext.SessionState.Path.GetUnresolvedProviderPath
 if (Test-Path -LiteralPath $OutputDirectory) { throw 'Use a fresh output directory.' }
 if (@(Get-CimInstance Win32_Process -Filter "Name LIKE 'velo-slint%'").Count) { throw 'Close other Slint test windows before sampling.' }
 New-Item -ItemType Directory -Path $OutputDirectory | Out-Null
-$exe = Join-Path $workspace "rust/target/artifacts/$Renderer/velo-slint.exe"
+$exe = Join-Path $workspace "target/artifacts/$Renderer/velo-slint.exe"
 $log = Join-Path $OutputDirectory 'measurement-events.log'
 $info = [Diagnostics.ProcessStartInfo]::new($exe)
 $info.UseShellExecute = $false
@@ -37,7 +37,7 @@ function Command([string]$Text) {
 function Sample([string]$Name, [string]$State, [int]$Settle) {
     Command status
     Write-Output "Sampling $Renderer / $Name (settle=$Settle s, 3 x 15 s)"
-    $null = & (Join-Path $PSScriptRoot 'measure-resources.ps1') -ProcessId $process.Id -ApplicationKind Slint -WindowHandle $script:hwnd `
+    $null = & (Join-Path $PSScriptRoot 'measure-resources.ps1') -ProcessId $process.Id -WindowHandle $script:hwnd `
         -ExpectedExecutable $exe -WindowState $State -MinimumStateSeconds $Settle -Seconds 15 -Samples 3 -IdleConfirmed `
         -IdleEvidence 'Fixed embedded 28-item fixture; all home rows pre-rendered; no scan or background business tasks; finite entry/hover animations settled; no screenshots during sampling.' `
         -OutputPath (Join-Path $OutputDirectory ($Name + '.json'))

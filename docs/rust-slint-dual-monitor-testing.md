@@ -1,3 +1,5 @@
+> 历史复现说明：本页命令和 `rust/` 路径对应整理前提交 `cc65619`。当前根目录工程的构建与验证见 [开发说明](development.md)。
+
 # Rust + Slint 双屏电脑复验清单
 
 交接日期：2026-10-30，最新验收：2026-11-03（北京时间）。分支：`codex/rust-slint-refactor`。RS-06 的双屏/混合 DPI、负坐标、两种渲染器物理拔插、实际 S3 及真实通知区入口已补齐，RS-06、RS-07 在已测 Windows 11 x64 范围已验证，**G2 放行**。详细证据与边界见 [G2 验收](baselines/2026-11-03-slint-rs06/g2-acceptance.md)，RS-08 本轮尚未开始。
@@ -17,7 +19,7 @@ git pull --ff-only origin codex/rust-slint-refactor
 ./scripts/verify-rust.ps1 -SmokeTest
 ```
 
-先按 [Rust 工程说明](../rust/README.md#已锁定的构建环境)安装 Rust/Cargo 1.99.1、MSVC 14.50.35717 和 Windows SDK 10.0.26100.0。验证脚本查找匹配版本，缺少时会报错；其他 MSVC/SDK 组合尚未验证。此入口只要求 Rust 构建环境，不需要常驻 Go、Wails 或 WebView 服务。
+历史复现按[当时的 Rust 工程说明](https://github.com/HBLADEH/velo-launcher/blob/cc656198b53ed049ba6abb13ff6f76738e247004/rust/README.md#已锁定的构建环境)配置 Rust/Cargo 1.99.1、MSVC 14.50.35717 和 Windows SDK 10.0.26100.0。验证脚本查找匹配版本，缺少时会报错；其他 MSVC/SDK 组合尚未验证。当前根目录工程的环境安装见[开发说明](development.md#环境)，不直接使用下文旧分支命令。
 
 成功后两份程序分别为 `rust/target/artifacts/software/velo-slint.exe` 与 `rust/target/artifacts/femtovg/velo-slint.exe`，各目录还有 `build-identity.json`、依赖 features 与许可证信息。保留本机生成的身份，不把前一台电脑的 exe SHA 改写成这一轮结果。Software 与 FemtoVG 都要验证，同一时刻只运行其中一份测试实例；默认渲染器仍留待 RS-14 决定。
 
@@ -68,7 +70,7 @@ New-Item -ItemType Directory -Path $runRoot | Out-Null
 
 ## 可选原生快照
 
-[rs06_native_probe.rs](../rust/examples/rs06_native_probe.rs)无参数运行时只读取显示器、主窗口与托盘注册状态。新电脑需要单独构建这个 example：
+[rs06_native_probe.rs](../examples/rs06_native_probe.rs)无参数运行时只读取显示器、主窗口与托盘注册状态。新电脑需要单独构建这个 example：
 
 ```powershell
 . ./scripts/lib/rust-environment.ps1

@@ -1,0 +1,1562 @@
+{
+  "passed": true,
+  "utc": "2026-11-16T17:16:59.4404690Z",
+  "executableSHA256": "B81FDF8487A8914F1230446D1B01CC4703534E8565007F98A98A0C1B6E1ABBF4",
+  "everythingSHA256": "F191F756996A14A11E5445FA7103D302EFD510CF2FBF920E6C0C8ED51D512E36",
+  "everythingVersion": "1.4.1.1032",
+  "sampleScope": "Instrumented component test with a 125-file synthetic index; not an idle-memory benchmark.",
+  "samples": [
+    {
+      "utc": "2026-11-16T17:16:08.5017222Z",
+      "veloPrivateBytes": 10264576,
+      "veloWorkingSetBytes": 33275904,
+      "everythingPrivateBytes": 4972544,
+      "everythingWorkingSetBytes": 19771392
+    },
+    {
+      "utc": "2026-11-16T17:16:08.7651051Z",
+      "veloPrivateBytes": 10264576,
+      "veloWorkingSetBytes": 33275904,
+      "everythingPrivateBytes": 4972544,
+      "everythingWorkingSetBytes": 19771392
+    },
+    {
+      "utc": "2026-11-16T17:16:09.0195095Z",
+      "veloPrivateBytes": 10264576,
+      "veloWorkingSetBytes": 33275904,
+      "everythingPrivateBytes": 4972544,
+      "everythingWorkingSetBytes": 19771392
+    },
+    {
+      "utc": "2026-11-16T17:16:09.2730931Z",
+      "veloPrivateBytes": 10264576,
+      "veloWorkingSetBytes": 33275904,
+      "everythingPrivateBytes": 4972544,
+      "everythingWorkingSetBytes": 19771392
+    },
+    {
+      "utc": "2026-11-16T17:16:09.5270230Z",
+      "veloPrivateBytes": 10645504,
+      "veloWorkingSetBytes": 36032512,
+      "everythingPrivateBytes": 4972544,
+      "everythingWorkingSetBytes": 19771392
+    },
+    {
+      "utc": "2026-11-16T17:16:09.7918712Z",
+      "veloPrivateBytes": 10645504,
+      "veloWorkingSetBytes": 36032512,
+      "everythingPrivateBytes": 4972544,
+      "everythingWorkingSetBytes": 19771392
+    },
+    {
+      "utc": "2026-11-16T17:16:10.0782956Z",
+      "veloPrivateBytes": 10645504,
+      "veloWorkingSetBytes": 36032512,
+      "everythingPrivateBytes": 4972544,
+      "everythingWorkingSetBytes": 19771392
+    },
+    {
+      "utc": "2026-11-16T17:16:10.3937487Z",
+      "veloPrivateBytes": 30691328,
+      "veloWorkingSetBytes": 78909440,
+      "everythingPrivateBytes": 4972544,
+      "everythingWorkingSetBytes": 19771392
+    },
+    {
+      "utc": "2026-11-16T17:16:10.6777784Z",
+      "veloPrivateBytes": 31571968,
+      "veloWorkingSetBytes": 81137664,
+      "everythingPrivateBytes": 4972544,
+      "everythingWorkingSetBytes": 19771392
+    },
+    {
+      "utc": "2026-11-16T17:16:10.9619804Z",
+      "veloPrivateBytes": 32808960,
+      "veloWorkingSetBytes": 82862080,
+      "everythingPrivateBytes": 4972544,
+      "everythingWorkingSetBytes": 19771392
+    },
+    {
+      "utc": "2026-11-16T17:16:11.2304458Z",
+      "veloPrivateBytes": 33341440,
+      "veloWorkingSetBytes": 88719360,
+      "everythingPrivateBytes": 4972544,
+      "everythingWorkingSetBytes": 19771392
+    },
+    {
+      "utc": "2026-11-16T17:16:11.4890426Z",
+      "veloPrivateBytes": 33554432,
+      "veloWorkingSetBytes": 89399296,
+      "everythingPrivateBytes": 4972544,
+      "everythingWorkingSetBytes": 19771392
+    },
+    {
+      "utc": "2026-11-16T17:16:11.7515023Z",
+      "veloPrivateBytes": 33669120,
+      "veloWorkingSetBytes": 89567232,
+      "everythingPrivateBytes": 4972544,
+      "everythingWorkingSetBytes": 19771392
+    },
+    {
+      "utc": "2026-11-16T17:16:12.0059909Z",
+      "veloPrivateBytes": 34742272,
+      "veloWorkingSetBytes": 90763264,
+      "everythingPrivateBytes": 4972544,
+      "everythingWorkingSetBytes": 19771392
+    },
+    {
+      "utc": "2026-11-16T17:16:12.2399956Z",
+      "veloPrivateBytes": 35651584,
+      "veloWorkingSetBytes": 91488256,
+      "everythingPrivateBytes": 4972544,
+      "everythingWorkingSetBytes": 19771392
+    },
+    {
+      "utc": "2026-11-16T17:16:12.4935721Z",
+      "veloPrivateBytes": 35033088,
+      "veloWorkingSetBytes": 90931200,
+      "everythingPrivateBytes": 4972544,
+      "everythingWorkingSetBytes": 19771392
+    },
+    {
+      "utc": "2026-11-16T17:16:12.7471837Z",
+      "veloPrivateBytes": 35033088,
+      "veloWorkingSetBytes": 90931200,
+      "everythingPrivateBytes": 4972544,
+      "everythingWorkingSetBytes": 19771392
+    },
+    {
+      "utc": "2026-11-16T17:16:12.9851383Z",
+      "veloPrivateBytes": 35033088,
+      "veloWorkingSetBytes": 90931200,
+      "everythingPrivateBytes": 4972544,
+      "everythingWorkingSetBytes": 19771392
+    },
+    {
+      "utc": "2026-11-16T17:16:13.2217607Z",
+      "veloPrivateBytes": 35069952,
+      "veloWorkingSetBytes": 91467776,
+      "everythingPrivateBytes": 4972544,
+      "everythingWorkingSetBytes": 19771392
+    },
+    {
+      "utc": "2026-11-16T17:16:13.4711039Z",
+      "veloPrivateBytes": 35028992,
+      "veloWorkingSetBytes": 91467776,
+      "everythingPrivateBytes": 4972544,
+      "everythingWorkingSetBytes": 19771392
+    },
+    {
+      "utc": "2026-11-16T17:16:13.7061175Z",
+      "veloPrivateBytes": 35028992,
+      "veloWorkingSetBytes": 91467776,
+      "everythingPrivateBytes": 4972544,
+      "everythingWorkingSetBytes": 19771392
+    },
+    {
+      "utc": "2026-11-16T17:16:13.9289330Z",
+      "veloPrivateBytes": 35053568,
+      "veloWorkingSetBytes": 91987968,
+      "everythingPrivateBytes": 4972544,
+      "everythingWorkingSetBytes": 19771392
+    },
+    {
+      "utc": "2026-11-16T17:16:14.1501516Z",
+      "veloPrivateBytes": 35053568,
+      "veloWorkingSetBytes": 91987968,
+      "everythingPrivateBytes": 4972544,
+      "everythingWorkingSetBytes": 19771392
+    },
+    {
+      "utc": "2026-11-16T17:16:14.3725972Z",
+      "veloPrivateBytes": 35119104,
+      "veloWorkingSetBytes": 92286976,
+      "everythingPrivateBytes": 4972544,
+      "everythingWorkingSetBytes": 19771392
+    },
+    {
+      "utc": "2026-11-16T17:16:14.5946883Z",
+      "veloPrivateBytes": 35119104,
+      "veloWorkingSetBytes": 92286976,
+      "everythingPrivateBytes": 4972544,
+      "everythingWorkingSetBytes": 19771392
+    },
+    {
+      "utc": "2026-11-16T17:16:14.8173861Z",
+      "veloPrivateBytes": 35119104,
+      "veloWorkingSetBytes": 92286976,
+      "everythingPrivateBytes": 4972544,
+      "everythingWorkingSetBytes": 19771392
+    },
+    {
+      "utc": "2026-11-16T17:16:15.0552448Z",
+      "veloPrivateBytes": 35119104,
+      "veloWorkingSetBytes": 92327936,
+      "everythingPrivateBytes": 4972544,
+      "everythingWorkingSetBytes": 19771392
+    },
+    {
+      "utc": "2026-11-16T17:16:15.2913750Z",
+      "veloPrivateBytes": 35119104,
+      "veloWorkingSetBytes": 92327936,
+      "everythingPrivateBytes": 4972544,
+      "everythingWorkingSetBytes": 19771392
+    },
+    {
+      "utc": "2026-11-16T17:16:15.5259907Z",
+      "veloPrivateBytes": 35119104,
+      "veloWorkingSetBytes": 92327936,
+      "everythingPrivateBytes": 4972544,
+      "everythingWorkingSetBytes": 19771392
+    },
+    {
+      "utc": "2026-11-16T17:16:15.7647391Z",
+      "veloPrivateBytes": 35119104,
+      "veloWorkingSetBytes": 92332032,
+      "everythingPrivateBytes": 4972544,
+      "everythingWorkingSetBytes": 19771392
+    },
+    {
+      "utc": "2026-11-16T17:16:15.9993675Z",
+      "veloPrivateBytes": 35119104,
+      "veloWorkingSetBytes": 92332032,
+      "everythingPrivateBytes": 4972544,
+      "everythingWorkingSetBytes": 19771392
+    },
+    {
+      "utc": "2026-11-16T17:16:16.2191945Z",
+      "veloPrivateBytes": 35119104,
+      "veloWorkingSetBytes": 92332032,
+      "everythingPrivateBytes": 4972544,
+      "everythingWorkingSetBytes": 19771392
+    },
+    {
+      "utc": "2026-11-16T17:16:16.4569890Z",
+      "veloPrivateBytes": 34979840,
+      "veloWorkingSetBytes": 92205056,
+      "everythingPrivateBytes": 4972544,
+      "everythingWorkingSetBytes": 19771392
+    },
+    {
+      "utc": "2026-11-16T17:16:16.6924324Z",
+      "veloPrivateBytes": 34979840,
+      "veloWorkingSetBytes": 92205056,
+      "everythingPrivateBytes": 4972544,
+      "everythingWorkingSetBytes": 19771392
+    },
+    {
+      "utc": "2026-11-16T17:16:16.9119331Z",
+      "veloPrivateBytes": 34979840,
+      "veloWorkingSetBytes": 92205056,
+      "everythingPrivateBytes": 4972544,
+      "everythingWorkingSetBytes": 19771392
+    },
+    {
+      "utc": "2026-11-16T17:16:17.1345845Z",
+      "veloPrivateBytes": 34979840,
+      "veloWorkingSetBytes": 92205056,
+      "everythingPrivateBytes": 4972544,
+      "everythingWorkingSetBytes": 19771392
+    },
+    {
+      "utc": "2026-11-16T17:16:17.3725623Z",
+      "veloPrivateBytes": 34979840,
+      "veloWorkingSetBytes": 92233728,
+      "everythingPrivateBytes": 4972544,
+      "everythingWorkingSetBytes": 19771392
+    },
+    {
+      "utc": "2026-11-16T17:16:17.6056702Z",
+      "veloPrivateBytes": 34979840,
+      "veloWorkingSetBytes": 92233728,
+      "everythingPrivateBytes": 4972544,
+      "everythingWorkingSetBytes": 19771392
+    },
+    {
+      "utc": "2026-11-16T17:16:17.8429891Z",
+      "veloPrivateBytes": 38629376,
+      "veloWorkingSetBytes": 105402368,
+      "everythingPrivateBytes": 4972544,
+      "everythingWorkingSetBytes": 19771392
+    },
+    {
+      "utc": "2026-11-16T17:16:18.0819505Z",
+      "veloPrivateBytes": 46899200,
+      "veloWorkingSetBytes": 112148480,
+      "everythingPrivateBytes": 4972544,
+      "everythingWorkingSetBytes": 19771392
+    },
+    {
+      "utc": "2026-11-16T17:16:18.3041783Z",
+      "veloPrivateBytes": 47042560,
+      "veloWorkingSetBytes": 114548736,
+      "everythingPrivateBytes": 4972544,
+      "everythingWorkingSetBytes": 19771392
+    },
+    {
+      "utc": "2026-11-16T17:16:18.5415876Z",
+      "veloPrivateBytes": 48955392,
+      "veloWorkingSetBytes": 111910912,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:18.7778715Z",
+      "veloPrivateBytes": 51359744,
+      "veloWorkingSetBytes": 120258560,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:19.0135979Z",
+      "veloPrivateBytes": 59002880,
+      "veloWorkingSetBytes": 122294272,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:19.2318313Z",
+      "veloPrivateBytes": 59969536,
+      "veloWorkingSetBytes": 129118208,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:19.4681758Z",
+      "veloPrivateBytes": 60002304,
+      "veloWorkingSetBytes": 129282048,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:19.7003756Z",
+      "veloPrivateBytes": 60280832,
+      "veloWorkingSetBytes": 129888256,
+      "everythingPrivateBytes": 4878336,
+      "everythingWorkingSetBytes": 19935232
+    },
+    {
+      "utc": "2026-11-16T17:16:19.9331154Z",
+      "veloPrivateBytes": 60960768,
+      "veloWorkingSetBytes": 131067904,
+      "everythingPrivateBytes": 4878336,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:20.1662204Z",
+      "veloPrivateBytes": 60985344,
+      "veloWorkingSetBytes": 131444736,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:20.4014558Z",
+      "veloPrivateBytes": 60985344,
+      "veloWorkingSetBytes": 131575808,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:20.6353025Z",
+      "veloPrivateBytes": 60985344,
+      "veloWorkingSetBytes": 131575808,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:20.8689842Z",
+      "veloPrivateBytes": 60985344,
+      "veloWorkingSetBytes": 131575808,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:21.1029532Z",
+      "veloPrivateBytes": 60985344,
+      "veloWorkingSetBytes": 131641344,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:21.3542028Z",
+      "veloPrivateBytes": 60985344,
+      "veloWorkingSetBytes": 131641344,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:21.6048973Z",
+      "veloPrivateBytes": 60985344,
+      "veloWorkingSetBytes": 131641344,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:21.8260436Z",
+      "veloPrivateBytes": 60985344,
+      "veloWorkingSetBytes": 131641344,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:22.0647034Z",
+      "veloPrivateBytes": 60985344,
+      "veloWorkingSetBytes": 131706880,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:22.3160538Z",
+      "veloPrivateBytes": 60985344,
+      "veloWorkingSetBytes": 131710976,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:22.5672371Z",
+      "veloPrivateBytes": 60985344,
+      "veloWorkingSetBytes": 131710976,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:22.8201918Z",
+      "veloPrivateBytes": 60985344,
+      "veloWorkingSetBytes": 131776512,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:23.0719382Z",
+      "veloPrivateBytes": 60985344,
+      "veloWorkingSetBytes": 131776512,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:23.3101740Z",
+      "veloPrivateBytes": 60985344,
+      "veloWorkingSetBytes": 131776512,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:23.5592540Z",
+      "veloPrivateBytes": 60985344,
+      "veloWorkingSetBytes": 131776512,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:23.8105674Z",
+      "veloPrivateBytes": 60985344,
+      "veloWorkingSetBytes": 131842048,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:24.0499113Z",
+      "veloPrivateBytes": 60985344,
+      "veloWorkingSetBytes": 131842048,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:24.2845257Z",
+      "veloPrivateBytes": 60985344,
+      "veloWorkingSetBytes": 131842048,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:24.5055260Z",
+      "veloPrivateBytes": 60985344,
+      "veloWorkingSetBytes": 131842048,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:24.7383729Z",
+      "veloPrivateBytes": 60985344,
+      "veloWorkingSetBytes": 131907584,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:24.9732574Z",
+      "veloPrivateBytes": 60985344,
+      "veloWorkingSetBytes": 131907584,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:25.2053161Z",
+      "veloPrivateBytes": 60952576,
+      "veloWorkingSetBytes": 131903488,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:25.4391861Z",
+      "veloPrivateBytes": 60952576,
+      "veloWorkingSetBytes": 131969024,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:25.6577625Z",
+      "veloPrivateBytes": 60952576,
+      "veloWorkingSetBytes": 131969024,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:25.8921078Z",
+      "veloPrivateBytes": 60952576,
+      "veloWorkingSetBytes": 131969024,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:26.1257783Z",
+      "veloPrivateBytes": 60952576,
+      "veloWorkingSetBytes": 131969024,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:26.3605341Z",
+      "veloPrivateBytes": 60952576,
+      "veloWorkingSetBytes": 132034560,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:26.5946809Z",
+      "veloPrivateBytes": 60952576,
+      "veloWorkingSetBytes": 132034560,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:26.8324361Z",
+      "veloPrivateBytes": 60952576,
+      "veloWorkingSetBytes": 132034560,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:27.0702481Z",
+      "veloPrivateBytes": 60952576,
+      "veloWorkingSetBytes": 132034560,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:27.3068072Z",
+      "veloPrivateBytes": 60952576,
+      "veloWorkingSetBytes": 132034560,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:27.5411324Z",
+      "veloPrivateBytes": 60952576,
+      "veloWorkingSetBytes": 132100096,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:27.7765893Z",
+      "veloPrivateBytes": 60952576,
+      "veloWorkingSetBytes": 132100096,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:28.0132945Z",
+      "veloPrivateBytes": 60952576,
+      "veloWorkingSetBytes": 132100096,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:28.2669068Z",
+      "veloPrivateBytes": 60952576,
+      "veloWorkingSetBytes": 132100096,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:28.5047013Z",
+      "veloPrivateBytes": 60952576,
+      "veloWorkingSetBytes": 132165632,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:28.7534759Z",
+      "veloPrivateBytes": 59457536,
+      "veloWorkingSetBytes": 130670592,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:28.9899290Z",
+      "veloPrivateBytes": 59457536,
+      "veloWorkingSetBytes": 130736128,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:29.2587193Z",
+      "veloPrivateBytes": 59293696,
+      "veloWorkingSetBytes": 130605056,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:29.5078421Z",
+      "veloPrivateBytes": 59293696,
+      "veloWorkingSetBytes": 130605056,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:29.7414349Z",
+      "veloPrivateBytes": 58245120,
+      "veloWorkingSetBytes": 129556480,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:29.9595348Z",
+      "veloPrivateBytes": 58245120,
+      "veloWorkingSetBytes": 129556480,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:30.1910636Z",
+      "veloPrivateBytes": 58245120,
+      "veloWorkingSetBytes": 129622016,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:30.4115646Z",
+      "veloPrivateBytes": 58236928,
+      "veloWorkingSetBytes": 129613824,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:30.6479363Z",
+      "veloPrivateBytes": 58236928,
+      "veloWorkingSetBytes": 129613824,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:30.8842717Z",
+      "veloPrivateBytes": 58236928,
+      "veloWorkingSetBytes": 129613824,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:31.1225012Z",
+      "veloPrivateBytes": 58236928,
+      "veloWorkingSetBytes": 129679360,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:31.3579352Z",
+      "veloPrivateBytes": 58212352,
+      "veloWorkingSetBytes": 129654784,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:31.5937472Z",
+      "veloPrivateBytes": 58212352,
+      "veloWorkingSetBytes": 129654784,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:31.8146528Z",
+      "veloPrivateBytes": 58212352,
+      "veloWorkingSetBytes": 129720320,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:32.0527918Z",
+      "veloPrivateBytes": 58208256,
+      "veloWorkingSetBytes": 129716224,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:32.2917231Z",
+      "veloPrivateBytes": 58208256,
+      "veloWorkingSetBytes": 129716224,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:32.5412609Z",
+      "veloPrivateBytes": 58208256,
+      "veloWorkingSetBytes": 129716224,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:32.7738920Z",
+      "veloPrivateBytes": 58208256,
+      "veloWorkingSetBytes": 129781760,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:33.0575800Z",
+      "veloPrivateBytes": 58208256,
+      "veloWorkingSetBytes": 129781760,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:33.3204306Z",
+      "veloPrivateBytes": 58191872,
+      "veloWorkingSetBytes": 129765376,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:33.5701719Z",
+      "veloPrivateBytes": 58191872,
+      "veloWorkingSetBytes": 129765376,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:33.8035419Z",
+      "veloPrivateBytes": 58191872,
+      "veloWorkingSetBytes": 129830912,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:34.0360448Z",
+      "veloPrivateBytes": 58191872,
+      "veloWorkingSetBytes": 129830912,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:34.2707291Z",
+      "veloPrivateBytes": 58191872,
+      "veloWorkingSetBytes": 129830912,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:34.5061670Z",
+      "veloPrivateBytes": 58191872,
+      "veloWorkingSetBytes": 129896448,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:34.7261510Z",
+      "veloPrivateBytes": 58085376,
+      "veloWorkingSetBytes": 129789952,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:34.9438376Z",
+      "veloPrivateBytes": 58085376,
+      "veloWorkingSetBytes": 129789952,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:35.1636087Z",
+      "veloPrivateBytes": 58085376,
+      "veloWorkingSetBytes": 129789952,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:35.3976584Z",
+      "veloPrivateBytes": 58085376,
+      "veloWorkingSetBytes": 129855488,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:35.6363319Z",
+      "veloPrivateBytes": 58064896,
+      "veloWorkingSetBytes": 129835008,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:35.8886974Z",
+      "veloPrivateBytes": 58064896,
+      "veloWorkingSetBytes": 129835008,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:36.1436888Z",
+      "veloPrivateBytes": 57978880,
+      "veloWorkingSetBytes": 129748992,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:36.3791018Z",
+      "veloPrivateBytes": 57978880,
+      "veloWorkingSetBytes": 129748992,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:36.6139019Z",
+      "veloPrivateBytes": 57962496,
+      "veloWorkingSetBytes": 129798144,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:36.8501621Z",
+      "veloPrivateBytes": 57962496,
+      "veloWorkingSetBytes": 129798144,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:37.0698891Z",
+      "veloPrivateBytes": 57962496,
+      "veloWorkingSetBytes": 129798144,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:37.3058372Z",
+      "veloPrivateBytes": 57962496,
+      "veloWorkingSetBytes": 129798144,
+      "everythingPrivateBytes": 4800512,
+      "everythingWorkingSetBytes": 19918848
+    },
+    {
+      "utc": "2026-11-16T17:16:37.5430037Z",
+      "veloPrivateBytes": 57962496,
+      "veloWorkingSetBytes": 129863680,
+      "everythingPrivateBytes": 4812800,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:37.7801572Z",
+      "veloPrivateBytes": 57954304,
+      "veloWorkingSetBytes": 129855488,
+      "everythingPrivateBytes": 4812800,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:38.0165442Z",
+      "veloPrivateBytes": 57954304,
+      "veloWorkingSetBytes": 129921024,
+      "everythingPrivateBytes": 4812800,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:38.2530624Z",
+      "veloPrivateBytes": 57933824,
+      "veloWorkingSetBytes": 129900544,
+      "everythingPrivateBytes": 4812800,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:38.4896456Z",
+      "veloPrivateBytes": 57933824,
+      "veloWorkingSetBytes": 129888256,
+      "everythingPrivateBytes": 4812800,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:38.7252982Z",
+      "veloPrivateBytes": 57905152,
+      "veloWorkingSetBytes": 129859584,
+      "everythingPrivateBytes": 4812800,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:38.9634805Z",
+      "veloPrivateBytes": 57905152,
+      "veloWorkingSetBytes": 129859584,
+      "everythingPrivateBytes": 4812800,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:39.2147405Z",
+      "veloPrivateBytes": 57905152,
+      "veloWorkingSetBytes": 129925120,
+      "everythingPrivateBytes": 4812800,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:39.4504741Z",
+      "veloPrivateBytes": 57659392,
+      "veloWorkingSetBytes": 129728512,
+      "everythingPrivateBytes": 4812800,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:39.6856658Z",
+      "veloPrivateBytes": 57659392,
+      "veloWorkingSetBytes": 129728512,
+      "everythingPrivateBytes": 4812800,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:39.9197811Z",
+      "veloPrivateBytes": 57655296,
+      "veloWorkingSetBytes": 129724416,
+      "everythingPrivateBytes": 4812800,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:40.1381416Z",
+      "veloPrivateBytes": 57655296,
+      "veloWorkingSetBytes": 129789952,
+      "everythingPrivateBytes": 4812800,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:40.3761395Z",
+      "veloPrivateBytes": 57638912,
+      "veloWorkingSetBytes": 129773568,
+      "everythingPrivateBytes": 4812800,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:40.6293045Z",
+      "veloPrivateBytes": 57638912,
+      "veloWorkingSetBytes": 129773568,
+      "everythingPrivateBytes": 4812800,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:40.8806748Z",
+      "veloPrivateBytes": 57479168,
+      "veloWorkingSetBytes": 129679360,
+      "everythingPrivateBytes": 4812800,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:41.1171456Z",
+      "veloPrivateBytes": 57479168,
+      "veloWorkingSetBytes": 129679360,
+      "everythingPrivateBytes": 4812800,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:41.3528580Z",
+      "veloPrivateBytes": 57479168,
+      "veloWorkingSetBytes": 129679360,
+      "everythingPrivateBytes": 4812800,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:41.5890407Z",
+      "veloPrivateBytes": 57479168,
+      "veloWorkingSetBytes": 129679360,
+      "everythingPrivateBytes": 4812800,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:41.8268869Z",
+      "veloPrivateBytes": 57479168,
+      "veloWorkingSetBytes": 129744896,
+      "everythingPrivateBytes": 4812800,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:42.0641749Z",
+      "veloPrivateBytes": 57401344,
+      "veloWorkingSetBytes": 129691648,
+      "everythingPrivateBytes": 4812800,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:42.2839455Z",
+      "veloPrivateBytes": 57401344,
+      "veloWorkingSetBytes": 129691648,
+      "everythingPrivateBytes": 4812800,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:42.5169570Z",
+      "veloPrivateBytes": 57397248,
+      "veloWorkingSetBytes": 129687552,
+      "everythingPrivateBytes": 4812800,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:42.7366760Z",
+      "veloPrivateBytes": 57397248,
+      "veloWorkingSetBytes": 129687552,
+      "everythingPrivateBytes": 4812800,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:42.9590614Z",
+      "veloPrivateBytes": 57389056,
+      "veloWorkingSetBytes": 129744896,
+      "everythingPrivateBytes": 4812800,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:43.1816978Z",
+      "veloPrivateBytes": 57389056,
+      "veloWorkingSetBytes": 129744896,
+      "everythingPrivateBytes": 4812800,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:43.4149000Z",
+      "veloPrivateBytes": 57389056,
+      "veloWorkingSetBytes": 129744896,
+      "everythingPrivateBytes": 4812800,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:43.6493142Z",
+      "veloPrivateBytes": 57389056,
+      "veloWorkingSetBytes": 129744896,
+      "everythingPrivateBytes": 4812800,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:43.8835518Z",
+      "veloPrivateBytes": 57389056,
+      "veloWorkingSetBytes": 129810432,
+      "everythingPrivateBytes": 4812800,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:44.1190019Z",
+      "veloPrivateBytes": 57348096,
+      "veloWorkingSetBytes": 129769472,
+      "everythingPrivateBytes": 4812800,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:44.3531853Z",
+      "veloPrivateBytes": 57348096,
+      "veloWorkingSetBytes": 129769472,
+      "everythingPrivateBytes": 4812800,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:44.5746842Z",
+      "veloPrivateBytes": 57348096,
+      "veloWorkingSetBytes": 129835008,
+      "everythingPrivateBytes": 4812800,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:44.8075728Z",
+      "veloPrivateBytes": 57348096,
+      "veloWorkingSetBytes": 129835008,
+      "everythingPrivateBytes": 4812800,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:45.0287418Z",
+      "veloPrivateBytes": 57348096,
+      "veloWorkingSetBytes": 129835008,
+      "everythingPrivateBytes": 4812800,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:45.2656410Z",
+      "veloPrivateBytes": 57344000,
+      "veloWorkingSetBytes": 129830912,
+      "everythingPrivateBytes": 4812800,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:45.4972505Z",
+      "veloPrivateBytes": 57344000,
+      "veloWorkingSetBytes": 129896448,
+      "everythingPrivateBytes": 4812800,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:45.7179123Z",
+      "veloPrivateBytes": 57311232,
+      "veloWorkingSetBytes": 129863680,
+      "everythingPrivateBytes": 4812800,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:45.9525702Z",
+      "veloPrivateBytes": 57311232,
+      "veloWorkingSetBytes": 129863680,
+      "everythingPrivateBytes": 4812800,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:46.1883844Z",
+      "veloPrivateBytes": 57192448,
+      "veloWorkingSetBytes": 129744896,
+      "everythingPrivateBytes": 4812800,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:46.4241091Z",
+      "veloPrivateBytes": 57192448,
+      "veloWorkingSetBytes": 129744896,
+      "everythingPrivateBytes": 4812800,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:46.6436634Z",
+      "veloPrivateBytes": 57184256,
+      "veloWorkingSetBytes": 129769472,
+      "everythingPrivateBytes": 4812800,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:46.8768247Z",
+      "veloPrivateBytes": 57184256,
+      "veloWorkingSetBytes": 129769472,
+      "everythingPrivateBytes": 4812800,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:47.1135443Z",
+      "veloPrivateBytes": 57184256,
+      "veloWorkingSetBytes": 129867776,
+      "everythingPrivateBytes": 4812800,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:47.3680420Z",
+      "veloPrivateBytes": 57180160,
+      "veloWorkingSetBytes": 129863680,
+      "everythingPrivateBytes": 4812800,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:47.6233970Z",
+      "veloPrivateBytes": 57180160,
+      "veloWorkingSetBytes": 129863680,
+      "everythingPrivateBytes": 4812800,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:47.8895894Z",
+      "veloPrivateBytes": 57155584,
+      "veloWorkingSetBytes": 129839104,
+      "everythingPrivateBytes": 4812800,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:48.1418954Z",
+      "veloPrivateBytes": 57155584,
+      "veloWorkingSetBytes": 129904640,
+      "everythingPrivateBytes": 4812800,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:48.3945475Z",
+      "veloPrivateBytes": 57151488,
+      "veloWorkingSetBytes": 129900544,
+      "everythingPrivateBytes": 4812800,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:48.6290922Z",
+      "veloPrivateBytes": 57151488,
+      "veloWorkingSetBytes": 129900544,
+      "everythingPrivateBytes": 4812800,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:48.8501055Z",
+      "veloPrivateBytes": 57110528,
+      "veloWorkingSetBytes": 129859584,
+      "everythingPrivateBytes": 4812800,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:49.0861015Z",
+      "veloPrivateBytes": 57110528,
+      "veloWorkingSetBytes": 129859584,
+      "everythingPrivateBytes": 4812800,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:49.3396469Z",
+      "veloPrivateBytes": 56893440,
+      "veloWorkingSetBytes": 129781760,
+      "everythingPrivateBytes": 4812800,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:49.6383532Z",
+      "veloPrivateBytes": 56893440,
+      "veloWorkingSetBytes": 129781760,
+      "everythingPrivateBytes": 4812800,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:49.8916005Z",
+      "veloPrivateBytes": 56672256,
+      "veloWorkingSetBytes": 129560576,
+      "everythingPrivateBytes": 4812800,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:50.1618615Z",
+      "veloPrivateBytes": 56627200,
+      "veloWorkingSetBytes": 129552384,
+      "everythingPrivateBytes": 4812800,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:50.4131977Z",
+      "veloPrivateBytes": 56627200,
+      "veloWorkingSetBytes": 129617920,
+      "everythingPrivateBytes": 4812800,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:50.7138643Z",
+      "veloPrivateBytes": 56143872,
+      "veloWorkingSetBytes": 129200128,
+      "everythingPrivateBytes": 4812800,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:51.0452638Z",
+      "veloPrivateBytes": 56111104,
+      "veloWorkingSetBytes": 129167360,
+      "everythingPrivateBytes": 4812800,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:51.3136108Z",
+      "veloPrivateBytes": 56111104,
+      "veloWorkingSetBytes": 129167360,
+      "everythingPrivateBytes": 4812800,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:51.5620615Z",
+      "veloPrivateBytes": 54374400,
+      "veloWorkingSetBytes": 127463424,
+      "everythingPrivateBytes": 4812800,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:51.8171122Z",
+      "veloPrivateBytes": 54374400,
+      "veloWorkingSetBytes": 127463424,
+      "everythingPrivateBytes": 4812800,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:52.1019338Z",
+      "veloPrivateBytes": 54374400,
+      "veloWorkingSetBytes": 127463424,
+      "everythingPrivateBytes": 4812800,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:52.3682276Z",
+      "veloPrivateBytes": 54374400,
+      "veloWorkingSetBytes": 127463424,
+      "everythingPrivateBytes": 4812800,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:52.6203985Z",
+      "veloPrivateBytes": 54349824,
+      "veloWorkingSetBytes": 127438848,
+      "everythingPrivateBytes": 4812800,
+      "everythingWorkingSetBytes": 19939328
+    },
+    {
+      "utc": "2026-11-16T17:16:52.8566081Z",
+      "veloPrivateBytes": 54394880,
+      "veloWorkingSetBytes": 127680512,
+      "everythingPrivateBytes": 4894720,
+      "everythingWorkingSetBytes": 19959808
+    },
+    {
+      "utc": "2026-11-16T17:16:53.1261329Z",
+      "veloPrivateBytes": 54394880,
+      "veloWorkingSetBytes": 127680512,
+      "everythingPrivateBytes": 4894720,
+      "everythingWorkingSetBytes": 19959808
+    },
+    {
+      "utc": "2026-11-16T17:16:53.4069543Z",
+      "veloPrivateBytes": 54390784,
+      "veloWorkingSetBytes": 127676416,
+      "everythingPrivateBytes": 4894720,
+      "everythingWorkingSetBytes": 19959808
+    },
+    {
+      "utc": "2026-11-16T17:16:53.7494558Z",
+      "veloPrivateBytes": 54378496,
+      "veloWorkingSetBytes": 127664128,
+      "everythingPrivateBytes": 4894720,
+      "everythingWorkingSetBytes": 19959808
+    },
+    {
+      "utc": "2026-11-16T17:16:54.0796665Z",
+      "veloPrivateBytes": 61792256,
+      "veloWorkingSetBytes": 136650752,
+      "everythingPrivateBytes": 4894720,
+      "everythingWorkingSetBytes": 19959808
+    },
+    {
+      "utc": "2026-11-16T17:16:54.4111800Z",
+      "veloPrivateBytes": 61792256,
+      "veloWorkingSetBytes": 136650752,
+      "everythingPrivateBytes": 4894720,
+      "everythingWorkingSetBytes": 19959808
+    },
+    {
+      "utc": "2026-11-16T17:16:54.7115810Z",
+      "veloPrivateBytes": 59887616,
+      "veloWorkingSetBytes": 134782976,
+      "everythingPrivateBytes": 4894720,
+      "everythingWorkingSetBytes": 19959808
+    },
+    {
+      "utc": "2026-11-16T17:16:54.9828546Z",
+      "veloPrivateBytes": 59887616,
+      "veloWorkingSetBytes": 134782976,
+      "everythingPrivateBytes": 4894720,
+      "everythingWorkingSetBytes": 19959808
+    },
+    {
+      "utc": "2026-11-16T17:16:55.2358969Z",
+      "veloPrivateBytes": 61140992,
+      "veloWorkingSetBytes": 136753152,
+      "everythingPrivateBytes": 4894720,
+      "everythingWorkingSetBytes": 19959808
+    },
+    {
+      "utc": "2026-11-16T17:16:55.4897493Z",
+      "veloPrivateBytes": 61206528,
+      "veloWorkingSetBytes": 136818688,
+      "everythingPrivateBytes": 4894720,
+      "everythingWorkingSetBytes": 19959808
+    },
+    {
+      "utc": "2026-11-16T17:16:55.7407421Z",
+      "veloPrivateBytes": 61280256,
+      "veloWorkingSetBytes": 136941568,
+      "everythingPrivateBytes": 4894720,
+      "everythingWorkingSetBytes": 19959808
+    },
+    {
+      "utc": "2026-11-16T17:16:55.9945901Z",
+      "veloPrivateBytes": 63307776,
+      "veloWorkingSetBytes": 138452992,
+      "everythingPrivateBytes": 4894720,
+      "everythingWorkingSetBytes": 19959808
+    },
+    {
+      "utc": "2026-11-16T17:16:56.2348576Z",
+      "veloPrivateBytes": 63307776,
+      "veloWorkingSetBytes": 138452992,
+      "everythingPrivateBytes": 4894720,
+      "everythingWorkingSetBytes": 19959808
+    },
+    {
+      "utc": "2026-11-16T17:16:56.5010573Z",
+      "veloPrivateBytes": 62259200,
+      "veloWorkingSetBytes": 137232384,
+      "everythingPrivateBytes": 4894720,
+      "everythingWorkingSetBytes": 19959808
+    },
+    {
+      "utc": "2026-11-16T17:16:56.7388269Z",
+      "veloPrivateBytes": 62259200,
+      "veloWorkingSetBytes": 137232384,
+      "everythingPrivateBytes": 4894720,
+      "everythingWorkingSetBytes": 19959808
+    },
+    {
+      "utc": "2026-11-16T17:16:56.9597769Z",
+      "veloPrivateBytes": 62259200,
+      "veloWorkingSetBytes": 137232384,
+      "everythingPrivateBytes": 4894720,
+      "everythingWorkingSetBytes": 19959808
+    },
+    {
+      "utc": "2026-11-16T17:16:57.1982171Z",
+      "veloPrivateBytes": 61927424,
+      "veloWorkingSetBytes": 136724480,
+      "everythingPrivateBytes": 4894720,
+      "everythingWorkingSetBytes": 19959808
+    },
+    {
+      "utc": "2026-11-16T17:16:57.4513109Z",
+      "veloPrivateBytes": 66371584,
+      "veloWorkingSetBytes": 139984896,
+      "everythingPrivateBytes": 4894720,
+      "everythingWorkingSetBytes": 19959808
+    },
+    {
+      "utc": "2026-11-16T17:16:57.7998416Z",
+      "veloPrivateBytes": 66371584,
+      "veloWorkingSetBytes": 139984896,
+      "everythingPrivateBytes": 4894720,
+      "everythingWorkingSetBytes": 19959808
+    },
+    {
+      "utc": "2026-11-16T17:16:58.0822182Z",
+      "veloPrivateBytes": 66371584,
+      "veloWorkingSetBytes": 139984896,
+      "everythingPrivateBytes": 4894720,
+      "everythingWorkingSetBytes": 19959808
+    },
+    {
+      "utc": "2026-11-16T17:16:58.3862985Z",
+      "veloPrivateBytes": 66371584,
+      "veloWorkingSetBytes": 139984896,
+      "everythingPrivateBytes": 4894720,
+      "everythingWorkingSetBytes": 19959808
+    },
+    {
+      "utc": "2026-11-16T17:16:58.6543955Z",
+      "veloPrivateBytes": 66371584,
+      "veloWorkingSetBytes": 139984896,
+      "everythingPrivateBytes": 4894720,
+      "everythingWorkingSetBytes": 19959808
+    },
+    {
+      "utc": "2026-11-16T17:16:58.9086930Z",
+      "veloPrivateBytes": 66166784,
+      "veloWorkingSetBytes": 139952128,
+      "everythingPrivateBytes": 4894720,
+      "everythingWorkingSetBytes": 19959808
+    }
+  ],
+  "assertions": [
+    {
+      "name": "starts_in_application_mode",
+      "passed": true
+    },
+    {
+      "name": "no_worker_before_first_file_query",
+      "passed": true
+    },
+    {
+      "name": "tab_switches_mode",
+      "passed": true
+    },
+    {
+      "name": "real_query_and_total",
+      "passed": true
+    },
+    {
+      "name": "single_query_worker",
+      "passed": true
+    },
+    {
+      "name": "file_list_navigation",
+      "passed": true
+    },
+    {
+      "name": "restores_application_query",
+      "passed": true
+    },
+    {
+      "name": "restores_file_query",
+      "passed": true
+    },
+    {
+      "name": "restores_file_selection",
+      "passed": true
+    },
+    {
+      "name": "ime_owns_commands",
+      "passed": true
+    },
+    {
+      "name": "native_dialog_owns_tab",
+      "passed": true
+    },
+    {
+      "name": "explicit_three_page_loading",
+      "passed": true
+    },
+    {
+      "name": "latest_query_wins",
+      "passed": true
+    },
+    {
+      "name": "hidden_results_released",
+      "passed": true
+    },
+    {
+      "name": "idle_query_thread_and_window_released",
+      "passed": true
+    },
+    {
+      "name": "settings_page_suspends_file_query",
+      "passed": true
+    },
+    {
+      "name": "disable_clears_mode_and_rows",
+      "passed": true
+    },
+    {
+      "name": "disabled_tab_preserves_focus_navigation",
+      "passed": true
+    }
+  ],
+  "resourceSummary": {
+    "sampleCount": 207,
+    "metrics": {
+      "veloPrivateBytes": {
+        "unit": "bytes",
+        "minimum": 10264576,
+        "median": 57905152,
+        "maximum": 66371584
+      },
+      "veloWorkingSetBytes": {
+        "unit": "bytes",
+        "minimum": 33275904,
+        "median": 129781760,
+        "maximum": 139984896
+      },
+      "everythingPrivateBytes": {
+        "unit": "bytes",
+        "minimum": 4800512,
+        "median": 4812800,
+        "maximum": 4972544
+      },
+      "everythingWorkingSetBytes": {
+        "unit": "bytes",
+        "minimum": 19771392,
+        "median": 19918848,
+        "maximum": 19959808
+      }
+    }
+  }
+}

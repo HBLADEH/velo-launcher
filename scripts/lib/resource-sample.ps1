@@ -13,14 +13,8 @@ function Get-VeloColdEnvironmentId {
 }
 
 function Get-VeloExecutableMode {
-    param([string]$CommandLine, [string[]]$GoBuildInfo = @())
+    param([string]$CommandLine)
     if ($CommandLine -match '--measurement-log=') { return 'MeasurementProbe' }
-    if (@($GoBuildInfo | Where-Object { $_ -match '^\s*build\s+-tags=.*\blatencyprobe\b' }).Count) {
-        # Go's probe is enabled through environment/sidecar settings, which are
-        # absent from CommandLine. The binary tag establishes instrumentation,
-        # but does not prove whether every optional observer is active.
-        return 'ProbeBuild'
-    }
     if ($CommandLine -match '(?:^|\s)--diagnostics(?:\s|$)') { return 'Diagnostics' }
     'Production'
 }
@@ -79,8 +73,8 @@ function Get-VeloIconDiskEvidence {
 function Read-VeloMetadataJson {
     param([string]$Path)
     try {
-        # Go writes UTF-8 without a BOM; Windows PowerShell 5.1 otherwise uses
-        # the system code page. Keep parser errors from dumping the user's index.
+        # Read JSON explicitly as UTF-8 and keep parser errors from dumping the
+        # user's index into the normal diagnostic output.
         [IO.File]::ReadAllText($Path, [Text.Encoding]::UTF8) | ConvertFrom-Json -ErrorAction Stop
     } catch {
         throw "Cannot read JSON metadata at '$Path'; check UTF-8 encoding and JSON syntax."
@@ -105,13 +99,13 @@ function Read-VeloRustBuildIdentity {
 }
 
 function Get-VeloProcessTree {
-    param([object[]]$Processes, [int]$RootProcessId, [switch]$AllDescendants)
+    param([object[]]$Processes, [int]$RootProcessId)
     $ids = [System.Collections.Generic.HashSet[int]]::new()
     [void]$ids.Add($RootProcessId)
     do {
         $added = $false
         foreach ($entry in $Processes) {
-            if (($AllDescendants -or $entry.Name -eq 'msedgewebview2.exe') -and $ids.Contains([int]$entry.ParentProcessId) -and $ids.Add([int]$entry.ProcessId)) { $added = $true }
+            if ($ids.Contains([int]$entry.ParentProcessId) -and $ids.Add([int]$entry.ProcessId)) { $added = $true }
         }
     } while ($added)
     $Processes | Where-Object { $ids.Contains([int]$_.ProcessId) }
@@ -153,7 +147,7 @@ function Get-VeloSampleSummary {
         StartedAtUtc = $first.TimestampUtc
         EndedAtUtc = $last.TimestampUtc
         ProcessCount = $last.Processes.Count
-        IncludesWebViewChildren = $true
+        ProcessTreePolicy = 'All descendants'
         SampleSeconds = [math]::Round($elapsed, 3)
         CPUSampleValid = $cpuValid
         CPUPercentOfMachine = $cpuPercent

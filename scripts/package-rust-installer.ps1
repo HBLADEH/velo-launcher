@@ -8,16 +8,16 @@ param(
 )
 $ErrorActionPreference='Stop'
 $repository=Split-Path -Parent $PSScriptRoot
-$target=(Resolve-Path -LiteralPath (Join-Path $repository 'rust/target')).Path
+$target=(Resolve-Path -LiteralPath (Join-Path $repository 'target')).Path
 $PreviewContent=(Resolve-Path -LiteralPath $PreviewContent).Path
 $Makensis=(Resolve-Path -LiteralPath $Makensis).Path
-$toolchain=Get-Content -LiteralPath (Join-Path $repository 'rust/windows/nsis-toolchain.json') -Raw|ConvertFrom-Json
+$toolchain=Get-Content -LiteralPath (Join-Path $repository 'windows/nsis-toolchain.json') -Raw|ConvertFrom-Json
 if((Get-FileHash -LiteralPath $Makensis).Hash -ne $toolchain.compilerSHA256 -or (& $Makensis /VERSION) -ne "v$($toolchain.version)"){throw 'NSIS compiler does not match the pinned identity.'}
 $OutputDirectory=$ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($OutputDirectory)
-if(-not $OutputDirectory.StartsWith($target+'\',[StringComparison]::OrdinalIgnoreCase) -or (Test-Path -LiteralPath $OutputDirectory)){throw 'Use a fresh installer output inside rust/target.'}
+if(-not $OutputDirectory.StartsWith($target+'\',[StringComparison]::OrdinalIgnoreCase) -or (Test-Path -LiteralPath $OutputDirectory)){throw 'Use a fresh installer output inside target.'}
 if($ValidationInstallDirectory){
     $ValidationInstallDirectory=$ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($ValidationInstallDirectory)
-    if(-not $ValidationInstallDirectory.StartsWith($target+'\',[StringComparison]::OrdinalIgnoreCase)){throw 'Validation install directory must stay inside rust/target.'}
+    if(-not $ValidationInstallDirectory.StartsWith($target+'\',[StringComparison]::OrdinalIgnoreCase)){throw 'Validation install directory must stay inside target.'}
 }
 $package=Get-Content -LiteralPath (Join-Path $PreviewContent 'package.json') -Raw|ConvertFrom-Json
 $identity=Get-Content -LiteralPath (Join-Path $PreviewContent 'build-identity.json') -Raw|ConvertFrom-Json
@@ -34,7 +34,8 @@ foreach($line in Get-Content -LiteralPath (Join-Path $PreviewContent 'SHA256SUMS
 }
 $files=@(Get-ChildItem -LiteralPath $PreviewContent -Recurse -File|Where-Object Name -ne 'SHA256SUMS.txt')
 if($listed.Count -ne $files.Count -or @($files|Where-Object{-not $listed.Contains($_.FullName)}).Count){throw 'Unlisted preview payload file.'}
-foreach($source in $identity.Sources){if((Get-FileHash -LiteralPath (Join-Path "$repository/rust" $source.Path)).Hash -ne $source.SHA256){throw 'Source changed after preview verification.'}}
+. (Join-Path $PSScriptRoot 'lib/rust-build-identity.ps1')
+Assert-VeloRustSources -Repository $repository -Recorded $identity.Sources
 $version=([Diagnostics.FileVersionInfo]::GetVersionInfo((Join-Path $PreviewContent 'velo-slint.exe'))).ProductVersion
 if($version -notmatch '^\d+\.\d+\.\d+$' -or $package.Version -ne $version){throw 'Windows and package versions differ.'}
 New-Item -ItemType Directory -Path $OutputDirectory|Out-Null
@@ -46,7 +47,7 @@ $delete|Set-Content -LiteralPath $uninstall -Encoding utf8NoBOM
 $installer=Join-Path $OutputDirectory "velo-slint-internal-$($package.Renderer)-x64-installer.exe"
 $arguments=@('/WX','/V3',('/DCONTENT='+$PreviewContent),('/DOUTPUT='+$installer),('/DVERSION='+$version),('/DRENDERER='+$package.Renderer),('/DUNINSTALL_FILES='+$uninstall))
 if($ValidationInstallDirectory){$arguments+=('/DVALIDATION_INSTALL_DIR='+$ValidationInstallDirectory)}
-$arguments+=(Join-Path $repository 'rust/windows/preview-installer.nsi')
+$arguments+=(Join-Path $repository 'windows/preview-installer.nsi')
 & $Makensis @arguments *> (Join-Path $OutputDirectory 'build.log')
 if($LASTEXITCODE){throw 'NSIS preview compilation failed; inspect build.log.'}
 [ordered]@{RecordedAtUtc=[datetime]::UtcNow.ToString('o');Version=$version;Renderer=$package.Renderer;ExecutableSHA256=$package.ExecutableSHA256;

@@ -93,8 +93,8 @@ def main():
         "SourceMatched": True, "ScenePairs": len(comparisons), "OriginalPNGs": len(images),
         "SyntheticStates": True, "ReducedMotion": True,
         "PhysicalDPIValidated": False, "PhysicalIMEValidated": False,
-        "WailsComparisonComplete": False, "PresentedFramesVerified": False,
-        "GeometryToleranceVerified": False, "RS13Complete": False,
+        "PresentedFramesVerified": False, "CaptureScope": "ComponentSnapshotsOnly",
+        "GeometryToleranceVerified": False,
         "DifferenceScope": "Descriptive RGB differences only. Includes text antialiasing, renderer label and caret phase; no pass/fail threshold or geometric tolerance is inferred.",
         "Comparisons": comparisons,
     }
@@ -109,10 +109,10 @@ def main():
 <meta name="viewport" content="width=device-width,initial-scale=1"><title>RS-13 static renderer review</title>
 <style>body{font:16px system-ui;margin:32px;background:#eef1f6;color:#192b43}h2{font-size:18px;margin-top:32px}.pair{display:flex;gap:20px;align-items:flex-start}figure{margin:0;width:50%;max-width:640px}img{max-width:100%;height:auto;border:1px solid #bcc8d7}figcaption{padding:8px}p{max-width:1000px}</style>
 <h1>RS-13 静态截图审查</h1><p>两种 Slint 渲染器、同源码合成数据、减少动画开启。点击图片查看原始像素。
-本页不是原生 Wails 对照、动画录像、物理 IME/DPI 或显示器帧验收。RGB 差异不等于布局误差。完整状态见 comparison.json。</p>
+本页仅覆盖组件快照，不包含动画录像、物理 IME/DPI 或显示器帧验收。RGB 差异不等于布局误差。完整状态见 comparison.json。</p>
 """ + "\n".join(figures) + "</html>\n"
     (args.output_directory / "gallery.html").write_text(gallery, encoding="utf-8")
-    print(f"Published {len(images)} original PNGs, {len(comparisons)} scene pairs; RS-13 remains incomplete.")
+    print(f"Published {len(images)} original PNGs, {len(comparisons)} scene pairs; scope is component snapshots only.")
 
 
 if __name__ == "__main__":

@@ -2,19 +2,21 @@
 [CmdletBinding()]
 param(
     [Parameter(Mandatory)][ValidateSet('software','femtovg')][string]$Renderer,
-    [Parameter(Mandatory)][string]$OutputPath
+    [Parameter(Mandatory)][string]$OutputPath,
+    [switch]$Product
 )
 $ErrorActionPreference = 'Stop'
 . (Join-Path $PSScriptRoot 'lib/rust-license-policy.ps1')
 $repository = Split-Path -Parent $PSScriptRoot
-$artifacts = Join-Path $repository "rust/target/artifacts/$Renderer"
+$artifactGroup = if ($Product) { 'product-artifacts' } else { 'artifacts' }
+$artifacts = Join-Path $repository "target/$artifactGroup/$Renderer"
 $OutputPath = $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($OutputPath)
 if (Test-Path -LiteralPath $OutputPath) { throw 'Preserve the previous license audit; use a fresh output.' }
 $metadataPath = Join-Path $artifacts 'cargo-metadata.json'
 $metadata = Get-Content -Raw -LiteralPath $metadataPath | ConvertFrom-Json
 $treePath = Join-Path $artifacts 'cargo-tree.txt'
 $tree = Get-Content -Raw -LiteralPath $treePath
-$supplements = Get-Content -Raw -LiteralPath (Join-Path $repository 'rust/licenses/dependency-supplements.json') | ConvertFrom-Json
+$supplements = Get-Content -Raw -LiteralPath (Join-Path $repository 'licenses/dependency-supplements.json') | ConvertFrom-Json
 $resolved = @($metadata.resolve.nodes.id)
 $packages = @(foreach ($package in $metadata.packages | Where-Object { $_.id -in $resolved -and $_.name -ne 'velo-slint' } | Sort-Object name,version) {
     $directory = Split-Path -Parent $package.manifest_path
@@ -23,7 +25,7 @@ $packages = @(foreach ($package in $metadata.packages | Where-Object { $_.id -in
     $extra = @($supplements.Entries | Where-Object { $_.Name -eq $package.name -and $_.Version -eq $package.version } | ForEach-Object Files)
     if (-not $files.Count -and -not $extra.Count) { throw "Dependency license text absent: $($package.name)" }
     foreach ($text in $extra) {
-        if ((Get-FileHash -LiteralPath (Join-Path "$repository/rust" $text.Path)).Hash -ne $text.SHA256) { throw 'Supplemental notice differs from provenance.' }
+        if ((Get-FileHash -LiteralPath (Join-Path $repository $text.Path)).Hash -ne $text.SHA256) { throw 'Supplemental notice differs from provenance.' }
     }
     $active = [regex]::IsMatch($tree, '(?m)(?:^|[\s─])' + [regex]::Escape($package.name + ' v' + $package.version) + '(?:\s|$)')
     $native = @(Get-ChildItem -LiteralPath $directory -Recurse -File | Where-Object { $_.Extension -in '.c','.h','.cpp','.cc','.cxx','.S','.asm','.dll','.lib','.a','.o','.exe' })

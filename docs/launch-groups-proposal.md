@@ -1,6 +1,6 @@
 # 启动组合：功能评估与实施方案
 
-状态：首版已实现，已通过自动检查、组件拖动、真实软件及本机 helper 的真实 UAC 专项，尚未发布；适用范围见实施记录。日期：2026-11-16。基线：`main` / `63763d3`（v0.10.0 发布记录），开发分支：`codex/launch-groups`。
+启动组合自 v0.11.0 起提供。首版通过自动检查、组件拖动、真实软件和本机 helper 的真实 UAC 专项，适用范围见实施记录。首轮设计始于 2026-11-16，基线为 `main` / `63763d3`（v0.10.0 发布记录）。
 
 ## 1. 建议与价值判断
 
@@ -112,7 +112,7 @@ Velo 内部需做到：
 - 新增 `platform/windows/processes.rs`：进程快照、用户/会话校验、程序身份解析；Win32 句柄用 RAII 释放，FFI 边界给出必要的 SAFETY 注释。
 - 扩展 `core/service.rs`：接收类型明确的单应用/组合请求，生成 `run_id`，安排有界任务、汇总结果、串行提交历史。此处只承担协调；不把整套组合规则堆入服务或 `main.rs`。
 - 搜索层增加独立的组合索引与有类型的候选项，例如 `Application` / `SystemTool` / `LaunchGroup`；复用现有归一化和匹配规则，不能伪造 `AppItem.path` 为可执行的组合命令。
-- `business.rs`、`ui.rs` 与 `rust/ui/` 接入管理页面、搜索类型和结果展示；UI 回调只投递命令，进程查询、快捷方式解析和写盘全部在后台。
+- `business.rs`、`ui.rs` 与 `ui/` 接入管理页面、搜索类型和结果展示；UI 回调只投递命令，进程查询、快捷方式解析和写盘全部在后台。
 
 最多 3 个 Shell 工作槽仅在有批次时工作，每个线程创建并释放自己的 COM STA；不跨线程传递 COM 对象，不为每个成员创建无界线程。优先复用既有模块和标准库，实现小型固定调度，暂不引入异步运行时或通用工作流框架。调度和存储协调不能在 UI 线程等待 Shell 或持锁执行 Shell。
 
@@ -219,11 +219,10 @@ Velo 内部需做到：
 实现阶段按仓库入口执行：
 
 ```powershell
-$env:GOTOOLCHAIN = 'go1.25.6'
 ./scripts/verify-rust.ps1 -Product -SmokeTest
-# 如果修改共享验证工具或 Go oracle，再追加：
-./scripts/verify.ps1 -SkipBuild
 ```
+
+此入口从仓库根目录运行，包含固化兼容基线检查，不再运行旧 Go oracle。
 
 两种渲染器均需完整检查和实际 UI 截图；Windows 10/11 在当前可用环境分别验证。记录基线与新构建身份、渲染器、进程规模、样本范围，以及隐藏空闲/触发时 CPU、PrivateBytes、线程/句柄和派发延迟。不把设计上限、估算工期或历史性能写成已验证结果。测试使用独立 `--instance-id` 与 `--data-dir`，必要时独立热键，完成后仅清理本次创建的 helper 和实例。
 
@@ -232,14 +231,14 @@ $env:GOTOOLCHAIN = 'go1.25.6'
 ## 8. 本轮评估依据
 
 - [当前产品与发布状态](../README.md)、[用户可见行为和数据位置](user-guide.md)、[Rust 开发与验证入口](development.md)。
-- [重构计划](rust-slint-refactor-plan.md)：最新 Rust 发布状态及历史迁移边界；[Rust 工程说明](../rust/README.md)：线程、启动、数据与原生调用约束。
-- [应用身份](../rust/src/core/model.rs)、[导入与成员来源](../rust/src/core/library.rs)、[索引和去重](../rust/src/core/indexer.rs)：现有 ID 由目标路径与参数决定。
-- [搜索与首页快照](../rust/src/core/catalog.rs)、[搜索规则](../rust/src/core/search.rs)、[历史学习](../rust/src/core/history.rs)：复用规则及查询污染边界。
-- [命令准备](../rust/src/core/launch.rs)、[Windows Shell 调用](../rust/src/platform/windows/launch.rs)：Shell 成功仅表示请求被接受。
-- [后台服务](../rust/src/core/service.rs)：单项忙碌状态、队列容量、事件合并、历史提交；[业务适配](../rust/src/business.rs)、[生命周期](../rust/src/lifecycle.rs)：选择、输入清理、显隐与迟到失败恢复。
-- [现有数据契约](../rust/src/core/data.rs)、[原子存储](../rust/src/core/storage.rs)、[锁定依赖](../rust/Cargo.toml)：新增文件隔离和依赖复用。
+- [重构计划](rust-slint-refactor-plan.md)：最新 Rust 发布状态及历史迁移边界；[Rust 工程说明](rust-engineering.md)：线程、启动、数据与原生调用约束。
+- [应用身份](../src/core/model.rs)、[导入与成员来源](../src/core/library.rs)、[索引和去重](../src/core/indexer.rs)：现有 ID 由目标路径与参数决定。
+- [搜索与首页快照](../src/core/catalog.rs)、[搜索规则](../src/core/search.rs)、[历史学习](../src/core/history.rs)：复用规则及查询污染边界。
+- [命令准备](../src/core/launch.rs)、[Windows Shell 调用](../src/platform/windows/launch.rs)：Shell 成功仅表示请求被接受。
+- [后台服务](../src/core/service.rs)：单项忙碌状态、队列容量、事件合并、历史提交；[业务适配](../src/business.rs)、[生命周期](../src/lifecycle.rs)：选择、输入清理、显隐与迟到失败恢复。
+- [现有数据契约](../src/core/data.rs)、[原子存储](../src/core/storage.rs)、[锁定依赖](../Cargo.toml)：新增文件隔离和依赖复用。
 
-## 9. 实施进度与验证（未发布）
+## 9. 实施进度与验证
 
 按用户补充的简单拖放要求，先交付可独立验证的基础模块：
 

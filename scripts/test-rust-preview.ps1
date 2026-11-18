@@ -7,12 +7,12 @@ param(
 $ErrorActionPreference = 'Stop'
 . (Join-Path $PSScriptRoot 'lib/rust-license-policy.ps1')
 $repository = Split-Path -Parent $PSScriptRoot
-$root = (Resolve-Path -LiteralPath (Join-Path $repository 'rust/target')).Path
+$root = (Resolve-Path -LiteralPath (Join-Path $repository 'target')).Path
 $OutputDirectory = $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($OutputDirectory)
 $parent = (Resolve-Path -LiteralPath (Split-Path -Parent $OutputDirectory)).Path
 if (-not $OutputDirectory.StartsWith($root + '\', [StringComparison]::OrdinalIgnoreCase) -or
     ($parent -ne $root -and -not $parent.StartsWith($root + '\', [StringComparison]::OrdinalIgnoreCase))) {
-    throw 'Preview verification must stay inside rust/target.'
+    throw 'Preview verification must stay inside target.'
 }
 if (Test-Path -LiteralPath $OutputDirectory) { throw 'Use a fresh verification directory.' }
 New-Item -ItemType Directory -Path $OutputDirectory | Out-Null
@@ -71,7 +71,7 @@ try {
     if (-not $package.InternalValidationOnly -or $package.RedistributionCleared -or $package.G4Passed -or $package.Renderer -ne $Renderer) {
         throw 'Preview scope or renderer identity was misclassified.'
     }
-    $policy = Get-Content -Raw -LiteralPath (Join-Path $repository 'rust/windows/release-policy.json') | ConvertFrom-Json
+    $policy = Get-Content -Raw -LiteralPath (Join-Path $repository 'windows/release-policy.json') | ConvertFrom-Json
     if ($package.DefaultRenderer -ne $policy.DefaultRenderer) { throw 'Package default renderer differs from accepted policy.' }
     if (@($package.MissingLicenseTexts).Count -ne 0 -or $package.Version -notmatch '^\d+\.\d+\.\d+$') { throw 'Preview lacks license text coverage or synchronized version metadata.' }
     $reader = [IO.StreamReader]::new($zip.GetEntry('dependency-inventory.json').Open())

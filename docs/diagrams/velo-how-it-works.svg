@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="860" viewBox="0 0 1200 860" role="img" aria-labelledby="title desc">
+<title id="title">从呼出到启动，都在本机</title>
+<desc id="desc">单进程内，Slint 通过 Rust 界面适配查询内存快照；有界后台任务负责索引、Windows 启动与原子保存。外部 Everything 为默认关闭的可选连接。</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/></marker></defs>
+<style>
+text{font-family:"Microsoft YaHei","Segoe UI",sans-serif;fill:#162b45}
+.title{font-size:30px;font-weight:700}.subtitle{font-size:18px;fill:#52657b}
+.process{font-size:20px;font-weight:600}.label{font-size:16px;fill:#52657b}
+.card{fill:white;stroke:#ced9e6;stroke-width:1.5}.card-title{font-size:22px;font-weight:600}
+.code{font-family:Consolas,"Cascadia Code",monospace;font-size:15px;fill:#476380}
+.detail{font-size:16px;fill:#52657b}.external-title{font-size:18px;font-weight:600}
+.edge{fill:none;stroke:#64748b;stroke-width:2}.edge-label{font-size:13px;fill:#52657b}
+.boundary{font-size:15px;fill:#52657b}.footer{font-size:16px;fill:#52657b}
+</style>
+<rect width="1200" height="860" rx="24" fill="#f7f9fc"/>
+<text x="52" y="58" class="title" text-anchor="start">从呼出到启动，都在本机</text>
+<text x="52" y="94" class="subtitle" text-anchor="start">输入只查内存；扫描、系统交互与保存交给后台。</text>
+<rect x="32" y="124" width="1136" height="558" rx="22" fill="#edf3fb" stroke="#c7d7eb" stroke-width="1.5"/>
+<text x="64" y="164" class="process" text-anchor="start">Velo · 单进程 Rust + Slint</text>
+<text x="64" y="202" class="label" text-anchor="start">界面线程 · 输入与模型更新</text>
+<rect x="64" y="228" width="288" height="124" rx="14" class="card"/>
+<rect x="64" y="248" width="4" height="84" rx="2" fill="#2979d7"/>
+<text x="84" y="263" class="card-title" text-anchor="start">Slint 界面</text>
+<text x="84" y="294" class="code" text-anchor="start">ui/</text>
+<text x="84" y="326" class="detail" text-anchor="start">Alt+Space · 搜索 · 选择结果</text>
+<rect x="456" y="228" width="288" height="124" rx="14" class="card"/>
+<rect x="456" y="248" width="4" height="84" rx="2" fill="#2979d7"/>
+<text x="476" y="263" class="card-title" text-anchor="start">Rust 界面适配</text>
+<text x="476" y="294" class="code" text-anchor="start">src/business.rs · src/ui.rs</text>
+<text x="476" y="326" class="detail" text-anchor="start">回调、显示行与会话状态</text>
+<rect x="848" y="228" width="288" height="124" rx="14" class="card"/>
+<rect x="848" y="248" width="4" height="84" rx="2" fill="#2979d7"/>
+<text x="868" y="263" class="card-title" text-anchor="start">内存搜索快照</text>
+<text x="868" y="294" class="code" text-anchor="start">src/core/search.rs</text>
+<text x="868" y="326" class="detail" text-anchor="start">名称 · 拼音 · 历史排序</text>
+<rect x="64" y="494" width="288" height="124" rx="14" class="card"/>
+<rect x="64" y="514" width="4" height="84" rx="2" fill="#16847a"/>
+<text x="84" y="529" class="card-title" text-anchor="start">Windows 平台层</text>
+<text x="84" y="560" class="code" text-anchor="start">src/platform/windows/</text>
+<text x="84" y="592" class="detail" text-anchor="start">窗口 · 热键 · Shell · COM</text>
+<rect x="456" y="494" width="288" height="124" rx="14" class="card"/>
+<rect x="456" y="514" width="4" height="84" rx="2" fill="#16847a"/>
+<text x="476" y="529" class="card-title" text-anchor="start">有界后台任务</text>
+<text x="476" y="560" class="code" text-anchor="start">src/core/service.rs</text>
+<text x="476" y="592" class="detail" text-anchor="start">扫描 · 图标 · 启动 · 写入</text>
+<rect x="848" y="494" width="288" height="124" rx="14" class="card"/>
+<rect x="848" y="514" width="4" height="84" rx="2" fill="#16847a"/>
+<text x="868" y="529" class="card-title" text-anchor="start">原子存储</text>
+<text x="868" y="560" class="code" text-anchor="start">src/core/storage.rs</text>
+<text x="868" y="592" class="detail" text-anchor="start">临时文件 → flush → 替换</text>
+<path d="M 352 290 H 456" class="edge" marker-end="url(#arrow)" marker-start="url(#arrow)"/><text x="404" y="277" class="edge-label" text-anchor="middle">回调 / 模型</text>
+<path d="M 744 290 H 848" class="edge" marker-end="url(#arrow)" marker-start="url(#arrow)"/><text x="796" y="277" class="edge-label" text-anchor="middle">查询 / 结果</text>
+<path d="M 600 352 V 494" class="edge" marker-end="url(#arrow)" marker-start="url(#arrow)"/><text x="614" y="423" class="edge-label" text-anchor="start">命令 / 事件</text>
+<path d="M 208 494 V 352" class="edge" marker-end="url(#arrow)"/><text x="222" y="423" class="edge-label" text-anchor="start">热键 / 窗口</text>
+<path d="M 456 548 H 352" class="edge" marker-end="url(#arrow)"/><text x="404" y="535" class="edge-label" text-anchor="middle">Shell / COM</text>
+<path d="M 744 586 H 848" class="edge" marker-end="url(#arrow)"/><text x="796" y="573" class="edge-label" text-anchor="middle">串行提交</text>
+<path d="M 744 520 H 790 V 391 H 992 V 352" class="edge" marker-end="url(#arrow)"/><text x="997" y="414" class="edge-label" text-anchor="middle">索引快照更新</text>
+<text x="600" y="658" class="boundary" text-anchor="middle">后台结果回到事件循环；后台线程不直接修改 Slint 组件。</text>
+<rect x="64" y="730" width="288" height="84" rx="14" class="card"/>
+<rect x="64" y="750" width="4" height="44" rx="2" fill="#8b6bc5"/>
+<text x="84" y="763" class="external-title" text-anchor="start">Everything 默认实例</text>
+<text x="84" y="790" class="detail" text-anchor="start">可选外部进程 · 默认关闭</text>
+<rect x="848" y="730" width="288" height="84" rx="14" class="card"/>
+<rect x="848" y="750" width="4" height="44" rx="2" fill="#8b6bc5"/>
+<text x="868" y="763" class="external-title" text-anchor="start">%LOCALAPPDATA%\Velo</text>
+<text x="868" y="790" class="detail" text-anchor="start">配置 · 索引 · 历史 · 应用库</text>
+<path d="M 208 618 V 730" class="edge" marker-end="url(#arrow)" marker-start="url(#arrow)" stroke-dasharray="6 5"/><text x="222" y="707" class="edge-label" text-anchor="start">可选 IPC</text>
+<path d="M 992 618 V 730" class="edge" marker-end="url(#arrow)"/><text x="1006" y="707" class="edge-label" text-anchor="start">本地文件</text>
+<text x="600" y="849" class="footer" text-anchor="middle">应用搜索不扫描磁盘 · 图标缓存有预算 · 过期结果按 generation 丢弃</text>
+</svg>

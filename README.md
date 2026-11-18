@@ -1,54 +1,192 @@
-# Velo
+<p align="center">
+  <img src="ui/assets/logo.png" alt="Velo 标志" width="128" height="128" />
+</p>
 
-[English](README.en.md) · [下载](https://github.com/HBLADEH/velo-launcher/releases/latest) · [用户指南](docs/user-guide.md)
+<h1 align="center">Velo</h1>
+<p align="center"><strong>按下快捷键，即刻开启所想。</strong><br /><sub>Fast. Light. Ready.</sub></p>
+<p align="center"><strong>简体中文</strong> · <a href="README.en.md">English</a></p>
+<p align="center">
+  <a href="https://github.com/HBLADEH/velo-launcher/actions/workflows/ci.yml?query=branch%3Amain"><img src="https://github.com/HBLADEH/velo-launcher/actions/workflows/ci.yml/badge.svg?branch=main" alt="Rust Windows CI 状态" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT 许可证" /></a>
+  <img src="https://img.shields.io/badge/platform-Windows%2010%20%2F%2011-0078D4" alt="Windows 10 / 11" />
+  <img src="https://img.shields.io/badge/built%20with-Rust%20%2B%20Slint-dea584" alt="Rust + Slint" />
+</p>
+<p align="center">
+  <a href="https://github.com/HBLADEH/velo-launcher/releases">下载</a> ·
+  <a href="#快速上手">快速上手</a> ·
+  <a href="#velo-是怎么实现的">实现原理</a> ·
+  <a href="docs/user-guide.md">用户指南</a> ·
+  <a href="CONTRIBUTING.md">参与贡献</a> ·
+  <a href="https://github.com/HBLADEH/velo-launcher/issues">问题反馈</a>
+</p>
 
-面向 **Windows 10/11 x64** 的中文应用启动器。按 `Alt+Space` 呼出，输入应用名称、拼音或首字母，按 `Enter` 启动。
+Velo 是一款面向 **Windows 10 / 11 x64** 的中文应用启动器，使用 **Rust + Slint** 构建。按下 `Alt+Space`，输入应用名称、拼音或首字母，再按 `Enter` 启动；常用应用、首页固定项与 Windows 系统快捷集中在一个窗口中。
 
-**Velo v0.10.0 延续 Go 0.9.x 的版本顺序，正式切换到 Rust + Slint。** 程序采用原生单进程，不需要 Go、Node.js、WebView2 或本地 HTTP 服务。Go/Wails 版本停止维护，已发布的 Rust 0.1.0 用户也可升级，见 [v0.10.0 版本说明](docs/releases/0.10.0.md)。
+原生界面与业务逻辑运行在同一个进程内，设置、应用索引和使用记录保存在本机。支持列表与网格、浅色与深色主题，软件界面为简体中文；本页为主要文档，同时提供 [English README](README.en.md)。
 
-## 安装
+> **v0.11.0** 新增 Everything 文件搜索与启动组合。安装包暂未签名。详见 [v0.11.0 版本说明](docs/releases/0.11.0.md)。
 
-从 [最新发布](https://github.com/HBLADEH/velo-launcher/releases/latest) 下载 `velo-rust-x64-installer.exe`，运行安装器并确认 Windows UAC。默认使用 Software 渲染器；`velo-rust-femtovg-x64-installer.exe` 是使用 OpenGL 的替代构建，切换前请从托盘完全退出 Velo。
+## 界面预览
 
-提供系统安装版。发布页同时提供 `SHA256SUMS.txt`、依赖许可包和构建清单，可用 `Get-FileHash` 核对安装包。`velo-launcher-amd64-installer.exe` 是默认 Software 安装器的相同字节副本，供旧 Go 更新器识别。
+以下为 **0.11.0 Software 开发构建**的真实 Windows 窗口，使用独立演示配置、固定项和使用记录。演示环境启用了 Everything，该功能默认关闭。图片按原始像素保存为 PNG；构建身份与完整场景见[截图说明](docs/images/README.md)。
 
-官方 Go **v0.9.11 系统安装**可在“设置 → 关于”检查更新，阅读迁移说明后下载安装；正常以普通权限运行、安装目录不可写时，旧更新器使用兼容安装包原位升级。也可先从托盘退出旧 Velo，再手动运行默认安装器。其他旧构建请先卸载并保留数据，再安装；免安装版请退出后手动安装，不使用旧版“下载并安装”。迁移继续保留自定义快捷键，新安装默认 `Alt+Space`。
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/images/home-dark.png" />
+    <source media="(prefers-color-scheme: light)" srcset="docs/images/home-light.png" />
+    <img src="docs/images/home-light.png" alt="Velo Rust 浅色首页：固定应用、常用应用与 Windows 系统快捷" width="640" />
+  </picture>
+</p>
+<p align="center"><em>首页：固定、常用与系统快捷集中展示，更多内容可滚动查看。</em><br /><a href="docs/images/home-light.png">查看浅色首页</a> · <a href="docs/images/home-dark.png">查看深色首页</a></p>
 
-设置、历史、自定义应用和固定项继续位于 `%LOCALAPPDATA%\Velo`。Rust 首次打开数据前会将原文快照保存在 `%LOCALAPPDATA%\VeloRustMigrationBackups`，备份失败时停止初始化。卸载保留用户数据与程序恢复档案。
+<table>
+  <tr><th>列表搜索</th><th>网格搜索</th></tr>
+  <tr>
+    <td valign="top"><a href="docs/images/search-list.png"><img src="docs/images/search-list.png" alt="列表搜索公开演示应用，显示名称、路径和选中状态" width="420" /></a><br />名称、路径与图标一目了然，方向键选择、Enter 启动。</td>
+    <td valign="top"><a href="docs/images/search-grid.png"><img src="docs/images/search-grid.png" alt="同一组演示结果以六列网格排列" width="420" /></a><br />同一搜索排名，图标与名称按网格排列。</td>
+  </tr>
+  <tr><th>Everything 文件搜索 · 0.11.0 新增</th><th>启动组合 · 0.11.0 新增</th></tr>
+  <tr>
+    <td valign="top"><a href="docs/images/everything-search.png"><img src="docs/images/everything-search.png" alt="文件模式从隔离目录查询到六项公开示例文件和文件夹" width="420" /></a><br />Tab 切换文件模式，搜索文件与文件夹，支持打开、定位和复制路径。</td>
+    <td valign="top"><a href="docs/images/launch-groups.png"><img src="docs/images/launch-groups.png" alt="专注工作组合：左侧筛选应用库，右侧配置记事本与 Chrome 两个成员" width="420" /></a><br />从应用库拖入成员，保存后搜索组合名称即可批量打开。</td>
+  </tr>
+  <tr><th>原生右键菜单</th><th>外观设置</th></tr>
+  <tr>
+    <td valign="top"><a href="docs/images/context-menu.png"><img src="docs/images/context-menu.png" alt="7-Zip 的 Windows 原生菜单，包含打开、安装目录、管理员启动和取消置顶" width="420" /></a><br />打开安装目录、以管理员权限启动，或管理首页固定项。</td>
+    <td valign="top"><a href="docs/images/appearance.png"><img src="docs/images/appearance.png" alt="外观设置中的 Windows 蓝主题预览、浅色主题和网格排列" width="420" /></a><br />选择主题与结果排列，保存后生效。</td>
+  </tr>
+</table>
 
-## 功能
+自定义应用、配置备份、文件搜索开关及版本页面的原图见[用户指南](docs/user-guide.md)与[截图目录](docs/images/README.md)。
 
-- 中文、英文、拼音、首字母、关键词及模糊搜索，结合本地使用历史排序。
-- 索引开始菜单、桌面、Windows Apps、Program Files 和自定义目录。
-- 固定与常用应用、系统快捷入口、自定义应用及文件拖入。
-- 列表与网格、键盘导航、原生右键菜单、托盘与全局快捷键。
-- 浅色、深色、跟随系统主题、设置备份及带 SHA-256 校验的 Rust 更新。
+## 主要功能
 
-本分支新增 **启动组合（尚未发布）**：命名后从带图标的应用库拖入成员，保存后搜索组合名称即可批量打开，并跳过已运行的成员。见[操作说明](docs/user-guide.md#启动组合本分支新增尚未发布)及[设计和验证范围](docs/launch-groups-proposal.md)。
+- **键盘操作**：全局快捷键呼出，方向键选择，`Enter` 启动；支持失焦隐藏、托盘入口和快捷键录制。
+- **窗口与会话**：拖动顶部标志、标题或空白区域移动窗口。隐藏后再次呼出，保留当前页面、搜索内容、设置草稿和更新进度。
+- **应用搜索**：支持中文、英文、拼音、首字母、关键词、模糊匹配和单字符拼写容错，结合启动频率、最近使用和查询历史排序。
+- **自动索引**：发现开始菜单、桌面、Windows Apps、Program Files 和自定义目录中的应用；合并重复项，按设置过滤卸载、帮助、更新等辅助入口。
+- **快捷访问**：固定项与常用应用集中展示；内置系统快捷支持中文、英文、拼音及缩写搜索。
+- **候选项操作**：列表与网格共用搜索排名；右键可打开应用、打开安装目录、以管理员权限启动或置顶到首页。
+- **自定义应用**：拖入文件、选择文件或粘贴路径，将扫描范围外的 `.exe` / `.lnk` 加入搜索；自定义应用与首页固定分别管理。
+- **外观与偏好**：浅色、深色、跟随系统主题，列表与网格排列，以及登录启动、结果数量、搜索权重和索引刷新设置。
+- **本地数据与备份**：数据保存在本机，索引在后台更新，图标按可见范围加载；可以备份已保存的配置。
+- **应用更新**：检查 GitHub Releases，下载后校验 SHA-256，安装前备份配置，通过系统安装器升级并保留原有设置。
 
-![Rust 界面示例，使用合成数据](docs/baselines/2026-11-07-slint-rs13/completion-2026-11-12/static/software/light-home.png)
+**0.11.0 新增功能**
 
-## 开发
+- **Everything 文件搜索**：在设置 → 搜索启用并保存后，按 `Tab` 切换文件模式。支持名称、路径和 Everything 语法，以及打开、定位、复制路径和分页。默认关闭，需自行安装并运行 Everything 默认实例；见[使用说明](docs/user-guide.md#everything-文件搜索)。
+- **启动组合**：为组合命名，从带图标的应用库拖入至少两个成员，保存后搜索组合名称即可批量打开；跳过已运行成员，并保留逐项结果和失败重试入口。见[使用说明](docs/user-guide.md#启动组合)。
 
-产品源码位于 `rust/`。工具链固定在 `rust/rust-toolchain.toml` 和 `rust/windows-toolchain.json`；请先按 [开发说明](docs/development.md) 安装匹配版本，使用 PowerShell 7.4+。
+## 下载与安装
+
+前往 [Releases](https://github.com/HBLADEH/velo-launcher/releases/latest) 下载 Windows x64 系统安装器：
+
+- **默认安装器**：`velo-rust-x64-installer.exe`，使用 Software 渲染器。
+- **替代安装器**：`velo-rust-femtovg-x64-installer.exe`，使用 FemtoVG / OpenGL 渲染器。
+
+运行安装向导并确认 Windows UAC。升级或切换渲染器前，请从托盘完全退出 Velo。当前发行提供系统安装版；发布页的 ZIP 为安装载荷，不能作为免安装版直接运行。
+
+发布页同时提供 `SHA256SUMS.txt`、依赖许可包和构建清单，可使用 `Get-FileHash -Algorithm SHA256` 核对安装包。系统要求为 Windows 10 / 11 x64，目前不支持 macOS / Linux。
+
+用户数据位于 `%LOCALAPPDATA%\Velo`。首次初始化前会在同级 `VeloRustMigrationBackups` 目录保留原始数据快照，备份失败时停止初始化；卸载保留用户数据与程序恢复档案。旧版本的升级步骤见 [v0.10.0 安装与迁移说明](docs/releases/0.10.0.md)。
+
+## 快速上手
+
+1. 安装并启动 Velo，等待首次索引完成；后续启动优先读取缓存。
+2. 按 `Alt+Space` 呼出窗口，输入应用名称，例如 `code`，也可以输入中文、拼音或首字母。
+3. 使用方向键选择结果，按 `Enter` 启动；点击星标可固定到首页。
+4. 按 `Ctrl+,` 打开设置，调整快捷键、主题、搜索偏好和索引目录，点击“保存设置”生效。
+
+常用操作：
+
+- **显示 / 隐藏**：`Alt+Space`，可在设置 → 快捷键中重新录制。
+- **选择结果**：`↑` / `↓`；首页与网格也支持 `←` / `→`。
+- **启动选中项**：`Enter`；默认也支持 `Space`。
+- **清空 / 返回 / 隐藏**：`Esc`，按当前页面和输入状态逐级处理。
+- **候选项菜单**：右键或 `Shift+F10`。
+- **设置**：`Ctrl+,` 或齿轮按钮；备份位于设置 → 备份，更新位于设置 → 关于。
+- **完全退出**：通知区域的 Velo 托盘图标 → 右键 → 退出。
+
+如需输入 `visual studio` 等带空格的查询，在设置 → 常规关闭“按空格键启动选中应用”。输入法合成期间，确认、空格、方向键和 `Esc` 优先交给输入法。Everything 文件模式的空格始终用于输入。
+
+可开启“全屏时禁止快捷键呼出”，托盘入口仍可使用。更多操作、数据目录与常见问题见[用户指南](docs/user-guide.md)。
+
+## Velo 是怎么实现的？
+
+先在后台把应用整理成目录，输入时从内存中查找，确认后交给 Windows 打开。**Slint 负责显示，Rust 组织业务，Windows 平台层处理系统交互。**
+
+<p align="center">
+  <img src="docs/diagrams/velo-how-it-works.svg" alt="Velo 原生单进程流程图：Slint 界面经 Rust 界面适配查询内存搜索快照；有界后台任务处理索引、Windows 启动及原子存储，可选连接外部 Everything 实例" width="1100" />
+</p>
+
+### 各层负责什么
+
+- **界面**：[ui/](ui/) 定义页面、控件、主题与动效；[src/ui.rs](src/ui.rs)、[src/business.rs](src/business.rs) 等模块连接 Slint 模型与业务回调。
+- **业务与数据**：[src/core/](src/core/) 管理配置、搜索、历史、应用库、索引、启动组合、文件查询和更新；[service.rs](src/core/service.rs) 组织有界后台任务与状态快照。
+- **Windows 集成**：[src/platform/windows/](src/platform/windows/) 集中管理窗口、IME、热键、托盘、Shell、COM、图标及安装更新所需的系统调用。
+- **程序入口**：[src/main.rs](src/main.rs) 解析启动参数、组装组件并运行事件循环；Slint 页面和固定资源在编译时嵌入程序。
+
+### 跟着一次使用，看看代码怎么跑
+
+1. **建目录**：读取配置、应用索引、应用库和历史，在后台扫描应用来源；去重、过滤并预先归一化名称、关键词和拼音，发布内存快照。
+2. **找应用**：搜索框回调进入 [search.rs](src/core/search.rs)，对内存快照匹配并排序，再把必要的显示行送回 Slint。输入时不扫描磁盘或提取图标；图标按可见范围请求并受缓存预算约束。
+3. **启动并记录**：确认选中项后，后台任务通过 Windows Shell 发出启动请求。请求被接受后记录使用历史，后续搜索和常用列表据此调整；失败时保留原有数据并显示提示。
+
+扫描、Shell 元数据、图标提取和写盘在后台处理，结果回到 Slint 事件循环。查询与索引通过 generation 等机制拒绝过期结果，避免迟到任务覆盖新状态。保存 JSON 时先写同目录临时文件并 flush，再原子替换；保存成功后发布新状态。
+
+Everything 是可选的外部检索服务，通过 Windows IPC 按需连接；关闭集成时不创建文件查询线程。文件结果使用独立模型，不写入应用库或应用使用历史。流程图的编辑与重新生成方式见[图示说明](docs/diagrams/README.md)。
+
+## 开发与构建
+
+工程是仓库根目录下的单一 Cargo 应用。开发需要 **Windows x64、PowerShell 7.4+、Rust 1.99.1、MSVC 14.50.35717 和 Windows SDK 10.0.26100.0**；精确工具链由 `rust-toolchain.toml`、`windows-toolchain.json` 与 `Cargo.lock` 锁定，安装步骤见[开发说明](docs/development.md)。
 
 ```powershell
-$env:GOTOOLCHAIN = 'go1.25.6' # 仅用于历史兼容契约测试
+git clone https://github.com/HBLADEH/velo-launcher.git
+cd velo-launcher
+
+# 编译并启动独立预览，使用 Ctrl+Alt+K 呼出
+./scripts/run-preview.ps1 -Build
+
+# 两种渲染器的格式、clippy、测试、Release 构建与界面冒烟
 ./scripts/verify-rust.ps1 -Product -SmokeTest
 ```
 
-两种渲染器分别构建到 `rust/target/product-artifacts/`。界面开发可使用独立预览身份，命令及参数见 [Rust 工程说明](rust/README.md)。测试必须使用独立实例和数据目录，不得访问正式数据。
+两种渲染器分别生成到 `target/product-artifacts/`；预览数据保存在 `.dev-data/`。测试使用独立实例、数据目录及必要的独立热键，不得访问正式数据。清理编译缓存使用 `./scripts/clean.ps1`；仅预览构建时使用的 `-SkipChecks` 不作为完整验证证据。
 
-Go/Wails 源码与旧构建脚本仅作为历史兼容测试基线保留，见 [旧版说明](docs/legacy-go-wails.md)。
+```text
+src/                 Rust 入口、界面适配、业务与 Windows 平台层
+ui/                  Slint 页面、组件、主题与静态资源
+tests/               行为、数据、发现与页面回归测试
+examples/            显式运行的原生验证与测量辅助程序
+windows/             PE manifest、NSIS 安装器与安装事务
+licenses/            第三方许可与来源记录
+scripts/             构建、预览、测试、打包与测量入口
+docs/                用户文档、工程说明、版本说明与验证证据
+```
 
-## 验证与限制
+## 文档
 
-[RS-14 / G4](docs/baselines/2026-11-07-slint-rs14/machine-completion-2026-11-14/g4-acceptance.md) 已在当前 Windows 11 / Intel UHD 630 宿主机和 Windows 10 测试虚拟机范围放行，其他不可用实体硬件未验证。真实搜狗输入、系统接管、故障恢复、升级、回退和卸载均有记录。
+- [用户指南](docs/user-guide.md)：自定义应用、文件搜索、启动组合、备份、更新与常见问题。
+- [开发说明](docs/development.md)：环境准备、日常预览、验证、清理与打包。
+- [Rust 工程说明](docs/rust-engineering.md)：模块职责、线程边界、实例隔离与兼容契约。
+- [系统快捷入口](docs/system-shortcuts.md)：支持的入口及 Windows 兼容性。
+- [验证入口](docs/verification.md)：自动检查与人工验证范围。
+- [完整文档索引](docs/README.md)：当前功能说明、发行记录和历史验收资料。
 
-渲染器与动画存在资源和帧节奏取舍，历史性能证据见 [重构计划](docs/rust-slint-refactor-plan.md)，不承诺所有设备均达到同一内存预算。
+## 项目状态
 
-## 贡献与许可
+Velo 专注于 Windows 本地应用搜索与启动，尚未提供插件或云同步。Software 为默认渲染器，FemtoVG 为 OpenGL 替代；两种路径分别构建和验证。
 
-欢迎通过 [Issues](https://github.com/HBLADEH/velo-launcher/issues) 反馈问题，附 Windows 版本、Velo 版本和渲染器；分享记录前移除个人信息。开发约定见 [贡献指南](CONTRIBUTING.md)。
+现有发行验收覆盖 Windows 11 / Intel UHD 630 宿主机与隔离的 Windows 10 测试虚拟机，其他不可用实体硬件未验证。渲染器的内存和动画帧节奏存在取舍，实测条件与限制见[验证记录](docs/verification.md)及[基线索引](docs/baselines/README.md)，不承诺所有设备达到相同资源预算。
 
-Velo 使用 [MIT](LICENSE) 许可证。第三方依赖遵循各自条款；Slint 使用 Royalty-free 2.0，应用设置 → 关于提供实际 AboutSlint，完整文本随安装器和许可包分发。[Fluent 图标](rust/ui/assets/fluent/LICENSE.txt) 使用 MIT 许可。
+## 参与贡献
+
+欢迎使用中文提交缺陷报告、功能建议、文档改进和 Pull Request，也接受英文反馈。开始前请阅读[贡献指南](CONTRIBUTING.md)。
+
+报告问题请前往 [Issues](https://github.com/HBLADEH/velo-launcher/issues)，附 Windows 版本、Velo 版本、渲染器、复现步骤和预期 / 实际结果。分享日志或截图前，请移除个人路径及其他敏感信息。
+
+## 许可证与致谢
+
+Velo 采用 [MIT License](LICENSE)，第三方依赖遵循各自条款。
+
+界面使用 [Slint](https://slint.dev/)（Royalty-free 2.0）和 [Microsoft Fluent UI System Icons](https://github.com/microsoft/fluentui-system-icons)（MIT）。设置 → 关于保留实际 `AboutSlint` 与第三方许可入口；完整许可随安装器和许可包分发。静态图标来源见[资源说明](ui/assets/README.md)，完整依赖许可见 [licenses/](licenses/)。

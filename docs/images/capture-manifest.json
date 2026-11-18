@@ -1,0 +1,162 @@
+{
+  "SchemaVersion": 1,
+  "DocumentationDate": "2026-11-18",
+  "Version": "0.11.0",
+  "Renderer": "software",
+  "Backend": "winit",
+  "SlintVersion": "1.18.1",
+  "Windows": {
+    "Caption": "Microsoft Windows 11 Pro Insider Preview",
+    "Version": "10.0.26340",
+    "BuildNumber": "26340"
+  },
+  "NativeDPI": 96,
+  "ScalePercent": 100,
+  "Language": "zh-CN",
+  "ExecutableSHA256": "13A52AEDB2ABF3DECC5E1FA223979F2E66B041EC198556F6803BF6050D8C6F73",
+  "BuildIdentitySHA256": "5AE09585E93100FBFB80701849423E9AA0E70FA2A3FA3D09E0386A8D678C36F7",
+  "VerificationSHA256": "0B17CCDD19C50345BFC2CC09755462F1B56A1329AFF87D583F90ED01838E98DD",
+  "BuildIdentity": "../baselines/2026-11-18-project-review/software-build-identity.json",
+  "WorkspaceDirty": true,
+  "DataScope": "Independent business-runtime instance; synthetic configuration, pins, history and custom applications; native installed-app discovery; public sample files only. No production user data directory used.",
+  "Everything": {
+    "Version": "1.4.1.1032",
+    "ExecutableSHA256": "F191F756996A14A11E5445FA7103D302EFD510CF2FBF920E6C0C8ED51D512E36",
+    "Scope": "Temporary default client with independent INI and a six-entry public folder index; existing service preserved."
+  },
+  "ImageProcessing": "Original native bitmap pixels encoded as PNG; no resizing, stitching or UI repainting. Native popup captured within the observed owner-window screen bounds.",
+  "Screenshots": [
+    {
+      "filename": "about.png",
+      "width": 640,
+      "height": 660,
+      "bytes": 58607,
+      "sha256": "c87c687b2cec02dec496750406776b0c87c267fdd3961e2e177d64bf84d7193f",
+      "source": "Windows Alt+PrintScreen clipboard bitmap",
+      "resampled": false,
+      "capturedAtUtc": "2026-11-17T18:51:12.799571+00:00",
+      "capturedAtShanghai": "2026-11-18T02:51:12.799571+08:00"
+    },
+    {
+      "filename": "appearance.png",
+      "width": 640,
+      "height": 660,
+      "bytes": 44602,
+      "sha256": "62a7d1ab537d4246a4851de83f47a47d4484e6f3fd15e93a6f1202da4a361d3d",
+      "source": "Windows Alt+PrintScreen clipboard bitmap",
+      "resampled": false,
+      "capturedAtUtc": "2026-11-17T18:50:19.312435+00:00",
+      "capturedAtShanghai": "2026-11-18T02:50:19.312435+08:00"
+    },
+    {
+      "filename": "config-backup.png",
+      "width": 640,
+      "height": 660,
+      "bytes": 82965,
+      "sha256": "2cbce323f173c8c7e6d604d20e3a28666fc58607e151251251970dac9eafeaf5",
+      "source": "Windows Alt+PrintScreen clipboard bitmap",
+      "resampled": false,
+      "capturedAtUtc": "2026-11-17T18:51:41.593768+00:00",
+      "capturedAtShanghai": "2026-11-18T02:51:41.593768+08:00"
+    },
+    {
+      "filename": "context-menu.png",
+      "width": 640,
+      "height": 480,
+      "bytes": 50972,
+      "sha256": "900004bb5d9b199bd40c940d34eb3f76e09c115cf61fced904cf9bf28c8dad41",
+      "source": "Native screen bitmap of the observed Velo window bounds, including its native popup",
+      "resampled": false,
+      "capturedAtUtc": "2026-11-17T18:55:25.509861+00:00",
+      "capturedAtShanghai": "2026-11-18T02:55:25.509861+08:00"
+    },
+    {
+      "filename": "custom-apps.png",
+      "width": 640,
+      "height": 660,
+      "bytes": 84346,
+      "sha256": "91417e00eab9791f853dd9b2d3662be0ea120f1eb279e52602979d6ec0d90639",
+      "source": "Windows Alt+PrintScreen clipboard bitmap",
+      "resampled": false,
+      "capturedAtUtc": "2026-11-17T18:46:31.094851+00:00",
+      "capturedAtShanghai": "2026-11-18T02:46:31.094851+08:00"
+    },
+    {
+      "filename": "everything-search.png",
+      "width": 640,
+      "height": 504,
+      "bytes": 59218,
+      "sha256": "a607cd613d9db1cd1dfe193e16a114eae8d93f394c72dbdfbc9ab913169053d1",
+      "source": "Windows Alt+PrintScreen clipboard bitmap",
+      "resampled": false,
+      "capturedAtUtc": "2026-11-17T18:49:30.052583+00:00",
+      "capturedAtShanghai": "2026-11-18T02:49:30.052583+08:00"
+    },
+    {
+      "filename": "everything-settings.png",
+      "width": 640,
+      "height": 660,
+      "bytes": 65195,
+      "sha256": "a0c5dacb7a88ad99e99b1d215c8bbc02331501777e30a4784c3b616ffac49334",
+      "source": "Windows Alt+PrintScreen clipboard bitmap",
+      "resampled": false,
+      "capturedAtUtc": "2026-11-17T18:50:47.728941+00:00",
+      "capturedAtShanghai": "2026-11-18T02:50:47.728941+08:00"
+    },
+    {
+      "filename": "home-dark.png",
+      "width": 640,
+      "height": 660,
+      "bytes": 75414,
+      "sha256": "06c20cb7618a7e349689df96e07cd934a9c6a5be5ca0cb0fa60fa43d3cb74baa",
+      "source": "Windows Alt+PrintScreen clipboard bitmap",
+      "resampled": false,
+      "capturedAtUtc": "2026-11-17T18:59:07.653618+00:00",
+      "capturedAtShanghai": "2026-11-18T02:59:07.653618+08:00"
+    },
+    {
+      "filename": "home-light.png",
+      "width": 640,
+      "height": 660,
+      "bytes": 73615,
+      "sha256": "38d0fe3e7b9f72f4d90fddfaa52cde1b60cfcdcb4fd25035c83dcf9912406dd9",
+      "source": "Windows Alt+PrintScreen clipboard bitmap",
+      "resampled": false,
+      "capturedAtUtc": "2026-11-17T18:45:54.041839+00:00",
+      "capturedAtShanghai": "2026-11-18T02:45:54.041839+08:00"
+    },
+    {
+      "filename": "launch-groups.png",
+      "width": 640,
+      "height": 660,
+      "bytes": 57362,
+      "sha256": "1a30f7231f7711c066ee89046e508be90ad73113bb236790460f78907540de5e",
+      "source": "Windows Alt+PrintScreen clipboard bitmap",
+      "resampled": false,
+      "capturedAtUtc": "2026-11-17T18:47:33.440495+00:00",
+      "capturedAtShanghai": "2026-11-18T02:47:33.440495+08:00"
+    },
+    {
+      "filename": "search-grid.png",
+      "width": 640,
+      "height": 316,
+      "bytes": 32500,
+      "sha256": "ccb1cbcda3b0367af133d722e1b0dc3370bf7f7f7a5ccc35cf6326a431123082",
+      "source": "Windows Alt+PrintScreen clipboard bitmap",
+      "resampled": false,
+      "capturedAtUtc": "2026-11-17T18:44:43.905216+00:00",
+      "capturedAtShanghai": "2026-11-18T02:44:43.905216+08:00"
+    },
+    {
+      "filename": "search-list.png",
+      "width": 640,
+      "height": 480,
+      "bytes": 52066,
+      "sha256": "bf43427e52ee61149e346582a9f8b50517907f7845694f80b63bf4b1f589f46b",
+      "source": "Windows Alt+PrintScreen clipboard bitmap",
+      "resampled": false,
+      "capturedAtUtc": "2026-11-17T18:53:00.435089+00:00",
+      "capturedAtShanghai": "2026-11-18T02:53:00.435089+08:00"
+    }
+  ]
+}

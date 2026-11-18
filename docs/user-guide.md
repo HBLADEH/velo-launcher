@@ -1,14 +1,14 @@
 # 用户指南
 
-[返回项目首页](../README.md)
+[返回项目首页](../README.md) · [文档索引](README.md) · [截图说明](images/README.md)
 
-## Velo v0.10.0 安装与迁移
+## 安装 Velo
 
-从[最新发布](https://github.com/HBLADEH/velo-launcher/releases/latest)下载 `velo-rust-x64-installer.exe`（Software 默认）并确认 UAC。FemtoVG / OpenGL 替代构建为 `velo-rust-femtovg-x64-installer.exe`，切换前从托盘完全退出。v0.10.0 提供系统安装版，新安装默认 `Alt+Space` 呼出；已有用户的快捷键继续保留。产品以 Rust 为主线，Go/Wails 0.9.x 停止维护；本文较早截图保留其原界面，仅供操作参照。
+从[最新发布](https://github.com/HBLADEH/velo-launcher/releases/latest)下载 `velo-rust-x64-installer.exe`（Software 默认）并确认 UAC。FemtoVG / OpenGL 替代构建为 `velo-rust-femtovg-x64-installer.exe`，切换前从托盘完全退出。当前提供系统安装版，新安装默认 `Alt+Space` 呼出；已有用户的快捷键继续保留。产品使用 Rust + Slint，界面为简体中文。
 
-v0.10.0 的数值高于 Go 0.9.x，旧版的自动检查或“设置 → 关于 → 检查更新”可以显示本次迁移说明。官方 Go v0.9.11 系统安装在普通权限运行、安装目录不可写时可通过旧更新器下载安装；兼容包 `velo-launcher-amd64-installer.exe` 与默认 Rust Software 包相同。其他旧构建、免安装版、管理员运行或安装目录可写时，请先退出旧 Velo，按[版本说明](releases/0.10.0.md)手动迁移。Rust 0.1.0 可直接使用关于页更新。
+本指南适用于 v0.11.0。截图来自 0.11.0 Software 开发构建的真实 Windows 窗口，使用独立演示配置与示例数据。构建身份和采集方式见[截图说明](images/README.md)。
 
-退出官方 Go v0.9.11 系统安装后可原位接管；其他旧系统安装请先卸载并保留数据。仍使用 `%LOCALAPPDATA%\Velo`，首次打开前在同级 `VeloRustMigrationBackups` 完整保留原始数据，备份失败则停止初始化。卸载保留数据与程序恢复档案。
+数据保存在 `%LOCALAPPDATA%\Velo`，首次打开前在同级 `VeloRustMigrationBackups` 完整保留原始数据，备份失败则停止初始化。卸载保留数据与程序恢复档案。早期版本用户请先阅读[安装与迁移说明](releases/0.10.0.md)，确认自己的安装方式对应哪条升级路径。
 
 ## 移动与隐藏窗口
 
@@ -34,9 +34,7 @@ v0.10.0 的数值高于 Go 0.9.x，旧版的自动检查或“设置 → 关于 
 
 进入 **设置 → 外观**，打开主题菜单，选择“跟随系统”“浅色”或“深色”。也可使用方向键移动、`Enter` 确认、`Esc` 收起菜单。主题示意图随选择更新，点击“保存设置”后应用到窗口。
 
-<p align="center">
-  <img src="images/appearance.png" alt="外观设置：主题和候选项排列，当前选择跟随系统与网格" width="640" />
-</p>
+<p align="center"><img src="images/appearance.png" alt="Rust 外观设置：主题预览、浅色主题和网格排列" width="640" /></p>
 
 ## 候选项排列与右键菜单
 
@@ -46,9 +44,7 @@ v0.10.0 的数值高于 Go 0.9.x，旧版的自动检查或“设置 → 关于 
 
 安装目录取自快捷方式的实际目标。管理员启动保留目标参数和工作目录，并由 Windows 显示 UAC 提示；Windows Apps、设置页及系统操作等不支持的候选项会禁用对应菜单项。
 
-<p align="center">
-  <img src="images/context-menu.png" alt="对 Visual Studio Code 右键，显示打开、打开安装目录、管理员启动和置顶操作" width="640" />
-</p>
+<p align="center"><img src="images/context-menu.png" alt="7-Zip 的原生右键菜单，展示安装目录、管理员启动和固定操作" width="640" /></p>
 
 ## 添加搜索范围外的应用
 
@@ -56,9 +52,7 @@ v0.10.0 的数值高于 Go 0.9.x，旧版的自动检查或“设置 → 关于 
 
 添加后立即加入搜索库，刷新索引或重启 Velo 后仍可搜索，无需把应用所在的整个目录加入扫描范围。列表中的“删除”移除该应用的自定义记录及首页固定，不删除原程序文件；若该应用也在自动扫描范围内，仍可通过自动索引找到。重复添加同一目标与参数不会产生重复项；程序移动后需要重新添加。
 
-<p align="center">
-  <img src="images/custom-apps.png" alt="自定义应用管理：拖入或选择文件、粘贴路径，以及已添加的四个应用" width="640" />
-</p>
+<p align="center"><img src="images/custom-apps.png" alt="自定义应用管理：拖入、选择文件、粘贴路径，以及公开演示应用列表" width="640" /></p>
 
 添加应用与首页固定独立：新添加的应用不会自动固定，搜索结果旁的星标按钮可将应用固定到首页，取消固定后仍可搜索。自定义应用和固定记录统一保存在 `application-library.json` 中；旧版 `quick-launch.json` 中的手动应用会自动迁移，原文件保留为备份。
 
@@ -70,11 +64,29 @@ v0.10.0 的数值高于 Go 0.9.x，旧版的自动检查或“设置 → 关于 
 
 首页默认展示 12 项系统快捷，可“展开全部”，支持固定和按使用记录排序。无需固定即可按中文、英文、拼音或缩写搜索，例如 `xt`、`msconfig`、`rwglq`、`hjbl`。名称、关键词和别名均支持中间匹配，关闭模糊搜索时也有效；详见[实现与兼容性说明](system-shortcuts.md)。每次呼出主页立即聚焦搜索框，点击主页内其他区域时保持焦点；有输入时按 `Esc` 清空并回到主页，再按一次隐藏窗口。
 
-## 启动组合（本分支新增，尚未发布）
+## Everything 文件搜索
+
+在 **设置 → 搜索 → 文件搜索** 打开“启用 Everything”，点击“保存设置”。默认关闭；开启后需在当前用户会话运行 Everything 默认实例，只有 Everything 服务运行时仍无法查询。可在设置中选择便携版程序路径，留空时尝试查找标准安装目录。
+
+<p align="center"><img src="images/everything-settings.png" alt="文件搜索开关与可选的 Everything 程序路径" width="640" /></p>
+
+呼出 Velo 后，在搜索框按 Tab 进入文件模式，再按一次返回应用搜索。两个模式分别保留查询与选中项；文件查询为空时可带入应用搜索词。文件模式支持 Everything 的名称、路径与语法查询，例如 ext:pdf、folder:合同，具体范围由 Everything 自己的索引设置决定。
+
+文件列表显示名称、所在目录和类型。↑ / ↓ 选择，Enter 或双击用默认程序打开，Ctrl+Enter 在资源管理器中定位；右键或 Shift+F10 可复制完整路径。单击只选择。文件模式空格始终用于输入，输入法合成期间不切换模式。设置页及原生弹窗仍保留原有 Tab 行为。
+
+<p align="center"><img src="images/everything-search.png" alt="文件模式中的六项隔离示例结果，包含文件夹、TXT、Markdown 和 CSV" width="640" /></p>
+
+每页加载 50 项，点击“加载更多结果”继续，最多保留 200 项；超出时缩小搜索范围。Esc 先清空查询，再返回应用模式，应用查询为空时隐藏。隐藏后释放文件结果，重新呼出时恢复查询和选择；空闲 30 秒后关闭查询线程。打开失败保留原结果并提示。
+
+未运行或连接失败时可重试、显式启动已有 Everything，或打开官方安装页。关闭开关释放 Velo 的查询资源，Everything 进程继续由用户管理。文件结果不会写入应用库或应用使用历史。见[实现与验收范围](everything-file-search-proposal.md)。
+
+## 启动组合
 
 首页点击“启动组合”，或在“设置 → 索引”中打开“启动组合”，再点击“新建组合”。输入名称，例如“开黑”，在左侧带图标的应用库中搜索或滚动查找应用，将它拖到右侧成员区域，点击“保存组合”。也可点击应用旁的“＋”添加。至少添加两个应用，每组最多 20 个。
 
 别名可不填。添加的成员先留在草稿中，只有保存成功后才生效；重复拖入不会重复添加，返回时会提示保留或放弃修改，切换到其他窗口则保持当前草稿。成员引用现有应用库，不会自动固定到首页。库外程序先通过已有“自定义应用”功能添加，再回到组合中选择。
+
+<p align="center"><img src="images/launch-groups.png" alt="专注工作组合编辑器：从筛选后的应用库配置记事本与 Chrome 两个成员" width="640" /></p>
 
 搜索“开黑”，选择标记为“启动组合”的结果，按 Enter 执行；Space 沿用“空格启动”设置。Velo 一次处理一组，最多同时发出三个启动请求；已经在当前用户和会话中运行的成员会被跳过。某项失败不影响其他成员，也不会关闭已经打开的应用。
 
@@ -90,11 +102,7 @@ v0.10.0 的数值高于 Go 0.9.x，旧版的自动检查或“设置 → 关于 
 
 每次备份生成独立的 `config-日期-时间-随机标识.json` 文件，保存到 `%LOCALAPPDATA%\Velo\backups`，不会覆盖此前备份。点击 **“打开备份目录”** 可查看文件或复制到其他位置长期保管。备份保留原配置内容，不会改动当前配置。
 
-<p align="center">
-  <img src="images/config-backup.png" alt="Windows 实机配置备份页面：立即备份、打开备份目录，以及恢复配置的说明" width="640" />
-</p>
-
-上图为 Windows 实机界面，展示手动备份入口与配置恢复说明。
+<p align="center"><img src="images/config-backup.png" alt="配置备份入口、更新前备份与手动恢复说明" width="640" /></p>
 
 恢复时，先从通知区域右键 Velo 托盘图标并选择“退出”，将所需备份复制到 `%LOCALAPPDATA%\Velo` 并重命名为 `config.json`（替换前可另存当前文件），然后重新启动。设置备份不包含自定义应用、固定项、历史记录和缓存；需要迁移这些数据时，请同时保留下面数据表中的对应文件。
 
@@ -106,7 +114,7 @@ v0.10.0 的数值高于 Go 0.9.x，旧版的自动检查或“设置 → 关于 
 
 - **Rust 系统安装版**：使用对应渲染器的系统安装包升级，Windows 会提示 UAC 确认；即使当前账户有目录写权限，也使用安装器维持安装回执和恢复档案。
 
-Rust 仅识别对应的 Rust 更新资产，忽略数值更大的旧 Go 版本。本次没有独立免安装版。
+更新器只识别对应渲染器的 Rust 更新资产。当前没有独立免安装版。
 
 下载内容会用发布页 `SHA256SUMS.txt` 中的 SHA-256 校验；校验文件缺失或不匹配时会停止自动安装，只保留手动下载。更新检查可以在设置 → 关于中关闭。
 
@@ -116,7 +124,7 @@ Rust 仅识别对应的 Rust 更新资产，忽略数值更大的旧 Go 版本�
 
 GitHub API 按出口 IP 限制请求次数，共享代理节点的额度可能被其他用户耗尽。遇到 `403 API rate limit exceeded` 或 `429` 时，Velo 会自动改读公开发布订阅与文件列表，继续识别预发布版本并校验下载文件，无需配置 GitHub Token。限流恢复前，后续检查也会使用备用通道。若备用通道同样不可用，可切换代理节点、稍后重试，或从发布页手动下载；仍显示原始 403 错误的旧版需要先手动升级。
 
-若下载校验文件或程序时提示连接超时，请检查代理是否可用。旧版更新器不会读取 Windows 系统代理；可通过浏览器从 [发布页](https://github.com/HBLADEH/velo-launcher/releases) 手动下载安装包，退出 Velo 后安装，设置与缓存会保留。
+若下载校验文件或程序时提示连接超时，请检查代理是否可用；也可通过浏览器从 [发布页](https://github.com/HBLADEH/velo-launcher/releases) 手动下载安装包，退出 Velo 后安装，设置与缓存会保留。
 
 ## 常见问题
 
@@ -145,8 +153,6 @@ GitHub API 按出口 IP 限制请求次数，共享代理节点的额度可能�
 | `index.json` | 应用索引与文件指纹缓存 |
 | `history.json` | 启动次数、最近使用及查询选择历史 |
 | `application-library.json` | 自定义搜索应用及独立的首页固定记录 |
-| `launch-groups.json` | 启动组合（本分支新增，尚未发布） |
+| `launch-groups.json` | 启动组合（v0.11.0 起） |
 | `cache/icons/` | 应用图标缓存 |
 | `updates/` | 更新时下载的程序文件与替换脚本，完成后自动清理 |
-| `logs/` | 当前及上一会话日志 |
-| `webview/` | 旧 Go/Wails 版本遗留数据；Rust 不使用 WebView2 |

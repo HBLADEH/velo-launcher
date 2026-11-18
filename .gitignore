@@ -1,17 +1,9 @@
-/build/bin/
-/build/release/
-/build/release-*/
-/build/windows/installer/tmp/
-/frontend/node_modules/
-/frontend/package.json.md5
-/frontend/dist/*
-!/frontend/dist/gitkeep
-*.syso
+/target/
+/.dev-data/
 *.log
 .DS_Store
 /.reasonix/
 /.playwright-mcp/
-/rust/target/
 __pycache__/
 *.pyc
 

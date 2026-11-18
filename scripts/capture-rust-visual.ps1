@@ -9,7 +9,7 @@ if (Test-Path -LiteralPath $OutputDirectory) { throw 'Visual capture needs a fre
 New-Item -ItemType Directory -Path $OutputDirectory | Out-Null
 Push-Location $environment.RustRoot
 try {
-    $sources = @(@('Cargo.toml','Cargo.lock','build.rs','rust-toolchain.toml','windows-toolchain.json','.cargo/config.toml','examples/rs13_visual.rs','../scripts/capture-rust-visual.ps1') | ForEach-Object { Get-Item -LiteralPath $_ })
+    $sources = @(@('Cargo.toml','Cargo.lock','build.rs','rust-toolchain.toml','windows-toolchain.json','.cargo/config.toml','examples/rs13_visual.rs','scripts/capture-rust-visual.ps1') | ForEach-Object { Get-Item -LiteralPath $_ })
     $sources += @(Get-ChildItem -LiteralPath 'ui' -Recurse -File)
     $sources += @(Get-ChildItem -LiteralPath 'examples/support' -Filter 'rs13_*.rs' -File)
     $sourceHashes = @($sources | ForEach-Object { [ordered]@{
@@ -56,7 +56,6 @@ try {
             ExpectedScenes = $sceneNames
             PhysicalInput = $false
             MonitorFrameCapture = $false
-            WailsComparisonComplete = $false
             Images = @($images | Sort-Object Name | ForEach-Object {
                 [ordered]@{ Name = $_.Name; SHA256 = (Get-FileHash -LiteralPath $_.FullName).Hash }
             })

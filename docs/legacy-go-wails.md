@@ -1,11 +1,9 @@
-# 已停止维护的 Go/Wails 版本
+# Go/Wails 历史版本
 
-自 Rust **0.1.0** 起，产品开发、构建和发布入口切换到 `rust/`。Go/Wails/Vue 的 0.9.x 系列停止维护，不再生成新版本。
+Go/Wails/Vue 旧版只保存在 [go 分支](https://github.com/HBLADEH/velo-launcher/tree/go)，分支指向 `ac2f51ad1317f4abffab2c548af251e48ce16d2b`，包含 v0.9.11 源码、前端与构建入口。旧标签、Release 和 Git 历史继续保留。
 
-仓库根目录的 Go 文件、`internal/`、`cmd/rs*-compat`、`frontend/`、`wails.json` 和 `scripts/verify.ps1` 暂留为历史行为及数据契约的测试基线。Rust 完整验证调用其中的离线 oracle；这不构成产品的 Go 或 WebView 运行时依赖。不要在这些入口继续开发产品功能。
+2026-11-17 主线改为根目录下的标准 Rust + Slint 工程，移除 Go 源码、Vue/Wails、旧构建、旧 CI 和迁移期比较脚本。完整构建与测试不再安装 Go/Node。迁移期新增 oracle 的最后状态保存在整理前提交 `cc65619`；如要重跑当年的 Go/Rust 差分，请在独立目录检出该提交。
 
-旧版开发说明保存在 [历史开发文档](development-go-wails.md)，旧标签和 Release 保留原始内容。新开发命令见 [当前开发说明](development.md)。
+当前测试保留已生成的合成 JSON 预期、静态拼音/Unicode 数据及来源许可，继续覆盖数据与排序兼容。`docs/baselines/` 记录原构建身份和当时路径，不改写成新构建的证据。
 
-官方 Go v0.9.11 系统安装可由 Rust 安装器原位接管，并保留字节校验的程序、注册和快捷方式快照。`uninstall.exe /ROLLBACK` 仅在存在原始 Go 快照时提供故障恢复；它不意味着恢复旧版维护。当前用户数据不会因回退或卸载而删除。
-
-Rust **v0.10.0** 延续旧版的版本顺序，旧 Go 更新检查可显示升级与迁移说明。普通权限运行的官方 v0.9.11 系统安装在受保护目录中使用 `velo-launcher-amd64-installer.exe` 兼容资产升级，该文件与默认 Software 安装器完全相同。免安装、管理员运行、安装目录可写或其他旧构建按 [v0.10.0 版本说明](releases/0.10.0.md)手动迁移，不向其提供可被直接覆盖的裸 Rust exe。
+官方 Go v0.9.11 系统安装仍可由 Rust 安装器原位接管。兼容安装器名称、首次数据快照和安装目录中的 `.velo-rollback` 恢复逻辑继续保留；有原 Go 快照时可运行 `uninstall.exe /ROLLBACK`。用户数据不会因回退或卸载而删除。迁移操作见 [v0.10.0 说明](releases/0.10.0.md)，当前开发见 [开发说明](development.md)。

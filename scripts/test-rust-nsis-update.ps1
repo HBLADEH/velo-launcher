@@ -11,9 +11,9 @@ param(
 )
 $ErrorActionPreference = 'Stop'
 $repository = Split-Path -Parent $PSScriptRoot
-$targetRoot = (Resolve-Path -LiteralPath (Join-Path $repository 'rust/target')).Path
+$targetRoot = (Resolve-Path -LiteralPath (Join-Path $repository 'target')).Path
 $OutputDirectory = $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($OutputDirectory)
-if (-not $OutputDirectory.StartsWith($targetRoot + '\', [StringComparison]::OrdinalIgnoreCase)) { throw 'Actual NSIS update test must stay inside rust/target.' }
+if (-not $OutputDirectory.StartsWith($targetRoot + '\', [StringComparison]::OrdinalIgnoreCase)) { throw 'Actual NSIS update test must stay inside target.' }
 $planPath = Join-Path $OutputDirectory 'assisted-plan.json'
 function Get-TestProcess {
     @(Get-CimInstance Win32_Process -Filter "name='velo-slint.exe'" | Where-Object {

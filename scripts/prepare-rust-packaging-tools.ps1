@@ -6,10 +6,10 @@ param(
 )
 $ErrorActionPreference='Stop'
 $repository=Split-Path -Parent $PSScriptRoot
-$target=(Resolve-Path -LiteralPath (Join-Path $repository 'rust/target')).Path
+$target=(Resolve-Path -LiteralPath (Join-Path $repository 'target')).Path
 $OutputDirectory=$ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($OutputDirectory)
-if(-not $OutputDirectory.StartsWith($target+'\',[StringComparison]::OrdinalIgnoreCase) -or (Test-Path -LiteralPath $OutputDirectory)){throw 'Use a fresh packaging-tools directory inside rust/target.'}
-$identity=Get-Content -LiteralPath (Join-Path $repository 'rust/windows/nsis-toolchain.json') -Raw|ConvertFrom-Json
+if(-not $OutputDirectory.StartsWith($target+'\',[StringComparison]::OrdinalIgnoreCase) -or (Test-Path -LiteralPath $OutputDirectory)){throw 'Use a fresh packaging-tools directory inside target.'}
+$identity=Get-Content -LiteralPath (Join-Path $repository 'windows/nsis-toolchain.json') -Raw|ConvertFrom-Json
 if($ArchivePath){
     $ArchivePath=(Resolve-Path -LiteralPath $ArchivePath).Path
     if((Get-FileHash -LiteralPath $ArchivePath).Hash -ne $identity.archiveSHA256){throw 'Local NSIS archive checksum differs; no compiler was executed.'}

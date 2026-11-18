@@ -1,4 +1,4 @@
-# 行尾统一为 LF：验证脚本直接跑 gofmt -l，CRLF 会被判为未格式化
+# 源码统一为 LF；证据与第三方许可保留原始字节
 * text=auto eol=lf
 *.png binary
 *.ico binary
@@ -10,6 +10,6 @@ docs/baselines/2026-10-29-slint-rs07/** -text whitespace=blank-at-eol,blank-at-e
 
 # Acceptance manifests and third-party provenance hash exact original bytes.
 docs/baselines/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
-rust/licenses/** -text -whitespace
-rust/ui/assets/fluent/LICENSE.txt -text whitespace=cr-at-eol
+licenses/** -text -whitespace
+ui/assets/fluent/LICENSE.txt -text whitespace=cr-at-eol
 tests/fixtures/compat/** -text whitespace=cr-at-eol

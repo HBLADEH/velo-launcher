@@ -1,0 +1,8 @@
+self-hosted-runner:
+  labels: [velo-locked-toolchain, release-publisher]
+paths:
+  # GitHub supports concurrency.queue; actionlint 1.7.12 predates it.
+  .github/workflows/release.yml:
+    ignore: ['unexpected key "queue" for "concurrency" section']
+  .github/workflows/rust-preview.yml:
+    ignore: ['unexpected key "queue" for "concurrency" section']

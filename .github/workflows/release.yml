@@ -1,0 +1,113 @@
+name: Publish Velo release
+on:
+  push:
+    tags: ['v[0-9]+.[0-9]+.[0-9]+']
+permissions:
+  contents: read
+concurrency:
+  group: velo-public-release
+  queue: max
+jobs:
+  validate-tag:
+    if: github.repository == 'HBLADEH/velo-launcher' && !github.event.deleted
+    runs-on: windows-2025
+    timeout-minutes: 5
+    outputs:
+      commit: ${{ steps.tag.outputs.commit }}
+      draft_checksums: ${{ steps.tag.outputs.draft_checksums }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.3.1
+        with:
+          ref: ${{ github.ref }}
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Require an approved version tag on main
+        id: tag
+        shell: pwsh
+        run: |
+          $commit = ./scripts/check-rust-release-tag.ps1 -Tag $env:GITHUB_REF_NAME -EventSha $env:GITHUB_SHA
+          "commit=$commit" >> $env:GITHUB_OUTPUT
+          $trailers = @(git for-each-ref '--format=%(trailers:key=Velo-Release-Draft,valueonly)' "refs/tags/$env:GITHUB_REF_NAME" | Where-Object { $_ })
+          if ($LASTEXITCODE -ne 0) { throw 'Could not read the release tag annotation.' }
+          if ($trailers.Count) {
+            if ($trailers.Count -ne 1 -or $trailers[0] -cnotmatch '\A[0-9a-f]{64}\z') {
+              throw 'Velo-Release-Draft must contain the SHA-256 of the staged SHA256SUMS.txt.'
+            }
+            "draft_checksums=$($trailers[0])" >> $env:GITHUB_OUTPUT
+          }
+
+  package:
+    needs: validate-tag
+    if: needs.validate-tag.outputs.draft_checksums == ''
+    runs-on: [self-hosted, Windows, X64, velo-locked-toolchain, release-publisher]
+    timeout-minutes: 180
+    concurrency:
+      group: velo-rust-desktop-validation
+      queue: max
+    outputs:
+      artifact: ${{ steps.package.outputs.artifact }}
+    env:
+      CARGO_BUILD_JOBS: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.3.1
+        with:
+          ref: ${{ needs.validate-tag.outputs.commit }}
+          persist-credentials: false
+      - name: Prepare the pinned NSIS toolchain
+        id: nsis
+        shell: pwsh
+        run: |
+          if (-not $env:VELO_NSIS_ARCHIVE) { throw 'Configure VELO_NSIS_ARCHIVE on the dedicated release runner.' }
+          New-Item -ItemType Directory -Path target -Force | Out-Null
+          $compiler = ./scripts/prepare-rust-packaging-tools.ps1 -OutputDirectory "target/ci-nsis-${{ github.run_id }}-${{ github.run_attempt }}"
+          "compiler=$compiler" >> $env:GITHUB_OUTPUT
+      - name: Verify both locked product builds and desktop smoke tests
+        shell: pwsh
+        run: ./scripts/verify-rust.ps1 -Product -SmokeTest
+      - name: Stage verified installers and notices
+        id: package
+        shell: pwsh
+        env:
+          VELO_MAKENSIS: ${{ steps.nsis.outputs.compiler }}
+        run: |
+          $output = "target/ci-release-$env:GITHUB_RUN_ID-$env:GITHUB_RUN_ATTEMPT"
+          ./scripts/package-rust-release.ps1 -OutputDirectory $output -Makensis $env:VELO_MAKENSIS
+          "artifact=velo-release-$env:GITHUB_RUN_ID-$env:GITHUB_RUN_ATTEMPT" >> $env:GITHUB_OUTPUT
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: ${{ steps.package.outputs.artifact }}
+          path: target/ci-release-${{ github.run_id }}-${{ github.run_attempt }}/assets/*
+          if-no-files-found: error
+          retention-days: 7
+
+  publish:
+    needs: [validate-tag, package]
+    if: >-
+      !cancelled() && needs.validate-tag.result == 'success' &&
+      (needs.package.result == 'success' ||
+      (needs.package.result == 'skipped' && needs.validate-tag.outputs.draft_checksums != ''))
+    runs-on: windows-2025
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    environment: public-release
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.3.1
+        with:
+          ref: ${{ needs.validate-tag.outputs.commit }}
+          persist-credentials: false
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        if: needs.validate-tag.outputs.draft_checksums == ''
+        with:
+          name: ${{ needs.package.outputs.artifact }}
+          path: target/release-assets
+      - name: Verify uploaded digests before making the release public
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VELO_RELEASE_COMMIT: ${{ needs.validate-tag.outputs.commit }}
+          VELO_DRAFT_CHECKSUMS: ${{ needs.validate-tag.outputs.draft_checksums }}
+        run: |
+          $options = @{}
+          if ($env:VELO_DRAFT_CHECKSUMS) { $options.DraftChecksumsSHA256 = $env:VELO_DRAFT_CHECKSUMS }
+          ./scripts/publish-rust-release.ps1 -Tag $env:GITHUB_REF_NAME -Commit $env:VELO_RELEASE_COMMIT -Directory target/release-assets @options

@@ -1,0 +1,91 @@
+{
+  "version": "0.11.0",
+  "status": "unreleased_candidate",
+  "checked_at_utc": "2026-11-17T07:02:59.556442+00:00",
+  "base_commit": "cc656198b53ed049ba6abb13ff6f76738e247004",
+  "workspace_dirty": true,
+  "go_archive_commit": "ac2f51ad1317f4abffab2c548af251e48ce16d2b",
+  "go_and_node_required": false,
+  "builds": {
+    "software": {
+      "executable_sha256": "43C74750919D3D072ADC3CB5699AFCC0925227528F5F84EE11BE6919D2565807",
+      "executable_bytes": 14512640,
+      "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+      "slint": "1.18.1",
+      "msvc": "14.50.35717",
+      "windows_sdk": "10.0.26100.0",
+      "source_count": 224,
+      "all_sources_matched": true,
+      "tests_passed": 117,
+      "live_everything_fixture_ignored": 1,
+      "checks_passed": true,
+      "smoke_passed": true,
+      "installer_sha256": "AF9B455950FA738BCC5D505753E5FA3CAA2B866E3C7463DA130A6422A0D4CE97",
+      "installer_executed": false,
+      "missing_license_texts": [],
+      "candidate_path": "target/previews/candidate-0.11.0-software/velo-rust-candidate-software-x64-installer.exe"
+    },
+    "femtovg": {
+      "executable_sha256": "4E88066FFD682AB256062FE8754FF7B6F07902284A9049D202CE466FA3444BBA",
+      "executable_bytes": 14009856,
+      "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+      "slint": "1.18.1",
+      "msvc": "14.50.35717",
+      "windows_sdk": "10.0.26100.0",
+      "source_count": 224,
+      "all_sources_matched": true,
+      "tests_passed": 117,
+      "live_everything_fixture_ignored": 1,
+      "checks_passed": true,
+      "smoke_passed": true,
+      "installer_sha256": "A06849ACBFBAB87591965348C319D5FB25E4597E38811545BAD012AD52390ACE",
+      "installer_executed": false,
+      "missing_license_texts": [],
+      "candidate_path": "target/previews/candidate-0.11.0-femtovg/velo-rust-candidate-femtovg-x64-installer.exe"
+    }
+  },
+  "limits": [
+    "Synthetic component events do not replace physical IME or UAC acceptance.",
+    "Current machine native tests passed; no fresh Windows 10 or cross-hardware installer execution.",
+    "Isolated Everything live endpoint test not repeated: user-owned default endpoint is running; owner accepted prior real Everything test.",
+    "Final public assets must be rebuilt from a clean source commit."
+  ],
+  "checks": {
+    "powershell_parse": true,
+    "data_fixture_ntfs_write_denial": true,
+    "frozen_fixture_and_table_bytes_match_original": true,
+    "synthetic_shortcut_and_shell_runtime": true,
+    "pe_version_renderer_manifest_imports": true,
+    "project_cleanup_and_release_asset_regressions": true,
+    "current_document_links": true,
+    "measurement_helpers": true,
+    "git_diff_check": true
+  },
+  "cleanup": {
+    "initial_target_bytes_approx_gib": 126.95,
+    "initial_reasonix_bytes_approx_gib": 16.61,
+    "old_protected_fixture_cleanup": "Completed after owner approved the repeated Windows UAC prompt; both protected test directories removed",
+    "remaining_target_bytes": 232775236,
+    "remaining_target_files": 1797,
+    "remaining_development_data_bytes": 1226354,
+    "removed_roots": {
+      "rust": true,
+      "frontend": true,
+      "build": true,
+      "internal": true,
+      "cmd": true,
+      ".reasonix": true,
+      ".playwright-mcp": true
+    },
+    "old_protected_fixture_bytes": 0,
+    "approx_existing_generated_files_reclaimed_gib": 143.34,
+    "remaining_directories": {
+      "previews": 63510819,
+      "product-artifacts": 158817397,
+      "tools": 10447020
+    },
+    "cleanup_completed_at_utc": "2026-11-17T07:23:21.780711+00:00",
+    "post_cleanup_build_and_installer_hashes_intact": true,
+    "post_cleanup_source_fingerprints_intact": true
+  }
+}

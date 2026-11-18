@@ -7,10 +7,10 @@ param(
 )
 $ErrorActionPreference = 'Stop'
 $repository = Split-Path -Parent $PSScriptRoot
-$target = (Resolve-Path -LiteralPath (Join-Path $repository 'rust/target')).Path
+$target = (Resolve-Path -LiteralPath (Join-Path $repository 'target')).Path
 $OutputDirectory = $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($OutputDirectory)
 if (-not $OutputDirectory.StartsWith($target + '\', [StringComparison]::OrdinalIgnoreCase) -or (Test-Path -LiteralPath $OutputDirectory)) {
-    throw 'Use a fresh user-install test directory inside rust/target.'
+    throw 'Use a fresh user-install test directory inside target.'
 }
 $registration = 'Software\Microsoft\Windows\CurrentVersion\Uninstall\HBLADEHVeloSlintPreview'
 $shortcut = Join-Path ([Environment]::GetFolderPath('Programs')) 'Velo Rust Preview.lnk'

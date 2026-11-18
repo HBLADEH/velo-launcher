@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="860" viewBox="0 0 1200 860" role="img" aria-labelledby="title desc">
+<title id="title">From hotkey to launch, on your PC</title>
+<desc id="desc">Inside a single process, Slint calls Rust adapters to query an in-memory snapshot. Bounded workers handle indexing, Windows launches and atomic writes. External Everything integration is optional and disabled by default.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/></marker></defs>
+<style>
+text{font-family:"Segoe UI","Microsoft YaHei",sans-serif;fill:#162b45}
+.title{font-size:30px;font-weight:700}.subtitle{font-size:18px;fill:#52657b}
+.process{font-size:20px;font-weight:600}.label{font-size:16px;fill:#52657b}
+.card{fill:white;stroke:#ced9e6;stroke-width:1.5}.card-title{font-size:22px;font-weight:600}
+.code{font-family:Consolas,"Cascadia Code",monospace;font-size:15px;fill:#476380}
+.detail{font-size:16px;fill:#52657b}.external-title{font-size:18px;font-weight:600}
+.edge{fill:none;stroke:#64748b;stroke-width:2}.edge-label{font-size:13px;fill:#52657b}
+.boundary{font-size:15px;fill:#52657b}.footer{font-size:16px;fill:#52657b}
+</style>
+<rect width="1200" height="860" rx="24" fill="#f7f9fc"/>
+<text x="52" y="58" class="title" text-anchor="start">From hotkey to launch, on your PC</text>
+<text x="52" y="94" class="subtitle" text-anchor="start">Search in memory. Scan, open and save in the background.</text>
+<rect x="32" y="124" width="1136" height="558" rx="22" fill="#edf3fb" stroke="#c7d7eb" stroke-width="1.5"/>
+<text x="64" y="164" class="process" text-anchor="start">Velo · Single-process Rust + Slint</text>
+<text x="64" y="202" class="label" text-anchor="start">UI thread · Input and model updates</text>
+<rect x="64" y="228" width="288" height="124" rx="14" class="card"/>
+<rect x="64" y="248" width="4" height="84" rx="2" fill="#2979d7"/>
+<text x="84" y="263" class="card-title" text-anchor="start">Slint interface</text>
+<text x="84" y="294" class="code" text-anchor="start">ui/</text>
+<text x="84" y="326" class="detail" text-anchor="start">Alt+Space · Type · Select</text>
+<rect x="456" y="228" width="288" height="124" rx="14" class="card"/>
+<rect x="456" y="248" width="4" height="84" rx="2" fill="#2979d7"/>
+<text x="476" y="263" class="card-title" text-anchor="start">Rust UI adapters</text>
+<text x="476" y="294" class="code" text-anchor="start">src/business.rs · src/ui.rs</text>
+<text x="476" y="326" class="detail" text-anchor="start">Callbacks, rows and session state</text>
+<rect x="848" y="228" width="288" height="124" rx="14" class="card"/>
+<rect x="848" y="248" width="4" height="84" rx="2" fill="#2979d7"/>
+<text x="868" y="263" class="card-title" text-anchor="start">In-memory search</text>
+<text x="868" y="294" class="code" text-anchor="start">src/core/search.rs</text>
+<text x="868" y="326" class="detail" text-anchor="start">Names · Pinyin · History ranking</text>
+<rect x="64" y="494" width="288" height="124" rx="14" class="card"/>
+<rect x="64" y="514" width="4" height="84" rx="2" fill="#16847a"/>
+<text x="84" y="529" class="card-title" text-anchor="start">Windows platform</text>
+<text x="84" y="560" class="code" text-anchor="start">src/platform/windows/</text>
+<text x="84" y="592" class="detail" text-anchor="start">Window · Hotkey · Shell · COM</text>
+<rect x="456" y="494" width="288" height="124" rx="14" class="card"/>
+<rect x="456" y="514" width="4" height="84" rx="2" fill="#16847a"/>
+<text x="476" y="529" class="card-title" text-anchor="start">Bounded workers</text>
+<text x="476" y="560" class="code" text-anchor="start">src/core/service.rs</text>
+<text x="476" y="592" class="detail" text-anchor="start">Scan · Icons · Launch · Write</text>
+<rect x="848" y="494" width="288" height="124" rx="14" class="card"/>
+<rect x="848" y="514" width="4" height="84" rx="2" fill="#16847a"/>
+<text x="868" y="529" class="card-title" text-anchor="start">Atomic storage</text>
+<text x="868" y="560" class="code" text-anchor="start">src/core/storage.rs</text>
+<text x="868" y="592" class="detail" text-anchor="start">Temp file → flush → replace</text>
+<path d="M 352 290 H 456" class="edge" marker-end="url(#arrow)" marker-start="url(#arrow)"/><text x="404" y="277" class="edge-label" text-anchor="middle">Callbacks / rows</text>
+<path d="M 744 290 H 848" class="edge" marker-end="url(#arrow)" marker-start="url(#arrow)"/><text x="796" y="277" class="edge-label" text-anchor="middle">Query / results</text>
+<path d="M 600 352 V 494" class="edge" marker-end="url(#arrow)" marker-start="url(#arrow)"/><text x="614" y="423" class="edge-label" text-anchor="start">Commands / events</text>
+<path d="M 208 494 V 352" class="edge" marker-end="url(#arrow)"/><text x="222" y="423" class="edge-label" text-anchor="start">Hotkey / window</text>
+<path d="M 456 548 H 352" class="edge" marker-end="url(#arrow)"/><text x="404" y="535" class="edge-label" text-anchor="middle">Shell / COM</text>
+<path d="M 744 586 H 848" class="edge" marker-end="url(#arrow)"/><text x="796" y="573" class="edge-label" text-anchor="middle">Serial writes</text>
+<path d="M 744 520 H 790 V 391 H 992 V 352" class="edge" marker-end="url(#arrow)"/><text x="997" y="414" class="edge-label" text-anchor="middle">Index snapshot</text>
+<text x="600" y="658" class="boundary" text-anchor="middle">Worker results return to the event loop; workers never update Slint components directly.</text>
+<rect x="64" y="730" width="288" height="84" rx="14" class="card"/>
+<rect x="64" y="750" width="4" height="44" rx="2" fill="#8b6bc5"/>
+<text x="84" y="763" class="external-title" text-anchor="start">Default Everything instance</text>
+<text x="84" y="790" class="detail" text-anchor="start">Optional process · Off by default</text>
+<rect x="848" y="730" width="288" height="84" rx="14" class="card"/>
+<rect x="848" y="750" width="4" height="44" rx="2" fill="#8b6bc5"/>
+<text x="868" y="763" class="external-title" text-anchor="start">%LOCALAPPDATA%\Velo</text>
+<text x="868" y="790" class="detail" text-anchor="start">Config · Index · History · Library</text>
+<path d="M 208 618 V 730" class="edge" marker-end="url(#arrow)" marker-start="url(#arrow)" stroke-dasharray="6 5"/><text x="222" y="707" class="edge-label" text-anchor="start">Optional IPC</text>
+<path d="M 992 618 V 730" class="edge" marker-end="url(#arrow)"/><text x="1006" y="707" class="edge-label" text-anchor="start">Local files</text>
+<text x="600" y="849" class="footer" text-anchor="middle">No disk scan while typing · Bounded icon cache · Generation checks reject stale results</text>
+</svg>

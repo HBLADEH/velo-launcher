@@ -60,14 +60,14 @@ export component RotatingGlyph inherits Rectangle {
     function ry(x: float, y: float) -> float { return root.center + (x - root.center) * root.sine + (y - root.center) * root.cosine; }
 """]
     for name, file, size in (("refresh", "ic_fluent_arrow_clockwise_20_regular.svg", 20), ("settings", "ic_fluent_settings_24_regular.svg", 24)):
-        svg = ET.parse(root / "rust/ui/assets/fluent" / file).getroot()
+        svg = ET.parse(root / "ui/assets/fluent" / file).getroot()
         parts.append(f'    if root.icon-key == "{name}": Path {{\n        width: parent.width; height: parent.height; viewbox-width: {size}; viewbox-height: {size}; fill: root.tint;\n')
         for path in svg.findall("{http://www.w3.org/2000/svg}path"):
             parts.extend("        " + command + "\n" for command in path_commands(path.attrib["d"]))
         parts.append("    }\n")
     parts.append("}\n")
     text = "".join(parts)
-    destination = root / "rust/ui/rotating-icons.slint"
+    destination = root / "ui/rotating-icons.slint"
     if args.check:
         if destination.read_text(encoding="utf-8") != text:
             raise ValueError("Rotating icon paths differ from their source SVGs; regenerate and review")

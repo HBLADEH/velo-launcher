@@ -7,9 +7,9 @@ param(
 )
 $ErrorActionPreference='Stop'
 $repository=Split-Path -Parent $PSScriptRoot
-$target=(Resolve-Path -LiteralPath (Join-Path $repository 'rust/target')).Path
+$target=(Resolve-Path -LiteralPath (Join-Path $repository 'target')).Path
 $OutputDirectory=$ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($OutputDirectory)
-if(-not $OutputDirectory.StartsWith($target+'\',[StringComparison]::OrdinalIgnoreCase) -or (Test-Path -LiteralPath $OutputDirectory)){throw 'Use a fresh installer test directory inside rust/target.'}
+if(-not $OutputDirectory.StartsWith($target+'\',[StringComparison]::OrdinalIgnoreCase) -or (Test-Path -LiteralPath $OutputDirectory)){throw 'Use a fresh installer test directory inside target.'}
 New-Item -ItemType Directory -Path $OutputDirectory|Out-Null
 $preview=Join-Path $OutputDirectory 'preview'
 & (Join-Path $PSScriptRoot 'package-rust-preview.ps1') -Renderer $Renderer -OutputDirectory $preview

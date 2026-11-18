@@ -12,7 +12,7 @@ body:
     attributes:
       label: Velo 版本 / Velo version
       description: 在“设置 → 关于”中查看。
-      placeholder: 例如 0.9.10
+      placeholder: 例如 0.10.0 或 0.11.0 开发构建
     validations:
       required: true
   - type: input
@@ -27,11 +27,18 @@ body:
     attributes:
       label: 使用方式 / Distribution
       options:
-        - 安装版 / Installer
-        - 免安装版 / Standalone
+        - 系统安装版 / System installer
+        - 独立开发预览 / Isolated development preview
         - 本地源码构建 / Built from source
+        - 其他或不确定 / Other or unsure
     validations:
       required: true
+  - type: textarea
+    id: renderer
+    attributes:
+      label: 渲染器与构建信息 / Renderer and build details
+      description: 在“设置 → 关于”查看 Software 或 FemtoVG；自行编译时请附提交号和启动参数。
+      placeholder: 例如 Software，官方系统安装版
   - type: textarea
     id: steps
     attributes:
@@ -59,5 +66,5 @@ body:
   - type: textarea
     id: evidence
     attributes:
-      label: 截图或日志 / Screenshots or logs
-      description: 日志位于 %LOCALAPPDATA%\Velo\logs。分享前请移除用户名、个人路径和敏感信息。
+      label: 截图或诊断输出 / Screenshots or diagnostics
+      description: 可附界面截图及诊断输出。分享前请移除用户名、个人路径和敏感信息。

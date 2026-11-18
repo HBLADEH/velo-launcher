@@ -9,7 +9,7 @@ if (Test-Path -LiteralPath $OutputDirectory) { throw 'Animation capture needs a 
 New-Item -ItemType Directory -Path $OutputDirectory | Out-Null
 Push-Location $environment.RustRoot
 try {
-    $sources = @(@('Cargo.toml','Cargo.lock','build.rs','rust-toolchain.toml','windows-toolchain.json','.cargo/config.toml','examples/rs13_animation.rs','../scripts/capture-rust-animation.ps1') | ForEach-Object { Get-Item -LiteralPath $_ })
+    $sources = @(@('Cargo.toml','Cargo.lock','build.rs','rust-toolchain.toml','windows-toolchain.json','.cargo/config.toml','examples/rs13_animation.rs','scripts/capture-rust-animation.ps1') | ForEach-Object { Get-Item -LiteralPath $_ })
     $sources += @(Get-ChildItem -LiteralPath 'ui' -Recurse -File)
     $sources += @(Get-ChildItem -LiteralPath 'examples/support' -Filter 'rs13_*.rs' -File)
     $fingerprints = @($sources | ForEach-Object { [ordered]@{

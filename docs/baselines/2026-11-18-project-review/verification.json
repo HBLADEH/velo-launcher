@@ -1,0 +1,89 @@
+{
+  "SchemaVersion": 1,
+  "DocumentationDate": "2026-11-18",
+  "Version": "0.11.0",
+  "Command": "./scripts/verify-rust.ps1 -Product -SmokeTest",
+  "ExitCode": 0,
+  "Renderers": [
+    {
+      "Renderer": "software",
+      "ExecutableSHA256": "13A52AEDB2ABF3DECC5E1FA223979F2E66B041EC198556F6803BF6050D8C6F73",
+      "ExecutableBytes": 14512640,
+      "BuildIdentitySHA256": "5AE09585E93100FBFB80701849423E9AA0E70FA2A3FA3D09E0386A8D678C36F7",
+      "VerificationSHA256": "0B17CCDD19C50345BFC2CC09755462F1B56A1329AFF87D583F90ED01838E98DD",
+      "SourceInputs": 224,
+      "SourceMismatchCount": 0,
+      "WorkspaceCommit": "cc656198b53ed049ba6abb13ff6f76738e247004",
+      "WorkspaceDirty": true,
+      "ChecksPassed": true,
+      "SmokeTestPassed": true,
+      "RustTestsPassed": 117,
+      "RustTestsIgnored": 1
+    },
+    {
+      "Renderer": "femtovg",
+      "ExecutableSHA256": "12C6613C7234939CE1745A1495F66A7B83E856F1DE56872961DB264B955120C8",
+      "ExecutableBytes": 14009856,
+      "BuildIdentitySHA256": "47D726B766152F0C9215D54F2643186722C799C8781C8E6F7F1F47C603B00DF5",
+      "VerificationSHA256": "51DBD520450BF38E6ACD3BFC31C40E087FBF58A4C182414FEE298BFE6E82F6D9",
+      "SourceInputs": 224,
+      "SourceMismatchCount": 0,
+      "WorkspaceCommit": "cc656198b53ed049ba6abb13ff6f76738e247004",
+      "WorkspaceDirty": true,
+      "ChecksPassed": true,
+      "SmokeTestPassed": true,
+      "RustTestsPassed": 117,
+      "RustTestsIgnored": 1
+    }
+  ],
+  "IgnoredTestScope": "One opt-in live Query2 test per renderer requires a dedicated 125-file Everything fixture. Not run in the automatic suite. The screenshot session separately queried its six-entry isolated real endpoint.",
+  "Screenshots": {
+    "Count": 12,
+    "CaptureManifest": "../../images/capture-manifest.json",
+    "CaptureManifestSHA256": "997E31C86F53427560BD81E98100CE90AE64AC9ED97EF4E17472EDCEE7C4DC2D"
+  },
+  "ToolChecks": [
+    "PowerShell entry-point parsing",
+    "Python syntax",
+    "project cleanup and release-asset regression tests",
+    "measurement process-tree and sample-validity regression tests",
+    "Schema 5 collector smoke on an isolated preparation instance; not a product benchmark",
+    "generated bilingual SVG consistency and visual inspection",
+    "maintained documentation local paths and GitHub YAML parsing",
+    "git diff --check"
+  ],
+  "SourceScope": "Root Rust + Slint project; no Go/Vue source or Wails/frontend build entry points. Upgrade compatibility, frozen fixtures, licensed data and historical evidence retained.",
+  "Cleanup": {
+    "CaptureProcessesClosed": true,
+    "IsolatedEverythingClientClosed": true,
+    "OriginalProductProcessPreserved": 24180,
+    "OriginalEverythingServicePreserved": 6440,
+    "TemporaryDemoDirectoryRemoved": false,
+    "TemporaryDemoDirectory": "D:\\VeloReadmeDemo20261117",
+    "Reason": "Automatic action review rejected the native PowerShell deletion command with blocked by policy; directory left in place."
+  },
+  "Limitations": [
+    "Dirty workspace identities record actual source hashes and do not constitute clean release artifacts.",
+    "The interrupted earlier verification attempt is not counted as a successful full check.",
+    "No new Windows 10, multi-monitor, physical IME, UAC/installer or performance acceptance is claimed.",
+    "Version 0.11.0 remains unpublished; no commit, push, installer execution or release publication performed."
+  ],
+  "DocumentationChecks": {
+    "MarkdownFiles": 23,
+    "LocalLinksAndAnchors": 400,
+    "PNGFiles": 12,
+    "PNGHashAndDimensionMatches": 12,
+    "GeneratedSVGs": 2,
+    "ReadmeVisualPreview": {
+      "ChineseDark": "visually inspected",
+      "EnglishLight": "visually inspected",
+      "MissingLocalImages": 0,
+      "HorizontalOverflow": false
+    }
+  },
+  "RemoteReleaseReadback": {
+    "Tag": "v0.10.0",
+    "Page": "https://github.com/HBLADEH/velo-launcher/releases/tag/v0.10.0",
+    "Source": "Read-only GitHub Releases latest endpoint; draft=false and prerelease=false."
+  }
+}

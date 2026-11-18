@@ -1,44 +1,44 @@
-# 界面截图 · Screenshots
+# Rust + Slint 界面截图
 
-[返回项目首页](../../README.md) · [用户指南](../user-guide.md)
+[项目首页](../../README.md) · [用户指南](../user-guide.md) · [采集清单与校验值](capture-manifest.json)
 
-## 当前界面截图（2026-10-23）
+本组 **12 张真实 Windows 窗口截图**于 2026-11-18 更新，展示 0.11.0 Software 开发构建的简体中文界面。中英文 README 共用这些图片。0.11.0 尚未发布，Everything 与启动组合不属于已发布的 v0.10.0。
 
-本组截图由维护者提供，用于当前 Velo 0.9.10 版本的文档，展示 Windows 上的简体中文界面。所有图片均按原始 PNG 文件收录，仅统一文件名；未裁剪、缩放、合成或替换界面内容。原图宽度均为 800 像素，README 中的首页与用户指南按 640 像素宽度展示，双列预览由 GitHub 按可用宽度缩放，图片比例保持不变。
+## 构建与环境
 
-| 文件 | 原图尺寸 | 场景与用途 |
-| --- | --- | --- |
-| `home-light.png` | 800 × 825 | 浅色首页：常用应用与系统快捷，README 首页主图 |
-| `home-dark.png` | 800 × 825 | 同一首页的深色主题，README 根据阅读环境选择深浅预览，并提供两张原图链接 |
-| `search-list.png` | 800 × 735 | 搜索 `code` 的列表结果，显示应用名称与安装路径 |
-| `search-grid.png` | 800 × 395 | 搜索 `qk` 的统一网格，同时包含清空回收站、Quicker 与 QuickerStarter |
-| `context-menu.png` | 800 × 500 | 搜索 `vsc` 后对 Visual Studio Code 右键，展示候选项操作 |
-| `appearance.png` | 800 × 825 | 设置 → 外观：跟随系统主题与网格排列选项 |
-| `custom-apps.png` | 800 × 825 | 自定义应用管理：添加入口及四个已添加应用，用于用户指南 |
-| `config-backup.png` | 800 × 825 | 设置 → 备份：手动备份入口与恢复说明，用于用户指南 |
+- Velo 0.11.0、Rust 1.99.1、Slint 1.18.1、winit、Software renderer，正式 `product` feature，使用独立实例和演示数据目录运行。
+- Windows 11 专业版 Insider Preview，10.0.26340；原生 DPI 96、缩放 100%，窗口宽度为 640 像素。
+- 构建前完成 `./scripts/verify-rust.ps1 -Product -SmokeTest`；Software / FemtoVG 各 117 项 Rust 测试及完整原生、窗口、输入和页面检查通过。
+- 截图 exe SHA-256：`13A52AEDB2ABF3DECC5E1FA223979F2E66B041EC198556F6803BF6050D8C6F73`。完整构建身份与验证范围见[本轮记录](../baselines/2026-11-18-project-review/README.md)。
 
-应用列表、排序、系统快捷数量及底部“索引有 4 条提示”均来自维护者的实际环境，不是产品默认数据。扫描提示予以保留；仅凭截图不能判断每条提示的原因。搜索列表与自定义应用页保留真实应用安装路径。备份截图展示操作入口，没有执行成功提示，也未显示备份文件的用户路径。
+构建仍来自未提交工作区；源码指纹记录实际输入，不把当前 Git 提交当成干净发行构建。截图用于说明界面与操作，不构成新的性能、跨机器或真实 IME 验收。
 
-中英文 README 共用同一组中文界面截图，英文页面提供对应的英文说明。已替换并移除原 README 使用的三张 0.9.3 JPEG 截图；下方历史验证图片继续保留其原有说明。
+## 场景与用途
 
-These maintainer-provided Windows captures were added on 2026-10-23 for the current Velo 0.9.10 documentation. The original 800-pixel-wide PNG files are retained without cropping, resizing, compositing, or UI replacement. Both READMEs share the Chinese UI captures. App lists, installation paths, and the four index notices reflect the actual local environment. The backup capture shows the available controls, not a completed backup.
+- [home-light.png](home-light.png)、[home-dark.png](home-dark.png)：640 × 660，同一组首页的深浅主题。固定、常用与系统快捷展示于同一窗口，更多内容可滚动查看。
+- [search-list.png](search-list.png)：640 × 480，查询“演示”，展示六项公开应用及真实安装路径。
+- [search-grid.png](search-grid.png)：640 × 316，同一组结果的六列网格；保留产品实际动态高度。
+- [context-menu.png](context-menu.png)：640 × 480，7-Zip 的 Windows 原生右键菜单，含打开、安装目录、管理员启动和取消置顶。
+- [appearance.png](appearance.png)：640 × 660，主题预览、浅色主题及网格排列选项。
+- [everything-search.png](everything-search.png)：640 × 504，真实 Query2 IPC 返回的六项隔离示例结果，包含文件夹、TXT、Markdown 和 CSV。
+- [everything-settings.png](everything-settings.png)：640 × 660，文件搜索开关与可选程序路径。
+- [launch-groups.png](launch-groups.png)：640 × 660，“专注工作”组合编辑器，展示筛选后的应用库和两个成员；拍摄期间没有执行组合启动。
+- [custom-apps.png](custom-apps.png)：640 × 660，拖入、选择文件、粘贴路径与公开应用列表。
+- [config-backup.png](config-backup.png)：640 × 660，备份入口及恢复说明；此图展示入口，不表示正在执行或已经完成备份。
+- [about.png](about.png)：640 × 660，当前版本、更新开关和许可入口。
 
-## 更新方式
+## 数据与采集方式
 
-运行待记录版本，等待索引、图标加载和界面过渡动画完成，仅捕获应用窗口。若截图工具会导致失焦隐藏，可先从托盘完全退出 Velo，再使用本地程序的 `--diagnostics` 参数启动。
+固定项、自定义应用、别名和使用记录为文档准备的演示数据；自动索引与应用图标来自本机 Windows 原生发现。应用数量、常用排序与所选偏好属于演示环境，不是新安装默认值。截图中启用了 Everything，产品默认关闭。
 
-检查路径、提示和列表中是否包含个人信息。以原始 PNG 替换对应场景，保持比例，同步更新中英文 README、用户指南及本文件中的日期、尺寸和场景说明。不要为了截图提交用户配置、索引或使用记录。
+文件搜索使用已有 Everything 1.4.1.1032 程序、独立 INI 与仅包含六项公开内容的文件夹索引。图片没有包含私人文件或用户名。拍摄使用独立热键，未使用正式 `%LOCALAPPDATA%\Velo` 数据。
 
-## 历史验证资料
+图片直接由窗口原始位图保存为 PNG；原生菜单在其所属窗口的已观测屏幕边界内采集，以保留弹出层。没有缩放、拼接、重绘或替换界面内容。README 的显示宽度只影响页面预览，点击可查看原始文件。每张图片的尺寸、来源方法、UTC / 北京时间和 SHA-256 均保存在 [capture-manifest.json](capture-manifest.json)。
 
-### 配置备份预览（2026-10-04）
+拍摄实例和临时 Everything 客户端已退出，原有正式 Velo 与 Everything 服务保留。验证范围与临时资源处理见上述本轮记录。
 
-`config-backup-preview.jpg` 为当时源码的“设置 → 备份”页面在本地浏览器中的真实渲染截图，使用 640 × 660 页面尺寸。预览连接真实 Go 配置服务，配置与备份均位于独立测试目录，截图展示实际生成文件后的成功提示。此图用于验证页面布局及备份交互，不是原生桌面窗口截图，也不包含用户配置数据。当前用户指南改用上方的 Windows 实机截图。
+## 后续更新
 
-`config-backup-preview.jpg` is a historical browser capture connected to the real Go configuration service with isolated test data. It shows a successful backup at 640 × 660 and remains available as validation material.
+使用待记录构建和独立演示数据，保持主题、缩放与应用集合一致，等待图标及过渡完成后采集窗口。更新图片时同步中英文 README、用户指南及采集清单，检查版本、场景、文字、隐私和校验值。不要提交用户配置、索引、历史、缓存或本地采集日志。
 
-### 空回收站信息提示（2026-10-14）
-
-`empty-recycle-bin-notice.jpg` 为当时 Go 源码的空回收站信息提示，使用真实 Windows `MessageBoxW` 显示并捕获。原生提示函数在独立测试中调用，截图展示信息图标、“回收站已为空，无需清理。”及单个“确定”按钮；实测按空格关闭后正常返回。测试没有调用清空接口，也没有删除文件。
-
-`empty-recycle-bin-notice.jpg` captures the Go informational message box with a single OK button. Pressing Space dismissed the notice successfully; the test did not invoke the empty operation or delete files.
+旧版界面截图随旧版源码保存在 [go 分支](https://github.com/HBLADEH/velo-launcher/tree/go/docs/images)；`docs/baselines/` 内的历史验证图片保留原始构建身份。

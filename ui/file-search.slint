@@ -1,0 +1,61 @@
+import { Glyph, Theme } from "components.slint";
+
+export struct FileEntry {
+    path: string,
+    name: string,
+    directory: string,
+    kind: string,
+    folder: bool,
+}
+
+export component FileResultRow inherits Rectangle {
+    in property <FileEntry> item;
+    in property <bool> selected;
+    callback hovered(string);
+    callback chosen(string);
+    callback context-menu(string);
+    height: 58px;
+    border-radius: 9px;
+    border-width: 1px;
+    border-color: root.selected ? Theme.accent-line : transparent;
+    background: root.selected ? Theme.selected : touch.has-hover ? Theme.hover : transparent;
+    if root.item.folder: Glyph {
+        x: 13px; y: 16px; width: 25px; height: 25px; icon-key: "folder";
+    }
+    if !root.item.folder: Path {
+        x: 15px; y: 17px; width: 21px; height: 24px;
+        fill: transparent; stroke: Theme.accent; stroke-width: 1.3px;
+        commands: "M 2 1 L 13 1 L 19 7 L 19 23 L 2 23 Z M 13 1 L 13 7 L 19 7 M 6 12 L 15 12 M 6 17 L 15 17";
+    }
+    Text {
+        x: 51px; y: 8px; width: parent.width - 131px; height: 20px;
+        text: root.item.name; overflow: elide;
+        color: root.selected ? Theme.accent : Theme.fg; font-size: 14px; font-weight: 550;
+    }
+    Text {
+        x: 51px; y: 31px; width: parent.width - 83px; height: 16px;
+        text: root.item.directory; overflow: elide; color: Theme.muted; font-size: 11px;
+    }
+    Text {
+        x: parent.width - 76px; y: 13px; width: 45px; height: 17px;
+        text: root.item.kind; overflow: elide; color: Theme.muted; font-size: 10px;
+        horizontal-alignment: right;
+    }
+    if root.selected: Glyph {
+        x: parent.width - 25px; y: 21px; width: 14px; height: 14px; icon-key: "enter";
+    }
+    touch := TouchArea {
+        mouse-cursor: pointer;
+        moved => { root.hovered(root.item.path); }
+        clicked => { root.hovered(root.item.path); }
+        double-clicked => { root.chosen(root.item.path); }
+        pointer-event(event) => {
+            if event.kind == PointerEventKind.up && event.button == PointerEventButton.right {
+                root.hovered(root.item.path); root.context-menu(root.item.path);
+            }
+        }
+    }
+    accessible-role: list-item;
+    accessible-label: root.item.name + " · " + root.item.path;
+    accessible-value: root.selected ? "selected" : "";
+}

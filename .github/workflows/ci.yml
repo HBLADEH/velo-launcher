@@ -1,4 +1,4 @@
-name: Rust Windows validation
+name: Rust Windows CI
 on:
   push:
     branches: [main]
@@ -7,59 +7,30 @@ on:
       - README.md
       - README.en.md
       - CONTRIBUTING.md
-      - rust/README.md
+  pull_request:
+    branches: [main]
+    paths-ignore:
+      - 'docs/**'
+      - README.md
+      - README.en.md
+      - CONTRIBUTING.md
   workflow_dispatch:
 permissions:
   contents: read
 jobs:
-  validate:
-    # Requires the exact Rust/MSVC/SDK versions from the repository, plus an
-    # interactive Windows desktop for native component smoke tests.
-    runs-on: [self-hosted, Windows, X64, velo-locked-toolchain]
-    timeout-minutes: 180
+  check:
+    runs-on: windows-2025
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        renderer: [software, femtovg]
     env:
-      CARGO_BUILD_JOBS: '1'
-      GOTOOLCHAIN: go1.25.6
-    concurrency:
-      group: velo-rust-desktop-validation
-      cancel-in-progress: false
+      VELO_RENDERER: ${{ matrix.renderer }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.3.1
         with:
           persist-credentials: false
-          # Keep ignored compiler outputs; release packaging rejects dirty
-          # source, stale receipts and changed input hashes.
-          clean: false
-      - uses: actions/setup-go@v5
-        with:
-          go-version: '1.25.6'
-          cache: false
-      - name: Verify both product renderers
+      - name: Check and test the product feature
         shell: pwsh
-        run: ./scripts/verify-rust.ps1 -Product -SmokeTest
-      - name: Check release policy for this version
-        id: release-policy
-        shell: pwsh
-        run: |
-          $policy = Get-Content -Raw rust/windows/release-policy.json | ConvertFrom-Json
-          $cargo = Get-Content -Raw rust/Cargo.toml
-          $version = [regex]::Match($cargo, '(?m)^version = "(\d+\.\d+\.\d+)"\r?$').Groups[1].Value
-          if (-not $version) { throw 'Cannot read the current Rust package version.' }
-          $approved = $policy.G4Passed -and $policy.RedistributionCleared -and $policy.PublicReleaseApproved -and $policy.ReleaseTag -match '^v?\d+\.\d+\.\d+$' -and ($policy.ReleaseTag -replace '^v', '') -eq $version
-          "approved=$($approved.ToString().ToLowerInvariant())" >> $env:GITHUB_OUTPUT
-      - name: Prepare pinned NSIS
-        if: steps.release-policy.outputs.approved == 'true'
-        shell: pwsh
-        run: ./scripts/prepare-rust-packaging-tools.ps1 -OutputDirectory rust/target/ci-packaging-tools-${{ github.run_id }}-${{ github.run_attempt }}
-      - name: Package approved Rust release
-        if: steps.release-policy.outputs.approved == 'true'
-        shell: pwsh
-        run: |
-          $tools = Get-Content -Raw rust/target/ci-packaging-tools-${{ github.run_id }}-${{ github.run_attempt }}/tools.json | ConvertFrom-Json
-          ./scripts/package-rust-release.ps1 -OutputDirectory rust/target/ci-release-${{ github.run_id }}-${{ github.run_attempt }} -Makensis $tools.Compiler
-      - uses: actions/upload-artifact@v4
-        if: steps.release-policy.outputs.approved == 'true'
-        with:
-          name: velo-rust-windows-x64
-          path: rust/target/ci-release-${{ github.run_id }}-${{ github.run_attempt }}/assets/*
-          if-no-files-found: error
+        run: ./scripts/test-rust-ci.ps1 -Renderer $env:VELO_RENDERER

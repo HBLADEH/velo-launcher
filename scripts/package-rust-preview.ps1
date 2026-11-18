@@ -9,8 +9,9 @@ param(
 )
 $ErrorActionPreference = 'Stop'
 . (Join-Path $PSScriptRoot 'lib/rust-license-policy.ps1')
+. (Join-Path $PSScriptRoot 'lib/rust-build-identity.ps1')
 $repository = Split-Path -Parent $PSScriptRoot
-$rustRoot = Join-Path $repository 'rust'
+$rustRoot = $repository
 $releasePolicy = Get-Content -Raw -LiteralPath (Join-Path $rustRoot 'windows/release-policy.json') | ConvertFrom-Json
 if ($Release -and (-not $Product -or -not $releasePolicy.G4Passed -or
     -not $releasePolicy.PublicReleaseApproved -or -not $releasePolicy.RedistributionCleared)) {
@@ -18,39 +19,14 @@ if ($Release -and (-not $Product -or -not $releasePolicy.G4Passed -or
 }
 if ($releasePolicy.DefaultRenderer -notin 'software','femtovg' -or $releasePolicy.AlternateRenderer -notin 'software','femtovg' -or
     $releasePolicy.DefaultRenderer -eq $releasePolicy.AlternateRenderer) { throw 'Invalid renderer release policy.' }
-if (-not $ArtifactDirectory) {
-    $group = if ($Product) { 'product-artifacts' } else { 'artifacts' }
-    $ArtifactDirectory = Join-Path $rustRoot "target/$group/$Renderer"
-}
-$ArtifactDirectory = (Resolve-Path -LiteralPath $ArtifactDirectory).Path
-$identityPath = Join-Path $ArtifactDirectory 'build-identity.json'
-$receipt = Get-Content -LiteralPath (Join-Path $ArtifactDirectory 'verification.json') -Raw | ConvertFrom-Json
-$identity = Get-Content -LiteralPath $identityPath -Raw | ConvertFrom-Json
-if ([bool]$identity.ProductIdentity -ne $Product.IsPresent -or [bool]$receipt.ProductIdentity -ne $Product.IsPresent) { throw 'Product and preview verification receipts cannot be interchanged.' }
-$metadataPath = Join-Path $ArtifactDirectory 'cargo-metadata.json'
-$executable = Join-Path $ArtifactDirectory 'velo-slint.exe'
-if (-not $receipt.ChecksPassed -or -not $receipt.SmokeTestPassed -or
-    $receipt.Renderer -ne $Renderer -or $identity.Renderer -ne $Renderer -or
-    $identity.Target -ne 'x86_64-pc-windows-msvc' -or
-    (Get-FileHash -LiteralPath $executable).Hash -ne $receipt.ExecutableSHA256 -or
-    $identity.ExecutableSHA256 -ne $receipt.ExecutableSHA256 -or
-    (Get-FileHash -LiteralPath $identityPath).Hash -ne $receipt.BuildIdentitySHA256 -or
-    (Get-FileHash -LiteralPath $metadataPath).Hash -ne $receipt.CargoMetadataSHA256) {
-    throw 'Preview packaging requires a matching successful full verification with -SmokeTest.'
-}
-foreach ($source in $identity.Sources) {
-    $path = [IO.Path]::GetFullPath((Join-Path $rustRoot $source.Path))
-    if (-not $path.StartsWith($repository + '\', [StringComparison]::OrdinalIgnoreCase) -or
-        (Get-FileHash -LiteralPath $path).Hash -ne $source.SHA256) {
-        throw "Source changed after verification: $($source.Path)"
-    }
-}
+$build = Read-VeloVerifiedBuild -Repository $repository -Renderer $Renderer -ArtifactDirectory $ArtifactDirectory -Product:$Product -Release:$Release
+$executable = $build.Executable
 $OutputDirectory = $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($OutputDirectory)
 $target = (Resolve-Path -LiteralPath (Join-Path $rustRoot 'target')).Path
 $parent = (Resolve-Path -LiteralPath (Split-Path -Parent $OutputDirectory)).Path
 if (-not $OutputDirectory.StartsWith($target + '\', [StringComparison]::OrdinalIgnoreCase) -or
     ($parent -ne $target -and -not $parent.StartsWith($target + '\', [StringComparison]::OrdinalIgnoreCase))) {
-    throw 'Stage preview archives inside rust/target with an existing parent.'
+    throw 'Stage preview archives inside target with an existing parent.'
 }
 if (Test-Path -LiteralPath $OutputDirectory) { throw 'Use a fresh preview output directory.' }
 New-Item -ItemType Directory -Path $OutputDirectory | Out-Null
@@ -58,13 +34,12 @@ $content = Join-Path $OutputDirectory 'content'
 New-Item -ItemType Directory -Path $content | Out-Null
 Copy-Item -LiteralPath $executable -Destination $content
 Copy-Item -LiteralPath (Join-Path $repository 'LICENSE') -Destination $content
-Copy-Item -LiteralPath $identityPath -Destination $content
-Copy-Item -LiteralPath (Join-Path $ArtifactDirectory 'verification.json') -Destination $content
+Copy-Item -LiteralPath $build.IdentityPath, $build.VerificationPath -Destination $content
 $licenseRoot = Join-Path $content 'licenses'
 New-Item -ItemType Directory -Path $licenseRoot | Out-Null
 Copy-Item -LiteralPath (Join-Path $rustRoot 'licenses') -Destination (Join-Path $licenseRoot 'project') -Recurse
 Copy-Item -LiteralPath (Join-Path $rustRoot 'ui/assets/fluent/LICENSE.txt') -Destination (Join-Path $licenseRoot 'Fluent-Icons-MIT.txt')
-$metadata = Get-Content -LiteralPath $metadataPath -Raw | ConvertFrom-Json
+$metadata = Get-Content -LiteralPath $build.MetadataPath -Raw | ConvertFrom-Json
 $supplements = Get-Content -LiteralPath (Join-Path $rustRoot 'licenses/dependency-supplements.json') -Raw | ConvertFrom-Json
 foreach ($entry in $supplements.Entries) {
     foreach ($text in $entry.Files) {
@@ -130,8 +105,8 @@ and data directory; exit any other Velo before opening it to avoid hotkey confli
 
 Run RUN-PREVIEW.ps1 with PowerShell. Do not point it at production data. Changing
 renderers uses the same preview data and requires the previous process to exit.
-For rollback, exit the preview and start the unchanged Go/Wails application.
-The preview does not migrate or replace that application's files or installer.
+To return to the installed release, exit the preview and start it normally.
+The preview does not migrate or replace the installed application's files.
 
 The dependency inventory conservatively includes resolved build dependencies.
 Root and nested license files and exact-revision supplements are collected with
@@ -159,7 +134,7 @@ $info.ArgumentList.Add(('--data-dir=' + (Join-Path $env:LOCALAPPDATA 'VeloSlintP
 [ordered]@{
     RecordedAtUtc = [DateTime]::UtcNow.ToString('o'); Renderer = $Renderer
     ProductIdentity = $Product.IsPresent
-    ExecutableSHA256 = $receipt.ExecutableSHA256
+    ExecutableSHA256 = $build.Receipt.ExecutableSHA256
     InternalValidationOnly = -not $Release; RedistributionCleared = $Release.IsPresent; DefaultRenderer = $releasePolicy.DefaultRenderer
     PublicReleaseApproved = $Release.IsPresent
     ReleaseTag = $(if ($Release) { $releasePolicy.ReleaseTag } else { $null })
@@ -208,10 +183,10 @@ installer; this ZIP is an installation payload, not a portable application.
 Software is the default renderer; FemtoVG is an explicit alternative.
 Exit Velo from the tray before installing or switching renderers.
 
-The installer can take over the verified official Go v0.9.11 system installation
-in its existing directory. Other Go builds must be uninstalled first, preserving
-user data. Go/Wails is retired from active development. Rust has no Go, WebView2
-or local HTTP runtime dependency. Future updates remain on the Rust channel.
+The installer can take over the verified official v0.9.11 system installation
+in its existing directory. Other legacy builds must be uninstalled first,
+preserving user data. See the v0.10.0 release notes for migration details.
+Future updates use the matching Rust renderer's system installer.
 
 Data stays in %LOCALAPPDATA%\Velo. Before first initialization, each user receives
 a complete, byte-verified snapshot under sibling VeloRustMigrationBackups.
@@ -219,14 +194,13 @@ Backup failure stops initialization. Uninstall preserves data, unknown files and
 .velo-rollback program archives. /ROLLBACK is available only when an original
 Go installation was retained; it is a recovery option, not a maintained release.
 
-Validation covers the current Windows 11 / Intel UHD 630 host and isolated
-Windows 10 VMware guest. Other hardware was not tested. Existing performance
-tradeoffs remain documented in RS-12/RS-14; no universal memory budget is claimed.
+Release verification scope: {{ACCEPTANCE_SCOPE}}
+See the release manifest for the validation evidence and build identity.
 
 Keep the project LICENSE, dependency-inventory.json and all licenses/ texts.
 Slint uses Royalty-free 2.0; Settings / About provides the actual AboutSlint.
 The MIT project license does not replace third-party terms.
-'@.Replace('{{VERSION}}', $version) | Set-Content -LiteralPath (Join-Path $content 'README.md') -Encoding utf8NoBOM
+'@.Replace('{{VERSION}}', $version).Replace('{{ACCEPTANCE_SCOPE}}', $releasePolicy.Scope) | Set-Content -LiteralPath (Join-Path $content 'README.md') -Encoding utf8NoBOM
 }
 $sums = @(Get-ChildItem -LiteralPath $content -File -Recurse | Sort-Object FullName | ForEach-Object {
     '{0}  {1}' -f (Get-FileHash -LiteralPath $_.FullName).Hash.ToLowerInvariant(), [IO.Path]::GetRelativePath($content, $_.FullName).Replace('\','/')

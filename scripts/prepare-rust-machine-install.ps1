@@ -14,11 +14,11 @@ param(
 )
 $ErrorActionPreference = 'Stop'
 $repository = Split-Path -Parent $PSScriptRoot
-$target = (Resolve-Path -LiteralPath (Join-Path $repository 'rust/target')).Path
+$target = (Resolve-Path -LiteralPath (Join-Path $repository 'target')).Path
 $OutputDirectory = $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($OutputDirectory)
-if (-not $OutputDirectory.StartsWith($target + '\', [StringComparison]::OrdinalIgnoreCase) -or (Test-Path -LiteralPath $OutputDirectory)) { throw 'Use a fresh machine acceptance input inside rust/target.' }
+if (-not $OutputDirectory.StartsWith($target + '\', [StringComparison]::OrdinalIgnoreCase) -or (Test-Path -LiteralPath $OutputDirectory)) { throw 'Use a fresh machine acceptance input inside target.' }
 $Makensis = (Resolve-Path -LiteralPath $Makensis).Path
-$toolchain = Get-Content -LiteralPath (Join-Path $repository 'rust/windows/nsis-toolchain.json') -Raw | ConvertFrom-Json
+$toolchain = Get-Content -LiteralPath (Join-Path $repository 'windows/nsis-toolchain.json') -Raw | ConvertFrom-Json
 if ((Get-FileHash -LiteralPath $Makensis).Hash -ne $toolchain.compilerSHA256 -or (& $Makensis /VERSION) -ne "v$($toolchain.version)") { throw 'Pinned NSIS identity required.' }
 New-Item -ItemType Directory -Path $OutputDirectory | Out-Null
 
@@ -51,7 +51,7 @@ $sums = @(Get-ChildItem -LiteralPath $fault -File -Recurse | Where-Object Name -
 })
 $sums | Set-Content -LiteralPath (Join-Path $fault 'SHA256SUMS.txt') -Encoding utf8NoBOM
 $faultInstaller = Join-Path $OutputDirectory 'fault-installer.exe'
-& $Makensis /WX /V3 /INPUTCHARSET UTF8 "/DCONTENT=$fault" "/DOUTPUT=$faultInstaller" "/DVERSION=$($renderers['software'].Version)" '/DRENDERER=software' (Join-Path $repository 'rust/windows/product-installer.nsi') *> (Join-Path $OutputDirectory 'fault-build.log')
+& $Makensis /WX /V3 /INPUTCHARSET UTF8 "/DCONTENT=$fault" "/DOUTPUT=$faultInstaller" "/DVERSION=$($renderers['software'].Version)" '/DRENDERER=software' (Join-Path $repository 'windows/product-installer.nsi') *> (Join-Path $OutputDirectory 'fault-build.log')
 if ($LASTEXITCODE) { throw 'Fault fixture NSIS compilation failed; inspect fault-build.log.' }
 
 # The elevated stage script and the guest-only final cleanup travel with the

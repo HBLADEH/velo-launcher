@@ -1,77 +1,72 @@
-# Rust 构建、内部安装器与发行准备
+# Rust + Slint 发行准备
 
-正式发行构建与最终安装器已完成验证，见 [0.1.0 发行验证](baselines/2026-11-15-rust-0.1.0/README.md)。
+[开发说明](development.md) · [v0.11.0 版本说明](releases/0.11.0.md) · [验证入口](verification.md) · [文档索引](README.md)
 
-2026-11-15 发布授权：所有者明确要求发布 Rust 首个正式版本，精确标签 `0.1.0`，并停止 Go/Wails 产品开发。现行 `release-policy.json` 记录 G4 当前机器验收、已完成的许可技术审查和本次公开发布授权。正式入口为 `verify-rust.ps1 -Product -SmokeTest` 与 `package-rust-release.ps1`，仅分发系统安装器；每份发行包重新绑定源码、exe、许可和 SHA256，旧包及下文历史状态不回写。具体步骤见[当前开发说明](development.md)。
+版本来源是根目录 `Cargo.toml`。发行策略位于 `windows/release-policy.json`，记录指定版本的批准状态及对应证据。实际下载以 GitHub Releases 为准。
 
-2026-11-15：[RS-14 / G4 当前机器验收完成](baselines/2026-11-07-slint-rs14/machine-completion-2026-11-14/g4-acceptance.md)。正式身份、打开数据层前原文快照、系统接管/故障恢复/升级/Go回退/卸载、两 renderer 完整检查、普通权限会话、搜狗真实键盘及最终清理通过。范围只含现有宿主机及其 Windows10 客户机，不可用实体驱动等按用户要求跳过；原预算差异、历史失败和前轮 CI 身份保留。下文旧日期状态按原范围保留，不冒称新远端 CI 或公共发行许可通过；未发布或替换宿主机正式程序。
+## 构建与验证
 
-正式候选构建入口为 `./scripts/verify-rust.ps1 -Product -SmokeTest`；打包使用 `package-rust-product.ps1`，仅在 `rust/target` 生成内部候选。预览身份与正式身份回执不能混用。`prepare-rust-machine-install.ps1` 生成客户机输入和独立的替换后故障注入夹具；`test-rust-machine-install.ps1` 的 Prepare / Switch / Rollback / Cleanup 只允许测试虚拟机执行，夹具不进入产品包。程序沿用原系统安装位置，用户快照则由每个普通权限用户首次启动前在后台完成；卸载/回退不删除数据。正式命名不代表发布许可通过，`0.1.0` 和 `RedistributionCleared=false` 继续保留。
-
-最新[本机 CI / Windows 10 续验](baselines/2026-11-07-slint-rs14/host-completion-2026-11-13/README.md)已完成真实 GitHub CI（[43370007545](https://github.com/HBLADEH/velo-launcher/actions/runs/43370007545)，临时分支，完整 success）和 Windows 10 Pro 22H2 虚拟机中两 renderer 的十组检查。runner 已退出并清理注册；“runner=0/未推送”只保留为前轮历史状态，不再是当前 CI 待办。原 GNU host 选择缺口与 NSIS HTTPS 降级拒绝分别修复为完整 MSVC host 锁定、同 SHA256 的离线包入口，原失败保留。正式 Go 系统安装/数据副本回退续验进度及剩余环境见[最新待办](baselines/2026-11-07-slint-rs14/host-completion-2026-11-13/remaining-work.json)，G4仍未放行。
-
-2026-11-13 [RS-14 续验](baselines/2026-11-07-slint-rs14/completion-2026-11-13/README.md)已选择 **Software 为已测 Windows 11 x64 的默认 renderer**，FemtoVG 保留为显式替代构建。当前 exe 的三态/100 次显隐补验、许可选项与嵌套声明、真实每用户注册/卸载、两条包级 Go/Rust 回退，以及两 renderer 各一组真实 UAC 确认/取消均已执行；最终检查与适用构建见新证据。远端 runner 仍为 0、Rust workflow 未推送，Windows 10/其他驱动等未实测，**RS-14/G4 继续保留这些待验项**。
-
-下文 2026-11-12 数字为原检查点，不能替代本轮程序与安装器身份。
-
-2026-11-12 [本地发行续验](baselines/2026-11-07-slint-rs14/completion-2026-11-12/README.md)完成 PE 版本/DPI/权限资源、版本同步、许可文本补充、实际 NSIS 内部安装器和两条 Go/Rust 包级回退。两种构建各 206 项输入、完整 Rust 检查及旧版 Go/Vue 回归通过。默认 renderer、公开再分发、正式管理员安装和 G4 仍未放行；当前原型/预览继续隔离正式 Velo 数据。
-
-## 可重复的本地命令
-
-在仓库根目录使用锁定 Rust/MSVC/Windows SDK 和 PowerShell 7.4+。所有输出目录必须全新：
+使用 `rust-toolchain.toml`、`windows-toolchain.json` 和 `Cargo.lock` 锁定的 Windows x64 工具链，在仓库根目录运行：
 
 ```powershell
-$env:GOTOOLCHAIN = 'go1.25.6'
-./scripts/verify-rust.ps1 -SmokeTest
-./scripts/test-rust-preview.ps1 -Renderer software -OutputDirectory rust/target/preview-software
-./scripts/test-rust-preview.ps1 -Renderer femtovg -OutputDirectory rust/target/preview-femtovg
-./scripts/audit-rust-licenses.ps1 -Renderer software -OutputPath rust/target/preview-software/license-audit.json
-./scripts/audit-rust-licenses.ps1 -Renderer femtovg -OutputPath rust/target/preview-femtovg/license-audit.json
-
-./scripts/prepare-rust-packaging-tools.ps1 -OutputDirectory rust/target/packaging-tools
-$tools = Get-Content -Raw rust/target/packaging-tools/tools.json | ConvertFrom-Json
-./scripts/test-rust-installer.ps1 -Renderer software -OutputDirectory rust/target/install-software -Makensis $tools.Compiler
-./scripts/test-rust-installer.ps1 -Renderer femtovg -OutputDirectory rust/target/install-femtovg -Makensis $tools.Compiler
-./scripts/test-rust-user-install.ps1 -Renderer software -OutputDirectory rust/target/user-install-software -Makensis $tools.Compiler
-./scripts/test-rust-user-install.ps1 -Renderer femtovg -OutputDirectory rust/target/user-install-femtovg -Makensis $tools.Compiler
+./scripts/verify-rust.ps1 -Product -SmokeTest
 ```
 
-`verification.json` 绑定 exe、构建身份、Cargo metadata 与完整检查/smoke 范围；开始验证时删除旧回执，失败不会留下新的成功回执。打包再次核对全部源码和元数据；`SkipChecks`、缺 smoke 或任一哈希变化会在生成包前拒绝。
+此入口分别验证 Software 与 FemtoVG，每份构建只启用一种渲染器，并启用正式 `product` 身份。检查格式、clippy、Rust 测试、固化契约、原生集成、Release、PE 资源和窗口 / 输入 / 页面冒烟。`-SkipChecks` 只用于迭代，不能生成完整验收结论。
 
-`Cargo.toml` 的版本是 CLI、更新判断、关于页、PE File/ProductVersion、manifest 和 NSIS 的共同来源。当前 `0.1.0` 是重构内部版本，不是替代正式 Go v0.9.11 的发布标签。`verify-rust.ps1` 使用锁定 SDK 的 rc/mt/dumpbin 核对实际 PE：x64 Windows GUI、renderer 名称、普通用户权限、PerMonitorV2、longPathAware，以及没有直接 WebView/动态 VC runtime 导入。
+产物位于 `target/product-artifacts/<renderer>/`，其中 `build-identity.json` 绑定 exe、工具链、renderer features 与源码指纹；`verification.json` 记录成功的完整检查与冒烟。打包时重新核对两者及全部输入文件，修改源码后必须重新验证。开发身份和正式身份的回执不能混用。
 
-## 内部 ZIP 与许可
+真实 IME、多屏、DPI、Shell、UAC 与系统安装测试按各自证据范围执行。Everything 的真实端点测试使用独立环境，不接管正在使用的默认客户端；见[文件搜索说明](everything-file-search-proposal.md)。
 
-ZIP 包含 exe、完整身份/回执、项目/资源/依赖许可、依赖 inventory 和内外两层 SHA256。解压后运行 `RUN-PREVIEW.ps1`，使用 `--instance-id=preview` 与 `%LOCALAPPDATA%\VeloSlintPreview`；两种 renderer 共用该预览身份/数据，切换前完全退出，避免热键争用。直接运行 exe 仍是 Rust prototype 隔离目录。
+## 生成本地系统安装候选
 
-依赖清单保守包含 resolved build/optional 节点，不把它们全部当作运行时链接依赖。原 30 项/41 份根文本补充继续保留；11 月 13 日增加精确 ANGLE submodule 的 BSD 文本，当前补充共 42 份。每个包记录明确许可选项，AND 两侧条款同时保留；新增未审查表达式会拒绝打包。递归收集 3 份嵌套文本，并从 Khronos XML/IDL 保存 11 份内嵌声明及其源文件/提取文本 SHA。两包 `MissingLicenseTexts=0`，根文件缺失统计仍单列。Slint 选择 Royalty-free 2.0 并保留真实 AboutSlint；技术审查见[许可审查](baselines/2026-11-07-slint-rs14/completion-2026-11-13/license-review.md)。内部包仍为 `RedistributionCleared=false`，不自动发布。
-
-## 实际 NSIS 与回退
-
-便携 NSIS 版本和 archive/compiler SHA256 固定在 `rust/windows/nsis-toolchain.json`。准备脚本只解压到 `rust/target`，不全局安装。下载返回 HTML 或哈希不一致时拒绝执行。安装器脚本由 Rust 工程独立提供，不依赖 Go/Wails 或 WebView 安装逻辑。
-
-网络返回 HTTPS→HTTP 重定向时仍然拒绝降级。已有下载包或 CI 预缓存可使用 `prepare-rust-packaging-tools.ps1 -ArchivePath <ZIP完整路径>`，或在 runner 进程设置 `VELO_NSIS_ARCHIVE`；两条入口均按同一个固定 archive SHA256 校验，再核对解压后的 compiler SHA256/版本。错误本地 ZIP 在创建输出前拒绝，不能用离线入口跳过完整性检查。
-
-`test-rust-installer.ps1` 编译实际 NSIS，并将安装目录编译期固定到一个测试路径，禁止系统卸载项和快捷方式写入。八个检查覆盖：错误目标拒绝、中文空格路径、安装后程序窗口 smoke、锁定程序拒绝、**锁定卸载在删除 payload 前拒绝**、失败恢复旧 exe 精确字节、升级替换、卸载保留未知文件与五份合成数据。安装先备份旧 exe，失败还原；卸载只删除生成清单中的文件，不递归删除安装目录或用户数据。NSIS 编译使用 `/WX`，不再忽略卸载命令引号等警告。
-
-可为审查编译不固定测试目录的内部候选，以下命令只生成安装器，不执行：
+安装器使用 `windows/nsis-toolchain.json` 锁定的 NSIS。输出目录必须全新，已有候选保留原来的构建身份：
 
 ```powershell
-./scripts/package-rust-installer.ps1 -PreviewContent rust/target/preview-software/valid/content -OutputDirectory rust/target/candidate-software -Makensis $tools.Compiler
+./scripts/prepare-rust-packaging-tools.ps1 -OutputDirectory target/packaging-tools
+$veloPackagingTools = Get-Content -Raw target/packaging-tools/tools.json | ConvertFrom-Json
+./scripts/package-rust-product.ps1 -Renderer software -OutputDirectory target/candidate-software -Makensis $veloPackagingTools.Compiler
+./scripts/package-rust-product.ps1 -Renderer femtovg -OutputDirectory target/candidate-femtovg -Makensis $veloPackagingTools.Compiler
 ```
 
-内部候选默认安装到 `%LOCALAPPDATA%\Programs\VeloSlintPreview`，使用独立的每用户开始菜单/卸载项及预览数据目录。`test-rust-user-install.ps1` 已执行不禁用注册的实际候选：程序目录通过 `/D` 留在任务目录，真实 HKCU/开始菜单分支执行并清理；默认预览数据未打开。x64 注册视图固定为 64 位，卸载命令正确引用中文空格路径。已有预览注册/快捷方式时测试拒绝覆盖。
+候选生成不执行安装器。系统安装、升级、恢复、卸载和回退在隔离客户机验证；`prepare-rust-machine-install.ps1` 准备输入，`test-rust-machine-install.ps1` 与 `test-rust-machine-cleanup.ps1` 限定测试虚拟机。故障注入载荷仅用于恢复验证，不得分发。不要用宿主机正式安装和正式数据作为测试目标。
 
-真实 UAC 更新使用 `test-rust-nsis-update.ps1` 的 `Prepare → Schedule → Verify → Finalize`。Prepare 只生成具体 NSIS 包、生产更新脚本、原配置备份及受保护任务目录；Schedule 才弹出 UAC，由用户操作；Verify 检查确认替换或取消保留、原始备份、错误原因及后台重启；用户从托盘正常退出后 Finalize 恢复原权限。两个 renderer 的确认/取消共四组已在本机完成，不修改系统安全策略、不替换正式应用。它补齐的是**真实 NSIS 在隔离受保护目录的提权更新链路**，没有冒充正式 Go 管理员安装器的全系统迁移。
+## 许可与数据保护
 
-`test-rust-package-rollback.ps1` 接受已冻结的 Wails `latencyprobe` exe/合成 seed manifest（`Builds.wails`、`SeedDirectory`、`Inputs`、`ExpectedCatalogCount`），逐项核对身份后，创建隔离 Go portable ZIP → 实际 NSIS Rust → 保留 Go 程序回退。两种 renderer 均验证三阶段能读取同一 1000 项数据，配置/历史/应用库与原始备份字节不变；写入兼容由已有 Go/Rust 双向契约另证。该范围不冒充正式 Go NSIS→管理员 Rust 安装器的系统级迁移。
+- 收集依赖及内嵌资源的许可文本，保留精确版本、来源与校验值；依赖清单包含构建依赖，不代表全部都是运行时组件。
+- Slint 采用 Royalty-free 2.0，保留设置 → 关于中的真实 `AboutSlint`；项目 MIT 不替代第三方条款。
+- 首次初始化前保留数据原文快照，备份失败停止初始化；更新继续要求 SHA-256 校验及安装前配置备份成功。
+- 系统安装器保持安装回执、失败恢复和既有用户的升级路径；卸载保留用户数据及恢复档案。
+- 资源测量保留构建、renderer、机器和采样范围。历史预算、历史结果与当前实测分别记录，不由一次打包扩大兼容性或性能结论。
 
-## CI 与尚未完成的门槛
+## 正式发行资产
 
-[手动 Rust workflow](../.github/workflows/rust-preview.yml)仅 `workflow_dispatch`、`contents: read`，不自动运行外部 PR、不发布 Release。自托管 Windows x64 runner 需要 `velo-locked-toolchain` 标签、精确 Rust/MSVC/SDK、PowerShell 7.4+、Go 1.25.6、可交互且无其他 Velo 的桌面；单任务串行验证两 renderer，再测 ZIP、准备固定 NSIS、运行实际隔离安装器并上传内部产物。
+正式打包要求干净工作区和匹配版本的发行策略。在创建输出目录之前，检查两种渲染器的完整验证回执均绑定当前 `HEAD`，且输入路径集合和每个文件的 SHA-256 均未改变。策略满足后使用：
 
-2026-11-12 只读查询显示仓库自托管 runner 数为 0，远端也尚无这份本地 Rust workflow。没有注册 runner、推送或触发远端任务；本地 YAML/命令通过不记为远端 CI 通过。
+```powershell
+./scripts/package-rust-release.ps1 -OutputDirectory target/release-0.11.0 -Makensis $veloPackagingTools.Compiler
+./scripts/check-release-assets.ps1 -Directory target/release-0.11.0/assets
+```
 
-RS-12 九份独立冷样本及测量矩阵已按[本机冻结程序验收](baselines/2026-11-04-slint-rs12/completion-2026-11-11/README.md)完成，不再将旧的 0/9 作为当前待办；FemtoVG 内存超预算、慢查询与历史失焦原因未知保留。RS-13 的 48 段原生/43 张页面见[自主续验](baselines/2026-11-07-slint-rs13/completion-2026-11-12/autonomous-followup/README.md)，保留原 exe 身份与精确曲线/物理输入限制。
+默认安装器为 `velo-rust-x64-installer.exe`，替代安装器为 `velo-rust-femtovg-x64-installer.exe`。兼容名称 `velo-launcher-amd64-installer.exe` 必须与默认安装器字节一致；发布时先上传兼容名称，再上传其余资产。发行清单、独立许可包 `velo-rust-<版本>-licenses.zip` 和三个安装器都必须列入 `SHA256SUMS.txt` 并通过校验。打包过程生成的载荷 ZIP 不是免安装版，不随正式资产分发。
 
-最新[剩余工作](baselines/2026-11-07-slint-rs14/host-completion-2026-11-13/remaining-work.json)取代此前审计作为当前入口。renderer 决策、RS-13 本机视觉/真实输入、许可选项与嵌套 vendor、实际每用户注册与真实 NSIS UAC 链路、真实 GitHub CI、Windows 10 虚拟机自动组件/安装检查，以及官方 Go 系统安装到独立 Rust 数据副本的回退和末尾清理已补齐。该手动副本路径保留 Go 和原始备份；自动原位接管的正式 Rust 系统安装器尚未实现，其他实体 GPU/第三方 IME 没有通过结论。临时源码分支/runner 的外部写入由用户明确授权，runner任务后清理；未发布或替换宿主机正式程序。
+README 的[产品 CI](../.github/workflows/ci.yml)使用托管 `windows-2025`，以固定 Rust、SDK 和镜像自带 MSVC 对 Software 与 FemtoVG 分别执行 fmt、Clippy 和大部分 Rust 测试。托盘、全局快捷键和原生确认焦点三个桌面测试，以及 `-SmokeTest`，留在完整验证中。托管 CI 不生成正式打包回执。[内部预览验证](../.github/workflows/rust-preview.yml)仅供手动触发。
+
+## 推送 tag 发版
+
+[发布工作流](../.github/workflows/release.yml)仅在本仓库的版本 tag 推送时发版，不随分支 push 公开发行。
+
+1. **准备 runner。** 使用带 `velo-locked-toolchain`、`release-publisher` 标签的独立 Windows x64 可交互 runner，安装锁定工具链、PowerShell 7.4+。为 runner 进程提供 `VELO_NSIS_ARCHIVE`，指向 checkout 目录外按 `windows/nsis-toolchain.json` 锁定的 ZIP。流程校验归档及编译器 SHA-256，不跟随不安全的下载跳转。配置 `public-release` 环境仅允许版本 tag；若设了必需审阅者，公开发布会等待该审批。不要用个人日常桌面或执行未经信任的 fork 工作流。
+2. **准备并批准版本。** 同步 `Cargo.toml`、`Cargo.lock`、`windows/release-policy.json` 和 `docs/releases/<版本>.md`。审核对应版本的许可和实机证据；所有者同意公开发布后才将策略中的 `PublicReleaseApproved` 设为 `true`。将这些改动合入 `main`，确保 CI 通过。
+3. **推送一个 tag。** 在已批准且可从 `origin/main` 到达的提交上创建带注释的 `vMAJOR.MINOR.PATCH`，例如 `git tag -a $tag $commit -m "Velo $tag"`，再 `git push origin "refs/tags/$tag"`。`$tag` 和 `$commit` 分别取实际版本和提交 SHA。tag、Cargo 版本、发行策略必须一致；不要重新指向已发布 tag。
+4. **核对发布结果。** 工作流按已校验的提交执行双渲染器完整验证与打包。托管发布 job 使用内置 `GITHUB_TOKEN` 创建草稿，先上传兼容安装器，再上传其他五项资产，核对 GitHub 对所有资产返回的 SHA-256 后才公开。只有这个 job 拥有 `contents: write`。不会替换已有草稿或已发布版本。
+
+专用 runner 不可用时，可在已进入 `origin/main` 的干净提交上用锁定工具链完成相同的双渲染器桌面验证和正式打包。用 `publish-rust-release.ps1 -Tag $tag -Commit $commit -Directory $assets -StageDraft` 将已核对的资产上传到指定提交的草稿。该命令使用已核实为 HBLADEH 的 `GH_TOKEN`，并输出 `Velo-Release-Draft: <SHA-256>`。创建注释 tag 时用第二个 `-m` 写入这行返回值。托管发布任务会下载草稿，对照 tag 中的 `SHA256SUMS.txt` 哈希、逐项校验资产和构建提交，通过后发布。
+
+检查未通过时，先查看 Actions 日志和 Release 状态。预上传草稿可以直接重跑发布任务，前提是仍然与 tag 绑定的校验文件和提交完全一致。已公开版本以新的版本号发布后续修复。
+
+## 证据与历史
+
+当前执行入口见[开发说明](development.md)，完整构建与实机证据见[基线索引](baselines/README.md)，既有 G4 范围见[机器验收](baselines/2026-11-07-slint-rs14/machine-completion-2026-11-14/g4-acceptance.md)。新版证据保持自己的 exe 和源码身份，不改写旧结果。
+
+0.1.0 首次发行期间的旧目录命令、迁移对照和阶段状态保存在[历史检查点](archive/rust-first-release.md)。
