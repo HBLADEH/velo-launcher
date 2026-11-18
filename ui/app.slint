@@ -110,6 +110,8 @@ export component AppWindow inherits Window {
     in-out property <string> selection-notice;
     in-out property <bool> is-home: true;
     in-out property <bool> dark-theme <=> Theme.dark;
+    in property <bool> draw-window-border: true;
+    callback window-border-changed(color);
     in-out property <bool> reduce-motion <=> Theme.reduce-motion;
     out property <bool> appearance-open: false;
     in property <bool> native-composing: false;
@@ -235,7 +237,10 @@ export component AppWindow inherits Window {
         }
     }
     init => { Palette.color-scheme = root.dark-theme ? ColorScheme.dark : ColorScheme.light; }
-    changed dark-theme => { Palette.color-scheme = root.dark-theme ? ColorScheme.dark : ColorScheme.light; }
+    changed dark-theme => {
+        Palette.color-scheme = root.dark-theme ? ColorScheme.dark : ColorScheme.light;
+        root.window-border-changed(Theme.window-border);
+    }
     changed input-text => { results.content-y = 0px; file-results.content-y = 0px; }
     changed file-mode => {
         if root.file-mode {
@@ -294,8 +299,16 @@ export component AppWindow inherits Window {
                 }
             }
             Rectangle { y: parent.height - 1px; height: 1px; background: Theme.border; }
-            Image { x: 21px; y: 23px; width: 36px; height: 36px; source: @image-url("assets/logo.png"); image-fit: contain; }
-            Rectangle {
+            Image {
+                x: (search-field.x - self.width) / 2;
+                // Center the visible mark, which sits below the bitmap's midpoint.
+                y: search-field.y + (search-field.height - self.height) / 2 - 2px;
+                width: 40px;
+                height: self.width;
+                source: @image-url("assets/logo.png");
+                image-fit: contain;
+            }
+            search-field := Rectangle {
                 x: 70px; y: 18px; width: parent.width - 136px; height: 44px;
                 border-radius: 10px;
                 border-width: 1px;
@@ -340,9 +353,10 @@ export component AppWindow inherits Window {
                     activated => { root.file-mode = !root.file-mode; }
                 }
                 if !root.everything-enabled && (root.business-enabled || root.input-text == ""): Text {
-                    x: parent.width - 39px; y: 14px; width: 30px; height: 18px;
+                    x: parent.width - 39px; y: 0px; width: 30px; height: parent.height;
                     text: "搜索"; font-size: 10px; color: Theme.muted;
                     horizontal-alignment: center;
+                    vertical-alignment: center;
                 }
             }
             ActionButton {
@@ -649,6 +663,12 @@ export component AppWindow inherits Window {
             drag => { root.drag-requested(); }
         }
         }
+    }
+    if root.draw-window-border: Rectangle {
+        width: parent.width;
+        height: parent.height;
+        border-width: 1px;
+        border-color: Theme.window-border;
     }
     forward-focus: input;
 }

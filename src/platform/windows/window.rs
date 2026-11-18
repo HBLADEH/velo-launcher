@@ -1,6 +1,7 @@
 //! Small, UI-thread-only Win32 operations; Slint owns the HWND and its lifetime.
 
 use windows_sys::Win32::Foundation::{HWND, RECT};
+use windows_sys::Win32::Graphics::Dwm::{DWMWA_BORDER_COLOR, DwmSetWindowAttribute};
 use windows_sys::Win32::Graphics::Gdi::{
     GetMonitorInfoW, MONITOR_DEFAULTTONEAREST, MONITORINFO, MonitorFromWindow,
 };
@@ -22,6 +23,19 @@ impl NativeWindow {
 
     pub fn hwnd(self) -> HWND {
         self.0 as HWND
+    }
+
+    pub fn set_border_color(self, [red, green, blue]: [u8; 3]) -> bool {
+        let color = u32::from_le_bytes([red, green, blue, 0]);
+        // Windows 10 does not support this attribute. The caller keeps the Slint outline then.
+        unsafe {
+            DwmSetWindowAttribute(
+                self.hwnd(),
+                DWMWA_BORDER_COLOR as u32,
+                (&raw const color).cast(),
+                std::mem::size_of_val(&color) as u32,
+            ) >= 0
+        }
     }
 
     pub fn active(self) -> bool {
