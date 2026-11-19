@@ -24,7 +24,7 @@ Velo is an application launcher for **Windows 10 / 11 x64**, built with **Rust +
 
 The native UI and application logic run in a single process. Settings, the app index and usage history stay on your computer. Choose a list or icon grid and a light or dark theme. This page accompanies the [primary Chinese documentation](README.md).
 
-> **v0.11.0** adds Everything file search and launch groups. Installers are currently unsigned. See the [v0.11.0 release notes (Chinese)](docs/releases/0.11.0.md).
+> **v0.11.2** adds folder pinning and improves update notes and download progress. Installers are currently unsigned. See the [v0.11.2 release notes (Chinese)](docs/releases/0.11.2.md).
 
 ## Screenshots
 

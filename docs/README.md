@@ -10,7 +10,7 @@
 - [系统快捷入口](system-shortcuts.md)：入口列表、操作语义与兼容范围。
 - [截图说明](images/README.md)：12 张当前界面原图、场景、构建身份和采集方式。
 - [实现流程图](diagrams/README.md)：中英文 SVG 及重新生成方式。
-- [v0.11.0 版本说明](releases/0.11.0.md)与 [v0.10.0 版本说明](releases/0.10.0.md)。
+- [v0.11.2 版本说明](releases/0.11.2.md)、[v0.11.0 版本说明](releases/0.11.0.md)与 [v0.10.0 版本说明](releases/0.10.0.md)。
 
 ## 开发与贡献
 

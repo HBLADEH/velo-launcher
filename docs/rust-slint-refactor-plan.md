@@ -1,5 +1,7 @@
 # Rust + Slint 重构实施方案
 
+- v0.11.2 发版准备（2026-11-20）：同步版本与所有者的 GitHub Actions 发布授权；Windows 11 x64 上双渲染器各 125 项 Rust 测试、完整桌面冒烟和许可审计通过。本机身份与托管发行构建分开记录，其他机器、真实 IME 与安装事务不扩大验收范围。[验证记录](baselines/2026-11-20-v0.11.2/README.md)
+
 - v0.11.0 正式发行（2026-11-18）。双渲染器通过 `main` 的托管 CI 与干净提交的 Windows 11 x64 完整桌面验证。推送版本 tag 后，Actions 核对预上传资产并公开发版。README CI 徽章显示 `passing`。[发行记录](baselines/2026-11-18-v0.11.0/README.md)
 
 - 托管 CI 与 tag 发版（2026-11-18）：README 对应的 Windows CI 不再依赖桌面 runner；正式 tag 发布继续要求审批、锁定工具链、双渲染器实机冒烟及远端资产校验。修复冒烟偶发未收到重绘事件。本机验证和候选打包通过，远端 runner 配置及真实发布待验，见[本轮记录](baselines/2026-11-18-tag-release-ci/README.md)。
