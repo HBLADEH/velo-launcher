@@ -1,14 +1,16 @@
 //! UI adapter for optional, session-only file search. Disk and IPC work stays
 //! on the bounded runtime workers; this controller only owns visible file state.
-use crate::business::owner;
+use crate::business::{owner, request_management};
 use crate::platform::windows::interaction;
 use crate::{AppWindow, FileEntry, navigation};
 use slint::{ComponentHandle, Model, ModelRc, VecModel};
 use std::cell::{Cell, RefCell};
+use std::path::Path;
 use std::rc::Rc;
 use velo_slint::core::config::Everything;
 use velo_slint::core::file_search::{self, FileHit, Status as FileStatus};
-use velo_slint::core::service::{Event, Runtime};
+use velo_slint::core::library;
+use velo_slint::core::service::{Event, Manage, Runtime};
 pub struct Controller {
     app: slint::Weak<AppWindow>,
     runtime: Rc<RefCell<Runtime>>,
@@ -104,6 +106,23 @@ impl Controller {
                     1 => controller.open_file(&path, false),
                     2 => controller.open_file(&path, true),
                     3 => app.set_selection_notice("已复制完整路径".into()),
+                    interaction::FILE_PIN_FOLDER | interaction::FILE_UNPIN_FOLDER
+                        if app.get_file_mode()
+                            && controller
+                                .file_paths
+                                .borrow()
+                                .iter()
+                                .any(|hit| hit.is_folder && hit.path == path.as_str()) =>
+                    {
+                        request_management(
+                            &app,
+                            &controller.runtime.borrow(),
+                            Manage::SetFolderPinned(
+                                path.as_str().into(),
+                                action == interaction::FILE_PIN_FOLDER,
+                            ),
+                        );
+                    }
                     -1 => app.set_selection_notice("无法打开菜单或复制路径，请重试。".into()),
                     _ => {}
                 }
@@ -493,9 +512,25 @@ impl Controller {
         if !app.get_presented() || app.get_native_dialog_active() || app.get_management_busy() {
             return;
         }
-        if !app.get_file_mode() || !self.file_paths.borrow().iter().any(|hit| hit.path == path) {
+        if !app.get_file_mode() {
             return;
         }
+        let Some(is_folder) = self
+            .file_paths
+            .borrow()
+            .iter()
+            .find(|hit| hit.path == path)
+            .map(|hit| hit.is_folder)
+        else {
+            return;
+        };
+        let folder_pinned = if is_folder {
+            library::folder_id(Path::new(path))
+                .ok()
+                .map(|id| self.runtime.borrow().is_pinned(&id))
+        } else {
+            None
+        };
         let Some(owner) = owner(&app) else {
             return;
         };
@@ -506,7 +541,7 @@ impl Controller {
         if std::thread::Builder::new()
             .name("velo-file-menu".into())
             .spawn(move || {
-                let action = interaction::file_menu(owner, &path);
+                let action = interaction::file_menu(owner, &path, folder_pinned);
                 let _ = weak.upgrade_in_event_loop(move |app| {
                     app.invoke_file_menu_completed(path.into(), action)
                 });

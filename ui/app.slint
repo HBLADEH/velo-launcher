@@ -93,7 +93,10 @@ export component AppWindow inherits Window {
     item-pinnable(id) => { return true; }
     in property <string> update-message;
     in property <string> update-notes;
+    in property <string> update-release-label;
     in property <int> update-progress;
+    in property <bool> update-progress-visible;
+    in property <string> update-progress-detail;
     in property <bool> update-busy: false;
     in property <bool> update-available: false;
     in-out property <bool> import-return-settings: false;
@@ -389,7 +392,7 @@ export component AppWindow inherits Window {
                 Text { x: 185px; y: 44px; text: "."; font-size: 23px; font-weight: 600; color: Theme.accent; }
                 if root.business-enabled: ActionButton {
                     x: parent.width - 120px; y: 35px; width: 96px; height: 32px;
-                    text: "+ 自定义应用"; show-shadow: true;
+                    text: "+ 自定义项目"; show-shadow: true;
                     activated => { root.show-import(true); }
                 }
                 if root.business-enabled: ActionButton { x: parent.width - 228px; y: 35px; width: 98px; height: 32px; text: "启动组合"; activated => { root.show-groups(true); } }
@@ -407,8 +410,8 @@ export component AppWindow inherits Window {
                 }
                 frequent := HomeSection {
                     x: 22px; y: pinned.y + pinned.height + (root.pinned-items.length > 0 ? 20px : 0px); width: parent.width - 44px;
-                    title: "常用应用"; hint: "根据使用习惯与应用来源排序";
-                    empty-message: root.scanning ? "正在发现本机应用…" : "搜索应用，或拖入你的第一个应用。";
+                    title: "常用项目"; hint: "根据使用习惯与项目来源排序";
+                    empty-message: root.scanning ? "正在发现本机应用…" : "搜索应用，或拖入应用和文件夹。";
                     items: root.frequent-items; selected-id: root.selected-id;
                     entered: root.presented && root.is-home;
                     hovered(id) => { root.selected-id = id; }
@@ -534,7 +537,7 @@ export component AppWindow inherits Window {
                     Rectangle { width: 25px; height: 19px; border-radius: 4px; border-width: 1px; border-color: Theme.border; background: Theme.field; Text { text: "Esc"; color: Theme.muted; font-size: 10px; horizontal-alignment: center; vertical-alignment: center; } }
                     Text { text: root.input-text == "" ? (root.file-mode ? "返回" : "隐藏") : "清空"; color: Theme.muted; font-size: 10px; vertical-alignment: center; horizontal-stretch: 0; }
                 }
-                if !root.file-mode && !root.is-home: ActionButton { width: 60px; height: 19px; text: "自定义应用"; text-size: 10px; flat: true; activated => { root.show-import(true); } }
+                if !root.file-mode && !root.is-home: ActionButton { width: 60px; height: 19px; text: "自定义项目"; text-size: 10px; flat: true; activated => { root.show-import(true); } }
                 if root.file-mode && root.file-total > root.file-items.length && root.file-items.length < 200: ActionButton { width: 58px; height: 19px; text: "更多结果"; flat: true; activated => { root.file-load-more(); } }
                 if !root.file-mode: ActionButton { width: 20px; height: 19px; text: "刷新索引"; icon-key: "refresh"; flat: true; spinning: root.scanning && !root.appearance-open && !root.import-open; activated => { root.refresh-requested(); } }
             }
@@ -550,6 +553,7 @@ export component AppWindow inherits Window {
                 busy: root.management-busy; import-busy: root.import-busy; elevated: root.import-elevated;
                 drop-hovering: root.drop-hovering; notice: root.import-notice; summary: root.import-summary;
                 close => { root.show-import(false); } browse => { root.import-native-requested(1); }
+                browse-folder => { root.import-native-requested(9); }
                 preview(path) => { root.import-path-requested(path); } commit => { root.import-commit(); }
                 remove(id) => { root.application-delete(id); } menu(id) => { root.application-menu(id); }
                 drag => { root.drag-requested(); } more => { root.import-native-requested(4); }
@@ -648,7 +652,9 @@ export component AppWindow inherits Window {
             busy: root.management-busy; notice: root.settings-notice;
             backup-path: root.backup-path; data-directory: root.data-directory; count: root.item-count;
             scanning: root.scanning; scan-status: root.business-status; renderer: root.renderer-label; product-version: root.product-version; licenses: root.third-party-licenses;
-            update-message: root.update-message; update-notes: root.update-notes; update-available: root.update-available; update-busy: root.update-busy; update-progress: root.update-progress;
+            update-message: root.update-message; update-notes: root.update-notes; update-release-label: root.update-release-label;
+            update-available: root.update-available; update-busy: root.update-busy;
+            update-progress: root.update-progress; update-progress-visible: root.update-progress-visible; update-progress-detail: root.update-progress-detail;
             close => { if !root.management-busy { root.show-appearance(false); } }
             save => { root.settings-save(); }
             choose-everything => { root.file-browse-requested(); }

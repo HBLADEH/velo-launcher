@@ -1,11 +1,10 @@
-//! Imports register files without executing or pinning them. The caller holds
-//! the shared commit lock so refresh acceptance and deletion cannot race.
+//! Build explicit library entries for the runtime's serialized updates.
 use super::{
     DataError, Result,
     data::ApplicationLibrary,
     icons,
     indexer::{self, Resolver},
-    model::{AppItem, identity},
+    model::{AppItem, FOLDER_SOURCE, identity},
 };
 use std::path::{Component, Path, PathBuf};
 
@@ -20,27 +19,93 @@ fn clean(path: &Path) -> PathBuf {
     }
     result
 }
+
+fn folder_path(path: &Path) -> Result<PathBuf> {
+    if !path.is_absolute() || path.to_str().is_none_or(|path| path.contains('\0')) {
+        return Err(DataError::new(
+            "pin folder path",
+            "valid absolute path required",
+        ));
+    }
+    Ok(clean(path))
+}
+
+pub fn folder_id(path: &Path) -> Result<String> {
+    Ok(folder_identity(&folder_path(path)?))
+}
+
+fn folder_identity(path: &Path) -> String {
+    format!("folder:{}", identity(&path.to_string_lossy(), ""))
+}
+
+pub fn folder(path: &Path) -> Result<AppItem> {
+    let path = folder_path(path)?;
+    let metadata = std::fs::metadata(&path).map_err(|e| DataError::new("read pinned folder", e))?;
+    if !metadata.is_dir() {
+        return Err(DataError::new("read pinned folder", "not a directory"));
+    }
+    Ok(folder_item(&path))
+}
+
+fn folder_item(path: &Path) -> AppItem {
+    let name = path.file_name().unwrap_or(path.as_os_str());
+    AppItem {
+        id: folder_identity(path),
+        name: name.to_string_lossy().into_owned(),
+        path: path.to_string_lossy().into_owned(),
+        source: FOLDER_SOURCE.into(),
+        ..AppItem::default()
+    }
+}
+
+#[derive(Clone, Copy)]
+pub enum ImportKind {
+    Executable,
+    Shortcut,
+    Folder,
+}
+
+pub fn inspect_import(path: &Path) -> Result<ImportKind> {
+    if !path.is_absolute() || path.to_str().is_none_or(|path| path.contains('\0')) {
+        return Err(DataError::new(
+            "validate import path",
+            "valid absolute path required",
+        ));
+    }
+    let metadata = std::fs::metadata(path).map_err(|e| DataError::new("read import target", e))?;
+    if metadata.is_dir() {
+        return Ok(ImportKind::Folder);
+    }
+    if metadata.is_file() {
+        let path = path.to_string_lossy();
+        if indexer::extension(&path, "exe") {
+            return Ok(ImportKind::Executable);
+        }
+        if indexer::extension(&path, "lnk") {
+            return Ok(ImportKind::Shortcut);
+        }
+    }
+    Err(DataError::new(
+        "validate import type",
+        "unsupported entry type",
+    ))
+}
+
 pub fn item(path: &Path, resolver: &mut dyn Resolver) -> Result<AppItem> {
-    if !path.is_absolute() {
-        return Err(DataError::new(
-            "import application",
-            "absolute path required",
-        ));
-    }
     let path = clean(path);
-    let path_text = path.to_string_lossy().into_owned();
-    if !(indexer::extension(&path_text, "exe") || indexer::extension(&path_text, "lnk")) {
-        return Err(DataError::new(
+    match inspect_import(&path)? {
+        ImportKind::Folder => Err(DataError::new(
             "import application",
-            "unsupported extension",
-        ));
+            "not an application file",
+        )),
+        kind => application_item(&path, kind, resolver),
     }
-    let metadata = std::fs::metadata(&path).map_err(|e| DataError::new("read imported file", e))?;
-    if !metadata.is_file() {
-        return Err(DataError::new("import application", "not a file"));
-    }
-    let mut item = if indexer::extension(&path_text, "lnk") {
-        resolver.resolve(&path)?
+}
+
+fn application_item(path: &Path, kind: ImportKind, resolver: &mut dyn Resolver) -> Result<AppItem> {
+    let path_text = path.to_string_lossy().into_owned();
+    let mut item = if matches!(kind, ImportKind::Shortcut) {
+        resolver.resolve(path)?
     } else {
         AppItem {
             exec_path: path_text.clone(),
@@ -83,10 +148,7 @@ pub fn import(
     resolver: &mut dyn Resolver,
 ) -> Result<Import> {
     if paths.len() > 100 {
-        return Err(DataError::new(
-            "import applications",
-            "100 file batch limit",
-        ));
+        return Err(DataError::new("import entries", "100 entry batch limit"));
     }
     let mut result = Import {
         library: library.clone(),
@@ -94,7 +156,11 @@ pub fn import(
         rejected: 0,
     };
     for path in paths {
-        let item = match item(path, resolver) {
+        let path = clean(path);
+        let item = match inspect_import(&path).and_then(|kind| match kind {
+            ImportKind::Folder => Ok(folder_item(&path)),
+            _ => application_item(&path, kind, resolver),
+        }) {
             Ok(item) => item,
             Err(_) => {
                 result.rejected += 1;

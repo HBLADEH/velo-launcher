@@ -4,6 +4,8 @@ use sha2::{Digest, Sha256};
 use super::UnknownFields;
 use std::path::{Path, PathBuf};
 
+pub const FOLDER_SOURCE: &str = "Folder";
+
 #[derive(Clone, Debug, Default, PartialEq, Serialize, Deserialize)]
 #[serde(default)]
 pub struct AppItem {
@@ -21,6 +23,12 @@ pub struct AppItem {
     pub keywords: Option<Vec<String>>,
     #[serde(flatten)]
     pub unknown: UnknownFields,
+}
+
+impl AppItem {
+    pub fn is_folder(&self) -> bool {
+        self.source == FOLDER_SOURCE
+    }
 }
 
 pub fn identity(path: &str, arguments: &str) -> String {

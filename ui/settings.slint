@@ -31,9 +31,12 @@ export component SettingsPanel inherits FocusScope {
     in property <[LicenseEntry]> licenses;
     in property <string> update-message;
     in property <string> update-notes;
+    in property <string> update-release-label;
     in property <bool> update-busy;
     in property <bool> update-available;
     in property <int> update-progress;
+    in property <bool> update-progress-visible;
+    in property <string> update-progress-detail;
     private property <bool> licenses-open: false;
     out property <bool> licenses-expanded: root.licenses-open;
     callback close(); callback save(); callback record(bool); callback manage(); callback groups();
@@ -77,7 +80,7 @@ export component SettingsPanel inherits FocusScope {
     body := ContentScroll {
         enabled: root.enabled; x: 0px; y: 132px; width: parent.width; height: max(1px, parent.height - 200px);
         reserve-scrollbar: true;
-        content-height: root.tab == 3 ? 482px : root.tab == 2 ? 508px : root.tab == 4 ? 642px : root.tab == 6 ? (root.licenses-open ? root.licenses.length * 232px + 180px : 0px) + (root.update-available ? 680px : 430px) : root.tab == 5 && root.backup-path != "" ? 510px : 460px;
+        content-height: root.tab == 3 ? 482px : root.tab == 2 ? 508px : root.tab == 4 ? 642px : root.tab == 6 ? update-details.y + update-details.height + 24px : root.tab == 5 && root.backup-path != "" ? 510px : 460px;
         Rectangle {
             x: 0px; y: 0px; width: body.visible-width; height: body.content-height;
             private property <length> field-width: self.width - 48px;
@@ -144,7 +147,7 @@ export component SettingsPanel inherits FocusScope {
             }
             Rectangle { visible: root.tab == 4; width: parent.width; height: parent.height;
                 SettingHeading { x: 24px; y: 24px; text: "应用来源"; }
-                ActionButton { x: 24px; y: 68px; width: 117px; height: 33px; text: "管理自定义应用"; text-size: 13px; radius: 6px; enabled: root.enabled; activated => { root.manage(); } }
+                ActionButton { x: 24px; y: 68px; width: 117px; height: 33px; text: "管理自定义项目"; text-size: 13px; radius: 6px; enabled: root.enabled; activated => { root.manage(); } }
                 ActionButton { x: 153px; y: 68px; width: 110px; height: 33px; text: "启动组合"; text-size: 13px; radius: 6px; enabled: root.enabled; activated => { root.groups(); } }
                 SettingHint { x: 24px; y: 109px; width: parent.width - 48px; text: "单独添加或删除扫描范围外的应用，重启后仍可搜索；无需添加整个目录。"; }
                 SettingHint { x: 24px; y: 150.6px; width: parent.width - 48px; text: "默认扫描开始菜单、桌面和 Windows Apps。"; }
@@ -166,7 +169,7 @@ export component SettingsPanel inherits FocusScope {
                 SettingHint { x: 24px; y: 178.2px; width: parent.width - 48px; text: root.backup-path == "" ? "备份位于数据目录的 backups 文件夹，每次创建独立的 JSON 文件，可复制到其他位置保管。" : "备份已保存：\n" + root.backup-path; }
                 SettingHeading { x: 24px; y: root.backup-path == "" ? 219.8px : 263px; text: "更新时保留配置"; }
                 SettingHint { x: 24px; y: root.backup-path == "" ? 263.8px : 307px; width: parent.width - 48px; text: "安装更新前会自动备份已保存的配置；备份失败时停止安装。更新后继续使用原有设置，新选项使用默认值。"; }
-                SettingHint { x: 24px; y: root.backup-path == "" ? 305.4px : 348.6px; width: parent.width - 48px; text: "需要恢复时，先完全退出 Velo，将备份复制到数据目录并命名为 config.json，然后重新启动。此备份仅包含设置，自定义应用、固定项和历史记录请另行保留数据目录中的对应文件。"; }
+                SettingHint { x: 24px; y: root.backup-path == "" ? 305.4px : 348.6px; width: parent.width - 48px; text: "需要恢复时，先完全退出 Velo，将备份复制到数据目录并命名为 config.json，然后重新启动。此备份仅包含设置，自定义项目、固定项和历史记录请另行保留数据目录中的对应文件。"; }
             }
             Rectangle { visible: root.tab == 6; width: parent.width; height: parent.height;
                 private property <length> expanded-offset: root.licenses-open ? root.licenses.length * 232px + 180px : 0px;
@@ -200,8 +203,56 @@ export component SettingsPanel inherits FocusScope {
                 SettingHint { x: 24px; y: 217px + parent.expanded-offset; width: parent.width - 48px; text: "安装前自动备份已保存的配置，更新后保留原有设置。也可在“备份”中提前手动备份。"; }
                 ActionButton { x: 24px; y: 258.6px + parent.expanded-offset; width: 104px; height: 33px; text: root.update-busy ? "更新处理中…" : "立即检查更新"; text-size: 13px; enabled: root.enabled && !root.update-busy && !root.busy; activated => { root.check-update(); } }
                 if root.update-available: ActionButton { x: 138px; y: 258.6px + parent.expanded-offset; width: 126px; height: 33px; text: "下载并安装"; primary: true; text-size: 13px; enabled: root.enabled && !root.update-busy && !root.busy && !root.recording; activated => { root.install-update(); } }
-                SettingHint { x: 24px; y: 311px + parent.expanded-offset; width: parent.width - 48px; text: root.update-message; }
-                if root.update-available: SettingField { x: 24px; y: 360px + parent.expanded-offset; width: parent.width - 48px; height: 180px; multiline: true; read-only: true; text: root.update-notes; enabled: root.enabled; label: "版本说明"; }
+                update-details := Rectangle {
+                    x: 24px; y: 311px + parent.expanded-offset;
+                    // Keep measurement independent of whether the outer scrollbar is visible.
+                    width: max(1px, root.width - 63px);
+                    height: release-notes.visible ? release-notes.y + release-notes.height : track.visible ? track.y + track.height : status.height;
+                    status := Rectangle {
+                        x: 0px; y: 0px; width: parent.width; height: max(message.preferred-height, detail.preferred-height);
+                        message := Text {
+                            x: 0px; y: 0px;
+                            width: max(1px, parent.width - (detail.width > 0px ? detail.width + 12px : 0px));
+                            height: self.preferred-height;
+                            text: root.update-message; wrap: word-wrap; font-size: 13px; color: Theme.muted;
+                        }
+                        detail := Text {
+                            x: parent.width - self.width; y: 0px;
+                            width: root.update-progress-detail == "" ? 0px : min(parent.width * 0.6, self.preferred-width);
+                            height: self.preferred-height;
+                            text: root.update-progress-detail; font-size: 12px; color: Theme.fg; overflow: elide; horizontal-alignment: right;
+                        }
+                    }
+                    track := Rectangle {
+                        visible: root.update-progress-visible;
+                        y: status.height + 8px; width: parent.width; height: 6px;
+                        border-radius: 3px; background: Theme.border;
+                        accessible-role: progress-indicator; accessible-label: root.update-message;
+                        accessible-value: root.update-progress-detail;
+                        Rectangle {
+                            private property <bool> indeterminate: root.update-progress < 0;
+                            private property <float> sweep: indeterminate && Theme.presented && !Theme.reduce-motion ? Math.mod(animation-tick() / 1.4s, 1) : 0.5;
+                            x: indeterminate ? (parent.width - self.width) * sweep : 0px;
+                            width: parent.width * (indeterminate ? 0.24 : clamp(root.update-progress / 100.0, 0, 1));
+                            height: parent.height; border-radius: 3px; background: Theme.accent;
+                        }
+                    }
+                    release-notes := Rectangle {
+                        visible: root.update-notes != "";
+                        y: (track.visible ? track.y + track.height : status.height) + 18px;
+                        width: parent.width; height: notes-text.y + notes-text.height + 16px;
+                        border-radius: 8px; border-width: 1px; border-color: Theme.border; background: Theme.field;
+                        Text { x: 16px; y: 14px; text: "更新日志"; font-size: 14px; font-weight: 600; color: Theme.fg; }
+                        Text {
+                            x: parent.width - self.width - 16px; y: 15px; width: min(notes-text.width * 0.65, self.preferred-width);
+                            text: root.update-release-label; color: Theme.muted; font-size: 12px; overflow: elide; horizontal-alignment: right;
+                        }
+                        notes-text := Text {
+                            x: 16px; y: 39px; width: max(1px, parent.width - 32px); height: self.preferred-height;
+                            text: root.update-notes; wrap: word-wrap; line-height-factor: 1.3; font-size: 13px; color: Theme.fg;
+                        }
+                    }
+                }
             }
         }
     }

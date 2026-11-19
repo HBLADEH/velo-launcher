@@ -14,7 +14,8 @@ use slint::{ComponentHandle, Model, ModelRc, VecModel};
 use velo_slint::core::config::Config;
 use velo_slint::core::launch::{APPS_FOLDER_PREFIX, Action};
 use velo_slint::core::model::AppItem;
-use velo_slint::core::service::{Event, Manage, Options, Runtime, Snapshot};
+use velo_slint::core::service::{Event, InstallProgress, Manage, Options, Runtime, Snapshot};
+use velo_slint::core::update::DownloadProgress;
 use velo_slint::core::{icons, normalize::normalize, service};
 use velo_slint::platform::windows::launch::Failure as LaunchFailure;
 
@@ -361,6 +362,7 @@ impl Controller {
                                     id: item.id.as_str().into(),
                                     name: item.name.as_str().into(),
                                     subtitle: item.path.as_str().into(),
+                                    icon_key: if item.is_folder() { "folder" } else { "" }.into(),
                                     fallback: item
                                         .name
                                         .chars()
@@ -452,9 +454,24 @@ impl Controller {
                     // generation. A late result cannot override a newer hide.
                     app.invoke_launch_finished(result.is_ok());
                     if let Err(error) = result {
-                        app.set_selection_notice(error.message().into());
+                        let folder = self.snapshot.borrow().as_ref().is_some_and(|snapshot| {
+                            snapshot
+                                .catalog
+                                .item(&id)
+                                .is_some_and(|item| item.is_folder())
+                        });
+                        let notice = if folder {
+                            match error {
+                                LaunchFailure::MissingTarget => "找不到文件夹，可能已移动或删除",
+                                LaunchFailure::Cancelled => "已取消打开文件夹",
+                                _ => "无法打开文件夹，请检查路径或访问权限后重试",
+                            }
+                        } else {
+                            error.message()
+                        };
+                        app.set_selection_notice(notice.into());
                         if error == LaunchFailure::MissingTarget {
-                            self.prompt_for_missing_app(&id);
+                            self.prompt_for_missing_item(&id);
                         }
                     } else if !history_saved {
                         app.set_selection_notice(
@@ -513,8 +530,10 @@ impl Controller {
                                 "update login startup" => {
                                     "登录启动项修改或恢复失败，请检查权限与 Windows 启动设置"
                                 }
-                                "import applications" => {
-                                    "每次最多导入 100 个文件，请减少预览后重试"
+                                "import entries" => "每次最多导入 100 个项目，请减少预览后重试",
+                                "add home pin" => "首页最多固定 200 项，请取消一项固定后重试",
+                                "pin folder path" | "read pinned folder" => {
+                                    "无法固定文件夹，请检查路径或访问权限后重试"
                                 }
                                 _ => "操作未完成，原文件已保留；请检查文件或目录权限后重试",
                             };
@@ -530,18 +549,53 @@ impl Controller {
                 | Event::FileUtility { .. }) => self.files.receive(event),
                 Event::Update(state) => {
                     app.set_update_busy(state.busy);
-                    app.set_update_progress(state.progress.into());
+                    let (percent, detail) = match state.progress {
+                        Some(InstallProgress::Download(DownloadProgress::Transfer {
+                            received,
+                            total: Some(total),
+                        })) => {
+                            let percent = (received * 100 / total.get()).min(99) as i32;
+                            let detail = format!(
+                                "{percent}% · {} / {}",
+                                download_size(received),
+                                download_size(total.get())
+                            );
+                            (percent, detail)
+                        }
+                        Some(InstallProgress::Download(DownloadProgress::Transfer {
+                            received,
+                            total: None,
+                        })) if received > 0 => (-1, format!("已下载 {}", download_size(received))),
+                        Some(
+                            InstallProgress::Download(DownloadProgress::Verifying)
+                            | InstallProgress::PreparingInstaller,
+                        ) => (100, String::new()),
+                        _ => (-1, String::new()),
+                    };
+                    app.set_update_progress(percent);
+                    app.set_update_progress_visible(state.progress.is_some());
+                    app.set_update_progress_detail(detail.into());
                     app.set_update_message(state.message.into());
                     app.set_update_available(
                         state.info.portable.is_some() || state.info.installer.is_some(),
                     );
-                    app.set_update_notes(
-                        state
-                            .info
-                            .release
-                            .as_ref()
-                            .map_or(String::new(), |r| {
-                                format!("{} · {}\n{}", r.tag_name, r.published_at, r.body)
+                    let release = state.info.release.as_ref();
+                    let notes = release.map_or("", |r| r.body.as_str());
+                    if app.get_update_notes().as_str() != notes {
+                        app.set_update_notes(notes.into());
+                    }
+                    app.set_update_release_label(
+                        release
+                            .map_or_else(String::new, |release| {
+                                match release
+                                    .published_at
+                                    .split('T')
+                                    .next()
+                                    .filter(|date| !date.is_empty())
+                                {
+                                    Some(date) => format!("{} · {}", release.tag_name, date),
+                                    None => release.tag_name.clone(),
+                                }
                             })
                             .into(),
                     );
@@ -641,7 +695,9 @@ impl Controller {
                             .into(),
                         pinned: item.pinned,
                         system: item.source == "System",
-                        icon_key: if item.source == "System" {
+                        icon_key: if item.is_folder() {
+                            "folder"
+                        } else if item.source == "System" {
                             match item.id.as_str() {
                                 "system:calculator" => "calculator",
                                 "system:explorer" => "folder",
@@ -863,13 +919,7 @@ impl Controller {
     }
     fn manage(&self, request: Manage) {
         if let Some(app) = self.app.upgrade() {
-            if self.runtime.borrow().manage(request) {
-                app.set_management_busy(true);
-                app.set_settings_notice("正在保存…".into());
-            } else {
-                app.set_settings_notice("其他操作正在进行，请稍后重试".into());
-                app.set_import_notice("其他操作正在进行，请稍后重试".into());
-            }
+            request_management(&app, &self.runtime.borrow(), request);
         }
     }
     fn update(&self, install: bool) {
@@ -881,7 +931,7 @@ impl Controller {
             }
         }
     }
-    fn prompt_for_missing_app(self: &Rc<Self>, id: &str) {
+    fn prompt_for_missing_item(self: &Rc<Self>, id: &str) {
         let request = self.snapshot.borrow().as_ref().and_then(|snapshot| {
             let item = snapshot.catalog.item(id)?;
             if snapshot.library.has_custom_app(id) {
@@ -941,11 +991,7 @@ impl Controller {
             2 => self.choose(id, Action::OpenDirectory),
             3 => self.choose(id, Action::RunAsAdmin),
             4 => {
-                let pinned = self
-                    .snapshot
-                    .borrow()
-                    .as_ref()
-                    .is_some_and(|s| s.library.pinned.iter().flatten().any(|i| i.id == id));
+                let pinned = self.runtime.borrow().is_pinned(id);
                 self.manage(Manage::Pin(id.into(), !pinned));
             }
             5 | interaction::DELETE_MISSING_CUSTOM_APP => self.manage(Manage::Delete(id.into())),
@@ -1050,6 +1096,26 @@ impl Controller {
 
     pub fn stop(&self) {
         self.runtime.borrow_mut().stop();
+    }
+}
+
+fn download_size(bytes: u64) -> String {
+    match bytes {
+        0..1024 => format!("{bytes} B"),
+        1024..1048576 => format!("{:.1} KiB", bytes as f64 / 1024.0),
+        _ => format!("{:.1} MiB", bytes as f64 / 1048576.0),
+    }
+}
+
+pub(crate) fn request_management(app: &AppWindow, runtime: &Runtime, request: Manage) {
+    if runtime.manage(request) {
+        app.set_management_busy(true);
+        app.set_settings_notice("正在保存…".into());
+    } else {
+        let notice = "其他操作正在进行，请稍后重试";
+        app.set_settings_notice(notice.into());
+        app.set_import_notice(notice.into());
+        app.set_selection_notice(notice.into());
     }
 }
 

@@ -40,6 +40,9 @@ impl Pixels {
 }
 
 pub fn signature(item: &AppItem) -> String {
+    if item.is_folder() {
+        return String::new();
+    }
     let icon = item
         .icon_path
         .split(',')

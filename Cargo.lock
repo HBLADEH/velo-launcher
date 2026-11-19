@@ -4443,6 +4443,7 @@ version = "0.11.1"
 dependencies = [
  "chrono",
  "image",
+ "pulldown-cmark",
  "quick-xml",
  "raw-window-handle",
  "serde",

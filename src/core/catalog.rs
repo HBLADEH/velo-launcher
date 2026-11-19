@@ -22,6 +22,7 @@ pub struct Catalog {
     index: Index,
     tool_index: Index,
     items: BTreeMap<String, Arc<AppItem>>,
+    application_count: usize,
     tools: Vec<Arc<AppItem>>,
     pinned: Vec<Arc<AppItem>>,
 }
@@ -60,7 +61,7 @@ impl Catalog {
             .iter()
             .map(|item| {
                 let mut item = item.clone();
-                item.pinned = library.pinned.iter().flatten().any(|pin| pin.id == item.id);
+                item.pinned = library.has_pin(&item.id);
                 Arc::new(item)
             })
             .collect();
@@ -79,6 +80,7 @@ impl Catalog {
         Self {
             index: Index::new(items.values().cloned()),
             tool_index: Index::new(tools.iter().cloned()),
+            application_count: items.values().filter(|item| !item.is_folder()).count(),
             items,
             tools,
             pinned,
@@ -86,10 +88,10 @@ impl Catalog {
     }
 
     pub fn len(&self) -> usize {
-        self.items.len()
+        self.application_count
     }
     pub fn is_empty(&self) -> bool {
-        self.items.is_empty()
+        self.application_count == 0
     }
 
     pub fn item(&self, id: &str) -> Option<&Arc<AppItem>> {
@@ -99,7 +101,7 @@ impl Catalog {
     }
 
     pub fn applications(&self) -> impl Iterator<Item = &Arc<AppItem>> {
-        self.items.values()
+        self.items.values().filter(|item| !item.is_folder())
     }
 
     pub fn search(
@@ -109,15 +111,37 @@ impl Catalog {
         history: &History,
         now: DateTime<Utc>,
     ) -> Result<Vec<SearchResult>> {
+        self.search_matching(query, config, history, now, |_| true)
+    }
+
+    pub fn search_applications(
+        &self,
+        query: &str,
+        config: &Config,
+        history: &History,
+        now: DateTime<Utc>,
+    ) -> Result<Vec<SearchResult>> {
+        self.search_matching(query, config, history, now, |item| !item.is_folder())
+    }
+
+    fn search_matching(
+        &self,
+        query: &str,
+        config: &Config,
+        history: &History,
+        now: DateTime<Utc>,
+        include: impl Fn(&AppItem) -> bool,
+    ) -> Result<Vec<SearchResult>> {
         let query = normalize(query);
         let weights = history.scores(&query, now)?;
         let limit = usize::try_from(config.max_results).unwrap_or(0);
-        let mut results = self.index.query(
+        let mut results = self.index.query_matching(
             &query,
             limit,
             config.search.fuzzy,
             &weights,
             config.search.history_weight,
+            include,
         );
         if !query.is_empty() {
             results.extend(self.tool_index.query(
@@ -159,7 +183,7 @@ impl Catalog {
         let weight = |id: &str| weights.get(id).copied().unwrap_or(0.0);
         let mut results = self
             .index
-            .query("", self.len(), false, &BTreeMap::new(), 0.0);
+            .query("", self.index.len(), false, &BTreeMap::new(), 0.0);
         // Personal history precedes cold-start priority, independently of the
         // search history setting; stable ties retain the search baseline order.
         results.sort_by(|a, b| weight(&b.item.id).total_cmp(&weight(&a.item.id)));
@@ -189,23 +213,15 @@ impl Catalog {
         id: &str,
         pinned: bool,
     ) -> Result<ApplicationLibrary> {
-        let mut next = library.clone();
-        if !pinned {
-            if let Some(pins) = &mut next.pinned {
-                pins.retain(|item| item.id != id);
-            }
-        } else if !next.pinned.iter().flatten().any(|item| item.id == id) {
-            let pins = next.pinned.get_or_insert_default();
-            if pins.len() >= 200 {
-                return Err(DataError::new("pin application", "200 pin limit"));
-            }
-            let mut item = self
+        if pinned && !library.has_pin(id) {
+            let item = self
                 .item(id)
-                .ok_or_else(|| DataError::new("pin application", "item no longer available"))?
-                .as_ref()
-                .clone();
-            item.pinned = true;
-            pins.push(item);
+                .ok_or_else(|| DataError::new("pin application", "item no longer available"))?;
+            return library.with_new_pin(item);
+        }
+        let mut next = library.clone();
+        if !pinned && let Some(pins) = &mut next.pinned {
+            pins.retain(|item| item.id != id);
         }
         Ok(next)
     }

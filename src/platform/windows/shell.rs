@@ -44,6 +44,37 @@ fn allocated_string(value: PWSTR) -> Result<String> {
     result
 }
 
+pub fn pick_folder(owner: isize) -> Result<Option<PathBuf>> {
+    use windows::Win32::Foundation::{ERROR_CANCELLED, HWND};
+    use windows::core::{HRESULT, w};
+
+    let _apartment = Apartment::new()?;
+    // SAFETY: the launcher retains its owner window while the modal dialog runs.
+    // The dialog and its result are released on their creating STA.
+    unsafe {
+        let dialog: IFileOpenDialog = CoCreateInstance(&FileOpenDialog, None, CLSCTX_INPROC_SERVER)
+            .map_err(|e| DataError::new("create folder picker", e))?;
+        let options = dialog
+            .GetOptions()
+            .map_err(|e| DataError::new("read folder picker options", e))?;
+        dialog
+            .SetOptions(options | FOS_PICKFOLDERS | FOS_FORCEFILESYSTEM | FOS_PATHMUSTEXIST)
+            .and_then(|()| dialog.SetTitle(w!("Velo · 选择要添加的文件夹")))
+            .map_err(|e| DataError::new("configure folder picker", e))?;
+        if let Err(error) = dialog.Show(Some(HWND(owner as *mut _))) {
+            if error.code() == HRESULT::from_win32(ERROR_CANCELLED.0) {
+                return Ok(None);
+            }
+            return Err(DataError::new("show folder picker", error));
+        }
+        let path = dialog
+            .GetResult()
+            .and_then(|item| item.GetDisplayName(SIGDN_FILESYSPATH))
+            .map_err(|e| DataError::new("read selected folder", e))?;
+        Ok(Some(PathBuf::from(allocated_string(path)?)))
+    }
+}
+
 pub fn roots(config: &Config) -> Result<Vec<Root>> {
     let mut result = Vec::new();
     let mut add = |id, source: &str, depth| -> Result<()> {

@@ -33,6 +33,24 @@ impl ApplicationLibrary {
         self.applications.iter().flatten().any(|item| item.id == id)
     }
 
+    pub fn has_pin(&self, id: &str) -> bool {
+        self.pinned.iter().flatten().any(|item| item.id == id)
+    }
+
+    pub fn with_new_pin(&self, item: &AppItem) -> Result<Self> {
+        let mut next = self.clone();
+        if !self.has_pin(&item.id) {
+            let pins = next.pinned.get_or_insert_default();
+            if pins.len() >= 200 {
+                return Err(DataError::new("add home pin", "200 pin limit"));
+            }
+            let mut item = item.clone();
+            item.pinned = true;
+            pins.push(item);
+        }
+        Ok(next)
+    }
+
     pub fn migrate(legacy: Option<Vec<AppItem>>) -> Self {
         let mut applications = Vec::new();
         let pinned = legacy.map(|mut items| {

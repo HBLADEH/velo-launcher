@@ -6,9 +6,12 @@ use sha2::{Digest, Sha256};
 use std::cmp::Ordering;
 use std::collections::BTreeMap;
 use std::io::{Read, Write};
+use std::num::NonZeroU64;
 use std::path::{Path, PathBuf};
 use std::sync::atomic::{AtomicBool, Ordering as AtomicOrdering};
 use std::time::{Duration, Instant};
+
+mod notes;
 
 pub const REPOSITORY: &str = "HBLADEH/velo-launcher";
 pub const CURRENT: &str = env!("CARGO_PKG_VERSION");
@@ -103,6 +106,16 @@ pub trait Transport {
     type Body: Read;
     fn get(&mut self, url: &str, cancelled: &AtomicBool) -> Result<Response<Self::Body>>;
 }
+
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum DownloadProgress {
+    Transfer {
+        received: u64,
+        total: Option<NonZeroU64>,
+    },
+    Verifying,
+}
+
 pub struct Client<T> {
     pub transport: T,
     pub api: String,
@@ -224,6 +237,9 @@ impl<T: Transport> Client<T> {
             if portable.is_none() && installer.is_none() {
                 continue;
             }
+            if !feed {
+                release.body = notes::markdown(&release.body);
+            }
             return Ok(Info {
                 portable,
                 installer,
@@ -239,7 +255,7 @@ impl<T: Transport> Client<T> {
         directory: &Path,
         portable: bool,
         cancel: &AtomicBool,
-        progress: &mut dyn FnMut(u8),
+        progress: &mut dyn FnMut(DownloadProgress),
     ) -> Result<(PathBuf, String)> {
         let checksum = info
             .checksum
@@ -273,11 +289,17 @@ impl<T: Transport> Client<T> {
             .headers
             .get("content-length")
             .and_then(|v| v.parse::<u64>().ok())
-            .unwrap_or(asset.size);
+            .and_then(NonZeroU64::new)
+            .or_else(|| NonZeroU64::new(asset.size));
         let mut reader = response.body;
         let mut hash = Sha256::new();
         let mut buffer = [0u8; 65536];
         let mut done = 0u64;
+        let mut last_report = None;
+        progress(DownloadProgress::Transfer {
+            received: done,
+            total,
+        });
         loop {
             check_cancel(cancel)?;
             let count = reader
@@ -293,12 +315,18 @@ impl<T: Transport> Client<T> {
             file.write_all(&buffer[..count])
                 .map_err(|e| DataError::new("write update download", e))?;
             hash.update(&buffer[..count]);
-            if let Some(percent) = done.saturating_mul(100).checked_div(total) {
-                progress(percent.min(99) as u8);
+            if last_report.is_none_or(|time: Instant| time.elapsed() >= Duration::from_millis(100))
+            {
+                progress(DownloadProgress::Transfer {
+                    received: done,
+                    total,
+                });
+                last_report = Some(Instant::now());
             }
         }
+        progress(DownloadProgress::Verifying);
         let actual: String = hash.finalize().iter().map(|b| format!("{b:02x}")).collect();
-        if &actual != expected || (total > 0 && done != total) {
+        if &actual != expected || total.is_some_and(|total| done != total.get()) {
             return Err(fail("verify update SHA-256"));
         }
         check_cancel(cancel)?;
@@ -309,7 +337,6 @@ impl<T: Transport> Client<T> {
         let destination = directory.join(&asset.name);
         crate::atomic_file::move_file(&temporary, &destination, true)
             .map_err(|e| DataError::new("commit verified update", e))?;
-        progress(100);
         Ok((destination, actual))
     }
 }
@@ -396,37 +423,12 @@ fn public_releases(bytes: &[u8], web: &str) -> Result<Vec<Release>> {
             }
             Some(Release {
                 tag_name: tag.into(),
-                body: plain_text(&entry.content),
+                body: notes::html(&entry.content),
                 published_at: entry.updated,
                 ..Release::default()
             })
         })
         .collect())
-}
-fn plain_text(html: &str) -> String {
-    let mut reader = quick_xml::Reader::from_str(html);
-    reader.config_mut().check_end_names = false;
-    let mut text = String::new();
-    loop {
-        match reader.read_event() {
-            Ok(quick_xml::events::Event::Text(value)) => {
-                if let Ok(value) = value.xml_content(quick_xml::XmlVersion::Implicit1_0) {
-                    match quick_xml::escape::unescape(&value) {
-                        Ok(decoded) => text.push_str(&decoded),
-                        Err(_) => text.push_str(&value),
-                    }
-                }
-            }
-            Ok(
-                quick_xml::events::Event::Start(_)
-                | quick_xml::events::Event::End(_)
-                | quick_xml::events::Event::Empty(_),
-            ) => text.push('\n'),
-            Ok(quick_xml::events::Event::Eof) | Err(_) => break,
-            _ => {}
-        }
-    }
-    text.trim().into()
 }
 fn public_assets(bytes: &[u8], web: &str, tag: &str) -> Vec<Asset> {
     let mut reader = quick_xml::Reader::from_reader(bytes);
@@ -704,6 +706,44 @@ mod tests {
         );
         assert_eq!(std::fs::read(&path).unwrap(), b"new");
     }
+    #[test]
+    fn download_reports_transferred_bytes_with_and_without_total_size() {
+        let directory = tempfile::tempdir().unwrap();
+        let cancel = AtomicBool::new(false);
+        let payload = vec![b'a'; 200_000];
+        let sums = format!("{:x}  velo-slint.exe\n", Sha256::digest(&payload));
+        for (header_size, asset_size, expected_total) in [
+            (Some("200000"), 1, NonZeroU64::new(200_000)),
+            (None, 200_000, NonZeroU64::new(200_000)),
+            (None, 0, None),
+        ] {
+            let mut info = info();
+            info.portable.as_mut().unwrap().size = asset_size;
+            let mut download = response(200, &payload);
+            if let Some(value) = header_size {
+                download.2.insert("content-length".into(), value.into());
+            }
+            let mut events = Vec::new();
+            client(vec![response(200, sums.as_bytes()), download])
+                .download(&info, directory.path(), true, &cancel, &mut |event| {
+                    events.push(event)
+                })
+                .unwrap();
+            assert_eq!(
+                events[0],
+                DownloadProgress::Transfer {
+                    received: 0,
+                    total: expected_total
+                }
+            );
+            assert!(
+                matches!(events[1], DownloadProgress::Transfer { received, total }
+                if received > 0 && received < payload.len() as u64 && total == expected_total)
+            );
+            assert_eq!(events.last(), Some(&DownloadProgress::Verifying));
+        }
+    }
+
     #[test]
     fn scripts_quote_literal_paths_wait_for_exit_verify_again_and_keep_failure_recovery() {
         for portable in [true, false] {
