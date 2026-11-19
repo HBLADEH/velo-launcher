@@ -16,6 +16,7 @@ product = []
 [dependencies]
 chrono = { version = "=0.4.45", default-features = false, features = ["std"] }
 image = { version = "=0.25.10", default-features = false, features = ["png"] }
+pulldown-cmark = { version = "=0.13.5", default-features = false }
 quick-xml = { version = "=0.41.0", features = ["serialize"] }
 raw-window-handle = "=0.6.2"
 serde = { version = "=1.0.229", features = ["derive"] }

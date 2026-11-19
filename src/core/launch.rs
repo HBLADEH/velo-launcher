@@ -38,7 +38,7 @@ fn target(item: &AppItem) -> &str {
 
 pub fn capabilities(item: &AppItem) -> (bool, bool) {
     let path = target(item);
-    let file = Path::new(path).is_absolute() && !extension(path, "lnk");
+    let file = !item.is_folder() && Path::new(path).is_absolute() && !extension(path, "lnk");
     (file, file && extension(path, "exe"))
 }
 
@@ -67,6 +67,16 @@ pub fn command(
         arguments: String::new(),
         directory: String::new(),
     };
+    if item.is_folder() {
+        let path = Path::new(&item.path);
+        if action != Action::Launch || !path.is_absolute() {
+            return Err(CommandError::Unavailable);
+        }
+        if !target_metadata(path, metadata)? {
+            return Err(CommandError::MissingTarget);
+        }
+        return Ok(empty(item.path.clone()));
+    }
     if action == Action::OpenDirectory {
         if !capabilities(item).0 {
             return Err(CommandError::Unavailable);

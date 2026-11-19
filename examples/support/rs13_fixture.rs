@@ -20,6 +20,8 @@ pub const SCENES: &[&str] = &[
     "scanning",
     "error",
     "update",
+    "update-download",
+    "update-download-unknown",
     "home-two-rows",
     "home-bottom",
     "home-empty-frequent",
@@ -111,8 +113,11 @@ pub fn prepare(app: &AppWindow, scene: &str, dark: bool) {
     app.set_selection_notice("".into());
     app.set_update_message("当前版本已是最新版本（合成状态）".into());
     app.set_update_notes("".into());
+    app.set_update_release_label("".into());
     app.set_update_available(false);
     app.set_update_busy(false);
+    app.set_update_progress_visible(false);
+    app.set_update_progress_detail("".into());
     app.set_hotkey_current("Alt+Space".into());
     app.set_hotkey_draft("Alt+Space".into());
     app.set_item_count(8);
@@ -233,12 +238,36 @@ pub fn prepare(app: &AppWindow, scene: &str, dark: bool) {
             app.set_platform_error("无法读取合成索引目录，请检查权限后重试。".into());
             app.set_business_status("部分目录不可访问 · 保留上次快照".into());
         }
-        "update" => {
+        "update" | "update-download" | "update-download-unknown" => {
             app.invoke_show_appearance(true);
             app.set_settings_tab(6);
             app.set_update_available(true);
-            app.set_update_message("发现新版本 · 仅展示合成状态，不下载或安装".into());
-            app.set_update_notes("合成版本说明\n修复示例问题；保留本机数据。".into());
+            app.set_update_release_label("v0.11.1 · 2026-11-19".into());
+            app.set_update_notes(concat!(
+                "问题修复\n",
+                "• 修复窗口圆角、描边和顶栏对齐 (#9) (b8cb975)\n",
+                "• 改善打开设置的响应速度，切换页面后保留之前的搜索内容，并让较长的更新日志随着设置页一起滚动。\n\n",
+                "性能优化\n• 加快应用索引刷新 (#11) (81e8f8d)\n\n",
+                "其他变更\n• 更新文档和快捷键提示。"
+            ).into());
+            match scene {
+                "update-download" | "update-download-unknown" => {
+                    let known_size = scene == "update-download";
+                    app.set_update_busy(true);
+                    app.set_update_message("正在下载更新…".into());
+                    app.set_update_progress_visible(true);
+                    app.set_update_progress(if known_size { 42 } else { -1 });
+                    app.set_update_progress_detail(
+                        if known_size {
+                            "42% · 2.6 MiB / 6.2 MiB"
+                        } else {
+                            "已下载 2.6 MiB"
+                        }
+                        .into(),
+                    );
+                }
+                _ => app.set_update_message("发现新版本 v0.11.1".into()),
+            }
         }
         _ => {
             if let Some(tab) = scene.strip_prefix("settings-") {
@@ -264,6 +293,7 @@ pub fn settle(app: &AppWindow, scene: &str) {
     match scene {
         "settings-4-bottom" => app.set_settings_scroll_y(-69.0),
         "settings-5-bottom" => app.set_settings_scroll_y(-29.0),
+        "update" => app.set_settings_scroll_y(-220.0),
         "settings-6-bottom" => {
             app.invoke_show_licenses(true);
             app.set_settings_scroll_y(-950.0);

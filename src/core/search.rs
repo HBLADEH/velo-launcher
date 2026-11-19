@@ -86,12 +86,24 @@ impl Index {
         weights: &BTreeMap<String, f64>,
         weight: f64,
     ) -> Vec<SearchResult> {
+        self.query_matching(query, limit, fuzzy, weights, weight, |_| true)
+    }
+
+    pub(super) fn query_matching(
+        &self,
+        query: &str,
+        limit: usize,
+        fuzzy: bool,
+        weights: &BTreeMap<String, f64>,
+        weight: f64,
+        include: impl Fn(&AppItem) -> bool,
+    ) -> Vec<SearchResult> {
         if limit == 0 {
             return Vec::new();
         }
         let query = normalize(query);
         let mut top: Vec<(&Entry, f64)> = Vec::with_capacity(limit.min(self.len()));
-        for entry in &self.entries {
+        for entry in self.entries.iter().filter(|entry| include(&entry.item)) {
             let mut score = matching(&query, &entry.name, &entry.terms, fuzzy);
             if !query.is_empty() && score < 800 {
                 for alias in &entry.aliases {

@@ -26,6 +26,9 @@ pub const MENU: i32 = 4;
 pub const BROWSE_EXECUTABLE: i32 = 5;
 pub const UNPIN_MISSING_APP: i32 = 7;
 pub const DELETE_MISSING_CUSTOM_APP: i32 = 8;
+pub const BROWSE_FOLDER: i32 = 9;
+pub const FILE_PIN_FOLDER: i32 = 4;
+pub const FILE_UNPIN_FOLDER: i32 = 5;
 
 pub fn new_group_id() -> Option<String> {
     let mut id = windows_sys::core::GUID::from_u128(0);
@@ -77,6 +80,20 @@ pub fn elevated() -> bool {
 }
 
 pub fn run(owner: isize, request: i32) -> Completion {
+    if request == BROWSE_FOLDER {
+        return match super::shell::pick_folder(owner) {
+            Ok(Some(path)) => Completion {
+                action: BROWSE_FOLDER,
+                paths: vec![path],
+                ..Default::default()
+            },
+            Ok(None) => Completion::default(),
+            Err(_) => Completion {
+                error: "无法打开文件夹选择器，请重试。".into(),
+                ..Default::default()
+            },
+        };
+    }
     // SAFETY: owner is the live Slint HWND. The caller prevents hide/quit and
     // concurrent interactions until the completion returns to its UI thread.
     unsafe {
@@ -229,6 +246,12 @@ unsafe fn menu(owner: HWND) -> Completion {
             };
         }
         AppendMenuW(menu, MF_STRING, BROWSE as usize, wide("选择文件…").as_ptr());
+        AppendMenuW(
+            menu,
+            MF_STRING,
+            BROWSE_FOLDER as usize,
+            wide("选择文件夹…").as_ptr(),
+        );
         AppendMenuW(menu, MF_STRING, CLEAR as usize, wide("清空预览…").as_ptr());
         AppendMenuW(menu, MF_SEPARATOR, 0, null());
         AppendMenuW(menu, MF_STRING, BACK as usize, wide("返回搜索").as_ptr());
@@ -268,18 +291,20 @@ pub fn application(owner: isize, item: Option<&AppItem>, request: i32) -> i32 {
             5 | 6 | UNPIN_MISSING_APP | DELETE_MISSING_CUSTOM_APP
         ) {
             let message = match (request, item) {
-                (5, _) => "移除此自定义应用及其固定项？原文件不会被删除。".into(),
+                (5, _) => "移除此自定义项目及其固定项？磁盘内容将保留。".into(),
                 (6, _) => "下载并安装更新？Velo 将备份已保存的配置，退出并重新启动。".into(),
                 (UNPIN_MISSING_APP | DELETE_MISSING_CUSTOM_APP, Some(item)) => {
+                    let missing = if item.is_folder() {
+                        format!("找不到文件夹“{}”。它可能已被移动或删除。", item.name)
+                    } else {
+                        format!("找不到应用“{}”。它可能已被卸载或移动。", item.name)
+                    };
                     let question = if request == DELETE_MISSING_CUSTOM_APP {
-                        "是否从 Velo 删除这条自定义应用记录？对应的固定项也会移除，不会删除任何文件。"
+                        "是否从 Velo 移除这条自定义项目记录及其固定项？磁盘内容将保留。"
                     } else {
                         "是否取消固定？"
                     };
-                    format!(
-                        "找不到应用“{}”。它可能已被卸载或移动。\n\n{question}",
-                        item.name
-                    )
+                    format!("{missing}\n\n{question}")
                 }
                 _ => return 0,
             };
@@ -348,6 +373,9 @@ pub fn application(owner: isize, item: Option<&AppItem>, request: i32) -> i32 {
                 true,
             ),
         ] {
+            if item.is_folder() && matches!(id, 2 | 3) {
+                continue;
+            }
             AppendMenuW(
                 menu,
                 MF_STRING | if enabled { 0 } else { MF_GRAYED },
@@ -376,7 +404,7 @@ pub fn application(owner: isize, item: Option<&AppItem>, request: i32) -> i32 {
     }
 }
 
-pub fn file_menu(owner: isize, path: &str) -> i32 {
+pub fn file_menu(owner: isize, path: &str, folder_pinned: Option<bool>) -> i32 {
     let owner = owner as HWND;
     // SAFETY: caller retains owner and suppresses hide/quit until both
     // the temporary same-thread menu host and its menu are destroyed.
@@ -414,6 +442,14 @@ pub fn file_menu(owner: isize, path: &str) -> i32 {
         AppendMenuW(menu, MF_STRING, 1, wide("打开").as_ptr());
         AppendMenuW(menu, MF_STRING, 2, wide("在资源管理器中显示").as_ptr());
         AppendMenuW(menu, MF_STRING, 3, wide("复制完整路径").as_ptr());
+        if let Some(pinned) = folder_pinned {
+            let (action, label) = if pinned {
+                (FILE_UNPIN_FOLDER, "取消固定文件夹")
+            } else {
+                (FILE_PIN_FOLDER, "固定文件夹到首页")
+            };
+            AppendMenuW(menu, MF_STRING, action as usize, wide(label).as_ptr());
+        }
         let mut point = POINT::default();
         GetCursorPos(&mut point);
         SetForegroundWindow(host);

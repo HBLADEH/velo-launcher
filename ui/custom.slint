@@ -12,7 +12,7 @@ export component CustomPanel inherits FocusScope {
     in property <bool> drop-hovering;
     in property <string> notice;
     in property <string> summary;
-    callback close(); callback browse(); callback preview(string); callback commit();
+    callback close(); callback browse(); callback browse-folder(); callback preview(string); callback commit();
     callback remove(string); callback menu(string); callback drag(); callback more();
     callback viewport-changed();
     private property <length> preview-height: root.previews.length > 0 || root.import-busy ? 90px : 0px;
@@ -26,29 +26,30 @@ export component CustomPanel inherits FocusScope {
     TouchArea { enabled: root.enabled; pointer-event(event) => { if event.kind == PointerEventKind.up && event.button == PointerEventButton.right { root.more(); } } }
     Rectangle { x: 0px; y: 0px; width: parent.width; height: 69px;
         TouchArea { enabled: root.enabled; pointer-event(event) => { if event.kind == PointerEventKind.down && event.button == PointerEventButton.left { root.drag(); } } }
-        Text { x: 24px; y: 22px; text: "自定义应用"; font-size: 20px; font-weight: 600; color: Theme.fg; }
+        Text { x: 24px; y: 22px; text: "自定义项目"; font-size: 20px; font-weight: 600; color: Theme.fg; }
         ActionButton { x: parent.width - 96px; y: 23px; width: 72px; height: 25px; text: "返回 · Esc"; text-size: 16px; flat: true; enabled: root.enabled; activated => { root.close(); } }
     }
-    SettingHint { x: 24px; y: 82px; width: parent.width - 48px; text: "添加搜索范围外的应用，保存后立即可搜索，重启 Velo 仍然保留。"; font-size: 13px; }
-    Rectangle { x: 24px; y: 118.1px; width: parent.width - 48px; height: 80px; border-radius: 12px; background: Theme.selected;
+    SettingHint { x: 24px; y: 82px; width: parent.width - 48px; text: "添加应用和文件夹，导入后即可搜索。"; font-size: 13px; }
+    Rectangle { x: 24px; y: 118.1px; width: parent.width - 48px; height: 80px; border-radius: 12px; background: root.drop-hovering ? Theme.hover : Theme.selected;
         DashedBorder { width: parent.width; height: parent.height; }
-        Text { x: 17px; y: 21px; text: "拖入 .exe 程序或 .lnk 快捷方式"; font-size: 12px; font-weight: 700; color: Theme.fg; }
-        Text { x: 17px; y: 45px; width: parent.width - 112px; text: root.elevated ? "管理员权限下请使用选择文件。" : "可一次添加多个；此页面保持显示，方便切换到资源管理器。"; font-size: 10px; color: Theme.muted; }
-        ActionButton { x: parent.width - 91px; y: 24px; width: 74px; height: 32px; text: "选择文件"; text-size: 12px; radius: 6px; enabled: root.enabled && !root.import-busy; activated => { root.browse(); } }
+        Text { x: 17px; y: 21px; width: parent.width - 200px; text: "拖入文件夹、.exe 或 .lnk"; overflow: elide; font-size: 12px; font-weight: 700; color: Theme.fg; }
+        Text { x: 17px; y: 45px; width: parent.width - 200px; text: root.elevated ? "管理员模式下请使用右侧按钮。" : "可一次拖入多个项目。"; overflow: elide; font-size: 10px; color: Theme.muted; }
+        ActionButton { x: parent.width - 183px; y: 24px; width: 74px; height: 32px; text: "选择文件"; text-size: 12px; radius: 6px; enabled: root.enabled && !root.import-busy; activated => { root.browse(); } }
+        ActionButton { x: parent.width - 101px; y: 24px; width: 84px; height: 32px; text: "选择文件夹"; text-size: 12px; radius: 6px; enabled: root.enabled && !root.import-busy; activated => { root.browse-folder(); } }
     }
-    SettingField { x: 24px; y: 212.1px; width: parent.width - 108px; height: 37px; text <=> root.path; label: "导入文件完整路径"; placeholder: "或粘贴应用的完整路径"; enabled: root.enabled && !root.import-busy; }
+    SettingField { x: 24px; y: 212.1px; width: parent.width - 108px; height: 37px; text <=> root.path; label: "导入项目完整路径"; placeholder: "或粘贴文件或文件夹的完整路径"; enabled: root.enabled && !root.import-busy; }
     ActionButton { x: parent.width - 76px; y: 212.1px; width: 52px; height: 37px; text: "添加"; text-size: 13px; enabled: root.enabled && !root.import-busy && root.path != ""; activated => { root.preview(root.path); } }
     SettingHint { x: 24px; y: 257.1px; width: parent.width - 48px; text: root.notice != "" ? root.notice : "添加不会自动固定到首页；可在搜索结果中点击星标按钮固定。"; }
     if root.preview-height > 0px: Rectangle { x: 24px; y: 292px; width: parent.width - 48px; height: 90px;
-        SettingHint { x: 0px; y: 0px; width: parent.width - 180px; text: root.import-busy ? "正在检查文件…" : root.summary; }
+        SettingHint { x: 0px; y: 0px; width: parent.width - 180px; text: root.import-busy ? "正在检查项目…" : root.summary; }
         ContentScroll { x: 0px; y: 25px; width: parent.width - 180px; height: 60px; content-height: root.previews.length * 28px; enabled: root.enabled;
             Rectangle { x: 0px; y: 0px; width: parent.visible-width; height: parent.content-height;
                 for entry[index] in root.previews: Text { x: 0px; y: index * 28px; width: parent.width - 12px; height: 24px; text: entry.name + " · " + entry.status; font-size: 12px; color: entry.valid ? Theme.fg : Theme.muted; overflow: elide; }
             }
         }
-        ActionButton { x: parent.width - 160px; y: 12px; width: 160px; height: 33px; text: root.busy ? "正在保存…" : "导入支持的文件"; text-size: 13px; primary: true; enabled: root.enabled && !root.busy && !root.import-busy; activated => { root.commit(); } }
+        ActionButton { x: parent.width - 160px; y: 12px; width: 160px; height: 33px; text: root.busy ? "正在保存…" : "导入可用项目"; text-size: 13px; primary: true; enabled: root.enabled && !root.busy && !root.import-busy; activated => { root.commit(); } }
     }
-    Text { x: 24px; y: 314.7px + root.preview-height; width: parent.width - 48px; height: 16px; text: "已添加 " + root.items.length + " 个应用"; font-size: 12px; color: Theme.muted; }
+    Text { x: 24px; y: 314.7px + root.preview-height; width: parent.width - 48px; height: 16px; text: "已添加 " + root.items.length + " 个项目"; font-size: 12px; color: Theme.muted; }
     list := ContentScroll { x: 0px; y: 338.7px + root.preview-height; width: parent.width; height: max(1px, root.height - 43.7px - self.y);
         enabled: root.enabled; reserve-scrollbar: true; content-height: root.items.length * 62px;
         Rectangle { x: 0px; y: 0px; width: list.visible-width; height: list.content-height;
@@ -60,11 +61,11 @@ export component CustomPanel inherits FocusScope {
                 TouchArea { enabled: root.enabled; pointer-event(event) => { if event.kind == PointerEventKind.up && event.button == PointerEventButton.right { root.menu(item.id); } } }
                 ActionButton { x: parent.width - 50px; y: 14.5px; width: 50px; height: 32px; text: "删除"; text-size: 12px; radius: 6px; enabled: root.enabled && !root.busy; activated => { root.remove(item.id); } }
             }
-            if root.items.length == 0: SettingHint { x: 24px; y: 12px; width: parent.width - 48px; text: "尚未添加自定义应用。使用上方任意一种方式添加。"; }
+            if root.items.length == 0: SettingHint { x: 24px; y: 12px; width: parent.width - 48px; text: "尚未添加自定义项目。"; }
         }
     }
     Rectangle { x: 0px; y: parent.height - 43.7px; width: parent.width; height: 43.7px;
         Rectangle { height: 1px; width: parent.width; background: Theme.border; }
-        SettingHint { x: 24px; y: 12px; width: parent.width - 48px; font-size: 11px; line-height-factor: 1.7; text: "删除只移除自定义记录及其首页固定，不删除文件。若应用也在自动扫描范围内，仍可被自动索引找到。"; }
+        SettingHint { x: 24px; y: 12px; width: parent.width - 48px; font-size: 11px; line-height-factor: 1.7; text: "删除会移除自定义记录及其首页固定，磁盘内容将保留。"; }
     }
 }

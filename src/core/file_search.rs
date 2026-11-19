@@ -1,5 +1,5 @@
-//! Everything results are session-only and intentionally never enter the
-//! application catalogue, launch history, pins or icon cache.
+//! Everything results live in the file search session. Explicit folder pins are
+//! registered separately in the application library.
 
 use std::time::Duration;
 

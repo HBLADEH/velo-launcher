@@ -119,6 +119,7 @@ fn generic_host(path: &str) -> bool {
 fn validate_entry(item: &AppItem) -> Result<()> {
     if item.id.is_empty()
         || item.source == "System"
+        || item.is_folder()
         || !Path::new(&item.path).is_absolute()
         || !executable_path(target(item))
         || !(indexer::extension(&item.path, "exe") || indexer::extension(&item.path, "lnk"))

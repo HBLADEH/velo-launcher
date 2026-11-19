@@ -258,7 +258,7 @@ impl Controller {
         } else {
             snapshot
                 .catalog
-                .search(
+                .search_applications(
                     &query,
                     &snapshot.config,
                     &snapshot.history,

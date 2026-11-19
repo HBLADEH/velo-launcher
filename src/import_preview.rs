@@ -14,6 +14,7 @@ use slint::{ComponentHandle, Model, ModelRc, SharedString, VecModel};
 use crate::measurement::{self, Observer};
 use crate::platform::windows::interaction;
 use crate::{AppWindow, PreviewEntry};
+use velo_slint::core::library::{ImportKind, inspect_import};
 
 const LIMIT: usize = 256;
 type InspectionJob = (i32, Vec<PathBuf>);
@@ -55,34 +56,28 @@ fn inspect(path: &Path) -> PreviewEntry {
     let display = path.to_string_lossy().into_owned();
     let normalized = std::path::absolute(path).unwrap_or_else(|_| path.to_owned());
     let key = normalized.to_string_lossy().to_lowercase();
-    let extension = path
-        .extension()
-        .unwrap_or_default()
-        .to_string_lossy()
-        .to_lowercase();
-    let status = if !path.is_absolute() {
-        "需要完整文件路径"
-    } else if !matches!(extension.as_str(), "exe" | "lnk") {
-        "不支持的类型，仅支持 .exe / .lnk"
-    } else {
-        match std::fs::metadata(path) {
-            Err(_) => "文件不存在或无法读取",
-            Ok(metadata) if !metadata.is_file() => "请添加文件，而非目录",
-            Ok(_) if extension == "lnk" => "快捷方式 · 文件存在，目标尚未解析",
-            Ok(_) => "程序 · 文件存在",
-        }
+    let kind = inspect_import(path);
+    let status = match &kind {
+        Ok(ImportKind::Folder) => "文件夹",
+        Ok(ImportKind::Shortcut) => "快捷方式 · 文件存在，目标尚未解析",
+        Ok(ImportKind::Executable) => "程序 · 文件存在",
+        Err(error) => match error.operation {
+            "validate import path" => "需要完整路径",
+            "validate import type" => "仅支持文件夹、.exe 和 .lnk",
+            _ => "项目不存在或无法读取",
+        },
     };
     PreviewEntry {
         key: key.into(),
         name: path
             .file_name()
-            .unwrap_or_default()
+            .unwrap_or(path.as_os_str())
             .to_string_lossy()
             .into_owned()
             .into(),
         path: display.into(),
         status: status.into(),
-        valid: status.starts_with("快捷方式") || status.starts_with("程序"),
+        valid: kind.is_ok(),
     }
 }
 
@@ -193,7 +188,7 @@ impl Controller {
             if limited {
                 "预览最多保留 256 项；超出部分未接收。"
             } else {
-                "正在检查文件…"
+                "正在检查项目…"
             }
             .into(),
         );
@@ -260,7 +255,7 @@ impl Controller {
                 });
             if worker.is_err() {
                 if let Some(app) = self.app.upgrade() {
-                    app.set_import_notice("无法创建文件检查线程，请重试。".into());
+                    app.set_import_notice("无法创建项目检查线程，请重试。".into());
                 }
                 draft.pending.clear();
                 return;
@@ -280,7 +275,7 @@ impl Controller {
         {
             draft.in_flight += 1;
         } else if let Some(app) = self.app.upgrade() {
-            app.set_import_notice("文件检查队列已满，请稍后重新添加。".into());
+            app.set_import_notice("项目检查队列已满，请稍后重新添加。".into());
             self.log("import_queue_rejected", "capacity=2");
         }
         drop(draft);
@@ -305,7 +300,7 @@ impl Controller {
             );
             app.set_import_summary(
                 format!(
-                    "{} 项预览 · {valid} 个支持的文件 · {} 个无效项",
+                    "{} 项预览 · {valid} 项可导入 · {} 项无效",
                     draft.entries.len(),
                     draft.entries.len() - valid
                 )
@@ -399,19 +394,23 @@ impl Controller {
             return;
         }
         if request == interaction::MENU
-            && matches!(action, interaction::BROWSE | interaction::CLEAR)
+            && matches!(
+                action,
+                interaction::BROWSE | interaction::BROWSE_FOLDER | interaction::CLEAR
+            )
         {
             self.native(action);
             return;
         }
         match action {
-            interaction::BROWSE if paths.row_count() > 0 => self.add_paths(
-                paths
-                    .iter()
-                    .map(|text| PathBuf::from(text.as_str()))
-                    .collect(),
-                "picker",
-            ),
+            interaction::BROWSE | interaction::BROWSE_FOLDER if paths.row_count() > 0 => self
+                .add_paths(
+                    paths
+                        .iter()
+                        .map(|text| PathBuf::from(text.as_str()))
+                        .collect(),
+                    "picker",
+                ),
             interaction::CLEAR => {
                 self.draft.borrow_mut().clear();
                 self.publish();
@@ -430,7 +429,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn preview_inspects_files_without_launching_and_rejects_invalid_inputs() {
+    fn preview_accepts_applications_and_folders_and_rejects_other_entries() {
         let folder = std::env::temp_dir().join(format!("velo-rs07-preview-{}", std::process::id()));
         std::fs::create_dir_all(&folder).unwrap();
         let executable = folder.join("中文 程序.EXE");
@@ -444,7 +443,9 @@ mod tests {
         assert!(!inspect(Path::new("relative.exe")).valid);
         let directory = folder.join("directory.exe");
         std::fs::create_dir_all(&directory).unwrap();
-        assert!(!inspect(&directory).valid);
+        assert!(inspect(&folder).valid);
+        assert!(inspect(&directory).valid);
+        assert_eq!(inspect(&directory).status, "文件夹");
         std::fs::remove_dir_all(folder).unwrap();
     }
 

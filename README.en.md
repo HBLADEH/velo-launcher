@@ -57,7 +57,7 @@ Actual Windows captures of the **0.11.0 Software development build**, using an i
   </tr>
 </table>
 
-Custom apps, configuration backup, the file-search toggle and version-page captures are included in the [user guide](docs/user-guide.md) and [screenshot directory](docs/images/README.md).
+See the [screenshot directory](docs/images/README.md) for more captures.
 
 ## Features
 
@@ -65,9 +65,9 @@ Custom apps, configuration backup, the file-search toggle and version-page captu
 - **Window and session**: drag the logo, title or empty header area to move the window. Hiding preserves the current page, search, unsaved settings and update progress.
 - **Application search**: Chinese, English, pinyin, initials, keywords, fuzzy matching and single-character typo tolerance. Ranking considers launch frequency, recent use and query history.
 - **Automatic indexing**: discovers Start menu, desktop, Windows Apps, Program Files and custom-directory apps; merges duplicates and optionally filters uninstall, help and update utilities.
-- **Quick access**: pins and frequently used apps on home, plus Windows shortcuts searchable by Chinese, English, pinyin and abbreviations.
+- **Quick access**: pin apps and folders to home. Search Windows shortcuts by Chinese, English, pinyin and abbreviations.
 - **Result actions**: ranked list and grid views; context menus can launch, open the installation directory, run as administrator or pin an app.
-- **Custom apps**: drop files, select files or paste paths to add `.exe` / `.lnk` entries outside scanned directories. Custom entries and home pins are managed separately.
+- **Custom items**: drag, select, or paste paths to add folders and `.exe` / `.lnk` entries outside scanned directories. Use the star button to pin them to home.
 - **Appearance and preferences**: light, dark or system theme, list or grid layout, login startup, result limits, ranking weights and index refresh settings. Development builds add a thin outline that follows the theme and use native rounded corners on Windows 11.
 - **Local data and backups**: background index refresh, visible-range icon loading with a cache budget, and backups of saved configuration.
 - **Updates**: GitHub Releases checks, SHA-256 verification, configuration backup before installation, and system-installer upgrades that preserve settings.
@@ -97,7 +97,9 @@ Data lives in `%LOCALAPPDATA%\Velo`. Before initial data-store setup, Velo prese
 3. Select a result with the arrow keys and press `Enter`. Use the star button to pin an app to home.
 4. Press `Ctrl+,` to open settings, adjust the hotkey, theme, search preferences or index directories, then save.
 
-If a custom app cannot be found, Velo asks whether to remove its entry, even if it is not pinned. OK removes the custom entry and any pin without deleting files; Cancel keeps the entry and returns to the launcher. For other pinned apps, Velo only offers to unpin them.
+To add a folder, open “自定义项目” (Custom items) from home, drag the folder into the panel, and import it. Star it for quick access from home. See [Custom items](docs/user-guide.md#自定义项目).
+
+If a custom item cannot be found, Velo offers to remove its library entry and any associated pin. If an item was pinned directly, Velo offers to unpin it.
 
 Common controls:
 

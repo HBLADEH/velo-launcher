@@ -95,16 +95,24 @@ pub enum Event {
 #[derive(Clone, Default)]
 pub struct UpdateState {
     pub busy: bool,
-    pub progress: u8,
+    pub progress: Option<InstallProgress>,
     pub message: String,
-    pub info: update::Info,
+    pub info: Arc<update::Info>,
     pub scheduled: bool,
+}
+
+#[derive(Clone, Copy)]
+pub enum InstallProgress {
+    Preparing,
+    Download(update::DownloadProgress),
+    PreparingInstaller,
 }
 pub enum Manage {
     SaveGroup(Group),
     DeleteGroup(String),
     Save(Config),
     Pin(String, bool),
+    SetFolderPinned(PathBuf, bool),
     Import(Vec<PathBuf>),
     Delete(String),
     Backup,
@@ -448,7 +456,7 @@ impl Runtime {
                                     Manage::Save(_) => "settings",
                                     Manage::Import(_) => "import",
                                     Manage::Delete(_) => "delete",
-                                    Manage::Pin(..) => "pin",
+                                    Manage::Pin(..) | Manage::SetFolderPinned(..) => "pin",
                                     Manage::Backup => "backup",
                                     Manage::OpenBackups(_) => "open_backups",
                                 };
@@ -650,6 +658,14 @@ impl Runtime {
     pub fn cancel_group(&self) {
         self.shared.group_cancelled.store(true, Ordering::Release);
     }
+    pub fn is_pinned(&self, id: &str) -> bool {
+        self.shared
+            .snapshot()
+            .ok()
+            .flatten()
+            .is_some_and(|snapshot| snapshot.library.has_pin(id))
+    }
+
     pub fn manage(&self, request: Manage) -> bool {
         if self.shared.stopping.load(Ordering::Acquire)
             || self.update_busy.load(Ordering::Acquire)
@@ -817,6 +833,25 @@ fn manage(shared: &Shared, request: Manage) -> Result<String> {
             }
             .into()
         }
+        Manage::SetFolderPinned(path, pinned) => {
+            let id = library::folder_id(&path)?;
+            if pinned {
+                let current = store.library.snapshot()?;
+                if !current.has_pin(&id) {
+                    let folder = library::folder(&path)?;
+                    store
+                        .library
+                        .update(|library| library.with_new_pin(&folder))?;
+                }
+                "已将文件夹固定到首页"
+            } else {
+                store
+                    .library
+                    .update(|library| snapshot.catalog.with_pin(library, &id, false))?;
+                "已取消固定文件夹"
+            }
+            .into()
+        }
         Manage::Import(paths) => {
             let apartment = shell::Apartment::new()?;
             let imported = library::import(
@@ -828,7 +863,7 @@ fn manage(shared: &Shared, request: Manage) -> Result<String> {
                 store.library.update(|_| Ok(imported.library))?;
             }
             format!(
-                "已添加 {} 个应用 · {} 个文件无法导入",
+                "已添加 {} 个项目 · {} 个项目无法导入",
                 imported.added, imported.rejected
             )
         }
@@ -836,7 +871,7 @@ fn manage(shared: &Shared, request: Manage) -> Result<String> {
             store
                 .library
                 .update(|library| library::delete(library, &id))?;
-            "已移除自定义应用及其固定项；原文件未修改".into()
+            "已移除自定义项目及其固定项，磁盘内容保留".into()
         }
         Manage::Backup => store
             .config
@@ -864,6 +899,7 @@ fn manage(shared: &Shared, request: Manage) -> Result<String> {
 
 fn update_worker(shared: &Shared, requests: std::sync::mpsc::Receiver<bool>, busy: &AtomicBool) {
     let mut client = update::Client::for_build(http::Http);
+    let mut state = UpdateState::default();
     let mut first = true;
     loop {
         let install = if first {
@@ -895,19 +931,19 @@ fn update_worker(shared: &Shared, requests: std::sync::mpsc::Receiver<bool>, bus
         if shared.stopping.load(Ordering::Acquire) {
             return;
         }
-        let mut state = UpdateState {
-            busy: true,
-            message: if install {
-                "正在验证并下载更新…"
-            } else {
-                "正在检查更新…"
-            }
-            .into(),
-            ..UpdateState::default()
-        };
+        state.busy = true;
+        state.progress = install.then_some(InstallProgress::Preparing);
+        state.scheduled = false;
+        state.message = if install {
+            "正在连接更新服务器…"
+        } else {
+            "正在检查更新…"
+        }
+        .into();
         shared.event(Event::Update(Box::new(state.clone())));
         let result = (|| -> Result<()> {
-            state.info = client.check(update::CURRENT, &shared.stopping)?;
+            let info = Arc::new(client.check(update::CURRENT, &shared.stopping)?);
+            state.info = info.clone();
             if !install {
                 state.message = if state.info.release.is_none() {
                     "当前已是最新版本".into()
@@ -935,20 +971,25 @@ fn update_worker(shared: &Shared, requests: std::sync::mpsc::Receiver<bool>, bus
                 .as_ref()
                 .is_some_and(|options| options.identity.migration_id.is_some());
             let portable = !installed_product && current.parent().is_some_and(updater::writable);
-            let info = state.info.clone();
             let (source, hash) = client.download(
                 &info,
                 &shared.directory.join("updates"),
                 portable,
                 &shared.stopping,
                 &mut |progress| {
-                    if state.progress != progress {
-                        state.progress = progress;
-                        shared.event(Event::Update(Box::new(state.clone())));
+                    state.progress = Some(InstallProgress::Download(progress));
+                    state.message = match progress {
+                        update::DownloadProgress::Transfer { .. } => "正在下载更新…",
+                        update::DownloadProgress::Verifying => "正在校验下载文件…",
                     }
+                    .into();
+                    shared.event(Event::Update(Box::new(state.clone())));
                 },
             )?;
             update::check_cancel(&shared.stopping)?;
+            state.progress = Some(InstallProgress::PreparingInstaller);
+            state.message = "正在备份配置并准备安装…".into();
+            shared.event(Event::Update(Box::new(state.clone())));
             let script = prepare_update(shared, &source, portable, &hash)?;
             update::check_cancel(&shared.stopping)?;
             updater::schedule(&script)?;
@@ -972,8 +1013,9 @@ fn update_worker(shared: &Shared, requests: std::sync::mpsc::Receiver<bool>, bus
             eprintln!("event=update_failed operation={}", error.operation);
         }
         state.busy = false;
+        state.progress = None;
         busy.store(false, Ordering::Release);
-        shared.event(Event::Update(Box::new(state)));
+        shared.event(Event::Update(Box::new(state.clone())));
     }
 }
 
@@ -1793,6 +1835,185 @@ mod tests {
         assert!(library.applications.as_ref().unwrap().is_empty());
         assert!(library.pinned.as_ref().unwrap().is_empty());
         assert!(path.exists());
+    }
+
+    #[test]
+    fn folder_pins_share_home_and_survive_restart() {
+        let directory = tempfile::tempdir().unwrap();
+        let runtime = shared(directory.path());
+        initialize(&runtime).unwrap();
+
+        let name = "Velo 文件夹.exe";
+        let folder = directory.path().join(name);
+        fs::create_dir(&folder).unwrap();
+        let application = directory.path().join("Velo 应用.exe");
+        fs::write(&application, b"never execute").unwrap();
+        manage(&runtime, Manage::Import(vec![application.clone()])).unwrap();
+        let app_id = runtime
+            .snapshot()
+            .unwrap()
+            .unwrap()
+            .library
+            .applications
+            .as_ref()
+            .unwrap()[0]
+            .id
+            .clone();
+        manage(&runtime, Manage::Pin(app_id.clone(), true)).unwrap();
+        assert!(manage(&runtime, Manage::SetFolderPinned(application, true)).is_err());
+        assert!(manage(&runtime, Manage::SetFolderPinned(PathBuf::from(name), true)).is_err());
+
+        let library_path = directory.path().join("application-library.json");
+        let lock = fs::OpenOptions::new()
+            .read(true)
+            .share_mode(FILE_SHARE_READ)
+            .open(&library_path)
+            .unwrap();
+        let before = runtime.snapshot().unwrap().unwrap();
+        assert!(manage(&runtime, Manage::SetFolderPinned(folder.clone(), true)).is_err());
+        assert!(Arc::ptr_eq(&before, &runtime.snapshot().unwrap().unwrap()));
+        drop(lock);
+
+        manage(&runtime, Manage::SetFolderPinned(folder.clone(), true)).unwrap();
+        let alternate = PathBuf::from(format!(
+            "{}/./VELO 文件夹.EXE/",
+            directory.path().to_string_lossy().replace('\\', "/")
+        ));
+        let folder_id = library::folder_id(&folder).unwrap();
+        assert_eq!(library::folder_id(&alternate).unwrap(), folder_id);
+        manage(&runtime, Manage::SetFolderPinned(alternate.clone(), true)).unwrap();
+
+        let restarted = shared(directory.path());
+        initialize(&restarted).unwrap();
+        let snapshot = restarted.snapshot().unwrap().unwrap();
+        let pins = snapshot
+            .catalog
+            .home(&snapshot.history, now())
+            .unwrap()
+            .pinned;
+        assert_eq!(
+            pins.iter().map(|item| item.id.as_str()).collect::<Vec<_>>(),
+            [app_id.as_str(), folder_id.as_str()]
+        );
+        let item = &pins[1];
+        assert_eq!(item.name, name);
+        assert!(item.is_folder() && item.pinned);
+        assert_eq!(snapshot.catalog.len(), 1);
+        assert!(!snapshot.library.has_custom_app(&folder_id));
+        assert_eq!(
+            snapshot
+                .catalog
+                .search(name, &snapshot.config, &snapshot.history, now())
+                .unwrap()[0]
+                .item
+                .id,
+            folder_id
+        );
+        assert!(
+            snapshot
+                .catalog
+                .search_applications(name, &snapshot.config, &snapshot.history, now())
+                .unwrap()
+                .iter()
+                .all(|result| !result.item.is_folder())
+        );
+        assert_eq!(super::super::launch::capabilities(item), (false, false));
+        let command =
+            super::super::launch::command(item, Action::Launch, directory.path(), |path| {
+                fs::metadata(path).map(|metadata| metadata.is_dir())
+            })
+            .unwrap();
+        assert_eq!(Path::new(&command.path), folder);
+        assert!(command.arguments.is_empty());
+
+        manage(&restarted, Manage::SetFolderPinned(alternate, false)).unwrap();
+        assert!(folder.is_dir());
+        assert!(
+            restarted
+                .snapshot()
+                .unwrap()
+                .unwrap()
+                .catalog
+                .item(&folder_id)
+                .is_none()
+        );
+        manage(&restarted, Manage::SetFolderPinned(folder.clone(), true)).unwrap();
+        fs::remove_dir(&folder).unwrap();
+        fs::write(&folder, b"regular file at the former folder path").unwrap();
+        let request = LaunchRequest {
+            id: folder_id.clone(),
+            query: name.into(),
+            action: Action::Launch,
+            owner: 0,
+        };
+        assert_eq!(
+            run_action(&restarted, &request),
+            (Err(launch::Failure::MissingTarget), true)
+        );
+        manage(&restarted, Manage::Pin(folder_id.clone(), false)).unwrap();
+        let snapshot = restarted.snapshot().unwrap().unwrap();
+        assert!(snapshot.catalog.item(&folder_id).is_none());
+        assert!(snapshot.library.has_pin(&app_id));
+        assert!(folder.is_file());
+    }
+
+    #[test]
+    fn imported_folders_remain_searchable_when_unpinned() {
+        let directory = tempfile::tempdir().unwrap();
+        let runtime = shared(directory.path());
+        initialize(&runtime).unwrap();
+        let folder = directory.path().join("Velo 自定义目录.lnk");
+        let application = directory.path().join("Velo 自定义程序.exe");
+        let unsupported = directory.path().join("notes.txt");
+        fs::create_dir(&folder).unwrap();
+        fs::write(&application, b"never execute").unwrap();
+        fs::write(&unsupported, b"unsupported regular file").unwrap();
+        assert_eq!(
+            manage(
+                &runtime,
+                Manage::Import(vec![
+                    application.clone(),
+                    folder.clone(),
+                    folder.clone(),
+                    unsupported
+                ])
+            )
+            .unwrap(),
+            "已添加 2 个项目 · 1 个项目无法导入"
+        );
+        let id = library::folder_id(&folder).unwrap();
+        let imported = runtime.snapshot().unwrap().unwrap();
+        assert!(imported.library.has_custom_app(&id));
+        assert!(!imported.catalog.item(&id).unwrap().pinned);
+
+        manage(&runtime, Manage::Pin(id.clone(), true)).unwrap();
+        manage(&runtime, Manage::SetFolderPinned(folder.clone(), true)).unwrap();
+        let pinned = runtime.snapshot().unwrap().unwrap();
+        assert_eq!(pinned.library.pinned.as_ref().unwrap().len(), 1);
+        assert!(pinned.catalog.item(&id).unwrap().pinned);
+        manage(&runtime, Manage::SetFolderPinned(folder.clone(), false)).unwrap();
+
+        let restarted = shared(directory.path());
+        initialize(&restarted).unwrap();
+        let snapshot = restarted.snapshot().unwrap().unwrap();
+        assert!(!snapshot.library.has_pin(&id));
+        let results = snapshot
+            .catalog
+            .search(
+                "Velo 自定义目录.lnk",
+                &snapshot.config,
+                &snapshot.history,
+                now(),
+            )
+            .unwrap();
+        assert_eq!(results[0].item.id, id);
+        assert!(results[0].item.is_folder());
+        manage(&restarted, Manage::Pin(id.clone(), true)).unwrap();
+        manage(&restarted, Manage::Delete(id.clone())).unwrap();
+        let deleted = restarted.snapshot().unwrap().unwrap();
+        assert!(deleted.catalog.item(&id).is_none());
+        assert!(!deleted.library.has_pin(&id));
+        assert!(folder.is_dir() && application.is_file());
     }
 
     #[test]
