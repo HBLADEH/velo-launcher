@@ -99,6 +99,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         groups: Arc::new(Collection::default()),
         group_index: Arc::new(Index::new(std::iter::empty())),
         groups_available: true,
+        enabled_workspace: None,
     }));
     app.invoke_show_groups(true);
     app.invoke_group_new();

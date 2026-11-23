@@ -22,12 +22,18 @@ use super::launch_groups::{self, Collection, DraftTicket, Group};
 use super::model::AppItem;
 use super::search::Index;
 use super::storage;
+use super::workspace::{
+    actions as workspace_action,
+    config::{KEY as WORKSPACE_KEY, WorkspaceConfig},
+};
 use super::{DataError, JsonDocument, Result, library, update};
 use crate::platform::windows::{
     everything::{self, Worker as FileSearchWorker},
     group_launch, hotkey, http, icons as native_icons,
     instance::Identity,
     launch, preferences, shell, system_tools, updater,
+    workspace::Foreground,
+    workspace_actions,
 };
 
 pub fn now() -> DateTime<Utc> {
@@ -43,11 +49,30 @@ pub struct Snapshot {
     pub groups: Arc<Collection>,
     pub group_index: Arc<Index>,
     pub groups_available: bool,
+    pub enabled_workspace: Option<Arc<WorkspaceConfig>>,
 }
 
 pub struct LoadedIcon {
     pub key: String,
     pub pixels: Pixels,
+}
+
+pub struct IconTarget {
+    key: String,
+    item: Arc<AppItem>,
+    size: u32,
+}
+
+impl IconTarget {
+    pub fn new(item: Arc<AppItem>, size: u32) -> Self {
+        let size = size.clamp(1, icons::SIZE);
+        let key = format!("{}@{size}", item.icon_url);
+        Self { key, item, size }
+    }
+
+    pub fn key(&self) -> &str {
+        &self.key
+    }
 }
 
 pub enum Event {
@@ -90,6 +115,10 @@ pub enum Event {
         kind: &'static str,
         success: bool,
     },
+    WorkspaceFinished {
+        action: workspace_action::WorkspaceAction,
+        result: std::result::Result<workspace_action::Success, workspace_action::Failure>,
+    },
 }
 
 #[derive(Clone, Default)]
@@ -111,6 +140,7 @@ pub enum Manage {
     SaveGroup(Group),
     DeleteGroup(String),
     Save(Config),
+    SaveWorkspace(Box<WorkspaceConfig>),
     Pin(String, bool),
     SetFolderPinned(PathBuf, bool),
     Import(Vec<PathBuf>),
@@ -128,6 +158,7 @@ enum Work {
         run_id: u64,
     },
     Launch(LaunchRequest),
+    Workspace(WorkspaceRequest),
     FileOpen {
         path: String,
         generation: u64,
@@ -149,7 +180,7 @@ pub struct Options {
 
 struct IconRequest {
     ticket: Ticket,
-    items: Vec<AppItem>,
+    items: Vec<IconTarget>,
 }
 struct IconMailbox {
     request: Mutex<Option<IconRequest>>,
@@ -248,6 +279,7 @@ impl Shared {
             groups,
             group_index,
             groups_available: self.groups.get().is_some(),
+            enabled_workspace: WorkspaceConfig::read_enabled(&config).map(Arc::new),
             catalog: Arc::new(Catalog::new(
                 &items,
                 &library,
@@ -275,6 +307,12 @@ struct LaunchRequest {
     id: String,
     query: String,
     action: Action,
+    owner: isize,
+}
+
+struct WorkspaceRequest {
+    action: workspace_action::WorkspaceAction,
+    target: Option<(Foreground, workspace_actions::Application)>,
     owner: isize,
 }
 
@@ -421,6 +459,11 @@ impl Runtime {
                                     history_saved: result.1,
                                 });
                             }
+                            Work::Workspace(request) => {
+                                let action = request.action;
+                                let result = run_workspace(&action_state, request);
+                                action_state.event(Event::WorkspaceFinished { action, result });
+                            }
                             Work::FileOpen {
                                 path,
                                 generation,
@@ -454,6 +497,7 @@ impl Runtime {
                                     Manage::SaveGroup(_) => "group_save",
                                     Manage::DeleteGroup(_) => "group_delete",
                                     Manage::Save(_) => "settings",
+                                    Manage::SaveWorkspace(_) => "workspace",
                                     Manage::Import(_) => "import",
                                     Manage::Delete(_) => "delete",
                                     Manage::Pin(..) | Manage::SetFolderPinned(..) => "pin",
@@ -587,6 +631,7 @@ impl Runtime {
                     | Event::GroupDetection { .. }
                     | Event::FileOpened { .. }
                     | Event::FileUtility { .. }
+                    | Event::WorkspaceFinished { .. }
             ) || matches!(event, Event::GroupRun(report) if report.done)
         }) {
             self.action_busy.store(false, Ordering::Release);
@@ -634,6 +679,18 @@ impl Runtime {
     }
     pub fn group_detection(&self, ticket: DraftTicket, path: PathBuf) -> bool {
         self.group_work(Work::GroupDetection(ticket, path))
+    }
+    pub fn workspace(
+        &self,
+        action: workspace_action::WorkspaceAction,
+        target: Option<(Foreground, workspace_actions::Application)>,
+        owner: isize,
+    ) -> bool {
+        self.group_work(Work::Workspace(WorkspaceRequest {
+            action,
+            target,
+            owner,
+        }))
     }
     pub fn launch_group(
         &self,
@@ -701,7 +758,7 @@ impl Runtime {
         self.update_busy.store(false, Ordering::Release);
         false
     }
-    pub fn icons(&self, items: Vec<AppItem>) {
+    pub fn icons(&self, items: Vec<IconTarget>) {
         self.cancel_icons();
         if items.is_empty() {
             return;
@@ -781,7 +838,7 @@ fn manage(shared: &Shared, request: Manage) -> Result<String> {
                 .update(|current| current.without_group(&id))?;
             "启动组合已删除".into()
         }
-        Manage::Save(config) => {
+        Manage::Save(mut config) => {
             config.validate()?;
             let key = hotkey::Key::parse(&config.hotkey)
                 .map_err(|e| DataError::new("validate global hotkey", e))?;
@@ -803,7 +860,14 @@ fn manage(shared: &Shared, request: Manage) -> Result<String> {
             } else {
                 None
             };
-            if let Err(error) = store.config.update(|_| Ok(config)) {
+            if let Err(error) = store.config.update(|current| {
+                if let Some(value) = current.unknown.get(WORKSPACE_KEY) {
+                    config.unknown.insert(WORKSPACE_KEY.into(), value.clone());
+                } else {
+                    config.unknown.remove(WORKSPACE_KEY);
+                }
+                Ok(config)
+            }) {
                 if let Some(startup) = &mut startup {
                     startup.rollback()?;
                 }
@@ -821,6 +885,16 @@ fn manage(shared: &Shared, request: Manage) -> Result<String> {
             // the commit lock; none may slip in between save and rescheduling.
             shared.refresh.advance();
             "设置已保存".into()
+        }
+        Manage::SaveWorkspace(mut layout) => {
+            layout.validate()?;
+            let value = super::defaults(&layout)?;
+            store.config.update(|current| {
+                let mut config = current.clone();
+                config.unknown.insert(WORKSPACE_KEY.into(), value);
+                Ok(config)
+            })?;
+            "工作台设置已保存".into()
         }
         Manage::Pin(id, pinned) => {
             store
@@ -1196,6 +1270,14 @@ fn commit_index(
                 .map(|item| item.icon_url.clone()),
         );
     }
+    retained.extend(
+        shared
+            .tools
+            .read()
+            .map_err(|_| DataError::new("read system tools", "poisoned lock"))?
+            .iter()
+            .map(|item| item.icon_url.clone()),
+    );
     Ok(!ticket.current() || icons::prune(&shared.directory, retained.into_iter()).is_ok())
 }
 
@@ -1304,6 +1386,30 @@ fn run_action(
     finish_action(shared, request, result)
 }
 
+fn run_workspace(
+    shared: &Shared,
+    request: WorkspaceRequest,
+) -> std::result::Result<workspace_action::Success, workspace_action::Failure> {
+    use workspace_action::{Failure, Success};
+    if request.action.template().is_some() {
+        let (original, application) = request.target.ok_or(Failure::TargetChanged)?;
+        return workspace_actions::shortcut(request.action, original, application);
+    }
+    if let Some(id) = request.action.system_id() {
+        let snapshot = shared
+            .snapshot()
+            .ok()
+            .flatten()
+            .ok_or(Failure::Unavailable)?;
+        let item = snapshot.catalog.item(id).ok_or(Failure::Unavailable)?;
+        let apartment = shell::Apartment::new().map_err(|_| Failure::Shell)?;
+        launch::execute(&apartment, request.owner, item, Action::Launch)
+            .map_err(|_| Failure::Shell)?;
+        return Ok(Success::Opened);
+    }
+    workspace_actions::open(request.action, request.owner)
+}
+
 fn finish_action(
     shared: &Shared,
     request: &LaunchRequest,
@@ -1361,15 +1467,18 @@ fn icon_worker(shared: &Shared) {
             continue;
         };
         let mut items = Vec::new();
-        for item in request.items {
+        for target in request.items {
             if !request.ticket.current() {
                 break;
             }
-            if let Ok(pixels) = icons::load(&shared.directory, &item, &request.ticket, |item| {
-                native_icons::extract(&apartment, item)
-            }) {
+            if let Ok(pixels) =
+                icons::load(&shared.directory, &target.item, &request.ticket, |item| {
+                    native_icons::extract(&apartment, item)
+                })
+                .and_then(|pixels| pixels.resample(target.size))
+            {
                 items.push(LoadedIcon {
-                    key: item.icon_url.clone(),
+                    key: target.key,
                     pixels,
                 });
             }
@@ -1777,6 +1886,94 @@ mod tests {
                 .as_ref(),
             &config
         );
+        let mut stale_launcher_draft = config;
+        stale_launcher_draft.max_results = 11;
+        let workspace = WorkspaceConfig {
+            enabled: true,
+            ..Default::default()
+        };
+        manage(&shared, Manage::SaveWorkspace(Box::new(workspace.clone()))).unwrap();
+        manage(&shared, Manage::Save(stale_launcher_draft)).unwrap();
+        let loaded = DataStore::open(directory.path())
+            .unwrap()
+            .config
+            .snapshot()
+            .unwrap();
+        assert_eq!(loaded.max_results, 11);
+        assert_eq!(WorkspaceConfig::read(&loaded).unwrap(), workspace);
+    }
+
+    #[test]
+    fn workspace_save_preserves_launcher_config_and_recovers_after_write_denial() {
+        let directory = tempfile::tempdir().unwrap();
+        let shared = shared(directory.path());
+        initialize(&shared).unwrap();
+        let store = shared.store.get().unwrap();
+        store
+            .config
+            .update(|current| {
+                let mut config = current.clone();
+                config.max_results = 13;
+                config.unknown.insert(
+                    "future_launcher_field".into(),
+                    serde_json::json!({"kept": true}),
+                );
+                Ok(config)
+            })
+            .unwrap();
+        let mut workspace = WorkspaceConfig {
+            enabled: true,
+            ..Default::default()
+        };
+        workspace.upper.count = 8;
+        workspace.upper.slots[7] = Some(workspace_action::WorkspaceAction::Pictures);
+        workspace
+            .unknown
+            .insert("future_workspace_field".into(), serde_json::json!(14));
+        let path = directory.path().join("config.json");
+        let previous = fs::read(&path).unwrap();
+        let lock = fs::OpenOptions::new()
+            .read(true)
+            .share_mode(FILE_SHARE_READ)
+            .open(&path)
+            .unwrap();
+        assert!(manage(&shared, Manage::SaveWorkspace(Box::new(workspace.clone()))).is_err());
+        assert_eq!(fs::read(&path).unwrap(), previous);
+        assert!(
+            shared
+                .snapshot()
+                .unwrap()
+                .unwrap()
+                .enabled_workspace
+                .is_none()
+        );
+        drop(lock);
+        manage(&shared, Manage::SaveWorkspace(Box::new(workspace.clone()))).unwrap();
+        let loaded = DataStore::open(directory.path())
+            .unwrap()
+            .config
+            .snapshot()
+            .unwrap();
+        assert_eq!(loaded.max_results, 13);
+        assert_eq!(
+            loaded.unknown["future_launcher_field"],
+            serde_json::json!({"kept": true})
+        );
+        assert_eq!(WorkspaceConfig::read(&loaded).unwrap(), workspace);
+        assert_eq!(
+            shared
+                .snapshot()
+                .unwrap()
+                .unwrap()
+                .enabled_workspace
+                .as_deref(),
+            Some(&workspace),
+        );
+        let backup = store
+            .config
+            .backup(&directory.path().join("backups"))
+            .unwrap();
+        assert_eq!(fs::read(backup).unwrap(), fs::read(path).unwrap());
     }
 
     #[test]

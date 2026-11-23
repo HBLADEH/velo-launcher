@@ -74,7 +74,7 @@ export component LaunchGroupsPanel inherits FocusScope {
                 Rectangle { x: 0px; y: 0px; width: apps.visible-width; height: apps.content-height;
                     for app[index] in root.sources: Rectangle { y: index * 44px; width: parent.width; height: 44px;
                         Rectangle { width: parent.width; height: parent.height; background: touch.has-hover ? Theme.hover : transparent; border-radius: 6px; }
-                        LauncherIcon { x: 7px; y: 10px; width: 24px; height: 24px; item: app; }
+                        LauncherIcon { x: 7px; y: 10px; width: Theme.group-icon-size; height: Theme.group-icon-size; item: app; }
                         Text { x: 41px; y: 12px; width: parent.width - 95px; text: app.name; font-size: 13px; color: Theme.fg; overflow: elide; }
                         touch := TouchArea {
                             enabled: root.enabled && !root.busy;

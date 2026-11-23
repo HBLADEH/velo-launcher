@@ -6,6 +6,7 @@ use std::fs;
 use std::io::Write;
 use std::path::Path;
 
+use image::imageops::FilterType;
 use image::{ImageDecoder, ImageEncoder};
 
 use super::indexer::{Ticket, modified_ns};
@@ -37,26 +38,77 @@ impl Pixels {
         // Renderer-private caches are outside application ownership, measured later.
         self.rgba.len() * 2
     }
+
+    pub(crate) fn resample(self, edge: u32) -> Result<Self> {
+        let original = self.width.max(self.height);
+        if original == edge {
+            return Ok(self);
+        }
+        let fit = |side| {
+            ((f64::from(side) * f64::from(edge) / f64::from(original)).round() as u32).max(1)
+        };
+        let (width, height) = (fit(self.width), fit(self.height));
+        let mut image = image::RgbaImage::from_raw(self.width, self.height, self.rgba)
+            .ok_or_else(|| DataError::new("resize icon", "invalid pixels"))?;
+        // Filter coverage and premultiplied color together to avoid dark or
+        // bright fringes around transparent Windows icons.
+        for pixel in image.pixels_mut() {
+            let alpha = u32::from(pixel.0[3]);
+            for color in &mut pixel.0[..3] {
+                *color = ((u32::from(*color) * alpha + 127) / 255) as u8;
+            }
+        }
+        let filter = if edge < original {
+            FilterType::Lanczos3
+        } else {
+            FilterType::Triangle
+        };
+        let mut image = image::imageops::resize(&image, width, height, filter);
+        for pixel in image.pixels_mut() {
+            let alpha = u32::from(pixel.0[3]);
+            for color in &mut pixel.0[..3] {
+                *color = (u32::from(*color) * 255 + alpha / 2)
+                    .checked_div(alpha)
+                    .unwrap_or(0)
+                    .min(255) as u8;
+            }
+        }
+        Ok(Self {
+            width,
+            height,
+            rgba: image.into_raw(),
+        })
+    }
+}
+
+pub(crate) fn icon_location(value: &str) -> (&str, Option<i32>) {
+    let (path, index) = value
+        .rsplit_once(',')
+        .and_then(|(path, index)| {
+            index
+                .trim()
+                .parse::<i32>()
+                .ok()
+                .map(|index| (path, Some(index)))
+        })
+        .unwrap_or((value, None));
+    (path.trim().trim_matches('"'), index)
 }
 
 pub fn signature(item: &AppItem) -> String {
-    if item.is_folder() {
+    if item.is_folder() || (item.source == "System" && !Path::new(&item.path).is_absolute()) {
         return String::new();
     }
-    let icon = item
-        .icon_path
-        .split(',')
-        .next()
-        .unwrap_or("")
-        .trim_matches('"');
-    let mut stamp = String::new();
-    for part in ["2", &item.path, &item.exec_path, icon] {
+    let (icon, _) = icon_location(&item.icon_path);
+    let mut stamp = String::from("3");
+    for part in [item.path.as_str(), item.exec_path.as_str(), icon] {
+        stamp.push('\0');
         stamp.push_str(part);
         if let Ok(metadata) = fs::metadata(part) {
             stamp.push_str(&format!("|{}|{}", metadata.len(), modified_ns(&metadata)));
         }
     }
-    format!("/icons/{}.png", identity(&stamp, ""))
+    format!("/icons/{}.png", identity(&stamp, &item.icon_path))
 }
 
 pub fn assign(items: &mut [AppItem], ticket: &Ticket) -> Result<()> {
@@ -80,13 +132,20 @@ fn decode(path: &Path) -> Result<Pixels> {
         .map_err(|e| DataError::new("limit icon dimensions", e))?;
     let image = image::DynamicImage::from_decoder(decoder)
         .map_err(|e| DataError::new("read icon pixels", e))?
-        .thumbnail(SIZE, SIZE)
         .into_rgba8();
-    Ok(Pixels {
+    limit_source_size(Pixels {
         width: image.width(),
         height: image.height(),
         rgba: image.into_raw(),
     })
+}
+
+fn limit_source_size(pixels: Pixels) -> Result<Pixels> {
+    if pixels.width.max(pixels.height) > SIZE {
+        pixels.resample(SIZE)
+    } else {
+        Ok(pixels)
+    }
 }
 
 pub fn load(
@@ -107,20 +166,11 @@ pub fn load(
         ticket.check()?;
         return Ok(pixels);
     }
-    let mut pixels = extract(item)?;
+    let pixels = extract(item)?;
     if !pixels.valid() {
         return Err(DataError::new("extract icon", "invalid dimensions"));
     }
-    if pixels.width > SIZE || pixels.height > SIZE {
-        let image = image::RgbaImage::from_raw(pixels.width, pixels.height, pixels.rgba)
-            .ok_or_else(|| DataError::new("resize icon", "invalid pixels"))?;
-        let image = image::imageops::thumbnail(&image, SIZE, SIZE);
-        pixels = Pixels {
-            width: image.width(),
-            height: image.height(),
-            rgba: image.into_raw(),
-        };
-    }
+    let pixels = limit_source_size(pixels)?;
     ticket.check()?;
     let parent = path
         .parent()
@@ -250,5 +300,56 @@ impl<T: Clone> Lru<T> {
         self.bytes += cost;
         self.entries.insert(key, (value, cost, self.clock));
         true
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn resampling_creates_coverage_without_bleeding_transparent_colors() {
+        let mut rgba = Vec::new();
+        for y in 0..64 {
+            for x in 0..64 {
+                rgba.extend(if x < y {
+                    [255, 0, 0, 255]
+                } else {
+                    [0, 0, 255, 0]
+                });
+            }
+        }
+        let icon = Pixels {
+            width: 64,
+            height: 64,
+            rgba,
+        }
+        .resample(32)
+        .unwrap();
+        assert_eq!((icon.width, icon.height), (32, 32));
+        assert!(icon.valid());
+        assert!(
+            icon.rgba
+                .as_chunks::<4>()
+                .0
+                .iter()
+                .any(|[r, _, b, a]| { *a > 16 && *a < 240 && *r >= 250 && *b == 0 })
+        );
+        assert!(icon.rgba.as_chunks::<4>().0.iter().all(|p| p[2] == 0));
+    }
+
+    #[test]
+    fn icon_cache_distinguishes_resources_in_same_file() {
+        let mut item = AppItem {
+            icon_path: r#""C:\Icons, Pack\icon.dll", -4"#.into(),
+            ..Default::default()
+        };
+        assert_eq!(
+            icon_location(&item.icon_path),
+            (r"C:\Icons, Pack\icon.dll", Some(-4))
+        );
+        let original = signature(&item);
+        item.icon_path = r#""C:\Icons, Pack\icon.dll", -5"#.into();
+        assert_ne!(signature(&item), original);
     }
 }

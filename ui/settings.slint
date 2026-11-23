@@ -1,6 +1,7 @@
 import { AboutSlint } from "std-widgets.slint";
 import { ActionButton, ContentScroll, Glyph, SurfaceBackground, Theme } from "components.slint";
 import { HotkeyCaps, LicenseEntry, SettingCheck, SettingField, SettingHeading, SettingHint, SettingLabel, SettingSelect, ThemePreview } from "settings-controls.slint";
+import { WorkspaceEditorState, WorkspaceSettings } from "workspace-settings.slint";
 export { LicenseEntry } from "settings-controls.slint";
 
 export struct SettingsDraft {
@@ -21,6 +22,7 @@ export component SettingsPanel inherits FocusScope {
     in property <bool> recording;
     in property <bool> busy;
     in property <string> notice;
+    in property <string> workspace-notice;
     in property <string> backup-path;
     in property <string> data-directory;
     in property <int> count;
@@ -38,6 +40,8 @@ export component SettingsPanel inherits FocusScope {
     in property <bool> update-progress-visible;
     in property <string> update-progress-detail;
     private property <bool> licenses-open: false;
+    private property <bool> can-save: root.enabled && !root.busy && !root.recording
+        && !root.update-busy && !WorkspaceEditorState.busy;
     out property <bool> licenses-expanded: root.licenses-open;
     callback close(); callback save(); callback record(bool); callback manage(); callback groups();
     callback choose-everything();
@@ -45,6 +49,9 @@ export component SettingsPanel inherits FocusScope {
     focus-on-click: false; focus-on-tab-navigation: false;
     public function focus-panel() { root.focus(); }
     public function show-licenses(open: bool) { root.licenses-open = open; }
+    public function save-workspace() {
+        if root.can-save && root.tab == 7 { WorkspaceEditorState.save(); }
+    }
     changed tab => { root.scroll-y = 0px; root.licenses-open = false; }
     // Export actual component rectangles for the optional visual example;
     // normal application code does not use this observation API.
@@ -71,8 +78,8 @@ export component SettingsPanel inherits FocusScope {
         ActionButton { enabled: root.enabled; x: parent.width - 96px; y: 27px; width: 72px; height: 26px; text: "返回 · Esc"; text-size: 16px; flat: true; activated => { root.close(); } }
     }
     Rectangle { x: 0px; y: 131px; width: parent.width; height: 1px; background: Theme.border; }
-    for name[index] in ["常规", "快捷键", "外观", "搜索", "索引", "备份", "关于"]: Rectangle {
-        x: 24px + index * ((root.width - 48px + 4px) / 7); y: 82px; width: (root.width - 48px - 24px) / 7; height: 35px;
+    for name[index] in ["常规", "快捷键", "外观", "搜索", "索引", "备份", "关于", "工作台"]: Rectangle {
+        x: 24px + index * ((root.width - 48px + 4px) / 8); y: 82px; width: (root.width - 48px - 24px) / 8; height: 35px;
         ActionButton { enabled: root.enabled; width: parent.width; height: parent.height; text: name; text-size: 13px; checked: root.tab == index; flat: true;
             activated => { root.record(false); root.tab = index; body.content-y = 0px; } }
         if root.tab == index: Rectangle { x: parent.width * 0.4; width: parent.width * 0.2; y: 33px; height: 2px; border-radius: 2px; background: Theme.accent; }
@@ -80,10 +87,14 @@ export component SettingsPanel inherits FocusScope {
     body := ContentScroll {
         enabled: root.enabled; x: 0px; y: 132px; width: parent.width; height: max(1px, parent.height - 200px);
         reserve-scrollbar: true;
-        content-height: root.tab == 3 ? 482px : root.tab == 2 ? 508px : root.tab == 4 ? 642px : root.tab == 6 ? update-details.y + update-details.height + 24px : root.tab == 5 && root.backup-path != "" ? 510px : 460px;
+        content-height: root.tab == 7 ? 830px : root.tab == 3 ? 482px : root.tab == 2 ? 508px : root.tab == 4 ? 642px : root.tab == 6 ? update-details.y + update-details.height + 24px : root.tab == 5 && root.backup-path != "" ? 510px : 460px;
         Rectangle {
             x: 0px; y: 0px; width: body.visible-width; height: body.content-height;
             private property <length> field-width: self.width - 48px;
+            if root.tab == 7: WorkspaceSettings {
+                x: 0px; y: 0px; width: parent.width; height: parent.height;
+                active: root.enabled;
+            }
             // y values include the 24px body padding. Explicit
             // controls avoid min-size/stretch changing when hidden tabs exist.
             Rectangle { visible: root.tab == 0; width: parent.width; height: parent.height;
@@ -259,8 +270,12 @@ export component SettingsPanel inherits FocusScope {
     actions := Rectangle {
         x: 0px; y: parent.height - 68px; width: parent.width; height: 68px; background: Theme.surface;
         Rectangle { x: 0px; y: 0px; width: parent.width; height: 1px; background: Theme.border; }
-        if root.notice != "": SettingHint { x: 24px; y: 12px; width: parent.width - 210px; height: 44px; text: root.notice; overflow: elide; }
-        cancel := ActionButton { x: parent.width - 182px; y: 16px; width: 58px; height: 37px; text: "取消"; text-size: 16px; radius: 6px; enabled: root.enabled && !root.busy; activated => { root.close(); } }
-        save := ActionButton { x: parent.width - 114px; y: 16px; width: 90px; height: 37px; text: root.busy ? "保存中…" : "保存设置"; text-size: 16px; radius: 6px; primary: true; enabled: root.enabled && !root.busy && !root.recording && !root.update-busy; activated => { root.save(); } }
+        SettingHint { x: 24px; y: 12px; width: parent.width - 210px; height: 44px;
+            text: root.tab == 7 ? root.workspace-notice : root.notice; overflow: elide; }
+        cancel := ActionButton { x: parent.width - 182px; y: 16px; width: 58px; height: 37px; text: "取消"; text-size: 16px; radius: 6px; enabled: root.enabled && !root.busy && !WorkspaceEditorState.busy; activated => { root.close(); } }
+        save := ActionButton { x: parent.width - 114px; y: 16px; width: 90px; height: 37px; text: root.busy || WorkspaceEditorState.busy ? "保存中…" : "保存设置"; text-size: 16px; radius: 6px; primary: true;
+            enabled: root.can-save;
+            activated => { if root.tab == 7 { root.save-workspace(); } else { root.save(); } }
+        }
     }
 }

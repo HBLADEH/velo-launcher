@@ -13,6 +13,7 @@ use std::time::Duration;
 use std::time::Instant;
 
 use raw_window_handle::{HasWindowHandle, RawWindowHandle};
+use slint::winit_030::winit::keyboard::{KeyCode, ModifiersState, PhysicalKey};
 use slint::winit_030::winit::platform::windows::{CornerPreference, WindowAttributesExtWindows};
 use slint::winit_030::{EventResult, WinitWindowAccessor, winit::event::WindowEvent};
 use slint::{ComponentHandle, GraphicsAPI, RenderingState};
@@ -34,6 +35,9 @@ mod navigation;
 mod pages_probe;
 use velo_slint::platform::{self, windows::window::NativeWindow};
 mod ui;
+mod workspace_preview;
+use velo_slint::platform::windows::workspace::Shape;
+use velo_slint::platform::windows::workspace_input::Button as WorkspaceButton;
 
 const RENDERER: &str = if cfg!(feature = "renderer-femtovg") {
     "femtovg"
@@ -71,6 +75,9 @@ fn main() -> Result<(), Box<dyn Error>> {
     let mut background = false;
     let mut hotkey = platform::windows::hotkey::Key::parse("Alt+Space")?;
     let mut hotkey_override = false;
+    let mut workspace_preview = None;
+    let mut workspace_hotkey = None;
+    let mut workspace_xbutton = None;
     let mut allow_hotkey_fullscreen = false;
     let mut instance_id = None;
     let mut data_dir = None;
@@ -114,7 +121,7 @@ fn main() -> Result<(), Box<dyn Error>> {
             }
             "--help" | "-h" => {
                 println!(
-                    "velo-slint [--background] [--hotkey=Alt+Space] [--allow-hotkey-fullscreen] [--instance-id=ID --data-dir=PATH] [--diagnostics] [--isolated|--fixtures] [--smoke-test|--input-smoke-test|--business-smoke-test|--everything-smoke-test] [--theme=light|dark] [--reduce-motion] [--empty-pinned] [--query=TEXT] [--measurement-log=PATH [--measurement-stdio] [--measurement-business]] [--version]"
+                    "velo-slint [--background] [--hotkey=Alt+Space] [--allow-hotkey-fullscreen] [--instance-id=ID --data-dir=PATH] [--workspace-preview=shaped|rounded|radial [--workspace-hotkey=Ctrl+Alt+Space] [--workspace-xbutton=xbutton1|xbutton2]] [--diagnostics] [--isolated|--fixtures] [--smoke-test|--input-smoke-test|--business-smoke-test|--everything-smoke-test] [--theme=light|dark] [--reduce-motion] [--empty-pinned] [--query=TEXT] [--measurement-log=PATH [--measurement-stdio] [--measurement-business]] [--version]"
                 );
                 return Ok(());
             }
@@ -126,6 +133,24 @@ fn main() -> Result<(), Box<dyn Error>> {
                 } else if let Some(text) = argument.strip_prefix("--hotkey=") {
                     hotkey = platform::windows::hotkey::Key::parse(text)?;
                     hotkey_override = true;
+                } else if let Some(shape) = argument.strip_prefix("--workspace-preview=") {
+                    workspace_preview = Some(match shape {
+                        "shaped" => Shape::Shaped,
+                        "rounded" => Shape::Rounded,
+                        "radial" => Shape::Radial,
+                        _ => {
+                            return Err(
+                                "--workspace-preview accepts shaped, rounded or radial".into()
+                            );
+                        }
+                    });
+                } else if let Some(text) = argument.strip_prefix("--workspace-hotkey=") {
+                    workspace_hotkey = Some(platform::windows::hotkey::Key::parse(text)?);
+                } else if let Some(text) = argument.strip_prefix("--workspace-xbutton=") {
+                    workspace_xbutton = Some(
+                        WorkspaceButton::parse(text)
+                            .ok_or("--workspace-xbutton accepts xbutton1 or xbutton2")?,
+                    );
                 } else if let Some(id) = argument.strip_prefix("--instance-id=") {
                     instance_id = Some(id.to_owned());
                 } else if let Some(path) = argument.strip_prefix("--data-dir=") {
@@ -148,6 +173,16 @@ fn main() -> Result<(), Box<dyn Error>> {
     }
     isolated |= smoke_test || (measurement_stdio && !measurement_business);
     fixture_mode |= isolated;
+    if workspace_preview.is_some() && (instance_id.is_none() || data_dir.is_none() || fixture_mode)
+    {
+        return Err("--workspace-preview requires a separate instance ID and data directory with the normal launcher lifecycle".into());
+    }
+    if workspace_hotkey.is_some() && workspace_preview.is_none() {
+        return Err("--workspace-hotkey requires --workspace-preview".into());
+    }
+    if workspace_xbutton.is_some() && workspace_preview != Some(Shape::Radial) {
+        return Err("--workspace-xbutton requires --workspace-preview=radial".into());
+    }
     if (business_smoke_test || pages_smoke_test)
         && (instance_id.is_none()
             || data_dir.is_none()
@@ -201,13 +236,21 @@ fn main() -> Result<(), Box<dyn Error>> {
         .backend_name("winit".into())
         .renderer_name(RENDERER.into())
         .with_winit_window_attributes_hook(move |attributes| {
-            attributes
+            let attributes = attributes
                 .with_visible(false)
-                .with_class_name("VeloSlintLauncherWindow")
                 .with_resizable(false)
+                .with_transparent(false);
+            if workspace_preview::creating_window() {
+                return attributes
+                    .with_class_name("VeloSlintWorkspaceWindow")
+                    .with_skip_taskbar(true)
+                    .with_decorations(false)
+                    .with_corner_preference(CornerPreference::DoNotRound);
+            }
+            attributes
+                .with_class_name("VeloSlintLauncherWindow")
                 .with_skip_taskbar(!isolated)
                 // An opaque surface lets DWM shape the frameless window itself.
-                .with_transparent(false)
                 .with_corner_preference(CornerPreference::Round)
         })
         .select()?;
@@ -269,6 +312,20 @@ fn main() -> Result<(), Box<dyn Error>> {
             measurement.clone(),
         )?)
     };
+    let workspace = business.as_ref().map(|business| {
+        workspace_preview::Controller::connect(
+            &app,
+            Rc::downgrade(business),
+            workspace_preview.map(|shape| workspace_preview::Preview {
+                shape,
+                key: workspace_hotkey.unwrap_or(workspace_preview::DEFAULT_HOTKEY),
+                button: workspace_xbutton,
+            }),
+            measurement.clone(),
+            diagnostics,
+            reduce_motion,
+        )
+    });
     app.set_input_text(initial_query.clone().into());
     app.invoke_input_edited(initial_query.into());
 
@@ -294,6 +351,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     let event_probe = probe.clone();
     let weak_app = app.as_weak();
     let mut composition = input::Composition::default();
+    let mut modifiers = ModifiersState::empty();
     let event_measurement = measurement.clone();
     let event_lifecycle = lifecycle.clone();
     let event_imports = imports.clone();
@@ -303,6 +361,9 @@ fn main() -> Result<(), Box<dyn Error>> {
         }
         match event {
             WindowEvent::ScaleFactorChanged { scale_factor, .. } => {
+                if let Some(app) = weak_app.upgrade() {
+                    app.invoke_icon_viewport_changed();
+                }
                 measurement::event(
                     &event_measurement,
                     "native_dpi_changed",
@@ -338,10 +399,18 @@ fn main() -> Result<(), Box<dyn Error>> {
                 {
                     return EventResult::PreventDefault;
                 }
+                if modifiers == ModifiersState::CONTROL
+                    && event.physical_key == PhysicalKey::Code(KeyCode::KeyS)
+                    && let Some(app) = weak_app.upgrade()
+                    && app.invoke_workspace_save_shortcut(event.repeat)
+                {
+                    return EventResult::PreventDefault;
+                }
             }
-            WindowEvent::ModifiersChanged(modifiers) => {
+            WindowEvent::ModifiersChanged(state) => {
+                modifiers = state.state();
                 if let Some(controller) = &event_lifecycle {
-                    controller.modifiers(modifiers.state());
+                    controller.modifiers(modifiers);
                 }
             }
             WindowEvent::HoveredFile(_) => {
@@ -361,6 +430,9 @@ fn main() -> Result<(), Box<dyn Error>> {
                 event_imports.add_paths(vec![path.clone()], "ole_drop");
             }
             WindowEvent::Focused(focused) => {
+                if !focused {
+                    modifiers = ModifiersState::empty();
+                }
                 measurement::event(
                     &event_measurement,
                     "native_focus",
@@ -533,6 +605,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     let everything_probe = everything_smoke_test
         .then(|| everything_probe::Controller::start(&app, &identity.data_dir));
     slint::run_event_loop_until_quit()?;
+    drop(workspace);
     app.set_presented(false);
     app.hide()?;
     if let Some(controller) = &business {

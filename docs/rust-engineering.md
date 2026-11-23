@@ -23,6 +23,8 @@
 
 `core/service.rs` 通过有界队列协调发现、启动与串行管理、图标和更新任务；各任务调用 `platform/windows/` 完成系统操作。通知合并后回到 Slint 事件循环，索引和文件搜索使用 generation 等机制拒绝过期结果。隐藏窗口会释放文件结果、暂停不必要的界面更新，完全退出时停止任务并释放原生资源。
 
+Workspace 与 Launcher 共用应用进程。径向轮廓、命中规则和手势状态在 `core/workspace/`，窗口、侧键钩子和焦点校验在 Windows 平台层，Slint 适配在 `workspace_preview`。默认关闭时，布局留在配置中，打开设置才读取。启用后注册触发键，键盘输入队列随热键注册一起建立，工作台窗口和应用识别线程在呼出时按需建立。动作执行通过现有队列返回独立结果。设置事务先预留输入注册，再原子保存和切换绑定。 [Workspace v0.2 实施步骤](plans/velo-workspace-v0.2/implementation.md)
+
 配置与数据先写同目录临时文件、flush，再通过 Windows 原子替换提交；新状态只在成功后发布。有效旧文件读取后不重写，未知字段继续保留，损坏或未来版本数据保留原件并报告问题。来源许可与兼容语义不通过删减代码来规避。
 
 概览见 [README 流程图](diagrams/velo-how-it-works.svg)。新增功能沿用对应层的边界；单个 Windows 应用无需为每层创建独立 crate，也不应把扫描、持久化或句柄所有权放进 Slint 页面。

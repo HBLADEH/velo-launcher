@@ -86,6 +86,53 @@ fn unchanged_links_are_reused_changed_and_deleted_files_update_without_losing_id
 }
 
 #[test]
+fn cached_shortcut_gets_shell_name_once_and_keeps_its_launch_metadata() {
+    struct LocalizedName(usize);
+    impl Resolver for LocalizedName {
+        fn shortcut_name(&mut self, _: &Path) -> Option<String> {
+            self.0 += 1;
+            Some("远程桌面连接".into())
+        }
+        fn resolve(&mut self, _: &Path) -> velo_slint::core::Result<AppItem> {
+            panic!("unchanged shortcut should keep its cached launch metadata")
+        }
+    }
+
+    let directory = tempfile::tempdir().unwrap();
+    let link = directory.path().join("Remote Desktop Connection.lnk");
+    touch(&link);
+    let roots = [root(directory.path(), "Start Menu", 0)];
+    let ticket = Generation::default().ticket();
+    let mut resolver = Links {
+        calls: 0,
+        target: directory.path().join("mstsc.exe"),
+        cancel: None,
+    };
+    let (mut legacy, _) =
+        indexer::scan(&roots, &IndexCache::default(), &mut resolver, &ticket).unwrap();
+    let key = indexer::path_key(&link);
+    let file = legacy.files.as_mut().unwrap().get_mut(&key).unwrap();
+    file.shortcut_name_checked = false;
+    let expected = file.item.clone();
+    let mut resolver = LocalizedName(0);
+    let (updated, stats) = indexer::scan(&roots, &legacy, &mut resolver, &ticket).unwrap();
+    let item = &updated.apps.as_ref().unwrap()[0];
+    assert_eq!(item.name, "远程桌面连接");
+    assert_eq!(
+        item.keywords.as_deref().unwrap(),
+        ["Remote Desktop Connection", "RemoteDesktopConnection"]
+    );
+    assert_eq!(item.id, expected.id);
+    assert_eq!(item.path, expected.path);
+    assert_eq!(item.exec_path, expected.exec_path);
+    assert_eq!(item.arguments, expected.arguments);
+    assert_eq!(stats.resolved, 0);
+    let (unchanged, _) = indexer::scan(&roots, &updated, &mut resolver, &ticket).unwrap();
+    assert_eq!(unchanged, updated);
+    assert_eq!(resolver.0, 1);
+}
+
+#[test]
 fn desktop_targets_are_rechecked_even_when_the_shortcut_did_not_change() {
     let directory = tempfile::tempdir().unwrap();
     let desktop = directory.path().join("Desktop");

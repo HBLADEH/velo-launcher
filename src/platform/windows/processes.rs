@@ -4,27 +4,30 @@
 use std::io;
 use std::mem::size_of;
 use std::os::windows::ffi::{OsStrExt, OsStringExt};
-use std::path::Path;
+use std::path::{Path, PathBuf};
 use std::ptr::{null, null_mut};
 
+use crate::core::workspace::config::AppKey;
 use windows_sys::Win32::Foundation::{
-    CloseHandle, ERROR_INVALID_PARAMETER, ERROR_NO_MORE_FILES, GetLastError, HANDLE,
-    INVALID_HANDLE_VALUE,
+    CloseHandle, ERROR_INSUFFICIENT_BUFFER, ERROR_INVALID_PARAMETER, ERROR_NO_MORE_FILES, FILETIME,
+    GetLastError, HANDLE, INVALID_HANDLE_VALUE,
 };
 use windows_sys::Win32::Security::{
-    GetLengthSid, GetTokenInformation, TOKEN_QUERY, TOKEN_USER, TokenUser,
+    GetLengthSid, GetSidSubAuthority, GetSidSubAuthorityCount, GetTokenInformation, IsValidSid,
+    TOKEN_MANDATORY_LABEL, TOKEN_QUERY, TOKEN_USER, TokenIntegrityLevel, TokenUser,
 };
 use windows_sys::Win32::Storage::FileSystem::{
     CreateFileW, FILE_ATTRIBUTE_NORMAL, FILE_ID_INFO, FILE_READ_ATTRIBUTES, FILE_SHARE_DELETE,
     FILE_SHARE_READ, FILE_SHARE_WRITE, FileIdInfo, GetFileInformationByHandleEx, OPEN_EXISTING,
 };
+use windows_sys::Win32::Storage::Packaging::Appx::GetApplicationUserModelId;
 use windows_sys::Win32::System::Diagnostics::ToolHelp::{
     CreateToolhelp32Snapshot, PROCESSENTRY32W, Process32FirstW, Process32NextW, TH32CS_SNAPPROCESS,
 };
 use windows_sys::Win32::System::RemoteDesktop::ProcessIdToSessionId;
 use windows_sys::Win32::System::Threading::{
-    GetCurrentProcess, GetCurrentProcessId, GetExitCodeProcess, OpenProcess, OpenProcessToken,
-    PROCESS_QUERY_LIMITED_INFORMATION, QueryFullProcessImageNameW,
+    GetCurrentProcess, GetCurrentProcessId, GetExitCodeProcess, GetProcessTimes, OpenProcess,
+    OpenProcessToken, PROCESS_QUERY_LIMITED_INFORMATION, QueryFullProcessImageNameW,
 };
 
 const PROCESS_LIMIT: usize = 8192;
@@ -166,15 +169,128 @@ fn user(process: HANDLE) -> io::Result<Vec<u8>> {
 }
 
 fn image(process: HANDLE) -> io::Result<FileIdentity> {
+    file_identity(&image_path(process)?)
+}
+
+fn image_path(process: HANDLE) -> io::Result<PathBuf> {
     let mut buffer = vec![0u16; 32768];
     let mut length = buffer.len() as u32;
     // SAFETY: buffer has length UTF-16 slots and caller holds process alive.
     if unsafe { QueryFullProcessImageNameW(process, 0, buffer.as_mut_ptr(), &mut length) } == 0 {
         return Err(io::Error::last_os_error());
     }
-    file_identity(Path::new(&std::ffi::OsString::from_wide(
+    Ok(PathBuf::from(std::ffi::OsString::from_wide(
         &buffer[..length as usize],
     )))
+}
+
+pub(super) struct AppProcess(OwnedHandle);
+
+impl AppProcess {
+    pub(super) fn open(pid: u32) -> io::Result<Self> {
+        // SAFETY: only a limited-query handle is needed, and it is owned here.
+        OwnedHandle::new(unsafe { OpenProcess(PROCESS_QUERY_LIMITED_INFORMATION, 0, pid) })
+            .map(Self)
+    }
+
+    pub(super) fn born(&self) -> Option<u64> {
+        let mut code = 0;
+        let [mut creation, mut exit, mut kernel, mut user] = [FILETIME::default(); 4];
+        // SAFETY: all timestamps live on this stack and the process handle is owned.
+        (unsafe {
+            GetExitCodeProcess(self.0.0, &mut code) != 0
+                && code == 259
+                && GetProcessTimes(self.0.0, &mut creation, &mut exit, &mut kernel, &mut user) != 0
+        })
+        .then(|| (u64::from(creation.dwHighDateTime) << 32) | u64::from(creation.dwLowDateTime))
+    }
+
+    pub(super) fn key(&self) -> Option<AppKey> {
+        self.key_impl(true)
+    }
+
+    pub(super) fn key_without_disk(&self) -> Option<AppKey> {
+        self.key_impl(false)
+    }
+
+    fn key_impl(&self, canonicalize: bool) -> Option<AppKey> {
+        let mut len = 0;
+        // SAFETY: the first call queries capacity. The second receives that many UTF-16 units.
+        if unsafe { GetApplicationUserModelId(self.0.0, &mut len, null_mut()) }
+            == ERROR_INSUFFICIENT_BUFFER
+            && (2..=1024).contains(&len)
+        {
+            let mut id = vec![0; len as usize];
+            if unsafe { GetApplicationUserModelId(self.0.0, &mut len, id.as_mut_ptr()) } == 0 {
+                let end = id.iter().position(|&unit| unit == 0)?;
+                return AppKey::package(&String::from_utf16(&id[..end]).ok()?);
+            }
+        }
+        let path = image_path(self.0.0).ok()?;
+        let path = if canonicalize {
+            path.canonicalize().unwrap_or(path)
+        } else {
+            path
+        };
+        // These generic hosts do not identify the application behind the window.
+        let name = path.file_name()?.to_str()?;
+        if [
+            "ApplicationFrameHost.exe",
+            "RuntimeBroker.exe",
+            "ShellExperienceHost.exe",
+        ]
+        .iter()
+        .any(|host| name.eq_ignore_ascii_case(host))
+        {
+            return None;
+        }
+        AppKey::executable(&path)
+    }
+
+    pub(super) fn integrity(&self) -> Option<u32> {
+        integrity(self.0.0)
+    }
+
+    pub(super) fn own_integrity() -> Option<u32> {
+        // SAFETY: GetCurrentProcess is a pseudo handle and is never closed here.
+        integrity(unsafe { GetCurrentProcess() })
+    }
+}
+
+fn integrity(process: HANDLE) -> Option<u32> {
+    let mut token = null_mut();
+    // SAFETY: either a live owned query handle or the current process pseudo handle.
+    if unsafe { OpenProcessToken(process, TOKEN_QUERY, &mut token) } == 0 {
+        return None;
+    }
+    let token = OwnedHandle::new(token).ok()?;
+    let mut size = 0u32;
+    // SAFETY: null/zero queries the needed capacity, and the token stays alive.
+    unsafe { GetTokenInformation(token.0, TokenIntegrityLevel, null_mut(), 0, &mut size) };
+    if !(size_of::<TOKEN_MANDATORY_LABEL>() as u32..=4096).contains(&size) {
+        return None;
+    }
+    let mut buffer = vec![0usize; (size as usize).div_ceil(size_of::<usize>())];
+    // SAFETY: the buffer is aligned and long enough for the label and its SID.
+    unsafe {
+        if GetTokenInformation(
+            token.0,
+            TokenIntegrityLevel,
+            buffer.as_mut_ptr().cast(),
+            size,
+            &mut size,
+        ) == 0
+        {
+            return None;
+        }
+        let label = &*buffer.as_ptr().cast::<TOKEN_MANDATORY_LABEL>();
+        let sid = label.Label.Sid;
+        if sid.is_null() || IsValidSid(sid) == 0 {
+            return None;
+        }
+        let count = *GetSidSubAuthorityCount(sid);
+        (count != 0).then(|| *GetSidSubAuthority(sid, u32::from(count) - 1))
+    }
 }
 
 enum Entry {

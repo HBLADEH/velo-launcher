@@ -3,17 +3,17 @@ use std::mem::size_of;
 use std::ptr::null_mut;
 use windows::Win32::Foundation::SIZE as ShellSize;
 use windows::Win32::UI::Shell::{
-    IShellItemImageFactory, SHCreateItemFromParsingName, SIIGBF_ICONONLY,
+    IShellItemImageFactory, SHCreateItemFromParsingName, SIIGBF_BIGGERSIZEOK, SIIGBF_ICONONLY,
 };
 use windows::core::PCWSTR;
 use windows_sys::Win32::Graphics::Gdi::*;
-use windows_sys::Win32::UI::Shell::{SHFILEINFOW, SHGFI_ICON, SHGetFileInfoW};
+use windows_sys::Win32::UI::Shell::{SHDefExtractIconW, SHFILEINFOW, SHGFI_ICON, SHGetFileInfoW};
 use windows_sys::Win32::UI::WindowsAndMessaging::{
-    DI_MASK, DI_NORMAL, DestroyIcon, DrawIconEx, HICON,
+    DI_MASK, DI_NORMAL, DestroyIcon, DrawIconEx, GetSystemMetrics, HICON, SM_CXICON,
 };
 
 use super::shell::{Apartment, wide};
-use crate::core::icons::{Pixels, SIZE};
+use crate::core::icons::{Pixels, SIZE, icon_location};
 use crate::core::indexer::extension;
 use crate::core::model::AppItem;
 use crate::core::{DataError, Result};
@@ -39,7 +39,7 @@ impl Drop for Dc {
 struct Icon(HICON);
 impl Drop for Icon {
     fn drop(&mut self) {
-        // SAFETY: SHGetFileInfo transferred ownership of this HICON.
+        // SAFETY: the extraction API transferred ownership of this HICON.
         unsafe {
             DestroyIcon(self.0);
         }
@@ -107,7 +107,7 @@ fn shell_image(path: &str) -> Result<Pixels> {
                     cx: SIZE as i32,
                     cy: SIZE as i32,
                 },
-                SIIGBF_ICONONLY,
+                SIIGBF_ICONONLY | SIIGBF_BIGGERSIZEOK,
             )
             .map_err(|e| DataError::new("extract Shell icon", e))?;
         let bitmap = Bitmap(bitmap.0);
@@ -157,27 +157,51 @@ fn shell_image(path: &str) -> Result<Pixels> {
 
 fn file_icon(path: &str) -> Result<Pixels> {
     let path = wide(path)?;
-    // SAFETY: HICON/DC/DIB are owned and RAII-released. Selection is restored
-    // before deleting the DIB. The DIB buffer is valid until Bitmap drops.
-    unsafe {
-        let mut info = SHFILEINFOW::default();
-        if SHGetFileInfoW(
+    let mut info = SHFILEINFOW::default();
+    // SAFETY: both buffers live through the call. SHGetFileInfo transfers the icon.
+    let found = unsafe {
+        SHGetFileInfoW(
             path.as_ptr(),
             0,
             &mut info,
             size_of::<SHFILEINFOW>() as u32,
             SHGFI_ICON,
-        ) == 0
-            || info.hIcon.is_null()
-        {
-            return Err(DataError::new("read file icon", "Shell returned no icon"));
-        }
-        let icon = Icon(info.hIcon);
+        ) != 0
+    };
+    if !found || info.hIcon.is_null() {
+        return Err(DataError::new("read file icon", "Shell returned no icon"));
+    }
+    // SHGFI_ICON supplies a large system icon. Keep its original sampling and
+    // let the icon worker resample it for the destination.
+    // SAFETY: this reads a system metric and does not retain any pointers.
+    let edge = unsafe { GetSystemMetrics(SM_CXICON) }.clamp(1, SIZE as i32) as u32;
+    paint_icon(Icon(info.hIcon), edge)
+}
+
+fn resource_icon(path: &str, index: i32) -> Result<Pixels> {
+    let path = wide(&shell_path(path))?;
+    let mut handle = null_mut();
+    // SAFETY: path and output live through extraction. A returned HICON is owned.
+    let result =
+        unsafe { SHDefExtractIconW(path.as_ptr(), index, 0, &mut handle, null_mut(), SIZE) };
+    let icon = (!handle.is_null()).then(|| Icon(handle));
+    windows::core::HRESULT(result)
+        .ok()
+        .map_err(|error| DataError::new("read icon resource", error))?;
+    let icon =
+        icon.ok_or_else(|| DataError::new("read icon resource", "Shell returned no icon"))?;
+    paint_icon(icon, SIZE)
+}
+
+fn paint_icon(icon: Icon, edge: u32) -> Result<Pixels> {
+    // SAFETY: HICON/DC/DIB are owned. Restore selection before deleting the
+    // DIB. Its buffer is valid until Bitmap drops.
+    unsafe {
         let dc = dc()?;
         let mut bits = null_mut();
         let bitmap = Bitmap(CreateDIBSection(
             dc.0,
-            &header(SIZE as i32, SIZE as i32),
+            &header(edge as i32, edge as i32),
             DIB_RGB_COLORS,
             &mut bits,
             null_mut(),
@@ -197,15 +221,15 @@ fn file_icon(path: &str) -> Result<Pixels> {
             ));
         }
         let selected = Selected(dc.0, previous);
-        let pixels = std::slice::from_raw_parts_mut(bits.cast::<u8>(), (SIZE * SIZE * 4) as usize);
+        let pixels = std::slice::from_raw_parts_mut(bits.cast::<u8>(), (edge * edge * 4) as usize);
         pixels.fill(0);
         if DrawIconEx(
             dc.0,
             0,
             0,
             icon.0,
-            SIZE as i32,
-            SIZE as i32,
+            edge as i32,
+            edge as i32,
             0,
             null_mut(),
             DI_NORMAL,
@@ -226,8 +250,8 @@ fn file_icon(path: &str) -> Result<Pixels> {
                 0,
                 0,
                 icon.0,
-                SIZE as i32,
-                SIZE as i32,
+                edge as i32,
+                edge as i32,
                 0,
                 null_mut(),
                 DI_MASK,
@@ -252,33 +276,42 @@ fn file_icon(path: &str) -> Result<Pixels> {
         }
         drop(selected);
         Ok(Pixels {
-            width: SIZE,
-            height: SIZE,
+            width: edge,
+            height: edge,
             rgba,
         })
     }
 }
 
+fn shell_path(path: &str) -> Cow<'_, str> {
+    // Shell icon APIs reject extended-length spellings for otherwise ordinary
+    // paths. Adapt the FFI argument without changing the saved identity.
+    if let Some(unc) = path.strip_prefix(r"\\?\UNC\") {
+        format!(r"\\{unc}").into()
+    } else {
+        path.strip_prefix(r"\\?\").unwrap_or(path).into()
+    }
+}
+
 pub fn extract(_apartment: &Apartment, item: &AppItem) -> Result<Pixels> {
-    let mut sources = Vec::new();
-    if extension(&item.path, "lnk")
-        && (item.exec_path.starts_with("shell:")
-            || std::fs::metadata(&item.exec_path).is_ok_and(|m| m.is_file()))
+    let (resource, index) = icon_location(&item.icon_path);
+    if let Some(index) = index
+        && let Ok(pixels) = resource_icon(resource, index)
     {
-        sources.push(item.exec_path.as_str());
+        return Ok(pixels);
     }
-    if !item.path.is_empty() {
-        sources.push(&item.path);
-    }
-    for path in sources {
-        // Imported files use canonical Win32 paths. Shell icon APIs reject the
-        // extended-length spelling even for ordinary short files; adapt only
-        // this FFI argument, preserving the saved identity and cache signature.
-        let path: Cow<'_, str> = if let Some(unc) = path.strip_prefix(r"\\?\UNC\") {
-            format!(r"\\{unc}").into()
-        } else {
-            path.strip_prefix(r"\\?\").unwrap_or(path).into()
-        };
+    let image = (!resource.is_empty() && index.is_none()).then_some(resource);
+    // A shortcut may specify an app icon even when its target is a launcher or updater.
+    let target = (extension(&item.path, "lnk") && item.exec_path != item.path)
+        .then_some(item.exec_path.as_str())
+        .filter(|path| {
+            path.starts_with("shell:") || std::fs::metadata(path).is_ok_and(|m| m.is_file())
+        });
+    for path in image.into_iter().chain([item.path.as_str()]).chain(target) {
+        if path.is_empty() {
+            continue;
+        }
+        let path = shell_path(path);
         if let Ok(pixels) = shell_image(&path).or_else(|_| file_icon(&path)) {
             return Ok(pixels);
         }

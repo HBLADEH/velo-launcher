@@ -19,6 +19,7 @@ pub mod service;
 pub mod storage;
 pub mod system_tools;
 pub mod update;
+pub mod workspace;
 
 use std::collections::BTreeMap;
 use std::error::Error;
