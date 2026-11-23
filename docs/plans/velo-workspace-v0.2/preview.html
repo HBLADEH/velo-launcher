@@ -1,0 +1,604 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Velo Workspace · v0.2 设计预览</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #111b2b;
+      --surface: #1c2b3e;
+      --field: #1a293d;
+      --fg: #e8eff9;
+      --muted: #99abc3;
+      --border: #29394e;
+      --outline: #4a5e78;
+      --selected: #173a60;
+      --accent: #69b7ff;
+      --accent-line: #365f8b;
+      --hover: #23364e;
+      --desktop: #10151d;
+      --shadow: #00000036;
+      font: 14px/1.5 "Segoe UI", "Microsoft YaHei UI", sans-serif;
+    }
+    [data-theme="light"] {
+      color-scheme: light;
+      --bg: #f6f8fc;
+      --surface: #fff;
+      --field: #fff;
+      --fg: #192b43;
+      --muted: #63758c;
+      --border: #dfe7f1;
+      --outline: #b7c5d6;
+      --selected: #e7f1ff;
+      --accent: #0067c0;
+      --accent-line: #b4d5ff;
+      --hover: #edf3fb;
+      --desktop: #e9eef5;
+      --shadow: #1d4b821a;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--fg); }
+    button, select { font: inherit; color: inherit; }
+    button { cursor: pointer; }
+    button:focus-visible, select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    [hidden] { display: none !important; }
+    .wrap { width: min(1120px, calc(100% - 48px)); margin-inline: auto; }
+    header { background: var(--surface); border-bottom: 1px solid var(--border); }
+    .top, .tools { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    .top { min-height: 66px; padding-block: 10px; }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand img { width: 30px; height: 30px; object-fit: contain; }
+    h1, h2, p { margin: 0; }
+    h1 { font-size: 19px; line-height: 1.35; font-weight: 650; }
+    .version { color: var(--muted); font-size: 12px; }
+    .tools { min-height: 74px; padding-block: 12px; }
+    .controls { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .segments { display: inline-flex; gap: 2px; padding: 3px; border: 1px solid var(--border); border-radius: 8px; background: var(--field); }
+    .segments button, .command {
+      min-height: 32px;
+      padding: 5px 12px;
+      border: 1px solid transparent;
+      border-radius: 5px;
+      background: transparent;
+      white-space: nowrap;
+      font-size: 13px;
+    }
+    .segments button:hover, .command:hover { background: var(--hover); }
+    .segments button[aria-pressed="true"] { color: var(--accent); background: var(--selected); border-color: var(--accent-line); }
+    .context-select { display: flex; align-items: center; gap: 8px; color: color-mix(in srgb, var(--muted) 90%, var(--fg)); font-size: 13px; }
+    select { min-height: 38px; padding: 5px 10px; border: 1px solid var(--outline); border-radius: 8px; background: var(--field); color: var(--fg); }
+    .scene { background: var(--desktop); border-block: 1px solid var(--border); }
+    .presentation { min-height: 604px; display: grid; grid-template-columns: minmax(0, 1fr); }
+    .presentation.editing { grid-template-columns: minmax(0, 1fr) 324px; }
+    .surface { position: relative; min-height: 550px; display: grid; place-items: center; overflow: clip; }
+    .board-box { position: relative; width: 420px; height: 424px; pointer-events: none; }
+    .board { position: absolute; inset: 0 auto auto 0; width: 420px; height: 424px; transform-origin: top left; touch-action: none; pointer-events: none; }
+    .board canvas, .tiles { position: absolute; inset: 0; }
+    .board canvas { pointer-events: none; }
+    .tile { position: absolute; inset: 0; border: 0; padding: 0; background: transparent; color: var(--fg); pointer-events: auto; }
+    .tile:focus-visible { outline: none; }
+    .tile .face {
+      position: absolute;
+      display: grid;
+      justify-items: center;
+      gap: 4px;
+      transform: translate(-50%, -50%);
+      line-height: 1.25;
+      font-size: 13px;
+      font-weight: 600;
+      white-space: nowrap;
+      pointer-events: none;
+    }
+    .icon { width: 20px; height: 20px; background: currentColor; mask: var(--icon) center/contain no-repeat; }
+    .tile .icon { color: var(--accent); }
+    .tile.empty .icon { color: var(--muted); }
+    .tile.passive { pointer-events: none; }
+    .hub {
+      position: absolute;
+      left: 178px;
+      top: 178px;
+      width: 64px;
+      height: 64px;
+      display: grid;
+      place-items: center;
+      padding: 0;
+      border: 1px solid var(--outline);
+      border-radius: 50%;
+      background: var(--bg);
+      box-shadow: 0 3px 8px var(--shadow);
+      pointer-events: auto;
+    }
+    .hub img { display: block; width: 34px; height: 34px; object-fit: contain; pointer-events: none; }
+    .hub:hover, .hub.holding { border-color: var(--accent); }
+    .scope {
+      position: absolute;
+      left: 210px;
+      top: 272px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      max-width: 140px;
+      min-height: 26px;
+      padding: 2px 9px;
+      transform: translate(-50%, -50%);
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      background: var(--bg);
+      color: color-mix(in srgb, var(--muted) 90%, var(--fg));
+      white-space: nowrap;
+      font-size: 12px;
+      pointer-events: auto;
+    }
+    .scope .icon { flex: 0 0 14px; width: 14px; height: 14px; color: var(--accent); }
+    .scope span:last-child { overflow: hidden; text-overflow: ellipsis; }
+    .settings {
+      position: absolute;
+      left: 249px;
+      top: 211px;
+      width: 30px;
+      height: 30px;
+      padding: 6px;
+      border: 1px solid var(--outline);
+      border-radius: 8px;
+      background: var(--bg);
+      color: var(--accent);
+      pointer-events: auto;
+    }
+    .settings .icon { display: block; width: 16px; height: 16px; }
+    .settings:hover { background: var(--selected); border-color: var(--accent); }
+    .notice {
+      position: absolute;
+      bottom: 13px;
+      left: 50%;
+      max-width: calc(100% - 24px);
+      transform: translateX(-50%);
+      padding: 6px 12px;
+      border-radius: 8px;
+      background: var(--surface);
+      color: var(--fg);
+      font-size: 13px;
+      text-align: center;
+    }
+    .notice:empty { display: none; }
+    .editor { display: flex; flex-direction: column; justify-content: space-between; gap: 24px; padding: 26px 22px; border-left: 1px solid var(--border); background: var(--surface); }
+    h2 { font-size: 17px; font-weight: 650; }
+    .editor-title { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 24px; }
+    .editor-fields { display: grid; gap: 14px; }
+    .editor-fields label { display: grid; gap: 6px; color: var(--muted); font-size: 13px; }
+    .edit-section { display: grid; gap: 8px; padding-top: 18px; margin-top: 18px; border-top: 1px solid var(--border); }
+    .edit-section strong { font-size: 14px; font-weight: 600; }
+    .error { min-height: 21px; color: var(--fg); font-size: 13px; }
+    .edit-actions { display: flex; gap: 8px; justify-content: flex-end; }
+    .command { border-color: var(--outline); }
+    .save { color: var(--accent); background: var(--selected); border-color: var(--accent-line); }
+    button:disabled { cursor: default; color: var(--muted); background: var(--field); }
+    @media (max-width: 760px) {
+      .wrap { width: calc(100% - 28px); }
+      .presentation.editing { grid-template-columns: minmax(0, 1fr); }
+      .surface { min-height: 490px; }
+      .editor { border-left: 0; border-top: 1px solid var(--border); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap top">
+      <div class="brand">
+        <img src="../../../ui/assets/logo.png" alt="">
+        <div><h1>Velo Workspace</h1><p class="version">v0.2 设计预览</p></div>
+      </div>
+      <div class="segments" role="group" aria-label="主题">
+        <button id="light" type="button" aria-pressed="false">浅色</button>
+        <button id="dark" type="button" aria-pressed="true">深色</button>
+      </div>
+    </div>
+  </header>
+  <main>
+    <div class="wrap tools">
+      <div class="controls">
+        <div class="segments" role="group" aria-label="工作台视图">
+          <button id="full" type="button" aria-pressed="true">完整菜单</button>
+          <button id="hold" type="button" aria-pressed="false">长按演示</button>
+          <button id="edit" type="button" aria-pressed="false">编辑布局</button>
+        </div>
+        <div id="hold-phases" class="segments" role="group" aria-label="长按状态" hidden>
+          <button id="center" type="button" aria-pressed="true">仅中心</button>
+          <button id="upper" type="button" aria-pressed="false">上划</button>
+          <button id="lower" type="button" aria-pressed="false">下划</button>
+        </div>
+      </div>
+      <label class="context-select" for="app">当前应用
+        <select id="app">
+          <option value="explorer">文件资源管理器</option>
+          <option value="code">Visual Studio Code</option>
+          <option value="browser">Microsoft Edge</option>
+          <option value="fallback">默认工作台</option>
+        </select>
+      </label>
+    </div>
+    <div class="scene">
+      <div id="presentation" class="wrap presentation">
+        <section id="surface" class="surface" aria-label="工作台预览">
+          <div class="board-box">
+            <div id="board" class="board">
+              <canvas width="420" height="424" aria-hidden="true"></canvas>
+              <div class="tiles"></div>
+              <button class="hub" type="button" aria-label="收起工作台" title="收起工作台">
+                <img src="../../../ui/assets/logo.png" alt="">
+              </button>
+              <div class="scope"><span class="icon" aria-hidden="true"></span><span></span></div>
+              <button class="settings" type="button" aria-label="编辑布局" title="编辑布局">
+                <span class="icon" aria-hidden="true" style="--icon:url('../../../ui/assets/fluent/ic_fluent_developer_board_24_regular.svg')"></span>
+              </button>
+            </div>
+          </div>
+          <p class="notice" role="status" aria-live="polite"></p>
+        </section>
+        <aside id="editor" class="editor" aria-labelledby="editor-title" hidden>
+          <div>
+            <div class="editor-title"><h2 id="editor-title">编辑槽位</h2></div>
+            <div class="editor-fields">
+              <label for="zone">动作范围
+                <select id="zone">
+                  <option value="upper">全局动作</option>
+                  <option value="lower">应用动作</option>
+                </select>
+              </label>
+              <label for="slot">槽位<select id="slot"></select></label>
+            </div>
+            <div class="edit-section">
+              <strong>动作</strong>
+              <select id="action" aria-label="槽位动作"></select>
+              <p id="edit-result" class="error" role="status"></p>
+            </div>
+          </div>
+          <div class="edit-actions">
+            <button id="cancel" class="command" type="button">取消</button>
+            <button id="save" class="command save" type="button">保存布局</button>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+  <script>
+    const $ = (selector) => document.querySelector(selector);
+    const iconUrls = {
+      apps: "ic_fluent_apps_24_regular.svg",
+      folder: "ic_fluent_folder_24_regular.svg",
+      calculator: "ic_fluent_calculator_24_regular.svg",
+      monitor: "ic_fluent_desktop_pulse_24_regular.svg",
+      terminal: "ic_fluent_window_console_20_regular.svg",
+      code: "ic_fluent_code_24_regular.svg",
+      search: "ic_fluent_search_20_regular.svg",
+      star: "ic_fluent_star_16_regular.svg",
+      plus: "ic_fluent_add_20_regular.svg",
+      settings: "ic_fluent_settings_24_regular.svg",
+    };
+    const actions = {
+      launcher: ["启动器", "search"], files: ["文件管理", "folder"], calculator: ["计算器", "calculator"],
+      tasks: ["任务管理", "apps"], control: ["控制面板", "settings"],
+      downloads: ["下载目录", "folder"], documents: ["文档目录", "folder"],
+      pictures: ["图片目录", "folder"], computer: ["此电脑", "monitor"], terminal: ["终端", "terminal"],
+      command: ["命令面板", "code"], find: ["查找", "search"], tab: ["新标签", "apps"],
+      address: ["地址栏", "search"], bookmarks: ["书签", "star"],
+    };
+    const profiles = {
+      explorer: ["文件资源管理器", "folder", ["downloads", "documents", "computer"]],
+      code: ["VS Code", "code", ["terminal", "command", "find"]],
+      browser: ["Microsoft Edge", "apps", ["tab", "address", "bookmarks"]],
+      fallback: ["默认工作台", "apps", ["downloads", "documents", "pictures"]],
+    };
+    const initial = {
+      upper: ["files", "calculator", "tasks", null, "launcher", "control"],
+      explorer: [...profiles.explorer[2], null],
+      code: [...profiles.code[2], null],
+      browser: [...profiles.browser[2], null],
+      fallback: [...profiles.fallback[2], null],
+    };
+    const available = {
+      upper: ["files", "calculator", "tasks", "launcher", "control", "downloads", "documents", "pictures"],
+      explorer: ["downloads", "documents", "computer", "pictures"],
+      code: ["terminal", "command", "find"],
+      browser: ["tab", "address", "bookmarks"],
+      fallback: ["downloads", "documents", "pictures", "files", "calculator"],
+    };
+    const key = "velo.workspace.design-preview.v02";
+    let layouts = structuredClone(initial);
+    try {
+      const saved = JSON.parse(localStorage.getItem(key));
+      if (saved) {
+        for (const name of Object.keys(initial)) {
+          if (Array.isArray(saved[name]) && saved[name].length === initial[name].length) {
+            layouts[name] = saved[name].map((id) => available[name].includes(id) ? id : null);
+          }
+        }
+      }
+    } catch { /* The design preview can also run without browser storage. */ }
+    let draft = null;
+    let mode = "full";
+    let phase = "center";
+    let highlighted = null;
+    let hovered = null;
+    let focused = null;
+    let shown = true;
+    let gesture = null;
+    const board = $("#board");
+    const canvas = $("canvas");
+    const context = canvas.getContext("2d");
+    const scaleFactor = window.devicePixelRatio || 1;
+    canvas.width = 420 * scaleFactor;
+    canvas.height = 424 * scaleFactor;
+    context.scale(scaleFactor, scaleFactor);
+    canvas.style.width = "420px";
+    canvas.style.height = "424px";
+
+    function point(radius, degrees) {
+      const angle = degrees * Math.PI / 180;
+      return [210 + radius * Math.sin(angle), 210 - radius * Math.cos(angle)];
+    }
+
+    function tile(zone, index, inner, outer, start, end) {
+      const round = 7;
+      const arcInset = (radius) => round / radius * 180 / Math.PI;
+      const p = (radius, angle) => point(radius, angle).map((n) => n.toFixed(2)).join(" ");
+      const bearing = (start + end) / 2;
+      const labelRadius = (inner + outer) / 2 + (inner === 64 && Math.abs(bearing) > 30 ? 8 : 0);
+      const [x, y] = point(labelRadius, bearing);
+      const path = [
+        "M", p(outer, start + arcInset(outer)),
+        "A", outer, outer, 0, 0, 1, p(outer, end - arcInset(outer)),
+        "Q", p(outer, end), p(outer - round, end),
+        "L", p(inner + round, end),
+        "Q", p(inner, end), p(inner, end - arcInset(inner)),
+        "A", inner, inner, 0, 0, 0, p(inner, start + arcInset(inner)),
+        "Q", p(inner, start), p(inner + round, start),
+        "L", p(outer - round, start),
+        "Q", p(outer, start), p(outer, start + arcInset(outer)), "Z",
+      ].join(" ");
+      return { zone, index, id: zone + index, x, y, path, shape: new Path2D(path) };
+    }
+
+    const slots = [
+      ...[[-74, -26], [-22, 22], [26, 74]].map(([a, b], i) => tile("upper", i, 132, 198, a, b)),
+      ...[[-72, -27], [-22, 22], [27, 72]].map(([a, b], i) => tile("upper", i + 3, 64, 124, a, b)),
+      ...[[-75, -40], [-35, -3], [3, 35], [40, 75]].map(([a, b], i) => tile("lower", i, 110, 184, 180 - b, 180 - a)),
+    ];
+
+    function icon(node, name) {
+      node.style.setProperty("--icon", "url('../../../ui/assets/fluent/" + iconUrls[name] + "')");
+    }
+
+    function assignment(slot) {
+      const values = draft ?? layouts;
+      return values[slot.zone === "upper" ? "upper" : $("#app").value][slot.index];
+    }
+
+    function visibleSlots() {
+      if (!shown) return [];
+      if (mode === "hold") return slots.filter((slot) => slot.zone === phase && assignment(slot));
+      return slots.filter((slot) => mode === "edit" || assignment(slot));
+    }
+
+    function paint() {
+      const colors = getComputedStyle(document.documentElement);
+      context.clearRect(0, 0, 420, 424);
+      for (const slot of visibleSlots()) {
+        const empty = !assignment(slot);
+        const selected = highlighted === slot.id || (mode === "edit" && $("#zone").value === slot.zone && Number($("#slot").value) === slot.index);
+        const active = selected || focused === slot.id;
+        context.fillStyle = colors.getPropertyValue(selected ? "--selected" : hovered === slot.id ? "--hover" : "--surface");
+        context.strokeStyle = colors.getPropertyValue(active ? "--accent" : empty ? "--outline" : "--border");
+        context.lineWidth = active ? 2 : 1;
+        context.setLineDash(empty && !active ? [4, 4] : []);
+        context.fill(slot.shape);
+        context.stroke(slot.shape);
+      }
+    }
+
+    function message(value) {
+      $(".notice").textContent = value;
+    }
+
+    function displayAction(id) {
+      if (!id) return;
+      shown = false;
+      draw();
+      message("预览动作 · " + actions[id][0]);
+    }
+
+    function draw() {
+      const held = mode === "hold";
+      for (const option of ["full", "hold", "edit"]) $("#" + option).setAttribute("aria-pressed", String(mode === option));
+      for (const step of ["center", "upper", "lower"]) $("#" + step).setAttribute("aria-pressed", String(phase === step));
+      $("#hold-phases").hidden = !held;
+      $("#editor").hidden = mode !== "edit";
+      $("#presentation").classList.toggle("editing", mode === "edit");
+      $(".hub").hidden = !shown;
+      $(".hub").classList.toggle("holding", held && shown);
+      $(".hub").setAttribute("aria-label", held ? "按住 Logo 演示方向选择" : "收起工作台");
+      $(".hub").title = held ? "按住 Logo 演示方向选择" : "收起工作台";
+      $(".settings").hidden = !shown || mode !== "full";
+      $(".scope").hidden = !shown || (held && phase !== "lower");
+      const [appName, appIcon] = profiles[$("#app").value];
+      $(".scope span:last-child").textContent = appName;
+      $(".scope").title = appName;
+      icon($(".scope .icon"), appIcon);
+      $(".tiles").replaceChildren(...visibleSlots().map((slot) => {
+        const id = assignment(slot);
+        const [name, glyph] = id ? actions[id] : ["添加动作", "plus"];
+        const button = document.createElement("button");
+        const showLabel = !held || highlighted === slot.id;
+        button.type = "button";
+        button.className = "tile" + (id ? "" : " empty") + (held ? " passive" : "");
+        button.dataset.slot = slot.id;
+        button.style.clipPath = 'path("' + slot.path + '")';
+        button.tabIndex = held ? -1 : 0;
+        button.setAttribute("aria-label", name);
+        button.title = name;
+        const face = document.createElement("span");
+        face.className = "face";
+        face.style.left = slot.x + "px";
+        face.style.top = slot.y + "px";
+        const symbol = document.createElement("span");
+        symbol.className = "icon";
+        icon(symbol, glyph);
+        face.append(symbol);
+        if (showLabel) face.append(name);
+        button.append(face);
+        button.addEventListener("pointerenter", () => { hovered = slot.id; paint(); });
+        button.addEventListener("pointerleave", () => { hovered = null; paint(); });
+        button.addEventListener("focus", () => { focused = slot.id; paint(); });
+        button.addEventListener("blur", () => { focused = null; paint(); });
+        button.addEventListener("click", () => {
+          if (mode === "edit") selectSlot(slot.zone, slot.index);
+          else displayAction(id);
+        });
+        return button;
+      }));
+      paint();
+    }
+
+    function setMode(next) {
+      if (next === "edit" && draft) return;
+      mode = next;
+      phase = "center";
+      hovered = focused = highlighted = null;
+      shown = true;
+      message("");
+      draft = next === "edit" ? structuredClone(layouts) : null;
+      if (draft) selectSlot("upper", 0);
+      else draw();
+    }
+
+    function selectSlot(zone, index) {
+      $("#zone").value = zone;
+      const name = zone === "upper" ? zone : $("#app").value;
+      $("#slot").replaceChildren(...slots.filter((slot) => slot.zone === zone).map((slot) => {
+        const id = draft[name][slot.index];
+        const place = zone === "lower" ? "下区" : slot.index < 3 ? "上区外环" : "上区内环";
+        return new Option(place + " " + (slot.index + 1) + " · " + (id ? actions[id][0] : "空槽"), slot.index);
+      }));
+      $("#slot").value = String(index);
+      $("#action").replaceChildren(new Option("留空", ""), ...available[name].map((id) => new Option(actions[id][0], id)));
+      $("#action").value = draft[name][index] ?? "";
+      $("#edit-result").textContent = "";
+      draw();
+    }
+
+    for (const theme of ["light", "dark"]) {
+      $("#" + theme).addEventListener("click", () => {
+        document.documentElement.dataset.theme = theme;
+        for (const choice of ["light", "dark"]) $("#" + choice).setAttribute("aria-pressed", String(choice === theme));
+        paint();
+      });
+    }
+    for (const option of ["full", "hold", "edit"]) $("#" + option).addEventListener("click", () => setMode(option));
+    for (const step of ["center", "upper", "lower"]) {
+      $("#" + step).addEventListener("click", () => {
+        phase = step;
+        shown = true;
+        highlighted = visibleSlots().find((slot) => step === "upper" ? slot.index === 4 : slot.index === 1)?.id ?? null;
+        message("");
+        draw();
+      });
+    }
+    $(".settings").addEventListener("click", () => { setMode("edit"); $("#zone").focus(); });
+    $("#app").addEventListener("change", () => {
+      shown = true;
+      hovered = focused = highlighted = null;
+      message("");
+      if (draft) selectSlot($("#zone").value, Number($("#slot").value));
+      else draw();
+    });
+    $("#zone").addEventListener("change", () => selectSlot($("#zone").value, 0));
+    $("#slot").addEventListener("change", () => selectSlot($("#zone").value, Number($("#slot").value)));
+    $("#action").addEventListener("change", () => {
+      const zone = $("#zone").value;
+      const name = zone === "upper" ? zone : $("#app").value;
+      draft[name][Number($("#slot").value)] = $("#action").value || null;
+      selectSlot(zone, Number($("#slot").value));
+    });
+    $("#cancel").addEventListener("click", () => setMode("full"));
+    $("#save").addEventListener("click", () => {
+      try {
+        localStorage.setItem(key, JSON.stringify(draft));
+        layouts = draft;
+        setMode("full");
+        message("预览布局已保存");
+      } catch {
+        $("#edit-result").textContent = "浏览器无法保存布局，当前草稿仍可编辑。";
+      }
+    });
+
+    function boardPoint(event) {
+      const rect = board.getBoundingClientRect();
+      return [(event.clientX - rect.left) * 420 / rect.width, (event.clientY - rect.top) * 424 / rect.height];
+    }
+
+    function heldTarget(x, y) {
+      return visibleSlots().find((slot) => context.isPointInPath(slot.shape, x * scaleFactor, y * scaleFactor));
+    }
+
+    $(".hub").addEventListener("click", () => {
+      if (mode === "full") { shown = false; draw(); }
+    });
+    $(".hub").addEventListener("pointerdown", (event) => {
+      if (mode !== "hold" || event.button !== 0) return;
+      gesture = { id: event.pointerId, movedOut: false };
+      phase = "center";
+      highlighted = null;
+      board.setPointerCapture(event.pointerId);
+      draw();
+    });
+    board.addEventListener("pointermove", (event) => {
+      if (gesture?.id !== event.pointerId) return;
+      const [x, y] = boardPoint(event);
+      const radius = Math.hypot(x - 210, y - 210);
+      if (phase !== "center" && gesture.movedOut && radius <= 32) {
+        phase = "center";
+        gesture.movedOut = false;
+      } else if (phase === "center" && (y <= 188 || y >= 232)) {
+        phase = y < 210 ? "upper" : "lower";
+      }
+      if (radius > 32 && phase !== "center") gesture.movedOut = true;
+      highlighted = heldTarget(x, y)?.id ?? null;
+      draw();
+    });
+    board.addEventListener("pointerup", (event) => {
+      if (gesture?.id !== event.pointerId) return;
+      const target = heldTarget(...boardPoint(event));
+      gesture = null;
+      if (target && target.id === highlighted) displayAction(assignment(target));
+      else setMode("hold");
+    });
+    board.addEventListener("pointercancel", () => {
+      if (gesture) { gesture = null; setMode("hold"); }
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key !== "Escape") return;
+      gesture = null;
+      if (mode === "edit") setMode("full");
+      else if (mode === "hold") setMode("hold");
+      else { shown = false; draw(); }
+    });
+    $("#surface").addEventListener("click", (event) => {
+      if (mode === "full" && event.target === $("#surface")) {
+        shown = false;
+        draw();
+      }
+    });
+    function fit() {
+      const scale = Math.min(1, $("#surface").clientWidth / 420);
+      const box = $(".board-box");
+      box.style.width = 420 * scale + "px";
+      box.style.height = 424 * scale + "px";
+      board.style.transform = "scale(" + scale + ")";
+    }
+    new ResizeObserver(fit).observe($("#surface"));
+    draw();
+  </script>
+</body>
+</html>

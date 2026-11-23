@@ -386,7 +386,10 @@ impl Controller {
         match action {
             Action::Show => self.show("startup"),
             Action::Hide => self.hide("startup"),
-            _ => {}
+            _ => return,
+        }
+        if let Some(app) = self.app.upgrade() {
+            app.invoke_lifecycle_started();
         }
     }
 
@@ -664,6 +667,7 @@ impl Controller {
             n if n == desktop::Event::EnvironmentChanged as i32 => {
                 if let Some(app) = self.app.upgrade() {
                     app.invoke_environment_changed();
+                    app.invoke_workspace_environment_changed();
                 }
                 self.queue_layout("display_or_resume")
             }

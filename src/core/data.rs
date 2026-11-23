@@ -111,6 +111,8 @@ pub struct IndexedFile {
     pub modified: i64,
     pub size: i64,
     pub item: AppItem,
+    #[serde(skip_serializing_if = "std::ops::Not::not")]
+    pub shortcut_name_checked: bool,
     #[serde(flatten)]
     pub unknown: UnknownFields,
 }

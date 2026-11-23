@@ -14,10 +14,17 @@ use slint::{ComponentHandle, Model, ModelRc, VecModel};
 use velo_slint::core::config::Config;
 use velo_slint::core::launch::{APPS_FOLDER_PREFIX, Action};
 use velo_slint::core::model::AppItem;
-use velo_slint::core::service::{Event, InstallProgress, Manage, Options, Runtime, Snapshot};
+use velo_slint::core::service::{
+    Event, IconTarget, InstallProgress, Manage, Options, Runtime, Snapshot,
+};
 use velo_slint::core::update::DownloadProgress;
+use velo_slint::core::workspace::{
+    actions::{Success as WorkspaceSuccess, WorkspaceAction},
+    config::WorkspaceConfig,
+};
 use velo_slint::core::{icons, normalize::normalize, service};
 use velo_slint::platform::windows::launch::Failure as LaunchFailure;
+use velo_slint::platform::windows::{workspace::Foreground, workspace_actions::Application};
 
 use crate::{AppWindow, LauncherItem, SettingsDraft, navigation, ui};
 
@@ -40,6 +47,34 @@ pub struct Controller {
 }
 
 impl Controller {
+    pub(crate) fn enabled_workspace(&self) -> Option<Arc<WorkspaceConfig>> {
+        self.snapshot.borrow().as_ref()?.enabled_workspace.clone()
+    }
+
+    pub(crate) fn workspace_config(&self) -> Option<Arc<WorkspaceConfig>> {
+        let snapshot = self.snapshot.borrow();
+        let snapshot = snapshot.as_ref()?;
+        snapshot.enabled_workspace.clone().or_else(|| {
+            // A disabled layout is needed only when editing it or using the explicit preview.
+            WorkspaceConfig::read(&snapshot.config).ok().map(Arc::new)
+        })
+    }
+
+    pub(crate) fn workspace_action(
+        &self,
+        action: WorkspaceAction,
+        target: Option<(Foreground, Application)>,
+        owner: isize,
+    ) -> bool {
+        self.runtime.borrow().workspace(action, target, owner)
+    }
+
+    pub(crate) fn save_workspace(&self, config: WorkspaceConfig) -> bool {
+        self.runtime
+            .borrow()
+            .manage(Manage::SaveWorkspace(Box::new(config)))
+    }
+
     pub fn connect(
         app: &AppWindow,
         directory: &Path,
@@ -485,7 +520,42 @@ impl Controller {
                         );
                     }
                 }
+                Event::WorkspaceFinished { action, result } => {
+                    let message = match result {
+                        Ok(WorkspaceSuccess::Opened) => format!("已打开{}", action.label()),
+                        Ok(WorkspaceSuccess::ShortcutSubmitted) => {
+                            format!("已提交「{}」快捷键", action.label())
+                        }
+                        Err(error) => error.message().to_string(),
+                    };
+                    app.set_workspace_notice(message.into());
+                    if self.diagnostics {
+                        eprintln!(
+                            "event=workspace_action_finished action={action:?} result={result:?}"
+                        );
+                    }
+                    if let Some(observer) = &self.observer {
+                        observer.event(
+                            "workspace_action_finished",
+                            &format!("action={action:?} result={result:?}"),
+                        );
+                    }
+                }
                 Event::Managed { kind, result } => {
+                    if kind == "workspace" {
+                        let (saved, message) = match result {
+                            Ok(message) => (true, message),
+                            Err(error) => {
+                                eprintln!(
+                                    "event=workspace_save_failed operation={}",
+                                    error.operation
+                                );
+                                (false, "工作台设置未保存，请检查数据目录权限后重试".into())
+                            }
+                        };
+                        app.invoke_workspace_saved(saved, message.into());
+                        continue;
+                    }
                     if kind.starts_with("group_") {
                         if let Some(editor) = self.groups.borrow().as_ref() {
                             editor.managed(kind, result.is_ok());
@@ -699,9 +769,15 @@ impl Controller {
                             "folder"
                         } else if item.source == "System" {
                             match item.id.as_str() {
+                                "system:empty-recycle-bin" => "delete",
+                                "system:shutdown" => "power",
+                                "system:restart" => "refresh",
+                                "system:lock" => "lock",
                                 "system:calculator" => "calculator",
                                 "system:explorer" => "folder",
                                 "system:terminal" => "terminal",
+                                "system:devices" | "system:taskmanager" => "monitor",
+                                "system:apps" => "apps",
                                 _ => "settings",
                             }
                         } else {
@@ -1033,8 +1109,8 @@ impl Controller {
 
     fn apply_icons(&self, app: &AppWindow, hidden: bool) {
         let mut requested = Vec::new();
-        let mut seen = BTreeSet::new();
         let mut protected = BTreeSet::new();
+        let scale = app.window().scale_factor();
         for (group, model) in [
             app.get_pinned_items(),
             app.get_frequent_items(),
@@ -1046,16 +1122,15 @@ impl Controller {
         .into_iter()
         .enumerate()
         {
+            let size = (app.invoke_icon_display_size(group as i32) * scale).round() as u32;
             for index in 0..model.row_count() {
                 let Some(mut row) = model.row_data(index) else {
                     continue;
                 };
-                // System shortcuts use semantic Fluent glyphs.
-                // Do not request/cache a Shell bitmap that would replace them.
-                let visible =
-                    !hidden && !row.system && app.invoke_icon_visible(group as i32, index as i32);
-                let item =
-                    self.choices
+                let visible = !hidden && app.invoke_icon_visible(group as i32, index as i32);
+                let image = if visible {
+                    let item = self
+                        .choices
                         .borrow()
                         .iter()
                         .find(|item| item.id == row.id.as_str())
@@ -1065,17 +1140,18 @@ impl Controller {
                                 snapshot.catalog.item(row.id.as_str()).cloned()
                             })
                         });
-                let image = if visible {
-                    item.and_then(|item| {
-                        protected.insert(item.icon_url.clone());
-                        if let Some(image) = self.images.borrow_mut().get(&item.icon_url) {
-                            return Some(image);
-                        }
-                        if !item.icon_url.is_empty() && seen.insert(item.icon_url.clone()) {
-                            requested.push(item.as_ref().clone());
-                        }
-                        None
-                    })
+                    item.filter(|item| !item.icon_url.is_empty())
+                        .and_then(|item| {
+                            let target = IconTarget::new(item, size);
+                            let first = protected.insert(target.key().to_owned());
+                            if let Some(image) = self.images.borrow_mut().get(target.key()) {
+                                return Some(image);
+                            }
+                            if first {
+                                requested.push(target);
+                            }
+                            None
+                        })
                 } else {
                     None
                 };
@@ -1087,7 +1163,10 @@ impl Controller {
             }
         }
         self.images.borrow_mut().protect(protected);
-        let keys: Vec<_> = requested.iter().map(|item| item.icon_url.clone()).collect();
+        let keys: Vec<_> = requested
+            .iter()
+            .map(|target| target.key().to_owned())
+            .collect();
         if *self.requested_icons.borrow() != keys {
             *self.requested_icons.borrow_mut() = keys;
             self.runtime.borrow().icons(requested);

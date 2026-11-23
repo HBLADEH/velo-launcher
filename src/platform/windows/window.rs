@@ -99,32 +99,50 @@ impl NativeWindow {
     }
 
     pub fn foreground_fullscreen(self) -> bool {
-        unsafe {
-            let foreground = GetForegroundWindow();
-            if foreground.is_null() || self.active() {
-                return false;
-            }
-            let mut class = [0u16; 256];
-            let length = GetClassNameW(foreground, class.as_mut_ptr(), class.len() as i32);
-            if matches!(
-                String::from_utf16_lossy(&class[..length.max(0) as usize]).as_str(),
-                "Progman" | "WorkerW" | "Shell_TrayWnd" | "Shell_SecondaryTrayWnd"
-            ) || GetWindowLongPtrW(foreground, GWL_STYLE) as u32 & WS_CAPTION == WS_CAPTION
-            {
-                return false;
-            }
-            let mut bounds = RECT::default();
-            let mut monitor = MONITORINFO {
-                cbSize: std::mem::size_of::<MONITORINFO>() as u32,
-                ..Default::default()
-            };
-            GetWindowRect(foreground, &mut bounds) != 0
-                && GetMonitorInfoW(
-                    MonitorFromWindow(foreground, MONITOR_DEFAULTTONEAREST),
-                    &mut monitor,
-                ) != 0
-                && covers_monitor(bounds, monitor.rcMonitor)
+        // SAFETY: GetForegroundWindow returns a borrowed handle.
+        !self.active() && fullscreen_state(unsafe { GetForegroundWindow() }) == Some(true)
+    }
+}
+
+pub(super) fn fullscreen_state(hwnd: HWND) -> Option<bool> {
+    if hwnd.is_null() {
+        return None;
+    }
+    let mut class = [0u16; 256];
+    let mut bounds = RECT::default();
+    let mut monitor = MONITORINFO {
+        cbSize: std::mem::size_of::<MONITORINFO>() as u32,
+        ..Default::default()
+    };
+    // SAFETY: all output buffers live through these synchronous Win32 calls.
+    unsafe {
+        let length = GetClassNameW(hwnd, class.as_mut_ptr(), class.len() as i32);
+        if length <= 0 {
+            return None;
         }
+        if [
+            b"Progman".as_slice(),
+            b"WorkerW",
+            b"Shell_TrayWnd",
+            b"Shell_SecondaryTrayWnd",
+        ]
+        .iter()
+        .any(|name| {
+            name.len() == length as usize
+                && name
+                    .iter()
+                    .zip(class)
+                    .all(|(left, right)| u16::from(*left) == right)
+        }) || GetWindowLongPtrW(hwnd, GWL_STYLE) as u32 & WS_CAPTION == WS_CAPTION
+        {
+            return Some(false);
+        }
+        (GetWindowRect(hwnd, &mut bounds) != 0
+            && GetMonitorInfoW(
+                MonitorFromWindow(hwnd, MONITOR_DEFAULTTONEAREST),
+                &mut monitor,
+            ) != 0)
+            .then(|| covers_monitor(bounds, monitor.rcMonitor))
     }
 }
 

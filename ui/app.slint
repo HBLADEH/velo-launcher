@@ -1,4 +1,5 @@
 import { FileEntry, FileResultRow } from "file-search.slint";
+export { WorkspaceWindow, RadialTile } from "workspace.slint";
 export { FileEntry } from "file-search.slint";
 import { CustomPanel } from "custom.slint";
 import { LaunchGroupsPanel, GroupMemberRow } from "launch-groups.slint";
@@ -6,8 +7,31 @@ export { GroupMemberRow } from "launch-groups.slint";
 import { AboutSlint, Palette } from "std-widgets.slint";
 import { ActionButton, AppTile, ContentScroll, Glyph, HomeSection, LauncherItem, PageTransition, PreviewEntry, ResultRow, SurfaceBackground, Theme } from "components.slint";
 import { ControlBounds, LicenseEntry, SettingsPanel, SettingsDraft } from "settings.slint";
+import { WorkspaceEditorState } from "workspace-settings.slint";
+export { WorkspaceDraft, WorkspaceChoice, WorkspaceEditorState } from "workspace-settings.slint";
 export { SettingsDraft, ControlBounds, LicenseEntry } from "settings.slint";
 export { LauncherItem, PreviewEntry, Theme } from "components.slint";
+
+component FooterHint inherits Text {
+    color: Theme.muted.mix(Theme.fg, 0.35);
+    font-size: 12px;
+    font-weight: 500;
+    vertical-alignment: center;
+    horizontal-stretch: 0;
+}
+
+component FooterKey inherits Rectangle {
+    in property <string> label;
+    in property <string> icon-key;
+    width: 20px; height: 22px;
+    border-radius: 4px; border-width: 1px; border-color: Theme.border;
+    background: Theme.field;
+    if root.icon-key == "": FooterHint { text: root.label; horizontal-alignment: center; }
+    if root.icon-key != "": Glyph {
+        width: 14px; height: 14px;
+        icon-key: root.icon-key; colorize: Theme.muted.mix(Theme.fg, 0.35);
+    }
+}
 
 export component AppWindow inherits Window {
     title: "Velo";
@@ -124,6 +148,7 @@ export component AppWindow inherits Window {
     in property <string> hotkey-current;
     in property <string> hotkey-error;
     in property <string> platform-error;
+    in property <string> workspace-notice;
     in-out property <string> hotkey-draft: "Alt+Space";
     in property <bool> hotkey-recording: false;
     in-out property <bool> disable-hotkey-fullscreen: true;
@@ -176,6 +201,15 @@ export component AppWindow inherits Window {
     callback update-requested(bool);
     callback environment-changed();
     callback startup-configuration-ready(bool);
+    callback lifecycle-started();
+    callback workspace-event();
+    callback workspace-mouse-event();
+    callback workspace-saved(bool, string);
+    callback workspace-environment-changed();
+    callback workspace-input-suspended(bool);
+    public function icon-display-size(group: int) -> length {
+        return group == 5 ? Theme.group-icon-size : group == 3 && root.grid-results ? Theme.grid-icon-size : Theme.app-icon-size;
+    }
     public function icon-visible(group: int, index: int) -> bool {
         if group == 5 { return root.presented && root.groups-open && groups-panel.icon-visible(index); }
         if group == 4 { return root.presented && root.import-open && custom-panel.icon-visible(index); }
@@ -198,6 +232,14 @@ export component AppWindow inherits Window {
     public function suspend-input() { parking-focus.focus(); }
     public function settings-geometry() -> [ControlBounds] { return settings.control-bounds(); }
     public function show-licenses(open: bool) { settings.show-licenses(open); }
+    public function workspace-save-shortcut(repeat: bool) -> bool {
+        if !root.presented || !root.appearance-open || root.settings-tab != 7
+            || root.native-dialog-active || root.native-composing || root.has-preedit {
+            return false;
+        }
+        if !repeat { settings.save-workspace(); }
+        return true;
+    }
     public function show-appearance(open: bool) {
         if open && !root.appearance-open && root.business-enabled { root.settings-requested(); }
         if open { root.import-open = false; root.groups-open = false; }
@@ -262,7 +304,14 @@ export component AppWindow inherits Window {
     }
     changed all-system-tools => { root.system-expansion-changed(); }
     changed input-has-focus => { root.input-focus-changed(root.input-has-focus); }
-    changed appearance-open => { if !root.appearance-open { root.hotkey-record(false); } root.layout-changed(); root.icon-viewport-changed(); }
+    changed appearance-open => {
+        if !root.appearance-open { root.hotkey-record(false); WorkspaceEditorState.close(); }
+        else if root.settings-tab == 7 { WorkspaceEditorState.open(); }
+        root.layout-changed(); root.icon-viewport-changed();
+    }
+    changed settings-tab => { if root.appearance-open && root.settings-tab == 7 { WorkspaceEditorState.open(); } }
+    changed native-dialog-active => { root.workspace-input-suspended(root.native-dialog-active || root.hotkey-recording); }
+    changed hotkey-recording => { root.workspace-input-suspended(root.native-dialog-active || root.hotkey-recording); }
     changed import-open => { root.layout-changed(); root.icon-viewport-changed(); }
     changed groups-open => { root.layout-changed(); root.icon-viewport-changed(); }
     changed group-mode => { root.icon-viewport-changed(); }
@@ -273,6 +322,7 @@ export component AppWindow inherits Window {
     changed file-active => { root.file-presentation-changed(root.file-active); }
     changed home-scroll-y => { root.icon-viewport-changed(); }
     changed result-scroll-y => { root.icon-viewport-changed(); }
+    changed grid-results => { root.icon-viewport-changed(); }
     changed viewport-height => { root.icon-viewport-changed(); }
 
     // Capture commands before TextInput's cursor navigation. Other keys retain
@@ -519,27 +569,27 @@ export component AppWindow inherits Window {
             x: 0px; y: parent.height - 43px; width: parent.width; height: 43px; background: Theme.surface;
             Rectangle { x: 0px; y: 0px; width: parent.width; height: 1px; background: Theme.border; }
             Rectangle { x: 20px; y: 19px; width: 5px; height: 5px; border-radius: 3px; background: Theme.accent; }
-            Text { x: 31px; height: parent.height; width: max(0px, footer-actions.x - self.x - 12px); font-size: 10px; color: Theme.muted; vertical-alignment: center; overflow: elide;
-                text: root.file-mode ? (root.selection-notice != "" ? root.selection-notice : root.file-items.length > 0 ? root.file-items.length + " / " + root.file-total + " 个结果" : root.file-status) : root.platform-error != "" ? root.platform-error : root.hotkey-error != "" ? "快捷键不可用，请打开设置" : root.selection-notice != "" ? root.selection-notice : root.scanning ? "正在更新索引…" : root.item-count + " 个应用就绪"; }
+            FooterHint { x: 31px; height: parent.height; width: max(0px, footer-actions.x - self.x - 12px); overflow: elide;
+                text: root.file-mode ? (root.selection-notice != "" ? root.selection-notice : root.file-items.length > 0 ? root.file-items.length + " / " + root.file-total + " 个结果" : root.file-status) : root.platform-error != "" ? root.platform-error : root.hotkey-error != "" ? "快捷键不可用，请打开设置" : root.selection-notice != "" ? root.selection-notice : root.workspace-notice != "" ? root.workspace-notice : root.scanning ? "正在更新索引…" : root.item-count + " 个应用就绪"; }
             // Reserve each visible group's natural width before the status elides.
             // Space and custom-app actions must not share a fixed right offset.
             footer-actions := HorizontalLayout {
-                x: parent.width - self.width - 20px; y: 12px;
-                width: self.preferred-width; height: 19px; spacing: 12px;
+                x: parent.width - self.width - 20px; y: 10px;
+                width: self.preferred-width; height: 22px; spacing: 12px;
                 HorizontalLayout {
-                    width: self.preferred-width; height: 19px; spacing: 4px;
-                    for key in (!root.file-mode && !root.is-home && root.grid-results ? ["↑", "↓", "←", "→"] : ["↑", "↓"]): Rectangle { width: 18px; height: 19px; border-radius: 4px; border-width: 1px; border-color: Theme.border; background: Theme.field; Text { text: key; color: Theme.muted; font-size: 10px; horizontal-alignment: center; vertical-alignment: center; } }
-                    Text { text: "选择"; color: Theme.muted; font-size: 10px; vertical-alignment: center; horizontal-stretch: 0; }
-                    Rectangle { width: 18px; height: 19px; border-radius: 4px; border-width: 1px; border-color: Theme.border; background: Theme.field; Glyph { x: 3px; y: 3px; width: 12px; height: 12px; icon-key: "enter"; colorize: Theme.muted; } }
-                    if root.space-launch && !root.file-mode: Rectangle { width: 38px; height: 19px; border-radius: 4px; border-width: 1px; border-color: Theme.border; background: Theme.field; Text { text: "Space"; color: Theme.muted; font-size: 10px; horizontal-alignment: center; vertical-alignment: center; } }
-                    Text { text: root.file-mode ? "打开" : "启动"; color: Theme.muted; font-size: 10px; vertical-alignment: center; horizontal-stretch: 0; }
-                    if root.file-mode: Text { text: "Ctrl+↵ 定位"; color: Theme.muted; font-size: 10px; vertical-alignment: center; horizontal-stretch: 0; }
-                    Rectangle { width: 25px; height: 19px; border-radius: 4px; border-width: 1px; border-color: Theme.border; background: Theme.field; Text { text: "Esc"; color: Theme.muted; font-size: 10px; horizontal-alignment: center; vertical-alignment: center; } }
-                    Text { text: root.input-text == "" ? (root.file-mode ? "返回" : "隐藏") : "清空"; color: Theme.muted; font-size: 10px; vertical-alignment: center; horizontal-stretch: 0; }
+                    width: self.preferred-width; height: 22px; spacing: 4px;
+                    for key in (!root.file-mode && !root.is-home && root.grid-results ? ["↑", "↓", "←", "→"] : ["↑", "↓"]): FooterKey { label: key; }
+                    FooterHint { text: "选择"; }
+                    FooterKey { icon-key: "enter"; }
+                    if root.space-launch && !root.file-mode: FooterKey { width: 42px; label: "Space"; }
+                    FooterHint { text: root.file-mode ? "打开" : "启动"; }
+                    if root.file-mode: FooterHint { text: "Ctrl+↵ 定位"; }
+                    FooterKey { width: 28px; label: "Esc"; }
+                    FooterHint { text: root.input-text == "" ? (root.file-mode ? "返回" : "隐藏") : "清空"; }
                 }
-                if !root.file-mode && !root.is-home: ActionButton { width: 60px; height: 19px; text: "自定义项目"; text-size: 10px; flat: true; activated => { root.show-import(true); } }
-                if root.file-mode && root.file-total > root.file-items.length && root.file-items.length < 200: ActionButton { width: 58px; height: 19px; text: "更多结果"; flat: true; activated => { root.file-load-more(); } }
-                if !root.file-mode: ActionButton { width: 20px; height: 19px; text: "刷新索引"; icon-key: "refresh"; flat: true; spinning: root.scanning && !root.appearance-open && !root.import-open; activated => { root.refresh-requested(); } }
+                if !root.file-mode && !root.is-home: ActionButton { width: 70px; height: 22px; text: "自定义项目"; text-size: 12px; flat: true; activated => { root.show-import(true); } }
+                if root.file-mode && root.file-total > root.file-items.length && root.file-items.length < 200: ActionButton { width: 62px; height: 22px; text: "更多结果"; text-size: 12px; flat: true; activated => { root.file-load-more(); } }
+                if !root.file-mode: ActionButton { width: 20px; height: 22px; text: "刷新索引"; icon-key: "refresh"; flat: true; spinning: root.scanning && !root.appearance-open && !root.import-open; activated => { root.refresh-requested(); } }
             }
         }
 
@@ -649,7 +699,7 @@ export component AppWindow inherits Window {
             width: parent.width; height: parent.height;
             draft <=> root.settings-draft; hotkey <=> root.hotkey-draft; tab <=> root.settings-tab;
             current-hotkey: root.hotkey-current; hotkey-keys: root.hotkey-parts(root.hotkey-draft); hotkey-error: root.hotkey-error; recording: root.hotkey-recording;
-            busy: root.management-busy; notice: root.settings-notice;
+            busy: root.management-busy; notice: root.settings-notice; workspace-notice: root.workspace-notice;
             backup-path: root.backup-path; data-directory: root.data-directory; count: root.item-count;
             scanning: root.scanning; scan-status: root.business-status; renderer: root.renderer-label; product-version: root.product-version; licenses: root.third-party-licenses;
             update-message: root.update-message; update-notes: root.update-notes; update-release-label: root.update-release-label;

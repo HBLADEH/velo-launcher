@@ -24,6 +24,9 @@ export global Theme {
     in-out property <bool> dark: false;
     in-out property <bool> reduce-motion: false;
     in-out property <bool> presented: false;
+    out property <length> app-icon-size: 32px;
+    out property <length> grid-icon-size: 38px;
+    out property <length> group-icon-size: 24px;
     out property <color> bg: dark ? #111b2b : #f6f8fc;
     out property <color> fg: dark ? #e8eff9 : #192b43;
     out property <color> muted: dark ? #99abc3 : #63758c;
@@ -70,6 +73,13 @@ export component Glyph inherits Image {
     in property <string> icon-key;
     source: icon-key == "code" ? @image-url("assets/fluent/ic_fluent_code_24_regular.svg")
     : icon-key == "folder" ? @image-url("assets/fluent/ic_fluent_folder_24_regular.svg")
+    : icon-key == "download" ? @image-url("assets/fluent/ic_fluent_arrow_download_24_regular.svg")
+    : icon-key == "document" ? @image-url("assets/fluent/ic_fluent_document_24_regular.svg")
+    : icon-key == "image" ? @image-url("assets/fluent/ic_fluent_image_24_regular.svg")
+    : icon-key == "edit" ? @image-url("assets/fluent/ic_fluent_edit_24_regular.svg")
+    : icon-key == "delete" ? @image-url("assets/fluent/ic_fluent_delete_24_regular.svg")
+    : icon-key == "power" ? @image-url("assets/fluent/ic_fluent_power_24_regular.svg")
+    : icon-key == "lock" ? @image-url("assets/fluent/ic_fluent_lock_closed_24_regular.svg")
     : icon-key == "calculator" ? @image-url("assets/fluent/ic_fluent_calculator_24_regular.svg")
     : icon-key == "monitor" ? @image-url("assets/fluent/ic_fluent_desktop_pulse_24_regular.svg")
     : icon-key == "terminal" ? @image-url("assets/fluent/ic_fluent_window_console_20_regular.svg")
@@ -91,10 +101,10 @@ export component Glyph inherits Image {
 
 export component LauncherIcon inherits Rectangle {
     in property <LauncherItem> item;
-    width: 32px;
-    height: 32px;
+    width: Theme.app-icon-size;
+    height: Theme.app-icon-size;
     border-radius: 7px;
-    background: root.item.system ? Theme.selected : root.item.icon.width > 0 ? transparent : Theme.field;
+    background: root.item.icon.width > 0 ? transparent : root.item.system ? Theme.selected : Theme.field;
     border-width: root.item.system || root.item.icon.width > 0 ? 0px : 1px;
     border-color: Theme.border;
     if root.item.icon.width > 0: Image {
@@ -282,8 +292,9 @@ export component AppTile inherits Rectangle {
     callback pin-toggled(string);
     private property <float> entry: root.entered ? 1 : 0;
     private property <length> lift: !Theme.reduce-motion && touch.has-hover ? -2px : 0px;
-    private property <length> base-icon-size: root.grid ? 38px : 32px;
-    private property <length> icon-size: !Theme.reduce-motion && touch.has-hover ? root.base-icon-size * 1.08 : root.base-icon-size;
+    private property <length> base-icon-size: root.grid ? Theme.grid-icon-size : Theme.app-icon-size;
+    // Bitmaps are prepared at their physical display size to keep small edges crisp.
+    private property <length> icon-size: root.item.icon.width == 0 && !Theme.reduce-motion && touch.has-hover ? root.base-icon-size * 1.08 : root.base-icon-size;
     private property <float> press-scale: !Theme.reduce-motion && touch.pressed ? 0.96 : 1;
     animate entry {
         duration: Theme.reduce-motion || !root.animate-entry ? 0ms : 360ms;
@@ -309,11 +320,11 @@ export component AppTile inherits Rectangle {
         LauncherIcon {
             width: Theme.reduce-motion ? root.base-icon-size : root.icon-size;
             height: self.width;
-            x: (parent.width - self.width) / 2; y: (root.grid ? 11px : 13px) + (Theme.reduce-motion ? 0px : root.lift) - (self.height - root.base-icon-size) / 2;
+            x: (parent.width - self.width) / 2; y: (root.grid ? 11px : 18px) + (Theme.reduce-motion ? 0px : root.lift) - (self.height - root.base-icon-size) / 2;
             item: root.item;
         }
         Text {
-            x: 4px; y: root.grid ? 57px : 54px; width: parent.width - 8px; height: root.grid ? 34px : 28px;
+            x: 4px; y: root.grid ? 57px : 59px; width: parent.width - 8px; height: root.grid ? 34px : 28px;
             text: root.item.name;
             font-size: root.grid ? 12px : 10px;
             color: root.grid && root.selected ? Theme.accent : Theme.fg;

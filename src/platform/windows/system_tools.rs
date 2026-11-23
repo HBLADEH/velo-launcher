@@ -41,6 +41,16 @@ pub fn discover() -> Result<Vec<AppItem>> {
     };
     let mut items = system_tools::discover(&env, |p| p.is_file())?;
     for item in &mut items {
+        // Match the Control Panel icon. The MMC executable and console file
+        // show different, generic management icons.
+        if let Some((file, index)) = match item.id.as_str() {
+            "system:devices" => Some(("devmgr.dll", -201)),
+            "system:apps" => Some(("appwiz.cpl", 0)),
+            "system:environment" => Some(("sysdm.cpl", 0)),
+            _ => None,
+        } {
+            item.icon_path = format!("{},{index}", windows.join("System32").join(file).display());
+        }
         item.icon_url = crate::core::icons::signature(item);
     }
     Ok(items)

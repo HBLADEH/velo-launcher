@@ -44,6 +44,13 @@ fn allocated_string(value: PWSTR) -> Result<String> {
     result
 }
 
+pub(crate) fn known_folder(id: &windows::core::GUID) -> Result<PathBuf> {
+    // SAFETY: id is valid for the synchronous query, whose allocation is freed below.
+    let value = unsafe { SHGetKnownFolderPath(id, KF_FLAG_DEFAULT, None) }
+        .map_err(|e| DataError::new("find Windows known folder", e))?;
+    Ok(PathBuf::from(allocated_string(value)?))
+}
+
 pub fn pick_folder(owner: isize) -> Result<Option<PathBuf>> {
     use windows::Win32::Foundation::{ERROR_CANCELLED, HWND};
     use windows::core::{HRESULT, w};
@@ -78,11 +85,8 @@ pub fn pick_folder(owner: isize) -> Result<Option<PathBuf>> {
 pub fn roots(config: &Config) -> Result<Vec<Root>> {
     let mut result = Vec::new();
     let mut add = |id, source: &str, depth| -> Result<()> {
-        // SAFETY: known folder GUID is static, returned memory freed below.
-        let value = unsafe { SHGetKnownFolderPath(id, KF_FLAG_DEFAULT, None) }
-            .map_err(|e| DataError::new("find Windows application directory", e))?;
         result.push(Root {
-            path: PathBuf::from(allocated_string(value)?),
+            path: known_folder(id)?,
             source: source.into(),
             max_depth: depth,
         });
@@ -107,6 +111,29 @@ pub fn roots(config: &Config) -> Result<Vec<Root>> {
 
 pub struct ShortcutResolver<'a>(pub &'a Apartment);
 impl Resolver for ShortcutResolver<'_> {
+    fn shortcut_name(&mut self, path: &Path) -> Option<String> {
+        use windows_sys::Win32::UI::Shell::{SHFILEINFOW, SHGFI_DISPLAYNAME, SHGetFileInfoW};
+
+        let path = wide(&path.to_string_lossy()).ok()?;
+        let mut info = SHFILEINFOW::default();
+        // SAFETY: the worker holds its Shell apartment and both buffers live
+        // through this synchronous query. The name stays in the stack buffer.
+        let found = unsafe {
+            SHGetFileInfoW(
+                path.as_ptr(),
+                0,
+                &mut info,
+                std::mem::size_of_val(&info) as u32,
+                SHGFI_DISPLAYNAME,
+            ) != 0
+        };
+        if !found {
+            return None;
+        }
+        let len = info.szDisplayName.iter().position(|&ch| ch == 0)?;
+        String::from_utf16(&info.szDisplayName[..len]).ok()
+    }
+
     fn resolve(&mut self, path: &Path) -> Result<AppItem> {
         let path = wide(&path.to_string_lossy())?;
         // SAFETY: apartment outlives the interfaces, buffers are sized and live

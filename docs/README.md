@@ -19,6 +19,7 @@
 - [Rust 工程说明](rust-engineering.md)：模块职责、线程边界、生命周期、隔离与兼容数据。
 - [Everything 文件搜索](everything-file-search-proposal.md)：当前实现、可选依赖、失败处理与验证范围。
 - [启动组合](launch-groups-proposal.md)：成员配置、运行检测、调度与重试语义。
+- [Workspace v0.2](plans/velo-workspace-v0.2/implementation.md) · [径向窗口验收记录](baselines/2026-11-21-workspace-v02/README.md)
 
 ## 验证与发行
 

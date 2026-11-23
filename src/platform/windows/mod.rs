@@ -14,3 +14,6 @@ pub mod shell;
 pub mod system_tools;
 pub mod updater;
 pub mod window;
+pub mod workspace;
+pub mod workspace_actions;
+pub mod workspace_input;

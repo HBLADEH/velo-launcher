@@ -65,10 +65,23 @@ pub(crate) fn monitor_dpi(monitor: HMONITOR) -> u32 {
     }
 }
 
+#[derive(Clone, Copy)]
 pub struct Layout {
     pub bounds: Bounds,
     pub work: Bounds,
     pub dpi: u32,
+}
+
+pub(crate) fn monitor_work_area(monitor: HMONITOR) -> Option<(Bounds, u32)> {
+    let mut info = MONITORINFO {
+        cbSize: std::mem::size_of::<MONITORINFO>() as u32,
+        ..Default::default()
+    };
+    // SAFETY: info is writable and initialized for GetMonitorInfoW.
+    if unsafe { GetMonitorInfoW(monitor, &mut info) } == 0 {
+        return None;
+    }
+    Some((Bounds::from_rect(info.rcWork), monitor_dpi(monitor)))
 }
 
 pub fn layout(native: NativeWindow, logical_height: i32, positioned: bool) -> Option<Layout> {
@@ -85,16 +98,8 @@ pub fn layout(native: NativeWindow, logical_height: i32, positioned: bool) -> Op
             MonitorFromPoint(point, MONITOR_DEFAULTTONEAREST)
         }
     };
-    let mut info = MONITORINFO {
-        cbSize: std::mem::size_of::<MONITORINFO>() as u32,
-        ..Default::default()
-    };
-    if unsafe { GetMonitorInfoW(monitor, &mut info) } == 0 {
-        return None;
-    }
-    let dpi = monitor_dpi(monitor);
+    let (work, dpi) = monitor_work_area(monitor)?;
     let physical = |logical: i32| ((i64::from(logical) * i64::from(dpi) + 48) / 96) as i32;
-    let work = Bounds::from_rect(info.rcWork);
     let bounds = placement(
         work,
         (physical(640), physical(logical_height.clamp(160, 720))),

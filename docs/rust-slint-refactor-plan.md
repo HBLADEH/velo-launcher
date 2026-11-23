@@ -1,5 +1,11 @@
 # Rust + Slint 重构实施方案
 
+- Workspace 触发设置（2026-11-24）。工作台默认关闭，启用后才分配触发资源。双渲染器在 Windows 11 单屏复验了侧键选项顺序、关闭后的窗口与线程释放，以及两枚侧键透传。 [复验记录](baselines/2026-11-21-workspace-v02/README.md#2026-11-24-触发设置与关闭状态复验)
+
+- Workspace v0.2（2026-11-21）。在独立预览和工作台设置中接入径向弧片、侧键短按与长按、应用布局和槽位编辑，按 v0.2 实施步骤保留原沙漏预览作为对照。Windows 11 单屏和 100% / 125% 混合 DPI 双屏已做桌面回归。2026-11-23，Software 补齐副屏弧片高亮时物理断开收起、接回后同进程双屏呼出的连续实机回执。 [实施步骤](plans/velo-workspace-v0.2/implementation.md) · [验收记录](baselines/2026-11-21-workspace-v02/README.md#同一进程的物理拔插复验)
+
+- Workspace P0（2026-11-21）。可选预览接入第二个 Slint 窗口、独立热键、鼠标锚点和原生命中区。Software 与 FemtoVG 在 Windows 11 单屏桌面通过双扇形和圆角验证，P1 采用原生区域裁切的双扇形方案。跨屏与混合 DPI 有待实机复验。 [验收记录](baselines/2026-11-21-workspace-p0/README.md)
+
 - v0.11.2 正式发行（2026-11-20）：Windows 11 x64 上双渲染器各 125 项 Rust 测试、完整桌面冒烟和许可审计通过；main CI 与 tag 发布任务成功，六项公开资产实际下载并通过 SHA-256 校验，GitHub latest 指向本版。本机身份与托管发行构建分开记录，其他机器、真实 IME 与安装事务不扩大验收范围。[发行记录](baselines/2026-11-20-v0.11.2/README.md)
 
 - v0.11.0 正式发行（2026-11-18）。双渲染器通过 `main` 的托管 CI 与干净提交的 Windows 11 x64 完整桌面验证。推送版本 tag 后，Actions 核对预上传资产并公开发版。README CI 徽章显示 `passing`。[发行记录](baselines/2026-11-18-v0.11.0/README.md)

@@ -1,0 +1,228 @@
+import { ActionButton, Glyph, Theme } from "components.slint";
+
+export struct RadialTile {
+    slot: int,
+    path: string,
+    label: string,
+    glyph: string,
+    guide: string,
+    center-x: float,
+    center-y: float,
+    face-x: float,
+    face-y: float,
+    face-width: float,
+    face-height: float,
+    inline-label: bool,
+    enabled: bool,
+}
+
+export component WorkspaceWindow inherits Window {
+    title: "Velo Workspace";
+    icon: @image-url("assets/logo.png");
+    no-frame: true;
+    always-on-top: true;
+    preferred-width: root.radial ? 420px : 360px;
+    preferred-height: root.radial ? 424px : 252px;
+    default-font-family: "Segoe UI";
+    background: root.radial ? Theme.surface : Theme.bg;
+
+    in-out property <bool> dark-theme <=> Theme.dark;
+    in-out property <bool> highlighted: false;
+    callback dismiss();
+    callback toggle-highlight();
+    in-out property <bool> reduce-motion <=> Theme.reduce-motion;
+
+    in property <bool> radial;
+    in property <[RadialTile]> radial-tiles;
+    in property <bool> radial-compact;
+    in property <bool> radial-full;
+    in property <bool> radial-editable;
+    in property <string> radial-scope;
+    in property <string> radial-scope-glyph: "apps";
+    in property <string> radial-detail;
+    in property <int> radial-hover: -3;
+    in property <int> radial-focus: -3;
+    callback radial-activate(int);
+
+    private property <float> radial-entry: root.radial-full ? 1 : 0;
+    animate radial-entry {
+        duration: Theme.reduce-motion || !root.radial-full ? 0ms : 108ms;
+        easing: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    if root.radial: Rectangle {
+        width: parent.width;
+        height: parent.height;
+        private property <float> sx: self.width / 420px;
+        private property <float> sy: self.height / 424px;
+
+        Rectangle {
+            x: 180px * parent.sx; y: 180px * parent.sy;
+            width: 60px * parent.sx; height: 60px * parent.sy;
+            border-radius: self.width / 2;
+            border-width: root.radial-focus == -1 ? 1.5px : 1px;
+            border-color: root.radial-focus == -1 || root.radial-hover == -1 ? Theme.accent
+                : !root.radial-full ? Theme.accent-line : Theme.window-border;
+            background: @linear-gradient(145deg, Theme.field, Theme.bg);
+            Image {
+                width: parent.width * (0.78 + 0.06 * root.radial-entry);
+                height: self.width;
+                source: @image-url("assets/logo.png");
+                image-fit: contain;
+            }
+            accessible-role: button;
+            accessible-label: "收起工作台";
+            accessible-action-default => { root.radial-activate(-1); }
+        }
+
+        for tile in root.radial-tiles: Rectangle {
+            x: 0px; y: 0px; width: parent.width; height: parent.height;
+            private property <float> scale-x: self.width / 420px;
+            private property <float> scale-y: self.height / 424px;
+            private property <float> entry: root.radial-full ? root.radial-entry : 1;
+            private property <bool> focused: root.radial-focus == tile.slot;
+            private property <bool> hovered: root.radial-hover == tile.slot;
+            private property <bool> selected: focused || (!root.radial-full && hovered);
+            face := Path {
+                private property <float> spread: 0.94 + 0.06 * parent.entry;
+                x: (tile.face-x + tile.face-width * (1 - spread) / 2) * parent.scale-x * 1px - self.stroke-width / 2;
+                y: (tile.face-y + tile.face-height * (1 - spread) / 2) * parent.scale-y * 1px - self.stroke-width / 2;
+                width: tile.face-width * spread * parent.scale-x * 1px + self.stroke-width;
+                height: tile.face-height * spread * parent.scale-y * 1px + self.stroke-width;
+                viewbox-x: tile.face-x; viewbox-y: tile.face-y;
+                viewbox-width: tile.face-width; viewbox-height: tile.face-height;
+                commands: tile.path;
+                fill: parent.selected ? Theme.selected : parent.hovered ? Theme.hover : Theme.surface;
+                stroke: parent.focused ? Theme.window-border : parent.selected ? Theme.accent
+                    : parent.hovered ? Theme.accent-line : Theme.border.mix(Theme.surface, 0.8);
+                stroke-width: parent.selected ? 1.5px : 1px;
+                stroke-line-join: round;
+            }
+            tile-content := Rectangle {
+                private property <float> travel: 0.022 * (1 - parent.entry);
+                private property <bool> labeled: root.radial-full && !root.radial-compact && tile.inline-label;
+                x: (tile.center-x + (210 - tile.center-x) * travel) * parent.scale-x * 1px - self.width / 2;
+                y: (tile.center-y + (210 - tile.center-y) * travel) * parent.scale-y * 1px - self.height / 2;
+                width: 54px * parent.scale-x;
+                height: 36px * parent.scale-y;
+                Glyph {
+                    x: (parent.width - self.width) / 2;
+                    y: parent.labeled ? 0px : (parent.height - self.height) / 2;
+                    width: parent.width * (parent.labeled ? 20 / 54 : 24 / 54);
+                    height: self.width;
+                    icon-key: tile.glyph;
+                    colorize: tile.enabled ? Theme.accent : Theme.muted;
+                }
+                if tile-content.labeled: Text {
+                    x: 0px; y: parent.height * 20 / 36; width: parent.width; height: parent.height * 16 / 36;
+                    text: tile.label;
+                    font-size: 12px; font-weight: 500;
+                    color: tile.enabled ? Theme.fg : Theme.muted;
+                    horizontal-alignment: center;
+                    vertical-alignment: center;
+                    overflow: elide;
+                }
+            }
+            accessible-role: button;
+            accessible-label: tile.label;
+            accessible-action-default => { root.radial-activate(tile.slot); }
+        }
+
+        if root.radial-scope != "": Rectangle {
+            x: 145px * parent.sx; y: 261px * parent.sy;
+            width: 130px * parent.sx; height: 22px * parent.sy;
+            border-radius: self.height / 2; border-width: 1px;
+            border-color: root.radial-detail != "" ? Theme.accent-line : Theme.border;
+            background: root.radial-detail != "" ? Theme.selected : Theme.bg;
+            if root.radial-detail == "": Glyph {
+                x: 9px; y: (parent.height - self.height) / 2;
+                width: 12px; height: 12px; icon-key: root.radial-scope-glyph;
+                colorize: Theme.muted;
+            }
+            Text {
+                x: root.radial-detail != "" ? 5px : 27px;
+                y: 0px; width: parent.width - self.x - 5px; height: parent.height;
+                text: root.radial-detail != "" ? root.radial-detail : root.radial-scope;
+                color: root.radial-detail != "" ? Theme.fg : Theme.muted;
+                font-size: 12px;
+                font-weight: root.radial-detail != "" ? 600 : 400;
+                horizontal-alignment: root.radial-detail != "" ? center : left;
+                vertical-alignment: center; overflow: elide;
+            }
+        }
+
+        if root.radial-full && root.radial-editable: Rectangle {
+            x: 250px * parent.sx; y: 212px * parent.sy;
+            width: 28px * parent.sx; height: 28px * parent.sy;
+            border-radius: 7px; border-width: root.radial-focus == -2 ? 1.5px : 1px;
+            background: root.radial-hover == -2 ? Theme.selected : Theme.bg;
+            border-color: root.radial-focus == -2 || root.radial-hover == -2 ? Theme.accent : Theme.window-border;
+            Glyph { width: 15px; height: 15px; icon-key: "edit"; }
+            accessible-role: button;
+            accessible-label: "编辑布局";
+            accessible-action-default => { root.radial-activate(-2); }
+        }
+    }
+
+    if !root.radial: Rectangle {
+        y: 0px;
+        width: parent.width;
+        height: parent.height * 0.38;
+        background: Theme.surface;
+        ActionButton {
+            x: (parent.width - self.width) / 2;
+            y: parent.height * 0.5 - self.height / 2;
+            width: min(104px, parent.width * 0.45);
+            height: 36px;
+            text: "收起";
+            text-size: 13px;
+            activated => { root.dismiss(); }
+        }
+    }
+
+    if !root.radial: Rectangle {
+        x: parent.width * 0.31;
+        y: parent.height * 0.38;
+        width: parent.width * 0.38;
+        height: parent.height * 0.24;
+        Image {
+            x: (parent.width - self.width) / 2;
+            y: parent.height / 2 - 22px;
+            width: 22px;
+            height: 22px;
+            source: @image-url("assets/logo.png");
+            image-fit: contain;
+        }
+        Text {
+            x: 0px;
+            y: parent.height / 2 + 2px;
+            width: parent.width;
+            height: 18px;
+            text: "Velo Workspace";
+            color: Theme.fg;
+            font-size: 13px;
+            font-weight: 600;
+            horizontal-alignment: center;
+            vertical-alignment: center;
+            overflow: elide;
+        }
+    }
+
+    if !root.radial: Rectangle {
+        y: parent.height * 0.62;
+        width: parent.width;
+        height: parent.height * 0.38;
+        background: root.highlighted ? Theme.selected : Theme.surface;
+        ActionButton {
+            x: (parent.width - self.width) / 2;
+            y: parent.height * 0.5 - self.height / 2;
+            width: min(104px, parent.width * 0.45);
+            height: 36px;
+            text: "高亮";
+            text-size: 13px;
+            checkable: true;
+            checked: root.highlighted;
+            activated => { root.toggle-highlight(); }
+        }
+    }
+}

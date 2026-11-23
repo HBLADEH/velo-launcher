@@ -61,6 +61,10 @@ impl Ticket {
 
 pub trait Resolver {
     fn resolve(&mut self, path: &Path) -> Result<AppItem>;
+
+    fn shortcut_name(&mut self, _path: &Path) -> Option<String> {
+        None
+    }
 }
 
 #[derive(Default, Debug)]
@@ -108,6 +112,32 @@ struct Scan<'a> {
 }
 
 impl Scan<'_> {
+    fn check_shortcut_name(&mut self, path: &Path, entry: &mut IndexedFile) {
+        if entry.shortcut_name_checked {
+            return;
+        }
+        // Old caches already have launch metadata. Read just the display name
+        // once and keep the filename searchable in both old and new caches.
+        let Some(name) = self
+            .resolver
+            .shortcut_name(path)
+            .filter(|name| !name.trim().is_empty())
+        else {
+            return;
+        };
+        entry.shortcut_name_checked = true;
+        if name != entry.item.name {
+            let previous = std::mem::replace(&mut entry.item.name, name);
+            let compact: String = previous.chars().filter(|c| !c.is_whitespace()).collect();
+            let aliases = entry.item.keywords.get_or_insert_default();
+            for alias in [previous, compact] {
+                if !alias.is_empty() && !aliases.contains(&alias) {
+                    aliases.push(alias);
+                }
+            }
+        }
+    }
+
     fn failed_subtree(&mut self, path: &Path, error: &std::io::Error, root: bool) {
         if error.kind() == std::io::ErrorKind::NotFound {
             self.stats.warnings += usize::from(root && self.stats.warnings < 25);
@@ -183,7 +213,8 @@ impl Scan<'_> {
             return Ok(());
         }
         let path_text = path.to_string_lossy();
-        if !extension(&path_text, "exe") && !extension(&path_text, "lnk") {
+        let shortcut = extension(&path_text, "lnk");
+        if !shortcut && !extension(&path_text, "exe") {
             return Ok(());
         }
         let key = path_key(path);
@@ -197,6 +228,9 @@ impl Scan<'_> {
             let mut cached = cached.clone();
             cached.item.source.clone_from(&root.source);
             if desktop_link_valid(&cached.item) {
+                if shortcut {
+                    self.check_shortcut_name(path, &mut cached);
+                }
                 self.files.insert(key, cached);
                 self.stats.reused += 1;
             }
@@ -216,7 +250,7 @@ impl Scan<'_> {
             ..AppItem::default()
         };
         let mut modified = modified;
-        if extension(&item.path, "lnk") {
+        if shortcut {
             self.stats.resolved += 1;
             match self.resolver.resolve(path) {
                 Ok(mut resolved) => {
@@ -241,15 +275,16 @@ impl Scan<'_> {
                 },
                 &item.arguments,
             );
-            self.files.insert(
-                key,
-                IndexedFile {
-                    modified,
-                    size,
-                    item,
-                    ..IndexedFile::default()
-                },
-            );
+            let mut entry = IndexedFile {
+                modified,
+                size,
+                item,
+                ..IndexedFile::default()
+            };
+            if shortcut {
+                self.check_shortcut_name(path, &mut entry);
+            }
+            self.files.insert(key, entry);
         }
         Ok(())
     }

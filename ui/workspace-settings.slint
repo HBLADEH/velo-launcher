@@ -1,0 +1,282 @@
+import { ActionButton, ContentScroll, Glyph, Theme } from "components.slint";
+import { SettingCheck, SettingField, SettingHeading, SettingHint, SettingLabel, SettingSelect } from "settings-controls.slint";
+import { RadialTile } from "workspace.slint";
+
+export struct WorkspaceDraft {
+    enabled: bool,
+    hotkey: string,
+    mouse: int,
+    application: string,
+    template: int,
+}
+
+export struct WorkspaceChoice { id: int, label: string, glyph: string }
+
+component SlotSelect inherits FocusScope {
+    in property <string> label;
+    in property <[string]> options;
+    in-out property <int> current-index;
+    callback confirm();
+    height: 36px;
+
+    function step(amount: int) {
+        if root.enabled && root.options.length > 0 {
+            root.current-index = clamp(root.current-index + amount, 0, root.options.length - 1);
+        }
+    }
+
+    key-pressed(event) => {
+        if !root.enabled || root.options.length == 0 { return reject; }
+        if event.text == Key.UpArrow || event.text == Key.LeftArrow {
+            root.step(-1);
+            return accept;
+        }
+        if event.text == Key.DownArrow || event.text == Key.RightArrow {
+            root.step(1);
+            return accept;
+        }
+        if event.text == "\n" {
+            root.confirm();
+            return accept;
+        }
+        return reject;
+    }
+    Rectangle {
+        width: parent.width; height: parent.height; border-radius: 6px;
+        border-width: 1px; border-color: root.has-focus ? Theme.accent : Theme.border;
+        background: Theme.field;
+        Text {
+            x: 30px; y: 0px; width: parent.width - 60px; height: parent.height;
+            text: root.options[root.current-index]; color: Theme.fg; font-size: 12px;
+            vertical-alignment: center; horizontal-alignment: center; overflow: elide;
+        }
+        TouchArea { enabled: root.enabled; clicked => { root.focus(); } }
+        for step in [-1, 1]: Rectangle {
+            x: step < 0 ? 1px : parent.width - 29px;
+            y: 1px; width: 28px; height: parent.height - 2px;
+            border-radius: 5px;
+            background: arrow.has-hover ? Theme.hover : transparent;
+            Glyph {
+                width: 13px; height: 13px; icon-key: "chevron";
+                transform-rotation: step < 0 ? 90deg : -90deg;
+                colorize: arrow.enabled ? Theme.fg : Theme.muted;
+            }
+            arrow := TouchArea {
+                enabled: root.enabled && root.current-index + step >= 0 && root.current-index + step < root.options.length;
+                clicked => { root.focus(); root.step(step); }
+                mouse-cursor: pointer;
+            }
+        }
+    }
+    accessible-role: spinbox;
+    accessible-label: root.label;
+    accessible-value: root.options[root.current-index];
+    accessible-action-increment => { root.step(1); }
+    accessible-action-decrement => { root.step(-1); }
+    accessible-action-default => { if root.enabled { root.confirm(); } }
+}
+
+export global WorkspaceEditorState {
+    in-out property <WorkspaceDraft> draft;
+    in-out property <int> scope;
+    in-out property <int> preset;
+    in-out property <int> slot;
+    in property <[string]> scopes;
+    in property <[string]> slots;
+    in property <[RadialTile]> tiles;
+    in property <[WorkspaceChoice]> choices;
+    in property <bool> excluded;
+    in property <bool> busy;
+    callback open();
+    callback close();
+    callback save();
+    callback changed-selection();
+    callback identity-changed();
+    callback command(string, int);
+    callback drop-action(int, float, float);
+    callback select-point(float, float);
+    changed scope => { root.changed-selection(); }
+    changed preset => { root.changed-selection(); }
+    private property <string> identity-text: root.draft.application;
+    changed identity-text => { root.identity-changed(); }
+}
+
+export component WorkspaceSettings inherits Rectangle {
+    in property <bool> active;
+    private property <bool> busy: WorkspaceEditorState.busy;
+    in-out property <WorkspaceDraft> draft <=> WorkspaceEditorState.draft;
+    in-out property <int> scope <=> WorkspaceEditorState.scope;
+    in-out property <int> preset <=> WorkspaceEditorState.preset;
+    in-out property <int> slot <=> WorkspaceEditorState.slot;
+    private property <[string]> scopes: WorkspaceEditorState.scopes;
+    private property <[string]> slots: WorkspaceEditorState.slots;
+    private property <[RadialTile]> tiles: WorkspaceEditorState.tiles;
+    private property <[WorkspaceChoice]> choices: WorkspaceEditorState.choices;
+    private property <bool> excluded: WorkspaceEditorState.excluded;
+    private property <int> dragging: -1;
+    private property <length> drag-x;
+    private property <length> drag-y;
+    callback command(string, int);
+    callback drop-action(int, float, float);
+    callback select-point(float, float);
+    command(name, id) => { WorkspaceEditorState.command(name, id); }
+    drop-action(id, x, y) => { WorkspaceEditorState.drop-action(id, x, y); }
+    select-point(x, y) => { WorkspaceEditorState.select-point(x, y); }
+
+    SettingHeading { x: 24px; y: 20px; text: "工作台"; }
+    SettingCheck {
+        x: 24px; y: 55px; width: 172px;
+        enabled: root.active && !root.busy; text: "启用工作台"; checked <=> root.draft.enabled;
+    }
+    SettingLabel { x: 24px; y: 89px; text: "侧键触发"; }
+    SettingSelect {
+        x: 24px; y: 112px; width: 198px; enabled: root.active && !root.busy;
+        label: "侧键触发"; options: ["不触发", "前进侧键", "后退侧键"]; current-index <=> root.draft.mouse;
+    }
+    SettingLabel { x: 246px; y: 89px; text: "快捷键触发"; }
+    SettingField {
+        x: 246px; y: 112px; width: 198px; enabled: root.active && !root.busy;
+        label: "工作台快捷键触发"; text <=> root.draft.hotkey;
+    }
+    SettingLabel { x: 24px; y: 170px; text: "动作布局"; }
+    SettingSelect {
+        x: 24px; y: 193px; width: 198px; enabled: root.active && !root.busy;
+        label: "动作布局"; options: root.scopes; current-index <=> root.scope;
+    }
+    SettingLabel { x: 246px; y: 170px; text: "槽位数量"; }
+    SettingSelect {
+        x: 246px; y: 193px; width: 92px; enabled: root.active && !root.busy;
+        label: "槽位数量"; options: ["4 槽", "6 槽", "8 槽"]; current-index <=> root.preset;
+    }
+    ActionButton {
+        x: 358px; y: 195px; width: 94px; height: 32px; enabled: root.active && !root.busy;
+        text: "恢复默认"; activated => { root.command("reset", 0); }
+    }
+    if root.scope >= 2: ActionButton {
+        x: 462px; y: 195px; width: 96px; height: 32px; enabled: root.active && !root.busy;
+        text: "移除布局"; activated => { root.command("remove", 0); }
+    }
+    SettingLabel { x: 24px; y: 250px; text: "应用完整路径或包标识"; }
+    SettingField {
+        x: 24px; y: 273px; width: parent.width - 228px; enabled: root.active && !root.busy;
+        label: "应用完整路径或包标识"; text <=> root.draft.application;
+    }
+    SettingSelect {
+        x: parent.width - 192px; y: 273px; width: 168px; enabled: root.active && !root.busy;
+        label: "应用模板"; options: ["默认动作组", "文件资源管理器", "VS Code", "Microsoft Edge"]; current-index <=> root.draft.template;
+    }
+    ActionButton {
+        x: 24px; y: 325px; width: 106px; enabled: root.active && !root.busy;
+        text: "创建应用布局"; activated => { root.command("profile", 0); }
+    }
+    ActionButton {
+        x: 142px; y: 325px; width: 112px; enabled: root.active && !root.busy;
+        text: root.excluded ? "允许此应用侧键" : "排除此应用侧键"; activated => { root.command("exclude", 0); }
+    }
+    SettingHint {
+        x: 266px; y: 328px; width: parent.width - 290px; height: 26px;
+        text: root.excluded ? "该应用保留原侧键功能" : "";
+    }
+    SettingLabel { x: 24px; y: 374px; text: "槽位预览"; }
+    SettingLabel { x: parent.width - 203px; y: 374px; text: "动作"; }
+    board := Rectangle {
+        x: 24px; y: 398px; width: parent.width - 246px; height: self.width * 424 / 420;
+        Image {
+            x: parent.width / 2 - 14px; y: 210px * parent.height / 424px - 14px;
+            width: 28px; height: 28px; source: @image-url("assets/logo.png"); image-fit: contain;
+        }
+        for tile in root.tiles: Rectangle {
+            x: 0px; y: 0px; width: parent.width; height: parent.height;
+            Path {
+                x: 0px; y: 0px; width: parent.width; height: parent.height;
+                viewbox-width: 420; viewbox-height: 424; commands: tile.path;
+                fill: root.slot == tile.slot ? Theme.selected : Theme.surface;
+                stroke: root.slot == tile.slot ? Theme.accent : tile.enabled ? Theme.border : transparent;
+                stroke-width: root.slot == tile.slot ? 2px : 1px;
+            }
+            if tile.guide != "" && root.slot != tile.slot: Path {
+                x: 0px; y: 0px; width: parent.width; height: parent.height;
+                viewbox-width: 420; viewbox-height: 424; commands: tile.guide;
+                fill: transparent; stroke: Theme.window-border; stroke-width: 1px;
+            }
+            Glyph {
+                x: tile.center-x * parent.width / 420 - self.width / 2;
+                y: tile.center-y * parent.height / 424 - self.height / 2;
+                width: 17px; height: 17px; icon-key: tile.glyph;
+                colorize: tile.enabled ? Theme.accent : Theme.muted;
+            }
+        }
+        TouchArea {
+            enabled: root.active && !root.busy;
+            clicked => { root.select-point(self.mouse-x / self.width * 420, self.mouse-y / self.height * 424); }
+        }
+    }
+    palette := ContentScroll {
+        x: parent.width - 203px; y: 398px; width: 179px; height: board.height;
+        content-height: root.choices.length * 36px;
+        enabled: root.active && !root.busy;
+        Rectangle { x: 0px; y: 0px; width: palette.visible-width; height: palette.content-height;
+            for action[index] in root.choices: Rectangle {
+                x: 0px; y: index * 36px; width: parent.width; height: 35px;
+                background: hover.has-hover ? Theme.hover : Theme.field; border-radius: 5px;
+                Glyph { x: 8px; y: 9px; width: 17px; height: 17px; icon-key: action.glyph; }
+                Text { x: 35px; y: 0px; width: parent.width - 70px; height: parent.height;
+                    text: action.label; color: Theme.fg; vertical-alignment: center; font-size: 13px; overflow: elide; }
+                hover := TouchArea {
+                    enabled: root.active && !root.busy;
+                    pointer-event(event) => {
+                        if event.kind == PointerEventKind.down && event.button == PointerEventButton.left {
+                            root.dragging = action.id;
+                            root.drag-x = palette.x + self.mouse-x;
+                            root.drag-y = palette.y + index * 36px + palette.content-y + self.mouse-y;
+                        }
+                        if event.kind == PointerEventKind.up && event.button == PointerEventButton.left {
+                            root.drop-action(action.id, (palette.x + self.mouse-x - board.x) / board.width * 420,
+                                (palette.y + index * 36px + palette.content-y + self.mouse-y - board.y) / board.height * 424);
+                            root.dragging = -1;
+                        }
+                        if event.kind == PointerEventKind.cancel { root.dragging = -1; }
+                    }
+                    moved => {
+                        if self.pressed {
+                            root.drag-x = palette.x + self.mouse-x;
+                            root.drag-y = palette.y + index * 36px + palette.content-y + self.mouse-y;
+                        }
+                    }
+                }
+                ActionButton {
+                    x: parent.width - 34px; y: 3px; width: 28px; height: 28px; flat: true;
+                    icon-key: "plus"; text: "分配 " + action.label; enabled: root.active && !root.busy;
+                    activated => { root.command("assign", action.id); }
+                }
+            }
+        }
+    }
+    if root.dragging >= 0: Rectangle {
+        x: root.drag-x - 12px; y: root.drag-y - 12px;
+        width: 24px; height: 24px; border-radius: 6px; background: Theme.selected;
+        border-width: 1px; border-color: Theme.accent;
+        Glyph { width: 14px; height: 14px; icon-key: "plus"; }
+    }
+    SlotSelect {
+        x: 24px; y: board.y + board.height + 12px; width: 198px; enabled: root.active && !root.busy;
+        label: "当前槽位"; options: root.slots; current-index <=> root.slot;
+    }
+    ActionButton {
+        x: 234px; y: board.y + board.height + 14px; width: 76px;
+        text: "清空槽位"; enabled: root.active && !root.busy; activated => { root.command("clear", 0); }
+    }
+    SlotSelect {
+        x: 320px; y: board.y + board.height + 12px; width: 148px; enabled: root.active && !root.busy;
+        label: "移动到槽位"; options: root.slots;
+        current-index <=> root.move-destination;
+        confirm => { if root.slot != root.move-destination { root.command("move", root.move-destination); } }
+    }
+    private property <int> move-destination;
+    changed slots => { root.move-destination = min(root.move-destination, max(0, root.slots.length - 1)); }
+    ActionButton {
+        x: 478px; y: board.y + board.height + 14px; width: 80px;
+        text: "交换槽位"; enabled: root.active && !root.busy && root.slot != root.move-destination;
+        activated => { root.command("move", root.move-destination); }
+    }
+}

@@ -14,7 +14,7 @@ use velo_slint::core::{
     icons, indexer,
     launch::Action,
     model::AppItem,
-    service::{Event, Runtime, Snapshot},
+    service::{Event, IconTarget, Runtime, Snapshot},
     storage,
 };
 use velo_slint::platform::windows::{
@@ -189,18 +189,21 @@ fn main() -> Result {
     };
     let mut runtime = Runtime::start(&identity.data_dir, || {})?;
     let snapshot = await_snapshot(&runtime, &app_id)?;
-    runtime.icons(vec![
+    let target = IconTarget::new(
         snapshot
             .catalog
             .item(&app_id)
             .ok_or("lost shortcut")?
-            .as_ref()
             .clone(),
-    ]);
-    await_event(
-        &runtime,
-        |event| matches!(event, Event::Icons { items, .. } if !items.is_empty()),
-    )?;
+        32,
+    );
+    let key = target.key().to_owned();
+    runtime.icons(vec![target]);
+    await_event(&runtime, |event| {
+        matches!(event, Event::Icons { items, .. } if items.iter().any(|item| {
+            item.key == key && item.pixels.width.max(item.pixels.height) == 32
+        }))
+    })?;
     assert!(runtime.launch(app_id.clone(), "中文".into(), Action::Launch, 0));
     assert!(!runtime.launch(app_id.clone(), "duplicate".into(), Action::Launch, 0));
     await_event(&runtime, |event| {
