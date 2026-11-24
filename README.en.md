@@ -24,7 +24,7 @@ Velo is an application launcher for **Windows 10 / 11 x64**, built with **Rust +
 
 The native UI and application logic run in a single process. Settings, the app index and usage history stay on your computer. Choose a list or icon grid and a light or dark theme. This page accompanies the [primary Chinese documentation](README.md).
 
-> **v0.11.2** adds folder pinning and improves update notes and download progress. Installers are currently unsigned. See the [v0.11.2 release notes (Chinese)](docs/releases/0.11.2.md).
+> **v0.12.0** adds an experimental radial workspace that is off by default, unifies confirmation dialogs, and improves selection on the home screen and in search results. Installers are currently unsigned. [v0.12.0 release notes (Chinese)](docs/releases/0.12.0.md)
 
 ## Screenshots
 
@@ -68,7 +68,7 @@ See the [screenshot directory](docs/images/README.md) for more captures.
 - **Quick access**: pin apps and folders to home. Search Windows shortcuts by Chinese, English, pinyin and abbreviations.
 - **Result actions**: ranked list and grid views; context menus can launch, open the installation directory, run as administrator or pin an app.
 - **Custom items**: drag, select, or paste paths to add folders and `.exe` / `.lnk` entries outside scanned directories. Use the star button to pin them to home.
-- **Appearance and preferences**: light, dark or system theme, list or grid layout, login startup, result limits, ranking weights and index refresh settings. Development builds add a thin outline that follows the theme and use native rounded corners on Windows 11.
+- **Appearance and preferences**: light, dark or system theme, list or grid layout, login startup, result limits, ranking weights and index refresh settings. The window has a thin outline that follows the theme and uses native rounded corners on Windows 11.
 - **Local data and backups**: background index refresh, visible-range icon loading with a cache budget, and backups of saved configuration.
 - **Updates**: GitHub Releases checks, SHA-256 verification, configuration backup before installation, and system-installer upgrades that preserve settings.
 

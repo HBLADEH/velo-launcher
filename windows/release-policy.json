@@ -1,13 +1,13 @@
 {
   "DefaultRenderer": "software",
   "AlternateRenderer": "femtovg",
-  "Scope": "Velo 0.11.2 passed desktop regression and smoke tests on Windows 11 x64. Windows 10 guest and physical IME coverage applies to the builds identified in that evidence.",
-  "Evidence": "docs/baselines/2026-11-20-v0.11.2/README.md",
-  "LicenseReview": "docs/baselines/2026-11-07-slint-rs14/completion-2026-11-13/license-review.md",
-  "ReleaseTag": "v0.11.2",
+  "Scope": "Velo 0.12.0 passed desktop regression and smoke tests on Windows 11 x64 with both renderers. Workspace is experimental and disabled by default. Windows 10, physical IME, mixed DPI and installer transaction evidence applies to its recorded builds.",
+  "Evidence": "docs/baselines/2026-11-24-v0.12.0/README.md",
+  "LicenseReview": "docs/baselines/2026-11-24-v0.12.0/README.md",
+  "ReleaseTag": "v0.12.0",
   "G4Passed": true,
   "RedistributionCleared": true,
   "PublicReleaseApproved": true,
-  "Approval": "Repository owner requested public publication of v0.11.2 through GitHub Actions on 2026-11-20 (Asia/Shanghai).",
-  "ReleaseEvidence": "docs/baselines/2026-11-20-v0.11.2/README.md"
+  "Approval": "Repository owner requested public publication of v0.12.0 through GitHub Actions on 2026-11-24 (Asia/Shanghai) and deferred v1.0.0.",
+  "ReleaseEvidence": "docs/baselines/2026-11-24-v0.12.0/README.md"
 }
