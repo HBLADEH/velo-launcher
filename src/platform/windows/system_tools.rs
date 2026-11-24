@@ -1,9 +1,9 @@
 use super::preferences::Root;
-use super::{instance::wide, launch::Failure, preferences};
+use super::{launch::Failure, preferences};
 use crate::core::{
     Result,
     model::AppItem,
-    system_tools::{self, Environment},
+    system_tools::{self, Environment, Prompt},
 };
 use std::os::windows::process::CommandExt;
 use std::process::Command;
@@ -13,7 +13,6 @@ use windows_sys::Win32::System::Shutdown::LockWorkStation;
 use windows_sys::Win32::UI::Shell::{
     SHERB_NOCONFIRMATION, SHEmptyRecycleBinW, SHQUERYRBINFO, SHQueryRecycleBinW,
 };
-use windows_sys::Win32::UI::WindowsAndMessaging::*;
 
 pub fn discover() -> Result<Vec<AppItem>> {
     let windows = preferences::windows_directory()?;
@@ -56,122 +55,72 @@ pub fn discover() -> Result<Vec<AppItem>> {
     Ok(items)
 }
 
-pub fn action(owner: isize, item: &AppItem) -> std::result::Result<(), Failure> {
+pub fn action(
+    owner: isize,
+    item: &AppItem,
+    prompt: impl FnOnce(Prompt) -> std::result::Result<bool, Failure>,
+) -> std::result::Result<(), Failure> {
     if !system_tools::special(item) {
         return Err(Failure::Unavailable);
     }
-    let owner = owner as HWND;
-    // SAFETY: the owner stays live until completion, strings are owned for each
-    // blocking call. Every destructive command comes from the exact allow list.
-    unsafe {
-        match item.id.as_str() {
-            "system:lock" => {
-                if LockWorkStation() == 0 {
-                    Err(Failure::Shell)
-                } else {
-                    Ok(())
-                }
+    match item.id.as_str() {
+        "system:lock" => {
+            // SAFETY: this is the allow-listed lock action and takes no pointers.
+            if unsafe { LockWorkStation() } == 0 {
+                Err(Failure::Shell)
+            } else {
+                Ok(())
             }
-            "system:shutdown" | "system:restart" => {
-                let answer = MessageBoxW(
-                    owner,
-                    wide(&format!("确定要{}吗？请先保存正在编辑的文件。", item.name)).as_ptr(),
-                    wide(&format!("Velo · {}", item.name)).as_ptr(),
-                    MB_OKCANCEL | MB_DEFBUTTON2 | MB_ICONWARNING | MB_SETFOREGROUND,
-                );
-                if answer != IDOK {
-                    return Err(Failure::Cancelled);
-                }
-                let root = preferences::windows_directory().map_err(|_| Failure::Unavailable)?;
-                let status = Command::new(root.join("System32/shutdown.exe"))
-                    .args([
-                        if item.id == "system:restart" {
-                            "/r"
-                        } else {
-                            "/s"
-                        },
-                        "/t",
-                        "0",
-                    ])
-                    .creation_flags(0x08000000)
-                    .status()
-                    .map_err(|_| Failure::Shell)?;
-                if status.success() {
-                    Ok(())
-                } else {
-                    Err(Failure::Shell)
-                }
-            }
-            "system:empty-recycle-bin" => {
-                let query = || {
-                    let mut info = SHQUERYRBINFO {
-                        cbSize: std::mem::size_of::<SHQUERYRBINFO>() as u32,
-                        ..Default::default()
-                    };
-                    (SHQueryRecycleBinW(null(), &mut info) >= 0).then_some(info.i64NumItems)
-                };
-                empty_recycle_bin(
-                    query,
-                    |count| confirm_empty_recycle_bin(owner, count),
-                    // SHEmptyRecycleBin can return S_OK when its own dialog is
-                    // cancelled. Own the decision above; retain Shell progress
-                    // and sound, but avoid a second, unobservable confirmation.
-                    || SHEmptyRecycleBinW(owner, null(), SHERB_NOCONFIRMATION),
-                    || {
-                        if MessageBoxW(
-                            owner,
-                            wide("回收站已为空，无需清理。").as_ptr(),
-                            wide("Velo · 清空回收站").as_ptr(),
-                            MB_OK | MB_ICONINFORMATION | MB_SETFOREGROUND,
-                        ) == 0
-                        {
-                            Err(Failure::Shell)
-                        } else {
-                            Ok(())
-                        }
-                    },
-                )
-            }
-            _ => Err(Failure::Unavailable),
         }
-    }
-}
-
-fn confirm_empty_recycle_bin(
-    owner: HWND,
-    count: Option<i64>,
-) -> std::result::Result<bool, Failure> {
-    let message = match count.filter(|count| *count > 0) {
-        Some(count) => format!("确定要永久删除回收站中的 {count} 个项目吗？此操作无法撤销。"),
-        None => "确定要永久删除回收站中的所有项目吗？此操作无法撤销。".into(),
-    };
-    // SAFETY: owner belongs to the caller and outlives this blocking dialog;
-    // strings remain alive until MessageBoxW returns. This only asks, never deletes.
-    match unsafe {
-        MessageBoxW(
-            owner,
-            wide(&message).as_ptr(),
-            wide("Velo · 清空回收站").as_ptr(),
-            MB_OKCANCEL | MB_DEFBUTTON1 | MB_ICONWARNING | MB_SETFOREGROUND,
-        )
-    } {
-        IDOK => Ok(true),
-        IDCANCEL => Ok(false),
-        _ => Err(Failure::Shell),
+        "system:shutdown" | "system:restart" => {
+            let restart = item.id == "system:restart";
+            if !prompt(if restart {
+                Prompt::Restart
+            } else {
+                Prompt::Shutdown
+            })? {
+                return Err(Failure::Cancelled);
+            }
+            let root = preferences::windows_directory().map_err(|_| Failure::Unavailable)?;
+            let status = Command::new(root.join("System32/shutdown.exe"))
+                .args([if restart { "/r" } else { "/s" }, "/t", "0"])
+                .creation_flags(0x08000000)
+                .status()
+                .map_err(|_| Failure::Shell)?;
+            if status.success() {
+                Ok(())
+            } else {
+                Err(Failure::Shell)
+            }
+        }
+        "system:empty-recycle-bin" => empty_recycle_bin(
+            || {
+                let mut info = SHQUERYRBINFO {
+                    cbSize: std::mem::size_of::<SHQUERYRBINFO>() as u32,
+                    ..Default::default()
+                };
+                // SAFETY: the initialized output lives for the query; null selects all drives.
+                (unsafe { SHQueryRecycleBinW(null(), &mut info) } >= 0).then_some(info.i64NumItems)
+            },
+            prompt,
+            // Own the confirmation in Velo and retain Shell progress and sound.
+            // SAFETY: the caller retains the owner until this blocking call completes.
+            || unsafe { SHEmptyRecycleBinW(owner as HWND, null(), SHERB_NOCONFIRMATION) },
+        ),
+        _ => Err(Failure::Unavailable),
     }
 }
 
 fn empty_recycle_bin(
     query: impl Fn() -> Option<i64>,
-    confirm: impl FnOnce(Option<i64>) -> std::result::Result<bool, Failure>,
+    prompt: impl FnOnce(Prompt) -> std::result::Result<bool, Failure>,
     empty: impl FnOnce() -> i32,
-    notify_empty: impl FnOnce() -> std::result::Result<(), Failure>,
 ) -> std::result::Result<(), Failure> {
     let count = query();
     if count == Some(0) {
-        return notify_empty();
+        return prompt(Prompt::RecycleBinAlreadyEmpty).map(|_| ());
     }
-    if !confirm(count)? {
+    if !prompt(Prompt::EmptyRecycleBin(count))? {
         return Err(Failure::Cancelled);
     }
     let result = empty();
@@ -189,96 +138,18 @@ mod tests {
     use std::cell::Cell;
 
     #[test]
-    fn native_recycle_confirmation_focuses_ok_and_enter_confirms_without_deleting() {
-        use std::sync::mpsc;
-        use std::time::{Duration, Instant};
-        use windows_sys::Win32::System::Threading::GetCurrentThreadId;
-        use windows_sys::Win32::UI::Input::KeyboardAndMouse::VK_RETURN;
-
-        unsafe extern "system" fn find_dialog(hwnd: HWND, slot: isize) -> i32 {
-            // SAFETY: slot is a live output in the synchronous enumeration;
-            // only this test's dialog thread is enumerated, never user dialogs.
-            unsafe {
-                if !GetDlgItem(hwnd, IDOK).is_null() && !GetDlgItem(hwnd, IDCANCEL).is_null() {
-                    *(slot as *mut isize) = hwnd as isize;
-                    return 0;
-                }
-            }
-            1
-        }
-
-        let (sender, receiver) = mpsc::sync_channel(1);
-        let worker = std::thread::spawn(move || {
-            // SAFETY: ID of this live thread, used only to find its own dialog.
-            sender.send(unsafe { GetCurrentThreadId() }).unwrap();
-            // This calls only the production confirmation. No query, cleanup or
-            // SHEmptyRecycleBin is reachable from this test.
-            confirm_empty_recycle_bin(std::ptr::null_mut(), Some(3))
-        });
-        let thread = receiver.recv_timeout(Duration::from_secs(3)).unwrap();
-        let deadline = Instant::now() + Duration::from_secs(5);
-        let mut dialog = 0isize;
-        let mut focused_control = 0;
-        let mut default_control = 0;
-        while Instant::now() < deadline {
-            let mut info = GUITHREADINFO {
-                cbSize: std::mem::size_of::<GUITHREADINFO>() as u32,
-                ..Default::default()
-            };
-            // SAFETY: queries stay on the explicitly spawned test thread. Slot
-            // and GUI info outlive each synchronous Win32 call.
-            unsafe {
-                EnumThreadWindows(
-                    thread,
-                    Some(find_dialog),
-                    (&mut dialog as *mut isize) as isize,
-                );
-                if dialog != 0 {
-                    default_control = SendMessageW(dialog as HWND, WM_USER, 0, 0) as u32 & 0xffff; // DM_GETDEFID
-                    if GetGUIThreadInfo(thread, &mut info) != 0 && !info.hwndFocus.is_null() {
-                        focused_control = GetDlgCtrlID(info.hwndFocus);
-                    }
-                }
-            }
-            if default_control == IDOK as u32 && focused_control == IDOK {
-                break;
-            }
-            std::thread::sleep(Duration::from_millis(15));
-        }
-        if dialog != 0 {
-            // SAFETY: Enter is delivered only to our confirmation-only dialog;
-            // on a failed focus observation, cancel it to leave no modal behind.
-            unsafe {
-                if default_control == IDOK as u32 && focused_control == IDOK {
-                    PostMessageW(dialog as HWND, WM_KEYDOWN, usize::from(VK_RETURN), 0);
-                } else {
-                    SendMessageW(dialog as HWND, WM_COMMAND, IDCANCEL as usize, 0);
-                }
-            }
-        }
-        assert_ne!(dialog, 0, "native confirmation did not open");
-        let result = worker.join().unwrap();
-        assert_eq!(default_control, IDOK as u32);
-        assert_eq!(focused_control, IDOK);
-        assert_eq!(
-            result,
-            Ok(true),
-            "Enter should accept the default confirmation"
-        );
-    }
-
-    #[test]
     fn cancelled_confirmation_never_calls_shell_or_reports_success() {
         for count in [Some(7), None] {
             assert_eq!(
                 empty_recycle_bin(
                     || count,
-                    |actual| {
-                        assert_eq!(actual, count);
+                    |prompt| {
+                        assert!(
+                            matches!(prompt, Prompt::EmptyRecycleBin(actual) if actual == count)
+                        );
                         Ok(false)
                     },
-                    || panic!("cancelled action reached Shell"),
-                    || panic!("not empty")
+                    || panic!("cancelled action reached Shell")
                 ),
                 Err(Failure::Cancelled)
             );
@@ -287,8 +158,7 @@ mod tests {
             empty_recycle_bin(
                 || Some(7),
                 |_| Err(Failure::Shell),
-                || panic!("failed confirmation reached Shell"),
-                || panic!("not empty")
+                || panic!("failed confirmation reached Shell")
             ),
             Err(Failure::Shell)
         );
@@ -299,9 +169,11 @@ mod tests {
         assert_eq!(
             empty_recycle_bin(
                 || Some(0),
-                |_| panic!("empty bin confirmation"),
-                || panic!("empty bin operation"),
-                || Ok(())
+                |prompt| {
+                    assert!(matches!(prompt, Prompt::RecycleBinAlreadyEmpty));
+                    Ok(false)
+                },
+                || panic!("empty bin operation")
             ),
             Ok(())
         );
@@ -312,7 +184,7 @@ mod tests {
             (0x80004005u32 as i32, Err(Failure::Shell)),
         ] {
             assert_eq!(
-                empty_recycle_bin(|| Some(7), |_| Ok(true), || result, || panic!("not empty")),
+                empty_recycle_bin(|| Some(7), |_| Ok(true), || result),
                 expected
             );
         }
@@ -329,19 +201,13 @@ mod tests {
                     Some(if n == 0 { 7 } else { 0 })
                 },
                 |_| Ok(true),
-                || 0x8000ffffu32 as i32,
-                || panic!("initially not empty")
+                || 0x8000ffffu32 as i32
             ),
             Ok(())
         );
         assert_eq!(queries.get(), 2);
         assert_eq!(
-            empty_recycle_bin(
-                || None,
-                |_| Ok(true),
-                || 0x8000ffffu32 as i32,
-                || panic!("unknown bin")
-            ),
+            empty_recycle_bin(|| None, |_| Ok(true), || 0x8000ffffu32 as i32),
             Err(Failure::Shell)
         );
     }

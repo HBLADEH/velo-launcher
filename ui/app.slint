@@ -6,6 +6,8 @@ import { LaunchGroupsPanel, GroupMemberRow } from "launch-groups.slint";
 export { GroupMemberRow } from "launch-groups.slint";
 import { AboutSlint, Palette } from "std-widgets.slint";
 import { ActionButton, AppTile, ContentScroll, Glyph, HomeSection, LauncherItem, PageTransition, PreviewEntry, ResultRow, SurfaceBackground, Theme } from "components.slint";
+import { Confirmation, ConfirmationDialog } from "confirmation.slint";
+export { Confirmation } from "confirmation.slint";
 import { ControlBounds, LicenseEntry, SettingsPanel, SettingsDraft } from "settings.slint";
 import { WorkspaceEditorState } from "workspace-settings.slint";
 export { WorkspaceDraft, WorkspaceChoice, WorkspaceEditorState } from "workspace-settings.slint";
@@ -66,8 +68,6 @@ export component AppWindow inherits Window {
     in property <bool> group-run-busy;
     in property <bool> group-retryable;
     in property <bool> groups-available;
-    in property <bool> group-confirm;
-    in property <string> group-confirm-text;
     in property <string> group-notice;
     in property <string> group-summary;
     in property <string> group-report-id;
@@ -75,13 +75,20 @@ export component AppWindow inherits Window {
     callback group-delete(string); callback group-save(); callback group-close();
     callback group-add(string); callback group-remove(string); callback group-detect(string);
     callback group-detection-selected(string); callback group-picker-cancelled();
-    callback group-retry(); callback group-force(string); callback group-cancel(); callback group-answer(bool);
+    callback group-retry(); callback group-force(string); callback group-cancel();
     callback group-filter-changed(); callback group-draft-changed();
     in property <[PreviewEntry]> preview-entries;
     in property <bool> import-busy: false;
     in property <bool> import-elevated: false;
     in property <bool> drop-hovering: false;
     in property <bool> native-dialog-active: false;
+    in property <bool> confirmation-open;
+    in property <Confirmation> confirmation;
+    out property <length> confirmation-minimum-height: root.confirmation-open ? dialog.minimum-window-height : 0px;
+    in property <float> confirmation-layout-height;
+    out property <bool> confirmation-layout-ready: !root.lifecycle-enabled
+        || (root.confirmation-layout-height > 0 && root.height + 1px >= root.confirmation-layout-height * 1px);
+    callback confirmation-answered(bool);
     in property <string> import-summary: "0 项预览";
     in-out property <string> import-notice;
     in-out property <string> import-path;
@@ -229,6 +236,13 @@ export component AppWindow inherits Window {
             else if !root.appearance-open { input.focus(); }
         }
     }
+    public function focus-confirmation() { dialog.focus-default(); }
+    public function restore-confirmation-focus() {
+        if root.presented && !root.native-dialog-active {
+            if root.appearance-open { settings.focus-panel(); }
+            else { root.focus-input(); }
+        }
+    }
     public function suspend-input() { parking-focus.focus(); }
     public function settings-geometry() -> [ControlBounds] { return settings.control-bounds(); }
     public function show-licenses(open: bool) { settings.show-licenses(open); }
@@ -311,6 +325,7 @@ export component AppWindow inherits Window {
     }
     changed settings-tab => { if root.appearance-open && root.settings-tab == 7 { WorkspaceEditorState.open(); } }
     changed native-dialog-active => { root.workspace-input-suspended(root.native-dialog-active || root.hotkey-recording); }
+    changed confirmation-minimum-height => { root.layout-changed(); }
     changed hotkey-recording => { root.workspace-input-suspended(root.native-dialog-active || root.hotkey-recording); }
     changed import-open => { root.layout-changed(); root.icon-viewport-changed(); }
     changed groups-open => { root.layout-changed(); root.icon-viewport-changed(); }
@@ -620,13 +635,13 @@ export component AppWindow inherits Window {
                 groups: root.group-items; sources: root.group-sources; members: root.group-members; results: root.group-results;
                 name <=> root.group-name; aliases <=> root.group-aliases; filter <=> root.group-filter; mode <=> root.group-mode;
                 busy: root.group-busy; run-busy: root.group-run-busy; retryable: root.group-retryable; available: root.groups-available;
-                notice: root.group-notice; summary: root.group-summary; confirm: root.group-confirm; confirm-text: root.group-confirm-text;
+                notice: root.group-notice; summary: root.group-summary;
                 report-id: root.group-report-id;
                 close => { root.group-close(); } create => { root.group-new(); } edit(id) => { root.group-edit(id); } remove-group(id) => { root.group-delete(id); }
                 save => { root.group-save(); } add(id) => { root.group-add(id); } remove(id) => { root.group-remove(id); }
                 detect(id) => { root.group-detect(id); }
                 viewport-changed => { root.icon-viewport-changed(); }
-                retry => { root.group-retry(); } force(id) => { root.group-force(id); } cancel => { root.group-cancel(); } answer(yes) => { root.group-answer(yes); }
+                retry => { root.group-retry(); } force(id) => { root.group-force(id); } cancel => { root.group-cancel(); }
                 drag => { root.drag-requested(); }
             }
         }
@@ -719,6 +734,13 @@ export component AppWindow inherits Window {
             drag => { root.drag-requested(); }
         }
         }
+    }
+    dialog := ConfirmationDialog {
+        width: parent.width; height: parent.height;
+        open: root.presented && root.confirmation-open;
+        layout-ready: root.confirmation-layout-ready;
+        content: root.confirmation;
+        answered(accepted) => { root.confirmation-answered(accepted); }
     }
     if root.draw-window-border: Rectangle {
         width: parent.width;

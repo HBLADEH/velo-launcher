@@ -11,7 +11,7 @@ use velo_slint::core::group_run::{Report, State};
 use velo_slint::core::launch_groups::{Detection, Draft, DraftTicket, Group, Member, RunningRule};
 use velo_slint::core::service::Snapshot;
 
-use crate::{AppWindow, GroupMemberRow, LauncherItem};
+use crate::{AppWindow, Confirmation, GroupMemberRow, LauncherItem, confirmations};
 
 pub enum Command {
     Save(Group),
@@ -33,23 +33,27 @@ enum Confirm {
 
 pub struct Controller {
     app: slint::Weak<AppWindow>,
+    confirmations: Rc<confirmations::Controller>,
     snapshot: RefCell<Option<Arc<Snapshot>>>,
     draft: RefCell<Draft>,
     submit: Box<dyn Fn(Command) -> bool>,
-    confirm: RefCell<Option<Confirm>>,
     detection: RefCell<Option<String>>,
     pending_save: RefCell<Option<Group>>,
     report: RefCell<Option<Report>>,
 }
 
 impl Controller {
-    pub fn connect(app: &AppWindow, submit: impl Fn(Command) -> bool + 'static) -> Rc<Self> {
+    pub fn connect(
+        app: &AppWindow,
+        confirmations: Rc<confirmations::Controller>,
+        submit: impl Fn(Command) -> bool + 'static,
+    ) -> Rc<Self> {
         let this = Rc::new(Self {
             app: app.as_weak(),
+            confirmations,
             snapshot: RefCell::default(),
             draft: RefCell::default(),
             submit: Box::new(submit),
-            confirm: RefCell::default(),
             detection: RefCell::default(),
             pending_save: RefCell::default(),
             report: RefCell::default(),
@@ -106,16 +110,23 @@ impl Controller {
         let weak = Rc::downgrade(&this);
         app.on_group_delete(move |id| {
             if let Some(this) = weak.upgrade() {
-                this.ask(
-                    Confirm::Delete(id.into()),
-                    "删除此启动组合？应用文件和其他组合不会被删除。",
+                let mut confirmation = confirmations::question(
+                    "删除启动组合？",
+                    "此操作会删除组合及其启动配置。应用文件和其他组合会保留。",
+                    "删除组合",
+                    "delete",
                 );
-            }
-        });
-        let weak = Rc::downgrade(&this);
-        app.on_group_answer(move |yes| {
-            if let Some(this) = weak.upgrade() {
-                this.answer(yes);
+                if let Some(group) = this.snapshot.borrow().as_ref().and_then(|snapshot| {
+                    snapshot
+                        .groups
+                        .groups
+                        .iter()
+                        .find(|group| group.id == id.as_str())
+                }) {
+                    confirmation.subject = group.name.as_str().into();
+                }
+                confirmation.destructive = true;
+                this.ask(Confirm::Delete(id.into()), confirmation);
             }
         });
         let weak = Rc::downgrade(&this);
@@ -152,7 +163,12 @@ impl Controller {
             if let Some(this) = weak.upgrade() {
                 this.ask(
                     Confirm::Force(id.into()),
-                    "无法确认该应用是否已运行。仍然打开可能创建重复窗口，是否继续？",
+                    confirmations::question(
+                        "仍然打开应用？",
+                        "无法确认该应用是否已运行。继续打开可能创建重复窗口。",
+                        "仍然打开",
+                        "apps",
+                    ),
                 );
             }
         });
@@ -458,14 +474,10 @@ impl Controller {
         }
     }
 
-    fn close(&self) {
+    fn close(self: &Rc<Self>) {
         let Some(app) = self.app.upgrade() else {
             return;
         };
-        if app.get_group_confirm() {
-            self.answer(false);
-            return;
-        }
         if app.get_group_busy() {
             self.notice("正在检查或保存，请稍候");
             return;
@@ -473,7 +485,14 @@ impl Controller {
         if app.get_group_mode() == 1 {
             let edited = self.edited_group();
             if self.draft.borrow().dirty() || edited.as_ref() != self.draft.borrow().group() {
-                self.ask(Confirm::Close, "放弃尚未保存的组合修改？");
+                let mut confirmation = confirmations::question(
+                    "放弃组合修改？",
+                    "当前草稿的修改尚未保存。放弃后将回到启动组合列表。",
+                    "放弃修改",
+                    "edit",
+                );
+                confirmation.cancel_label = "继续编辑".into();
+                self.ask(Confirm::Close, confirmation);
                 return;
             }
             self.draft.borrow_mut().close();
@@ -483,37 +502,31 @@ impl Controller {
         }
     }
 
-    fn ask(&self, action: Confirm, text: &str) {
-        *self.confirm.borrow_mut() = Some(action);
-        if let Some(app) = self.app.upgrade() {
-            app.set_group_confirm_text(text.into());
-            app.invoke_suspend_input();
-            app.set_group_confirm(true);
-        }
+    fn ask(self: &Rc<Self>, action: Confirm, confirmation: Confirmation) {
+        let weak = Rc::downgrade(self);
+        self.confirmations
+            .show(confirmation, false, move |accepted| {
+                if accepted && let Some(this) = weak.upgrade() {
+                    this.confirm(action);
+                }
+            });
     }
 
-    fn answer(&self, yes: bool) {
-        let action = self.confirm.borrow_mut().take();
+    fn confirm(&self, action: Confirm) {
         let Some(app) = self.app.upgrade() else {
             return;
         };
-        app.set_group_confirm(false);
-        app.invoke_focus_input();
-        if !yes {
-            return;
-        }
         match action {
-            Some(Confirm::Close) => {
+            Confirm::Close => {
                 self.draft.borrow_mut().close();
                 app.set_group_mode(0);
             }
-            Some(Confirm::Delete(id)) => {
+            Confirm::Delete(id) => {
                 if (self.submit)(Command::Delete(id)) {
                     app.set_group_busy(true);
                 }
             }
-            Some(Confirm::Force(id)) => self.retry(Some(id)),
-            None => {}
+            Confirm::Force(id) => self.retry(Some(id)),
         }
     }
 

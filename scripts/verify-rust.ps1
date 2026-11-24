@@ -59,12 +59,11 @@ try {
             if ($LASTEXITCODE -ne 0) { throw "clippy failed: $name" }
             $testArguments = @('test', '--locked', '--no-default-features', '--features', $feature)
             if ($HostedCI) {
-                # These tests need taskbar, global hotkey or modal focus ownership.
+                # These tests need taskbar or global hotkey ownership.
                 $testArguments += @(
                     '--',
                     '--skip', 'platform::windows::desktop::tests::native_endpoint_second_launch_tray_recovery_and_cleanup',
-                    '--skip', 'platform::windows::hotkey::tests::native_conflict_rollback_dispatch_rebind_and_cleanup',
-                    '--skip', 'platform::windows::system_tools::tests::native_recycle_confirmation_focuses_ok_and_enter_confirms_without_deleting'
+                    '--skip', 'platform::windows::hotkey::tests::native_conflict_rollback_dispatch_rebind_and_cleanup'
                 )
             }
             & cargo @testArguments

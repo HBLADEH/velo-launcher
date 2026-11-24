@@ -42,7 +42,7 @@ pub fn execute(
     action: Action,
 ) -> Result<(), Failure> {
     if action == Action::Launch && item.path.starts_with("velo-action:") {
-        return super::system_tools::action(owner, item);
+        return super::system_tools::action(owner, item, |_| Err(Failure::Cancelled));
     }
     let windows = std::env::var_os("WINDIR").ok_or(Failure::Unavailable)?;
     let command = launch::command(item, action, Path::new(&windows), |path| {

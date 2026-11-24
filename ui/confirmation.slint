@@ -1,0 +1,147 @@
+import { ActionButton, ContentScroll, Glyph, Theme } from "components.slint";
+
+export struct Confirmation {
+    title: string,
+    subject: string,
+    detail: string,
+    icon-key: string,
+    confirm-label: string,
+    cancel-label: string,
+    destructive: bool,
+    default-accept: bool,
+}
+
+export component ConfirmationDialog inherits FocusScope {
+    in property <Confirmation> content;
+    in property <bool> open;
+    in property <bool> layout-ready: true;
+    out property <length> minimum-window-height: min(304px, panel.preferred-height + 24px);
+    callback answered(bool);
+
+    public function focus-default() {
+        body.content-y = 0px;
+        if root.content.cancel-label == "" || root.content.default-accept { confirm.focus(); }
+        else { cancel.focus(); }
+    }
+
+    visible: root.open;
+    enabled: root.open;
+    focus-on-click: false;
+    focus-on-tab-navigation: false;
+    accessible-role: groupbox;
+    accessible-label: root.content.title;
+    accessible-description: root.content.subject == "" ? root.content.detail : root.content.subject + "。 " + root.content.detail;
+    capture-key-pressed(event) => {
+        if event.text == Key.Escape {
+            if !event.repeat { root.answered(false); }
+            return accept;
+        }
+        if !root.layout-ready { return accept; }
+        if event.text == Key.Tab || event.text == Key.Backtab {
+            if root.content.cancel-label != "" {
+                if confirm.has-keyboard-focus { cancel.focus(); }
+                else { confirm.focus(); }
+            }
+            return accept;
+        }
+        if event.repeat && (event.text == Key.Return || event.text == " ") { return accept; }
+        if event.text == Key.PageUp || event.text == Key.PageDown {
+            body.content-y = max(min(0px, body.height - body.content-height),
+                min(0px, body.content-y + (event.text == Key.PageUp ? body.height : -body.height)));
+            return accept;
+        }
+        return reject;
+    }
+
+    private property <float> opacity-progress: root.open ? 1 : 0;
+    animate opacity-progress { duration: root.open && !Theme.reduce-motion ? 140ms : 0ms; easing: ease-out; }
+    opacity: root.opacity-progress;
+
+    Rectangle { width: root.width; height: root.height; background: Theme.dialog-scrim; }
+    TouchArea {
+        width: root.width; height: root.height;
+        scroll-event(event) => { return accept; }
+    }
+
+    panel := Rectangle {
+        property <length> inset: 22px;
+        property <length> text-left: inset + 40px + 14px;
+        property <length> footer-height: 64px;
+        preferred-height: body.y + body.content-height + 20px + footer-height;
+        width: max(0px, min(420px, root.width - 24px));
+        height: min(self.preferred-height, max(0px, root.height - 24px));
+        x: (root.width - self.width) / 2;
+        y: (root.height - self.height) / 2;
+        opacity: root.layout-ready ? 1 : 0;
+        border-radius: 14px;
+        border-width: 1px; border-color: Theme.border;
+        background: Theme.surface;
+        drop-shadow-color: Theme.dark ? #050b1670 : #112c4d38;
+        drop-shadow-blur: 20px; drop-shadow-offset-y: 8px;
+
+        Rectangle {
+            x: panel.inset; y: 20px; width: 40px; height: 40px;
+            border-radius: 10px;
+            background: root.content.destructive ? Theme.danger.mix(Theme.surface, 0.18) : Theme.selected;
+            Glyph {
+                x: 9px; y: 9px; width: 22px; height: 22px;
+                icon-key: root.content.icon-key;
+                colorize: root.content.destructive ? Theme.danger-ink : Theme.accent;
+            }
+        }
+        title := Text {
+            x: panel.text-left; y: 22px;
+            width: max(1px, panel.width - self.x - panel.inset);
+            height: self.preferred-height;
+            text: root.content.title;
+            font-size: 18px; font-weight: 700; color: Theme.fg;
+            wrap: word-wrap;
+        }
+        body := ContentScroll {
+            x: panel.text-left; y: title.y + title.height + 8px;
+            width: max(1px, panel.width - self.x - panel.inset + 10px);
+            height: max(0px, footer.y - self.y - 19px);
+            content-height: detail.y + detail.height;
+            subject := Text {
+                x: 0px; y: 0px; width: max(1px, body.width - 10px);
+                height: root.content.subject == "" ? 0px : self.preferred-height;
+                visible: root.content.subject != "";
+                text: root.content.subject;
+                font-size: 14px; font-weight: 600; color: Theme.fg;
+                wrap: word-wrap; line-height-factor: 1.35;
+            }
+            detail := Text {
+                x: 0px; y: subject.height > 0px ? subject.height + 6px : 0px;
+                width: subject.width; height: self.preferred-height;
+                text: root.content.detail;
+                font-size: 13px; color: Theme.muted.mix(Theme.fg, 0.67);
+                wrap: word-wrap; line-height-factor: 1.45;
+            }
+        }
+        footer := Rectangle {
+            x: 1px; y: panel.height - self.height - 1px;
+            width: max(0px, panel.width - 2px); height: panel.footer-height;
+            border-bottom-left-radius: 13px; border-bottom-right-radius: 13px;
+            background: Theme.bg.mix(Theme.surface, 0.7);
+            actions := HorizontalLayout {
+                x: footer.width - self.width - panel.inset;
+                y: (footer.height - self.height) / 2;
+                width: self.preferred-width; height: 34px; spacing: 10px;
+                cancel := ActionButton {
+                    visible: root.content.cancel-label != "";
+                    enabled: root.open && self.visible;
+                    width: self.visible ? 90px : 0px;
+                    height: 34px; text-size: 13px; focus-ring: true;
+                    text: root.content.cancel-label;
+                    activated => { if root.layout-ready { root.answered(false); } }
+                }
+                confirm := ActionButton {
+                    width: 106px; height: 34px; text-size: 13px; focus-ring: true;
+                    text: root.content.confirm-label;
+                    enabled: root.open; primary: true; destructive: root.content.destructive;
+                    activated => { if root.layout-ready { root.answered(true); } }
+                }
+            }
+        }
+    }
+}

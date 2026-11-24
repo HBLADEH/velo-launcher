@@ -17,6 +17,7 @@ use velo_slint::core::model::AppItem;
 use velo_slint::core::service::{
     Event, IconTarget, InstallProgress, Manage, Options, Runtime, Snapshot,
 };
+use velo_slint::core::system_tools::{Prompt as SystemPrompt, needs_confirmation};
 use velo_slint::core::update::DownloadProgress;
 use velo_slint::core::workspace::{
     actions::{Success as WorkspaceSuccess, WorkspaceAction},
@@ -26,11 +27,12 @@ use velo_slint::core::{icons, normalize::normalize, service};
 use velo_slint::platform::windows::launch::Failure as LaunchFailure;
 use velo_slint::platform::windows::{workspace::Foreground, workspace_actions::Application};
 
-use crate::{AppWindow, LauncherItem, SettingsDraft, navigation, ui};
+use crate::{AppWindow, Confirmation, LauncherItem, SettingsDraft, confirmations, navigation, ui};
 
 pub struct Controller {
     groups: RefCell<Option<Rc<crate::group_editor::Controller>>>,
     app: slint::Weak<AppWindow>,
+    confirmations: Rc<confirmations::Controller>,
     runtime: Rc<RefCell<Runtime>>,
     snapshot: RefCell<Option<Arc<Snapshot>>>,
     choices: RefCell<Vec<Arc<AppItem>>>,
@@ -77,6 +79,7 @@ impl Controller {
 
     pub fn connect(
         app: &AppWindow,
+        confirmations: Rc<confirmations::Controller>,
         directory: &Path,
         diagnostics: bool,
         options: Option<Options>,
@@ -92,6 +95,7 @@ impl Controller {
         let controller = Rc::new(Self {
             groups: RefCell::new(None),
             app: app.as_weak(),
+            confirmations,
             runtime,
             files,
             snapshot: RefCell::new(None),
@@ -196,19 +200,19 @@ impl Controller {
         let weak = Rc::downgrade(&controller);
         app.on_application_menu(move |id| {
             if let Some(controller) = weak.upgrade() {
-                controller.native(&id, 0);
+                controller.application_menu(&id);
             }
         });
         let weak = Rc::downgrade(&controller);
         app.on_application_delete(move |id| {
             if let Some(controller) = weak.upgrade() {
-                controller.native(&id, 5);
+                controller.confirm_removal(&id, false);
             }
         });
         let weak = Rc::downgrade(&controller);
         app.on_application_menu_completed(move |id, action| {
             if let Some(controller) = weak.upgrade() {
-                controller.native_completed(&id, action);
+                controller.application_menu_completed(&id, action);
             }
         });
         let weak = Rc::downgrade(&controller);
@@ -243,7 +247,7 @@ impl Controller {
         app.on_update_requested(move |install| {
             if let Some(controller) = weak.upgrade() {
                 if install {
-                    controller.native("", 6);
+                    controller.confirm_update();
                 } else {
                     controller.update(false);
                 }
@@ -296,6 +300,7 @@ impl Controller {
         let weak = Rc::downgrade(&controller);
         *controller.groups.borrow_mut() = Some(crate::group_editor::Controller::connect(
             app,
+            controller.confirmations.clone(),
             move |command| {
                 let Some(controller) = weak.upgrade() else {
                     return false;
@@ -480,6 +485,9 @@ impl Controller {
                     }
                 }
                 Event::Icons { .. } => {}
+                Event::SystemPrompt(prompt) => {
+                    self.confirm_system_action(prompt);
+                }
                 Event::Launched {
                     id,
                     result,
@@ -506,7 +514,7 @@ impl Controller {
                         };
                         app.set_selection_notice(notice.into());
                         if error == LaunchFailure::MissingTarget {
-                            self.prompt_for_missing_item(&id);
+                            self.confirm_removal(&id, true);
                         }
                     } else if !history_saved {
                         app.set_selection_notice(
@@ -834,7 +842,8 @@ impl Controller {
             let Some(item) = snapshot.catalog.item(id) else {
                 return;
             };
-            snapshot.library.has_custom_app(id)
+            (action == Action::Launch && needs_confirmation(item))
+                || snapshot.library.has_custom_app(id)
                 || (item.pinned
                     && (Path::new(&item.path).is_absolute()
                         || item.path.starts_with(APPS_FOLDER_PREFIX)))
@@ -842,11 +851,12 @@ impl Controller {
         let Some(owner) = owner(&app) else {
             return;
         };
-        if self
-            .runtime
-            .borrow()
-            .launch(id.into(), app.get_input_text().to_string(), action, owner)
-        {
+        if self.runtime.borrow().launch_interactive(
+            id.into(),
+            app.get_input_text().to_string(),
+            action,
+            owner,
+        ) {
             if action != Action::OpenDirectory {
                 if !keep_visible {
                     app.invoke_clear_input();
@@ -1007,35 +1017,153 @@ impl Controller {
             }
         }
     }
-    fn prompt_for_missing_item(self: &Rc<Self>, id: &str) {
-        let request = self.snapshot.borrow().as_ref().and_then(|snapshot| {
-            let item = snapshot.catalog.item(id)?;
-            if snapshot.library.has_custom_app(id) {
-                Some(interaction::DELETE_MISSING_CUSTOM_APP)
+    fn confirm_removal(self: &Rc<Self>, id: &str, missing: bool) {
+        let Some(app) = self.app.upgrade() else {
+            return;
+        };
+        if app.get_management_busy() {
+            return;
+        }
+        let (item, is_custom) = {
+            let snapshot = self.snapshot.borrow();
+            let Some(snapshot) = snapshot.as_ref() else {
+                return;
+            };
+            let Some(item) = snapshot.catalog.item(id) else {
+                return;
+            };
+            (item.clone(), snapshot.library.has_custom_app(id))
+        };
+        if !(is_custom || (missing && item.pinned)) {
+            return;
+        }
+        let mut confirmation = if is_custom {
+            let reason = if missing && item.is_folder() {
+                "找不到此文件夹。\n"
+            } else if missing {
+                "找不到此应用。\n"
             } else {
-                item.pinned.then_some(interaction::UNPIN_MISSING_APP)
+                ""
+            };
+            let detail = format!("{reason}移除范围仅限 Velo 中的自定义记录及首页固定项。");
+            let mut confirmation =
+                confirmations::question("移除自定义项目？", detail, "移除记录", "delete");
+            confirmation.destructive = true;
+            confirmation
+        } else {
+            let (title, detail, icon) = if item.is_folder() {
+                (
+                    "取消固定文件夹？",
+                    "找不到此文件夹，可能已被移动或删除。\n取消固定后，首页将移除此快捷入口。",
+                    "folder",
+                )
+            } else {
+                (
+                    "取消固定应用？",
+                    "找不到此应用，可能已卸载或移动。\n取消固定后，首页将移除此快捷入口。",
+                    "pinned",
+                )
+            };
+            let mut confirmation = confirmations::question(title, detail, "取消固定", icon);
+            confirmation.cancel_label = "保留固定".into();
+            confirmation
+        };
+        confirmation.subject = item.name.as_str().into();
+        let request = if is_custom {
+            Manage::Delete(id.into())
+        } else {
+            Manage::Pin(id.into(), false)
+        };
+        let weak = Rc::downgrade(self);
+        self.confirmations
+            .show(confirmation, false, move |accepted| {
+                if accepted && let Some(controller) = weak.upgrade() {
+                    controller.manage(request);
+                }
+            });
+    }
+
+    fn confirm_update(self: &Rc<Self>) {
+        let Some(app) = self.app.upgrade() else {
+            return;
+        };
+        if app.get_management_busy() || app.get_update_busy() {
+            return;
+        }
+        let mut confirmation = confirmations::question(
+            "下载并安装更新？",
+            "Velo 会在安装前备份已保存的配置，随后退出并在更新后重新启动。",
+            "下载并安装",
+            "download",
+        );
+        confirmation.subject = app.get_update_release_label();
+        let weak = Rc::downgrade(self);
+        self.confirmations
+            .show(confirmation, false, move |accepted| {
+                if accepted && let Some(controller) = weak.upgrade() {
+                    controller.update(true);
+                }
+            });
+    }
+
+    fn confirm_system_action(&self, prompt: SystemPrompt) {
+        let mut confirmation = match prompt {
+            SystemPrompt::Shutdown => {
+                confirmations::question("关闭电脑？", "请先保存正在编辑的文件。", "关机", "power")
             }
-        });
-        if let Some(request) = request {
-            self.native(id, request);
+            SystemPrompt::Restart => confirmations::question(
+                "重启电脑？",
+                "请先保存正在编辑的文件。",
+                "重新启动",
+                "refresh",
+            ),
+            SystemPrompt::EmptyRecycleBin(count) => {
+                let detail = match count.filter(|count| *count > 0) {
+                    Some(count) => format!("将永久删除回收站中的 {count} 个项目。此操作无法撤销。"),
+                    None => "将永久删除回收站中的所有项目。此操作无法撤销。".into(),
+                };
+                let mut confirmation =
+                    confirmations::question("清空回收站？", detail, "清空回收站", "delete");
+                confirmation.default_accept = true;
+                confirmation
+            }
+            SystemPrompt::RecycleBinAlreadyEmpty => Confirmation {
+                title: "回收站已为空".into(),
+                detail: "当前没有需要清理的项目。".into(),
+                confirm_label: "确定".into(),
+                icon_key: "check".into(),
+                ..Confirmation::default()
+            },
+        };
+        confirmation.destructive = !confirmation.cancel_label.is_empty();
+        let runtime = Rc::downgrade(&self.runtime);
+        if !self
+            .confirmations
+            .show(confirmation, true, move |accepted| {
+                if let Some(runtime) = runtime.upgrade() {
+                    runtime.borrow().answer_system_prompt(accepted);
+                }
+            })
+        {
+            self.runtime.borrow().answer_system_prompt(false);
         }
     }
 
-    fn native(self: &Rc<Self>, id: &str, request: i32) {
+    fn application_menu(self: &Rc<Self>, id: &str) {
         let Some(app) = self.app.upgrade() else {
             return;
         };
         if !app.get_presented() || app.get_native_dialog_active() || app.get_management_busy() {
             return;
         }
-        let item = self
+        let Some(item) = self
             .snapshot
             .borrow()
             .as_ref()
-            .and_then(|s| s.catalog.item(id).cloned());
-        if request != 6 && item.is_none() {
+            .and_then(|s| s.catalog.item(id).cloned())
+        else {
             return;
-        }
+        };
         let Some(owner) = owner(&app) else {
             return;
         };
@@ -1047,7 +1175,7 @@ impl Controller {
         let started = std::thread::Builder::new()
             .name("velo-item-interaction".into())
             .spawn(move || {
-                let result = interaction::application(owner, item.as_deref(), request);
+                let result = interaction::application_menu(owner, &item);
                 let _ = weak.upgrade_in_event_loop(move |app| {
                     app.invoke_application_menu_completed(id.into(), result)
                 });
@@ -1057,7 +1185,7 @@ impl Controller {
             app.set_selection_notice("无法打开原生交互，请重试".into());
         }
     }
-    fn native_completed(self: &Rc<Self>, id: &str, action: i32) {
+    fn application_menu_completed(self: &Rc<Self>, id: &str, action: i32) {
         let Some(app) = self.app.upgrade() else {
             return;
         };
@@ -1070,10 +1198,7 @@ impl Controller {
                 let pinned = self.runtime.borrow().is_pinned(id);
                 self.manage(Manage::Pin(id.into(), !pinned));
             }
-            5 | interaction::DELETE_MISSING_CUSTOM_APP => self.manage(Manage::Delete(id.into())),
-            6 => self.update(true),
-            interaction::UNPIN_MISSING_APP => self.manage(Manage::Pin(id.into(), false)),
-            -1 => app.set_selection_notice("无法打开原生菜单或确认框，请重试".into()),
+            -1 => app.set_selection_notice("无法打开菜单，请重试".into()),
             _ => {}
         }
         app.invoke_native_interaction_finished();

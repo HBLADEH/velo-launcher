@@ -1,9 +1,12 @@
 //! Opt-in component integration checks; synthetic events are not native IME proof.
 
-use slint::platform::{Key, WindowEvent};
-use slint::{ComponentHandle, Model};
+use std::cell::Cell;
+use std::rc::Rc;
 
-use crate::AppWindow;
+use slint::platform::{Key, PointerEventButton, WindowEvent};
+use slint::{ComponentHandle, LogicalPosition, Model};
+
+use crate::{AppWindow, confirmations};
 
 fn press(app: &AppWindow, text: impl Into<slint::SharedString>) {
     let text = text.into();
@@ -18,7 +21,23 @@ fn check(passed: bool, name: &str) -> Result<(), String> {
     if passed { Ok(()) } else { Err(name.into()) }
 }
 
-pub fn run(app: &AppWindow) -> Result<(), String> {
+fn click(app: &AppWindow, x: f32, y: f32) {
+    let position = LogicalPosition::new(x, y);
+    for event in [
+        WindowEvent::PointerPressed {
+            position,
+            button: PointerEventButton::Left,
+        },
+        WindowEvent::PointerReleased {
+            position,
+            button: PointerEventButton::Left,
+        },
+    ] {
+        app.window().dispatch_event(event);
+    }
+}
+
+pub fn run(app: &AppWindow, confirmations: &confirmations::Controller) -> Result<(), String> {
     app.set_reduce_motion(true);
     app.invoke_clear_input();
     let first = app.get_selected_id();
@@ -149,6 +168,96 @@ pub fn run(app: &AppWindow) -> Result<(), String> {
         app.get_selected_id() == "code" && app.get_result_items().row_count() == 2,
         "unicode_query_normalization",
     )?;
+    check_confirmation(app, confirmations)?;
     app.invoke_clear_input();
+    Ok(())
+}
+
+fn check_confirmation(
+    app: &AppWindow,
+    controller: &confirmations::Controller,
+) -> Result<(), String> {
+    let query = app.get_input_text();
+    let selection = app.get_selected_id();
+    let mut dialog = confirmations::question(
+        "取消固定应用？",
+        "取消固定后，应用将从首页移除。",
+        "取消固定",
+        "pinned",
+    );
+    dialog.subject = "取色卡".into();
+    let answer = Rc::new(Cell::new(None));
+    let reply = answer.clone();
+    check(
+        controller.show(dialog.clone(), false, move |accepted| {
+            reply.set(Some(accepted))
+        }),
+        "confirmation_opens",
+    )?;
+    check(
+        !controller.show(dialog.clone(), false, |_| {}),
+        "confirmation_rejects_stacking",
+    )?;
+    click(app, 300.0, 40.0);
+    check(
+        app.get_confirmation_open() && !app.get_input_has_focus(),
+        "confirmation_blocks_background_click",
+    )?;
+    press(app, Key::Return);
+    check(
+        !app.get_confirmation_open()
+            && !app.get_native_dialog_active()
+            && app.get_input_has_focus()
+            && app.get_input_text() == query
+            && app.get_selected_id() == selection
+            && answer.get() == Some(false),
+        "confirmation_defaults_to_cancel_and_restores_search",
+    )?;
+
+    let reply = answer.clone();
+    controller.show(dialog, false, move |accepted| reply.set(Some(accepted)));
+    press(app, Key::Tab);
+    press(app, Key::Backtab);
+    press(app, Key::Tab);
+    press(app, Key::Return);
+    check(
+        answer.get() == Some(true),
+        "confirmation_keeps_tab_focus_on_actions",
+    )?;
+
+    // Keep the existing Recycle Bin keyboard flow. The callback here records
+    // only the answer, so no system action can execute.
+    let mut dialog =
+        confirmations::question("清空回收站？", "此操作无法撤销。", "清空回收站", "delete");
+    dialog.default_accept = true;
+    dialog.destructive = true;
+    let reply = answer.clone();
+    app.set_native_dialog_active(true);
+    controller.show(dialog.clone(), true, move |accepted| {
+        reply.set(Some(accepted))
+    });
+    app.window().dispatch_event(WindowEvent::KeyPressRepeated {
+        text: Key::Return.into(),
+    });
+    check(
+        app.get_confirmation_open(),
+        "confirmation_ignores_held_enter",
+    )?;
+    press(app, Key::Return);
+    check(
+        !app.get_confirmation_open()
+            && app.get_native_dialog_active()
+            && answer.get() == Some(true),
+        "recycle_confirmation_enter_keeps_launch_lock",
+    )?;
+    let reply = answer.clone();
+    controller.show(dialog, true, move |accepted| reply.set(Some(accepted)));
+    press(app, Key::Escape);
+    check(
+        !app.get_confirmation_open() && answer.get() == Some(false),
+        "confirmation_escape_cancels",
+    )?;
+    app.set_native_dialog_active(false);
+    app.invoke_focus_input();
     Ok(())
 }

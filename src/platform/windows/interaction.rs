@@ -1,5 +1,5 @@
 //! Owned native interactions run on one temporary STA thread at a time. The
-//! Slint thread stays responsive; neither menu nor dialog executes a file.
+//! Slint thread stays responsive while Windows owns the menu or file picker.
 
 use std::os::windows::ffi::OsStringExt;
 use std::path::PathBuf;
@@ -24,8 +24,6 @@ pub const CLEAR: i32 = 2;
 pub const BACK: i32 = 3;
 pub const MENU: i32 = 4;
 pub const BROWSE_EXECUTABLE: i32 = 5;
-pub const UNPIN_MISSING_APP: i32 = 7;
-pub const DELETE_MISSING_CUSTOM_APP: i32 = 8;
 pub const BROWSE_FOLDER: i32 = 9;
 pub const FILE_PIN_FOLDER: i32 = 4;
 pub const FILE_UNPIN_FOLDER: i32 = 5;
@@ -101,20 +99,6 @@ pub fn run(owner: isize, request: i32) -> Completion {
         let owner = owner as HWND;
         let result = match request {
             BROWSE | BROWSE_EXECUTABLE => browse(owner, request == BROWSE_EXECUTABLE),
-            CLEAR => Completion {
-                action: if MessageBoxW(
-                    owner,
-                    wide("清空当前导入预览？原文件不会被修改。").as_ptr(),
-                    wide("Velo · 清空预览").as_ptr(),
-                    MB_OKCANCEL | MB_ICONQUESTION | MB_DEFBUTTON2,
-                ) == IDOK
-                {
-                    CLEAR
-                } else {
-                    0
-                },
-                ..Default::default()
-            },
             MENU => menu(owner),
             _ => Completion::default(),
         };
@@ -281,47 +265,11 @@ unsafe fn menu(owner: HWND) -> Completion {
 
 /// Only an existing catalog item can reach this worker. Return a command; no
 /// menu selection performs disk writes or launches before the UI accepts it.
-pub fn application(owner: isize, item: Option<&AppItem>, request: i32) -> i32 {
+pub fn application_menu(owner: isize, item: &AppItem) -> i32 {
     let owner = owner as HWND;
     // SAFETY: UI retains owner and suppresses hide/quit for this interaction.
     // All Win32 objects are created/destroyed on this temporary worker thread.
     unsafe {
-        if matches!(
-            request,
-            5 | 6 | UNPIN_MISSING_APP | DELETE_MISSING_CUSTOM_APP
-        ) {
-            let message = match (request, item) {
-                (5, _) => "移除此自定义项目及其固定项？磁盘内容将保留。".into(),
-                (6, _) => "下载并安装更新？Velo 将备份已保存的配置，退出并重新启动。".into(),
-                (UNPIN_MISSING_APP | DELETE_MISSING_CUSTOM_APP, Some(item)) => {
-                    let missing = if item.is_folder() {
-                        format!("找不到文件夹“{}”。它可能已被移动或删除。", item.name)
-                    } else {
-                        format!("找不到应用“{}”。它可能已被卸载或移动。", item.name)
-                    };
-                    let question = if request == DELETE_MISSING_CUSTOM_APP {
-                        "是否从 Velo 移除这条自定义项目记录及其固定项？磁盘内容将保留。"
-                    } else {
-                        "是否取消固定？"
-                    };
-                    format!("{missing}\n\n{question}")
-                }
-                _ => return 0,
-            };
-            return match MessageBoxW(
-                owner,
-                wide(&message).as_ptr(),
-                wide("Velo · 确认操作").as_ptr(),
-                MB_OKCANCEL | MB_DEFBUTTON2 | MB_ICONQUESTION | MB_SETFOREGROUND,
-            ) {
-                IDOK => request,
-                0 => -1,
-                _ => 0,
-            };
-        }
-        let Some(item) = item else {
-            return 0;
-        };
         let host = CreateWindowExW(
             0,
             wide("STATIC").as_ptr(),

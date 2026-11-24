@@ -22,6 +22,7 @@ slint::include_modules!();
 
 mod business;
 mod business_probe;
+mod confirmations;
 mod everything_probe;
 mod file_search_ui;
 mod fixtures;
@@ -264,7 +265,13 @@ fn main() -> Result<(), Box<dyn Error>> {
         ))
         .into()
     });
-    let imports = import_preview::Controller::connect(&app, diagnostics, measurement.clone());
+    let confirmations = confirmations::Controller::connect(&app);
+    let imports = import_preview::Controller::connect(
+        &app,
+        confirmations.clone(),
+        diagnostics,
+        measurement.clone(),
+    );
     app.set_dark_theme(dark_theme);
     app.set_reduce_motion(reduce_motion);
     app.set_lifecycle_enabled(!isolated);
@@ -305,6 +312,7 @@ fn main() -> Result<(), Box<dyn Error>> {
             .transpose()?;
         Some(business::Controller::connect(
             &app,
+            confirmations.clone(),
             &identity.data_dir,
             diagnostics,
             options,
@@ -506,9 +514,10 @@ fn main() -> Result<(), Box<dyn Error>> {
     if input_smoke_test {
         let result = input_result.clone();
         let weak_app = app.as_weak();
+        let confirmations = confirmations.clone();
         slint::Timer::single_shot(Duration::from_millis(500), move || {
             if let Some(app) = weak_app.upgrade() {
-                let check = interaction_probe::run(&app);
+                let check = interaction_probe::run(&app, &confirmations);
                 eprintln!(
                     "event=input_smoke_result passed={} error={:?}",
                     check.is_ok(),

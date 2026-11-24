@@ -324,6 +324,12 @@ impl Controller {
         let weak = Rc::downgrade(&controller);
         app.window().on_close_requested(move || {
             if let Some(controller) = weak.upgrade() {
+                if let Some(app) = controller.app.upgrade()
+                    && app.get_confirmation_open()
+                {
+                    app.invoke_confirmation_answered(false);
+                    return CloseRequestResponse::KeepWindowShown;
+                }
                 let state = controller.state.borrow();
                 let recording = state.recording;
                 let recoverable = state.hotkey_available || state.tray_available;
@@ -753,6 +759,7 @@ impl Controller {
                 app.get_result_items().row_count(),
             )
         };
+        let height = height.max(app.get_confirmation_minimum_height().ceil() as i32);
         let Some(layout) = geometry::layout(native, height, self.positioned.get()) else {
             self.log("geometry_error", "operation=monitor_layout");
             return;
@@ -761,6 +768,11 @@ impl Controller {
         let scale = layout.dpi as f32 / 96.0;
         let width = bounds.width as f32 / scale;
         let height = bounds.height as f32 / scale;
+        if app.get_confirmation_open() {
+            // Slint may paint a Software frame before Winit delivers Resized.
+            // Reveal the panel when its actual height reaches the work-area-clamped target.
+            app.set_confirmation_layout_height(height);
+        }
         let changed = (app.get_viewport_width() - width).abs() > 0.1
             || (app.get_viewport_height() - height).abs() > 0.1;
         if changed {

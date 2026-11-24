@@ -31,9 +31,14 @@ New-Item -ItemType Directory -Path $manual | Out-Null
 Copy-Item -LiteralPath $Helper -Destination (Join-Path $manual 'RS11 自定义应用.exe')
 $instance = 'rs11-ui-' + [guid]::NewGuid().ToString('N')
 foreach ($mode in @('pages-smoke-test','pages-restart-test')) {
+    if ($mode -eq 'pages-restart-test') {
+        # Simulate a pinned application disappearing inside this disposable fixture.
+        $shortcut = Join-Path $fixture 'apps/RS10 启动验证.lnk'
+        Move-Item -LiteralPath $shortcut -Destination "$shortcut.offline"
+    }
     $log = Join-Path $OutputDirectory ($mode + '.stderr.log')
     $process = Start-Process -FilePath $Executable -ArgumentList "--$mode", '--diagnostics',
-        "--instance-id=$instance", ('--data-dir="' + $dataDirectory + '"'), '--hotkey=Ctrl+Alt+K', '--query="RS10 启动验证"' `
+        "--instance-id=$instance", ('--data-dir="' + $dataDirectory + '"'), '--hotkey=Ctrl+Alt+Shift+F11', '--query="RS10 启动验证"' `
         -WindowStyle Hidden -PassThru -RedirectStandardError $log
     try {
         $deadline = [DateTime]::UtcNow.AddSeconds(100)
@@ -49,7 +54,8 @@ foreach ($mode in @('pages-smoke-test','pages-restart-test')) {
 $saved = Get-Content -LiteralPath (Join-Path $dataDirectory 'config.json') -Raw | ConvertFrom-Json
 if ($saved.result_layout -ne 'grid' -or $saved.max_results -ne 20 -or $saved.auto_check_updates) { throw 'Settings did not survive restart or an unsaved draft was persisted.' }
 if (-not (Test-Path -LiteralPath (Join-Path $dataDirectory 'backup-created.png'))) { throw 'Missing backup screenshot.' }
-Write-Output 'RS-11 settings, grid, import, pin, backup, restart and delete integration passed.'
+if (-not (Test-Path -LiteralPath (Join-Path $manual 'RS11 自定义应用.exe'))) { throw 'Removing the custom record changed the source file.' }
+Write-Output 'RS-11 settings, grid, import, pin, backup, restart and confirmation integration passed.'
 if ($LegacyCopySource) {
     foreach ($name in $sourceHashes.Keys) {
         if ((Get-FileHash -LiteralPath (Join-Path $source $name)).Hash -ne $sourceHashes[$name]) { throw 'Original old data changed during copy verification.' }

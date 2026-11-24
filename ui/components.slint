@@ -40,6 +40,9 @@ export global Theme {
     out property <color> accent-line: dark ? #365f8b : #b4d5ff;
     out property <color> shadow: dark ? #00000020 : #1d4b8210;
     out property <color> glow: dark ? #0078d418 : #0078d40c;
+    out property <color> dialog-scrim: dark ? #050b16a6 : #172c4b59;
+    out property <color> danger: dark ? #c64354 : #b32c3d;
+    out property <color> danger-ink: dark ? #ff9fac : #a62738;
 }
 
 export component SurfaceBackground inherits Rectangle {
@@ -135,6 +138,9 @@ export component ActionButton inherits Rectangle {
     in property <bool> spinning: false;
     in property <bool> flat: false;
     in property <bool> primary: false;
+    in property <bool> destructive: false;
+    in property <bool> focus-ring: false;
+    out property <bool> has-keyboard-focus: focus.has-focus;
     in property <length> text-size: 11px;
     in property <length> radius: 8px;
     in property <bool> show-shadow: false;
@@ -145,14 +151,24 @@ export component ActionButton inherits Rectangle {
     animate press-scale { duration: Theme.reduce-motion ? 0ms : 180ms; easing: cubic-bezier(0.22, 1, 0.36, 1); }
     height: 32px;
     background: transparent;
+    if root.focus-ring && focus.has-focus: Rectangle {
+        x: -3px; y: -3px;
+        width: parent.width + 6px; height: parent.height + 6px;
+        border-radius: root.radius + 3px;
+        border-width: 2px; border-color: Theme.accent;
+    }
     Rectangle {
         x: (parent.width - self.width) / 2; y: (parent.height - self.height) / 2;
         width: parent.width * (Theme.reduce-motion ? 1 : root.press-scale);
         height: parent.height * (Theme.reduce-motion ? 1 : root.press-scale);
         border-radius: root.radius;
-        background: root.primary ? (touch.has-hover ? #0067c0 : #0078d4) : root.checked ? Theme.selected : touch.pressed ? Theme.selected : touch.has-hover && !root.flat ? Theme.hover : root.flat ? transparent : Theme.field;
+        background: root.destructive ? (touch.has-hover ? Theme.danger.darker(0.15) : Theme.danger)
+            : root.primary ? (touch.has-hover ? #0067c0 : #0078d4)
+            : root.checked || touch.pressed ? Theme.selected
+            : touch.has-hover && !root.flat ? Theme.hover : root.flat ? transparent : Theme.field;
         border-width: root.flat && !root.checked ? 0px : 1px;
-        border-color: focus.has-focus ? Theme.accent : root.primary ? #0078d4 : root.checked ? Theme.accent-line : Theme.border;
+        border-color: focus.has-focus && !root.focus-ring ? Theme.accent : root.destructive ? Theme.danger
+            : root.primary ? #0078d4 : root.checked ? Theme.accent-line : Theme.border;
         drop-shadow-blur: root.show-shadow ? 12px : 0px; drop-shadow-offset-y: root.show-shadow ? 3px : 0px; drop-shadow-color: Theme.shadow;
         animate background, border-color { duration: Theme.reduce-motion ? 0ms : 160ms; }
         if root.icon-key != "" && !((root.icon-key == "refresh" || root.icon-key == "settings") && root.icon-angle != 0deg): Glyph {
@@ -168,7 +184,7 @@ export component ActionButton inherits Rectangle {
         if root.icon-key == "": Text {
             text: root.text;
             font-size: root.text-size;
-            color: root.primary ? white : root.checked ? Theme.accent : root.flat ? Theme.muted : Theme.fg;
+            color: root.primary || root.destructive ? white : root.checked ? Theme.accent : root.flat ? Theme.muted : Theme.fg;
             horizontal-alignment: center;
             vertical-alignment: center;
         }
@@ -192,7 +208,7 @@ export component ActionButton inherits Rectangle {
     accessible-label: root.text;
     accessible-checkable: root.checkable;
     accessible-checked: root.checked;
-    accessible-action-default => { root.activated(); }
+    accessible-action-default => { if root.enabled { root.activated(); } }
     forward-focus: focus;
 }
 

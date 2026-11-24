@@ -20,6 +20,8 @@ use velo_slint::core::{
 use velo_slint::platform;
 
 slint::include_modules!();
+#[path = "../src/confirmations.rs"]
+mod confirmations;
 #[path = "../src/group_editor.rs"]
 mod group_editor;
 
@@ -71,7 +73,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     .map_err(|_| "icon worker panicked")??;
     let commands = Rc::new(RefCell::new(Vec::new()));
     let capture = commands.clone();
-    let editor = group_editor::Controller::connect(&app, move |command| {
+    let confirmations = confirmations::Controller::connect(&app);
+    let editor = group_editor::Controller::connect(&app, confirmations, move |command| {
         capture.borrow_mut().push(command);
         false
     });
@@ -203,11 +206,11 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 }
                 4 => {
                     app.invoke_group_close();
-                    assert!(app.get_group_confirm());
-                    app.invoke_group_answer(false);
+                    assert!(app.get_confirmation_open());
+                    app.invoke_confirmation_answered(false);
                     assert_eq!(app.get_group_mode(), 1);
                     app.invoke_group_close();
-                    app.invoke_group_answer(true);
+                    app.invoke_confirmation_answered(true);
                     assert_eq!(app.get_group_mode(), 0);
                     editor.managed("group_delete", false);
                     editor.detection_ready(

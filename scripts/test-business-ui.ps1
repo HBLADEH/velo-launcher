@@ -15,7 +15,7 @@ if ($LASTEXITCODE -ne 0) { throw 'Failed to create synthetic business UI fixture
 $log = Join-Path $OutputDirectory 'business.stderr.log'
 $instance = 'rs10-ui-' + [guid]::NewGuid().ToString('N')
 $process = Start-Process -FilePath $Executable -ArgumentList '--business-smoke-test', '--diagnostics', '--reduce-motion',
-    "--instance-id=$instance", ('--data-dir="' + (Join-Path $fixture 'data') + '"'), '--hotkey=Ctrl+Alt+K', '--query="RS10 启动验证"' `
+    "--instance-id=$instance", ('--data-dir="' + (Join-Path $fixture 'data') + '"'), '--hotkey=Ctrl+Alt+Shift+F11', '--query="RS10 启动验证"' `
     -WindowStyle Hidden -PassThru -RedirectStandardError $log
 try {
     if (-not $process.WaitForExit(60000)) { throw 'Business UI verification timed out.' }

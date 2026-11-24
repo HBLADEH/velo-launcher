@@ -83,6 +83,7 @@ fn inspect(path: &Path) -> PreviewEntry {
 
 pub struct Controller {
     app: slint::Weak<AppWindow>,
+    confirmations: Rc<crate::confirmations::Controller>,
     draft: RefCell<Draft>,
     queued: Cell<bool>,
     native_request: Cell<i32>,
@@ -92,9 +93,15 @@ pub struct Controller {
 }
 
 impl Controller {
-    pub fn connect(app: &AppWindow, diagnostics: bool, observer: Option<Observer>) -> Rc<Self> {
+    pub fn connect(
+        app: &AppWindow,
+        confirmations: Rc<crate::confirmations::Controller>,
+        diagnostics: bool,
+        observer: Option<Observer>,
+    ) -> Rc<Self> {
         let controller = Rc::new(Self {
             app: app.as_weak(),
+            confirmations,
             draft: RefCell::default(),
             queued: Cell::new(false),
             native_request: Cell::new(0),
@@ -320,6 +327,26 @@ impl Controller {
         {
             return;
         }
+        if request == interaction::CLEAR {
+            let weak = Rc::downgrade(self);
+            let confirmation = crate::confirmations::question(
+                "清空导入预览？",
+                "此操作会清除当前预览中的所有条目。原文件会保留。",
+                "清空预览",
+                "delete",
+            );
+            self.confirmations
+                .show(confirmation, false, move |accepted| {
+                    if accepted && let Some(controller) = weak.upgrade() {
+                        controller.draft.borrow_mut().clear();
+                        controller.publish();
+                        if let Some(app) = controller.app.upgrade() {
+                            app.set_import_notice("预览已清空。".into());
+                        }
+                    }
+                });
+            return;
+        }
         let owner = app
             .window()
             .with_winit_window(|window| match window.window_handle().ok()?.as_raw() {
@@ -411,15 +438,9 @@ impl Controller {
                         .collect(),
                     "picker",
                 ),
-            interaction::CLEAR => {
-                self.draft.borrow_mut().clear();
-                self.publish();
-                app.set_import_notice("预览已清空；原文件未修改。".into());
-            }
             interaction::BACK => app.invoke_show_import(false),
             _ => {}
         }
-        // Menu "clear" opens the confirmation as its own owned interaction.
         app.invoke_native_interaction_finished();
     }
 }

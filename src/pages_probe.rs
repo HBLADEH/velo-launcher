@@ -1,7 +1,8 @@
 //! Opt-in component verification against a real isolated store. This exercises
 //! callbacks and persistence; it is deliberately not native keyboard/IME proof.
-use crate::{AppWindow, business_probe::QUERY};
+use crate::{AppWindow, business_probe::QUERY, platform::windows::interaction};
 use image::ImageEncoder;
+use slint::platform::Key;
 use slint::{ComponentHandle, Model};
 use std::cell::{Cell, RefCell};
 use std::path::Path;
@@ -77,6 +78,13 @@ impl Controller {
             .window()
             .take_snapshot()
             .map_err(|_| "snapshot failed")?;
+        if app.get_confirmation_open() {
+            let scale = pixels.width() as f32 / app.get_viewport_width();
+            self.check(
+                pixels.height() as f32 + 1.0 >= app.get_confirmation_layout_height() * scale,
+                "confirmation_snapshot_uses_resized_window",
+            )?;
+        }
         self.sender
             .borrow()
             .as_ref()
@@ -144,8 +152,11 @@ impl Controller {
                             .any(|i| i.name == "RS11 自定义应用"),
                         "custom_import_survives_restart",
                     )?;
-                    Self::query(app, "RS11 自定义应用");
-                    self.stage.set(40);
+                    // The default list has less room than the grid for a single result.
+                    app.set_grid_results(false);
+                    app.invoke_layout_changed();
+                    app.invoke_item_chosen(app.get_selected_id());
+                    self.stage.set(42);
                 } else {
                     *self.selected.borrow_mut() = app.get_selected_id();
                     app.invoke_application_menu_completed(app.get_selected_id(), 4);
@@ -261,6 +272,17 @@ impl Controller {
                         .is_some_and(|entry| entry.valid),
                     "real_import_preview_callback",
                 )?;
+                app.invoke_import_native_requested(interaction::CLEAR);
+                self.check(app.get_confirmation_open(), "clear_preview_asks_first")?;
+                self.stage.set(31);
+            }
+            31 if app.get_confirmation_layout_ready() => {
+                self.picture(app, "confirmation-clear-preview.png".into())?;
+                Self::key(app, Key::Escape);
+                self.check(
+                    !app.get_confirmation_open() && app.get_preview_entries().row_count() == 1,
+                    "clear_preview_cancel_keeps_entries",
+                )?;
                 app.invoke_import_commit();
                 self.stage.set(27);
             }
@@ -341,8 +363,9 @@ impl Controller {
                     app.get_result_items().row_count() == 1,
                     "import_is_searchable_after_restart",
                 )?;
-                app.invoke_application_menu_completed(app.get_selected_id(), 5);
-                self.stage.set(41);
+                app.invoke_application_delete(app.get_selected_id());
+                self.check(app.get_confirmation_open(), "custom_removal_asks_first")?;
+                self.stage.set(46);
             }
             41 if !app.get_management_busy() => {
                 self.check(
@@ -351,6 +374,83 @@ impl Controller {
                         .all(|i| i.name != "RS11 自定义应用")
                         && app.get_result_items().row_count() == 0,
                     "delete_callback_commits_without_revival",
+                )?;
+                Self::query(app, "关机");
+                app.invoke_item_chosen("system:shutdown".into());
+                self.stage.set(47);
+            }
+            42 if app.get_confirmation_open() && app.get_confirmation_layout_ready() => {
+                self.check(
+                    app.get_confirmation().title == "取消固定应用？" && app.get_presented(),
+                    "missing_pinned_target_opens_themed_confirmation",
+                )?;
+                self.check(
+                    app.get_viewport_height() + 1.0 >= app.get_confirmation_minimum_height(),
+                    "compact_list_makes_room_for_confirmation",
+                )?;
+                self.picture(app, "confirmation-unpin-light.png".into())?;
+                app.set_dark_theme(true);
+                self.stage.set(43);
+            }
+            43 => {
+                self.picture(app, "confirmation-unpin-dark.png".into())?;
+                Self::key(app, Key::Escape);
+                self.check(
+                    !app.get_confirmation_open()
+                        && app.get_input_has_focus()
+                        && app.get_input_text() == QUERY
+                        && app
+                            .get_result_items()
+                            .row_data(0)
+                            .is_some_and(|item| item.pinned),
+                    "missing_target_cancel_keeps_pin_and_search",
+                )?;
+                app.invoke_item_chosen(app.get_selected_id());
+                self.stage.set(44);
+            }
+            44 if app.get_confirmation_open() && app.get_confirmation_layout_ready() => {
+                Self::key(app, Key::Tab);
+                Self::key(app, Key::Return);
+                self.stage.set(45);
+            }
+            45 if !app.get_management_busy() => {
+                self.check(
+                    !app.get_confirmation_open() && app.get_result_items().row_count() == 0,
+                    "missing_target_unpin_commits",
+                )?;
+                Self::query(app, "RS11 自定义应用");
+                self.stage.set(40);
+            }
+            46 if app.get_confirmation_layout_ready() => {
+                self.picture(app, "confirmation-remove-dark.png".into())?;
+                Self::key(app, Key::Return);
+                self.check(
+                    !app.get_confirmation_open() && app.get_result_items().row_count() == 1,
+                    "custom_removal_default_keeps_record",
+                )?;
+                app.invoke_application_delete(app.get_selected_id());
+                self.check(app.get_confirmation_open(), "custom_removal_reopens")?;
+                self.stage.set(49);
+            }
+            49 if app.get_confirmation_layout_ready() => {
+                Self::key(app, Key::Tab);
+                Self::key(app, Key::Return);
+                self.check(app.get_management_busy(), "custom_removal_keyboard_submits")?;
+                self.stage.set(41);
+            }
+            47 if app.get_confirmation_open() && app.get_confirmation_layout_ready() => {
+                self.check(
+                    app.get_confirmation().title == "关闭电脑？" && app.get_presented(),
+                    "power_confirmation_stays_in_launcher",
+                )?;
+                self.picture(app, "confirmation-shutdown-dark.png".into())?;
+                Self::key(app, Key::Escape);
+                self.stage.set(48);
+            }
+            48 if !app.get_native_dialog_active() => {
+                self.check(
+                    app.get_presented() && app.get_input_text() == "关机",
+                    "power_confirmation_cancel_restores_search",
                 )?;
                 self.complete(app);
             }

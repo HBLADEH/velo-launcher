@@ -25,6 +25,22 @@ pub struct Environment<'a> {
     pub settings: bool,
     pub policies: &'a [String],
 }
+
+pub enum Prompt {
+    Shutdown,
+    Restart,
+    EmptyRecycleBin(Option<i64>),
+    RecycleBinAlreadyEmpty,
+}
+
+pub fn needs_confirmation(item: &AppItem) -> bool {
+    item.path.starts_with("velo-action:")
+        && matches!(
+            item.id.as_str(),
+            "system:shutdown" | "system:restart" | "system:empty-recycle-bin"
+        )
+}
+
 pub fn discover(env: &Environment<'_>, exists: impl Fn(&Path) -> bool) -> Result<Vec<AppItem>> {
     let mut items = Vec::new();
     for d in definitions()? {

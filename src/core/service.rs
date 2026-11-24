@@ -22,6 +22,7 @@ use super::launch_groups::{self, Collection, DraftTicket, Group};
 use super::model::AppItem;
 use super::search::Index;
 use super::storage;
+use super::system_tools::{Prompt as SystemPrompt, needs_confirmation};
 use super::workspace::{
     actions as workspace_action,
     config::{KEY as WORKSPACE_KEY, WorkspaceConfig},
@@ -90,6 +91,7 @@ pub enum Event {
         ticket: Ticket,
         items: Vec<LoadedIcon>,
     },
+    SystemPrompt(SystemPrompt),
     Launched {
         id: String,
         result: std::result::Result<(), launch::Failure>,
@@ -157,7 +159,7 @@ enum Work {
         owner: isize,
         run_id: u64,
     },
-    Launch(LaunchRequest),
+    Launch(LaunchRequest, bool),
     Workspace(WorkspaceRequest),
     FileOpen {
         path: String,
@@ -201,6 +203,7 @@ struct Shared {
     refresh: Generation,
     icon_generation: Generation,
     stopping: AtomicBool,
+    system_answer: Mutex<Option<SyncSender<bool>>>,
     events: Mutex<(bool, VecDeque<Event>)>,
     notify: Box<dyn Fn() + Send + Sync>,
     icon_mailbox: IconMailbox,
@@ -228,6 +231,28 @@ impl Shared {
         if scheduled {
             (self.notify)();
         }
+    }
+    fn confirm_system_action(
+        &self,
+        prompt: SystemPrompt,
+    ) -> std::result::Result<bool, launch::Failure> {
+        let (answer, response) = sync_channel(1);
+        {
+            let mut pending = self
+                .system_answer
+                .lock()
+                .map_err(|_| launch::Failure::Shell)?;
+            if self.stopping.load(Ordering::Acquire) {
+                return Err(launch::Failure::Cancelled);
+            }
+            *pending = Some(answer);
+        }
+        self.event(Event::SystemPrompt(prompt));
+        let accepted = response.recv().map_err(|_| launch::Failure::Cancelled)?;
+        if self.stopping.load(Ordering::Acquire) {
+            return Err(launch::Failure::Cancelled);
+        }
+        Ok(accepted)
     }
     fn status(&self, scanning: bool, notice: &'static str) {
         self.event(Event::Status { scanning, notice });
@@ -351,6 +376,7 @@ impl Runtime {
             refresh: Generation::default(),
             icon_generation: Generation::default(),
             stopping: AtomicBool::new(false),
+            system_answer: Mutex::new(None),
             events: Mutex::new((false, VecDeque::new())),
             notify: Box::new(notify),
             icon_mailbox: IconMailbox {
@@ -451,8 +477,8 @@ impl Runtime {
                             } => {
                                 run_group(&action_state, &id, &only, force, owner, run_id);
                             }
-                            Work::Launch(request) => {
-                                let result = run_action(&action_state, &request);
+                            Work::Launch(request, interactive) => {
+                                let result = run_action(&action_state, &request, interactive);
                                 action_state.event(Event::Launched {
                                     id: request.id,
                                     result: result.0,
@@ -639,26 +665,41 @@ impl Runtime {
         drained
     }
     pub fn launch(&self, id: String, query: String, action: Action, owner: isize) -> bool {
-        if self.shared.stopping.load(Ordering::Acquire)
-            || self.update_busy.load(Ordering::Acquire)
-            || self.action_busy.swap(true, Ordering::AcqRel)
+        self.queue_launch(id, query, action, owner, false)
+    }
+    pub fn launch_interactive(
+        &self,
+        id: String,
+        query: String,
+        action: Action,
+        owner: isize,
+    ) -> bool {
+        self.queue_launch(id, query, action, owner, true)
+    }
+    fn queue_launch(
+        &self,
+        id: String,
+        query: String,
+        action: Action,
+        owner: isize,
+        interactive: bool,
+    ) -> bool {
+        self.group_work(Work::Launch(
+            LaunchRequest {
+                id,
+                query,
+                action,
+                owner,
+            },
+            interactive,
+        ))
+    }
+    pub fn answer_system_prompt(&self, accepted: bool) {
+        if let Ok(mut pending) = self.shared.system_answer.lock()
+            && let Some(answer) = pending.take()
         {
-            return false;
+            let _ = answer.try_send(accepted);
         }
-        if self.actions.as_ref().is_some_and(|sender| {
-            sender
-                .try_send(Work::Launch(LaunchRequest {
-                    id,
-                    query,
-                    action,
-                    owner,
-                }))
-                .is_ok()
-        }) {
-            return true;
-        }
-        self.action_busy.store(false, Ordering::Release);
-        false
     }
     fn group_work(&self, work: Work) -> bool {
         if self.shared.stopping.load(Ordering::Acquire)
@@ -780,6 +821,10 @@ impl Runtime {
     }
     pub fn stop(&mut self) {
         self.shared.stopping.store(true, Ordering::Release);
+        // Dropping the reply wakes a launch even if its prompt never reached the UI.
+        if let Ok(mut pending) = self.shared.system_answer.lock() {
+            pending.take();
+        }
         self.shared.refresh.advance();
         self.cancel_icons();
         self.shared.icon_mailbox.wake.notify_all();
@@ -1369,6 +1414,7 @@ fn run_group(
 fn run_action(
     shared: &Shared,
     request: &LaunchRequest,
+    interactive: bool,
 ) -> (std::result::Result<(), launch::Failure>, bool) {
     let result = (|| {
         let snapshot = shared
@@ -1381,6 +1427,11 @@ fn run_action(
             .item(&request.id)
             .ok_or(launch::Failure::Unavailable)?;
         let apartment = shell::Apartment::new().map_err(|_| launch::Failure::Shell)?;
+        if interactive && request.action == Action::Launch && needs_confirmation(item) {
+            return system_tools::action(request.owner, item, |prompt| {
+                shared.confirm_system_action(prompt)
+            });
+        }
         launch::execute(&apartment, request.owner, item, request.action)
     })();
     finish_action(shared, request, result)
@@ -1512,6 +1563,7 @@ mod tests {
             refresh: Generation::default(),
             icon_generation: Generation::default(),
             stopping: AtomicBool::new(false),
+            system_answer: Mutex::new(None),
             events: Mutex::new((false, VecDeque::new())),
             notify: Box::new(|| {}),
             icon_mailbox: IconMailbox {
@@ -2144,7 +2196,7 @@ mod tests {
             owner: 0,
         };
         assert_eq!(
-            run_action(&restarted, &request),
+            run_action(&restarted, &request, false),
             (Err(launch::Failure::MissingTarget), true)
         );
         manage(&restarted, Manage::Pin(folder_id.clone(), false)).unwrap();
@@ -2239,7 +2291,7 @@ mod tests {
                 owner: 0,
             };
             assert_eq!(
-                run_action(&shared, &request),
+                run_action(&shared, &request, false),
                 (Err(launch::Failure::MissingTarget), true)
             );
             let before = shared.snapshot().unwrap().unwrap();
