@@ -294,6 +294,20 @@ export component ContentScroll inherits Rectangle {
     }
 }
 
+export component ResultTouchArea inherits TouchArea {
+    callback hovered();
+    callback context-menu();
+    mouse-cursor: pointer;
+    // Slint's moved callback only runs during a pointer grab.
+    pointer-event(event) => {
+        if event.kind == PointerEventKind.move && self.has-hover {
+            root.hovered();
+        } else if event.kind == PointerEventKind.up && event.button == PointerEventButton.right {
+            root.context-menu();
+        }
+    }
+}
+
 export component AppTile inherits Rectangle {
     in property <bool> pinnable: true;
     in property <LauncherItem> item;
@@ -350,16 +364,20 @@ export component AppTile inherits Rectangle {
             vertical-alignment: top;
         }
     }
-    touch := TouchArea {
-        mouse-cursor: pointer;
-        moved => { root.hovered(root.item.id); }
+    touch := ResultTouchArea {
+        hovered => { root.hovered(root.item.id); }
         clicked => { root.chosen(root.item.id); }
-        pointer-event(event) => { if event.kind == PointerEventKind.up && event.button == PointerEventButton.right { root.context-menu(root.item.id); } }
-    }
-    if root.pinnable && (root.item.pinned || root.selected || touch.has-hover): Rectangle {
-        x: parent.width - 23px; y: 3px; width: 20px; height: 20px; border-radius: 5px; background: Theme.field;
-        Glyph { x: 2px; y: 2px; width: 16px; height: 16px; icon-key: root.item.pinned ? "pinned" : "star"; colorize: root.item.pinned ? Theme.accent : Theme.muted; }
-        TouchArea { mouse-cursor: pointer; clicked => { root.pin-toggled(root.item.id); } }
+        context-menu => { root.context-menu(root.item.id); }
+        // The pin target stays inside the tile's hover area while taking its own clicks.
+        if root.pinnable: Rectangle {
+            visible: root.item.pinned || root.selected || touch.has-hover;
+            x: parent.width - 23px; y: 3px; width: 20px; height: 20px; border-radius: 5px; background: Theme.field;
+            Glyph { x: 2px; y: 2px; width: 16px; height: 16px; icon-key: root.item.pinned ? "pinned" : "star"; colorize: root.item.pinned ? Theme.accent : Theme.muted; }
+            ResultTouchArea {
+                hovered => { root.hovered(root.item.id); }
+                clicked => { root.pin-toggled(root.item.id); }
+            }
+        }
     }
     accessible-role: list-item;
     accessible-label: root.item.name + " · " + root.item.subtitle;
@@ -421,6 +439,7 @@ export component ResultRow inherits Rectangle {
     callback chosen(string);
     callback context-menu(string);
     callback pin-toggled(string);
+    private property <length> text-right-inset: root.pinnable ? 85px : 45px;
     height: 54px;
     border-radius: 9px;
     border-width: 1px;
@@ -429,27 +448,28 @@ export component ResultRow inherits Rectangle {
     animate background, border-color { duration: Theme.reduce-motion ? 0ms : 140ms; }
     LauncherIcon { x: 12px; y: 11px; item: root.item; }
     Text {
-        x: 57px; y: 8.5px; width: parent.width - 102px; height: 19px;
+        x: 57px; y: 8.5px; width: max(0px, parent.width - self.x - root.text-right-inset); height: 19px;
         text: root.item.name;
         color: root.selected ? Theme.accent : Theme.fg;
         font-size: 14px; font-weight: 550;
         overflow: elide;
     }
     Text {
-        x: 57px; y: 30.5px; width: parent.width - 102px; height: 15px;
+        x: 57px; y: 30.5px; width: max(0px, parent.width - self.x - root.text-right-inset); height: 15px;
         text: root.item.subtitle;
         color: Theme.muted; font-size: 11px;
         overflow: elide;
     }
-    touch := TouchArea {
-        mouse-cursor: pointer;
-        moved => { root.hovered(root.item.id); }
+    touch := ResultTouchArea {
+        hovered => { root.hovered(root.item.id); }
         clicked => { root.chosen(root.item.id); }
-        pointer-event(event) => { if event.kind == PointerEventKind.up && event.button == PointerEventButton.right { root.context-menu(root.item.id); } }
-    }
-    if root.pinnable: Rectangle { x: parent.width - (root.selected ? 77px : 47px); y: 12px; width: 34px; height: 30px;
-        Glyph { x: 9px; y: 6px; width: 18px; height: 18px; icon-key: root.item.pinned ? "pinned" : "star"; colorize: Theme.muted; }
-        TouchArea { mouse-cursor: pointer; clicked => { root.pin-toggled(root.item.id); } }
+        context-menu => { root.context-menu(root.item.id); }
+        if root.pinnable: ResultTouchArea {
+            x: parent.width - 77px; y: 12px; width: 34px; height: 30px;
+            Glyph { x: 9px; y: 6px; width: 18px; height: 18px; icon-key: root.item.pinned ? "pinned" : "star"; colorize: Theme.muted; }
+            hovered => { root.hovered(root.item.id); }
+            clicked => { root.pin-toggled(root.item.id); }
+        }
     }
     if root.selected: Glyph { x: parent.width - 30px; y: 20px; width: 14px; height: 14px; icon-key: "enter"; }
     accessible-role: list-item;

@@ -158,8 +158,14 @@ impl Controller {
                     app.invoke_item_chosen(app.get_selected_id());
                     self.stage.set(42);
                 } else {
-                    *self.selected.borrow_mut() = app.get_selected_id();
-                    app.invoke_application_menu_completed(app.get_selected_id(), 4);
+                    let selected = app.get_selected_id();
+                    crate::interaction_probe::click(app, 6.0, 112.0);
+                    self.check(
+                        app.get_selected_id().is_empty() && app.get_input_text() == QUERY,
+                        "search_margin_click_clears_selection",
+                    )?;
+                    *self.selected.borrow_mut() = selected.clone();
+                    app.invoke_application_menu_completed(selected, 4);
                     self.stage.set(1);
                 }
             }
@@ -167,6 +173,10 @@ impl Controller {
                 && app.get_result_items().row_data(0).is_some_and(|i| i.pinned) =>
             {
                 self.check(true, "pin_callback_persists_and_publishes")?;
+                self.check(
+                    app.get_selected_id().is_empty(),
+                    "catalog_refresh_keeps_deselected_search_result",
+                )?;
                 app.invoke_show_appearance(true);
                 app.set_settings_tab(0);
                 app.set_dark_theme(false);
@@ -222,6 +232,10 @@ impl Controller {
             25 if app.get_result_items().row_count() > 6 && !app.get_scanning() => {
                 Self::query(app, "");
                 self.check(
+                    app.get_selected_id().is_empty(),
+                    "clearing_search_leaves_home_unselected",
+                )?;
+                self.check(
                     app.get_system_total_count() > 12 && app.get_system_items().row_count() == 12,
                     "home_system_shortcuts_start_with_twelve",
                 )?;
@@ -234,6 +248,10 @@ impl Controller {
                 self.check(
                     app.get_system_items().row_count() > 12,
                     "system_expansion_publishes_all_choices",
+                )?;
+                self.check(
+                    app.get_selected_id().is_empty(),
+                    "expanding_system_tools_leaves_home_unselected",
                 )?;
                 app.set_all_system_tools(false);
                 Self::query(app, "系统");

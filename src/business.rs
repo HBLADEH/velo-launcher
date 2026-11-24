@@ -188,7 +188,7 @@ impl Controller {
         let weak = Rc::downgrade(&controller);
         app.on_system_expansion_changed(move || {
             if let Some(controller) = weak.upgrade() {
-                controller.render(false);
+                controller.render(true);
             }
         });
         let weak = Rc::downgrade(&controller);
@@ -744,8 +744,18 @@ impl Controller {
             results.into_iter().map(|result| result.item).collect()
         };
         let selected = app.get_selected_id();
-        if !preserve_selection || !items.iter().any(|item| item.id == selected.as_str()) {
-            app.set_selected_id(items.first().map_or("", |item| item.id.as_str()).into());
+        // Keep a blank-click deselection while refreshing an existing result list.
+        // A search receiving its first results still selects the first item.
+        let deselected = selected.is_empty() && app.get_result_items().row_count() > 0;
+        if !preserve_selection
+            || (!deselected && !items.iter().any(|item| item.id == selected.as_str()))
+        {
+            let initial_selection = if home {
+                ""
+            } else {
+                items.first().map_or("", |item| item.id.as_str())
+            };
+            app.set_selected_id(initial_selection.into());
         }
         app.set_is_home(home);
         app.set_item_count(snapshot.catalog.len() as i32);

@@ -353,10 +353,18 @@ export component AppWindow inherits Window {
             return reject;
         }
         SurfaceBackground { width: parent.width; height: parent.height; }
-        TouchArea { clicked => { root.focus-input(); } }
+        TouchArea {
+            clicked => {
+                if self.mouse-y >= launcher-header.height && root.file-active
+                    && !root.file-mode && !root.native-dialog-active {
+                    root.selected-id = "";
+                }
+                root.focus-input();
+            }
+        }
         parking-focus := FocusScope { focus-on-click: false; focus-on-tab-navigation: false; }
 
-        Rectangle {
+        launcher-header := Rectangle {
             x: 0px; y: 0px; width: parent.width;
             height: 79px; background: Theme.surface;
             // Background only: later input/buttons consume their own pointer events.

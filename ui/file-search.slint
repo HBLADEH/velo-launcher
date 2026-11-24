@@ -1,4 +1,4 @@
-import { Glyph, Theme } from "components.slint";
+import { Glyph, ResultTouchArea, Theme } from "components.slint";
 
 export struct FileEntry {
     path: string,
@@ -44,15 +44,13 @@ export component FileResultRow inherits Rectangle {
     if root.selected: Glyph {
         x: parent.width - 25px; y: 21px; width: 14px; height: 14px; icon-key: "enter";
     }
-    touch := TouchArea {
-        mouse-cursor: pointer;
-        moved => { root.hovered(root.item.path); }
+    touch := ResultTouchArea {
+        hovered => { root.hovered(root.item.path); }
         clicked => { root.hovered(root.item.path); }
         double-clicked => { root.chosen(root.item.path); }
-        pointer-event(event) => {
-            if event.kind == PointerEventKind.up && event.button == PointerEventButton.right {
-                root.hovered(root.item.path); root.context-menu(root.item.path);
-            }
+        context-menu => {
+            root.hovered(root.item.path);
+            root.context-menu(root.item.path);
         }
     }
     accessible-role: list-item;

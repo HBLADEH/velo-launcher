@@ -62,7 +62,6 @@ pub fn connect(
     }
     let initial = snapshot.home.clone();
     app.set_item_count(fixtures::ITEMS.len() as i32);
-    app.set_selected_id(initial.first().map_or("", |item| item.id).into());
     let section_lengths = [Group::Pinned, Group::Frequent, Group::System]
         .map(|group| initial.iter().filter(|item| item.group == group).count());
     let home_rows = navigation::choice_rows(&section_lengths, 6);
@@ -87,7 +86,12 @@ pub fn connect(
             }
         };
         app.set_is_home(home);
-        app.set_selected_id(items.first().map_or("", |item| item.id).into());
+        let initial_selection = if home {
+            ""
+        } else {
+            items.first().map_or("", |item| item.id)
+        };
+        app.set_selected_id(initial_selection.into());
         app.set_selection_notice("".into());
         app.set_result_items(model(items.iter().copied()));
         *query_visible.borrow_mut() = items;
