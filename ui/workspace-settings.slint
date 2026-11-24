@@ -123,7 +123,13 @@ export component WorkspaceSettings inherits Rectangle {
     drop-action(id, x, y) => { WorkspaceEditorState.drop-action(id, x, y); }
     select-point(x, y) => { WorkspaceEditorState.select-point(x, y); }
 
-    SettingHeading { x: 24px; y: 20px; text: "工作台"; }
+    heading := SettingHeading { x: 24px; y: 20px; width: self.preferred-width; text: "工作台"; }
+    SettingHint {
+        x: heading.x + heading.width + 8px; y: heading.y;
+        width: max(1px, parent.width - self.x - 24px); height: heading.height;
+        vertical-alignment: center; wrap: no-wrap; overflow: elide;
+        text: "（测试版本，可能会存在不少问题）";
+    }
     SettingCheck {
         x: 24px; y: 55px; width: 172px;
         enabled: root.active && !root.busy; text: "启用工作台"; checked <=> root.draft.enabled;
