@@ -13,3 +13,11 @@
 - 较 v0.11.2 新增的七个 Fluent 图标及其 MIT 声明已核对来源。包附第三方许可和依赖清单。 [上游资源](https://github.com/microsoft/fluentui-system-icons/tree/6c2c9075cf8952ef48369b2475233b6e9761efed/assets) · [MIT 许可](../../../ui/assets/fluent/LICENSE.txt)
 
 所有者于 2026-11-24 授权通过 GitHub Actions 发布 v0.12.0，并将 v1.0.0 留待工作台修复后发布。发行流程使用锁定的 NSIS 3.13。 [版本说明](../../releases/0.12.0.md)
+
+## 正式发行结果
+
+2026-11-24 16:05:29（北京时间），GitHub Actions 公开 Velo v0.12.0，并将其设为最新正式版本。注释 tag 指向 `29d58206e2e8f5bc8322c7ac6dc62cb59588f960`，发布正文与该提交的版本说明一致。 [发布页](https://github.com/HBLADEH/velo-launcher/releases/tag/v0.12.0)
+
+- 发布提交的主分支 CI 通过。该提交在锁定 Windows 工具链上通过 `./scripts/verify-rust.ps1 -Product -SmokeTest`，Software 和 FemtoVG 各通过 139 项 Rust 测试及正式桌面冒烟。Everything 真实端点测试各按默认配置跳过 1 项。 [主分支 CI](https://github.com/HBLADEH/velo-launcher/actions/runs/45350773232)
+- 本机使用锁定的 NSIS 3.13 从发布提交打包，发行清单将两种构建标记为 `desktop`。安装包预上传为草稿，tag 发布流程通过 `validate-tag` 和 `publish` 核验并公开草稿。 [发行清单](https://github.com/HBLADEH/velo-launcher/releases/download/v0.12.0/release-manifest.json) · [发布任务](https://github.com/HBLADEH/velo-launcher/actions/runs/45352994904)
+- 六项公开附件已下载并逐项比对 GitHub API 的 SHA-256 和文件大小，`check-release-assets.ps1` 校验通过。`SHA256SUMS.txt` 的 SHA-256 为 `747f826bd83b1eec340a73f619f717c54a92d944906c70ebaddba52084b839f4`，与 tag 注释一致。默认 Software 安装器和兼容别名字节一致，兼容别名是 API 中第一项安装器。 [校验清单](https://github.com/HBLADEH/velo-launcher/releases/download/v0.12.0/SHA256SUMS.txt)
