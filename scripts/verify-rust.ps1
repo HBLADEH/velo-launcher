@@ -143,8 +143,10 @@ try {
 
         if ($SmokeTest) {
             $smokeLog = Join-Path $outputDirectory 'smoke.stderr.log'
+            # Give both streams their own handles when launched from a redirected host.
+            $smokeOutput = Join-Path $outputDirectory 'smoke.stdout.log'
             $process = Start-Process -FilePath $executable -ArgumentList '--smoke-test', '--diagnostics' `
-                -WindowStyle Hidden -PassThru -RedirectStandardError $smokeLog
+                -WindowStyle Hidden -PassThru -RedirectStandardError $smokeLog -RedirectStandardOutput $smokeOutput
             if (-not $process.WaitForExit(15000)) {
                 Stop-Process -Id $process.Id -ErrorAction SilentlyContinue
                 throw "Window smoke test timed out: $name"
@@ -158,8 +160,9 @@ try {
             # Dispatch through the real Slint component/focus path as a separate
             # check. This is repeatable integration coverage, not native IME proof.
             $inputLog = Join-Path $outputDirectory 'input-smoke.stderr.log'
+            $inputOutput = Join-Path $outputDirectory 'input-smoke.stdout.log'
             $inputProcess = Start-Process -FilePath $executable -ArgumentList '--input-smoke-test', '--diagnostics' `
-                -WindowStyle Hidden -PassThru -RedirectStandardError $inputLog
+                -WindowStyle Hidden -PassThru -RedirectStandardError $inputLog -RedirectStandardOutput $inputOutput
             if (-not $inputProcess.WaitForExit(15000)) {
                 Stop-Process -Id $inputProcess.Id -ErrorAction SilentlyContinue
                 throw "Input component smoke test timed out: $name"
