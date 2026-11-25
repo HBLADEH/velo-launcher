@@ -11,6 +11,15 @@ use std::sync::Arc;
 
 impl History {
     pub fn record(&self, id: &str, query: &str, now: DateTime<FixedOffset>) -> Result<Self> {
+        self.record_batch([id], query, now)
+    }
+
+    pub(super) fn record_batch<'a>(
+        &self,
+        ids: impl IntoIterator<Item = &'a str>,
+        query: &str,
+        now: DateTime<FixedOffset>,
+    ) -> Result<Self> {
         if !(0..=9999).contains(&now.year()) {
             return Err(DataError::new(
                 "record history",
@@ -19,39 +28,41 @@ impl History {
         }
         let query = normalize(query);
         let mut next = self.clone();
-        let entry = next.0.entry(id.into()).or_default();
-        entry.launch_count = entry
-            .launch_count
-            .checked_add(1)
-            .ok_or_else(|| DataError::new("record history", "launch count overflow"))?;
-        let queries = entry.query_history.get_or_insert_default();
-        if !query.is_empty() {
-            let count = queries.entry(query.clone()).or_default();
-            *count = count
-                .checked_add(1)
-                .ok_or_else(|| DataError::new("record history", "query count overflow"))?;
-        }
-        if queries.len() > 100 {
-            // Go leaves equal-count eviction unspecified (map iteration). Use a
-            // reproducible tie break; always retain the query being recorded.
-            let key = queries
-                .iter()
-                .filter(|(key, _)| **key != query)
-                .min_by_key(|(_, count)| **count)
-                .map(|(key, _)| key.clone());
-            if let Some(key) = key {
-                queries.remove(&key);
-            }
-        }
         let timestamp = now.to_rfc3339_opts(SecondsFormat::Nanos, true);
         let (seconds, fraction) = timestamp.split_at(19);
         // Go emits only significant fractional digits, preserving the offset.
         let digits = fraction[1..10].trim_end_matches('0');
-        entry.last_launch_time = if digits.is_empty() {
+        let last_launch_time = if digits.is_empty() {
             format!("{seconds}{}", &fraction[10..])
         } else {
             format!("{seconds}.{digits}{}", &fraction[10..])
         };
+        for id in ids {
+            let entry = next.0.entry(id.into()).or_default();
+            entry.launch_count = entry
+                .launch_count
+                .checked_add(1)
+                .ok_or_else(|| DataError::new("record history", "launch count overflow"))?;
+            let queries = entry.query_history.get_or_insert_default();
+            if !query.is_empty() {
+                let count = queries.entry(query.clone()).or_default();
+                *count = count
+                    .checked_add(1)
+                    .ok_or_else(|| DataError::new("record history", "query count overflow"))?;
+            }
+            if queries.len() > 100 {
+                // A stable tie break keeps the current query during eviction.
+                let key = queries
+                    .iter()
+                    .filter(|(key, _)| **key != query)
+                    .min_by_key(|(_, count)| **count)
+                    .map(|(key, _)| key.clone());
+                if let Some(key) = key {
+                    queries.remove(&key);
+                }
+            }
+            entry.last_launch_time.clone_from(&last_launch_time);
+        }
         Ok(next)
     }
 

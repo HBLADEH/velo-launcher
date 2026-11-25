@@ -165,7 +165,7 @@ impl Controller {
                         "search_margin_click_clears_selection",
                     )?;
                     *self.selected.borrow_mut() = selected.clone();
-                    app.invoke_application_menu_completed(selected, 4);
+                    app.invoke_item_pin_toggled(selected);
                     self.stage.set(1);
                 }
             }

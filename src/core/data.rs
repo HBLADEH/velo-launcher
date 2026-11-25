@@ -11,6 +11,8 @@ use super::model::AppItem;
 use super::storage::{self, Store};
 use super::{DataError, JsonDocument, Result, UnknownFields, decode_fields, defaults, overlay};
 
+pub(super) const MAX_HOME_PINS: usize = 200;
+
 #[derive(Clone, Debug, Default, PartialEq, Serialize, Deserialize)]
 #[serde(default)]
 pub struct ApplicationLibrary {
@@ -41,7 +43,7 @@ impl ApplicationLibrary {
         let mut next = self.clone();
         if !self.has_pin(&item.id) {
             let pins = next.pinned.get_or_insert_default();
-            if pins.len() >= 200 {
+            if pins.len() >= MAX_HOME_PINS {
                 return Err(DataError::new("add home pin", "200 pin limit"));
             }
             let mut item = item.clone();

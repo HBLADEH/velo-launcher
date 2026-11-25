@@ -1,5 +1,7 @@
 # Rust + Slint 重构实施方案
 
+- 启动组合首页入口（2026-11-25）。支持置顶、按使用历史参与常用排序，并复用现有星标和右键入口。 [验收记录](baselines/2026-11-25-launch-group-home/README.md)
+
 - v0.12.0 正式发行（2026-11-24）。两种渲染器通过 Windows 11 x64 正式桌面冒烟，GitHub Actions 公开该版本，六项发行附件通过下载校验。径向工作台默认关闭，作为测试功能随本版提供。 [验收与发行记录](baselines/2026-11-24-v0.12.0/README.md)
 
 - Workspace v0.3（2026-11-25）。双模式成为唯一工作台，默认关闭。短按取指针下应用，长按取前台应用，提供共享动作库及方向编辑。已有配置在首次保存前备份。 [实施步骤](plans/velo-workspace-v0.3/implementation.md) · [验收记录](baselines/2026-11-25-workspace-v03/README.md)

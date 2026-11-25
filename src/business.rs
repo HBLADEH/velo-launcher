@@ -115,22 +115,6 @@ impl Controller {
             observer,
         });
         app.set_business_enabled(true);
-        let weak = Rc::downgrade(&controller);
-        app.on_item_pinnable(move |id| {
-            weak.upgrade().is_none_or(|controller| {
-                controller
-                    .snapshot
-                    .borrow()
-                    .as_ref()
-                    .is_none_or(|snapshot| {
-                        !snapshot
-                            .groups
-                            .groups
-                            .iter()
-                            .any(|group| group.id == id.as_str())
-                    })
-            })
-        });
         app.set_business_status("正在读取应用索引…".into());
         app.set_data_directory(directory.to_string_lossy().into_owned().into());
         app.set_third_party_licenses(
@@ -181,6 +165,12 @@ impl Controller {
         app.on_item_chosen(move |id| {
             if let Some(controller) = weak.upgrade() {
                 controller.choose(&id, Action::Launch);
+            }
+        });
+        let weak = Rc::downgrade(&controller);
+        app.on_item_pin_toggled(move |id| {
+            if let Some(controller) = weak.upgrade() {
+                controller.toggle_pin(&id);
             }
         });
         let weak = Rc::downgrade(&controller);
@@ -609,7 +599,7 @@ impl Controller {
                         app.invoke_workspace_saved(saved, message.into());
                         continue;
                     }
-                    if kind.starts_with("group_") {
+                    if matches!(kind, "group_save" | "group_delete") {
                         if let Some(editor) = self.groups.borrow().as_ref() {
                             editor.managed(kind, result.is_ok());
                         }
@@ -623,6 +613,9 @@ impl Controller {
                             } else {
                                 app.set_selection_notice(message.as_str().into());
                                 app.set_import_notice(message.as_str().into());
+                            }
+                            if kind == "group_pin" {
+                                app.set_group_notice(message.as_str().into());
                             }
                             app.set_settings_notice(
                                 if kind == "backup" {
@@ -655,6 +648,7 @@ impl Controller {
                                 }
                                 "import entries" => "每次最多导入 100 个项目，请减少预览后重试",
                                 "add home pin" => "首页最多固定 200 项，请取消一项固定后重试",
+                                "pin launch group" => "启动组合已不可用，请返回列表后重试",
                                 "pin folder path" | "read pinned folder" => {
                                     "无法固定文件夹，请检查路径或访问权限后重试"
                                 }
@@ -663,6 +657,9 @@ impl Controller {
                             app.set_settings_notice(notice.into());
                             app.set_import_notice(notice.into());
                             app.set_selection_notice(notice.into());
+                            if kind == "group_pin" {
+                                app.set_group_notice(notice.into());
+                            }
                             eprintln!("event=management_failed operation={}", error.operation);
                         }
                     }
@@ -756,7 +753,7 @@ impl Controller {
             self.lengths.set(groups.each_ref().map(|group| group.len()));
             groups.iter().flatten().cloned().collect::<Vec<_>>()
         } else {
-            let Ok(mut results) = snapshot.catalog.search(
+            let Ok(results) = snapshot.catalog.search(
                 &app.get_input_text(),
                 &snapshot.config,
                 &snapshot.history,
@@ -765,27 +762,6 @@ impl Controller {
                 app.set_selection_notice("搜索失败，请刷新后重试".into());
                 return;
             };
-            results.extend(snapshot.group_index.query(
-                &app.get_input_text(),
-                snapshot.config.max_results as usize,
-                snapshot.config.search.fuzzy,
-                &Default::default(),
-                0.0,
-            ));
-            let query = normalize(&app.get_input_text());
-            results.sort_by(|a, b| {
-                let a_group = a.item.source == "LaunchGroup";
-                let b_group = b.item.source == "LaunchGroup";
-                if a_group != b_group
-                    && normalize(&a.item.name) == query
-                    && normalize(&b.item.name) == query
-                {
-                    a_group.cmp(&b_group)
-                } else {
-                    b.score.total_cmp(&a.score)
-                }
-            });
-            results.truncate(snapshot.config.max_results as usize);
             results.into_iter().map(|result| result.item).collect()
         };
         let selected = app.get_selected_id();
@@ -812,7 +788,7 @@ impl Controller {
                     .map(|item| LauncherItem {
                         id: item.id.as_str().into(),
                         name: item.name.as_str().into(),
-                        subtitle: if item.source == "LaunchGroup" {
+                        subtitle: if item.is_launch_group() {
                             item.description.as_str()
                         } else {
                             item.path.as_str()
@@ -830,6 +806,8 @@ impl Controller {
                         system: item.source == "System",
                         icon_key: if item.is_folder() {
                             "folder"
+                        } else if item.is_launch_group() {
+                            "apps"
                         } else if item.source == "System" {
                             match item.id.as_str() {
                                 "system:empty-recycle-bin" => "delete",
@@ -1249,14 +1227,26 @@ impl Controller {
             1 => self.choose(id, Action::Launch),
             2 => self.choose(id, Action::OpenDirectory),
             3 => self.choose(id, Action::RunAsAdmin),
-            4 => {
-                let pinned = self.runtime.borrow().is_pinned(id);
-                self.manage(Manage::Pin(id.into(), !pinned));
-            }
+            4 => self.toggle_pin(id),
             -1 => app.set_selection_notice("无法打开菜单，请重试".into()),
             _ => {}
         }
         app.invoke_native_interaction_finished();
+    }
+
+    fn toggle_pin(&self, id: &str) {
+        let Some(app) = self.app.upgrade() else {
+            return;
+        };
+        if !app.get_presented() || app.get_native_dialog_active() || app.get_management_busy() {
+            return;
+        }
+        let runtime = self.runtime.borrow();
+        request_management(
+            &app,
+            &runtime,
+            Manage::Pin(id.into(), !runtime.is_pinned(id)),
+        );
     }
 
     fn queue_viewport(self: &Rc<Self>) {
@@ -1375,6 +1365,9 @@ pub(crate) fn request_management(app: &AppWindow, runtime: &Runtime, request: Ma
         app.set_settings_notice(notice.into());
         app.set_import_notice(notice.into());
         app.set_selection_notice(notice.into());
+        if app.get_groups_open() {
+            app.set_group_notice(notice.into());
+        }
     }
 }
 

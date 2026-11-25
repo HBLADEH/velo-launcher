@@ -322,7 +322,7 @@ pub fn application_menu(owner: isize, item: &AppItem) -> i32 {
                 true,
             ),
         ] {
-            if item.is_folder() && matches!(id, 2 | 3) {
+            if (item.is_folder() || item.is_launch_group()) && matches!(id, 2 | 3) {
                 continue;
             }
             AppendMenuW(

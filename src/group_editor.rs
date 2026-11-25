@@ -199,6 +199,7 @@ impl Controller {
                         .map(|group| LauncherItem {
                             id: group.id.as_str().into(),
                             name: group.name.as_str().into(),
+                            pinned: snapshot.groups.is_pinned(&group.id),
                             subtitle: format!(
                                 "{} 个应用 · {}",
                                 group.members.len(),

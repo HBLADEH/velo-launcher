@@ -59,6 +59,21 @@ pub struct Report {
 }
 
 impl Report {
+    pub(super) fn history_ids(&self, full_run: bool) -> impl Iterator<Item = &str> {
+        // Count the group once when a member starts or is already running.
+        // A retry or a duplicate request still pending doesn't count again.
+        let group = full_run
+            && self
+                .entries
+                .iter()
+                .any(|entry| matches!(entry.state, State::Submitted | State::AlreadyRunning));
+        self.entries
+            .iter()
+            .filter(|entry| entry.state == State::Submitted)
+            .map(|entry| entry.app_id.as_str())
+            .chain(group.then_some(self.group_id.as_str()))
+    }
+
     pub fn retry_ids(&self) -> Vec<String> {
         self.entries
             .iter()

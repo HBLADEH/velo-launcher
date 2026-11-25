@@ -9,7 +9,7 @@ use serde::{Deserialize, Serialize};
 use serde_json::Value;
 
 use super::indexer;
-use super::model::AppItem;
+use super::model::{AppItem, LAUNCH_GROUP_SOURCE};
 use super::normalize::normalize;
 use super::storage::Store;
 use super::{DataError, JsonDocument, Result, UnknownFields};
@@ -120,6 +120,7 @@ fn validate_entry(item: &AppItem) -> Result<()> {
     if item.id.is_empty()
         || item.source == "System"
         || item.is_folder()
+        || item.is_launch_group()
         || !Path::new(&item.path).is_absolute()
         || !executable_path(target(item))
         || !(indexer::extension(&item.path, "exe") || indexer::extension(&item.path, "lnk"))
@@ -142,6 +143,18 @@ pub struct Group {
 }
 
 impl Group {
+    pub(super) fn catalog_item(&self, pinned: bool) -> AppItem {
+        AppItem {
+            id: self.id.clone(),
+            name: self.name.clone(),
+            keywords: Some(self.aliases.clone()),
+            source: LAUNCH_GROUP_SOURCE.into(),
+            description: format!("启动组合 · {} 个应用", self.members.len()),
+            pinned,
+            ..AppItem::default()
+        }
+    }
+
     fn validate(&self) -> Result<()> {
         if !self.id.starts_with("group:")
             || self.id.len() <= 6
@@ -181,6 +194,8 @@ impl Group {
 pub struct Collection {
     pub version: u32,
     pub groups: Vec<Group>,
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pinned: Vec<String>,
     #[serde(flatten)]
     pub unknown: UnknownFields,
 }
@@ -190,6 +205,7 @@ impl Default for Collection {
         Self {
             version: 1,
             groups: Vec::new(),
+            pinned: Vec::new(),
             unknown: UnknownFields::new(),
         }
     }
@@ -203,7 +219,7 @@ impl JsonDocument for Collection {
     }
 
     fn validate(&self) -> Result<()> {
-        if self.version != 1 || self.groups.len() > MAX_GROUPS {
+        if self.version != 1 || self.groups.len() > MAX_GROUPS || self.pinned.len() > MAX_GROUPS {
             return Err(invalid("unsupported version or group limit exceeded"));
         }
         let mut ids = BTreeSet::new();
@@ -219,11 +235,46 @@ impl JsonDocument for Collection {
                 }
             }
         }
+        let pins: BTreeSet<_> = self.pinned.iter().collect();
+        if pins.len() != self.pinned.len() {
+            return Err(invalid("invalid or duplicate pinned launch group"));
+        }
         Ok(())
     }
 }
 
 impl Collection {
+    pub fn is_pinned(&self, id: &str) -> bool {
+        self.pinned.iter().any(|pinned| pinned == id)
+    }
+
+    pub(super) fn pinned_ids(&self) -> impl Iterator<Item = &str> {
+        // Older Velo builds can delete a group while preserving this field.
+        self.pinned
+            .iter()
+            .filter(|id| self.groups.iter().any(|group| &group.id == *id))
+            .map(String::as_str)
+    }
+
+    pub(super) fn with_pin(&self, id: &str, pinned: bool) -> Result<Self> {
+        let mut next = self.clone();
+        next.pinned = self.pinned_ids().map(str::to_owned).collect();
+        if pinned {
+            if !self.groups.iter().any(|group| group.id == id) {
+                return Err(DataError::new(
+                    "pin launch group",
+                    "group no longer available",
+                ));
+            }
+            if !self.is_pinned(id) {
+                next.pinned.push(id.into());
+            }
+        } else {
+            next.pinned.retain(|pinned| pinned != id);
+        }
+        Ok(next)
+    }
+
     pub fn with_group(&self, group: Group) -> Result<Self> {
         let mut next = self.clone();
         if let Some(existing) = next.groups.iter_mut().find(|old| old.id == group.id) {
@@ -238,6 +289,7 @@ impl Collection {
     pub fn without_group(&self, id: &str) -> Result<Self> {
         let mut next = self.clone();
         next.groups.retain(|group| group.id != id);
+        next.pinned.retain(|pinned| pinned != id);
         next.validate()?;
         Ok(next)
     }
