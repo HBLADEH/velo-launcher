@@ -15,7 +15,7 @@ use velo_slint::core::config::Config;
 use velo_slint::core::launch::{APPS_FOLDER_PREFIX, Action};
 use velo_slint::core::model::AppItem;
 use velo_slint::core::service::{
-    Event, IconTarget, InstallProgress, Manage, Options, Runtime, Snapshot,
+    Event, IconTarget, InstallProgress, Manage, Options, Runtime, Snapshot, WorkspaceUserRequest,
 };
 use velo_slint::core::system_tools::{Prompt as SystemPrompt, needs_confirmation};
 use velo_slint::core::update::DownloadProgress;
@@ -75,6 +75,10 @@ impl Controller {
         self.runtime
             .borrow()
             .manage(Manage::SaveWorkspace(Box::new(config)))
+    }
+
+    pub(crate) fn workspace_user_action(&self, request: WorkspaceUserRequest) -> bool {
+        self.runtime.borrow_mut().workspace_user(request)
     }
 
     pub fn connect(
@@ -534,6 +538,7 @@ impl Controller {
                         Ok(WorkspaceSuccess::ShortcutSubmitted) => {
                             format!("已提交「{}」快捷键", action.label())
                         }
+                        Ok(_) => "工作台动作已完成".into(),
                         Err(error) => error.message().to_string(),
                     };
                     app.set_workspace_notice(message.into());
@@ -549,6 +554,33 @@ impl Controller {
                         );
                     }
                 }
+                Event::WorkspaceUserActionFinished {
+                    kind,
+                    ticket,
+                    result,
+                } => {
+                    let message = match result {
+                        Ok(WorkspaceSuccess::Opened) => "已打开动作目标",
+                        Ok(WorkspaceSuccess::ShortcutSubmitted) => "已提交快捷键步骤",
+                        Ok(WorkspaceSuccess::TextSubmitted) => "已提交文本输入",
+                        Ok(WorkspaceSuccess::ScriptCompleted) => "脚本已完成",
+                        Err(error) => error.message(),
+                    };
+                    if app.get_workspace_action_ticket() == ticket {
+                        app.set_workspace_notice(message.into());
+                    }
+                    if self.diagnostics {
+                        eprintln!(
+                            "event=workspace_user_action_finished kind={kind} result={result:?}"
+                        );
+                    }
+                    if let Some(observer) = &self.observer {
+                        observer.event(
+                            "workspace_user_action_finished",
+                            &format!("kind={kind} result={result:?}"),
+                        );
+                    }
+                }
                 Event::Managed { kind, result } => {
                     if kind == "workspace" {
                         let (saved, message) = match result {
@@ -558,7 +590,20 @@ impl Controller {
                                     "event=workspace_save_failed operation={}",
                                     error.operation
                                 );
-                                (false, "工作台设置未保存，请检查数据目录权限后重试".into())
+                                (
+                                    false,
+                                    match error.operation {
+                                        "verify Workspace script" => {
+                                            "无法验证脚本文件，请检查路径或文件占用情况"
+                                        }
+                                        "read backup source" | "create backup" | "write backup"
+                                        | "flush backup" | "commit backup" => {
+                                            "旧工作台配置备份失败，设置尚未保存"
+                                        }
+                                        _ => "工作台设置未保存，请检查数据目录权限后重试",
+                                    }
+                                    .into(),
+                                )
                             }
                         };
                         app.invoke_workspace_saved(saved, message.into());

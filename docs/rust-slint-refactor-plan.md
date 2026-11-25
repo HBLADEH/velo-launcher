@@ -2,6 +2,8 @@
 
 - v0.12.0 正式发行（2026-11-24）。两种渲染器通过 Windows 11 x64 正式桌面冒烟，GitHub Actions 公开该版本，六项发行附件通过下载校验。径向工作台默认关闭，作为测试功能随本版提供。 [验收与发行记录](baselines/2026-11-24-v0.12.0/README.md)
 
+- Workspace v0.3（2026-11-25）。双模式成为唯一工作台，默认关闭。短按取指针下应用，长按取前台应用，提供共享动作库及方向编辑。已有配置在首次保存前备份。 [实施步骤](plans/velo-workspace-v0.3/implementation.md) · [验收记录](baselines/2026-11-25-workspace-v03/README.md)
+
 - Workspace 触发设置（2026-11-24）。工作台默认关闭，启用后才分配触发资源。双渲染器在 Windows 11 单屏复验了侧键选项顺序、关闭后的窗口与线程释放，以及两枚侧键透传。 [复验记录](baselines/2026-11-21-workspace-v02/README.md#2026-11-24-触发设置与关闭状态复验)
 
 - Workspace v0.2（2026-11-21）。在独立预览和工作台设置中接入径向弧片、侧键短按与长按、应用布局和槽位编辑，按 v0.2 实施步骤保留原沙漏预览作为对照。Windows 11 单屏和 100% / 125% 混合 DPI 双屏已做桌面回归。2026-11-23，Software 补齐副屏弧片高亮时物理断开收起、接回后同进程双屏呼出的连续实机回执。 [实施步骤](plans/velo-workspace-v0.2/implementation.md) · [验收记录](baselines/2026-11-21-workspace-v02/README.md#同一进程的物理拔插复验)

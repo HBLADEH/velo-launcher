@@ -121,6 +121,11 @@ pub enum Event {
         action: workspace_action::WorkspaceAction,
         result: std::result::Result<workspace_action::Success, workspace_action::Failure>,
     },
+    WorkspaceUserActionFinished {
+        kind: &'static str,
+        ticket: i32,
+        result: std::result::Result<workspace_action::Success, workspace_action::Failure>,
+    },
 }
 
 #[derive(Clone, Default)]
@@ -341,6 +346,19 @@ struct WorkspaceRequest {
     owner: isize,
 }
 
+pub struct WorkspaceUserRequest {
+    pub action: super::workspace::user_actions::UserAction,
+    pub target: Option<(
+        Foreground,
+        workspace_actions::Application,
+        Option<Foreground>,
+    )>,
+    pub owner: isize,
+    pub epoch: Arc<std::sync::atomic::AtomicU64>,
+    pub generation: u64,
+    pub ticket: i32,
+}
+
 pub struct Runtime {
     shared: Arc<Shared>,
     refresh: Option<SyncSender<()>>,
@@ -351,6 +369,7 @@ pub struct Runtime {
     file_search_enabled: bool,
     update_busy: Arc<AtomicBool>,
     workers: Vec<JoinHandle<()>>,
+    workspace_user_worker: Option<JoinHandle<()>>,
 }
 
 impl Runtime {
@@ -400,6 +419,7 @@ impl Runtime {
             file_search_enabled: false,
             update_busy: Arc::new(AtomicBool::new(false)),
             workers: Vec::new(),
+            workspace_user_worker: None,
         };
         let scan_state = shared.clone();
         runtime.workers.push(
@@ -733,6 +753,44 @@ impl Runtime {
             owner,
         }))
     }
+
+    pub fn workspace_user(&mut self, request: WorkspaceUserRequest) -> bool {
+        if self.shared.stopping.load(Ordering::Acquire)
+            || self.update_busy.load(Ordering::Acquire)
+            || self
+                .workspace_user_worker
+                .as_ref()
+                .is_some_and(|worker| !worker.is_finished())
+        {
+            return false;
+        }
+        if let Some(worker) = self.workspace_user_worker.take() {
+            let _ = worker.join();
+        }
+        // A long batch or shortcut sequence cannot block the Launcher action
+        // queue. Permit one in-flight action and release the thread on completion.
+        let shared = self.shared.clone();
+        self.workspace_user_worker = std::thread::Builder::new()
+            .name("velo-workspace-action".into())
+            .spawn(move || {
+                let result = workspace_actions::execute_user(
+                    &request.action,
+                    request.target,
+                    request.owner,
+                    || {
+                        shared.stopping.load(Ordering::Acquire)
+                            || request.epoch.load(Ordering::Acquire) != request.generation
+                    },
+                );
+                shared.event(Event::WorkspaceUserActionFinished {
+                    kind: request.action.action.kind(),
+                    ticket: request.ticket,
+                    result,
+                });
+            })
+            .ok();
+        self.workspace_user_worker.is_some()
+    }
     pub fn launch_group(
         &self,
         id: String,
@@ -821,6 +879,9 @@ impl Runtime {
     }
     pub fn stop(&mut self) {
         self.shared.stopping.store(true, Ordering::Release);
+        if let Some(worker) = self.workspace_user_worker.take() {
+            let _ = worker.join();
+        }
         // Dropping the reply wakes a launch even if its prompt never reached the UI.
         if let Ok(mut pending) = self.shared.system_answer.lock() {
             pending.take();
@@ -933,6 +994,14 @@ fn manage(shared: &Shared, request: Manage) -> Result<String> {
         }
         Manage::SaveWorkspace(mut layout) => {
             layout.validate()?;
+            workspace_actions::review_scripts(&mut layout.dual)?;
+            let committed = store.config.snapshot()?;
+            if let Some(raw) = committed.unknown.get(WORKSPACE_KEY) {
+                WorkspaceConfig::read(&committed)?;
+                if WorkspaceConfig::needs_layout_backup(raw) {
+                    store.config.backup(&shared.directory.join("backups"))?;
+                }
+            }
             let value = super::defaults(&layout)?;
             store.config.update(|current| {
                 let mut config = current.clone();
@@ -1956,6 +2025,53 @@ mod tests {
     }
 
     #[test]
+    fn first_dual_save_backs_up_the_radial_document_before_writing() {
+        let directory = tempfile::tempdir().unwrap();
+        let shared = shared(directory.path());
+        initialize(&shared).unwrap();
+        let store = shared.store.get().unwrap();
+        store
+            .config
+            .update(|current| {
+                let mut config = current.clone();
+                config.unknown.insert(
+                    WORKSPACE_KEY.into(),
+                    serde_json::json!({
+                        "enabled": true, "upper": {"count": 4}, "dual_enabled": false
+                    }),
+                );
+                Ok(config)
+            })
+            .unwrap();
+        let settings = directory.path().join("config.json");
+        let raw = fs::read(&settings).unwrap();
+        let backups = directory.path().join("backups");
+        fs::write(&backups, b"block the backup directory").unwrap();
+        let mut dual = WorkspaceConfig::read(&store.config.snapshot().unwrap()).unwrap();
+        assert!(manage(&shared, Manage::SaveWorkspace(Box::new(dual.clone()))).is_err());
+        assert_eq!(fs::read(&settings).unwrap(), raw);
+        fs::remove_file(&backups).unwrap();
+
+        manage(&shared, Manage::SaveWorkspace(Box::new(dual.clone()))).unwrap();
+        let loaded = DataStore::open(directory.path())
+            .unwrap()
+            .config
+            .snapshot()
+            .unwrap();
+        assert_eq!(WorkspaceConfig::read(&loaded).unwrap(), dual);
+        let backup = fs::read_dir(&backups)
+            .unwrap()
+            .next()
+            .unwrap()
+            .unwrap()
+            .path();
+        assert_eq!(fs::read(backup).unwrap(), raw);
+        dual.enabled = false;
+        manage(&shared, Manage::SaveWorkspace(Box::new(dual))).unwrap();
+        assert_eq!(fs::read_dir(backups).unwrap().count(), 1);
+    }
+
+    #[test]
     fn workspace_save_preserves_launcher_config_and_recovers_after_write_denial() {
         let directory = tempfile::tempdir().unwrap();
         let shared = shared(directory.path());
@@ -1977,8 +2093,8 @@ mod tests {
             enabled: true,
             ..Default::default()
         };
-        workspace.upper.count = 8;
-        workspace.upper.slots[7] = Some(workspace_action::WorkspaceAction::Pictures);
+        workspace.dual.global.columns = 4;
+        workspace.dual.global.slots[7] = Some("pictures".into());
         workspace
             .unknown
             .insert("future_workspace_field".into(), serde_json::json!(14));

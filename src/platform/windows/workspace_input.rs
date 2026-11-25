@@ -13,10 +13,12 @@ use windows_sys::Win32::Foundation::{LPARAM, LRESULT, WPARAM};
 use windows_sys::Win32::System::LibraryLoader::GetModuleHandleW;
 use windows_sys::Win32::System::SystemInformation::GetTickCount;
 use windows_sys::Win32::System::Threading::GetCurrentThreadId;
+use windows_sys::Win32::UI::Input::KeyboardAndMouse::VK_ESCAPE;
 use windows_sys::Win32::UI::WindowsAndMessaging::{
-    CallNextHookEx, GetMessageW, HHOOK, KillTimer, MSG, MSLLHOOKSTRUCT, PM_NOREMOVE, PeekMessageW,
-    PostThreadMessageW, SetTimer, SetWindowsHookExW, UnhookWindowsHookEx, WH_MOUSE_LL, WM_APP,
-    WM_MOUSEMOVE, WM_TIMER, WM_XBUTTONDOWN, WM_XBUTTONUP, XBUTTON1, XBUTTON2,
+    CallNextHookEx, GetMessageW, HHOOK, KBDLLHOOKSTRUCT, KillTimer, MSG, MSLLHOOKSTRUCT,
+    PM_NOREMOVE, PeekMessageW, PostThreadMessageW, SetTimer, SetWindowsHookExW,
+    UnhookWindowsHookEx, WH_KEYBOARD_LL, WH_MOUSE_LL, WM_APP, WM_KEYDOWN, WM_KEYUP, WM_MOUSEMOVE,
+    WM_SYSKEYDOWN, WM_SYSKEYUP, WM_TIMER, WM_XBUTTONDOWN, WM_XBUTTONUP, XBUTTON1, XBUTTON2,
 };
 
 use super::workspace::{Anchor, Foreground, Invocation, current_input_desktop};
@@ -73,7 +75,7 @@ impl Admission {
         }
     }
 
-    fn accepts(&self, window: Foreground) -> bool {
+    fn accepts(&self, window: Foreground, hovered: Option<Foreground>) -> bool {
         if !self.enabled.load(Ordering::Acquire) || self.suspended.load(Ordering::Acquire) {
             return false;
         }
@@ -81,7 +83,12 @@ impl Admission {
             return false;
         };
         excluded.is_empty()
-            || Resolver::exclusion_identity(window).is_some_and(|key| !excluded.contains(&key))
+            || [Some(window), hovered.filter(|target| *target != window)]
+                .into_iter()
+                .flatten()
+                .all(|target| {
+                    Resolver::exclusion_identity(target).is_some_and(|key| !excluded.contains(&key))
+                })
     }
 }
 
@@ -124,6 +131,7 @@ struct Capture {
     origin: (i32, i32),
     distance: f64,
     cancelled: bool,
+    foreground: Option<Foreground>,
 }
 
 impl Capture {
@@ -147,6 +155,7 @@ struct HookState {
     admission: Arc<Admission>,
     stopping: bool,
     timer: usize,
+    escape_owned: bool,
 }
 
 impl HookState {
@@ -219,22 +228,21 @@ impl HookState {
             }
             WM_XBUTTONDOWN if !self.stopping => {
                 self.capture = None;
-                let Some(foreground) = Foreground::current()
-                    .filter(|target| self.admission.accepts(*target) && target.is_windowed())
+                let Some(foreground) = Foreground::current().filter(|target| target.is_windowed())
                 else {
                     return false;
                 };
                 let Some(anchor) = Anchor::capture(point) else {
                     return false;
                 };
+                let invocation = Invocation::new(at, Some(foreground), Some(anchor));
+                if !self.admission.accepts(foreground, invocation.hovered) {
+                    return false;
+                }
                 if !self.timer(CAPTURE_CHECK_MS) {
                     return false;
                 }
-                if !self.send(Event::Pressed(Invocation {
-                    at,
-                    foreground: Some(foreground),
-                    anchor: Some(anchor),
-                })) {
+                if !self.send(Event::Pressed(invocation)) {
                     self.clear_timer();
                     return false;
                 }
@@ -243,6 +251,7 @@ impl HookState {
                     origin: point,
                     distance: 0.0,
                     cancelled: false,
+                    foreground: foreground.external_application().then_some(foreground),
                 });
                 true
             }
@@ -268,6 +277,24 @@ impl HookState {
         }
         self.send(Event::Cancelled(reason));
     }
+
+    fn escape(&mut self, message: u32) -> bool {
+        match message {
+            WM_KEYDOWN | WM_SYSKEYDOWN if self.escape_owned => true,
+            WM_KEYDOWN | WM_SYSKEYDOWN
+                if self
+                    .capture
+                    .as_ref()
+                    .is_some_and(|capture| !capture.cancelled) =>
+            {
+                self.escape_owned = true;
+                self.cancel("escape");
+                true
+            }
+            WM_KEYUP | WM_SYSKEYUP => std::mem::take(&mut self.escape_owned),
+            _ => false,
+        }
+    }
 }
 
 thread_local! {
@@ -290,6 +317,25 @@ unsafe extern "system" fn on_mouse(code: i32, wparam: WPARAM, lparam: LPARAM) ->
         }
     }
     // SAFETY: events not owned by this service retain the original parameters.
+    unsafe { CallNextHookEx(null_mut(), code, wparam, lparam) }
+}
+
+unsafe extern "system" fn on_keyboard(code: i32, wparam: WPARAM, lparam: LPARAM) -> LRESULT {
+    // SAFETY: HC_ACTION supplies a live KBDLLHOOKSTRUCT while this callback runs.
+    if code == 0
+        && lparam != 0
+        && unsafe { (*(lparam as *const KBDLLHOOKSTRUCT)).vkCode } == u32::from(VK_ESCAPE)
+        && HOOK.with(|state| {
+            state
+                .try_borrow_mut()
+                .ok()
+                .and_then(|mut state| state.as_mut().map(|hook| hook.escape(wparam as u32)))
+                .unwrap_or(false)
+        })
+    {
+        return 1;
+    }
+    // SAFETY: keys outside the active cancellation path pass through unchanged.
     unsafe { CallNextHookEx(null_mut(), code, wparam, lparam) }
 }
 
@@ -332,6 +378,20 @@ impl Service {
                     return;
                 }
                 let hook = InstalledHook(hook);
+                // SAFETY: cancellation shares this same message thread and capture lifetime.
+                let key_hook = unsafe {
+                    SetWindowsHookExW(
+                        WH_KEYBOARD_LL,
+                        Some(on_keyboard),
+                        GetModuleHandleW(null_mut()),
+                        0,
+                    )
+                };
+                if key_hook.is_null() {
+                    let _ = ready.send(Err(io::Error::last_os_error()));
+                    return;
+                }
+                let key_hook = InstalledHook(key_hook);
                 HOOK.with(|state| {
                     state.replace(Some(HookState {
                         button,
@@ -341,6 +401,7 @@ impl Service {
                         admission,
                         stopping: false,
                         timer: 0,
+                        escape_owned: false,
                     }));
                 });
                 // SAFETY: the queue and registration have already been initialized.
@@ -358,7 +419,7 @@ impl Service {
                         match message.message {
                             STOP => {
                                 state.stopping = true;
-                                if state.capture.is_some() {
+                                if state.capture.is_some() || state.escape_owned {
                                     state.cancel("input_disabled");
                                     if !state.timer(DRAIN_MS) {
                                         return true;
@@ -372,6 +433,14 @@ impl Service {
                                 if !current_input_desktop() {
                                     state.cancel("input_desktop_changed");
                                     state.clear_timer();
+                                } else if state
+                                    .capture
+                                    .as_ref()
+                                    .and_then(|cap| cap.foreground)
+                                    .is_some_and(|target| Foreground::current() != Some(target))
+                                {
+                                    state.cancel("foreground_changed");
+                                    state.clear_timer();
                                 } else if state.capture.as_ref().is_some_and(|cap| {
                                     cap.started.elapsed()
                                         >= Duration::from_millis(u64::from(CAPTURE_LIMIT_MS))
@@ -382,13 +451,14 @@ impl Service {
                             }
                             _ => {}
                         }
-                        state.stopping && state.capture.is_none()
+                        state.stopping && state.capture.is_none() && !state.escape_owned
                     });
                     if done {
                         break;
                     }
                 }
                 drop(hook);
+                drop(key_hook);
                 HOOK.with(|state| {
                     if let Some(mut state) = state.take() {
                         state.clear_timer();
@@ -443,14 +513,11 @@ mod tests {
             origin: point,
             distance: 0.0,
             cancelled: false,
+            foreground: None,
         };
         let mut queue = Inbox::default();
         assert_eq!(
-            queue.push(Event::Pressed(Invocation {
-                at,
-                foreground: None,
-                anchor: None,
-            })),
+            queue.push(Event::Pressed(Invocation::new(at, None, None))),
             (true, true)
         );
         assert_eq!(

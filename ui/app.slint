@@ -1,5 +1,5 @@
 import { FileEntry, FileResultRow } from "file-search.slint";
-export { WorkspaceWindow, RadialTile } from "workspace.slint";
+export { WorkspaceTile, WorkspaceWindow } from "workspace.slint";
 export { FileEntry } from "file-search.slint";
 import { CustomPanel } from "custom.slint";
 import { LaunchGroupsPanel, GroupMemberRow } from "launch-groups.slint";
@@ -10,7 +10,7 @@ import { Confirmation, ConfirmationDialog } from "confirmation.slint";
 export { Confirmation } from "confirmation.slint";
 import { ControlBounds, LicenseEntry, SettingsPanel, SettingsDraft } from "settings.slint";
 import { WorkspaceEditorState } from "workspace-settings.slint";
-export { WorkspaceDraft, WorkspaceChoice, WorkspaceEditorState } from "workspace-settings.slint";
+export { WorkspaceActionDraft, WorkspaceDraft, WorkspaceChoice, WorkspaceEditorState } from "workspace-settings.slint";
 export { SettingsDraft, ControlBounds, LicenseEntry } from "settings.slint";
 export { LauncherItem, PreviewEntry, Theme } from "components.slint";
 
@@ -114,6 +114,9 @@ export component AppWindow inherits Window {
     in property <[LauncherItem]> custom-items;
     in-out property <SettingsDraft> settings-draft;
     in-out property <int> settings-tab: 0;
+    in property <int> workspace-action-ticket;
+    in property <bool> workspace-recording;
+    callback workspace-recorded-chord(string);
     in property <string> settings-notice;
     in property <string> backup-path;
     in property <string> data-directory;
@@ -324,9 +327,10 @@ export component AppWindow inherits Window {
         root.layout-changed(); root.icon-viewport-changed();
     }
     changed settings-tab => { if root.appearance-open && root.settings-tab == 7 { WorkspaceEditorState.open(); } }
-    changed native-dialog-active => { root.workspace-input-suspended(root.native-dialog-active || root.hotkey-recording); }
+    changed native-dialog-active => { root.workspace-input-suspended(root.native-dialog-active || root.hotkey-recording || root.workspace-recording); }
     changed confirmation-minimum-height => { root.layout-changed(); }
-    changed hotkey-recording => { root.workspace-input-suspended(root.native-dialog-active || root.hotkey-recording); }
+    changed hotkey-recording => { root.workspace-input-suspended(root.native-dialog-active || root.hotkey-recording || root.workspace-recording); }
+    changed workspace-recording => { root.workspace-input-suspended(root.native-dialog-active || root.hotkey-recording || root.workspace-recording); }
     changed import-open => { root.layout-changed(); root.icon-viewport-changed(); }
     changed groups-open => { root.layout-changed(); root.icon-viewport-changed(); }
     changed group-mode => { root.icon-viewport-changed(); }

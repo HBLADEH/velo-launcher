@@ -23,6 +23,9 @@ use super::{
     workspace::{Foreground, Invocation, current_input_desktop},
 };
 
+mod user;
+pub use user::{execute_user, review_scripts};
+
 #[derive(Clone)]
 pub struct Application {
     pub key: AppKey,
@@ -55,7 +58,7 @@ const CACHE_LIFETIME: Duration = Duration::from_secs(15);
 struct Lookup {
     request: Mutex<(bool, Option<Invocation>)>,
     wake: Condvar,
-    result: Mutex<Option<(Instant, Foreground, Application)>>,
+    cache: Mutex<VecDeque<(Foreground, Instant, Application)>>,
 }
 
 pub struct Resolver {
@@ -68,13 +71,12 @@ impl Resolver {
         let shared = Arc::new(Lookup {
             request: Mutex::new((false, None)),
             wake: Condvar::new(),
-            result: Mutex::new(None),
+            cache: Mutex::default(),
         });
         let state = shared.clone();
         let worker = thread::Builder::new()
             .name("velo-workspace-context".into())
             .spawn(move || {
-                let mut cache: VecDeque<(Foreground, Instant, Application)> = VecDeque::new();
                 loop {
                     let Ok(queue) = state.request.lock() else {
                         break;
@@ -91,27 +93,39 @@ impl Resolver {
                     let request = queue.1.take();
                     drop(queue);
                     let Some(request) = request else { continue };
-                    let Some(window) = request.foreground else {
-                        continue;
-                    };
-                    cache.retain(|(_, at, _)| at.elapsed() < CACHE_LIFETIME);
-                    let application = resolve(window, |born| {
-                        cache
-                            .iter()
-                            .find(|(target, _, app)| {
-                                target.process() == window.process() && app.born == born
-                            })
-                            .map(|(_, _, app)| app.key.clone())
-                    });
-                    if let Some(app) = &application {
-                        cache.retain(|(target, _, _)| *target != window);
-                        if cache.len() == CACHE_CAPACITY {
-                            cache.pop_front();
+                    for window in [
+                        request.foreground,
+                        request
+                            .hovered
+                            .filter(|window| Some(*window) != request.foreground),
+                    ]
+                    .into_iter()
+                    .flatten()
+                    {
+                        let application = resolve(window, |born| {
+                            state
+                                .cache
+                                .lock()
+                                .ok()?
+                                .iter()
+                                .find(|(target, at, app)| {
+                                    target.process() == window.process()
+                                        && app.born == born
+                                        && at.elapsed() < CACHE_LIFETIME
+                                })
+                                .map(|(_, _, app)| app.key.clone())
+                        });
+                        if let Ok(mut cache) = state.cache.lock() {
+                            cache.retain(|(target, at, _)| {
+                                *target != window && at.elapsed() < CACHE_LIFETIME
+                            });
+                            if let Some(app) = application {
+                                if cache.len() == CACHE_CAPACITY {
+                                    cache.pop_front();
+                                }
+                                cache.push_back((window, Instant::now(), app));
+                            }
                         }
-                        cache.push_back((window, Instant::now(), app.clone()));
-                    }
-                    if let Ok(mut result) = state.result.lock() {
-                        *result = application.map(|app| (Instant::now(), window, app));
                     }
                 }
             })?;
@@ -122,7 +136,7 @@ impl Resolver {
     }
 
     pub fn request(&self, invocation: Invocation) {
-        if invocation.foreground.is_some()
+        if (invocation.foreground.is_some() || invocation.hovered.is_some())
             && let Ok(mut pending) = self.shared.request.lock()
         {
             pending.1 = Some(invocation);
@@ -132,10 +146,15 @@ impl Resolver {
 
     pub fn recent(&self, window: Option<Foreground>) -> Option<Application> {
         let window = window?;
-        let result = self.shared.result.lock().ok()?;
-        let (received, target, app) = result.as_ref()?;
-        (*target == window && received.elapsed() < CACHE_LIFETIME && window.exists())
-            .then(|| app.clone())
+        if !window.exists() {
+            return None;
+        }
+        let cache = self.shared.cache.lock().ok()?;
+        cache
+            .iter()
+            .rev()
+            .find(|(target, received, _)| *target == window && received.elapsed() < CACHE_LIFETIME)
+            .map(|(_, _, app)| app.clone())
     }
 
     pub(super) fn exclusion_identity(window: Foreground) -> Option<AppKey> {
@@ -181,16 +200,7 @@ pub fn shortcut(
     application: Application,
 ) -> Result<Success, Failure> {
     use WorkspaceAction::*;
-    if original.process() == std::process::id() || Foreground::current() != Some(original) {
-        return Err(Failure::TargetChanged);
-    }
-    let process = AppProcess::open(original.process()).map_err(|_| Failure::Permission)?;
-    if process.born() != Some(application.born) {
-        return Err(Failure::TargetChanged);
-    }
-    if !integrity_allows_shortcut(&process) || !current_input_desktop() {
-        return Err(Failure::Permission);
-    }
+    let process = input_process(original, &application)?;
     let (shift, key) = match action {
         CodeCommands => (true, b'P'.into()),
         CodeFind => (false, b'F'.into()),
@@ -208,16 +218,6 @@ pub fn shortcut(
         }
         _ => return Err(Failure::Unavailable),
     };
-    if [VK_CONTROL, VK_MENU, VK_SHIFT, VK_LWIN, VK_RWIN, key]
-        .into_iter()
-        // SAFETY: this only queries keys, after authorization and desktop checks.
-        .any(|vk| unsafe { GetAsyncKeyState(i32::from(vk)) } < 0)
-    {
-        return Err(Failure::KeysHeld);
-    }
-    if Foreground::current() != Some(original) || process.born() != Some(application.born) {
-        return Err(Failure::TargetChanged);
-    }
     let shifted = [VK_CONTROL, VK_SHIFT, key];
     let plain = [VK_CONTROL, key];
     let keys = if shift {
@@ -225,21 +225,66 @@ pub fn shortcut(
     } else {
         plain.as_slice()
     };
+    ensure_input(original, None, &process, &application)?;
+    send_chord(keys)?;
+    Ok(Success::ShortcutSubmitted)
+}
+
+fn input_process(original: Foreground, application: &Application) -> Result<AppProcess, Failure> {
+    if original.process() == std::process::id() || Foreground::current() != Some(original) {
+        return Err(Failure::TargetChanged);
+    }
+    let process = AppProcess::open(original.process()).map_err(|_| Failure::Permission)?;
+    if process.born() != Some(application.born) {
+        return Err(Failure::TargetChanged);
+    }
+    if !integrity_allows_shortcut(&process) || !current_input_desktop() {
+        return Err(Failure::Permission);
+    }
+    Ok(process)
+}
+
+fn ensure_input(
+    original: Foreground,
+    focus: Option<Foreground>,
+    process: &AppProcess,
+    application: &Application,
+) -> Result<(), Failure> {
+    if !current_input_desktop() {
+        return Err(Failure::Permission);
+    }
+    if Foreground::current() != Some(original)
+        || process.born() != Some(application.born)
+        || focus.is_some_and(|focus| original.focus() != Some(focus))
+    {
+        return Err(Failure::TargetChanged);
+    }
+    Ok(())
+}
+
+fn keys_clear(keys: &[u16]) -> Result<(), Failure> {
+    if [VK_CONTROL, VK_MENU, VK_SHIFT, VK_LWIN, VK_RWIN]
+        .into_iter()
+        .chain(keys.iter().copied())
+        // SAFETY: this only queries keys, after authorization and desktop checks.
+        .any(|vk| unsafe { GetAsyncKeyState(i32::from(vk)) } < 0)
+    {
+        return Err(Failure::KeysHeld);
+    }
+    Ok(())
+}
+
+fn send_chord(keys: &[u16]) -> Result<(), Failure> {
+    keys_clear(keys)?;
     let packets = keys
         .iter()
         .map(|&key| packet(key, false))
         .chain(keys.iter().rev().map(|&key| packet(key, true)))
         .collect::<Vec<_>>();
     // SAFETY: SendInput synchronously copies this batch of paired key events.
-    let accepted = unsafe {
-        SendInput(
-            packets.len() as u32,
-            packets.as_ptr(),
-            size_of::<INPUT>() as i32,
-        )
-    } as usize;
+    let accepted = send(&packets);
     if accepted == packets.len() {
-        return Ok(Success::ShortcutSubmitted);
+        return Ok(());
     }
     // If Windows accepted a prefix, release only the keys that prefix put down.
     let down = accepted.min(keys.len());
@@ -252,16 +297,20 @@ pub fn shortcut(
             .rev()
             .map(|&key| packet(key, true))
             .collect::<Vec<_>>();
-        // SAFETY: this batch contains key-up events only.
-        unsafe {
-            SendInput(
-                releases.len() as u32,
-                releases.as_ptr(),
-                size_of::<INPUT>() as i32,
-            )
-        };
+        send(&releases);
     }
     Err(Failure::Keyboard)
+}
+
+fn send(packets: &[INPUT]) -> usize {
+    // SAFETY: SendInput synchronously copies this initialized batch.
+    unsafe {
+        SendInput(
+            packets.len() as u32,
+            packets.as_ptr(),
+            size_of::<INPUT>() as i32,
+        ) as usize
+    }
 }
 
 fn packet(key: u16, up: bool) -> INPUT {
