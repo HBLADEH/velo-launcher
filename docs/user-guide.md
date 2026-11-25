@@ -6,7 +6,7 @@
 
 从[最新发布](https://github.com/HBLADEH/velo-launcher/releases/latest)下载 `velo-rust-x64-installer.exe`（Software 默认）并确认 UAC。FemtoVG / OpenGL 替代构建为 `velo-rust-femtovg-x64-installer.exe`，切换前从托盘完全退出。当前提供系统安装版，新安装默认 `Alt+Space` 呼出；已有用户的快捷键继续保留。产品使用 Rust + Slint，界面为简体中文。
 
-本指南适用于 v0.13.0。截图来自 0.11.0 Software 开发构建的真实 Windows 窗口，使用独立演示配置与示例数据。构建身份和采集方式见[截图说明](images/README.md)。
+本指南适用于 v0.13.0。主要截图来自 v0.13.0 Software 的 Windows 实机窗口，使用独立演示配置与示例数据。 [截图说明](images/README.md)
 
 数据保存在 `%LOCALAPPDATA%\Velo`，首次打开前在同级 `VeloRustMigrationBackups` 完整保留原始数据，备份失败则停止初始化。卸载保留数据与程序恢复档案。早期版本用户请先阅读[安装与迁移说明](releases/0.10.0.md)，确认自己的安装方式对应哪条升级路径。
 
@@ -40,6 +40,11 @@
 - **长按快捷盘**按住侧键后划向目标方向，看到「松开执行」即可松手。方向动作取决于触发时的前台应用。回到中心、划入空方向或按 `Esc` 可取消。未绑定方向可从短按工作台的齿轮进入设置。
 - **动作库**可配置文本、快捷键步骤、本地批处理以及文件或网页入口。快捷键每行一步，例如 `Ctrl+K` 与 `Ctrl+S @150`，其中 `@150` 表示按下这一组合前等待 150 毫秒。文本以明文保存在本地。脚本需确认信任且保存成功后才能执行，文件或参数改变后需要重新确认。
 
+<p align="center">
+  <img src="images/workspace-panel.png" alt="短按侧键打开工作台，显示全局动作和应用动作" width="320" />
+  <img src="images/workspace-gesture.png" alt="长按侧键划向上方，快捷盘提示松开执行" width="298" />
+</p>
+
 短按矩阵支持用 `Tab` 移动焦点，再按 `Enter` 或空格执行。编辑时可把动作拖入槽位，或先选中槽位再点动作旁的「＋」。通过「交换目标」选定目标后，按 `Enter` 或点击「交换槽位」。最后点「保存设置」或按 `Ctrl+S`。应用配置按完整 `.exe` 路径或 Windows 包应用标识匹配。
 
 关闭工作台并保存会释放其侧键与热键、销毁工作台窗口并停止应用识别线程。布局、开关和绑定随 `config.json` 一并备份。
@@ -55,7 +60,7 @@
 
 进入 **设置 → 外观**，打开主题菜单，选择“跟随系统”“浅色”或“深色”。也可使用方向键移动、`Enter` 确认、`Esc` 收起菜单。主题示意图随选择更新，点击“保存设置”后应用到窗口。
 
-<p align="center"><img src="images/appearance.png" alt="Rust 外观设置：主题预览、浅色主题和网格排列" width="640" /></p>
+<p align="center"><img src="images/appearance.png" alt="Windows 蓝预览，使用浅色主题和列表排列" width="640" /></p>
 
 ## 候选项排列与右键菜单
 
@@ -95,7 +100,7 @@
 
 文件列表显示名称、所在目录和类型。↑ / ↓ 选择，Enter 或双击用默认程序打开，Ctrl+Enter 在资源管理器中定位；右键或 Shift+F10 可复制完整路径。单击只选择。文件模式空格始终用于输入，输入法合成期间不切换模式。设置页及原生弹窗仍保留原有 Tab 行为。
 
-<p align="center"><img src="images/everything-search.png" alt="文件模式中的六项隔离示例结果，包含文件夹、TXT、Markdown 和 CSV" width="640" /></p>
+<p align="center"><img src="images/everything-search.png" alt="文件模式查找会议纪要，选中 Velo 示例纪要文本文件" width="640" /></p>
 
 每页加载 50 项，点击“加载更多结果”继续，最多保留 200 项；超出时缩小搜索范围。Esc 先清空查询，再返回应用模式，应用查询为空时隐藏。隐藏后释放文件结果，重新呼出时恢复查询和选择；空闲 30 秒后关闭查询线程。打开失败保留原结果并提示。
 
@@ -107,7 +112,7 @@
 
 别名可不填。添加的成员先留在草稿中，只有保存成功后才生效；重复拖入不会重复添加，返回时会提示保留或放弃修改，切换到其他窗口则保持当前草稿。成员引用现有应用库，不会自动固定到首页。库外程序先通过已有“自定义项目”功能添加，再回到组合中选择。
 
-<p align="center"><img src="images/launch-groups.png" alt="专注工作组合编辑器：从筛选后的应用库配置记事本与 Chrome 两个成员" width="640" /></p>
+<p align="center"><img src="images/launch-groups.png" alt="专注工作组合编辑器，配置了记事本、计算器和字符映射表" width="640" /></p>
 
 搜索“开黑”，选择标记为“启动组合”的结果，按 Enter 执行；Space 沿用“空格启动”设置。Velo 一次处理一组，最多同时发出三个启动请求；已经在当前用户和会话中运行的成员会被跳过。某项失败不影响其他成员，也不会关闭已经打开的应用。
 

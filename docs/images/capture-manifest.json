@@ -1,7 +1,10 @@
 {
   "SchemaVersion": 1,
-  "DocumentationDate": "2026-11-18",
-  "Version": "0.11.0",
+  "DocumentationDate": "2026-11-26",
+  "Version": "0.13.0",
+  "SourceTag": "v0.13.0",
+  "SourceCommit": "70c2da73d7de5d2b2f97baa571aa616703e1bc77",
+  "ProductIdentity": true,
   "Renderer": "software",
   "Backend": "winit",
   "SlintVersion": "1.18.1",
@@ -13,150 +16,273 @@
   "NativeDPI": 96,
   "ScalePercent": 100,
   "Language": "zh-CN",
-  "ExecutableSHA256": "13A52AEDB2ABF3DECC5E1FA223979F2E66B041EC198556F6803BF6050D8C6F73",
-  "BuildIdentitySHA256": "5AE09585E93100FBFB80701849423E9AA0E70FA2A3FA3D09E0386A8D678C36F7",
-  "VerificationSHA256": "0B17CCDD19C50345BFC2CC09755462F1B56A1329AFF87D583F90ED01838E98DD",
-  "BuildIdentity": "../baselines/2026-11-18-project-review/software-build-identity.json",
-  "WorkspaceDirty": true,
-  "DataScope": "Independent business-runtime instance; synthetic configuration, pins, history and custom applications; native installed-app discovery; public sample files only. No production user data directory used.",
+  "ExecutableSHA256": "EC271369A1E8D26E6817D91A53007BE3EE9740EE714BEF5E3131ED4653CC6B24",
+  "WorkspaceDirty": false,
+  "DataScope": "Independent app instance; demo pins, group and history; native app discovery; public sample documents only.",
   "Everything": {
-    "Version": "1.4.1.1032",
-    "ExecutableSHA256": "F191F756996A14A11E5445FA7103D302EFD510CF2FBF920E6C0C8ED51D512E36",
-    "Scope": "Temporary default client with independent INI and a six-entry public folder index; existing service preserved."
+    "Version": "1.4.1.1015",
+    "ExecutableSHA256": "8F853443C0B0E8C144315A27D1E8BF1595BD09CB364393226ACCFE105C0A2C85",
+    "Scope": "Temporary default client with its own INI and five public results; pre-existing service retained."
   },
-  "ImageProcessing": "Original native bitmap pixels encoded as PNG; no resizing, stitching or UI repainting. Native popup captured within the observed owner-window screen bounds.",
+  "ImageProcessing": "Native screenshot pixels without resizing or UI reconstruction. The Workspace captures retain frame padding. The delivered frames omit the pointer and input overlay.",
   "Screenshots": [
     {
       "filename": "about.png",
       "width": 640,
       "height": 660,
-      "bytes": 58607,
-      "sha256": "c87c687b2cec02dec496750406776b0c87c267fdd3961e2e177d64bf84d7193f",
-      "source": "Windows Alt+PrintScreen clipboard bitmap",
+      "bytes": 59536,
+      "sha256": "1ca5ed62d28ba68442ae70f847eb2e3389638dc665263e3cc4214c8f1e6aca7c",
+      "source": "Windows GDI window bitmap",
       "resampled": false,
-      "capturedAtUtc": "2026-11-17T18:51:12.799571+00:00",
-      "capturedAtShanghai": "2026-11-18T02:51:12.799571+08:00"
+      "capturedAtUtc": "2026-11-25T18:35:11.547152+00:00",
+      "capturedAtShanghai": "2026-11-26T02:35:11.547152+08:00"
     },
     {
       "filename": "appearance.png",
       "width": 640,
       "height": 660,
-      "bytes": 44602,
-      "sha256": "62a7d1ab537d4246a4851de83f47a47d4484e6f3fd15e93a6f1202da4a361d3d",
-      "source": "Windows Alt+PrintScreen clipboard bitmap",
+      "bytes": 45349,
+      "sha256": "1314ee9bc794fe74261ee2bed781c9ec0d506e597c129ed1bbc8048e9fa5504d",
+      "source": "Windows GDI window bitmap",
       "resampled": false,
-      "capturedAtUtc": "2026-11-17T18:50:19.312435+00:00",
-      "capturedAtShanghai": "2026-11-18T02:50:19.312435+08:00"
+      "capturedAtUtc": "2026-11-25T18:34:14.640901+00:00",
+      "capturedAtShanghai": "2026-11-26T02:34:14.640901+08:00"
     },
     {
       "filename": "config-backup.png",
       "width": 640,
       "height": 660,
-      "bytes": 82965,
-      "sha256": "2cbce323f173c8c7e6d604d20e3a28666fc58607e151251251970dac9eafeaf5",
-      "source": "Windows Alt+PrintScreen clipboard bitmap",
+      "bytes": 83753,
+      "sha256": "5011ef6a477efdd7408d6085fbb23be6f6e9074dd5bce3d3ba07ff91f0f9eea8",
+      "source": "Windows GDI window bitmap",
       "resampled": false,
-      "capturedAtUtc": "2026-11-17T18:51:41.593768+00:00",
-      "capturedAtShanghai": "2026-11-18T02:51:41.593768+08:00"
+      "capturedAtUtc": "2026-11-25T18:34:39.525252+00:00",
+      "capturedAtShanghai": "2026-11-26T02:34:39.525252+08:00"
     },
     {
       "filename": "context-menu.png",
       "width": 640,
       "height": 480,
-      "bytes": 50972,
-      "sha256": "900004bb5d9b199bd40c940d34eb3f76e09c115cf61fced904cf9bf28c8dad41",
-      "source": "Native screen bitmap of the observed Velo window bounds, including its native popup",
+      "bytes": 54835,
+      "sha256": "6de97cc0cd8445ef5e7d053a6d2ebc96b9b0859e6605ebe4955e4ccfc0c3081b",
+      "source": "Windows screen bitmap cropped to the DWM window frame",
       "resampled": false,
-      "capturedAtUtc": "2026-11-17T18:55:25.509861+00:00",
-      "capturedAtShanghai": "2026-11-18T02:55:25.509861+08:00"
+      "capturedAtUtc": "2026-11-25T18:33:05.472877+00:00",
+      "capturedAtShanghai": "2026-11-26T02:33:05.472877+08:00"
     },
     {
       "filename": "custom-apps.png",
       "width": 640,
       "height": 660,
-      "bytes": 84346,
-      "sha256": "91417e00eab9791f853dd9b2d3662be0ea120f1eb279e52602979d6ec0d90639",
-      "source": "Windows Alt+PrintScreen clipboard bitmap",
+      "bytes": 73015,
+      "sha256": "ad56bc51ba08880d2fab6d34b7f39d650c92148a1c635924a6d04db5b82157bc",
+      "source": "Windows GDI window bitmap",
       "resampled": false,
-      "capturedAtUtc": "2026-11-17T18:46:31.094851+00:00",
-      "capturedAtShanghai": "2026-11-18T02:46:31.094851+08:00"
+      "capturedAtUtc": "2026-11-25T18:35:59.272162+00:00",
+      "capturedAtShanghai": "2026-11-26T02:35:59.272162+08:00"
     },
     {
       "filename": "everything-search.png",
       "width": 640,
-      "height": 504,
-      "bytes": 59218,
-      "sha256": "a607cd613d9db1cd1dfe193e16a114eae8d93f394c72dbdfbc9ab913169053d1",
-      "source": "Windows Alt+PrintScreen clipboard bitmap",
+      "height": 446,
+      "bytes": 45436,
+      "sha256": "1db64c865ec7885db7c0a11fc771abccd116ddfb3dd5fad0817b1ba651149d24",
+      "source": "Windows GDI window bitmap",
       "resampled": false,
-      "capturedAtUtc": "2026-11-17T18:49:30.052583+00:00",
-      "capturedAtShanghai": "2026-11-18T02:49:30.052583+08:00"
+      "capturedAtUtc": "2026-11-25T18:28:09.499960+00:00",
+      "capturedAtShanghai": "2026-11-26T02:28:09.499960+08:00"
     },
     {
       "filename": "everything-settings.png",
       "width": 640,
       "height": 660,
-      "bytes": 65195,
-      "sha256": "a0c5dacb7a88ad99e99b1d215c8bbc02331501777e30a4784c3b616ffac49334",
-      "source": "Windows Alt+PrintScreen clipboard bitmap",
+      "bytes": 66283,
+      "sha256": "504ae0ead83e4c93023c0476ac86d1c01a7aed5531953a9b130a6af69f7d4d09",
+      "source": "Windows GDI window bitmap",
       "resampled": false,
-      "capturedAtUtc": "2026-11-17T18:50:47.728941+00:00",
-      "capturedAtShanghai": "2026-11-18T02:50:47.728941+08:00"
+      "capturedAtUtc": "2026-11-25T18:34:25.791564+00:00",
+      "capturedAtShanghai": "2026-11-26T02:34:25.791564+08:00"
     },
     {
       "filename": "home-dark.png",
       "width": 640,
       "height": 660,
-      "bytes": 75414,
-      "sha256": "06c20cb7618a7e349689df96e07cd934a9c6a5be5ca0cb0fa60fa43d3cb74baa",
-      "source": "Windows Alt+PrintScreen clipboard bitmap",
+      "bytes": 81231,
+      "sha256": "1c108ab836cf8d9d97d10b1ad45760f6256dbbb8d54e5dd7c87305613dbedc97",
+      "source": "Windows GDI window bitmap",
       "resampled": false,
-      "capturedAtUtc": "2026-11-17T18:59:07.653618+00:00",
-      "capturedAtShanghai": "2026-11-18T02:59:07.653618+08:00"
+      "capturedAtUtc": "2026-11-25T18:37:57.606558+00:00",
+      "capturedAtShanghai": "2026-11-26T02:37:57.606558+08:00"
     },
     {
       "filename": "home-light.png",
       "width": 640,
       "height": 660,
-      "bytes": 73615,
-      "sha256": "38d0fe3e7b9f72f4d90fddfaa52cde1b60cfcdcb4fd25035c83dcf9912406dd9",
-      "source": "Windows Alt+PrintScreen clipboard bitmap",
+      "bytes": 79812,
+      "sha256": "9e63d2be6c883de10e6302f062f52a5cff3d1e574c3b9a393e1431949c749a55",
+      "source": "Windows GDI window bitmap",
       "resampled": false,
-      "capturedAtUtc": "2026-11-17T18:45:54.041839+00:00",
-      "capturedAtShanghai": "2026-11-18T02:45:54.041839+08:00"
+      "capturedAtUtc": "2026-11-25T18:39:16.382673+00:00",
+      "capturedAtShanghai": "2026-11-26T02:39:16.382673+08:00"
     },
     {
       "filename": "launch-groups.png",
       "width": 640,
       "height": 660,
-      "bytes": 57362,
-      "sha256": "1a30f7231f7711c066ee89046e508be90ad73113bb236790460f78907540de5e",
-      "source": "Windows Alt+PrintScreen clipboard bitmap",
+      "bytes": 62741,
+      "sha256": "ebb350cf3f89d06d3c14bf21c90442c79cb7074222cab4e937e0dea6d4564d1d",
+      "source": "Windows GDI window bitmap",
       "resampled": false,
-      "capturedAtUtc": "2026-11-17T18:47:33.440495+00:00",
-      "capturedAtShanghai": "2026-11-18T02:47:33.440495+08:00"
+      "capturedAtUtc": "2026-11-25T18:29:45.027803+00:00",
+      "capturedAtShanghai": "2026-11-26T02:29:45.027803+08:00"
     },
     {
       "filename": "search-grid.png",
       "width": 640,
       "height": 316,
-      "bytes": 32500,
-      "sha256": "ccb1cbcda3b0367af133d722e1b0dc3370bf7f7f7a5ccc35cf6326a431123082",
-      "source": "Windows Alt+PrintScreen clipboard bitmap",
+      "bytes": 34863,
+      "sha256": "f88852bcb26b2e764905209c624ff5ebbb79fbba9ef9680979d188fcd39f966a",
+      "source": "Windows GDI window bitmap",
       "resampled": false,
-      "capturedAtUtc": "2026-11-17T18:44:43.905216+00:00",
-      "capturedAtShanghai": "2026-11-18T02:44:43.905216+08:00"
+      "capturedAtUtc": "2026-11-25T18:38:31.437801+00:00",
+      "capturedAtShanghai": "2026-11-26T02:38:31.437801+08:00"
     },
     {
       "filename": "search-list.png",
       "width": 640,
       "height": 480,
-      "bytes": 52066,
-      "sha256": "bf43427e52ee61149e346582a9f8b50517907f7845694f80b63bf4b1f589f46b",
-      "source": "Windows Alt+PrintScreen clipboard bitmap",
+      "bytes": 56183,
+      "sha256": "3993c63c85903bbdfd9157e6cce3888ce45c6222af9d9401858e04f577ff74b5",
+      "source": "Windows GDI window bitmap",
       "resampled": false,
-      "capturedAtUtc": "2026-11-17T18:53:00.435089+00:00",
-      "capturedAtShanghai": "2026-11-18T02:53:00.435089+08:00"
+      "capturedAtUtc": "2026-11-25T18:31:51.863254+00:00",
+      "capturedAtShanghai": "2026-11-26T02:31:51.863254+08:00"
+    },
+    {
+      "filename": "video-v0.13/file-mode.png",
+      "width": 640,
+      "height": 214,
+      "bytes": 19500,
+      "sha256": "3be902b7bd0f6112a916239b21cb538ffc53540d9fa831b63221a21cb03587f1",
+      "source": "Windows GDI window bitmap",
+      "resampled": false,
+      "capturedAtUtc": "2026-11-25T18:27:48.610270+00:00",
+      "capturedAtShanghai": "2026-11-26T02:27:48.610270+08:00"
+    },
+    {
+      "filename": "video-v0.13/launch-group-result.png",
+      "width": 640,
+      "height": 660,
+      "bytes": 83045,
+      "sha256": "d3e1dbe8104da3bd0dae55bd6b42417d798b9f7e640742f07cf937163a7d692a",
+      "source": "Windows GDI window bitmap",
+      "resampled": false,
+      "capturedAtUtc": "2026-11-25T18:31:39.091940+00:00",
+      "capturedAtShanghai": "2026-11-26T02:31:39.091940+08:00"
+    },
+    {
+      "filename": "video-v0.13/launch-group-search.png",
+      "width": 640,
+      "height": 210,
+      "bytes": 18480,
+      "sha256": "74eec692a046d879696383bcfc049630bb5a9a4524c81bde34b2bba19d928c76",
+      "source": "Windows GDI window bitmap",
+      "resampled": false,
+      "capturedAtUtc": "2026-11-25T18:30:44.593637+00:00",
+      "capturedAtShanghai": "2026-11-26T02:30:44.593637+08:00"
+    },
+    {
+      "filename": "video-v0.13/meeting-notepad.png",
+      "width": 1000,
+      "height": 689,
+      "bytes": 26034,
+      "sha256": "21267e0e592aba619cc85984faea004ad25dbd5ce32564e47c402f779d3b9a09",
+      "source": "Windows screen bitmap cropped to the DWM window frame",
+      "resampled": false,
+      "capturedAtUtc": "2026-11-25T18:52:49.470413+00:00",
+      "capturedAtShanghai": "2026-11-26T02:52:49.470413+08:00"
+    },
+    {
+      "filename": "video-v0.13/notepad-open.png",
+      "width": 1000,
+      "height": 689,
+      "bytes": 15250,
+      "sha256": "d0d4b0d1ac77a34c1e828631b0a73c4012fc8c72bdb3e1521db9e46c67bc0dc0",
+      "source": "Windows screen bitmap cropped to the DWM window frame",
+      "resampled": false,
+      "capturedAtUtc": "2026-11-25T18:51:53.007389+00:00",
+      "capturedAtShanghai": "2026-11-26T02:51:53.007389+08:00"
+    },
+    {
+      "filename": "video-v0.13/notepad-search.png",
+      "width": 640,
+      "height": 264,
+      "bytes": 30274,
+      "sha256": "8ac80cba678fabadbfa54f432a8244b2b973a0cd8667d2a48d2aca8afdb5f213",
+      "source": "Windows GDI window bitmap",
+      "resampled": false,
+      "capturedAtUtc": "2026-11-25T18:25:59.542020+00:00",
+      "capturedAtShanghai": "2026-11-26T02:25:59.542020+08:00"
+    },
+    {
+      "filename": "workspace-gesture.png",
+      "width": 298,
+      "height": 238,
+      "bytes": 12858,
+      "sha256": "96544be38300776ec6dd85bd12ae97a12b2c152ff1beac850720cd4febc486db",
+      "source": "Workspace desktop probe screen capture with native window bounds and padding",
+      "resampled": false,
+      "capturedAtUtc": "2026-11-25T18:54:14.490280+00:00",
+      "capturedAtShanghai": "2026-11-26T02:54:14.490280+08:00"
+    },
+    {
+      "filename": "workspace-panel.png",
+      "width": 320,
+      "height": 368,
+      "bytes": 23957,
+      "sha256": "b7d82a0bb95f14fb42f7bc344bdff8c8de60d6e170df7f935af5bc1a6fd80b4b",
+      "source": "Workspace desktop probe screen capture with native window bounds and padding",
+      "resampled": false,
+      "capturedAtUtc": "2026-11-25T18:54:13.908952+00:00",
+      "capturedAtShanghai": "2026-11-26T02:54:13.908952+08:00"
+    }
+  ],
+  "RelatedImages": [
+    {
+      "filename": "site/home-dark.webp",
+      "width": 640,
+      "height": 660,
+      "bytes": 48650,
+      "sha256": "13e8d483bb480d37e3134424c8c1db746484874e80fa3eedc7d45a136da3637d",
+      "source": "home-dark.png, lossless WebP",
+      "resampled": false
+    },
+    {
+      "filename": "site/home-light.webp",
+      "width": 640,
+      "height": 660,
+      "bytes": 48212,
+      "sha256": "ecdcc70ff7b917bfce452b2a11d9a24a94363515c6a798cd82cabbfd76060bbc",
+      "source": "home-light.png, lossless WebP",
+      "resampled": false
+    },
+    {
+      "filename": "video-v0.13/home-go-v0.9.11.png",
+      "width": 800,
+      "height": 825,
+      "bytes": 290769,
+      "sha256": "ffd7761418115871ca461a5ed0ae9438527d3a2de26b14917959f5c19133023d",
+      "source": "v0.9.11:docs/images/home-light.png",
+      "resampled": false
+    },
+    {
+      "filename": "video-v0.13/velo-logo.png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 264515,
+      "sha256": "b996ac1562316fe09124207272145dc5f8b951c8f1f0e85ccc8bbef71661f0e8",
+      "source": "v0.9.11:build/appicon.png",
+      "resampled": false
     }
   ]
 }

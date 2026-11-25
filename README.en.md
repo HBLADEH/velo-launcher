@@ -28,36 +28,41 @@ The native UI and application logic run in a single process. Settings, the app i
 
 ## Screenshots
 
-Actual Windows captures of the **0.11.0 Software development build**, using an independent demo configuration, pins and usage records. Everything is enabled for this demo; integration is disabled by default. Images retain their captured pixel dimensions and are stored as PNG. See the [capture notes](docs/images/README.md) for build identity and all scenes. The interface is in Chinese.
+Windows captures of **Velo v0.13.0 Software**, using an independent demo configuration and sample data. The demo enables Everything and the experimental workspace. The interface is in Simplified Chinese. [Capture notes](docs/images/README.md)
 
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="docs/images/home-dark.png" />
     <source media="(prefers-color-scheme: light)" srcset="docs/images/home-light.png" />
-    <img src="docs/images/home-light.png" alt="Velo Rust home with pins, frequently used apps and Windows shortcuts" width="640" />
+    <img src="docs/images/home-light.png" alt="Velo Home with pinned apps and a launch group, frequent items and Windows shortcuts" width="640" />
   </picture>
 </p>
-<p align="center"><em>Home brings pins, frequent apps and Windows shortcuts together. Scroll to see more.</em><br /><a href="docs/images/home-light.png">View light theme</a> · <a href="docs/images/home-dark.png">View dark theme</a></p>
+<p align="center"><em>Open pinned apps, launch groups, frequent items and Windows shortcuts from Home.</em><br /><a href="docs/images/home-light.png">View light theme</a> · <a href="docs/images/home-dark.png">View dark theme</a></p>
 
 <table>
   <tr><th>List search</th><th>Grid search</th></tr>
   <tr>
     <td valign="top"><a href="docs/images/search-list.png"><img src="docs/images/search-list.png" alt="List results for public demo apps, with names, paths and selection" width="420" /></a><br />Names, paths and icons, with arrow-key selection and Enter to launch.</td>
-    <td valign="top"><a href="docs/images/search-grid.png"><img src="docs/images/search-grid.png" alt="The same ranked demo results in a six-column grid" width="420" /></a><br />The same ranking presented as an icon grid.</td>
+    <td valign="top"><a href="docs/images/search-grid.png"><img src="docs/images/search-grid.png" alt="Six demo apps in a six-column grid" width="420" /></a><br />Icons and names in a grid with four-way arrow-key selection.</td>
   </tr>
-  <tr><th>Everything file search · New in 0.11.0</th><th>Launch groups · New in 0.11.0</th></tr>
+  <tr><th>Everything file search</th><th>Launch groups</th></tr>
   <tr>
-    <td valign="top"><a href="docs/images/everything-search.png"><img src="docs/images/everything-search.png" alt="File mode shows six public sample files and folders from an isolated directory" width="420" /></a><br />Press Tab to search files and folders, then open, reveal or copy paths.</td>
-    <td valign="top"><a href="docs/images/launch-groups.png"><img src="docs/images/launch-groups.png" alt="A focus-work group with a filtered app library and Notepad and Chrome members" width="420" /></a><br />Drag library apps into a named group, save, then search its name to launch.</td>
+    <td valign="top"><a href="docs/images/everything-search.png"><img src="docs/images/everything-search.png" alt="File mode with sample meeting notes selected among other demo files and folders" width="420" /></a><br />Press Tab to search files and folders, then open, reveal or copy paths.</td>
+    <td valign="top"><a href="docs/images/launch-groups.png"><img src="docs/images/launch-groups.png" alt="A focus-work group with Notepad, Calculator and Character Map as its three members" width="420" /></a><br />Drag library apps into a named group, save, then search its name to launch.</td>
+  </tr>
+  <tr><th>Workspace (experimental)</th><th>Gesture pad (experimental)</th></tr>
+  <tr>
+    <td valign="top"><a href="docs/images/workspace-panel.png"><img src="docs/images/workspace-panel.png" alt="Workspace with global actions above and app-specific actions below" width="320" /></a><br />Tap the mouse side button to open the two-section panel.</td>
+    <td valign="top"><a href="docs/images/workspace-gesture.png"><img src="docs/images/workspace-gesture.png" alt="Gesture pad with the launcher highlighted at the top and a release-to-run message in the center" width="298" /></a><br />Hold the side button, move toward a bound direction and release to run.</td>
   </tr>
   <tr><th>Native context menu</th><th>Appearance settings</th></tr>
   <tr>
     <td valign="top"><a href="docs/images/context-menu.png"><img src="docs/images/context-menu.png" alt="7-Zip native menu with open, installation directory, administrator launch and unpin actions" width="420" /></a><br />Open installation folders, run as administrator or manage pins.</td>
-    <td valign="top"><a href="docs/images/appearance.png"><img src="docs/images/appearance.png" alt="Windows Blue appearance preview with light theme and grid layout selected" width="420" /></a><br />Choose a theme and result layout, then save.</td>
+    <td valign="top"><a href="docs/images/appearance.png"><img src="docs/images/appearance.png" alt="Windows Blue appearance preview with light theme and list layout selected" width="420" /></a><br />Choose a theme and result layout, then save.</td>
   </tr>
 </table>
 
-See the [screenshot directory](docs/images/README.md) for more captures.
+See the [screenshot directory](docs/images/README.md) for more captures and promotional video stills.
 
 ## Features
 

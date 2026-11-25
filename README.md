@@ -28,36 +28,41 @@ Velo 是一款面向 **Windows 10 / 11 x64** 的中文应用启动器，使用 *
 
 ## 界面预览
 
-以下为 **0.11.0 Software 开发构建**的真实 Windows 窗口，使用独立演示配置、固定项和使用记录。演示环境启用了 Everything，该功能默认关闭。图片按原始像素保存为 PNG；构建身份与完整场景见[截图说明](docs/images/README.md)。
+以下是 **Velo v0.13.0 Software** 的 Windows 实机截图，使用独立的演示配置与示例数据。演示中开启了 Everything 和测试版工作台。 [截图说明](docs/images/README.md)
 
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="docs/images/home-dark.png" />
     <source media="(prefers-color-scheme: light)" srcset="docs/images/home-light.png" />
-    <img src="docs/images/home-light.png" alt="Velo Rust 浅色首页：固定应用、常用应用与 Windows 系统快捷" width="640" />
+    <img src="docs/images/home-light.png" alt="Velo 浅色首页，展示已固定的应用和启动组合、常用项目与 Windows 系统快捷" width="640" />
   </picture>
 </p>
-<p align="center"><em>首页：固定、常用与系统快捷集中展示，更多内容可滚动查看。</em><br /><a href="docs/images/home-light.png">查看浅色首页</a> · <a href="docs/images/home-dark.png">查看深色首页</a></p>
+<p align="center"><em>在首页打开固定应用、启动组合、常用项目与系统快捷。</em><br /><a href="docs/images/home-light.png">查看浅色首页</a> · <a href="docs/images/home-dark.png">查看深色首页</a></p>
 
 <table>
   <tr><th>列表搜索</th><th>网格搜索</th></tr>
   <tr>
     <td valign="top"><a href="docs/images/search-list.png"><img src="docs/images/search-list.png" alt="列表搜索公开演示应用，显示名称、路径和选中状态" width="420" /></a><br />名称、路径与图标一目了然，方向键选择、Enter 启动。</td>
-    <td valign="top"><a href="docs/images/search-grid.png"><img src="docs/images/search-grid.png" alt="同一组演示结果以六列网格排列" width="420" /></a><br />同一搜索排名，图标与名称按网格排列。</td>
+    <td valign="top"><a href="docs/images/search-grid.png"><img src="docs/images/search-grid.png" alt="六个演示应用以六列网格排列" width="420" /></a><br />图标与名称按网格排列，支持四个方向键选择。</td>
   </tr>
-  <tr><th>Everything 文件搜索 · 0.11.0 新增</th><th>启动组合 · 0.11.0 新增</th></tr>
+  <tr><th>Everything 文件搜索</th><th>启动组合</th></tr>
   <tr>
-    <td valign="top"><a href="docs/images/everything-search.png"><img src="docs/images/everything-search.png" alt="文件模式从隔离目录查询到六项公开示例文件和文件夹" width="420" /></a><br />Tab 切换文件模式，搜索文件与文件夹，支持打开、定位和复制路径。</td>
-    <td valign="top"><a href="docs/images/launch-groups.png"><img src="docs/images/launch-groups.png" alt="专注工作组合：左侧筛选应用库，右侧配置记事本与 Chrome 两个成员" width="420" /></a><br />从应用库拖入成员，保存后搜索组合名称即可批量打开。</td>
+    <td valign="top"><a href="docs/images/everything-search.png"><img src="docs/images/everything-search.png" alt="文件模式选中了 Velo 示例会议纪要，列表同时显示其他演示文件和文件夹" width="420" /></a><br />Tab 切换文件模式，搜索文件与文件夹，支持打开、定位和复制路径。</td>
+    <td valign="top"><a href="docs/images/launch-groups.png"><img src="docs/images/launch-groups.png" alt="专注工作组合的三个成员为记事本、计算器和字符映射表" width="420" /></a><br />从应用库拖入成员，保存后搜索组合名称即可批量打开。</td>
+  </tr>
+  <tr><th>工作台（测试版）</th><th>快捷盘（测试版）</th></tr>
+  <tr>
+    <td valign="top"><a href="docs/images/workspace-panel.png"><img src="docs/images/workspace-panel.png" alt="工作台上方是全局动作，下方是当前应用的专属动作" width="320" /></a><br />短按侧键打开双区矩阵。</td>
+    <td valign="top"><a href="docs/images/workspace-gesture.png"><img src="docs/images/workspace-gesture.png" alt="快捷盘向上选中启动器，中央显示松开执行" width="298" /></a><br />长按侧键并划向已绑定的方向，松开执行。</td>
   </tr>
   <tr><th>原生右键菜单</th><th>外观设置</th></tr>
   <tr>
     <td valign="top"><a href="docs/images/context-menu.png"><img src="docs/images/context-menu.png" alt="7-Zip 的 Windows 原生菜单，包含打开、安装目录、管理员启动和取消置顶" width="420" /></a><br />打开安装目录、以管理员权限启动，或管理首页固定项。</td>
-    <td valign="top"><a href="docs/images/appearance.png"><img src="docs/images/appearance.png" alt="外观设置中的 Windows 蓝主题预览、浅色主题和网格排列" width="420" /></a><br />选择主题与结果排列，保存后生效。</td>
+    <td valign="top"><a href="docs/images/appearance.png"><img src="docs/images/appearance.png" alt="外观设置中的 Windows 蓝主题预览、浅色主题和列表排列" width="420" /></a><br />选择主题与结果排列，保存后生效。</td>
   </tr>
 </table>
 
-更多界面原图见[截图目录](docs/images/README.md)。
+更多界面原图与宣传片定帧见[截图目录](docs/images/README.md)。
 
 ## 主要功能
 
