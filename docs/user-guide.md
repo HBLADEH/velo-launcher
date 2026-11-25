@@ -6,7 +6,7 @@
 
 从[最新发布](https://github.com/HBLADEH/velo-launcher/releases/latest)下载 `velo-rust-x64-installer.exe`（Software 默认）并确认 UAC。FemtoVG / OpenGL 替代构建为 `velo-rust-femtovg-x64-installer.exe`，切换前从托盘完全退出。当前提供系统安装版，新安装默认 `Alt+Space` 呼出；已有用户的快捷键继续保留。产品使用 Rust + Slint，界面为简体中文。
 
-本指南适用于 v0.11.0。截图来自 0.11.0 Software 开发构建的真实 Windows 窗口，使用独立演示配置与示例数据。构建身份和采集方式见[截图说明](images/README.md)。
+本指南适用于 v0.13.0。截图来自 0.11.0 Software 开发构建的真实 Windows 窗口，使用独立演示配置与示例数据。构建身份和采集方式见[截图说明](images/README.md)。
 
 数据保存在 `%LOCALAPPDATA%\Velo`，首次打开前在同级 `VeloRustMigrationBackups` 完整保留原始数据，备份失败则停止初始化。卸载保留数据与程序恢复档案。早期版本用户请先阅读[安装与迁移说明](releases/0.10.0.md)，确认自己的安装方式对应哪条升级路径。
 
@@ -119,7 +119,7 @@
 
 大多数直接程序和普通快捷方式无需额外设置。对于 Steam 等带参数的游戏入口，在成员下点击“选择运行程序”，选取游戏实际运行的 `.exe` 后保存；启动器进程本身不能证明游戏正在运行。无法确认进程权限时会提示需要确认，可重新检查，或在确认可能重复打开后点击“仍然打开”。启动后暂未观察到进程时也不会自动重复打开。
 
-组合保存在 `launch-groups.json`，不包含在当前只备份设置的“立即备份”中；迁移数据时请一并保留该文件。损坏或未来版本的组合文件会保留原件并停用组合编辑，普通应用仍可搜索和启动。此功能尚未进入已发布的 v0.10.0 安装包，验证范围见[最新实施记录](baselines/2026-11-16-launch-groups-library-only/README.md)。
+组合保存在 `launch-groups.json`，不包含在当前只备份设置的“立即备份”中；迁移数据时请一并保留该文件。损坏或未来版本的组合文件会保留原件并停用组合编辑，普通应用仍可搜索和启动。组合置顶、常用排序和计数的验证范围见[启动组合验收记录](baselines/2026-11-25-launch-group-home/README.md)。
 
 ## 备份与恢复配置
 
