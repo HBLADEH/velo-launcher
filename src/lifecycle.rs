@@ -593,6 +593,10 @@ impl Controller {
             self.log("global_hotkey", "action=None native_dialog=true");
             return;
         }
+        if app.get_workspace_recording() {
+            app.invoke_workspace_recorded_chord(text.into());
+            return;
+        }
         let action = self.state.borrow().hotkey(
             native.is_some_and(NativeWindow::active),
             native.is_some_and(NativeWindow::foreground_fullscreen),
@@ -858,20 +862,8 @@ impl Controller {
             self.record(false);
             return true;
         }
-        let virtual_key = match code {
-            KeyCode::Space => 0x20,
-            KeyCode::Enter => 0x0d,
-            KeyCode::Tab => 9,
-            code if (KeyCode::KeyA as u32..=KeyCode::KeyZ as u32).contains(&(code as u32)) => {
-                0x41 + code as u32 - KeyCode::KeyA as u32
-            }
-            code if (KeyCode::Digit0 as u32..=KeyCode::Digit9 as u32).contains(&(code as u32)) => {
-                0x30 + code as u32 - KeyCode::Digit0 as u32
-            }
-            code if (KeyCode::F1 as u32..=KeyCode::F24 as u32).contains(&(code as u32)) => {
-                0x70 + code as u32 - KeyCode::F1 as u32
-            }
-            _ => return true,
+        let Some(virtual_key) = virtual_key(code) else {
+            return true;
         };
         let modifiers = self.modifiers.get();
         let flags = u32::from(modifiers.alt_key())
@@ -902,6 +894,25 @@ impl Controller {
         self.log("lifecycle_quit", "");
         let _ = slint::quit_event_loop();
     }
+}
+
+pub(crate) fn virtual_key(code: KeyCode) -> Option<u32> {
+    let raw = code as u32;
+    Some(match code {
+        KeyCode::Space => 0x20,
+        KeyCode::Enter | KeyCode::NumpadEnter => 0x0d,
+        KeyCode::Tab => 9,
+        _ if (KeyCode::KeyA as u32..=KeyCode::KeyZ as u32).contains(&raw) => {
+            0x41 + raw - KeyCode::KeyA as u32
+        }
+        _ if (KeyCode::Digit0 as u32..=KeyCode::Digit9 as u32).contains(&raw) => {
+            0x30 + raw - KeyCode::Digit0 as u32
+        }
+        _ if (KeyCode::F1 as u32..=KeyCode::F24 as u32).contains(&raw) => {
+            0x70 + raw - KeyCode::F1 as u32
+        }
+        _ => return None,
+    })
 }
 
 #[cfg(test)]

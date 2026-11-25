@@ -48,45 +48,30 @@ $veloEnvironment = Initialize-VeloRustEnvironment
 cargo build --release --locked --no-default-features --features renderer-software
 ```
 
-### Workspace 径向预览
+### Workspace 双模式预览
 
-从仓库根目录运行。`Ctrl+Alt+K` 呼出测试 Launcher，`Ctrl+Alt+Space` 呼出独立的径向工作台。可在测试实例的 **设置 → 工作台** 保存配置。下例显式启用 `XBUTTON2`，可省略 `--workspace-xbutton` 单独体验键盘入口。
-
-```powershell
-./target/artifacts/software/velo-slint.exe --background --instance-id=workspace-radial --data-dir=.dev-data/workspace-radial --hotkey=Ctrl+Alt+K --workspace-preview=radial --workspace-xbutton=xbutton2 --measurement-log=target/workspace-radial-software.log
-```
-
-备用热键冲突时可指定 `--workspace-hotkey=Ctrl+Alt+W`。退出测试实例后，可在同一隔离目录用另一种渲染器复验，为每次运行指定独立日志。验证已保存的工作台开关、绑定和布局时，保留实例、数据目录和日志参数，去掉 `--workspace-preview`、`--workspace-xbutton` 和 `--workspace-hotkey`。
-
-快捷键呼出时先显示 Logo，再展开扇区。可用 `--reduce-motion` 比较完整菜单直接到位的效果。长按划选直接显示当前区域，悬停、键盘焦点或手势高亮的动作名称显示在 Logo 下方。
-
-桌面专项应逐次运行，每次使用新输出目录。`-SideButton` 通过 Windows 输入队列验证侧键。`-SettingsRoundTrip` 会逐项保存侧键选项并检查禁用后释放窗口、热键和线程。`-Mode disabled` 用没有工作台配置的隔离目录验证启动默认值及两侧键透传。`-Monitor` 按系统枚举顺序选屏，编号从 0 开始。两屏启用时可加 `-CrossMonitors`，验证同一个窗口在另一屏呼出后返回起始屏。用 `result.json` 中的 `MonitorPrimary`、`MonitorBounds` 与 `EffectiveDpi` 核对起始环境。
+从仓库根目录构建并运行隔离实例。备用快捷键打开短按工作台，实体前进侧键可用于短按或划向已绑定的方向。初次打开时可在 **设置 → 工作台 → 长按快捷盘** 分配方向。
 
 ```powershell
-pwsh -NoProfile -STA -File ./scripts/test-workspace-preview.ps1 -Executable target/artifacts/software/velo-slint.exe -OutputDirectory target/workspace-radial-software -Mode radial -SideButton xbutton1 -SettingsRoundTrip
+./scripts/verify-rust.ps1 -SmokeTest
+./target/artifacts/software/velo-slint.exe --background --instance-id=workspace-v03 --data-dir=.dev-data/workspace-v03 --hotkey=Ctrl+Alt+K --workspace-preview=dual --workspace-xbutton=xbutton2
 ```
 
-槽位编辑专项单独使用 `-EditSlots`，检查拖入空弧片、方向键选择后的交换与 `Ctrl+S` 保存。`-MeasureResources` 会记录使用前、可见和隐藏的资源读数。加 `-SideButton xbutton1 -SideSamples 8` 可同时采集手势延迟，原版和关闭工作台使用 `-Mode disabled -MeasureResources`。
+自动专项使用独立配置和合成侧键。按需将渲染器改为 `femtovg`，并为每轮指定新的输出目录。
 
-实体侧键复验时逐个运行渲染器。选择普通应用窗口，在两块屏幕中部检查短按、长按上划与下划、回 Logo 后松开及 Esc。在日志中用 `workspace_side_release` 核对选择结果，用 `workspace_action_dispatched` 核对派发次数，用 `workspace_hidden` 核对收起原因与焦点归还。按 [实施步骤](plans/velo-workspace-v0.2/implementation.md#p4--兼容验证与发布准备) 记录实际 Windows 版本、显示器坐标、缩放与构建身份。
+```powershell
+pwsh -NoProfile -STA -File ./scripts/test-workspace-preview.ps1 -Executable target/artifacts/software/velo-slint.exe -OutputDirectory target/workspace-v03-software -Mode dual -SideButton xbutton1 -Theme light -MeasureResources
+```
+
+调试工作台应用身份、触发与派发可附带 `--measurement-log=target/workspace-v03.log`。日志记录模式、方向和结果类别。 [实施说明](plans/velo-workspace-v0.3/implementation.md)
+
+备用键冲突时可为隔离预览指定 `--workspace-hotkey=Ctrl+Alt+W`。用 `-Mode legacy` 验证旧配置经普通入口启动、首次保存、原文备份和禁用。`-Mode disabled` 验证默认关闭及两侧键透传。`-MeasureResources` 记录资源读数，双模式可附加 `-SideSamples 8` 采集延迟。`-Monitor` 按系统枚举顺序选屏，编号从 0 开始。两块显示器都启用时，可附加 `-CrossMonitors` 验证窗口跨屏复用和 DPI。
+
+实体侧键复验时逐个运行渲染器。在普通应用窗口中检查短按、划向已绑定方向、回到中心和 `Esc` 取消。在日志中用 `workspace_side_release` 核对选择，用 `workspace_action_dispatched` 核对派发次数，用 `workspace_hidden` 核对收起原因与焦点归还。
 
 - **浏览器透传**　在独立浏览器窗口准备两条历史记录。分别保存工作台禁用、浏览器按完整路径排除两种配置，用实体侧键检查前进和后退。清除排除规则并启用工作台后，再检查浏览器进入和退出 F11 全屏时侧键的去向。
 - **驱动改键**　用鼠标驱动把当前绑定的侧键改为普通键盘按键，确认测试窗口收到按键且工作台保持隐藏。用备用热键呼出后，恢复鼠标默认映射，再确认侧键可呼出。
-- **活动手势中拔插**　在副屏按住侧键并划至弧片高亮，在 8 秒长按上限内拔掉副屏。核对工作台在松开侧键前以 `display_changed` 收起，且本次无动作派发。保持同一实例运行，在主屏用备用热键和侧键分别呼出。接回副屏后记录工作区和缩放，在两屏重复呼出、定位和 Esc 焦点归还检查。
-
-### Workspace P0 预览
-
-构建后从仓库根目录运行以下命令。`Ctrl+Alt+K` 呼出测试实例的 Launcher，`Ctrl+Alt+Space` 呼出 Workspace。上区的「收起」用于验证焦点归还，下区的「高亮」用于验证点击。退出测试实例的托盘菜单后，可将 `shaped` 改为 `rounded` 比较轮廓，或更换渲染器产物。
-
-```powershell
-./target/artifacts/software/velo-slint.exe --background --instance-id=workspace-preview --data-dir=.dev-data/workspace-preview --hotkey=Ctrl+Alt+K --workspace-preview=shaped
-```
-
-热键被占用时可另选 `--workspace-hotkey=Ctrl+Alt+W`。桌面专项使用独立的测试窗口、热键与数据目录，检查原生命中、焦点和工作区，并记录屏幕采样。默认测第一个活动显示器，`-Monitor 1` 可选第二个。每轮用新的 PowerShell 进程和 `-OutputDirectory`，采样期间保持桌面空闲。
-
-```powershell
-pwsh -NoProfile -STA -File ./scripts/test-workspace-preview.ps1 -Executable target/artifacts/software/velo-slint.exe -OutputDirectory target/workspace-p0-software -Mode shaped
-```
+- **活动手势中拔插**　在副屏按住侧键并划至方向卡片高亮，在 8 秒长按上限内拔掉副屏。核对工作台在松开前以 `display_changed` 收起且派发次数为零。保持同一实例运行，在主屏分别用备用热键和侧键呼出。接回后在两屏复验定位和焦点归还。
 
 ## 清理磁盘空间
 

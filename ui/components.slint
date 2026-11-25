@@ -141,6 +141,8 @@ export component ActionButton inherits Rectangle {
     in property <bool> destructive: false;
     in property <bool> focus-ring: false;
     out property <bool> has-keyboard-focus: focus.has-focus;
+    out property <bool> has-hover: touch.has-hover;
+    in property <bool> show-text: true;
     in property <length> text-size: 11px;
     in property <length> radius: 8px;
     in property <bool> show-shadow: false;
@@ -181,7 +183,7 @@ export component ActionButton inherits Rectangle {
             x: (parent.width - self.width) / 2; y: (parent.height - self.height) / 2;
             width: 18px; height: 18px; icon-key: root.icon-key; angle: root.icon-angle; tint: Theme.accent;
         }
-        if root.icon-key == "": Text {
+        if root.icon-key == "" && root.show-text: Text {
             text: root.text;
             font-size: root.text-size;
             color: root.primary || root.destructive ? white : root.checked ? Theme.accent : root.flat ? Theme.muted : Theme.fg;

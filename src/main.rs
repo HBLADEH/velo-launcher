@@ -37,7 +37,6 @@ mod pages_probe;
 use velo_slint::platform::{self, windows::window::NativeWindow};
 mod ui;
 mod workspace_preview;
-use velo_slint::platform::windows::workspace::Shape;
 use velo_slint::platform::windows::workspace_input::Button as WorkspaceButton;
 
 const RENDERER: &str = if cfg!(feature = "renderer-femtovg") {
@@ -76,7 +75,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     let mut background = false;
     let mut hotkey = platform::windows::hotkey::Key::parse("Alt+Space")?;
     let mut hotkey_override = false;
-    let mut workspace_preview = None;
+    let mut workspace_preview = false;
     let mut workspace_hotkey = None;
     let mut workspace_xbutton = None;
     let mut allow_hotkey_fullscreen = false;
@@ -106,6 +105,7 @@ fn main() -> Result<(), Box<dyn Error>> {
                 pages_restart_test = true;
             }
             "--background" => background = true,
+            "--workspace-preview=dual" => workspace_preview = true,
             "--allow-hotkey-fullscreen" => allow_hotkey_fullscreen = true,
             "--version" => {
                 println!(
@@ -122,7 +122,7 @@ fn main() -> Result<(), Box<dyn Error>> {
             }
             "--help" | "-h" => {
                 println!(
-                    "velo-slint [--background] [--hotkey=Alt+Space] [--allow-hotkey-fullscreen] [--instance-id=ID --data-dir=PATH] [--workspace-preview=shaped|rounded|radial [--workspace-hotkey=Ctrl+Alt+Space] [--workspace-xbutton=xbutton1|xbutton2]] [--diagnostics] [--isolated|--fixtures] [--smoke-test|--input-smoke-test|--business-smoke-test|--everything-smoke-test] [--theme=light|dark] [--reduce-motion] [--empty-pinned] [--query=TEXT] [--measurement-log=PATH [--measurement-stdio] [--measurement-business]] [--version]"
+                    "velo-slint [--background] [--hotkey=Alt+Space] [--allow-hotkey-fullscreen] [--instance-id=ID --data-dir=PATH] [--workspace-preview=dual [--workspace-hotkey=Ctrl+Alt+Space] [--workspace-xbutton=xbutton1|xbutton2]] [--diagnostics] [--isolated|--fixtures] [--smoke-test|--input-smoke-test|--business-smoke-test|--everything-smoke-test] [--theme=light|dark] [--reduce-motion] [--empty-pinned] [--query=TEXT] [--measurement-log=PATH [--measurement-stdio] [--measurement-business]] [--version]"
                 );
                 return Ok(());
             }
@@ -134,17 +134,8 @@ fn main() -> Result<(), Box<dyn Error>> {
                 } else if let Some(text) = argument.strip_prefix("--hotkey=") {
                     hotkey = platform::windows::hotkey::Key::parse(text)?;
                     hotkey_override = true;
-                } else if let Some(shape) = argument.strip_prefix("--workspace-preview=") {
-                    workspace_preview = Some(match shape {
-                        "shaped" => Shape::Shaped,
-                        "rounded" => Shape::Rounded,
-                        "radial" => Shape::Radial,
-                        _ => {
-                            return Err(
-                                "--workspace-preview accepts shaped, rounded or radial".into()
-                            );
-                        }
-                    });
+                } else if argument.starts_with("--workspace-preview=") {
+                    return Err("--workspace-preview accepts only dual".into());
                 } else if let Some(text) = argument.strip_prefix("--workspace-hotkey=") {
                     workspace_hotkey = Some(platform::windows::hotkey::Key::parse(text)?);
                 } else if let Some(text) = argument.strip_prefix("--workspace-xbutton=") {
@@ -174,15 +165,14 @@ fn main() -> Result<(), Box<dyn Error>> {
     }
     isolated |= smoke_test || (measurement_stdio && !measurement_business);
     fixture_mode |= isolated;
-    if workspace_preview.is_some() && (instance_id.is_none() || data_dir.is_none() || fixture_mode)
-    {
+    if workspace_preview && (instance_id.is_none() || data_dir.is_none() || fixture_mode) {
         return Err("--workspace-preview requires a separate instance ID and data directory with the normal launcher lifecycle".into());
     }
-    if workspace_hotkey.is_some() && workspace_preview.is_none() {
-        return Err("--workspace-hotkey requires --workspace-preview".into());
+    if workspace_hotkey.is_some() && !workspace_preview {
+        return Err("--workspace-hotkey requires --workspace-preview=dual".into());
     }
-    if workspace_xbutton.is_some() && workspace_preview != Some(Shape::Radial) {
-        return Err("--workspace-xbutton requires --workspace-preview=radial".into());
+    if workspace_xbutton.is_some() && !workspace_preview {
+        return Err("--workspace-xbutton requires --workspace-preview=dual".into());
     }
     if (business_smoke_test || pages_smoke_test)
         && (instance_id.is_none()
@@ -243,6 +233,7 @@ fn main() -> Result<(), Box<dyn Error>> {
                 .with_transparent(false);
             if workspace_preview::creating_window() {
                 return attributes
+                    .with_active(false)
                     .with_class_name("VeloSlintWorkspaceWindow")
                     .with_skip_taskbar(true)
                     .with_decorations(false)
@@ -324,14 +315,12 @@ fn main() -> Result<(), Box<dyn Error>> {
         workspace_preview::Controller::connect(
             &app,
             Rc::downgrade(business),
-            workspace_preview.map(|shape| workspace_preview::Preview {
-                shape,
+            workspace_preview.then_some(workspace_preview::Preview {
                 key: workspace_hotkey.unwrap_or(workspace_preview::DEFAULT_HOTKEY),
                 button: workspace_xbutton,
             }),
             measurement.clone(),
             diagnostics,
-            reduce_motion,
         )
     });
     app.set_input_text(initial_query.clone().into());
@@ -363,6 +352,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     let event_measurement = measurement.clone();
     let event_lifecycle = lifecycle.clone();
     let event_imports = imports.clone();
+    let event_workspace = workspace.as_ref().map(Rc::downgrade);
     app.window().on_winit_window_event(move |_, event| {
         if let Some(app) = weak_app.upgrade() {
             prepare_native_window(&app, &event_probe, &event_measurement);
@@ -401,6 +391,13 @@ fn main() -> Result<(), Box<dyn Error>> {
             }
             WindowEvent::KeyboardInput { event, .. } if event.state.is_pressed() => {
                 measurement::event(&event_measurement, "native_key_down", "");
+                if let Some(app) = weak_app.upgrade()
+                    && let Some(workspace) =
+                        event_workspace.as_ref().and_then(std::rc::Weak::upgrade)
+                    && workspace.record_action_key(&app, event, modifiers)
+                {
+                    return EventResult::PreventDefault;
+                }
                 if event_lifecycle
                     .as_ref()
                     .is_some_and(|controller| controller.record_key(event))
@@ -447,6 +444,13 @@ fn main() -> Result<(), Box<dyn Error>> {
                     &format!("focused={focused}"),
                 );
                 if let Some(app) = weak_app.upgrade() {
+                    if !focused
+                        && app.get_workspace_recording()
+                        && let Some(workspace) =
+                            event_workspace.as_ref().and_then(std::rc::Weak::upgrade)
+                    {
+                        workspace.stop_action_recording(&app);
+                    }
                     app.set_native_focused(*focused);
                     if let Some(controller) = &event_lifecycle {
                         controller.focused(*focused);

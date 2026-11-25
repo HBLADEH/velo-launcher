@@ -87,6 +87,26 @@ impl WorkspaceAction {
         }
     }
 
+    pub fn id(self) -> &'static str {
+        match self {
+            Self::Launcher => "launcher",
+            Self::Explorer => "explorer",
+            Self::Calculator => "calculator",
+            Self::TaskManager => "task-manager",
+            Self::ControlPanel => "control-panel",
+            Self::Downloads => "downloads",
+            Self::Documents => "documents",
+            Self::Pictures => "pictures",
+            Self::ThisPc => "this-pc",
+            Self::CodeTerminal => "code-terminal",
+            Self::CodeCommands => "code-commands",
+            Self::CodeFind => "code-find",
+            Self::EdgeNewTab => "edge-new-tab",
+            Self::EdgeAddress => "edge-address",
+            Self::EdgeBookmarks => "edge-bookmarks",
+        }
+    }
+
     pub fn glyph(self) -> &'static str {
         match self {
             Self::Launcher | Self::CodeFind | Self::EdgeAddress => "search",
@@ -127,6 +147,8 @@ impl WorkspaceAction {
 pub enum Success {
     Opened,
     ShortcutSubmitted,
+    TextSubmitted,
+    ScriptCompleted,
 }
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
@@ -137,6 +159,11 @@ pub enum Failure {
     Permission,
     KeysHeld,
     Keyboard,
+    ScriptUntrusted,
+    ScriptUnavailable,
+    ScriptTimeout,
+    ScriptExit(u32),
+    Cancelled,
 }
 
 impl Failure {
@@ -144,10 +171,15 @@ impl Failure {
         match self {
             Self::Unavailable => "工作台动作不可用，请检查设置",
             Self::Shell => "Windows 无法打开该目标",
-            Self::TargetChanged => "原窗口已切换或关闭，未发送快捷键",
-            Self::Permission => "无法验证目标权限，未发送快捷键",
+            Self::TargetChanged => "原窗口或输入焦点已变化，已取消输入",
+            Self::Permission => "无法验证目标权限，已取消输入",
             Self::KeysHeld => "请松开修饰键后重试",
-            Self::Keyboard => "Windows 未完整接收快捷键，请检查目标应用",
+            Self::Keyboard => "Windows 未完整接收输入，请检查目标应用",
+            Self::ScriptUntrusted => "脚本内容或参数已变化，请在动作库重新确认信任",
+            Self::ScriptUnavailable => "脚本无法启动，请检查路径和工作目录",
+            Self::ScriptTimeout => "脚本运行超时，已结束进程",
+            Self::ScriptExit(_) => "脚本异常退出，请检查脚本",
+            Self::Cancelled => "工作台动作已取消",
         }
     }
 }

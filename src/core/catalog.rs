@@ -3,6 +3,7 @@
 
 use super::config::Config;
 use super::data::{ApplicationLibrary, History};
+use super::launch_groups::Collection;
 use super::model::AppItem;
 use super::normalize::normalize;
 use super::search::{Index, SearchResult};
@@ -21,6 +22,7 @@ pub struct Home {
 pub struct Catalog {
     index: Index,
     tool_index: Index,
+    group_index: Index,
     items: BTreeMap<String, Arc<AppItem>>,
     application_count: usize,
     tools: Vec<Arc<AppItem>>,
@@ -31,6 +33,15 @@ impl Catalog {
     /// Build on a bounded background worker before publishing the snapshot.
     /// Input must already have the scanner's deduplication/filtering applied.
     pub fn new(visible: &[AppItem], library: &ApplicationLibrary, tools: &[AppItem]) -> Self {
+        Self::with_groups(visible, library, tools, &Collection::default())
+    }
+
+    pub(super) fn with_groups(
+        visible: &[AppItem],
+        library: &ApplicationLibrary,
+        tools: &[AppItem],
+        groups: &Collection,
+    ) -> Self {
         let mut visible = visible.to_vec();
         for item in library.applications.iter().flatten() {
             visible.retain(|current| current.id != item.id);
@@ -65,7 +76,13 @@ impl Catalog {
                 Arc::new(item)
             })
             .collect();
-        let pinned = library
+        let group_index = Index::new(
+            groups
+                .groups
+                .iter()
+                .map(|group| Arc::new(group.catalog_item(groups.is_pinned(&group.id)))),
+        );
+        let mut pinned: Vec<_> = library
             .pinned
             .iter()
             .flatten()
@@ -77,9 +94,15 @@ impl Catalog {
                 })
             })
             .collect();
+        pinned.extend(
+            groups
+                .pinned_ids()
+                .filter_map(|id| group_index.items().find(|item| item.id == id).cloned()),
+        );
         Self {
             index: Index::new(items.values().cloned()),
             tool_index: Index::new(tools.iter().cloned()),
+            group_index,
             application_count: items.values().filter(|item| !item.is_folder()).count(),
             items,
             tools,
@@ -98,6 +121,7 @@ impl Catalog {
         self.items
             .get(id)
             .or_else(|| self.tools.iter().find(|item| item.id == id))
+            .or_else(|| self.group_index.items().find(|item| item.id == id))
     }
 
     pub fn applications(&self) -> impl Iterator<Item = &Arc<AppItem>> {
@@ -121,7 +145,9 @@ impl Catalog {
         history: &History,
         now: DateTime<Utc>,
     ) -> Result<Vec<SearchResult>> {
-        self.search_matching(query, config, history, now, |item| !item.is_folder())
+        self.search_matching(query, config, history, now, |item| {
+            !item.is_folder() && !item.is_launch_group()
+        })
     }
 
     fn search_matching(
@@ -141,7 +167,7 @@ impl Catalog {
             config.search.fuzzy,
             &weights,
             config.search.history_weight,
-            include,
+            &include,
         );
         if !query.is_empty() {
             results.extend(self.tool_index.query(
@@ -151,9 +177,28 @@ impl Catalog {
                 &weights,
                 config.search.history_weight,
             ));
-            // Go keeps application results ahead of equal-score tools. Do not
-            // introduce a new global name/ID tie break across the two indexes.
-            results.sort_by(|a, b| b.score.total_cmp(&a.score));
+            results.extend(self.group_index.query_matching(
+                &query,
+                limit,
+                config.search.fuzzy,
+                &weights,
+                config.search.history_weight,
+                include,
+            ));
+            // Preserve the app/tool order on score ties and prefer an app
+            // when its exact name also belongs to a group.
+            results.sort_by(|a, b| {
+                let a_group = a.item.is_launch_group();
+                let b_group = b.item.is_launch_group();
+                if a_group != b_group
+                    && normalize(&a.item.name) == query
+                    && normalize(&b.item.name) == query
+                {
+                    a_group.cmp(&b_group)
+                } else {
+                    b.score.total_cmp(&a.score)
+                }
+            });
             results.truncate(limit);
         }
         for result in &mut results {
@@ -181,18 +226,28 @@ impl Catalog {
         let ids: BTreeSet<_> = pinned.iter().map(|item| item.id.as_str()).collect();
         let weights = history.scores("", now)?;
         let weight = |id: &str| weights.get(id).copied().unwrap_or(0.0);
-        let mut results = self
+        let mut frequent = self
             .index
-            .query("", self.index.len(), false, &BTreeMap::new(), 0.0);
+            .query("", self.index.len(), false, &BTreeMap::new(), 0.0)
+            .into_iter()
+            .map(|result| result.item)
+            .collect::<Vec<_>>();
+        frequent.extend(
+            self.group_index
+                .items()
+                .filter(|item| {
+                    history
+                        .0
+                        .get(&item.id)
+                        .is_some_and(|entry| entry.launch_count > 0)
+                })
+                .cloned(),
+        );
         // Personal history precedes cold-start priority, independently of the
         // search history setting; stable ties retain the search baseline order.
-        results.sort_by(|a, b| weight(&b.item.id).total_cmp(&weight(&a.item.id)));
-        let frequent = results
-            .into_iter()
-            .filter(|r| !ids.contains(r.item.id.as_str()))
-            .take(12)
-            .map(|r| r.item)
-            .collect();
+        frequent.retain(|item| !ids.contains(item.id.as_str()));
+        frequent.sort_by(|a, b| weight(&b.id).total_cmp(&weight(&a.id)));
+        frequent.truncate(12);
         let mut tools: Vec<_> = self
             .tools
             .iter()
@@ -216,6 +271,7 @@ impl Catalog {
         if pinned && !library.has_pin(id) {
             let item = self
                 .item(id)
+                .filter(|item| !item.is_launch_group())
                 .ok_or_else(|| DataError::new("pin application", "item no longer available"))?;
             return library.with_new_pin(item);
         }

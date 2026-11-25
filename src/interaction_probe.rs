@@ -202,8 +202,8 @@ pub fn run(app: &AppWindow, confirmations: &confirmations::Controller) -> Result
 fn check_application_pointer(app: &AppWindow) -> Result<(), String> {
     let pins = Rc::new(Cell::new(0));
     let pin_count = pins.clone();
-    app.on_application_menu_completed(move |id, action| {
-        if (id == "studio" || id == "editor") && action == 4 {
+    app.on_item_pin_toggled(move |id| {
+        if id == "studio" || id == "editor" {
             pin_count.set(pin_count.get() + 1);
         }
     });

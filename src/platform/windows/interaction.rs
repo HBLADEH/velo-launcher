@@ -25,6 +25,7 @@ pub const BACK: i32 = 3;
 pub const MENU: i32 = 4;
 pub const BROWSE_EXECUTABLE: i32 = 5;
 pub const BROWSE_FOLDER: i32 = 9;
+pub const BROWSE_BATCH: i32 = 10;
 pub const FILE_PIN_FOLDER: i32 = 4;
 pub const FILE_UNPIN_FOLDER: i32 = 5;
 
@@ -98,7 +99,7 @@ pub fn run(owner: isize, request: i32) -> Completion {
         let initialized = CoInitializeEx(null(), COINIT_APARTMENTTHREADED as u32) >= 0;
         let owner = owner as HWND;
         let result = match request {
-            BROWSE | BROWSE_EXECUTABLE => browse(owner, request == BROWSE_EXECUTABLE),
+            BROWSE | BROWSE_EXECUTABLE | BROWSE_BATCH => browse(owner, request),
             MENU => menu(owner),
             _ => Completion::default(),
         };
@@ -109,17 +110,17 @@ pub fn run(owner: isize, request: i32) -> Completion {
     }
 }
 
-unsafe fn browse(owner: HWND, executable_only: bool) -> Completion {
+unsafe fn browse(owner: HWND, request: i32) -> Completion {
     let mut buffer = vec![0u16; 65536];
-    let title = wide(if executable_only {
-        "Velo · 选择实际运行的主程序"
-    } else {
-        "Velo · 选择应用文件"
+    let title = wide(match request {
+        BROWSE_EXECUTABLE => "Velo · 选择实际运行的主程序",
+        BROWSE_BATCH => "Velo · 选择本地批处理脚本",
+        _ => "Velo · 选择应用文件",
     });
-    let filter = wide(if executable_only {
-        "应用程序 (*.exe)\0*.exe\0"
-    } else {
-        "应用与快捷方式 (*.exe;*.lnk)\0*.exe;*.lnk\0所有文件 (*.*)\0*.*\0"
+    let filter = wide(match request {
+        BROWSE_EXECUTABLE => "应用程序 (*.exe)\0*.exe\0",
+        BROWSE_BATCH => "批处理脚本 (*.bat;*.cmd)\0*.bat;*.cmd\0",
+        _ => "应用与快捷方式 (*.exe;*.lnk)\0*.exe;*.lnk\0所有文件 (*.*)\0*.*\0",
     });
     let mut options = OPENFILENAMEW {
         lStructSize: std::mem::size_of::<OPENFILENAMEW>() as u32,
@@ -130,10 +131,10 @@ unsafe fn browse(owner: HWND, executable_only: bool) -> Completion {
         lpstrFile: buffer.as_mut_ptr(),
         nMaxFile: buffer.len() as u32,
         Flags: OFN_EXPLORER
-            | if executable_only {
-                0
-            } else {
+            | if request == BROWSE {
                 OFN_ALLOWMULTISELECT
+            } else {
+                0
             }
             | OFN_FILEMUSTEXIST
             | OFN_PATHMUSTEXIST
@@ -321,7 +322,7 @@ pub fn application_menu(owner: isize, item: &AppItem) -> i32 {
                 true,
             ),
         ] {
-            if item.is_folder() && matches!(id, 2 | 3) {
+            if (item.is_folder() || item.is_launch_group()) && matches!(id, 2 | 3) {
                 continue;
             }
             AppendMenuW(

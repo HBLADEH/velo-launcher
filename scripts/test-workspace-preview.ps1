@@ -3,24 +3,20 @@
 param(
     [Parameter(Mandatory)][string]$Executable,
     [Parameter(Mandatory)][string]$OutputDirectory,
-    [ValidateSet('disabled', 'shaped', 'rounded', 'radial', 'conflict')][string]$Mode = 'shaped',
+    [ValidateSet('dual', 'legacy', 'disabled', 'conflict')][string]$Mode = 'dual',
     [int]$Monitor = 0,
     [switch]$CrossMonitors,
     [ValidateSet('xbutton1', 'xbutton2')][string]$SideButton,
-    [switch]$SettingsRoundTrip,
-    [switch]$EditSlots,
     [switch]$MeasureResources,
+    [ValidateSet('light', 'dark')][string]$Theme = 'light',
     [ValidateRange(0, 100)][int]$SideSamples = 0
 )
 
 $ErrorActionPreference = 'Stop'
-if (($SideButton -or $SettingsRoundTrip -or $EditSlots -or $CrossMonitors) -and $Mode -ne 'radial') {
-    throw 'Side-button, settings and cross-monitor tests require radial mode.'
+if (($SideButton -or $CrossMonitors) -and $Mode -notin 'dual', 'legacy') {
+    throw 'Side-button and cross-monitor checks require an active Workspace.'
 }
-if ($EditSlots -and $SettingsRoundTrip) {
-    throw 'Run -EditSlots and -SettingsRoundTrip separately. They seed different initial settings.'
-}
-if ($SideSamples -and -not $SideButton) { throw '-SideSamples requires -SideButton.' }
+if ($SideSamples -and (!$SideButton -or $Mode -ne 'dual')) { throw '-SideSamples requires -Mode dual and -SideButton.' }
 Add-Type -AssemblyName System.Windows.Forms
 Add-Type -AssemblyName System.Drawing
 if (-not ('VeloWorkspaceProbe' -as [type])) {
@@ -68,9 +64,6 @@ public static class VeloWorkspaceProbe {
     [DllImport("user32.dll")] public static extern bool GetCursorPos(out Point point);
     [DllImport("user32.dll")] public static extern IntPtr WindowFromPoint(Point point);
     [DllImport("user32.dll")] public static extern bool PostMessage(IntPtr window, uint message, IntPtr w, IntPtr l);
-    [DllImport("user32.dll", CharSet = CharSet.Unicode)]
-    static extern IntPtr SendMessageTimeout(IntPtr window, uint message, IntPtr w, IntPtr l,
-        uint flags, uint milliseconds, out UIntPtr result);
     [DllImport("user32.dll")] static extern bool RegisterHotKey(IntPtr window, int id, uint modifiers, uint key);
     [DllImport("user32.dll")] static extern bool UnregisterHotKey(IntPtr window, int id);
     [DllImport("user32.dll")] static extern IntPtr GetDC(IntPtr window);
@@ -127,10 +120,6 @@ public static class VeloWorkspaceProbe {
             finally { LocalFree(description); }
         } finally { CloseHandle(thread); }
     }
-    public static bool RepaintActiveFrame(IntPtr window) {
-        const uint wmNcActivate = 0x0086, abortIfHung = 0x0002;
-        return SendMessageTimeout(window, wmNcActivate, (IntPtr)1, IntPtr.Zero, abortIfHung, 2000, out _) != IntPtr.Zero;
-    }
     public static IntPtr Find(uint pid, string windowClass) {
         IntPtr found = IntPtr.Zero;
         EnumWindows((window, data) => {
@@ -174,25 +163,11 @@ public static class VeloWorkspaceProbe {
         }
         for (int i = keys.Length - 1; i >= 0; i--) keybd_event(keys[i], 0, 2, UIntPtr.Zero);
     }
-    public static void Left(bool down) {
-        Inject(new MouseInput { Flags = down ? 2u : 4u });
-    }
     public static void Side(bool down, uint button) {
         Inject(new MouseInput { Data = button, Flags = down ? 0x80u : 0x100u, Extra = Marker });
     }
     public static void Move(int x, int y) {
         Inject(Motion(x, y));
-    }
-    public static void Swipe(int x, int y, uint button) {
-        var sequence = new[] {
-            new Input { Mouse = new MouseInput { Data = button, Flags = 0x80u, Extra = Marker } },
-            new Input { Mouse = Motion(x, y) },
-            new Input { Mouse = new MouseInput { Data = button, Flags = 0x100u, Extra = Marker } }
-        };
-        if (SendInput((uint)sequence.Length, sequence, Marshal.SizeOf<Input>()) != sequence.Length) {
-            Inject(sequence[2].Mouse);
-            throw new InvalidOperationException("Sending the complete side-button swipe failed");
-        }
     }
     static MouseInput Motion(int x, int y) {
         int nx = (int)((x - GetSystemMetrics(76) + 0.5) * 65536 / GetSystemMetrics(78));
@@ -250,9 +225,8 @@ function Open-Panel([string]$Class, [byte[]]$Keys, [int]$X, [int]$Y) {
     }
     $window = [VeloWorkspaceProbe]::GetForegroundWindow()
     $rect = [VeloWorkspaceProbe]::Bounds($window)
-    $isRadial = $Class -eq $workspaceClass -and $Mode -eq 'radial'
-    $sampleX = $rect.Left + [int](($rect.Right - $rect.Left) * $(if ($isRadial) { 0.46 } else { 0.28 }))
-    $sampleY = $rect.Top + [int](($rect.Bottom - $rect.Top) * $(if ($isRadial) { 0.09 } else { 0.12 }))
+    $sampleX = $rect.Left + [int](($rect.Right - $rect.Left) * 0.28)
+    $sampleY = $rect.Top + [int](($rect.Bottom - $rect.Top) * 0.12)
     Wait-Desktop "$Class painting" {
         $pixel = [VeloWorkspaceProbe]::Pixel($sampleX, $sampleY)
         $pixel -ne 0x675342 -and $pixel -ne 0 -and $pixel -ne [uint32]::MaxValue
@@ -306,50 +280,6 @@ function Save-Panel($Panel, [string]$Name = $Mode) {
     } finally { $graphics.Dispose(); $bitmap.Dispose() }
 }
 
-function Read-ScreenPatch([Drawing.Rectangle]$Area) {
-    $bitmap = [Drawing.Bitmap]::new($Area.Width, $Area.Height)
-    $graphics = [Drawing.Graphics]::FromImage($bitmap)
-    $stream = [IO.MemoryStream]::new()
-    try {
-        $graphics.CopyFromScreen($Area.Location, [Drawing.Point]::Empty, $Area.Size)
-        $bitmap.Save($stream, [Drawing.Imaging.ImageFormat]::Bmp)
-        [Convert]::ToBase64String($stream.ToArray())
-    } finally { $stream.Dispose(); $graphics.Dispose(); $bitmap.Dispose() }
-}
-
-function Test-RadialFrame($Panel) {
-    $rect = $Panel.Rect
-    $sx = ($rect.Right - $rect.Left) / 420
-    $sy = ($rect.Bottom - $rect.Top) / 424
-    $capY = $rect.Top + [int](20 * $sy)
-    $fill = [VeloWorkspaceProbe]::Pixel(($centerX + [int](28 * $sx)), ($rect.Top + [int](34 * $sy)))
-    $corner = [Drawing.Rectangle]::FromLTRB(
-        ($rect.Left + [int](135 * $sx)), ($rect.Top + [int](21 * $sy)),
-        ($rect.Left + [int](147 * $sx)), ($rect.Top + [int](32 * $sy)))
-    $originalCorner = Read-ScreenPatch $corner
-    Assert-Probe ([VeloWorkspaceProbe]::Pixel($centerX, $capY) -eq $fill) 'radial first full paint has a consistent outer tile fill'
-
-    $idle = [Diagnostics.Stopwatch]::StartNew()
-    Wait-Desktop 'five seconds of radial idle' { $idle.ElapsedMilliseconds -ge 5000 } 6000
-    Assert-Probe ([VeloWorkspaceProbe]::GetForegroundWindow() -eq $Panel.Handle -and
-        [VeloWorkspaceProbe]::Pixel($centerX, $capY) -eq $fill -and
-        (Read-ScreenPatch $corner) -ceq $originalCorner) 'radial tile and corner stay clean while idle'
-
-    # An activation repaint could paint a system title bar on this shaped window.
-    Assert-Probe ([VeloWorkspaceProbe]::RepaintActiveFrame($Panel.Handle)) 'radial window receives the native activation repaint request'
-    [void][VeloWorkspaceProbe]::DwmFlush()
-    $repaintedCap = [VeloWorkspaceProbe]::Pixel($centerX, $capY)
-    $hoverX = $rect.Left + [int](100 * $sx)
-    $hoverY = $rect.Top + [int](101 * $sy)
-    $unhovered = [VeloWorkspaceProbe]::Pixel($hoverX, $hoverY)
-    [VeloWorkspaceProbe]::Move($hoverX, $hoverY)
-    Wait-Desktop 'file tile hover paint' { [VeloWorkspaceProbe]::Pixel($hoverX, $hoverY) -ne $unhovered }
-    [VeloWorkspaceProbe]::Move($centerX, ($rect.Top + [int](160 * $sy)))
-    Wait-Desktop 'file tile hover clears' { [VeloWorkspaceProbe]::Pixel($hoverX, $hoverY) -eq $unhovered }
-    Assert-Probe ($repaintedCap -eq $fill) 'native activation keeps the outer tile fill'
-    Assert-Probe ((Read-ScreenPatch $corner) -ceq $originalCorner) 'hover repaint leaves the outer tile corner clean'
-}
-
 function Start-SidePress {
     Focus-Witness
     [void][VeloWorkspaceProbe]::SetCursorPos($centerX, $centerY)
@@ -365,131 +295,274 @@ function Wait-SidePanel {
     [pscustomobject]@{ Handle = $handle; Rect = [VeloWorkspaceProbe]::Bounds($handle) }
 }
 
-function Test-FastColdSwipe {
-    Focus-Witness
-    [void][VeloWorkspaceProbe]::SetCursorPos($centerX, $centerY)
-    $launcherWindow = [VeloWorkspaceProbe]::Find($process.Id, $launcherClass)
+function Test-DualInput {
+    $side = if ($SideButton -eq 'xbutton1') { 1 } else { 2 }
     $scale = [VeloWorkspaceProbe]::GetDpiForWindow($witness.Handle) / 96
-    $side = if ($SideButton -eq 'xbutton1') { 1 } else { 2 }
-    [VeloWorkspaceProbe]::Swipe($centerX, ($centerY - [int](94 * $scale)), $side)
-    Wait-Desktop 'quick swipe dispatched while first Workspace window opens' {
-        $events = Read-Events
-        $events -match 'event=workspace_fast_release .*window=opening' -and
-        $events -match 'event=workspace_action_dispatched .*action=Launcher' -and
-        [VeloWorkspaceProbe]::GetForegroundWindow() -eq $launcherWindow
-    }
-    $dispatches = [regex]::Matches((Read-Events), '(?m)^event=workspace_action_dispatched .*action=Launcher').Count
-    Assert-Probe ($dispatches -eq 1) 'cold side-button swipe dispatches once'
-    Close-Panel @{ Handle = $launcherWindow } $escapeKey $false
-}
-
-function Test-SideInput {
-    $side = if ($SideButton -eq 'xbutton1') { 1 } else { 2 }
-    $other = 3 - $side
-    $pointX = $centerX
-    $upperY = $centerY - [int](94 * $dpi / 96)
-    $lowerX = $centerX - [int](48 * $dpi / 96)
-    $lowerY = $centerY + [int](139 * $dpi / 96)
-    Focus-Witness
-    [void][VeloWorkspaceProbe]::SetCursorPos($centerX, $centerY)
-    $freshClicks = [VeloWorkspaceProbe]::SideDowns
-    $freshReleases = [VeloWorkspaceProbe]::SideUps
-    Start-Sleep -Milliseconds 30
-    [VeloWorkspaceProbe]::Side($true, $other)
-    [VeloWorkspaceProbe]::Side($false, $other)
-    Wait-Desktop 'other side button passes to witness hook' { [VeloWorkspaceProbe]::SideDowns -gt $freshClicks -and [VeloWorkspaceProbe]::SideUps -gt $freshReleases }
-    Assert-Probe $true 'unbound side button passes through'
+    $window = $null
+    $countDispatches = { [regex]::Matches((Read-Events), '(?m)^event=workspace_action_dispatched ').Count }
+    $initialDispatches = & $countDispatches
     try {
         Start-SidePress
-        Start-Sleep -Milliseconds 25
+        Start-Sleep -Milliseconds 65
         [VeloWorkspaceProbe]::Side($false, $side)
         $panel = Wait-SidePanel
-        Wait-Desktop 'full menu after short press' {
-            [VeloWorkspaceProbe]::WindowFromPoint([VeloWorkspaceProbe+Point]::new($lowerX, $lowerY)) -eq $panel.Handle
-        }
-        Assert-Probe ([VeloWorkspaceProbe]::SideDowns -eq ($freshClicks + 1) -and [VeloWorkspaceProbe]::SideUps -eq ($freshReleases + 1)) 'selected side-button pair consumed'
+        $window = $panel.Handle
+        Assert-Probe (($panel.Rect.Right - $panel.Rect.Left) -eq [int](300 * $scale)) 'short press presents the three-column Panel'
+        Wait-Desktop 'matched pointer application on short press' { (Read-Events) -match 'event=workspace_dual_shown .*mode=panel matched=true' }
+        Save-Panel $panel "$Theme-panel"
         Close-Panel $panel $escapeKey $true
-
         Start-SidePress
-        $panel = Wait-SidePanel
-        Assert-Probe ([VeloWorkspaceProbe]::WindowFromPoint([VeloWorkspaceProbe+Point]::new($pointX, $upperY)) -eq $witness.Handle) 'long press shows only hub'
-        Save-Panel $panel 'radial-hold'
-        [VeloWorkspaceProbe]::Move($pointX, $upperY)
-        Wait-Desktop 'upper section and Launcher highlight' {
-            [VeloWorkspaceProbe]::WindowFromPoint([VeloWorkspaceProbe+Point]::new($pointX, $upperY)) -eq $panel.Handle -and
-            (Read-Events) -match 'event=workspace_side_highlight .*slot=4 '
-        }
-        Assert-Probe ([VeloWorkspaceProbe]::WindowFromPoint([VeloWorkspaceProbe+Point]::new($lowerX, $lowerY)) -eq $witness.Handle) 'upper swipe leaves lower section absent'
-        Save-Panel $panel 'radial-upper'
+        Wait-Desktop 'passive hold center' { (Read-Events) -match 'event=workspace_dual_shown .*mode=center matched=true' }
+        Assert-Probe ([VeloWorkspaceProbe]::IsWindowVisible($window) -and [VeloWorkspaceProbe]::GetForegroundWindow() -eq $witness.Handle) 'hold retains original foreground and reuses the HWND'
+        Save-Panel @{ Handle = $window; Rect = [VeloWorkspaceProbe]::Bounds($window) } "$Theme-center"
+        [VeloWorkspaceProbe]::Move($centerX, ($centerY - [int](44 * $scale)))
+        Wait-Desktop 'north action highlighted' { (Read-Events) -match 'phase=Selecting\(North\) effective=Some\(1\)' }
+        Save-Panel @{ Handle = $window; Rect = [VeloWorkspaceProbe]::Bounds($window) } "$Theme-pad"
         [VeloWorkspaceProbe]::Side($false, $side)
-        Wait-Desktop 'upper release opens Launcher' {
-            [VeloWorkspaceProbe]::GetForegroundWindow() -eq $launcherWindow -and -not [VeloWorkspaceProbe]::IsWindowVisible($panel.Handle)
-        }
+        Wait-Desktop 'one gesture opens Launcher' { [VeloWorkspaceProbe]::GetForegroundWindow() -eq $launcherWindow }
+        Wait-Desktop 'north action dispatch receipt' { (& $countDispatches) -ge $initialDispatches + 1 }
+        Assert-Probe ((& $countDispatches) -eq $initialDispatches + 1) 'north executes exactly once'
         Close-Panel @{ Handle = $launcherWindow } $escapeKey $false
 
+        foreach ($cancel in 'dead zone', 'empty direction', 'Escape') {
+            Start-SidePress
+            $priorMoves = [regex]::Matches((Read-Events), 'phase=Selecting\(North\)').Count
+            [VeloWorkspaceProbe]::Move($centerX, ($centerY - [int](40 * $scale)))
+            Wait-Desktop 'fresh north direction' { [regex]::Matches((Read-Events), 'phase=Selecting\(North\)').Count -gt $priorMoves }
+            switch ($cancel) {
+                'dead zone' { [VeloWorkspaceProbe]::Move($centerX, $centerY) }
+                'empty direction' { [VeloWorkspaceProbe]::Move(($centerX + [int](40 * $scale)), $centerY) }
+                'Escape' { [VeloWorkspaceProbe]::Press($escapeKey) }
+            }
+            Start-Sleep -Milliseconds 34
+            [VeloWorkspaceProbe]::Side($false, $side)
+            Wait-Desktop "dismissed upon $cancel" { -not [VeloWorkspaceProbe]::IsWindowVisible($window) }
+            Assert-Probe ((& $countDispatches) -eq $initialDispatches + 1) "$cancel cancels without an action"
+        }
+
+        [void]$witnessText.Focus()
         Start-SidePress
-        [VeloWorkspaceProbe]::Move($lowerX, $lowerY)
-        $panel = Wait-SidePanel
-        Wait-Desktop 'fast downward motion selects lower zone' {
-            [VeloWorkspaceProbe]::WindowFromPoint([VeloWorkspaceProbe+Point]::new($lowerX, $lowerY)) -eq $panel.Handle -and
-            (Read-Events) -match 'event=workspace_side_highlight .*slot=9 '
-        }
-        Assert-Probe ([VeloWorkspaceProbe]::WindowFromPoint([VeloWorkspaceProbe+Point]::new($pointX, $upperY)) -eq $witness.Handle) 'lower swipe leaves upper section absent'
-        Save-Panel $panel 'radial-lower'
-        [VeloWorkspaceProbe]::Move($centerX, $centerY)
-        Wait-Desktop 'return to hub removes lower region' {
-            [VeloWorkspaceProbe]::WindowFromPoint([VeloWorkspaceProbe+Point]::new($lowerX, $lowerY)) -eq $witness.Handle
-        }
+        [VeloWorkspaceProbe]::Move(($centerX - [int](42 * $scale)), $centerY)
+        Start-Sleep -Milliseconds 35
         [VeloWorkspaceProbe]::Side($false, $side)
-        Wait-Desktop 'hub cancels release and returns focus' {
-            [VeloWorkspaceProbe]::GetForegroundWindow() -eq $witness.Handle -and -not [VeloWorkspaceProbe]::IsWindowVisible($panel.Handle)
+        Wait-Desktop 'Unicode text in original edit control' { $witnessText.Text -match 'Velo.*中文' -and $witnessText.Text -match 'second line' }
+        if ($witnessText.Text -ne "Velo 中文`r`nsecond line" -and $witnessText.Text -ne "Velo 中文`nsecond line") {
+            $codes = $witnessText.Text.ToCharArray() | ForEach-Object { [int]$_ }
+            throw "Unexpected character codes in synthetic text: $codes"
         }
-        Assert-Probe ((Read-Events) -match 'event=workspace_side_release .*result=Cancel ') 'hub release cancels'
+        Assert-Probe $true 'text preserves Unicode and a line break'
+
+        $before = $witnessText.Text
+        $typed = if ([Windows.Forms.Control]::IsKeyLocked([Windows.Forms.Keys]::CapsLock)) { 'xz' } else { 'XZ' }
+        Start-SidePress
+        [VeloWorkspaceProbe]::Move($centerX, ($centerY + [int](43 * $scale)))
+        Start-Sleep -Milliseconds 35
+        [VeloWorkspaceProbe]::Side($false, $side)
+        Wait-Desktop 'two native chord steps' { (Read-Events) -match 'kind=SendKeys result=Ok\(ShortcutSubmitted\)' }
+        Wait-Desktop 'original edit control sees both steps in order' { $witnessText.Text -ceq ($before + $typed) }
+        Assert-Probe $true 'two-step shortcut reaches the original edit control'
 
         Start-SidePress
-        $panel = Wait-SidePanel
-        Close-Panel $panel $escapeKey $true
+        Start-Sleep -Milliseconds 60
         [VeloWorkspaceProbe]::Side($false, $side)
-        Start-Sleep -Milliseconds 90
-        Assert-Probe (-not [VeloWorkspaceProbe]::IsWindowVisible($panel.Handle)) 'Escape consumes the pending release'
+        $panel = Wait-SidePanel
+        Start-Sleep -Milliseconds 80
+        $rect = $panel.Rect
+        Click-TestPoint ($rect.Right - [int](29 * $scale)) ($rect.Top + [int](170 * $scale)) $window
+        Wait-Desktop 'settings owns the Launcher window' { [VeloWorkspaceProbe]::GetForegroundWindow() -eq $launcherWindow }
+        $settings = @{ Handle = $launcherWindow; Rect = [VeloWorkspaceProbe]::Bounds($launcherWindow) }
+        Wait-Desktop 'settings surface painted' {
+            $pixel = [VeloWorkspaceProbe]::Pixel(($settings.Rect.Left + [int](27 * $scale)), ($settings.Rect.Top + [int](151 * $scale)))
+            $pixel -notin 0, 0x675342, [uint32]::MaxValue
+        }
+        Save-Panel $settings "$Theme-gesture-settings"
+        [VeloWorkspaceProbe]::PressEditor([byte[]]@(0x11, 0x53))
+        Wait-WorkspaceSave 1
+        $saved = (Get-Content -LiteralPath $configPath -Raw | ConvertFrom-Json).workspace
+        Assert-Probe ($saved.enabled -and $saved.hotkey -eq $workspaceChord -and
+            $saved.dual.gesture_profiles[0].directions.slots[6] -eq 'launcher' -and
+            $saved.dual.panel_profiles[0].matrix.slots[3] -eq 'action:text') 'save retains both layouts and the live preview binding'
+        Save-Panel $settings "$Theme-gesture-settings-saved"
+        [VeloWorkspaceProbe]::Press($escapeKey)
+        Start-Sleep -Milliseconds 160
+        Close-Panel $settings $escapeKey $false
+        $panel = Open-Panel $workspaceClass $workspaceKeys $centerX $centerY
+        Close-Panel $panel $escapeKey $true
     } finally {
         [VeloWorkspaceProbe]::Side($false, $side)
     }
 }
 
-function Test-ClosedSideTarget {
-    $origin = [Windows.Forms.Form]::new()
-    $origin.StartPosition = 'Manual'
-    $origin.ShowInTaskbar = $false
-    $origin.Text = 'Workspace closed-target probe'
-    $origin.Bounds = [Drawing.Rectangle]::new($centerX - 150, $centerY - 110, 300, 220)
+function Test-DualContexts {
+    # Separate executable identities let the probe detect swapped context rules.
     $side = if ($SideButton -eq 'xbutton1') { 1 } else { 2 }
+    $scale = [VeloWorkspaceProbe]::GetDpiForWindow($witness.Handle) / 96
+    $position = [VeloWorkspaceProbe+Point]::new(($work.Left + 280), ($work.Top + 255))
+    $source = @"
+Add-Type -AssemblyName System.Windows.Forms
+Add-Type -AssemblyName System.Drawing
+`$form = [Windows.Forms.Form]::new()
+`$form.ShowInTaskbar = `$false
+`$form.TopMost = `$true
+`$form.StartPosition = 'Manual'
+`$form.Bounds = [Drawing.Rectangle]::new($($work.Left + 200), $($work.Top + 200), 166, 117)
+`$form.Text = 'Velo context fixture'
+[Windows.Forms.Application]::Run(`$form)
+"@
+    $encoded = [Convert]::ToBase64String([Text.Encoding]::Unicode.GetBytes($source))
+    $fixture = Start-Process -FilePath $contextExe -ArgumentList '-NoProfile','-STA','-EncodedCommand',$encoded -WindowStyle Hidden -PassThru
     try {
-        $origin.Show()
-        $origin.Activate()
-        [void][VeloWorkspaceProbe]::SetForegroundWindow($origin.Handle)
-        if ([VeloWorkspaceProbe]::GetForegroundWindow() -ne $origin.Handle) {
-            Click-TestPoint $centerX $centerY $origin.Handle
-        }
-        Wait-Desktop 'disposable target is foreground' { [VeloWorkspaceProbe]::GetForegroundWindow() -eq $origin.Handle }
-        [void][VeloWorkspaceProbe]::SetCursorPos($centerX, $centerY)
+        Wait-Desktop 'secondary context fixture' {
+            $hit = [VeloWorkspaceProbe]::WindowFromPoint($position)
+            $owner = [uint32]0
+            [void][VeloWorkspaceProbe]::GetWindowThreadProcessId($hit, [ref]$owner)
+            $owner -eq $fixture.Id
+        } 10000
+        Focus-Witness
+        [void][VeloWorkspaceProbe]::SetCursorPos($position.X, $position.Y)
         [VeloWorkspaceProbe]::Side($true, $side)
-        $panel = Wait-SidePanel
-        $upperY = $centerY - [int](94 * $dpi / 96)
-        [VeloWorkspaceProbe]::Move($centerX, $upperY)
-        Wait-Desktop 'swipe selects a tile above the target' {
-            [VeloWorkspaceProbe]::WindowFromPoint([VeloWorkspaceProbe+Point]::new($centerX, $upperY)) -eq $panel.Handle
-        }
-        $dispatchesBefore = [regex]::Matches((Read-Events), '(?m)^event=workspace_action_dispatched ').Count
-        $origin.Close()
-        Assert-Probe ([VeloWorkspaceProbe]::GetForegroundWindow() -eq $panel.Handle) 'Workspace remains foreground after target closes'
+        Start-Sleep -Milliseconds 85
         [VeloWorkspaceProbe]::Side($false, $side)
-        Wait-Desktop 'closed target cancels the swipe' { (Read-Events) -match 'event=workspace_hidden .*reason=target_invalid restored=false' }
-        Assert-Probe ([regex]::Matches((Read-Events), '(?m)^event=workspace_action_dispatched ').Count -eq $dispatchesBefore) 'release after target closes dispatches no action'
+        $panel = Wait-SidePanel
+        Assert-Probe (($panel.Rect.Right - $panel.Rect.Left) -eq [int](488 * $scale)) 'short press uses the separate hovered five-column profile'
+        Save-Panel $panel "$Theme-pointer-context"
+        Close-Panel $panel $escapeKey $true
+
+        $previous = [regex]::Matches((Read-Events), 'mode=pad matched=true').Count
+        [void][VeloWorkspaceProbe]::SetCursorPos($position.X, $position.Y)
+        [VeloWorkspaceProbe]::Side($true, $side)
+        [VeloWorkspaceProbe]::Move($position.X, ($position.Y - [int](44 * $scale)))
+        Wait-Desktop 'foreground gesture profile' { [regex]::Matches((Read-Events), 'mode=pad matched=true').Count -gt $previous }
+        Assert-Probe ([VeloWorkspaceProbe]::GetForegroundWindow() -eq $witness.Handle) 'long press keeps focus on the separate foreground application'
+        [VeloWorkspaceProbe]::Side($false, $side)
+        Wait-Desktop 'gesture from the foreground profile opens Launcher' { [VeloWorkspaceProbe]::GetForegroundWindow() -eq $launcherWindow }
+        Close-Panel @{ Handle = $launcherWindow } $escapeKey $false
     } finally {
         [VeloWorkspaceProbe]::Side($false, $side)
-        $origin.Dispose()
+        if (-not $fixture.HasExited) { $fixture.Kill(); $fixture.WaitForExit() }
+        $fixture.Dispose()
     }
+}
+
+function Measure-DualCycle {
+    $side = if ($SideButton -eq 'xbutton1') { 1 } else { 2 }
+    $scale = [VeloWorkspaceProbe]::GetDpiForWindow($witness.Handle) / 96
+    $x = $centerX - [int](20 * $scale)
+    $panelY = $centerY - [int](110 * $scale)
+    $padY = $centerY - [int](87 * $scale)
+    $baseline = [VeloWorkspaceProbe]::Pixel($x, $panelY)
+    $highlight = if ($Theme -eq 'dark') { 0x603a17 } else { 0xfff1e7 }
+    try {
+        Start-SidePress
+        Start-Sleep -Milliseconds 65
+        $watch = [Diagnostics.Stopwatch]::StartNew()
+        [VeloWorkspaceProbe]::Side($false, $side)
+        Wait-Desktop 'warm Panel first frame' { [VeloWorkspaceProbe]::Pixel($x, $panelY) -ne $baseline }
+        $panelMs = $watch.Elapsed.TotalMilliseconds
+        Close-Panel (Wait-SidePanel) $escapeKey $true
+
+        Start-SidePress
+        $watch.Restart()
+        [VeloWorkspaceProbe]::Move($centerX, ($centerY - [int](44 * $scale)))
+        Wait-Desktop 'warm Gesture Pad highlight frame' { [VeloWorkspaceProbe]::Pixel($x, $padY) -eq $highlight }
+        $highlightMs = $watch.Elapsed.TotalMilliseconds
+        $prior = [regex]::Matches((Read-Events), 'action=Launcher input_us=').Count
+        [VeloWorkspaceProbe]::Side($false, $side)
+        Wait-Desktop 'gesture dispatch receipt' { [regex]::Matches((Read-Events), 'action=Launcher input_us=').Count -gt $prior }
+        Wait-Desktop 'gesture opens Launcher' { [VeloWorkspaceProbe]::GetForegroundWindow() -eq $launcherWindow }
+        Close-Panel @{ Handle = $launcherWindow } $escapeKey $false
+        $events = Read-Events
+        $selection = [regex]::Matches($events, 'phase=Selecting\(North\) effective=Some\(1\) input_us=(\d+)') | Select-Object -Last 1
+        $dispatch = [regex]::Matches($events, 'action=Launcher input_us=(\d+)') | Select-Object -Last 1
+        [pscustomobject]@{
+            ReleaseToPanelFrameMs = $panelMs
+            MoveToHighlightMs = $highlightMs
+            MoveToSelectionUs = [int]$selection.Groups[1].Value
+            ReleaseToLauncherDispatchUs = [int]$dispatch.Groups[1].Value
+        }
+    } finally {
+        [VeloWorkspaceProbe]::Side($false, $side)
+    }
+}
+
+function Test-PanelControls($Panel) {
+    $rect = $Panel.Rect
+    $scale = [VeloWorkspaceProbe]::GetDpiForWindow($Panel.Handle) / 96
+    $width = $rect.Right - $rect.Left
+    $height = $rect.Bottom - $rect.Top
+    Assert-Probe ([Math]::Abs($width - $panelWidth * $scale) -le 1 -and
+        [Math]::Abs($height - 348 * $scale) -le 1) 'Workspace opens the matrix at the monitor DPI'
+    Assert-Probe ([Math]::Abs($rect.Left + $width / 2 - $centerX) -le 1 -and
+        [Math]::Abs($rect.Top + [Math]::Round(172 * $scale) - $centerY) -le 1) 'the control strip anchors at the pointer'
+    $outsideX = $rect.Left - 18
+    Assert-Probe ([VeloWorkspaceProbe]::WindowFromPoint([VeloWorkspaceProbe+Point]::new($outsideX, $centerY)) -eq $witness.Handle) 'click outside the Panel hits the original application'
+    Click-TestPoint $outsideX $centerY $witness.Handle
+    Wait-Desktop 'outside click dismisses the Panel and restores the underlying target' {
+        -not [VeloWorkspaceProbe]::IsWindowVisible($Panel.Handle) -and
+            [VeloWorkspaceProbe]::GetForegroundWindow() -eq $witness.Handle
+    }
+    $corner = Open-Panel $workspaceClass $workspaceKeys ($screen.Bounds.Right - 1) ($screen.Bounds.Bottom - 1)
+    Assert-Probe ($corner.Rect.Right -eq $work.Right -and $corner.Rect.Bottom -eq $work.Bottom) 'Panel stays inside the lower-right work area'
+    Close-Panel $corner $workspaceKeys $true
+    $corner = Open-Panel $workspaceClass $workspaceKeys $screen.Bounds.Left $screen.Bounds.Top
+    Assert-Probe ($corner.Rect.Left -eq $work.Left -and $corner.Rect.Top -eq $work.Top) 'Panel stays inside the upper-left work area'
+    Close-Panel $corner $escapeKey $true
+}
+
+function Test-WorkspaceUpgrade {
+    $dpi = [VeloWorkspaceProbe]::GetDpiForWindow($witness.Handle)
+    Assert-Probe ((Get-FileHash -LiteralPath $configPath).Hash -eq $originalHash) 'startup uses migrated settings without rewriting the old file'
+    if ($SideButton) {
+        $side = if ($SideButton -eq 'xbutton1') { 1 } else { 2 }
+        $before = [regex]::Matches((Read-Events), 'event=workspace_action_dispatched ').Count
+        try {
+            Start-SidePress
+            [VeloWorkspaceProbe]::Move($centerX, ($centerY - [int](50 * $dpi / 96)))
+            Wait-Desktop 'legacy upgrade selects an unassigned direction' {
+                (Read-Events) -match 'phase=Selecting\(North\) effective=None'
+            }
+            [VeloWorkspaceProbe]::Side($false, $side)
+            Wait-Desktop 'empty gesture closes' {
+                (Read-Events) -match 'event=workspace_hidden .*reason=empty_direction'
+            }
+            Assert-Probe ([regex]::Matches((Read-Events), 'event=workspace_action_dispatched ').Count -eq $before) 'previous actions do not become gesture bindings'
+        } finally {
+            [VeloWorkspaceProbe]::Side($false, $side)
+        }
+    }
+
+    $panel = Open-Panel $workspaceClass $workspaceKeys $centerX $centerY
+    $scale = [VeloWorkspaceProbe]::GetDpiForWindow($panel.Handle) / 96
+    Click-TestPoint ($panel.Rect.Right - [int](29 * $scale)) ($panel.Rect.Top + [int](170 * $scale)) $panel.Handle
+    Wait-Desktop 'upgraded Workspace settings' { [VeloWorkspaceProbe]::GetForegroundWindow() -eq $launcherWindow }
+    $settings = @{ Handle = $launcherWindow; Rect = [VeloWorkspaceProbe]::Bounds($launcherWindow) }
+    Wait-Desktop 'upgraded Workspace settings paint' {
+        $pixel = [VeloWorkspaceProbe]::Pixel(($settings.Rect.Left + [int](27 * $scale)), ($settings.Rect.Top + [int](151 * $scale)))
+        $pixel -notin 0, 0x675342, [uint32]::MaxValue
+    }
+    Save-Panel $settings 'legacy-gesture-settings'
+    [VeloWorkspaceProbe]::PressEditor([byte[]]@(0x11, 0x53))
+    Wait-WorkspaceSave 1
+    $saved = (Get-Content -Raw -LiteralPath $configPath | ConvertFrom-Json).workspace
+    Assert-Probe ($saved.enabled -and $saved.hotkey -eq $workspaceChord -and
+        $saved.dual.global.columns -eq 4 -and $saved.dual.global.slots[7] -eq 'pictures' -and
+        $saved.dual.default_panel.slots[4] -eq 'this-pc' -and
+        $saved.dual.default_gestures.slots.Count -eq 8 -and @($saved.dual.default_gestures.slots | Where-Object { $_ }).Count -eq 0) 'the first save persists both migrated slot groups and empty gestures'
+    Assert-Probe (@($saved.PSObject.Properties.Name | Where-Object { $_ -in 'upper','default','profiles','dual_enabled' }).Count -eq 0) 'saved settings contain only the current layout fields'
+    $backups = @(Get-ChildItem -LiteralPath (Join-Path $OutputDirectory 'data/backups') -File)
+    Assert-Probe ($backups.Count -eq 1 -and (Get-FileHash -LiteralPath $backups[0].FullName).Hash -eq $originalHash) 'first save backs up the original configuration bytes'
+
+    $scale = [VeloWorkspaceProbe]::GetDpiForWindow($launcherWindow) / 96
+    Click-TestPoint ($settings.Rect.Left + [int](91 * $scale)) ($settings.Rect.Top + [int](205 * $scale)) $launcherWindow
+    Click-TestPoint ($settings.Rect.Left + [int](33 * $scale)) ($settings.Rect.Top + [int](265 * $scale)) $launcherWindow
+    [VeloWorkspaceProbe]::PressEditor([byte[]]@(0x11, 0x53))
+    Wait-WorkspaceSave 2
+    $saved = (Get-Content -Raw -LiteralPath $configPath | ConvertFrom-Json).workspace
+    Assert-Probe (!$saved.enabled) 'the only Workspace can still be disabled in Settings'
+    [VeloWorkspaceProbe]::Press($escapeKey)
+    Start-Sleep -Milliseconds 160
+    Close-Panel $settings $escapeKey $false
+    Test-WorkspaceDormant
 }
 
 function Test-MonitorCrossing {
@@ -513,31 +586,16 @@ function Test-MonitorCrossing {
             $height = $rect.Bottom - $rect.Top
             Assert-Probe ($panel.Handle -eq $workspaceHandle) 'same Workspace HWND survives crossing'
             Write-Output ("crossing={0} rect={1},{2},{3},{4} dpi={5}" -f $step, $rect.Left, $rect.Top, $width, $height, $nativeDpi)
-            Assert-Probe ($nativeDpi -eq $targetDpi -and [Math]::Abs($width - 420 * $targetDpi / 96) -le 1 -and
-                [Math]::Abs($height - 424 * $targetDpi / 96) -le 1) "crossing $step adopts $targetDpi DPI"
+            Assert-Probe ($nativeDpi -eq $targetDpi -and [Math]::Abs($width - $panelWidth * $targetDpi / 96) -le 1 -and
+                [Math]::Abs($height - 348 * $targetDpi / 96) -le 1) "crossing $step adopts $targetDpi DPI"
             Assert-Probe ([Math]::Abs($rect.Left + $width / 2 - $centerX) -le 1 -and
-                [Math]::Abs($rect.Top + [Math]::Round($height * 210 / 424) - $centerY) -le 1) "crossing $step stays anchored"
-            Save-Panel $panel "radial-crossing-$step"
+                [Math]::Abs($rect.Top + [Math]::Round(172 * $targetDpi / 96) - $centerY) -le 1) "crossing $step stays anchored"
+            Save-Panel $panel "workspace-crossing-$step"
             Close-Panel $panel $escapeKey $true
         }
     } finally {
         $witness.Bounds = $work
     }
-}
-
-function Open-RadialSettings {
-    $panel = Open-Panel $workspaceClass $workspaceKeys $centerX $centerY
-    $rect = $panel.Rect
-    $editX = $rect.Left + [int](264 * ($rect.Right - $rect.Left) / 420)
-    $editY = $rect.Top + [int](226 * ($rect.Bottom - $rect.Top) / 424)
-    Click-TestPoint $editX $editY $panel.Handle
-    Wait-Desktop 'Launcher opens Workspace settings' {
-        [VeloWorkspaceProbe]::GetForegroundWindow() -eq $launcherWindow
-    }
-    Start-Sleep -Milliseconds 700
-    $settingsPanel = @{ Handle = $launcherWindow; Rect = [VeloWorkspaceProbe]::Bounds($launcherWindow) }
-    Save-Panel $settingsPanel 'workspace-settings'
-    $settingsPanel
 }
 
 function Wait-WorkspaceSave([int]$Attempt) {
@@ -570,112 +628,6 @@ function Test-WorkspaceDormant {
     Assert-Probe ([VeloWorkspaceProbe]::Find($process.Id, $workspaceClass) -eq [IntPtr]::Zero) 'both side buttons pass through without creating Workspace'
 }
 
-function Test-RadialSettings {
-    $settingsPanel = Open-RadialSettings
-    $settingsRect = $settingsPanel.Rect
-    $scale = [VeloWorkspaceProbe]::GetDpiForWindow($launcherWindow) / 96
-    $toggleX = $settingsRect.Left + [int](33 * $scale)
-    $toggleY = $settingsRect.Top + [int](195 * $scale)
-    $sideX = $settingsRect.Left + [int](103 * $scale)
-    $sideY = $settingsRect.Top + [int](266 * $scale)
-    $saveX = $settingsRect.Right - [int](66 * $scale)
-    $saveY = $settingsRect.Bottom - [int](29 * $scale)
-    Click-TestPoint $toggleX $toggleY $launcherWindow
-    $configPath = Join-Path $OutputDirectory 'data/config.json'
-    $orderedButtons = @($null, 'xbutton2', 'xbutton1')
-    for ($index = 0; $index -lt $orderedButtons.Count; $index++) {
-        Click-TestPoint $sideX $sideY $launcherWindow
-        if ($index -eq 0) { Save-Panel $settingsPanel 'workspace-trigger-options' }
-        [VeloWorkspaceProbe]::PressEditor([byte[]]@(0x24))
-        for ($step = 0; $step -lt $index; $step++) {
-            [VeloWorkspaceProbe]::PressEditor([byte[]]@(0x28))
-        }
-        [VeloWorkspaceProbe]::PressEditor([byte[]]@(0x0D))
-        Start-Sleep -Milliseconds 220
-        Click-TestPoint $saveX $saveY $launcherWindow
-        Wait-WorkspaceSave ($index + 1)
-        $config = Get-Content -LiteralPath $configPath -Raw | ConvertFrom-Json
-        Assert-Probe ($config.workspace.enabled -and $config.workspace.upper.count -eq 6 -and
-            $config.workspace.hotkey -eq $workspaceChord -and $config.workspace.mouse -eq $orderedButtons[$index]) "left selector saves side trigger option $index"
-    }
-    Click-TestPoint $toggleX $toggleY $launcherWindow
-    Click-TestPoint $saveX $saveY $launcherWindow
-    Wait-WorkspaceSave 4
-    $config = Get-Content -LiteralPath $configPath -Raw | ConvertFrom-Json
-    Assert-Probe ($config.workspace.enabled -eq $false) 'isolated config disables Workspace'
-    Wait-Desktop 'disabled Workspace destroys its HWND' {
-        [VeloWorkspaceProbe]::Find($process.Id, $workspaceClass) -eq [IntPtr]::Zero
-    }
-    Assert-Probe $true 'disabling Workspace destroys window'
-    [VeloWorkspaceProbe]::Press($escapeKey)
-    Start-Sleep -Milliseconds 160
-    Close-Panel $settingsPanel $escapeKey $false
-    Test-WorkspaceDormant
-}
-
-function Test-RadialSlotEditor {
-    $settingsPanel = Open-RadialSettings
-    $settingsRect = $settingsPanel.Rect
-    $scale = [VeloWorkspaceProbe]::GetDpiForWindow($launcherWindow) / 96
-    $configPath = Join-Path $OutputDirectory 'data/config.json'
-    $px = { param($x) $settingsRect.Left + [int]($x * $scale) }
-    $py = { param($y) $settingsRect.Top + [int]($y * $scale) }
-    Click-TestPoint (& $px 122) (& $py 347) $launcherWindow
-    Start-Sleep -Milliseconds 350
-    Click-TestPoint (& $px 122) (& $py 404) $launcherWindow
-    Start-Sleep -Milliseconds 450
-    Click-TestPoint (& $px 635) (& $py 580) $launcherWindow
-    Start-Sleep -Milliseconds 450
-    Save-Panel $settingsPanel 'workspace-slots-before'
-
-    # A real pointer drag from Calculator in the palette to the left inner arc.
-    $startX = & $px 466
-    $startY = & $py 246
-    $dropX = & $px 143
-    $dropY = & $py 290
-    foreach ($point in @(@($startX, $startY), @($dropX, $dropY))) {
-        if ([VeloWorkspaceProbe]::WindowFromPoint([VeloWorkspaceProbe+Point]::new($point[0], $point[1])) -ne $launcherWindow) {
-            throw 'The workspace editor fixture is covered.'
-        }
-    }
-    [void][VeloWorkspaceProbe]::SetCursorPos($startX, $startY)
-    Wait-Desktop 'pointer is on the fixture action' {
-        $cursor = [VeloWorkspaceProbe+Point]::new(0, 0)
-        [VeloWorkspaceProbe]::GetCursorPos([ref]$cursor) -and $cursor.X -eq $startX -and $cursor.Y -eq $startY
-    }
-    Start-Sleep -Milliseconds 180
-    [VeloWorkspaceProbe]::Left($true)
-    try {
-        foreach ($part in 1..6) {
-            [void][VeloWorkspaceProbe]::SetCursorPos([int]($startX + ($dropX - $startX) * $part / 6), [int]($startY + ($dropY - $startY) * $part / 6))
-            Start-Sleep -Milliseconds 45
-        }
-    } finally { [VeloWorkspaceProbe]::Left($false) }
-    Save-Panel $settingsPanel 'workspace-slots-dropped'
-    Wait-Desktop 'drop selects the inner arc' {
-        $pixel = [VeloWorkspaceProbe]::Pixel((& $px 158), (& $py 283))
-        $pixel -in 0x603a17, 0xfff1e7
-    }
-    $destinationX = & $px 394
-    $destinationY = & $py 573
-    if ([VeloWorkspaceProbe]::WindowFromPoint([VeloWorkspaceProbe+Point]::new($destinationX, $destinationY)) -ne $launcherWindow) {
-        throw 'The Workspace destination selector is covered.'
-    }
-    [void][VeloWorkspaceProbe]::SetCursorPos($destinationX, $destinationY)
-    Start-Sleep -Milliseconds 120
-    [VeloWorkspaceProbe]::Left($true)
-    Start-Sleep -Milliseconds 120
-    [VeloWorkspaceProbe]::Left($false)
-    Save-Panel $settingsPanel 'workspace-slots-destination-focused'
-    [VeloWorkspaceProbe]::PressEditor([byte[]]@(0x0D))
-    Save-Panel $settingsPanel 'workspace-slots-edited'
-    [VeloWorkspaceProbe]::PressEditor([byte[]]@(0x11, 0x53))
-    Wait-WorkspaceSave 1
-    Save-Panel $settingsPanel 'workspace-slots-after-save'
-    $slots = (Get-Content -LiteralPath $configPath -Raw | ConvertFrom-Json).workspace.upper.slots
-    Assert-Probe ($slots -and $slots[0] -eq 'calculator' -and $slots[3] -eq 'explorer') 'native drag, keyboard exchange and Ctrl+S persisted both slots'
-}
-
 function Get-WorkspaceResources([string]$State) {
     $process.Refresh()
     $cpu0 = $process.TotalProcessorTime.TotalMilliseconds
@@ -691,41 +643,6 @@ function Get-WorkspaceResources([string]$State) {
         WorkspaceVisible=[VeloWorkspaceProbe]::IsWindowVisible($workspace); CpuPercentOfCore=$cpu }
 }
 
-function Measure-SideCycle {
-    $side = if ($SideButton -eq 'xbutton1') { 1 } else { 2 }
-    $x = $centerX
-    $y = $centerY - [int](94 * $dpi / 96)
-    Focus-Witness
-    [void][VeloWorkspaceProbe]::SetCursorPos($centerX, $centerY)
-    $clock = [Diagnostics.Stopwatch]::StartNew()
-    [VeloWorkspaceProbe]::Side($true, $side)
-    try {
-        $panel = Wait-SidePanel
-        Wait-Desktop 'logo painted' {
-            $p = [VeloWorkspaceProbe]::Pixel($centerX, $centerY)
-            $p -ne 0x675342 -and $p -ne 0 -and $p -ne [uint32]::MaxValue
-        }
-        $first = $clock.Elapsed.TotalMilliseconds
-        $clock.Restart()
-        [VeloWorkspaceProbe]::Move($x, $y)
-        $selectionX = $x - [int](25 * $dpi / 96)
-        Wait-Desktop 'selection fill painted' {
-            $p = [VeloWorkspaceProbe]::Pixel($selectionX, $y)
-            [VeloWorkspaceProbe]::WindowFromPoint([VeloWorkspaceProbe+Point]::new($x, $y)) -eq $panel.Handle -and
-            $p -in 0x603a17, 0xfff1e7
-        }
-        $highlight = $clock.Elapsed.TotalMilliseconds
-        $clock.Restart()
-        [VeloWorkspaceProbe]::Side($false, $side)
-        Wait-Desktop 'dispatch reaches Launcher' { [VeloWorkspaceProbe]::GetForegroundWindow() -eq $launcherWindow }
-        $dispatch = $clock.Elapsed.TotalMilliseconds
-        Close-Panel @{ Handle = $launcherWindow } $escapeKey $false
-        [ordered]@{ HoldToFrameMs=$first; MoveToHighlightMs=$highlight; ReleaseToLauncherMs=$dispatch }
-    } finally {
-        [VeloWorkspaceProbe]::Side($false, $side)
-    }
-}
-
 $exe = (Resolve-Path -LiteralPath $Executable).Path
 $OutputDirectory = (New-Item -ItemType Directory -Path $OutputDirectory).FullName
 $eventsPath = Join-Path $OutputDirectory 'measurement.log'
@@ -737,7 +654,7 @@ $witness = [Windows.Forms.Form]::new()
 $process = $null
 $workspaceClass = 'VeloSlintWorkspaceWindow'
 $launcherClass = 'VeloSlintLauncherWindow'
-$watchSide = $SideButton -or $SettingsRoundTrip -or $Mode -eq 'disabled'
+$watchSide = $SideButton -or $Mode -in 'disabled', 'legacy'
 $workspaceChord = 'Ctrl+Alt+Space'
 $workspaceKeys = [byte[]]@(0x11, 0x12, 0x20)
 $escapeKey = [byte[]]@(0x1B)
@@ -761,7 +678,7 @@ try {
             if (-not [VeloWorkspaceProbe]::Free(3, 0x4A)) { throw 'All launcher test chords are occupied.' }
         }
     }
-    if ($Mode -in 'shaped', 'rounded', 'radial' -and -not [VeloWorkspaceProbe]::Free(3, 0x20)) {
+    if ($Mode -ne 'conflict' -and -not [VeloWorkspaceProbe]::Free(3, 0x20)) {
         $workspaceChord = 'Ctrl+Alt+W'
         $workspaceKeys = [byte[]]@(0x11, 0x12, 0x57)
         if (-not [VeloWorkspaceProbe]::Free(3, 0x57)) {
@@ -776,8 +693,13 @@ try {
     $witness.BackColor = [Drawing.Color]::FromArgb(66, 83, 103)
     $witness.ShowInTaskbar = $false
     $witness.TopMost = $true
-    $clicked = [int[]]@(0)
-    $witness.add_MouseDown({ $clicked[0]++ }.GetNewClosure())
+    if ($Mode -eq 'dual') {
+        $witnessText = [Windows.Forms.TextBox]::new()
+        $witnessText.Multiline = $true
+        $witnessText.ImeMode = [Windows.Forms.ImeMode]::Disable
+        $witnessText.Bounds = [Drawing.Rectangle]::new(20, 20, 320, 108)
+        $witness.Controls.Add($witnessText)
+    }
     $witness.Show()
     if ($watchSide) { [VeloWorkspaceProbe]::WatchSide() }
     $found = $false
@@ -805,26 +727,46 @@ try {
     $witness.TopMost = $false
     Focus-Witness
 
-    $instance = 'workspace-p0-' + [Guid]::NewGuid().ToString('N').Substring(0, 12)
-    $arguments = @('--background', '--diagnostics', "--instance-id=$instance", "--hotkey=$launcherChord",
+    $instance = 'workspace-test-' + [Guid]::NewGuid().ToString('N').Substring(0, 12)
+    $arguments = @('--background', '--diagnostics', "--theme=$Theme", "--instance-id=$instance", "--hotkey=$launcherChord",
         ('--data-dir="' + (Join-Path $OutputDirectory 'data') + '"'), ('--measurement-log="' + $eventsPath + '"'))
-    if ($Mode -in 'shaped', 'rounded', 'radial') {
-        $arguments += "--workspace-preview=$Mode", "--workspace-hotkey=$workspaceChord"
+    if ($Mode -eq 'dual') {
+        $arguments += '--workspace-preview=dual', "--workspace-hotkey=$workspaceChord"
+        if ($SideButton) { $arguments += "--workspace-xbutton=$SideButton" }
+    } elseif ($Mode -eq 'conflict') {
+        $arguments += '--workspace-preview=dual', "--workspace-hotkey=$launcherChord"
     }
-    if ($Mode -eq 'disabled' -or $SettingsRoundTrip -or $EditSlots -or $MeasureResources -or $SideSamples) {
-        New-Item -ItemType Directory -Path (Join-Path $OutputDirectory 'data') | Out-Null
-        $configPath = Join-Path $OutputDirectory 'data/config.json'
-        $config = @{ auto_check_updates = $false }
-        if ($Mode -ne 'disabled') {
-            $config.workspace = @{ enabled = [bool]$EditSlots; hotkey = $workspaceChord }
-            if ($SideButton) { $config.workspace.mouse = $SideButton }
+    New-Item -ItemType Directory -Path (Join-Path $OutputDirectory 'data') | Out-Null
+    $configPath = Join-Path $OutputDirectory 'data/config.json'
+    $config = @{ auto_check_updates = $false; theme = $Theme }
+    if ($Mode -eq 'legacy') {
+        $config.workspace = @{
+            enabled = $true; hotkey = $workspaceChord; dual_enabled = $false
+            upper = @{ count = 8; slots = @('explorer', 'calculator', 'task-manager', $null, 'launcher', 'control-panel', $null, 'pictures') }
+            default = @{ count = 4; slots = @('downloads', 'documents', 'pictures', $null, 'this-pc', $null, $null, $null) }
         }
-        $config | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath $configPath -Encoding utf8NoBOM
+        if ($SideButton) { $config.workspace.mouse = $SideButton }
     }
-    if ($SideButton) {
-        $arguments += "--workspace-xbutton=$SideButton"
+    if ($Mode -eq 'dual') {
+        $config.workspace = @{ enabled = $false; hotkey = $workspaceChord }
+        $id = @{ kind = 'executable'; value = [Environment]::ProcessPath }
+        $contextExe = Join-Path $env:SystemRoot 'System32/WindowsPowerShell/v1.0/powershell.exe'
+        $config.workspace.dual = @{
+            global = @{ columns = 3; slots = @('explorer', 'calculator', 'task-manager', $null, 'launcher', 'control-panel') }
+            default_panel = @{ columns = 3; slots = @('downloads', 'documents', 'pictures') }
+            panel_profiles = @(
+                @{ app = $id; name = '测试编辑器'; matrix = @{ columns = 3; slots = @('documents', 'downloads', 'this-pc', 'action:text', 'action:keys', $null) } }
+                @{ app = @{ kind = 'executable'; value = $contextExe }; name = '指针下应用'; matrix = @{ columns = 5; slots = @('launcher', 'calculator') } }
+            )
+            gesture_profiles = @(@{ app = $id; name = '测试编辑器'; directions = @{ slots = @($null, $null, 'action:keys', $null, 'action:text', $null, 'launcher', $null) } })
+            actions = @{
+                'action:text' = @{ label = '输入示例'; action = @{ type = 'insert_text'; text = "Velo 中文`r`nsecond line" } }
+                'action:keys' = @{ label = '两步输入'; action = @{ type = 'send_keys'; steps = @(@{ chord = 'Shift+X' }, @{ chord = 'Shift+Z'; wait_ms = 70 }) } }
+            }
+        }
     }
-    if ($Mode -eq 'conflict') { $arguments += '--workspace-preview=shaped', "--workspace-hotkey=$launcherChord" }
+    $config | ConvertTo-Json -Depth 12 | Set-Content -LiteralPath $configPath -Encoding utf8NoBOM
+    $originalHash = (Get-FileHash -LiteralPath $configPath).Hash
     $launch = @{
         FilePath = $exe; ArgumentList = $arguments; WindowStyle = 'Hidden'; PassThru = $true
         RedirectStandardError = (Join-Path $OutputDirectory 'stderr.log')
@@ -845,111 +787,33 @@ try {
     $resourceStates = @()
     $sideMeasurements = @()
     if ($MeasureResources) {
-        $state = if ($Mode -eq 'radial') { 'enabled-not-opened' } else { 'disabled' }
+        $state = if ($Mode -in 'dual', 'legacy') { 'enabled-not-opened' } else { 'disabled' }
         $resourceStates += Get-WorkspaceResources $state
     }
-    if ($Mode -eq 'radial' -and $SideButton) { Test-FastColdSwipe }
     $paintSamples = [Collections.Generic.List[uint32]]::new()
-    if ($Mode -in 'shaped', 'rounded') {
-        $panel = Open-Panel $workspaceClass $workspaceKeys $centerX $centerY
-        $workspaceTimes += $panel.Milliseconds
-        $rect = $panel.Rect
-        $width = $rect.Right - $rect.Left
-        $height = $rect.Bottom - $rect.Top
-        $dpi = [VeloWorkspaceProbe]::GetDpiForWindow($panel.Handle)
-        Assert-Probe ([Math]::Abs($width - 360 * $dpi / 96) -le 1 -and [Math]::Abs($height - 252 * $dpi / 96) -le 1) 'size follows monitor DPI'
-        Assert-Probe ([Math]::Abs($rect.Left + $width / 2 - $centerX) -le 1 -and [Math]::Abs($rect.Top + $height / 2 - $centerY) -le 1) 'hub aligns with the pointer'
-        Save-Panel $panel
-        Click-TestPoint $centerX ($rect.Top + [int]($height * 0.81)) $panel.Handle
-        Wait-Desktop 'lower control responds' { (Read-Events) -match 'event=workspace_highlight .*checked=true' }
-        Click-TestPoint $centerX ($rect.Top + [int]($height * 0.19)) $panel.Handle
-        Wait-Desktop 'upper control hides and restores focus' {
-            -not [VeloWorkspaceProbe]::IsWindowVisible($panel.Handle) -and [VeloWorkspaceProbe]::GetForegroundWindow() -eq $witness.Handle
-        }
-        foreach ($sample in 1..5) {
-            $panel = Open-Panel $workspaceClass $workspaceKeys $centerX $centerY
-            $workspaceTimes += $panel.Milliseconds
-            $closeKeys = if ($sample -eq 1) { $escapeKey } else { $workspaceKeys }
-            Close-Panel $panel $closeKeys $true
-        }
-        Assert-Probe $true 'controls, Escape and repeated hotkey return focus'
-        $panel = Open-Panel $workspaceClass $workspaceKeys $centerX $centerY
-        $hitX = $panel.Rect.Left + 2
-        $hitY = if ($Mode -eq 'shaped') { $centerY } else { $panel.Rect.Top + 2 }
-        Assert-Probe ([VeloWorkspaceProbe]::Pixel($hitX, $hitY) -eq 0x675342) 'cropped corner or waist shows the test surface'
-        $previousClicks = $clicked[0]
-        Click-TestPoint $hitX $hitY $witness.Handle
-        Wait-Desktop 'click reaches surface and dismisses Workspace' {
-            $clicked[0] -gt $previousClicks -and [VeloWorkspaceProbe]::GetForegroundWindow() -eq $witness.Handle -and
-            -not [VeloWorkspaceProbe]::IsWindowVisible($panel.Handle)
-        }
-        Assert-Probe $true 'outside click passes through and keeps its foreground'
-        $panel = Open-Panel $workspaceClass $workspaceKeys $centerX $centerY
-        [VeloWorkspaceProbe]::Press($launcherKeys)
+    if ($Mode -in 'dual', 'legacy') {
+        $panelWidth = if ($Mode -eq 'legacy') { 394 } else { 300 }
         $launcherWindow = [VeloWorkspaceProbe]::Find($process.Id, $launcherClass)
-        Wait-Desktop 'Launcher takes focus from Workspace' {
-            [VeloWorkspaceProbe]::GetForegroundWindow() -eq $launcherWindow -and
-            -not [VeloWorkspaceProbe]::IsWindowVisible($panel.Handle)
-        }
-        Close-Panel @{ Handle = $launcherWindow } $escapeKey $false
-        Assert-Probe $true 'Launcher keeps its own hotkey while Workspace is open'
-        $panel = Open-Panel $workspaceClass $workspaceKeys ($screen.Bounds.Right - 1) ($screen.Bounds.Bottom - 1)
-        Assert-Probe ($panel.Rect.Right -eq $work.Right -and $panel.Rect.Bottom -eq $work.Bottom) 'clamped to lower-right working area'
-        Close-Panel $panel $escapeKey $true
-        $panel = Open-Panel $workspaceClass $workspaceKeys $screen.Bounds.Left $screen.Bounds.Top
-        Assert-Probe ($panel.Rect.Left -eq $work.Left -and $panel.Rect.Top -eq $work.Top) 'clamped to upper-left working area'
-        Close-Panel $panel $escapeKey $true
-    } elseif ($Mode -eq 'radial') {
         $panel = Open-Panel $workspaceClass $workspaceKeys $centerX $centerY
         $workspaceTimes += $panel.Milliseconds
-        $rect = $panel.Rect
-        $width = $rect.Right - $rect.Left
-        $height = $rect.Bottom - $rect.Top
-        $dpi = [VeloWorkspaceProbe]::GetDpiForWindow($panel.Handle)
-        Assert-Probe ([Math]::Abs($width - 420 * $dpi / 96) -le 1 -and [Math]::Abs($height - 424 * $dpi / 96) -le 1) 'radial board follows monitor DPI'
-        Assert-Probe ([Math]::Abs($rect.Left + $width / 2 - $centerX) -le 1 -and [Math]::Abs($rect.Top + [math]::Round(210 * $height / 424) - $centerY) -le 1) 'radial hub aligns with pointer'
-        Save-Panel $panel
-        Test-RadialFrame $panel
-        $gapY = $rect.Top + [int](160 * $height / 424)
         if ($MeasureResources) { $resourceStates += Get-WorkspaceResources 'visible' }
-        $previousClicks = $clicked[0]
-        Assert-Probe ([VeloWorkspaceProbe]::Pixel($centerX, $gapY) -eq 0x675342) 'radial gap shows underlying window'
-        Click-TestPoint $centerX $gapY $witness.Handle
-        Wait-Desktop 'gap click delivered and radial menu dismissed' {
-            $clicked[0] -gt $previousClicks -and [VeloWorkspaceProbe]::GetForegroundWindow() -eq $witness.Handle -and
-            -not [VeloWorkspaceProbe]::IsWindowVisible($panel.Handle)
-        }
-        Assert-Probe $true 'radial gap click passes through'
-        $panel = Open-Panel $workspaceClass $workspaceKeys $centerX $centerY
-        Click-TestPoint $centerX ($rect.Top + [int](116 * $height / 424)) $panel.Handle
-        $launcherWindow = [VeloWorkspaceProbe]::Find($process.Id, $launcherClass)
-        Wait-Desktop 'radial Launcher action' {
-            [VeloWorkspaceProbe]::GetForegroundWindow() -eq $launcherWindow -and
-            -not [VeloWorkspaceProbe]::IsWindowVisible($panel.Handle)
-        }
-        Close-Panel @{ Handle = $launcherWindow } $escapeKey $false
-        Assert-Probe $true 'radial tile opens Launcher'
-        foreach ($sample in 1..5) {
-            $panel = Open-Panel $workspaceClass $workspaceKeys $centerX $centerY
-            $workspaceTimes += $panel.Milliseconds
-            Close-Panel $panel $escapeKey $true
-        }
-        $panel = Open-Panel $workspaceClass $workspaceKeys ($screen.Bounds.Right - 1) ($screen.Bounds.Bottom - 1)
-        Assert-Probe ($panel.Rect.Right -eq $work.Right -and $panel.Rect.Bottom -eq $work.Bottom) 'radial board clamps at lower-right working area'
-        Close-Panel $panel $workspaceKeys $true
-        $panel = Open-Panel $workspaceClass $workspaceKeys $screen.Bounds.Left $screen.Bounds.Top
-        Assert-Probe ($panel.Rect.Left -eq $work.Left -and $panel.Rect.Top -eq $work.Top) 'radial board clamps at upper-left working area'
-        Close-Panel $panel $escapeKey $true
+        Save-Panel $panel "$Theme-keyboard-panel"
+        Test-PanelControls $panel
         if ($CrossMonitors) { Test-MonitorCrossing }
-        if ($SideButton) { Test-SideInput }
-        if ($SideSamples) { $sideMeasurements = @(foreach ($sample in 1..$SideSamples) { Measure-SideCycle }) }
+        if ($Mode -eq 'legacy') { Test-WorkspaceUpgrade }
+        if ($Mode -eq 'dual' -and $SideButton) {
+            Test-DualInput
+            Test-DualContexts
+        }
+        if ($SideSamples) {
+            $sideMeasurements = @(foreach ($sample in 1..$SideSamples) { Measure-DualCycle })
+        }
         if ($MeasureResources) { $resourceStates += Get-WorkspaceResources 'used-hidden' }
-        if ($SideButton) { Test-ClosedSideTarget }
-        if ($EditSlots) { Test-RadialSlotEditor }
-        if ($SettingsRoundTrip) { Test-RadialSettings }
     } elseif ($Mode -eq 'disabled') {
         Assert-Probe ((Read-Events) -notmatch 'event=workspace_(hotkey_ready|mouse_ready|shown) ') 'fresh config never starts Workspace'
         Test-WorkspaceDormant
+    } else {
+        Assert-Probe ((Read-Events) -notmatch 'event=workspace_hotkey_ready ') 'a conflict keeps the conflicting Workspace chord inactive'
     }
 
     Start-Sleep -Seconds 2
@@ -1011,7 +875,7 @@ try {
                 Wait-Desktop 'native tray quit received' { (Read-Events) -match '(?m)^event=desktop_event .*action=3\b' }
                 if (!$process.WaitForExit(8000)) { throw 'Tray exit timed out after native quit.' }
                 Write-Output "exit via tray; code=$($process.ExitCode)"
-                if ($Mode -in 'shaped', 'rounded', 'radial') {
+                if ($Mode -in 'dual', 'legacy') {
                     Assert-Probe ([VeloWorkspaceProbe]::Free(3, $workspaceKeys[-1])) 'Workspace hotkey released at exit'
                 }
             } catch {

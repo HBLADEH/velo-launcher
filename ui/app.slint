@@ -1,5 +1,5 @@
 import { FileEntry, FileResultRow } from "file-search.slint";
-export { WorkspaceWindow, RadialTile } from "workspace.slint";
+export { WorkspaceTile, WorkspaceWindow } from "workspace.slint";
 export { FileEntry } from "file-search.slint";
 import { CustomPanel } from "custom.slint";
 import { LaunchGroupsPanel, GroupMemberRow } from "launch-groups.slint";
@@ -10,7 +10,7 @@ import { Confirmation, ConfirmationDialog } from "confirmation.slint";
 export { Confirmation } from "confirmation.slint";
 import { ControlBounds, LicenseEntry, SettingsPanel, SettingsDraft } from "settings.slint";
 import { WorkspaceEditorState } from "workspace-settings.slint";
-export { WorkspaceDraft, WorkspaceChoice, WorkspaceEditorState } from "workspace-settings.slint";
+export { WorkspaceActionDraft, WorkspaceDraft, WorkspaceChoice, WorkspaceEditorState } from "workspace-settings.slint";
 export { SettingsDraft, ControlBounds, LicenseEntry } from "settings.slint";
 export { LauncherItem, PreviewEntry, Theme } from "components.slint";
 
@@ -114,14 +114,16 @@ export component AppWindow inherits Window {
     in property <[LauncherItem]> custom-items;
     in-out property <SettingsDraft> settings-draft;
     in-out property <int> settings-tab: 0;
+    in property <int> workspace-action-ticket;
+    in property <bool> workspace-recording;
+    callback workspace-recorded-chord(string);
     in property <string> settings-notice;
     in property <string> backup-path;
     in property <string> data-directory;
     in property <[LicenseEntry]> third-party-licenses;
     out property <bool> licenses-expanded: settings.licenses-expanded;
     pure callback hotkey-parts(string) -> [string];
-    pure callback item-pinnable(string) -> bool;
-    item-pinnable(id) => { return true; }
+    callback item-pin-toggled(string);
     in property <string> update-message;
     in property <string> update-notes;
     in property <string> update-release-label;
@@ -324,9 +326,10 @@ export component AppWindow inherits Window {
         root.layout-changed(); root.icon-viewport-changed();
     }
     changed settings-tab => { if root.appearance-open && root.settings-tab == 7 { WorkspaceEditorState.open(); } }
-    changed native-dialog-active => { root.workspace-input-suspended(root.native-dialog-active || root.hotkey-recording); }
+    changed native-dialog-active => { root.workspace-input-suspended(root.native-dialog-active || root.hotkey-recording || root.workspace-recording); }
     changed confirmation-minimum-height => { root.layout-changed(); }
-    changed hotkey-recording => { root.workspace-input-suspended(root.native-dialog-active || root.hotkey-recording); }
+    changed hotkey-recording => { root.workspace-input-suspended(root.native-dialog-active || root.hotkey-recording || root.workspace-recording); }
+    changed workspace-recording => { root.workspace-input-suspended(root.native-dialog-active || root.hotkey-recording || root.workspace-recording); }
     changed import-open => { root.layout-changed(); root.icon-viewport-changed(); }
     changed groups-open => { root.layout-changed(); root.icon-viewport-changed(); }
     changed group-mode => { root.icon-viewport-changed(); }
@@ -479,7 +482,7 @@ export component AppWindow inherits Window {
                     hovered(id) => { root.selected-id = id; }
                     chosen(id) => { root.item-chosen(id); }
                     context-menu(id) => { root.application-menu(id); }
-                    pin-toggled(id) => { root.application-menu-completed(id, 4); }
+                    pin-toggled(id) => { root.item-pin-toggled(id); }
                 }
                 frequent := HomeSection {
                     x: 22px; y: pinned.y + pinned.height + (root.pinned-items.length > 0 ? 20px : 0px); width: parent.width - 44px;
@@ -490,7 +493,7 @@ export component AppWindow inherits Window {
                     hovered(id) => { root.selected-id = id; }
                     chosen(id) => { root.item-chosen(id); }
                     context-menu(id) => { root.application-menu(id); }
-                    pin-toggled(id) => { root.application-menu-completed(id, 4); }
+                    pin-toggled(id) => { root.item-pin-toggled(id); }
                 }
                 system := HomeSection {
                     x: 22px; y: frequent.y + frequent.height + 20px; width: parent.width - 44px;
@@ -502,7 +505,7 @@ export component AppWindow inherits Window {
                     hovered(id) => { root.selected-id = id; }
                     chosen(id) => { root.item-chosen(id); }
                     context-menu(id) => { root.application-menu(id); }
-                    pin-toggled(id) => { root.application-menu-completed(id, 4); }
+                    pin-toggled(id) => { root.item-pin-toggled(id); }
                 }
             }
         }
@@ -519,20 +522,18 @@ export component AppWindow inherits Window {
             x: 0px; y: 0px;
             width: results.visible-width; height: results.content-height;
             for item[index] in root.result-items: ResultRow {
-                pinnable: root.item-pinnable(item.id);
                 x: 12px; y: 6px + index * 54px; width: results.visible-width - 24px;
                 item: item; selected: root.selected-id == item.id;
                 hovered(id) => { root.selected-id = id; }
                 chosen(id) => { root.item-chosen(id); }
                 context-menu(id) => { root.application-menu(id); }
-                    pin-toggled(id) => { root.application-menu-completed(id, 4); }
+                pin-toggled(id) => { root.item-pin-toggled(id); }
             }
             }
             if root.grid-results: Rectangle {
                 x: 0px; y: 0px;
                 width: results.visible-width; height: results.content-height;
                 for item[index] in root.result-items: AppTile {
-                    pinnable: root.item-pinnable(item.id);
                     x: 16px + Math.mod(index,6) * ((parent.width - 32px + 8px) / 6); y: 18px + Math.floor(index / 6) * 108px;
                     width: (parent.width - 32px - 40px) / 6;
                     grid: true;
@@ -540,7 +541,7 @@ export component AppWindow inherits Window {
                     hovered(id) => { root.selected-id = id; }
                     chosen(id) => { root.item-chosen(id); }
                     context-menu(id) => { root.application-menu(id); }
-                    pin-toggled(id) => { root.application-menu-completed(id, 4); }
+                    pin-toggled(id) => { root.item-pin-toggled(id); }
                 }
             }
         }
@@ -645,6 +646,8 @@ export component AppWindow inherits Window {
                 busy: root.group-busy; run-busy: root.group-run-busy; retryable: root.group-retryable; available: root.groups-available;
                 notice: root.group-notice; summary: root.group-summary;
                 report-id: root.group-report-id;
+                pin-busy: root.management-busy;
+                pin-toggled(id) => { root.item-pin-toggled(id); }
                 close => { root.group-close(); } create => { root.group-new(); } edit(id) => { root.group-edit(id); } remove-group(id) => { root.group-delete(id); }
                 save => { root.group-save(); } add(id) => { root.group-add(id); } remove(id) => { root.group-remove(id); }
                 detect(id) => { root.group-detect(id); }

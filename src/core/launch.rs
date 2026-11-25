@@ -38,7 +38,10 @@ fn target(item: &AppItem) -> &str {
 
 pub fn capabilities(item: &AppItem) -> (bool, bool) {
     let path = target(item);
-    let file = !item.is_folder() && Path::new(path).is_absolute() && !extension(path, "lnk");
+    let file = !item.is_folder()
+        && !item.is_launch_group()
+        && Path::new(path).is_absolute()
+        && !extension(path, "lnk");
     (file, file && extension(path, "exe"))
 }
 
@@ -61,6 +64,9 @@ pub fn command(
     windows_directory: &Path,
     metadata: impl Fn(&Path) -> io::Result<bool>,
 ) -> Result<Command, CommandError> {
+    if item.is_launch_group() {
+        return Err(CommandError::Unavailable);
+    }
     let empty = |path: String| Command {
         verb: "",
         path,

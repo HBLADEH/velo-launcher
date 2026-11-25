@@ -130,6 +130,9 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     );
     assert_eq!(first.entries[1].state, State::AlreadyRunning);
     assert!(first.history_saved);
+    let history_path = data.join("history.json");
+    let after_first = storage::read::<velo_slint::core::data::History>(&history_path)?;
+    assert_eq!(after_first.0[&group.id].launch_count, 1);
     assert!(runtime.launch_group(group.id.clone(), Vec::new(), None, 0));
     let second = completion(&runtime)?;
     assert!(
@@ -137,6 +140,16 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             .entries
             .iter()
             .all(|entry| matches!(entry.state, State::AlreadyRunning | State::Pending))
+    );
+    assert!(runtime.launch_group(
+        group.id.clone(),
+        vec![group.members[1].app_id.clone()],
+        None,
+        0,
+    ));
+    assert_eq!(
+        completion(&runtime)?.entries[0].state,
+        State::AlreadyRunning
     );
     let deadline = Instant::now() + Duration::from_secs(10);
     while paths.iter().any(|path| marker(path) == 0) && Instant::now() < deadline {
@@ -146,14 +159,18 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         paths.iter().map(|path| marker(path)).collect::<Vec<_>>(),
         vec![1, 1, 1]
     );
-    let history = storage::read::<velo_slint::core::data::History>(&data.join("history.json"))?;
-    assert_eq!(history.0.len(), 2);
+    let history = storage::read::<velo_slint::core::data::History>(&history_path)?;
+    assert_eq!(history.0.len(), 3);
+    assert_eq!(history.0[&group.id].launch_count, 2);
+    for member in [&group.members[0], &group.members[2]] {
+        assert_eq!(history.0[&member.app_id].launch_count, 1);
+    }
+    assert!(!history.0.contains_key(&group.members[1].app_id));
     assert!(history.0.values().all(|entry| {
-        entry.launch_count == 1
-            && entry
-                .query_history
-                .as_ref()
-                .is_none_or(|queries| queries.is_empty())
+        entry
+            .query_history
+            .as_ref()
+            .is_none_or(|queries| queries.is_empty())
     }));
     runtime.stop();
     voice.wait()?;
@@ -173,7 +190,18 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         }
         std::thread::sleep(Duration::from_millis(50));
     }
-    let evidence = serde_json::json!({"synthetic":true,"first_submitted":2,"first_skipped":1,"second_submitted":0,"marker_counts":[1,1,1],"history_counts":[1,1],"query_learning_empty":true,"helpers_exited":true});
+    let evidence = serde_json::json!({
+        "synthetic": true,
+        "first_submitted": 2,
+        "first_skipped": 1,
+        "second_submitted": 0,
+        "marker_counts": [1, 1, 1],
+        "history_counts": [1, 1],
+        "group_history_count": 2,
+        "member_retry_counted_as_group": false,
+        "query_learning_empty": true,
+        "helpers_exited": true
+    });
     std::fs::write(
         directory.join("result.json"),
         serde_json::to_vec_pretty(&evidence)?,

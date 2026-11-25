@@ -41,7 +41,8 @@ export component SettingsPanel inherits FocusScope {
     in property <string> update-progress-detail;
     private property <bool> licenses-open: false;
     private property <bool> can-save: root.enabled && !root.busy && !root.recording
-        && !root.update-busy && !WorkspaceEditorState.busy;
+        && !root.update-busy && !WorkspaceEditorState.busy && !WorkspaceEditorState.recording
+        && (root.tab != 7 || WorkspaceEditorState.draft-open);
     out property <bool> licenses-expanded: root.licenses-open;
     callback close(); callback save(); callback record(bool); callback manage(); callback groups();
     callback choose-everything();

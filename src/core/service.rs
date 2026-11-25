@@ -13,14 +13,13 @@ use chrono::{DateTime, Utc};
 
 use super::catalog::Catalog;
 use super::config::Config;
-use super::data::{ApplicationLibrary, DataStore, History, IndexCache, IndexLoad};
-use super::group_run::{Report, State};
+use super::data::{ApplicationLibrary, DataStore, History, IndexCache, IndexLoad, MAX_HOME_PINS};
+use super::group_run::Report;
 use super::icons::{self, Pixels};
 use super::indexer::{self, Generation, Ticket};
 use super::launch::Action;
 use super::launch_groups::{self, Collection, DraftTicket, Group};
 use super::model::AppItem;
-use super::search::Index;
 use super::storage;
 use super::system_tools::{Prompt as SystemPrompt, needs_confirmation};
 use super::workspace::{
@@ -48,7 +47,6 @@ pub struct Snapshot {
     pub cache: Arc<IndexCache>,
     pub library: Arc<ApplicationLibrary>,
     pub groups: Arc<Collection>,
-    pub group_index: Arc<Index>,
     pub groups_available: bool,
     pub enabled_workspace: Option<Arc<WorkspaceConfig>>,
 }
@@ -119,6 +117,11 @@ pub enum Event {
     },
     WorkspaceFinished {
         action: workspace_action::WorkspaceAction,
+        result: std::result::Result<workspace_action::Success, workspace_action::Failure>,
+    },
+    WorkspaceUserActionFinished {
+        kind: &'static str,
+        ticket: i32,
         result: std::result::Result<workspace_action::Success, workspace_action::Failure>,
     },
 }
@@ -290,29 +293,19 @@ impl Shared {
             .map(|store| store.snapshot())
             .transpose()?
             .unwrap_or_else(|| Arc::new(Collection::default()));
-        let group_index = Arc::new(Index::new(groups.groups.iter().map(|group| {
-            Arc::new(AppItem {
-                id: group.id.clone(),
-                name: group.name.clone(),
-                keywords: Some(group.aliases.clone()),
-                source: "LaunchGroup".into(),
-                description: format!("启动组合 · {} 个应用", group.members.len()),
-                ..AppItem::default()
-            })
-        })));
         let snapshot = Arc::new(Snapshot {
-            groups,
-            group_index,
             groups_available: self.groups.get().is_some(),
             enabled_workspace: WorkspaceConfig::read_enabled(&config).map(Arc::new),
-            catalog: Arc::new(Catalog::new(
+            catalog: Arc::new(Catalog::with_groups(
                 &items,
                 &library,
                 &self
                     .tools
                     .read()
                     .map_err(|_| DataError::new("read system tools", "poisoned lock"))?,
+                &groups,
             )),
+            groups,
             config,
             history,
             cache,
@@ -341,6 +334,19 @@ struct WorkspaceRequest {
     owner: isize,
 }
 
+pub struct WorkspaceUserRequest {
+    pub action: super::workspace::user_actions::UserAction,
+    pub target: Option<(
+        Foreground,
+        workspace_actions::Application,
+        Option<Foreground>,
+    )>,
+    pub owner: isize,
+    pub epoch: Arc<std::sync::atomic::AtomicU64>,
+    pub generation: u64,
+    pub ticket: i32,
+}
+
 pub struct Runtime {
     shared: Arc<Shared>,
     refresh: Option<SyncSender<()>>,
@@ -351,6 +357,7 @@ pub struct Runtime {
     file_search_enabled: bool,
     update_busy: Arc<AtomicBool>,
     workers: Vec<JoinHandle<()>>,
+    workspace_user_worker: Option<JoinHandle<()>>,
 }
 
 impl Runtime {
@@ -400,6 +407,7 @@ impl Runtime {
             file_search_enabled: false,
             update_busy: Arc::new(AtomicBool::new(false)),
             workers: Vec::new(),
+            workspace_user_worker: None,
         };
         let scan_state = shared.clone();
         runtime.workers.push(
@@ -526,6 +534,9 @@ impl Runtime {
                                     Manage::SaveWorkspace(_) => "workspace",
                                     Manage::Import(_) => "import",
                                     Manage::Delete(_) => "delete",
+                                    Manage::Pin(ref id, _) if id.starts_with("group:") => {
+                                        "group_pin"
+                                    }
                                     Manage::Pin(..) | Manage::SetFolderPinned(..) => "pin",
                                     Manage::Backup => "backup",
                                     Manage::OpenBackups(_) => "open_backups",
@@ -733,6 +744,44 @@ impl Runtime {
             owner,
         }))
     }
+
+    pub fn workspace_user(&mut self, request: WorkspaceUserRequest) -> bool {
+        if self.shared.stopping.load(Ordering::Acquire)
+            || self.update_busy.load(Ordering::Acquire)
+            || self
+                .workspace_user_worker
+                .as_ref()
+                .is_some_and(|worker| !worker.is_finished())
+        {
+            return false;
+        }
+        if let Some(worker) = self.workspace_user_worker.take() {
+            let _ = worker.join();
+        }
+        // A long batch or shortcut sequence cannot block the Launcher action
+        // queue. Permit one in-flight action and release the thread on completion.
+        let shared = self.shared.clone();
+        self.workspace_user_worker = std::thread::Builder::new()
+            .name("velo-workspace-action".into())
+            .spawn(move || {
+                let result = workspace_actions::execute_user(
+                    &request.action,
+                    request.target,
+                    request.owner,
+                    || {
+                        shared.stopping.load(Ordering::Acquire)
+                            || request.epoch.load(Ordering::Acquire) != request.generation
+                    },
+                );
+                shared.event(Event::WorkspaceUserActionFinished {
+                    kind: request.action.action.kind(),
+                    ticket: request.ticket,
+                    result,
+                });
+            })
+            .ok();
+        self.workspace_user_worker.is_some()
+    }
     pub fn launch_group(
         &self,
         id: String,
@@ -761,7 +810,7 @@ impl Runtime {
             .snapshot()
             .ok()
             .flatten()
-            .is_some_and(|snapshot| snapshot.library.has_pin(id))
+            .is_some_and(|snapshot| snapshot.library.has_pin(id) || snapshot.groups.is_pinned(id))
     }
 
     pub fn manage(&self, request: Manage) -> bool {
@@ -821,6 +870,9 @@ impl Runtime {
     }
     pub fn stop(&mut self) {
         self.shared.stopping.store(true, Ordering::Release);
+        if let Some(worker) = self.workspace_user_worker.take() {
+            let _ = worker.join();
+        }
         // Dropping the reply wakes a launch even if its prompt never reached the UI.
         if let Ok(mut pending) = self.shared.system_answer.lock() {
             pending.take();
@@ -933,6 +985,14 @@ fn manage(shared: &Shared, request: Manage) -> Result<String> {
         }
         Manage::SaveWorkspace(mut layout) => {
             layout.validate()?;
+            workspace_actions::review_scripts(&mut layout.dual)?;
+            let committed = store.config.snapshot()?;
+            if let Some(raw) = committed.unknown.get(WORKSPACE_KEY) {
+                WorkspaceConfig::read(&committed)?;
+                if WorkspaceConfig::needs_layout_backup(raw) {
+                    store.config.backup(&shared.directory.join("backups"))?;
+                }
+            }
             let value = super::defaults(&layout)?;
             store.config.update(|current| {
                 let mut config = current.clone();
@@ -942,9 +1002,20 @@ fn manage(shared: &Shared, request: Manage) -> Result<String> {
             "工作台设置已保存".into()
         }
         Manage::Pin(id, pinned) => {
-            store
-                .library
-                .update(|library| snapshot.catalog.with_pin(library, &id, pinned))?;
+            if pinned {
+                check_home_pin_limit(&snapshot, &id)?;
+            }
+            if id.starts_with("group:") {
+                shared
+                    .groups
+                    .get()
+                    .ok_or_else(|| DataError::new("pin launch group", "groups unavailable"))?
+                    .update(|groups| groups.with_pin(&id, pinned))?;
+            } else {
+                store
+                    .library
+                    .update(|library| snapshot.catalog.with_pin(library, &id, pinned))?;
+            }
             if pinned {
                 "已固定到首页"
             } else {
@@ -957,6 +1028,7 @@ fn manage(shared: &Shared, request: Manage) -> Result<String> {
             if pinned {
                 let current = store.library.snapshot()?;
                 if !current.has_pin(&id) {
+                    check_home_pin_limit(&snapshot, &id)?;
                     let folder = library::folder(&path)?;
                     store
                         .library
@@ -1014,6 +1086,17 @@ fn manage(shared: &Shared, request: Manage) -> Result<String> {
     };
     shared.publish(snapshot.cache.clone())?;
     Ok(message)
+}
+
+fn check_home_pin_limit(snapshot: &Snapshot, id: &str) -> Result<()> {
+    if snapshot.library.has_pin(id) || snapshot.groups.is_pinned(id) {
+        return Ok(());
+    }
+    let applications = snapshot.library.pinned.as_ref().map_or(0, Vec::len);
+    if applications + snapshot.groups.pinned_ids().count() >= MAX_HOME_PINS {
+        return Err(DataError::new("add home pin", "200 pin limit"));
+    }
+    Ok(())
 }
 
 fn update_worker(shared: &Shared, requests: std::sync::mpsc::Receiver<bool>, busy: &AtomicBool) {
@@ -1361,10 +1444,12 @@ fn run_group(
                 snapshot
                     .catalog
                     .item(&member.app_id)
+                    .filter(|item| !item.is_launch_group())
                     .map(|item| item.as_ref().clone())
             })
         })
         .collect();
+    let full_run = only.is_empty() && force.is_none();
     let mut report = group_launch::run(
         group_launch::Request {
             group,
@@ -1378,36 +1463,29 @@ fn run_group(
         &shared.group_cancelled,
         |report| shared.event(Event::GroupRun(Box::new(report))),
     );
-    let successes: Vec<_> = report
-        .entries
-        .iter()
-        .filter(|entry| entry.state == State::Submitted)
-        .map(|entry| entry.app_id.as_str())
-        .collect();
-    if !successes.is_empty() {
-        report.history_saved = (|| -> Result<()> {
-            let _commit = shared
-                .commit
-                .lock()
-                .map_err(|_| DataError::new("record group history", "poisoned lock"))?;
-            let store = shared
-                .store
-                .get()
-                .ok_or_else(|| DataError::new("record group history", "not initialized"))?;
-            store.history.update(|current| {
-                let mut history = current.clone();
-                for id in &successes {
-                    history = history.record(id, "", now().fixed_offset())?;
+    let history_saved = {
+        let mut ids = report.history_ids(full_run).peekable();
+        ids.peek().is_none()
+            || (|| -> Result<()> {
+                let _commit = shared
+                    .commit
+                    .lock()
+                    .map_err(|_| DataError::new("record group history", "poisoned lock"))?;
+                let store = shared
+                    .store
+                    .get()
+                    .ok_or_else(|| DataError::new("record group history", "not initialized"))?;
+                store
+                    .history
+                    .update(|current| current.record_batch(ids, "", now().fixed_offset()))?;
+                if let Some(snapshot) = shared.snapshot()? {
+                    shared.publish(snapshot.cache.clone())?;
                 }
-                Ok(history)
-            })?;
-            if let Some(snapshot) = shared.snapshot()? {
-                shared.publish(snapshot.cache.clone())?;
-            }
-            Ok(())
-        })()
-        .is_ok();
-    }
+                Ok(())
+            })()
+            .is_ok()
+    };
+    report.history_saved = history_saved;
     shared.event(Event::GroupRun(Box::new(report)));
 }
 
@@ -1546,6 +1624,7 @@ fn icon_worker(shared: &Shared) {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::core::group_run::State;
     use std::fs;
     use std::os::windows::fs::OpenOptionsExt;
     use windows_sys::Win32::Storage::FileSystem::FILE_SHARE_READ;
@@ -1602,7 +1681,7 @@ mod tests {
     }
 
     #[test]
-    fn saved_groups_search_restart_and_native_partial_results_preserve_application_history() {
+    fn group_pins_and_frequent_order_survive_restart_and_follow_group_identity() {
         use super::launch_groups::{Group, Member};
         let directory = tempfile::tempdir().unwrap();
         let shared = shared(directory.path());
@@ -1637,7 +1716,7 @@ mod tests {
             })
             .unwrap();
         let cache = shared.snapshot().unwrap().unwrap().cache.clone();
-        shared.publish(cache).unwrap();
+        shared.publish(cache.clone()).unwrap();
         let group = Group {
             id: "group:synthetic".into(),
             name: "开黑".into(),
@@ -1649,14 +1728,14 @@ mod tests {
         };
         manage(&shared, Manage::SaveGroup(group.clone())).unwrap();
         let snapshot = shared.snapshot().unwrap().unwrap();
-        assert_eq!(
-            snapshot
-                .group_index
-                .query("kh", 10, true, &Default::default(), 0.0)[0]
-                .item
-                .id,
-            group.id
-        );
+        let results = snapshot
+            .catalog
+            .search("kh", &snapshot.config, &snapshot.history, now())
+            .unwrap();
+        let group_result = results.iter().find(|result| result.item.id == group.id);
+        assert!(group_result.is_some_and(|result| !result.item.pinned));
+        let home = snapshot.catalog.home(&snapshot.history, now()).unwrap();
+        assert!(home.frequent.iter().all(|item| item.id != group.id));
         assert_eq!(
             launch_groups::open(directory.path())
                 .unwrap()
@@ -1665,23 +1744,103 @@ mod tests {
                 .groups[0],
             group
         );
-        let before = shared.store.get().unwrap().history.snapshot().unwrap();
-        run_group(&shared, &group.id, &[], None, 0, 1);
-        let events = &shared.events.lock().unwrap().1;
-        let report = events
-            .iter()
-            .find_map(|event| match event {
-                Event::GroupRun(report) if report.done => Some(report),
-                _ => None,
-            })
+        let store = shared.store.get().unwrap();
+        store
+            .history
+            .record_success(&running.id, "", now().fixed_offset())
             .unwrap();
-        assert_eq!(report.entries.len(), 2);
-        assert_eq!(report.entries[0].state, State::AlreadyRunning);
-        assert_eq!(report.entries[1].state, State::Failed);
-        assert!(report.accepted());
+        shared.publish(cache).unwrap();
+        for run_id in 1..=2 {
+            run_group(&shared, &group.id, &[], None, 0, run_id);
+            let events = shared.events.lock().unwrap();
+            let report = events
+                .1
+                .iter()
+                .find_map(|event| match event {
+                    Event::GroupRun(report) if report.done => Some(report),
+                    _ => None,
+                })
+                .unwrap();
+            assert_eq!(report.entries.len(), 2);
+            assert_eq!(report.entries[0].state, State::AlreadyRunning);
+            assert_eq!(report.entries[1].state, State::Failed);
+            assert!(report.history_saved);
+        }
+        let history = store.history.snapshot().unwrap();
+        assert_eq!(history.0[&group.id].launch_count, 2);
+        assert_eq!(history.0[&running.id].launch_count, 1);
+        assert!(!history.0.contains_key(&missing.id));
+        run_group(&shared, &group.id, &[running.id], None, 0, 3);
+        assert_eq!(store.history.snapshot().unwrap(), history);
+        let snapshot = shared.snapshot().unwrap().unwrap();
+        let home = snapshot.catalog.home(&snapshot.history, now()).unwrap();
+        assert_eq!(home.frequent[0].id, group.id);
+
+        let path = directory.path().join("launch-groups.json");
+        let original = fs::read(&path).unwrap();
+        let locked = fs::OpenOptions::new()
+            .read(true)
+            .share_mode(FILE_SHARE_READ)
+            .open(&path)
+            .unwrap();
+        assert!(manage(&shared, Manage::Pin(group.id.clone(), true)).is_err());
+        assert_eq!(fs::read(&path).unwrap(), original);
+        assert!(
+            !shared
+                .snapshot()
+                .unwrap()
+                .unwrap()
+                .groups
+                .is_pinned(&group.id)
+        );
+        drop(locked);
+        manage(&shared, Manage::Pin(group.id.clone(), true)).unwrap();
+        let renamed = Group {
+            name: "周末游戏".into(),
+            ..group
+        };
+        manage(&shared, Manage::SaveGroup(renamed.clone())).unwrap();
+        let restarted = self::shared(directory.path());
+        initialize(&restarted).unwrap();
+        let snapshot = restarted.snapshot().unwrap().unwrap();
+        let home = snapshot.catalog.home(&snapshot.history, now()).unwrap();
+        assert_eq!(home.pinned[0].name, renamed.name);
+        assert!(home.frequent.iter().all(|item| item.id != renamed.id));
+        let results = snapshot
+            .catalog
+            .search(&renamed.name, &snapshot.config, &snapshot.history, now())
+            .unwrap();
+        assert!(results[0].item.pinned);
+        assert!(
+            snapshot
+                .catalog
+                .search_applications(&renamed.name, &snapshot.config, &snapshot.history, now())
+                .unwrap()
+                .iter()
+                .all(|result| !result.item.is_launch_group())
+        );
+        assert!(!snapshot.library.has_pin(&renamed.id));
+
+        manage(&restarted, Manage::Pin(renamed.id.clone(), false)).unwrap();
+        let snapshot = restarted.snapshot().unwrap().unwrap();
+        let home = snapshot.catalog.home(&snapshot.history, now()).unwrap();
+        assert!(home.pinned.is_empty());
+        assert_eq!(home.frequent[0].id, renamed.id);
+        manage(&restarted, Manage::Pin(renamed.id.clone(), true)).unwrap();
+        manage(&restarted, Manage::DeleteGroup(renamed.id.clone())).unwrap();
+        let snapshot = restarted.snapshot().unwrap().unwrap();
+        let home = snapshot.catalog.home(&snapshot.history, now()).unwrap();
+        assert!(home.pinned.is_empty());
+        assert!(home.frequent.iter().all(|item| item.id != renamed.id));
+        assert!(!snapshot.groups.is_pinned(&renamed.id));
         assert_eq!(
-            before,
-            shared.store.get().unwrap().history.snapshot().unwrap()
+            launch_groups::open(directory.path())
+                .unwrap()
+                .snapshot()
+                .unwrap()
+                .pinned_ids()
+                .count(),
+            0
         );
     }
 
@@ -1956,6 +2115,53 @@ mod tests {
     }
 
     #[test]
+    fn first_dual_save_backs_up_the_radial_document_before_writing() {
+        let directory = tempfile::tempdir().unwrap();
+        let shared = shared(directory.path());
+        initialize(&shared).unwrap();
+        let store = shared.store.get().unwrap();
+        store
+            .config
+            .update(|current| {
+                let mut config = current.clone();
+                config.unknown.insert(
+                    WORKSPACE_KEY.into(),
+                    serde_json::json!({
+                        "enabled": true, "upper": {"count": 4}, "dual_enabled": false
+                    }),
+                );
+                Ok(config)
+            })
+            .unwrap();
+        let settings = directory.path().join("config.json");
+        let raw = fs::read(&settings).unwrap();
+        let backups = directory.path().join("backups");
+        fs::write(&backups, b"block the backup directory").unwrap();
+        let mut dual = WorkspaceConfig::read(&store.config.snapshot().unwrap()).unwrap();
+        assert!(manage(&shared, Manage::SaveWorkspace(Box::new(dual.clone()))).is_err());
+        assert_eq!(fs::read(&settings).unwrap(), raw);
+        fs::remove_file(&backups).unwrap();
+
+        manage(&shared, Manage::SaveWorkspace(Box::new(dual.clone()))).unwrap();
+        let loaded = DataStore::open(directory.path())
+            .unwrap()
+            .config
+            .snapshot()
+            .unwrap();
+        assert_eq!(WorkspaceConfig::read(&loaded).unwrap(), dual);
+        let backup = fs::read_dir(&backups)
+            .unwrap()
+            .next()
+            .unwrap()
+            .unwrap()
+            .path();
+        assert_eq!(fs::read(backup).unwrap(), raw);
+        dual.enabled = false;
+        manage(&shared, Manage::SaveWorkspace(Box::new(dual))).unwrap();
+        assert_eq!(fs::read_dir(backups).unwrap().count(), 1);
+    }
+
+    #[test]
     fn workspace_save_preserves_launcher_config_and_recovers_after_write_denial() {
         let directory = tempfile::tempdir().unwrap();
         let shared = shared(directory.path());
@@ -1977,8 +2183,8 @@ mod tests {
             enabled: true,
             ..Default::default()
         };
-        workspace.upper.count = 8;
-        workspace.upper.slots[7] = Some(workspace_action::WorkspaceAction::Pictures);
+        workspace.dual.global.columns = 4;
+        workspace.dual.global.slots[7] = Some("pictures".into());
         workspace
             .unknown
             .insert("future_workspace_field".into(), serde_json::json!(14));

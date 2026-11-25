@@ -78,6 +78,10 @@ impl Index {
         self.entries.is_empty()
     }
 
+    pub(super) fn items(&self) -> impl Iterator<Item = &Arc<AppItem>> {
+        self.entries.iter().map(|entry| &entry.item)
+    }
+
     pub fn query(
         &self,
         query: &str,

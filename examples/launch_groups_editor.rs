@@ -12,9 +12,8 @@ use velo_slint::core::{
     catalog::Catalog,
     config::Config,
     data::{ApplicationLibrary, History, IndexCache},
-    launch_groups::Collection,
+    launch_groups::{Collection, Group, Member},
     model::{AppItem, identity},
-    search::Index,
     service::Snapshot,
 };
 use velo_slint::platform;
@@ -93,14 +92,33 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         })
         .collect();
     let library = ApplicationLibrary::empty();
+    let existing = Group {
+        id: "group:synthetic".into(),
+        name: "日常工作".into(),
+        members: applications[..2]
+            .iter()
+            .map(Member::from_app)
+            .collect::<Result<_, _>>()?,
+        ..Group::default()
+    };
+    let group_id = existing.id.clone();
+    let weak_app = app.as_weak();
+    app.on_item_pin_toggled(move |id| {
+        assert_eq!(id, group_id);
+        let app = weak_app.unwrap();
+        let groups = app.get_group_items();
+        let mut row = groups.row_data(0).unwrap();
+        assert_eq!(row.id, id);
+        row.pinned = !row.pinned;
+        groups.set_row_data(0, row);
+    });
     editor.snapshot(Arc::new(Snapshot {
         catalog: Arc::new(Catalog::new(&applications, &library, &[])),
         config: Arc::new(Config::default()),
         history: Arc::new(History::default()),
         cache: Arc::new(IndexCache::default()),
         library: Arc::new(library),
-        groups: Arc::new(Collection::default()),
-        group_index: Arc::new(Index::new(std::iter::empty())),
+        groups: Arc::new(Collection::default().with_group(existing)?),
         groups_available: true,
         enabled_workspace: None,
     }));
@@ -252,6 +270,37 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                         ))
                         .expect("bounded screenshot writer");
                 }
+                6 => app.set_group_mode(0),
+                7 => {
+                    use slint::platform::{PointerEventButton, WindowEvent};
+                    let position = slint::LogicalPosition::new(463.0, 195.0);
+                    for event in [
+                        WindowEvent::PointerPressed {
+                            position,
+                            button: PointerEventButton::Left,
+                        },
+                        WindowEvent::PointerReleased {
+                            position,
+                            button: PointerEventButton::Left,
+                        },
+                    ] {
+                        app.window().dispatch_event(event);
+                    }
+                    assert!(app.get_group_items().row_data(0).unwrap().pinned);
+                    assert_eq!(app.get_group_mode(), 0);
+                    let pixels = app
+                        .window()
+                        .take_snapshot()
+                        .expect("pinned group screenshot");
+                    sender
+                        .try_send((
+                            "dark-pinned.png".into(),
+                            pixels.width(),
+                            pixels.height(),
+                            pixels.as_bytes().to_vec(),
+                        ))
+                        .expect("bounded screenshot writer");
+                }
                 _ => {
                     let _ = slint::quit_event_loop();
                 }
@@ -265,7 +314,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     drop(timer);
     app.hide()?;
     writer.join().map_err(|_| "screenshot writer panicked")??;
-    if stage.get() != 7 {
+    if stage.get() != 9 {
         return Err("editor check did not finish".into());
     }
     // Reference other command payloads so this shared adapter example also
@@ -288,7 +337,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         }
     }
     println!(
-        "event=launch_group_editor_check passed=true renderer={renderer} synthetic=true captures=3"
+        "event=launch_group_editor_check passed=true renderer={renderer} synthetic=true captures=4"
     );
     Ok(())
 }

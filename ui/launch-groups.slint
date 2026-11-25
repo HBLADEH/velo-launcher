@@ -14,12 +14,14 @@ export component LaunchGroupsPanel inherits FocusScope {
     in-out property <int> mode;
     in property <bool> busy;
     in property <bool> run-busy;
+    in property <bool> pin-busy;
     in property <bool> retryable;
     in property <bool> available;
     in property <string> notice;
     in property <string> summary;
     in property <string> report-id;
     callback close(); callback create(); callback edit(string); callback remove-group(string);
+    callback pin-toggled(string);
     callback save(); callback add(string); callback remove(string); callback detect(string);
     callback viewport-changed();
     callback retry(); callback force(string); callback cancel(); callback drag();
@@ -50,8 +52,16 @@ export component LaunchGroupsPanel inherits FocusScope {
         list := ContentScroll { x: 24px; y: 95px; width: parent.width - 48px; height: parent.height - 100px; content-height: max(72px, root.groups.length * 70px); enabled: root.enabled;
             Rectangle { x: 0px; y: 0px; width: list.visible-width; height: list.content-height;
                 for group[index] in root.groups: Rectangle { y: index * 70px; width: parent.width; height: 66px;
-                    Text { x: 0px; y: 8px; width: parent.width - 136px; text: group.name; color: Theme.fg; font-size: 15px; overflow: elide; }
-                    Text { x: 0px; y: 34px; width: parent.width - 136px; text: group.subtitle; color: Theme.muted; font-size: 12px; overflow: elide; }
+                    Text { x: 0px; y: 8px; width: parent.width - 185px; text: group.name; color: Theme.fg; font-size: 15px; overflow: elide; }
+                    Text { x: 0px; y: 34px; width: parent.width - 185px; text: group.subtitle; color: Theme.muted; font-size: 12px; overflow: elide; }
+                    ActionButton {
+                        x: parent.width - 172px; y: 12px; width: 40px; height: 32px;
+                        text: (group.pinned ? "取消置顶 " : "置顶 ") + group.name;
+                        icon-key: group.pinned ? "pinned" : "star";
+                        checkable: true; checked: group.pinned;
+                        enabled: root.enabled && !root.busy && !root.run-busy && !root.pin-busy;
+                        activated => { root.pin-toggled(group.id); }
+                    }
                     ActionButton { x: parent.width - 122px; y: 12px; width: 54px; height: 32px; text: "编辑"; enabled: root.enabled && !root.busy && !root.run-busy; activated => { root.edit(group.id); } }
                     ActionButton { x: parent.width - 58px; y: 12px; width: 54px; height: 32px; text: "删除"; enabled: root.enabled && !root.busy && !root.run-busy; activated => { root.remove-group(group.id); } }
                     Rectangle { y: 65px; width: parent.width; height: 1px; background: Theme.border; }

@@ -5,6 +5,7 @@ use super::UnknownFields;
 use std::path::{Path, PathBuf};
 
 pub const FOLDER_SOURCE: &str = "Folder";
+pub const LAUNCH_GROUP_SOURCE: &str = "LaunchGroup";
 
 #[derive(Clone, Debug, Default, PartialEq, Serialize, Deserialize)]
 #[serde(default)]
@@ -28,6 +29,10 @@ pub struct AppItem {
 impl AppItem {
     pub fn is_folder(&self) -> bool {
         self.source == FOLDER_SOURCE
+    }
+
+    pub fn is_launch_group(&self) -> bool {
+        self.source == LAUNCH_GROUP_SOURCE
     }
 }
 

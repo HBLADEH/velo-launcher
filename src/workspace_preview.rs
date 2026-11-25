@@ -1,44 +1,36 @@
-//! UI-thread controller for the opt-in Workspace prototype.
+//! UI-thread controller for the Workspace windows.
 
 use std::cell::{Cell, RefCell};
 use std::io;
 use std::rc::{Rc, Weak};
 use std::sync::Arc;
-use std::sync::atomic::Ordering;
+use std::sync::atomic::{AtomicU64, Ordering};
 use std::time::Duration;
 
 use raw_window_handle::{HasWindowHandle, RawWindowHandle};
 use slint::winit_030::winit::{
-    event::{MouseButton, WindowEvent},
+    event::WindowEvent,
     keyboard::{KeyCode, PhysicalKey},
     window::Window,
 };
 use slint::winit_030::{EventResult, WinitWindowAccessor};
 use slint::{CloseRequestResponse, ComponentHandle, PhysicalPosition, PhysicalSize, Timer};
-use velo_slint::core::workspace::{
-    actions::WorkspaceAction,
-    config::{Layouts, WorkspaceConfig},
-};
+use velo_slint::core::workspace::config::WorkspaceConfig;
 use velo_slint::platform::windows::{
     geometry::Layout,
     hotkey::Key,
-    preferences,
     window::NativeWindow,
-    workspace::{self, Foreground, Invocation, Region, Shape},
+    workspace::{self, Foreground, Invocation, Region},
     workspace_actions::Resolver,
-    workspace_input::Button,
+    workspace_input::{Button, Event},
 };
 
 use crate::{AppWindow, WorkspaceWindow, measurement::Observer};
 
-#[path = "workspace_preview/radial.rs"]
-mod radial;
-use radial::{Display, Scene};
-#[path = "workspace_preview/gestures.rs"]
-mod gestures;
-use gestures::Hold;
 #[path = "workspace_preview/bindings.rs"]
 mod bindings;
+#[path = "workspace_preview/dual.rs"]
+mod dual;
 use bindings::{Bindings, Keyboard, Message, Mouse, Prepared};
 #[path = "workspace_preview/editor.rs"]
 mod editor;
@@ -48,7 +40,6 @@ pub const DEFAULT_HOTKEY: Key = Key {
     modifiers: 3,
     code: 0x20,
 };
-const INTRO_DURATION: Duration = Duration::from_millis(48);
 
 thread_local! {
     // Slint's hook runs when this component asks for its adapter, before an
@@ -61,7 +52,6 @@ pub fn creating_window() -> bool {
 }
 
 pub struct Preview {
-    pub shape: Shape,
     pub key: Key,
     pub button: Option<Button>,
 }
@@ -72,22 +62,7 @@ enum Phase {
     Hidden,
     Opening,
     Shown(Option<Foreground>),
-}
-
-impl Phase {
-    fn swipe_can_submit<T: Eq>(
-        self,
-        original: Option<T>,
-        current: Option<T>,
-        owns_focus: bool,
-    ) -> bool {
-        original.is_some()
-            && match self {
-                Self::Shown(_) => owns_focus,
-                Self::Opening => current == original,
-                Self::Hidden => false,
-            }
-    }
+    Pad,
 }
 
 #[derive(Default)]
@@ -108,7 +83,7 @@ impl State {
     }
 
     fn visible_generation(&self) -> Option<u64> {
-        matches!(self.phase, Phase::Shown(_)).then_some(self.generation)
+        matches!(self.phase, Phase::Shown(_) | Phase::Pad).then_some(self.generation)
     }
 
     fn hide(&mut self) -> Phase {
@@ -120,19 +95,18 @@ pub struct Controller {
     bindings: RefCell<Bindings>,
     pending: RefCell<Option<Prepared>>,
     editor: Editor,
-    hold: RefCell<Option<Hold>>,
+    dual: dual::Dual,
+    execution_epoch: Arc<AtomicU64>,
     launcher: slint::Weak<AppWindow>,
     business: Weak<crate::business::Controller>,
     window: RefCell<Option<WorkspaceWindow>>,
     state: RefCell<State>,
     native: Cell<Option<NativeWindow>>,
     region: Cell<Option<Region>>,
-    radial: RefCell<Option<Rc<Scene>>>,
     resolver: RefCell<Option<Resolver>>,
-    shape: Shape,
+    preview: bool,
     observer: Option<Observer>,
     diagnostics: bool,
-    force_reduce_motion: bool,
 }
 
 impl Controller {
@@ -142,27 +116,23 @@ impl Controller {
         preview: Option<Preview>,
         observer: Option<Observer>,
         diagnostics: bool,
-        force_reduce_motion: bool,
     ) -> Rc<Self> {
         let controller = Rc::new(Self {
             bindings: RefCell::default(),
             pending: RefCell::new(None),
             editor: Editor::default(),
-            hold: RefCell::new(None),
+            dual: dual::Dual::default(),
+            execution_epoch: Arc::default(),
             launcher: launcher.as_weak(),
             business,
             window: RefCell::new(None),
             state: RefCell::default(),
             native: Cell::new(None),
             region: Cell::new(None),
-            radial: RefCell::new(None),
             resolver: RefCell::new(None),
-            shape: preview
-                .as_ref()
-                .map_or(Shape::Radial, |preview| preview.shape),
+            preview: preview.is_some(),
             observer,
             diagnostics,
-            force_reduce_motion,
         });
         let weak = Rc::downgrade(&controller);
         launcher.on_workspace_event(move || {
@@ -216,9 +186,7 @@ impl Controller {
         });
         let weak = Rc::downgrade(&controller);
         launcher.on_workspace_environment_changed(move || {
-            if let Some(controller) = weak.upgrade()
-                && controller.shape == Shape::Radial
-            {
+            if let Some(controller) = weak.upgrade() {
                 controller.hide("display_changed", true);
             }
         });
@@ -246,7 +214,7 @@ impl Controller {
             Ok(keyboard) => {
                 keyboard.active.store(true, Ordering::Release);
                 self.bindings.borrow_mut().keyboard = Some(keyboard);
-                self.log("workspace_hotkey_ready", &format!("shape={:?}", self.shape));
+                self.log("workspace_hotkey_ready", "");
             }
             Err(error) => self.report_hotkey_error(&error),
         }
@@ -280,27 +248,21 @@ impl Controller {
         self.business.upgrade()?.enabled_workspace()
     }
 
-    fn prepare_bindings(&self, config: &WorkspaceConfig) -> Result<Prepared, String> {
-        self.bindings
-            .borrow()
-            .prepare(config, self.launcher.clone())
-    }
-
     fn apply_bindings(&self, prepared: Prepared) {
+        self.execution_epoch.fetch_add(1, Ordering::AcqRel);
         let enabled = prepared.enabled;
         self.hide("settings_changed", true);
         let old = self.bindings.borrow_mut().commit(prepared);
         drop(old);
-        self.suspend_input(
-            self.launcher
-                .upgrade()
-                .is_some_and(|app| app.get_native_dialog_active() || app.get_hotkey_recording()),
-        );
+        self.suspend_input(self.launcher.upgrade().is_some_and(|app| {
+            app.get_native_dialog_active()
+                || app.get_hotkey_recording()
+                || app.get_workspace_recording()
+        }));
         if !enabled {
             self.window.borrow_mut().take();
             self.native.set(None);
             self.region.set(None);
-            self.radial.borrow_mut().take();
             self.resolver.borrow_mut().take();
         }
     }
@@ -319,7 +281,7 @@ impl Controller {
                 .suspended
                 .store(suspended, Ordering::Release);
         }
-        if suspended && self.hold.borrow().is_some() {
+        if suspended && self.dual.pending() {
             self.hide("launcher_modal", false);
         }
     }
@@ -329,8 +291,11 @@ impl Controller {
             return Err("工作台设置正在保存".into());
         }
         config.validate().map_err(|_| "应用配置或槽位数量有误")?;
-        config.hotkey = Key::parse(&config.hotkey)?.to_string();
-        let prepared = self.prepare_bindings(&config)?;
+        let prepared = self
+            .bindings
+            .borrow()
+            .prepare(&config, self.launcher.clone())?;
+        self.execution_epoch.fetch_add(1, Ordering::AcqRel);
         if self
             .business
             .upgrade()
@@ -371,7 +336,15 @@ impl Controller {
     }
 
     fn toggle(self: &Rc<Self>, trigger: Invocation) {
-        if self.hold.borrow().is_some() || !matches!(self.state.borrow().phase, Phase::Hidden) {
+        if let Some(app) = self.launcher.upgrade()
+            && app.get_workspace_recording()
+        {
+            if let Some(keyboard) = &self.bindings.borrow().keyboard {
+                self.append_chord(&app, &keyboard.key.to_string());
+            }
+            return;
+        }
+        if self.dual.pending() || !matches!(self.state.borrow().phase, Phase::Hidden) {
             self.hide("hotkey", true);
             return;
         }
@@ -381,33 +354,38 @@ impl Controller {
         if launcher.get_native_dialog_active() || launcher.get_hotkey_recording() {
             return;
         }
-        let Some((layout, _)) = self.invocation_layout(trigger, &launcher) else {
-            return;
-        };
-        if self.shape == Shape::Radial {
-            self.request_context(trigger);
-        }
-        if let Err(error) = self.open(trigger, layout, &launcher) {
-            self.hide("open_error", false);
-            self.log("workspace_error", &format!("operation=open error={error}"));
+        self.request_context(trigger);
+        self.open_dual_panel(trigger, trigger.at);
+    }
+
+    fn drain_mouse(self: &Rc<Self>) {
+        let events = self
+            .bindings
+            .borrow()
+            .mouse
+            .as_ref()
+            .map(|mouse| mouse.service.drain())
+            .unwrap_or_default();
+        for event in events {
+            match event {
+                Event::Pressed(invocation) => self.dual_press(invocation),
+                Event::Moved(sample) => self.dual_move(sample),
+                Event::Released(sample) => self.dual_release(sample),
+                Event::Cancelled(reason) => self.cancel_side_input(reason),
+                Event::Stopped => {
+                    self.cancel_side_input("mouse_stopped");
+                    self.bindings.borrow_mut().mouse.take();
+                    self.log("workspace_mouse_error", "reason=worker_stopped");
+                }
+            }
         }
     }
 
-    fn invocation_layout(
-        &self,
-        trigger: Invocation,
-        launcher: &AppWindow,
-    ) -> Option<(Layout, (i32, i32))> {
-        let result = trigger.anchor.and_then(|anchor| {
-            anchor
-                .layout(self.shape)
-                .map(|layout| (layout, anchor.point))
-        });
-        if result.is_none() {
-            self.log("workspace_error", "operation=layout");
-            launcher.set_workspace_notice("工作台无法在当前显示器工作区内打开".into());
+    fn cancel_side_input(&self, reason: &'static str) {
+        if self.dual.pending() {
+            self.hide(reason, false);
         }
-        result
+        self.log("workspace_mouse_cancelled", &format!("reason={reason}"));
     }
 
     fn open(
@@ -421,6 +399,7 @@ impl Controller {
             let window = CREATING_WINDOW.with(|flag| {
                 flag.set(true);
                 let window = WorkspaceWindow::new().inspect(|window| {
+                    window.set_reduce_motion(true);
                     let _ = window.window();
                 });
                 flag.set(false);
@@ -433,17 +412,9 @@ impl Controller {
             return Ok(());
         };
         window.set_dark_theme(launcher.get_dark_theme());
-        window.set_reduce_motion(
-            self.shape != Shape::Radial
-                || self.force_reduce_motion
-                || launcher.get_reduce_motion()
-                || preferences::reduced_motion(),
-        );
-        window.set_highlighted(false);
-        if self.shape == Shape::Radial {
-            window.set_radial(true);
-            self.region.set(None);
-        }
+        let scene = self.dual.scene.borrow().clone().ok_or("工作台视图不可用")?;
+        scene.show(&window);
+        self.region.set(None);
         if !window.window().has_winit_window() {
             let bounds = layout.bounds;
             window
@@ -454,6 +425,11 @@ impl Controller {
                 .set_size(PhysicalSize::new(bounds.width as u32, bounds.height as u32));
         }
         let generation = self.state.borrow_mut().begin();
+        // Reused windows can present in this input turn without scheduling the
+        // adapter creation future and another zero-duration timer.
+        if let Some(native) = self.native.get() {
+            return self.reveal(&window, Some(native), layout, trigger, false);
+        }
         let view = window.as_weak();
         let weak = Rc::downgrade(self);
         slint::spawn_local(async move {
@@ -493,7 +469,7 @@ impl Controller {
         trigger: Invocation,
         cold: bool,
     ) -> Result<(), Box<dyn std::error::Error>> {
-        if self.shape == Shape::Radial && !workspace::current_input_desktop() {
+        if !workspace::current_input_desktop() {
             self.hide("input_desktop_changed", false);
             return Ok(());
         }
@@ -512,129 +488,62 @@ impl Controller {
             .is_some_and(|old| old.hwnd() == native.hwnd())
         {
             self.region.set(None);
-            if self.shape == Shape::Radial {
-                workspace::prepare_radial_frame(native)?;
-            }
+            workspace::prepare_frame(native)?;
             self.native.set(Some(native));
         }
+        let scene = self.dual.scene.borrow().clone().ok_or("工作台视图不可用")?;
+        let pad = scene.is_pad();
+        workspace::set_passive(native, pad)?;
         workspace::apply_layout(native, layout)?;
-        let scene = (self.shape == Shape::Radial).then(|| self.prepare_scene(trigger));
-        let intro = !view.get_reduce_motion()
-            && scene
-                .as_ref()
-                .is_some_and(|scene| scene.display() == Display::Full);
-        if let Some(scene) = &scene {
-            if intro {
-                scene.set_display(Display::Intro);
-            }
-            scene.show(view);
-            if let Some(hold) = self.hold.borrow().as_ref() {
-                scene.highlight(view, hold.highlight());
-            }
-        }
         self.update_region(native)?;
         if Foreground::current() != trigger.foreground {
             self.hide("foreground_changed", false);
             return Ok(());
         }
         // Record the original target before any show or activation event.
-        self.state.borrow_mut().phase = Phase::Shown(trigger.foreground);
+        self.state.borrow_mut().phase = if pad {
+            Phase::Pad
+        } else {
+            Phase::Shown(trigger.foreground)
+        };
         view.show()?;
-        native.activate();
-        if !native.active() {
-            self.hide("activation_failed", false);
-            return Ok(());
+        if pad {
+            if Foreground::current() != trigger.foreground {
+                self.hide("passive_activation_failed", false);
+                return Ok(());
+            }
+        } else {
+            native.activate();
+            if !native.active() {
+                self.hide("activation_failed", false);
+                return Ok(());
+            }
         }
+        scene.report_shown(self);
         self.log(
             "workspace_shown",
             &format!(
-                "shape={:?} cold={cold} dpi={} invoke_us={} captured={}",
-                self.shape,
+                "cold={cold} dpi={} invoke_us={} captured={}",
                 layout.dpi,
                 trigger.at.elapsed().as_micros(),
                 trigger.foreground.is_some()
             ),
         );
-        if let Some(scene) = scene {
-            self.log(
-                "workspace_radial_display",
-                &format!("mode={:?}", scene.display()),
-            );
-        }
-        if intro {
-            let weak = Rc::downgrade(self);
-            let generation = self.state.borrow().generation;
-            // Only the hub is interactive during the opening beat. Install
-            // the full region once when its tiles are ready to appear.
-            Timer::single_shot(INTRO_DURATION, move || {
-                if let Some(controller) = weak.upgrade()
-                    && controller.state.borrow().visible_generation() == Some(generation)
-                    && let (Some(scene), Some(view)) = (controller.scene(), controller.window())
-                {
-                    controller.finish_intro(&scene, &view);
-                }
-            });
-        }
         Ok(())
-    }
-
-    fn finish_intro(&self, scene: &Scene, view: &WorkspaceWindow) -> bool {
-        if scene.display() != Display::Intro {
-            return scene.display() == Display::Full;
-        }
-        let Some(native) = self.native.get().filter(|native| native.active()) else {
-            self.hide("blur", false);
-            return false;
-        };
-        scene.set_display(Display::Full);
-        scene.render(view);
-        self.region.set(None);
-        if let Err(error) = self.update_region(native) {
-            self.hide("region_error", false);
-            self.log(
-                "workspace_error",
-                &format!("operation=region error={error}"),
-            );
-            return false;
-        }
-        self.log("workspace_radial_display", "mode=Full");
-        true
     }
 
     fn update_region(&self, native: NativeWindow) -> io::Result<()> {
         let region = Region::read(native)?;
-        if self.region.get() != Some(region) {
-            if let Some(scene) = self.scene() {
-                region.apply_radial(native, scene.outlines())?;
-                if let Some(window) = self.window() {
-                    window.set_radial_compact(region.scale() < 0.97);
-                }
-            } else {
-                region.apply(native, self.shape)?;
-            }
+        if self.region.get() != Some(region)
+            && let Some(scene) = self.dual.scene.borrow().as_ref()
+        {
+            region.apply(native, scene.center_only())?;
             self.region.set(Some(region));
         }
         Ok(())
     }
 
     fn connect_window(self: &Rc<Self>, view: &WorkspaceWindow) {
-        let weak = Rc::downgrade(self);
-        view.on_dismiss(move || {
-            if let Some(controller) = weak.upgrade() {
-                controller.hide("button", true);
-            }
-        });
-        let weak = Rc::downgrade(self);
-        let weak_view = view.as_weak();
-        view.on_toggle_highlight(move || {
-            if let Some(view) = weak_view.upgrade() {
-                let checked = !view.get_highlighted();
-                view.set_highlighted(checked);
-                if let Some(controller) = weak.upgrade() {
-                    controller.log("workspace_highlight", &format!("checked={checked}"));
-                }
-            }
-        });
         let weak = Rc::downgrade(self);
         view.window().on_close_requested(move || {
             if let Some(controller) = weak.upgrade() {
@@ -643,9 +552,9 @@ impl Controller {
             CloseRequestResponse::KeepWindowShown
         });
         let weak = Rc::downgrade(self);
-        view.on_radial_activate(move |item| {
+        view.on_panel_activate(move |index| {
             if let Some(controller) = weak.upgrade() {
-                controller.radial_activate(item);
+                controller.dual_activate(index);
             }
         });
         let weak = Rc::downgrade(self);
@@ -653,60 +562,6 @@ impl Controller {
             let Some(controller) = weak.upgrade() else {
                 return EventResult::Propagate;
             };
-            if let (Some(scene), Some(region), Some(window)) = (
-                controller.scene(),
-                controller.region.get(),
-                controller.window(),
-            ) && controller.state.borrow().visible_generation().is_some()
-                && matches!(scene.display(), Display::Full | Display::Intro)
-            {
-                match event {
-                    WindowEvent::CursorMoved { position, .. } => {
-                        scene.move_pointer(
-                            &window,
-                            Some(region.board_point(position.x, position.y)),
-                        );
-                    }
-                    WindowEvent::CursorLeft { .. } => scene.move_pointer(&window, None),
-                    WindowEvent::MouseInput {
-                        state,
-                        button: MouseButton::Left,
-                        ..
-                    } => {
-                        scene.move_pointer(
-                            &window,
-                            workspace::cursor().map(|point| region.screen_to_board(point)),
-                        );
-                        if let Some(item) = scene.click(state.is_pressed()) {
-                            controller.radial_activate(item);
-                        }
-                        return EventResult::PreventDefault;
-                    }
-                    WindowEvent::ModifiersChanged(modifiers) => {
-                        scene.reverse_tab.set(modifiers.state().shift_key());
-                    }
-                    WindowEvent::KeyboardInput { event, .. } if event.state.is_pressed() => {
-                        match event.physical_key {
-                            PhysicalKey::Code(KeyCode::Tab) => {
-                                if controller.finish_intro(&scene, &window) {
-                                    scene.tab(&window);
-                                }
-                                return EventResult::PreventDefault;
-                            }
-                            PhysicalKey::Code(
-                                KeyCode::Enter | KeyCode::NumpadEnter | KeyCode::Space,
-                            ) => {
-                                if !event.repeat {
-                                    controller.radial_activate(window.get_radial_focus());
-                                }
-                                return EventResult::PreventDefault;
-                            }
-                            _ => {}
-                        }
-                    }
-                    _ => {}
-                }
-            }
             match event {
                 WindowEvent::KeyboardInput { event, .. }
                     if event.physical_key == PhysicalKey::Code(KeyCode::Escape)
@@ -715,9 +570,13 @@ impl Controller {
                     controller.hide("escape", true);
                     return EventResult::PreventDefault;
                 }
-                WindowEvent::Focused(false) => controller.after_window_event(true),
+                WindowEvent::Focused(false)
+                    if !matches!(controller.state.borrow().phase, Phase::Pad) =>
+                {
+                    controller.after_window_event(true)
+                }
                 WindowEvent::ScaleFactorChanged { .. }
-                    if controller.hold.borrow().is_some()
+                    if controller.dual.pending()
                         && controller.state.borrow().visible_generation().is_some() =>
                 {
                     controller.hide("dpi_changed", true);
@@ -731,104 +590,8 @@ impl Controller {
         });
     }
 
-    fn radial_activate(&self, item: i32) {
-        if self.state.borrow().visible_generation().is_none()
-            || !self.scene().is_some_and(|scene| {
-                scene.display() == Display::Full
-                    || (scene.display() == Display::Intro && item == radial::HUB)
-            })
-        {
-            return;
-        }
-        if item == radial::HUB {
-            self.hide("hub", true);
-        } else if item == radial::EDIT
-            && let Some(scene) = self.scene()
-            && scene.can_edit()
-            && let Some(app) = self.launcher.upgrade()
-        {
-            self.open_editor(
-                scene
-                    .application
-                    .as_ref()
-                    .map(|application| &application.key),
-            );
-            self.hide("edit", false);
-            app.set_settings_tab(7);
-            app.invoke_desktop_event(
-                velo_slint::platform::windows::desktop::Event::Settings as i32,
-            );
-        } else {
-            self.dispatch_radial(item);
-        }
-    }
-
-    fn dispatch_radial(&self, item: i32) {
-        let original = match self.state.borrow().phase {
-            Phase::Shown(original) if self.native.get().is_some_and(NativeWindow::active) => {
-                original
-            }
-            _ => return,
-        };
-        self.run_radial_action(item, original);
-    }
-
-    fn run_radial_action(&self, item: i32, original: Option<Foreground>) {
-        if !workspace::current_input_desktop() {
-            self.hide("input_desktop_changed", false);
-            return;
-        }
-        if original.is_some_and(|target| !target.exists()) {
-            self.hide("target_invalid", false);
-            return;
-        }
-        let Some(scene) = self.scene() else { return };
-        let Some(action) = scene.action(item) else {
-            return;
-        };
-        let Some(launcher) = self.launcher.upgrade() else {
-            return;
-        };
-        if !scene.item_available(item) {
-            launcher.set_workspace_notice("请在工作台设置中为该应用选择匹配的动作".into());
-            if let Some(window) = self.window() {
-                window.set_radial_scope("当前应用不可用".into());
-            }
-            return;
-        }
-        self.log(
-            "workspace_radial_selected",
-            &format!("slot={item} action={action:?}"),
-        );
-        if action == WorkspaceAction::Launcher {
-            self.hide("radial_tile", false);
-            launcher
-                .invoke_desktop_event(velo_slint::platform::windows::desktop::Event::Open as i32);
-            self.log("workspace_action_dispatched", "action=Launcher");
-            return;
-        }
-        let target = original.zip(scene.application.clone());
-        let owner = native_window_from_app(&launcher).map_or(0, |window| window.hwnd() as isize);
-        self.hide("radial_tile", true);
-        if self
-            .business
-            .upgrade()
-            .is_some_and(|business| business.workspace_action(action, target, owner))
-        {
-            launcher.set_workspace_notice("正在执行工作台动作".into());
-            self.log("workspace_action_dispatched", &format!("action={action:?}"));
-        } else {
-            launcher.set_workspace_notice("工作台动作暂时无法提交，请稍后重试".into());
-        }
-    }
-
-    fn scene(&self) -> Option<Rc<Scene>> {
-        self.radial.borrow().clone()
-    }
-
     fn request_context(&self, trigger: Invocation) {
-        self.radial.borrow_mut().take();
-        if trigger.foreground.is_none() {
+        if trigger.foreground.is_none() && trigger.hovered.is_none() {
             return;
         }
         if self.resolver.borrow().is_none() {
@@ -842,22 +605,6 @@ impl Controller {
         if let Some(resolver) = self.resolver.borrow().as_ref() {
             resolver.request(trigger);
         }
-    }
-
-    fn prepare_scene(&self, trigger: Invocation) -> Rc<Scene> {
-        if let Some(view) = self.scene() {
-            return view;
-        }
-        let application = self
-            .resolver
-            .borrow()
-            .as_ref()
-            .and_then(|resolver| resolver.recent(trigger.foreground));
-        let config = self.committed_config().unwrap_or_default();
-        let layouts = Layouts::resolve(&config, application.as_ref().map(|app| &app.key));
-        let view = Rc::new(Scene::new(layouts, application, true));
-        self.radial.replace(Some(view.clone()));
-        view
     }
 
     fn after_window_event(self: &Rc<Self>, blur: bool) {
@@ -890,7 +637,7 @@ impl Controller {
     }
 
     fn hide(&self, reason: &str, restore_focus: bool) {
-        self.hold.borrow_mut().take();
+        self.dual.clear();
         let phase = self.state.borrow_mut().hide();
         if matches!(phase, Phase::Hidden) {
             return;
@@ -912,6 +659,12 @@ impl Controller {
             "workspace_hidden",
             &format!("reason={reason} restored={restored}"),
         );
+    }
+}
+
+impl Drop for Controller {
+    fn drop(&mut self) {
+        self.execution_epoch.fetch_add(1, Ordering::AcqRel);
     }
 }
 
@@ -946,15 +699,5 @@ mod tests {
         assert!(!state.is_opening(second));
         state.phase = Phase::Shown(None);
         assert_eq!(state.visible_generation(), Some(third));
-    }
-
-    #[test]
-    fn swipe_release_needs_the_original_target_or_an_active_workspace() {
-        assert!(!Phase::Opening.swipe_can_submit::<u32>(None, None, false));
-        assert!(!Phase::Opening.swipe_can_submit(Some(1), Some(2), false));
-        assert!(Phase::Opening.swipe_can_submit(Some(1), Some(1), false));
-        assert!(Phase::Shown(None).swipe_can_submit(Some(1), Some(2), true));
-        assert!(!Phase::Shown(None).swipe_can_submit(Some(1), Some(2), false));
-        assert!(!Phase::Hidden.swipe_can_submit(Some(1), Some(1), true));
     }
 }
