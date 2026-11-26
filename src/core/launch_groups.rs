@@ -117,13 +117,18 @@ fn generic_host(path: &str) -> bool {
 }
 
 fn validate_entry(item: &AppItem) -> Result<()> {
+    let supported = if indexer::extension(&item.path, "url") {
+        target(item) == item.path && item.arguments.is_empty()
+    } else {
+        executable_path(target(item))
+            && (indexer::extension(&item.path, "exe") || indexer::extension(&item.path, "lnk"))
+    };
     if item.id.is_empty()
         || item.source == "System"
         || item.is_folder()
         || item.is_launch_group()
         || !Path::new(&item.path).is_absolute()
-        || !executable_path(target(item))
-        || !(indexer::extension(&item.path, "exe") || indexer::extension(&item.path, "lnk"))
+        || !supported
         || item.path.contains('\0')
     {
         return Err(invalid("unsupported local application"));
@@ -613,6 +618,12 @@ mod tests {
         game.id = identity(&game.exec_path, &game.arguments);
         let mut member = Member::from_app(&game).unwrap();
         assert!(member.running_program(&game).is_none());
+        let mut shortcut = app("Steam 游戏");
+        shortcut.path = r"C:\Games\Steam 游戏.url".into();
+        shortcut.exec_path.clone_from(&shortcut.path);
+        shortcut.id = identity(&shortcut.path, "");
+        let mut url_member = Member::from_app(&shortcut).unwrap();
+        assert!(url_member.running_program(&shortcut).is_none());
         member.running_rule = RunningRule {
             kind: Detection::Executable,
             path: app("Game").path,
@@ -621,6 +632,11 @@ mod tests {
         assert_eq!(
             member.running_program(&game),
             Some(PathBuf::from(r"C:\SyntheticApps\Game.exe"))
+        );
+        url_member.running_rule = member.running_rule.clone();
+        assert_eq!(
+            url_member.running_program(&shortcut),
+            member.running_program(&game)
         );
         let host = app("explorer");
         assert!(

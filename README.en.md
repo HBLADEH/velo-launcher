@@ -72,7 +72,7 @@ See the [screenshot directory](docs/images/README.md) for more captures and prom
 - **Automatic indexing**: discovers Start menu, desktop, Windows Apps, Program Files and custom-directory apps; merges duplicates and optionally filters uninstall, help and update utilities.
 - **Quick access**: pin apps and folders to home. Search Windows shortcuts by Chinese, English, pinyin and abbreviations.
 - **Result actions**: ranked list and grid views; context menus can launch, open the installation directory, run as administrator or pin an app.
-- **Custom items**: drag, select, or paste paths to add folders and `.exe` / `.lnk` entries outside scanned directories. Use the star button to pin them to home.
+- **Custom items**: drag, select, or paste paths to add folders, `.exe`, `.lnk`, and `.url` files. Search for them by name or pin them to Home. Steam game shortcuts on the desktop or in the Start menu appear after an index refresh.
 - **Appearance and preferences**: light, dark or system theme, list or grid layout, login startup, result limits, ranking weights and index refresh settings. The window has a thin outline that follows the theme and uses native rounded corners on Windows 11.
 - **Local data and backups**: background index refresh, visible-range icon loading with a cache budget, and backups of saved configuration.
 - **Updates**: GitHub Releases checks, SHA-256 verification, configuration backup before installation, and system-installer upgrades that preserve settings.

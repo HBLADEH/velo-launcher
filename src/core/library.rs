@@ -62,6 +62,7 @@ fn folder_item(path: &Path) -> AppItem {
 pub enum ImportKind {
     Executable,
     Shortcut,
+    InternetShortcut,
     Folder,
 }
 
@@ -83,6 +84,9 @@ pub fn inspect_import(path: &Path) -> Result<ImportKind> {
         }
         if indexer::extension(&path, "lnk") {
             return Ok(ImportKind::Shortcut);
+        }
+        if indexer::extension(&path, "url") {
+            return Ok(ImportKind::InternetShortcut);
         }
     }
     Err(DataError::new(

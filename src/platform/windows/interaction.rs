@@ -120,7 +120,7 @@ unsafe fn browse(owner: HWND, request: i32) -> Completion {
     let filter = wide(match request {
         BROWSE_EXECUTABLE => "应用程序 (*.exe)\0*.exe\0",
         BROWSE_BATCH => "批处理脚本 (*.bat;*.cmd)\0*.bat;*.cmd\0",
-        _ => "应用与快捷方式 (*.exe;*.lnk)\0*.exe;*.lnk\0所有文件 (*.*)\0*.*\0",
+        _ => "应用与快捷方式 (*.exe;*.lnk;*.url)\0*.exe;*.lnk;*.url\0所有文件 (*.*)\0*.*\0",
     });
     let mut options = OPENFILENAMEW {
         lStructSize: std::mem::size_of::<OPENFILENAMEW>() as u32,
@@ -310,7 +310,15 @@ pub fn application_menu(owner: isize, item: &AppItem) -> i32 {
         AppendMenuW(menu, MF_SEPARATOR, 0, null());
         for (id, label, enabled) in [
             (1, "打开", true),
-            (2, "打开安装目录", directory),
+            (
+                2,
+                if crate::core::indexer::extension(&item.path, "url") {
+                    "打开快捷方式所在目录"
+                } else {
+                    "打开安装目录"
+                },
+                directory,
+            ),
             (3, "使用管理员权限打开", admin),
             (
                 4,

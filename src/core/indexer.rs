@@ -214,7 +214,9 @@ impl Scan<'_> {
         }
         let path_text = path.to_string_lossy();
         let shortcut = extension(&path_text, "lnk");
-        if !shortcut && !extension(&path_text, "exe") {
+        let internet_shortcut = matches!(root.source.as_str(), "Desktop" | "Start Menu" | "Custom")
+            && extension(&path_text, "url");
+        if !(shortcut || internet_shortcut || extension(&path_text, "exe")) {
             return Ok(());
         }
         let key = path_key(path);
@@ -349,7 +351,7 @@ fn target(item: &AppItem) -> &str {
 fn priority(item: &AppItem) -> u8 {
     if item.source == "Windows Apps" {
         3
-    } else if extension(&item.path, "lnk") {
+    } else if extension(&item.path, "lnk") || extension(&item.path, "url") {
         match item.source.as_str() {
             "Desktop" => 0,
             "Start Menu" => 1,
@@ -384,12 +386,14 @@ pub fn deduplicate(mut items: Vec<AppItem>) -> Vec<AppItem> {
             }
             continue;
         }
-        let key = (
-            normalize(&item.name),
-            path_key(Path::new(
-                Path::new(target(&item)).file_name().unwrap_or_default(),
-            )),
-        );
+        let target = Path::new(target(&item));
+        // Same-named Internet shortcuts in different folders can open different URLs.
+        let key_path = if extension(&item.path, "url") {
+            Path::new(&item.path)
+        } else {
+            Path::new(target.file_name().unwrap_or_default())
+        };
+        let key = (normalize(&item.name), path_key(key_path));
         if names.insert(key) {
             ids.insert(item.id.clone(), out.len());
             out.push(item);

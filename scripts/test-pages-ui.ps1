@@ -28,7 +28,8 @@ if ($LegacyCopySource) {
 }
 $manual = Join-Path $fixture 'manual'
 New-Item -ItemType Directory -Path $manual | Out-Null
-Copy-Item -LiteralPath $Helper -Destination (Join-Path $manual 'RS11 自定义应用.exe')
+$manualShortcut = Join-Path $manual 'RS11 自定义应用.URL'
+Set-Content -LiteralPath $manualShortcut -Value '[InternetShortcut]', 'URL=steam://rungameid/42' -Encoding ascii
 $instance = 'rs11-ui-' + [guid]::NewGuid().ToString('N')
 foreach ($mode in @('pages-smoke-test','pages-restart-test')) {
     if ($mode -eq 'pages-restart-test') {
@@ -54,7 +55,7 @@ foreach ($mode in @('pages-smoke-test','pages-restart-test')) {
 $saved = Get-Content -LiteralPath (Join-Path $dataDirectory 'config.json') -Raw | ConvertFrom-Json
 if ($saved.result_layout -ne 'grid' -or $saved.max_results -ne 20 -or $saved.auto_check_updates) { throw 'Settings did not survive restart or an unsaved draft was persisted.' }
 if (-not (Test-Path -LiteralPath (Join-Path $dataDirectory 'backup-created.png'))) { throw 'Missing backup screenshot.' }
-if (-not (Test-Path -LiteralPath (Join-Path $manual 'RS11 自定义应用.exe'))) { throw 'Removing the custom record changed the source file.' }
+if (-not (Test-Path -LiteralPath $manualShortcut)) { throw 'Removing the custom record changed the source file.' }
 Write-Output 'RS-11 settings, grid, import, pin, backup, restart and confirmation integration passed.'
 if ($LegacyCopySource) {
     foreach ($name in $sourceHashes.Keys) {
