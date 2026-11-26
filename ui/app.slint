@@ -395,18 +395,18 @@ export component AppWindow inherits Window {
                 background: Theme.field;
                 if input.has-focus: Rectangle { x: -3px; y: -3px; width: parent.width + 6px; height: parent.height + 6px; border-radius: 13px; border-width: 3px; border-color: Theme.selected; }
                 animate border-color { duration: Theme.reduce-motion ? 0ms : 180ms; }
-                Glyph { x: 12px; y: 13px; width: 17px; height: 17px; icon-key: root.file-mode ? "folder" : "search"; }
+                Glyph { x: 12px; y: (parent.height - self.height) / 2; width: 17px; height: 17px; icon-key: root.file-mode ? "folder" : "search"; }
                 Text {
-                    x: root.file-mode ? 74px : 39px; width: parent.width - (root.file-mode ? 144px : root.everything-enabled ? 109px : 92px); height: 44px;
+                    x: input.x; y: input.y; width: input.width; height: input.height;
                     text: input.text == "" && input.preedit-text == "" ? (root.file-mode ? "搜索文件与文件夹…" : "搜索应用与系统功能…") : "";
-                    font-size: 15px; color: Theme.muted; vertical-alignment: center;
+                    font-size: input.font-size; color: Theme.muted; vertical-alignment: center;
                 }
                 input := TextInput {
-                    x: root.file-mode ? 74px : 39px; y: 10px; width: parent.width - (root.file-mode ? 144px : root.everything-enabled ? 109px : 92px); height: 24px;
+                    x: root.file-mode ? 74px : 39px; y: 0px; width: parent.width - (root.file-mode ? 144px : root.everything-enabled ? 109px : 92px); height: parent.height;
                     text <=> root.input-text;
                     single-line: true;
                     enabled: root.presented && !root.appearance-open && !root.import-open && !root.native-dialog-active;
-                    font-size: 15px; color: Theme.fg;
+                    font-size: 15px; color: Theme.fg; vertical-alignment: center;
                     selection-background-color: Theme.selected;
                     selection-foreground-color: Theme.fg;
                     edited => {
