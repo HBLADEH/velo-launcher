@@ -10,7 +10,7 @@
 - [系统快捷入口](system-shortcuts.md)：入口列表、操作语义与兼容范围。
 - v0.13.0 启动器、工作台、宣传片分镜及构建与采集记录。 [界面截图](images/README.md)
 - [实现流程图](diagrams/README.md)：中英文 SVG 及重新生成方式。
-- [v0.13.0 版本说明](releases/0.13.0.md) · [v0.12.0 版本说明](releases/0.12.0.md) · [v0.11.2 版本说明](releases/0.11.2.md) · [v0.11.0 版本说明](releases/0.11.0.md) · [v0.10.0 版本说明](releases/0.10.0.md)
+- [v0.13.1 版本说明](releases/0.13.1.md) · [v0.13.0 版本说明](releases/0.13.0.md) · [v0.12.0 版本说明](releases/0.12.0.md) · [v0.11.2 版本说明](releases/0.11.2.md) · [v0.11.0 版本说明](releases/0.11.0.md) · [v0.10.0 版本说明](releases/0.10.0.md)
 
 ## 开发与贡献
 

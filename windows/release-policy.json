@@ -1,13 +1,13 @@
 {
   "DefaultRenderer": "software",
   "AlternateRenderer": "femtovg",
-  "Scope": "Velo 0.13.0 passed Windows 11 x64 desktop regression and smoke tests with both renderers. Workspace is experimental and disabled by default. Windows 10, physical input, mixed DPI and installer transaction results apply to their recorded builds.",
-  "Evidence": "docs/baselines/2026-11-26-v0.13.0/README.md",
-  "LicenseReview": "docs/baselines/2026-11-26-v0.13.0/README.md",
-  "ReleaseTag": "v0.13.0",
+  "Scope": "Velo 0.13.1 passed Windows 11 x64 desktop regression and smoke tests with both renderers, including Internet shortcut discovery and import. Windows 10, physical input, mixed DPI and installer transaction results apply to their recorded builds.",
+  "Evidence": "docs/baselines/2026-11-27-v0.13.1/README.md",
+  "LicenseReview": "docs/baselines/2026-11-27-v0.13.1/README.md",
+  "ReleaseTag": "v0.13.1",
   "G4Passed": true,
   "RedistributionCleared": true,
   "PublicReleaseApproved": true,
-  "Approval": "Repository owner authorized the v0.13.0 minor tag and GitHub Actions packaging on 2026-11-26 (Asia/Shanghai).",
-  "ReleaseEvidence": "docs/baselines/2026-11-26-v0.13.0/README.md"
+  "Approval": "Repository owner authorized the version update and tag-triggered GitHub Actions release on 2026-11-27 (Asia/Shanghai).",
+  "ReleaseEvidence": "docs/baselines/2026-11-27-v0.13.1/README.md"
 }

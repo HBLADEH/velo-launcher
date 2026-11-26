@@ -6,7 +6,7 @@
 
 从[最新发布](https://github.com/HBLADEH/velo-launcher/releases/latest)下载 `velo-rust-x64-installer.exe`（Software 默认）并确认 UAC。FemtoVG / OpenGL 替代构建为 `velo-rust-femtovg-x64-installer.exe`，切换前从托盘完全退出。当前提供系统安装版，新安装默认 `Alt+Space` 呼出；已有用户的快捷键继续保留。产品使用 Rust + Slint，界面为简体中文。
 
-本指南适用于 v0.13.0。主要截图来自 v0.13.0 Software 的 Windows 实机窗口，使用独立演示配置与示例数据。 [截图说明](images/README.md)
+本指南适用于 v0.13.1。主要截图来自 v0.13.0 Software 的 Windows 实机窗口，使用独立演示配置与示例数据。 [截图说明](images/README.md)
 
 数据保存在 `%LOCALAPPDATA%\Velo`，首次打开前在同级 `VeloRustMigrationBackups` 完整保留原始数据，备份失败则停止初始化。卸载保留数据与程序恢复档案。早期版本用户请先阅读[安装与迁移说明](releases/0.10.0.md)，确认自己的安装方式对应哪条升级路径。
 
