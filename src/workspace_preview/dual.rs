@@ -23,6 +23,7 @@ use crate::{WorkspaceTile, WorkspaceWindow};
 use super::{Controller, Phase};
 
 pub(super) const PANEL_HEIGHT: i32 = 348;
+const PANEL_MIN_WIDTH: i32 = 320;
 const PANEL_HUB: i32 = 172;
 const PAD_WIDTH: i32 = 278;
 const PAD_HEIGHT: i32 = 218;
@@ -252,7 +253,7 @@ impl Scene {
             } => {
                 let columns = global_columns.max(local_columns) as i32;
                 (
-                    24 + columns * 88 + (columns - 1) * 6,
+                    PANEL_MIN_WIDTH.max(24 + columns * 88 + (columns - 1) * 6),
                     PANEL_HEIGHT,
                     PANEL_HUB,
                 )

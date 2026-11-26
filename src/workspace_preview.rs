@@ -558,6 +558,23 @@ impl Controller {
             }
         });
         let weak = Rc::downgrade(self);
+        let view_ref = view.as_weak();
+        view.on_panel_drag_requested(move || {
+            let Some(controller) = weak.upgrade() else {
+                return;
+            };
+            if !matches!(controller.state.borrow().phase, Phase::Shown(_)) {
+                return;
+            }
+            if let Some(view) = view_ref.upgrade() {
+                let started = view
+                    .window()
+                    .with_winit_window(|window| window.drag_window().is_ok())
+                    .unwrap_or(false);
+                controller.log("workspace_drag", &format!("started={started}"));
+            }
+        });
+        let weak = Rc::downgrade(self);
         view.window().on_winit_window_event(move |_, event| {
             let Some(controller) = weak.upgrade() else {
                 return EventResult::Propagate;

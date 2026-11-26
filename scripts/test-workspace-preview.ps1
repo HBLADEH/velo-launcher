@@ -186,6 +186,20 @@ public static class VeloWorkspaceProbe {
         mouse_event(2, 0, 0, 0, UIntPtr.Zero);
         mouse_event(4, 0, 0, 0, UIntPtr.Zero);
     }
+    public static void Drag(int x, int y, int dx, int dy) {
+        Move(x, y);
+        System.Threading.Thread.Sleep(25);
+        Inject(new MouseInput { Flags = 0x0002 });
+        try {
+            System.Threading.Thread.Sleep(90);
+            Move(x + dx / 2, y + dy / 2);
+            System.Threading.Thread.Sleep(60);
+            Move(x + dx, y + dy);
+            System.Threading.Thread.Sleep(60);
+        } finally {
+            Inject(new MouseInput { Flags = 0x0004 });
+        }
+    }
     public static uint Pixel(int x, int y) {
         var dc = GetDC(IntPtr.Zero);
         try { return GetPixel(dc, x, y); }
@@ -307,7 +321,7 @@ function Test-DualInput {
         [VeloWorkspaceProbe]::Side($false, $side)
         $panel = Wait-SidePanel
         $window = $panel.Handle
-        Assert-Probe (($panel.Rect.Right - $panel.Rect.Left) -eq [int](300 * $scale)) 'short press presents the three-column Panel'
+        Assert-Probe (($panel.Rect.Right - $panel.Rect.Left) -eq [int](320 * $scale)) 'short press presents the three-column Panel'
         Wait-Desktop 'matched pointer application on short press' { (Read-Events) -match 'event=workspace_dual_shown .*mode=panel matched=true' }
         Save-Panel $panel "$Theme-panel"
         Close-Panel $panel $escapeKey $true
@@ -494,9 +508,31 @@ function Test-PanelControls($Panel) {
         [Math]::Abs($height - 348 * $scale) -le 1) 'Workspace opens the matrix at the monitor DPI'
     Assert-Probe ([Math]::Abs($rect.Left + $width / 2 - $centerX) -le 1 -and
         [Math]::Abs($rect.Top + [Math]::Round(172 * $scale) - $centerY) -le 1) 'the control strip anchors at the pointer'
-    $outsideX = $rect.Left - 18
-    Assert-Probe ([VeloWorkspaceProbe]::WindowFromPoint([VeloWorkspaceProbe+Point]::new($outsideX, $centerY)) -eq $witness.Handle) 'click outside the Panel hits the original application'
-    Click-TestPoint $outsideX $centerY $witness.Handle
+    $outline = if ($Theme -eq 'dark') { 0x785e4a } else { 0xd6c5b7 }
+    $edges = @(
+        [VeloWorkspaceProbe]::Pixel($centerX, $rect.Top)
+        [VeloWorkspaceProbe]::Pixel($centerX, ($rect.Bottom - 1))
+        [VeloWorkspaceProbe]::Pixel($rect.Left, $centerY)
+        [VeloWorkspaceProbe]::Pixel(($rect.Right - 1), $centerY)
+    )
+    Assert-Probe (@($edges | Where-Object { $_ -ne $outline }).Count -eq 0) 'all four Panel edges show the theme outline'
+
+    $dx = [int](80 * $scale)
+    $dy = [int](50 * $scale)
+    [VeloWorkspaceProbe]::Drag(($rect.Left + [int](72 * $scale)), ($rect.Top + [int](17 * $scale)), $dx, $dy)
+    Wait-Desktop 'dragging the Panel header moves its HWND with the pointer' {
+        $moved = [VeloWorkspaceProbe]::Bounds($Panel.Handle)
+        [Math]::Abs($moved.Left - $rect.Left - $dx) -le 2 -and
+            [Math]::Abs($moved.Top - $rect.Top - $dy) -le 2
+    }
+    $moved = [VeloWorkspaceProbe]::Bounds($Panel.Handle)
+    Assert-Probe ([VeloWorkspaceProbe]::GetForegroundWindow() -eq $Panel.Handle -and
+        $moved.Right - $moved.Left -eq $width -and $moved.Bottom - $moved.Top -eq $height) 'dragging preserves Panel focus and size'
+
+    $outsideX = $moved.Left - 18
+    $outsideY = $centerY + $moved.Top - $rect.Top
+    Assert-Probe ([VeloWorkspaceProbe]::WindowFromPoint([VeloWorkspaceProbe+Point]::new($outsideX, $outsideY)) -eq $witness.Handle) 'click outside the Panel hits the original application'
+    Click-TestPoint $outsideX $outsideY $witness.Handle
     Wait-Desktop 'outside click dismisses the Panel and restores the underlying target' {
         -not [VeloWorkspaceProbe]::IsWindowVisible($Panel.Handle) -and
             [VeloWorkspaceProbe]::GetForegroundWindow() -eq $witness.Handle
@@ -792,7 +828,7 @@ try {
     }
     $paintSamples = [Collections.Generic.List[uint32]]::new()
     if ($Mode -in 'dual', 'legacy') {
-        $panelWidth = if ($Mode -eq 'legacy') { 394 } else { 300 }
+        $panelWidth = if ($Mode -eq 'legacy') { 394 } else { 320 }
         $launcherWindow = [VeloWorkspaceProbe]::Find($process.Id, $launcherClass)
         $panel = Open-Panel $workspaceClass $workspaceKeys $centerX $centerY
         $workspaceTimes += $panel.Milliseconds
