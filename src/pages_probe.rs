@@ -42,7 +42,7 @@ impl Controller {
         let manual = directory
             .parent()
             .unwrap_or(directory)
-            .join("manual/RS11 自定义应用.exe")
+            .join("manual/RS11 自定义应用.URL")
             .to_string_lossy()
             .into_owned();
         let controller = Rc::new(Self {

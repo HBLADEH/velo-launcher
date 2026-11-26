@@ -53,7 +53,7 @@ fn unchanged_links_are_reused_changed_and_deleted_files_update_without_losing_id
     let executable = path.join("app.exe");
     touch(&link);
     touch(&executable);
-    touch(&path.join("ignore.url"));
+    touch(&path.join("ignore.txt"));
     let generation = Generation::default();
     let ticket = generation.ticket();
     let mut resolver = Links {
@@ -83,6 +83,87 @@ fn unchanged_links_are_reused_changed_and_deleted_files_update_without_losing_id
     fs::remove_file(&link).unwrap();
     let (fourth, _) = indexer::scan(&roots, &third, &mut resolver, &ticket).unwrap();
     assert_eq!(fourth.apps.as_ref().unwrap().len(), 1);
+}
+
+#[test]
+fn internet_shortcuts_on_desktop_and_start_menu_are_searchable_and_pinnable() {
+    use velo_slint::core::{catalog::Catalog, config::Config, data::History, library};
+
+    let directory = tempfile::tempdir().unwrap();
+    let desktop = directory.path().join("Desktop");
+    let menu = directory.path().join("Programs");
+    let nested = menu.join("Games");
+    fs::create_dir(&desktop).unwrap();
+    fs::create_dir_all(&nested).unwrap();
+    let game = desktop.join("星际游戏.URL");
+    let web = nested.join("星际游戏.url");
+    fs::write(&game, "[InternetShortcut]\r\nURL=steam://rungameid/42\r\n").unwrap();
+    fs::write(
+        &web,
+        "[InternetShortcut]\r\nURL=https://example.invalid/\r\n",
+    )
+    .unwrap();
+    let roots = [root(&desktop, "Desktop", 0), root(&menu, "Start Menu", 0)];
+    let mut resolver = Links {
+        calls: 0,
+        target: PathBuf::new(),
+        cancel: None,
+    };
+    let ticket = Generation::default().ticket();
+    let (cache, _) = indexer::scan(&roots, &IndexCache::default(), &mut resolver, &ticket).unwrap();
+    let (warm, stats) = indexer::scan(&roots, &cache, &mut resolver, &ticket).unwrap();
+    assert_eq!(warm, cache);
+    assert_eq!(stats.reused, 2);
+
+    let imported = library::import(
+        &Default::default(),
+        std::slice::from_ref(&game),
+        &mut resolver,
+    )
+    .unwrap();
+    assert_eq!((imported.added, imported.rejected), (1, 0));
+    assert_eq!(resolver.calls, 0); // Internet shortcuts do not use the .lnk COM resolver.
+    let apps = cache.apps.unwrap();
+    let catalog = Catalog::new(&apps, &imported.library, &[]);
+    let results = catalog
+        .search(
+            "星际游戏",
+            &Config::default(),
+            &History::default(),
+            chrono::Utc::now(),
+        )
+        .unwrap();
+    assert_eq!(results.len(), 2);
+    let id = identity(&game.to_string_lossy(), "");
+    let item = catalog.item(&id).unwrap();
+    assert_eq!(item.source, "Manual");
+    assert_eq!(item.name, "星际游戏");
+    assert!(
+        catalog
+            .with_pin(&imported.library, &id, true)
+            .unwrap()
+            .has_pin(&id)
+    );
+    assert_eq!(launch::capabilities(item), (true, false));
+    let open = || {
+        launch::command(item, launch::Action::Launch, directory.path(), |p| {
+            fs::metadata(p).map(|m| m.is_dir())
+        })
+    };
+    let command = open().unwrap();
+    assert_eq!(Path::new(&command.path), game);
+    assert!(command.arguments.is_empty() && command.directory.is_empty());
+    fs::remove_file(&game).unwrap();
+    assert_eq!(open(), Err(launch::CommandError::MissingTarget));
+    assert_eq!(
+        indexer::scan(&roots, &warm, &mut resolver, &ticket)
+            .unwrap()
+            .0
+            .apps
+            .unwrap()
+            .len(),
+        1
+    );
 }
 
 #[test]

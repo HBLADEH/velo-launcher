@@ -32,7 +32,7 @@ export component CustomPanel inherits FocusScope {
     SettingHint { x: 24px; y: 82px; width: parent.width - 48px; text: "添加应用和文件夹，导入后即可搜索。"; font-size: 13px; }
     Rectangle { x: 24px; y: 118.1px; width: parent.width - 48px; height: 80px; border-radius: 12px; background: root.drop-hovering ? Theme.hover : Theme.selected;
         DashedBorder { width: parent.width; height: parent.height; }
-        Text { x: 17px; y: 21px; width: parent.width - 200px; text: "拖入文件夹、.exe 或 .lnk"; overflow: elide; font-size: 12px; font-weight: 700; color: Theme.fg; }
+        Text { x: 17px; y: 21px; width: parent.width - 200px; text: "拖入文件夹、.exe、.lnk 或 .url"; overflow: elide; font-size: 12px; font-weight: 700; color: Theme.fg; }
         Text { x: 17px; y: 45px; width: parent.width - 200px; text: root.elevated ? "管理员模式下请使用右侧按钮。" : "可一次拖入多个项目。"; overflow: elide; font-size: 10px; color: Theme.muted; }
         ActionButton { x: parent.width - 183px; y: 24px; width: 74px; height: 32px; text: "选择文件"; text-size: 12px; radius: 6px; enabled: root.enabled && !root.import-busy; activated => { root.browse(); } }
         ActionButton { x: parent.width - 101px; y: 24px; width: 84px; height: 32px; text: "选择文件夹"; text-size: 12px; radius: 6px; enabled: root.enabled && !root.import-busy; activated => { root.browse-folder(); } }

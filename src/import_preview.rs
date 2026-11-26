@@ -60,10 +60,11 @@ fn inspect(path: &Path) -> PreviewEntry {
     let status = match &kind {
         Ok(ImportKind::Folder) => "文件夹",
         Ok(ImportKind::Shortcut) => "快捷方式 · 文件存在，目标尚未解析",
+        Ok(ImportKind::InternetShortcut) => "Internet 快捷方式 · 文件存在",
         Ok(ImportKind::Executable) => "程序 · 文件存在",
         Err(error) => match error.operation {
             "validate import path" => "需要完整路径",
-            "validate import type" => "仅支持文件夹、.exe 和 .lnk",
+            "validate import type" => "仅支持文件夹、.exe、.lnk 和 .url",
             _ => "项目不存在或无法读取",
         },
     };

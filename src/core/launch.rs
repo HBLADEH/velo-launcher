@@ -29,7 +29,7 @@ pub struct Command {
 }
 
 fn target(item: &AppItem) -> &str {
-    if item.exec_path.is_empty() {
+    if item.exec_path.is_empty() || extension(&item.path, "url") {
         &item.path
     } else {
         &item.exec_path
@@ -124,8 +124,11 @@ pub fn command(
             )
         });
     }
-    target_metadata(Path::new(&item.path), metadata)?;
-    if extension(&item.path, "lnk") {
+    let directory = target_metadata(Path::new(&item.path), metadata)?;
+    if extension(&item.path, "url") && directory {
+        return Err(CommandError::MissingTarget);
+    }
+    if extension(&item.path, "lnk") || extension(&item.path, "url") {
         return Ok(empty(item.path.clone()));
     }
     Ok(Command {
