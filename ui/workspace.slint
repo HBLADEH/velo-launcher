@@ -15,7 +15,7 @@ export component WorkspaceWindow inherits Window {
     in-out property <bool> dark-theme <=> Theme.dark;
     in-out property <bool> reduce-motion <=> Theme.reduce-motion;
 
-    in property <int> board-width: 300;
+    in property <int> board-width: 320;
     in property <int> board-height: 348;
     in property <bool> pad;
     in property <bool> pad-expanded;
@@ -28,6 +28,7 @@ export component WorkspaceWindow inherits Window {
     in property <string> context-source;
     in property <string> context-glyph: "apps";
     callback panel-activate(int);
+    callback panel-drag-requested();
 
     if !root.pad: WorkspacePanel {
         width: parent.width; height: parent.height;
@@ -37,6 +38,7 @@ export component WorkspaceWindow inherits Window {
         context-columns: root.context-columns;
         context-title: root.context-title; context-source: root.context-source; context-glyph: root.context-glyph;
         activate(index) => { root.panel-activate(index); }
+        drag-requested => { root.panel-drag-requested(); }
     }
 
     if root.pad: WorkspaceGesturePad {

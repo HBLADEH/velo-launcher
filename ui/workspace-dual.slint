@@ -112,12 +112,23 @@ export component WorkspacePanel inherits Rectangle {
     in property <string> context-source;
     in property <string> context-glyph: "apps";
     callback activate(int);
+    callback drag-requested();
     private property <string> detail;
     private property <int> largest: max(root.global-columns, root.context-columns);
     private property <length> cell-width: (self.width - 24px - 6px * (self.largest - 1)) / self.largest;
     background: Theme.bg;
     border-radius: 12px; border-width: 1px; border-color: Theme.window-border;
 
+    // The close button is painted and receives pointer events above this area.
+    TouchArea {
+        x: 0px; y: 0px; width: parent.width; height: 34px;
+        mouse-cursor: move;
+        pointer-event(event) => {
+            if event.kind == PointerEventKind.down && event.button == PointerEventButton.left {
+                root.drag-requested();
+            }
+        }
+    }
     Text { x: 13px; y: 10px; width: 90px; height: 17px; text: "全局动作"; color: Theme.fg; font-size: 13px; font-weight: 600; }
     Text {
         x: 100px; y: 10px; width: parent.width - 156px; height: 17px;
@@ -139,20 +150,32 @@ export component WorkspacePanel inherits Rectangle {
         x: 12px; y: 151px; width: parent.width - 24px; height: 42px;
         border-radius: 10px; border-width: 1px; border-color: Theme.accent-line;
         background: Theme.field;
-        HubButton { x: 4px; y: 4px; text: "打开启动器"; show-text: false; detail <=> root.detail; activated => { root.activate(-1); } }
-        Image { x: 9px; y: 7px; width: 26px; height: 28px; source: @image-url("assets/logo.png"); image-fit: contain; }
-        Rectangle { x: 43px; y: 9px; width: 1px; height: 24px; background: Theme.border; }
-        Glyph { x: 52px; y: 13px; width: 16px; height: 16px; icon-key: root.context-glyph; }
+        HubButton { x: 4px; y: 4px; width: 32px; text: "打开启动器"; show-text: false; detail <=> root.detail; activated => { root.activate(-1); } }
+        Image { x: 7px; y: 7px; width: 26px; height: 28px; source: @image-url("assets/logo.png"); image-fit: contain; }
+        Rectangle { x: 37px; y: 9px; width: 1px; height: 24px; background: Theme.border; }
+        Glyph { x: 41px; y: 13px; width: 16px; height: 16px; icon-key: root.context-glyph; }
         Text {
-            x: 75px; y: 0px; width: parent.width - 216px; height: parent.height;
+            x: 61px; y: 0px; width: actions.x - self.x - 5px; height: parent.height;
             text: root.context-title; color: Theme.fg; font-size: 12px;
             font-weight: 600; vertical-alignment: center; overflow: elide;
         }
-        HubButton { x: parent.width - 137px; y: 6px; width: 48px; height: 30px; flat: false;
-            text: "编辑全局"; text-size: 11px; activated => { root.activate(-2); } }
-        HubButton { x: parent.width - 86px; y: 6px; width: 48px; height: 30px; flat: false;
-            text: "编辑应用"; text-size: 11px; activated => { root.activate(-3); } }
-        HubButton { x: parent.width - 37px; y: 4px; text: "手势设置"; icon-key: "settings"; detail <=> root.detail; activated => { root.activate(-4); } }
+        actions := HorizontalLayout {
+            x: parent.width - self.width - 4px;
+            y: (parent.height - self.height) / 2;
+            width: self.preferred-width; height: 34px; spacing: 5px;
+            HubButton {
+                width: 62px; flat: false; text: "编辑全局"; text-size: 12px;
+                activated => { root.activate(-2); }
+            }
+            HubButton {
+                width: 62px; flat: false; text: "编辑应用"; text-size: 12px;
+                activated => { root.activate(-3); }
+            }
+            HubButton {
+                width: 32px; text: "手势设置"; icon-key: "settings"; detail <=> root.detail;
+                activated => { root.activate(-4); }
+            }
+        }
     }
     Text { x: 13px; y: 203px; width: 90px; height: 17px; text: "应用动作"; color: Theme.fg; font-size: 13px; font-weight: 600; }
     Text {

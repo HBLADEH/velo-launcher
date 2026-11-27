@@ -433,8 +433,11 @@ impl Region {
             height = cell_height;
         }
         let diameter = physical(24);
+        // GDI drops the bottom and right edges of a rounded region. Include the
+        // last client pixel on each side so the full Slint outline stays visible.
         // SAFETY: GDI owns no borrowed storage. OwnedRegion transfers the result to HWND.
-        let region = unsafe { CreateRoundRectRgn(x, y, x + width, y + height, diameter, diameter) };
+        let region =
+            unsafe { CreateRoundRectRgn(x, y, x + width + 1, y + height + 1, diameter, diameter) };
         OwnedRegion::new(region)?.attach(native)
     }
 }
